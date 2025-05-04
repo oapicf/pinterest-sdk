@@ -12,8 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Update Swaggy C to include contact updates on init-spec
 - Upgrade Pinterest API spec to 5.14.0
-- Upgrade OpenAPI Generator to 7.9.0
-- Upgrade Swaggy C to 4.8.0
+- Upgrade Swaggy C to 4.10.0
+- Upgrade OpenAPI Generator to 7.12.0
 - Handover repo to OpenAPI Clients Factory project
 
 ## 1.1.0 - 2022-07-01
