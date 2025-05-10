@@ -72,11 +72,11 @@ export function CatalogsFeedValidationDetailsFromJSONTyped(json: any, ignoreDisc
     };
 }
 
-  export function CatalogsFeedValidationDetailsToJSON(json: any): CatalogsFeedValidationDetails {
-      return CatalogsFeedValidationDetailsToJSONTyped(json, false);
-  }
+export function CatalogsFeedValidationDetailsToJSON(json: any): CatalogsFeedValidationDetails {
+    return CatalogsFeedValidationDetailsToJSONTyped(json, false);
+}
 
-  export function CatalogsFeedValidationDetailsToJSONTyped(value?: CatalogsFeedValidationDetails | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsFeedValidationDetailsToJSONTyped(value?: CatalogsFeedValidationDetails | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -11,6 +11,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.ConversionTagConfigs;
 import org.openapitools.model.EnhancedMatchStatusType;
 import org.openapitools.model.EntityStatus;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -26,26 +27,26 @@ import javax.annotation.Generated;
  * ConversionTagResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConversionTagResponse {
 
-  private String adAccountId;
+  private @Nullable String adAccountId;
 
-  private String codeSnippet;
+  private @Nullable String codeSnippet;
 
   private JsonNullable<EnhancedMatchStatusType> enhancedMatchStatus = JsonNullable.<EnhancedMatchStatusType>undefined();
 
-  private String id;
+  private @Nullable String id;
 
   private JsonNullable<BigDecimal> lastFiredTimeMs = JsonNullable.<BigDecimal>undefined();
 
-  private String name;
+  private @Nullable String name;
 
-  private EntityStatus status;
+  private @Nullable EntityStatus status;
 
-  private String version;
+  private @Nullable String version;
 
-  private ConversionTagConfigs configs;
+  private @Nullable ConversionTagConfigs configs;
 
   public ConversionTagResponse adAccountId(String adAccountId) {
     this.adAccountId = adAccountId;

@@ -23,9 +23,10 @@ typedef struct order_line_error_t {
     order_line_t *data; //object
     list_t *error_messages; //primitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } order_line_error_t;
 
-order_line_error_t *order_line_error_create(
+__attribute__((deprecated)) order_line_error_t *order_line_error_create(
     order_line_t *data,
     list_t *error_messages
 );

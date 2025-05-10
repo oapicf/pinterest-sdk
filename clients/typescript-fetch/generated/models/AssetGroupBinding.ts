@@ -119,11 +119,11 @@ export function AssetGroupBindingFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-  export function AssetGroupBindingToJSON(json: any): AssetGroupBinding {
-      return AssetGroupBindingToJSONTyped(json, false);
-  }
+export function AssetGroupBindingToJSON(json: any): AssetGroupBinding {
+    return AssetGroupBindingToJSONTyped(json, false);
+}
 
-  export function AssetGroupBindingToJSONTyped(value?: AssetGroupBinding | null, ignoreDiscriminator: boolean = false): any {
+export function AssetGroupBindingToJSONTyped(value?: AssetGroupBinding | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

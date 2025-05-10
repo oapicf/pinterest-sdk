@@ -18,6 +18,7 @@ import org.openapitools.server.models.CatalogsProductGroupStatus
 import org.openapitools.server.models.CatalogsProductGroupType
 import org.openapitools.server.models.CatalogsRetailProductGroup
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param catalogType 
@@ -35,6 +36,7 @@ import org.openapitools.server.models.CatalogsRetailProductGroup
  * @param country 
  * @param locale 
  */
+@Serializable
 data class CatalogsVerticalProductGroup(
     val catalogType: CatalogsVerticalProductGroup.CatalogType,
     /* ID of the creative assets product group. */
@@ -43,7 +45,7 @@ data class CatalogsVerticalProductGroup(
     /* Catalog id pertaining to the creative assets product group. */
     val catalogId: kotlin.String,
     /* id of the catalogs feed belonging to this catalog product group */
-    val feedId: kotlin.String,
+    val feedId: kotlin.String?,
     /* Name of creative assets product group */
     val name: kotlin.String? = null,
     val description: kotlin.String? = null,
@@ -57,7 +59,7 @@ data class CatalogsVerticalProductGroup(
     val updatedAt: kotlin.Int? = null,
     val country: kotlin.String? = null,
     val locale: kotlin.String? = null
-) 
+)
 {
     /**
     * 

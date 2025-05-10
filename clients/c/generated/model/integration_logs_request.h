@@ -22,9 +22,10 @@ typedef struct integration_logs_request_t integration_logs_request_t;
 typedef struct integration_logs_request_t {
     list_t *logs; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } integration_logs_request_t;
 
-integration_logs_request_t *integration_logs_request_create(
+__attribute__((deprecated)) integration_logs_request_t *integration_logs_request_create(
     list_t *logs
 );
 

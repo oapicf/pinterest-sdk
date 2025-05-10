@@ -48,10 +48,11 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * BillingProfilesResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BillingProfilesResponse {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   /**
@@ -116,6 +117,7 @@ public class BillingProfilesResponse {
 
   public static final String SERIALIZED_NAME_CARD_TYPE = "card_type";
   @SerializedName(SERIALIZED_NAME_CARD_TYPE)
+  @javax.annotation.Nullable
   private CardTypeEnum cardType;
 
   /**
@@ -182,10 +184,12 @@ public class BillingProfilesResponse {
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private StatusEnum status;
 
   public static final String SERIALIZED_NAME_ADVERTISER_ID = "advertiser_id";
   @SerializedName(SERIALIZED_NAME_ADVERTISER_ID)
+  @javax.annotation.Nullable
   private String advertiserId;
 
   /**
@@ -256,12 +260,13 @@ public class BillingProfilesResponse {
 
   public static final String SERIALIZED_NAME_PAYMENT_METHOD_BRAND = "payment_method_brand";
   @SerializedName(SERIALIZED_NAME_PAYMENT_METHOD_BRAND)
+  @javax.annotation.Nullable
   private PaymentMethodBrandEnum paymentMethodBrand;
 
   public BillingProfilesResponse() {
   }
 
-  public BillingProfilesResponse id(String id) {
+  public BillingProfilesResponse id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -275,12 +280,12 @@ public class BillingProfilesResponse {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public BillingProfilesResponse cardType(CardTypeEnum cardType) {
+  public BillingProfilesResponse cardType(@javax.annotation.Nullable CardTypeEnum cardType) {
     this.cardType = cardType;
     return this;
   }
@@ -294,12 +299,12 @@ public class BillingProfilesResponse {
     return cardType;
   }
 
-  public void setCardType(CardTypeEnum cardType) {
+  public void setCardType(@javax.annotation.Nullable CardTypeEnum cardType) {
     this.cardType = cardType;
   }
 
 
-  public BillingProfilesResponse status(StatusEnum status) {
+  public BillingProfilesResponse status(@javax.annotation.Nullable StatusEnum status) {
     this.status = status;
     return this;
   }
@@ -313,12 +318,12 @@ public class BillingProfilesResponse {
     return status;
   }
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(@javax.annotation.Nullable StatusEnum status) {
     this.status = status;
   }
 
 
-  public BillingProfilesResponse advertiserId(String advertiserId) {
+  public BillingProfilesResponse advertiserId(@javax.annotation.Nullable String advertiserId) {
     this.advertiserId = advertiserId;
     return this;
   }
@@ -332,12 +337,12 @@ public class BillingProfilesResponse {
     return advertiserId;
   }
 
-  public void setAdvertiserId(String advertiserId) {
+  public void setAdvertiserId(@javax.annotation.Nullable String advertiserId) {
     this.advertiserId = advertiserId;
   }
 
 
-  public BillingProfilesResponse paymentMethodBrand(PaymentMethodBrandEnum paymentMethodBrand) {
+  public BillingProfilesResponse paymentMethodBrand(@javax.annotation.Nullable PaymentMethodBrandEnum paymentMethodBrand) {
     this.paymentMethodBrand = paymentMethodBrand;
     return this;
   }
@@ -351,7 +356,7 @@ public class BillingProfilesResponse {
     return paymentMethodBrand;
   }
 
-  public void setPaymentMethodBrand(PaymentMethodBrandEnum paymentMethodBrand) {
+  public void setPaymentMethodBrand(@javax.annotation.Nullable PaymentMethodBrandEnum paymentMethodBrand) {
     this.paymentMethodBrand = paymentMethodBrand;
   }
 

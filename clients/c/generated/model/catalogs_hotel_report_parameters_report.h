@@ -34,9 +34,10 @@ typedef struct catalogs_hotel_report_parameters_report_t {
     char *processing_result_id; // string
     char *catalog_id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_hotel_report_parameters_report_t;
 
-catalogs_hotel_report_parameters_report_t *catalogs_hotel_report_parameters_report_create(
+__attribute__((deprecated)) catalogs_hotel_report_parameters_report_t *catalogs_hotel_report_parameters_report_create(
     pinterest_rest_api_catalogs_hotel_report_parameters_report_REPORTTYPE_e report_type,
     char *feed_id,
     char *processing_result_id,

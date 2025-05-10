@@ -61,7 +61,7 @@ class BillingProfilesResponse
      * @SerializedName("card_type")
      * @Type("string")
     */
-    #[Assert\Choice(["UNKNOWN", "VISA", "MASTERCARD", "AMERICAN_EXPRESS", "DISCOVER", "ELO"])]
+    #[Assert\Choice(['UNKNOWN', 'VISA', 'MASTERCARD', 'AMERICAN_EXPRESS', 'DISCOVER', 'ELO'])]
     #[Assert\Type("string")]
     protected ?string $cardType = null;
 
@@ -72,7 +72,7 @@ class BillingProfilesResponse
      * @SerializedName("status")
      * @Type("string")
     */
-    #[Assert\Choice(["UNSPECIFIED", "VALID", "INVALID", "PENDING", "DELETED", "SECONDARY", "PENDING_SECONDARY"])]
+    #[Assert\Choice(['UNSPECIFIED', 'VALID', 'INVALID', 'PENDING', 'DELETED', 'SECONDARY', 'PENDING_SECONDARY'])]
     #[Assert\Type("string")]
     protected ?string $status = null;
 
@@ -94,7 +94,7 @@ class BillingProfilesResponse
      * @SerializedName("payment_method_brand")
      * @Type("string")
     */
-    #[Assert\Choice(["UNKNOWN", "VISA", "MASTERCARD", "AMERICAN_EXPRESS", "DISCOVER", "SOFORT", "DINERS_CLUB", "ELO", "CARTE_BANCAIRE"])]
+    #[Assert\Choice(['UNKNOWN', 'VISA', 'MASTERCARD', 'AMERICAN_EXPRESS', 'DISCOVER', 'SOFORT', 'DINERS_CLUB', 'ELO', 'CARTE_BANCAIRE'])]
     #[Assert\Type("string")]
     protected ?string $paymentMethodBrand = null;
 
@@ -102,7 +102,7 @@ class BillingProfilesResponse
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->id = array_key_exists('id', $data) ? $data['id'] : $this->id;

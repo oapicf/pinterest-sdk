@@ -121,11 +121,11 @@ export function BillingProfilesResponseFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-  export function BillingProfilesResponseToJSON(json: any): BillingProfilesResponse {
-      return BillingProfilesResponseToJSONTyped(json, false);
-  }
+export function BillingProfilesResponseToJSON(json: any): BillingProfilesResponse {
+    return BillingProfilesResponseToJSONTyped(json, false);
+}
 
-  export function BillingProfilesResponseToJSONTyped(value?: BillingProfilesResponse | null, ignoreDiscriminator: boolean = false): any {
+export function BillingProfilesResponseToJSONTyped(value?: BillingProfilesResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -44,8 +44,8 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum AudienceSharingType: string
 {
-        case CUSTOM = "CUSTOM";
-        case SYNDICATED = "SYNDICATED";
+        case CUSTOM = 'CUSTOM';
+        case SYNDICATED = 'SYNDICATED';
 }
 
 

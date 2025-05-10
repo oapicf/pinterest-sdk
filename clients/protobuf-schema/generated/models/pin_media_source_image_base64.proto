@@ -24,8 +24,8 @@ message PinMediaSourceImageBase64 {
   Source_typeEnum source_type = 84625186;
 
   enum Content_typeEnum {
-    Content_typeEnum_JPEG = 0;
-    Content_typeEnum_PNG = 1;
+    Content_typeEnum_IMAGE_JPEG = 0;
+    Content_typeEnum_IMAGE_PNG = 1;
   }
 
   Content_typeEnum content_type = 294975297;

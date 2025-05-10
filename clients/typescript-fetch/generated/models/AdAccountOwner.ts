@@ -55,11 +55,11 @@ export function AdAccountOwnerFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-  export function AdAccountOwnerToJSON(json: any): AdAccountOwner {
-      return AdAccountOwnerToJSONTyped(json, false);
-  }
+export function AdAccountOwnerToJSON(json: any): AdAccountOwner {
+    return AdAccountOwnerToJSONTyped(json, false);
+}
 
-  export function AdAccountOwnerToJSONTyped(value?: AdAccountOwner | null, ignoreDiscriminator: boolean = false): any {
+export function AdAccountOwnerToJSONTyped(value?: AdAccountOwner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

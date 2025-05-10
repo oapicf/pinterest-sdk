@@ -15,9 +15,13 @@
 export type UserFollowingFeedType = 'ALL' | 'RANKED' | 'CREATOR_ONLY' | 'RANKED_CREATOR_ONLY';
 
 export const UserFollowingFeedType = {
+
     All: 'ALL' as UserFollowingFeedType,
+
     Ranked: 'RANKED' as UserFollowingFeedType,
+
     CreatorOnly: 'CREATOR_ONLY' as UserFollowingFeedType,
+
     RankedCreatorOnly: 'RANKED_CREATOR_ONLY' as UserFollowingFeedType
 };
 

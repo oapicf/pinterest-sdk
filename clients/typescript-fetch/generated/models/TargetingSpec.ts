@@ -176,11 +176,11 @@ export function TargetingSpecFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-  export function TargetingSpecToJSON(json: any): TargetingSpec {
-      return TargetingSpecToJSONTyped(json, false);
-  }
+export function TargetingSpecToJSON(json: any): TargetingSpec {
+    return TargetingSpecToJSONTyped(json, false);
+}
 
-  export function TargetingSpecToJSONTyped(value?: TargetingSpec | null, ignoreDiscriminator: boolean = false): any {
+export function TargetingSpecToJSONTyped(value?: TargetingSpec | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

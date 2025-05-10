@@ -49,16 +49,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CreateAssetGroupResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CreateAssetGroupResponse {
   public static final String SERIALIZED_NAME_ASSET_GROUP = "asset_group";
   @SerializedName(SERIALIZED_NAME_ASSET_GROUP)
+  @javax.annotation.Nullable
   private AssetGroupBinding assetGroup;
 
   public CreateAssetGroupResponse() {
   }
 
-  public CreateAssetGroupResponse assetGroup(AssetGroupBinding assetGroup) {
+  public CreateAssetGroupResponse assetGroup(@javax.annotation.Nullable AssetGroupBinding assetGroup) {
     this.assetGroup = assetGroup;
     return this;
   }
@@ -72,7 +73,7 @@ public class CreateAssetGroupResponse {
     return assetGroup;
   }
 
-  public void setAssetGroup(AssetGroupBinding assetGroup) {
+  public void setAssetGroup(@javax.annotation.Nullable AssetGroupBinding assetGroup) {
     this.assetGroup = assetGroup;
   }
 

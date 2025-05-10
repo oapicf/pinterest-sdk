@@ -61,10 +61,35 @@ SharedAudienceAccount <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return SharedAudienceAccount in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return SharedAudienceAccount as a base R list.
+    #' @examples
+    #' # convert array of SharedAudienceAccount (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert SharedAudienceAccount to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       SharedAudienceAccountObject <- list()
       if (!is.null(self$`account_id`)) {
         SharedAudienceAccountObject[["account_id"]] <-
@@ -82,7 +107,7 @@ SharedAudienceAccount <- R6::R6Class(
         SharedAudienceAccountObject[["shared_on_timestamp"]] <-
           self$`shared_on_timestamp`
       }
-      SharedAudienceAccountObject
+      return(SharedAudienceAccountObject)
     },
 
     #' @description
@@ -112,45 +137,13 @@ SharedAudienceAccount <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return SharedAudienceAccount in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`account_id`)) {
-          sprintf(
-          '"account_id":
-            "%s"
-                    ',
-          self$`account_id`
-          )
-        },
-        if (!is.null(self$`account_name`)) {
-          sprintf(
-          '"account_name":
-            "%s"
-                    ',
-          self$`account_name`
-          )
-        },
-        if (!is.null(self$`account_type`)) {
-          sprintf(
-          '"account_type":
-            "%s"
-                    ',
-          self$`account_type`
-          )
-        },
-        if (!is.null(self$`shared_on_timestamp`)) {
-          sprintf(
-          '"shared_on_timestamp":
-            %d
-                    ',
-          self$`shared_on_timestamp`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

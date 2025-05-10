@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param title The name of the creative assets.
@@ -29,6 +30,7 @@ package org.openapitools.server.models
  * @param imageLink The creative assets image.
  * @param videoLink The creative assets video.
  */
+@Serializable
 data class CatalogsCreativeAssetsAttributes(
     /* The name of the creative assets. */
     val title: kotlin.String? = null,
@@ -58,5 +60,5 @@ data class CatalogsCreativeAssetsAttributes(
     val imageLink: kotlin.String? = null,
     /* The creative assets video. */
     val videoLink: kotlin.String? = null
-) 
+)
 

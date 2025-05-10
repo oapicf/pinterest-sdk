@@ -14,16 +14,18 @@ package org.openapitools.server.models
 import org.openapitools.server.models.Country
 import org.openapitools.server.models.Language
 
+import kotlinx.serialization.Serializable
 /**
  * Object uniquely identifying a retail catalog item
  * @param itemId The catalog retail item id in the merchant namespace
  * @param country 
  * @param language 
  */
+@Serializable
 data class AdvancedAuctionItemsGetRecord(
     /* The catalog retail item id in the merchant namespace */
     val itemId: kotlin.String,
     val country: Country,
     val language: Language
-) 
+)
 

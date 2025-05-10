@@ -63,10 +63,35 @@ AudienceCreateRequest <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return AudienceCreateRequest in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return AudienceCreateRequest as a base R list.
+    #' @examples
+    #' # convert array of AudienceCreateRequest (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert AudienceCreateRequest to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       AudienceCreateRequestObject <- list()
       if (!is.null(self$`ad_account_id`)) {
         AudienceCreateRequestObject[["ad_account_id"]] <-
@@ -78,7 +103,7 @@ AudienceCreateRequest <- R6::R6Class(
       }
       if (!is.null(self$`rule`)) {
         AudienceCreateRequestObject[["rule"]] <-
-          self$`rule`$toJSON()
+          self$`rule`$toSimpleType()
       }
       if (!is.null(self$`description`)) {
         AudienceCreateRequestObject[["description"]] <-
@@ -86,9 +111,9 @@ AudienceCreateRequest <- R6::R6Class(
       }
       if (!is.null(self$`audience_type`)) {
         AudienceCreateRequestObject[["audience_type"]] <-
-          self$`audience_type`$toJSON()
+          self$`audience_type`$toSimpleType()
       }
-      AudienceCreateRequestObject
+      return(AudienceCreateRequestObject)
     },
 
     #' @description
@@ -122,53 +147,13 @@ AudienceCreateRequest <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return AudienceCreateRequest in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`ad_account_id`)) {
-          sprintf(
-          '"ad_account_id":
-            "%s"
-                    ',
-          self$`ad_account_id`
-          )
-        },
-        if (!is.null(self$`name`)) {
-          sprintf(
-          '"name":
-            "%s"
-                    ',
-          self$`name`
-          )
-        },
-        if (!is.null(self$`rule`)) {
-          sprintf(
-          '"rule":
-          %s
-          ',
-          jsonlite::toJSON(self$`rule`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`description`)) {
-          sprintf(
-          '"description":
-            "%s"
-                    ',
-          self$`description`
-          )
-        },
-        if (!is.null(self$`audience_type`)) {
-          sprintf(
-          '"audience_type":
-          %s
-          ',
-          jsonlite::toJSON(self$`audience_type`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

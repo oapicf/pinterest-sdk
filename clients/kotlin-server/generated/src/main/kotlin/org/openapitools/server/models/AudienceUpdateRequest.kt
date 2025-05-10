@@ -14,6 +14,7 @@ package org.openapitools.server.models
 import org.openapitools.server.models.AudienceRule
 import org.openapitools.server.models.AudienceUpdateOperationType
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param adAccountId Ad account ID.
@@ -22,6 +23,7 @@ import org.openapitools.server.models.AudienceUpdateOperationType
  * @param description Audience description.
  * @param operationType 
  */
+@Serializable
 data class AudienceUpdateRequest(
     /* Ad account ID. */
     val adAccountId: kotlin.String? = null,
@@ -31,5 +33,5 @@ data class AudienceUpdateRequest(
     /* Audience description. */
     val description: kotlin.String? = null,
     val operationType: AudienceUpdateOperationType? = AudienceUpdateOperationType.UPDATE
-) 
+)
 

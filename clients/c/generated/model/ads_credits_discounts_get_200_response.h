@@ -23,9 +23,10 @@ typedef struct ads_credits_discounts_get_200_response_t {
     list_t *items; //nonprimitive container
     char *bookmark; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } ads_credits_discounts_get_200_response_t;
 
-ads_credits_discounts_get_200_response_t *ads_credits_discounts_get_200_response_create(
+__attribute__((deprecated)) ads_credits_discounts_get_200_response_t *ads_credits_discounts_get_200_response_create(
     list_t *items,
     char *bookmark
 );

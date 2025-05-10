@@ -1,6 +1,6 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Multipart};
+use axum_extra::extract::{CookieJar, Host};
 use bytes::Bytes;
 use http::Method;
 use serde::{Deserialize, Serialize};
@@ -244,138 +244,138 @@ pub enum BoardsSlashUpdateResponse {
 /// Boards
 #[async_trait]
 #[allow(clippy::ptr_arg)]
-pub trait Boards {
+pub trait Boards<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHandler<E> {
     /// Create board section.
     ///
     /// BoardSectionsSlashCreate - POST /v5/boards/{board_id}/sections
     async fn board_sections_slash_create(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::BoardSectionsSlashCreatePathParams,
-      query_params: models::BoardSectionsSlashCreateQueryParams,
-            body: models::BoardSection,
-    ) -> Result<BoardSectionsSlashCreateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::BoardSectionsSlashCreatePathParams,
+      query_params: &models::BoardSectionsSlashCreateQueryParams,
+            body: &models::BoardSection,
+    ) -> Result<BoardSectionsSlashCreateResponse, E>;
 
     /// Delete board section.
     ///
     /// BoardSectionsSlashDelete - DELETE /v5/boards/{board_id}/sections/{section_id}
     async fn board_sections_slash_delete(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::BoardSectionsSlashDeletePathParams,
-      query_params: models::BoardSectionsSlashDeleteQueryParams,
-    ) -> Result<BoardSectionsSlashDeleteResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::BoardSectionsSlashDeletePathParams,
+      query_params: &models::BoardSectionsSlashDeleteQueryParams,
+    ) -> Result<BoardSectionsSlashDeleteResponse, E>;
 
     /// List board sections.
     ///
     /// BoardSectionsSlashList - GET /v5/boards/{board_id}/sections
     async fn board_sections_slash_list(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::BoardSectionsSlashListPathParams,
-      query_params: models::BoardSectionsSlashListQueryParams,
-    ) -> Result<BoardSectionsSlashListResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::BoardSectionsSlashListPathParams,
+      query_params: &models::BoardSectionsSlashListQueryParams,
+    ) -> Result<BoardSectionsSlashListResponse, E>;
 
     /// List Pins on board section.
     ///
     /// BoardSectionsSlashListPins - GET /v5/boards/{board_id}/sections/{section_id}/pins
     async fn board_sections_slash_list_pins(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::BoardSectionsSlashListPinsPathParams,
-      query_params: models::BoardSectionsSlashListPinsQueryParams,
-    ) -> Result<BoardSectionsSlashListPinsResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::BoardSectionsSlashListPinsPathParams,
+      query_params: &models::BoardSectionsSlashListPinsQueryParams,
+    ) -> Result<BoardSectionsSlashListPinsResponse, E>;
 
     /// Update board section.
     ///
     /// BoardSectionsSlashUpdate - PATCH /v5/boards/{board_id}/sections/{section_id}
     async fn board_sections_slash_update(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::BoardSectionsSlashUpdatePathParams,
-      query_params: models::BoardSectionsSlashUpdateQueryParams,
-            body: models::BoardSection,
-    ) -> Result<BoardSectionsSlashUpdateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::BoardSectionsSlashUpdatePathParams,
+      query_params: &models::BoardSectionsSlashUpdateQueryParams,
+            body: &models::BoardSection,
+    ) -> Result<BoardSectionsSlashUpdateResponse, E>;
 
     /// Create board.
     ///
     /// BoardsSlashCreate - POST /v5/boards
     async fn boards_slash_create(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::BoardsSlashCreateQueryParams,
-            body: models::Board,
-    ) -> Result<BoardsSlashCreateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::BoardsSlashCreateQueryParams,
+            body: &models::Board,
+    ) -> Result<BoardsSlashCreateResponse, E>;
 
     /// Delete board.
     ///
     /// BoardsSlashDelete - DELETE /v5/boards/{board_id}
     async fn boards_slash_delete(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::BoardsSlashDeletePathParams,
-      query_params: models::BoardsSlashDeleteQueryParams,
-    ) -> Result<BoardsSlashDeleteResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::BoardsSlashDeletePathParams,
+      query_params: &models::BoardsSlashDeleteQueryParams,
+    ) -> Result<BoardsSlashDeleteResponse, E>;
 
     /// Get board.
     ///
     /// BoardsSlashGet - GET /v5/boards/{board_id}
     async fn boards_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::BoardsSlashGetPathParams,
-      query_params: models::BoardsSlashGetQueryParams,
-    ) -> Result<BoardsSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::BoardsSlashGetPathParams,
+      query_params: &models::BoardsSlashGetQueryParams,
+    ) -> Result<BoardsSlashGetResponse, E>;
 
     /// List boards.
     ///
     /// BoardsSlashList - GET /v5/boards
     async fn boards_slash_list(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::BoardsSlashListQueryParams,
-    ) -> Result<BoardsSlashListResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::BoardsSlashListQueryParams,
+    ) -> Result<BoardsSlashListResponse, E>;
 
     /// List Pins on board.
     ///
     /// BoardsSlashListPins - GET /v5/boards/{board_id}/pins
     async fn boards_slash_list_pins(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::BoardsSlashListPinsPathParams,
-      query_params: models::BoardsSlashListPinsQueryParams,
-    ) -> Result<BoardsSlashListPinsResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::BoardsSlashListPinsPathParams,
+      query_params: &models::BoardsSlashListPinsQueryParams,
+    ) -> Result<BoardsSlashListPinsResponse, E>;
 
     /// Update board.
     ///
     /// BoardsSlashUpdate - PATCH /v5/boards/{board_id}
     async fn boards_slash_update(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::BoardsSlashUpdatePathParams,
-      query_params: models::BoardsSlashUpdateQueryParams,
-            body: models::BoardUpdate,
-    ) -> Result<BoardsSlashUpdateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::BoardsSlashUpdatePathParams,
+      query_params: &models::BoardsSlashUpdateQueryParams,
+            body: &models::BoardUpdate,
+    ) -> Result<BoardsSlashUpdateResponse, E>;
 }

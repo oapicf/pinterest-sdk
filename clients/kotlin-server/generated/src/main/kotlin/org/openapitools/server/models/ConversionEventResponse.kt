@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.ConversionTagType
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param conversionEvent 
@@ -20,6 +21,7 @@ import org.openapitools.server.models.ConversionTagType
  * @param adAccountId Id of the ad account.
  * @param createdTime Creation date in epoch format.
  */
+@Serializable
 data class ConversionEventResponse(
     val conversionEvent: ConversionTagType? = null,
     /* Id of the tag. */
@@ -28,5 +30,5 @@ data class ConversionEventResponse(
     val adAccountId: kotlin.String? = null,
     /* Creation date in epoch format. */
     val createdTime: kotlin.Int? = null
-) 
+)
 

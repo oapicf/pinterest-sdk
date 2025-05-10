@@ -31,9 +31,10 @@ typedef struct asset_group_binding_t {
     struct business_access_user_summary_t *owner; //model
     struct business_access_user_summary_t *created_by; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } asset_group_binding_t;
 
-asset_group_binding_t *asset_group_binding_create(
+__attribute__((deprecated)) asset_group_binding_t *asset_group_binding_create(
     char *id,
     char *asset_group_name,
     char *asset_group_description,

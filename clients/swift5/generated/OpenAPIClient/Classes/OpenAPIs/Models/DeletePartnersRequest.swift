@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct DeletePartnersRequest: Codable, JSONEncodable, Hashable {
 
-    static let partnerIdsRule = ArrayRule(minItems: 1, maxItems: 50, uniqueItems: false)
+    public static let partnerIdsRule = ArrayRule(minItems: 1, maxItems: 50, uniqueItems: false)
     public var partnerIds: [String]
     public var partnerType: String?
 

@@ -28,7 +28,7 @@ import org.openapitools.model.InviteAssetsSummaryProfilesInner;
  */
 
 @ApiModel(description = "Ad accounts and profiles the member/partner will be granted access to with this invite/request.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-11-05T02:05:24.181167181Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2025-05-10T05:39:45.096615976Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class InviteAssetsSummary   {
   
   private List<InviteAssetsSummaryAdAccountsInner> adAccounts = new ArrayList<>();

@@ -24,9 +24,10 @@ typedef struct create_invites_results_response_array_items_inner_t {
     struct invite_exception_response_t *exception; //model
     struct create_invites_results_response_array_items_inner_invite_t *invite; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } create_invites_results_response_array_items_inner_t;
 
-create_invites_results_response_array_items_inner_t *create_invites_results_response_array_items_inner_create(
+__attribute__((deprecated)) create_invites_results_response_array_items_inner_t *create_invites_results_response_array_items_inner_create(
     invite_exception_response_t *exception,
     create_invites_results_response_array_items_inner_invite_t *invite
 );

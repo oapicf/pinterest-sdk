@@ -14,16 +14,18 @@ package org.openapitools.server.models
 import org.openapitools.server.models.Country
 import org.openapitools.server.models.Language
 
+import kotlinx.serialization.Serializable
 /**
  * Object describing an item bid option deletion operation
  * @param itemId The catalog retail item id in the merchant namespace
  * @param country 
  * @param language 
  */
+@Serializable
 data class AdvancedAuctionItemsSubmitDeleteRecord(
     /* The catalog retail item id in the merchant namespace */
     val itemId: kotlin.String,
     val country: Country,
     val language: Language
-) 
+)
 

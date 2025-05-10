@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param offerCodeHash Takes in a SHA256 hash of the offerCode.
  * @param validateOnly If true, only validate if we can redeem offer code. Otherwise it will actually apply the offer code to the account
  */
+@Serializable
 data class AdsCreditRedeemRequest(
     /* Takes in a SHA256 hash of the offerCode. */
     val offerCodeHash: kotlin.String,
     /* If true, only validate if we can redeem offer code. Otherwise it will actually apply the offer code to the account */
     val validateOnly: kotlin.Boolean
-) 
+)
 

@@ -152,7 +152,7 @@ func (c *AudiencesAPIController) AudiencesCreate(w http.ResponseWriter, r *http.
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	audienceCreateRequestParam := AudienceCreateRequest{}
+	var audienceCreateRequestParam AudienceCreateRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&audienceCreateRequestParam); err != nil {
@@ -213,7 +213,7 @@ func (c *AudiencesAPIController) AudiencesUpdate(w http.ResponseWriter, r *http.
 		c.errorHandler(w, r, &RequiredError{"audience_id"}, nil)
 		return
 	}
-	audienceUpdateRequestParam := AudienceUpdateRequest{}
+	var audienceUpdateRequestParam AudienceUpdateRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&audienceUpdateRequestParam); err != nil && !errors.Is(err, io.EOF) {
@@ -246,7 +246,7 @@ func (c *AudiencesAPIController) AudiencesCreateCustom(w http.ResponseWriter, r 
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	audienceCreateCustomRequestParam := AudienceCreateCustomRequest{}
+	var audienceCreateCustomRequestParam AudienceCreateCustomRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&audienceCreateCustomRequestParam); err != nil {

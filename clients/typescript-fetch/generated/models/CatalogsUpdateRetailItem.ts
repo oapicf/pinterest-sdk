@@ -97,11 +97,11 @@ export function CatalogsUpdateRetailItemFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function CatalogsUpdateRetailItemToJSON(json: any): CatalogsUpdateRetailItem {
-      return CatalogsUpdateRetailItemToJSONTyped(json, false);
-  }
+export function CatalogsUpdateRetailItemToJSON(json: any): CatalogsUpdateRetailItem {
+    return CatalogsUpdateRetailItemToJSONTyped(json, false);
+}
 
-  export function CatalogsUpdateRetailItemToJSONTyped(value?: CatalogsUpdateRetailItem | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsUpdateRetailItemToJSONTyped(value?: CatalogsUpdateRetailItem | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

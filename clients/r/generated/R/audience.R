@@ -119,10 +119,35 @@ Audience <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return Audience in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return Audience as a base R list.
+    #' @examples
+    #' # convert array of Audience (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert Audience to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       AudienceObject <- list()
       if (!is.null(self$`ad_account_id`)) {
         AudienceObject[["ad_account_id"]] <-
@@ -146,7 +171,7 @@ Audience <- R6::R6Class(
       }
       if (!is.null(self$`rule`)) {
         AudienceObject[["rule"]] <-
-          self$`rule`$toJSON()
+          self$`rule`$toSimpleType()
       }
       if (!is.null(self$`size`)) {
         AudienceObject[["size"]] <-
@@ -168,7 +193,7 @@ Audience <- R6::R6Class(
         AudienceObject[["updated_timestamp"]] <-
           self$`updated_timestamp`
       }
-      AudienceObject
+      return(AudienceObject)
     },
 
     #' @description
@@ -218,101 +243,13 @@ Audience <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return Audience in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`ad_account_id`)) {
-          sprintf(
-          '"ad_account_id":
-            "%s"
-                    ',
-          self$`ad_account_id`
-          )
-        },
-        if (!is.null(self$`id`)) {
-          sprintf(
-          '"id":
-            "%s"
-                    ',
-          self$`id`
-          )
-        },
-        if (!is.null(self$`name`)) {
-          sprintf(
-          '"name":
-            "%s"
-                    ',
-          self$`name`
-          )
-        },
-        if (!is.null(self$`audience_type`)) {
-          sprintf(
-          '"audience_type":
-            "%s"
-                    ',
-          self$`audience_type`
-          )
-        },
-        if (!is.null(self$`description`)) {
-          sprintf(
-          '"description":
-            "%s"
-                    ',
-          self$`description`
-          )
-        },
-        if (!is.null(self$`rule`)) {
-          sprintf(
-          '"rule":
-          %s
-          ',
-          jsonlite::toJSON(self$`rule`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`size`)) {
-          sprintf(
-          '"size":
-            %d
-                    ',
-          self$`size`
-          )
-        },
-        if (!is.null(self$`status`)) {
-          sprintf(
-          '"status":
-            "%s"
-                    ',
-          self$`status`
-          )
-        },
-        if (!is.null(self$`type`)) {
-          sprintf(
-          '"type":
-            "%s"
-                    ',
-          self$`type`
-          )
-        },
-        if (!is.null(self$`created_timestamp`)) {
-          sprintf(
-          '"created_timestamp":
-            %d
-                    ',
-          self$`created_timestamp`
-          )
-        },
-        if (!is.null(self$`updated_timestamp`)) {
-          sprintf(
-          '"updated_timestamp":
-            %d
-                    ',
-          self$`updated_timestamp`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

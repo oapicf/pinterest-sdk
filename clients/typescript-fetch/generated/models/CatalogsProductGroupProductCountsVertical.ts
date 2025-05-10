@@ -61,17 +61,21 @@ export function CatalogsProductGroupProductCountsVerticalFromJSONTyped(json: any
     }
 }
 
-export function CatalogsProductGroupProductCountsVerticalToJSON(value?: CatalogsProductGroupProductCountsVertical | null): any {
+export function CatalogsProductGroupProductCountsVerticalToJSON(json: any): any {
+    return CatalogsProductGroupProductCountsVerticalToJSONTyped(json, false);
+}
+
+export function CatalogsProductGroupProductCountsVerticalToJSONTyped(value?: CatalogsProductGroupProductCountsVertical | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
     switch (value['catalogType']) {
         case 'CREATIVE_ASSETS':
-            return CatalogsCreativeAssetsProductGroupProductCountsToJSON(value);
+            return Object.assign({}, CatalogsCreativeAssetsProductGroupProductCountsToJSON(value), { catalogType: 'CREATIVE_ASSETS' } as const);
         case 'HOTEL':
-            return CatalogsHotelProductGroupProductCountsToJSON(value);
+            return Object.assign({}, CatalogsHotelProductGroupProductCountsToJSON(value), { catalogType: 'HOTEL' } as const);
         case 'RETAIL':
-            return CatalogsRetailProductGroupProductCountsToJSON(value);
+            return Object.assign({}, CatalogsRetailProductGroupProductCountsToJSON(value), { catalogType: 'RETAIL' } as const);
         default:
             throw new Error(`No variant of CatalogsProductGroupProductCountsVertical exists with 'catalogType=${value['catalogType']}'`);
     }

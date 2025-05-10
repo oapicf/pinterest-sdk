@@ -32,9 +32,10 @@ typedef struct campaign_common_t {
     int end_time; //numeric
     int is_flexible_daily_budgets; //boolean
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } campaign_common_t;
 
-campaign_common_t *campaign_common_create(
+__attribute__((deprecated)) campaign_common_t *campaign_common_create(
     char *ad_account_id,
     char *name,
     entity_status_t *status,

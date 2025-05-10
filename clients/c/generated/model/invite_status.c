@@ -22,7 +22,7 @@ pinterest_rest_api_invite_status__e invite_status_invite_status_FromString(char*
     return 0;
 }
 
-cJSON *invite_status_invite_status_convertToJSON(pinterest_rest_api_invite_status__e invite_status) {
+cJSON *invite_status_convertToJSON(pinterest_rest_api_invite_status__e invite_status) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "invite_status", invite_status_invite_status_ToString(invite_status)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_invite_status__e invite_status_invite_status_parseFromJSON(cJSON *invite_statusJSON) {
-    pinterest_rest_api_invite_status__e *invite_status = NULL;
-    pinterest_rest_api_invite_status__e invite_statusVariable;
-    cJSON *invite_statusVar = cJSON_GetObjectItemCaseSensitive(invite_statusJSON, "invite_status");
-    if(!cJSON_IsString(invite_statusVar) || (invite_statusVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_invite_status__e invite_status_parseFromJSON(cJSON *invite_statusJSON) {
+    if(!cJSON_IsString(invite_statusJSON) || (invite_statusJSON->valuestring == NULL)) {
+        return 0;
     }
-    invite_statusVariable = invite_status_invite_status_FromString(invite_statusVar->valuestring);
-    return invite_statusVariable;
-end:
-    return 0;
+    return invite_status_invite_status_FromString(invite_statusJSON->valuestring);
 }

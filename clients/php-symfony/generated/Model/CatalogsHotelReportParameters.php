@@ -51,7 +51,7 @@ class CatalogsHotelReportParameters
      * @Type("string")
     */
     #[Assert\NotNull]
-    #[Assert\Choice(["HOTEL"])]
+    #[Assert\Choice(['HOTEL'])]
     #[Assert\Type("string")]
     protected ?string $catalogType = null;
 
@@ -69,7 +69,7 @@ class CatalogsHotelReportParameters
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->catalogType = array_key_exists('catalogType', $data) ? $data['catalogType'] : $this->catalogType;

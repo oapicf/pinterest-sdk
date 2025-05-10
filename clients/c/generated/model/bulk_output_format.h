@@ -24,9 +24,9 @@ char* bulk_output_format_bulk_output_format_ToString(pinterest_rest_api_bulk_out
 
 pinterest_rest_api_bulk_output_format__e bulk_output_format_bulk_output_format_FromString(char* bulk_output_format);
 
-//cJSON *bulk_output_format_bulk_output_format_convertToJSON(pinterest_rest_api_bulk_output_format__e bulk_output_format);
+cJSON *bulk_output_format_convertToJSON(pinterest_rest_api_bulk_output_format__e bulk_output_format);
 
-//pinterest_rest_api_bulk_output_format__e bulk_output_format_bulk_output_format_parseFromJSON(cJSON *bulk_output_formatJSON);
+pinterest_rest_api_bulk_output_format__e bulk_output_format_parseFromJSON(cJSON *bulk_output_formatJSON);
 
 #endif /* _bulk_output_format_H_ */
 

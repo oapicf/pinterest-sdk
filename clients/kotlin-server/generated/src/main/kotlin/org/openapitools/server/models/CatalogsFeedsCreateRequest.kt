@@ -20,6 +20,7 @@ import org.openapitools.server.models.Country
 import org.openapitools.server.models.NullableCurrency
 import org.openapitools.server.models.ProductAvailabilityType
 
+import kotlinx.serialization.Serializable
 /**
  * Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.
  * @param name A human-friendly name associated to a given feed.
@@ -33,6 +34,7 @@ import org.openapitools.server.models.ProductAvailabilityType
  * @param defaultAvailability 
  * @param status 
  */
+@Serializable
 data class CatalogsFeedsCreateRequest(
     /* A human-friendly name associated to a given feed. */
     val name: kotlin.String,
@@ -46,5 +48,5 @@ data class CatalogsFeedsCreateRequest(
     val defaultCountry: Country? = null,
     val defaultAvailability: ProductAvailabilityType? = null,
     val status: CatalogsStatus? = null
-) 
+)
 

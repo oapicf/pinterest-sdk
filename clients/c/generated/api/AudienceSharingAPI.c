@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 // Functions for enum  for AudienceSharingAPI_adAccountsAudiencesSharedAccountsList
 
@@ -163,15 +158,20 @@ AudienceSharingAPI_adAccountsAudiencesSharedAccountsList(apiClient_t *apiClient,
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/audiences/shared/accounts")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/audiences/shared/accounts");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/audiences/shared/accounts");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -202,7 +202,7 @@ AudienceSharingAPI_adAccountsAudiencesSharedAccountsList(apiClient_t *apiClient,
     {
         keyQuery_account_type = strdup("account_type");
         valueQuery_account_type = (account_type);
-        keyPairQuery_account_type = keyValuePair_create(keyQuery_account_type, (void *)strdup(adAccountsAudiencesSharedAccountsList__ToString(
+        keyPairQuery_account_type = keyValuePair_create(keyQuery_account_type, strdup(adAccountsAudiencesSharedAccountsList__ToString(
         &valueQuery_account_type)));
         list_addElement(localVarQueryParameters,keyPairQuery_account_type);
     }
@@ -240,6 +240,7 @@ AudienceSharingAPI_adAccountsAudiencesSharedAccountsList(apiClient_t *apiClient,
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -259,11 +260,14 @@ AudienceSharingAPI_adAccountsAudiencesSharedAccountsList(apiClient_t *apiClient,
     //    printf("%s\n","Unexpected error.");
     //}
     //nonprimitive not container
-    cJSON *AudienceSharingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    ad_accounts_audiences_shared_accounts_list_200_response_t *elementToReturn = ad_accounts_audiences_shared_accounts_list_200_response_parseFromJSON(AudienceSharingAPIlocalVarJSON);
-    cJSON_Delete(AudienceSharingAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    ad_accounts_audiences_shared_accounts_list_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AudienceSharingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = ad_accounts_audiences_shared_accounts_list_200_response_parseFromJSON(AudienceSharingAPIlocalVarJSON);
+        cJSON_Delete(AudienceSharingAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -343,15 +347,20 @@ AudienceSharingAPI_businessAccountAudiencesSharedAccountsList(apiClient_t *apiCl
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/businesses/{business_id}/audiences/shared/accounts")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/businesses/{business_id}/audiences/shared/accounts");
+    char *localVarPath = strdup("/businesses/{business_id}/audiences/shared/accounts");
+
+    if(!business_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen("{ business_id }");
+    long sizeOfPathParams_business_id = strlen(business_id)+3 + sizeof("{ business_id }") - 1;
     if(business_id == NULL) {
         goto end;
     }
@@ -382,7 +391,7 @@ AudienceSharingAPI_businessAccountAudiencesSharedAccountsList(apiClient_t *apiCl
     {
         keyQuery_account_type = strdup("account_type");
         valueQuery_account_type = (account_type);
-        keyPairQuery_account_type = keyValuePair_create(keyQuery_account_type, (void *)strdup(businessAccountAudiencesSharedAccountsList__ToString(
+        keyPairQuery_account_type = keyValuePair_create(keyQuery_account_type, strdup(businessAccountAudiencesSharedAccountsList__ToString(
         &valueQuery_account_type)));
         list_addElement(localVarQueryParameters,keyPairQuery_account_type);
     }
@@ -420,6 +429,7 @@ AudienceSharingAPI_businessAccountAudiencesSharedAccountsList(apiClient_t *apiCl
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -439,11 +449,14 @@ AudienceSharingAPI_businessAccountAudiencesSharedAccountsList(apiClient_t *apiCl
     //    printf("%s\n","Unexpected error.");
     //}
     //nonprimitive not container
-    cJSON *AudienceSharingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    ad_accounts_audiences_shared_accounts_list_200_response_t *elementToReturn = ad_accounts_audiences_shared_accounts_list_200_response_parseFromJSON(AudienceSharingAPIlocalVarJSON);
-    cJSON_Delete(AudienceSharingAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    ad_accounts_audiences_shared_accounts_list_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AudienceSharingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = ad_accounts_audiences_shared_accounts_list_200_response_parseFromJSON(AudienceSharingAPIlocalVarJSON);
+        cJSON_Delete(AudienceSharingAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -523,15 +536,20 @@ AudienceSharingAPI_sharedAudiencesForBusinessList(apiClient_t *apiClient, char *
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/businesses/{business_id}/audiences")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/businesses/{business_id}/audiences");
+    char *localVarPath = strdup("/businesses/{business_id}/audiences");
+
+    if(!business_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen("{ business_id }");
+    long sizeOfPathParams_business_id = strlen(business_id)+3 + sizeof("{ business_id }") - 1;
     if(business_id == NULL) {
         goto end;
     }
@@ -562,7 +580,7 @@ AudienceSharingAPI_sharedAudiencesForBusinessList(apiClient_t *apiClient, char *
     {
         keyQuery_order = strdup("order");
         valueQuery_order = (order);
-        keyPairQuery_order = keyValuePair_create(keyQuery_order, (void *)strdup(sharedAudiencesForBusinessList_ORDER_ToString(
+        keyPairQuery_order = keyValuePair_create(keyQuery_order, strdup(sharedAudiencesForBusinessList_ORDER_ToString(
         valueQuery_order)));
         list_addElement(localVarQueryParameters,keyPairQuery_order);
     }
@@ -588,6 +606,7 @@ AudienceSharingAPI_sharedAudiencesForBusinessList(apiClient_t *apiClient, char *
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -603,11 +622,14 @@ AudienceSharingAPI_sharedAudiencesForBusinessList(apiClient_t *apiClient, char *
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *AudienceSharingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    audiences_list_200_response_t *elementToReturn = audiences_list_200_response_parseFromJSON(AudienceSharingAPIlocalVarJSON);
-    cJSON_Delete(AudienceSharingAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    audiences_list_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AudienceSharingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = audiences_list_200_response_parseFromJSON(AudienceSharingAPIlocalVarJSON);
+        cJSON_Delete(AudienceSharingAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -675,15 +697,20 @@ AudienceSharingAPI_updateAdAccountToAdAccountSharedAudience(apiClient_t *apiClie
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -698,9 +725,10 @@ AudienceSharingAPI_updateAdAccountToAdAccountSharedAudience(apiClient_t *apiClie
     cJSON *localVarSingleItemJSON_shared_audience = NULL;
     if (shared_audience != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_shared_audience = shared_audience_convertToJSON(shared_audience);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_shared_audience);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -712,6 +740,7 @@ AudienceSharingAPI_updateAdAccountToAdAccountSharedAudience(apiClient_t *apiClie
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "PATCH");
 
     // uncomment below to debug the error response
@@ -727,11 +756,14 @@ AudienceSharingAPI_updateAdAccountToAdAccountSharedAudience(apiClient_t *apiClie
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *AudienceSharingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    shared_audience_response_t *elementToReturn = shared_audience_response_parseFromJSON(AudienceSharingAPIlocalVarJSON);
-    cJSON_Delete(AudienceSharingAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    shared_audience_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AudienceSharingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = shared_audience_response_parseFromJSON(AudienceSharingAPIlocalVarJSON);
+        cJSON_Delete(AudienceSharingAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -772,15 +804,20 @@ AudienceSharingAPI_updateAdAccountToBusinessSharedAudience(apiClient_t *apiClien
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/audiences/businesses/shared")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/audiences/businesses/shared");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/audiences/businesses/shared");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -795,9 +832,10 @@ AudienceSharingAPI_updateAdAccountToBusinessSharedAudience(apiClient_t *apiClien
     cJSON *localVarSingleItemJSON_business_shared_audience = NULL;
     if (business_shared_audience != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_business_shared_audience = business_shared_audience_convertToJSON(business_shared_audience);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_business_shared_audience);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -809,6 +847,7 @@ AudienceSharingAPI_updateAdAccountToBusinessSharedAudience(apiClient_t *apiClien
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "PATCH");
 
     // uncomment below to debug the error response
@@ -824,11 +863,14 @@ AudienceSharingAPI_updateAdAccountToBusinessSharedAudience(apiClient_t *apiClien
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *AudienceSharingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    business_shared_audience_response_t *elementToReturn = business_shared_audience_response_parseFromJSON(AudienceSharingAPIlocalVarJSON);
-    cJSON_Delete(AudienceSharingAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    business_shared_audience_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AudienceSharingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = business_shared_audience_response_parseFromJSON(AudienceSharingAPIlocalVarJSON);
+        cJSON_Delete(AudienceSharingAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -869,15 +911,20 @@ AudienceSharingAPI_updateBusinessToAdAccountSharedAudience(apiClient_t *apiClien
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/businesses/{business_id}/audiences/ad_accounts/shared")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/businesses/{business_id}/audiences/ad_accounts/shared");
+    char *localVarPath = strdup("/businesses/{business_id}/audiences/ad_accounts/shared");
+
+    if(!business_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen("{ business_id }");
+    long sizeOfPathParams_business_id = strlen(business_id)+3 + sizeof("{ business_id }") - 1;
     if(business_id == NULL) {
         goto end;
     }
@@ -892,9 +939,10 @@ AudienceSharingAPI_updateBusinessToAdAccountSharedAudience(apiClient_t *apiClien
     cJSON *localVarSingleItemJSON_shared_audience = NULL;
     if (shared_audience != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_shared_audience = shared_audience_convertToJSON(shared_audience);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_shared_audience);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -906,6 +954,7 @@ AudienceSharingAPI_updateBusinessToAdAccountSharedAudience(apiClient_t *apiClien
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "PATCH");
 
     // uncomment below to debug the error response
@@ -921,11 +970,14 @@ AudienceSharingAPI_updateBusinessToAdAccountSharedAudience(apiClient_t *apiClien
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *AudienceSharingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    shared_audience_response_t *elementToReturn = shared_audience_response_parseFromJSON(AudienceSharingAPIlocalVarJSON);
-    cJSON_Delete(AudienceSharingAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    shared_audience_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AudienceSharingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = shared_audience_response_parseFromJSON(AudienceSharingAPIlocalVarJSON);
+        cJSON_Delete(AudienceSharingAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -966,15 +1018,20 @@ AudienceSharingAPI_updateBusinessToBusinessSharedAudience(apiClient_t *apiClient
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/businesses/{business_id}/audiences/businesses/shared")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/businesses/{business_id}/audiences/businesses/shared");
+    char *localVarPath = strdup("/businesses/{business_id}/audiences/businesses/shared");
+
+    if(!business_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen("{ business_id }");
+    long sizeOfPathParams_business_id = strlen(business_id)+3 + sizeof("{ business_id }") - 1;
     if(business_id == NULL) {
         goto end;
     }
@@ -989,9 +1046,10 @@ AudienceSharingAPI_updateBusinessToBusinessSharedAudience(apiClient_t *apiClient
     cJSON *localVarSingleItemJSON_business_shared_audience = NULL;
     if (business_shared_audience != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_business_shared_audience = business_shared_audience_convertToJSON(business_shared_audience);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_business_shared_audience);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -1003,6 +1061,7 @@ AudienceSharingAPI_updateBusinessToBusinessSharedAudience(apiClient_t *apiClient
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "PATCH");
 
     // uncomment below to debug the error response
@@ -1018,11 +1077,14 @@ AudienceSharingAPI_updateBusinessToBusinessSharedAudience(apiClient_t *apiClient
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *AudienceSharingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    business_shared_audience_response_t *elementToReturn = business_shared_audience_response_parseFromJSON(AudienceSharingAPIlocalVarJSON);
-    cJSON_Delete(AudienceSharingAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    business_shared_audience_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AudienceSharingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = business_shared_audience_response_parseFromJSON(AudienceSharingAPIlocalVarJSON);
+        cJSON_Delete(AudienceSharingAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type

@@ -61,17 +61,21 @@ export function CatalogsItemsPostFiltersFromJSONTyped(json: any, ignoreDiscrimin
     }
 }
 
-export function CatalogsItemsPostFiltersToJSON(value?: CatalogsItemsPostFilters | null): any {
+export function CatalogsItemsPostFiltersToJSON(json: any): any {
+    return CatalogsItemsPostFiltersToJSONTyped(json, false);
+}
+
+export function CatalogsItemsPostFiltersToJSONTyped(value?: CatalogsItemsPostFilters | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
     switch (value['catalogType']) {
         case 'CREATIVE_ASSETS':
-            return CatalogsCreativeAssetsItemsPostFilterToJSON(value);
+            return Object.assign({}, CatalogsCreativeAssetsItemsPostFilterToJSON(value), { catalogType: 'CREATIVE_ASSETS' } as const);
         case 'HOTEL':
-            return CatalogsHotelItemsPostFilterToJSON(value);
+            return Object.assign({}, CatalogsHotelItemsPostFilterToJSON(value), { catalogType: 'HOTEL' } as const);
         case 'RETAIL':
-            return CatalogsRetailItemsPostFilterToJSON(value);
+            return Object.assign({}, CatalogsRetailItemsPostFilterToJSON(value), { catalogType: 'RETAIL' } as const);
         default:
             throw new Error(`No variant of CatalogsItemsPostFilters exists with 'catalogType=${value['catalogType']}'`);
     }

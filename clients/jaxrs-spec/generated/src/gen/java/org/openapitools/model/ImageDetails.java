@@ -15,11 +15,25 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ImageDetails")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ImageDetails   {
   private Integer width;
   private Integer height;
   private String url;
+
+  public ImageDetails() {
+  }
+
+  @JsonCreator
+  public ImageDetails(
+    @JsonProperty(required = true, value = "width") Integer width,
+    @JsonProperty(required = true, value = "height") Integer height,
+    @JsonProperty(required = true, value = "url") String url
+  ) {
+    this.width = width;
+    this.height = height;
+    this.url = url;
+  }
 
   /**
    * minimum: 100
@@ -31,12 +45,12 @@ public class ImageDetails   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("width")
+  @JsonProperty(required = true, value = "width")
   @NotNull  @Min(100)public Integer getWidth() {
     return width;
   }
 
-  @JsonProperty("width")
+  @JsonProperty(required = true, value = "width")
   public void setWidth(Integer width) {
     this.width = width;
   }
@@ -51,12 +65,12 @@ public class ImageDetails   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("height")
+  @JsonProperty(required = true, value = "height")
   @NotNull  @Min(100)public Integer getHeight() {
     return height;
   }
 
-  @JsonProperty("height")
+  @JsonProperty(required = true, value = "height")
   public void setHeight(Integer height) {
     this.height = height;
   }
@@ -70,12 +84,12 @@ public class ImageDetails   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("url")
+  @JsonProperty(required = true, value = "url")
   @NotNull public String getUrl() {
     return url;
   }
 
-  @JsonProperty("url")
+  @JsonProperty(required = true, value = "url")
   public void setUrl(String url) {
     this.url = url;
   }

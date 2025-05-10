@@ -5,7 +5,7 @@
 
 
 
-quiz_pin_question_t *quiz_pin_question_create(
+static quiz_pin_question_t *quiz_pin_question_create_internal(
     double question_id,
     char *question_text,
     list_t *options
@@ -18,12 +18,28 @@ quiz_pin_question_t *quiz_pin_question_create(
     quiz_pin_question_local_var->question_text = question_text;
     quiz_pin_question_local_var->options = options;
 
+    quiz_pin_question_local_var->_library_owned = 1;
     return quiz_pin_question_local_var;
 }
 
+__attribute__((deprecated)) quiz_pin_question_t *quiz_pin_question_create(
+    double question_id,
+    char *question_text,
+    list_t *options
+    ) {
+    return quiz_pin_question_create_internal (
+        question_id,
+        question_text,
+        options
+        );
+}
 
 void quiz_pin_question_free(quiz_pin_question_t *quiz_pin_question) {
     if(NULL == quiz_pin_question){
+        return ;
+    }
+    if(quiz_pin_question->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "quiz_pin_question_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -96,6 +112,9 @@ quiz_pin_question_t *quiz_pin_question_parseFromJSON(cJSON *quiz_pin_questionJSO
 
     // quiz_pin_question->question_id
     cJSON *question_id = cJSON_GetObjectItemCaseSensitive(quiz_pin_questionJSON, "question_id");
+    if (cJSON_IsNull(question_id)) {
+        question_id = NULL;
+    }
     if (question_id) { 
     if(!cJSON_IsNumber(question_id))
     {
@@ -105,6 +124,9 @@ quiz_pin_question_t *quiz_pin_question_parseFromJSON(cJSON *quiz_pin_questionJSO
 
     // quiz_pin_question->question_text
     cJSON *question_text = cJSON_GetObjectItemCaseSensitive(quiz_pin_questionJSON, "question_text");
+    if (cJSON_IsNull(question_text)) {
+        question_text = NULL;
+    }
     if (question_text) { 
     if(!cJSON_IsString(question_text) && !cJSON_IsNull(question_text))
     {
@@ -114,6 +136,9 @@ quiz_pin_question_t *quiz_pin_question_parseFromJSON(cJSON *quiz_pin_questionJSO
 
     // quiz_pin_question->options
     cJSON *options = cJSON_GetObjectItemCaseSensitive(quiz_pin_questionJSON, "options");
+    if (cJSON_IsNull(options)) {
+        options = NULL;
+    }
     if (options) { 
     cJSON *options_local_nonprimitive = NULL;
     if(!cJSON_IsArray(options)){
@@ -134,7 +159,7 @@ quiz_pin_question_t *quiz_pin_question_parseFromJSON(cJSON *quiz_pin_questionJSO
     }
 
 
-    quiz_pin_question_local_var = quiz_pin_question_create (
+    quiz_pin_question_local_var = quiz_pin_question_create_internal (
         question_id ? question_id->valuedouble : 0,
         question_text && !cJSON_IsNull(question_text) ? strdup(question_text->valuestring) : NULL,
         options ? optionsList : NULL

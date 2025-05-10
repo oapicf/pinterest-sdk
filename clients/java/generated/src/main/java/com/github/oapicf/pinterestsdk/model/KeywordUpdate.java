@@ -49,24 +49,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * KeywordUpdate
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class KeywordUpdate {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nonnull
   private String id;
 
   public static final String SERIALIZED_NAME_ARCHIVED = "archived";
   @SerializedName(SERIALIZED_NAME_ARCHIVED)
+  @javax.annotation.Nullable
   private Boolean archived;
 
   public static final String SERIALIZED_NAME_BID = "bid";
   @SerializedName(SERIALIZED_NAME_BID)
+  @javax.annotation.Nullable
   private Integer bid;
 
   public KeywordUpdate() {
   }
 
-  public KeywordUpdate id(String id) {
+  public KeywordUpdate id(@javax.annotation.Nonnull String id) {
     this.id = id;
     return this;
   }
@@ -80,12 +83,12 @@ public class KeywordUpdate {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 
 
-  public KeywordUpdate archived(Boolean archived) {
+  public KeywordUpdate archived(@javax.annotation.Nullable Boolean archived) {
     this.archived = archived;
     return this;
   }
@@ -99,12 +102,12 @@ public class KeywordUpdate {
     return archived;
   }
 
-  public void setArchived(Boolean archived) {
+  public void setArchived(@javax.annotation.Nullable Boolean archived) {
     this.archived = archived;
   }
 
 
-  public KeywordUpdate bid(Integer bid) {
+  public KeywordUpdate bid(@javax.annotation.Nullable Integer bid) {
     this.bid = bid;
     return this;
   }
@@ -118,7 +121,7 @@ public class KeywordUpdate {
     return bid;
   }
 
-  public void setBid(Integer bid) {
+  public void setBid(@javax.annotation.Nullable Integer bid) {
     this.bid = bid;
   }
 

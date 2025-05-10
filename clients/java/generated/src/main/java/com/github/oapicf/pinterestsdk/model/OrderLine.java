@@ -54,60 +54,72 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * OrderLine
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class OrderLine {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nullable
   private String type;
 
   public static final String SERIALIZED_NAME_AD_ACCOUNT_ID = "ad_account_id";
   @SerializedName(SERIALIZED_NAME_AD_ACCOUNT_ID)
+  @javax.annotation.Nullable
   private String adAccountId;
 
   public static final String SERIALIZED_NAME_PURCHASE_ORDER_ID = "purchase_order_id";
   @SerializedName(SERIALIZED_NAME_PURCHASE_ORDER_ID)
+  @javax.annotation.Nullable
   private String purchaseOrderId;
 
   public static final String SERIALIZED_NAME_START_TIME = "start_time";
   @SerializedName(SERIALIZED_NAME_START_TIME)
+  @javax.annotation.Nullable
   private BigDecimal startTime;
 
   public static final String SERIALIZED_NAME_END_TIME = "end_time";
   @SerializedName(SERIALIZED_NAME_END_TIME)
+  @javax.annotation.Nullable
   private BigDecimal endTime;
 
   public static final String SERIALIZED_NAME_BUDGET = "budget";
   @SerializedName(SERIALIZED_NAME_BUDGET)
+  @javax.annotation.Nullable
   private BigDecimal budget;
 
   public static final String SERIALIZED_NAME_PAID_BUDGET = "paid_budget";
   @SerializedName(SERIALIZED_NAME_PAID_BUDGET)
+  @javax.annotation.Nullable
   private BigDecimal paidBudget;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private OrderLineStatus status;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_PAID_TYPE = "paid_type";
   @SerializedName(SERIALIZED_NAME_PAID_TYPE)
+  @javax.annotation.Nullable
   private OrderLinePaidType paidType;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_IDS = "campaign_ids";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_IDS)
+  @javax.annotation.Nonnull
   private List<String> campaignIds = new ArrayList<>();
 
   public OrderLine() {
   }
 
-  public OrderLine id(String id) {
+  public OrderLine id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -121,12 +133,12 @@ public class OrderLine {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public OrderLine type(String type) {
+  public OrderLine type(@javax.annotation.Nullable String type) {
     this.type = type;
     return this;
   }
@@ -140,12 +152,12 @@ public class OrderLine {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@javax.annotation.Nullable String type) {
     this.type = type;
   }
 
 
-  public OrderLine adAccountId(String adAccountId) {
+  public OrderLine adAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -159,12 +171,12 @@ public class OrderLine {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
 
-  public OrderLine purchaseOrderId(String purchaseOrderId) {
+  public OrderLine purchaseOrderId(@javax.annotation.Nullable String purchaseOrderId) {
     this.purchaseOrderId = purchaseOrderId;
     return this;
   }
@@ -178,12 +190,12 @@ public class OrderLine {
     return purchaseOrderId;
   }
 
-  public void setPurchaseOrderId(String purchaseOrderId) {
+  public void setPurchaseOrderId(@javax.annotation.Nullable String purchaseOrderId) {
     this.purchaseOrderId = purchaseOrderId;
   }
 
 
-  public OrderLine startTime(BigDecimal startTime) {
+  public OrderLine startTime(@javax.annotation.Nullable BigDecimal startTime) {
     this.startTime = startTime;
     return this;
   }
@@ -197,12 +209,12 @@ public class OrderLine {
     return startTime;
   }
 
-  public void setStartTime(BigDecimal startTime) {
+  public void setStartTime(@javax.annotation.Nullable BigDecimal startTime) {
     this.startTime = startTime;
   }
 
 
-  public OrderLine endTime(BigDecimal endTime) {
+  public OrderLine endTime(@javax.annotation.Nullable BigDecimal endTime) {
     this.endTime = endTime;
     return this;
   }
@@ -216,12 +228,12 @@ public class OrderLine {
     return endTime;
   }
 
-  public void setEndTime(BigDecimal endTime) {
+  public void setEndTime(@javax.annotation.Nullable BigDecimal endTime) {
     this.endTime = endTime;
   }
 
 
-  public OrderLine budget(BigDecimal budget) {
+  public OrderLine budget(@javax.annotation.Nullable BigDecimal budget) {
     this.budget = budget;
     return this;
   }
@@ -235,12 +247,12 @@ public class OrderLine {
     return budget;
   }
 
-  public void setBudget(BigDecimal budget) {
+  public void setBudget(@javax.annotation.Nullable BigDecimal budget) {
     this.budget = budget;
   }
 
 
-  public OrderLine paidBudget(BigDecimal paidBudget) {
+  public OrderLine paidBudget(@javax.annotation.Nullable BigDecimal paidBudget) {
     this.paidBudget = paidBudget;
     return this;
   }
@@ -254,12 +266,12 @@ public class OrderLine {
     return paidBudget;
   }
 
-  public void setPaidBudget(BigDecimal paidBudget) {
+  public void setPaidBudget(@javax.annotation.Nullable BigDecimal paidBudget) {
     this.paidBudget = paidBudget;
   }
 
 
-  public OrderLine status(OrderLineStatus status) {
+  public OrderLine status(@javax.annotation.Nullable OrderLineStatus status) {
     this.status = status;
     return this;
   }
@@ -273,12 +285,12 @@ public class OrderLine {
     return status;
   }
 
-  public void setStatus(OrderLineStatus status) {
+  public void setStatus(@javax.annotation.Nullable OrderLineStatus status) {
     this.status = status;
   }
 
 
-  public OrderLine name(String name) {
+  public OrderLine name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -292,12 +304,12 @@ public class OrderLine {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public OrderLine paidType(OrderLinePaidType paidType) {
+  public OrderLine paidType(@javax.annotation.Nullable OrderLinePaidType paidType) {
     this.paidType = paidType;
     return this;
   }
@@ -311,12 +323,12 @@ public class OrderLine {
     return paidType;
   }
 
-  public void setPaidType(OrderLinePaidType paidType) {
+  public void setPaidType(@javax.annotation.Nullable OrderLinePaidType paidType) {
     this.paidType = paidType;
   }
 
 
-  public OrderLine campaignIds(List<String> campaignIds) {
+  public OrderLine campaignIds(@javax.annotation.Nonnull List<String> campaignIds) {
     this.campaignIds = campaignIds;
     return this;
   }
@@ -338,7 +350,7 @@ public class OrderLine {
     return campaignIds;
   }
 
-  public void setCampaignIds(List<String> campaignIds) {
+  public void setCampaignIds(@javax.annotation.Nonnull List<String> campaignIds) {
     this.campaignIds = campaignIds;
   }
 

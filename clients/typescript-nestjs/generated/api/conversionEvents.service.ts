@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { ConversionApiResponse } from '../model/conversionApiResponse';
 import { ConversionEvents } from '../model/conversionEvents';
@@ -28,10 +28,12 @@ export class ConversionEventsService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -51,9 +53,10 @@ export class ConversionEventsService {
      * @param test Include query param ?test&#x3D;true to mark the request as a test request. The events will not be recorded but the API will still return the same response messages. Use this mode to verify your requests are working and your events are constructed correctly. Warning: If you use this query parameter, be certain that it is off (set to false or deleted) before sending a legitimate (non-testing) request.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [eventsCreateOpts.config] Override http request option.
      */
-    public eventsCreate(adAccountId: string, conversionEvents: ConversionEvents, test?: boolean, ): Observable<AxiosResponse<ConversionApiResponse>>;
-    public eventsCreate(adAccountId: string, conversionEvents: ConversionEvents, test?: boolean, ): Observable<any> {
+    public eventsCreate(adAccountId: string, conversionEvents: ConversionEvents, test?: boolean, eventsCreateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<ConversionApiResponse>>;
+    public eventsCreate(adAccountId: string, conversionEvents: ConversionEvents, test?: boolean, eventsCreateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling eventsCreate.');
         }
@@ -112,7 +115,8 @@ export class ConversionEventsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...eventsCreateOpts?.config,
+                        headers: {...headers, ...eventsCreateOpts?.config?.headers},
                     }
                 );
             })

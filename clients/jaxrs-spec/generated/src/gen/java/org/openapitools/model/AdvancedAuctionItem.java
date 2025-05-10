@@ -18,12 +18,28 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdvancedAuctionItem")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdvancedAuctionItem   {
   private String itemId;
   private Country country;
   private Language language;
   private AdvancedAuctionBidOptions bidOptions;
+
+  public AdvancedAuctionItem() {
+  }
+
+  @JsonCreator
+  public AdvancedAuctionItem(
+    @JsonProperty(required = true, value = "item_id") String itemId,
+    @JsonProperty(required = true, value = "country") Country country,
+    @JsonProperty(required = true, value = "language") Language language,
+    @JsonProperty(required = true, value = "bid_options") AdvancedAuctionBidOptions bidOptions
+  ) {
+    this.itemId = itemId;
+    this.country = country;
+    this.language = language;
+    this.bidOptions = bidOptions;
+  }
 
   /**
    * The catalog retail item id in the merchant namespace
@@ -35,12 +51,12 @@ public class AdvancedAuctionItem   {
 
   
   @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog retail item id in the merchant namespace")
-  @JsonProperty("item_id")
+  @JsonProperty(required = true, value = "item_id")
   @NotNull public String getItemId() {
     return itemId;
   }
 
-  @JsonProperty("item_id")
+  @JsonProperty(required = true, value = "item_id")
   public void setItemId(String itemId) {
     this.itemId = itemId;
   }
@@ -54,12 +70,12 @@ public class AdvancedAuctionItem   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("country")
+  @JsonProperty(required = true, value = "country")
   @NotNull public Country getCountry() {
     return country;
   }
 
-  @JsonProperty("country")
+  @JsonProperty(required = true, value = "country")
   public void setCountry(Country country) {
     this.country = country;
   }
@@ -73,12 +89,12 @@ public class AdvancedAuctionItem   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("language")
+  @JsonProperty(required = true, value = "language")
   @NotNull public Language getLanguage() {
     return language;
   }
 
-  @JsonProperty("language")
+  @JsonProperty(required = true, value = "language")
   public void setLanguage(Language language) {
     this.language = language;
   }
@@ -92,12 +108,12 @@ public class AdvancedAuctionItem   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("bid_options")
+  @JsonProperty(required = true, value = "bid_options")
   @NotNull @Valid public AdvancedAuctionBidOptions getBidOptions() {
     return bidOptions;
   }
 
-  @JsonProperty("bid_options")
+  @JsonProperty(required = true, value = "bid_options")
   public void setBidOptions(AdvancedAuctionBidOptions bidOptions) {
     this.bidOptions = bidOptions;
   }

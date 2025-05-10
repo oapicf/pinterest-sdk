@@ -26,9 +26,10 @@ typedef struct media_upload_t {
     char *upload_url; // string
     struct media_upload_all_of_upload_parameters_t *upload_parameters; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } media_upload_t;
 
-media_upload_t *media_upload_create(
+__attribute__((deprecated)) media_upload_t *media_upload_create(
     char *media_id,
     media_upload_type_t *media_type,
     char *upload_url,

@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Integration metadata
  * @param id 
@@ -29,6 +30,7 @@ package org.openapitools.server.models
  * @param additionalId1 
  * @param partnerMetadata 
  */
+@Serializable
 data class IntegrationMetadata(
     val id: kotlin.String? = null,
     val externalBusinessId: kotlin.String? = null,
@@ -44,5 +46,5 @@ data class IntegrationMetadata(
     val updatedTimestamp: java.math.BigDecimal? = null,
     val additionalId1: kotlin.String? = null,
     val partnerMetadata: kotlin.String? = null
-) 
+)
 

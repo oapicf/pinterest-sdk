@@ -21,9 +21,10 @@ typedef struct cancel_invites_body_t cancel_invites_body_t;
 typedef struct cancel_invites_body_t {
     list_t *invite_ids; //primitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } cancel_invites_body_t;
 
-cancel_invites_body_t *cancel_invites_body_create(
+__attribute__((deprecated)) cancel_invites_body_t *cancel_invites_body_create(
     list_t *invite_ids
 );
 

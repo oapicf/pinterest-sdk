@@ -21,11 +21,25 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdsAnalyticsMetricsFilter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdsAnalyticsMetricsFilter   {
   private AdsAnalyticsFilterColumn field;
   private AdsAnalyticsFilterOperator operator;
   private @Valid List<BigDecimal> values = new ArrayList<>();
+
+  public AdsAnalyticsMetricsFilter() {
+  }
+
+  @JsonCreator
+  public AdsAnalyticsMetricsFilter(
+    @JsonProperty(required = true, value = "field") AdsAnalyticsFilterColumn field,
+    @JsonProperty(required = true, value = "operator") AdsAnalyticsFilterOperator operator,
+    @JsonProperty(required = true, value = "values") List<@Valid BigDecimal> values
+  ) {
+    this.field = field;
+    this.operator = operator;
+    this.values = values;
+  }
 
   /**
    **/
@@ -36,12 +50,12 @@ public class AdsAnalyticsMetricsFilter   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("field")
+  @JsonProperty(required = true, value = "field")
   @NotNull public AdsAnalyticsFilterColumn getField() {
     return field;
   }
 
-  @JsonProperty("field")
+  @JsonProperty(required = true, value = "field")
   public void setField(AdsAnalyticsFilterColumn field) {
     this.field = field;
   }
@@ -55,12 +69,12 @@ public class AdsAnalyticsMetricsFilter   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("operator")
+  @JsonProperty(required = true, value = "operator")
   @NotNull public AdsAnalyticsFilterOperator getOperator() {
     return operator;
   }
 
-  @JsonProperty("operator")
+  @JsonProperty(required = true, value = "operator")
   public void setOperator(AdsAnalyticsFilterOperator operator) {
     this.operator = operator;
   }
@@ -75,12 +89,12 @@ public class AdsAnalyticsMetricsFilter   {
 
   
   @ApiModelProperty(required = true, value = "List of values for filtering")
-  @JsonProperty("values")
+  @JsonProperty(required = true, value = "values")
   @NotNull @Valid  @Size(min=1)public List<@Valid BigDecimal> getValues() {
     return values;
   }
 
-  @JsonProperty("values")
+  @JsonProperty(required = true, value = "values")
   public void setValues(List<BigDecimal> values) {
     this.values = values;
   }

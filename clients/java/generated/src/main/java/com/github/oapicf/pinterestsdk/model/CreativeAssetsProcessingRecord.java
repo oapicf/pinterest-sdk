@@ -52,28 +52,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Object describing an item processing record
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CreativeAssetsProcessingRecord {
   public static final String SERIALIZED_NAME_CREATIVE_ASSETS_ID = "creative_assets_id";
   @SerializedName(SERIALIZED_NAME_CREATIVE_ASSETS_ID)
+  @javax.annotation.Nullable
   private String creativeAssetsId;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
+  @javax.annotation.Nullable
   private List<ItemValidationEvent> errors = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_WARNINGS = "warnings";
   @SerializedName(SERIALIZED_NAME_WARNINGS)
+  @javax.annotation.Nullable
   private List<ItemValidationEvent> warnings = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private ItemProcessingStatus status;
 
   public CreativeAssetsProcessingRecord() {
   }
 
-  public CreativeAssetsProcessingRecord creativeAssetsId(String creativeAssetsId) {
+  public CreativeAssetsProcessingRecord creativeAssetsId(@javax.annotation.Nullable String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
     return this;
   }
@@ -87,12 +91,12 @@ public class CreativeAssetsProcessingRecord {
     return creativeAssetsId;
   }
 
-  public void setCreativeAssetsId(String creativeAssetsId) {
+  public void setCreativeAssetsId(@javax.annotation.Nullable String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
   }
 
 
-  public CreativeAssetsProcessingRecord errors(List<ItemValidationEvent> errors) {
+  public CreativeAssetsProcessingRecord errors(@javax.annotation.Nullable List<ItemValidationEvent> errors) {
     this.errors = errors;
     return this;
   }
@@ -114,12 +118,12 @@ public class CreativeAssetsProcessingRecord {
     return errors;
   }
 
-  public void setErrors(List<ItemValidationEvent> errors) {
+  public void setErrors(@javax.annotation.Nullable List<ItemValidationEvent> errors) {
     this.errors = errors;
   }
 
 
-  public CreativeAssetsProcessingRecord warnings(List<ItemValidationEvent> warnings) {
+  public CreativeAssetsProcessingRecord warnings(@javax.annotation.Nullable List<ItemValidationEvent> warnings) {
     this.warnings = warnings;
     return this;
   }
@@ -141,12 +145,12 @@ public class CreativeAssetsProcessingRecord {
     return warnings;
   }
 
-  public void setWarnings(List<ItemValidationEvent> warnings) {
+  public void setWarnings(@javax.annotation.Nullable List<ItemValidationEvent> warnings) {
     this.warnings = warnings;
   }
 
 
-  public CreativeAssetsProcessingRecord status(ItemProcessingStatus status) {
+  public CreativeAssetsProcessingRecord status(@javax.annotation.Nullable ItemProcessingStatus status) {
     this.status = status;
     return this;
   }
@@ -160,7 +164,7 @@ public class CreativeAssetsProcessingRecord {
     return status;
   }
 
-  public void setStatus(ItemProcessingStatus status) {
+  public void setStatus(@javax.annotation.Nullable ItemProcessingStatus status) {
     this.status = status;
   }
 

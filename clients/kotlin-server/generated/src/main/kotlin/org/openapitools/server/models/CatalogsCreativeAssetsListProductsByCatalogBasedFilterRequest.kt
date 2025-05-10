@@ -13,18 +13,20 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsCreativeAssetsProductGroupFilters
 
+import kotlinx.serialization.Serializable
 /**
  * Request object to list products for a given creative assets catalog_id and product group filter.
  * @param catalogType 
  * @param catalogId Catalog id pertaining to the creative assets product group.
  * @param filters 
  */
+@Serializable
 data class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest(
     val catalogType: CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.CatalogType,
     /* Catalog id pertaining to the creative assets product group. */
     val catalogId: kotlin.String,
     val filters: CatalogsCreativeAssetsProductGroupFilters
-) 
+)
 {
     /**
     * 

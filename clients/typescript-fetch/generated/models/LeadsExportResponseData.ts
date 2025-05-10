@@ -65,11 +65,11 @@ export function LeadsExportResponseDataFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-  export function LeadsExportResponseDataToJSON(json: any): LeadsExportResponseData {
-      return LeadsExportResponseDataToJSONTyped(json, false);
-  }
+export function LeadsExportResponseDataToJSON(json: any): LeadsExportResponseData {
+    return LeadsExportResponseDataToJSONTyped(json, false);
+}
 
-  export function LeadsExportResponseDataToJSONTyped(value?: LeadsExportResponseData | null, ignoreDiscriminator: boolean = false): any {
+export function LeadsExportResponseDataToJSONTyped(value?: LeadsExportResponseData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

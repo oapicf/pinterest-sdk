@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Template fields")
 @JsonTypeName("TemplateResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TemplateResponse   {
   private String id;
   private String adAccountId;
@@ -92,7 +92,7 @@ public class TemplateResponse   {
   private BigDecimal engagementWindowDays;
   public enum ConversionReportTimeTypeEnum {
 
-    AD_ACTION(String.valueOf("TIME_OF_AD_ACTION")), CONVERSION(String.valueOf("TIME_OF_CONVERSION"));
+    TIME_OF_AD_ACTION(String.valueOf("TIME_OF_AD_ACTION")), TIME_OF_CONVERSION(String.valueOf("TIME_OF_CONVERSION"));
 
 
     private String value;
@@ -143,7 +143,7 @@ public class TemplateResponse   {
   private Boolean isScheduled;
   public enum CreationSourceEnum {
 
-    API(String.valueOf("ADS_API")), MANAGER_REPORTING_PAGE(String.valueOf("ADS_MANAGER_REPORTING_PAGE")), MANAGER_REPORT_BUILDER(String.valueOf("ADS_MANAGER_REPORT_BUILDER"));
+    ADS_API(String.valueOf("ADS_API")), ADS_MANAGER_REPORTING_PAGE(String.valueOf("ADS_MANAGER_REPORTING_PAGE")), ADS_MANAGER_REPORT_BUILDER(String.valueOf("ADS_MANAGER_REPORT_BUILDER"));
 
 
     private String value;
@@ -288,6 +288,9 @@ public class TemplateResponse   {
 }
 
   private @Valid List<IngestionSourcesEnum> ingestionSources;
+
+  public TemplateResponse() {
+  }
 
   /**
    * Template ID

@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct OptimizationGoalMetadataScrollupGoalMetadata: Codable, JSONEncodable, Hashable {
 
-    static let scrollupGoalValueInMicroCurrencyRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^[0-9]+$/")
+    public static let scrollupGoalValueInMicroCurrencyRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^[0-9]+$/")
     public var scrollupGoalValueInMicroCurrency: String?
 
     public init(scrollupGoalValueInMicroCurrency: String? = nil) {

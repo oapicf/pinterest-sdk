@@ -14,13 +14,15 @@ package org.openapitools.server.models
 import org.openapitools.server.models.Exception
 import org.openapitools.server.models.LeadFormResponse
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param `data` 
  * @param exceptions 
  */
+@Serializable
 data class LeadFormArrayResponseItemsInner(
     val `data`: LeadFormResponse? = null,
     val exceptions: kotlin.collections.List<Exception>? = null
-) 
+)
 

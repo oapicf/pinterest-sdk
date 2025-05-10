@@ -58,10 +58,35 @@ AdAccountCreateSubscriptionResponse <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return AdAccountCreateSubscriptionResponse in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return AdAccountCreateSubscriptionResponse as a base R list.
+    #' @examples
+    #' # convert array of AdAccountCreateSubscriptionResponse (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert AdAccountCreateSubscriptionResponse to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       AdAccountCreateSubscriptionResponseObject <- list()
       if (!is.null(self$`id`)) {
         AdAccountCreateSubscriptionResponseObject[["id"]] <-
@@ -79,7 +104,7 @@ AdAccountCreateSubscriptionResponse <- R6::R6Class(
         AdAccountCreateSubscriptionResponseObject[["created_time"]] <-
           self$`created_time`
       }
-      AdAccountCreateSubscriptionResponseObject
+      return(AdAccountCreateSubscriptionResponseObject)
     },
 
     #' @description
@@ -106,45 +131,13 @@ AdAccountCreateSubscriptionResponse <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return AdAccountCreateSubscriptionResponse in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`id`)) {
-          sprintf(
-          '"id":
-            "%s"
-                    ',
-          self$`id`
-          )
-        },
-        if (!is.null(self$`cryptographic_key`)) {
-          sprintf(
-          '"cryptographic_key":
-            "%s"
-                    ',
-          self$`cryptographic_key`
-          )
-        },
-        if (!is.null(self$`cryptographic_algorithm`)) {
-          sprintf(
-          '"cryptographic_algorithm":
-            "%s"
-                    ',
-          self$`cryptographic_algorithm`
-          )
-        },
-        if (!is.null(self$`created_time`)) {
-          sprintf(
-          '"created_time":
-            %d
-                    ',
-          self$`created_time`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

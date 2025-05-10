@@ -5,7 +5,7 @@
 
 
 
-users_for_individual_asset_response_t *users_for_individual_asset_response_create(
+static users_for_individual_asset_response_t *users_for_individual_asset_response_create_internal(
     char *asset_id,
     char *member_id,
     list_t *permissions
@@ -18,12 +18,28 @@ users_for_individual_asset_response_t *users_for_individual_asset_response_creat
     users_for_individual_asset_response_local_var->member_id = member_id;
     users_for_individual_asset_response_local_var->permissions = permissions;
 
+    users_for_individual_asset_response_local_var->_library_owned = 1;
     return users_for_individual_asset_response_local_var;
 }
 
+__attribute__((deprecated)) users_for_individual_asset_response_t *users_for_individual_asset_response_create(
+    char *asset_id,
+    char *member_id,
+    list_t *permissions
+    ) {
+    return users_for_individual_asset_response_create_internal (
+        asset_id,
+        member_id,
+        permissions
+        );
+}
 
 void users_for_individual_asset_response_free(users_for_individual_asset_response_t *users_for_individual_asset_response) {
     if(NULL == users_for_individual_asset_response){
+        return ;
+    }
+    if(users_for_individual_asset_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "users_for_individual_asset_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -73,7 +89,7 @@ cJSON *users_for_individual_asset_response_convertToJSON(users_for_individual_as
 
     listEntry_t *permissionsListEntry;
     list_ForEach(permissionsListEntry, users_for_individual_asset_response->permissions) {
-    if(cJSON_AddStringToObject(permissions, "", (char*)permissionsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(permissions, "", permissionsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -97,6 +113,9 @@ users_for_individual_asset_response_t *users_for_individual_asset_response_parse
 
     // users_for_individual_asset_response->asset_id
     cJSON *asset_id = cJSON_GetObjectItemCaseSensitive(users_for_individual_asset_responseJSON, "asset_id");
+    if (cJSON_IsNull(asset_id)) {
+        asset_id = NULL;
+    }
     if (asset_id) { 
     if(!cJSON_IsString(asset_id) && !cJSON_IsNull(asset_id))
     {
@@ -106,6 +125,9 @@ users_for_individual_asset_response_t *users_for_individual_asset_response_parse
 
     // users_for_individual_asset_response->member_id
     cJSON *member_id = cJSON_GetObjectItemCaseSensitive(users_for_individual_asset_responseJSON, "member_id");
+    if (cJSON_IsNull(member_id)) {
+        member_id = NULL;
+    }
     if (member_id) { 
     if(!cJSON_IsString(member_id) && !cJSON_IsNull(member_id))
     {
@@ -115,6 +137,9 @@ users_for_individual_asset_response_t *users_for_individual_asset_response_parse
 
     // users_for_individual_asset_response->permissions
     cJSON *permissions = cJSON_GetObjectItemCaseSensitive(users_for_individual_asset_responseJSON, "permissions");
+    if (cJSON_IsNull(permissions)) {
+        permissions = NULL;
+    }
     if (permissions) { 
     cJSON *permissions_local = NULL;
     if(!cJSON_IsArray(permissions)) {
@@ -133,7 +158,7 @@ users_for_individual_asset_response_t *users_for_individual_asset_response_parse
     }
 
 
-    users_for_individual_asset_response_local_var = users_for_individual_asset_response_create (
+    users_for_individual_asset_response_local_var = users_for_individual_asset_response_create_internal (
         asset_id && !cJSON_IsNull(asset_id) ? strdup(asset_id->valuestring) : NULL,
         member_id && !cJSON_IsNull(member_id) ? strdup(member_id->valuestring) : NULL,
         permissions ? permissionsList : NULL

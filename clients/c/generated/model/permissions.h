@@ -24,9 +24,9 @@ char* permissions_permissions_ToString(pinterest_rest_api_permissions__e permiss
 
 pinterest_rest_api_permissions__e permissions_permissions_FromString(char* permissions);
 
-//cJSON *permissions_permissions_convertToJSON(pinterest_rest_api_permissions__e permissions);
+cJSON *permissions_convertToJSON(pinterest_rest_api_permissions__e permissions);
 
-//pinterest_rest_api_permissions__e permissions_permissions_parseFromJSON(cJSON *permissionsJSON);
+pinterest_rest_api_permissions__e permissions_parseFromJSON(cJSON *permissionsJSON);
 
 #endif /* _permissions_H_ */
 

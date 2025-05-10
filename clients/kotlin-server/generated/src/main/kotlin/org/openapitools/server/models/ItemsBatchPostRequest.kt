@@ -18,6 +18,7 @@ import org.openapitools.server.models.CatalogsVerticalBatchRequest
 import org.openapitools.server.models.Country
 import org.openapitools.server.models.ItemDeleteBatchRecord
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param country 
@@ -25,6 +26,7 @@ import org.openapitools.server.models.ItemDeleteBatchRecord
  * @param operation 
  * @param items Array with catalogs items
  */
+@Serializable
 data class ItemsBatchPostRequest(
     val country: Country,
     val language: CatalogsItemsRequestLanguage,
@@ -34,5 +36,5 @@ data class ItemsBatchPostRequest(
     val catalogType: ItemsBatchPostRequest.CatalogType,
     /* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
     val catalogId: kotlin.String? = null
-) 
+)
 

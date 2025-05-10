@@ -22,9 +22,10 @@ typedef struct catalogs_feed_product_counts_t {
     int original; //numeric
     int ingested; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_feed_product_counts_t;
 
-catalogs_feed_product_counts_t *catalogs_feed_product_counts_create(
+__attribute__((deprecated)) catalogs_feed_product_counts_t *catalogs_feed_product_counts_create(
     int original,
     int ingested
 );

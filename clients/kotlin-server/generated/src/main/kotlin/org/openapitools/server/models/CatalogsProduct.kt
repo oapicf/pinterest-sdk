@@ -18,17 +18,19 @@ import org.openapitools.server.models.CatalogsRetailProduct
 import org.openapitools.server.models.CatalogsType
 import org.openapitools.server.models.Pin
 
+import kotlinx.serialization.Serializable
 /**
  * Catalogs product for all verticals
  * @param catalogType 
  * @param metadata 
  * @param pin 
  */
+@Serializable
 data class CatalogsProduct(
     val catalogType: CatalogsType,
     val metadata: CatalogsCreativeAssetsProductMetadata,
-    val pin: Pin
-) 
+    val pin: Pin?
+)
 {
 }
 

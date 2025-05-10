@@ -13,13 +13,15 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.BulkUpsertStatus
 
+import kotlinx.serialization.Serializable
 /**
  * ID of the bulk request.
  * @param status 
  * @param resultUrl 
  */
+@Serializable
 data class BulkUpsertStatusResponse(
     val status: BulkUpsertStatus? = null,
     val resultUrl: kotlin.String? = null
-) 
+)
 

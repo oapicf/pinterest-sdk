@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Board")
 @JsonTypeName("Board")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class Board   {
   private String id;
   private Date createdAt;
@@ -81,6 +81,16 @@ public class Board   {
 }
 
   private PrivacyEnum privacy = PrivacyEnum.PUBLIC;
+
+  public Board() {
+  }
+
+  @JsonCreator
+  public Board(
+    @JsonProperty(required = true, value = "name") String name
+  ) {
+    this.name = name;
+  }
 
   /**
    **/
@@ -150,12 +160,12 @@ public class Board   {
 
   
   @ApiModelProperty(example = "Summer Recipes", required = true, value = "")
-  @JsonProperty("name")
+  @JsonProperty(required = true, value = "name")
   @NotNull public String getName() {
     return name;
   }
 
-  @JsonProperty("name")
+  @JsonProperty(required = true, value = "name")
   public void setName(String name) {
     this.name = name;
   }

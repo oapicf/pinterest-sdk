@@ -14,10 +14,12 @@ package org.openapitools.server.models
 import org.openapitools.server.models.CatalogsLocale
 import org.openapitools.server.models.Language
 
+import kotlinx.serialization.Serializable
 /**
  * We recommend using the CatalogsLocale values.
  */
+@Serializable
 class CatalogsItemsRequestLanguage(
 
-) 
+)
 

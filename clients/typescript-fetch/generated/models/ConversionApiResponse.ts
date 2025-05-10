@@ -73,11 +73,11 @@ export function ConversionApiResponseFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function ConversionApiResponseToJSON(json: any): ConversionApiResponse {
-      return ConversionApiResponseToJSONTyped(json, false);
-  }
+export function ConversionApiResponseToJSON(json: any): ConversionApiResponse {
+    return ConversionApiResponseToJSONTyped(json, false);
+}
 
-  export function ConversionApiResponseToJSONTyped(value?: ConversionApiResponse | null, ignoreDiscriminator: boolean = false): any {
+export function ConversionApiResponseToJSONTyped(value?: ConversionApiResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

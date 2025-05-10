@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "A request object that can have multiple operations on a single retail batch")
 @JsonTypeName("CatalogsRetailBatchRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsRetailBatchRequest   {
   public enum CatalogTypeEnum {
 
@@ -77,6 +77,22 @@ public class CatalogsRetailBatchRequest   {
   private CatalogsItemsRequestLanguage language;
   private @Valid List<CatalogsRetailBatchRequestItemsInner> items = new ArrayList<>();
 
+  public CatalogsRetailBatchRequest() {
+  }
+
+  @JsonCreator
+  public CatalogsRetailBatchRequest(
+    @JsonProperty(required = true, value = "catalog_type") CatalogTypeEnum catalogType,
+    @JsonProperty(required = true, value = "country") Country country,
+    @JsonProperty(required = true, value = "language") CatalogsItemsRequestLanguage language,
+    @JsonProperty(required = true, value = "items") List<@Valid CatalogsRetailBatchRequestItemsInner> items
+  ) {
+    this.catalogType = catalogType;
+    this.country = country;
+    this.language = language;
+    this.items = items;
+  }
+
   /**
    **/
   public CatalogsRetailBatchRequest catalogType(CatalogTypeEnum catalogType) {
@@ -86,12 +102,12 @@ public class CatalogsRetailBatchRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   @NotNull public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
@@ -105,12 +121,12 @@ public class CatalogsRetailBatchRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("country")
+  @JsonProperty(required = true, value = "country")
   @NotNull public Country getCountry() {
     return country;
   }
 
-  @JsonProperty("country")
+  @JsonProperty(required = true, value = "country")
   public void setCountry(Country country) {
     this.country = country;
   }
@@ -124,12 +140,12 @@ public class CatalogsRetailBatchRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("language")
+  @JsonProperty(required = true, value = "language")
   @NotNull @Valid public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
 
-  @JsonProperty("language")
+  @JsonProperty(required = true, value = "language")
   public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
@@ -144,12 +160,12 @@ public class CatalogsRetailBatchRequest   {
 
   
   @ApiModelProperty(required = true, value = "Array with catalogs item operations")
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   @NotNull @Valid  @Size(min=1,max=1000)public List<@Valid CatalogsRetailBatchRequestItemsInner> getItems() {
     return items;
   }
 
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   public void setItems(List<CatalogsRetailBatchRequestItemsInner> items) {
     this.items = items;
   }

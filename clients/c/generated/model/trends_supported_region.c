@@ -22,7 +22,7 @@ pinterest_rest_api_trends_supported_region__e trends_supported_region_trends_sup
     return 0;
 }
 
-cJSON *trends_supported_region_trends_supported_region_convertToJSON(pinterest_rest_api_trends_supported_region__e trends_supported_region) {
+cJSON *trends_supported_region_convertToJSON(pinterest_rest_api_trends_supported_region__e trends_supported_region) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "trends_supported_region", trends_supported_region_trends_supported_region_ToString(trends_supported_region)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_trends_supported_region__e trends_supported_region_trends_supported_region_parseFromJSON(cJSON *trends_supported_regionJSON) {
-    pinterest_rest_api_trends_supported_region__e *trends_supported_region = NULL;
-    pinterest_rest_api_trends_supported_region__e trends_supported_regionVariable;
-    cJSON *trends_supported_regionVar = cJSON_GetObjectItemCaseSensitive(trends_supported_regionJSON, "trends_supported_region");
-    if(!cJSON_IsString(trends_supported_regionVar) || (trends_supported_regionVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_trends_supported_region__e trends_supported_region_parseFromJSON(cJSON *trends_supported_regionJSON) {
+    if(!cJSON_IsString(trends_supported_regionJSON) || (trends_supported_regionJSON->valuestring == NULL)) {
+        return 0;
     }
-    trends_supported_regionVariable = trends_supported_region_trends_supported_region_FromString(trends_supported_regionVar->valuestring);
-    return trends_supported_regionVariable;
-end:
-    return 0;
+    return trends_supported_region_trends_supported_region_FromString(trends_supported_regionJSON->valuestring);
 }

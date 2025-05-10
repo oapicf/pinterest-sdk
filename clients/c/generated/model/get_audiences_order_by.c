@@ -22,7 +22,7 @@ pinterest_rest_api_get_audiences_order_by__e get_audiences_order_by_get_audience
     return 0;
 }
 
-cJSON *get_audiences_order_by_get_audiences_order_by_convertToJSON(pinterest_rest_api_get_audiences_order_by__e get_audiences_order_by) {
+cJSON *get_audiences_order_by_convertToJSON(pinterest_rest_api_get_audiences_order_by__e get_audiences_order_by) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "get_audiences_order_by", get_audiences_order_by_get_audiences_order_by_ToString(get_audiences_order_by)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_get_audiences_order_by__e get_audiences_order_by_get_audiences_order_by_parseFromJSON(cJSON *get_audiences_order_byJSON) {
-    pinterest_rest_api_get_audiences_order_by__e *get_audiences_order_by = NULL;
-    pinterest_rest_api_get_audiences_order_by__e get_audiences_order_byVariable;
-    cJSON *get_audiences_order_byVar = cJSON_GetObjectItemCaseSensitive(get_audiences_order_byJSON, "get_audiences_order_by");
-    if(!cJSON_IsString(get_audiences_order_byVar) || (get_audiences_order_byVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_get_audiences_order_by__e get_audiences_order_by_parseFromJSON(cJSON *get_audiences_order_byJSON) {
+    if(!cJSON_IsString(get_audiences_order_byJSON) || (get_audiences_order_byJSON->valuestring == NULL)) {
+        return 0;
     }
-    get_audiences_order_byVariable = get_audiences_order_by_get_audiences_order_by_FromString(get_audiences_order_byVar->valuestring);
-    return get_audiences_order_byVariable;
-end:
-    return 0;
+    return get_audiences_order_by_get_audiences_order_by_FromString(get_audiences_order_byJSON->valuestring);
 }

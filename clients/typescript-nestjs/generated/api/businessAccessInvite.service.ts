@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { AuthRespondInvitesBody } from '../model/authRespondInvitesBody';
 import { CancelInvitesBody } from '../model/cancelInvitesBody';
@@ -37,10 +37,12 @@ export class BusinessAccessInviteService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -59,9 +61,10 @@ export class BusinessAccessInviteService {
      * @param createAssetAccessRequestBody 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [assetAccessRequestsCreateOpts.config] Override http request option.
      */
-    public assetAccessRequestsCreate(businessId: string, createAssetAccessRequestBody: CreateAssetAccessRequestBody, ): Observable<AxiosResponse<CreateAssetAccessRequestResponse>>;
-    public assetAccessRequestsCreate(businessId: string, createAssetAccessRequestBody: CreateAssetAccessRequestBody, ): Observable<any> {
+    public assetAccessRequestsCreate(businessId: string, createAssetAccessRequestBody: CreateAssetAccessRequestBody, assetAccessRequestsCreateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreateAssetAccessRequestResponse>>;
+    public assetAccessRequestsCreate(businessId: string, createAssetAccessRequestBody: CreateAssetAccessRequestBody, assetAccessRequestsCreateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling assetAccessRequestsCreate.');
         }
@@ -108,7 +111,8 @@ export class BusinessAccessInviteService {
                     createAssetAccessRequestBody,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...assetAccessRequestsCreateOpts?.config,
+                        headers: {...headers, ...assetAccessRequestsCreateOpts?.config?.headers},
                     }
                 );
             })
@@ -121,9 +125,10 @@ export class BusinessAccessInviteService {
      * @param cancelInvitesBody A list with invite ids
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [cancelInvitesOrRequestsOpts.config] Override http request option.
      */
-    public cancelInvitesOrRequests(businessId: string, cancelInvitesBody: CancelInvitesBody, ): Observable<AxiosResponse<DeleteInvitesResultsResponseArray>>;
-    public cancelInvitesOrRequests(businessId: string, cancelInvitesBody: CancelInvitesBody, ): Observable<any> {
+    public cancelInvitesOrRequests(businessId: string, cancelInvitesBody: CancelInvitesBody, cancelInvitesOrRequestsOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<DeleteInvitesResultsResponseArray>>;
+    public cancelInvitesOrRequests(businessId: string, cancelInvitesBody: CancelInvitesBody, cancelInvitesOrRequestsOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling cancelInvitesOrRequests.');
         }
@@ -169,7 +174,8 @@ export class BusinessAccessInviteService {
                 return this.httpClient.delete<DeleteInvitesResultsResponseArray>(`${this.basePath}/businesses/${encodeURIComponent(String(business_id))}/invites`,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...cancelInvitesOrRequestsOpts?.config,
+                        headers: {...headers, ...cancelInvitesOrRequestsOpts?.config?.headers},
                     }
                 );
             })
@@ -182,9 +188,10 @@ export class BusinessAccessInviteService {
      * @param createAssetInvitesRequest A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [createAssetInvitesOpts.config] Override http request option.
      */
-    public createAssetInvites(businessId: string, createAssetInvitesRequest: CreateAssetInvitesRequest, ): Observable<AxiosResponse<UpdateInvitesResultsResponseArray>>;
-    public createAssetInvites(businessId: string, createAssetInvitesRequest: CreateAssetInvitesRequest, ): Observable<any> {
+    public createAssetInvites(businessId: string, createAssetInvitesRequest: CreateAssetInvitesRequest, createAssetInvitesOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<UpdateInvitesResultsResponseArray>>;
+    public createAssetInvites(businessId: string, createAssetInvitesRequest: CreateAssetInvitesRequest, createAssetInvitesOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling createAssetInvites.');
         }
@@ -231,7 +238,8 @@ export class BusinessAccessInviteService {
                     createAssetInvitesRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...createAssetInvitesOpts?.config,
+                        headers: {...headers, ...createAssetInvitesOpts?.config?.headers},
                     }
                 );
             })
@@ -244,9 +252,10 @@ export class BusinessAccessInviteService {
      * @param createMembershipOrPartnershipInvitesBody An object with the properties: invite_type, partners, members, business_role
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [createMembershipOrPartnershipInvitesOpts.config] Override http request option.
      */
-    public createMembershipOrPartnershipInvites(businessId: string, createMembershipOrPartnershipInvitesBody: CreateMembershipOrPartnershipInvitesBody, ): Observable<AxiosResponse<CreateInvitesResultsResponseArray>>;
-    public createMembershipOrPartnershipInvites(businessId: string, createMembershipOrPartnershipInvitesBody: CreateMembershipOrPartnershipInvitesBody, ): Observable<any> {
+    public createMembershipOrPartnershipInvites(businessId: string, createMembershipOrPartnershipInvitesBody: CreateMembershipOrPartnershipInvitesBody, createMembershipOrPartnershipInvitesOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreateInvitesResultsResponseArray>>;
+    public createMembershipOrPartnershipInvites(businessId: string, createMembershipOrPartnershipInvitesBody: CreateMembershipOrPartnershipInvitesBody, createMembershipOrPartnershipInvitesOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling createMembershipOrPartnershipInvites.');
         }
@@ -293,7 +302,8 @@ export class BusinessAccessInviteService {
                     createMembershipOrPartnershipInvitesBody,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...createMembershipOrPartnershipInvitesOpts?.config,
+                        headers: {...headers, ...createMembershipOrPartnershipInvitesOpts?.config?.headers},
                     }
                 );
             })
@@ -310,9 +320,10 @@ export class BusinessAccessInviteService {
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [getInvitesOpts.config] Override http request option.
      */
-    public getInvites(businessId: string, isMember?: boolean, inviteStatus?: Array<'PENDING' | 'EXPIRED'>, inviteType?: InviteType, bookmark?: string, pageSize?: number, ): Observable<AxiosResponse<GetInvites200Response>>;
-    public getInvites(businessId: string, isMember?: boolean, inviteStatus?: Array<'PENDING' | 'EXPIRED'>, inviteType?: InviteType, bookmark?: string, pageSize?: number, ): Observable<any> {
+    public getInvites(businessId: string, isMember?: boolean, inviteStatus?: Array<'PENDING' | 'EXPIRED'>, inviteType?: InviteType, bookmark?: string, pageSize?: number, getInvitesOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<GetInvites200Response>>;
+    public getInvites(businessId: string, isMember?: boolean, inviteStatus?: Array<'PENDING' | 'EXPIRED'>, inviteType?: InviteType, bookmark?: string, pageSize?: number, getInvitesOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling getInvites.');
         }
@@ -369,7 +380,8 @@ export class BusinessAccessInviteService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...getInvitesOpts?.config,
+                        headers: {...headers, ...getInvitesOpts?.config?.headers},
                     }
                 );
             })
@@ -381,9 +393,10 @@ export class BusinessAccessInviteService {
      * @param authRespondInvitesBody 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [respondBusinessAccessInvitesOpts.config] Override http request option.
      */
-    public respondBusinessAccessInvites(authRespondInvitesBody: AuthRespondInvitesBody, ): Observable<AxiosResponse<RespondToInvitesResponseArray>>;
-    public respondBusinessAccessInvites(authRespondInvitesBody: AuthRespondInvitesBody, ): Observable<any> {
+    public respondBusinessAccessInvites(authRespondInvitesBody: AuthRespondInvitesBody, respondBusinessAccessInvitesOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<RespondToInvitesResponseArray>>;
+    public respondBusinessAccessInvites(authRespondInvitesBody: AuthRespondInvitesBody, respondBusinessAccessInvitesOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (authRespondInvitesBody === null || authRespondInvitesBody === undefined) {
             throw new Error('Required parameter authRespondInvitesBody was null or undefined when calling respondBusinessAccessInvites.');
         }
@@ -426,7 +439,8 @@ export class BusinessAccessInviteService {
                     authRespondInvitesBody,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...respondBusinessAccessInvitesOpts?.config,
+                        headers: {...headers, ...respondBusinessAccessInvitesOpts?.config?.headers},
                     }
                 );
             })

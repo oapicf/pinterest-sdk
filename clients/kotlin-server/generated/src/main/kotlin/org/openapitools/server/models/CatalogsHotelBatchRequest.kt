@@ -15,6 +15,7 @@ import org.openapitools.server.models.CatalogsHotelBatchItem
 import org.openapitools.server.models.CatalogsItemsRequestLanguage
 import org.openapitools.server.models.Country
 
+import kotlinx.serialization.Serializable
 /**
  * Request object to update catalogs hotel items
  * @param catalogType 
@@ -23,6 +24,7 @@ import org.openapitools.server.models.Country
  * @param items Array with catalogs item operations
  * @param catalogId Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
  */
+@Serializable
 data class CatalogsHotelBatchRequest(
     val catalogType: CatalogsHotelBatchRequest.CatalogType,
     val country: Country,
@@ -31,7 +33,7 @@ data class CatalogsHotelBatchRequest(
     val items: kotlin.collections.List<CatalogsHotelBatchItem>,
     /* Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog */
     val catalogId: kotlin.String? = null
-) 
+)
 {
     /**
     * 

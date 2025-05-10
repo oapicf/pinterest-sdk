@@ -51,16 +51,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * UpdatePartnerAssetAccessBody
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class UpdatePartnerAssetAccessBody {
   public static final String SERIALIZED_NAME_ACCESSES = "accesses";
   @SerializedName(SERIALIZED_NAME_ACCESSES)
+  @javax.annotation.Nonnull
   private List<UpdatePartnerAssetAccessBodyAccessesInner> accesses = new ArrayList<>();
 
   public UpdatePartnerAssetAccessBody() {
   }
 
-  public UpdatePartnerAssetAccessBody accesses(List<UpdatePartnerAssetAccessBodyAccessesInner> accesses) {
+  public UpdatePartnerAssetAccessBody accesses(@javax.annotation.Nonnull List<UpdatePartnerAssetAccessBodyAccessesInner> accesses) {
     this.accesses = accesses;
     return this;
   }
@@ -82,7 +83,7 @@ public class UpdatePartnerAssetAccessBody {
     return accesses;
   }
 
-  public void setAccesses(List<UpdatePartnerAssetAccessBodyAccessesInner> accesses) {
+  public void setAccesses(@javax.annotation.Nonnull List<UpdatePartnerAssetAccessBodyAccessesInner> accesses) {
     this.accesses = accesses;
   }
 

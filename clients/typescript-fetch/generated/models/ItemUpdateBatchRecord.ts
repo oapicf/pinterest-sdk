@@ -77,11 +77,11 @@ export function ItemUpdateBatchRecordFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function ItemUpdateBatchRecordToJSON(json: any): ItemUpdateBatchRecord {
-      return ItemUpdateBatchRecordToJSONTyped(json, false);
-  }
+export function ItemUpdateBatchRecordToJSON(json: any): ItemUpdateBatchRecord {
+    return ItemUpdateBatchRecordToJSONTyped(json, false);
+}
 
-  export function ItemUpdateBatchRecordToJSONTyped(value?: ItemUpdateBatchRecord | null, ignoreDiscriminator: boolean = false): any {
+export function ItemUpdateBatchRecordToJSONTyped(value?: ItemUpdateBatchRecord | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

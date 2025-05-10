@@ -51,10 +51,11 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Schema for log sent from an integration application.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class IntegrationLog {
   public static final String SERIALIZED_NAME_CLIENT_TIMESTAMP = "client_timestamp";
   @SerializedName(SERIALIZED_NAME_CLIENT_TIMESTAMP)
+  @javax.annotation.Nonnull
   private Integer clientTimestamp;
 
   /**
@@ -111,6 +112,7 @@ public class IntegrationLog {
 
   public static final String SERIALIZED_NAME_EVENT_TYPE = "event_type";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
+  @javax.annotation.Nonnull
   private EventTypeEnum eventType;
 
   /**
@@ -169,52 +171,63 @@ public class IntegrationLog {
 
   public static final String SERIALIZED_NAME_LOG_LEVEL = "log_level";
   @SerializedName(SERIALIZED_NAME_LOG_LEVEL)
+  @javax.annotation.Nonnull
   private LogLevelEnum logLevel;
 
   public static final String SERIALIZED_NAME_EXTERNAL_BUSINESS_ID = "external_business_id";
   @SerializedName(SERIALIZED_NAME_EXTERNAL_BUSINESS_ID)
+  @javax.annotation.Nullable
   private String externalBusinessId;
 
   public static final String SERIALIZED_NAME_ADVERTISER_ID = "advertiser_id";
   @SerializedName(SERIALIZED_NAME_ADVERTISER_ID)
+  @javax.annotation.Nullable
   private String advertiserId;
 
   public static final String SERIALIZED_NAME_MERCHANT_ID = "merchant_id";
   @SerializedName(SERIALIZED_NAME_MERCHANT_ID)
+  @javax.annotation.Nullable
   private String merchantId;
 
   public static final String SERIALIZED_NAME_TAG_ID = "tag_id";
   @SerializedName(SERIALIZED_NAME_TAG_ID)
+  @javax.annotation.Nullable
   private String tagId;
 
   public static final String SERIALIZED_NAME_FEED_PROFILE_ID = "feed_profile_id";
   @SerializedName(SERIALIZED_NAME_FEED_PROFILE_ID)
+  @javax.annotation.Nullable
   private String feedProfileId;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
+  @javax.annotation.Nullable
   private String message;
 
   public static final String SERIALIZED_NAME_APP_VERSION_NUMBER = "app_version_number";
   @SerializedName(SERIALIZED_NAME_APP_VERSION_NUMBER)
+  @javax.annotation.Nullable
   private String appVersionNumber;
 
   public static final String SERIALIZED_NAME_PLATFORM_VERSION_NUMBER = "platform_version_number";
   @SerializedName(SERIALIZED_NAME_PLATFORM_VERSION_NUMBER)
+  @javax.annotation.Nullable
   private String platformVersionNumber;
 
   public static final String SERIALIZED_NAME_ERROR = "error";
   @SerializedName(SERIALIZED_NAME_ERROR)
+  @javax.annotation.Nullable
   private IntegrationLogClientError error;
 
   public static final String SERIALIZED_NAME_REQUEST = "request";
   @SerializedName(SERIALIZED_NAME_REQUEST)
+  @javax.annotation.Nullable
   private IntegrationLogClientRequest request;
 
   public IntegrationLog() {
   }
 
-  public IntegrationLog clientTimestamp(Integer clientTimestamp) {
+  public IntegrationLog clientTimestamp(@javax.annotation.Nonnull Integer clientTimestamp) {
     this.clientTimestamp = clientTimestamp;
     return this;
   }
@@ -228,12 +241,12 @@ public class IntegrationLog {
     return clientTimestamp;
   }
 
-  public void setClientTimestamp(Integer clientTimestamp) {
+  public void setClientTimestamp(@javax.annotation.Nonnull Integer clientTimestamp) {
     this.clientTimestamp = clientTimestamp;
   }
 
 
-  public IntegrationLog eventType(EventTypeEnum eventType) {
+  public IntegrationLog eventType(@javax.annotation.Nonnull EventTypeEnum eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -247,12 +260,12 @@ public class IntegrationLog {
     return eventType;
   }
 
-  public void setEventType(EventTypeEnum eventType) {
+  public void setEventType(@javax.annotation.Nonnull EventTypeEnum eventType) {
     this.eventType = eventType;
   }
 
 
-  public IntegrationLog logLevel(LogLevelEnum logLevel) {
+  public IntegrationLog logLevel(@javax.annotation.Nonnull LogLevelEnum logLevel) {
     this.logLevel = logLevel;
     return this;
   }
@@ -266,12 +279,12 @@ public class IntegrationLog {
     return logLevel;
   }
 
-  public void setLogLevel(LogLevelEnum logLevel) {
+  public void setLogLevel(@javax.annotation.Nonnull LogLevelEnum logLevel) {
     this.logLevel = logLevel;
   }
 
 
-  public IntegrationLog externalBusinessId(String externalBusinessId) {
+  public IntegrationLog externalBusinessId(@javax.annotation.Nullable String externalBusinessId) {
     this.externalBusinessId = externalBusinessId;
     return this;
   }
@@ -285,12 +298,12 @@ public class IntegrationLog {
     return externalBusinessId;
   }
 
-  public void setExternalBusinessId(String externalBusinessId) {
+  public void setExternalBusinessId(@javax.annotation.Nullable String externalBusinessId) {
     this.externalBusinessId = externalBusinessId;
   }
 
 
-  public IntegrationLog advertiserId(String advertiserId) {
+  public IntegrationLog advertiserId(@javax.annotation.Nullable String advertiserId) {
     this.advertiserId = advertiserId;
     return this;
   }
@@ -304,12 +317,12 @@ public class IntegrationLog {
     return advertiserId;
   }
 
-  public void setAdvertiserId(String advertiserId) {
+  public void setAdvertiserId(@javax.annotation.Nullable String advertiserId) {
     this.advertiserId = advertiserId;
   }
 
 
-  public IntegrationLog merchantId(String merchantId) {
+  public IntegrationLog merchantId(@javax.annotation.Nullable String merchantId) {
     this.merchantId = merchantId;
     return this;
   }
@@ -323,12 +336,12 @@ public class IntegrationLog {
     return merchantId;
   }
 
-  public void setMerchantId(String merchantId) {
+  public void setMerchantId(@javax.annotation.Nullable String merchantId) {
     this.merchantId = merchantId;
   }
 
 
-  public IntegrationLog tagId(String tagId) {
+  public IntegrationLog tagId(@javax.annotation.Nullable String tagId) {
     this.tagId = tagId;
     return this;
   }
@@ -342,12 +355,12 @@ public class IntegrationLog {
     return tagId;
   }
 
-  public void setTagId(String tagId) {
+  public void setTagId(@javax.annotation.Nullable String tagId) {
     this.tagId = tagId;
   }
 
 
-  public IntegrationLog feedProfileId(String feedProfileId) {
+  public IntegrationLog feedProfileId(@javax.annotation.Nullable String feedProfileId) {
     this.feedProfileId = feedProfileId;
     return this;
   }
@@ -361,12 +374,12 @@ public class IntegrationLog {
     return feedProfileId;
   }
 
-  public void setFeedProfileId(String feedProfileId) {
+  public void setFeedProfileId(@javax.annotation.Nullable String feedProfileId) {
     this.feedProfileId = feedProfileId;
   }
 
 
-  public IntegrationLog message(String message) {
+  public IntegrationLog message(@javax.annotation.Nullable String message) {
     this.message = message;
     return this;
   }
@@ -380,12 +393,12 @@ public class IntegrationLog {
     return message;
   }
 
-  public void setMessage(String message) {
+  public void setMessage(@javax.annotation.Nullable String message) {
     this.message = message;
   }
 
 
-  public IntegrationLog appVersionNumber(String appVersionNumber) {
+  public IntegrationLog appVersionNumber(@javax.annotation.Nullable String appVersionNumber) {
     this.appVersionNumber = appVersionNumber;
     return this;
   }
@@ -399,12 +412,12 @@ public class IntegrationLog {
     return appVersionNumber;
   }
 
-  public void setAppVersionNumber(String appVersionNumber) {
+  public void setAppVersionNumber(@javax.annotation.Nullable String appVersionNumber) {
     this.appVersionNumber = appVersionNumber;
   }
 
 
-  public IntegrationLog platformVersionNumber(String platformVersionNumber) {
+  public IntegrationLog platformVersionNumber(@javax.annotation.Nullable String platformVersionNumber) {
     this.platformVersionNumber = platformVersionNumber;
     return this;
   }
@@ -418,12 +431,12 @@ public class IntegrationLog {
     return platformVersionNumber;
   }
 
-  public void setPlatformVersionNumber(String platformVersionNumber) {
+  public void setPlatformVersionNumber(@javax.annotation.Nullable String platformVersionNumber) {
     this.platformVersionNumber = platformVersionNumber;
   }
 
 
-  public IntegrationLog error(IntegrationLogClientError error) {
+  public IntegrationLog error(@javax.annotation.Nullable IntegrationLogClientError error) {
     this.error = error;
     return this;
   }
@@ -437,12 +450,12 @@ public class IntegrationLog {
     return error;
   }
 
-  public void setError(IntegrationLogClientError error) {
+  public void setError(@javax.annotation.Nullable IntegrationLogClientError error) {
     this.error = error;
   }
 
 
-  public IntegrationLog request(IntegrationLogClientRequest request) {
+  public IntegrationLog request(@javax.annotation.Nullable IntegrationLogClientRequest request) {
     this.request = request;
     return this;
   }
@@ -456,7 +469,7 @@ public class IntegrationLog {
     return request;
   }
 
-  public void setRequest(IntegrationLogClientRequest request) {
+  public void setRequest(@javax.annotation.Nullable IntegrationLogClientRequest request) {
     this.request = request;
   }
 

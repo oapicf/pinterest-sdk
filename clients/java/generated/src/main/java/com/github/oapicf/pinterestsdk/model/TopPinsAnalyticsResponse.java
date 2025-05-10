@@ -52,14 +52,16 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * TopPinsAnalyticsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TopPinsAnalyticsResponse {
   public static final String SERIALIZED_NAME_DATE_AVAILABILITY = "date_availability";
   @SerializedName(SERIALIZED_NAME_DATE_AVAILABILITY)
+  @javax.annotation.Nullable
   private TopPinsAnalyticsResponseDateAvailability dateAvailability;
 
   public static final String SERIALIZED_NAME_PINS = "pins";
   @SerializedName(SERIALIZED_NAME_PINS)
+  @javax.annotation.Nullable
   private List<TopPinsAnalyticsResponsePinsInner> pins = new ArrayList<>();
 
   /**
@@ -122,12 +124,13 @@ public class TopPinsAnalyticsResponse {
 
   public static final String SERIALIZED_NAME_SORT_BY = "sort_by";
   @SerializedName(SERIALIZED_NAME_SORT_BY)
+  @javax.annotation.Nullable
   private SortByEnum sortBy;
 
   public TopPinsAnalyticsResponse() {
   }
 
-  public TopPinsAnalyticsResponse dateAvailability(TopPinsAnalyticsResponseDateAvailability dateAvailability) {
+  public TopPinsAnalyticsResponse dateAvailability(@javax.annotation.Nullable TopPinsAnalyticsResponseDateAvailability dateAvailability) {
     this.dateAvailability = dateAvailability;
     return this;
   }
@@ -141,12 +144,12 @@ public class TopPinsAnalyticsResponse {
     return dateAvailability;
   }
 
-  public void setDateAvailability(TopPinsAnalyticsResponseDateAvailability dateAvailability) {
+  public void setDateAvailability(@javax.annotation.Nullable TopPinsAnalyticsResponseDateAvailability dateAvailability) {
     this.dateAvailability = dateAvailability;
   }
 
 
-  public TopPinsAnalyticsResponse pins(List<TopPinsAnalyticsResponsePinsInner> pins) {
+  public TopPinsAnalyticsResponse pins(@javax.annotation.Nullable List<TopPinsAnalyticsResponsePinsInner> pins) {
     this.pins = pins;
     return this;
   }
@@ -168,12 +171,12 @@ public class TopPinsAnalyticsResponse {
     return pins;
   }
 
-  public void setPins(List<TopPinsAnalyticsResponsePinsInner> pins) {
+  public void setPins(@javax.annotation.Nullable List<TopPinsAnalyticsResponsePinsInner> pins) {
     this.pins = pins;
   }
 
 
-  public TopPinsAnalyticsResponse sortBy(SortByEnum sortBy) {
+  public TopPinsAnalyticsResponse sortBy(@javax.annotation.Nullable SortByEnum sortBy) {
     this.sortBy = sortBy;
     return this;
   }
@@ -187,7 +190,7 @@ public class TopPinsAnalyticsResponse {
     return sortBy;
   }
 
-  public void setSortBy(SortByEnum sortBy) {
+  public void setSortBy(@javax.annotation.Nullable SortByEnum sortBy) {
     this.sortBy = sortBy;
   }
 

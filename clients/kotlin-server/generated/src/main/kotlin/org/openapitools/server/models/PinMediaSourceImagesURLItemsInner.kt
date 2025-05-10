@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param url URL of image to upload.
@@ -19,6 +20,7 @@ package org.openapitools.server.models
  * @param description 
  * @param link Destination link for the image.
  */
+@Serializable
 data class PinMediaSourceImagesURLItemsInner(
     /* URL of image to upload. */
     val url: kotlin.String,
@@ -26,5 +28,5 @@ data class PinMediaSourceImagesURLItemsInner(
     val description: kotlin.String? = null,
     /* Destination link for the image. */
     val link: kotlin.String? = null
-) 
+)
 

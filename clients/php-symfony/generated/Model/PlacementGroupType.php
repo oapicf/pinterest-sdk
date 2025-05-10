@@ -44,10 +44,10 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum PlacementGroupType: string
 {
-        case ALL = "ALL";
-        case SEARCH = "SEARCH";
-        case BROWSE = "BROWSE";
-        case OTHER = "OTHER";
+        case ALL = 'ALL';
+        case SEARCH = 'SEARCH';
+        case BROWSE = 'BROWSE';
+        case OTHER = 'OTHER';
 }
 
 

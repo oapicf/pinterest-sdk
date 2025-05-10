@@ -189,10 +189,35 @@ ConversionEventsDataInner <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return ConversionEventsDataInner in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return ConversionEventsDataInner as a base R list.
+    #' @examples
+    #' # convert array of ConversionEventsDataInner (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert ConversionEventsDataInner to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       ConversionEventsDataInnerObject <- list()
       if (!is.null(self$`event_name`)) {
         ConversionEventsDataInnerObject[["event_name"]] <-
@@ -224,11 +249,11 @@ ConversionEventsDataInner <- R6::R6Class(
       }
       if (!is.null(self$`user_data`)) {
         ConversionEventsDataInnerObject[["user_data"]] <-
-          self$`user_data`$toJSON()
+          self$`user_data`$toSimpleType()
       }
       if (!is.null(self$`custom_data`)) {
         ConversionEventsDataInnerObject[["custom_data"]] <-
-          self$`custom_data`$toJSON()
+          self$`custom_data`$toSimpleType()
       }
       if (!is.null(self$`app_id`)) {
         ConversionEventsDataInnerObject[["app_id"]] <-
@@ -270,7 +295,7 @@ ConversionEventsDataInner <- R6::R6Class(
         ConversionEventsDataInnerObject[["language"]] <-
           self$`language`
       }
-      ConversionEventsDataInnerObject
+      return(ConversionEventsDataInnerObject)
     },
 
     #' @description
@@ -346,165 +371,13 @@ ConversionEventsDataInner <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return ConversionEventsDataInner in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`event_name`)) {
-          sprintf(
-          '"event_name":
-            "%s"
-                    ',
-          self$`event_name`
-          )
-        },
-        if (!is.null(self$`action_source`)) {
-          sprintf(
-          '"action_source":
-            "%s"
-                    ',
-          self$`action_source`
-          )
-        },
-        if (!is.null(self$`event_time`)) {
-          sprintf(
-          '"event_time":
-            %d
-                    ',
-          self$`event_time`
-          )
-        },
-        if (!is.null(self$`event_id`)) {
-          sprintf(
-          '"event_id":
-            "%s"
-                    ',
-          self$`event_id`
-          )
-        },
-        if (!is.null(self$`event_source_url`)) {
-          sprintf(
-          '"event_source_url":
-            "%s"
-                    ',
-          self$`event_source_url`
-          )
-        },
-        if (!is.null(self$`opt_out`)) {
-          sprintf(
-          '"opt_out":
-            %s
-                    ',
-          tolower(self$`opt_out`)
-          )
-        },
-        if (!is.null(self$`partner_name`)) {
-          sprintf(
-          '"partner_name":
-            "%s"
-                    ',
-          self$`partner_name`
-          )
-        },
-        if (!is.null(self$`user_data`)) {
-          sprintf(
-          '"user_data":
-          %s
-          ',
-          jsonlite::toJSON(self$`user_data`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`custom_data`)) {
-          sprintf(
-          '"custom_data":
-          %s
-          ',
-          jsonlite::toJSON(self$`custom_data`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`app_id`)) {
-          sprintf(
-          '"app_id":
-            "%s"
-                    ',
-          self$`app_id`
-          )
-        },
-        if (!is.null(self$`app_name`)) {
-          sprintf(
-          '"app_name":
-            "%s"
-                    ',
-          self$`app_name`
-          )
-        },
-        if (!is.null(self$`app_version`)) {
-          sprintf(
-          '"app_version":
-            "%s"
-                    ',
-          self$`app_version`
-          )
-        },
-        if (!is.null(self$`device_brand`)) {
-          sprintf(
-          '"device_brand":
-            "%s"
-                    ',
-          self$`device_brand`
-          )
-        },
-        if (!is.null(self$`device_carrier`)) {
-          sprintf(
-          '"device_carrier":
-            "%s"
-                    ',
-          self$`device_carrier`
-          )
-        },
-        if (!is.null(self$`device_model`)) {
-          sprintf(
-          '"device_model":
-            "%s"
-                    ',
-          self$`device_model`
-          )
-        },
-        if (!is.null(self$`device_type`)) {
-          sprintf(
-          '"device_type":
-            "%s"
-                    ',
-          self$`device_type`
-          )
-        },
-        if (!is.null(self$`os_version`)) {
-          sprintf(
-          '"os_version":
-            "%s"
-                    ',
-          self$`os_version`
-          )
-        },
-        if (!is.null(self$`wifi`)) {
-          sprintf(
-          '"wifi":
-            %s
-                    ',
-          tolower(self$`wifi`)
-          )
-        },
-        if (!is.null(self$`language`)) {
-          sprintf(
-          '"language":
-            "%s"
-                    ',
-          self$`language`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

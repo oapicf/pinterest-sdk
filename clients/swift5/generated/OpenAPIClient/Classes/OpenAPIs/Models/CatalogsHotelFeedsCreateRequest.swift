@@ -13,8 +13,8 @@ import AnyCodable
 /** Request object for creating a feed. Please, be aware that \&quot;default_country\&quot; and \&quot;default_locale\&quot; are not required in the spec for forward compatibility but for now the API will not accept requests without those fields. */
 public struct CatalogsHotelFeedsCreateRequest: Codable, JSONEncodable, Hashable {
 
-    static let locationRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(http|https|ftp|sftp):\/\//")
-    static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let locationRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(http|https|ftp|sftp):\/\//")
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public var defaultCurrency: NullableCurrency?
     /** A human-friendly name associated to a given feed. */
     public var name: String

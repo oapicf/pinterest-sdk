@@ -28,9 +28,10 @@ typedef struct line_item_t {
     char *product_variant; // string
     char *product_variant_id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } line_item_t;
 
-line_item_t *line_item_create(
+__attribute__((deprecated)) line_item_t *line_item_create(
     char *product_brand,
     char *product_category,
     int product_id,

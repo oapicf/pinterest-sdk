@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.BusinessMemberAssetsSummaryAdAccountsInner;
 import org.openapitools.model.BusinessMemberAssetsSummaryProfilesInner;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -24,7 +25,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "BusinessMemberAssetsSummary", description = "Ad accounts and profiles the business member/partner has access to.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BusinessMemberAssetsSummary {
 
   @Valid

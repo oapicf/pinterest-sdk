@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.AssetGroupBinding
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param assetGroup 
  */
+@Serializable
 data class CreateAssetGroupResponse(
     val assetGroup: AssetGroupBinding? = null
-) 
+)
 

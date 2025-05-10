@@ -57,11 +57,11 @@ export function CreateAssetInvitesRequestFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function CreateAssetInvitesRequestToJSON(json: any): CreateAssetInvitesRequest {
-      return CreateAssetInvitesRequestToJSONTyped(json, false);
-  }
+export function CreateAssetInvitesRequestToJSON(json: any): CreateAssetInvitesRequest {
+    return CreateAssetInvitesRequestToJSONTyped(json, false);
+}
 
-  export function CreateAssetInvitesRequestToJSONTyped(value?: CreateAssetInvitesRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CreateAssetInvitesRequestToJSONTyped(value?: CreateAssetInvitesRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

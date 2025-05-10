@@ -23,9 +23,10 @@ typedef struct create_mmm_report_response_t {
     double code; //numeric
     struct create_mmm_report_response_data_t *data; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } create_mmm_report_response_t;
 
-create_mmm_report_response_t *create_mmm_report_response_create(
+__attribute__((deprecated)) create_mmm_report_response_t *create_mmm_report_response_create(
     double code,
     create_mmm_report_response_data_t *data
 );

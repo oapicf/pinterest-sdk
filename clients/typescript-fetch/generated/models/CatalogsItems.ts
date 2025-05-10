@@ -56,11 +56,11 @@ export function CatalogsItemsFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-  export function CatalogsItemsToJSON(json: any): CatalogsItems {
-      return CatalogsItemsToJSONTyped(json, false);
-  }
+export function CatalogsItemsToJSON(json: any): CatalogsItems {
+    return CatalogsItemsToJSONTyped(json, false);
+}
 
-  export function CatalogsItemsToJSONTyped(value?: CatalogsItems | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsItemsToJSONTyped(value?: CatalogsItems | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

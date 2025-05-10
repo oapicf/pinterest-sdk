@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdCreateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdCreateRequest   {
   private String adGroupId;
   private String androidDeepLink;
@@ -94,6 +94,20 @@ public class AdCreateRequest   {
   private QuizPinData quizPinData;
   private String pinId;
 
+  public AdCreateRequest() {
+  }
+
+  @JsonCreator
+  public AdCreateRequest(
+    @JsonProperty(required = true, value = "ad_group_id") String adGroupId,
+    @JsonProperty(required = true, value = "creative_type") CreativeType creativeType,
+    @JsonProperty(required = true, value = "pin_id") String pinId
+  ) {
+    this.adGroupId = adGroupId;
+    this.creativeType = creativeType;
+    this.pinId = pinId;
+  }
+
   /**
    * ID of the ad group that contains the ad.
    **/
@@ -104,12 +118,12 @@ public class AdCreateRequest   {
 
   
   @ApiModelProperty(example = "2680059592705", required = true, value = "ID of the ad group that contains the ad.")
-  @JsonProperty("ad_group_id")
+  @JsonProperty(required = true, value = "ad_group_id")
   @NotNull  @Pattern(regexp="^(AG)?\\d+$")public String getAdGroupId() {
     return adGroupId;
   }
 
-  @JsonProperty("ad_group_id")
+  @JsonProperty(required = true, value = "ad_group_id")
   public void setAdGroupId(String adGroupId) {
     this.adGroupId = adGroupId;
   }
@@ -271,12 +285,12 @@ public class AdCreateRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("creative_type")
+  @JsonProperty(required = true, value = "creative_type")
   @NotNull public CreativeType getCreativeType() {
     return creativeType;
   }
 
-  @JsonProperty("creative_type")
+  @JsonProperty(required = true, value = "creative_type")
   public void setCreativeType(CreativeType creativeType) {
     this.creativeType = creativeType;
   }
@@ -528,12 +542,12 @@ public class AdCreateRequest   {
 
   
   @ApiModelProperty(example = "394205773611545468", required = true, value = "Pin ID.")
-  @JsonProperty("pin_id")
+  @JsonProperty(required = true, value = "pin_id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getPinId() {
     return pinId;
   }
 
-  @JsonProperty("pin_id")
+  @JsonProperty(required = true, value = "pin_id")
   public void setPinId(String pinId) {
     this.pinId = pinId;
   }

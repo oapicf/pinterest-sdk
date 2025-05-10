@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param verificationCode Code to check against the user claiming the website
@@ -20,6 +21,7 @@ package org.openapitools.server.models
  * @param filename File expected to find on the website being claimed
  * @param fileContent A full html file to upload to the website in order for it to be claimed
  */
+@Serializable
 data class UserWebsiteVerificationCode(
     /* Code to check against the user claiming the website */
     val verificationCode: kotlin.String? = null,
@@ -31,5 +33,5 @@ data class UserWebsiteVerificationCode(
     val filename: kotlin.String? = null,
     /* A full html file to upload to the website in order for it to be claimed */
     val fileContent: kotlin.String? = null
-) 
+)
 

@@ -82,7 +82,11 @@ export function ItemBatchRecordFromJSONTyped(json: any, ignoreDiscriminator: boo
     return {} as any;
 }
 
-export function ItemBatchRecordToJSON(value?: ItemBatchRecord | null): any {
+export function ItemBatchRecordToJSON(json: any): any {
+    return ItemBatchRecordToJSONTyped(json, false);
+}
+
+export function ItemBatchRecordToJSONTyped(value?: ItemBatchRecord | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

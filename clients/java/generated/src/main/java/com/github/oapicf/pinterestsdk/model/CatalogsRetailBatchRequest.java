@@ -53,7 +53,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * A request object that can have multiple operations on a single retail batch
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsRetailBatchRequest {
   /**
    * Gets or Sets catalogType
@@ -107,24 +107,28 @@ public class CatalogsRetailBatchRequest {
 
   public static final String SERIALIZED_NAME_CATALOG_TYPE = "catalog_type";
   @SerializedName(SERIALIZED_NAME_CATALOG_TYPE)
+  @javax.annotation.Nonnull
   private CatalogTypeEnum catalogType;
 
   public static final String SERIALIZED_NAME_COUNTRY = "country";
   @SerializedName(SERIALIZED_NAME_COUNTRY)
+  @javax.annotation.Nonnull
   private Country country;
 
   public static final String SERIALIZED_NAME_LANGUAGE = "language";
   @SerializedName(SERIALIZED_NAME_LANGUAGE)
+  @javax.annotation.Nonnull
   private CatalogsItemsRequestLanguage language;
 
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
+  @javax.annotation.Nonnull
   private List<CatalogsRetailBatchRequestItemsInner> items = new ArrayList<>();
 
   public CatalogsRetailBatchRequest() {
   }
 
-  public CatalogsRetailBatchRequest catalogType(CatalogTypeEnum catalogType) {
+  public CatalogsRetailBatchRequest catalogType(@javax.annotation.Nonnull CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -138,12 +142,12 @@ public class CatalogsRetailBatchRequest {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogTypeEnum catalogType) {
+  public void setCatalogType(@javax.annotation.Nonnull CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
 
-  public CatalogsRetailBatchRequest country(Country country) {
+  public CatalogsRetailBatchRequest country(@javax.annotation.Nonnull Country country) {
     this.country = country;
     return this;
   }
@@ -157,12 +161,12 @@ public class CatalogsRetailBatchRequest {
     return country;
   }
 
-  public void setCountry(Country country) {
+  public void setCountry(@javax.annotation.Nonnull Country country) {
     this.country = country;
   }
 
 
-  public CatalogsRetailBatchRequest language(CatalogsItemsRequestLanguage language) {
+  public CatalogsRetailBatchRequest language(@javax.annotation.Nonnull CatalogsItemsRequestLanguage language) {
     this.language = language;
     return this;
   }
@@ -176,12 +180,12 @@ public class CatalogsRetailBatchRequest {
     return language;
   }
 
-  public void setLanguage(CatalogsItemsRequestLanguage language) {
+  public void setLanguage(@javax.annotation.Nonnull CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 
 
-  public CatalogsRetailBatchRequest items(List<CatalogsRetailBatchRequestItemsInner> items) {
+  public CatalogsRetailBatchRequest items(@javax.annotation.Nonnull List<CatalogsRetailBatchRequestItemsInner> items) {
     this.items = items;
     return this;
   }
@@ -203,7 +207,7 @@ public class CatalogsRetailBatchRequest {
     return items;
   }
 
-  public void setItems(List<CatalogsRetailBatchRequestItemsInner> items) {
+  public void setItems(@javax.annotation.Nonnull List<CatalogsRetailBatchRequestItemsInner> items) {
     this.items = items;
   }
 

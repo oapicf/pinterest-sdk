@@ -56,46 +56,56 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Template fields
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TemplateResponse {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_AD_ACCOUNT_ID = "ad_account_id";
   @SerializedName(SERIALIZED_NAME_AD_ACCOUNT_ID)
+  @javax.annotation.Nullable
   private String adAccountId;
 
   public static final String SERIALIZED_NAME_AD_ACCOUNT_IDS = "ad_account_ids";
   @SerializedName(SERIALIZED_NAME_AD_ACCOUNT_IDS)
+  @javax.annotation.Nullable
   private List<String> adAccountIds = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_USER_ID = "user_id";
   @SerializedName(SERIALIZED_NAME_USER_ID)
+  @javax.annotation.Nullable
   private String userId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_REPORT_START_RELATIVE_DAYS_IN_PAST = "report_start_relative_days_in_past";
   @SerializedName(SERIALIZED_NAME_REPORT_START_RELATIVE_DAYS_IN_PAST)
+  @javax.annotation.Nullable
   private BigDecimal reportStartRelativeDaysInPast;
 
   public static final String SERIALIZED_NAME_REPORT_END_RELATIVE_DAYS_IN_PAST = "report_end_relative_days_in_past";
   @SerializedName(SERIALIZED_NAME_REPORT_END_RELATIVE_DAYS_IN_PAST)
+  @javax.annotation.Nullable
   private BigDecimal reportEndRelativeDaysInPast;
 
   public static final String SERIALIZED_NAME_DATE_RANGE = "date_range";
   @SerializedName(SERIALIZED_NAME_DATE_RANGE)
+  @javax.annotation.Nullable
   private TemplateResponseDateRange dateRange;
 
   public static final String SERIALIZED_NAME_REPORT_LEVEL = "report_level";
   @SerializedName(SERIALIZED_NAME_REPORT_LEVEL)
+  @javax.annotation.Nullable
   private MetricsReportingLevel reportLevel;
 
   public static final String SERIALIZED_NAME_REPORT_FORMAT = "report_format";
   @SerializedName(SERIALIZED_NAME_REPORT_FORMAT)
+  @javax.annotation.Nullable
   private DataOutputFormat reportFormat;
 
   /**
@@ -3320,22 +3330,27 @@ public class TemplateResponse {
 
   public static final String SERIALIZED_NAME_COLUMNS = "columns";
   @SerializedName(SERIALIZED_NAME_COLUMNS)
+  @javax.annotation.Nullable
   private List<ColumnsEnum> columns = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_GRANULARITY = "granularity";
   @SerializedName(SERIALIZED_NAME_GRANULARITY)
+  @javax.annotation.Nullable
   private Granularity granularity;
 
   public static final String SERIALIZED_NAME_VIEW_WINDOW_DAYS = "view_window_days";
   @SerializedName(SERIALIZED_NAME_VIEW_WINDOW_DAYS)
+  @javax.annotation.Nullable
   private BigDecimal viewWindowDays;
 
   public static final String SERIALIZED_NAME_CLICK_WINDOW_DAYS = "click_window_days";
   @SerializedName(SERIALIZED_NAME_CLICK_WINDOW_DAYS)
+  @javax.annotation.Nullable
   private BigDecimal clickWindowDays;
 
   public static final String SERIALIZED_NAME_ENGAGEMENT_WINDOW_DAYS = "engagement_window_days";
   @SerializedName(SERIALIZED_NAME_ENGAGEMENT_WINDOW_DAYS)
+  @javax.annotation.Nullable
   private BigDecimal engagementWindowDays;
 
   /**
@@ -3343,9 +3358,9 @@ public class TemplateResponse {
    */
   @JsonAdapter(ConversionReportTimeTypeEnum.Adapter.class)
   public enum ConversionReportTimeTypeEnum {
-    AD_ACTION("TIME_OF_AD_ACTION"),
+    TIME_OF_AD_ACTION("TIME_OF_AD_ACTION"),
     
-    CONVERSION("TIME_OF_CONVERSION");
+    TIME_OF_CONVERSION("TIME_OF_CONVERSION");
 
     private String value;
 
@@ -3392,18 +3407,22 @@ public class TemplateResponse {
 
   public static final String SERIALIZED_NAME_CONVERSION_REPORT_TIME_TYPE = "conversion_report_time_type";
   @SerializedName(SERIALIZED_NAME_CONVERSION_REPORT_TIME_TYPE)
+  @javax.annotation.Nullable
   private ConversionReportTimeTypeEnum conversionReportTimeType;
 
   public static final String SERIALIZED_NAME_FILTERS_JSON = "filters_json";
   @SerializedName(SERIALIZED_NAME_FILTERS_JSON)
+  @javax.annotation.Nullable
   private String filtersJson;
 
   public static final String SERIALIZED_NAME_IS_OWNED_BY_USER = "is_owned_by_user";
   @SerializedName(SERIALIZED_NAME_IS_OWNED_BY_USER)
+  @javax.annotation.Nullable
   private Boolean isOwnedByUser;
 
   public static final String SERIALIZED_NAME_IS_SCHEDULED = "is_scheduled";
   @SerializedName(SERIALIZED_NAME_IS_SCHEDULED)
+  @javax.annotation.Nullable
   private Boolean isScheduled;
 
   /**
@@ -3411,11 +3430,11 @@ public class TemplateResponse {
    */
   @JsonAdapter(CreationSourceEnum.Adapter.class)
   public enum CreationSourceEnum {
-    API("ADS_API"),
+    ADS_API("ADS_API"),
     
-    MANAGER_REPORTING_PAGE("ADS_MANAGER_REPORTING_PAGE"),
+    ADS_MANAGER_REPORTING_PAGE("ADS_MANAGER_REPORTING_PAGE"),
     
-    MANAGER_REPORT_BUILDER("ADS_MANAGER_REPORT_BUILDER");
+    ADS_MANAGER_REPORT_BUILDER("ADS_MANAGER_REPORT_BUILDER");
 
     private String value;
 
@@ -3462,18 +3481,22 @@ public class TemplateResponse {
 
   public static final String SERIALIZED_NAME_CREATION_SOURCE = "creation_source";
   @SerializedName(SERIALIZED_NAME_CREATION_SOURCE)
+  @javax.annotation.Nullable
   private CreationSourceEnum creationSource;
 
   public static final String SERIALIZED_NAME_IS_DELETED = "is_deleted";
   @SerializedName(SERIALIZED_NAME_IS_DELETED)
+  @javax.annotation.Nullable
   private Boolean isDeleted;
 
   public static final String SERIALIZED_NAME_UPDATED_TIME = "updated_time";
   @SerializedName(SERIALIZED_NAME_UPDATED_TIME)
+  @javax.annotation.Nullable
   private BigDecimal updatedTime;
 
   public static final String SERIALIZED_NAME_CUSTOM_COLUMN_IDS = "custom_column_ids";
   @SerializedName(SERIALIZED_NAME_CUSTOM_COLUMN_IDS)
+  @javax.annotation.Nullable
   private List<String> customColumnIds;
 
   /**
@@ -3534,6 +3557,7 @@ public class TemplateResponse {
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nullable
   private TypeEnum type;
 
   /**
@@ -3596,12 +3620,13 @@ public class TemplateResponse {
 
   public static final String SERIALIZED_NAME_INGESTION_SOURCES = "ingestion_sources";
   @SerializedName(SERIALIZED_NAME_INGESTION_SOURCES)
+  @javax.annotation.Nullable
   private List<IngestionSourcesEnum> ingestionSources;
 
   public TemplateResponse() {
   }
 
-  public TemplateResponse id(String id) {
+  public TemplateResponse id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -3615,12 +3640,12 @@ public class TemplateResponse {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public TemplateResponse adAccountId(String adAccountId) {
+  public TemplateResponse adAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -3634,12 +3659,12 @@ public class TemplateResponse {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
 
-  public TemplateResponse adAccountIds(List<String> adAccountIds) {
+  public TemplateResponse adAccountIds(@javax.annotation.Nullable List<String> adAccountIds) {
     this.adAccountIds = adAccountIds;
     return this;
   }
@@ -3661,12 +3686,12 @@ public class TemplateResponse {
     return adAccountIds;
   }
 
-  public void setAdAccountIds(List<String> adAccountIds) {
+  public void setAdAccountIds(@javax.annotation.Nullable List<String> adAccountIds) {
     this.adAccountIds = adAccountIds;
   }
 
 
-  public TemplateResponse userId(String userId) {
+  public TemplateResponse userId(@javax.annotation.Nullable String userId) {
     this.userId = userId;
     return this;
   }
@@ -3680,12 +3705,12 @@ public class TemplateResponse {
     return userId;
   }
 
-  public void setUserId(String userId) {
+  public void setUserId(@javax.annotation.Nullable String userId) {
     this.userId = userId;
   }
 
 
-  public TemplateResponse name(String name) {
+  public TemplateResponse name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -3699,12 +3724,12 @@ public class TemplateResponse {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public TemplateResponse reportStartRelativeDaysInPast(BigDecimal reportStartRelativeDaysInPast) {
+  public TemplateResponse reportStartRelativeDaysInPast(@javax.annotation.Nullable BigDecimal reportStartRelativeDaysInPast) {
     this.reportStartRelativeDaysInPast = reportStartRelativeDaysInPast;
     return this;
   }
@@ -3718,12 +3743,12 @@ public class TemplateResponse {
     return reportStartRelativeDaysInPast;
   }
 
-  public void setReportStartRelativeDaysInPast(BigDecimal reportStartRelativeDaysInPast) {
+  public void setReportStartRelativeDaysInPast(@javax.annotation.Nullable BigDecimal reportStartRelativeDaysInPast) {
     this.reportStartRelativeDaysInPast = reportStartRelativeDaysInPast;
   }
 
 
-  public TemplateResponse reportEndRelativeDaysInPast(BigDecimal reportEndRelativeDaysInPast) {
+  public TemplateResponse reportEndRelativeDaysInPast(@javax.annotation.Nullable BigDecimal reportEndRelativeDaysInPast) {
     this.reportEndRelativeDaysInPast = reportEndRelativeDaysInPast;
     return this;
   }
@@ -3737,12 +3762,12 @@ public class TemplateResponse {
     return reportEndRelativeDaysInPast;
   }
 
-  public void setReportEndRelativeDaysInPast(BigDecimal reportEndRelativeDaysInPast) {
+  public void setReportEndRelativeDaysInPast(@javax.annotation.Nullable BigDecimal reportEndRelativeDaysInPast) {
     this.reportEndRelativeDaysInPast = reportEndRelativeDaysInPast;
   }
 
 
-  public TemplateResponse dateRange(TemplateResponseDateRange dateRange) {
+  public TemplateResponse dateRange(@javax.annotation.Nullable TemplateResponseDateRange dateRange) {
     this.dateRange = dateRange;
     return this;
   }
@@ -3756,12 +3781,12 @@ public class TemplateResponse {
     return dateRange;
   }
 
-  public void setDateRange(TemplateResponseDateRange dateRange) {
+  public void setDateRange(@javax.annotation.Nullable TemplateResponseDateRange dateRange) {
     this.dateRange = dateRange;
   }
 
 
-  public TemplateResponse reportLevel(MetricsReportingLevel reportLevel) {
+  public TemplateResponse reportLevel(@javax.annotation.Nullable MetricsReportingLevel reportLevel) {
     this.reportLevel = reportLevel;
     return this;
   }
@@ -3775,12 +3800,12 @@ public class TemplateResponse {
     return reportLevel;
   }
 
-  public void setReportLevel(MetricsReportingLevel reportLevel) {
+  public void setReportLevel(@javax.annotation.Nullable MetricsReportingLevel reportLevel) {
     this.reportLevel = reportLevel;
   }
 
 
-  public TemplateResponse reportFormat(DataOutputFormat reportFormat) {
+  public TemplateResponse reportFormat(@javax.annotation.Nullable DataOutputFormat reportFormat) {
     this.reportFormat = reportFormat;
     return this;
   }
@@ -3794,12 +3819,12 @@ public class TemplateResponse {
     return reportFormat;
   }
 
-  public void setReportFormat(DataOutputFormat reportFormat) {
+  public void setReportFormat(@javax.annotation.Nullable DataOutputFormat reportFormat) {
     this.reportFormat = reportFormat;
   }
 
 
-  public TemplateResponse columns(List<ColumnsEnum> columns) {
+  public TemplateResponse columns(@javax.annotation.Nullable List<ColumnsEnum> columns) {
     this.columns = columns;
     return this;
   }
@@ -3821,12 +3846,12 @@ public class TemplateResponse {
     return columns;
   }
 
-  public void setColumns(List<ColumnsEnum> columns) {
+  public void setColumns(@javax.annotation.Nullable List<ColumnsEnum> columns) {
     this.columns = columns;
   }
 
 
-  public TemplateResponse granularity(Granularity granularity) {
+  public TemplateResponse granularity(@javax.annotation.Nullable Granularity granularity) {
     this.granularity = granularity;
     return this;
   }
@@ -3840,12 +3865,12 @@ public class TemplateResponse {
     return granularity;
   }
 
-  public void setGranularity(Granularity granularity) {
+  public void setGranularity(@javax.annotation.Nullable Granularity granularity) {
     this.granularity = granularity;
   }
 
 
-  public TemplateResponse viewWindowDays(BigDecimal viewWindowDays) {
+  public TemplateResponse viewWindowDays(@javax.annotation.Nullable BigDecimal viewWindowDays) {
     this.viewWindowDays = viewWindowDays;
     return this;
   }
@@ -3859,12 +3884,12 @@ public class TemplateResponse {
     return viewWindowDays;
   }
 
-  public void setViewWindowDays(BigDecimal viewWindowDays) {
+  public void setViewWindowDays(@javax.annotation.Nullable BigDecimal viewWindowDays) {
     this.viewWindowDays = viewWindowDays;
   }
 
 
-  public TemplateResponse clickWindowDays(BigDecimal clickWindowDays) {
+  public TemplateResponse clickWindowDays(@javax.annotation.Nullable BigDecimal clickWindowDays) {
     this.clickWindowDays = clickWindowDays;
     return this;
   }
@@ -3878,12 +3903,12 @@ public class TemplateResponse {
     return clickWindowDays;
   }
 
-  public void setClickWindowDays(BigDecimal clickWindowDays) {
+  public void setClickWindowDays(@javax.annotation.Nullable BigDecimal clickWindowDays) {
     this.clickWindowDays = clickWindowDays;
   }
 
 
-  public TemplateResponse engagementWindowDays(BigDecimal engagementWindowDays) {
+  public TemplateResponse engagementWindowDays(@javax.annotation.Nullable BigDecimal engagementWindowDays) {
     this.engagementWindowDays = engagementWindowDays;
     return this;
   }
@@ -3897,12 +3922,12 @@ public class TemplateResponse {
     return engagementWindowDays;
   }
 
-  public void setEngagementWindowDays(BigDecimal engagementWindowDays) {
+  public void setEngagementWindowDays(@javax.annotation.Nullable BigDecimal engagementWindowDays) {
     this.engagementWindowDays = engagementWindowDays;
   }
 
 
-  public TemplateResponse conversionReportTimeType(ConversionReportTimeTypeEnum conversionReportTimeType) {
+  public TemplateResponse conversionReportTimeType(@javax.annotation.Nullable ConversionReportTimeTypeEnum conversionReportTimeType) {
     this.conversionReportTimeType = conversionReportTimeType;
     return this;
   }
@@ -3916,12 +3941,12 @@ public class TemplateResponse {
     return conversionReportTimeType;
   }
 
-  public void setConversionReportTimeType(ConversionReportTimeTypeEnum conversionReportTimeType) {
+  public void setConversionReportTimeType(@javax.annotation.Nullable ConversionReportTimeTypeEnum conversionReportTimeType) {
     this.conversionReportTimeType = conversionReportTimeType;
   }
 
 
-  public TemplateResponse filtersJson(String filtersJson) {
+  public TemplateResponse filtersJson(@javax.annotation.Nullable String filtersJson) {
     this.filtersJson = filtersJson;
     return this;
   }
@@ -3935,12 +3960,12 @@ public class TemplateResponse {
     return filtersJson;
   }
 
-  public void setFiltersJson(String filtersJson) {
+  public void setFiltersJson(@javax.annotation.Nullable String filtersJson) {
     this.filtersJson = filtersJson;
   }
 
 
-  public TemplateResponse isOwnedByUser(Boolean isOwnedByUser) {
+  public TemplateResponse isOwnedByUser(@javax.annotation.Nullable Boolean isOwnedByUser) {
     this.isOwnedByUser = isOwnedByUser;
     return this;
   }
@@ -3954,12 +3979,12 @@ public class TemplateResponse {
     return isOwnedByUser;
   }
 
-  public void setIsOwnedByUser(Boolean isOwnedByUser) {
+  public void setIsOwnedByUser(@javax.annotation.Nullable Boolean isOwnedByUser) {
     this.isOwnedByUser = isOwnedByUser;
   }
 
 
-  public TemplateResponse isScheduled(Boolean isScheduled) {
+  public TemplateResponse isScheduled(@javax.annotation.Nullable Boolean isScheduled) {
     this.isScheduled = isScheduled;
     return this;
   }
@@ -3973,12 +3998,12 @@ public class TemplateResponse {
     return isScheduled;
   }
 
-  public void setIsScheduled(Boolean isScheduled) {
+  public void setIsScheduled(@javax.annotation.Nullable Boolean isScheduled) {
     this.isScheduled = isScheduled;
   }
 
 
-  public TemplateResponse creationSource(CreationSourceEnum creationSource) {
+  public TemplateResponse creationSource(@javax.annotation.Nullable CreationSourceEnum creationSource) {
     this.creationSource = creationSource;
     return this;
   }
@@ -3992,12 +4017,12 @@ public class TemplateResponse {
     return creationSource;
   }
 
-  public void setCreationSource(CreationSourceEnum creationSource) {
+  public void setCreationSource(@javax.annotation.Nullable CreationSourceEnum creationSource) {
     this.creationSource = creationSource;
   }
 
 
-  public TemplateResponse isDeleted(Boolean isDeleted) {
+  public TemplateResponse isDeleted(@javax.annotation.Nullable Boolean isDeleted) {
     this.isDeleted = isDeleted;
     return this;
   }
@@ -4011,12 +4036,12 @@ public class TemplateResponse {
     return isDeleted;
   }
 
-  public void setIsDeleted(Boolean isDeleted) {
+  public void setIsDeleted(@javax.annotation.Nullable Boolean isDeleted) {
     this.isDeleted = isDeleted;
   }
 
 
-  public TemplateResponse updatedTime(BigDecimal updatedTime) {
+  public TemplateResponse updatedTime(@javax.annotation.Nullable BigDecimal updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -4030,12 +4055,12 @@ public class TemplateResponse {
     return updatedTime;
   }
 
-  public void setUpdatedTime(BigDecimal updatedTime) {
+  public void setUpdatedTime(@javax.annotation.Nullable BigDecimal updatedTime) {
     this.updatedTime = updatedTime;
   }
 
 
-  public TemplateResponse customColumnIds(List<String> customColumnIds) {
+  public TemplateResponse customColumnIds(@javax.annotation.Nullable List<String> customColumnIds) {
     this.customColumnIds = customColumnIds;
     return this;
   }
@@ -4057,12 +4082,12 @@ public class TemplateResponse {
     return customColumnIds;
   }
 
-  public void setCustomColumnIds(List<String> customColumnIds) {
+  public void setCustomColumnIds(@javax.annotation.Nullable List<String> customColumnIds) {
     this.customColumnIds = customColumnIds;
   }
 
 
-  public TemplateResponse type(TypeEnum type) {
+  public TemplateResponse type(@javax.annotation.Nullable TypeEnum type) {
     this.type = type;
     return this;
   }
@@ -4076,12 +4101,12 @@ public class TemplateResponse {
     return type;
   }
 
-  public void setType(TypeEnum type) {
+  public void setType(@javax.annotation.Nullable TypeEnum type) {
     this.type = type;
   }
 
 
-  public TemplateResponse ingestionSources(List<IngestionSourcesEnum> ingestionSources) {
+  public TemplateResponse ingestionSources(@javax.annotation.Nullable List<IngestionSourcesEnum> ingestionSources) {
     this.ingestionSources = ingestionSources;
     return this;
   }
@@ -4103,7 +4128,7 @@ public class TemplateResponse {
     return ingestionSources;
   }
 
-  public void setIngestionSources(List<IngestionSourcesEnum> ingestionSources) {
+  public void setIngestionSources(@javax.annotation.Nullable List<IngestionSourcesEnum> ingestionSources) {
     this.ingestionSources = ingestionSources;
   }
 

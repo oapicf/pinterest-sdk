@@ -13,18 +13,20 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsUpdatableHotelAttributes
 
+import kotlinx.serialization.Serializable
 /**
  * Object describing an hotel item batch record
  * @param hotelId The catalog hotel item id in the merchant namespace
  * @param operation 
  * @param attributes 
  */
+@Serializable
 data class CatalogsUpdateHotelItem(
     /* The catalog hotel item id in the merchant namespace */
     val hotelId: kotlin.String,
     val operation: CatalogsUpdateHotelItem.Operation,
     val attributes: CatalogsUpdatableHotelAttributes
-) 
+)
 {
     /**
     * 

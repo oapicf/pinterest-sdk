@@ -14,6 +14,7 @@ import org.openapitools.model.DataOutputFormat;
 import org.openapitools.model.Granularity;
 import org.openapitools.model.MetricsReportingLevel;
 import org.openapitools.model.TemplateResponseDateRange;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -30,29 +31,29 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "TemplateResponse", description = "Template fields")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TemplateResponse {
 
-  private String id;
+  private @Nullable String id;
 
-  private String adAccountId;
+  private @Nullable String adAccountId;
 
   @Valid
   private List<String> adAccountIds = new ArrayList<>();
 
-  private String userId;
+  private @Nullable String userId;
 
   private JsonNullable<String> name = JsonNullable.<String>undefined();
 
-  private BigDecimal reportStartRelativeDaysInPast;
+  private @Nullable BigDecimal reportStartRelativeDaysInPast;
 
-  private BigDecimal reportEndRelativeDaysInPast;
+  private @Nullable BigDecimal reportEndRelativeDaysInPast;
 
-  private TemplateResponseDateRange dateRange;
+  private @Nullable TemplateResponseDateRange dateRange;
 
-  private MetricsReportingLevel reportLevel;
+  private @Nullable MetricsReportingLevel reportLevel;
 
-  private DataOutputFormat reportFormat;
+  private @Nullable DataOutputFormat reportFormat;
 
   /**
    * Reporting Columns (Internal)
@@ -3260,21 +3261,21 @@ public class TemplateResponse {
   @Valid
   private List<ColumnsEnum> columns = new ArrayList<>();
 
-  private Granularity granularity;
+  private @Nullable Granularity granularity;
 
-  private BigDecimal viewWindowDays;
+  private @Nullable BigDecimal viewWindowDays;
 
-  private BigDecimal clickWindowDays;
+  private @Nullable BigDecimal clickWindowDays;
 
-  private BigDecimal engagementWindowDays;
+  private @Nullable BigDecimal engagementWindowDays;
 
   /**
    * Conversion report time type
    */
   public enum ConversionReportTimeTypeEnum {
-    AD_ACTION("TIME_OF_AD_ACTION"),
+    TIME_OF_AD_ACTION("TIME_OF_AD_ACTION"),
     
-    CONVERSION("TIME_OF_CONVERSION");
+    TIME_OF_CONVERSION("TIME_OF_CONVERSION");
 
     private String value;
 
@@ -3303,23 +3304,23 @@ public class TemplateResponse {
     }
   }
 
-  private ConversionReportTimeTypeEnum conversionReportTimeType;
+  private @Nullable ConversionReportTimeTypeEnum conversionReportTimeType;
 
   private JsonNullable<String> filtersJson = JsonNullable.<String>undefined();
 
-  private Boolean isOwnedByUser;
+  private @Nullable Boolean isOwnedByUser;
 
-  private Boolean isScheduled;
+  private @Nullable Boolean isScheduled;
 
   /**
    * The surface used to create this template
    */
   public enum CreationSourceEnum {
-    API("ADS_API"),
+    ADS_API("ADS_API"),
     
-    MANAGER_REPORTING_PAGE("ADS_MANAGER_REPORTING_PAGE"),
+    ADS_MANAGER_REPORTING_PAGE("ADS_MANAGER_REPORTING_PAGE"),
     
-    MANAGER_REPORT_BUILDER("ADS_MANAGER_REPORT_BUILDER");
+    ADS_MANAGER_REPORT_BUILDER("ADS_MANAGER_REPORT_BUILDER");
 
     private String value;
 
@@ -3348,11 +3349,11 @@ public class TemplateResponse {
     }
   }
 
-  private CreationSourceEnum creationSource;
+  private @Nullable CreationSourceEnum creationSource;
 
   private JsonNullable<Boolean> isDeleted = JsonNullable.<Boolean>undefined();
 
-  private BigDecimal updatedTime;
+  private @Nullable BigDecimal updatedTime;
 
   @Valid
   private JsonNullable<List<String>> customColumnIds = JsonNullable.<List<String>>undefined();
@@ -3396,7 +3397,7 @@ public class TemplateResponse {
     }
   }
 
-  private TypeEnum type;
+  private @Nullable TypeEnum type;
 
   /**
    * The source of conversion events ingestion

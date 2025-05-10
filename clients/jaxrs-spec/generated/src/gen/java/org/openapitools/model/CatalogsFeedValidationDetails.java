@@ -17,10 +17,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsFeedValidationDetails")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsFeedValidationDetails   {
   private CatalogsFeedValidationErrors errors;
   private CatalogsFeedValidationWarnings warnings;
+
+  public CatalogsFeedValidationDetails() {
+  }
+
+  @JsonCreator
+  public CatalogsFeedValidationDetails(
+    @JsonProperty(required = true, value = "errors") CatalogsFeedValidationErrors errors,
+    @JsonProperty(required = true, value = "warnings") CatalogsFeedValidationWarnings warnings
+  ) {
+    this.errors = errors;
+    this.warnings = warnings;
+  }
 
   /**
    **/
@@ -31,12 +43,12 @@ public class CatalogsFeedValidationDetails   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("errors")
+  @JsonProperty(required = true, value = "errors")
   @NotNull @Valid public CatalogsFeedValidationErrors getErrors() {
     return errors;
   }
 
-  @JsonProperty("errors")
+  @JsonProperty(required = true, value = "errors")
   public void setErrors(CatalogsFeedValidationErrors errors) {
     this.errors = errors;
   }
@@ -50,12 +62,12 @@ public class CatalogsFeedValidationDetails   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("warnings")
+  @JsonProperty(required = true, value = "warnings")
   @NotNull @Valid public CatalogsFeedValidationWarnings getWarnings() {
     return warnings;
   }
 
-  @JsonProperty("warnings")
+  @JsonProperty(required = true, value = "warnings")
   public void setWarnings(CatalogsFeedValidationWarnings warnings) {
     this.warnings = warnings;
   }

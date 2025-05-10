@@ -139,11 +139,11 @@ export function IntegrationMetadataFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function IntegrationMetadataToJSON(json: any): IntegrationMetadata {
-      return IntegrationMetadataToJSONTyped(json, false);
-  }
+export function IntegrationMetadataToJSON(json: any): IntegrationMetadata {
+    return IntegrationMetadataToJSONTyped(json, false);
+}
 
-  export function IntegrationMetadataToJSONTyped(value?: Omit<IntegrationMetadata, 'connected_user_id'|'connected_advertiser_id'> | null, ignoreDiscriminator: boolean = false): any {
+export function IntegrationMetadataToJSONTyped(value?: Omit<IntegrationMetadata, 'connected_user_id'|'connected_advertiser_id'> | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

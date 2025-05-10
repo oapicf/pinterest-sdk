@@ -22,7 +22,7 @@ pinterest_rest_api_catalogs_upsert_retail_item_OPERATION_e catalogs_upsert_retai
     return 0;
 }
 
-catalogs_upsert_retail_item_t *catalogs_upsert_retail_item_create(
+static catalogs_upsert_retail_item_t *catalogs_upsert_retail_item_create_internal(
     char *item_id,
     pinterest_rest_api_catalogs_upsert_retail_item_OPERATION_e operation,
     item_attributes_request_t *attributes
@@ -35,12 +35,28 @@ catalogs_upsert_retail_item_t *catalogs_upsert_retail_item_create(
     catalogs_upsert_retail_item_local_var->operation = operation;
     catalogs_upsert_retail_item_local_var->attributes = attributes;
 
+    catalogs_upsert_retail_item_local_var->_library_owned = 1;
     return catalogs_upsert_retail_item_local_var;
 }
 
+__attribute__((deprecated)) catalogs_upsert_retail_item_t *catalogs_upsert_retail_item_create(
+    char *item_id,
+    pinterest_rest_api_catalogs_upsert_retail_item_OPERATION_e operation,
+    item_attributes_request_t *attributes
+    ) {
+    return catalogs_upsert_retail_item_create_internal (
+        item_id,
+        operation,
+        attributes
+        );
+}
 
 void catalogs_upsert_retail_item_free(catalogs_upsert_retail_item_t *catalogs_upsert_retail_item) {
     if(NULL == catalogs_upsert_retail_item){
+        return ;
+    }
+    if(catalogs_upsert_retail_item->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_upsert_retail_item_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -71,7 +87,7 @@ cJSON *catalogs_upsert_retail_item_convertToJSON(catalogs_upsert_retail_item_t *
     if (pinterest_rest_api_catalogs_upsert_retail_item_OPERATION_NULL == catalogs_upsert_retail_item->operation) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "operation", operationcatalogs_upsert_retail_item_ToString(catalogs_upsert_retail_item->operation)) == NULL)
+    if(cJSON_AddStringToObject(item, "operation", catalogs_upsert_retail_item_operation_ToString(catalogs_upsert_retail_item->operation)) == NULL)
     {
     goto fail; //Enum
     }
@@ -107,6 +123,9 @@ catalogs_upsert_retail_item_t *catalogs_upsert_retail_item_parseFromJSON(cJSON *
 
     // catalogs_upsert_retail_item->item_id
     cJSON *item_id = cJSON_GetObjectItemCaseSensitive(catalogs_upsert_retail_itemJSON, "item_id");
+    if (cJSON_IsNull(item_id)) {
+        item_id = NULL;
+    }
     if (!item_id) {
         goto end;
     }
@@ -119,6 +138,9 @@ catalogs_upsert_retail_item_t *catalogs_upsert_retail_item_parseFromJSON(cJSON *
 
     // catalogs_upsert_retail_item->operation
     cJSON *operation = cJSON_GetObjectItemCaseSensitive(catalogs_upsert_retail_itemJSON, "operation");
+    if (cJSON_IsNull(operation)) {
+        operation = NULL;
+    }
     if (!operation) {
         goto end;
     }
@@ -133,6 +155,9 @@ catalogs_upsert_retail_item_t *catalogs_upsert_retail_item_parseFromJSON(cJSON *
 
     // catalogs_upsert_retail_item->attributes
     cJSON *attributes = cJSON_GetObjectItemCaseSensitive(catalogs_upsert_retail_itemJSON, "attributes");
+    if (cJSON_IsNull(attributes)) {
+        attributes = NULL;
+    }
     if (!attributes) {
         goto end;
     }
@@ -141,7 +166,7 @@ catalogs_upsert_retail_item_t *catalogs_upsert_retail_item_parseFromJSON(cJSON *
     attributes_local_nonprim = item_attributes_request_parseFromJSON(attributes); //nonprimitive
 
 
-    catalogs_upsert_retail_item_local_var = catalogs_upsert_retail_item_create (
+    catalogs_upsert_retail_item_local_var = catalogs_upsert_retail_item_create_internal (
         strdup(item_id->valuestring),
         operationVariable,
         attributes_local_nonprim

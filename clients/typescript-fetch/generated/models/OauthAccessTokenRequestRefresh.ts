@@ -83,11 +83,11 @@ export function OauthAccessTokenRequestRefreshFromJSONTyped(json: any, ignoreDis
     };
 }
 
-  export function OauthAccessTokenRequestRefreshToJSON(json: any): OauthAccessTokenRequestRefresh {
-      return OauthAccessTokenRequestRefreshToJSONTyped(json, false);
-  }
+export function OauthAccessTokenRequestRefreshToJSON(json: any): OauthAccessTokenRequestRefresh {
+    return OauthAccessTokenRequestRefreshToJSONTyped(json, false);
+}
 
-  export function OauthAccessTokenRequestRefreshToJSONTyped(value?: OauthAccessTokenRequestRefresh | null, ignoreDiscriminator: boolean = false): any {
+export function OauthAccessTokenRequestRefreshToJSONTyped(value?: OauthAccessTokenRequestRefresh | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

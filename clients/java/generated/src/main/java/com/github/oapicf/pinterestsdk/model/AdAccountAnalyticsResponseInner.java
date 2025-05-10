@@ -49,20 +49,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdAccountAnalyticsResponseInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdAccountAnalyticsResponseInner {
   public static final String SERIALIZED_NAME_A_D_A_C_C_O_U_N_T_I_D = "AD_ACCOUNT_ID";
   @SerializedName(SERIALIZED_NAME_A_D_A_C_C_O_U_N_T_I_D)
+  @javax.annotation.Nonnull
   private String AD_ACCOUNT_ID;
 
   public static final String SERIALIZED_NAME_D_A_T_E = "DATE";
   @SerializedName(SERIALIZED_NAME_D_A_T_E)
+  @javax.annotation.Nullable
   private LocalDate DATE;
 
   public AdAccountAnalyticsResponseInner() {
   }
 
-  public AdAccountAnalyticsResponseInner AD_ACCOUNT_ID(String AD_ACCOUNT_ID) {
+  public AdAccountAnalyticsResponseInner AD_ACCOUNT_ID(@javax.annotation.Nonnull String AD_ACCOUNT_ID) {
     this.AD_ACCOUNT_ID = AD_ACCOUNT_ID;
     return this;
   }
@@ -76,12 +78,12 @@ public class AdAccountAnalyticsResponseInner {
     return AD_ACCOUNT_ID;
   }
 
-  public void setADACCOUNTID(String AD_ACCOUNT_ID) {
+  public void setADACCOUNTID(@javax.annotation.Nonnull String AD_ACCOUNT_ID) {
     this.AD_ACCOUNT_ID = AD_ACCOUNT_ID;
   }
 
 
-  public AdAccountAnalyticsResponseInner DATE(LocalDate DATE) {
+  public AdAccountAnalyticsResponseInner DATE(@javax.annotation.Nullable LocalDate DATE) {
     this.DATE = DATE;
     return this;
   }
@@ -95,7 +97,7 @@ public class AdAccountAnalyticsResponseInner {
     return DATE;
   }
 
-  public void setDATE(LocalDate DATE) {
+  public void setDATE(@javax.annotation.Nullable LocalDate DATE) {
     this.DATE = DATE;
   }
 

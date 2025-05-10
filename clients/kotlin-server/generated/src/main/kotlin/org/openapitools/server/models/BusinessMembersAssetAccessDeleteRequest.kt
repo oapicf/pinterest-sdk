@@ -13,12 +13,14 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.BusinessMembersAssetAccessDeleteRequestAccessesInner
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param accesses List of members asset access to be deleted
  */
+@Serializable
 data class BusinessMembersAssetAccessDeleteRequest(
     /* List of members asset access to be deleted */
     val accesses: kotlin.collections.List<BusinessMembersAssetAccessDeleteRequestAccessesInner>
-) 
+)
 

@@ -34,9 +34,10 @@ typedef struct catalogs_creative_assets_product_group_create_request_t {
     struct catalogs_creative_assets_product_group_filters_t *filters; //model
     char *catalog_id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_creative_assets_product_group_create_request_t;
 
-catalogs_creative_assets_product_group_create_request_t *catalogs_creative_assets_product_group_create_request_create(
+__attribute__((deprecated)) catalogs_creative_assets_product_group_create_request_t *catalogs_creative_assets_product_group_create_request_create(
     pinterest_rest_api_catalogs_creative_assets_product_group_create_request_CATALOGTYPE_e catalog_type,
     char *name,
     char *description,

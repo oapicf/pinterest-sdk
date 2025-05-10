@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Board fields for updates")
 @JsonTypeName("BoardUpdate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BoardUpdate   {
   private String name;
   private String description;
@@ -70,6 +70,9 @@ public class BoardUpdate   {
 }
 
   private PrivacyEnum privacy;
+
+  public BoardUpdate() {
+  }
 
   /**
    **/

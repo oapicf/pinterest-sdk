@@ -71,7 +71,7 @@ class OrderLineResponse
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->errors = array_key_exists('errors', $data) ? $data['errors'] : $this->errors;

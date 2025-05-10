@@ -39,7 +39,7 @@ pinterest_rest_api_catalogs_retail_batch_request_items_inner__e catalogs_retail_
     return 0;
 }
 
-catalogs_retail_batch_request_items_inner_t *catalogs_retail_batch_request_items_inner_create(
+static catalogs_retail_batch_request_items_inner_t *catalogs_retail_batch_request_items_inner_create_internal(
     char *item_id,
     pinterest_rest_api_catalogs_retail_batch_request_items_inner_OPERATION_e operation,
     item_attributes_request_t *attributes,
@@ -54,12 +54,30 @@ catalogs_retail_batch_request_items_inner_t *catalogs_retail_batch_request_items
     catalogs_retail_batch_request_items_inner_local_var->attributes = attributes;
     catalogs_retail_batch_request_items_inner_local_var->update_mask = update_mask;
 
+    catalogs_retail_batch_request_items_inner_local_var->_library_owned = 1;
     return catalogs_retail_batch_request_items_inner_local_var;
 }
 
+__attribute__((deprecated)) catalogs_retail_batch_request_items_inner_t *catalogs_retail_batch_request_items_inner_create(
+    char *item_id,
+    pinterest_rest_api_catalogs_retail_batch_request_items_inner_OPERATION_e operation,
+    item_attributes_request_t *attributes,
+    list_t *update_mask
+    ) {
+    return catalogs_retail_batch_request_items_inner_create_internal (
+        item_id,
+        operation,
+        attributes,
+        update_mask
+        );
+}
 
 void catalogs_retail_batch_request_items_inner_free(catalogs_retail_batch_request_items_inner_t *catalogs_retail_batch_request_items_inner) {
     if(NULL == catalogs_retail_batch_request_items_inner){
+        return ;
+    }
+    if(catalogs_retail_batch_request_items_inner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_retail_batch_request_items_inner_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -97,7 +115,7 @@ cJSON *catalogs_retail_batch_request_items_inner_convertToJSON(catalogs_retail_b
     if (pinterest_rest_api_catalogs_retail_batch_request_items_inner_OPERATION_NULL == catalogs_retail_batch_request_items_inner->operation) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "operation", operationcatalogs_retail_batch_request_items_inner_ToString(catalogs_retail_batch_request_items_inner->operation)) == NULL)
+    if(cJSON_AddStringToObject(item, "operation", catalogs_retail_batch_request_items_inner_operation_ToString(catalogs_retail_batch_request_items_inner->operation)) == NULL)
     {
     goto fail; //Enum
     }
@@ -118,7 +136,7 @@ cJSON *catalogs_retail_batch_request_items_inner_convertToJSON(catalogs_retail_b
 
 
     // catalogs_retail_batch_request_items_inner->update_mask
-    if(catalogs_retail_batch_request_items_inner->update_mask != pinterest_rest_api_catalogs_retail_batch_request_items_inner_UPDATEMASK_NULL) {
+    if(catalogs_retail_batch_request_items_inner->update_mask != pinterest_rest_api_list_UPDATEMASK_NULL) {
     cJSON *update_mask = cJSON_AddArrayToObject(item, "update_mask");
     if(update_mask == NULL) {
     goto fail; //nonprimitive container
@@ -156,6 +174,9 @@ catalogs_retail_batch_request_items_inner_t *catalogs_retail_batch_request_items
 
     // catalogs_retail_batch_request_items_inner->item_id
     cJSON *item_id = cJSON_GetObjectItemCaseSensitive(catalogs_retail_batch_request_items_innerJSON, "item_id");
+    if (cJSON_IsNull(item_id)) {
+        item_id = NULL;
+    }
     if (!item_id) {
         goto end;
     }
@@ -168,6 +189,9 @@ catalogs_retail_batch_request_items_inner_t *catalogs_retail_batch_request_items
 
     // catalogs_retail_batch_request_items_inner->operation
     cJSON *operation = cJSON_GetObjectItemCaseSensitive(catalogs_retail_batch_request_items_innerJSON, "operation");
+    if (cJSON_IsNull(operation)) {
+        operation = NULL;
+    }
     if (!operation) {
         goto end;
     }
@@ -182,6 +206,9 @@ catalogs_retail_batch_request_items_inner_t *catalogs_retail_batch_request_items
 
     // catalogs_retail_batch_request_items_inner->attributes
     cJSON *attributes = cJSON_GetObjectItemCaseSensitive(catalogs_retail_batch_request_items_innerJSON, "attributes");
+    if (cJSON_IsNull(attributes)) {
+        attributes = NULL;
+    }
     if (!attributes) {
         goto end;
     }
@@ -191,6 +218,9 @@ catalogs_retail_batch_request_items_inner_t *catalogs_retail_batch_request_items
 
     // catalogs_retail_batch_request_items_inner->update_mask
     cJSON *update_mask = cJSON_GetObjectItemCaseSensitive(catalogs_retail_batch_request_items_innerJSON, "update_mask");
+    if (cJSON_IsNull(update_mask)) {
+        update_mask = NULL;
+    }
     if (update_mask) { 
     cJSON *update_mask_local_nonprimitive = NULL;
     if(!cJSON_IsArray(update_mask)){
@@ -211,7 +241,7 @@ catalogs_retail_batch_request_items_inner_t *catalogs_retail_batch_request_items
     }
 
 
-    catalogs_retail_batch_request_items_inner_local_var = catalogs_retail_batch_request_items_inner_create (
+    catalogs_retail_batch_request_items_inner_local_var = catalogs_retail_batch_request_items_inner_create_internal (
         strdup(item_id->valuestring),
         operationVariable,
         attributes_local_nonprim,

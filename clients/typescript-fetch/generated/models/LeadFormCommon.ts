@@ -124,11 +124,11 @@ export function LeadFormCommonFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-  export function LeadFormCommonToJSON(json: any): LeadFormCommon {
-      return LeadFormCommonToJSONTyped(json, false);
-  }
+export function LeadFormCommonToJSON(json: any): LeadFormCommon {
+    return LeadFormCommonToJSONTyped(json, false);
+}
 
-  export function LeadFormCommonToJSONTyped(value?: LeadFormCommon | null, ignoreDiscriminator: boolean = false): any {
+export function LeadFormCommonToJSONTyped(value?: LeadFormCommon | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

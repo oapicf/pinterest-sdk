@@ -57,11 +57,11 @@ export function BusinessMembersAssetAccessDeleteRequestFromJSONTyped(json: any, 
     };
 }
 
-  export function BusinessMembersAssetAccessDeleteRequestToJSON(json: any): BusinessMembersAssetAccessDeleteRequest {
-      return BusinessMembersAssetAccessDeleteRequestToJSONTyped(json, false);
-  }
+export function BusinessMembersAssetAccessDeleteRequestToJSON(json: any): BusinessMembersAssetAccessDeleteRequest {
+    return BusinessMembersAssetAccessDeleteRequestToJSONTyped(json, false);
+}
 
-  export function BusinessMembersAssetAccessDeleteRequestToJSONTyped(value?: BusinessMembersAssetAccessDeleteRequest | null, ignoreDiscriminator: boolean = false): any {
+export function BusinessMembersAssetAccessDeleteRequestToJSONTyped(value?: BusinessMembersAssetAccessDeleteRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

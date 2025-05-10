@@ -5,7 +5,7 @@
 
 
 
-pin_media_with_video_t *pin_media_with_video_create(
+static pin_media_with_video_t *pin_media_with_video_create_internal(
     char *media_type,
     pin_media_with_image_all_of_images_t *images,
     char *cover_image_url,
@@ -26,12 +26,36 @@ pin_media_with_video_t *pin_media_with_video_create(
     pin_media_with_video_local_var->height = height;
     pin_media_with_video_local_var->width = width;
 
+    pin_media_with_video_local_var->_library_owned = 1;
     return pin_media_with_video_local_var;
 }
 
+__attribute__((deprecated)) pin_media_with_video_t *pin_media_with_video_create(
+    char *media_type,
+    pin_media_with_image_all_of_images_t *images,
+    char *cover_image_url,
+    char *video_url,
+    double duration,
+    int height,
+    int width
+    ) {
+    return pin_media_with_video_create_internal (
+        media_type,
+        images,
+        cover_image_url,
+        video_url,
+        duration,
+        height,
+        width
+        );
+}
 
 void pin_media_with_video_free(pin_media_with_video_t *pin_media_with_video) {
     if(NULL == pin_media_with_video){
+        return ;
+    }
+    if(pin_media_with_video->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "pin_media_with_video_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -134,6 +158,9 @@ pin_media_with_video_t *pin_media_with_video_parseFromJSON(cJSON *pin_media_with
 
     // pin_media_with_video->media_type
     cJSON *media_type = cJSON_GetObjectItemCaseSensitive(pin_media_with_videoJSON, "media_type");
+    if (cJSON_IsNull(media_type)) {
+        media_type = NULL;
+    }
     if (media_type) { 
     if(!cJSON_IsString(media_type) && !cJSON_IsNull(media_type))
     {
@@ -143,12 +170,18 @@ pin_media_with_video_t *pin_media_with_video_parseFromJSON(cJSON *pin_media_with
 
     // pin_media_with_video->images
     cJSON *images = cJSON_GetObjectItemCaseSensitive(pin_media_with_videoJSON, "images");
+    if (cJSON_IsNull(images)) {
+        images = NULL;
+    }
     if (images) { 
     images_local_nonprim = pin_media_with_image_all_of_images_parseFromJSON(images); //nonprimitive
     }
 
     // pin_media_with_video->cover_image_url
     cJSON *cover_image_url = cJSON_GetObjectItemCaseSensitive(pin_media_with_videoJSON, "cover_image_url");
+    if (cJSON_IsNull(cover_image_url)) {
+        cover_image_url = NULL;
+    }
     if (cover_image_url) { 
     if(!cJSON_IsString(cover_image_url) && !cJSON_IsNull(cover_image_url))
     {
@@ -158,6 +191,9 @@ pin_media_with_video_t *pin_media_with_video_parseFromJSON(cJSON *pin_media_with
 
     // pin_media_with_video->video_url
     cJSON *video_url = cJSON_GetObjectItemCaseSensitive(pin_media_with_videoJSON, "video_url");
+    if (cJSON_IsNull(video_url)) {
+        video_url = NULL;
+    }
     if (video_url) { 
     if(!cJSON_IsString(video_url) && !cJSON_IsNull(video_url))
     {
@@ -167,6 +203,9 @@ pin_media_with_video_t *pin_media_with_video_parseFromJSON(cJSON *pin_media_with
 
     // pin_media_with_video->duration
     cJSON *duration = cJSON_GetObjectItemCaseSensitive(pin_media_with_videoJSON, "duration");
+    if (cJSON_IsNull(duration)) {
+        duration = NULL;
+    }
     if (duration) { 
     if(!cJSON_IsNumber(duration))
     {
@@ -176,6 +215,9 @@ pin_media_with_video_t *pin_media_with_video_parseFromJSON(cJSON *pin_media_with
 
     // pin_media_with_video->height
     cJSON *height = cJSON_GetObjectItemCaseSensitive(pin_media_with_videoJSON, "height");
+    if (cJSON_IsNull(height)) {
+        height = NULL;
+    }
     if (height) { 
     if(!cJSON_IsNumber(height))
     {
@@ -185,6 +227,9 @@ pin_media_with_video_t *pin_media_with_video_parseFromJSON(cJSON *pin_media_with
 
     // pin_media_with_video->width
     cJSON *width = cJSON_GetObjectItemCaseSensitive(pin_media_with_videoJSON, "width");
+    if (cJSON_IsNull(width)) {
+        width = NULL;
+    }
     if (width) { 
     if(!cJSON_IsNumber(width))
     {
@@ -193,7 +238,7 @@ pin_media_with_video_t *pin_media_with_video_parseFromJSON(cJSON *pin_media_with
     }
 
 
-    pin_media_with_video_local_var = pin_media_with_video_create (
+    pin_media_with_video_local_var = pin_media_with_video_create_internal (
         media_type && !cJSON_IsNull(media_type) ? strdup(media_type->valuestring) : NULL,
         images ? images_local_nonprim : NULL,
         cover_image_url && !cJSON_IsNull(cover_image_url) ? strdup(cover_image_url->valuestring) : NULL,

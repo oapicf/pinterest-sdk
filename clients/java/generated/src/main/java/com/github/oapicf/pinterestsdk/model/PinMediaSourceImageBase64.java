@@ -48,7 +48,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Base64-encoded image media source
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMediaSourceImageBase64 {
   /**
    * Gets or Sets sourceType
@@ -102,6 +102,7 @@ public class PinMediaSourceImageBase64 {
 
   public static final String SERIALIZED_NAME_SOURCE_TYPE = "source_type";
   @SerializedName(SERIALIZED_NAME_SOURCE_TYPE)
+  @javax.annotation.Nonnull
   private SourceTypeEnum sourceType;
 
   /**
@@ -109,9 +110,9 @@ public class PinMediaSourceImageBase64 {
    */
   @JsonAdapter(ContentTypeEnum.Adapter.class)
   public enum ContentTypeEnum {
-    JPEG("image/jpeg"),
+    IMAGE_JPEG("image/jpeg"),
     
-    PNG("image/png");
+    IMAGE_PNG("image/png");
 
     private String value;
 
@@ -158,20 +159,23 @@ public class PinMediaSourceImageBase64 {
 
   public static final String SERIALIZED_NAME_CONTENT_TYPE = "content_type";
   @SerializedName(SERIALIZED_NAME_CONTENT_TYPE)
+  @javax.annotation.Nonnull
   private ContentTypeEnum contentType;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
+  @javax.annotation.Nonnull
   private String data;
 
   public static final String SERIALIZED_NAME_IS_STANDARD = "is_standard";
   @SerializedName(SERIALIZED_NAME_IS_STANDARD)
+  @javax.annotation.Nullable
   private Boolean isStandard = true;
 
   public PinMediaSourceImageBase64() {
   }
 
-  public PinMediaSourceImageBase64 sourceType(SourceTypeEnum sourceType) {
+  public PinMediaSourceImageBase64 sourceType(@javax.annotation.Nonnull SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
     return this;
   }
@@ -185,12 +189,12 @@ public class PinMediaSourceImageBase64 {
     return sourceType;
   }
 
-  public void setSourceType(SourceTypeEnum sourceType) {
+  public void setSourceType(@javax.annotation.Nonnull SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
   }
 
 
-  public PinMediaSourceImageBase64 contentType(ContentTypeEnum contentType) {
+  public PinMediaSourceImageBase64 contentType(@javax.annotation.Nonnull ContentTypeEnum contentType) {
     this.contentType = contentType;
     return this;
   }
@@ -204,12 +208,12 @@ public class PinMediaSourceImageBase64 {
     return contentType;
   }
 
-  public void setContentType(ContentTypeEnum contentType) {
+  public void setContentType(@javax.annotation.Nonnull ContentTypeEnum contentType) {
     this.contentType = contentType;
   }
 
 
-  public PinMediaSourceImageBase64 data(String data) {
+  public PinMediaSourceImageBase64 data(@javax.annotation.Nonnull String data) {
     this.data = data;
     return this;
   }
@@ -223,12 +227,12 @@ public class PinMediaSourceImageBase64 {
     return data;
   }
 
-  public void setData(String data) {
+  public void setData(@javax.annotation.Nonnull String data) {
     this.data = data;
   }
 
 
-  public PinMediaSourceImageBase64 isStandard(Boolean isStandard) {
+  public PinMediaSourceImageBase64 isStandard(@javax.annotation.Nullable Boolean isStandard) {
     this.isStandard = isStandard;
     return this;
   }
@@ -242,7 +246,7 @@ public class PinMediaSourceImageBase64 {
     return isStandard;
   }
 
-  public void setIsStandard(Boolean isStandard) {
+  public void setIsStandard(@javax.annotation.Nullable Boolean isStandard) {
     this.isStandard = isStandard;
   }
 

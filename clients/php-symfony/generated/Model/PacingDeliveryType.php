@@ -44,8 +44,8 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum PacingDeliveryType: string
 {
-        case STANDARD = "STANDARD";
-        case ACCELERATED = "ACCELERATED";
+        case STANDARD = 'STANDARD';
+        case ACCELERATED = 'ACCELERATED';
 }
 
 

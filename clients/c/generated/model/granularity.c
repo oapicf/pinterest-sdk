@@ -22,7 +22,7 @@ pinterest_rest_api_granularity__e granularity_granularity_FromString(char* granu
     return 0;
 }
 
-cJSON *granularity_granularity_convertToJSON(pinterest_rest_api_granularity__e granularity) {
+cJSON *granularity_convertToJSON(pinterest_rest_api_granularity__e granularity) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "granularity", granularity_granularity_ToString(granularity)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_granularity__e granularity_granularity_parseFromJSON(cJSON *granularityJSON) {
-    pinterest_rest_api_granularity__e *granularity = NULL;
-    pinterest_rest_api_granularity__e granularityVariable;
-    cJSON *granularityVar = cJSON_GetObjectItemCaseSensitive(granularityJSON, "granularity");
-    if(!cJSON_IsString(granularityVar) || (granularityVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_granularity__e granularity_parseFromJSON(cJSON *granularityJSON) {
+    if(!cJSON_IsString(granularityJSON) || (granularityJSON->valuestring == NULL)) {
+        return 0;
     }
-    granularityVariable = granularity_granularity_FromString(granularityVar->valuestring);
-    return granularityVariable;
-end:
-    return 0;
+    return granularity_granularity_FromString(granularityJSON->valuestring);
 }

@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **adAccountId** | **string** | Campaign&#39;s Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema. | 
 **name** | **string** | Campaign name. | 
-**status** | [**OpenAPI\Server\Model\EntityStatus**](EntityStatus.md) |  | [optional] [default to 'ACTIVE']
+**status** | [**OpenAPI\Server\Model\EntityStatus**](EntityStatus.md) |  | [optional] [default to self::OpenAPI\Server\Model\EntityStatus_ACTIVE]
 **lifetimeSpendCap** | **int** | Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;daily_spend_cap\&quot; cannot be set at the same time. | [optional] 
 **dailySpendCap** | **int** | Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;lifetime_spend_cap\&quot; cannot be set at the same time. | [optional] 
 **orderLineId** | **string** | Order line ID that appears on the invoice. | [optional] 

@@ -64,98 +64,121 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdsAnalyticsCreateAsyncRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdsAnalyticsCreateAsyncRequest {
   public static final String SERIALIZED_NAME_START_DATE = "start_date";
   @SerializedName(SERIALIZED_NAME_START_DATE)
+  @javax.annotation.Nonnull
   private String startDate;
 
   public static final String SERIALIZED_NAME_END_DATE = "end_date";
   @SerializedName(SERIALIZED_NAME_END_DATE)
+  @javax.annotation.Nonnull
   private String endDate;
 
   public static final String SERIALIZED_NAME_GRANULARITY = "granularity";
   @SerializedName(SERIALIZED_NAME_GRANULARITY)
+  @javax.annotation.Nonnull
   private Granularity granularity;
 
   public static final String SERIALIZED_NAME_CLICK_WINDOW_DAYS = "click_window_days";
   @SerializedName(SERIALIZED_NAME_CLICK_WINDOW_DAYS)
+  @javax.annotation.Nullable
   private ConversionAttributionWindowDays clickWindowDays = ConversionAttributionWindowDays.NUMBER_30;
 
   public static final String SERIALIZED_NAME_ENGAGEMENT_WINDOW_DAYS = "engagement_window_days";
   @SerializedName(SERIALIZED_NAME_ENGAGEMENT_WINDOW_DAYS)
+  @javax.annotation.Nullable
   private ConversionAttributionWindowDays engagementWindowDays = ConversionAttributionWindowDays.NUMBER_30;
 
   public static final String SERIALIZED_NAME_VIEW_WINDOW_DAYS = "view_window_days";
   @SerializedName(SERIALIZED_NAME_VIEW_WINDOW_DAYS)
+  @javax.annotation.Nullable
   private ConversionAttributionWindowDays viewWindowDays = ConversionAttributionWindowDays.NUMBER_1;
 
   public static final String SERIALIZED_NAME_CONVERSION_REPORT_TIME = "conversion_report_time";
   @SerializedName(SERIALIZED_NAME_CONVERSION_REPORT_TIME)
+  @javax.annotation.Nullable
   private ConversionReportTimeType conversionReportTime = "TIME_OF_AD_ACTION";
 
   public static final String SERIALIZED_NAME_ATTRIBUTION_TYPES = "attribution_types";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTION_TYPES)
+  @javax.annotation.Nullable
   private List<ConversionReportAttributionType> attributionTypes = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_CAMPAIGN_IDS = "campaign_ids";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_IDS)
+  @javax.annotation.Nullable
   private List<String> campaignIds = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_CAMPAIGN_STATUSES = "campaign_statuses";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_STATUSES)
+  @javax.annotation.Nullable
   private List<CampaignSummaryStatus> campaignStatuses = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_CAMPAIGN_OBJECTIVE_TYPES = "campaign_objective_types";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_OBJECTIVE_TYPES)
+  @javax.annotation.Nullable
   private List<ObjectiveType> campaignObjectiveTypes = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_AD_GROUP_IDS = "ad_group_ids";
   @SerializedName(SERIALIZED_NAME_AD_GROUP_IDS)
+  @javax.annotation.Nullable
   private List<String> adGroupIds = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_AD_GROUP_STATUSES = "ad_group_statuses";
   @SerializedName(SERIALIZED_NAME_AD_GROUP_STATUSES)
+  @javax.annotation.Nullable
   private List<AdGroupSummaryStatus> adGroupStatuses = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_AD_IDS = "ad_ids";
   @SerializedName(SERIALIZED_NAME_AD_IDS)
+  @javax.annotation.Nullable
   private List<String> adIds = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_AD_STATUSES = "ad_statuses";
   @SerializedName(SERIALIZED_NAME_AD_STATUSES)
+  @javax.annotation.Nullable
   private List<PinPromotionSummaryStatus> adStatuses = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_PRODUCT_GROUP_IDS = "product_group_ids";
   @SerializedName(SERIALIZED_NAME_PRODUCT_GROUP_IDS)
+  @javax.annotation.Nullable
   private List<String> productGroupIds = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_PRODUCT_GROUP_STATUSES = "product_group_statuses";
   @SerializedName(SERIALIZED_NAME_PRODUCT_GROUP_STATUSES)
+  @javax.annotation.Nullable
   private List<ProductGroupSummaryStatus> productGroupStatuses = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_PRODUCT_ITEM_IDS = "product_item_ids";
   @SerializedName(SERIALIZED_NAME_PRODUCT_ITEM_IDS)
+  @javax.annotation.Nullable
   private List<String> productItemIds = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_TARGETING_TYPES = "targeting_types";
   @SerializedName(SERIALIZED_NAME_TARGETING_TYPES)
+  @javax.annotation.Nullable
   private List<AdsAnalyticsTargetingType> targetingTypes = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_METRICS_FILTERS = "metrics_filters";
   @SerializedName(SERIALIZED_NAME_METRICS_FILTERS)
+  @javax.annotation.Nullable
   private List<AdsAnalyticsMetricsFilter> metricsFilters = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_COLUMNS = "columns";
   @SerializedName(SERIALIZED_NAME_COLUMNS)
+  @javax.annotation.Nonnull
   private List<ReportingColumnAsync> columns = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_LEVEL = "level";
   @SerializedName(SERIALIZED_NAME_LEVEL)
+  @javax.annotation.Nonnull
   private MetricsReportingLevel level;
 
   public static final String SERIALIZED_NAME_REPORT_FORMAT = "report_format";
   @SerializedName(SERIALIZED_NAME_REPORT_FORMAT)
+  @javax.annotation.Nullable
   private DataOutputFormat reportFormat = "JSON";
 
   /**
@@ -163,9 +186,9 @@ public class AdsAnalyticsCreateAsyncRequest {
    */
   @JsonAdapter(PrimarySortEnum.Adapter.class)
   public enum PrimarySortEnum {
-    ID("BY_ID"),
+    BY_ID("BY_ID"),
     
-    DATE("BY_DATE");
+    BY_DATE("BY_DATE");
 
     private String value;
 
@@ -212,20 +235,23 @@ public class AdsAnalyticsCreateAsyncRequest {
 
   public static final String SERIALIZED_NAME_PRIMARY_SORT = "primary_sort";
   @SerializedName(SERIALIZED_NAME_PRIMARY_SORT)
+  @javax.annotation.Nullable
   private PrimarySortEnum primarySort;
 
   public static final String SERIALIZED_NAME_START_HOUR = "start_hour";
   @SerializedName(SERIALIZED_NAME_START_HOUR)
+  @javax.annotation.Nullable
   private Integer startHour;
 
   public static final String SERIALIZED_NAME_END_HOUR = "end_hour";
   @SerializedName(SERIALIZED_NAME_END_HOUR)
+  @javax.annotation.Nullable
   private Integer endHour;
 
   public AdsAnalyticsCreateAsyncRequest() {
   }
 
-  public AdsAnalyticsCreateAsyncRequest startDate(String startDate) {
+  public AdsAnalyticsCreateAsyncRequest startDate(@javax.annotation.Nonnull String startDate) {
     this.startDate = startDate;
     return this;
   }
@@ -239,12 +265,12 @@ public class AdsAnalyticsCreateAsyncRequest {
     return startDate;
   }
 
-  public void setStartDate(String startDate) {
+  public void setStartDate(@javax.annotation.Nonnull String startDate) {
     this.startDate = startDate;
   }
 
 
-  public AdsAnalyticsCreateAsyncRequest endDate(String endDate) {
+  public AdsAnalyticsCreateAsyncRequest endDate(@javax.annotation.Nonnull String endDate) {
     this.endDate = endDate;
     return this;
   }
@@ -258,12 +284,12 @@ public class AdsAnalyticsCreateAsyncRequest {
     return endDate;
   }
 
-  public void setEndDate(String endDate) {
+  public void setEndDate(@javax.annotation.Nonnull String endDate) {
     this.endDate = endDate;
   }
 
 
-  public AdsAnalyticsCreateAsyncRequest granularity(Granularity granularity) {
+  public AdsAnalyticsCreateAsyncRequest granularity(@javax.annotation.Nonnull Granularity granularity) {
     this.granularity = granularity;
     return this;
   }
@@ -277,12 +303,12 @@ public class AdsAnalyticsCreateAsyncRequest {
     return granularity;
   }
 
-  public void setGranularity(Granularity granularity) {
+  public void setGranularity(@javax.annotation.Nonnull Granularity granularity) {
     this.granularity = granularity;
   }
 
 
-  public AdsAnalyticsCreateAsyncRequest clickWindowDays(ConversionAttributionWindowDays clickWindowDays) {
+  public AdsAnalyticsCreateAsyncRequest clickWindowDays(@javax.annotation.Nullable ConversionAttributionWindowDays clickWindowDays) {
     this.clickWindowDays = clickWindowDays;
     return this;
   }
@@ -296,12 +322,12 @@ public class AdsAnalyticsCreateAsyncRequest {
     return clickWindowDays;
   }
 
-  public void setClickWindowDays(ConversionAttributionWindowDays clickWindowDays) {
+  public void setClickWindowDays(@javax.annotation.Nullable ConversionAttributionWindowDays clickWindowDays) {
     this.clickWindowDays = clickWindowDays;
   }
 
 
-  public AdsAnalyticsCreateAsyncRequest engagementWindowDays(ConversionAttributionWindowDays engagementWindowDays) {
+  public AdsAnalyticsCreateAsyncRequest engagementWindowDays(@javax.annotation.Nullable ConversionAttributionWindowDays engagementWindowDays) {
     this.engagementWindowDays = engagementWindowDays;
     return this;
   }
@@ -315,12 +341,12 @@ public class AdsAnalyticsCreateAsyncRequest {
     return engagementWindowDays;
   }
 
-  public void setEngagementWindowDays(ConversionAttributionWindowDays engagementWindowDays) {
+  public void setEngagementWindowDays(@javax.annotation.Nullable ConversionAttributionWindowDays engagementWindowDays) {
     this.engagementWindowDays = engagementWindowDays;
   }
 
 
-  public AdsAnalyticsCreateAsyncRequest viewWindowDays(ConversionAttributionWindowDays viewWindowDays) {
+  public AdsAnalyticsCreateAsyncRequest viewWindowDays(@javax.annotation.Nullable ConversionAttributionWindowDays viewWindowDays) {
     this.viewWindowDays = viewWindowDays;
     return this;
   }
@@ -334,12 +360,12 @@ public class AdsAnalyticsCreateAsyncRequest {
     return viewWindowDays;
   }
 
-  public void setViewWindowDays(ConversionAttributionWindowDays viewWindowDays) {
+  public void setViewWindowDays(@javax.annotation.Nullable ConversionAttributionWindowDays viewWindowDays) {
     this.viewWindowDays = viewWindowDays;
   }
 
 
-  public AdsAnalyticsCreateAsyncRequest conversionReportTime(ConversionReportTimeType conversionReportTime) {
+  public AdsAnalyticsCreateAsyncRequest conversionReportTime(@javax.annotation.Nullable ConversionReportTimeType conversionReportTime) {
     this.conversionReportTime = conversionReportTime;
     return this;
   }
@@ -353,12 +379,12 @@ public class AdsAnalyticsCreateAsyncRequest {
     return conversionReportTime;
   }
 
-  public void setConversionReportTime(ConversionReportTimeType conversionReportTime) {
+  public void setConversionReportTime(@javax.annotation.Nullable ConversionReportTimeType conversionReportTime) {
     this.conversionReportTime = conversionReportTime;
   }
 
 
-  public AdsAnalyticsCreateAsyncRequest attributionTypes(List<ConversionReportAttributionType> attributionTypes) {
+  public AdsAnalyticsCreateAsyncRequest attributionTypes(@javax.annotation.Nullable List<ConversionReportAttributionType> attributionTypes) {
     this.attributionTypes = attributionTypes;
     return this;
   }
@@ -380,12 +406,12 @@ public class AdsAnalyticsCreateAsyncRequest {
     return attributionTypes;
   }
 
-  public void setAttributionTypes(List<ConversionReportAttributionType> attributionTypes) {
+  public void setAttributionTypes(@javax.annotation.Nullable List<ConversionReportAttributionType> attributionTypes) {
     this.attributionTypes = attributionTypes;
   }
 
 
-  public AdsAnalyticsCreateAsyncRequest campaignIds(List<String> campaignIds) {
+  public AdsAnalyticsCreateAsyncRequest campaignIds(@javax.annotation.Nullable List<String> campaignIds) {
     this.campaignIds = campaignIds;
     return this;
   }
@@ -407,12 +433,12 @@ public class AdsAnalyticsCreateAsyncRequest {
     return campaignIds;
   }
 
-  public void setCampaignIds(List<String> campaignIds) {
+  public void setCampaignIds(@javax.annotation.Nullable List<String> campaignIds) {
     this.campaignIds = campaignIds;
   }
 
 
-  public AdsAnalyticsCreateAsyncRequest campaignStatuses(List<CampaignSummaryStatus> campaignStatuses) {
+  public AdsAnalyticsCreateAsyncRequest campaignStatuses(@javax.annotation.Nullable List<CampaignSummaryStatus> campaignStatuses) {
     this.campaignStatuses = campaignStatuses;
     return this;
   }
@@ -434,12 +460,12 @@ public class AdsAnalyticsCreateAsyncRequest {
     return campaignStatuses;
   }
 
-  public void setCampaignStatuses(List<CampaignSummaryStatus> campaignStatuses) {
+  public void setCampaignStatuses(@javax.annotation.Nullable List<CampaignSummaryStatus> campaignStatuses) {
     this.campaignStatuses = campaignStatuses;
   }
 
 
-  public AdsAnalyticsCreateAsyncRequest campaignObjectiveTypes(List<ObjectiveType> campaignObjectiveTypes) {
+  public AdsAnalyticsCreateAsyncRequest campaignObjectiveTypes(@javax.annotation.Nullable List<ObjectiveType> campaignObjectiveTypes) {
     this.campaignObjectiveTypes = campaignObjectiveTypes;
     return this;
   }
@@ -461,12 +487,12 @@ public class AdsAnalyticsCreateAsyncRequest {
     return campaignObjectiveTypes;
   }
 
-  public void setCampaignObjectiveTypes(List<ObjectiveType> campaignObjectiveTypes) {
+  public void setCampaignObjectiveTypes(@javax.annotation.Nullable List<ObjectiveType> campaignObjectiveTypes) {
     this.campaignObjectiveTypes = campaignObjectiveTypes;
   }
 
 
-  public AdsAnalyticsCreateAsyncRequest adGroupIds(List<String> adGroupIds) {
+  public AdsAnalyticsCreateAsyncRequest adGroupIds(@javax.annotation.Nullable List<String> adGroupIds) {
     this.adGroupIds = adGroupIds;
     return this;
   }
@@ -488,12 +514,12 @@ public class AdsAnalyticsCreateAsyncRequest {
     return adGroupIds;
   }
 
-  public void setAdGroupIds(List<String> adGroupIds) {
+  public void setAdGroupIds(@javax.annotation.Nullable List<String> adGroupIds) {
     this.adGroupIds = adGroupIds;
   }
 
 
-  public AdsAnalyticsCreateAsyncRequest adGroupStatuses(List<AdGroupSummaryStatus> adGroupStatuses) {
+  public AdsAnalyticsCreateAsyncRequest adGroupStatuses(@javax.annotation.Nullable List<AdGroupSummaryStatus> adGroupStatuses) {
     this.adGroupStatuses = adGroupStatuses;
     return this;
   }
@@ -515,12 +541,12 @@ public class AdsAnalyticsCreateAsyncRequest {
     return adGroupStatuses;
   }
 
-  public void setAdGroupStatuses(List<AdGroupSummaryStatus> adGroupStatuses) {
+  public void setAdGroupStatuses(@javax.annotation.Nullable List<AdGroupSummaryStatus> adGroupStatuses) {
     this.adGroupStatuses = adGroupStatuses;
   }
 
 
-  public AdsAnalyticsCreateAsyncRequest adIds(List<String> adIds) {
+  public AdsAnalyticsCreateAsyncRequest adIds(@javax.annotation.Nullable List<String> adIds) {
     this.adIds = adIds;
     return this;
   }
@@ -542,12 +568,12 @@ public class AdsAnalyticsCreateAsyncRequest {
     return adIds;
   }
 
-  public void setAdIds(List<String> adIds) {
+  public void setAdIds(@javax.annotation.Nullable List<String> adIds) {
     this.adIds = adIds;
   }
 
 
-  public AdsAnalyticsCreateAsyncRequest adStatuses(List<PinPromotionSummaryStatus> adStatuses) {
+  public AdsAnalyticsCreateAsyncRequest adStatuses(@javax.annotation.Nullable List<PinPromotionSummaryStatus> adStatuses) {
     this.adStatuses = adStatuses;
     return this;
   }
@@ -569,12 +595,12 @@ public class AdsAnalyticsCreateAsyncRequest {
     return adStatuses;
   }
 
-  public void setAdStatuses(List<PinPromotionSummaryStatus> adStatuses) {
+  public void setAdStatuses(@javax.annotation.Nullable List<PinPromotionSummaryStatus> adStatuses) {
     this.adStatuses = adStatuses;
   }
 
 
-  public AdsAnalyticsCreateAsyncRequest productGroupIds(List<String> productGroupIds) {
+  public AdsAnalyticsCreateAsyncRequest productGroupIds(@javax.annotation.Nullable List<String> productGroupIds) {
     this.productGroupIds = productGroupIds;
     return this;
   }
@@ -596,12 +622,12 @@ public class AdsAnalyticsCreateAsyncRequest {
     return productGroupIds;
   }
 
-  public void setProductGroupIds(List<String> productGroupIds) {
+  public void setProductGroupIds(@javax.annotation.Nullable List<String> productGroupIds) {
     this.productGroupIds = productGroupIds;
   }
 
 
-  public AdsAnalyticsCreateAsyncRequest productGroupStatuses(List<ProductGroupSummaryStatus> productGroupStatuses) {
+  public AdsAnalyticsCreateAsyncRequest productGroupStatuses(@javax.annotation.Nullable List<ProductGroupSummaryStatus> productGroupStatuses) {
     this.productGroupStatuses = productGroupStatuses;
     return this;
   }
@@ -623,12 +649,12 @@ public class AdsAnalyticsCreateAsyncRequest {
     return productGroupStatuses;
   }
 
-  public void setProductGroupStatuses(List<ProductGroupSummaryStatus> productGroupStatuses) {
+  public void setProductGroupStatuses(@javax.annotation.Nullable List<ProductGroupSummaryStatus> productGroupStatuses) {
     this.productGroupStatuses = productGroupStatuses;
   }
 
 
-  public AdsAnalyticsCreateAsyncRequest productItemIds(List<String> productItemIds) {
+  public AdsAnalyticsCreateAsyncRequest productItemIds(@javax.annotation.Nullable List<String> productItemIds) {
     this.productItemIds = productItemIds;
     return this;
   }
@@ -650,12 +676,12 @@ public class AdsAnalyticsCreateAsyncRequest {
     return productItemIds;
   }
 
-  public void setProductItemIds(List<String> productItemIds) {
+  public void setProductItemIds(@javax.annotation.Nullable List<String> productItemIds) {
     this.productItemIds = productItemIds;
   }
 
 
-  public AdsAnalyticsCreateAsyncRequest targetingTypes(List<AdsAnalyticsTargetingType> targetingTypes) {
+  public AdsAnalyticsCreateAsyncRequest targetingTypes(@javax.annotation.Nullable List<AdsAnalyticsTargetingType> targetingTypes) {
     this.targetingTypes = targetingTypes;
     return this;
   }
@@ -677,12 +703,12 @@ public class AdsAnalyticsCreateAsyncRequest {
     return targetingTypes;
   }
 
-  public void setTargetingTypes(List<AdsAnalyticsTargetingType> targetingTypes) {
+  public void setTargetingTypes(@javax.annotation.Nullable List<AdsAnalyticsTargetingType> targetingTypes) {
     this.targetingTypes = targetingTypes;
   }
 
 
-  public AdsAnalyticsCreateAsyncRequest metricsFilters(List<AdsAnalyticsMetricsFilter> metricsFilters) {
+  public AdsAnalyticsCreateAsyncRequest metricsFilters(@javax.annotation.Nullable List<AdsAnalyticsMetricsFilter> metricsFilters) {
     this.metricsFilters = metricsFilters;
     return this;
   }
@@ -704,12 +730,12 @@ public class AdsAnalyticsCreateAsyncRequest {
     return metricsFilters;
   }
 
-  public void setMetricsFilters(List<AdsAnalyticsMetricsFilter> metricsFilters) {
+  public void setMetricsFilters(@javax.annotation.Nullable List<AdsAnalyticsMetricsFilter> metricsFilters) {
     this.metricsFilters = metricsFilters;
   }
 
 
-  public AdsAnalyticsCreateAsyncRequest columns(List<ReportingColumnAsync> columns) {
+  public AdsAnalyticsCreateAsyncRequest columns(@javax.annotation.Nonnull List<ReportingColumnAsync> columns) {
     this.columns = columns;
     return this;
   }
@@ -731,12 +757,12 @@ public class AdsAnalyticsCreateAsyncRequest {
     return columns;
   }
 
-  public void setColumns(List<ReportingColumnAsync> columns) {
+  public void setColumns(@javax.annotation.Nonnull List<ReportingColumnAsync> columns) {
     this.columns = columns;
   }
 
 
-  public AdsAnalyticsCreateAsyncRequest level(MetricsReportingLevel level) {
+  public AdsAnalyticsCreateAsyncRequest level(@javax.annotation.Nonnull MetricsReportingLevel level) {
     this.level = level;
     return this;
   }
@@ -750,12 +776,12 @@ public class AdsAnalyticsCreateAsyncRequest {
     return level;
   }
 
-  public void setLevel(MetricsReportingLevel level) {
+  public void setLevel(@javax.annotation.Nonnull MetricsReportingLevel level) {
     this.level = level;
   }
 
 
-  public AdsAnalyticsCreateAsyncRequest reportFormat(DataOutputFormat reportFormat) {
+  public AdsAnalyticsCreateAsyncRequest reportFormat(@javax.annotation.Nullable DataOutputFormat reportFormat) {
     this.reportFormat = reportFormat;
     return this;
   }
@@ -769,12 +795,12 @@ public class AdsAnalyticsCreateAsyncRequest {
     return reportFormat;
   }
 
-  public void setReportFormat(DataOutputFormat reportFormat) {
+  public void setReportFormat(@javax.annotation.Nullable DataOutputFormat reportFormat) {
     this.reportFormat = reportFormat;
   }
 
 
-  public AdsAnalyticsCreateAsyncRequest primarySort(PrimarySortEnum primarySort) {
+  public AdsAnalyticsCreateAsyncRequest primarySort(@javax.annotation.Nullable PrimarySortEnum primarySort) {
     this.primarySort = primarySort;
     return this;
   }
@@ -788,12 +814,12 @@ public class AdsAnalyticsCreateAsyncRequest {
     return primarySort;
   }
 
-  public void setPrimarySort(PrimarySortEnum primarySort) {
+  public void setPrimarySort(@javax.annotation.Nullable PrimarySortEnum primarySort) {
     this.primarySort = primarySort;
   }
 
 
-  public AdsAnalyticsCreateAsyncRequest startHour(Integer startHour) {
+  public AdsAnalyticsCreateAsyncRequest startHour(@javax.annotation.Nullable Integer startHour) {
     this.startHour = startHour;
     return this;
   }
@@ -809,12 +835,12 @@ public class AdsAnalyticsCreateAsyncRequest {
     return startHour;
   }
 
-  public void setStartHour(Integer startHour) {
+  public void setStartHour(@javax.annotation.Nullable Integer startHour) {
     this.startHour = startHour;
   }
 
 
-  public AdsAnalyticsCreateAsyncRequest endHour(Integer endHour) {
+  public AdsAnalyticsCreateAsyncRequest endHour(@javax.annotation.Nullable Integer endHour) {
     this.endHour = endHour;
     return this;
   }
@@ -830,7 +856,7 @@ public class AdsAnalyticsCreateAsyncRequest {
     return endHour;
   }
 
-  public void setEndHour(Integer endHour) {
+  public void setEndHour(@javax.annotation.Nullable Integer endHour) {
     this.endHour = endHour;
   }
 

@@ -64,11 +64,11 @@ export function SearchPartnerPins200ResponseFromJSONTyped(json: any, ignoreDiscr
     };
 }
 
-  export function SearchPartnerPins200ResponseToJSON(json: any): SearchPartnerPins200Response {
-      return SearchPartnerPins200ResponseToJSONTyped(json, false);
-  }
+export function SearchPartnerPins200ResponseToJSON(json: any): SearchPartnerPins200Response {
+    return SearchPartnerPins200ResponseToJSONTyped(json, false);
+}
 
-  export function SearchPartnerPins200ResponseToJSONTyped(value?: SearchPartnerPins200Response | null, ignoreDiscriminator: boolean = false): any {
+export function SearchPartnerPins200ResponseToJSONTyped(value?: SearchPartnerPins200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

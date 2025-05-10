@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("UpdateAssetGroupBody_asset_groups_to_update_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class UpdateAssetGroupBodyAssetGroupsToUpdateInner   {
   private String assetGroupId;
   private String name;
@@ -28,6 +28,16 @@ public class UpdateAssetGroupBodyAssetGroupsToUpdateInner   {
   private @Valid List<AssetGroupType> assetGroupTypes = new ArrayList<>();
   private @Valid List<String> assetsToAdd = new ArrayList<>();
   private @Valid List<String> assetsToRemove = new ArrayList<>();
+
+  public UpdateAssetGroupBodyAssetGroupsToUpdateInner() {
+  }
+
+  @JsonCreator
+  public UpdateAssetGroupBodyAssetGroupsToUpdateInner(
+    @JsonProperty(required = true, value = "asset_group_id") String assetGroupId
+  ) {
+    this.assetGroupId = assetGroupId;
+  }
 
   /**
    * Unique identifier of the asset group to update.
@@ -39,12 +49,12 @@ public class UpdateAssetGroupBodyAssetGroupsToUpdateInner   {
 
   
   @ApiModelProperty(example = "666791336903426391", required = true, value = "Unique identifier of the asset group to update.")
-  @JsonProperty("asset_group_id")
+  @JsonProperty(required = true, value = "asset_group_id")
   @NotNull public String getAssetGroupId() {
     return assetGroupId;
   }
 
-  @JsonProperty("asset_group_id")
+  @JsonProperty(required = true, value = "asset_group_id")
   public void setAssetGroupId(String assetGroupId) {
     this.assetGroupId = assetGroupId;
   }

@@ -44,9 +44,9 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum LeadsExportStatus: string
 {
-        case IN_PROGRESS = "IN_PROGRESS";
-        case FINISHED = "FINISHED";
-        case FAILED = "FAILED";
+        case IN_PROGRESS = 'IN_PROGRESS';
+        case FINISHED = 'FINISHED';
+        case FAILED = 'FAILED';
 }
 
 

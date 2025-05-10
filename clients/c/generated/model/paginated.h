@@ -23,9 +23,10 @@ typedef struct paginated_t {
     list_t *items; //nonprimitive container
     char *bookmark; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } paginated_t;
 
-paginated_t *paginated_create(
+__attribute__((deprecated)) paginated_t *paginated_create(
     list_t *items,
     char *bookmark
 );

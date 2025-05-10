@@ -15,9 +15,13 @@
 export type OrderLinePaidType = 'PAID' | 'BONUS' | 'MAKE_GOOD' | 'TEST';
 
 export const OrderLinePaidType = {
+
     Paid: 'PAID' as OrderLinePaidType,
+
     Bonus: 'BONUS' as OrderLinePaidType,
+
     MakeGood: 'MAKE_GOOD' as OrderLinePaidType,
+
     Test: 'TEST' as OrderLinePaidType
 };
 

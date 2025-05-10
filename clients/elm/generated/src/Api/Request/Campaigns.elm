@@ -800,7 +800,6 @@ stringFromColumns model =
 
 
 
-
 type ClickWindowDays
     = ClickWindowDays0
     | ClickWindowDays1
@@ -841,7 +840,6 @@ stringFromClickWindowDays model =
 
         ClickWindowDays60 ->
             60
-
 
 
 
@@ -888,7 +886,6 @@ stringFromEngagementWindowDays model =
 
 
 
-
 type ViewWindowDays
     = ViewWindowDays0
     | ViewWindowDays1
@@ -932,28 +929,26 @@ stringFromViewWindowDays model =
 
 
 
-
 type ConversionReportTime
-    = ConversionReportTimeADACTION
-    | ConversionReportTimeCONVERSION
+    = ConversionReportTimeTIMEOFADACTION
+    | ConversionReportTimeTIMEOFCONVERSION
 
 
 conversionReportTimeVariants : List ConversionReportTime
 conversionReportTimeVariants =
-    [ ConversionReportTimeADACTION
-    , ConversionReportTimeCONVERSION
+    [ ConversionReportTimeTIMEOFADACTION
+    , ConversionReportTimeTIMEOFCONVERSION
     ]
 
 
 stringFromConversionReportTime : ConversionReportTime -> String
 stringFromConversionReportTime model =
     case model of
-        ConversionReportTimeADACTION ->
+        ConversionReportTimeTIMEOFADACTION ->
             "TIME_OF_AD_ACTION"
 
-        ConversionReportTimeCONVERSION ->
+        ConversionReportTimeTIMEOFCONVERSION ->
             "TIME_OF_CONVERSION"
-
 
 
 
@@ -1725,7 +1720,6 @@ stringFromColumns model =
 
 
 
-
 type ClickWindowDays
     = ClickWindowDays0
     | ClickWindowDays1
@@ -1766,7 +1760,6 @@ stringFromClickWindowDays model =
 
         ClickWindowDays60 ->
             60
-
 
 
 
@@ -1813,7 +1806,6 @@ stringFromEngagementWindowDays model =
 
 
 
-
 type ViewWindowDays
     = ViewWindowDays0
     | ViewWindowDays1
@@ -1857,28 +1849,26 @@ stringFromViewWindowDays model =
 
 
 
-
 type ConversionReportTime
-    = ConversionReportTimeADACTION
-    | ConversionReportTimeCONVERSION
+    = ConversionReportTimeTIMEOFADACTION
+    | ConversionReportTimeTIMEOFCONVERSION
 
 
 conversionReportTimeVariants : List ConversionReportTime
 conversionReportTimeVariants =
-    [ ConversionReportTimeADACTION
-    , ConversionReportTimeCONVERSION
+    [ ConversionReportTimeTIMEOFADACTION
+    , ConversionReportTimeTIMEOFCONVERSION
     ]
 
 
 stringFromConversionReportTime : ConversionReportTime -> String
 stringFromConversionReportTime model =
     case model of
-        ConversionReportTimeADACTION ->
+        ConversionReportTimeTIMEOFADACTION ->
             "TIME_OF_AD_ACTION"
 
-        ConversionReportTimeCONVERSION ->
+        ConversionReportTimeTIMEOFCONVERSION ->
             "TIME_OF_CONVERSION"
-
 
 
 
@@ -1920,7 +1910,6 @@ stringFromEntityStatuses model =
 
 
 
-
 type Order_
     = Order_ASCENDING
     | Order_DESCENDING
@@ -1944,84 +1933,102 @@ stringFromOrder_ model =
 
 
 
-{-| Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+{-| Get targeting analytics for campaigns
+
+Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+
 -}
 campaignTargetingAnalyticsGet : String -> List String -> Posix -> Posix -> List AdsAnalyticsCampaignTargetingType -> List Columns -> Granularity -> Maybe ClickWindowDays -> Maybe EngagementWindowDays -> Maybe ViewWindowDays -> Maybe ConversionReportTime -> Maybe ConversionReportAttributionType -> Api.Request Api.Data.MetricsResponse
 campaignTargetingAnalyticsGet adAccountId_path campaignIds_query startDate_query endDate_query targetingTypes_query columns_query granularity_query clickWindowDays_query engagementWindowDays_query viewWindowDays_query conversionReportTime_query attributionTypes_query =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/campaigns/targeting_analytics"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         [ ( "campaign_ids", Just <| (String.join "," << List.map identity) campaignIds_query ), ( "start_date", Just <| Api.Time.dateToString startDate_query ), ( "end_date", Just <| Api.Time.dateToString endDate_query ), ( "targeting_types", Just <| (String.join "," << List.map Api.Data.stringFromAdsAnalyticsCampaignTargetingType) targetingTypes_query ), ( "columns", Just <| (String.join "," << List.map stringFromColumns) columns_query ), ( "granularity", Just <| Api.Data.stringFromGranularity granularity_query ), ( "click_window_days", Maybe.map String.fromInt stringFromClickWindowDays clickWindowDays_query ), ( "engagement_window_days", Maybe.map String.fromInt stringFromEngagementWindowDays engagementWindowDays_query ), ( "view_window_days", Maybe.map String.fromInt stringFromViewWindowDays viewWindowDays_query ), ( "conversion_report_time", Maybe.map stringFromConversionReportTime conversionReportTime_query ), ( "attribution_types", Maybe.map Api.Data.stringFromConversionReportAttributionType attributionTypes_query ) ]
         []
         Nothing
         Api.Data.metricsResponseDecoder
 
 
-{-| Get analytics for the specified campaigns in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+{-| Get campaign analytics
+
+Get analytics for the specified campaigns in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+
 -}
 campaignsAnalytics : String -> Posix -> Posix -> List String -> List Columns -> Granularity -> Maybe ClickWindowDays -> Maybe EngagementWindowDays -> Maybe ViewWindowDays -> Maybe ConversionReportTime -> Api.Request (List CampaignsAnalyticsResponseInner)
 campaignsAnalytics adAccountId_path startDate_query endDate_query campaignIds_query columns_query granularity_query clickWindowDays_query engagementWindowDays_query viewWindowDays_query conversionReportTime_query =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/campaigns/analytics"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         [ ( "start_date", Just <| Api.Time.dateToString startDate_query ), ( "end_date", Just <| Api.Time.dateToString endDate_query ), ( "campaign_ids", Just <| (String.join "," << List.map identity) campaignIds_query ), ( "columns", Just <| (String.join "," << List.map stringFromColumns) columns_query ), ( "granularity", Just <| Api.Data.stringFromGranularity granularity_query ), ( "click_window_days", Maybe.map String.fromInt stringFromClickWindowDays clickWindowDays_query ), ( "engagement_window_days", Maybe.map String.fromInt stringFromEngagementWindowDays engagementWindowDays_query ), ( "view_window_days", Maybe.map String.fromInt stringFromViewWindowDays viewWindowDays_query ), ( "conversion_report_time", Maybe.map stringFromConversionReportTime conversionReportTime_query ) ]
         []
         Nothing
         (Json.Decode.list Api.Data.campaignsAnalyticsResponseInnerDecoder)
 
 
-{-| Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads. For more, see <a href=\"https://help.pinterest.com/en/business/article/set-up-your-campaign/\">Set up your campaign</a>. <p/> <strong>Note:</strong> - The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>  <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>
+{-| Create campaigns
+
+Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads. For more, see <a href=\"https://help.pinterest.com/en/business/article/set-up-your-campaign/\">Set up your campaign</a>. <p/> <strong>Note:</strong> - The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>  <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>
+
 -}
 campaignsCreate : String -> List Api.Data.CampaignCreateRequest -> Api.Request Api.Data.CampaignCreateResponse
 campaignsCreate adAccountId_path campaignCreateRequest_body =
     Api.request
         "POST"
         "/ad_accounts/{ad_account_id}/campaigns"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Just (Json.Encode.list encodeCampaignCreateRequest campaignCreateRequest_body)))
         Api.Data.campaignCreateResponseDecoder
 
 
-{-| Get a specific campaign given the campaign ID.
+{-| Get campaign
+
+Get a specific campaign given the campaign ID.
+
 -}
 campaignsGet : String -> String -> Api.Request Api.Data.CampaignResponse
 campaignsGet adAccountId_path campaignId_path =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/campaigns/{campaign_id}"
-        [ ( "adAccountId", identity adAccountId_path ), ( "campaignId", identity campaignId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ), ( "campaign_id", identity campaignId_path ) ]
         []
         []
         Nothing
         Api.Data.campaignResponseDecoder
 
 
-{-| Get a list of the campaigns in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+{-| List campaigns
+
+Get a list of the campaigns in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+
 -}
 campaignsList : String -> Maybe (List String) -> Maybe (List EntityStatuses) -> Maybe Int -> Maybe Order_ -> Maybe String -> Api.Request Api.Data.CampaignsList200Response
 campaignsList adAccountId_path campaignIds_query entityStatuses_query pageSize_query order_query bookmark_query =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/campaigns"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         [ ( "campaign_ids", Maybe.map (String.join "," << List.map identity) campaignIds_query ), ( "entity_statuses", Maybe.map (String.join "," << List.map stringFromEntityStatuses) entityStatuses_query ), ( "page_size", Maybe.map String.fromInt pageSize_query ), ( "order", Maybe.map stringFromOrder_ order_query ), ( "bookmark", Maybe.map identity bookmark_query ) ]
         []
         Nothing
         Api.Data.campaignsList200ResponseDecoder
 
 
-{-| Update multiple ad campaigns based on campaign_ids. <p/> <strong>Note:</strong><p/>  - <p>The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>
+{-| Update campaigns
+
+Update multiple ad campaigns based on campaign_ids. <p/> <strong>Note:</strong><p/>  - <p>The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>
+
 -}
 campaignsUpdate : String -> List Api.Data.CampaignUpdateRequest -> Api.Request Api.Data.CampaignUpdateResponse
 campaignsUpdate adAccountId_path campaignUpdateRequest_body =
     Api.request
         "PATCH"
         "/ad_accounts/{ad_account_id}/campaigns"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Just (Json.Encode.list encodeCampaignUpdateRequest campaignUpdateRequest_body)))

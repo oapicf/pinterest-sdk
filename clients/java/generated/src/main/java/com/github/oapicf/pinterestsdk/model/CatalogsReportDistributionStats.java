@@ -48,7 +48,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsReportDistributionStats
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsReportDistributionStats {
   /**
    * Gets or Sets reportType
@@ -102,40 +102,48 @@ public class CatalogsReportDistributionStats {
 
   public static final String SERIALIZED_NAME_REPORT_TYPE = "report_type";
   @SerializedName(SERIALIZED_NAME_REPORT_TYPE)
+  @javax.annotation.Nullable
   private ReportTypeEnum reportType;
 
   public static final String SERIALIZED_NAME_CATALOG_ID = "catalog_id";
   @SerializedName(SERIALIZED_NAME_CATALOG_ID)
+  @javax.annotation.Nullable
   private String catalogId;
 
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
+  @javax.annotation.Nullable
   private Integer code;
 
   public static final String SERIALIZED_NAME_CODE_LABEL = "code_label";
   @SerializedName(SERIALIZED_NAME_CODE_LABEL)
+  @javax.annotation.Nullable
   private String codeLabel;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
+  @javax.annotation.Nullable
   private String message;
 
   public static final String SERIALIZED_NAME_OCCURRENCES = "occurrences";
   @SerializedName(SERIALIZED_NAME_OCCURRENCES)
+  @javax.annotation.Nullable
   private Integer occurrences;
 
   public static final String SERIALIZED_NAME_INELIGIBLE_FOR_ADS = "ineligible_for_ads";
   @SerializedName(SERIALIZED_NAME_INELIGIBLE_FOR_ADS)
+  @javax.annotation.Nullable
   private Boolean ineligibleForAds;
 
   public static final String SERIALIZED_NAME_INELIGIBLE_FOR_ORGANIC = "ineligible_for_organic";
   @SerializedName(SERIALIZED_NAME_INELIGIBLE_FOR_ORGANIC)
+  @javax.annotation.Nullable
   private Boolean ineligibleForOrganic;
 
   public CatalogsReportDistributionStats() {
   }
 
-  public CatalogsReportDistributionStats reportType(ReportTypeEnum reportType) {
+  public CatalogsReportDistributionStats reportType(@javax.annotation.Nullable ReportTypeEnum reportType) {
     this.reportType = reportType;
     return this;
   }
@@ -149,12 +157,12 @@ public class CatalogsReportDistributionStats {
     return reportType;
   }
 
-  public void setReportType(ReportTypeEnum reportType) {
+  public void setReportType(@javax.annotation.Nullable ReportTypeEnum reportType) {
     this.reportType = reportType;
   }
 
 
-  public CatalogsReportDistributionStats catalogId(String catalogId) {
+  public CatalogsReportDistributionStats catalogId(@javax.annotation.Nullable String catalogId) {
     this.catalogId = catalogId;
     return this;
   }
@@ -168,12 +176,12 @@ public class CatalogsReportDistributionStats {
     return catalogId;
   }
 
-  public void setCatalogId(String catalogId) {
+  public void setCatalogId(@javax.annotation.Nullable String catalogId) {
     this.catalogId = catalogId;
   }
 
 
-  public CatalogsReportDistributionStats code(Integer code) {
+  public CatalogsReportDistributionStats code(@javax.annotation.Nullable Integer code) {
     this.code = code;
     return this;
   }
@@ -187,12 +195,12 @@ public class CatalogsReportDistributionStats {
     return code;
   }
 
-  public void setCode(Integer code) {
+  public void setCode(@javax.annotation.Nullable Integer code) {
     this.code = code;
   }
 
 
-  public CatalogsReportDistributionStats codeLabel(String codeLabel) {
+  public CatalogsReportDistributionStats codeLabel(@javax.annotation.Nullable String codeLabel) {
     this.codeLabel = codeLabel;
     return this;
   }
@@ -206,12 +214,12 @@ public class CatalogsReportDistributionStats {
     return codeLabel;
   }
 
-  public void setCodeLabel(String codeLabel) {
+  public void setCodeLabel(@javax.annotation.Nullable String codeLabel) {
     this.codeLabel = codeLabel;
   }
 
 
-  public CatalogsReportDistributionStats message(String message) {
+  public CatalogsReportDistributionStats message(@javax.annotation.Nullable String message) {
     this.message = message;
     return this;
   }
@@ -225,12 +233,12 @@ public class CatalogsReportDistributionStats {
     return message;
   }
 
-  public void setMessage(String message) {
+  public void setMessage(@javax.annotation.Nullable String message) {
     this.message = message;
   }
 
 
-  public CatalogsReportDistributionStats occurrences(Integer occurrences) {
+  public CatalogsReportDistributionStats occurrences(@javax.annotation.Nullable Integer occurrences) {
     this.occurrences = occurrences;
     return this;
   }
@@ -244,12 +252,12 @@ public class CatalogsReportDistributionStats {
     return occurrences;
   }
 
-  public void setOccurrences(Integer occurrences) {
+  public void setOccurrences(@javax.annotation.Nullable Integer occurrences) {
     this.occurrences = occurrences;
   }
 
 
-  public CatalogsReportDistributionStats ineligibleForAds(Boolean ineligibleForAds) {
+  public CatalogsReportDistributionStats ineligibleForAds(@javax.annotation.Nullable Boolean ineligibleForAds) {
     this.ineligibleForAds = ineligibleForAds;
     return this;
   }
@@ -263,12 +271,12 @@ public class CatalogsReportDistributionStats {
     return ineligibleForAds;
   }
 
-  public void setIneligibleForAds(Boolean ineligibleForAds) {
+  public void setIneligibleForAds(@javax.annotation.Nullable Boolean ineligibleForAds) {
     this.ineligibleForAds = ineligibleForAds;
   }
 
 
-  public CatalogsReportDistributionStats ineligibleForOrganic(Boolean ineligibleForOrganic) {
+  public CatalogsReportDistributionStats ineligibleForOrganic(@javax.annotation.Nullable Boolean ineligibleForOrganic) {
     this.ineligibleForOrganic = ineligibleForOrganic;
     return this;
   }
@@ -282,7 +290,7 @@ public class CatalogsReportDistributionStats {
     return ineligibleForOrganic;
   }
 
-  public void setIneligibleForOrganic(Boolean ineligibleForOrganic) {
+  public void setIneligibleForOrganic(@javax.annotation.Nullable Boolean ineligibleForOrganic) {
     this.ineligibleForOrganic = ineligibleForOrganic;
   }
 

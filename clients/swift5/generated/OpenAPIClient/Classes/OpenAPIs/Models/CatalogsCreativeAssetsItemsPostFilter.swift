@@ -15,8 +15,8 @@ public struct CatalogsCreativeAssetsItemsPostFilter: Codable, JSONEncodable, Has
     public enum CatalogType: String, Codable, CaseIterable {
         case creativeAssets = "CREATIVE_ASSETS"
     }
-    static let creativeAssetsIdsRule = ArrayRule(minItems: 1, maxItems: 1000, uniqueItems: false)
-    static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let creativeAssetsIdsRule = ArrayRule(minItems: 1, maxItems: 1000, uniqueItems: false)
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public var catalogType: CatalogType
     public var creativeAssetsIds: [String]
     /** Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */

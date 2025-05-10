@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 // Functions for enum ORDER for LeadFormsAPI_leadFormsList
 
@@ -77,15 +72,22 @@ LeadFormsAPI_leadFormGet(apiClient_t *apiClient, char *ad_account_id, char *lead
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}");
+
+    if(!ad_account_id)
+        goto end;
+    if(!lead_form_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(lead_form_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(lead_form_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -95,7 +97,7 @@ LeadFormsAPI_leadFormGet(apiClient_t *apiClient, char *ad_account_id, char *lead
     localVarPath = strReplace(localVarPath, localVarToReplace_ad_account_id, ad_account_id);
 
     // Path Params
-    long sizeOfPathParams_lead_form_id = strlen(ad_account_id)+3 + strlen(lead_form_id)+3 + strlen("{ lead_form_id }");
+    long sizeOfPathParams_lead_form_id = strlen(ad_account_id)+3 + strlen(lead_form_id)+3 + sizeof("{ lead_form_id }") - 1;
     if(lead_form_id == NULL) {
         goto end;
     }
@@ -114,6 +116,7 @@ LeadFormsAPI_leadFormGet(apiClient_t *apiClient, char *ad_account_id, char *lead
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -133,11 +136,14 @@ LeadFormsAPI_leadFormGet(apiClient_t *apiClient, char *ad_account_id, char *lead
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *LeadFormsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    lead_form_response_t *elementToReturn = lead_form_response_parseFromJSON(LeadFormsAPIlocalVarJSON);
-    cJSON_Delete(LeadFormsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    lead_form_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *LeadFormsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = lead_form_response_parseFromJSON(LeadFormsAPIlocalVarJSON);
+        cJSON_Delete(LeadFormsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -174,15 +180,22 @@ LeadFormsAPI_leadFormTestCreate(apiClient_t *apiClient, char *ad_account_id, cha
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test");
+
+    if(!ad_account_id)
+        goto end;
+    if(!lead_form_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(lead_form_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(lead_form_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -192,7 +205,7 @@ LeadFormsAPI_leadFormTestCreate(apiClient_t *apiClient, char *ad_account_id, cha
     localVarPath = strReplace(localVarPath, localVarToReplace_ad_account_id, ad_account_id);
 
     // Path Params
-    long sizeOfPathParams_lead_form_id = strlen(ad_account_id)+3 + strlen(lead_form_id)+3 + strlen("{ lead_form_id }");
+    long sizeOfPathParams_lead_form_id = strlen(ad_account_id)+3 + strlen(lead_form_id)+3 + sizeof("{ lead_form_id }") - 1;
     if(lead_form_id == NULL) {
         goto end;
     }
@@ -207,9 +220,10 @@ LeadFormsAPI_leadFormTestCreate(apiClient_t *apiClient, char *ad_account_id, cha
     cJSON *localVarSingleItemJSON_lead_form_test_request = NULL;
     if (lead_form_test_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_lead_form_test_request = lead_form_test_request_convertToJSON(lead_form_test_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_lead_form_test_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -221,6 +235,7 @@ LeadFormsAPI_leadFormTestCreate(apiClient_t *apiClient, char *ad_account_id, cha
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -240,11 +255,14 @@ LeadFormsAPI_leadFormTestCreate(apiClient_t *apiClient, char *ad_account_id, cha
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *LeadFormsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    lead_form_test_response_t *elementToReturn = lead_form_test_response_parseFromJSON(LeadFormsAPIlocalVarJSON);
-    cJSON_Delete(LeadFormsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    lead_form_test_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *LeadFormsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = lead_form_test_response_parseFromJSON(LeadFormsAPIlocalVarJSON);
+        cJSON_Delete(LeadFormsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -286,15 +304,20 @@ LeadFormsAPI_leadFormsCreate(apiClient_t *apiClient, char *ad_account_id, list_t
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/lead_forms")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/lead_forms");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/lead_forms");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -332,6 +355,7 @@ LeadFormsAPI_leadFormsCreate(apiClient_t *apiClient, char *ad_account_id, list_t
         }
         cJSON_AddItemToArray(localVarSingleItemJSON_lead_form_create_request, localVar_lead_form_create_request);
         localVarBodyParameters = cJSON_Print(localVarItemJSON_lead_form_create_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -343,6 +367,7 @@ LeadFormsAPI_leadFormsCreate(apiClient_t *apiClient, char *ad_account_id, list_t
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -358,11 +383,14 @@ LeadFormsAPI_leadFormsCreate(apiClient_t *apiClient, char *ad_account_id, list_t
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *LeadFormsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    lead_form_array_response_t *elementToReturn = lead_form_array_response_parseFromJSON(LeadFormsAPIlocalVarJSON);
-    cJSON_Delete(LeadFormsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    lead_form_array_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *LeadFormsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = lead_form_array_response_parseFromJSON(LeadFormsAPIlocalVarJSON);
+        cJSON_Delete(LeadFormsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -411,15 +439,20 @@ LeadFormsAPI_leadFormsList(apiClient_t *apiClient, char *ad_account_id, int *pag
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/lead_forms")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/lead_forms");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/lead_forms");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -451,7 +484,7 @@ LeadFormsAPI_leadFormsList(apiClient_t *apiClient, char *ad_account_id, int *pag
     {
         keyQuery_order = strdup("order");
         valueQuery_order = (order);
-        keyPairQuery_order = keyValuePair_create(keyQuery_order, (void *)strdup(leadFormsList_ORDER_ToString(
+        keyPairQuery_order = keyValuePair_create(keyQuery_order, strdup(leadFormsList_ORDER_ToString(
         valueQuery_order)));
         list_addElement(localVarQueryParameters,keyPairQuery_order);
     }
@@ -476,6 +509,7 @@ LeadFormsAPI_leadFormsList(apiClient_t *apiClient, char *ad_account_id, int *pag
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -491,11 +525,14 @@ LeadFormsAPI_leadFormsList(apiClient_t *apiClient, char *ad_account_id, int *pag
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *LeadFormsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    lead_forms_list_200_response_t *elementToReturn = lead_forms_list_200_response_parseFromJSON(LeadFormsAPIlocalVarJSON);
-    cJSON_Delete(LeadFormsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    lead_forms_list_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *LeadFormsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = lead_forms_list_200_response_parseFromJSON(LeadFormsAPIlocalVarJSON);
+        cJSON_Delete(LeadFormsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -563,15 +600,20 @@ LeadFormsAPI_leadFormsUpdate(apiClient_t *apiClient, char *ad_account_id, list_t
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/lead_forms")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/lead_forms");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/lead_forms");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -609,6 +651,7 @@ LeadFormsAPI_leadFormsUpdate(apiClient_t *apiClient, char *ad_account_id, list_t
         }
         cJSON_AddItemToArray(localVarSingleItemJSON_lead_form_update_request, localVar_lead_form_update_request);
         localVarBodyParameters = cJSON_Print(localVarItemJSON_lead_form_update_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -620,6 +663,7 @@ LeadFormsAPI_leadFormsUpdate(apiClient_t *apiClient, char *ad_account_id, list_t
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "PATCH");
 
     // uncomment below to debug the error response
@@ -635,11 +679,14 @@ LeadFormsAPI_leadFormsUpdate(apiClient_t *apiClient, char *ad_account_id, list_t
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *LeadFormsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    lead_form_array_response_t *elementToReturn = lead_form_array_response_parseFromJSON(LeadFormsAPIlocalVarJSON);
-    cJSON_Delete(LeadFormsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    lead_form_array_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *LeadFormsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = lead_form_array_response_parseFromJSON(LeadFormsAPIlocalVarJSON);
+        cJSON_Delete(LeadFormsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type

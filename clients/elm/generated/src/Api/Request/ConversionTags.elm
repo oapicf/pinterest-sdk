@@ -53,70 +53,85 @@ stringFromOrder_ model =
 
 
 
-{-| Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\" target=\"_blank\">Pinterest tag</a>, with the option to enable enhanced match.<p/> The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/> For more information, see:<p/> <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\">Set up the Pinterest tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/\">Pinterest Tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/#enhanced-match\">Enhanced match</a>
+{-| Create conversion tag
+
+Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\" target=\"_blank\">Pinterest tag</a>, with the option to enable enhanced match.<p/> The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/> For more information, see:<p/> <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\">Set up the Pinterest tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/\">Pinterest Tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/#enhanced-match\">Enhanced match</a>
+
 -}
 conversionTagsCreate : String -> Api.Data.ConversionTagCreate -> Api.Request Api.Data.ConversionTagResponse
 conversionTagsCreate adAccountId_path conversionTagCreate_body =
     Api.request
         "POST"
         "/ad_accounts/{ad_account_id}/conversion_tags"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Just (Api.Data.encodeConversionTagCreate conversionTagCreate_body)))
         Api.Data.conversionTagResponseDecoder
 
 
-{-| Get information about an existing conversion tag.
+{-| Get conversion tag
+
+Get information about an existing conversion tag.
+
 -}
 conversionTagsGet : String -> String -> Api.Request Api.Data.ConversionTagResponse
 conversionTagsGet adAccountId_path conversionTagId_path =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}"
-        [ ( "adAccountId", identity adAccountId_path ), ( "conversionTagId", identity conversionTagId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ), ( "conversion_tag_id", identity conversionTagId_path ) ]
         []
         []
         Nothing
         Api.Data.conversionTagResponseDecoder
 
 
-{-| List conversion tags associated with an ad account.
+{-| Get conversion tags
+
+List conversion tags associated with an ad account.
+
 -}
 conversionTagsList : String -> Maybe Bool -> Api.Request Api.Data.ConversionTagListResponse
 conversionTagsList adAccountId_path filterDeleted_query =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/conversion_tags"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         [ ( "filter_deleted", Maybe.map (\val -> if val then "true" else "false") filterDeleted_query ) ]
         []
         Nothing
         Api.Data.conversionTagListResponseDecoder
 
 
-{-| Get Ocpm eligible conversion tag events for an ad account.
+{-| Get Ocpm eligible conversion tags
+
+Get Ocpm eligible conversion tag events for an ad account.
+
 -}
 ocpmEligibleConversionTagsGet : String -> Api.Request (Dict.Dict String ConversionEventResponse)
 ocpmEligibleConversionTagsGet adAccountId_path =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         Nothing
         (Json.Decode.dict (Json.Decode.list Api.Data.conversionEventResponseDecoder))
 
 
-{-| Get all page visit conversion tag events for an ad account.
+{-| Get page visit conversion tags
+
+Get all page visit conversion tag events for an ad account.
+
 -}
 pageVisitConversionTagsGet : String -> Maybe Int -> Maybe Order_ -> Maybe String -> Api.Request Api.Data.PageVisitConversionTagsGet200Response
 pageVisitConversionTagsGet adAccountId_path pageSize_query order_query bookmark_query =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/conversion_tags/page_visit"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         [ ( "page_size", Maybe.map String.fromInt pageSize_query ), ( "order", Maybe.map stringFromOrder_ order_query ), ( "bookmark", Maybe.map identity bookmark_query ) ]
         []
         Nothing

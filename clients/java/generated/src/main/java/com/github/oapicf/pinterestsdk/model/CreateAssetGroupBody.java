@@ -51,24 +51,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CreateAssetGroupBody
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CreateAssetGroupBody {
   public static final String SERIALIZED_NAME_ASSET_GROUP_NAME = "asset_group_name";
   @SerializedName(SERIALIZED_NAME_ASSET_GROUP_NAME)
+  @javax.annotation.Nonnull
   private String assetGroupName;
 
   public static final String SERIALIZED_NAME_ASSET_GROUP_DESCRIPTION = "asset_group_description";
   @SerializedName(SERIALIZED_NAME_ASSET_GROUP_DESCRIPTION)
+  @javax.annotation.Nonnull
   private String assetGroupDescription;
 
   public static final String SERIALIZED_NAME_ASSET_GROUP_TYPES = "asset_group_types";
   @SerializedName(SERIALIZED_NAME_ASSET_GROUP_TYPES)
+  @javax.annotation.Nonnull
   private List<AssetGroupType> assetGroupTypes = new ArrayList<>();
 
   public CreateAssetGroupBody() {
   }
 
-  public CreateAssetGroupBody assetGroupName(String assetGroupName) {
+  public CreateAssetGroupBody assetGroupName(@javax.annotation.Nonnull String assetGroupName) {
     this.assetGroupName = assetGroupName;
     return this;
   }
@@ -82,12 +85,12 @@ public class CreateAssetGroupBody {
     return assetGroupName;
   }
 
-  public void setAssetGroupName(String assetGroupName) {
+  public void setAssetGroupName(@javax.annotation.Nonnull String assetGroupName) {
     this.assetGroupName = assetGroupName;
   }
 
 
-  public CreateAssetGroupBody assetGroupDescription(String assetGroupDescription) {
+  public CreateAssetGroupBody assetGroupDescription(@javax.annotation.Nonnull String assetGroupDescription) {
     this.assetGroupDescription = assetGroupDescription;
     return this;
   }
@@ -101,12 +104,12 @@ public class CreateAssetGroupBody {
     return assetGroupDescription;
   }
 
-  public void setAssetGroupDescription(String assetGroupDescription) {
+  public void setAssetGroupDescription(@javax.annotation.Nonnull String assetGroupDescription) {
     this.assetGroupDescription = assetGroupDescription;
   }
 
 
-  public CreateAssetGroupBody assetGroupTypes(List<AssetGroupType> assetGroupTypes) {
+  public CreateAssetGroupBody assetGroupTypes(@javax.annotation.Nonnull List<AssetGroupType> assetGroupTypes) {
     this.assetGroupTypes = assetGroupTypes;
     return this;
   }
@@ -128,7 +131,7 @@ public class CreateAssetGroupBody {
     return assetGroupTypes;
   }
 
-  public void setAssetGroupTypes(List<AssetGroupType> assetGroupTypes) {
+  public void setAssetGroupTypes(@javax.annotation.Nonnull List<AssetGroupType> assetGroupTypes) {
     this.assetGroupTypes = assetGroupTypes;
   }
 

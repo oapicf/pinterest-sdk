@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param PRODUCT_GROUP_ID The ID of the product group that this metrics belongs to.
  * @param DATE Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
  */
+@Serializable
 data class ProductGroupAnalyticsResponseInner(
     /* The ID of the product group that this metrics belongs to. */
     val PRODUCT_GROUP_ID: kotlin.String,
     /* Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`) */
     val DATE: java.time.LocalDate? = null
-) 
+)
 

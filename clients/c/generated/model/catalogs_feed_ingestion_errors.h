@@ -36,9 +36,10 @@ typedef struct catalogs_feed_ingestion_errors_t {
     int image_file_not_found; //numeric
     int image_invalid_file; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_feed_ingestion_errors_t;
 
-catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors_create(
+__attribute__((deprecated)) catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors_create(
     int line_level_internal_error,
     int large_product_count_decrease,
     int account_flagged,

@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct ImageDetails: Codable, JSONEncodable, Hashable {
 
-    static let widthRule = NumericRule<Int>(minimum: 100, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
-    static let heightRule = NumericRule<Int>(minimum: 100, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
+    public static let widthRule = NumericRule<Int>(minimum: 100, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
+    public static let heightRule = NumericRule<Int>(minimum: 100, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
     public var width: Int
     public var height: Int?
     public var url: String

@@ -49,7 +49,7 @@ class CatalogsProductGroupPricingCurrencyCriteria
      * @Type("string")
     */
     #[Assert\NotNull]
-    #[Assert\Choice(["GREATER_THAN", "GREATER_THAN_OR_EQUALS", "LESS_THAN", "LESS_THAN_OR_EQUALS"])]
+    #[Assert\Choice(['GREATER_THAN', 'GREATER_THAN_OR_EQUALS', 'LESS_THAN', 'LESS_THAN_OR_EQUALS'])]
     #[Assert\Type("string")]
     protected ?string $operator = null;
 
@@ -85,7 +85,7 @@ class CatalogsProductGroupPricingCurrencyCriteria
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->operator = array_key_exists('operator', $data) ? $data['operator'] : $this->operator;

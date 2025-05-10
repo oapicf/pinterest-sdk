@@ -13,8 +13,8 @@ import AnyCodable
 /** An object containing the permissions a business member has on the asset. */
 public struct UsersForIndividualAssetResponse: Codable, JSONEncodable, Hashable {
 
-    static let assetIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let memberIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let assetIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let memberIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Unique identifier of a business asset. */
     public var assetId: String?
     /** Unique identifier of the business member with asset access. */

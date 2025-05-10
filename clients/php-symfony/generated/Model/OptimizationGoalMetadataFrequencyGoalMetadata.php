@@ -58,7 +58,7 @@ class OptimizationGoalMetadataFrequencyGoalMetadata
      * @SerializedName("timerange")
      * @Type("string")
     */
-    #[Assert\Choice(["THIRTY_DAY", "DAY", "SEVEN_DAY", "TWENTY_MINUTE", "TEN_MINUTE", "TWENTY_FOUR_HOUR"])]
+    #[Assert\Choice(['THIRTY_DAY', 'DAY', 'SEVEN_DAY', 'TWENTY_MINUTE', 'TEN_MINUTE', 'TWENTY_FOUR_HOUR'])]
     #[Assert\Type("string")]
     protected ?string $timerange = null;
 
@@ -66,7 +66,7 @@ class OptimizationGoalMetadataFrequencyGoalMetadata
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->frequency = array_key_exists('frequency', $data) ? $data['frequency'] : $this->frequency;

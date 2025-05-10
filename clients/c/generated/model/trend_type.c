@@ -22,7 +22,7 @@ pinterest_rest_api_trend_type__e trend_type_trend_type_FromString(char* trend_ty
     return 0;
 }
 
-cJSON *trend_type_trend_type_convertToJSON(pinterest_rest_api_trend_type__e trend_type) {
+cJSON *trend_type_convertToJSON(pinterest_rest_api_trend_type__e trend_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "trend_type", trend_type_trend_type_ToString(trend_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_trend_type__e trend_type_trend_type_parseFromJSON(cJSON *trend_typeJSON) {
-    pinterest_rest_api_trend_type__e *trend_type = NULL;
-    pinterest_rest_api_trend_type__e trend_typeVariable;
-    cJSON *trend_typeVar = cJSON_GetObjectItemCaseSensitive(trend_typeJSON, "trend_type");
-    if(!cJSON_IsString(trend_typeVar) || (trend_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_trend_type__e trend_type_parseFromJSON(cJSON *trend_typeJSON) {
+    if(!cJSON_IsString(trend_typeJSON) || (trend_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    trend_typeVariable = trend_type_trend_type_FromString(trend_typeVar->valuestring);
-    return trend_typeVariable;
-end:
-    return 0;
+    return trend_type_trend_type_FromString(trend_typeJSON->valuestring);
 }

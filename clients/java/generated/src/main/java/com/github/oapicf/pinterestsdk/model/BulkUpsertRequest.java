@@ -50,20 +50,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Two set of objects to be managed asyncronusly by bulk. One for creations, one for modifications.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BulkUpsertRequest {
   public static final String SERIALIZED_NAME_CREATE = "create";
   @SerializedName(SERIALIZED_NAME_CREATE)
+  @javax.annotation.Nullable
   private BulkUpsertRequestCreate create;
 
   public static final String SERIALIZED_NAME_UPDATE = "update";
   @SerializedName(SERIALIZED_NAME_UPDATE)
+  @javax.annotation.Nullable
   private BulkUpsertRequestUpdate update;
 
   public BulkUpsertRequest() {
   }
 
-  public BulkUpsertRequest create(BulkUpsertRequestCreate create) {
+  public BulkUpsertRequest create(@javax.annotation.Nullable BulkUpsertRequestCreate create) {
     this.create = create;
     return this;
   }
@@ -77,12 +79,12 @@ public class BulkUpsertRequest {
     return create;
   }
 
-  public void setCreate(BulkUpsertRequestCreate create) {
+  public void setCreate(@javax.annotation.Nullable BulkUpsertRequestCreate create) {
     this.create = create;
   }
 
 
-  public BulkUpsertRequest update(BulkUpsertRequestUpdate update) {
+  public BulkUpsertRequest update(@javax.annotation.Nullable BulkUpsertRequestUpdate update) {
     this.update = update;
     return this;
   }
@@ -96,7 +98,7 @@ public class BulkUpsertRequest {
     return update;
   }
 
-  public void setUpdate(BulkUpsertRequestUpdate update) {
+  public void setUpdate(@javax.annotation.Nullable BulkUpsertRequestUpdate update) {
     this.update = update;
   }
 

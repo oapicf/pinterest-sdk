@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.MediaUploadType
 
+import kotlinx.serialization.Serializable
 /**
  * Media upload request
  * @param mediaType 
  */
+@Serializable
 data class MediaUploadRequest(
     val mediaType: MediaUploadType
-) 
+)
 

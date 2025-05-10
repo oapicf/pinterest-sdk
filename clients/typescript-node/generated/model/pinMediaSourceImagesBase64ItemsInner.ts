@@ -61,7 +61,7 @@ export class PinMediaSourceImagesBase64ItemsInner {
 
 export namespace PinMediaSourceImagesBase64ItemsInner {
     export enum ContentTypeEnum {
-        Jpeg = <any> 'image/jpeg',
-        Png = <any> 'image/png'
+        ImageJpeg = <any> 'image/jpeg',
+        ImagePng = <any> 'image/png'
     }
 }

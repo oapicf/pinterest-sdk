@@ -12,6 +12,6 @@ import AnyCodable
 
 /** Conversion report time type */
 public enum ConversionReportTimeType: String, Codable, CaseIterable {
-    case adAction = "TIME_OF_AD_ACTION"
-    case conversion = "TIME_OF_CONVERSION"
+    case timeOfAdAction = "TIME_OF_AD_ACTION"
+    case timeOfConversion = "TIME_OF_CONVERSION"
 }

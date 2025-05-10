@@ -49,24 +49,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AudienceCommon
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AudienceCommon {
   public static final String SERIALIZED_NAME_AD_ACCOUNT_ID = "ad_account_id";
   @SerializedName(SERIALIZED_NAME_AD_ACCOUNT_ID)
+  @javax.annotation.Nullable
   private String adAccountId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_RULE = "rule";
   @SerializedName(SERIALIZED_NAME_RULE)
+  @javax.annotation.Nullable
   private AudienceRule rule;
 
   public AudienceCommon() {
   }
 
-  public AudienceCommon adAccountId(String adAccountId) {
+  public AudienceCommon adAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -80,12 +83,12 @@ public class AudienceCommon {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
 
-  public AudienceCommon name(String name) {
+  public AudienceCommon name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -99,12 +102,12 @@ public class AudienceCommon {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public AudienceCommon rule(AudienceRule rule) {
+  public AudienceCommon rule(@javax.annotation.Nullable AudienceRule rule) {
     this.rule = rule;
     return this;
   }
@@ -118,7 +121,7 @@ public class AudienceCommon {
     return rule;
   }
 
-  public void setRule(AudienceRule rule) {
+  public void setRule(@javax.annotation.Nullable AudienceRule rule) {
     this.rule = rule;
   }
 

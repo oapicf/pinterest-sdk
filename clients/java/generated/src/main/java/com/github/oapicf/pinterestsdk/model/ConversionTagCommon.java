@@ -53,48 +53,57 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ConversionTagCommon
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConversionTagCommon {
   public static final String SERIALIZED_NAME_AD_ACCOUNT_ID = "ad_account_id";
   @SerializedName(SERIALIZED_NAME_AD_ACCOUNT_ID)
+  @javax.annotation.Nullable
   private String adAccountId;
 
   public static final String SERIALIZED_NAME_CODE_SNIPPET = "code_snippet";
   @SerializedName(SERIALIZED_NAME_CODE_SNIPPET)
+  @javax.annotation.Nullable
   private String codeSnippet;
 
   public static final String SERIALIZED_NAME_ENHANCED_MATCH_STATUS = "enhanced_match_status";
   @SerializedName(SERIALIZED_NAME_ENHANCED_MATCH_STATUS)
+  @javax.annotation.Nullable
   private EnhancedMatchStatusType enhancedMatchStatus;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_LAST_FIRED_TIME_MS = "last_fired_time_ms";
   @SerializedName(SERIALIZED_NAME_LAST_FIRED_TIME_MS)
+  @javax.annotation.Nullable
   private BigDecimal lastFiredTimeMs;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private EntityStatus status;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
+  @javax.annotation.Nullable
   private String version;
 
   public static final String SERIALIZED_NAME_CONFIGS = "configs";
   @SerializedName(SERIALIZED_NAME_CONFIGS)
+  @javax.annotation.Nullable
   private ConversionTagConfigs configs;
 
   public ConversionTagCommon() {
   }
 
-  public ConversionTagCommon adAccountId(String adAccountId) {
+  public ConversionTagCommon adAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -108,12 +117,12 @@ public class ConversionTagCommon {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
 
-  public ConversionTagCommon codeSnippet(String codeSnippet) {
+  public ConversionTagCommon codeSnippet(@javax.annotation.Nullable String codeSnippet) {
     this.codeSnippet = codeSnippet;
     return this;
   }
@@ -127,12 +136,12 @@ public class ConversionTagCommon {
     return codeSnippet;
   }
 
-  public void setCodeSnippet(String codeSnippet) {
+  public void setCodeSnippet(@javax.annotation.Nullable String codeSnippet) {
     this.codeSnippet = codeSnippet;
   }
 
 
-  public ConversionTagCommon enhancedMatchStatus(EnhancedMatchStatusType enhancedMatchStatus) {
+  public ConversionTagCommon enhancedMatchStatus(@javax.annotation.Nullable EnhancedMatchStatusType enhancedMatchStatus) {
     this.enhancedMatchStatus = enhancedMatchStatus;
     return this;
   }
@@ -146,12 +155,12 @@ public class ConversionTagCommon {
     return enhancedMatchStatus;
   }
 
-  public void setEnhancedMatchStatus(EnhancedMatchStatusType enhancedMatchStatus) {
+  public void setEnhancedMatchStatus(@javax.annotation.Nullable EnhancedMatchStatusType enhancedMatchStatus) {
     this.enhancedMatchStatus = enhancedMatchStatus;
   }
 
 
-  public ConversionTagCommon id(String id) {
+  public ConversionTagCommon id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -165,12 +174,12 @@ public class ConversionTagCommon {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public ConversionTagCommon lastFiredTimeMs(BigDecimal lastFiredTimeMs) {
+  public ConversionTagCommon lastFiredTimeMs(@javax.annotation.Nullable BigDecimal lastFiredTimeMs) {
     this.lastFiredTimeMs = lastFiredTimeMs;
     return this;
   }
@@ -184,12 +193,12 @@ public class ConversionTagCommon {
     return lastFiredTimeMs;
   }
 
-  public void setLastFiredTimeMs(BigDecimal lastFiredTimeMs) {
+  public void setLastFiredTimeMs(@javax.annotation.Nullable BigDecimal lastFiredTimeMs) {
     this.lastFiredTimeMs = lastFiredTimeMs;
   }
 
 
-  public ConversionTagCommon name(String name) {
+  public ConversionTagCommon name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -203,12 +212,12 @@ public class ConversionTagCommon {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public ConversionTagCommon status(EntityStatus status) {
+  public ConversionTagCommon status(@javax.annotation.Nullable EntityStatus status) {
     this.status = status;
     return this;
   }
@@ -222,12 +231,12 @@ public class ConversionTagCommon {
     return status;
   }
 
-  public void setStatus(EntityStatus status) {
+  public void setStatus(@javax.annotation.Nullable EntityStatus status) {
     this.status = status;
   }
 
 
-  public ConversionTagCommon version(String version) {
+  public ConversionTagCommon version(@javax.annotation.Nullable String version) {
     this.version = version;
     return this;
   }
@@ -241,12 +250,12 @@ public class ConversionTagCommon {
     return version;
   }
 
-  public void setVersion(String version) {
+  public void setVersion(@javax.annotation.Nullable String version) {
     this.version = version;
   }
 
 
-  public ConversionTagCommon configs(ConversionTagConfigs configs) {
+  public ConversionTagCommon configs(@javax.annotation.Nullable ConversionTagConfigs configs) {
     this.configs = configs;
     return this;
   }
@@ -260,7 +269,7 @@ public class ConversionTagCommon {
     return configs;
   }
 
-  public void setConfigs(ConversionTagConfigs configs) {
+  public void setConfigs(@javax.annotation.Nullable ConversionTagConfigs configs) {
     this.configs = configs;
   }
 

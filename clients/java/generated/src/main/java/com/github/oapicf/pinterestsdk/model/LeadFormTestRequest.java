@@ -50,16 +50,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Request to create test data for lead data test API.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class LeadFormTestRequest {
   public static final String SERIALIZED_NAME_ANSWERS = "answers";
   @SerializedName(SERIALIZED_NAME_ANSWERS)
+  @javax.annotation.Nonnull
   private List<String> answers = new ArrayList<>();
 
   public LeadFormTestRequest() {
   }
 
-  public LeadFormTestRequest answers(List<String> answers) {
+  public LeadFormTestRequest answers(@javax.annotation.Nonnull List<String> answers) {
     this.answers = answers;
     return this;
   }
@@ -81,7 +82,7 @@ public class LeadFormTestRequest {
     return answers;
   }
 
-  public void setAnswers(List<String> answers) {
+  public void setAnswers(@javax.annotation.Nonnull List<String> answers) {
     this.answers = answers;
   }
 

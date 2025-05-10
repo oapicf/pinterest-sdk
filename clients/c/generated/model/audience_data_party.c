@@ -22,7 +22,7 @@ pinterest_rest_api_audience_data_party__e audience_data_party_audience_data_part
     return 0;
 }
 
-cJSON *audience_data_party_audience_data_party_convertToJSON(pinterest_rest_api_audience_data_party__e audience_data_party) {
+cJSON *audience_data_party_convertToJSON(pinterest_rest_api_audience_data_party__e audience_data_party) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "audience_data_party", audience_data_party_audience_data_party_ToString(audience_data_party)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_audience_data_party__e audience_data_party_audience_data_party_parseFromJSON(cJSON *audience_data_partyJSON) {
-    pinterest_rest_api_audience_data_party__e *audience_data_party = NULL;
-    pinterest_rest_api_audience_data_party__e audience_data_partyVariable;
-    cJSON *audience_data_partyVar = cJSON_GetObjectItemCaseSensitive(audience_data_partyJSON, "audience_data_party");
-    if(!cJSON_IsString(audience_data_partyVar) || (audience_data_partyVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_audience_data_party__e audience_data_party_parseFromJSON(cJSON *audience_data_partyJSON) {
+    if(!cJSON_IsString(audience_data_partyJSON) || (audience_data_partyJSON->valuestring == NULL)) {
+        return 0;
     }
-    audience_data_partyVariable = audience_data_party_audience_data_party_FromString(audience_data_partyVar->valuestring);
-    return audience_data_partyVariable;
-end:
-    return 0;
+    return audience_data_party_audience_data_party_FromString(audience_data_partyJSON->valuestring);
 }

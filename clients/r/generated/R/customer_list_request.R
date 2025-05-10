@@ -56,10 +56,35 @@ CustomerListRequest <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return CustomerListRequest in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return CustomerListRequest as a base R list.
+    #' @examples
+    #' # convert array of CustomerListRequest (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert CustomerListRequest to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       CustomerListRequestObject <- list()
       if (!is.null(self$`name`)) {
         CustomerListRequestObject[["name"]] <-
@@ -71,13 +96,13 @@ CustomerListRequest <- R6::R6Class(
       }
       if (!is.null(self$`list_type`)) {
         CustomerListRequestObject[["list_type"]] <-
-          self$`list_type`$toJSON()
+          self$`list_type`$toSimpleType()
       }
       if (!is.null(self$`exceptions`)) {
         CustomerListRequestObject[["exceptions"]] <-
           self$`exceptions`
       }
-      CustomerListRequestObject
+      return(CustomerListRequestObject)
     },
 
     #' @description
@@ -106,45 +131,13 @@ CustomerListRequest <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return CustomerListRequest in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`name`)) {
-          sprintf(
-          '"name":
-            "%s"
-                    ',
-          self$`name`
-          )
-        },
-        if (!is.null(self$`records`)) {
-          sprintf(
-          '"records":
-            "%s"
-                    ',
-          self$`records`
-          )
-        },
-        if (!is.null(self$`list_type`)) {
-          sprintf(
-          '"list_type":
-          %s
-          ',
-          jsonlite::toJSON(self$`list_type`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`exceptions`)) {
-          sprintf(
-          '"exceptions":
-            "%s"
-                    ',
-          self$`exceptions`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

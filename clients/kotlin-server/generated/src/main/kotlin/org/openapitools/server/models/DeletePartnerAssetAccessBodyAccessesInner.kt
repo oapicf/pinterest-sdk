@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param partnerId Unique identifier of a business partner to update asset access to.
  * @param assetId Unique identifier of the business asset.
  * @param partnerType If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner's business asset.
  */
+@Serializable
 data class DeletePartnerAssetAccessBodyAccessesInner(
     /* Unique identifier of a business partner to update asset access to. */
     val partnerId: kotlin.String,
@@ -25,7 +27,7 @@ data class DeletePartnerAssetAccessBodyAccessesInner(
     val assetId: kotlin.String,
     /* If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner's business asset. */
     val partnerType: DeletePartnerAssetAccessBodyAccessesInner.PartnerType? = PartnerType.INTERNAL
-) 
+)
 {
     /**
     * If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner's business asset.

@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsCreativeAssetsProductGroupFilterKeys")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsCreativeAssetsProductGroupFilterKeys   {
   private CatalogsProductGroupMultipleStringCriteria CREATIVE_ASSETS_ID;
   private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_0;
@@ -49,6 +49,42 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys   {
   private CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_0;
   private CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE;
 
+  public CatalogsCreativeAssetsProductGroupFilterKeys() {
+  }
+
+  @JsonCreator
+  public CatalogsCreativeAssetsProductGroupFilterKeys(
+    @JsonProperty(required = true, value = "CREATIVE_ASSETS_ID") CatalogsProductGroupMultipleStringCriteria CREATIVE_ASSETS_ID,
+    @JsonProperty(required = true, value = "CUSTOM_LABEL_0") CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_0,
+    @JsonProperty(required = true, value = "CUSTOM_LABEL_1") CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_1,
+    @JsonProperty(required = true, value = "CUSTOM_LABEL_2") CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_2,
+    @JsonProperty(required = true, value = "CUSTOM_LABEL_3") CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_3,
+    @JsonProperty(required = true, value = "CUSTOM_LABEL_4") CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_4,
+    @JsonProperty(required = true, value = "GOOGLE_PRODUCT_CATEGORY_6") CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_6,
+    @JsonProperty(required = true, value = "GOOGLE_PRODUCT_CATEGORY_5") CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_5,
+    @JsonProperty(required = true, value = "GOOGLE_PRODUCT_CATEGORY_4") CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_4,
+    @JsonProperty(required = true, value = "GOOGLE_PRODUCT_CATEGORY_3") CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_3,
+    @JsonProperty(required = true, value = "GOOGLE_PRODUCT_CATEGORY_2") CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_2,
+    @JsonProperty(required = true, value = "GOOGLE_PRODUCT_CATEGORY_1") CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_1,
+    @JsonProperty(required = true, value = "GOOGLE_PRODUCT_CATEGORY_0") CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_0,
+    @JsonProperty(required = true, value = "MEDIA_TYPE") CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE
+  ) {
+    this.CREATIVE_ASSETS_ID = CREATIVE_ASSETS_ID;
+    this.CUSTOM_LABEL_0 = CUSTOM_LABEL_0;
+    this.CUSTOM_LABEL_1 = CUSTOM_LABEL_1;
+    this.CUSTOM_LABEL_2 = CUSTOM_LABEL_2;
+    this.CUSTOM_LABEL_3 = CUSTOM_LABEL_3;
+    this.CUSTOM_LABEL_4 = CUSTOM_LABEL_4;
+    this.GOOGLE_PRODUCT_CATEGORY_6 = GOOGLE_PRODUCT_CATEGORY_6;
+    this.GOOGLE_PRODUCT_CATEGORY_5 = GOOGLE_PRODUCT_CATEGORY_5;
+    this.GOOGLE_PRODUCT_CATEGORY_4 = GOOGLE_PRODUCT_CATEGORY_4;
+    this.GOOGLE_PRODUCT_CATEGORY_3 = GOOGLE_PRODUCT_CATEGORY_3;
+    this.GOOGLE_PRODUCT_CATEGORY_2 = GOOGLE_PRODUCT_CATEGORY_2;
+    this.GOOGLE_PRODUCT_CATEGORY_1 = GOOGLE_PRODUCT_CATEGORY_1;
+    this.GOOGLE_PRODUCT_CATEGORY_0 = GOOGLE_PRODUCT_CATEGORY_0;
+    this.MEDIA_TYPE = MEDIA_TYPE;
+  }
+
   /**
    **/
   public CatalogsCreativeAssetsProductGroupFilterKeys CREATIVE_ASSETS_ID(CatalogsProductGroupMultipleStringCriteria CREATIVE_ASSETS_ID) {
@@ -58,12 +94,12 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("CREATIVE_ASSETS_ID")
+  @JsonProperty(required = true, value = "CREATIVE_ASSETS_ID")
   @NotNull @Valid public CatalogsProductGroupMultipleStringCriteria getCREATIVEASSETSID() {
     return CREATIVE_ASSETS_ID;
   }
 
-  @JsonProperty("CREATIVE_ASSETS_ID")
+  @JsonProperty(required = true, value = "CREATIVE_ASSETS_ID")
   public void setCREATIVEASSETSID(CatalogsProductGroupMultipleStringCriteria CREATIVE_ASSETS_ID) {
     this.CREATIVE_ASSETS_ID = CREATIVE_ASSETS_ID;
   }
@@ -77,12 +113,12 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("CUSTOM_LABEL_0")
+  @JsonProperty(required = true, value = "CUSTOM_LABEL_0")
   @NotNull @Valid public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL0() {
     return CUSTOM_LABEL_0;
   }
 
-  @JsonProperty("CUSTOM_LABEL_0")
+  @JsonProperty(required = true, value = "CUSTOM_LABEL_0")
   public void setCUSTOMLABEL0(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_0) {
     this.CUSTOM_LABEL_0 = CUSTOM_LABEL_0;
   }
@@ -96,12 +132,12 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("CUSTOM_LABEL_1")
+  @JsonProperty(required = true, value = "CUSTOM_LABEL_1")
   @NotNull @Valid public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL1() {
     return CUSTOM_LABEL_1;
   }
 
-  @JsonProperty("CUSTOM_LABEL_1")
+  @JsonProperty(required = true, value = "CUSTOM_LABEL_1")
   public void setCUSTOMLABEL1(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_1) {
     this.CUSTOM_LABEL_1 = CUSTOM_LABEL_1;
   }
@@ -115,12 +151,12 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("CUSTOM_LABEL_2")
+  @JsonProperty(required = true, value = "CUSTOM_LABEL_2")
   @NotNull @Valid public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL2() {
     return CUSTOM_LABEL_2;
   }
 
-  @JsonProperty("CUSTOM_LABEL_2")
+  @JsonProperty(required = true, value = "CUSTOM_LABEL_2")
   public void setCUSTOMLABEL2(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_2) {
     this.CUSTOM_LABEL_2 = CUSTOM_LABEL_2;
   }
@@ -134,12 +170,12 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("CUSTOM_LABEL_3")
+  @JsonProperty(required = true, value = "CUSTOM_LABEL_3")
   @NotNull @Valid public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL3() {
     return CUSTOM_LABEL_3;
   }
 
-  @JsonProperty("CUSTOM_LABEL_3")
+  @JsonProperty(required = true, value = "CUSTOM_LABEL_3")
   public void setCUSTOMLABEL3(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_3) {
     this.CUSTOM_LABEL_3 = CUSTOM_LABEL_3;
   }
@@ -153,12 +189,12 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("CUSTOM_LABEL_4")
+  @JsonProperty(required = true, value = "CUSTOM_LABEL_4")
   @NotNull @Valid public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL4() {
     return CUSTOM_LABEL_4;
   }
 
-  @JsonProperty("CUSTOM_LABEL_4")
+  @JsonProperty(required = true, value = "CUSTOM_LABEL_4")
   public void setCUSTOMLABEL4(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_4) {
     this.CUSTOM_LABEL_4 = CUSTOM_LABEL_4;
   }
@@ -172,12 +208,12 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("GOOGLE_PRODUCT_CATEGORY_6")
+  @JsonProperty(required = true, value = "GOOGLE_PRODUCT_CATEGORY_6")
   @NotNull @Valid public CatalogsProductGroupMultipleStringListCriteria getGOOGLEPRODUCTCATEGORY6() {
     return GOOGLE_PRODUCT_CATEGORY_6;
   }
 
-  @JsonProperty("GOOGLE_PRODUCT_CATEGORY_6")
+  @JsonProperty(required = true, value = "GOOGLE_PRODUCT_CATEGORY_6")
   public void setGOOGLEPRODUCTCATEGORY6(CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_6) {
     this.GOOGLE_PRODUCT_CATEGORY_6 = GOOGLE_PRODUCT_CATEGORY_6;
   }
@@ -191,12 +227,12 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("GOOGLE_PRODUCT_CATEGORY_5")
+  @JsonProperty(required = true, value = "GOOGLE_PRODUCT_CATEGORY_5")
   @NotNull @Valid public CatalogsProductGroupMultipleStringListCriteria getGOOGLEPRODUCTCATEGORY5() {
     return GOOGLE_PRODUCT_CATEGORY_5;
   }
 
-  @JsonProperty("GOOGLE_PRODUCT_CATEGORY_5")
+  @JsonProperty(required = true, value = "GOOGLE_PRODUCT_CATEGORY_5")
   public void setGOOGLEPRODUCTCATEGORY5(CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_5) {
     this.GOOGLE_PRODUCT_CATEGORY_5 = GOOGLE_PRODUCT_CATEGORY_5;
   }
@@ -210,12 +246,12 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("GOOGLE_PRODUCT_CATEGORY_4")
+  @JsonProperty(required = true, value = "GOOGLE_PRODUCT_CATEGORY_4")
   @NotNull @Valid public CatalogsProductGroupMultipleStringListCriteria getGOOGLEPRODUCTCATEGORY4() {
     return GOOGLE_PRODUCT_CATEGORY_4;
   }
 
-  @JsonProperty("GOOGLE_PRODUCT_CATEGORY_4")
+  @JsonProperty(required = true, value = "GOOGLE_PRODUCT_CATEGORY_4")
   public void setGOOGLEPRODUCTCATEGORY4(CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_4) {
     this.GOOGLE_PRODUCT_CATEGORY_4 = GOOGLE_PRODUCT_CATEGORY_4;
   }
@@ -229,12 +265,12 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("GOOGLE_PRODUCT_CATEGORY_3")
+  @JsonProperty(required = true, value = "GOOGLE_PRODUCT_CATEGORY_3")
   @NotNull @Valid public CatalogsProductGroupMultipleStringListCriteria getGOOGLEPRODUCTCATEGORY3() {
     return GOOGLE_PRODUCT_CATEGORY_3;
   }
 
-  @JsonProperty("GOOGLE_PRODUCT_CATEGORY_3")
+  @JsonProperty(required = true, value = "GOOGLE_PRODUCT_CATEGORY_3")
   public void setGOOGLEPRODUCTCATEGORY3(CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_3) {
     this.GOOGLE_PRODUCT_CATEGORY_3 = GOOGLE_PRODUCT_CATEGORY_3;
   }
@@ -248,12 +284,12 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("GOOGLE_PRODUCT_CATEGORY_2")
+  @JsonProperty(required = true, value = "GOOGLE_PRODUCT_CATEGORY_2")
   @NotNull @Valid public CatalogsProductGroupMultipleStringListCriteria getGOOGLEPRODUCTCATEGORY2() {
     return GOOGLE_PRODUCT_CATEGORY_2;
   }
 
-  @JsonProperty("GOOGLE_PRODUCT_CATEGORY_2")
+  @JsonProperty(required = true, value = "GOOGLE_PRODUCT_CATEGORY_2")
   public void setGOOGLEPRODUCTCATEGORY2(CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_2) {
     this.GOOGLE_PRODUCT_CATEGORY_2 = GOOGLE_PRODUCT_CATEGORY_2;
   }
@@ -267,12 +303,12 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("GOOGLE_PRODUCT_CATEGORY_1")
+  @JsonProperty(required = true, value = "GOOGLE_PRODUCT_CATEGORY_1")
   @NotNull @Valid public CatalogsProductGroupMultipleStringListCriteria getGOOGLEPRODUCTCATEGORY1() {
     return GOOGLE_PRODUCT_CATEGORY_1;
   }
 
-  @JsonProperty("GOOGLE_PRODUCT_CATEGORY_1")
+  @JsonProperty(required = true, value = "GOOGLE_PRODUCT_CATEGORY_1")
   public void setGOOGLEPRODUCTCATEGORY1(CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_1) {
     this.GOOGLE_PRODUCT_CATEGORY_1 = GOOGLE_PRODUCT_CATEGORY_1;
   }
@@ -286,12 +322,12 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("GOOGLE_PRODUCT_CATEGORY_0")
+  @JsonProperty(required = true, value = "GOOGLE_PRODUCT_CATEGORY_0")
   @NotNull @Valid public CatalogsProductGroupMultipleStringListCriteria getGOOGLEPRODUCTCATEGORY0() {
     return GOOGLE_PRODUCT_CATEGORY_0;
   }
 
-  @JsonProperty("GOOGLE_PRODUCT_CATEGORY_0")
+  @JsonProperty(required = true, value = "GOOGLE_PRODUCT_CATEGORY_0")
   public void setGOOGLEPRODUCTCATEGORY0(CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_0) {
     this.GOOGLE_PRODUCT_CATEGORY_0 = GOOGLE_PRODUCT_CATEGORY_0;
   }
@@ -305,12 +341,12 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("MEDIA_TYPE")
+  @JsonProperty(required = true, value = "MEDIA_TYPE")
   @NotNull @Valid public CatalogsProductGroupMultipleMediaTypesCriteria getMEDIATYPE() {
     return MEDIA_TYPE;
   }
 
-  @JsonProperty("MEDIA_TYPE")
+  @JsonProperty(required = true, value = "MEDIA_TYPE")
   public void setMEDIATYPE(CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE) {
     this.MEDIA_TYPE = MEDIA_TYPE;
   }

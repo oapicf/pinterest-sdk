@@ -51,20 +51,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsProductGroupMultipleGenderCriteria
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsProductGroupMultipleGenderCriteria {
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
+  @javax.annotation.Nonnull
   private List<Gender> values = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_NEGATED = "negated";
   @SerializedName(SERIALIZED_NAME_NEGATED)
+  @javax.annotation.Nullable
   private Boolean negated = false;
 
   public CatalogsProductGroupMultipleGenderCriteria() {
   }
 
-  public CatalogsProductGroupMultipleGenderCriteria values(List<Gender> values) {
+  public CatalogsProductGroupMultipleGenderCriteria values(@javax.annotation.Nonnull List<Gender> values) {
     this.values = values;
     return this;
   }
@@ -86,12 +88,12 @@ public class CatalogsProductGroupMultipleGenderCriteria {
     return values;
   }
 
-  public void setValues(List<Gender> values) {
+  public void setValues(@javax.annotation.Nonnull List<Gender> values) {
     this.values = values;
   }
 
 
-  public CatalogsProductGroupMultipleGenderCriteria negated(Boolean negated) {
+  public CatalogsProductGroupMultipleGenderCriteria negated(@javax.annotation.Nullable Boolean negated) {
     this.negated = negated;
     return this;
   }
@@ -105,7 +107,7 @@ public class CatalogsProductGroupMultipleGenderCriteria {
     return negated;
   }
 
-  public void setNegated(Boolean negated) {
+  public void setNegated(@javax.annotation.Nullable Boolean negated) {
     this.negated = negated;
   }
 

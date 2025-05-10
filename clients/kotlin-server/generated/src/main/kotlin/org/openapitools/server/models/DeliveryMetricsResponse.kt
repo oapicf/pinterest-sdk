@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.DeliveryMetricsResponseItemsInner
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items 
  */
+@Serializable
 data class DeliveryMetricsResponse(
     val items: kotlin.collections.List<DeliveryMetricsResponseItemsInner>? = null
-) 
+)
 

@@ -49,20 +49,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * PinsSaveRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinsSaveRequest {
   public static final String SERIALIZED_NAME_BOARD_ID = "board_id";
   @SerializedName(SERIALIZED_NAME_BOARD_ID)
+  @javax.annotation.Nullable
   private String boardId;
 
   public static final String SERIALIZED_NAME_BOARD_SECTION_ID = "board_section_id";
   @SerializedName(SERIALIZED_NAME_BOARD_SECTION_ID)
+  @javax.annotation.Nullable
   private String boardSectionId;
 
   public PinsSaveRequest() {
   }
 
-  public PinsSaveRequest boardId(String boardId) {
+  public PinsSaveRequest boardId(@javax.annotation.Nullable String boardId) {
     this.boardId = boardId;
     return this;
   }
@@ -76,12 +78,12 @@ public class PinsSaveRequest {
     return boardId;
   }
 
-  public void setBoardId(String boardId) {
+  public void setBoardId(@javax.annotation.Nullable String boardId) {
     this.boardId = boardId;
   }
 
 
-  public PinsSaveRequest boardSectionId(String boardSectionId) {
+  public PinsSaveRequest boardSectionId(@javax.annotation.Nullable String boardSectionId) {
     this.boardSectionId = boardSectionId;
     return this;
   }
@@ -95,7 +97,7 @@ public class PinsSaveRequest {
     return boardSectionId;
   }
 
-  public void setBoardSectionId(String boardSectionId) {
+  public void setBoardSectionId(@javax.annotation.Nullable String boardSectionId) {
     this.boardSectionId = boardSectionId;
   }
 

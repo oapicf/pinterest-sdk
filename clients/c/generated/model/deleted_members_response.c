@@ -5,7 +5,7 @@
 
 
 
-deleted_members_response_t *deleted_members_response_create(
+static deleted_members_response_t *deleted_members_response_create_internal(
     list_t *deleted_members
     ) {
     deleted_members_response_t *deleted_members_response_local_var = malloc(sizeof(deleted_members_response_t));
@@ -14,12 +14,24 @@ deleted_members_response_t *deleted_members_response_create(
     }
     deleted_members_response_local_var->deleted_members = deleted_members;
 
+    deleted_members_response_local_var->_library_owned = 1;
     return deleted_members_response_local_var;
 }
 
+__attribute__((deprecated)) deleted_members_response_t *deleted_members_response_create(
+    list_t *deleted_members
+    ) {
+    return deleted_members_response_create_internal (
+        deleted_members
+        );
+}
 
 void deleted_members_response_free(deleted_members_response_t *deleted_members_response) {
     if(NULL == deleted_members_response){
+        return ;
+    }
+    if(deleted_members_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "deleted_members_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -45,7 +57,7 @@ cJSON *deleted_members_response_convertToJSON(deleted_members_response_t *delete
 
     listEntry_t *deleted_membersListEntry;
     list_ForEach(deleted_membersListEntry, deleted_members_response->deleted_members) {
-    if(cJSON_AddStringToObject(deleted_members, "", (char*)deleted_membersListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(deleted_members, "", deleted_membersListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -69,6 +81,9 @@ deleted_members_response_t *deleted_members_response_parseFromJSON(cJSON *delete
 
     // deleted_members_response->deleted_members
     cJSON *deleted_members = cJSON_GetObjectItemCaseSensitive(deleted_members_responseJSON, "deleted_members");
+    if (cJSON_IsNull(deleted_members)) {
+        deleted_members = NULL;
+    }
     if (deleted_members) { 
     cJSON *deleted_members_local = NULL;
     if(!cJSON_IsArray(deleted_members)) {
@@ -87,7 +102,7 @@ deleted_members_response_t *deleted_members_response_parseFromJSON(cJSON *delete
     }
 
 
-    deleted_members_response_local_var = deleted_members_response_create (
+    deleted_members_response_local_var = deleted_members_response_create_internal (
         deleted_members ? deleted_membersList : NULL
         );
 

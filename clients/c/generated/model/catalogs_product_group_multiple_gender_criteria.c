@@ -22,7 +22,7 @@ pinterest_rest_api_catalogs_product_group_multiple_gender_criteria__e catalogs_p
     return 0;
 }
 
-catalogs_product_group_multiple_gender_criteria_t *catalogs_product_group_multiple_gender_criteria_create(
+static catalogs_product_group_multiple_gender_criteria_t *catalogs_product_group_multiple_gender_criteria_create_internal(
     list_t *values,
     int negated
     ) {
@@ -33,12 +33,26 @@ catalogs_product_group_multiple_gender_criteria_t *catalogs_product_group_multip
     catalogs_product_group_multiple_gender_criteria_local_var->values = values;
     catalogs_product_group_multiple_gender_criteria_local_var->negated = negated;
 
+    catalogs_product_group_multiple_gender_criteria_local_var->_library_owned = 1;
     return catalogs_product_group_multiple_gender_criteria_local_var;
 }
 
+__attribute__((deprecated)) catalogs_product_group_multiple_gender_criteria_t *catalogs_product_group_multiple_gender_criteria_create(
+    list_t *values,
+    int negated
+    ) {
+    return catalogs_product_group_multiple_gender_criteria_create_internal (
+        values,
+        negated
+        );
+}
 
 void catalogs_product_group_multiple_gender_criteria_free(catalogs_product_group_multiple_gender_criteria_t *catalogs_product_group_multiple_gender_criteria) {
     if(NULL == catalogs_product_group_multiple_gender_criteria){
+        return ;
+    }
+    if(catalogs_product_group_multiple_gender_criteria->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_product_group_multiple_gender_criteria_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -56,7 +70,7 @@ cJSON *catalogs_product_group_multiple_gender_criteria_convertToJSON(catalogs_pr
     cJSON *item = cJSON_CreateObject();
 
     // catalogs_product_group_multiple_gender_criteria->values
-    if (pinterest_rest_api_catalogs_product_group_multiple_gender_criteria_VALUES_NULL == catalogs_product_group_multiple_gender_criteria->values) {
+    if (pinterest_rest_api_list_VALUES_NULL == catalogs_product_group_multiple_gender_criteria->values) {
         goto fail;
     }
     cJSON *values = cJSON_AddArrayToObject(item, "values");
@@ -100,6 +114,9 @@ catalogs_product_group_multiple_gender_criteria_t *catalogs_product_group_multip
 
     // catalogs_product_group_multiple_gender_criteria->values
     cJSON *values = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_multiple_gender_criteriaJSON, "values");
+    if (cJSON_IsNull(values)) {
+        values = NULL;
+    }
     if (!values) {
         goto end;
     }
@@ -124,6 +141,9 @@ catalogs_product_group_multiple_gender_criteria_t *catalogs_product_group_multip
 
     // catalogs_product_group_multiple_gender_criteria->negated
     cJSON *negated = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_multiple_gender_criteriaJSON, "negated");
+    if (cJSON_IsNull(negated)) {
+        negated = NULL;
+    }
     if (negated) { 
     if(!cJSON_IsBool(negated))
     {
@@ -132,7 +152,7 @@ catalogs_product_group_multiple_gender_criteria_t *catalogs_product_group_multip
     }
 
 
-    catalogs_product_group_multiple_gender_criteria_local_var = catalogs_product_group_multiple_gender_criteria_create (
+    catalogs_product_group_multiple_gender_criteria_local_var = catalogs_product_group_multiple_gender_criteria_create_internal (
         valuesList,
         negated ? negated->valueint : 0
         );

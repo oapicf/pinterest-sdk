@@ -61,17 +61,21 @@ export function CatalogsVerticalBatchRequestFromJSONTyped(json: any, ignoreDiscr
     }
 }
 
-export function CatalogsVerticalBatchRequestToJSON(value?: CatalogsVerticalBatchRequest | null): any {
+export function CatalogsVerticalBatchRequestToJSON(json: any): any {
+    return CatalogsVerticalBatchRequestToJSONTyped(json, false);
+}
+
+export function CatalogsVerticalBatchRequestToJSONTyped(value?: CatalogsVerticalBatchRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
     switch (value['catalogType']) {
         case 'CREATIVE_ASSETS':
-            return CatalogsCreativeAssetsBatchRequestToJSON(value);
+            return Object.assign({}, CatalogsCreativeAssetsBatchRequestToJSON(value), { catalogType: 'CREATIVE_ASSETS' } as const);
         case 'HOTEL':
-            return CatalogsHotelBatchRequestToJSON(value);
+            return Object.assign({}, CatalogsHotelBatchRequestToJSON(value), { catalogType: 'HOTEL' } as const);
         case 'RETAIL':
-            return CatalogsRetailBatchRequestToJSON(value);
+            return Object.assign({}, CatalogsRetailBatchRequestToJSON(value), { catalogType: 'RETAIL' } as const);
         default:
             throw new Error(`No variant of CatalogsVerticalBatchRequest exists with 'catalogType=${value['catalogType']}'`);
     }

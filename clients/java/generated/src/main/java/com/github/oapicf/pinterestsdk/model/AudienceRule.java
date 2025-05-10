@@ -52,92 +52,112 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * JSON object defining targeted audience users. Example rule formats per audience type:&lt;br&gt;CUSTOMER_LIST: { \&quot;customer_list_id\&quot;: \&quot;&amp;lt;customer list ID&amp;gt;\&quot;}&lt;br&gt;ACTALIKE: { \&quot;seed_id\&quot;: [\&quot;&amp;lt;audience ID&amp;gt;\&quot;], \&quot;country\&quot;: \&quot;US\&quot;, \&quot;percentage\&quot;: \&quot;10\&quot; }&lt;br&gt;(Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;. Percentage should be 1-10.&lt;br&gt;The targeted audience should be this % size across Pinterest.)&lt;br&gt;VISITOR: { \&quot;visitor_source_id\&quot;: [\&quot;&amp;lt;conversion tag ID&amp;gt;\&quot;], \&quot;retention_days\&quot;: \&quot;180\&quot;, \&quot;event_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;web\&quot;, \&quot;mobile\&quot;]}, \&quot;ingestion_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;tag\&quot;]}}&lt;br&gt;(Retention days should be 1-540. Retention applies to specific customers.)&lt;br&gt;ENGAGEMENT: {\&quot;engagement_domain\&quot;: [\&quot;www.entomi.com\&quot;], \&quot;engager_type\&quot;: 1}&lt;br&gt;For more details on engagement audiences, see &lt;a href&#x3D;\&quot;/docs/redoc/adtech_ads_v4/#section/November-2021\&quot; target&#x3D;\&quot;_blank\&quot;&gt;November 2021 changelog&lt;/a&gt;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AudienceRule {
   public static final String SERIALIZED_NAME_COUNTRY = "country";
   @SerializedName(SERIALIZED_NAME_COUNTRY)
+  @javax.annotation.Nullable
   private String country;
 
   public static final String SERIALIZED_NAME_CUSTOMER_LIST_ID = "customer_list_id";
   @SerializedName(SERIALIZED_NAME_CUSTOMER_LIST_ID)
+  @javax.annotation.Nullable
   private String customerListId;
 
   public static final String SERIALIZED_NAME_ENGAGEMENT_DOMAIN = "engagement_domain";
   @SerializedName(SERIALIZED_NAME_ENGAGEMENT_DOMAIN)
+  @javax.annotation.Nullable
   private List<String> engagementDomain = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_ENGAGEMENT_TYPE = "engagement_type";
   @SerializedName(SERIALIZED_NAME_ENGAGEMENT_TYPE)
+  @javax.annotation.Nullable
   private String engagementType;
 
   public static final String SERIALIZED_NAME_EVENT = "event";
   @SerializedName(SERIALIZED_NAME_EVENT)
+  @javax.annotation.Nullable
   private String event;
 
   public static final String SERIALIZED_NAME_EVENT_DATA = "event_data";
   @SerializedName(SERIALIZED_NAME_EVENT_DATA)
+  @javax.annotation.Nullable
   private PinterestTagEventData eventData;
 
   public static final String SERIALIZED_NAME_PERCENTAGE = "percentage";
   @SerializedName(SERIALIZED_NAME_PERCENTAGE)
+  @javax.annotation.Nullable
   private Integer percentage;
 
   public static final String SERIALIZED_NAME_PIN_ID = "pin_id";
   @SerializedName(SERIALIZED_NAME_PIN_ID)
+  @javax.annotation.Nullable
   private List<String> pinId = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_PREFILL = "prefill";
   @SerializedName(SERIALIZED_NAME_PREFILL)
+  @javax.annotation.Nullable
   private Boolean prefill;
 
   public static final String SERIALIZED_NAME_RETENTION_DAYS = "retention_days";
   @SerializedName(SERIALIZED_NAME_RETENTION_DAYS)
+  @javax.annotation.Nullable
   private Integer retentionDays;
 
   public static final String SERIALIZED_NAME_SEED_ID = "seed_id";
   @SerializedName(SERIALIZED_NAME_SEED_ID)
+  @javax.annotation.Nullable
   private List<String> seedId = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)
+  @javax.annotation.Nullable
   private List<String> url = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_VISITOR_SOURCE_ID = "visitor_source_id";
   @SerializedName(SERIALIZED_NAME_VISITOR_SOURCE_ID)
+  @javax.annotation.Nullable
   private String visitorSourceId;
 
   public static final String SERIALIZED_NAME_EVENT_SOURCE = "event_source";
   @SerializedName(SERIALIZED_NAME_EVENT_SOURCE)
+  @javax.annotation.Nullable
   private Object eventSource;
 
   public static final String SERIALIZED_NAME_INGESTION_SOURCE = "ingestion_source";
   @SerializedName(SERIALIZED_NAME_INGESTION_SOURCE)
+  @javax.annotation.Nullable
   private Object ingestionSource;
 
   public static final String SERIALIZED_NAME_ENGAGER_TYPE = "engager_type";
   @SerializedName(SERIALIZED_NAME_ENGAGER_TYPE)
+  @javax.annotation.Nullable
   private Integer engagerType;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaign_id";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
+  @javax.annotation.Nullable
   private List<String> campaignId = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_AD_ID = "ad_id";
   @SerializedName(SERIALIZED_NAME_AD_ID)
+  @javax.annotation.Nullable
   private List<String> adId = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_OBJECTIVE_TYPE = "objective_type";
   @SerializedName(SERIALIZED_NAME_OBJECTIVE_TYPE)
+  @javax.annotation.Nullable
   private List<ObjectiveType> objectiveType = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_AD_ACCOUNT_ID = "ad_account_id";
   @SerializedName(SERIALIZED_NAME_AD_ACCOUNT_ID)
+  @javax.annotation.Nullable
   private String adAccountId;
 
   public AudienceRule() {
   }
 
-  public AudienceRule country(String country) {
+  public AudienceRule country(@javax.annotation.Nullable String country) {
     this.country = country;
     return this;
   }
@@ -151,12 +171,12 @@ public class AudienceRule {
     return country;
   }
 
-  public void setCountry(String country) {
+  public void setCountry(@javax.annotation.Nullable String country) {
     this.country = country;
   }
 
 
-  public AudienceRule customerListId(String customerListId) {
+  public AudienceRule customerListId(@javax.annotation.Nullable String customerListId) {
     this.customerListId = customerListId;
     return this;
   }
@@ -170,12 +190,12 @@ public class AudienceRule {
     return customerListId;
   }
 
-  public void setCustomerListId(String customerListId) {
+  public void setCustomerListId(@javax.annotation.Nullable String customerListId) {
     this.customerListId = customerListId;
   }
 
 
-  public AudienceRule engagementDomain(List<String> engagementDomain) {
+  public AudienceRule engagementDomain(@javax.annotation.Nullable List<String> engagementDomain) {
     this.engagementDomain = engagementDomain;
     return this;
   }
@@ -197,12 +217,12 @@ public class AudienceRule {
     return engagementDomain;
   }
 
-  public void setEngagementDomain(List<String> engagementDomain) {
+  public void setEngagementDomain(@javax.annotation.Nullable List<String> engagementDomain) {
     this.engagementDomain = engagementDomain;
   }
 
 
-  public AudienceRule engagementType(String engagementType) {
+  public AudienceRule engagementType(@javax.annotation.Nullable String engagementType) {
     this.engagementType = engagementType;
     return this;
   }
@@ -216,12 +236,12 @@ public class AudienceRule {
     return engagementType;
   }
 
-  public void setEngagementType(String engagementType) {
+  public void setEngagementType(@javax.annotation.Nullable String engagementType) {
     this.engagementType = engagementType;
   }
 
 
-  public AudienceRule event(String event) {
+  public AudienceRule event(@javax.annotation.Nullable String event) {
     this.event = event;
     return this;
   }
@@ -235,12 +255,12 @@ public class AudienceRule {
     return event;
   }
 
-  public void setEvent(String event) {
+  public void setEvent(@javax.annotation.Nullable String event) {
     this.event = event;
   }
 
 
-  public AudienceRule eventData(PinterestTagEventData eventData) {
+  public AudienceRule eventData(@javax.annotation.Nullable PinterestTagEventData eventData) {
     this.eventData = eventData;
     return this;
   }
@@ -254,12 +274,12 @@ public class AudienceRule {
     return eventData;
   }
 
-  public void setEventData(PinterestTagEventData eventData) {
+  public void setEventData(@javax.annotation.Nullable PinterestTagEventData eventData) {
     this.eventData = eventData;
   }
 
 
-  public AudienceRule percentage(Integer percentage) {
+  public AudienceRule percentage(@javax.annotation.Nullable Integer percentage) {
     this.percentage = percentage;
     return this;
   }
@@ -273,12 +293,12 @@ public class AudienceRule {
     return percentage;
   }
 
-  public void setPercentage(Integer percentage) {
+  public void setPercentage(@javax.annotation.Nullable Integer percentage) {
     this.percentage = percentage;
   }
 
 
-  public AudienceRule pinId(List<String> pinId) {
+  public AudienceRule pinId(@javax.annotation.Nullable List<String> pinId) {
     this.pinId = pinId;
     return this;
   }
@@ -300,12 +320,12 @@ public class AudienceRule {
     return pinId;
   }
 
-  public void setPinId(List<String> pinId) {
+  public void setPinId(@javax.annotation.Nullable List<String> pinId) {
     this.pinId = pinId;
   }
 
 
-  public AudienceRule prefill(Boolean prefill) {
+  public AudienceRule prefill(@javax.annotation.Nullable Boolean prefill) {
     this.prefill = prefill;
     return this;
   }
@@ -319,12 +339,12 @@ public class AudienceRule {
     return prefill;
   }
 
-  public void setPrefill(Boolean prefill) {
+  public void setPrefill(@javax.annotation.Nullable Boolean prefill) {
     this.prefill = prefill;
   }
 
 
-  public AudienceRule retentionDays(Integer retentionDays) {
+  public AudienceRule retentionDays(@javax.annotation.Nullable Integer retentionDays) {
     this.retentionDays = retentionDays;
     return this;
   }
@@ -338,12 +358,12 @@ public class AudienceRule {
     return retentionDays;
   }
 
-  public void setRetentionDays(Integer retentionDays) {
+  public void setRetentionDays(@javax.annotation.Nullable Integer retentionDays) {
     this.retentionDays = retentionDays;
   }
 
 
-  public AudienceRule seedId(List<String> seedId) {
+  public AudienceRule seedId(@javax.annotation.Nullable List<String> seedId) {
     this.seedId = seedId;
     return this;
   }
@@ -365,12 +385,12 @@ public class AudienceRule {
     return seedId;
   }
 
-  public void setSeedId(List<String> seedId) {
+  public void setSeedId(@javax.annotation.Nullable List<String> seedId) {
     this.seedId = seedId;
   }
 
 
-  public AudienceRule url(List<String> url) {
+  public AudienceRule url(@javax.annotation.Nullable List<String> url) {
     this.url = url;
     return this;
   }
@@ -392,12 +412,12 @@ public class AudienceRule {
     return url;
   }
 
-  public void setUrl(List<String> url) {
+  public void setUrl(@javax.annotation.Nullable List<String> url) {
     this.url = url;
   }
 
 
-  public AudienceRule visitorSourceId(String visitorSourceId) {
+  public AudienceRule visitorSourceId(@javax.annotation.Nullable String visitorSourceId) {
     this.visitorSourceId = visitorSourceId;
     return this;
   }
@@ -411,12 +431,12 @@ public class AudienceRule {
     return visitorSourceId;
   }
 
-  public void setVisitorSourceId(String visitorSourceId) {
+  public void setVisitorSourceId(@javax.annotation.Nullable String visitorSourceId) {
     this.visitorSourceId = visitorSourceId;
   }
 
 
-  public AudienceRule eventSource(Object eventSource) {
+  public AudienceRule eventSource(@javax.annotation.Nullable Object eventSource) {
     this.eventSource = eventSource;
     return this;
   }
@@ -430,12 +450,12 @@ public class AudienceRule {
     return eventSource;
   }
 
-  public void setEventSource(Object eventSource) {
+  public void setEventSource(@javax.annotation.Nullable Object eventSource) {
     this.eventSource = eventSource;
   }
 
 
-  public AudienceRule ingestionSource(Object ingestionSource) {
+  public AudienceRule ingestionSource(@javax.annotation.Nullable Object ingestionSource) {
     this.ingestionSource = ingestionSource;
     return this;
   }
@@ -449,12 +469,12 @@ public class AudienceRule {
     return ingestionSource;
   }
 
-  public void setIngestionSource(Object ingestionSource) {
+  public void setIngestionSource(@javax.annotation.Nullable Object ingestionSource) {
     this.ingestionSource = ingestionSource;
   }
 
 
-  public AudienceRule engagerType(Integer engagerType) {
+  public AudienceRule engagerType(@javax.annotation.Nullable Integer engagerType) {
     this.engagerType = engagerType;
     return this;
   }
@@ -468,12 +488,12 @@ public class AudienceRule {
     return engagerType;
   }
 
-  public void setEngagerType(Integer engagerType) {
+  public void setEngagerType(@javax.annotation.Nullable Integer engagerType) {
     this.engagerType = engagerType;
   }
 
 
-  public AudienceRule campaignId(List<String> campaignId) {
+  public AudienceRule campaignId(@javax.annotation.Nullable List<String> campaignId) {
     this.campaignId = campaignId;
     return this;
   }
@@ -495,12 +515,12 @@ public class AudienceRule {
     return campaignId;
   }
 
-  public void setCampaignId(List<String> campaignId) {
+  public void setCampaignId(@javax.annotation.Nullable List<String> campaignId) {
     this.campaignId = campaignId;
   }
 
 
-  public AudienceRule adId(List<String> adId) {
+  public AudienceRule adId(@javax.annotation.Nullable List<String> adId) {
     this.adId = adId;
     return this;
   }
@@ -522,12 +542,12 @@ public class AudienceRule {
     return adId;
   }
 
-  public void setAdId(List<String> adId) {
+  public void setAdId(@javax.annotation.Nullable List<String> adId) {
     this.adId = adId;
   }
 
 
-  public AudienceRule objectiveType(List<ObjectiveType> objectiveType) {
+  public AudienceRule objectiveType(@javax.annotation.Nullable List<ObjectiveType> objectiveType) {
     this.objectiveType = objectiveType;
     return this;
   }
@@ -549,12 +569,12 @@ public class AudienceRule {
     return objectiveType;
   }
 
-  public void setObjectiveType(List<ObjectiveType> objectiveType) {
+  public void setObjectiveType(@javax.annotation.Nullable List<ObjectiveType> objectiveType) {
     this.objectiveType = objectiveType;
   }
 
 
-  public AudienceRule adAccountId(String adAccountId) {
+  public AudienceRule adAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -568,7 +588,7 @@ public class AudienceRule {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 

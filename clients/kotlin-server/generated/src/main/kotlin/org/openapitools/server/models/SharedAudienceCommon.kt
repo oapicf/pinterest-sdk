@@ -13,14 +13,16 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.OperationType
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param audienceId Unique identifier of an audience
  * @param operationType 
  */
+@Serializable
 data class SharedAudienceCommon(
     /* Unique identifier of an audience */
     val audienceId: kotlin.String? = null,
     val operationType: OperationType? = null
-) 
+)
 

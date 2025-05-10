@@ -13,7 +13,7 @@ import AnyCodable
 /** An invite object if the invite/request was successfully created. Will only be provided if the an invite/request is successfully created. */
 public struct CreateInvitesResultsResponseArrayItemsInnerInvite: Codable, JSONEncodable, Hashable {
 
-    static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Unique identifier of the invite/request. */
     public var id: String?
     /** Metadata for the member/partner that was sent the invite/request. */
@@ -38,3 +38,6 @@ public struct CreateInvitesResultsResponseArrayItemsInnerInvite: Codable, JSONEn
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension CreateInvitesResultsResponseArrayItemsInnerInvite: Identifiable {}

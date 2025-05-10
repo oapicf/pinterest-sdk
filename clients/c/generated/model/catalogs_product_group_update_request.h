@@ -25,9 +25,10 @@ typedef struct catalogs_product_group_update_request_t {
     int is_featured; //boolean
     struct catalogs_product_group_filters_request_t *filters; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_product_group_update_request_t;
 
-catalogs_product_group_update_request_t *catalogs_product_group_update_request_create(
+__attribute__((deprecated)) catalogs_product_group_update_request_t *catalogs_product_group_update_request_create(
     char *name,
     char *description,
     int is_featured,

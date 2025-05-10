@@ -21,9 +21,10 @@ typedef struct bulk_download_response_t bulk_download_response_t;
 typedef struct bulk_download_response_t {
     char *request_id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } bulk_download_response_t;
 
-bulk_download_response_t *bulk_download_response_create(
+__attribute__((deprecated)) bulk_download_response_t *bulk_download_response_create(
     char *request_id
 );
 

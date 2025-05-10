@@ -70,11 +70,11 @@ export function DeleteInvitesResultsResponseArrayItemsInnerFromJSONTyped(json: a
     };
 }
 
-  export function DeleteInvitesResultsResponseArrayItemsInnerToJSON(json: any): DeleteInvitesResultsResponseArrayItemsInner {
-      return DeleteInvitesResultsResponseArrayItemsInnerToJSONTyped(json, false);
-  }
+export function DeleteInvitesResultsResponseArrayItemsInnerToJSON(json: any): DeleteInvitesResultsResponseArrayItemsInner {
+    return DeleteInvitesResultsResponseArrayItemsInnerToJSONTyped(json, false);
+}
 
-  export function DeleteInvitesResultsResponseArrayItemsInnerToJSONTyped(value?: DeleteInvitesResultsResponseArrayItemsInner | null, ignoreDiscriminator: boolean = false): any {
+export function DeleteInvitesResultsResponseArrayItemsInnerToJSONTyped(value?: DeleteInvitesResultsResponseArrayItemsInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -53,40 +53,47 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsFeedProcessingResult
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsFeedProcessingResult {
   public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  @javax.annotation.Nonnull
   private OffsetDateTime createdAt;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nonnull
   private String id;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updated_at";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+  @javax.annotation.Nonnull
   private OffsetDateTime updatedAt;
 
   public static final String SERIALIZED_NAME_INGESTION_DETAILS = "ingestion_details";
   @SerializedName(SERIALIZED_NAME_INGESTION_DETAILS)
+  @javax.annotation.Nonnull
   private CatalogsFeedIngestionDetails ingestionDetails;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nonnull
   private CatalogsFeedProcessingStatus status;
 
   public static final String SERIALIZED_NAME_PRODUCT_COUNTS = "product_counts";
   @SerializedName(SERIALIZED_NAME_PRODUCT_COUNTS)
+  @javax.annotation.Nullable
   private CatalogsFeedProductCounts productCounts;
 
   public static final String SERIALIZED_NAME_VALIDATION_DETAILS = "validation_details";
   @SerializedName(SERIALIZED_NAME_VALIDATION_DETAILS)
+  @javax.annotation.Nonnull
   private CatalogsFeedValidationDetails validationDetails;
 
   public CatalogsFeedProcessingResult() {
   }
 
-  public CatalogsFeedProcessingResult createdAt(OffsetDateTime createdAt) {
+  public CatalogsFeedProcessingResult createdAt(@javax.annotation.Nonnull OffsetDateTime createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -100,12 +107,12 @@ public class CatalogsFeedProcessingResult {
     return createdAt;
   }
 
-  public void setCreatedAt(OffsetDateTime createdAt) {
+  public void setCreatedAt(@javax.annotation.Nonnull OffsetDateTime createdAt) {
     this.createdAt = createdAt;
   }
 
 
-  public CatalogsFeedProcessingResult id(String id) {
+  public CatalogsFeedProcessingResult id(@javax.annotation.Nonnull String id) {
     this.id = id;
     return this;
   }
@@ -119,12 +126,12 @@ public class CatalogsFeedProcessingResult {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 
 
-  public CatalogsFeedProcessingResult updatedAt(OffsetDateTime updatedAt) {
+  public CatalogsFeedProcessingResult updatedAt(@javax.annotation.Nonnull OffsetDateTime updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
@@ -138,12 +145,12 @@ public class CatalogsFeedProcessingResult {
     return updatedAt;
   }
 
-  public void setUpdatedAt(OffsetDateTime updatedAt) {
+  public void setUpdatedAt(@javax.annotation.Nonnull OffsetDateTime updatedAt) {
     this.updatedAt = updatedAt;
   }
 
 
-  public CatalogsFeedProcessingResult ingestionDetails(CatalogsFeedIngestionDetails ingestionDetails) {
+  public CatalogsFeedProcessingResult ingestionDetails(@javax.annotation.Nonnull CatalogsFeedIngestionDetails ingestionDetails) {
     this.ingestionDetails = ingestionDetails;
     return this;
   }
@@ -157,12 +164,12 @@ public class CatalogsFeedProcessingResult {
     return ingestionDetails;
   }
 
-  public void setIngestionDetails(CatalogsFeedIngestionDetails ingestionDetails) {
+  public void setIngestionDetails(@javax.annotation.Nonnull CatalogsFeedIngestionDetails ingestionDetails) {
     this.ingestionDetails = ingestionDetails;
   }
 
 
-  public CatalogsFeedProcessingResult status(CatalogsFeedProcessingStatus status) {
+  public CatalogsFeedProcessingResult status(@javax.annotation.Nonnull CatalogsFeedProcessingStatus status) {
     this.status = status;
     return this;
   }
@@ -176,12 +183,12 @@ public class CatalogsFeedProcessingResult {
     return status;
   }
 
-  public void setStatus(CatalogsFeedProcessingStatus status) {
+  public void setStatus(@javax.annotation.Nonnull CatalogsFeedProcessingStatus status) {
     this.status = status;
   }
 
 
-  public CatalogsFeedProcessingResult productCounts(CatalogsFeedProductCounts productCounts) {
+  public CatalogsFeedProcessingResult productCounts(@javax.annotation.Nullable CatalogsFeedProductCounts productCounts) {
     this.productCounts = productCounts;
     return this;
   }
@@ -195,12 +202,12 @@ public class CatalogsFeedProcessingResult {
     return productCounts;
   }
 
-  public void setProductCounts(CatalogsFeedProductCounts productCounts) {
+  public void setProductCounts(@javax.annotation.Nullable CatalogsFeedProductCounts productCounts) {
     this.productCounts = productCounts;
   }
 
 
-  public CatalogsFeedProcessingResult validationDetails(CatalogsFeedValidationDetails validationDetails) {
+  public CatalogsFeedProcessingResult validationDetails(@javax.annotation.Nonnull CatalogsFeedValidationDetails validationDetails) {
     this.validationDetails = validationDetails;
     return this;
   }
@@ -214,7 +221,7 @@ public class CatalogsFeedProcessingResult {
     return validationDetails;
   }
 
-  public void setValidationDetails(CatalogsFeedValidationDetails validationDetails) {
+  public void setValidationDetails(@javax.annotation.Nonnull CatalogsFeedValidationDetails validationDetails) {
     this.validationDetails = validationDetails;
   }
 

@@ -22,14 +22,14 @@ public struct IntegrationLog: Codable, JSONEncodable, Hashable {
         case warn = "WARN"
         case error = "ERROR"
     }
-    static let externalBusinessIdRule = StringRule(minLength: nil, maxLength: 2048, pattern: nil)
-    static let advertiserIdRule = StringRule(minLength: nil, maxLength: 128, pattern: nil)
-    static let merchantIdRule = StringRule(minLength: nil, maxLength: 128, pattern: nil)
-    static let tagIdRule = StringRule(minLength: nil, maxLength: 128, pattern: nil)
-    static let feedProfileIdRule = StringRule(minLength: nil, maxLength: 128, pattern: nil)
-    static let messageRule = StringRule(minLength: nil, maxLength: 2048, pattern: nil)
-    static let appVersionNumberRule = StringRule(minLength: nil, maxLength: 20, pattern: nil)
-    static let platformVersionNumberRule = StringRule(minLength: nil, maxLength: 20, pattern: nil)
+    public static let externalBusinessIdRule = StringRule(minLength: nil, maxLength: 2048, pattern: nil)
+    public static let advertiserIdRule = StringRule(minLength: nil, maxLength: 128, pattern: nil)
+    public static let merchantIdRule = StringRule(minLength: nil, maxLength: 128, pattern: nil)
+    public static let tagIdRule = StringRule(minLength: nil, maxLength: 128, pattern: nil)
+    public static let feedProfileIdRule = StringRule(minLength: nil, maxLength: 128, pattern: nil)
+    public static let messageRule = StringRule(minLength: nil, maxLength: 2048, pattern: nil)
+    public static let appVersionNumberRule = StringRule(minLength: nil, maxLength: 20, pattern: nil)
+    public static let platformVersionNumberRule = StringRule(minLength: nil, maxLength: 20, pattern: nil)
     /** Timestamp in milliseconds of when the log was executed at the client. */
     public var clientTimestamp: Int
     /** Log event type */

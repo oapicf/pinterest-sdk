@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Request object for creating a catalog.")
 @JsonTypeName("CatalogsCreateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsCreateRequest   {
   public enum CatalogTypeEnum {
 
@@ -69,6 +69,18 @@ public class CatalogsCreateRequest   {
   private CatalogTypeEnum catalogType;
   private String name;
 
+  public CatalogsCreateRequest() {
+  }
+
+  @JsonCreator
+  public CatalogsCreateRequest(
+    @JsonProperty(required = true, value = "catalog_type") CatalogTypeEnum catalogType,
+    @JsonProperty(required = true, value = "name") String name
+  ) {
+    this.catalogType = catalogType;
+    this.name = name;
+  }
+
   /**
    * Type of the catalog entity.
    **/
@@ -79,12 +91,12 @@ public class CatalogsCreateRequest   {
 
   
   @ApiModelProperty(required = true, value = "Type of the catalog entity.")
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   @NotNull public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
@@ -99,12 +111,12 @@ public class CatalogsCreateRequest   {
 
   
   @ApiModelProperty(required = true, value = "A human-friendly name associated to a given catalog.")
-  @JsonProperty("name")
+  @JsonProperty(required = true, value = "name")
   @NotNull public String getName() {
     return name;
   }
 
-  @JsonProperty("name")
+  @JsonProperty(required = true, value = "name")
   public void setName(String name) {
     this.name = name;
   }

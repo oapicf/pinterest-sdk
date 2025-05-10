@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param pinOrderId Salesforce order id
  * @param status Salesforce insertion order status
  * @param creationTime Salesforce insertion order creation time
  */
+@Serializable
 data class SSIOInsertionOrderStatus(
     /* Salesforce order id */
     val pinOrderId: kotlin.String? = null,
@@ -25,5 +27,5 @@ data class SSIOInsertionOrderStatus(
     val status: kotlin.String? = null,
     /* Salesforce insertion order creation time */
     val creationTime: kotlin.String? = null
-) 
+)
 

@@ -50,7 +50,7 @@ class OauthAccessTokenResponseClientCredentials
      * @SerializedName("response_type")
      * @Type("string")
     */
-    #[Assert\Choice(["authorization_code", "refresh_token", "client_credentials"])]
+    #[Assert\Choice(['authorization_code', 'refresh_token', 'client_credentials'])]
     #[Assert\Type("string")]
     protected ?string $responseType = null;
 
@@ -94,7 +94,7 @@ class OauthAccessTokenResponseClientCredentials
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->responseType = array_key_exists('responseType', $data) ? $data['responseType'] : $this->responseType;

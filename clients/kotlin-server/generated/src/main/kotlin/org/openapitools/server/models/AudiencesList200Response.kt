@@ -13,13 +13,15 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.Audience
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items 
  * @param bookmark 
  */
+@Serializable
 data class AudiencesList200Response(
     val items: kotlin.collections.List<Audience>,
     val bookmark: kotlin.String? = null
-) 
+)
 

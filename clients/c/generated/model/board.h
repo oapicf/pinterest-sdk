@@ -41,9 +41,10 @@ typedef struct board_t {
     struct board_owner_t *owner; //model
     pinterest_rest_api_board_PRIVACY_e privacy; //enum
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } board_t;
 
-board_t *board_create(
+__attribute__((deprecated)) board_t *board_create(
     char *id,
     char *created_at,
     char *board_pins_modified_at,

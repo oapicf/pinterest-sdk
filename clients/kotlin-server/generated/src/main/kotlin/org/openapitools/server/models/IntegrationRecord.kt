@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Integration record
  * @param id 
@@ -32,6 +33,7 @@ package org.openapitools.server.models
  * @param createdTime 
  * @param updatedTime 
  */
+@Serializable
 data class IntegrationRecord(
     val id: kotlin.String? = null,
     val externalBusinessId: kotlin.String? = null,
@@ -50,5 +52,5 @@ data class IntegrationRecord(
     val additionalId1: kotlin.String? = null,
     val createdTime: kotlin.Int? = null,
     val updatedTime: kotlin.Int? = null
-) 
+)
 

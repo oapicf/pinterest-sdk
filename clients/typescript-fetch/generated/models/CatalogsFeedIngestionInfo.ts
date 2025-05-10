@@ -62,11 +62,11 @@ export function CatalogsFeedIngestionInfoFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function CatalogsFeedIngestionInfoToJSON(json: any): CatalogsFeedIngestionInfo {
-      return CatalogsFeedIngestionInfoToJSONTyped(json, false);
-  }
+export function CatalogsFeedIngestionInfoToJSON(json: any): CatalogsFeedIngestionInfo {
+    return CatalogsFeedIngestionInfoToJSONTyped(json, false);
+}
 
-  export function CatalogsFeedIngestionInfoToJSONTyped(value?: CatalogsFeedIngestionInfo | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsFeedIngestionInfoToJSONTyped(value?: CatalogsFeedIngestionInfo | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

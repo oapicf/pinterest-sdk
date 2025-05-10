@@ -26,9 +26,10 @@ typedef struct audience_demographics_t {
     list_t *metros; //nonprimitive container
     list_t *countries; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } audience_demographics_t;
 
-audience_demographics_t *audience_demographics_create(
+__attribute__((deprecated)) audience_demographics_t *audience_demographics_create(
     list_t *ages,
     list_t *genders,
     list_t *devices,

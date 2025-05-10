@@ -10,6 +10,7 @@ import java.util.List;
 import org.openapitools.model.CatalogsProductGroupFilterKeys;
 import org.openapitools.model.CatalogsProductGroupFiltersRequestAnyOf;
 import org.openapitools.model.CatalogsProductGroupFiltersRequestAnyOf1;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -25,7 +26,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsProductGroupFiltersRequest", description = "Object holding a group of filters for request on catalog product group. This is a distinct schema It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsProductGroupFiltersRequest {
 
   @Valid

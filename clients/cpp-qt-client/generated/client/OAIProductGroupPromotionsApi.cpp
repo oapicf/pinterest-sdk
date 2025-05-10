@@ -250,7 +250,7 @@ void OAIProductGroupPromotionsApi::productGroupPromotions_create(const QString &
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIProductGroupPromotionsApi::productGroupPromotions_createCallback);
     connect(this, &OAIProductGroupPromotionsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -272,7 +272,7 @@ void OAIProductGroupPromotionsApi::productGroupPromotions_create(const QString &
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIProductGroupPromotionsApi::productGroupPromotions_createCallback);
     connect(this, &OAIProductGroupPromotionsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -389,7 +389,7 @@ void OAIProductGroupPromotionsApi::productGroupPromotions_get(const QString &ad_
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIProductGroupPromotionsApi::productGroupPromotions_getCallback);
     connect(this, &OAIProductGroupPromotionsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -411,7 +411,7 @@ void OAIProductGroupPromotionsApi::productGroupPromotions_get(const QString &ad_
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIProductGroupPromotionsApi::productGroupPromotions_getCallback);
     connect(this, &OAIProductGroupPromotionsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -685,7 +685,7 @@ void OAIProductGroupPromotionsApi::productGroupPromotions_list(const QString &ad
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_group_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_group_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_group_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_group_id.stringValue())));
     }
     if (page_size.hasValue())
     {
@@ -700,7 +700,7 @@ void OAIProductGroupPromotionsApi::productGroupPromotions_list(const QString &ad
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     if (order.hasValue())
     {
@@ -715,7 +715,7 @@ void OAIProductGroupPromotionsApi::productGroupPromotions_list(const QString &ad
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("order")).append(querySuffix).append(QUrl::toPercentEncoding(order.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("order")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(order.stringValue())));
     }
     if (bookmark.hasValue())
     {
@@ -730,7 +730,7 @@ void OAIProductGroupPromotionsApi::productGroupPromotions_list(const QString &ad
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -745,7 +745,7 @@ void OAIProductGroupPromotionsApi::productGroupPromotions_list(const QString &ad
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIProductGroupPromotionsApi::productGroupPromotions_listCallback);
     connect(this, &OAIProductGroupPromotionsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -767,7 +767,7 @@ void OAIProductGroupPromotionsApi::productGroupPromotions_list(const QString &ad
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIProductGroupPromotionsApi::productGroupPromotions_listCallback);
     connect(this, &OAIProductGroupPromotionsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -875,7 +875,7 @@ void OAIProductGroupPromotionsApi::productGroupPromotions_update(const QString &
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIProductGroupPromotionsApi::productGroupPromotions_updateCallback);
     connect(this, &OAIProductGroupPromotionsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -897,7 +897,7 @@ void OAIProductGroupPromotionsApi::productGroupPromotions_update(const QString &
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIProductGroupPromotionsApi::productGroupPromotions_updateCallback);
     connect(this, &OAIProductGroupPromotionsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1001,7 +1001,7 @@ void OAIProductGroupPromotionsApi::productGroups_analytics(const QString &ad_acc
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("start_date")).append(querySuffix).append(QUrl::toPercentEncoding(start_date));
+        fullPath.append(QUrl::toPercentEncoding("start_date")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(start_date)));
     }
     
     {
@@ -1016,7 +1016,7 @@ void OAIProductGroupPromotionsApi::productGroups_analytics(const QString &ad_acc
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("end_date")).append(querySuffix).append(QUrl::toPercentEncoding(end_date));
+        fullPath.append(QUrl::toPercentEncoding("end_date")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(end_date)));
     }
     
     {
@@ -1260,7 +1260,7 @@ void OAIProductGroupPromotionsApi::productGroups_analytics(const QString &ad_acc
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("click_window_days")).append(querySuffix).append(QUrl::toPercentEncoding(click_window_days.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("click_window_days")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(click_window_days.stringValue())));
     }
     if (engagement_window_days.hasValue())
     {
@@ -1275,7 +1275,7 @@ void OAIProductGroupPromotionsApi::productGroups_analytics(const QString &ad_acc
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("engagement_window_days")).append(querySuffix).append(QUrl::toPercentEncoding(engagement_window_days.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("engagement_window_days")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(engagement_window_days.stringValue())));
     }
     if (view_window_days.hasValue())
     {
@@ -1290,7 +1290,7 @@ void OAIProductGroupPromotionsApi::productGroups_analytics(const QString &ad_acc
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("view_window_days")).append(querySuffix).append(QUrl::toPercentEncoding(view_window_days.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("view_window_days")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(view_window_days.stringValue())));
     }
     if (conversion_report_time.hasValue())
     {
@@ -1305,7 +1305,7 @@ void OAIProductGroupPromotionsApi::productGroups_analytics(const QString &ad_acc
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("conversion_report_time")).append(querySuffix).append(QUrl::toPercentEncoding(conversion_report_time.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("conversion_report_time")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(conversion_report_time.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -1320,7 +1320,7 @@ void OAIProductGroupPromotionsApi::productGroups_analytics(const QString &ad_acc
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIProductGroupPromotionsApi::productGroups_analyticsCallback);
     connect(this, &OAIProductGroupPromotionsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1342,7 +1342,7 @@ void OAIProductGroupPromotionsApi::productGroups_analytics(const QString &ad_acc
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIProductGroupPromotionsApi::productGroups_analyticsCallback);
     connect(this, &OAIProductGroupPromotionsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }

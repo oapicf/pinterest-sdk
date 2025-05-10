@@ -64,14 +64,39 @@ BulkDownloadRequest <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return BulkDownloadRequest in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return BulkDownloadRequest as a base R list.
+    #' @examples
+    #' # convert array of BulkDownloadRequest (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert BulkDownloadRequest to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       BulkDownloadRequestObject <- list()
       if (!is.null(self$`entity_types`)) {
         BulkDownloadRequestObject[["entity_types"]] <-
-          lapply(self$`entity_types`, function(x) x$toJSON())
+          lapply(self$`entity_types`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`entity_ids`)) {
         BulkDownloadRequestObject[["entity_ids"]] <-
@@ -83,13 +108,13 @@ BulkDownloadRequest <- R6::R6Class(
       }
       if (!is.null(self$`campaign_filter`)) {
         BulkDownloadRequestObject[["campaign_filter"]] <-
-          self$`campaign_filter`$toJSON()
+          self$`campaign_filter`$toSimpleType()
       }
       if (!is.null(self$`output_format`)) {
         BulkDownloadRequestObject[["output_format"]] <-
-          self$`output_format`$toJSON()
+          self$`output_format`$toSimpleType()
       }
-      BulkDownloadRequestObject
+      return(BulkDownloadRequestObject)
     },
 
     #' @description
@@ -123,53 +148,13 @@ BulkDownloadRequest <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return BulkDownloadRequest in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`entity_types`)) {
-          sprintf(
-          '"entity_types":
-          [%s]
-',
-          paste(sapply(self$`entity_types`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`entity_ids`)) {
-          sprintf(
-          '"entity_ids":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`entity_ids`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`updated_since`)) {
-          sprintf(
-          '"updated_since":
-            "%s"
-                    ',
-          self$`updated_since`
-          )
-        },
-        if (!is.null(self$`campaign_filter`)) {
-          sprintf(
-          '"campaign_filter":
-          %s
-          ',
-          jsonlite::toJSON(self$`campaign_filter`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`output_format`)) {
-          sprintf(
-          '"output_format":
-          %s
-          ',
-          jsonlite::toJSON(self$`output_format`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

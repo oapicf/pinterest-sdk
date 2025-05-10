@@ -13,18 +13,20 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.ItemAttributesRequest
 
+import kotlinx.serialization.Serializable
 /**
  * An item to be upserted
  * @param itemId The catalog item id in the merchant namespace
  * @param operation 
  * @param attributes 
  */
+@Serializable
 data class CatalogsUpsertRetailItem(
     /* The catalog item id in the merchant namespace */
     val itemId: kotlin.String,
     val operation: CatalogsUpsertRetailItem.Operation,
     val attributes: ItemAttributesRequest
-) 
+)
 {
     /**
     * 

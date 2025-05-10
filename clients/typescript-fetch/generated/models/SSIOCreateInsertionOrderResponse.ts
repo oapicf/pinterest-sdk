@@ -48,11 +48,11 @@ export function SSIOCreateInsertionOrderResponseFromJSONTyped(json: any, ignoreD
     };
 }
 
-  export function SSIOCreateInsertionOrderResponseToJSON(json: any): SSIOCreateInsertionOrderResponse {
-      return SSIOCreateInsertionOrderResponseToJSONTyped(json, false);
-  }
+export function SSIOCreateInsertionOrderResponseToJSON(json: any): SSIOCreateInsertionOrderResponse {
+    return SSIOCreateInsertionOrderResponseToJSONTyped(json, false);
+}
 
-  export function SSIOCreateInsertionOrderResponseToJSONTyped(value?: SSIOCreateInsertionOrderResponse | null, ignoreDiscriminator: boolean = false): any {
+export function SSIOCreateInsertionOrderResponseToJSONTyped(value?: SSIOCreateInsertionOrderResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

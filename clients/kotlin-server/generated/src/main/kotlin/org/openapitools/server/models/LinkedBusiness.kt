@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param username Username
@@ -20,6 +21,7 @@ package org.openapitools.server.models
  * @param imageLargeUrl image_large_url
  * @param imageXlargeUrl image_xlarge_url
  */
+@Serializable
 data class LinkedBusiness(
     /* Username */
     val username: kotlin.String? = null,
@@ -31,5 +33,5 @@ data class LinkedBusiness(
     val imageLargeUrl: kotlin.String? = null,
     /* image_xlarge_url */
     val imageXlargeUrl: kotlin.String? = null
-) 
+)
 

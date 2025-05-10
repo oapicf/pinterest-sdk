@@ -127,7 +127,7 @@ func (c *ConversionTagsAPIController) ConversionTagsCreate(w http.ResponseWriter
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	conversionTagCreateParam := ConversionTagCreate{}
+	var conversionTagCreateParam ConversionTagCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&conversionTagCreateParam); err != nil {

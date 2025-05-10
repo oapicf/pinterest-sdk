@@ -5,7 +5,7 @@
 
 
 
-keywords_response_t *keywords_response_create(
+static keywords_response_t *keywords_response_create_internal(
     list_t *errors,
     list_t *keywords
     ) {
@@ -16,12 +16,26 @@ keywords_response_t *keywords_response_create(
     keywords_response_local_var->errors = errors;
     keywords_response_local_var->keywords = keywords;
 
+    keywords_response_local_var->_library_owned = 1;
     return keywords_response_local_var;
 }
 
+__attribute__((deprecated)) keywords_response_t *keywords_response_create(
+    list_t *errors,
+    list_t *keywords
+    ) {
+    return keywords_response_create_internal (
+        errors,
+        keywords
+        );
+}
 
 void keywords_response_free(keywords_response_t *keywords_response) {
     if(NULL == keywords_response){
+        return ;
+    }
+    if(keywords_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "keywords_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -104,6 +118,9 @@ keywords_response_t *keywords_response_parseFromJSON(cJSON *keywords_responseJSO
 
     // keywords_response->errors
     cJSON *errors = cJSON_GetObjectItemCaseSensitive(keywords_responseJSON, "errors");
+    if (cJSON_IsNull(errors)) {
+        errors = NULL;
+    }
     if (errors) { 
     cJSON *errors_local_nonprimitive = NULL;
     if(!cJSON_IsArray(errors)){
@@ -125,6 +142,9 @@ keywords_response_t *keywords_response_parseFromJSON(cJSON *keywords_responseJSO
 
     // keywords_response->keywords
     cJSON *keywords = cJSON_GetObjectItemCaseSensitive(keywords_responseJSON, "keywords");
+    if (cJSON_IsNull(keywords)) {
+        keywords = NULL;
+    }
     if (keywords) { 
     cJSON *keywords_local_nonprimitive = NULL;
     if(!cJSON_IsArray(keywords)){
@@ -145,7 +165,7 @@ keywords_response_t *keywords_response_parseFromJSON(cJSON *keywords_responseJSO
     }
 
 
-    keywords_response_local_var = keywords_response_create (
+    keywords_response_local_var = keywords_response_create_internal (
         errors ? errorsList : NULL,
         keywords ? keywordsList : NULL
         );

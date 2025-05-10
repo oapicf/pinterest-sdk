@@ -79,7 +79,7 @@ export namespace PinMediaSourceVideoID {
         VideoId = <any> 'video_id'
     }
     export enum CoverImageContentTypeEnum {
-        Jpeg = <any> 'image/jpeg',
-        Png = <any> 'image/png'
+        ImageJpeg = <any> 'image/jpeg',
+        ImagePng = <any> 'image/png'
     }
 }

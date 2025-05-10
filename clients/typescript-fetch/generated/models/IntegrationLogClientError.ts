@@ -104,11 +104,11 @@ export function IntegrationLogClientErrorFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function IntegrationLogClientErrorToJSON(json: any): IntegrationLogClientError {
-      return IntegrationLogClientErrorToJSONTyped(json, false);
-  }
+export function IntegrationLogClientErrorToJSON(json: any): IntegrationLogClientError {
+    return IntegrationLogClientErrorToJSONTyped(json, false);
+}
 
-  export function IntegrationLogClientErrorToJSONTyped(value?: IntegrationLogClientError | null, ignoreDiscriminator: boolean = false): any {
+export function IntegrationLogClientErrorToJSONTyped(value?: IntegrationLogClientError | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

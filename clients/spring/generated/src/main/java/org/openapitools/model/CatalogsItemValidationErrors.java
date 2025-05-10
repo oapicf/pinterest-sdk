@@ -5,6 +5,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.openapitools.model.CatalogsItemValidationDetails;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -19,54 +20,54 @@ import javax.annotation.Generated;
  * CatalogsItemValidationErrors
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsItemValidationErrors {
 
-  private CatalogsItemValidationDetails ADULT_INVALID;
+  private @Nullable CatalogsItemValidationDetails ADULT_INVALID;
 
-  private CatalogsItemValidationDetails ADWORDS_FORMAT_INVALID;
+  private @Nullable CatalogsItemValidationDetails ADWORDS_FORMAT_INVALID;
 
-  private CatalogsItemValidationDetails AVAILABILITY_INVALID;
+  private @Nullable CatalogsItemValidationDetails AVAILABILITY_INVALID;
 
-  private CatalogsItemValidationDetails BLOCKLISTED_IMAGE_SIGNATURE;
+  private @Nullable CatalogsItemValidationDetails BLOCKLISTED_IMAGE_SIGNATURE;
 
-  private CatalogsItemValidationDetails DESCRIPTION_MISSING;
+  private @Nullable CatalogsItemValidationDetails DESCRIPTION_MISSING;
 
-  private CatalogsItemValidationDetails DUPLICATE_PRODUCTS;
+  private @Nullable CatalogsItemValidationDetails DUPLICATE_PRODUCTS;
 
-  private CatalogsItemValidationDetails IMAGE_LINK_INVALID;
+  private @Nullable CatalogsItemValidationDetails IMAGE_LINK_INVALID;
 
-  private CatalogsItemValidationDetails IMAGE_LINK_LENGTH_TOO_LONG;
+  private @Nullable CatalogsItemValidationDetails IMAGE_LINK_LENGTH_TOO_LONG;
 
-  private CatalogsItemValidationDetails IMAGE_LINK_MISSING;
+  private @Nullable CatalogsItemValidationDetails IMAGE_LINK_MISSING;
 
-  private CatalogsItemValidationDetails INVALID_DOMAIN;
+  private @Nullable CatalogsItemValidationDetails INVALID_DOMAIN;
 
-  private CatalogsItemValidationDetails ITEMID_MISSING;
+  private @Nullable CatalogsItemValidationDetails ITEMID_MISSING;
 
-  private CatalogsItemValidationDetails ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
+  private @Nullable CatalogsItemValidationDetails ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
 
-  private CatalogsItemValidationDetails LINK_FORMAT_INVALID;
+  private @Nullable CatalogsItemValidationDetails LINK_FORMAT_INVALID;
 
-  private CatalogsItemValidationDetails LINK_LENGTH_TOO_LONG;
+  private @Nullable CatalogsItemValidationDetails LINK_LENGTH_TOO_LONG;
 
-  private CatalogsItemValidationDetails LIST_PRICE_INVALID;
+  private @Nullable CatalogsItemValidationDetails LIST_PRICE_INVALID;
 
-  private CatalogsItemValidationDetails MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
+  private @Nullable CatalogsItemValidationDetails MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
 
-  private CatalogsItemValidationDetails PARSE_LINE_ERROR;
+  private @Nullable CatalogsItemValidationDetails PARSE_LINE_ERROR;
 
-  private CatalogsItemValidationDetails PINJOIN_CONTENT_UNSAFE;
+  private @Nullable CatalogsItemValidationDetails PINJOIN_CONTENT_UNSAFE;
 
-  private CatalogsItemValidationDetails PRICE_CANNOT_BE_DETERMINED;
+  private @Nullable CatalogsItemValidationDetails PRICE_CANNOT_BE_DETERMINED;
 
-  private CatalogsItemValidationDetails PRICE_MISSING;
+  private @Nullable CatalogsItemValidationDetails PRICE_MISSING;
 
-  private CatalogsItemValidationDetails PRODUCT_LINK_MISSING;
+  private @Nullable CatalogsItemValidationDetails PRODUCT_LINK_MISSING;
 
-  private CatalogsItemValidationDetails PRODUCT_PRICE_INVALID;
+  private @Nullable CatalogsItemValidationDetails PRODUCT_PRICE_INVALID;
 
-  private CatalogsItemValidationDetails TITLE_MISSING;
+  private @Nullable CatalogsItemValidationDetails TITLE_MISSING;
 
   public CatalogsItemValidationErrors ADULT_INVALID(CatalogsItemValidationDetails ADULT_INVALID) {
     this.ADULT_INVALID = ADULT_INVALID;

@@ -1782,16 +1782,16 @@ Protected Class TemplateResponse
 
     #tag Enum, Name = Conversion_report_time_typeEnum, Type = Integer, Flags = &h0
         
-        AdAction
-        Conversion
+        TimeOfAdAction
+        TimeOfConversion
         
     #tag EndEnum
 
     #tag Enum, Name = Creation_sourceEnum, Type = Integer, Flags = &h0
         
-        Api
-        ManagerReportingPage
-        ManagerReportBuilder
+        AdsApi
+        AdsManagerReportingPage
+        AdsManagerReportBuilder
         
     #tag EndEnum
 
@@ -5000,9 +5000,9 @@ Protected Class TemplateResponse
 		Shared Function Conversion_report_time_typeEnumToString(value As Conversion_report_time_typeEnum) As String
 		  Select Case value
 		    
-		    Case Conversion_report_time_typeEnum.AdAction
+		    Case Conversion_report_time_typeEnum.TimeOfAdAction
 		      Return "TIME_OF_AD_ACTION"
-		    Case Conversion_report_time_typeEnum.Conversion
+		    Case Conversion_report_time_typeEnum.TimeOfConversion
 		      Return "TIME_OF_CONVERSION"
 		    
 		  End Select
@@ -5013,11 +5013,11 @@ Protected Class TemplateResponse
 		Shared Function Creation_sourceEnumToString(value As Creation_sourceEnum) As String
 		  Select Case value
 		    
-		    Case Creation_sourceEnum.Api
+		    Case Creation_sourceEnum.AdsApi
 		      Return "ADS_API"
-		    Case Creation_sourceEnum.ManagerReportingPage
+		    Case Creation_sourceEnum.AdsManagerReportingPage
 		      Return "ADS_MANAGER_REPORTING_PAGE"
-		    Case Creation_sourceEnum.ManagerReportBuilder
+		    Case Creation_sourceEnum.AdsManagerReportBuilder
 		      Return "ADS_MANAGER_REPORT_BUILDER"
 		    
 		  End Select

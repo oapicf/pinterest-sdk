@@ -51,16 +51,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Schema describing the response when a log has invalid fields.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class IntegrationLogsInvalidLogResponse {
   public static final String SERIALIZED_NAME_REJECTED_LOGS = "rejected_logs";
   @SerializedName(SERIALIZED_NAME_REJECTED_LOGS)
+  @javax.annotation.Nullable
   private List<IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs = new ArrayList<>();
 
   public IntegrationLogsInvalidLogResponse() {
   }
 
-  public IntegrationLogsInvalidLogResponse rejectedLogs(List<IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs) {
+  public IntegrationLogsInvalidLogResponse rejectedLogs(@javax.annotation.Nullable List<IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs) {
     this.rejectedLogs = rejectedLogs;
     return this;
   }
@@ -82,7 +83,7 @@ public class IntegrationLogsInvalidLogResponse {
     return rejectedLogs;
   }
 
-  public void setRejectedLogs(List<IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs) {
+  public void setRejectedLogs(@javax.annotation.Nullable List<IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs) {
     this.rejectedLogs = rejectedLogs;
   }
 

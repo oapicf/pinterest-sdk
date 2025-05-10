@@ -49,16 +49,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * MediaTypeFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class MediaTypeFilter {
   public static final String SERIALIZED_NAME_M_E_D_I_A_T_Y_P_E = "MEDIA_TYPE";
   @SerializedName(SERIALIZED_NAME_M_E_D_I_A_T_Y_P_E)
+  @javax.annotation.Nonnull
   private CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE;
 
   public MediaTypeFilter() {
   }
 
-  public MediaTypeFilter MEDIA_TYPE(CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE) {
+  public MediaTypeFilter MEDIA_TYPE(@javax.annotation.Nonnull CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE) {
     this.MEDIA_TYPE = MEDIA_TYPE;
     return this;
   }
@@ -72,7 +73,7 @@ public class MediaTypeFilter {
     return MEDIA_TYPE;
   }
 
-  public void setMEDIATYPE(CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE) {
+  public void setMEDIATYPE(@javax.annotation.Nonnull CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE) {
     this.MEDIA_TYPE = MEDIA_TYPE;
   }
 

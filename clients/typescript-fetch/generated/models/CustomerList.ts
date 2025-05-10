@@ -131,11 +131,11 @@ export function CustomerListFromJSONTyped(json: any, ignoreDiscriminator: boolea
     };
 }
 
-  export function CustomerListToJSON(json: any): CustomerList {
-      return CustomerListToJSONTyped(json, false);
-  }
+export function CustomerListToJSON(json: any): CustomerList {
+    return CustomerListToJSONTyped(json, false);
+}
 
-  export function CustomerListToJSONTyped(value?: CustomerList | null, ignoreDiscriminator: boolean = false): any {
+export function CustomerListToJSONTyped(value?: CustomerList | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

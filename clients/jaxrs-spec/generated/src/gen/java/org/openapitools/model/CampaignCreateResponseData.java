@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CampaignCreateResponseData")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CampaignCreateResponseData   {
   private String adAccountId;
   private String name;
@@ -41,6 +41,9 @@ public class CampaignCreateResponseData   {
   private String type;
   private Boolean isCampaignBudgetOptimization;
   private CampaignSummaryStatus summaryStatus;
+
+  public CampaignCreateResponseData() {
+  }
 
   /**
    * Campaign&#39;s Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.

@@ -64,11 +64,11 @@ export function AdAccountsAudiencesSharedAccountsList200ResponseFromJSONTyped(js
     };
 }
 
-  export function AdAccountsAudiencesSharedAccountsList200ResponseToJSON(json: any): AdAccountsAudiencesSharedAccountsList200Response {
-      return AdAccountsAudiencesSharedAccountsList200ResponseToJSONTyped(json, false);
-  }
+export function AdAccountsAudiencesSharedAccountsList200ResponseToJSON(json: any): AdAccountsAudiencesSharedAccountsList200Response {
+    return AdAccountsAudiencesSharedAccountsList200ResponseToJSONTyped(json, false);
+}
 
-  export function AdAccountsAudiencesSharedAccountsList200ResponseToJSONTyped(value?: AdAccountsAudiencesSharedAccountsList200Response | null, ignoreDiscriminator: boolean = false): any {
+export function AdAccountsAudiencesSharedAccountsList200ResponseToJSONTyped(value?: AdAccountsAudiencesSharedAccountsList200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

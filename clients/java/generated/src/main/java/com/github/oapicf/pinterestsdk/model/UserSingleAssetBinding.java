@@ -51,20 +51,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * An object containing the permissions a business member/partner has on the asset.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class UserSingleAssetBinding {
   public static final String SERIALIZED_NAME_PERMISSIONS = "permissions";
   @SerializedName(SERIALIZED_NAME_PERMISSIONS)
+  @javax.annotation.Nullable
   private List<String> permissions = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_USER = "user";
   @SerializedName(SERIALIZED_NAME_USER)
+  @javax.annotation.Nullable
   private BusinessAccessUserSummary user;
 
   public UserSingleAssetBinding() {
   }
 
-  public UserSingleAssetBinding permissions(List<String> permissions) {
+  public UserSingleAssetBinding permissions(@javax.annotation.Nullable List<String> permissions) {
     this.permissions = permissions;
     return this;
   }
@@ -86,12 +88,12 @@ public class UserSingleAssetBinding {
     return permissions;
   }
 
-  public void setPermissions(List<String> permissions) {
+  public void setPermissions(@javax.annotation.Nullable List<String> permissions) {
     this.permissions = permissions;
   }
 
 
-  public UserSingleAssetBinding user(BusinessAccessUserSummary user) {
+  public UserSingleAssetBinding user(@javax.annotation.Nullable BusinessAccessUserSummary user) {
     this.user = user;
     return this;
   }
@@ -105,7 +107,7 @@ public class UserSingleAssetBinding {
     return user;
   }
 
-  public void setUser(BusinessAccessUserSummary user) {
+  public void setUser(@javax.annotation.Nullable BusinessAccessUserSummary user) {
     this.user = user;
   }
 

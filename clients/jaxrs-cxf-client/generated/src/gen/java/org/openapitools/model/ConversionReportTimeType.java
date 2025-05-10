@@ -8,9 +8,9 @@ import io.swagger.annotations.ApiModel;
  */
 public enum ConversionReportTimeType {
   
-  AD_ACTION("TIME_OF_AD_ACTION"),
+  TIME_OF_AD_ACTION("TIME_OF_AD_ACTION"),
   
-  CONVERSION("TIME_OF_CONVERSION");
+  TIME_OF_CONVERSION("TIME_OF_CONVERSION");
 
   private String value;
 

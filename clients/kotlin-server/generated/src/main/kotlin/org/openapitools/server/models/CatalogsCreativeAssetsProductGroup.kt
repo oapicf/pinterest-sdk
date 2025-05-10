@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsCreativeAssetsProductGroupFilters
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param catalogType 
@@ -24,6 +25,7 @@ import org.openapitools.server.models.CatalogsCreativeAssetsProductGroupFilters
  * @param createdAt Unix timestamp in seconds of when catalog product group was created.
  * @param updatedAt Unix timestamp in seconds of last time catalog product group was updated.
  */
+@Serializable
 data class CatalogsCreativeAssetsProductGroup(
     val catalogType: CatalogsCreativeAssetsProductGroup.CatalogType,
     /* ID of the creative assets product group. */
@@ -38,7 +40,7 @@ data class CatalogsCreativeAssetsProductGroup(
     val createdAt: kotlin.Int? = null,
     /* Unix timestamp in seconds of last time catalog product group was updated. */
     val updatedAt: kotlin.Int? = null
-) 
+)
 {
     /**
     * 

@@ -89,7 +89,7 @@ class OauthController extends Controller
         // Validate the input values
         $asserts = [];
         $asserts[] = new Assert\NotNull();
-        $asserts[] = new Assert\Choice([ "authorization_code", "refresh_token", "client_credentials" ]);
+        $asserts[] = new Assert\Choice([ 'authorization_code', 'refresh_token', 'client_credentials' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($grantType, $asserts);
         if ($response instanceof Response) {

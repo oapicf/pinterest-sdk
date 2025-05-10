@@ -50,6 +50,7 @@ class TargetingTemplateApi(basePath: kotlin.String = defaultBasePath, client: Ca
     }
 
     /**
+     * POST /ad_accounts/{ad_account_id}/targeting_templates
      * Create targeting templates
      * &lt;p&gt;Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.&lt;/p&gt;  &lt;p&gt;Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.&lt;/p&gt;
      * @param adAccountId Unique identifier of an ad account.
@@ -82,6 +83,7 @@ class TargetingTemplateApi(basePath: kotlin.String = defaultBasePath, client: Ca
     }
 
     /**
+     * POST /ad_accounts/{ad_account_id}/targeting_templates
      * Create targeting templates
      * &lt;p&gt;Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.&lt;/p&gt;  &lt;p&gt;Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.&lt;/p&gt;
      * @param adAccountId Unique identifier of an ad account.
@@ -142,6 +144,7 @@ class TargetingTemplateApi(basePath: kotlin.String = defaultBasePath, client: Ca
      }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/targeting_templates
      * List targeting templates
      * Get a list of the targeting templates in the specified &lt;code&gt;ad_account_id&lt;/code&gt;
      * @param adAccountId Unique identifier of an ad account.
@@ -178,6 +181,7 @@ class TargetingTemplateApi(basePath: kotlin.String = defaultBasePath, client: Ca
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/targeting_templates
      * List targeting templates
      * Get a list of the targeting templates in the specified &lt;code&gt;ad_account_id&lt;/code&gt;
      * @param adAccountId Unique identifier of an ad account.
@@ -245,6 +249,7 @@ class TargetingTemplateApi(basePath: kotlin.String = defaultBasePath, client: Ca
     }
 
     /**
+     * PATCH /ad_accounts/{ad_account_id}/targeting_templates
      * Update targeting templates
      * &lt;p&gt;Update the targeting template given advertiser ID and targeting template ID&lt;/p&gt;
      * @param adAccountId Unique identifier of an ad account.
@@ -276,6 +281,7 @@ class TargetingTemplateApi(basePath: kotlin.String = defaultBasePath, client: Ca
     }
 
     /**
+     * PATCH /ad_accounts/{ad_account_id}/targeting_templates
      * Update targeting templates
      * &lt;p&gt;Update the targeting template given advertiser ID and targeting template ID&lt;/p&gt;
      * @param adAccountId Unique identifier of an ad account.

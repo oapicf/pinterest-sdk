@@ -24,9 +24,9 @@ char* business_role_business_role_ToString(pinterest_rest_api_business_role__e b
 
 pinterest_rest_api_business_role__e business_role_business_role_FromString(char* business_role);
 
-//cJSON *business_role_business_role_convertToJSON(pinterest_rest_api_business_role__e business_role);
+cJSON *business_role_convertToJSON(pinterest_rest_api_business_role__e business_role);
 
-//pinterest_rest_api_business_role__e business_role_business_role_parseFromJSON(cJSON *business_roleJSON);
+pinterest_rest_api_business_role__e business_role_parseFromJSON(cJSON *business_roleJSON);
 
 #endif /* _business_role_H_ */
 

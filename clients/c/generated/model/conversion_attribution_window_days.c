@@ -22,7 +22,7 @@ pinterest_rest_api_conversion_attribution_window_days__e conversion_attribution_
     return 0;
 }
 
-cJSON *conversion_attribution_window_days_conversion_attribution_window_days_convertToJSON(pinterest_rest_api_conversion_attribution_window_days__e conversion_attribution_window_days) {
+cJSON *conversion_attribution_window_days_convertToJSON(pinterest_rest_api_conversion_attribution_window_days__e conversion_attribution_window_days) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddNumberToObject(item, "conversion_attribution_window_days", conversion_attribution_window_days) == NULL) {
         goto fail;
@@ -33,14 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_conversion_attribution_window_days__e conversion_attribution_window_days_conversion_attribution_window_days_parseFromJSON(cJSON *conversion_attribution_window_daysJSON) {
-    pinterest_rest_api_conversion_attribution_window_days__e *conversion_attribution_window_days = NULL;
-    cJSON *conversion_attribution_window_daysVar = cJSON_GetObjectItemCaseSensitive(conversion_attribution_window_daysJSON, "conversion_attribution_window_days");
-    if(!cJSON_IsNumber(conversion_attribution_window_daysVar))
-    {
-        goto end;
+pinterest_rest_api_conversion_attribution_window_days__e conversion_attribution_window_days_parseFromJSON(cJSON *conversion_attribution_window_daysJSON) {
+    if(!cJSON_IsNumber(conversion_attribution_window_daysJSON)) {
+        return 0;
     }
-    return conversion_attribution_window_daysVariable;
-end:
-    return 0;
+    return conversion_attribution_window_daysJSON->valueint;
 }

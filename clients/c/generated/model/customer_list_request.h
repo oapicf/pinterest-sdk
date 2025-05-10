@@ -26,9 +26,10 @@ typedef struct customer_list_request_t {
     user_list_type_t *list_type; // custom
     object_t *exceptions; //object
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } customer_list_request_t;
 
-customer_list_request_t *customer_list_request_create(
+__attribute__((deprecated)) customer_list_request_t *customer_list_request_create(
     char *name,
     char *records,
     user_list_type_t *list_type,

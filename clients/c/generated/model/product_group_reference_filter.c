@@ -5,7 +5,7 @@
 
 
 
-product_group_reference_filter_t *product_group_reference_filter_create(
+static product_group_reference_filter_t *product_group_reference_filter_create_internal(
     catalogs_product_group_multiple_string_criteria_t *product_group
     ) {
     product_group_reference_filter_t *product_group_reference_filter_local_var = malloc(sizeof(product_group_reference_filter_t));
@@ -14,12 +14,24 @@ product_group_reference_filter_t *product_group_reference_filter_create(
     }
     product_group_reference_filter_local_var->product_group = product_group;
 
+    product_group_reference_filter_local_var->_library_owned = 1;
     return product_group_reference_filter_local_var;
 }
 
+__attribute__((deprecated)) product_group_reference_filter_t *product_group_reference_filter_create(
+    catalogs_product_group_multiple_string_criteria_t *product_group
+    ) {
+    return product_group_reference_filter_create_internal (
+        product_group
+        );
+}
 
 void product_group_reference_filter_free(product_group_reference_filter_t *product_group_reference_filter) {
     if(NULL == product_group_reference_filter){
+        return ;
+    }
+    if(product_group_reference_filter->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "product_group_reference_filter_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -60,6 +72,9 @@ product_group_reference_filter_t *product_group_reference_filter_parseFromJSON(c
 
     // product_group_reference_filter->product_group
     cJSON *product_group = cJSON_GetObjectItemCaseSensitive(product_group_reference_filterJSON, "PRODUCT_GROUP");
+    if (cJSON_IsNull(product_group)) {
+        product_group = NULL;
+    }
     if (!product_group) {
         goto end;
     }
@@ -69,7 +84,7 @@ product_group_reference_filter_t *product_group_reference_filter_parseFromJSON(c
     product_group_local_object = object_parseFromJSON(product_group); //object
 
 
-    product_group_reference_filter_local_var = product_group_reference_filter_create (
+    product_group_reference_filter_local_var = product_group_reference_filter_create_internal (
         product_group_local_object
         );
 

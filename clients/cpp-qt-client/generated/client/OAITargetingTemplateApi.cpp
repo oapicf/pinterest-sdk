@@ -246,7 +246,7 @@ void OAITargetingTemplateApi::targetingTemplate_create(const QString &ad_account
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAITargetingTemplateApi::targetingTemplate_createCallback);
     connect(this, &OAITargetingTemplateApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -268,7 +268,7 @@ void OAITargetingTemplateApi::targetingTemplate_create(const QString &ad_account
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAITargetingTemplateApi::targetingTemplate_createCallback);
     connect(this, &OAITargetingTemplateApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -372,7 +372,7 @@ void OAITargetingTemplateApi::targetingTemplate_list(const QString &ad_account_i
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("order")).append(querySuffix).append(QUrl::toPercentEncoding(order.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("order")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(order.stringValue())));
     }
     if (include_sizing.hasValue())
     {
@@ -387,7 +387,7 @@ void OAITargetingTemplateApi::targetingTemplate_list(const QString &ad_account_i
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("include_sizing")).append(querySuffix).append(QUrl::toPercentEncoding(include_sizing.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("include_sizing")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(include_sizing.stringValue())));
     }
     if (search_query.hasValue())
     {
@@ -402,7 +402,7 @@ void OAITargetingTemplateApi::targetingTemplate_list(const QString &ad_account_i
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("search_query")).append(querySuffix).append(QUrl::toPercentEncoding(search_query.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("search_query")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(search_query.stringValue())));
     }
     if (page_size.hasValue())
     {
@@ -417,7 +417,7 @@ void OAITargetingTemplateApi::targetingTemplate_list(const QString &ad_account_i
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     if (bookmark.hasValue())
     {
@@ -432,7 +432,7 @@ void OAITargetingTemplateApi::targetingTemplate_list(const QString &ad_account_i
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -447,7 +447,7 @@ void OAITargetingTemplateApi::targetingTemplate_list(const QString &ad_account_i
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAITargetingTemplateApi::targetingTemplate_listCallback);
     connect(this, &OAITargetingTemplateApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -469,7 +469,7 @@ void OAITargetingTemplateApi::targetingTemplate_list(const QString &ad_account_i
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAITargetingTemplateApi::targetingTemplate_listCallback);
     connect(this, &OAITargetingTemplateApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -577,7 +577,7 @@ void OAITargetingTemplateApi::targetingTemplate_update(const QString &ad_account
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAITargetingTemplateApi::targetingTemplate_updateCallback);
     connect(this, &OAITargetingTemplateApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -599,7 +599,7 @@ void OAITargetingTemplateApi::targetingTemplate_update(const QString &ad_account
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAITargetingTemplateApi::targetingTemplate_updateCallback);
     connect(this, &OAITargetingTemplateApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }

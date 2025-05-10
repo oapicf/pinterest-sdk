@@ -51,8 +51,8 @@ Protected Class PinMediaSourceVideoID
 
     #tag Enum, Name = Cover_image_content_typeEnum, Type = Integer, Flags = &h0
         
-        Jpeg
-        Png
+        ImageSlashJpeg
+        ImageSlashPng
         
     #tag EndEnum
 
@@ -72,9 +72,9 @@ Protected Class PinMediaSourceVideoID
 		Shared Function Cover_image_content_typeEnumToString(value As Cover_image_content_typeEnum) As String
 		  Select Case value
 		    
-		    Case Cover_image_content_typeEnum.Jpeg
+		    Case Cover_image_content_typeEnum.ImageSlashJpeg
 		      Return "image/jpeg"
-		    Case Cover_image_content_typeEnum.Png
+		    Case Cover_image_content_typeEnum.ImageSlashPng
 		      Return "image/png"
 		    
 		  End Select

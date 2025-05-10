@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsReportFeedIngestionFilter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsReportFeedIngestionFilter   {
   public enum ReportTypeEnum {
 
@@ -68,6 +68,18 @@ public class CatalogsReportFeedIngestionFilter   {
   private String feedId;
   private String processingResultId;
 
+  public CatalogsReportFeedIngestionFilter() {
+  }
+
+  @JsonCreator
+  public CatalogsReportFeedIngestionFilter(
+    @JsonProperty(required = true, value = "report_type") ReportTypeEnum reportType,
+    @JsonProperty(required = true, value = "feed_id") String feedId
+  ) {
+    this.reportType = reportType;
+    this.feedId = feedId;
+  }
+
   /**
    **/
   public CatalogsReportFeedIngestionFilter reportType(ReportTypeEnum reportType) {
@@ -77,12 +89,12 @@ public class CatalogsReportFeedIngestionFilter   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("report_type")
+  @JsonProperty(required = true, value = "report_type")
   @NotNull public ReportTypeEnum getReportType() {
     return reportType;
   }
 
-  @JsonProperty("report_type")
+  @JsonProperty(required = true, value = "report_type")
   public void setReportType(ReportTypeEnum reportType) {
     this.reportType = reportType;
   }
@@ -97,12 +109,12 @@ public class CatalogsReportFeedIngestionFilter   {
 
   
   @ApiModelProperty(required = true, value = "ID of the feed entity.")
-  @JsonProperty("feed_id")
+  @JsonProperty(required = true, value = "feed_id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getFeedId() {
     return feedId;
   }
 
-  @JsonProperty("feed_id")
+  @JsonProperty(required = true, value = "feed_id")
   public void setFeedId(String feedId) {
     this.feedId = feedId;
   }

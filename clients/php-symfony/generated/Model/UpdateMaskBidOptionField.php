@@ -44,9 +44,9 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum UpdateMaskBidOptionField: string
 {
-        case BID = "BID";
-        case APP_TYPE_BID_MULTIPLIER_SET = "APP_TYPE_BID_MULTIPLIER_SET";
-        case PLACEMENT_BID_MULTIPLIER_SET = "PLACEMENT_BID_MULTIPLIER_SET";
+        case BID = 'BID';
+        case APP_TYPE_BID_MULTIPLIER_SET = 'APP_TYPE_BID_MULTIPLIER_SET';
+        case PLACEMENT_BID_MULTIPLIER_SET = 'PLACEMENT_BID_MULTIPLIER_SET';
 }
 
 

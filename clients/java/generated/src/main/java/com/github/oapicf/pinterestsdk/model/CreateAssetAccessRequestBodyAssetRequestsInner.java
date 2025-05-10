@@ -52,20 +52,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CreateAssetAccessRequestBodyAssetRequestsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CreateAssetAccessRequestBodyAssetRequestsInner {
   public static final String SERIALIZED_NAME_PARTNER_ID = "partner_id";
   @SerializedName(SERIALIZED_NAME_PARTNER_ID)
+  @javax.annotation.Nonnull
   private String partnerId;
 
   public static final String SERIALIZED_NAME_ASSET_ID_TO_PERMISSIONS = "asset_id_to_permissions";
   @SerializedName(SERIALIZED_NAME_ASSET_ID_TO_PERMISSIONS)
+  @javax.annotation.Nonnull
   private Map<String, List<Permissions>> assetIdToPermissions = new HashMap<>();
 
   public CreateAssetAccessRequestBodyAssetRequestsInner() {
   }
 
-  public CreateAssetAccessRequestBodyAssetRequestsInner partnerId(String partnerId) {
+  public CreateAssetAccessRequestBodyAssetRequestsInner partnerId(@javax.annotation.Nonnull String partnerId) {
     this.partnerId = partnerId;
     return this;
   }
@@ -79,12 +81,12 @@ public class CreateAssetAccessRequestBodyAssetRequestsInner {
     return partnerId;
   }
 
-  public void setPartnerId(String partnerId) {
+  public void setPartnerId(@javax.annotation.Nonnull String partnerId) {
     this.partnerId = partnerId;
   }
 
 
-  public CreateAssetAccessRequestBodyAssetRequestsInner assetIdToPermissions(Map<String, List<Permissions>> assetIdToPermissions) {
+  public CreateAssetAccessRequestBodyAssetRequestsInner assetIdToPermissions(@javax.annotation.Nonnull Map<String, List<Permissions>> assetIdToPermissions) {
     this.assetIdToPermissions = assetIdToPermissions;
     return this;
   }
@@ -106,7 +108,7 @@ public class CreateAssetAccessRequestBodyAssetRequestsInner {
     return assetIdToPermissions;
   }
 
-  public void setAssetIdToPermissions(Map<String, List<Permissions>> assetIdToPermissions) {
+  public void setAssetIdToPermissions(@javax.annotation.Nonnull Map<String, List<Permissions>> assetIdToPermissions) {
     this.assetIdToPermissions = assetIdToPermissions;
   }
 

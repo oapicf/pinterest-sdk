@@ -44,13 +44,13 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum ObjectiveType: string
 {
-        case AWARENESS = "AWARENESS";
-        case CONSIDERATION = "CONSIDERATION";
-        case VIDEO_VIEW = "VIDEO_VIEW";
-        case WEB_CONVERSION = "WEB_CONVERSION";
-        case CATALOG_SALES = "CATALOG_SALES";
-        case WEB_SESSIONS = "WEB_SESSIONS";
-        case VIDEO_COMPLETION = "VIDEO_COMPLETION";
+        case AWARENESS = 'AWARENESS';
+        case CONSIDERATION = 'CONSIDERATION';
+        case VIDEO_VIEW = 'VIDEO_VIEW';
+        case WEB_CONVERSION = 'WEB_CONVERSION';
+        case CATALOG_SALES = 'CATALOG_SALES';
+        case WEB_SESSIONS = 'WEB_SESSIONS';
+        case VIDEO_COMPLETION = 'VIDEO_COMPLETION';
 }
 
 

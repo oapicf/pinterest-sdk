@@ -48,20 +48,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * BusinessMembersAssetAccessDeleteRequestAccessesInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BusinessMembersAssetAccessDeleteRequestAccessesInner {
   public static final String SERIALIZED_NAME_ASSET_ID = "asset_id";
   @SerializedName(SERIALIZED_NAME_ASSET_ID)
+  @javax.annotation.Nonnull
   private String assetId;
 
   public static final String SERIALIZED_NAME_MEMBER_ID = "member_id";
   @SerializedName(SERIALIZED_NAME_MEMBER_ID)
+  @javax.annotation.Nonnull
   private String memberId;
 
   public BusinessMembersAssetAccessDeleteRequestAccessesInner() {
   }
 
-  public BusinessMembersAssetAccessDeleteRequestAccessesInner assetId(String assetId) {
+  public BusinessMembersAssetAccessDeleteRequestAccessesInner assetId(@javax.annotation.Nonnull String assetId) {
     this.assetId = assetId;
     return this;
   }
@@ -75,12 +77,12 @@ public class BusinessMembersAssetAccessDeleteRequestAccessesInner {
     return assetId;
   }
 
-  public void setAssetId(String assetId) {
+  public void setAssetId(@javax.annotation.Nonnull String assetId) {
     this.assetId = assetId;
   }
 
 
-  public BusinessMembersAssetAccessDeleteRequestAccessesInner memberId(String memberId) {
+  public BusinessMembersAssetAccessDeleteRequestAccessesInner memberId(@javax.annotation.Nonnull String memberId) {
     this.memberId = memberId;
     return this;
   }
@@ -94,7 +96,7 @@ public class BusinessMembersAssetAccessDeleteRequestAccessesInner {
     return memberId;
   }
 
-  public void setMemberId(String memberId) {
+  public void setMemberId(@javax.annotation.Nonnull String memberId) {
     this.memberId = memberId;
   }
 

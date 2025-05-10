@@ -61,17 +61,21 @@ export function CatalogsVerticalProductGroupCreateRequestFromJSONTyped(json: any
     }
 }
 
-export function CatalogsVerticalProductGroupCreateRequestToJSON(value?: CatalogsVerticalProductGroupCreateRequest | null): any {
+export function CatalogsVerticalProductGroupCreateRequestToJSON(json: any): any {
+    return CatalogsVerticalProductGroupCreateRequestToJSONTyped(json, false);
+}
+
+export function CatalogsVerticalProductGroupCreateRequestToJSONTyped(value?: CatalogsVerticalProductGroupCreateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
     switch (value['catalogType']) {
         case 'CREATIVE_ASSETS':
-            return CatalogsCreativeAssetsProductGroupCreateRequestToJSON(value);
+            return Object.assign({}, CatalogsCreativeAssetsProductGroupCreateRequestToJSON(value), { catalogType: 'CREATIVE_ASSETS' } as const);
         case 'HOTEL':
-            return CatalogsHotelProductGroupCreateRequestToJSON(value);
+            return Object.assign({}, CatalogsHotelProductGroupCreateRequestToJSON(value), { catalogType: 'HOTEL' } as const);
         case 'RETAIL':
-            return CatalogsRetailProductGroupCreateRequestToJSON(value);
+            return Object.assign({}, CatalogsRetailProductGroupCreateRequestToJSON(value), { catalogType: 'RETAIL' } as const);
         default:
             throw new Error(`No variant of CatalogsVerticalProductGroupCreateRequest exists with 'catalogType=${value['catalogType']}'`);
     }

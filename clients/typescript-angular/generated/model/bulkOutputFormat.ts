@@ -15,7 +15,9 @@
 export type BulkOutputFormat = 'CSV' | 'JSON';
 
 export const BulkOutputFormat = {
+
     Csv: 'CSV' as BulkOutputFormat,
+
     Json: 'JSON' as BulkOutputFormat
 };
 

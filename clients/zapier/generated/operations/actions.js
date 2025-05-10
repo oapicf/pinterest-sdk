@@ -32,7 +32,7 @@ const TargetingTemplateApi = require('../apis/TargetingTemplateApi');
 const TermsApi = require('../apis/TermsApi');
 const TermsOfServiceApi = require('../apis/TermsOfServiceApi');
 const UserAccountApi = require('../apis/UserAccountApi');
-const { triggerMiddleware, isTrigger, searchMiddleware, hasSearchRequisites, isSearchAction, isCreateAction } = require('../utils/utils');
+const { triggerMiddleware, isTrigger, searchMiddleware, hasSearchRequisites, isSearchAction, isCreateAction, createMiddleware } = require('../utils/utils');
 
 const actions = {
     [AdAccountsApi.adAccount/analytics.key]: AdAccountsApi.adAccount/analytics,
@@ -243,6 +243,6 @@ const actions = {
 
 module.exports = {
     searchActions: () => Object.entries(actions).reduce((actions, [key, value]) => isSearchAction(key) && hasSearchRequisites(value) ? {...actions, [key]: searchMiddleware(value)} : actions, {}),
-    createActions: () => Object.entries(actions).reduce((actions, [key, value]) => isCreateAction(key) ? {...actions, [key]: value} : actions, {}),
+    createActions: () => Object.entries(actions).reduce((actions, [key, value]) => isCreateAction(key) ? {...actions, [key]: createMiddleware(value)} : actions, {}),
     triggers: () => Object.entries(actions).reduce((actions, [key, value]) => isTrigger(key) ? {...actions, [key]: triggerMiddleware(value)} : actions, {}),
 }

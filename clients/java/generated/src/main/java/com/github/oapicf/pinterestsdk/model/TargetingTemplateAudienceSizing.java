@@ -49,16 +49,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Gets an audience size estimate for a set of given targeting spec data. &lt;p&gt;Returns:&lt;/p&gt; An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate. 
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TargetingTemplateAudienceSizing {
   public static final String SERIALIZED_NAME_REACH_ESTIMATE = "reach_estimate";
   @SerializedName(SERIALIZED_NAME_REACH_ESTIMATE)
+  @javax.annotation.Nullable
   private TargetingTemplateAudienceSizingReachEstimate reachEstimate;
 
   public TargetingTemplateAudienceSizing() {
   }
 
-  public TargetingTemplateAudienceSizing reachEstimate(TargetingTemplateAudienceSizingReachEstimate reachEstimate) {
+  public TargetingTemplateAudienceSizing reachEstimate(@javax.annotation.Nullable TargetingTemplateAudienceSizingReachEstimate reachEstimate) {
     this.reachEstimate = reachEstimate;
     return this;
   }
@@ -72,7 +73,7 @@ public class TargetingTemplateAudienceSizing {
     return reachEstimate;
   }
 
-  public void setReachEstimate(TargetingTemplateAudienceSizingReachEstimate reachEstimate) {
+  public void setReachEstimate(@javax.annotation.Nullable TargetingTemplateAudienceSizingReachEstimate reachEstimate) {
     this.reachEstimate = reachEstimate;
   }
 

@@ -48,7 +48,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Video ID-based media source
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMediaSourceVideoID {
   /**
    * Gets or Sets sourceType
@@ -102,10 +102,12 @@ public class PinMediaSourceVideoID {
 
   public static final String SERIALIZED_NAME_SOURCE_TYPE = "source_type";
   @SerializedName(SERIALIZED_NAME_SOURCE_TYPE)
+  @javax.annotation.Nonnull
   private SourceTypeEnum sourceType;
 
   public static final String SERIALIZED_NAME_COVER_IMAGE_URL = "cover_image_url";
   @SerializedName(SERIALIZED_NAME_COVER_IMAGE_URL)
+  @javax.annotation.Nullable
   private String coverImageUrl;
 
   /**
@@ -113,9 +115,9 @@ public class PinMediaSourceVideoID {
    */
   @JsonAdapter(CoverImageContentTypeEnum.Adapter.class)
   public enum CoverImageContentTypeEnum {
-    JPEG("image/jpeg"),
+    IMAGE_JPEG("image/jpeg"),
     
-    PNG("image/png");
+    IMAGE_PNG("image/png");
 
     private String value;
 
@@ -162,24 +164,28 @@ public class PinMediaSourceVideoID {
 
   public static final String SERIALIZED_NAME_COVER_IMAGE_CONTENT_TYPE = "cover_image_content_type";
   @SerializedName(SERIALIZED_NAME_COVER_IMAGE_CONTENT_TYPE)
+  @javax.annotation.Nullable
   private CoverImageContentTypeEnum coverImageContentType;
 
   public static final String SERIALIZED_NAME_COVER_IMAGE_DATA = "cover_image_data";
   @SerializedName(SERIALIZED_NAME_COVER_IMAGE_DATA)
+  @javax.annotation.Nullable
   private String coverImageData;
 
   public static final String SERIALIZED_NAME_MEDIA_ID = "media_id";
   @SerializedName(SERIALIZED_NAME_MEDIA_ID)
+  @javax.annotation.Nonnull
   private String mediaId;
 
   public static final String SERIALIZED_NAME_IS_STANDARD = "is_standard";
   @SerializedName(SERIALIZED_NAME_IS_STANDARD)
+  @javax.annotation.Nullable
   private Boolean isStandard = true;
 
   public PinMediaSourceVideoID() {
   }
 
-  public PinMediaSourceVideoID sourceType(SourceTypeEnum sourceType) {
+  public PinMediaSourceVideoID sourceType(@javax.annotation.Nonnull SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
     return this;
   }
@@ -193,12 +199,12 @@ public class PinMediaSourceVideoID {
     return sourceType;
   }
 
-  public void setSourceType(SourceTypeEnum sourceType) {
+  public void setSourceType(@javax.annotation.Nonnull SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
   }
 
 
-  public PinMediaSourceVideoID coverImageUrl(String coverImageUrl) {
+  public PinMediaSourceVideoID coverImageUrl(@javax.annotation.Nullable String coverImageUrl) {
     this.coverImageUrl = coverImageUrl;
     return this;
   }
@@ -212,12 +218,12 @@ public class PinMediaSourceVideoID {
     return coverImageUrl;
   }
 
-  public void setCoverImageUrl(String coverImageUrl) {
+  public void setCoverImageUrl(@javax.annotation.Nullable String coverImageUrl) {
     this.coverImageUrl = coverImageUrl;
   }
 
 
-  public PinMediaSourceVideoID coverImageContentType(CoverImageContentTypeEnum coverImageContentType) {
+  public PinMediaSourceVideoID coverImageContentType(@javax.annotation.Nullable CoverImageContentTypeEnum coverImageContentType) {
     this.coverImageContentType = coverImageContentType;
     return this;
   }
@@ -231,12 +237,12 @@ public class PinMediaSourceVideoID {
     return coverImageContentType;
   }
 
-  public void setCoverImageContentType(CoverImageContentTypeEnum coverImageContentType) {
+  public void setCoverImageContentType(@javax.annotation.Nullable CoverImageContentTypeEnum coverImageContentType) {
     this.coverImageContentType = coverImageContentType;
   }
 
 
-  public PinMediaSourceVideoID coverImageData(String coverImageData) {
+  public PinMediaSourceVideoID coverImageData(@javax.annotation.Nullable String coverImageData) {
     this.coverImageData = coverImageData;
     return this;
   }
@@ -250,12 +256,12 @@ public class PinMediaSourceVideoID {
     return coverImageData;
   }
 
-  public void setCoverImageData(String coverImageData) {
+  public void setCoverImageData(@javax.annotation.Nullable String coverImageData) {
     this.coverImageData = coverImageData;
   }
 
 
-  public PinMediaSourceVideoID mediaId(String mediaId) {
+  public PinMediaSourceVideoID mediaId(@javax.annotation.Nonnull String mediaId) {
     this.mediaId = mediaId;
     return this;
   }
@@ -269,12 +275,12 @@ public class PinMediaSourceVideoID {
     return mediaId;
   }
 
-  public void setMediaId(String mediaId) {
+  public void setMediaId(@javax.annotation.Nonnull String mediaId) {
     this.mediaId = mediaId;
   }
 
 
-  public PinMediaSourceVideoID isStandard(Boolean isStandard) {
+  public PinMediaSourceVideoID isStandard(@javax.annotation.Nullable Boolean isStandard) {
     this.isStandard = isStandard;
     return this;
   }
@@ -288,7 +294,7 @@ public class PinMediaSourceVideoID {
     return isStandard;
   }
 
-  public void setIsStandard(Boolean isStandard) {
+  public void setIsStandard(@javax.annotation.Nullable Boolean isStandard) {
     this.isStandard = isStandard;
   }
 

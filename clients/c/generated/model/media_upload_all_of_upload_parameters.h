@@ -28,9 +28,10 @@ typedef struct media_upload_all_of_upload_parameters_t {
     char *x_amz_credential; // string
     char *content_type; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } media_upload_all_of_upload_parameters_t;
 
-media_upload_all_of_upload_parameters_t *media_upload_all_of_upload_parameters_create(
+__attribute__((deprecated)) media_upload_all_of_upload_parameters_t *media_upload_all_of_upload_parameters_create(
     char *x_amz_date,
     char *x_amz_signature,
     char *x_amz_security_token,

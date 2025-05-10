@@ -22,7 +22,7 @@ pinterest_rest_api_top_video_pins_analytics_response_SORTBY_e top_video_pins_ana
     return 0;
 }
 
-top_video_pins_analytics_response_t *top_video_pins_analytics_response_create(
+static top_video_pins_analytics_response_t *top_video_pins_analytics_response_create_internal(
     top_pins_analytics_response_date_availability_t *date_availability,
     list_t *pins,
     pinterest_rest_api_top_video_pins_analytics_response_SORTBY_e sort_by
@@ -35,12 +35,28 @@ top_video_pins_analytics_response_t *top_video_pins_analytics_response_create(
     top_video_pins_analytics_response_local_var->pins = pins;
     top_video_pins_analytics_response_local_var->sort_by = sort_by;
 
+    top_video_pins_analytics_response_local_var->_library_owned = 1;
     return top_video_pins_analytics_response_local_var;
 }
 
+__attribute__((deprecated)) top_video_pins_analytics_response_t *top_video_pins_analytics_response_create(
+    top_pins_analytics_response_date_availability_t *date_availability,
+    list_t *pins,
+    pinterest_rest_api_top_video_pins_analytics_response_SORTBY_e sort_by
+    ) {
+    return top_video_pins_analytics_response_create_internal (
+        date_availability,
+        pins,
+        sort_by
+        );
+}
 
 void top_video_pins_analytics_response_free(top_video_pins_analytics_response_t *top_video_pins_analytics_response) {
     if(NULL == top_video_pins_analytics_response){
+        return ;
+    }
+    if(top_video_pins_analytics_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "top_video_pins_analytics_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -96,7 +112,7 @@ cJSON *top_video_pins_analytics_response_convertToJSON(top_video_pins_analytics_
 
     // top_video_pins_analytics_response->sort_by
     if(top_video_pins_analytics_response->sort_by != pinterest_rest_api_top_video_pins_analytics_response_SORTBY_NULL) {
-    if(cJSON_AddStringToObject(item, "sort_by", sort_bytop_video_pins_analytics_response_ToString(top_video_pins_analytics_response->sort_by)) == NULL)
+    if(cJSON_AddStringToObject(item, "sort_by", top_video_pins_analytics_response_sort_by_ToString(top_video_pins_analytics_response->sort_by)) == NULL)
     {
     goto fail; //Enum
     }
@@ -122,12 +138,18 @@ top_video_pins_analytics_response_t *top_video_pins_analytics_response_parseFrom
 
     // top_video_pins_analytics_response->date_availability
     cJSON *date_availability = cJSON_GetObjectItemCaseSensitive(top_video_pins_analytics_responseJSON, "date_availability");
+    if (cJSON_IsNull(date_availability)) {
+        date_availability = NULL;
+    }
     if (date_availability) { 
     date_availability_local_nonprim = top_pins_analytics_response_date_availability_parseFromJSON(date_availability); //nonprimitive
     }
 
     // top_video_pins_analytics_response->pins
     cJSON *pins = cJSON_GetObjectItemCaseSensitive(top_video_pins_analytics_responseJSON, "pins");
+    if (cJSON_IsNull(pins)) {
+        pins = NULL;
+    }
     if (pins) { 
     cJSON *pins_local_nonprimitive = NULL;
     if(!cJSON_IsArray(pins)){
@@ -149,6 +171,9 @@ top_video_pins_analytics_response_t *top_video_pins_analytics_response_parseFrom
 
     // top_video_pins_analytics_response->sort_by
     cJSON *sort_by = cJSON_GetObjectItemCaseSensitive(top_video_pins_analytics_responseJSON, "sort_by");
+    if (cJSON_IsNull(sort_by)) {
+        sort_by = NULL;
+    }
     pinterest_rest_api_top_video_pins_analytics_response_SORTBY_e sort_byVariable;
     if (sort_by) { 
     if(!cJSON_IsString(sort_by))
@@ -159,7 +184,7 @@ top_video_pins_analytics_response_t *top_video_pins_analytics_response_parseFrom
     }
 
 
-    top_video_pins_analytics_response_local_var = top_video_pins_analytics_response_create (
+    top_video_pins_analytics_response_local_var = top_video_pins_analytics_response_create_internal (
         date_availability ? date_availability_local_nonprim : NULL,
         pins ? pinsList : NULL,
         sort_by ? sort_byVariable : pinterest_rest_api_top_video_pins_analytics_response_SORTBY_NULL

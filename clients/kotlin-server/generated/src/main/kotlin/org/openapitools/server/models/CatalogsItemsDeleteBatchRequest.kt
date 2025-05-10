@@ -16,6 +16,7 @@ import org.openapitools.server.models.CatalogsItemsRequestLanguage
 import org.openapitools.server.models.Country
 import org.openapitools.server.models.ItemDeleteBatchRecord
 
+import kotlinx.serialization.Serializable
 /**
  * Request object to delete catalogs items
  * @param country 
@@ -23,11 +24,12 @@ import org.openapitools.server.models.ItemDeleteBatchRecord
  * @param operation 
  * @param items Array with catalogs items
  */
+@Serializable
 data class CatalogsItemsDeleteBatchRequest(
     val country: Country,
     val language: CatalogsItemsRequestLanguage,
     val operation: BatchOperation,
     /* Array with catalogs items */
     val items: kotlin.collections.List<ItemDeleteBatchRecord>
-) 
+)
 

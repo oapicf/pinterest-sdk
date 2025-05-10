@@ -48,7 +48,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * A request to receive a client token.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class OauthAccessTokenRequestClientCredentials {
   /**
    * Gets or Sets grantType
@@ -106,16 +106,18 @@ public class OauthAccessTokenRequestClientCredentials {
 
   public static final String SERIALIZED_NAME_GRANT_TYPE = "grant_type";
   @SerializedName(SERIALIZED_NAME_GRANT_TYPE)
+  @javax.annotation.Nonnull
   private GrantTypeEnum grantType;
 
   public static final String SERIALIZED_NAME_SCOPE = "scope";
   @SerializedName(SERIALIZED_NAME_SCOPE)
+  @javax.annotation.Nonnull
   private String scope;
 
   public OauthAccessTokenRequestClientCredentials() {
   }
 
-  public OauthAccessTokenRequestClientCredentials grantType(GrantTypeEnum grantType) {
+  public OauthAccessTokenRequestClientCredentials grantType(@javax.annotation.Nonnull GrantTypeEnum grantType) {
     this.grantType = grantType;
     return this;
   }
@@ -129,12 +131,12 @@ public class OauthAccessTokenRequestClientCredentials {
     return grantType;
   }
 
-  public void setGrantType(GrantTypeEnum grantType) {
+  public void setGrantType(@javax.annotation.Nonnull GrantTypeEnum grantType) {
     this.grantType = grantType;
   }
 
 
-  public OauthAccessTokenRequestClientCredentials scope(String scope) {
+  public OauthAccessTokenRequestClientCredentials scope(@javax.annotation.Nonnull String scope) {
     this.scope = scope;
     return this;
   }
@@ -148,7 +150,7 @@ public class OauthAccessTokenRequestClientCredentials {
     return scope;
   }
 
-  public void setScope(String scope) {
+  public void setScope(@javax.annotation.Nonnull String scope) {
     this.scope = scope;
   }
 

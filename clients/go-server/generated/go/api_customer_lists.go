@@ -138,7 +138,7 @@ func (c *CustomerListsAPIController) CustomerListsCreate(w http.ResponseWriter, 
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	customerListRequestParam := CustomerListRequest{}
+	var customerListRequestParam CustomerListRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&customerListRequestParam); err != nil {
@@ -199,7 +199,7 @@ func (c *CustomerListsAPIController) CustomerListsUpdate(w http.ResponseWriter, 
 		c.errorHandler(w, r, &RequiredError{"customer_list_id"}, nil)
 		return
 	}
-	customerListUpdateRequestParam := CustomerListUpdateRequest{}
+	var customerListUpdateRequestParam CustomerListUpdateRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&customerListUpdateRequestParam); err != nil {

@@ -140,8 +140,8 @@ class BusinessAccessInviteApiSimulation extends Simulation {
         .queryParam("is_member","${is_member}")
         .queryParam("invite_status","${invite_status}")
         .queryParam("page_size","${page_size}")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("invite_type","${invite_type}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scngetInvites with warm up and reach a constant rate for entire duration

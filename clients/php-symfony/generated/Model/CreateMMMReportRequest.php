@@ -86,7 +86,7 @@ class CreateMMMReportRequest
      * @Type("string")
     */
     #[Assert\NotNull]
-    #[Assert\Choice(["DAY", "WEEK"])]
+    #[Assert\Choice(['DAY', 'WEEK'])]
     #[Assert\Type("string")]
     protected ?string $granularity = null;
 
@@ -98,7 +98,7 @@ class CreateMMMReportRequest
      * @Type("string")
     */
     #[Assert\NotNull]
-    #[Assert\Choice(["CAMPAIGN_TARGETING", "AD_GROUP_TARGETING"])]
+    #[Assert\Choice(['CAMPAIGN_TARGETING', 'AD_GROUP_TARGETING'])]
     #[Assert\Type("string")]
     protected ?string $level = null;
 
@@ -151,7 +151,7 @@ class CreateMMMReportRequest
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->reportName = array_key_exists('reportName', $data) ? $data['reportName'] : $this->reportName;

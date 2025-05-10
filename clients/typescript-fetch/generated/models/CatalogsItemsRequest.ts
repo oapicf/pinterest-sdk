@@ -89,11 +89,11 @@ export function CatalogsItemsRequestFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function CatalogsItemsRequestToJSON(json: any): CatalogsItemsRequest {
-      return CatalogsItemsRequestToJSONTyped(json, false);
-  }
+export function CatalogsItemsRequestToJSON(json: any): CatalogsItemsRequest {
+    return CatalogsItemsRequestToJSONTyped(json, false);
+}
 
-  export function CatalogsItemsRequestToJSONTyped(value?: CatalogsItemsRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsItemsRequestToJSONTyped(value?: CatalogsItemsRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

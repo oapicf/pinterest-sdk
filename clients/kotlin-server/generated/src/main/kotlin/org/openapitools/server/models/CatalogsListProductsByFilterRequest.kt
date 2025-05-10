@@ -17,11 +17,13 @@ import org.openapitools.server.models.CatalogsProductGroupFilters
 import org.openapitools.server.models.CatalogsVerticalsListProductsByCatalogBasedFilterRequest
 import org.openapitools.server.models.Country
 
+import kotlinx.serialization.Serializable
 /**
  * Request object to list products for a given product group filter.
  * @param feedId Catalog Feed id pertaining to the catalog product group filter.
  * @param filters 
  */
+@Serializable
 data class CatalogsListProductsByFilterRequest(
     /* Catalog Feed id pertaining to the catalog product group filter. */
     val feedId: kotlin.String,
@@ -31,5 +33,5 @@ data class CatalogsListProductsByFilterRequest(
     val catalogId: kotlin.String,
     val country: Country,
     val locale: CatalogsLocale
-) 
+)
 

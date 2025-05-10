@@ -15,13 +15,21 @@
 export type PinPromotionSummaryStatus = 'APPROVED' | 'PAUSED' | 'PENDING' | 'REJECTED' | 'ADVERTISER_DISABLED' | 'ARCHIVED' | 'DRAFT' | 'DELETED_DRAFT';
 
 export const PinPromotionSummaryStatus = {
+
     Approved: 'APPROVED' as PinPromotionSummaryStatus,
+
     Paused: 'PAUSED' as PinPromotionSummaryStatus,
+
     Pending: 'PENDING' as PinPromotionSummaryStatus,
+
     Rejected: 'REJECTED' as PinPromotionSummaryStatus,
+
     AdvertiserDisabled: 'ADVERTISER_DISABLED' as PinPromotionSummaryStatus,
+
     Archived: 'ARCHIVED' as PinPromotionSummaryStatus,
+
     Draft: 'DRAFT' as PinPromotionSummaryStatus,
+
     DeletedDraft: 'DELETED_DRAFT' as PinPromotionSummaryStatus
 };
 

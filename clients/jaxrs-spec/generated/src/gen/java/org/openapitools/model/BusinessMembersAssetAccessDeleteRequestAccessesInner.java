@@ -16,10 +16,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("business_members_asset_access_delete_request_accesses_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BusinessMembersAssetAccessDeleteRequestAccessesInner   {
   private String assetId;
   private String memberId;
+
+  public BusinessMembersAssetAccessDeleteRequestAccessesInner() {
+  }
+
+  @JsonCreator
+  public BusinessMembersAssetAccessDeleteRequestAccessesInner(
+    @JsonProperty(required = true, value = "asset_id") String assetId,
+    @JsonProperty(required = true, value = "member_id") String memberId
+  ) {
+    this.assetId = assetId;
+    this.memberId = memberId;
+  }
 
   /**
    * Id of the asset on which to remove member permissions.
@@ -31,12 +43,12 @@ public class BusinessMembersAssetAccessDeleteRequestAccessesInner   {
 
   
   @ApiModelProperty(example = "549755885175", required = true, value = "Id of the asset on which to remove member permissions.")
-  @JsonProperty("asset_id")
+  @JsonProperty(required = true, value = "asset_id")
   @NotNull  @Pattern(regexp="^\\d+$") @Size(max=25)public String getAssetId() {
     return assetId;
   }
 
-  @JsonProperty("asset_id")
+  @JsonProperty(required = true, value = "asset_id")
   public void setAssetId(String assetId) {
     this.assetId = assetId;
   }
@@ -51,12 +63,12 @@ public class BusinessMembersAssetAccessDeleteRequestAccessesInner   {
 
   
   @ApiModelProperty(example = "140943737684417", required = true, value = "Unique identifier of the member on which to perform the asset permission removal")
-  @JsonProperty("member_id")
+  @JsonProperty(required = true, value = "member_id")
   @NotNull  @Pattern(regexp="^\\d+$") @Size(max=25)public String getMemberId() {
     return memberId;
   }
 
-  @JsonProperty("member_id")
+  @JsonProperty(required = true, value = "member_id")
   public void setMemberId(String memberId) {
     this.memberId = memberId;
   }

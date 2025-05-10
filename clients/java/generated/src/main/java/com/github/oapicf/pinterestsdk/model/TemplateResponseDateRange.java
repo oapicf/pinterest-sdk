@@ -52,24 +52,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * TemplateResponseDateRange
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TemplateResponseDateRange {
   public static final String SERIALIZED_NAME_DYNAMIC_DATE_RANGE = "dynamic_date_range";
   @SerializedName(SERIALIZED_NAME_DYNAMIC_DATE_RANGE)
+  @javax.annotation.Nullable
   private TemplateResponseDateRangeDynamicDateRange dynamicDateRange;
 
   public static final String SERIALIZED_NAME_RELATIVE_DATE_RANGE = "relative_date_range";
   @SerializedName(SERIALIZED_NAME_RELATIVE_DATE_RANGE)
+  @javax.annotation.Nullable
   private TemplateResponseDateRangeRelativeDateRange relativeDateRange;
 
   public static final String SERIALIZED_NAME_ABSOLUTE_DATE_RANGE = "absolute_date_range";
   @SerializedName(SERIALIZED_NAME_ABSOLUTE_DATE_RANGE)
+  @javax.annotation.Nullable
   private TemplateResponseDateRangeAbsoluteDateRange absoluteDateRange;
 
   public TemplateResponseDateRange() {
   }
 
-  public TemplateResponseDateRange dynamicDateRange(TemplateResponseDateRangeDynamicDateRange dynamicDateRange) {
+  public TemplateResponseDateRange dynamicDateRange(@javax.annotation.Nullable TemplateResponseDateRangeDynamicDateRange dynamicDateRange) {
     this.dynamicDateRange = dynamicDateRange;
     return this;
   }
@@ -83,12 +86,12 @@ public class TemplateResponseDateRange {
     return dynamicDateRange;
   }
 
-  public void setDynamicDateRange(TemplateResponseDateRangeDynamicDateRange dynamicDateRange) {
+  public void setDynamicDateRange(@javax.annotation.Nullable TemplateResponseDateRangeDynamicDateRange dynamicDateRange) {
     this.dynamicDateRange = dynamicDateRange;
   }
 
 
-  public TemplateResponseDateRange relativeDateRange(TemplateResponseDateRangeRelativeDateRange relativeDateRange) {
+  public TemplateResponseDateRange relativeDateRange(@javax.annotation.Nullable TemplateResponseDateRangeRelativeDateRange relativeDateRange) {
     this.relativeDateRange = relativeDateRange;
     return this;
   }
@@ -102,12 +105,12 @@ public class TemplateResponseDateRange {
     return relativeDateRange;
   }
 
-  public void setRelativeDateRange(TemplateResponseDateRangeRelativeDateRange relativeDateRange) {
+  public void setRelativeDateRange(@javax.annotation.Nullable TemplateResponseDateRangeRelativeDateRange relativeDateRange) {
     this.relativeDateRange = relativeDateRange;
   }
 
 
-  public TemplateResponseDateRange absoluteDateRange(TemplateResponseDateRangeAbsoluteDateRange absoluteDateRange) {
+  public TemplateResponseDateRange absoluteDateRange(@javax.annotation.Nullable TemplateResponseDateRangeAbsoluteDateRange absoluteDateRange) {
     this.absoluteDateRange = absoluteDateRange;
     return this;
   }
@@ -121,7 +124,7 @@ public class TemplateResponseDateRange {
     return absoluteDateRange;
   }
 
-  public void setAbsoluteDateRange(TemplateResponseDateRangeAbsoluteDateRange absoluteDateRange) {
+  public void setAbsoluteDateRange(@javax.annotation.Nullable TemplateResponseDateRangeAbsoluteDateRange absoluteDateRange) {
     this.absoluteDateRange = absoluteDateRange;
   }
 

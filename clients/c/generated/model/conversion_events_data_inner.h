@@ -41,9 +41,10 @@ typedef struct conversion_events_data_inner_t {
     int wifi; //boolean
     char *language; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } conversion_events_data_inner_t;
 
-conversion_events_data_inner_t *conversion_events_data_inner_create(
+__attribute__((deprecated)) conversion_events_data_inner_t *conversion_events_data_inner_create(
     char *event_name,
     char *action_source,
     long event_time,

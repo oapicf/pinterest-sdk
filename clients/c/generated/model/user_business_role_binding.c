@@ -5,7 +5,7 @@
 
 
 
-user_business_role_binding_t *user_business_role_binding_create(
+static user_business_role_binding_t *user_business_role_binding_create_internal(
     business_member_assets_summary_t *assets_summary,
     list_t *business_roles,
     business_access_user_summary_t *created_by_business,
@@ -28,12 +28,38 @@ user_business_role_binding_t *user_business_role_binding_create(
     user_business_role_binding_local_var->is_shared_partner = is_shared_partner;
     user_business_role_binding_local_var->user = user;
 
+    user_business_role_binding_local_var->_library_owned = 1;
     return user_business_role_binding_local_var;
 }
 
+__attribute__((deprecated)) user_business_role_binding_t *user_business_role_binding_create(
+    business_member_assets_summary_t *assets_summary,
+    list_t *business_roles,
+    business_access_user_summary_t *created_by_business,
+    business_access_user_summary_t *created_by_user,
+    int created_time,
+    char *id,
+    int is_shared_partner,
+    business_access_user_summary_t *user
+    ) {
+    return user_business_role_binding_create_internal (
+        assets_summary,
+        business_roles,
+        created_by_business,
+        created_by_user,
+        created_time,
+        id,
+        is_shared_partner,
+        user
+        );
+}
 
 void user_business_role_binding_free(user_business_role_binding_t *user_business_role_binding) {
     if(NULL == user_business_role_binding){
+        return ;
+    }
+    if(user_business_role_binding->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "user_business_role_binding_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -92,7 +118,7 @@ cJSON *user_business_role_binding_convertToJSON(user_business_role_binding_t *us
 
     listEntry_t *business_rolesListEntry;
     list_ForEach(business_rolesListEntry, user_business_role_binding->business_roles) {
-    if(cJSON_AddStringToObject(business_roles, "", (char*)business_rolesListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(business_roles, "", business_rolesListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -191,12 +217,18 @@ user_business_role_binding_t *user_business_role_binding_parseFromJSON(cJSON *us
 
     // user_business_role_binding->assets_summary
     cJSON *assets_summary = cJSON_GetObjectItemCaseSensitive(user_business_role_bindingJSON, "assets_summary");
+    if (cJSON_IsNull(assets_summary)) {
+        assets_summary = NULL;
+    }
     if (assets_summary) { 
     assets_summary_local_nonprim = business_member_assets_summary_parseFromJSON(assets_summary); //nonprimitive
     }
 
     // user_business_role_binding->business_roles
     cJSON *business_roles = cJSON_GetObjectItemCaseSensitive(user_business_role_bindingJSON, "business_roles");
+    if (cJSON_IsNull(business_roles)) {
+        business_roles = NULL;
+    }
     if (business_roles) { 
     cJSON *business_roles_local = NULL;
     if(!cJSON_IsArray(business_roles)) {
@@ -216,18 +248,27 @@ user_business_role_binding_t *user_business_role_binding_parseFromJSON(cJSON *us
 
     // user_business_role_binding->created_by_business
     cJSON *created_by_business = cJSON_GetObjectItemCaseSensitive(user_business_role_bindingJSON, "created_by_business");
+    if (cJSON_IsNull(created_by_business)) {
+        created_by_business = NULL;
+    }
     if (created_by_business) { 
     created_by_business_local_nonprim = business_access_user_summary_parseFromJSON(created_by_business); //nonprimitive
     }
 
     // user_business_role_binding->created_by_user
     cJSON *created_by_user = cJSON_GetObjectItemCaseSensitive(user_business_role_bindingJSON, "created_by_user");
+    if (cJSON_IsNull(created_by_user)) {
+        created_by_user = NULL;
+    }
     if (created_by_user) { 
     created_by_user_local_nonprim = business_access_user_summary_parseFromJSON(created_by_user); //nonprimitive
     }
 
     // user_business_role_binding->created_time
     cJSON *created_time = cJSON_GetObjectItemCaseSensitive(user_business_role_bindingJSON, "created_time");
+    if (cJSON_IsNull(created_time)) {
+        created_time = NULL;
+    }
     if (created_time) { 
     if(!cJSON_IsNumber(created_time))
     {
@@ -237,6 +278,9 @@ user_business_role_binding_t *user_business_role_binding_parseFromJSON(cJSON *us
 
     // user_business_role_binding->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(user_business_role_bindingJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -246,6 +290,9 @@ user_business_role_binding_t *user_business_role_binding_parseFromJSON(cJSON *us
 
     // user_business_role_binding->is_shared_partner
     cJSON *is_shared_partner = cJSON_GetObjectItemCaseSensitive(user_business_role_bindingJSON, "is_shared_partner");
+    if (cJSON_IsNull(is_shared_partner)) {
+        is_shared_partner = NULL;
+    }
     if (is_shared_partner) { 
     if(!cJSON_IsBool(is_shared_partner))
     {
@@ -255,12 +302,15 @@ user_business_role_binding_t *user_business_role_binding_parseFromJSON(cJSON *us
 
     // user_business_role_binding->user
     cJSON *user = cJSON_GetObjectItemCaseSensitive(user_business_role_bindingJSON, "user");
+    if (cJSON_IsNull(user)) {
+        user = NULL;
+    }
     if (user) { 
     user_local_nonprim = business_access_user_summary_parseFromJSON(user); //nonprimitive
     }
 
 
-    user_business_role_binding_local_var = user_business_role_binding_create (
+    user_business_role_binding_local_var = user_business_role_binding_create_internal (
         assets_summary ? assets_summary_local_nonprim : NULL,
         business_roles ? business_rolesList : NULL,
         created_by_business ? created_by_business_local_nonprim : NULL,

@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.PinUpdateCarouselSlotsInner
 
+import kotlinx.serialization.Serializable
 /**
  * Pin fields for updates
  * @param altText Pin's alternative text.
@@ -24,6 +25,7 @@ import org.openapitools.server.models.PinUpdateCarouselSlotsInner
  * @param carouselSlots Carousel Pin slots data.
  * @param note Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
  */
+@Serializable
 data class PinUpdate(
     /* Pin's alternative text. */
     val altText: kotlin.String? = null,
@@ -41,5 +43,5 @@ data class PinUpdate(
     val carouselSlots: kotlin.collections.List<PinUpdateCarouselSlotsInner>? = null,
     /* Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>. */
     val note: kotlin.String? = null
-) 
+)
 

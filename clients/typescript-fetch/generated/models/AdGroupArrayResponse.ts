@@ -56,11 +56,11 @@ export function AdGroupArrayResponseFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function AdGroupArrayResponseToJSON(json: any): AdGroupArrayResponse {
-      return AdGroupArrayResponseToJSONTyped(json, false);
-  }
+export function AdGroupArrayResponseToJSON(json: any): AdGroupArrayResponse {
+    return AdGroupArrayResponseToJSONTyped(json, false);
+}
 
-  export function AdGroupArrayResponseToJSONTyped(value?: AdGroupArrayResponse | null, ignoreDiscriminator: boolean = false): any {
+export function AdGroupArrayResponseToJSONTyped(value?: AdGroupArrayResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

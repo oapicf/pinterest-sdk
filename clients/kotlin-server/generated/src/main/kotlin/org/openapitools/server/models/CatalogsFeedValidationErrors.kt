@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param FETCH_ERROR Pinterest couldn't download your feed.
@@ -48,6 +49,7 @@ package org.openapitools.server.models
  * @param LIST_PRICE_INVALID Some items have list price formatting errors in their product metadata, those items will not be published.
  * @param PRICE_CANNOT_BE_DETERMINED Some items were not published because price cannot be determined. The price, list price, and sale price are all different, so those items will not be published.
  */
+@Serializable
 data class CatalogsFeedValidationErrors(
     /* Pinterest couldn't download your feed. */
     val FETCH_ERROR: kotlin.Int? = null,
@@ -115,5 +117,5 @@ data class CatalogsFeedValidationErrors(
     val LIST_PRICE_INVALID: kotlin.Int? = null,
     /* Some items were not published because price cannot be determined. The price, list price, and sale price are all different, so those items will not be published. */
     val PRICE_CANNOT_BE_DETERMINED: kotlin.Int? = null
-) 
+)
 

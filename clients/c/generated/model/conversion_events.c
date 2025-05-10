@@ -5,7 +5,7 @@
 
 
 
-conversion_events_t *conversion_events_create(
+static conversion_events_t *conversion_events_create_internal(
     list_t *data
     ) {
     conversion_events_t *conversion_events_local_var = malloc(sizeof(conversion_events_t));
@@ -14,12 +14,24 @@ conversion_events_t *conversion_events_create(
     }
     conversion_events_local_var->data = data;
 
+    conversion_events_local_var->_library_owned = 1;
     return conversion_events_local_var;
 }
 
+__attribute__((deprecated)) conversion_events_t *conversion_events_create(
+    list_t *data
+    ) {
+    return conversion_events_create_internal (
+        data
+        );
+}
 
 void conversion_events_free(conversion_events_t *conversion_events) {
     if(NULL == conversion_events){
+        return ;
+    }
+    if(conversion_events->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "conversion_events_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -73,6 +85,9 @@ conversion_events_t *conversion_events_parseFromJSON(cJSON *conversion_eventsJSO
 
     // conversion_events->data
     cJSON *data = cJSON_GetObjectItemCaseSensitive(conversion_eventsJSON, "data");
+    if (cJSON_IsNull(data)) {
+        data = NULL;
+    }
     if (!data) {
         goto end;
     }
@@ -96,7 +111,7 @@ conversion_events_t *conversion_events_parseFromJSON(cJSON *conversion_eventsJSO
     }
 
 
-    conversion_events_local_var = conversion_events_create (
+    conversion_events_local_var = conversion_events_create_internal (
         dataList
         );
 

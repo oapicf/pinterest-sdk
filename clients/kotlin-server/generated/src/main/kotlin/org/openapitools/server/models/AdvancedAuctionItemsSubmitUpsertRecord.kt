@@ -16,6 +16,7 @@ import org.openapitools.server.models.Country
 import org.openapitools.server.models.Language
 import org.openapitools.server.models.UpdateMaskBidOptionField
 
+import kotlinx.serialization.Serializable
 /**
  * Object describing an item bid option upsert operation
  * @param itemId The catalog retail item id in the merchant namespace
@@ -24,6 +25,7 @@ import org.openapitools.server.models.UpdateMaskBidOptionField
  * @param bidOptions 
  * @param updateMask The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`.
  */
+@Serializable
 data class AdvancedAuctionItemsSubmitUpsertRecord(
     /* The catalog retail item id in the merchant namespace */
     val itemId: kotlin.String,
@@ -31,6 +33,6 @@ data class AdvancedAuctionItemsSubmitUpsertRecord(
     val language: Language,
     val bidOptions: AdvancedAuctionBidOptions,
     /* The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`. */
-    val updateMask: kotlin.collections.List<UpdateMaskBidOptionField>
-) 
+    val updateMask: kotlin.collections.List<UpdateMaskBidOptionField>?
+)
 

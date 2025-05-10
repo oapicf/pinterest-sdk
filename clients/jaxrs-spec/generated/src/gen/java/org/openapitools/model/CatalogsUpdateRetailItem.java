@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "An item to be updated")
 @JsonTypeName("CatalogsUpdateRetailItem")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsUpdateRetailItem   {
   private String itemId;
   public enum OperationEnum {
@@ -77,6 +77,20 @@ public class CatalogsUpdateRetailItem   {
   private UpdatableItemAttributes attributes;
   private @Valid List<UpdateMaskFieldType> updateMask;
 
+  public CatalogsUpdateRetailItem() {
+  }
+
+  @JsonCreator
+  public CatalogsUpdateRetailItem(
+    @JsonProperty(required = true, value = "item_id") String itemId,
+    @JsonProperty(required = true, value = "operation") OperationEnum operation,
+    @JsonProperty(required = true, value = "attributes") UpdatableItemAttributes attributes
+  ) {
+    this.itemId = itemId;
+    this.operation = operation;
+    this.attributes = attributes;
+  }
+
   /**
    * The catalog item id in the merchant namespace
    **/
@@ -87,12 +101,12 @@ public class CatalogsUpdateRetailItem   {
 
   
   @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog item id in the merchant namespace")
-  @JsonProperty("item_id")
+  @JsonProperty(required = true, value = "item_id")
   @NotNull public String getItemId() {
     return itemId;
   }
 
-  @JsonProperty("item_id")
+  @JsonProperty(required = true, value = "item_id")
   public void setItemId(String itemId) {
     this.itemId = itemId;
   }
@@ -106,12 +120,12 @@ public class CatalogsUpdateRetailItem   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("operation")
+  @JsonProperty(required = true, value = "operation")
   @NotNull public OperationEnum getOperation() {
     return operation;
   }
 
-  @JsonProperty("operation")
+  @JsonProperty(required = true, value = "operation")
   public void setOperation(OperationEnum operation) {
     this.operation = operation;
   }
@@ -125,12 +139,12 @@ public class CatalogsUpdateRetailItem   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("attributes")
+  @JsonProperty(required = true, value = "attributes")
   @NotNull @Valid public UpdatableItemAttributes getAttributes() {
     return attributes;
   }
 
-  @JsonProperty("attributes")
+  @JsonProperty(required = true, value = "attributes")
   public void setAttributes(UpdatableItemAttributes attributes) {
     this.attributes = attributes;
   }

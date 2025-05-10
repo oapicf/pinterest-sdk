@@ -12,18 +12,20 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Image URL-based media source
  * @param sourceType 
  * @param url 
  * @param isStandard Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
  */
+@Serializable
 data class PinMediaSourceImageURL(
     val sourceType: PinMediaSourceImageURL.SourceType,
     val url: kotlin.String,
     /* Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users. */
     val isStandard: kotlin.Boolean? = true
-) 
+)
 {
     /**
     * 

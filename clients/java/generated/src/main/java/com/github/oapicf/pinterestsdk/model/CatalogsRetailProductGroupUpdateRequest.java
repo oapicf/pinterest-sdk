@@ -52,7 +52,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Request object for updating a retail product group.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsRetailProductGroupUpdateRequest {
   /**
    * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
@@ -106,32 +106,38 @@ public class CatalogsRetailProductGroupUpdateRequest {
 
   public static final String SERIALIZED_NAME_CATALOG_TYPE = "catalog_type";
   @SerializedName(SERIALIZED_NAME_CATALOG_TYPE)
+  @javax.annotation.Nullable
   private CatalogTypeEnum catalogType;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nullable
   private String description;
 
   public static final String SERIALIZED_NAME_FILTERS = "filters";
   @SerializedName(SERIALIZED_NAME_FILTERS)
+  @javax.annotation.Nullable
   private CatalogsProductGroupFiltersRequest filters;
 
   public static final String SERIALIZED_NAME_COUNTRY = "country";
   @SerializedName(SERIALIZED_NAME_COUNTRY)
+  @javax.annotation.Nullable
   private Country country;
 
   public static final String SERIALIZED_NAME_LOCALE = "locale";
   @SerializedName(SERIALIZED_NAME_LOCALE)
+  @javax.annotation.Nullable
   private CatalogsLocale locale;
 
   public CatalogsRetailProductGroupUpdateRequest() {
   }
 
-  public CatalogsRetailProductGroupUpdateRequest catalogType(CatalogTypeEnum catalogType) {
+  public CatalogsRetailProductGroupUpdateRequest catalogType(@javax.annotation.Nullable CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -145,12 +151,12 @@ public class CatalogsRetailProductGroupUpdateRequest {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogTypeEnum catalogType) {
+  public void setCatalogType(@javax.annotation.Nullable CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
 
-  public CatalogsRetailProductGroupUpdateRequest name(String name) {
+  public CatalogsRetailProductGroupUpdateRequest name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -164,12 +170,12 @@ public class CatalogsRetailProductGroupUpdateRequest {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public CatalogsRetailProductGroupUpdateRequest description(String description) {
+  public CatalogsRetailProductGroupUpdateRequest description(@javax.annotation.Nullable String description) {
     this.description = description;
     return this;
   }
@@ -183,12 +189,12 @@ public class CatalogsRetailProductGroupUpdateRequest {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
 
-  public CatalogsRetailProductGroupUpdateRequest filters(CatalogsProductGroupFiltersRequest filters) {
+  public CatalogsRetailProductGroupUpdateRequest filters(@javax.annotation.Nullable CatalogsProductGroupFiltersRequest filters) {
     this.filters = filters;
     return this;
   }
@@ -202,12 +208,12 @@ public class CatalogsRetailProductGroupUpdateRequest {
     return filters;
   }
 
-  public void setFilters(CatalogsProductGroupFiltersRequest filters) {
+  public void setFilters(@javax.annotation.Nullable CatalogsProductGroupFiltersRequest filters) {
     this.filters = filters;
   }
 
 
-  public CatalogsRetailProductGroupUpdateRequest country(Country country) {
+  public CatalogsRetailProductGroupUpdateRequest country(@javax.annotation.Nullable Country country) {
     this.country = country;
     return this;
   }
@@ -221,12 +227,12 @@ public class CatalogsRetailProductGroupUpdateRequest {
     return country;
   }
 
-  public void setCountry(Country country) {
+  public void setCountry(@javax.annotation.Nullable Country country) {
     this.country = country;
   }
 
 
-  public CatalogsRetailProductGroupUpdateRequest locale(CatalogsLocale locale) {
+  public CatalogsRetailProductGroupUpdateRequest locale(@javax.annotation.Nullable CatalogsLocale locale) {
     this.locale = locale;
     return this;
   }
@@ -240,7 +246,7 @@ public class CatalogsRetailProductGroupUpdateRequest {
     return locale;
   }
 
-  public void setLocale(CatalogsLocale locale) {
+  public void setLocale(@javax.annotation.Nullable CatalogsLocale locale) {
     this.locale = locale;
   }
 

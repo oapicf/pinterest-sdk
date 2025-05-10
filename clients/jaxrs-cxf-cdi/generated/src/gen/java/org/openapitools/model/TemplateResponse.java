@@ -91,7 +91,7 @@ public enum ColumnsEnum {
 
 public enum ConversionReportTimeTypeEnum {
 
-    @JsonProperty("TIME_OF_AD_ACTION") AD_ACTION(String.valueOf("TIME_OF_AD_ACTION")), @JsonProperty("TIME_OF_CONVERSION") CONVERSION(String.valueOf("TIME_OF_CONVERSION"));
+    @JsonProperty("TIME_OF_AD_ACTION") TIME_OF_AD_ACTION(String.valueOf("TIME_OF_AD_ACTION")), @JsonProperty("TIME_OF_CONVERSION") TIME_OF_CONVERSION(String.valueOf("TIME_OF_CONVERSION"));
 
 
     private String value;
@@ -130,7 +130,7 @@ public enum ConversionReportTimeTypeEnum {
 
 public enum CreationSourceEnum {
 
-    @JsonProperty("ADS_API") API(String.valueOf("ADS_API")), @JsonProperty("ADS_MANAGER_REPORTING_PAGE") MANAGER_REPORTING_PAGE(String.valueOf("ADS_MANAGER_REPORTING_PAGE")), @JsonProperty("ADS_MANAGER_REPORT_BUILDER") MANAGER_REPORT_BUILDER(String.valueOf("ADS_MANAGER_REPORT_BUILDER"));
+    @JsonProperty("ADS_API") ADS_API(String.valueOf("ADS_API")), @JsonProperty("ADS_MANAGER_REPORTING_PAGE") ADS_MANAGER_REPORTING_PAGE(String.valueOf("ADS_MANAGER_REPORTING_PAGE")), @JsonProperty("ADS_MANAGER_REPORT_BUILDER") ADS_MANAGER_REPORT_BUILDER(String.valueOf("ADS_MANAGER_REPORT_BUILDER"));
 
 
     private String value;

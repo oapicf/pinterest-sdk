@@ -44,14 +44,14 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum CampaignSummaryStatus: string
 {
-        case RUNNING = "RUNNING";
-        case PAUSED = "PAUSED";
-        case NOT_STARTED = "NOT_STARTED";
-        case COMPLETED = "COMPLETED";
-        case ADVERTISER_DISABLED = "ADVERTISER_DISABLED";
-        case ARCHIVED = "ARCHIVED";
-        case DRAFT = "DRAFT";
-        case DELETED_DRAFT = "DELETED_DRAFT";
+        case RUNNING = 'RUNNING';
+        case PAUSED = 'PAUSED';
+        case NOT_STARTED = 'NOT_STARTED';
+        case COMPLETED = 'COMPLETED';
+        case ADVERTISER_DISABLED = 'ADVERTISER_DISABLED';
+        case ARCHIVED = 'ARCHIVED';
+        case DRAFT = 'DRAFT';
+        case DELETED_DRAFT = 'DELETED_DRAFT';
 }
 
 

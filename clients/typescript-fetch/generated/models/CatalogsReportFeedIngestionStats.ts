@@ -109,11 +109,11 @@ export function CatalogsReportFeedIngestionStatsFromJSONTyped(json: any, ignoreD
     };
 }
 
-  export function CatalogsReportFeedIngestionStatsToJSON(json: any): CatalogsReportFeedIngestionStats {
-      return CatalogsReportFeedIngestionStatsToJSONTyped(json, false);
-  }
+export function CatalogsReportFeedIngestionStatsToJSON(json: any): CatalogsReportFeedIngestionStats {
+    return CatalogsReportFeedIngestionStatsToJSONTyped(json, false);
+}
 
-  export function CatalogsReportFeedIngestionStatsToJSONTyped(value?: CatalogsReportFeedIngestionStats | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsReportFeedIngestionStatsToJSONTyped(value?: CatalogsReportFeedIngestionStats | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

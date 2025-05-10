@@ -49,32 +49,37 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdAccountCreateSubscriptionRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdAccountCreateSubscriptionRequest {
   public static final String SERIALIZED_NAME_WEBHOOK_URL = "webhook_url";
   @SerializedName(SERIALIZED_NAME_WEBHOOK_URL)
+  @javax.annotation.Nonnull
   private String webhookUrl;
 
   public static final String SERIALIZED_NAME_LEAD_FORM_ID = "lead_form_id";
   @SerializedName(SERIALIZED_NAME_LEAD_FORM_ID)
+  @javax.annotation.Nullable
   private String leadFormId;
 
   public static final String SERIALIZED_NAME_PARTNER_ACCESS_TOKEN = "partner_access_token";
   @SerializedName(SERIALIZED_NAME_PARTNER_ACCESS_TOKEN)
+  @javax.annotation.Nullable
   private String partnerAccessToken;
 
   public static final String SERIALIZED_NAME_PARTNER_REFRESH_TOKEN = "partner_refresh_token";
   @SerializedName(SERIALIZED_NAME_PARTNER_REFRESH_TOKEN)
+  @javax.annotation.Nullable
   private String partnerRefreshToken;
 
   public static final String SERIALIZED_NAME_PARTNER_METADATA = "partner_metadata";
   @SerializedName(SERIALIZED_NAME_PARTNER_METADATA)
+  @javax.annotation.Nullable
   private AdAccountCreateSubscriptionRequestPartnerMetadata partnerMetadata;
 
   public AdAccountCreateSubscriptionRequest() {
   }
 
-  public AdAccountCreateSubscriptionRequest webhookUrl(String webhookUrl) {
+  public AdAccountCreateSubscriptionRequest webhookUrl(@javax.annotation.Nonnull String webhookUrl) {
     this.webhookUrl = webhookUrl;
     return this;
   }
@@ -88,12 +93,12 @@ public class AdAccountCreateSubscriptionRequest {
     return webhookUrl;
   }
 
-  public void setWebhookUrl(String webhookUrl) {
+  public void setWebhookUrl(@javax.annotation.Nonnull String webhookUrl) {
     this.webhookUrl = webhookUrl;
   }
 
 
-  public AdAccountCreateSubscriptionRequest leadFormId(String leadFormId) {
+  public AdAccountCreateSubscriptionRequest leadFormId(@javax.annotation.Nullable String leadFormId) {
     this.leadFormId = leadFormId;
     return this;
   }
@@ -107,12 +112,12 @@ public class AdAccountCreateSubscriptionRequest {
     return leadFormId;
   }
 
-  public void setLeadFormId(String leadFormId) {
+  public void setLeadFormId(@javax.annotation.Nullable String leadFormId) {
     this.leadFormId = leadFormId;
   }
 
 
-  public AdAccountCreateSubscriptionRequest partnerAccessToken(String partnerAccessToken) {
+  public AdAccountCreateSubscriptionRequest partnerAccessToken(@javax.annotation.Nullable String partnerAccessToken) {
     this.partnerAccessToken = partnerAccessToken;
     return this;
   }
@@ -126,12 +131,12 @@ public class AdAccountCreateSubscriptionRequest {
     return partnerAccessToken;
   }
 
-  public void setPartnerAccessToken(String partnerAccessToken) {
+  public void setPartnerAccessToken(@javax.annotation.Nullable String partnerAccessToken) {
     this.partnerAccessToken = partnerAccessToken;
   }
 
 
-  public AdAccountCreateSubscriptionRequest partnerRefreshToken(String partnerRefreshToken) {
+  public AdAccountCreateSubscriptionRequest partnerRefreshToken(@javax.annotation.Nullable String partnerRefreshToken) {
     this.partnerRefreshToken = partnerRefreshToken;
     return this;
   }
@@ -145,12 +150,12 @@ public class AdAccountCreateSubscriptionRequest {
     return partnerRefreshToken;
   }
 
-  public void setPartnerRefreshToken(String partnerRefreshToken) {
+  public void setPartnerRefreshToken(@javax.annotation.Nullable String partnerRefreshToken) {
     this.partnerRefreshToken = partnerRefreshToken;
   }
 
 
-  public AdAccountCreateSubscriptionRequest partnerMetadata(AdAccountCreateSubscriptionRequestPartnerMetadata partnerMetadata) {
+  public AdAccountCreateSubscriptionRequest partnerMetadata(@javax.annotation.Nullable AdAccountCreateSubscriptionRequestPartnerMetadata partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
     return this;
   }
@@ -164,7 +169,7 @@ public class AdAccountCreateSubscriptionRequest {
     return partnerMetadata;
   }
 
-  public void setPartnerMetadata(AdAccountCreateSubscriptionRequestPartnerMetadata partnerMetadata) {
+  public void setPartnerMetadata(@javax.annotation.Nullable AdAccountCreateSubscriptionRequestPartnerMetadata partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
   }
 

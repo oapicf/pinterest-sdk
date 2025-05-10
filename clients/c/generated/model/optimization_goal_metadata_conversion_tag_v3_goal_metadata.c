@@ -39,7 +39,7 @@ pinterest_rest_api_optimization_goal_metadata_conversion_tag_v3_goal_metadata_LE
     return 0;
 }
 
-optimization_goal_metadata_conversion_tag_v3_goal_metadata_t *optimization_goal_metadata_conversion_tag_v3_goal_metadata_create(
+static optimization_goal_metadata_conversion_tag_v3_goal_metadata_t *optimization_goal_metadata_conversion_tag_v3_goal_metadata_create_internal(
     optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_t *attribution_windows,
     pinterest_rest_api_optimization_goal_metadata_conversion_tag_v3_goal_metadata_CONVERSIONEVENT_e conversion_event,
     char *conversion_tag_id,
@@ -58,12 +58,34 @@ optimization_goal_metadata_conversion_tag_v3_goal_metadata_t *optimization_goal_
     optimization_goal_metadata_conversion_tag_v3_goal_metadata_local_var->is_roas_optimized = is_roas_optimized;
     optimization_goal_metadata_conversion_tag_v3_goal_metadata_local_var->learning_mode_type = learning_mode_type;
 
+    optimization_goal_metadata_conversion_tag_v3_goal_metadata_local_var->_library_owned = 1;
     return optimization_goal_metadata_conversion_tag_v3_goal_metadata_local_var;
 }
 
+__attribute__((deprecated)) optimization_goal_metadata_conversion_tag_v3_goal_metadata_t *optimization_goal_metadata_conversion_tag_v3_goal_metadata_create(
+    optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_t *attribution_windows,
+    pinterest_rest_api_optimization_goal_metadata_conversion_tag_v3_goal_metadata_CONVERSIONEVENT_e conversion_event,
+    char *conversion_tag_id,
+    char *cpa_goal_value_in_micro_currency,
+    int is_roas_optimized,
+    pinterest_rest_api_optimization_goal_metadata_conversion_tag_v3_goal_metadata_LEARNINGMODETYPE_e learning_mode_type
+    ) {
+    return optimization_goal_metadata_conversion_tag_v3_goal_metadata_create_internal (
+        attribution_windows,
+        conversion_event,
+        conversion_tag_id,
+        cpa_goal_value_in_micro_currency,
+        is_roas_optimized,
+        learning_mode_type
+        );
+}
 
 void optimization_goal_metadata_conversion_tag_v3_goal_metadata_free(optimization_goal_metadata_conversion_tag_v3_goal_metadata_t *optimization_goal_metadata_conversion_tag_v3_goal_metadata) {
     if(NULL == optimization_goal_metadata_conversion_tag_v3_goal_metadata){
+        return ;
+    }
+    if(optimization_goal_metadata_conversion_tag_v3_goal_metadata->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "optimization_goal_metadata_conversion_tag_v3_goal_metadata_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -100,7 +122,7 @@ cJSON *optimization_goal_metadata_conversion_tag_v3_goal_metadata_convertToJSON(
 
     // optimization_goal_metadata_conversion_tag_v3_goal_metadata->conversion_event
     if(optimization_goal_metadata_conversion_tag_v3_goal_metadata->conversion_event != pinterest_rest_api_optimization_goal_metadata_conversion_tag_v3_goal_metadata_CONVERSIONEVENT_NULL) {
-    if(cJSON_AddStringToObject(item, "conversion_event", conversion_eventoptimization_goal_metadata_conversion_tag_v3_goal_metadata_ToString(optimization_goal_metadata_conversion_tag_v3_goal_metadata->conversion_event)) == NULL)
+    if(cJSON_AddStringToObject(item, "conversion_event", optimization_goal_metadata_conversion_tag_v3_goal_metadata_conversion_event_ToString(optimization_goal_metadata_conversion_tag_v3_goal_metadata->conversion_event)) == NULL)
     {
     goto fail; //Enum
     }
@@ -133,7 +155,7 @@ cJSON *optimization_goal_metadata_conversion_tag_v3_goal_metadata_convertToJSON(
 
     // optimization_goal_metadata_conversion_tag_v3_goal_metadata->learning_mode_type
     if(optimization_goal_metadata_conversion_tag_v3_goal_metadata->learning_mode_type != pinterest_rest_api_optimization_goal_metadata_conversion_tag_v3_goal_metadata_LEARNINGMODETYPE_NULL) {
-    if(cJSON_AddStringToObject(item, "learning_mode_type", learning_mode_typeoptimization_goal_metadata_conversion_tag_v3_goal_metadata_ToString(optimization_goal_metadata_conversion_tag_v3_goal_metadata->learning_mode_type)) == NULL)
+    if(cJSON_AddStringToObject(item, "learning_mode_type", optimization_goal_metadata_conversion_tag_v3_goal_metadata_learning_mode_type_ToString(optimization_goal_metadata_conversion_tag_v3_goal_metadata->learning_mode_type)) == NULL)
     {
     goto fail; //Enum
     }
@@ -156,12 +178,18 @@ optimization_goal_metadata_conversion_tag_v3_goal_metadata_t *optimization_goal_
 
     // optimization_goal_metadata_conversion_tag_v3_goal_metadata->attribution_windows
     cJSON *attribution_windows = cJSON_GetObjectItemCaseSensitive(optimization_goal_metadata_conversion_tag_v3_goal_metadataJSON, "attribution_windows");
+    if (cJSON_IsNull(attribution_windows)) {
+        attribution_windows = NULL;
+    }
     if (attribution_windows) { 
     attribution_windows_local_nonprim = optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_parseFromJSON(attribution_windows); //nonprimitive
     }
 
     // optimization_goal_metadata_conversion_tag_v3_goal_metadata->conversion_event
     cJSON *conversion_event = cJSON_GetObjectItemCaseSensitive(optimization_goal_metadata_conversion_tag_v3_goal_metadataJSON, "conversion_event");
+    if (cJSON_IsNull(conversion_event)) {
+        conversion_event = NULL;
+    }
     pinterest_rest_api_optimization_goal_metadata_conversion_tag_v3_goal_metadata_CONVERSIONEVENT_e conversion_eventVariable;
     if (conversion_event) { 
     if(!cJSON_IsString(conversion_event))
@@ -173,6 +201,9 @@ optimization_goal_metadata_conversion_tag_v3_goal_metadata_t *optimization_goal_
 
     // optimization_goal_metadata_conversion_tag_v3_goal_metadata->conversion_tag_id
     cJSON *conversion_tag_id = cJSON_GetObjectItemCaseSensitive(optimization_goal_metadata_conversion_tag_v3_goal_metadataJSON, "conversion_tag_id");
+    if (cJSON_IsNull(conversion_tag_id)) {
+        conversion_tag_id = NULL;
+    }
     if (conversion_tag_id) { 
     if(!cJSON_IsString(conversion_tag_id) && !cJSON_IsNull(conversion_tag_id))
     {
@@ -182,6 +213,9 @@ optimization_goal_metadata_conversion_tag_v3_goal_metadata_t *optimization_goal_
 
     // optimization_goal_metadata_conversion_tag_v3_goal_metadata->cpa_goal_value_in_micro_currency
     cJSON *cpa_goal_value_in_micro_currency = cJSON_GetObjectItemCaseSensitive(optimization_goal_metadata_conversion_tag_v3_goal_metadataJSON, "cpa_goal_value_in_micro_currency");
+    if (cJSON_IsNull(cpa_goal_value_in_micro_currency)) {
+        cpa_goal_value_in_micro_currency = NULL;
+    }
     if (cpa_goal_value_in_micro_currency) { 
     if(!cJSON_IsString(cpa_goal_value_in_micro_currency) && !cJSON_IsNull(cpa_goal_value_in_micro_currency))
     {
@@ -191,6 +225,9 @@ optimization_goal_metadata_conversion_tag_v3_goal_metadata_t *optimization_goal_
 
     // optimization_goal_metadata_conversion_tag_v3_goal_metadata->is_roas_optimized
     cJSON *is_roas_optimized = cJSON_GetObjectItemCaseSensitive(optimization_goal_metadata_conversion_tag_v3_goal_metadataJSON, "is_roas_optimized");
+    if (cJSON_IsNull(is_roas_optimized)) {
+        is_roas_optimized = NULL;
+    }
     if (is_roas_optimized) { 
     if(!cJSON_IsBool(is_roas_optimized))
     {
@@ -200,6 +237,9 @@ optimization_goal_metadata_conversion_tag_v3_goal_metadata_t *optimization_goal_
 
     // optimization_goal_metadata_conversion_tag_v3_goal_metadata->learning_mode_type
     cJSON *learning_mode_type = cJSON_GetObjectItemCaseSensitive(optimization_goal_metadata_conversion_tag_v3_goal_metadataJSON, "learning_mode_type");
+    if (cJSON_IsNull(learning_mode_type)) {
+        learning_mode_type = NULL;
+    }
     pinterest_rest_api_optimization_goal_metadata_conversion_tag_v3_goal_metadata_LEARNINGMODETYPE_e learning_mode_typeVariable;
     if (learning_mode_type) { 
     if(!cJSON_IsString(learning_mode_type))
@@ -210,7 +250,7 @@ optimization_goal_metadata_conversion_tag_v3_goal_metadata_t *optimization_goal_
     }
 
 
-    optimization_goal_metadata_conversion_tag_v3_goal_metadata_local_var = optimization_goal_metadata_conversion_tag_v3_goal_metadata_create (
+    optimization_goal_metadata_conversion_tag_v3_goal_metadata_local_var = optimization_goal_metadata_conversion_tag_v3_goal_metadata_create_internal (
         attribution_windows ? attribution_windows_local_nonprim : NULL,
         conversion_event ? conversion_eventVariable : pinterest_rest_api_optimization_goal_metadata_conversion_tag_v3_goal_metadata_CONVERSIONEVENT_NULL,
         conversion_tag_id && !cJSON_IsNull(conversion_tag_id) ? strdup(conversion_tag_id->valuestring) : NULL,

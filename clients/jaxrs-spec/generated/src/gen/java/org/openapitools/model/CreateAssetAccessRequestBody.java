@@ -21,9 +21,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "An object containing a list of all the asset access requests")
 @JsonTypeName("CreateAssetAccessRequestBody")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CreateAssetAccessRequestBody   {
   private @Valid List<@Valid CreateAssetAccessRequestBodyAssetRequestsInner> assetRequests = new ArrayList<>();
+
+  public CreateAssetAccessRequestBody() {
+  }
+
+  @JsonCreator
+  public CreateAssetAccessRequestBody(
+    @JsonProperty(required = true, value = "asset_requests") List<@Valid CreateAssetAccessRequestBodyAssetRequestsInner> assetRequests
+  ) {
+    this.assetRequests = assetRequests;
+  }
 
   /**
    **/
@@ -34,12 +44,12 @@ public class CreateAssetAccessRequestBody   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("asset_requests")
+  @JsonProperty(required = true, value = "asset_requests")
   @NotNull @Valid  @Size(min=1,max=100)public List<@Valid CreateAssetAccessRequestBodyAssetRequestsInner> getAssetRequests() {
     return assetRequests;
   }
 
-  @JsonProperty("asset_requests")
+  @JsonProperty(required = true, value = "asset_requests")
   public void setAssetRequests(List<@Valid CreateAssetAccessRequestBodyAssetRequestsInner> assetRequests) {
     this.assetRequests = assetRequests;
   }

@@ -76,11 +76,11 @@ export function CatalogsHotelAddressFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function CatalogsHotelAddressToJSON(json: any): CatalogsHotelAddress {
-      return CatalogsHotelAddressToJSONTyped(json, false);
-  }
+export function CatalogsHotelAddressToJSON(json: any): CatalogsHotelAddress {
+    return CatalogsHotelAddressToJSONTyped(json, false);
+}
 
-  export function CatalogsHotelAddressToJSONTyped(value?: CatalogsHotelAddress | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsHotelAddressToJSONTyped(value?: CatalogsHotelAddress | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

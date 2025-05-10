@@ -50,7 +50,7 @@ class PinMediaSourceImagesURL
      * @SerializedName("source_type")
      * @Type("string")
     */
-    #[Assert\Choice(["multiple_image_urls"])]
+    #[Assert\Choice(['multiple_image_urls'])]
     #[Assert\Type("string")]
     protected ?string $sourceType = null;
 
@@ -83,7 +83,7 @@ class PinMediaSourceImagesURL
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->sourceType = array_key_exists('sourceType', $data) ? $data['sourceType'] : $this->sourceType;

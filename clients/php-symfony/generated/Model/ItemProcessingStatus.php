@@ -44,9 +44,9 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum ItemProcessingStatus: string
 {
-        case SUCCESS = "SUCCESS";
-        case FAILURE = "FAILURE";
-        case PROCESSING = "PROCESSING";
+        case SUCCESS = 'SUCCESS';
+        case FAILURE = 'FAILURE';
+        case PROCESSING = 'PROCESSING';
 }
 
 

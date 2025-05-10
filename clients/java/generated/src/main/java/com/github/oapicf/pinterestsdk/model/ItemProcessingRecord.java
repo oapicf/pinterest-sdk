@@ -52,28 +52,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Object describing an item processing record
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ItemProcessingRecord {
   public static final String SERIALIZED_NAME_ITEM_ID = "item_id";
   @SerializedName(SERIALIZED_NAME_ITEM_ID)
+  @javax.annotation.Nullable
   private String itemId;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
+  @javax.annotation.Nullable
   private List<ItemValidationEvent> errors = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_WARNINGS = "warnings";
   @SerializedName(SERIALIZED_NAME_WARNINGS)
+  @javax.annotation.Nullable
   private List<ItemValidationEvent> warnings = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private ItemProcessingStatus status;
 
   public ItemProcessingRecord() {
   }
 
-  public ItemProcessingRecord itemId(String itemId) {
+  public ItemProcessingRecord itemId(@javax.annotation.Nullable String itemId) {
     this.itemId = itemId;
     return this;
   }
@@ -87,12 +91,12 @@ public class ItemProcessingRecord {
     return itemId;
   }
 
-  public void setItemId(String itemId) {
+  public void setItemId(@javax.annotation.Nullable String itemId) {
     this.itemId = itemId;
   }
 
 
-  public ItemProcessingRecord errors(List<ItemValidationEvent> errors) {
+  public ItemProcessingRecord errors(@javax.annotation.Nullable List<ItemValidationEvent> errors) {
     this.errors = errors;
     return this;
   }
@@ -114,12 +118,12 @@ public class ItemProcessingRecord {
     return errors;
   }
 
-  public void setErrors(List<ItemValidationEvent> errors) {
+  public void setErrors(@javax.annotation.Nullable List<ItemValidationEvent> errors) {
     this.errors = errors;
   }
 
 
-  public ItemProcessingRecord warnings(List<ItemValidationEvent> warnings) {
+  public ItemProcessingRecord warnings(@javax.annotation.Nullable List<ItemValidationEvent> warnings) {
     this.warnings = warnings;
     return this;
   }
@@ -141,12 +145,12 @@ public class ItemProcessingRecord {
     return warnings;
   }
 
-  public void setWarnings(List<ItemValidationEvent> warnings) {
+  public void setWarnings(@javax.annotation.Nullable List<ItemValidationEvent> warnings) {
     this.warnings = warnings;
   }
 
 
-  public ItemProcessingRecord status(ItemProcessingStatus status) {
+  public ItemProcessingRecord status(@javax.annotation.Nullable ItemProcessingStatus status) {
     this.status = status;
     return this;
   }
@@ -160,7 +164,7 @@ public class ItemProcessingRecord {
     return status;
   }
 
-  public void setStatus(ItemProcessingStatus status) {
+  public void setStatus(@javax.annotation.Nullable ItemProcessingStatus status) {
     this.status = status;
   }
 

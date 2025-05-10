@@ -49,188 +49,232 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsItemValidationWarnings
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsItemValidationWarnings {
   public static final String SERIALIZED_NAME_A_D_L_I_N_K_F_O_R_M_A_T_W_A_R_N_I_N_G = "AD_LINK_FORMAT_WARNING";
   @SerializedName(SERIALIZED_NAME_A_D_L_I_N_K_F_O_R_M_A_T_W_A_R_N_I_N_G)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails AD_LINK_FORMAT_WARNING;
 
   public static final String SERIALIZED_NAME_A_D_L_I_N_K_S_A_M_E_A_S_L_I_N_K = "AD_LINK_SAME_AS_LINK";
   @SerializedName(SERIALIZED_NAME_A_D_L_I_N_K_S_A_M_E_A_S_L_I_N_K)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails AD_LINK_SAME_AS_LINK;
 
   public static final String SERIALIZED_NAME_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_L_I_N_K_L_E_N_G_T_H_T_O_O_L_O_N_G = "ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG";
   @SerializedName(SERIALIZED_NAME_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_L_I_N_K_L_E_N_G_T_H_T_O_O_L_O_N_G)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
 
   public static final String SERIALIZED_NAME_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_L_I_N_K_W_A_R_N_I_N_G = "ADDITIONAL_IMAGE_LINK_WARNING";
   @SerializedName(SERIALIZED_NAME_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_L_I_N_K_W_A_R_N_I_N_G)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_WARNING;
 
   public static final String SERIALIZED_NAME_A_D_W_O_R_D_S_F_O_R_M_A_T_W_A_R_N_I_N_G = "ADWORDS_FORMAT_WARNING";
   @SerializedName(SERIALIZED_NAME_A_D_W_O_R_D_S_F_O_R_M_A_T_W_A_R_N_I_N_G)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails ADWORDS_FORMAT_WARNING;
 
   public static final String SERIALIZED_NAME_A_D_W_O_R_D_S_S_A_M_E_A_S_L_I_N_K = "ADWORDS_SAME_AS_LINK";
   @SerializedName(SERIALIZED_NAME_A_D_W_O_R_D_S_S_A_M_E_A_S_L_I_N_K)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails ADWORDS_SAME_AS_LINK;
 
   public static final String SERIALIZED_NAME_A_G_E_G_R_O_U_P_I_N_V_A_L_I_D = "AGE_GROUP_INVALID";
   @SerializedName(SERIALIZED_NAME_A_G_E_G_R_O_U_P_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails AGE_GROUP_INVALID;
 
   public static final String SERIALIZED_NAME_S_I_Z_E_S_Y_S_T_E_M_I_N_V_A_L_I_D = "SIZE_SYSTEM_INVALID";
   @SerializedName(SERIALIZED_NAME_S_I_Z_E_S_Y_S_T_E_M_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails SIZE_SYSTEM_INVALID;
 
   public static final String SERIALIZED_NAME_A_N_D_R_O_I_D_D_E_E_P_L_I_N_K_I_N_V_A_L_I_D = "ANDROID_DEEP_LINK_INVALID";
   @SerializedName(SERIALIZED_NAME_A_N_D_R_O_I_D_D_E_E_P_L_I_N_K_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails ANDROID_DEEP_LINK_INVALID;
 
   public static final String SERIALIZED_NAME_A_V_A_I_L_A_B_I_L_I_T_Y_D_A_T_E_I_N_V_A_L_I_D = "AVAILABILITY_DATE_INVALID";
   @SerializedName(SERIALIZED_NAME_A_V_A_I_L_A_B_I_L_I_T_Y_D_A_T_E_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails AVAILABILITY_DATE_INVALID;
 
   public static final String SERIALIZED_NAME_C_O_U_N_T_R_Y_D_O_E_S_N_O_T_M_A_P_T_O_C_U_R_R_E_N_C_Y = "COUNTRY_DOES_NOT_MAP_TO_CURRENCY";
   @SerializedName(SERIALIZED_NAME_C_O_U_N_T_R_Y_D_O_E_S_N_O_T_M_A_P_T_O_C_U_R_R_E_N_C_Y)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
 
   public static final String SERIALIZED_NAME_C_U_S_T_O_M_L_A_B_E_L_L_E_N_G_T_H_T_O_O_L_O_N_G = "CUSTOM_LABEL_LENGTH_TOO_LONG";
   @SerializedName(SERIALIZED_NAME_C_U_S_T_O_M_L_A_B_E_L_L_E_N_G_T_H_T_O_O_L_O_N_G)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails CUSTOM_LABEL_LENGTH_TOO_LONG;
 
   public static final String SERIALIZED_NAME_D_E_S_C_R_I_P_T_I_O_N_L_E_N_G_T_H_T_O_O_L_O_N_G = "DESCRIPTION_LENGTH_TOO_LONG";
   @SerializedName(SERIALIZED_NAME_D_E_S_C_R_I_P_T_I_O_N_L_E_N_G_T_H_T_O_O_L_O_N_G)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails DESCRIPTION_LENGTH_TOO_LONG;
 
   public static final String SERIALIZED_NAME_E_X_P_I_R_A_T_I_O_N_D_A_T_E_I_N_V_A_L_I_D = "EXPIRATION_DATE_INVALID";
   @SerializedName(SERIALIZED_NAME_E_X_P_I_R_A_T_I_O_N_D_A_T_E_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails EXPIRATION_DATE_INVALID;
 
   public static final String SERIALIZED_NAME_G_E_N_D_E_R_I_N_V_A_L_I_D = "GENDER_INVALID";
   @SerializedName(SERIALIZED_NAME_G_E_N_D_E_R_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails GENDER_INVALID;
 
   public static final String SERIALIZED_NAME_G_T_I_N_I_N_V_A_L_I_D = "GTIN_INVALID";
   @SerializedName(SERIALIZED_NAME_G_T_I_N_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails GTIN_INVALID;
 
   public static final String SERIALIZED_NAME_I_M_A_G_E_L_I_N_K_W_A_R_N_I_N_G = "IMAGE_LINK_WARNING";
   @SerializedName(SERIALIZED_NAME_I_M_A_G_E_L_I_N_K_W_A_R_N_I_N_G)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails IMAGE_LINK_WARNING;
 
   public static final String SERIALIZED_NAME_I_O_S_D_E_E_P_L_I_N_K_I_N_V_A_L_I_D = "IOS_DEEP_LINK_INVALID";
   @SerializedName(SERIALIZED_NAME_I_O_S_D_E_E_P_L_I_N_K_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails IOS_DEEP_LINK_INVALID;
 
   public static final String SERIALIZED_NAME_I_S_B_U_N_D_L_E_I_N_V_A_L_I_D = "IS_BUNDLE_INVALID";
   @SerializedName(SERIALIZED_NAME_I_S_B_U_N_D_L_E_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails IS_BUNDLE_INVALID;
 
   public static final String SERIALIZED_NAME_I_T_E_M_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_D_O_W_N_L_O_A_D_F_A_I_L_U_R_E = "ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE";
   @SerializedName(SERIALIZED_NAME_I_T_E_M_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_D_O_W_N_L_O_A_D_F_A_I_L_U_R_E)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
 
   public static final String SERIALIZED_NAME_L_I_N_K_F_O_R_M_A_T_W_A_R_N_I_N_G = "LINK_FORMAT_WARNING";
   @SerializedName(SERIALIZED_NAME_L_I_N_K_F_O_R_M_A_T_W_A_R_N_I_N_G)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails LINK_FORMAT_WARNING;
 
   public static final String SERIALIZED_NAME_M_I_N_A_D_P_R_I_C_E_I_N_V_A_L_I_D = "MIN_AD_PRICE_INVALID";
   @SerializedName(SERIALIZED_NAME_M_I_N_A_D_P_R_I_C_E_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails MIN_AD_PRICE_INVALID;
 
   public static final String SERIALIZED_NAME_M_P_N_I_N_V_A_L_I_D = "MPN_INVALID";
   @SerializedName(SERIALIZED_NAME_M_P_N_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails MPN_INVALID;
 
   public static final String SERIALIZED_NAME_M_U_L_T_I_P_A_C_K_I_N_V_A_L_I_D = "MULTIPACK_INVALID";
   @SerializedName(SERIALIZED_NAME_M_U_L_T_I_P_A_C_K_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails MULTIPACK_INVALID;
 
   public static final String SERIALIZED_NAME_O_P_T_I_O_N_A_L_C_O_N_D_I_T_I_O_N_I_N_V_A_L_I_D = "OPTIONAL_CONDITION_INVALID";
   @SerializedName(SERIALIZED_NAME_O_P_T_I_O_N_A_L_C_O_N_D_I_T_I_O_N_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails OPTIONAL_CONDITION_INVALID;
 
   public static final String SERIALIZED_NAME_O_P_T_I_O_N_A_L_C_O_N_D_I_T_I_O_N_M_I_S_S_I_N_G = "OPTIONAL_CONDITION_MISSING";
   @SerializedName(SERIALIZED_NAME_O_P_T_I_O_N_A_L_C_O_N_D_I_T_I_O_N_M_I_S_S_I_N_G)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails OPTIONAL_CONDITION_MISSING;
 
   public static final String SERIALIZED_NAME_O_P_T_I_O_N_A_L_P_R_O_D_U_C_T_C_A_T_E_G_O_R_Y_I_N_V_A_L_I_D = "OPTIONAL_PRODUCT_CATEGORY_INVALID";
   @SerializedName(SERIALIZED_NAME_O_P_T_I_O_N_A_L_P_R_O_D_U_C_T_C_A_T_E_G_O_R_Y_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_INVALID;
 
   public static final String SERIALIZED_NAME_O_P_T_I_O_N_A_L_P_R_O_D_U_C_T_C_A_T_E_G_O_R_Y_M_I_S_S_I_N_G = "OPTIONAL_PRODUCT_CATEGORY_MISSING";
   @SerializedName(SERIALIZED_NAME_O_P_T_I_O_N_A_L_P_R_O_D_U_C_T_C_A_T_E_G_O_R_Y_M_I_S_S_I_N_G)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_MISSING;
 
   public static final String SERIALIZED_NAME_P_R_O_D_U_C_T_C_A_T_E_G_O_R_Y_D_E_P_T_H_W_A_R_N_I_N_G = "PRODUCT_CATEGORY_DEPTH_WARNING";
   @SerializedName(SERIALIZED_NAME_P_R_O_D_U_C_T_C_A_T_E_G_O_R_Y_D_E_P_T_H_W_A_R_N_I_N_G)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails PRODUCT_CATEGORY_DEPTH_WARNING;
 
   public static final String SERIALIZED_NAME_P_R_O_D_U_C_T_T_Y_P_E_L_E_N_G_T_H_T_O_O_L_O_N_G = "PRODUCT_TYPE_LENGTH_TOO_LONG";
   @SerializedName(SERIALIZED_NAME_P_R_O_D_U_C_T_T_Y_P_E_L_E_N_G_T_H_T_O_O_L_O_N_G)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails PRODUCT_TYPE_LENGTH_TOO_LONG;
 
   public static final String SERIALIZED_NAME_S_A_L_E_S_P_R_I_C_E_I_N_V_A_L_I_D = "SALES_PRICE_INVALID";
   @SerializedName(SERIALIZED_NAME_S_A_L_E_S_P_R_I_C_E_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails SALES_PRICE_INVALID;
 
   public static final String SERIALIZED_NAME_S_A_L_E_S_P_R_I_C_E_T_O_O_L_O_W = "SALES_PRICE_TOO_LOW";
   @SerializedName(SERIALIZED_NAME_S_A_L_E_S_P_R_I_C_E_T_O_O_L_O_W)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails SALES_PRICE_TOO_LOW;
 
   public static final String SERIALIZED_NAME_S_A_L_E_S_P_R_I_C_E_T_O_O_H_I_G_H = "SALES_PRICE_TOO_HIGH";
   @SerializedName(SERIALIZED_NAME_S_A_L_E_S_P_R_I_C_E_T_O_O_H_I_G_H)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails SALES_PRICE_TOO_HIGH;
 
   public static final String SERIALIZED_NAME_S_A_L_E_D_A_T_E_I_N_V_A_L_I_D = "SALE_DATE_INVALID";
   @SerializedName(SERIALIZED_NAME_S_A_L_E_D_A_T_E_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails SALE_DATE_INVALID;
 
   public static final String SERIALIZED_NAME_S_H_I_P_P_I_N_G_I_N_V_A_L_I_D = "SHIPPING_INVALID";
   @SerializedName(SERIALIZED_NAME_S_H_I_P_P_I_N_G_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails SHIPPING_INVALID;
 
   public static final String SERIALIZED_NAME_S_H_I_P_P_I_N_G_H_E_I_G_H_T_I_N_V_A_L_I_D = "SHIPPING_HEIGHT_INVALID";
   @SerializedName(SERIALIZED_NAME_S_H_I_P_P_I_N_G_H_E_I_G_H_T_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails SHIPPING_HEIGHT_INVALID;
 
   public static final String SERIALIZED_NAME_S_H_I_P_P_I_N_G_W_E_I_G_H_T_I_N_V_A_L_I_D = "SHIPPING_WEIGHT_INVALID";
   @SerializedName(SERIALIZED_NAME_S_H_I_P_P_I_N_G_W_E_I_G_H_T_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails SHIPPING_WEIGHT_INVALID;
 
   public static final String SERIALIZED_NAME_S_H_I_P_P_I_N_G_W_I_D_T_H_I_N_V_A_L_I_D = "SHIPPING_WIDTH_INVALID";
   @SerializedName(SERIALIZED_NAME_S_H_I_P_P_I_N_G_W_I_D_T_H_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails SHIPPING_WIDTH_INVALID;
 
   public static final String SERIALIZED_NAME_S_I_Z_E_T_Y_P_E_I_N_V_A_L_I_D = "SIZE_TYPE_INVALID";
   @SerializedName(SERIALIZED_NAME_S_I_Z_E_T_Y_P_E_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails SIZE_TYPE_INVALID;
 
   public static final String SERIALIZED_NAME_T_A_X_I_N_V_A_L_I_D = "TAX_INVALID";
   @SerializedName(SERIALIZED_NAME_T_A_X_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails TAX_INVALID;
 
   public static final String SERIALIZED_NAME_T_I_T_L_E_L_E_N_G_T_H_T_O_O_L_O_N_G = "TITLE_LENGTH_TOO_LONG";
   @SerializedName(SERIALIZED_NAME_T_I_T_L_E_L_E_N_G_T_H_T_O_O_L_O_N_G)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails TITLE_LENGTH_TOO_LONG;
 
   public static final String SERIALIZED_NAME_T_O_O_M_A_N_Y_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_L_I_N_K_S = "TOO_MANY_ADDITIONAL_IMAGE_LINKS";
   @SerializedName(SERIALIZED_NAME_T_O_O_M_A_N_Y_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_L_I_N_K_S)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails TOO_MANY_ADDITIONAL_IMAGE_LINKS;
 
   public static final String SERIALIZED_NAME_U_T_M_S_O_U_R_C_E_A_U_T_O_C_O_R_R_E_C_T_E_D = "UTM_SOURCE_AUTO_CORRECTED";
   @SerializedName(SERIALIZED_NAME_U_T_M_S_O_U_R_C_E_A_U_T_O_C_O_R_R_E_C_T_E_D)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails UTM_SOURCE_AUTO_CORRECTED;
 
   public static final String SERIALIZED_NAME_W_E_I_G_H_T_U_N_I_T_I_N_V_A_L_I_D = "WEIGHT_UNIT_INVALID";
   @SerializedName(SERIALIZED_NAME_W_E_I_G_H_T_U_N_I_T_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private CatalogsItemValidationDetails WEIGHT_UNIT_INVALID;
 
   public CatalogsItemValidationWarnings() {
   }
 
-  public CatalogsItemValidationWarnings AD_LINK_FORMAT_WARNING(CatalogsItemValidationDetails AD_LINK_FORMAT_WARNING) {
+  public CatalogsItemValidationWarnings AD_LINK_FORMAT_WARNING(@javax.annotation.Nullable CatalogsItemValidationDetails AD_LINK_FORMAT_WARNING) {
     this.AD_LINK_FORMAT_WARNING = AD_LINK_FORMAT_WARNING;
     return this;
   }
@@ -244,12 +288,12 @@ public class CatalogsItemValidationWarnings {
     return AD_LINK_FORMAT_WARNING;
   }
 
-  public void setADLINKFORMATWARNING(CatalogsItemValidationDetails AD_LINK_FORMAT_WARNING) {
+  public void setADLINKFORMATWARNING(@javax.annotation.Nullable CatalogsItemValidationDetails AD_LINK_FORMAT_WARNING) {
     this.AD_LINK_FORMAT_WARNING = AD_LINK_FORMAT_WARNING;
   }
 
 
-  public CatalogsItemValidationWarnings AD_LINK_SAME_AS_LINK(CatalogsItemValidationDetails AD_LINK_SAME_AS_LINK) {
+  public CatalogsItemValidationWarnings AD_LINK_SAME_AS_LINK(@javax.annotation.Nullable CatalogsItemValidationDetails AD_LINK_SAME_AS_LINK) {
     this.AD_LINK_SAME_AS_LINK = AD_LINK_SAME_AS_LINK;
     return this;
   }
@@ -263,12 +307,12 @@ public class CatalogsItemValidationWarnings {
     return AD_LINK_SAME_AS_LINK;
   }
 
-  public void setADLINKSAMEASLINK(CatalogsItemValidationDetails AD_LINK_SAME_AS_LINK) {
+  public void setADLINKSAMEASLINK(@javax.annotation.Nullable CatalogsItemValidationDetails AD_LINK_SAME_AS_LINK) {
     this.AD_LINK_SAME_AS_LINK = AD_LINK_SAME_AS_LINK;
   }
 
 
-  public CatalogsItemValidationWarnings ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG(CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG) {
+  public CatalogsItemValidationWarnings ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG(@javax.annotation.Nullable CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG) {
     this.ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG = ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
     return this;
   }
@@ -282,12 +326,12 @@ public class CatalogsItemValidationWarnings {
     return ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
   }
 
-  public void setADDITIONALIMAGELINKLENGTHTOOLONG(CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG) {
+  public void setADDITIONALIMAGELINKLENGTHTOOLONG(@javax.annotation.Nullable CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG) {
     this.ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG = ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
   }
 
 
-  public CatalogsItemValidationWarnings ADDITIONAL_IMAGE_LINK_WARNING(CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_WARNING) {
+  public CatalogsItemValidationWarnings ADDITIONAL_IMAGE_LINK_WARNING(@javax.annotation.Nullable CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_WARNING) {
     this.ADDITIONAL_IMAGE_LINK_WARNING = ADDITIONAL_IMAGE_LINK_WARNING;
     return this;
   }
@@ -301,12 +345,12 @@ public class CatalogsItemValidationWarnings {
     return ADDITIONAL_IMAGE_LINK_WARNING;
   }
 
-  public void setADDITIONALIMAGELINKWARNING(CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_WARNING) {
+  public void setADDITIONALIMAGELINKWARNING(@javax.annotation.Nullable CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_WARNING) {
     this.ADDITIONAL_IMAGE_LINK_WARNING = ADDITIONAL_IMAGE_LINK_WARNING;
   }
 
 
-  public CatalogsItemValidationWarnings ADWORDS_FORMAT_WARNING(CatalogsItemValidationDetails ADWORDS_FORMAT_WARNING) {
+  public CatalogsItemValidationWarnings ADWORDS_FORMAT_WARNING(@javax.annotation.Nullable CatalogsItemValidationDetails ADWORDS_FORMAT_WARNING) {
     this.ADWORDS_FORMAT_WARNING = ADWORDS_FORMAT_WARNING;
     return this;
   }
@@ -320,12 +364,12 @@ public class CatalogsItemValidationWarnings {
     return ADWORDS_FORMAT_WARNING;
   }
 
-  public void setADWORDSFORMATWARNING(CatalogsItemValidationDetails ADWORDS_FORMAT_WARNING) {
+  public void setADWORDSFORMATWARNING(@javax.annotation.Nullable CatalogsItemValidationDetails ADWORDS_FORMAT_WARNING) {
     this.ADWORDS_FORMAT_WARNING = ADWORDS_FORMAT_WARNING;
   }
 
 
-  public CatalogsItemValidationWarnings ADWORDS_SAME_AS_LINK(CatalogsItemValidationDetails ADWORDS_SAME_AS_LINK) {
+  public CatalogsItemValidationWarnings ADWORDS_SAME_AS_LINK(@javax.annotation.Nullable CatalogsItemValidationDetails ADWORDS_SAME_AS_LINK) {
     this.ADWORDS_SAME_AS_LINK = ADWORDS_SAME_AS_LINK;
     return this;
   }
@@ -339,12 +383,12 @@ public class CatalogsItemValidationWarnings {
     return ADWORDS_SAME_AS_LINK;
   }
 
-  public void setADWORDSSAMEASLINK(CatalogsItemValidationDetails ADWORDS_SAME_AS_LINK) {
+  public void setADWORDSSAMEASLINK(@javax.annotation.Nullable CatalogsItemValidationDetails ADWORDS_SAME_AS_LINK) {
     this.ADWORDS_SAME_AS_LINK = ADWORDS_SAME_AS_LINK;
   }
 
 
-  public CatalogsItemValidationWarnings AGE_GROUP_INVALID(CatalogsItemValidationDetails AGE_GROUP_INVALID) {
+  public CatalogsItemValidationWarnings AGE_GROUP_INVALID(@javax.annotation.Nullable CatalogsItemValidationDetails AGE_GROUP_INVALID) {
     this.AGE_GROUP_INVALID = AGE_GROUP_INVALID;
     return this;
   }
@@ -358,12 +402,12 @@ public class CatalogsItemValidationWarnings {
     return AGE_GROUP_INVALID;
   }
 
-  public void setAGEGROUPINVALID(CatalogsItemValidationDetails AGE_GROUP_INVALID) {
+  public void setAGEGROUPINVALID(@javax.annotation.Nullable CatalogsItemValidationDetails AGE_GROUP_INVALID) {
     this.AGE_GROUP_INVALID = AGE_GROUP_INVALID;
   }
 
 
-  public CatalogsItemValidationWarnings SIZE_SYSTEM_INVALID(CatalogsItemValidationDetails SIZE_SYSTEM_INVALID) {
+  public CatalogsItemValidationWarnings SIZE_SYSTEM_INVALID(@javax.annotation.Nullable CatalogsItemValidationDetails SIZE_SYSTEM_INVALID) {
     this.SIZE_SYSTEM_INVALID = SIZE_SYSTEM_INVALID;
     return this;
   }
@@ -377,12 +421,12 @@ public class CatalogsItemValidationWarnings {
     return SIZE_SYSTEM_INVALID;
   }
 
-  public void setSIZESYSTEMINVALID(CatalogsItemValidationDetails SIZE_SYSTEM_INVALID) {
+  public void setSIZESYSTEMINVALID(@javax.annotation.Nullable CatalogsItemValidationDetails SIZE_SYSTEM_INVALID) {
     this.SIZE_SYSTEM_INVALID = SIZE_SYSTEM_INVALID;
   }
 
 
-  public CatalogsItemValidationWarnings ANDROID_DEEP_LINK_INVALID(CatalogsItemValidationDetails ANDROID_DEEP_LINK_INVALID) {
+  public CatalogsItemValidationWarnings ANDROID_DEEP_LINK_INVALID(@javax.annotation.Nullable CatalogsItemValidationDetails ANDROID_DEEP_LINK_INVALID) {
     this.ANDROID_DEEP_LINK_INVALID = ANDROID_DEEP_LINK_INVALID;
     return this;
   }
@@ -396,12 +440,12 @@ public class CatalogsItemValidationWarnings {
     return ANDROID_DEEP_LINK_INVALID;
   }
 
-  public void setANDROIDDEEPLINKINVALID(CatalogsItemValidationDetails ANDROID_DEEP_LINK_INVALID) {
+  public void setANDROIDDEEPLINKINVALID(@javax.annotation.Nullable CatalogsItemValidationDetails ANDROID_DEEP_LINK_INVALID) {
     this.ANDROID_DEEP_LINK_INVALID = ANDROID_DEEP_LINK_INVALID;
   }
 
 
-  public CatalogsItemValidationWarnings AVAILABILITY_DATE_INVALID(CatalogsItemValidationDetails AVAILABILITY_DATE_INVALID) {
+  public CatalogsItemValidationWarnings AVAILABILITY_DATE_INVALID(@javax.annotation.Nullable CatalogsItemValidationDetails AVAILABILITY_DATE_INVALID) {
     this.AVAILABILITY_DATE_INVALID = AVAILABILITY_DATE_INVALID;
     return this;
   }
@@ -415,12 +459,12 @@ public class CatalogsItemValidationWarnings {
     return AVAILABILITY_DATE_INVALID;
   }
 
-  public void setAVAILABILITYDATEINVALID(CatalogsItemValidationDetails AVAILABILITY_DATE_INVALID) {
+  public void setAVAILABILITYDATEINVALID(@javax.annotation.Nullable CatalogsItemValidationDetails AVAILABILITY_DATE_INVALID) {
     this.AVAILABILITY_DATE_INVALID = AVAILABILITY_DATE_INVALID;
   }
 
 
-  public CatalogsItemValidationWarnings COUNTRY_DOES_NOT_MAP_TO_CURRENCY(CatalogsItemValidationDetails COUNTRY_DOES_NOT_MAP_TO_CURRENCY) {
+  public CatalogsItemValidationWarnings COUNTRY_DOES_NOT_MAP_TO_CURRENCY(@javax.annotation.Nullable CatalogsItemValidationDetails COUNTRY_DOES_NOT_MAP_TO_CURRENCY) {
     this.COUNTRY_DOES_NOT_MAP_TO_CURRENCY = COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
     return this;
   }
@@ -434,12 +478,12 @@ public class CatalogsItemValidationWarnings {
     return COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
   }
 
-  public void setCOUNTRYDOESNOTMAPTOCURRENCY(CatalogsItemValidationDetails COUNTRY_DOES_NOT_MAP_TO_CURRENCY) {
+  public void setCOUNTRYDOESNOTMAPTOCURRENCY(@javax.annotation.Nullable CatalogsItemValidationDetails COUNTRY_DOES_NOT_MAP_TO_CURRENCY) {
     this.COUNTRY_DOES_NOT_MAP_TO_CURRENCY = COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
   }
 
 
-  public CatalogsItemValidationWarnings CUSTOM_LABEL_LENGTH_TOO_LONG(CatalogsItemValidationDetails CUSTOM_LABEL_LENGTH_TOO_LONG) {
+  public CatalogsItemValidationWarnings CUSTOM_LABEL_LENGTH_TOO_LONG(@javax.annotation.Nullable CatalogsItemValidationDetails CUSTOM_LABEL_LENGTH_TOO_LONG) {
     this.CUSTOM_LABEL_LENGTH_TOO_LONG = CUSTOM_LABEL_LENGTH_TOO_LONG;
     return this;
   }
@@ -453,12 +497,12 @@ public class CatalogsItemValidationWarnings {
     return CUSTOM_LABEL_LENGTH_TOO_LONG;
   }
 
-  public void setCUSTOMLABELLENGTHTOOLONG(CatalogsItemValidationDetails CUSTOM_LABEL_LENGTH_TOO_LONG) {
+  public void setCUSTOMLABELLENGTHTOOLONG(@javax.annotation.Nullable CatalogsItemValidationDetails CUSTOM_LABEL_LENGTH_TOO_LONG) {
     this.CUSTOM_LABEL_LENGTH_TOO_LONG = CUSTOM_LABEL_LENGTH_TOO_LONG;
   }
 
 
-  public CatalogsItemValidationWarnings DESCRIPTION_LENGTH_TOO_LONG(CatalogsItemValidationDetails DESCRIPTION_LENGTH_TOO_LONG) {
+  public CatalogsItemValidationWarnings DESCRIPTION_LENGTH_TOO_LONG(@javax.annotation.Nullable CatalogsItemValidationDetails DESCRIPTION_LENGTH_TOO_LONG) {
     this.DESCRIPTION_LENGTH_TOO_LONG = DESCRIPTION_LENGTH_TOO_LONG;
     return this;
   }
@@ -472,12 +516,12 @@ public class CatalogsItemValidationWarnings {
     return DESCRIPTION_LENGTH_TOO_LONG;
   }
 
-  public void setDESCRIPTIONLENGTHTOOLONG(CatalogsItemValidationDetails DESCRIPTION_LENGTH_TOO_LONG) {
+  public void setDESCRIPTIONLENGTHTOOLONG(@javax.annotation.Nullable CatalogsItemValidationDetails DESCRIPTION_LENGTH_TOO_LONG) {
     this.DESCRIPTION_LENGTH_TOO_LONG = DESCRIPTION_LENGTH_TOO_LONG;
   }
 
 
-  public CatalogsItemValidationWarnings EXPIRATION_DATE_INVALID(CatalogsItemValidationDetails EXPIRATION_DATE_INVALID) {
+  public CatalogsItemValidationWarnings EXPIRATION_DATE_INVALID(@javax.annotation.Nullable CatalogsItemValidationDetails EXPIRATION_DATE_INVALID) {
     this.EXPIRATION_DATE_INVALID = EXPIRATION_DATE_INVALID;
     return this;
   }
@@ -491,12 +535,12 @@ public class CatalogsItemValidationWarnings {
     return EXPIRATION_DATE_INVALID;
   }
 
-  public void setEXPIRATIONDATEINVALID(CatalogsItemValidationDetails EXPIRATION_DATE_INVALID) {
+  public void setEXPIRATIONDATEINVALID(@javax.annotation.Nullable CatalogsItemValidationDetails EXPIRATION_DATE_INVALID) {
     this.EXPIRATION_DATE_INVALID = EXPIRATION_DATE_INVALID;
   }
 
 
-  public CatalogsItemValidationWarnings GENDER_INVALID(CatalogsItemValidationDetails GENDER_INVALID) {
+  public CatalogsItemValidationWarnings GENDER_INVALID(@javax.annotation.Nullable CatalogsItemValidationDetails GENDER_INVALID) {
     this.GENDER_INVALID = GENDER_INVALID;
     return this;
   }
@@ -510,12 +554,12 @@ public class CatalogsItemValidationWarnings {
     return GENDER_INVALID;
   }
 
-  public void setGENDERINVALID(CatalogsItemValidationDetails GENDER_INVALID) {
+  public void setGENDERINVALID(@javax.annotation.Nullable CatalogsItemValidationDetails GENDER_INVALID) {
     this.GENDER_INVALID = GENDER_INVALID;
   }
 
 
-  public CatalogsItemValidationWarnings GTIN_INVALID(CatalogsItemValidationDetails GTIN_INVALID) {
+  public CatalogsItemValidationWarnings GTIN_INVALID(@javax.annotation.Nullable CatalogsItemValidationDetails GTIN_INVALID) {
     this.GTIN_INVALID = GTIN_INVALID;
     return this;
   }
@@ -529,12 +573,12 @@ public class CatalogsItemValidationWarnings {
     return GTIN_INVALID;
   }
 
-  public void setGTININVALID(CatalogsItemValidationDetails GTIN_INVALID) {
+  public void setGTININVALID(@javax.annotation.Nullable CatalogsItemValidationDetails GTIN_INVALID) {
     this.GTIN_INVALID = GTIN_INVALID;
   }
 
 
-  public CatalogsItemValidationWarnings IMAGE_LINK_WARNING(CatalogsItemValidationDetails IMAGE_LINK_WARNING) {
+  public CatalogsItemValidationWarnings IMAGE_LINK_WARNING(@javax.annotation.Nullable CatalogsItemValidationDetails IMAGE_LINK_WARNING) {
     this.IMAGE_LINK_WARNING = IMAGE_LINK_WARNING;
     return this;
   }
@@ -548,12 +592,12 @@ public class CatalogsItemValidationWarnings {
     return IMAGE_LINK_WARNING;
   }
 
-  public void setIMAGELINKWARNING(CatalogsItemValidationDetails IMAGE_LINK_WARNING) {
+  public void setIMAGELINKWARNING(@javax.annotation.Nullable CatalogsItemValidationDetails IMAGE_LINK_WARNING) {
     this.IMAGE_LINK_WARNING = IMAGE_LINK_WARNING;
   }
 
 
-  public CatalogsItemValidationWarnings IOS_DEEP_LINK_INVALID(CatalogsItemValidationDetails IOS_DEEP_LINK_INVALID) {
+  public CatalogsItemValidationWarnings IOS_DEEP_LINK_INVALID(@javax.annotation.Nullable CatalogsItemValidationDetails IOS_DEEP_LINK_INVALID) {
     this.IOS_DEEP_LINK_INVALID = IOS_DEEP_LINK_INVALID;
     return this;
   }
@@ -567,12 +611,12 @@ public class CatalogsItemValidationWarnings {
     return IOS_DEEP_LINK_INVALID;
   }
 
-  public void setIOSDEEPLINKINVALID(CatalogsItemValidationDetails IOS_DEEP_LINK_INVALID) {
+  public void setIOSDEEPLINKINVALID(@javax.annotation.Nullable CatalogsItemValidationDetails IOS_DEEP_LINK_INVALID) {
     this.IOS_DEEP_LINK_INVALID = IOS_DEEP_LINK_INVALID;
   }
 
 
-  public CatalogsItemValidationWarnings IS_BUNDLE_INVALID(CatalogsItemValidationDetails IS_BUNDLE_INVALID) {
+  public CatalogsItemValidationWarnings IS_BUNDLE_INVALID(@javax.annotation.Nullable CatalogsItemValidationDetails IS_BUNDLE_INVALID) {
     this.IS_BUNDLE_INVALID = IS_BUNDLE_INVALID;
     return this;
   }
@@ -586,12 +630,12 @@ public class CatalogsItemValidationWarnings {
     return IS_BUNDLE_INVALID;
   }
 
-  public void setISBUNDLEINVALID(CatalogsItemValidationDetails IS_BUNDLE_INVALID) {
+  public void setISBUNDLEINVALID(@javax.annotation.Nullable CatalogsItemValidationDetails IS_BUNDLE_INVALID) {
     this.IS_BUNDLE_INVALID = IS_BUNDLE_INVALID;
   }
 
 
-  public CatalogsItemValidationWarnings ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE(CatalogsItemValidationDetails ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE) {
+  public CatalogsItemValidationWarnings ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE(@javax.annotation.Nullable CatalogsItemValidationDetails ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE) {
     this.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE = ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
     return this;
   }
@@ -605,12 +649,12 @@ public class CatalogsItemValidationWarnings {
     return ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
   }
 
-  public void setITEMADDITIONALIMAGEDOWNLOADFAILURE(CatalogsItemValidationDetails ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE) {
+  public void setITEMADDITIONALIMAGEDOWNLOADFAILURE(@javax.annotation.Nullable CatalogsItemValidationDetails ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE) {
     this.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE = ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
   }
 
 
-  public CatalogsItemValidationWarnings LINK_FORMAT_WARNING(CatalogsItemValidationDetails LINK_FORMAT_WARNING) {
+  public CatalogsItemValidationWarnings LINK_FORMAT_WARNING(@javax.annotation.Nullable CatalogsItemValidationDetails LINK_FORMAT_WARNING) {
     this.LINK_FORMAT_WARNING = LINK_FORMAT_WARNING;
     return this;
   }
@@ -624,12 +668,12 @@ public class CatalogsItemValidationWarnings {
     return LINK_FORMAT_WARNING;
   }
 
-  public void setLINKFORMATWARNING(CatalogsItemValidationDetails LINK_FORMAT_WARNING) {
+  public void setLINKFORMATWARNING(@javax.annotation.Nullable CatalogsItemValidationDetails LINK_FORMAT_WARNING) {
     this.LINK_FORMAT_WARNING = LINK_FORMAT_WARNING;
   }
 
 
-  public CatalogsItemValidationWarnings MIN_AD_PRICE_INVALID(CatalogsItemValidationDetails MIN_AD_PRICE_INVALID) {
+  public CatalogsItemValidationWarnings MIN_AD_PRICE_INVALID(@javax.annotation.Nullable CatalogsItemValidationDetails MIN_AD_PRICE_INVALID) {
     this.MIN_AD_PRICE_INVALID = MIN_AD_PRICE_INVALID;
     return this;
   }
@@ -643,12 +687,12 @@ public class CatalogsItemValidationWarnings {
     return MIN_AD_PRICE_INVALID;
   }
 
-  public void setMINADPRICEINVALID(CatalogsItemValidationDetails MIN_AD_PRICE_INVALID) {
+  public void setMINADPRICEINVALID(@javax.annotation.Nullable CatalogsItemValidationDetails MIN_AD_PRICE_INVALID) {
     this.MIN_AD_PRICE_INVALID = MIN_AD_PRICE_INVALID;
   }
 
 
-  public CatalogsItemValidationWarnings MPN_INVALID(CatalogsItemValidationDetails MPN_INVALID) {
+  public CatalogsItemValidationWarnings MPN_INVALID(@javax.annotation.Nullable CatalogsItemValidationDetails MPN_INVALID) {
     this.MPN_INVALID = MPN_INVALID;
     return this;
   }
@@ -662,12 +706,12 @@ public class CatalogsItemValidationWarnings {
     return MPN_INVALID;
   }
 
-  public void setMPNINVALID(CatalogsItemValidationDetails MPN_INVALID) {
+  public void setMPNINVALID(@javax.annotation.Nullable CatalogsItemValidationDetails MPN_INVALID) {
     this.MPN_INVALID = MPN_INVALID;
   }
 
 
-  public CatalogsItemValidationWarnings MULTIPACK_INVALID(CatalogsItemValidationDetails MULTIPACK_INVALID) {
+  public CatalogsItemValidationWarnings MULTIPACK_INVALID(@javax.annotation.Nullable CatalogsItemValidationDetails MULTIPACK_INVALID) {
     this.MULTIPACK_INVALID = MULTIPACK_INVALID;
     return this;
   }
@@ -681,12 +725,12 @@ public class CatalogsItemValidationWarnings {
     return MULTIPACK_INVALID;
   }
 
-  public void setMULTIPACKINVALID(CatalogsItemValidationDetails MULTIPACK_INVALID) {
+  public void setMULTIPACKINVALID(@javax.annotation.Nullable CatalogsItemValidationDetails MULTIPACK_INVALID) {
     this.MULTIPACK_INVALID = MULTIPACK_INVALID;
   }
 
 
-  public CatalogsItemValidationWarnings OPTIONAL_CONDITION_INVALID(CatalogsItemValidationDetails OPTIONAL_CONDITION_INVALID) {
+  public CatalogsItemValidationWarnings OPTIONAL_CONDITION_INVALID(@javax.annotation.Nullable CatalogsItemValidationDetails OPTIONAL_CONDITION_INVALID) {
     this.OPTIONAL_CONDITION_INVALID = OPTIONAL_CONDITION_INVALID;
     return this;
   }
@@ -700,12 +744,12 @@ public class CatalogsItemValidationWarnings {
     return OPTIONAL_CONDITION_INVALID;
   }
 
-  public void setOPTIONALCONDITIONINVALID(CatalogsItemValidationDetails OPTIONAL_CONDITION_INVALID) {
+  public void setOPTIONALCONDITIONINVALID(@javax.annotation.Nullable CatalogsItemValidationDetails OPTIONAL_CONDITION_INVALID) {
     this.OPTIONAL_CONDITION_INVALID = OPTIONAL_CONDITION_INVALID;
   }
 
 
-  public CatalogsItemValidationWarnings OPTIONAL_CONDITION_MISSING(CatalogsItemValidationDetails OPTIONAL_CONDITION_MISSING) {
+  public CatalogsItemValidationWarnings OPTIONAL_CONDITION_MISSING(@javax.annotation.Nullable CatalogsItemValidationDetails OPTIONAL_CONDITION_MISSING) {
     this.OPTIONAL_CONDITION_MISSING = OPTIONAL_CONDITION_MISSING;
     return this;
   }
@@ -719,12 +763,12 @@ public class CatalogsItemValidationWarnings {
     return OPTIONAL_CONDITION_MISSING;
   }
 
-  public void setOPTIONALCONDITIONMISSING(CatalogsItemValidationDetails OPTIONAL_CONDITION_MISSING) {
+  public void setOPTIONALCONDITIONMISSING(@javax.annotation.Nullable CatalogsItemValidationDetails OPTIONAL_CONDITION_MISSING) {
     this.OPTIONAL_CONDITION_MISSING = OPTIONAL_CONDITION_MISSING;
   }
 
 
-  public CatalogsItemValidationWarnings OPTIONAL_PRODUCT_CATEGORY_INVALID(CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_INVALID) {
+  public CatalogsItemValidationWarnings OPTIONAL_PRODUCT_CATEGORY_INVALID(@javax.annotation.Nullable CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_INVALID) {
     this.OPTIONAL_PRODUCT_CATEGORY_INVALID = OPTIONAL_PRODUCT_CATEGORY_INVALID;
     return this;
   }
@@ -738,12 +782,12 @@ public class CatalogsItemValidationWarnings {
     return OPTIONAL_PRODUCT_CATEGORY_INVALID;
   }
 
-  public void setOPTIONALPRODUCTCATEGORYINVALID(CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_INVALID) {
+  public void setOPTIONALPRODUCTCATEGORYINVALID(@javax.annotation.Nullable CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_INVALID) {
     this.OPTIONAL_PRODUCT_CATEGORY_INVALID = OPTIONAL_PRODUCT_CATEGORY_INVALID;
   }
 
 
-  public CatalogsItemValidationWarnings OPTIONAL_PRODUCT_CATEGORY_MISSING(CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_MISSING) {
+  public CatalogsItemValidationWarnings OPTIONAL_PRODUCT_CATEGORY_MISSING(@javax.annotation.Nullable CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_MISSING) {
     this.OPTIONAL_PRODUCT_CATEGORY_MISSING = OPTIONAL_PRODUCT_CATEGORY_MISSING;
     return this;
   }
@@ -757,12 +801,12 @@ public class CatalogsItemValidationWarnings {
     return OPTIONAL_PRODUCT_CATEGORY_MISSING;
   }
 
-  public void setOPTIONALPRODUCTCATEGORYMISSING(CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_MISSING) {
+  public void setOPTIONALPRODUCTCATEGORYMISSING(@javax.annotation.Nullable CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_MISSING) {
     this.OPTIONAL_PRODUCT_CATEGORY_MISSING = OPTIONAL_PRODUCT_CATEGORY_MISSING;
   }
 
 
-  public CatalogsItemValidationWarnings PRODUCT_CATEGORY_DEPTH_WARNING(CatalogsItemValidationDetails PRODUCT_CATEGORY_DEPTH_WARNING) {
+  public CatalogsItemValidationWarnings PRODUCT_CATEGORY_DEPTH_WARNING(@javax.annotation.Nullable CatalogsItemValidationDetails PRODUCT_CATEGORY_DEPTH_WARNING) {
     this.PRODUCT_CATEGORY_DEPTH_WARNING = PRODUCT_CATEGORY_DEPTH_WARNING;
     return this;
   }
@@ -776,12 +820,12 @@ public class CatalogsItemValidationWarnings {
     return PRODUCT_CATEGORY_DEPTH_WARNING;
   }
 
-  public void setPRODUCTCATEGORYDEPTHWARNING(CatalogsItemValidationDetails PRODUCT_CATEGORY_DEPTH_WARNING) {
+  public void setPRODUCTCATEGORYDEPTHWARNING(@javax.annotation.Nullable CatalogsItemValidationDetails PRODUCT_CATEGORY_DEPTH_WARNING) {
     this.PRODUCT_CATEGORY_DEPTH_WARNING = PRODUCT_CATEGORY_DEPTH_WARNING;
   }
 
 
-  public CatalogsItemValidationWarnings PRODUCT_TYPE_LENGTH_TOO_LONG(CatalogsItemValidationDetails PRODUCT_TYPE_LENGTH_TOO_LONG) {
+  public CatalogsItemValidationWarnings PRODUCT_TYPE_LENGTH_TOO_LONG(@javax.annotation.Nullable CatalogsItemValidationDetails PRODUCT_TYPE_LENGTH_TOO_LONG) {
     this.PRODUCT_TYPE_LENGTH_TOO_LONG = PRODUCT_TYPE_LENGTH_TOO_LONG;
     return this;
   }
@@ -795,12 +839,12 @@ public class CatalogsItemValidationWarnings {
     return PRODUCT_TYPE_LENGTH_TOO_LONG;
   }
 
-  public void setPRODUCTTYPELENGTHTOOLONG(CatalogsItemValidationDetails PRODUCT_TYPE_LENGTH_TOO_LONG) {
+  public void setPRODUCTTYPELENGTHTOOLONG(@javax.annotation.Nullable CatalogsItemValidationDetails PRODUCT_TYPE_LENGTH_TOO_LONG) {
     this.PRODUCT_TYPE_LENGTH_TOO_LONG = PRODUCT_TYPE_LENGTH_TOO_LONG;
   }
 
 
-  public CatalogsItemValidationWarnings SALES_PRICE_INVALID(CatalogsItemValidationDetails SALES_PRICE_INVALID) {
+  public CatalogsItemValidationWarnings SALES_PRICE_INVALID(@javax.annotation.Nullable CatalogsItemValidationDetails SALES_PRICE_INVALID) {
     this.SALES_PRICE_INVALID = SALES_PRICE_INVALID;
     return this;
   }
@@ -814,12 +858,12 @@ public class CatalogsItemValidationWarnings {
     return SALES_PRICE_INVALID;
   }
 
-  public void setSALESPRICEINVALID(CatalogsItemValidationDetails SALES_PRICE_INVALID) {
+  public void setSALESPRICEINVALID(@javax.annotation.Nullable CatalogsItemValidationDetails SALES_PRICE_INVALID) {
     this.SALES_PRICE_INVALID = SALES_PRICE_INVALID;
   }
 
 
-  public CatalogsItemValidationWarnings SALES_PRICE_TOO_LOW(CatalogsItemValidationDetails SALES_PRICE_TOO_LOW) {
+  public CatalogsItemValidationWarnings SALES_PRICE_TOO_LOW(@javax.annotation.Nullable CatalogsItemValidationDetails SALES_PRICE_TOO_LOW) {
     this.SALES_PRICE_TOO_LOW = SALES_PRICE_TOO_LOW;
     return this;
   }
@@ -833,12 +877,12 @@ public class CatalogsItemValidationWarnings {
     return SALES_PRICE_TOO_LOW;
   }
 
-  public void setSALESPRICETOOLOW(CatalogsItemValidationDetails SALES_PRICE_TOO_LOW) {
+  public void setSALESPRICETOOLOW(@javax.annotation.Nullable CatalogsItemValidationDetails SALES_PRICE_TOO_LOW) {
     this.SALES_PRICE_TOO_LOW = SALES_PRICE_TOO_LOW;
   }
 
 
-  public CatalogsItemValidationWarnings SALES_PRICE_TOO_HIGH(CatalogsItemValidationDetails SALES_PRICE_TOO_HIGH) {
+  public CatalogsItemValidationWarnings SALES_PRICE_TOO_HIGH(@javax.annotation.Nullable CatalogsItemValidationDetails SALES_PRICE_TOO_HIGH) {
     this.SALES_PRICE_TOO_HIGH = SALES_PRICE_TOO_HIGH;
     return this;
   }
@@ -852,12 +896,12 @@ public class CatalogsItemValidationWarnings {
     return SALES_PRICE_TOO_HIGH;
   }
 
-  public void setSALESPRICETOOHIGH(CatalogsItemValidationDetails SALES_PRICE_TOO_HIGH) {
+  public void setSALESPRICETOOHIGH(@javax.annotation.Nullable CatalogsItemValidationDetails SALES_PRICE_TOO_HIGH) {
     this.SALES_PRICE_TOO_HIGH = SALES_PRICE_TOO_HIGH;
   }
 
 
-  public CatalogsItemValidationWarnings SALE_DATE_INVALID(CatalogsItemValidationDetails SALE_DATE_INVALID) {
+  public CatalogsItemValidationWarnings SALE_DATE_INVALID(@javax.annotation.Nullable CatalogsItemValidationDetails SALE_DATE_INVALID) {
     this.SALE_DATE_INVALID = SALE_DATE_INVALID;
     return this;
   }
@@ -871,12 +915,12 @@ public class CatalogsItemValidationWarnings {
     return SALE_DATE_INVALID;
   }
 
-  public void setSALEDATEINVALID(CatalogsItemValidationDetails SALE_DATE_INVALID) {
+  public void setSALEDATEINVALID(@javax.annotation.Nullable CatalogsItemValidationDetails SALE_DATE_INVALID) {
     this.SALE_DATE_INVALID = SALE_DATE_INVALID;
   }
 
 
-  public CatalogsItemValidationWarnings SHIPPING_INVALID(CatalogsItemValidationDetails SHIPPING_INVALID) {
+  public CatalogsItemValidationWarnings SHIPPING_INVALID(@javax.annotation.Nullable CatalogsItemValidationDetails SHIPPING_INVALID) {
     this.SHIPPING_INVALID = SHIPPING_INVALID;
     return this;
   }
@@ -890,12 +934,12 @@ public class CatalogsItemValidationWarnings {
     return SHIPPING_INVALID;
   }
 
-  public void setSHIPPINGINVALID(CatalogsItemValidationDetails SHIPPING_INVALID) {
+  public void setSHIPPINGINVALID(@javax.annotation.Nullable CatalogsItemValidationDetails SHIPPING_INVALID) {
     this.SHIPPING_INVALID = SHIPPING_INVALID;
   }
 
 
-  public CatalogsItemValidationWarnings SHIPPING_HEIGHT_INVALID(CatalogsItemValidationDetails SHIPPING_HEIGHT_INVALID) {
+  public CatalogsItemValidationWarnings SHIPPING_HEIGHT_INVALID(@javax.annotation.Nullable CatalogsItemValidationDetails SHIPPING_HEIGHT_INVALID) {
     this.SHIPPING_HEIGHT_INVALID = SHIPPING_HEIGHT_INVALID;
     return this;
   }
@@ -909,12 +953,12 @@ public class CatalogsItemValidationWarnings {
     return SHIPPING_HEIGHT_INVALID;
   }
 
-  public void setSHIPPINGHEIGHTINVALID(CatalogsItemValidationDetails SHIPPING_HEIGHT_INVALID) {
+  public void setSHIPPINGHEIGHTINVALID(@javax.annotation.Nullable CatalogsItemValidationDetails SHIPPING_HEIGHT_INVALID) {
     this.SHIPPING_HEIGHT_INVALID = SHIPPING_HEIGHT_INVALID;
   }
 
 
-  public CatalogsItemValidationWarnings SHIPPING_WEIGHT_INVALID(CatalogsItemValidationDetails SHIPPING_WEIGHT_INVALID) {
+  public CatalogsItemValidationWarnings SHIPPING_WEIGHT_INVALID(@javax.annotation.Nullable CatalogsItemValidationDetails SHIPPING_WEIGHT_INVALID) {
     this.SHIPPING_WEIGHT_INVALID = SHIPPING_WEIGHT_INVALID;
     return this;
   }
@@ -928,12 +972,12 @@ public class CatalogsItemValidationWarnings {
     return SHIPPING_WEIGHT_INVALID;
   }
 
-  public void setSHIPPINGWEIGHTINVALID(CatalogsItemValidationDetails SHIPPING_WEIGHT_INVALID) {
+  public void setSHIPPINGWEIGHTINVALID(@javax.annotation.Nullable CatalogsItemValidationDetails SHIPPING_WEIGHT_INVALID) {
     this.SHIPPING_WEIGHT_INVALID = SHIPPING_WEIGHT_INVALID;
   }
 
 
-  public CatalogsItemValidationWarnings SHIPPING_WIDTH_INVALID(CatalogsItemValidationDetails SHIPPING_WIDTH_INVALID) {
+  public CatalogsItemValidationWarnings SHIPPING_WIDTH_INVALID(@javax.annotation.Nullable CatalogsItemValidationDetails SHIPPING_WIDTH_INVALID) {
     this.SHIPPING_WIDTH_INVALID = SHIPPING_WIDTH_INVALID;
     return this;
   }
@@ -947,12 +991,12 @@ public class CatalogsItemValidationWarnings {
     return SHIPPING_WIDTH_INVALID;
   }
 
-  public void setSHIPPINGWIDTHINVALID(CatalogsItemValidationDetails SHIPPING_WIDTH_INVALID) {
+  public void setSHIPPINGWIDTHINVALID(@javax.annotation.Nullable CatalogsItemValidationDetails SHIPPING_WIDTH_INVALID) {
     this.SHIPPING_WIDTH_INVALID = SHIPPING_WIDTH_INVALID;
   }
 
 
-  public CatalogsItemValidationWarnings SIZE_TYPE_INVALID(CatalogsItemValidationDetails SIZE_TYPE_INVALID) {
+  public CatalogsItemValidationWarnings SIZE_TYPE_INVALID(@javax.annotation.Nullable CatalogsItemValidationDetails SIZE_TYPE_INVALID) {
     this.SIZE_TYPE_INVALID = SIZE_TYPE_INVALID;
     return this;
   }
@@ -966,12 +1010,12 @@ public class CatalogsItemValidationWarnings {
     return SIZE_TYPE_INVALID;
   }
 
-  public void setSIZETYPEINVALID(CatalogsItemValidationDetails SIZE_TYPE_INVALID) {
+  public void setSIZETYPEINVALID(@javax.annotation.Nullable CatalogsItemValidationDetails SIZE_TYPE_INVALID) {
     this.SIZE_TYPE_INVALID = SIZE_TYPE_INVALID;
   }
 
 
-  public CatalogsItemValidationWarnings TAX_INVALID(CatalogsItemValidationDetails TAX_INVALID) {
+  public CatalogsItemValidationWarnings TAX_INVALID(@javax.annotation.Nullable CatalogsItemValidationDetails TAX_INVALID) {
     this.TAX_INVALID = TAX_INVALID;
     return this;
   }
@@ -985,12 +1029,12 @@ public class CatalogsItemValidationWarnings {
     return TAX_INVALID;
   }
 
-  public void setTAXINVALID(CatalogsItemValidationDetails TAX_INVALID) {
+  public void setTAXINVALID(@javax.annotation.Nullable CatalogsItemValidationDetails TAX_INVALID) {
     this.TAX_INVALID = TAX_INVALID;
   }
 
 
-  public CatalogsItemValidationWarnings TITLE_LENGTH_TOO_LONG(CatalogsItemValidationDetails TITLE_LENGTH_TOO_LONG) {
+  public CatalogsItemValidationWarnings TITLE_LENGTH_TOO_LONG(@javax.annotation.Nullable CatalogsItemValidationDetails TITLE_LENGTH_TOO_LONG) {
     this.TITLE_LENGTH_TOO_LONG = TITLE_LENGTH_TOO_LONG;
     return this;
   }
@@ -1004,12 +1048,12 @@ public class CatalogsItemValidationWarnings {
     return TITLE_LENGTH_TOO_LONG;
   }
 
-  public void setTITLELENGTHTOOLONG(CatalogsItemValidationDetails TITLE_LENGTH_TOO_LONG) {
+  public void setTITLELENGTHTOOLONG(@javax.annotation.Nullable CatalogsItemValidationDetails TITLE_LENGTH_TOO_LONG) {
     this.TITLE_LENGTH_TOO_LONG = TITLE_LENGTH_TOO_LONG;
   }
 
 
-  public CatalogsItemValidationWarnings TOO_MANY_ADDITIONAL_IMAGE_LINKS(CatalogsItemValidationDetails TOO_MANY_ADDITIONAL_IMAGE_LINKS) {
+  public CatalogsItemValidationWarnings TOO_MANY_ADDITIONAL_IMAGE_LINKS(@javax.annotation.Nullable CatalogsItemValidationDetails TOO_MANY_ADDITIONAL_IMAGE_LINKS) {
     this.TOO_MANY_ADDITIONAL_IMAGE_LINKS = TOO_MANY_ADDITIONAL_IMAGE_LINKS;
     return this;
   }
@@ -1023,12 +1067,12 @@ public class CatalogsItemValidationWarnings {
     return TOO_MANY_ADDITIONAL_IMAGE_LINKS;
   }
 
-  public void setTOOMANYADDITIONALIMAGELINKS(CatalogsItemValidationDetails TOO_MANY_ADDITIONAL_IMAGE_LINKS) {
+  public void setTOOMANYADDITIONALIMAGELINKS(@javax.annotation.Nullable CatalogsItemValidationDetails TOO_MANY_ADDITIONAL_IMAGE_LINKS) {
     this.TOO_MANY_ADDITIONAL_IMAGE_LINKS = TOO_MANY_ADDITIONAL_IMAGE_LINKS;
   }
 
 
-  public CatalogsItemValidationWarnings UTM_SOURCE_AUTO_CORRECTED(CatalogsItemValidationDetails UTM_SOURCE_AUTO_CORRECTED) {
+  public CatalogsItemValidationWarnings UTM_SOURCE_AUTO_CORRECTED(@javax.annotation.Nullable CatalogsItemValidationDetails UTM_SOURCE_AUTO_CORRECTED) {
     this.UTM_SOURCE_AUTO_CORRECTED = UTM_SOURCE_AUTO_CORRECTED;
     return this;
   }
@@ -1042,12 +1086,12 @@ public class CatalogsItemValidationWarnings {
     return UTM_SOURCE_AUTO_CORRECTED;
   }
 
-  public void setUTMSOURCEAUTOCORRECTED(CatalogsItemValidationDetails UTM_SOURCE_AUTO_CORRECTED) {
+  public void setUTMSOURCEAUTOCORRECTED(@javax.annotation.Nullable CatalogsItemValidationDetails UTM_SOURCE_AUTO_CORRECTED) {
     this.UTM_SOURCE_AUTO_CORRECTED = UTM_SOURCE_AUTO_CORRECTED;
   }
 
 
-  public CatalogsItemValidationWarnings WEIGHT_UNIT_INVALID(CatalogsItemValidationDetails WEIGHT_UNIT_INVALID) {
+  public CatalogsItemValidationWarnings WEIGHT_UNIT_INVALID(@javax.annotation.Nullable CatalogsItemValidationDetails WEIGHT_UNIT_INVALID) {
     this.WEIGHT_UNIT_INVALID = WEIGHT_UNIT_INVALID;
     return this;
   }
@@ -1061,7 +1105,7 @@ public class CatalogsItemValidationWarnings {
     return WEIGHT_UNIT_INVALID;
   }
 
-  public void setWEIGHTUNITINVALID(CatalogsItemValidationDetails WEIGHT_UNIT_INVALID) {
+  public void setWEIGHTUNITINVALID(@javax.annotation.Nullable CatalogsItemValidationDetails WEIGHT_UNIT_INVALID) {
     this.WEIGHT_UNIT_INVALID = WEIGHT_UNIT_INVALID;
   }
 

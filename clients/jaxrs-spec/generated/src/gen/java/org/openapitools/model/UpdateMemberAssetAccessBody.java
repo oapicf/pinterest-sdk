@@ -21,9 +21,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "An object with a list of all the new accesses.")
 @JsonTypeName("UpdateMemberAssetAccessBody")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class UpdateMemberAssetAccessBody   {
   private @Valid List<@Valid UpdateMemberAssetAccessBodyAccessesInner> accesses = new ArrayList<>();
+
+  public UpdateMemberAssetAccessBody() {
+  }
+
+  @JsonCreator
+  public UpdateMemberAssetAccessBody(
+    @JsonProperty(required = true, value = "accesses") List<@Valid UpdateMemberAssetAccessBodyAccessesInner> accesses
+  ) {
+    this.accesses = accesses;
+  }
 
   /**
    **/
@@ -34,12 +44,12 @@ public class UpdateMemberAssetAccessBody   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("accesses")
+  @JsonProperty(required = true, value = "accesses")
   @NotNull @Valid  @Size(min=1,max=50)public List<@Valid UpdateMemberAssetAccessBodyAccessesInner> getAccesses() {
     return accesses;
   }
 
-  @JsonProperty("accesses")
+  @JsonProperty(required = true, value = "accesses")
   public void setAccesses(List<@Valid UpdateMemberAssetAccessBodyAccessesInner> accesses) {
     this.accesses = accesses;
   }

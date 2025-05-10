@@ -13,7 +13,7 @@ import AnyCodable
 /** Response for lead data test API. */
 public struct LeadFormTestResponse: Codable, JSONEncodable, Hashable {
 
-    static let subscriptionIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let subscriptionIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Subscription ID. */
     public var subscriptionId: String?
 

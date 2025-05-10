@@ -19,11 +19,25 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CreateAssetGroupBody")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CreateAssetGroupBody   {
   private String assetGroupName;
   private String assetGroupDescription;
   private @Valid List<AssetGroupType> assetGroupTypes = new ArrayList<>();
+
+  public CreateAssetGroupBody() {
+  }
+
+  @JsonCreator
+  public CreateAssetGroupBody(
+    @JsonProperty(required = true, value = "asset_group_name") String assetGroupName,
+    @JsonProperty(required = true, value = "asset_group_description") String assetGroupDescription,
+    @JsonProperty(required = true, value = "asset_group_types") List<AssetGroupType> assetGroupTypes
+  ) {
+    this.assetGroupName = assetGroupName;
+    this.assetGroupDescription = assetGroupDescription;
+    this.assetGroupTypes = assetGroupTypes;
+  }
 
   /**
    * Asset Group name
@@ -35,12 +49,12 @@ public class CreateAssetGroupBody   {
 
   
   @ApiModelProperty(example = "Canada Ad Accounts", required = true, value = "Asset Group name")
-  @JsonProperty("asset_group_name")
+  @JsonProperty(required = true, value = "asset_group_name")
   @NotNull public String getAssetGroupName() {
     return assetGroupName;
   }
 
-  @JsonProperty("asset_group_name")
+  @JsonProperty(required = true, value = "asset_group_name")
   public void setAssetGroupName(String assetGroupName) {
     this.assetGroupName = assetGroupName;
   }
@@ -55,12 +69,12 @@ public class CreateAssetGroupBody   {
 
   
   @ApiModelProperty(example = "Asset groups that has ad accounts shared in Canada", required = true, value = "Asset group description")
-  @JsonProperty("asset_group_description")
+  @JsonProperty(required = true, value = "asset_group_description")
   @NotNull public String getAssetGroupDescription() {
     return assetGroupDescription;
   }
 
-  @JsonProperty("asset_group_description")
+  @JsonProperty(required = true, value = "asset_group_description")
   public void setAssetGroupDescription(String assetGroupDescription) {
     this.assetGroupDescription = assetGroupDescription;
   }
@@ -75,12 +89,12 @@ public class CreateAssetGroupBody   {
 
   
   @ApiModelProperty(example = "[\"BRAND\",\"LOCATION_OR_LANGUAGE\",\"PRODUCT_LINE\",\"OTHER\"]", required = true, value = "Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.")
-  @JsonProperty("asset_group_types")
+  @JsonProperty(required = true, value = "asset_group_types")
   @NotNull public List<AssetGroupType> getAssetGroupTypes() {
     return assetGroupTypes;
   }
 
-  @JsonProperty("asset_group_types")
+  @JsonProperty(required = true, value = "asset_group_types")
   public void setAssetGroupTypes(List<AssetGroupType> assetGroupTypes) {
     this.assetGroupTypes = assetGroupTypes;
   }

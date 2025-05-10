@@ -53,7 +53,7 @@ class TargetingSpec
      * @Type("array<string>")
     */
     #[Assert\All([
-        new Assert\Choice(["18-24", "21+", "25-34", "35-44", "45-49", "50-54", "55-64", "65+"]),
+        new Assert\Choice(['18-24', '21+', '25-34', '35-44', '45-49', '50-54', '55-64', '65+']),
     ])]
     #[Assert\All([
         new Assert\Type("string"),
@@ -68,7 +68,7 @@ class TargetingSpec
      * @Type("array<string>")
     */
     #[Assert\All([
-        new Assert\Choice(["android_mobile", "android_tablet", "ipad", "iphone", "web", "web_mobile"]),
+        new Assert\Choice(['android_mobile', 'android_tablet', 'ipad', 'iphone', 'web', 'web_mobile']),
     ])]
     #[Assert\All([
         new Assert\Type("string"),
@@ -107,7 +107,7 @@ class TargetingSpec
      * @Type("array<string>")
     */
     #[Assert\All([
-        new Assert\Choice(["unknown", "male", "female"]),
+        new Assert\Choice(['unknown', 'male', 'female']),
     ])]
     #[Assert\All([
         new Assert\Type("string"),
@@ -182,7 +182,7 @@ class TargetingSpec
      * @Type("array<string>")
     */
     #[Assert\All([
-        new Assert\Choice(["CHOOSE_YOUR_OWN", "FIND_NEW_CUSTOMERS", "RECONNECT_WITH_USERS"]),
+        new Assert\Choice(['CHOOSE_YOUR_OWN', 'FIND_NEW_CUSTOMERS', 'RECONNECT_WITH_USERS']),
     ])]
     #[Assert\All([
         new Assert\Type("string"),
@@ -193,7 +193,7 @@ class TargetingSpec
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->aGEBUCKET = array_key_exists('aGEBUCKET', $data) ? $data['aGEBUCKET'] : $this->aGEBUCKET;

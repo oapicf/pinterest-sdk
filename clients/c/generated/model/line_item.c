@@ -5,7 +5,7 @@
 
 
 
-line_item_t *line_item_create(
+static line_item_t *line_item_create_internal(
     char *product_brand,
     char *product_category,
     int product_id,
@@ -28,12 +28,38 @@ line_item_t *line_item_create(
     line_item_local_var->product_variant = product_variant;
     line_item_local_var->product_variant_id = product_variant_id;
 
+    line_item_local_var->_library_owned = 1;
     return line_item_local_var;
 }
 
+__attribute__((deprecated)) line_item_t *line_item_create(
+    char *product_brand,
+    char *product_category,
+    int product_id,
+    char *product_name,
+    char *product_price,
+    int product_quantity,
+    char *product_variant,
+    char *product_variant_id
+    ) {
+    return line_item_create_internal (
+        product_brand,
+        product_category,
+        product_id,
+        product_name,
+        product_price,
+        product_quantity,
+        product_variant,
+        product_variant_id
+        );
+}
 
 void line_item_free(line_item_t *line_item) {
     if(NULL == line_item){
+        return ;
+    }
+    if(line_item->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "line_item_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -144,6 +170,9 @@ line_item_t *line_item_parseFromJSON(cJSON *line_itemJSON){
 
     // line_item->product_brand
     cJSON *product_brand = cJSON_GetObjectItemCaseSensitive(line_itemJSON, "product_brand");
+    if (cJSON_IsNull(product_brand)) {
+        product_brand = NULL;
+    }
     if (product_brand) { 
     if(!cJSON_IsString(product_brand) && !cJSON_IsNull(product_brand))
     {
@@ -153,6 +182,9 @@ line_item_t *line_item_parseFromJSON(cJSON *line_itemJSON){
 
     // line_item->product_category
     cJSON *product_category = cJSON_GetObjectItemCaseSensitive(line_itemJSON, "product_category");
+    if (cJSON_IsNull(product_category)) {
+        product_category = NULL;
+    }
     if (product_category) { 
     if(!cJSON_IsString(product_category) && !cJSON_IsNull(product_category))
     {
@@ -162,6 +194,9 @@ line_item_t *line_item_parseFromJSON(cJSON *line_itemJSON){
 
     // line_item->product_id
     cJSON *product_id = cJSON_GetObjectItemCaseSensitive(line_itemJSON, "product_id");
+    if (cJSON_IsNull(product_id)) {
+        product_id = NULL;
+    }
     if (product_id) { 
     if(!cJSON_IsNumber(product_id))
     {
@@ -171,6 +206,9 @@ line_item_t *line_item_parseFromJSON(cJSON *line_itemJSON){
 
     // line_item->product_name
     cJSON *product_name = cJSON_GetObjectItemCaseSensitive(line_itemJSON, "product_name");
+    if (cJSON_IsNull(product_name)) {
+        product_name = NULL;
+    }
     if (product_name) { 
     if(!cJSON_IsString(product_name) && !cJSON_IsNull(product_name))
     {
@@ -180,6 +218,9 @@ line_item_t *line_item_parseFromJSON(cJSON *line_itemJSON){
 
     // line_item->product_price
     cJSON *product_price = cJSON_GetObjectItemCaseSensitive(line_itemJSON, "product_price");
+    if (cJSON_IsNull(product_price)) {
+        product_price = NULL;
+    }
     if (product_price) { 
     if(!cJSON_IsString(product_price) && !cJSON_IsNull(product_price))
     {
@@ -189,6 +230,9 @@ line_item_t *line_item_parseFromJSON(cJSON *line_itemJSON){
 
     // line_item->product_quantity
     cJSON *product_quantity = cJSON_GetObjectItemCaseSensitive(line_itemJSON, "product_quantity");
+    if (cJSON_IsNull(product_quantity)) {
+        product_quantity = NULL;
+    }
     if (product_quantity) { 
     if(!cJSON_IsNumber(product_quantity))
     {
@@ -198,6 +242,9 @@ line_item_t *line_item_parseFromJSON(cJSON *line_itemJSON){
 
     // line_item->product_variant
     cJSON *product_variant = cJSON_GetObjectItemCaseSensitive(line_itemJSON, "product_variant");
+    if (cJSON_IsNull(product_variant)) {
+        product_variant = NULL;
+    }
     if (product_variant) { 
     if(!cJSON_IsString(product_variant) && !cJSON_IsNull(product_variant))
     {
@@ -207,6 +254,9 @@ line_item_t *line_item_parseFromJSON(cJSON *line_itemJSON){
 
     // line_item->product_variant_id
     cJSON *product_variant_id = cJSON_GetObjectItemCaseSensitive(line_itemJSON, "product_variant_id");
+    if (cJSON_IsNull(product_variant_id)) {
+        product_variant_id = NULL;
+    }
     if (product_variant_id) { 
     if(!cJSON_IsString(product_variant_id) && !cJSON_IsNull(product_variant_id))
     {
@@ -215,7 +265,7 @@ line_item_t *line_item_parseFromJSON(cJSON *line_itemJSON){
     }
 
 
-    line_item_local_var = line_item_create (
+    line_item_local_var = line_item_create_internal (
         product_brand && !cJSON_IsNull(product_brand) ? strdup(product_brand->valuestring) : NULL,
         product_category && !cJSON_IsNull(product_category) ? strdup(product_category->valuestring) : NULL,
         product_id ? product_id->valuedouble : 0,

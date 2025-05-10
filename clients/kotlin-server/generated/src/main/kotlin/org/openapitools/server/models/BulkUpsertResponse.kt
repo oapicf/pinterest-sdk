@@ -12,11 +12,13 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * ID of the bulk request.
  * @param requestId 
  */
+@Serializable
 data class BulkUpsertResponse(
     val requestId: kotlin.String? = null
-) 
+)
 

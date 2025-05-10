@@ -73,7 +73,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   CatalogsItemValidationWarnings.JSON_PROPERTY_W_E_I_G_H_T_U_N_I_T_I_N_V_A_L_I_D
 })
 @JsonTypeName("CatalogsItemValidationWarnings")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2024-11-05T02:03:37.829873561Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2025-05-10T05:39:14.747146068Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 @Introspected
 public class CatalogsItemValidationWarnings {
     public static final String JSON_PROPERTY_A_D_L_I_N_K_F_O_R_M_A_T_W_A_R_N_I_N_G = "AD_LINK_FORMAT_WARNING";

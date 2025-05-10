@@ -49,16 +49,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * GoogleProductCategory0Filter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class GoogleProductCategory0Filter {
   public static final String SERIALIZED_NAME_G_O_O_G_L_E_P_R_O_D_U_C_T_C_A_T_E_G_O_R_Y0 = "GOOGLE_PRODUCT_CATEGORY_0";
   @SerializedName(SERIALIZED_NAME_G_O_O_G_L_E_P_R_O_D_U_C_T_C_A_T_E_G_O_R_Y0)
+  @javax.annotation.Nonnull
   private CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_0;
 
   public GoogleProductCategory0Filter() {
   }
 
-  public GoogleProductCategory0Filter GOOGLE_PRODUCT_CATEGORY_0(CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_0) {
+  public GoogleProductCategory0Filter GOOGLE_PRODUCT_CATEGORY_0(@javax.annotation.Nonnull CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_0) {
     this.GOOGLE_PRODUCT_CATEGORY_0 = GOOGLE_PRODUCT_CATEGORY_0;
     return this;
   }
@@ -72,7 +73,7 @@ public class GoogleProductCategory0Filter {
     return GOOGLE_PRODUCT_CATEGORY_0;
   }
 
-  public void setGOOGLEPRODUCTCATEGORY0(CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_0) {
+  public void setGOOGLEPRODUCTCATEGORY0(@javax.annotation.Nonnull CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_0) {
     this.GOOGLE_PRODUCT_CATEGORY_0 = GOOGLE_PRODUCT_CATEGORY_0;
   }
 

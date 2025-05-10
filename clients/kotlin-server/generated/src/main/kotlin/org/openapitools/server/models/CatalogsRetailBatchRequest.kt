@@ -15,6 +15,7 @@ import org.openapitools.server.models.CatalogsItemsRequestLanguage
 import org.openapitools.server.models.CatalogsRetailBatchRequestItemsInner
 import org.openapitools.server.models.Country
 
+import kotlinx.serialization.Serializable
 /**
  * A request object that can have multiple operations on a single retail batch
  * @param catalogType 
@@ -22,13 +23,14 @@ import org.openapitools.server.models.Country
  * @param language 
  * @param items Array with catalogs item operations
  */
+@Serializable
 data class CatalogsRetailBatchRequest(
     val catalogType: CatalogsRetailBatchRequest.CatalogType,
     val country: Country,
     val language: CatalogsItemsRequestLanguage,
     /* Array with catalogs item operations */
     val items: kotlin.collections.List<CatalogsRetailBatchRequestItemsInner>
-) 
+)
 {
     /**
     * 

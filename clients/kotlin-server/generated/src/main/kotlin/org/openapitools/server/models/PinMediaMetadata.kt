@@ -15,6 +15,7 @@ import org.openapitools.server.models.ImageMetadata
 import org.openapitools.server.models.ImageMetadataImages
 import org.openapitools.server.models.VideoMetadata
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param itemType 
@@ -28,6 +29,7 @@ import org.openapitools.server.models.VideoMetadata
  * @param height Height (in pixels)
  * @param width Width (in pixels)
  */
+@Serializable
 data class PinMediaMetadata(
     val itemType: kotlin.String? = null,
     val title: kotlin.String? = null,
@@ -43,5 +45,5 @@ data class PinMediaMetadata(
     val height: kotlin.Int? = null,
     /* Width (in pixels) */
     val width: kotlin.Int? = null
-) 
+)
 

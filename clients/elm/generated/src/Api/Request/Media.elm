@@ -27,7 +27,11 @@ import Http
 import Json.Decode
 import Json.Encode
 
-{-| Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+
+{-| Register media upload
+
+Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+
 -}
 mediaCreate : Api.Data.MediaUploadRequest -> Api.Request Api.Data.MediaUpload
 mediaCreate mediaUploadRequest_body =
@@ -41,21 +45,27 @@ mediaCreate mediaUploadRequest_body =
         Api.Data.mediaUploadDecoder
 
 
-{-| Get details for a registered media upload, including its current status.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+{-| Get media upload details
+
+Get details for a registered media upload, including its current status.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+
 -}
 mediaGet : String -> Api.Request Api.Data.MediaUploadDetails
 mediaGet mediaId_path =
     Api.request
         "GET"
         "/media/{media_id}"
-        [ ( "mediaId", identity mediaId_path ) ]
+        [ ( "media_id", identity mediaId_path ) ]
         []
         []
         Nothing
         Api.Data.mediaUploadDetailsDecoder
 
 
-{-| List media uploads filtered by given parameters.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+{-| List media uploads
+
+List media uploads filtered by given parameters.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+
 -}
 mediaList : Maybe String -> Maybe Int -> Api.Request Api.Data.MediaList200Response
 mediaList bookmark_query pageSize_query =

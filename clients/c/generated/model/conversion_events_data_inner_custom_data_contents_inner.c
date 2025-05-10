@@ -5,7 +5,7 @@
 
 
 
-conversion_events_data_inner_custom_data_contents_inner_t *conversion_events_data_inner_custom_data_contents_inner_create(
+static conversion_events_data_inner_custom_data_contents_inner_t *conversion_events_data_inner_custom_data_contents_inner_create_internal(
     char *id,
     char *item_price,
     long quantity,
@@ -24,12 +24,34 @@ conversion_events_data_inner_custom_data_contents_inner_t *conversion_events_dat
     conversion_events_data_inner_custom_data_contents_inner_local_var->item_category = item_category;
     conversion_events_data_inner_custom_data_contents_inner_local_var->item_brand = item_brand;
 
+    conversion_events_data_inner_custom_data_contents_inner_local_var->_library_owned = 1;
     return conversion_events_data_inner_custom_data_contents_inner_local_var;
 }
 
+__attribute__((deprecated)) conversion_events_data_inner_custom_data_contents_inner_t *conversion_events_data_inner_custom_data_contents_inner_create(
+    char *id,
+    char *item_price,
+    long quantity,
+    char *item_name,
+    char *item_category,
+    char *item_brand
+    ) {
+    return conversion_events_data_inner_custom_data_contents_inner_create_internal (
+        id,
+        item_price,
+        quantity,
+        item_name,
+        item_category,
+        item_brand
+        );
+}
 
 void conversion_events_data_inner_custom_data_contents_inner_free(conversion_events_data_inner_custom_data_contents_inner_t *conversion_events_data_inner_custom_data_contents_inner) {
     if(NULL == conversion_events_data_inner_custom_data_contents_inner){
+        return ;
+    }
+    if(conversion_events_data_inner_custom_data_contents_inner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "conversion_events_data_inner_custom_data_contents_inner_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -120,6 +142,9 @@ conversion_events_data_inner_custom_data_contents_inner_t *conversion_events_dat
 
     // conversion_events_data_inner_custom_data_contents_inner->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(conversion_events_data_inner_custom_data_contents_innerJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -129,6 +154,9 @@ conversion_events_data_inner_custom_data_contents_inner_t *conversion_events_dat
 
     // conversion_events_data_inner_custom_data_contents_inner->item_price
     cJSON *item_price = cJSON_GetObjectItemCaseSensitive(conversion_events_data_inner_custom_data_contents_innerJSON, "item_price");
+    if (cJSON_IsNull(item_price)) {
+        item_price = NULL;
+    }
     if (item_price) { 
     if(!cJSON_IsString(item_price) && !cJSON_IsNull(item_price))
     {
@@ -138,6 +166,9 @@ conversion_events_data_inner_custom_data_contents_inner_t *conversion_events_dat
 
     // conversion_events_data_inner_custom_data_contents_inner->quantity
     cJSON *quantity = cJSON_GetObjectItemCaseSensitive(conversion_events_data_inner_custom_data_contents_innerJSON, "quantity");
+    if (cJSON_IsNull(quantity)) {
+        quantity = NULL;
+    }
     if (quantity) { 
     if(!cJSON_IsNumber(quantity))
     {
@@ -147,6 +178,9 @@ conversion_events_data_inner_custom_data_contents_inner_t *conversion_events_dat
 
     // conversion_events_data_inner_custom_data_contents_inner->item_name
     cJSON *item_name = cJSON_GetObjectItemCaseSensitive(conversion_events_data_inner_custom_data_contents_innerJSON, "item_name");
+    if (cJSON_IsNull(item_name)) {
+        item_name = NULL;
+    }
     if (item_name) { 
     if(!cJSON_IsString(item_name) && !cJSON_IsNull(item_name))
     {
@@ -156,6 +190,9 @@ conversion_events_data_inner_custom_data_contents_inner_t *conversion_events_dat
 
     // conversion_events_data_inner_custom_data_contents_inner->item_category
     cJSON *item_category = cJSON_GetObjectItemCaseSensitive(conversion_events_data_inner_custom_data_contents_innerJSON, "item_category");
+    if (cJSON_IsNull(item_category)) {
+        item_category = NULL;
+    }
     if (item_category) { 
     if(!cJSON_IsString(item_category) && !cJSON_IsNull(item_category))
     {
@@ -165,6 +202,9 @@ conversion_events_data_inner_custom_data_contents_inner_t *conversion_events_dat
 
     // conversion_events_data_inner_custom_data_contents_inner->item_brand
     cJSON *item_brand = cJSON_GetObjectItemCaseSensitive(conversion_events_data_inner_custom_data_contents_innerJSON, "item_brand");
+    if (cJSON_IsNull(item_brand)) {
+        item_brand = NULL;
+    }
     if (item_brand) { 
     if(!cJSON_IsString(item_brand) && !cJSON_IsNull(item_brand))
     {
@@ -173,7 +213,7 @@ conversion_events_data_inner_custom_data_contents_inner_t *conversion_events_dat
     }
 
 
-    conversion_events_data_inner_custom_data_contents_inner_local_var = conversion_events_data_inner_custom_data_contents_inner_create (
+    conversion_events_data_inner_custom_data_contents_inner_local_var = conversion_events_data_inner_custom_data_contents_inner_create_internal (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         item_price && !cJSON_IsNull(item_price) ? strdup(item_price->valuestring) : NULL,
         quantity ? quantity->valuedouble : 0,

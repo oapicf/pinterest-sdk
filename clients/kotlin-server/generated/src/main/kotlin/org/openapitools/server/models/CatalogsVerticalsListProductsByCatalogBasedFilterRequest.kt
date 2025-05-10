@@ -18,6 +18,7 @@ import org.openapitools.server.models.CatalogsLocale
 import org.openapitools.server.models.CatalogsRetailListProductsByCatalogBasedFilterRequest
 import org.openapitools.server.models.Country
 
+import kotlinx.serialization.Serializable
 /**
  * Request object to list products for a given catalog_id and product group filter.
  * @param catalogType 
@@ -26,6 +27,7 @@ import org.openapitools.server.models.Country
  * @param country 
  * @param locale 
  */
+@Serializable
 data class CatalogsVerticalsListProductsByCatalogBasedFilterRequest(
     val catalogType: CatalogsVerticalsListProductsByCatalogBasedFilterRequest.CatalogType,
     /* Catalog id pertaining to the creative assets product group. */
@@ -33,7 +35,7 @@ data class CatalogsVerticalsListProductsByCatalogBasedFilterRequest(
     val filters: CatalogsCreativeAssetsProductGroupFilters,
     val country: Country,
     val locale: CatalogsLocale
-) 
+)
 {
     /**
     * 

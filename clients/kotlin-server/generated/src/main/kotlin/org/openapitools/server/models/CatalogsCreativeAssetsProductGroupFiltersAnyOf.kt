@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsCreativeAssetsProductGroupFilterKeys
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param anyOf 
  */
+@Serializable
 data class CatalogsCreativeAssetsProductGroupFiltersAnyOf(
     val anyOf: kotlin.collections.List<CatalogsCreativeAssetsProductGroupFilterKeys>
-) 
+)
 

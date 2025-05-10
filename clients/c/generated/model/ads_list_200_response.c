@@ -5,7 +5,7 @@
 
 
 
-ads_list_200_response_t *ads_list_200_response_create(
+static ads_list_200_response_t *ads_list_200_response_create_internal(
     list_t *items,
     char *bookmark
     ) {
@@ -16,12 +16,26 @@ ads_list_200_response_t *ads_list_200_response_create(
     ads_list_200_response_local_var->items = items;
     ads_list_200_response_local_var->bookmark = bookmark;
 
+    ads_list_200_response_local_var->_library_owned = 1;
     return ads_list_200_response_local_var;
 }
 
+__attribute__((deprecated)) ads_list_200_response_t *ads_list_200_response_create(
+    list_t *items,
+    char *bookmark
+    ) {
+    return ads_list_200_response_create_internal (
+        items,
+        bookmark
+        );
+}
 
 void ads_list_200_response_free(ads_list_200_response_t *ads_list_200_response) {
     if(NULL == ads_list_200_response){
+        return ;
+    }
+    if(ads_list_200_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ads_list_200_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -87,6 +101,9 @@ ads_list_200_response_t *ads_list_200_response_parseFromJSON(cJSON *ads_list_200
 
     // ads_list_200_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(ads_list_200_responseJSON, "items");
+    if (cJSON_IsNull(items)) {
+        items = NULL;
+    }
     if (!items) {
         goto end;
     }
@@ -111,6 +128,9 @@ ads_list_200_response_t *ads_list_200_response_parseFromJSON(cJSON *ads_list_200
 
     // ads_list_200_response->bookmark
     cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(ads_list_200_responseJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
     if (bookmark) { 
     if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
     {
@@ -119,7 +139,7 @@ ads_list_200_response_t *ads_list_200_response_parseFromJSON(cJSON *ads_list_200
     }
 
 
-    ads_list_200_response_local_var = ads_list_200_response_create (
+    ads_list_200_response_local_var = ads_list_200_response_create_internal (
         itemsList,
         bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
         );

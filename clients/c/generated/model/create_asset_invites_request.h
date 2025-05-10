@@ -22,9 +22,10 @@ typedef struct create_asset_invites_request_t create_asset_invites_request_t;
 typedef struct create_asset_invites_request_t {
     list_t *invites; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } create_asset_invites_request_t;
 
-create_asset_invites_request_t *create_asset_invites_request_create(
+__attribute__((deprecated)) create_asset_invites_request_t *create_asset_invites_request_create(
     list_t *invites
 );
 

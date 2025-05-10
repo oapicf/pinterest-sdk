@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { DetailedError } from '../model/detailedError';
 import { IntegrationLogsRequest } from '../model/integrationLogsRequest';
@@ -33,10 +33,12 @@ export class IntegrationsService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -54,9 +56,10 @@ export class IntegrationsService {
      * @param externalBusinessId External business ID for the integration.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [integrationsCommerceDelOpts.config] Override http request option.
      */
-    public integrationsCommerceDel(externalBusinessId: string, ): Observable<AxiosResponse<any>>;
-    public integrationsCommerceDel(externalBusinessId: string, ): Observable<any> {
+    public integrationsCommerceDel(externalBusinessId: string, integrationsCommerceDelOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public integrationsCommerceDel(externalBusinessId: string, integrationsCommerceDelOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (externalBusinessId === null || externalBusinessId === undefined) {
             throw new Error('Required parameter externalBusinessId was null or undefined when calling integrationsCommerceDel.');
         }
@@ -93,7 +96,8 @@ export class IntegrationsService {
                 return this.httpClient.delete<any>(`${this.basePath}/integrations/commerce/${encodeURIComponent(String(external_business_id))}`,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...integrationsCommerceDelOpts?.config,
+                        headers: {...headers, ...integrationsCommerceDelOpts?.config?.headers},
                     }
                 );
             })
@@ -105,9 +109,10 @@ export class IntegrationsService {
      * @param externalBusinessId External business ID for the integration.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [integrationsCommerceGetOpts.config] Override http request option.
      */
-    public integrationsCommerceGet(externalBusinessId: string, ): Observable<AxiosResponse<IntegrationMetadata>>;
-    public integrationsCommerceGet(externalBusinessId: string, ): Observable<any> {
+    public integrationsCommerceGet(externalBusinessId: string, integrationsCommerceGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<IntegrationMetadata>>;
+    public integrationsCommerceGet(externalBusinessId: string, integrationsCommerceGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (externalBusinessId === null || externalBusinessId === undefined) {
             throw new Error('Required parameter externalBusinessId was null or undefined when calling integrationsCommerceGet.');
         }
@@ -144,7 +149,8 @@ export class IntegrationsService {
                 return this.httpClient.get<IntegrationMetadata>(`${this.basePath}/integrations/commerce/${encodeURIComponent(String(external_business_id))}`,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...integrationsCommerceGetOpts?.config,
+                        headers: {...headers, ...integrationsCommerceGetOpts?.config?.headers},
                     }
                 );
             })
@@ -157,9 +163,10 @@ export class IntegrationsService {
      * @param integrationRequestPatch Parameters to get create/update the Integration Metadata
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [integrationsCommercePatchOpts.config] Override http request option.
      */
-    public integrationsCommercePatch(externalBusinessId: string, integrationRequestPatch?: IntegrationRequestPatch, ): Observable<AxiosResponse<IntegrationMetadata>>;
-    public integrationsCommercePatch(externalBusinessId: string, integrationRequestPatch?: IntegrationRequestPatch, ): Observable<any> {
+    public integrationsCommercePatch(externalBusinessId: string, integrationRequestPatch?: IntegrationRequestPatch, integrationsCommercePatchOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<IntegrationMetadata>>;
+    public integrationsCommercePatch(externalBusinessId: string, integrationRequestPatch?: IntegrationRequestPatch, integrationsCommercePatchOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (externalBusinessId === null || externalBusinessId === undefined) {
             throw new Error('Required parameter externalBusinessId was null or undefined when calling integrationsCommercePatch.');
         }
@@ -202,7 +209,8 @@ export class IntegrationsService {
                     integrationRequestPatch,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...integrationsCommercePatchOpts?.config,
+                        headers: {...headers, ...integrationsCommercePatchOpts?.config?.headers},
                     }
                 );
             })
@@ -214,9 +222,10 @@ export class IntegrationsService {
      * @param integrationRequest Parameters to get create/update the Integration Metadata
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [integrationsCommercePostOpts.config] Override http request option.
      */
-    public integrationsCommercePost(integrationRequest?: IntegrationRequest, ): Observable<AxiosResponse<IntegrationMetadata>>;
-    public integrationsCommercePost(integrationRequest?: IntegrationRequest, ): Observable<any> {
+    public integrationsCommercePost(integrationRequest?: IntegrationRequest, integrationsCommercePostOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<IntegrationMetadata>>;
+    public integrationsCommercePost(integrationRequest?: IntegrationRequest, integrationsCommercePostOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let headers = {...this.defaultHeaders};
 
         let accessTokenObservable: Observable<any> = of(null);
@@ -255,7 +264,8 @@ export class IntegrationsService {
                     integrationRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...integrationsCommercePostOpts?.config,
+                        headers: {...headers, ...integrationsCommercePostOpts?.config?.headers},
                     }
                 );
             })
@@ -267,9 +277,10 @@ export class IntegrationsService {
      * @param id Integration ID.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [integrationsGetByIdOpts.config] Override http request option.
      */
-    public integrationsGetById(id: string, ): Observable<AxiosResponse<IntegrationRecord>>;
-    public integrationsGetById(id: string, ): Observable<any> {
+    public integrationsGetById(id: string, integrationsGetByIdOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<IntegrationRecord>>;
+    public integrationsGetById(id: string, integrationsGetByIdOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling integrationsGetById.');
         }
@@ -306,7 +317,8 @@ export class IntegrationsService {
                 return this.httpClient.get<IntegrationRecord>(`${this.basePath}/integrations/${encodeURIComponent(String(id))}`,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...integrationsGetByIdOpts?.config,
+                        headers: {...headers, ...integrationsGetByIdOpts?.config?.headers},
                     }
                 );
             })
@@ -319,9 +331,10 @@ export class IntegrationsService {
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [integrationsGetListOpts.config] Override http request option.
      */
-    public integrationsGetList(bookmark?: string, pageSize?: number, ): Observable<AxiosResponse<IntegrationsGetList200Response>>;
-    public integrationsGetList(bookmark?: string, pageSize?: number, ): Observable<any> {
+    public integrationsGetList(bookmark?: string, pageSize?: number, integrationsGetListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<IntegrationsGetList200Response>>;
+    public integrationsGetList(bookmark?: string, pageSize?: number, integrationsGetListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let queryParameters = new URLSearchParams();
         if (bookmark !== undefined && bookmark !== null) {
             queryParameters.append('bookmark', <any>bookmark);
@@ -363,7 +376,8 @@ export class IntegrationsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...integrationsGetListOpts?.config,
+                        headers: {...headers, ...integrationsGetListOpts?.config?.headers},
                     }
                 );
             })
@@ -375,9 +389,10 @@ export class IntegrationsService {
      * @param integrationLogsRequest Ingest log information from external integration application.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [integrationsLogsPostOpts.config] Override http request option.
      */
-    public integrationsLogsPost(integrationLogsRequest: IntegrationLogsRequest, ): Observable<AxiosResponse<IntegrationLogsSuccessResponse>>;
-    public integrationsLogsPost(integrationLogsRequest: IntegrationLogsRequest, ): Observable<any> {
+    public integrationsLogsPost(integrationLogsRequest: IntegrationLogsRequest, integrationsLogsPostOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<IntegrationLogsSuccessResponse>>;
+    public integrationsLogsPost(integrationLogsRequest: IntegrationLogsRequest, integrationsLogsPostOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (integrationLogsRequest === null || integrationLogsRequest === undefined) {
             throw new Error('Required parameter integrationLogsRequest was null or undefined when calling integrationsLogsPost.');
         }
@@ -420,7 +435,8 @@ export class IntegrationsService {
                     integrationLogsRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...integrationsLogsPostOpts?.config,
+                        headers: {...headers, ...integrationsLogsPostOpts?.config?.headers},
                     }
                 );
             })

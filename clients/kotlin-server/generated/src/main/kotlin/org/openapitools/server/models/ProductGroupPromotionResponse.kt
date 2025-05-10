@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.ProductGroupPromotionResponseItem
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items 
  */
+@Serializable
 data class ProductGroupPromotionResponse(
     val items: kotlin.collections.List<ProductGroupPromotionResponseItem>? = null
-) 
+)
 

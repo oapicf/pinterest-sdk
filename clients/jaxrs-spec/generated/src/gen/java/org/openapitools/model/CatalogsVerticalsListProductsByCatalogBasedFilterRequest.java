@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Request object to list products for a given catalog_id and product group filter.")
 @JsonTypeName("CatalogsVerticalsListProductsByCatalogBasedFilterRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsVerticalsListProductsByCatalogBasedFilterRequest   {
   public enum CatalogTypeEnum {
 
@@ -87,6 +87,24 @@ public class CatalogsVerticalsListProductsByCatalogBasedFilterRequest   {
   private Country country;
   private CatalogsLocale locale;
 
+  public CatalogsVerticalsListProductsByCatalogBasedFilterRequest() {
+  }
+
+  @JsonCreator
+  public CatalogsVerticalsListProductsByCatalogBasedFilterRequest(
+    @JsonProperty(required = true, value = "catalog_type") CatalogTypeEnum catalogType,
+    @JsonProperty(required = true, value = "catalog_id") String catalogId,
+    @JsonProperty(required = true, value = "filters") CatalogsCreativeAssetsProductGroupFilters filters,
+    @JsonProperty(required = true, value = "country") Country country,
+    @JsonProperty(required = true, value = "locale") CatalogsLocale locale
+  ) {
+    this.catalogType = catalogType;
+    this.catalogId = catalogId;
+    this.filters = filters;
+    this.country = country;
+    this.locale = locale;
+  }
+
   /**
    **/
   public CatalogsVerticalsListProductsByCatalogBasedFilterRequest catalogType(CatalogTypeEnum catalogType) {
@@ -96,12 +114,12 @@ public class CatalogsVerticalsListProductsByCatalogBasedFilterRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   @NotNull public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
@@ -116,12 +134,12 @@ public class CatalogsVerticalsListProductsByCatalogBasedFilterRequest   {
 
   
   @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the creative assets product group.")
-  @JsonProperty("catalog_id")
+  @JsonProperty(required = true, value = "catalog_id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getCatalogId() {
     return catalogId;
   }
 
-  @JsonProperty("catalog_id")
+  @JsonProperty(required = true, value = "catalog_id")
   public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
   }
@@ -135,12 +153,12 @@ public class CatalogsVerticalsListProductsByCatalogBasedFilterRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("filters")
+  @JsonProperty(required = true, value = "filters")
   @NotNull @Valid public CatalogsCreativeAssetsProductGroupFilters getFilters() {
     return filters;
   }
 
-  @JsonProperty("filters")
+  @JsonProperty(required = true, value = "filters")
   public void setFilters(CatalogsCreativeAssetsProductGroupFilters filters) {
     this.filters = filters;
   }
@@ -154,12 +172,12 @@ public class CatalogsVerticalsListProductsByCatalogBasedFilterRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("country")
+  @JsonProperty(required = true, value = "country")
   @NotNull public Country getCountry() {
     return country;
   }
 
-  @JsonProperty("country")
+  @JsonProperty(required = true, value = "country")
   public void setCountry(Country country) {
     this.country = country;
   }
@@ -173,12 +191,12 @@ public class CatalogsVerticalsListProductsByCatalogBasedFilterRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("locale")
+  @JsonProperty(required = true, value = "locale")
   @NotNull public CatalogsLocale getLocale() {
     return locale;
   }
 
-  @JsonProperty("locale")
+  @JsonProperty(required = true, value = "locale")
   public void setLocale(CatalogsLocale locale) {
     this.locale = locale;
   }

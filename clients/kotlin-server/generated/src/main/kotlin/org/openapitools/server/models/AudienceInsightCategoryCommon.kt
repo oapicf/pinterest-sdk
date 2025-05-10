@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param key 
@@ -20,11 +21,12 @@ package org.openapitools.server.models
  * @param index 
  * @param id 
  */
+@Serializable
 data class AudienceInsightCategoryCommon(
     val key: kotlin.String? = null,
     val name: kotlin.String? = null,
     val ratio: java.math.BigDecimal? = null,
     val index: java.math.BigDecimal? = null,
     val id: kotlin.String? = null
-) 
+)
 

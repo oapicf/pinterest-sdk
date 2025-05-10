@@ -13,8 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // CatalogsProduct - Catalogs product for all verticals
@@ -147,6 +147,24 @@ func (obj *CatalogsProduct) GetActualInstance() (interface{}) {
 
 	if obj.CatalogsRetailProduct != nil {
 		return obj.CatalogsRetailProduct
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj CatalogsProduct) GetActualInstanceValue() (interface{}) {
+	if obj.CatalogsCreativeAssetsProduct != nil {
+		return *obj.CatalogsCreativeAssetsProduct
+	}
+
+	if obj.CatalogsHotelProduct != nil {
+		return *obj.CatalogsHotelProduct
+	}
+
+	if obj.CatalogsRetailProduct != nil {
+		return *obj.CatalogsRetailProduct
 	}
 
 	// all schemas are nil

@@ -49,16 +49,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ItemIdFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ItemIdFilter {
   public static final String SERIALIZED_NAME_I_T_E_M_I_D = "ITEM_ID";
   @SerializedName(SERIALIZED_NAME_I_T_E_M_I_D)
+  @javax.annotation.Nonnull
   private CatalogsProductGroupMultipleStringCriteria ITEM_ID;
 
   public ItemIdFilter() {
   }
 
-  public ItemIdFilter ITEM_ID(CatalogsProductGroupMultipleStringCriteria ITEM_ID) {
+  public ItemIdFilter ITEM_ID(@javax.annotation.Nonnull CatalogsProductGroupMultipleStringCriteria ITEM_ID) {
     this.ITEM_ID = ITEM_ID;
     return this;
   }
@@ -72,7 +73,7 @@ public class ItemIdFilter {
     return ITEM_ID;
   }
 
-  public void setITEMID(CatalogsProductGroupMultipleStringCriteria ITEM_ID) {
+  public void setITEMID(@javax.annotation.Nonnull CatalogsProductGroupMultipleStringCriteria ITEM_ID) {
     this.ITEM_ID = ITEM_ID;
   }
 

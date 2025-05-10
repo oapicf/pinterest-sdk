@@ -13,14 +13,16 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.MatchTypeResponse
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param matchType 
  * @param `value` Keyword value (120 chars max).
  */
+@Serializable
 data class AdGroupAudienceSizingRequestKeywordsInner(
-    val matchType: MatchTypeResponse,
+    val matchType: MatchTypeResponse?,
     /* Keyword value (120 chars max). */
     val `value`: kotlin.String
-) 
+)
 

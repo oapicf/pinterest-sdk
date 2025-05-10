@@ -22,9 +22,10 @@ typedef struct board_media_t {
     char *image_cover_url; // string
     list_t *pin_thumbnail_urls; //primitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } board_media_t;
 
-board_media_t *board_media_create(
+__attribute__((deprecated)) board_media_t *board_media_create(
     char *image_cover_url,
     list_t *pin_thumbnail_urls
 );

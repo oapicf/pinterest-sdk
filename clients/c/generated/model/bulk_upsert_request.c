@@ -5,7 +5,7 @@
 
 
 
-bulk_upsert_request_t *bulk_upsert_request_create(
+static bulk_upsert_request_t *bulk_upsert_request_create_internal(
     bulk_upsert_request_create_t *create,
     bulk_upsert_request_update_t *update
     ) {
@@ -16,12 +16,26 @@ bulk_upsert_request_t *bulk_upsert_request_create(
     bulk_upsert_request_local_var->create = create;
     bulk_upsert_request_local_var->update = update;
 
+    bulk_upsert_request_local_var->_library_owned = 1;
     return bulk_upsert_request_local_var;
 }
 
+__attribute__((deprecated)) bulk_upsert_request_t *bulk_upsert_request_create(
+    bulk_upsert_request_create_t *create,
+    bulk_upsert_request_update_t *update
+    ) {
+    return bulk_upsert_request_create_internal (
+        create,
+        update
+        );
+}
 
 void bulk_upsert_request_free(bulk_upsert_request_t *bulk_upsert_request) {
     if(NULL == bulk_upsert_request){
+        return ;
+    }
+    if(bulk_upsert_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "bulk_upsert_request_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -84,18 +98,24 @@ bulk_upsert_request_t *bulk_upsert_request_parseFromJSON(cJSON *bulk_upsert_requ
 
     // bulk_upsert_request->create
     cJSON *create = cJSON_GetObjectItemCaseSensitive(bulk_upsert_requestJSON, "create");
+    if (cJSON_IsNull(create)) {
+        create = NULL;
+    }
     if (create) { 
     create_local_nonprim = bulk_upsert_request_create_parseFromJSON(create); //nonprimitive
     }
 
     // bulk_upsert_request->update
     cJSON *update = cJSON_GetObjectItemCaseSensitive(bulk_upsert_requestJSON, "update");
+    if (cJSON_IsNull(update)) {
+        update = NULL;
+    }
     if (update) { 
     update_local_nonprim = bulk_upsert_request_update_parseFromJSON(update); //nonprimitive
     }
 
 
-    bulk_upsert_request_local_var = bulk_upsert_request_create (
+    bulk_upsert_request_local_var = bulk_upsert_request_create_internal (
         create ? create_local_nonprim : NULL,
         update ? update_local_nonprim : NULL
         );

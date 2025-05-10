@@ -171,11 +171,11 @@ export function IntegrationLogFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-  export function IntegrationLogToJSON(json: any): IntegrationLog {
-      return IntegrationLogToJSONTyped(json, false);
-  }
+export function IntegrationLogToJSON(json: any): IntegrationLog {
+    return IntegrationLogToJSONTyped(json, false);
+}
 
-  export function IntegrationLogToJSONTyped(value?: IntegrationLog | null, ignoreDiscriminator: boolean = false): any {
+export function IntegrationLogToJSONTyped(value?: IntegrationLog | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

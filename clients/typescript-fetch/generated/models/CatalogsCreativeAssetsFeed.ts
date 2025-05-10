@@ -205,11 +205,11 @@ export function CatalogsCreativeAssetsFeedFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-  export function CatalogsCreativeAssetsFeedToJSON(json: any): CatalogsCreativeAssetsFeed {
-      return CatalogsCreativeAssetsFeedToJSONTyped(json, false);
-  }
+export function CatalogsCreativeAssetsFeedToJSON(json: any): CatalogsCreativeAssetsFeed {
+    return CatalogsCreativeAssetsFeedToJSONTyped(json, false);
+}
 
-  export function CatalogsCreativeAssetsFeedToJSONTyped(value?: CatalogsCreativeAssetsFeed | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsCreativeAssetsFeedToJSONTyped(value?: CatalogsCreativeAssetsFeed | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

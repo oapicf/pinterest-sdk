@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param adAccountId Associated ad account ID.
@@ -26,6 +27,7 @@ package org.openapitools.server.models
  * @param updatedTime Last update time. Unix timestamp in seconds.
  * @param exceptions Customer list errors
  */
+@Serializable
 data class CustomerList(
     /* Associated ad account ID. */
     val adAccountId: kotlin.String? = null,
@@ -49,7 +51,7 @@ data class CustomerList(
     val updatedTime: java.math.BigDecimal? = null,
     /* Customer list errors */
     val exceptions: kotlin.Any? = null
-) 
+)
 {
     /**
     * Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.

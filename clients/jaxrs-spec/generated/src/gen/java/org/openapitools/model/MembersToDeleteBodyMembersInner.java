@@ -17,10 +17,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("MembersToDeleteBody_members_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class MembersToDeleteBodyMembersInner   {
   private String memberId;
   private BusinessRoleForMembers businessRole;
+
+  public MembersToDeleteBodyMembersInner() {
+  }
+
+  @JsonCreator
+  public MembersToDeleteBodyMembersInner(
+    @JsonProperty(required = true, value = "member_id") String memberId,
+    @JsonProperty(required = true, value = "business_role") BusinessRoleForMembers businessRole
+  ) {
+    this.memberId = memberId;
+    this.businessRole = businessRole;
+  }
 
   /**
    * Unique identifier of the member
@@ -32,12 +44,12 @@ public class MembersToDeleteBodyMembersInner   {
 
   
   @ApiModelProperty(example = "140943737684417", required = true, value = "Unique identifier of the member")
-  @JsonProperty("member_id")
+  @JsonProperty(required = true, value = "member_id")
   @NotNull  @Pattern(regexp="^\\d+$") @Size(max=25)public String getMemberId() {
     return memberId;
   }
 
-  @JsonProperty("member_id")
+  @JsonProperty(required = true, value = "member_id")
   public void setMemberId(String memberId) {
     this.memberId = memberId;
   }
@@ -51,12 +63,12 @@ public class MembersToDeleteBodyMembersInner   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("business_role")
+  @JsonProperty(required = true, value = "business_role")
   @NotNull public BusinessRoleForMembers getBusinessRole() {
     return businessRole;
   }
 
-  @JsonProperty("business_role")
+  @JsonProperty(required = true, value = "business_role")
   public void setBusinessRole(BusinessRoleForMembers businessRole) {
     this.businessRole = businessRole;
   }

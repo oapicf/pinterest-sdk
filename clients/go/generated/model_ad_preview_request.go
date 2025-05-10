@@ -13,8 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // AdPreviewRequest - struct for AdPreviewRequest
@@ -113,6 +113,20 @@ func (obj *AdPreviewRequest) GetActualInstance() (interface{}) {
 
 	if obj.AdPreviewCreateFromPin != nil {
 		return obj.AdPreviewCreateFromPin
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj AdPreviewRequest) GetActualInstanceValue() (interface{}) {
+	if obj.AdPreviewCreateFromImage != nil {
+		return *obj.AdPreviewCreateFromImage
+	}
+
+	if obj.AdPreviewCreateFromPin != nil {
+		return *obj.AdPreviewCreateFromPin
 	}
 
 	// all schemas are nil

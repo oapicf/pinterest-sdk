@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Board media.
  * @param imageCoverUrl Board cover image.
  * @param pinThumbnailUrls Board pin thumbnail urls.
  */
+@Serializable
 data class BoardMedia(
     /* Board cover image. */
     val imageCoverUrl: kotlin.String? = null,
     /* Board pin thumbnail urls. */
     val pinThumbnailUrls: kotlin.collections.List<kotlin.String>? = null
-) 
+)
 

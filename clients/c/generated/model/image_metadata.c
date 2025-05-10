@@ -5,7 +5,7 @@
 
 
 
-image_metadata_t *image_metadata_create(
+static image_metadata_t *image_metadata_create_internal(
     char *item_type,
     char *title,
     char *description,
@@ -22,12 +22,32 @@ image_metadata_t *image_metadata_create(
     image_metadata_local_var->link = link;
     image_metadata_local_var->images = images;
 
+    image_metadata_local_var->_library_owned = 1;
     return image_metadata_local_var;
 }
 
+__attribute__((deprecated)) image_metadata_t *image_metadata_create(
+    char *item_type,
+    char *title,
+    char *description,
+    char *link,
+    image_metadata_images_t *images
+    ) {
+    return image_metadata_create_internal (
+        item_type,
+        title,
+        description,
+        link,
+        images
+        );
+}
 
 void image_metadata_free(image_metadata_t *image_metadata) {
     if(NULL == image_metadata){
+        return ;
+    }
+    if(image_metadata->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "image_metadata_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -118,6 +138,9 @@ image_metadata_t *image_metadata_parseFromJSON(cJSON *image_metadataJSON){
 
     // image_metadata->item_type
     cJSON *item_type = cJSON_GetObjectItemCaseSensitive(image_metadataJSON, "item_type");
+    if (cJSON_IsNull(item_type)) {
+        item_type = NULL;
+    }
     if (item_type) { 
     if(!cJSON_IsString(item_type) && !cJSON_IsNull(item_type))
     {
@@ -127,6 +150,9 @@ image_metadata_t *image_metadata_parseFromJSON(cJSON *image_metadataJSON){
 
     // image_metadata->title
     cJSON *title = cJSON_GetObjectItemCaseSensitive(image_metadataJSON, "title");
+    if (cJSON_IsNull(title)) {
+        title = NULL;
+    }
     if (title) { 
     if(!cJSON_IsString(title) && !cJSON_IsNull(title))
     {
@@ -136,6 +162,9 @@ image_metadata_t *image_metadata_parseFromJSON(cJSON *image_metadataJSON){
 
     // image_metadata->description
     cJSON *description = cJSON_GetObjectItemCaseSensitive(image_metadataJSON, "description");
+    if (cJSON_IsNull(description)) {
+        description = NULL;
+    }
     if (description) { 
     if(!cJSON_IsString(description) && !cJSON_IsNull(description))
     {
@@ -145,6 +174,9 @@ image_metadata_t *image_metadata_parseFromJSON(cJSON *image_metadataJSON){
 
     // image_metadata->link
     cJSON *link = cJSON_GetObjectItemCaseSensitive(image_metadataJSON, "link");
+    if (cJSON_IsNull(link)) {
+        link = NULL;
+    }
     if (link) { 
     if(!cJSON_IsString(link) && !cJSON_IsNull(link))
     {
@@ -154,12 +186,15 @@ image_metadata_t *image_metadata_parseFromJSON(cJSON *image_metadataJSON){
 
     // image_metadata->images
     cJSON *images = cJSON_GetObjectItemCaseSensitive(image_metadataJSON, "images");
+    if (cJSON_IsNull(images)) {
+        images = NULL;
+    }
     if (images) { 
     images_local_nonprim = image_metadata_images_parseFromJSON(images); //nonprimitive
     }
 
 
-    image_metadata_local_var = image_metadata_create (
+    image_metadata_local_var = image_metadata_create_internal (
         item_type && !cJSON_IsNull(item_type) ? strdup(item_type->valuestring) : NULL,
         title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,

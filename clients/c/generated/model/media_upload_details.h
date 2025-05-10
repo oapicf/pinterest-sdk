@@ -25,9 +25,10 @@ typedef struct media_upload_details_t {
     media_upload_type_t *media_type; // custom
     media_upload_status_t *status; // custom
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } media_upload_details_t;
 
-media_upload_details_t *media_upload_details_create(
+__attribute__((deprecated)) media_upload_details_t *media_upload_details_create(
     char *media_id,
     media_upload_type_t *media_type,
     media_upload_status_t *status

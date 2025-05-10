@@ -22,7 +22,7 @@ pinterest_rest_api_invite_type__e invite_type_invite_type_FromString(char* invit
     return 0;
 }
 
-cJSON *invite_type_invite_type_convertToJSON(pinterest_rest_api_invite_type__e invite_type) {
+cJSON *invite_type_convertToJSON(pinterest_rest_api_invite_type__e invite_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "invite_type", invite_type_invite_type_ToString(invite_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_invite_type__e invite_type_invite_type_parseFromJSON(cJSON *invite_typeJSON) {
-    pinterest_rest_api_invite_type__e *invite_type = NULL;
-    pinterest_rest_api_invite_type__e invite_typeVariable;
-    cJSON *invite_typeVar = cJSON_GetObjectItemCaseSensitive(invite_typeJSON, "invite_type");
-    if(!cJSON_IsString(invite_typeVar) || (invite_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_invite_type__e invite_type_parseFromJSON(cJSON *invite_typeJSON) {
+    if(!cJSON_IsString(invite_typeJSON) || (invite_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    invite_typeVariable = invite_type_invite_type_FromString(invite_typeVar->valuestring);
-    return invite_typeVariable;
-end:
-    return 0;
+    return invite_type_invite_type_FromString(invite_typeJSON->valuestring);
 }

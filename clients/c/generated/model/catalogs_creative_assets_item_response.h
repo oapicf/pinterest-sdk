@@ -19,26 +19,19 @@ typedef struct catalogs_creative_assets_item_response_t catalogs_creative_assets
 #include "catalogs_type.h"
 #include "pin.h"
 
-// Enum  for catalogs_creative_assets_item_response
-
-typedef enum  { pinterest_rest_api_catalogs_creative_assets_item_response__NULL = 0, pinterest_rest_api_catalogs_creative_assets_item_response__RETAIL, pinterest_rest_api_catalogs_creative_assets_item_response__HOTEL, pinterest_rest_api_catalogs_creative_assets_item_response__CREATIVE_ASSETS } pinterest_rest_api_catalogs_creative_assets_item_response__e;
-
-char* catalogs_creative_assets_item_response_catalog_type_ToString(pinterest_rest_api_catalogs_creative_assets_item_response__e catalog_type);
-
-pinterest_rest_api_catalogs_creative_assets_item_response__e catalogs_creative_assets_item_response_catalog_type_FromString(char* catalog_type);
-
 
 
 typedef struct catalogs_creative_assets_item_response_t {
-    catalogs_type_t *catalog_type; // custom
+    pinterest_rest_api_catalogs_type__e catalog_type; //referenced enum
     char *creative_assets_id; // string
     list_t *pins; //nonprimitive container
     struct catalogs_creative_assets_attributes_t *attributes; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_creative_assets_item_response_t;
 
-catalogs_creative_assets_item_response_t *catalogs_creative_assets_item_response_create(
-    catalogs_type_t *catalog_type,
+__attribute__((deprecated)) catalogs_creative_assets_item_response_t *catalogs_creative_assets_item_response_create(
+    pinterest_rest_api_catalogs_type__e catalog_type,
     char *creative_assets_id,
     list_t *pins,
     catalogs_creative_assets_attributes_t *attributes

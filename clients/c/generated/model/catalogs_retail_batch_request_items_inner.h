@@ -46,9 +46,10 @@ typedef struct catalogs_retail_batch_request_items_inner_t {
     struct item_attributes_request_t *attributes; //model
     list_t *update_mask; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_retail_batch_request_items_inner_t;
 
-catalogs_retail_batch_request_items_inner_t *catalogs_retail_batch_request_items_inner_create(
+__attribute__((deprecated)) catalogs_retail_batch_request_items_inner_t *catalogs_retail_batch_request_items_inner_create(
     char *item_id,
     pinterest_rest_api_catalogs_retail_batch_request_items_inner_OPERATION_e operation,
     item_attributes_request_t *attributes,

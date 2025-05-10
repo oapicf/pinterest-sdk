@@ -13,8 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // PinMediaSource - Pin media source.
@@ -249,6 +249,36 @@ func (obj *PinMediaSource) GetActualInstance() (interface{}) {
 
 	if obj.PinMediaSourceVideoID != nil {
 		return obj.PinMediaSourceVideoID
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj PinMediaSource) GetActualInstanceValue() (interface{}) {
+	if obj.PinMediaSourceImageBase64 != nil {
+		return *obj.PinMediaSourceImageBase64
+	}
+
+	if obj.PinMediaSourceImageURL != nil {
+		return *obj.PinMediaSourceImageURL
+	}
+
+	if obj.PinMediaSourceImagesBase64 != nil {
+		return *obj.PinMediaSourceImagesBase64
+	}
+
+	if obj.PinMediaSourceImagesURL != nil {
+		return *obj.PinMediaSourceImagesURL
+	}
+
+	if obj.PinMediaSourcePinURL != nil {
+		return *obj.PinMediaSourcePinURL
+	}
+
+	if obj.PinMediaSourceVideoID != nil {
+		return *obj.PinMediaSourceVideoID
 	}
 
 	// all schemas are nil

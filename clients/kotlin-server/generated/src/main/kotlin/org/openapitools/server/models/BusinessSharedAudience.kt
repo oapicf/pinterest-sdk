@@ -13,17 +13,19 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.OperationType
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param audienceId Unique identifier of an audience
  * @param operationType 
  * @param recipientBusinessIds List of business IDs to share with or revoke from.
  */
+@Serializable
 data class BusinessSharedAudience(
     /* Unique identifier of an audience */
     val audienceId: kotlin.String,
     val operationType: OperationType,
     /* List of business IDs to share with or revoke from. */
     val recipientBusinessIds: kotlin.collections.List<kotlin.String>
-) 
+)
 

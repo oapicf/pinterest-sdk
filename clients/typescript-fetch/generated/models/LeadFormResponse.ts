@@ -152,11 +152,11 @@ export function LeadFormResponseFromJSONTyped(json: any, ignoreDiscriminator: bo
     };
 }
 
-  export function LeadFormResponseToJSON(json: any): LeadFormResponse {
-      return LeadFormResponseToJSONTyped(json, false);
-  }
+export function LeadFormResponseToJSON(json: any): LeadFormResponse {
+    return LeadFormResponseToJSONTyped(json, false);
+}
 
-  export function LeadFormResponseToJSONTyped(value?: LeadFormResponse | null, ignoreDiscriminator: boolean = false): any {
+export function LeadFormResponseToJSONTyped(value?: LeadFormResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

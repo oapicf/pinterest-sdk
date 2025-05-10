@@ -83,11 +83,11 @@ export function CreateAssetInvitesRequestItemFromJSONTyped(json: any, ignoreDisc
     };
 }
 
-  export function CreateAssetInvitesRequestItemToJSON(json: any): CreateAssetInvitesRequestItem {
-      return CreateAssetInvitesRequestItemToJSONTyped(json, false);
-  }
+export function CreateAssetInvitesRequestItemToJSON(json: any): CreateAssetInvitesRequestItem {
+    return CreateAssetInvitesRequestItemToJSONTyped(json, false);
+}
 
-  export function CreateAssetInvitesRequestItemToJSONTyped(value?: CreateAssetInvitesRequestItem | null, ignoreDiscriminator: boolean = false): any {
+export function CreateAssetInvitesRequestItemToJSONTyped(value?: CreateAssetInvitesRequestItem | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

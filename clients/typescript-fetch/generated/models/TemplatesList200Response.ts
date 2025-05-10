@@ -64,11 +64,11 @@ export function TemplatesList200ResponseFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function TemplatesList200ResponseToJSON(json: any): TemplatesList200Response {
-      return TemplatesList200ResponseToJSONTyped(json, false);
-  }
+export function TemplatesList200ResponseToJSON(json: any): TemplatesList200Response {
+    return TemplatesList200ResponseToJSONTyped(json, false);
+}
 
-  export function TemplatesList200ResponseToJSONTyped(value?: TemplatesList200Response | null, ignoreDiscriminator: boolean = false): any {
+export function TemplatesList200ResponseToJSONTyped(value?: TemplatesList200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

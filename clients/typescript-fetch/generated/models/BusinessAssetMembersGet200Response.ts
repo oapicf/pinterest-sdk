@@ -64,11 +64,11 @@ export function BusinessAssetMembersGet200ResponseFromJSONTyped(json: any, ignor
     };
 }
 
-  export function BusinessAssetMembersGet200ResponseToJSON(json: any): BusinessAssetMembersGet200Response {
-      return BusinessAssetMembersGet200ResponseToJSONTyped(json, false);
-  }
+export function BusinessAssetMembersGet200ResponseToJSON(json: any): BusinessAssetMembersGet200Response {
+    return BusinessAssetMembersGet200ResponseToJSONTyped(json, false);
+}
 
-  export function BusinessAssetMembersGet200ResponseToJSONTyped(value?: BusinessAssetMembersGet200Response | null, ignoreDiscriminator: boolean = false): any {
+export function BusinessAssetMembersGet200ResponseToJSONTyped(value?: BusinessAssetMembersGet200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

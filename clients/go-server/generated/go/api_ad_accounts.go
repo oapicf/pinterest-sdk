@@ -175,7 +175,7 @@ func (c *AdAccountsAPIController) AdAccountsList(w http.ResponseWriter, r *http.
 
 // AdAccountsCreate - Create ad account
 func (c *AdAccountsAPIController) AdAccountsCreate(w http.ResponseWriter, r *http.Request) {
-	adAccountCreateRequestParam := AdAccountCreateRequest{}
+	var adAccountCreateRequestParam AdAccountCreateRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&adAccountCreateRequestParam); err != nil {
@@ -369,7 +369,7 @@ func (c *AdAccountsAPIController) AnalyticsCreateMmmReport(w http.ResponseWriter
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	createMmmReportRequestParam := CreateMmmReportRequest{}
+	var createMmmReportRequestParam CreateMmmReportRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&createMmmReportRequestParam); err != nil {
@@ -434,7 +434,7 @@ func (c *AdAccountsAPIController) AnalyticsCreateReport(w http.ResponseWriter, r
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	adsAnalyticsCreateAsyncRequestParam := AdsAnalyticsCreateAsyncRequest{}
+	var adsAnalyticsCreateAsyncRequestParam AdsAnalyticsCreateAsyncRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&adsAnalyticsCreateAsyncRequestParam); err != nil {

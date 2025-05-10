@@ -37,11 +37,18 @@ UserListType <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return UserListType in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
-        jsonlite::toJSON(private$value, auto_unbox = TRUE)
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert UserListType to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
+      return(private$value)
     },
 
     #' @description
@@ -59,10 +66,11 @@ UserListType <- R6::R6Class(
     #' @description
     #' To JSON String
     #'
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return UserListType in JSON format
-    toJSONString = function() {
-      as.character(jsonlite::toJSON(private$value,
-          auto_unbox = TRUE))
+    toJSONString = function(...) {
+      json <- jsonlite::toJSON(self$toSimpleType(), auto_unbox = TRUE, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

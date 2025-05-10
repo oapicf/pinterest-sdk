@@ -258,7 +258,7 @@ void OAIBillingApi::adsCredit_redeem(const QString &ad_account_id, const OAIAdsC
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBillingApi::adsCredit_redeemCallback);
     connect(this, &OAIBillingApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -281,7 +281,7 @@ void OAIBillingApi::adsCredit_redeem(const QString &ad_account_id, const OAIAdsC
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBillingApi::adsCredit_redeemCallback);
     connect(this, &OAIBillingApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -386,7 +386,7 @@ void OAIBillingApi::adsCreditsDiscounts_get(const QString &ad_account_id, const 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     if (page_size.hasValue())
     {
@@ -401,7 +401,7 @@ void OAIBillingApi::adsCreditsDiscounts_get(const QString &ad_account_id, const 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -416,7 +416,7 @@ void OAIBillingApi::adsCreditsDiscounts_get(const QString &ad_account_id, const 
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBillingApi::adsCreditsDiscounts_getCallback);
     connect(this, &OAIBillingApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -439,7 +439,7 @@ void OAIBillingApi::adsCreditsDiscounts_get(const QString &ad_account_id, const 
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBillingApi::adsCreditsDiscounts_getCallback);
     connect(this, &OAIBillingApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -544,7 +544,7 @@ void OAIBillingApi::billingProfiles_get(const QString &ad_account_id, const bool
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("is_active")).append(querySuffix).append(QUrl::toPercentEncoding(is_active));
+        fullPath.append(QUrl::toPercentEncoding("is_active")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(is_active)));
     }
     if (bookmark.hasValue())
     {
@@ -559,7 +559,7 @@ void OAIBillingApi::billingProfiles_get(const QString &ad_account_id, const bool
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     if (page_size.hasValue())
     {
@@ -574,7 +574,7 @@ void OAIBillingApi::billingProfiles_get(const QString &ad_account_id, const bool
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -589,7 +589,7 @@ void OAIBillingApi::billingProfiles_get(const QString &ad_account_id, const bool
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBillingApi::billingProfiles_getCallback);
     connect(this, &OAIBillingApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -612,7 +612,7 @@ void OAIBillingApi::billingProfiles_get(const QString &ad_account_id, const bool
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBillingApi::billingProfiles_getCallback);
     connect(this, &OAIBillingApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -716,7 +716,7 @@ void OAIBillingApi::ssioAccounts_get(const QString &ad_account_id) {
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBillingApi::ssioAccounts_getCallback);
     connect(this, &OAIBillingApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -738,7 +738,7 @@ void OAIBillingApi::ssioAccounts_get(const QString &ad_account_id) {
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBillingApi::ssioAccounts_getCallback);
     connect(this, &OAIBillingApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -846,7 +846,7 @@ void OAIBillingApi::ssioInsertionOrder_create(const QString &ad_account_id, cons
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBillingApi::ssioInsertionOrder_createCallback);
     connect(this, &OAIBillingApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -868,7 +868,7 @@ void OAIBillingApi::ssioInsertionOrder_create(const QString &ad_account_id, cons
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBillingApi::ssioInsertionOrder_createCallback);
     connect(this, &OAIBillingApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -976,7 +976,7 @@ void OAIBillingApi::ssioInsertionOrder_edit(const QString &ad_account_id, const 
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBillingApi::ssioInsertionOrder_editCallback);
     connect(this, &OAIBillingApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -998,7 +998,7 @@ void OAIBillingApi::ssioInsertionOrder_edit(const QString &ad_account_id, const 
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBillingApi::ssioInsertionOrder_editCallback);
     connect(this, &OAIBillingApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1102,7 +1102,7 @@ void OAIBillingApi::ssioInsertionOrdersStatus_getByAdAccount(const QString &ad_a
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     if (page_size.hasValue())
     {
@@ -1117,7 +1117,7 @@ void OAIBillingApi::ssioInsertionOrdersStatus_getByAdAccount(const QString &ad_a
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -1132,7 +1132,7 @@ void OAIBillingApi::ssioInsertionOrdersStatus_getByAdAccount(const QString &ad_a
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBillingApi::ssioInsertionOrdersStatus_getByAdAccountCallback);
     connect(this, &OAIBillingApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1154,7 +1154,7 @@ void OAIBillingApi::ssioInsertionOrdersStatus_getByAdAccount(const QString &ad_a
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBillingApi::ssioInsertionOrdersStatus_getByAdAccountCallback);
     connect(this, &OAIBillingApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1271,7 +1271,7 @@ void OAIBillingApi::ssioInsertionOrdersStatus_getByPinOrderId(const QString &ad_
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBillingApi::ssioInsertionOrdersStatus_getByPinOrderIdCallback);
     connect(this, &OAIBillingApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1293,7 +1293,7 @@ void OAIBillingApi::ssioInsertionOrdersStatus_getByPinOrderId(const QString &ad_
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBillingApi::ssioInsertionOrdersStatus_getByPinOrderIdCallback);
     connect(this, &OAIBillingApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1397,7 +1397,7 @@ void OAIBillingApi::ssioOrderLines_getByAdAccount(const QString &ad_account_id, 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     if (page_size.hasValue())
     {
@@ -1412,7 +1412,7 @@ void OAIBillingApi::ssioOrderLines_getByAdAccount(const QString &ad_account_id, 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     if (pin_order_id.hasValue())
     {
@@ -1427,7 +1427,7 @@ void OAIBillingApi::ssioOrderLines_getByAdAccount(const QString &ad_account_id, 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("pin_order_id")).append(querySuffix).append(QUrl::toPercentEncoding(pin_order_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("pin_order_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(pin_order_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -1442,7 +1442,7 @@ void OAIBillingApi::ssioOrderLines_getByAdAccount(const QString &ad_account_id, 
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBillingApi::ssioOrderLines_getByAdAccountCallback);
     connect(this, &OAIBillingApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1464,7 +1464,7 @@ void OAIBillingApi::ssioOrderLines_getByAdAccount(const QString &ad_account_id, 
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBillingApi::ssioOrderLines_getByAdAccountCallback);
     connect(this, &OAIBillingApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }

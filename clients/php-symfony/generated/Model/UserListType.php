@@ -44,12 +44,12 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum UserListType: string
 {
-        case EMAIL = "EMAIL";
-        case IDFA = "IDFA";
-        case MAID = "MAID";
-        case LR_ID = "LR_ID";
-        case DLX_ID = "DLX_ID";
-        case HASHED_PINNER_ID = "HASHED_PINNER_ID";
+        case EMAIL = 'EMAIL';
+        case IDFA = 'IDFA';
+        case MAID = 'MAID';
+        case LR_ID = 'LR_ID';
+        case DLX_ID = 'DLX_ID';
+        case HASHED_PINNER_ID = 'HASHED_PINNER_ID';
 }
 
 

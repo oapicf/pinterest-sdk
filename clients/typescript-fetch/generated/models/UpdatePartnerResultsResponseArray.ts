@@ -56,11 +56,11 @@ export function UpdatePartnerResultsResponseArrayFromJSONTyped(json: any, ignore
     };
 }
 
-  export function UpdatePartnerResultsResponseArrayToJSON(json: any): UpdatePartnerResultsResponseArray {
-      return UpdatePartnerResultsResponseArrayToJSONTyped(json, false);
-  }
+export function UpdatePartnerResultsResponseArrayToJSON(json: any): UpdatePartnerResultsResponseArray {
+    return UpdatePartnerResultsResponseArrayToJSONTyped(json, false);
+}
 
-  export function UpdatePartnerResultsResponseArrayToJSONTyped(value?: UpdatePartnerResultsResponseArray | null, ignoreDiscriminator: boolean = false): any {
+export function UpdatePartnerResultsResponseArrayToJSONTyped(value?: UpdatePartnerResultsResponseArray | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

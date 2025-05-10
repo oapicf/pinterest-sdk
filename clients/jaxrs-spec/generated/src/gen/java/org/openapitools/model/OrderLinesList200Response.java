@@ -21,10 +21,20 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("order_lines_list_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class OrderLinesList200Response   {
   private @Valid List<@Valid OrderLine> items = new ArrayList<>();
   private String bookmark;
+
+  public OrderLinesList200Response() {
+  }
+
+  @JsonCreator
+  public OrderLinesList200Response(
+    @JsonProperty(required = true, value = "items") List<@Valid OrderLine> items
+  ) {
+    this.items = items;
+  }
 
   /**
    **/
@@ -35,12 +45,12 @@ public class OrderLinesList200Response   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   @NotNull @Valid public List<@Valid OrderLine> getItems() {
     return items;
   }
 
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   public void setItems(List<@Valid OrderLine> items) {
     this.items = items;
   }

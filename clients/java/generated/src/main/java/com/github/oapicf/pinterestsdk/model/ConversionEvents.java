@@ -51,16 +51,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * A list of events (one or more) encapsulated by a data object.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConversionEvents {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
+  @javax.annotation.Nonnull
   private List<ConversionEventsDataInner> data = new ArrayList<>();
 
   public ConversionEvents() {
   }
 
-  public ConversionEvents data(List<ConversionEventsDataInner> data) {
+  public ConversionEvents data(@javax.annotation.Nonnull List<ConversionEventsDataInner> data) {
     this.data = data;
     return this;
   }
@@ -82,7 +83,7 @@ public class ConversionEvents {
     return data;
   }
 
-  public void setData(List<ConversionEventsDataInner> data) {
+  public void setData(@javax.annotation.Nonnull List<ConversionEventsDataInner> data) {
     this.data = data;
   }
 

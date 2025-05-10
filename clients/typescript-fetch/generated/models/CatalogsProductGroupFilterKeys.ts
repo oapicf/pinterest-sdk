@@ -504,11 +504,11 @@ export function CatalogsProductGroupFilterKeysFromJSONTyped(json: any, ignoreDis
     };
 }
 
-  export function CatalogsProductGroupFilterKeysToJSON(json: any): CatalogsProductGroupFilterKeys {
-      return CatalogsProductGroupFilterKeysToJSONTyped(json, false);
-  }
+export function CatalogsProductGroupFilterKeysToJSON(json: any): CatalogsProductGroupFilterKeys {
+    return CatalogsProductGroupFilterKeysToJSONTyped(json, false);
+}
 
-  export function CatalogsProductGroupFilterKeysToJSONTyped(value?: CatalogsProductGroupFilterKeys | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsProductGroupFilterKeysToJSONTyped(value?: CatalogsProductGroupFilterKeys | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

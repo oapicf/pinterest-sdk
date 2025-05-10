@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.PinMediaSourceImagesBase64ItemsInner;
+import org.springframework.lang.Nullable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -27,7 +28,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "PinMediaSourceImagesBase64", description = "Multiple Base64-encoded images media source")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMediaSourceImagesBase64 implements PinMediaSource {
 
   /**
@@ -63,12 +64,12 @@ public class PinMediaSourceImagesBase64 implements PinMediaSource {
     }
   }
 
-  private SourceTypeEnum sourceType;
+  private @Nullable SourceTypeEnum sourceType;
 
   @Valid
   private List<@Valid PinMediaSourceImagesBase64ItemsInner> items = new ArrayList<>();
 
-  private Integer index;
+  private @Nullable Integer index;
 
   public PinMediaSourceImagesBase64() {
     super();

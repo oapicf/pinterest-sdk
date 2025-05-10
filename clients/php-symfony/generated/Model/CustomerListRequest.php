@@ -71,7 +71,7 @@ class CustomerListRequest
     * @Accessor(getter="getSerializedListType", setter="setDeserializedListType")
     * @Type("string")
     */
-    protected ?UserListType $listType = 'EMAIL';
+    protected ?UserListType $listType = self::OpenAPI\Server\Model\UserListType_EMAIL;
 
     /**
      * Customer list errors.
@@ -87,7 +87,7 @@ class CustomerListRequest
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->name = array_key_exists('name', $data) ? $data['name'] : $this->name;

@@ -303,7 +303,7 @@ export class AdsAnalyticsCreateAsyncRequest {
 }
 
 export enum AdsAnalyticsCreateAsyncRequestPrimarySortEnum {
-    Id = 'BY_ID',
-    Date = 'BY_DATE'
+    ById = 'BY_ID',
+    ByDate = 'BY_DATE'
 }
 

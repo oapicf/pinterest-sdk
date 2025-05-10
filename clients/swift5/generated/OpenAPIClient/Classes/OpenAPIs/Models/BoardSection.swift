@@ -13,7 +13,7 @@ import AnyCodable
 /** Sections help organize pins within a board. */
 public struct BoardSection: Codable, JSONEncodable, Hashable {
 
-    static let nameRule = StringRule(minLength: 1, maxLength: 180, pattern: nil)
+    public static let nameRule = StringRule(minLength: 1, maxLength: 180, pattern: nil)
     public var id: String?
     public var name: String
 
@@ -36,3 +36,6 @@ public struct BoardSection: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension BoardSection: Identifiable {}

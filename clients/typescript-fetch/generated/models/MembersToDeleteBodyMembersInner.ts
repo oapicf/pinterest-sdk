@@ -67,11 +67,11 @@ export function MembersToDeleteBodyMembersInnerFromJSONTyped(json: any, ignoreDi
     };
 }
 
-  export function MembersToDeleteBodyMembersInnerToJSON(json: any): MembersToDeleteBodyMembersInner {
-      return MembersToDeleteBodyMembersInnerToJSONTyped(json, false);
-  }
+export function MembersToDeleteBodyMembersInnerToJSON(json: any): MembersToDeleteBodyMembersInner {
+    return MembersToDeleteBodyMembersInnerToJSONTyped(json, false);
+}
 
-  export function MembersToDeleteBodyMembersInnerToJSONTyped(value?: MembersToDeleteBodyMembersInner | null, ignoreDiscriminator: boolean = false): any {
+export function MembersToDeleteBodyMembersInnerToJSONTyped(value?: MembersToDeleteBodyMembersInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

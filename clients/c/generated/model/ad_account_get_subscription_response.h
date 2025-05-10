@@ -29,9 +29,10 @@ typedef struct ad_account_get_subscription_response_t {
     char *cryptographic_algorithm; // string
     int created_time; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } ad_account_get_subscription_response_t;
 
-ad_account_get_subscription_response_t *ad_account_get_subscription_response_create(
+__attribute__((deprecated)) ad_account_get_subscription_response_t *ad_account_get_subscription_response_create(
     char *lead_form_id,
     char *webhook_url,
     char *id,

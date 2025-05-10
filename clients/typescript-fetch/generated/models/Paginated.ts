@@ -56,11 +56,11 @@ export function PaginatedFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     };
 }
 
-  export function PaginatedToJSON(json: any): Paginated {
-      return PaginatedToJSONTyped(json, false);
-  }
+export function PaginatedToJSON(json: any): Paginated {
+    return PaginatedToJSONTyped(json, false);
+}
 
-  export function PaginatedToJSONTyped(value?: Paginated | null, ignoreDiscriminator: boolean = false): any {
+export function PaginatedToJSONTyped(value?: Paginated | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

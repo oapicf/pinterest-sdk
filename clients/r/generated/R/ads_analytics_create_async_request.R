@@ -252,10 +252,35 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return AdsAnalyticsCreateAsyncRequest in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return AdsAnalyticsCreateAsyncRequest as a base R list.
+    #' @examples
+    #' # convert array of AdsAnalyticsCreateAsyncRequest (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert AdsAnalyticsCreateAsyncRequest to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       AdsAnalyticsCreateAsyncRequestObject <- list()
       if (!is.null(self$`start_date`)) {
         AdsAnalyticsCreateAsyncRequestObject[["start_date"]] <-
@@ -267,27 +292,27 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
       }
       if (!is.null(self$`granularity`)) {
         AdsAnalyticsCreateAsyncRequestObject[["granularity"]] <-
-          self$`granularity`$toJSON()
+          self$`granularity`$toSimpleType()
       }
       if (!is.null(self$`click_window_days`)) {
         AdsAnalyticsCreateAsyncRequestObject[["click_window_days"]] <-
-          self$`click_window_days`$toJSON()
+          self$`click_window_days`$toSimpleType()
       }
       if (!is.null(self$`engagement_window_days`)) {
         AdsAnalyticsCreateAsyncRequestObject[["engagement_window_days"]] <-
-          self$`engagement_window_days`$toJSON()
+          self$`engagement_window_days`$toSimpleType()
       }
       if (!is.null(self$`view_window_days`)) {
         AdsAnalyticsCreateAsyncRequestObject[["view_window_days"]] <-
-          self$`view_window_days`$toJSON()
+          self$`view_window_days`$toSimpleType()
       }
       if (!is.null(self$`conversion_report_time`)) {
         AdsAnalyticsCreateAsyncRequestObject[["conversion_report_time"]] <-
-          self$`conversion_report_time`$toJSON()
+          self$`conversion_report_time`$toSimpleType()
       }
       if (!is.null(self$`attribution_types`)) {
         AdsAnalyticsCreateAsyncRequestObject[["attribution_types"]] <-
-          lapply(self$`attribution_types`, function(x) x$toJSON())
+          lapply(self$`attribution_types`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`campaign_ids`)) {
         AdsAnalyticsCreateAsyncRequestObject[["campaign_ids"]] <-
@@ -295,11 +320,11 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
       }
       if (!is.null(self$`campaign_statuses`)) {
         AdsAnalyticsCreateAsyncRequestObject[["campaign_statuses"]] <-
-          lapply(self$`campaign_statuses`, function(x) x$toJSON())
+          lapply(self$`campaign_statuses`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`campaign_objective_types`)) {
         AdsAnalyticsCreateAsyncRequestObject[["campaign_objective_types"]] <-
-          lapply(self$`campaign_objective_types`, function(x) x$toJSON())
+          lapply(self$`campaign_objective_types`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`ad_group_ids`)) {
         AdsAnalyticsCreateAsyncRequestObject[["ad_group_ids"]] <-
@@ -307,7 +332,7 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
       }
       if (!is.null(self$`ad_group_statuses`)) {
         AdsAnalyticsCreateAsyncRequestObject[["ad_group_statuses"]] <-
-          lapply(self$`ad_group_statuses`, function(x) x$toJSON())
+          lapply(self$`ad_group_statuses`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`ad_ids`)) {
         AdsAnalyticsCreateAsyncRequestObject[["ad_ids"]] <-
@@ -315,7 +340,7 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
       }
       if (!is.null(self$`ad_statuses`)) {
         AdsAnalyticsCreateAsyncRequestObject[["ad_statuses"]] <-
-          lapply(self$`ad_statuses`, function(x) x$toJSON())
+          lapply(self$`ad_statuses`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`product_group_ids`)) {
         AdsAnalyticsCreateAsyncRequestObject[["product_group_ids"]] <-
@@ -323,7 +348,7 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
       }
       if (!is.null(self$`product_group_statuses`)) {
         AdsAnalyticsCreateAsyncRequestObject[["product_group_statuses"]] <-
-          lapply(self$`product_group_statuses`, function(x) x$toJSON())
+          lapply(self$`product_group_statuses`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`product_item_ids`)) {
         AdsAnalyticsCreateAsyncRequestObject[["product_item_ids"]] <-
@@ -331,23 +356,23 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
       }
       if (!is.null(self$`targeting_types`)) {
         AdsAnalyticsCreateAsyncRequestObject[["targeting_types"]] <-
-          lapply(self$`targeting_types`, function(x) x$toJSON())
+          lapply(self$`targeting_types`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`metrics_filters`)) {
         AdsAnalyticsCreateAsyncRequestObject[["metrics_filters"]] <-
-          lapply(self$`metrics_filters`, function(x) x$toJSON())
+          lapply(self$`metrics_filters`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`columns`)) {
         AdsAnalyticsCreateAsyncRequestObject[["columns"]] <-
-          lapply(self$`columns`, function(x) x$toJSON())
+          lapply(self$`columns`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`level`)) {
         AdsAnalyticsCreateAsyncRequestObject[["level"]] <-
-          self$`level`$toJSON()
+          self$`level`$toSimpleType()
       }
       if (!is.null(self$`report_format`)) {
         AdsAnalyticsCreateAsyncRequestObject[["report_format"]] <-
-          self$`report_format`$toJSON()
+          self$`report_format`$toSimpleType()
       }
       if (!is.null(self$`primary_sort`)) {
         AdsAnalyticsCreateAsyncRequestObject[["primary_sort"]] <-
@@ -361,7 +386,7 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
         AdsAnalyticsCreateAsyncRequestObject[["end_hour"]] <-
           self$`end_hour`
       }
-      AdsAnalyticsCreateAsyncRequestObject
+      return(AdsAnalyticsCreateAsyncRequestObject)
     },
 
     #' @description
@@ -471,221 +496,13 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return AdsAnalyticsCreateAsyncRequest in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`start_date`)) {
-          sprintf(
-          '"start_date":
-            "%s"
-                    ',
-          self$`start_date`
-          )
-        },
-        if (!is.null(self$`end_date`)) {
-          sprintf(
-          '"end_date":
-            "%s"
-                    ',
-          self$`end_date`
-          )
-        },
-        if (!is.null(self$`granularity`)) {
-          sprintf(
-          '"granularity":
-          %s
-          ',
-          jsonlite::toJSON(self$`granularity`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`click_window_days`)) {
-          sprintf(
-          '"click_window_days":
-          %s
-          ',
-          jsonlite::toJSON(self$`click_window_days`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`engagement_window_days`)) {
-          sprintf(
-          '"engagement_window_days":
-          %s
-          ',
-          jsonlite::toJSON(self$`engagement_window_days`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`view_window_days`)) {
-          sprintf(
-          '"view_window_days":
-          %s
-          ',
-          jsonlite::toJSON(self$`view_window_days`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`conversion_report_time`)) {
-          sprintf(
-          '"conversion_report_time":
-          %s
-          ',
-          jsonlite::toJSON(self$`conversion_report_time`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`attribution_types`)) {
-          sprintf(
-          '"attribution_types":
-          [%s]
-',
-          paste(sapply(self$`attribution_types`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`campaign_ids`)) {
-          sprintf(
-          '"campaign_ids":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`campaign_ids`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`campaign_statuses`)) {
-          sprintf(
-          '"campaign_statuses":
-          [%s]
-',
-          paste(sapply(self$`campaign_statuses`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`campaign_objective_types`)) {
-          sprintf(
-          '"campaign_objective_types":
-          [%s]
-',
-          paste(sapply(self$`campaign_objective_types`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`ad_group_ids`)) {
-          sprintf(
-          '"ad_group_ids":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`ad_group_ids`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`ad_group_statuses`)) {
-          sprintf(
-          '"ad_group_statuses":
-          [%s]
-',
-          paste(sapply(self$`ad_group_statuses`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`ad_ids`)) {
-          sprintf(
-          '"ad_ids":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`ad_ids`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`ad_statuses`)) {
-          sprintf(
-          '"ad_statuses":
-          [%s]
-',
-          paste(sapply(self$`ad_statuses`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`product_group_ids`)) {
-          sprintf(
-          '"product_group_ids":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`product_group_ids`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`product_group_statuses`)) {
-          sprintf(
-          '"product_group_statuses":
-          [%s]
-',
-          paste(sapply(self$`product_group_statuses`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`product_item_ids`)) {
-          sprintf(
-          '"product_item_ids":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`product_item_ids`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`targeting_types`)) {
-          sprintf(
-          '"targeting_types":
-          [%s]
-',
-          paste(sapply(self$`targeting_types`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`metrics_filters`)) {
-          sprintf(
-          '"metrics_filters":
-          [%s]
-',
-          paste(sapply(self$`metrics_filters`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`columns`)) {
-          sprintf(
-          '"columns":
-          [%s]
-',
-          paste(sapply(self$`columns`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`level`)) {
-          sprintf(
-          '"level":
-          %s
-          ',
-          jsonlite::toJSON(self$`level`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`report_format`)) {
-          sprintf(
-          '"report_format":
-          %s
-          ',
-          jsonlite::toJSON(self$`report_format`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`primary_sort`)) {
-          sprintf(
-          '"primary_sort":
-            "%s"
-                    ',
-          self$`primary_sort`
-          )
-        },
-        if (!is.null(self$`start_hour`)) {
-          sprintf(
-          '"start_hour":
-            %d
-                    ',
-          self$`start_hour`
-          )
-        },
-        if (!is.null(self$`end_hour`)) {
-          sprintf(
-          '"end_hour":
-            %d
-                    ',
-          self$`end_hour`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

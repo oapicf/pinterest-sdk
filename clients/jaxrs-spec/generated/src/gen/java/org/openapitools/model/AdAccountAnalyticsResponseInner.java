@@ -19,10 +19,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdAccountAnalyticsResponse_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdAccountAnalyticsResponseInner extends HashMap<String, Object>  {
   private String AD_ACCOUNT_ID;
   private LocalDate DATE;
+
+  public AdAccountAnalyticsResponseInner() {
+  }
+
+  @JsonCreator
+  public AdAccountAnalyticsResponseInner(
+    @JsonProperty(required = true, value = "AD_ACCOUNT_ID") String AD_ACCOUNT_ID
+  ) {
+    super(
+    );
+    this.AD_ACCOUNT_ID = AD_ACCOUNT_ID;
+  }
 
   /**
    * The ID of the advertiser that this metrics belongs to.
@@ -34,12 +46,12 @@ public class AdAccountAnalyticsResponseInner extends HashMap<String, Object>  {
 
   
   @ApiModelProperty(required = true, value = "The ID of the advertiser that this metrics belongs to.")
-  @JsonProperty("AD_ACCOUNT_ID")
+  @JsonProperty(required = true, value = "AD_ACCOUNT_ID")
   @NotNull  @Pattern(regexp="^\\d+$")public String getADACCOUNTID() {
     return AD_ACCOUNT_ID;
   }
 
-  @JsonProperty("AD_ACCOUNT_ID")
+  @JsonProperty(required = true, value = "AD_ACCOUNT_ID")
   public void setADACCOUNTID(String AD_ACCOUNT_ID) {
     this.AD_ACCOUNT_ID = AD_ACCOUNT_ID;
   }

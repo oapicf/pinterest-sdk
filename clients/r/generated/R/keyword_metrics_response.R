@@ -38,10 +38,35 @@ KeywordMetricsResponse <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return KeywordMetricsResponse in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return KeywordMetricsResponse as a base R list.
+    #' @examples
+    #' # convert array of KeywordMetricsResponse (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert KeywordMetricsResponse to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       KeywordMetricsResponseObject <- list()
       if (!is.null(self$`keyword`)) {
         KeywordMetricsResponseObject[["keyword"]] <-
@@ -49,9 +74,9 @@ KeywordMetricsResponse <- R6::R6Class(
       }
       if (!is.null(self$`metrics`)) {
         KeywordMetricsResponseObject[["metrics"]] <-
-          self$`metrics`$toJSON()
+          self$`metrics`$toSimpleType()
       }
-      KeywordMetricsResponseObject
+      return(KeywordMetricsResponseObject)
     },
 
     #' @description
@@ -74,29 +99,13 @@ KeywordMetricsResponse <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return KeywordMetricsResponse in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`keyword`)) {
-          sprintf(
-          '"keyword":
-            "%s"
-                    ',
-          self$`keyword`
-          )
-        },
-        if (!is.null(self$`metrics`)) {
-          sprintf(
-          '"metrics":
-          %s
-          ',
-          jsonlite::toJSON(self$`metrics`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

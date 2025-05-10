@@ -5,7 +5,7 @@
 
 
 
-respond_to_invites_response_array_t *respond_to_invites_response_array_create(
+static respond_to_invites_response_array_t *respond_to_invites_response_array_create_internal(
     list_t *items
     ) {
     respond_to_invites_response_array_t *respond_to_invites_response_array_local_var = malloc(sizeof(respond_to_invites_response_array_t));
@@ -14,12 +14,24 @@ respond_to_invites_response_array_t *respond_to_invites_response_array_create(
     }
     respond_to_invites_response_array_local_var->items = items;
 
+    respond_to_invites_response_array_local_var->_library_owned = 1;
     return respond_to_invites_response_array_local_var;
 }
 
+__attribute__((deprecated)) respond_to_invites_response_array_t *respond_to_invites_response_array_create(
+    list_t *items
+    ) {
+    return respond_to_invites_response_array_create_internal (
+        items
+        );
+}
 
 void respond_to_invites_response_array_free(respond_to_invites_response_array_t *respond_to_invites_response_array) {
     if(NULL == respond_to_invites_response_array){
+        return ;
+    }
+    if(respond_to_invites_response_array->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "respond_to_invites_response_array_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -72,6 +84,9 @@ respond_to_invites_response_array_t *respond_to_invites_response_array_parseFrom
 
     // respond_to_invites_response_array->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(respond_to_invites_response_arrayJSON, "items");
+    if (cJSON_IsNull(items)) {
+        items = NULL;
+    }
     if (items) { 
     cJSON *items_local_nonprimitive = NULL;
     if(!cJSON_IsArray(items)){
@@ -92,7 +107,7 @@ respond_to_invites_response_array_t *respond_to_invites_response_array_parseFrom
     }
 
 
-    respond_to_invites_response_array_local_var = respond_to_invites_response_array_create (
+    respond_to_invites_response_array_local_var = respond_to_invites_response_array_create_internal (
         items ? itemsList : NULL
         );
 

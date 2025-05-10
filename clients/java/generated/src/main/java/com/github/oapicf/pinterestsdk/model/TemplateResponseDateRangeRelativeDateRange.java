@@ -49,24 +49,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * The relative date range of the template
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TemplateResponseDateRangeRelativeDateRange {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nullable
   private String type;
 
   public static final String SERIALIZED_NAME_START_DAYS_IN_PAST = "start_days_in_past";
   @SerializedName(SERIALIZED_NAME_START_DAYS_IN_PAST)
+  @javax.annotation.Nullable
   private BigDecimal startDaysInPast;
 
   public static final String SERIALIZED_NAME_END_DAYS_IN_PAST = "end_days_in_past";
   @SerializedName(SERIALIZED_NAME_END_DAYS_IN_PAST)
+  @javax.annotation.Nullable
   private BigDecimal endDaysInPast;
 
   public TemplateResponseDateRangeRelativeDateRange() {
   }
 
-  public TemplateResponseDateRangeRelativeDateRange type(String type) {
+  public TemplateResponseDateRangeRelativeDateRange type(@javax.annotation.Nullable String type) {
     this.type = type;
     return this;
   }
@@ -80,12 +83,12 @@ public class TemplateResponseDateRangeRelativeDateRange {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@javax.annotation.Nullable String type) {
     this.type = type;
   }
 
 
-  public TemplateResponseDateRangeRelativeDateRange startDaysInPast(BigDecimal startDaysInPast) {
+  public TemplateResponseDateRangeRelativeDateRange startDaysInPast(@javax.annotation.Nullable BigDecimal startDaysInPast) {
     this.startDaysInPast = startDaysInPast;
     return this;
   }
@@ -99,12 +102,12 @@ public class TemplateResponseDateRangeRelativeDateRange {
     return startDaysInPast;
   }
 
-  public void setStartDaysInPast(BigDecimal startDaysInPast) {
+  public void setStartDaysInPast(@javax.annotation.Nullable BigDecimal startDaysInPast) {
     this.startDaysInPast = startDaysInPast;
   }
 
 
-  public TemplateResponseDateRangeRelativeDateRange endDaysInPast(BigDecimal endDaysInPast) {
+  public TemplateResponseDateRangeRelativeDateRange endDaysInPast(@javax.annotation.Nullable BigDecimal endDaysInPast) {
     this.endDaysInPast = endDaysInPast;
     return this;
   }
@@ -118,7 +121,7 @@ public class TemplateResponseDateRangeRelativeDateRange {
     return endDaysInPast;
   }
 
-  public void setEndDaysInPast(BigDecimal endDaysInPast) {
+  public void setEndDaysInPast(@javax.annotation.Nullable BigDecimal endDaysInPast) {
     this.endDaysInPast = endDaysInPast;
   }
 

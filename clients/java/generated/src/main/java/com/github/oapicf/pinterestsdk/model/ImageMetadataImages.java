@@ -49,28 +49,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ImageMetadataImages
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ImageMetadataImages {
   public static final String SERIALIZED_NAME_150X150 = "150x150";
   @SerializedName(SERIALIZED_NAME_150X150)
+  @javax.annotation.Nullable
   private ImageDetails _150x150;
 
   public static final String SERIALIZED_NAME_400X300 = "400x300";
   @SerializedName(SERIALIZED_NAME_400X300)
+  @javax.annotation.Nullable
   private ImageDetails _400x300;
 
   public static final String SERIALIZED_NAME_600X = "600x";
   @SerializedName(SERIALIZED_NAME_600X)
+  @javax.annotation.Nullable
   private ImageDetails _600x;
 
   public static final String SERIALIZED_NAME_1200X = "1200x";
   @SerializedName(SERIALIZED_NAME_1200X)
+  @javax.annotation.Nullable
   private ImageDetails _1200x;
 
   public ImageMetadataImages() {
   }
 
-  public ImageMetadataImages _150x150(ImageDetails _150x150) {
+  public ImageMetadataImages _150x150(@javax.annotation.Nullable ImageDetails _150x150) {
     this._150x150 = _150x150;
     return this;
   }
@@ -84,12 +88,12 @@ public class ImageMetadataImages {
     return _150x150;
   }
 
-  public void set150x150(ImageDetails _150x150) {
+  public void set150x150(@javax.annotation.Nullable ImageDetails _150x150) {
     this._150x150 = _150x150;
   }
 
 
-  public ImageMetadataImages _400x300(ImageDetails _400x300) {
+  public ImageMetadataImages _400x300(@javax.annotation.Nullable ImageDetails _400x300) {
     this._400x300 = _400x300;
     return this;
   }
@@ -103,12 +107,12 @@ public class ImageMetadataImages {
     return _400x300;
   }
 
-  public void set400x300(ImageDetails _400x300) {
+  public void set400x300(@javax.annotation.Nullable ImageDetails _400x300) {
     this._400x300 = _400x300;
   }
 
 
-  public ImageMetadataImages _600x(ImageDetails _600x) {
+  public ImageMetadataImages _600x(@javax.annotation.Nullable ImageDetails _600x) {
     this._600x = _600x;
     return this;
   }
@@ -122,12 +126,12 @@ public class ImageMetadataImages {
     return _600x;
   }
 
-  public void set600x(ImageDetails _600x) {
+  public void set600x(@javax.annotation.Nullable ImageDetails _600x) {
     this._600x = _600x;
   }
 
 
-  public ImageMetadataImages _1200x(ImageDetails _1200x) {
+  public ImageMetadataImages _1200x(@javax.annotation.Nullable ImageDetails _1200x) {
     this._1200x = _1200x;
     return this;
   }
@@ -141,7 +145,7 @@ public class ImageMetadataImages {
     return _1200x;
   }
 
-  public void set1200x(ImageDetails _1200x) {
+  public void set1200x(@javax.annotation.Nullable ImageDetails _1200x) {
     this._1200x = _1200x;
   }
 

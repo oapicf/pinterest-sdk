@@ -15,7 +15,7 @@ import org.openapitools.model.Currency;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-11-05T02:02:36.960464654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2025-05-10T05:38:59.250229241Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SSIOOrderLine   {
   @JsonProperty("salesforce_order_line_id")
   private String salesforceOrderLineId;
@@ -164,7 +164,7 @@ public class SSIOOrderLine   {
   }
 
   
-  @ApiModelProperty(example = "Thu Mar 01 00:00:00 UTC 2018", value = "Start date of the order line.")
+  @ApiModelProperty(example = "2018-03-01", value = "Start date of the order line.")
   @JsonProperty("start_date")
   public Date getStartDate() {
     return startDate;
@@ -182,7 +182,7 @@ public class SSIOOrderLine   {
   }
 
   
-  @ApiModelProperty(example = "Mon Oct 05 00:00:00 UTC 2020", value = "End date of the order line.")
+  @ApiModelProperty(example = "2020-10-05", value = "End date of the order line.")
   @JsonProperty("end_date")
   public Date getEndDate() {
     return endDate;

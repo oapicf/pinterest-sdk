@@ -57,11 +57,11 @@ export function MediaTypeFilterFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-  export function MediaTypeFilterToJSON(json: any): MediaTypeFilter {
-      return MediaTypeFilterToJSONTyped(json, false);
-  }
+export function MediaTypeFilterToJSON(json: any): MediaTypeFilter {
+    return MediaTypeFilterToJSONTyped(json, false);
+}
 
-  export function MediaTypeFilterToJSONTyped(value?: MediaTypeFilter | null, ignoreDiscriminator: boolean = false): any {
+export function MediaTypeFilterToJSONTyped(value?: MediaTypeFilter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -13,14 +13,16 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.SSIOInsertionOrderStatus
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items Insertion orders status by ad acount id
  * @param bookmark 
  */
+@Serializable
 data class SsioInsertionOrdersStatusGetByAdAccount200Response(
     /* Insertion orders status by ad acount id */
     val items: kotlin.collections.List<SSIOInsertionOrderStatus>,
     val bookmark: kotlin.String? = null
-) 
+)
 

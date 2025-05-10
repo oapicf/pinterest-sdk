@@ -8,7 +8,7 @@ import play.api.libs.json._
   * @param members A list of usernames, emails, or a mix of them. Should be used if invite_type is MEMBER_INVITE
   * @param partners A list of partner_id. Should be used if invite_type is PARTNER_INVITE or PARTNER_REQUEST
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2025-05-10T05:44:38.070631387Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 case class CreateMembershipOrPartnershipInvitesBody(
   businessRole: CreateMembershipOrPartnershipInvitesBody.BusinessRole.Value,
   inviteType: InviteType,

@@ -32,11 +32,25 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Catalogs product for all verticals")
 @JsonTypeName("CatalogsProduct")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsProduct   {
   private CatalogsType catalogType;
   private CatalogsCreativeAssetsProductMetadata metadata;
   private Pin pin;
+
+  public CatalogsProduct() {
+  }
+
+  @JsonCreator
+  public CatalogsProduct(
+    @JsonProperty(required = true, value = "catalog_type") CatalogsType catalogType,
+    @JsonProperty(required = true, value = "metadata") CatalogsCreativeAssetsProductMetadata metadata,
+    @JsonProperty(required = true, value = "pin") Pin pin
+  ) {
+    this.catalogType = catalogType;
+    this.metadata = metadata;
+    this.pin = pin;
+  }
 
   /**
    **/
@@ -47,12 +61,12 @@ public class CatalogsProduct   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   @NotNull public CatalogsType getCatalogType() {
     return catalogType;
   }
 
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   public void setCatalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
   }
@@ -66,12 +80,12 @@ public class CatalogsProduct   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("metadata")
+  @JsonProperty(required = true, value = "metadata")
   @NotNull @Valid public CatalogsCreativeAssetsProductMetadata getMetadata() {
     return metadata;
   }
 
-  @JsonProperty("metadata")
+  @JsonProperty(required = true, value = "metadata")
   public void setMetadata(CatalogsCreativeAssetsProductMetadata metadata) {
     this.metadata = metadata;
   }
@@ -85,12 +99,12 @@ public class CatalogsProduct   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("pin")
+  @JsonProperty(required = true, value = "pin")
   @NotNull @Valid public Pin getPin() {
     return pin;
   }
 
-  @JsonProperty("pin")
+  @JsonProperty(required = true, value = "pin")
   public void setPin(Pin pin) {
     this.pin = pin;
   }

@@ -4,27 +4,10 @@
 #include "members_to_delete_body_members_inner.h"
 
 
-char* members_to_delete_body_members_inner_business_role_ToString(pinterest_rest_api_members_to_delete_body_members_inner__e business_role) {
-    char* business_roleArray[] =  { "NULL", "EMPLOYEE", "BIZ_ADMIN" };
-    return business_roleArray[business_role];
-}
 
-pinterest_rest_api_members_to_delete_body_members_inner__e members_to_delete_body_members_inner_business_role_FromString(char* business_role){
-    int stringToReturn = 0;
-    char *business_roleArray[] =  { "NULL", "EMPLOYEE", "BIZ_ADMIN" };
-    size_t sizeofArray = sizeof(business_roleArray) / sizeof(business_roleArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(business_role, business_roleArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-
-members_to_delete_body_members_inner_t *members_to_delete_body_members_inner_create(
+static members_to_delete_body_members_inner_t *members_to_delete_body_members_inner_create_internal(
     char *member_id,
-    business_role_for_members_t *business_role
+    pinterest_rest_api_business_role_for_members__e business_role
     ) {
     members_to_delete_body_members_inner_t *members_to_delete_body_members_inner_local_var = malloc(sizeof(members_to_delete_body_members_inner_t));
     if (!members_to_delete_body_members_inner_local_var) {
@@ -33,22 +16,32 @@ members_to_delete_body_members_inner_t *members_to_delete_body_members_inner_cre
     members_to_delete_body_members_inner_local_var->member_id = member_id;
     members_to_delete_body_members_inner_local_var->business_role = business_role;
 
+    members_to_delete_body_members_inner_local_var->_library_owned = 1;
     return members_to_delete_body_members_inner_local_var;
 }
 
+__attribute__((deprecated)) members_to_delete_body_members_inner_t *members_to_delete_body_members_inner_create(
+    char *member_id,
+    pinterest_rest_api_business_role_for_members__e business_role
+    ) {
+    return members_to_delete_body_members_inner_create_internal (
+        member_id,
+        business_role
+        );
+}
 
 void members_to_delete_body_members_inner_free(members_to_delete_body_members_inner_t *members_to_delete_body_members_inner) {
     if(NULL == members_to_delete_body_members_inner){
+        return ;
+    }
+    if(members_to_delete_body_members_inner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "members_to_delete_body_members_inner_free");
         return ;
     }
     listEntry_t *listEntry;
     if (members_to_delete_body_members_inner->member_id) {
         free(members_to_delete_body_members_inner->member_id);
         members_to_delete_body_members_inner->member_id = NULL;
-    }
-    if (members_to_delete_body_members_inner->business_role) {
-        business_role_for_members_free(members_to_delete_body_members_inner->business_role);
-        members_to_delete_body_members_inner->business_role = NULL;
     }
     free(members_to_delete_body_members_inner);
 }
@@ -66,7 +59,7 @@ cJSON *members_to_delete_body_members_inner_convertToJSON(members_to_delete_body
 
 
     // members_to_delete_body_members_inner->business_role
-    if (pinterest_rest_api_members_to_delete_body_members_inner__NULL == members_to_delete_body_members_inner->business_role) {
+    if (pinterest_rest_api_business_role_for_members__NULL == members_to_delete_body_members_inner->business_role) {
         goto fail;
     }
     cJSON *business_role_local_JSON = business_role_for_members_convertToJSON(members_to_delete_body_members_inner->business_role);
@@ -91,10 +84,13 @@ members_to_delete_body_members_inner_t *members_to_delete_body_members_inner_par
     members_to_delete_body_members_inner_t *members_to_delete_body_members_inner_local_var = NULL;
 
     // define the local variable for members_to_delete_body_members_inner->business_role
-    business_role_for_members_t *business_role_local_nonprim = NULL;
+    pinterest_rest_api_business_role_for_members__e business_role_local_nonprim = 0;
 
     // members_to_delete_body_members_inner->member_id
     cJSON *member_id = cJSON_GetObjectItemCaseSensitive(members_to_delete_body_members_innerJSON, "member_id");
+    if (cJSON_IsNull(member_id)) {
+        member_id = NULL;
+    }
     if (!member_id) {
         goto end;
     }
@@ -107,6 +103,9 @@ members_to_delete_body_members_inner_t *members_to_delete_body_members_inner_par
 
     // members_to_delete_body_members_inner->business_role
     cJSON *business_role = cJSON_GetObjectItemCaseSensitive(members_to_delete_body_members_innerJSON, "business_role");
+    if (cJSON_IsNull(business_role)) {
+        business_role = NULL;
+    }
     if (!business_role) {
         goto end;
     }
@@ -115,7 +114,7 @@ members_to_delete_body_members_inner_t *members_to_delete_body_members_inner_par
     business_role_local_nonprim = business_role_for_members_parseFromJSON(business_role); //custom
 
 
-    members_to_delete_body_members_inner_local_var = members_to_delete_body_members_inner_create (
+    members_to_delete_body_members_inner_local_var = members_to_delete_body_members_inner_create_internal (
         strdup(member_id->valuestring),
         business_role_local_nonprim
         );
@@ -123,8 +122,7 @@ members_to_delete_body_members_inner_t *members_to_delete_body_members_inner_par
     return members_to_delete_body_members_inner_local_var;
 end:
     if (business_role_local_nonprim) {
-        business_role_for_members_free(business_role_local_nonprim);
-        business_role_local_nonprim = NULL;
+        business_role_local_nonprim = 0;
     }
     return NULL;
 

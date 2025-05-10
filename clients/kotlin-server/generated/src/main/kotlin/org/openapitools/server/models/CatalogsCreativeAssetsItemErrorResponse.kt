@@ -14,17 +14,19 @@ package org.openapitools.server.models
 import org.openapitools.server.models.CatalogsType
 import org.openapitools.server.models.ItemValidationEvent
 
+import kotlinx.serialization.Serializable
 /**
  * Object describing a creative assets item error
  * @param catalogType 
  * @param creativeAssetsId The catalog creative assets id in the merchant namespace
  * @param errors Array with the errors for the item id requested
  */
+@Serializable
 data class CatalogsCreativeAssetsItemErrorResponse(
     val catalogType: CatalogsType,
     /* The catalog creative assets id in the merchant namespace */
     val creativeAssetsId: kotlin.String? = null,
     /* Array with the errors for the item id requested */
     val errors: kotlin.collections.List<ItemValidationEvent>? = null
-) 
+)
 

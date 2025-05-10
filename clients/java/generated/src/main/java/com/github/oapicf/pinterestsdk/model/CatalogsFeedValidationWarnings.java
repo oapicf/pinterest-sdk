@@ -48,62 +48,76 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsFeedValidationWarnings
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsFeedValidationWarnings {
   public static final String SERIALIZED_NAME_A_D_L_I_N_K_F_O_R_M_A_T_W_A_R_N_I_N_G = "AD_LINK_FORMAT_WARNING";
   @SerializedName(SERIALIZED_NAME_A_D_L_I_N_K_F_O_R_M_A_T_W_A_R_N_I_N_G)
+  @javax.annotation.Nullable
   private Integer AD_LINK_FORMAT_WARNING;
 
   public static final String SERIALIZED_NAME_A_D_L_I_N_K_S_A_M_E_A_S_L_I_N_K = "AD_LINK_SAME_AS_LINK";
   @SerializedName(SERIALIZED_NAME_A_D_L_I_N_K_S_A_M_E_A_S_L_I_N_K)
+  @javax.annotation.Nullable
   private Integer AD_LINK_SAME_AS_LINK;
 
   public static final String SERIALIZED_NAME_T_I_T_L_E_L_E_N_G_T_H_T_O_O_L_O_N_G = "TITLE_LENGTH_TOO_LONG";
   @SerializedName(SERIALIZED_NAME_T_I_T_L_E_L_E_N_G_T_H_T_O_O_L_O_N_G)
+  @javax.annotation.Nullable
   private Integer TITLE_LENGTH_TOO_LONG;
 
   public static final String SERIALIZED_NAME_D_E_S_C_R_I_P_T_I_O_N_L_E_N_G_T_H_T_O_O_L_O_N_G = "DESCRIPTION_LENGTH_TOO_LONG";
   @SerializedName(SERIALIZED_NAME_D_E_S_C_R_I_P_T_I_O_N_L_E_N_G_T_H_T_O_O_L_O_N_G)
+  @javax.annotation.Nullable
   private Integer DESCRIPTION_LENGTH_TOO_LONG;
 
   public static final String SERIALIZED_NAME_G_E_N_D_E_R_I_N_V_A_L_I_D = "GENDER_INVALID";
   @SerializedName(SERIALIZED_NAME_G_E_N_D_E_R_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer GENDER_INVALID;
 
   public static final String SERIALIZED_NAME_A_G_E_G_R_O_U_P_I_N_V_A_L_I_D = "AGE_GROUP_INVALID";
   @SerializedName(SERIALIZED_NAME_A_G_E_G_R_O_U_P_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer AGE_GROUP_INVALID;
 
   public static final String SERIALIZED_NAME_S_I_Z_E_T_Y_P_E_I_N_V_A_L_I_D = "SIZE_TYPE_INVALID";
   @SerializedName(SERIALIZED_NAME_S_I_Z_E_T_Y_P_E_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer SIZE_TYPE_INVALID;
 
   public static final String SERIALIZED_NAME_S_I_Z_E_S_Y_S_T_E_M_I_N_V_A_L_I_D = "SIZE_SYSTEM_INVALID";
   @SerializedName(SERIALIZED_NAME_S_I_Z_E_S_Y_S_T_E_M_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer SIZE_SYSTEM_INVALID;
 
   public static final String SERIALIZED_NAME_L_I_N_K_F_O_R_M_A_T_W_A_R_N_I_N_G = "LINK_FORMAT_WARNING";
   @SerializedName(SERIALIZED_NAME_L_I_N_K_F_O_R_M_A_T_W_A_R_N_I_N_G)
+  @javax.annotation.Nullable
   private Integer LINK_FORMAT_WARNING;
 
   public static final String SERIALIZED_NAME_S_A_L_E_S_P_R_I_C_E_I_N_V_A_L_I_D = "SALES_PRICE_INVALID";
   @SerializedName(SERIALIZED_NAME_S_A_L_E_S_P_R_I_C_E_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer SALES_PRICE_INVALID;
 
   public static final String SERIALIZED_NAME_P_R_O_D_U_C_T_C_A_T_E_G_O_R_Y_D_E_P_T_H_W_A_R_N_I_N_G = "PRODUCT_CATEGORY_DEPTH_WARNING";
   @SerializedName(SERIALIZED_NAME_P_R_O_D_U_C_T_C_A_T_E_G_O_R_Y_D_E_P_T_H_W_A_R_N_I_N_G)
+  @javax.annotation.Nullable
   private Integer PRODUCT_CATEGORY_DEPTH_WARNING;
 
   public static final String SERIALIZED_NAME_A_D_W_O_R_D_S_F_O_R_M_A_T_W_A_R_N_I_N_G = "ADWORDS_FORMAT_WARNING";
   @SerializedName(SERIALIZED_NAME_A_D_W_O_R_D_S_F_O_R_M_A_T_W_A_R_N_I_N_G)
+  @javax.annotation.Nullable
   private Integer ADWORDS_FORMAT_WARNING;
 
   public static final String SERIALIZED_NAME_A_D_W_O_R_D_S_S_A_M_E_A_S_L_I_N_K = "ADWORDS_SAME_AS_LINK";
   @SerializedName(SERIALIZED_NAME_A_D_W_O_R_D_S_S_A_M_E_A_S_L_I_N_K)
+  @javax.annotation.Nullable
   private Integer ADWORDS_SAME_AS_LINK;
 
   public static final String SERIALIZED_NAME_D_U_P_L_I_C_A_T_E_H_E_A_D_E_R_S = "DUPLICATE_HEADERS";
   @SerializedName(SERIALIZED_NAME_D_U_P_L_I_C_A_T_E_H_E_A_D_E_R_S)
+  @javax.annotation.Nullable
   private Integer DUPLICATE_HEADERS;
 
   /**
@@ -158,148 +172,183 @@ public class CatalogsFeedValidationWarnings {
 
   public static final String SERIALIZED_NAME_F_E_T_C_H_S_A_M_E_S_I_G_N_A_T_U_R_E = "FETCH_SAME_SIGNATURE";
   @SerializedName(SERIALIZED_NAME_F_E_T_C_H_S_A_M_E_S_I_G_N_A_T_U_R_E)
+  @javax.annotation.Nullable
   private FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE;
 
   public static final String SERIALIZED_NAME_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_L_I_N_K_L_E_N_G_T_H_T_O_O_L_O_N_G = "ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG";
   @SerializedName(SERIALIZED_NAME_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_L_I_N_K_L_E_N_G_T_H_T_O_O_L_O_N_G)
+  @javax.annotation.Nullable
   private Integer ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
 
   public static final String SERIALIZED_NAME_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_L_I_N_K_W_A_R_N_I_N_G = "ADDITIONAL_IMAGE_LINK_WARNING";
   @SerializedName(SERIALIZED_NAME_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_L_I_N_K_W_A_R_N_I_N_G)
+  @javax.annotation.Nullable
   private Integer ADDITIONAL_IMAGE_LINK_WARNING;
 
   public static final String SERIALIZED_NAME_I_M_A_G_E_L_I_N_K_W_A_R_N_I_N_G = "IMAGE_LINK_WARNING";
   @SerializedName(SERIALIZED_NAME_I_M_A_G_E_L_I_N_K_W_A_R_N_I_N_G)
+  @javax.annotation.Nullable
   private Integer IMAGE_LINK_WARNING;
 
   public static final String SERIALIZED_NAME_S_H_I_P_P_I_N_G_I_N_V_A_L_I_D = "SHIPPING_INVALID";
   @SerializedName(SERIALIZED_NAME_S_H_I_P_P_I_N_G_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer SHIPPING_INVALID;
 
   public static final String SERIALIZED_NAME_T_A_X_I_N_V_A_L_I_D = "TAX_INVALID";
   @SerializedName(SERIALIZED_NAME_T_A_X_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer TAX_INVALID;
 
   public static final String SERIALIZED_NAME_S_H_I_P_P_I_N_G_W_E_I_G_H_T_I_N_V_A_L_I_D = "SHIPPING_WEIGHT_INVALID";
   @SerializedName(SERIALIZED_NAME_S_H_I_P_P_I_N_G_W_E_I_G_H_T_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer SHIPPING_WEIGHT_INVALID;
 
   public static final String SERIALIZED_NAME_E_X_P_I_R_A_T_I_O_N_D_A_T_E_I_N_V_A_L_I_D = "EXPIRATION_DATE_INVALID";
   @SerializedName(SERIALIZED_NAME_E_X_P_I_R_A_T_I_O_N_D_A_T_E_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer EXPIRATION_DATE_INVALID;
 
   public static final String SERIALIZED_NAME_A_V_A_I_L_A_B_I_L_I_T_Y_D_A_T_E_I_N_V_A_L_I_D = "AVAILABILITY_DATE_INVALID";
   @SerializedName(SERIALIZED_NAME_A_V_A_I_L_A_B_I_L_I_T_Y_D_A_T_E_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer AVAILABILITY_DATE_INVALID;
 
   public static final String SERIALIZED_NAME_S_A_L_E_D_A_T_E_I_N_V_A_L_I_D = "SALE_DATE_INVALID";
   @SerializedName(SERIALIZED_NAME_S_A_L_E_D_A_T_E_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer SALE_DATE_INVALID;
 
   public static final String SERIALIZED_NAME_W_E_I_G_H_T_U_N_I_T_I_N_V_A_L_I_D = "WEIGHT_UNIT_INVALID";
   @SerializedName(SERIALIZED_NAME_W_E_I_G_H_T_U_N_I_T_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer WEIGHT_UNIT_INVALID;
 
   public static final String SERIALIZED_NAME_I_S_B_U_N_D_L_E_I_N_V_A_L_I_D = "IS_BUNDLE_INVALID";
   @SerializedName(SERIALIZED_NAME_I_S_B_U_N_D_L_E_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer IS_BUNDLE_INVALID;
 
   public static final String SERIALIZED_NAME_U_P_D_A_T_E_D_T_I_M_E_I_N_V_A_L_I_D = "UPDATED_TIME_INVALID";
   @SerializedName(SERIALIZED_NAME_U_P_D_A_T_E_D_T_I_M_E_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer UPDATED_TIME_INVALID;
 
   public static final String SERIALIZED_NAME_C_U_S_T_O_M_L_A_B_E_L_L_E_N_G_T_H_T_O_O_L_O_N_G = "CUSTOM_LABEL_LENGTH_TOO_LONG";
   @SerializedName(SERIALIZED_NAME_C_U_S_T_O_M_L_A_B_E_L_L_E_N_G_T_H_T_O_O_L_O_N_G)
+  @javax.annotation.Nullable
   private Integer CUSTOM_LABEL_LENGTH_TOO_LONG;
 
   public static final String SERIALIZED_NAME_P_R_O_D_U_C_T_T_Y_P_E_L_E_N_G_T_H_T_O_O_L_O_N_G = "PRODUCT_TYPE_LENGTH_TOO_LONG";
   @SerializedName(SERIALIZED_NAME_P_R_O_D_U_C_T_T_Y_P_E_L_E_N_G_T_H_T_O_O_L_O_N_G)
+  @javax.annotation.Nullable
   private Integer PRODUCT_TYPE_LENGTH_TOO_LONG;
 
   public static final String SERIALIZED_NAME_T_O_O_M_A_N_Y_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_L_I_N_K_S = "TOO_MANY_ADDITIONAL_IMAGE_LINKS";
   @SerializedName(SERIALIZED_NAME_T_O_O_M_A_N_Y_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_L_I_N_K_S)
+  @javax.annotation.Nullable
   private Integer TOO_MANY_ADDITIONAL_IMAGE_LINKS;
 
   public static final String SERIALIZED_NAME_M_U_L_T_I_P_A_C_K_I_N_V_A_L_I_D = "MULTIPACK_INVALID";
   @SerializedName(SERIALIZED_NAME_M_U_L_T_I_P_A_C_K_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer MULTIPACK_INVALID;
 
   public static final String SERIALIZED_NAME_I_N_D_E_X_E_D_P_R_O_D_U_C_T_C_O_U_N_T_L_A_R_G_E_D_E_L_T_A = "INDEXED_PRODUCT_COUNT_LARGE_DELTA";
   @SerializedName(SERIALIZED_NAME_I_N_D_E_X_E_D_P_R_O_D_U_C_T_C_O_U_N_T_L_A_R_G_E_D_E_L_T_A)
+  @javax.annotation.Nullable
   private Integer INDEXED_PRODUCT_COUNT_LARGE_DELTA;
 
   public static final String SERIALIZED_NAME_I_T_E_M_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_D_O_W_N_L_O_A_D_F_A_I_L_U_R_E = "ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE";
   @SerializedName(SERIALIZED_NAME_I_T_E_M_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_D_O_W_N_L_O_A_D_F_A_I_L_U_R_E)
+  @javax.annotation.Nullable
   private Integer ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
 
   public static final String SERIALIZED_NAME_O_P_T_I_O_N_A_L_P_R_O_D_U_C_T_C_A_T_E_G_O_R_Y_M_I_S_S_I_N_G = "OPTIONAL_PRODUCT_CATEGORY_MISSING";
   @SerializedName(SERIALIZED_NAME_O_P_T_I_O_N_A_L_P_R_O_D_U_C_T_C_A_T_E_G_O_R_Y_M_I_S_S_I_N_G)
+  @javax.annotation.Nullable
   private Integer OPTIONAL_PRODUCT_CATEGORY_MISSING;
 
   public static final String SERIALIZED_NAME_O_P_T_I_O_N_A_L_P_R_O_D_U_C_T_C_A_T_E_G_O_R_Y_I_N_V_A_L_I_D = "OPTIONAL_PRODUCT_CATEGORY_INVALID";
   @SerializedName(SERIALIZED_NAME_O_P_T_I_O_N_A_L_P_R_O_D_U_C_T_C_A_T_E_G_O_R_Y_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer OPTIONAL_PRODUCT_CATEGORY_INVALID;
 
   public static final String SERIALIZED_NAME_O_P_T_I_O_N_A_L_C_O_N_D_I_T_I_O_N_M_I_S_S_I_N_G = "OPTIONAL_CONDITION_MISSING";
   @SerializedName(SERIALIZED_NAME_O_P_T_I_O_N_A_L_C_O_N_D_I_T_I_O_N_M_I_S_S_I_N_G)
+  @javax.annotation.Nullable
   private Integer OPTIONAL_CONDITION_MISSING;
 
   public static final String SERIALIZED_NAME_O_P_T_I_O_N_A_L_C_O_N_D_I_T_I_O_N_I_N_V_A_L_I_D = "OPTIONAL_CONDITION_INVALID";
   @SerializedName(SERIALIZED_NAME_O_P_T_I_O_N_A_L_C_O_N_D_I_T_I_O_N_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer OPTIONAL_CONDITION_INVALID;
 
   public static final String SERIALIZED_NAME_I_O_S_D_E_E_P_L_I_N_K_I_N_V_A_L_I_D = "IOS_DEEP_LINK_INVALID";
   @SerializedName(SERIALIZED_NAME_I_O_S_D_E_E_P_L_I_N_K_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer IOS_DEEP_LINK_INVALID;
 
   public static final String SERIALIZED_NAME_A_N_D_R_O_I_D_D_E_E_P_L_I_N_K_I_N_V_A_L_I_D = "ANDROID_DEEP_LINK_INVALID";
   @SerializedName(SERIALIZED_NAME_A_N_D_R_O_I_D_D_E_E_P_L_I_N_K_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer ANDROID_DEEP_LINK_INVALID;
 
   public static final String SERIALIZED_NAME_U_T_M_S_O_U_R_C_E_A_U_T_O_C_O_R_R_E_C_T_E_D = "UTM_SOURCE_AUTO_CORRECTED";
   @SerializedName(SERIALIZED_NAME_U_T_M_S_O_U_R_C_E_A_U_T_O_C_O_R_R_E_C_T_E_D)
+  @javax.annotation.Nullable
   private Integer UTM_SOURCE_AUTO_CORRECTED;
 
   public static final String SERIALIZED_NAME_C_O_U_N_T_R_Y_D_O_E_S_N_O_T_M_A_P_T_O_C_U_R_R_E_N_C_Y = "COUNTRY_DOES_NOT_MAP_TO_CURRENCY";
   @SerializedName(SERIALIZED_NAME_C_O_U_N_T_R_Y_D_O_E_S_N_O_T_M_A_P_T_O_C_U_R_R_E_N_C_Y)
+  @javax.annotation.Nullable
   private Integer COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
 
   public static final String SERIALIZED_NAME_M_I_N_A_D_P_R_I_C_E_I_N_V_A_L_I_D = "MIN_AD_PRICE_INVALID";
   @SerializedName(SERIALIZED_NAME_M_I_N_A_D_P_R_I_C_E_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer MIN_AD_PRICE_INVALID;
 
   public static final String SERIALIZED_NAME_G_T_I_N_I_N_V_A_L_I_D = "GTIN_INVALID";
   @SerializedName(SERIALIZED_NAME_G_T_I_N_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer GTIN_INVALID;
 
   public static final String SERIALIZED_NAME_I_N_C_O_N_S_I_S_T_E_N_T_C_U_R_R_E_N_C_Y_V_A_L_U_E_S = "INCONSISTENT_CURRENCY_VALUES";
   @SerializedName(SERIALIZED_NAME_I_N_C_O_N_S_I_S_T_E_N_T_C_U_R_R_E_N_C_Y_V_A_L_U_E_S)
+  @javax.annotation.Nullable
   private Integer INCONSISTENT_CURRENCY_VALUES;
 
   public static final String SERIALIZED_NAME_S_A_L_E_S_P_R_I_C_E_T_O_O_L_O_W = "SALES_PRICE_TOO_LOW";
   @SerializedName(SERIALIZED_NAME_S_A_L_E_S_P_R_I_C_E_T_O_O_L_O_W)
+  @javax.annotation.Nullable
   private Integer SALES_PRICE_TOO_LOW;
 
   public static final String SERIALIZED_NAME_S_H_I_P_P_I_N_G_W_I_D_T_H_I_N_V_A_L_I_D = "SHIPPING_WIDTH_INVALID";
   @SerializedName(SERIALIZED_NAME_S_H_I_P_P_I_N_G_W_I_D_T_H_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer SHIPPING_WIDTH_INVALID;
 
   public static final String SERIALIZED_NAME_S_H_I_P_P_I_N_G_H_E_I_G_H_T_I_N_V_A_L_I_D = "SHIPPING_HEIGHT_INVALID";
   @SerializedName(SERIALIZED_NAME_S_H_I_P_P_I_N_G_H_E_I_G_H_T_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer SHIPPING_HEIGHT_INVALID;
 
   public static final String SERIALIZED_NAME_S_A_L_E_S_P_R_I_C_E_T_O_O_H_I_G_H = "SALES_PRICE_TOO_HIGH";
   @SerializedName(SERIALIZED_NAME_S_A_L_E_S_P_R_I_C_E_T_O_O_H_I_G_H)
+  @javax.annotation.Nullable
   private Integer SALES_PRICE_TOO_HIGH;
 
   public static final String SERIALIZED_NAME_M_P_N_I_N_V_A_L_I_D = "MPN_INVALID";
   @SerializedName(SERIALIZED_NAME_M_P_N_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer MPN_INVALID;
 
   public CatalogsFeedValidationWarnings() {
   }
 
-  public CatalogsFeedValidationWarnings AD_LINK_FORMAT_WARNING(Integer AD_LINK_FORMAT_WARNING) {
+  public CatalogsFeedValidationWarnings AD_LINK_FORMAT_WARNING(@javax.annotation.Nullable Integer AD_LINK_FORMAT_WARNING) {
     this.AD_LINK_FORMAT_WARNING = AD_LINK_FORMAT_WARNING;
     return this;
   }
@@ -313,12 +362,12 @@ public class CatalogsFeedValidationWarnings {
     return AD_LINK_FORMAT_WARNING;
   }
 
-  public void setADLINKFORMATWARNING(Integer AD_LINK_FORMAT_WARNING) {
+  public void setADLINKFORMATWARNING(@javax.annotation.Nullable Integer AD_LINK_FORMAT_WARNING) {
     this.AD_LINK_FORMAT_WARNING = AD_LINK_FORMAT_WARNING;
   }
 
 
-  public CatalogsFeedValidationWarnings AD_LINK_SAME_AS_LINK(Integer AD_LINK_SAME_AS_LINK) {
+  public CatalogsFeedValidationWarnings AD_LINK_SAME_AS_LINK(@javax.annotation.Nullable Integer AD_LINK_SAME_AS_LINK) {
     this.AD_LINK_SAME_AS_LINK = AD_LINK_SAME_AS_LINK;
     return this;
   }
@@ -332,12 +381,12 @@ public class CatalogsFeedValidationWarnings {
     return AD_LINK_SAME_AS_LINK;
   }
 
-  public void setADLINKSAMEASLINK(Integer AD_LINK_SAME_AS_LINK) {
+  public void setADLINKSAMEASLINK(@javax.annotation.Nullable Integer AD_LINK_SAME_AS_LINK) {
     this.AD_LINK_SAME_AS_LINK = AD_LINK_SAME_AS_LINK;
   }
 
 
-  public CatalogsFeedValidationWarnings TITLE_LENGTH_TOO_LONG(Integer TITLE_LENGTH_TOO_LONG) {
+  public CatalogsFeedValidationWarnings TITLE_LENGTH_TOO_LONG(@javax.annotation.Nullable Integer TITLE_LENGTH_TOO_LONG) {
     this.TITLE_LENGTH_TOO_LONG = TITLE_LENGTH_TOO_LONG;
     return this;
   }
@@ -351,12 +400,12 @@ public class CatalogsFeedValidationWarnings {
     return TITLE_LENGTH_TOO_LONG;
   }
 
-  public void setTITLELENGTHTOOLONG(Integer TITLE_LENGTH_TOO_LONG) {
+  public void setTITLELENGTHTOOLONG(@javax.annotation.Nullable Integer TITLE_LENGTH_TOO_LONG) {
     this.TITLE_LENGTH_TOO_LONG = TITLE_LENGTH_TOO_LONG;
   }
 
 
-  public CatalogsFeedValidationWarnings DESCRIPTION_LENGTH_TOO_LONG(Integer DESCRIPTION_LENGTH_TOO_LONG) {
+  public CatalogsFeedValidationWarnings DESCRIPTION_LENGTH_TOO_LONG(@javax.annotation.Nullable Integer DESCRIPTION_LENGTH_TOO_LONG) {
     this.DESCRIPTION_LENGTH_TOO_LONG = DESCRIPTION_LENGTH_TOO_LONG;
     return this;
   }
@@ -370,12 +419,12 @@ public class CatalogsFeedValidationWarnings {
     return DESCRIPTION_LENGTH_TOO_LONG;
   }
 
-  public void setDESCRIPTIONLENGTHTOOLONG(Integer DESCRIPTION_LENGTH_TOO_LONG) {
+  public void setDESCRIPTIONLENGTHTOOLONG(@javax.annotation.Nullable Integer DESCRIPTION_LENGTH_TOO_LONG) {
     this.DESCRIPTION_LENGTH_TOO_LONG = DESCRIPTION_LENGTH_TOO_LONG;
   }
 
 
-  public CatalogsFeedValidationWarnings GENDER_INVALID(Integer GENDER_INVALID) {
+  public CatalogsFeedValidationWarnings GENDER_INVALID(@javax.annotation.Nullable Integer GENDER_INVALID) {
     this.GENDER_INVALID = GENDER_INVALID;
     return this;
   }
@@ -389,12 +438,12 @@ public class CatalogsFeedValidationWarnings {
     return GENDER_INVALID;
   }
 
-  public void setGENDERINVALID(Integer GENDER_INVALID) {
+  public void setGENDERINVALID(@javax.annotation.Nullable Integer GENDER_INVALID) {
     this.GENDER_INVALID = GENDER_INVALID;
   }
 
 
-  public CatalogsFeedValidationWarnings AGE_GROUP_INVALID(Integer AGE_GROUP_INVALID) {
+  public CatalogsFeedValidationWarnings AGE_GROUP_INVALID(@javax.annotation.Nullable Integer AGE_GROUP_INVALID) {
     this.AGE_GROUP_INVALID = AGE_GROUP_INVALID;
     return this;
   }
@@ -408,12 +457,12 @@ public class CatalogsFeedValidationWarnings {
     return AGE_GROUP_INVALID;
   }
 
-  public void setAGEGROUPINVALID(Integer AGE_GROUP_INVALID) {
+  public void setAGEGROUPINVALID(@javax.annotation.Nullable Integer AGE_GROUP_INVALID) {
     this.AGE_GROUP_INVALID = AGE_GROUP_INVALID;
   }
 
 
-  public CatalogsFeedValidationWarnings SIZE_TYPE_INVALID(Integer SIZE_TYPE_INVALID) {
+  public CatalogsFeedValidationWarnings SIZE_TYPE_INVALID(@javax.annotation.Nullable Integer SIZE_TYPE_INVALID) {
     this.SIZE_TYPE_INVALID = SIZE_TYPE_INVALID;
     return this;
   }
@@ -427,12 +476,12 @@ public class CatalogsFeedValidationWarnings {
     return SIZE_TYPE_INVALID;
   }
 
-  public void setSIZETYPEINVALID(Integer SIZE_TYPE_INVALID) {
+  public void setSIZETYPEINVALID(@javax.annotation.Nullable Integer SIZE_TYPE_INVALID) {
     this.SIZE_TYPE_INVALID = SIZE_TYPE_INVALID;
   }
 
 
-  public CatalogsFeedValidationWarnings SIZE_SYSTEM_INVALID(Integer SIZE_SYSTEM_INVALID) {
+  public CatalogsFeedValidationWarnings SIZE_SYSTEM_INVALID(@javax.annotation.Nullable Integer SIZE_SYSTEM_INVALID) {
     this.SIZE_SYSTEM_INVALID = SIZE_SYSTEM_INVALID;
     return this;
   }
@@ -446,12 +495,12 @@ public class CatalogsFeedValidationWarnings {
     return SIZE_SYSTEM_INVALID;
   }
 
-  public void setSIZESYSTEMINVALID(Integer SIZE_SYSTEM_INVALID) {
+  public void setSIZESYSTEMINVALID(@javax.annotation.Nullable Integer SIZE_SYSTEM_INVALID) {
     this.SIZE_SYSTEM_INVALID = SIZE_SYSTEM_INVALID;
   }
 
 
-  public CatalogsFeedValidationWarnings LINK_FORMAT_WARNING(Integer LINK_FORMAT_WARNING) {
+  public CatalogsFeedValidationWarnings LINK_FORMAT_WARNING(@javax.annotation.Nullable Integer LINK_FORMAT_WARNING) {
     this.LINK_FORMAT_WARNING = LINK_FORMAT_WARNING;
     return this;
   }
@@ -465,12 +514,12 @@ public class CatalogsFeedValidationWarnings {
     return LINK_FORMAT_WARNING;
   }
 
-  public void setLINKFORMATWARNING(Integer LINK_FORMAT_WARNING) {
+  public void setLINKFORMATWARNING(@javax.annotation.Nullable Integer LINK_FORMAT_WARNING) {
     this.LINK_FORMAT_WARNING = LINK_FORMAT_WARNING;
   }
 
 
-  public CatalogsFeedValidationWarnings SALES_PRICE_INVALID(Integer SALES_PRICE_INVALID) {
+  public CatalogsFeedValidationWarnings SALES_PRICE_INVALID(@javax.annotation.Nullable Integer SALES_PRICE_INVALID) {
     this.SALES_PRICE_INVALID = SALES_PRICE_INVALID;
     return this;
   }
@@ -484,12 +533,12 @@ public class CatalogsFeedValidationWarnings {
     return SALES_PRICE_INVALID;
   }
 
-  public void setSALESPRICEINVALID(Integer SALES_PRICE_INVALID) {
+  public void setSALESPRICEINVALID(@javax.annotation.Nullable Integer SALES_PRICE_INVALID) {
     this.SALES_PRICE_INVALID = SALES_PRICE_INVALID;
   }
 
 
-  public CatalogsFeedValidationWarnings PRODUCT_CATEGORY_DEPTH_WARNING(Integer PRODUCT_CATEGORY_DEPTH_WARNING) {
+  public CatalogsFeedValidationWarnings PRODUCT_CATEGORY_DEPTH_WARNING(@javax.annotation.Nullable Integer PRODUCT_CATEGORY_DEPTH_WARNING) {
     this.PRODUCT_CATEGORY_DEPTH_WARNING = PRODUCT_CATEGORY_DEPTH_WARNING;
     return this;
   }
@@ -503,12 +552,12 @@ public class CatalogsFeedValidationWarnings {
     return PRODUCT_CATEGORY_DEPTH_WARNING;
   }
 
-  public void setPRODUCTCATEGORYDEPTHWARNING(Integer PRODUCT_CATEGORY_DEPTH_WARNING) {
+  public void setPRODUCTCATEGORYDEPTHWARNING(@javax.annotation.Nullable Integer PRODUCT_CATEGORY_DEPTH_WARNING) {
     this.PRODUCT_CATEGORY_DEPTH_WARNING = PRODUCT_CATEGORY_DEPTH_WARNING;
   }
 
 
-  public CatalogsFeedValidationWarnings ADWORDS_FORMAT_WARNING(Integer ADWORDS_FORMAT_WARNING) {
+  public CatalogsFeedValidationWarnings ADWORDS_FORMAT_WARNING(@javax.annotation.Nullable Integer ADWORDS_FORMAT_WARNING) {
     this.ADWORDS_FORMAT_WARNING = ADWORDS_FORMAT_WARNING;
     return this;
   }
@@ -522,12 +571,12 @@ public class CatalogsFeedValidationWarnings {
     return ADWORDS_FORMAT_WARNING;
   }
 
-  public void setADWORDSFORMATWARNING(Integer ADWORDS_FORMAT_WARNING) {
+  public void setADWORDSFORMATWARNING(@javax.annotation.Nullable Integer ADWORDS_FORMAT_WARNING) {
     this.ADWORDS_FORMAT_WARNING = ADWORDS_FORMAT_WARNING;
   }
 
 
-  public CatalogsFeedValidationWarnings ADWORDS_SAME_AS_LINK(Integer ADWORDS_SAME_AS_LINK) {
+  public CatalogsFeedValidationWarnings ADWORDS_SAME_AS_LINK(@javax.annotation.Nullable Integer ADWORDS_SAME_AS_LINK) {
     this.ADWORDS_SAME_AS_LINK = ADWORDS_SAME_AS_LINK;
     return this;
   }
@@ -541,12 +590,12 @@ public class CatalogsFeedValidationWarnings {
     return ADWORDS_SAME_AS_LINK;
   }
 
-  public void setADWORDSSAMEASLINK(Integer ADWORDS_SAME_AS_LINK) {
+  public void setADWORDSSAMEASLINK(@javax.annotation.Nullable Integer ADWORDS_SAME_AS_LINK) {
     this.ADWORDS_SAME_AS_LINK = ADWORDS_SAME_AS_LINK;
   }
 
 
-  public CatalogsFeedValidationWarnings DUPLICATE_HEADERS(Integer DUPLICATE_HEADERS) {
+  public CatalogsFeedValidationWarnings DUPLICATE_HEADERS(@javax.annotation.Nullable Integer DUPLICATE_HEADERS) {
     this.DUPLICATE_HEADERS = DUPLICATE_HEADERS;
     return this;
   }
@@ -560,12 +609,12 @@ public class CatalogsFeedValidationWarnings {
     return DUPLICATE_HEADERS;
   }
 
-  public void setDUPLICATEHEADERS(Integer DUPLICATE_HEADERS) {
+  public void setDUPLICATEHEADERS(@javax.annotation.Nullable Integer DUPLICATE_HEADERS) {
     this.DUPLICATE_HEADERS = DUPLICATE_HEADERS;
   }
 
 
-  public CatalogsFeedValidationWarnings FETCH_SAME_SIGNATURE(FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE) {
+  public CatalogsFeedValidationWarnings FETCH_SAME_SIGNATURE(@javax.annotation.Nullable FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE) {
     this.FETCH_SAME_SIGNATURE = FETCH_SAME_SIGNATURE;
     return this;
   }
@@ -579,12 +628,12 @@ public class CatalogsFeedValidationWarnings {
     return FETCH_SAME_SIGNATURE;
   }
 
-  public void setFETCHSAMESIGNATURE(FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE) {
+  public void setFETCHSAMESIGNATURE(@javax.annotation.Nullable FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE) {
     this.FETCH_SAME_SIGNATURE = FETCH_SAME_SIGNATURE;
   }
 
 
-  public CatalogsFeedValidationWarnings ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG(Integer ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG) {
+  public CatalogsFeedValidationWarnings ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG(@javax.annotation.Nullable Integer ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG) {
     this.ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG = ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
     return this;
   }
@@ -598,12 +647,12 @@ public class CatalogsFeedValidationWarnings {
     return ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
   }
 
-  public void setADDITIONALIMAGELINKLENGTHTOOLONG(Integer ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG) {
+  public void setADDITIONALIMAGELINKLENGTHTOOLONG(@javax.annotation.Nullable Integer ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG) {
     this.ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG = ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
   }
 
 
-  public CatalogsFeedValidationWarnings ADDITIONAL_IMAGE_LINK_WARNING(Integer ADDITIONAL_IMAGE_LINK_WARNING) {
+  public CatalogsFeedValidationWarnings ADDITIONAL_IMAGE_LINK_WARNING(@javax.annotation.Nullable Integer ADDITIONAL_IMAGE_LINK_WARNING) {
     this.ADDITIONAL_IMAGE_LINK_WARNING = ADDITIONAL_IMAGE_LINK_WARNING;
     return this;
   }
@@ -617,12 +666,12 @@ public class CatalogsFeedValidationWarnings {
     return ADDITIONAL_IMAGE_LINK_WARNING;
   }
 
-  public void setADDITIONALIMAGELINKWARNING(Integer ADDITIONAL_IMAGE_LINK_WARNING) {
+  public void setADDITIONALIMAGELINKWARNING(@javax.annotation.Nullable Integer ADDITIONAL_IMAGE_LINK_WARNING) {
     this.ADDITIONAL_IMAGE_LINK_WARNING = ADDITIONAL_IMAGE_LINK_WARNING;
   }
 
 
-  public CatalogsFeedValidationWarnings IMAGE_LINK_WARNING(Integer IMAGE_LINK_WARNING) {
+  public CatalogsFeedValidationWarnings IMAGE_LINK_WARNING(@javax.annotation.Nullable Integer IMAGE_LINK_WARNING) {
     this.IMAGE_LINK_WARNING = IMAGE_LINK_WARNING;
     return this;
   }
@@ -636,12 +685,12 @@ public class CatalogsFeedValidationWarnings {
     return IMAGE_LINK_WARNING;
   }
 
-  public void setIMAGELINKWARNING(Integer IMAGE_LINK_WARNING) {
+  public void setIMAGELINKWARNING(@javax.annotation.Nullable Integer IMAGE_LINK_WARNING) {
     this.IMAGE_LINK_WARNING = IMAGE_LINK_WARNING;
   }
 
 
-  public CatalogsFeedValidationWarnings SHIPPING_INVALID(Integer SHIPPING_INVALID) {
+  public CatalogsFeedValidationWarnings SHIPPING_INVALID(@javax.annotation.Nullable Integer SHIPPING_INVALID) {
     this.SHIPPING_INVALID = SHIPPING_INVALID;
     return this;
   }
@@ -655,12 +704,12 @@ public class CatalogsFeedValidationWarnings {
     return SHIPPING_INVALID;
   }
 
-  public void setSHIPPINGINVALID(Integer SHIPPING_INVALID) {
+  public void setSHIPPINGINVALID(@javax.annotation.Nullable Integer SHIPPING_INVALID) {
     this.SHIPPING_INVALID = SHIPPING_INVALID;
   }
 
 
-  public CatalogsFeedValidationWarnings TAX_INVALID(Integer TAX_INVALID) {
+  public CatalogsFeedValidationWarnings TAX_INVALID(@javax.annotation.Nullable Integer TAX_INVALID) {
     this.TAX_INVALID = TAX_INVALID;
     return this;
   }
@@ -674,12 +723,12 @@ public class CatalogsFeedValidationWarnings {
     return TAX_INVALID;
   }
 
-  public void setTAXINVALID(Integer TAX_INVALID) {
+  public void setTAXINVALID(@javax.annotation.Nullable Integer TAX_INVALID) {
     this.TAX_INVALID = TAX_INVALID;
   }
 
 
-  public CatalogsFeedValidationWarnings SHIPPING_WEIGHT_INVALID(Integer SHIPPING_WEIGHT_INVALID) {
+  public CatalogsFeedValidationWarnings SHIPPING_WEIGHT_INVALID(@javax.annotation.Nullable Integer SHIPPING_WEIGHT_INVALID) {
     this.SHIPPING_WEIGHT_INVALID = SHIPPING_WEIGHT_INVALID;
     return this;
   }
@@ -693,12 +742,12 @@ public class CatalogsFeedValidationWarnings {
     return SHIPPING_WEIGHT_INVALID;
   }
 
-  public void setSHIPPINGWEIGHTINVALID(Integer SHIPPING_WEIGHT_INVALID) {
+  public void setSHIPPINGWEIGHTINVALID(@javax.annotation.Nullable Integer SHIPPING_WEIGHT_INVALID) {
     this.SHIPPING_WEIGHT_INVALID = SHIPPING_WEIGHT_INVALID;
   }
 
 
-  public CatalogsFeedValidationWarnings EXPIRATION_DATE_INVALID(Integer EXPIRATION_DATE_INVALID) {
+  public CatalogsFeedValidationWarnings EXPIRATION_DATE_INVALID(@javax.annotation.Nullable Integer EXPIRATION_DATE_INVALID) {
     this.EXPIRATION_DATE_INVALID = EXPIRATION_DATE_INVALID;
     return this;
   }
@@ -712,12 +761,12 @@ public class CatalogsFeedValidationWarnings {
     return EXPIRATION_DATE_INVALID;
   }
 
-  public void setEXPIRATIONDATEINVALID(Integer EXPIRATION_DATE_INVALID) {
+  public void setEXPIRATIONDATEINVALID(@javax.annotation.Nullable Integer EXPIRATION_DATE_INVALID) {
     this.EXPIRATION_DATE_INVALID = EXPIRATION_DATE_INVALID;
   }
 
 
-  public CatalogsFeedValidationWarnings AVAILABILITY_DATE_INVALID(Integer AVAILABILITY_DATE_INVALID) {
+  public CatalogsFeedValidationWarnings AVAILABILITY_DATE_INVALID(@javax.annotation.Nullable Integer AVAILABILITY_DATE_INVALID) {
     this.AVAILABILITY_DATE_INVALID = AVAILABILITY_DATE_INVALID;
     return this;
   }
@@ -731,12 +780,12 @@ public class CatalogsFeedValidationWarnings {
     return AVAILABILITY_DATE_INVALID;
   }
 
-  public void setAVAILABILITYDATEINVALID(Integer AVAILABILITY_DATE_INVALID) {
+  public void setAVAILABILITYDATEINVALID(@javax.annotation.Nullable Integer AVAILABILITY_DATE_INVALID) {
     this.AVAILABILITY_DATE_INVALID = AVAILABILITY_DATE_INVALID;
   }
 
 
-  public CatalogsFeedValidationWarnings SALE_DATE_INVALID(Integer SALE_DATE_INVALID) {
+  public CatalogsFeedValidationWarnings SALE_DATE_INVALID(@javax.annotation.Nullable Integer SALE_DATE_INVALID) {
     this.SALE_DATE_INVALID = SALE_DATE_INVALID;
     return this;
   }
@@ -750,12 +799,12 @@ public class CatalogsFeedValidationWarnings {
     return SALE_DATE_INVALID;
   }
 
-  public void setSALEDATEINVALID(Integer SALE_DATE_INVALID) {
+  public void setSALEDATEINVALID(@javax.annotation.Nullable Integer SALE_DATE_INVALID) {
     this.SALE_DATE_INVALID = SALE_DATE_INVALID;
   }
 
 
-  public CatalogsFeedValidationWarnings WEIGHT_UNIT_INVALID(Integer WEIGHT_UNIT_INVALID) {
+  public CatalogsFeedValidationWarnings WEIGHT_UNIT_INVALID(@javax.annotation.Nullable Integer WEIGHT_UNIT_INVALID) {
     this.WEIGHT_UNIT_INVALID = WEIGHT_UNIT_INVALID;
     return this;
   }
@@ -769,12 +818,12 @@ public class CatalogsFeedValidationWarnings {
     return WEIGHT_UNIT_INVALID;
   }
 
-  public void setWEIGHTUNITINVALID(Integer WEIGHT_UNIT_INVALID) {
+  public void setWEIGHTUNITINVALID(@javax.annotation.Nullable Integer WEIGHT_UNIT_INVALID) {
     this.WEIGHT_UNIT_INVALID = WEIGHT_UNIT_INVALID;
   }
 
 
-  public CatalogsFeedValidationWarnings IS_BUNDLE_INVALID(Integer IS_BUNDLE_INVALID) {
+  public CatalogsFeedValidationWarnings IS_BUNDLE_INVALID(@javax.annotation.Nullable Integer IS_BUNDLE_INVALID) {
     this.IS_BUNDLE_INVALID = IS_BUNDLE_INVALID;
     return this;
   }
@@ -788,12 +837,12 @@ public class CatalogsFeedValidationWarnings {
     return IS_BUNDLE_INVALID;
   }
 
-  public void setISBUNDLEINVALID(Integer IS_BUNDLE_INVALID) {
+  public void setISBUNDLEINVALID(@javax.annotation.Nullable Integer IS_BUNDLE_INVALID) {
     this.IS_BUNDLE_INVALID = IS_BUNDLE_INVALID;
   }
 
 
-  public CatalogsFeedValidationWarnings UPDATED_TIME_INVALID(Integer UPDATED_TIME_INVALID) {
+  public CatalogsFeedValidationWarnings UPDATED_TIME_INVALID(@javax.annotation.Nullable Integer UPDATED_TIME_INVALID) {
     this.UPDATED_TIME_INVALID = UPDATED_TIME_INVALID;
     return this;
   }
@@ -807,12 +856,12 @@ public class CatalogsFeedValidationWarnings {
     return UPDATED_TIME_INVALID;
   }
 
-  public void setUPDATEDTIMEINVALID(Integer UPDATED_TIME_INVALID) {
+  public void setUPDATEDTIMEINVALID(@javax.annotation.Nullable Integer UPDATED_TIME_INVALID) {
     this.UPDATED_TIME_INVALID = UPDATED_TIME_INVALID;
   }
 
 
-  public CatalogsFeedValidationWarnings CUSTOM_LABEL_LENGTH_TOO_LONG(Integer CUSTOM_LABEL_LENGTH_TOO_LONG) {
+  public CatalogsFeedValidationWarnings CUSTOM_LABEL_LENGTH_TOO_LONG(@javax.annotation.Nullable Integer CUSTOM_LABEL_LENGTH_TOO_LONG) {
     this.CUSTOM_LABEL_LENGTH_TOO_LONG = CUSTOM_LABEL_LENGTH_TOO_LONG;
     return this;
   }
@@ -826,12 +875,12 @@ public class CatalogsFeedValidationWarnings {
     return CUSTOM_LABEL_LENGTH_TOO_LONG;
   }
 
-  public void setCUSTOMLABELLENGTHTOOLONG(Integer CUSTOM_LABEL_LENGTH_TOO_LONG) {
+  public void setCUSTOMLABELLENGTHTOOLONG(@javax.annotation.Nullable Integer CUSTOM_LABEL_LENGTH_TOO_LONG) {
     this.CUSTOM_LABEL_LENGTH_TOO_LONG = CUSTOM_LABEL_LENGTH_TOO_LONG;
   }
 
 
-  public CatalogsFeedValidationWarnings PRODUCT_TYPE_LENGTH_TOO_LONG(Integer PRODUCT_TYPE_LENGTH_TOO_LONG) {
+  public CatalogsFeedValidationWarnings PRODUCT_TYPE_LENGTH_TOO_LONG(@javax.annotation.Nullable Integer PRODUCT_TYPE_LENGTH_TOO_LONG) {
     this.PRODUCT_TYPE_LENGTH_TOO_LONG = PRODUCT_TYPE_LENGTH_TOO_LONG;
     return this;
   }
@@ -845,12 +894,12 @@ public class CatalogsFeedValidationWarnings {
     return PRODUCT_TYPE_LENGTH_TOO_LONG;
   }
 
-  public void setPRODUCTTYPELENGTHTOOLONG(Integer PRODUCT_TYPE_LENGTH_TOO_LONG) {
+  public void setPRODUCTTYPELENGTHTOOLONG(@javax.annotation.Nullable Integer PRODUCT_TYPE_LENGTH_TOO_LONG) {
     this.PRODUCT_TYPE_LENGTH_TOO_LONG = PRODUCT_TYPE_LENGTH_TOO_LONG;
   }
 
 
-  public CatalogsFeedValidationWarnings TOO_MANY_ADDITIONAL_IMAGE_LINKS(Integer TOO_MANY_ADDITIONAL_IMAGE_LINKS) {
+  public CatalogsFeedValidationWarnings TOO_MANY_ADDITIONAL_IMAGE_LINKS(@javax.annotation.Nullable Integer TOO_MANY_ADDITIONAL_IMAGE_LINKS) {
     this.TOO_MANY_ADDITIONAL_IMAGE_LINKS = TOO_MANY_ADDITIONAL_IMAGE_LINKS;
     return this;
   }
@@ -864,12 +913,12 @@ public class CatalogsFeedValidationWarnings {
     return TOO_MANY_ADDITIONAL_IMAGE_LINKS;
   }
 
-  public void setTOOMANYADDITIONALIMAGELINKS(Integer TOO_MANY_ADDITIONAL_IMAGE_LINKS) {
+  public void setTOOMANYADDITIONALIMAGELINKS(@javax.annotation.Nullable Integer TOO_MANY_ADDITIONAL_IMAGE_LINKS) {
     this.TOO_MANY_ADDITIONAL_IMAGE_LINKS = TOO_MANY_ADDITIONAL_IMAGE_LINKS;
   }
 
 
-  public CatalogsFeedValidationWarnings MULTIPACK_INVALID(Integer MULTIPACK_INVALID) {
+  public CatalogsFeedValidationWarnings MULTIPACK_INVALID(@javax.annotation.Nullable Integer MULTIPACK_INVALID) {
     this.MULTIPACK_INVALID = MULTIPACK_INVALID;
     return this;
   }
@@ -883,12 +932,12 @@ public class CatalogsFeedValidationWarnings {
     return MULTIPACK_INVALID;
   }
 
-  public void setMULTIPACKINVALID(Integer MULTIPACK_INVALID) {
+  public void setMULTIPACKINVALID(@javax.annotation.Nullable Integer MULTIPACK_INVALID) {
     this.MULTIPACK_INVALID = MULTIPACK_INVALID;
   }
 
 
-  public CatalogsFeedValidationWarnings INDEXED_PRODUCT_COUNT_LARGE_DELTA(Integer INDEXED_PRODUCT_COUNT_LARGE_DELTA) {
+  public CatalogsFeedValidationWarnings INDEXED_PRODUCT_COUNT_LARGE_DELTA(@javax.annotation.Nullable Integer INDEXED_PRODUCT_COUNT_LARGE_DELTA) {
     this.INDEXED_PRODUCT_COUNT_LARGE_DELTA = INDEXED_PRODUCT_COUNT_LARGE_DELTA;
     return this;
   }
@@ -902,12 +951,12 @@ public class CatalogsFeedValidationWarnings {
     return INDEXED_PRODUCT_COUNT_LARGE_DELTA;
   }
 
-  public void setINDEXEDPRODUCTCOUNTLARGEDELTA(Integer INDEXED_PRODUCT_COUNT_LARGE_DELTA) {
+  public void setINDEXEDPRODUCTCOUNTLARGEDELTA(@javax.annotation.Nullable Integer INDEXED_PRODUCT_COUNT_LARGE_DELTA) {
     this.INDEXED_PRODUCT_COUNT_LARGE_DELTA = INDEXED_PRODUCT_COUNT_LARGE_DELTA;
   }
 
 
-  public CatalogsFeedValidationWarnings ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE(Integer ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE) {
+  public CatalogsFeedValidationWarnings ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE(@javax.annotation.Nullable Integer ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE) {
     this.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE = ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
     return this;
   }
@@ -921,12 +970,12 @@ public class CatalogsFeedValidationWarnings {
     return ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
   }
 
-  public void setITEMADDITIONALIMAGEDOWNLOADFAILURE(Integer ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE) {
+  public void setITEMADDITIONALIMAGEDOWNLOADFAILURE(@javax.annotation.Nullable Integer ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE) {
     this.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE = ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
   }
 
 
-  public CatalogsFeedValidationWarnings OPTIONAL_PRODUCT_CATEGORY_MISSING(Integer OPTIONAL_PRODUCT_CATEGORY_MISSING) {
+  public CatalogsFeedValidationWarnings OPTIONAL_PRODUCT_CATEGORY_MISSING(@javax.annotation.Nullable Integer OPTIONAL_PRODUCT_CATEGORY_MISSING) {
     this.OPTIONAL_PRODUCT_CATEGORY_MISSING = OPTIONAL_PRODUCT_CATEGORY_MISSING;
     return this;
   }
@@ -940,12 +989,12 @@ public class CatalogsFeedValidationWarnings {
     return OPTIONAL_PRODUCT_CATEGORY_MISSING;
   }
 
-  public void setOPTIONALPRODUCTCATEGORYMISSING(Integer OPTIONAL_PRODUCT_CATEGORY_MISSING) {
+  public void setOPTIONALPRODUCTCATEGORYMISSING(@javax.annotation.Nullable Integer OPTIONAL_PRODUCT_CATEGORY_MISSING) {
     this.OPTIONAL_PRODUCT_CATEGORY_MISSING = OPTIONAL_PRODUCT_CATEGORY_MISSING;
   }
 
 
-  public CatalogsFeedValidationWarnings OPTIONAL_PRODUCT_CATEGORY_INVALID(Integer OPTIONAL_PRODUCT_CATEGORY_INVALID) {
+  public CatalogsFeedValidationWarnings OPTIONAL_PRODUCT_CATEGORY_INVALID(@javax.annotation.Nullable Integer OPTIONAL_PRODUCT_CATEGORY_INVALID) {
     this.OPTIONAL_PRODUCT_CATEGORY_INVALID = OPTIONAL_PRODUCT_CATEGORY_INVALID;
     return this;
   }
@@ -959,12 +1008,12 @@ public class CatalogsFeedValidationWarnings {
     return OPTIONAL_PRODUCT_CATEGORY_INVALID;
   }
 
-  public void setOPTIONALPRODUCTCATEGORYINVALID(Integer OPTIONAL_PRODUCT_CATEGORY_INVALID) {
+  public void setOPTIONALPRODUCTCATEGORYINVALID(@javax.annotation.Nullable Integer OPTIONAL_PRODUCT_CATEGORY_INVALID) {
     this.OPTIONAL_PRODUCT_CATEGORY_INVALID = OPTIONAL_PRODUCT_CATEGORY_INVALID;
   }
 
 
-  public CatalogsFeedValidationWarnings OPTIONAL_CONDITION_MISSING(Integer OPTIONAL_CONDITION_MISSING) {
+  public CatalogsFeedValidationWarnings OPTIONAL_CONDITION_MISSING(@javax.annotation.Nullable Integer OPTIONAL_CONDITION_MISSING) {
     this.OPTIONAL_CONDITION_MISSING = OPTIONAL_CONDITION_MISSING;
     return this;
   }
@@ -978,12 +1027,12 @@ public class CatalogsFeedValidationWarnings {
     return OPTIONAL_CONDITION_MISSING;
   }
 
-  public void setOPTIONALCONDITIONMISSING(Integer OPTIONAL_CONDITION_MISSING) {
+  public void setOPTIONALCONDITIONMISSING(@javax.annotation.Nullable Integer OPTIONAL_CONDITION_MISSING) {
     this.OPTIONAL_CONDITION_MISSING = OPTIONAL_CONDITION_MISSING;
   }
 
 
-  public CatalogsFeedValidationWarnings OPTIONAL_CONDITION_INVALID(Integer OPTIONAL_CONDITION_INVALID) {
+  public CatalogsFeedValidationWarnings OPTIONAL_CONDITION_INVALID(@javax.annotation.Nullable Integer OPTIONAL_CONDITION_INVALID) {
     this.OPTIONAL_CONDITION_INVALID = OPTIONAL_CONDITION_INVALID;
     return this;
   }
@@ -997,12 +1046,12 @@ public class CatalogsFeedValidationWarnings {
     return OPTIONAL_CONDITION_INVALID;
   }
 
-  public void setOPTIONALCONDITIONINVALID(Integer OPTIONAL_CONDITION_INVALID) {
+  public void setOPTIONALCONDITIONINVALID(@javax.annotation.Nullable Integer OPTIONAL_CONDITION_INVALID) {
     this.OPTIONAL_CONDITION_INVALID = OPTIONAL_CONDITION_INVALID;
   }
 
 
-  public CatalogsFeedValidationWarnings IOS_DEEP_LINK_INVALID(Integer IOS_DEEP_LINK_INVALID) {
+  public CatalogsFeedValidationWarnings IOS_DEEP_LINK_INVALID(@javax.annotation.Nullable Integer IOS_DEEP_LINK_INVALID) {
     this.IOS_DEEP_LINK_INVALID = IOS_DEEP_LINK_INVALID;
     return this;
   }
@@ -1016,12 +1065,12 @@ public class CatalogsFeedValidationWarnings {
     return IOS_DEEP_LINK_INVALID;
   }
 
-  public void setIOSDEEPLINKINVALID(Integer IOS_DEEP_LINK_INVALID) {
+  public void setIOSDEEPLINKINVALID(@javax.annotation.Nullable Integer IOS_DEEP_LINK_INVALID) {
     this.IOS_DEEP_LINK_INVALID = IOS_DEEP_LINK_INVALID;
   }
 
 
-  public CatalogsFeedValidationWarnings ANDROID_DEEP_LINK_INVALID(Integer ANDROID_DEEP_LINK_INVALID) {
+  public CatalogsFeedValidationWarnings ANDROID_DEEP_LINK_INVALID(@javax.annotation.Nullable Integer ANDROID_DEEP_LINK_INVALID) {
     this.ANDROID_DEEP_LINK_INVALID = ANDROID_DEEP_LINK_INVALID;
     return this;
   }
@@ -1035,12 +1084,12 @@ public class CatalogsFeedValidationWarnings {
     return ANDROID_DEEP_LINK_INVALID;
   }
 
-  public void setANDROIDDEEPLINKINVALID(Integer ANDROID_DEEP_LINK_INVALID) {
+  public void setANDROIDDEEPLINKINVALID(@javax.annotation.Nullable Integer ANDROID_DEEP_LINK_INVALID) {
     this.ANDROID_DEEP_LINK_INVALID = ANDROID_DEEP_LINK_INVALID;
   }
 
 
-  public CatalogsFeedValidationWarnings UTM_SOURCE_AUTO_CORRECTED(Integer UTM_SOURCE_AUTO_CORRECTED) {
+  public CatalogsFeedValidationWarnings UTM_SOURCE_AUTO_CORRECTED(@javax.annotation.Nullable Integer UTM_SOURCE_AUTO_CORRECTED) {
     this.UTM_SOURCE_AUTO_CORRECTED = UTM_SOURCE_AUTO_CORRECTED;
     return this;
   }
@@ -1054,12 +1103,12 @@ public class CatalogsFeedValidationWarnings {
     return UTM_SOURCE_AUTO_CORRECTED;
   }
 
-  public void setUTMSOURCEAUTOCORRECTED(Integer UTM_SOURCE_AUTO_CORRECTED) {
+  public void setUTMSOURCEAUTOCORRECTED(@javax.annotation.Nullable Integer UTM_SOURCE_AUTO_CORRECTED) {
     this.UTM_SOURCE_AUTO_CORRECTED = UTM_SOURCE_AUTO_CORRECTED;
   }
 
 
-  public CatalogsFeedValidationWarnings COUNTRY_DOES_NOT_MAP_TO_CURRENCY(Integer COUNTRY_DOES_NOT_MAP_TO_CURRENCY) {
+  public CatalogsFeedValidationWarnings COUNTRY_DOES_NOT_MAP_TO_CURRENCY(@javax.annotation.Nullable Integer COUNTRY_DOES_NOT_MAP_TO_CURRENCY) {
     this.COUNTRY_DOES_NOT_MAP_TO_CURRENCY = COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
     return this;
   }
@@ -1073,12 +1122,12 @@ public class CatalogsFeedValidationWarnings {
     return COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
   }
 
-  public void setCOUNTRYDOESNOTMAPTOCURRENCY(Integer COUNTRY_DOES_NOT_MAP_TO_CURRENCY) {
+  public void setCOUNTRYDOESNOTMAPTOCURRENCY(@javax.annotation.Nullable Integer COUNTRY_DOES_NOT_MAP_TO_CURRENCY) {
     this.COUNTRY_DOES_NOT_MAP_TO_CURRENCY = COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
   }
 
 
-  public CatalogsFeedValidationWarnings MIN_AD_PRICE_INVALID(Integer MIN_AD_PRICE_INVALID) {
+  public CatalogsFeedValidationWarnings MIN_AD_PRICE_INVALID(@javax.annotation.Nullable Integer MIN_AD_PRICE_INVALID) {
     this.MIN_AD_PRICE_INVALID = MIN_AD_PRICE_INVALID;
     return this;
   }
@@ -1092,12 +1141,12 @@ public class CatalogsFeedValidationWarnings {
     return MIN_AD_PRICE_INVALID;
   }
 
-  public void setMINADPRICEINVALID(Integer MIN_AD_PRICE_INVALID) {
+  public void setMINADPRICEINVALID(@javax.annotation.Nullable Integer MIN_AD_PRICE_INVALID) {
     this.MIN_AD_PRICE_INVALID = MIN_AD_PRICE_INVALID;
   }
 
 
-  public CatalogsFeedValidationWarnings GTIN_INVALID(Integer GTIN_INVALID) {
+  public CatalogsFeedValidationWarnings GTIN_INVALID(@javax.annotation.Nullable Integer GTIN_INVALID) {
     this.GTIN_INVALID = GTIN_INVALID;
     return this;
   }
@@ -1111,12 +1160,12 @@ public class CatalogsFeedValidationWarnings {
     return GTIN_INVALID;
   }
 
-  public void setGTININVALID(Integer GTIN_INVALID) {
+  public void setGTININVALID(@javax.annotation.Nullable Integer GTIN_INVALID) {
     this.GTIN_INVALID = GTIN_INVALID;
   }
 
 
-  public CatalogsFeedValidationWarnings INCONSISTENT_CURRENCY_VALUES(Integer INCONSISTENT_CURRENCY_VALUES) {
+  public CatalogsFeedValidationWarnings INCONSISTENT_CURRENCY_VALUES(@javax.annotation.Nullable Integer INCONSISTENT_CURRENCY_VALUES) {
     this.INCONSISTENT_CURRENCY_VALUES = INCONSISTENT_CURRENCY_VALUES;
     return this;
   }
@@ -1130,12 +1179,12 @@ public class CatalogsFeedValidationWarnings {
     return INCONSISTENT_CURRENCY_VALUES;
   }
 
-  public void setINCONSISTENTCURRENCYVALUES(Integer INCONSISTENT_CURRENCY_VALUES) {
+  public void setINCONSISTENTCURRENCYVALUES(@javax.annotation.Nullable Integer INCONSISTENT_CURRENCY_VALUES) {
     this.INCONSISTENT_CURRENCY_VALUES = INCONSISTENT_CURRENCY_VALUES;
   }
 
 
-  public CatalogsFeedValidationWarnings SALES_PRICE_TOO_LOW(Integer SALES_PRICE_TOO_LOW) {
+  public CatalogsFeedValidationWarnings SALES_PRICE_TOO_LOW(@javax.annotation.Nullable Integer SALES_PRICE_TOO_LOW) {
     this.SALES_PRICE_TOO_LOW = SALES_PRICE_TOO_LOW;
     return this;
   }
@@ -1149,12 +1198,12 @@ public class CatalogsFeedValidationWarnings {
     return SALES_PRICE_TOO_LOW;
   }
 
-  public void setSALESPRICETOOLOW(Integer SALES_PRICE_TOO_LOW) {
+  public void setSALESPRICETOOLOW(@javax.annotation.Nullable Integer SALES_PRICE_TOO_LOW) {
     this.SALES_PRICE_TOO_LOW = SALES_PRICE_TOO_LOW;
   }
 
 
-  public CatalogsFeedValidationWarnings SHIPPING_WIDTH_INVALID(Integer SHIPPING_WIDTH_INVALID) {
+  public CatalogsFeedValidationWarnings SHIPPING_WIDTH_INVALID(@javax.annotation.Nullable Integer SHIPPING_WIDTH_INVALID) {
     this.SHIPPING_WIDTH_INVALID = SHIPPING_WIDTH_INVALID;
     return this;
   }
@@ -1168,12 +1217,12 @@ public class CatalogsFeedValidationWarnings {
     return SHIPPING_WIDTH_INVALID;
   }
 
-  public void setSHIPPINGWIDTHINVALID(Integer SHIPPING_WIDTH_INVALID) {
+  public void setSHIPPINGWIDTHINVALID(@javax.annotation.Nullable Integer SHIPPING_WIDTH_INVALID) {
     this.SHIPPING_WIDTH_INVALID = SHIPPING_WIDTH_INVALID;
   }
 
 
-  public CatalogsFeedValidationWarnings SHIPPING_HEIGHT_INVALID(Integer SHIPPING_HEIGHT_INVALID) {
+  public CatalogsFeedValidationWarnings SHIPPING_HEIGHT_INVALID(@javax.annotation.Nullable Integer SHIPPING_HEIGHT_INVALID) {
     this.SHIPPING_HEIGHT_INVALID = SHIPPING_HEIGHT_INVALID;
     return this;
   }
@@ -1187,12 +1236,12 @@ public class CatalogsFeedValidationWarnings {
     return SHIPPING_HEIGHT_INVALID;
   }
 
-  public void setSHIPPINGHEIGHTINVALID(Integer SHIPPING_HEIGHT_INVALID) {
+  public void setSHIPPINGHEIGHTINVALID(@javax.annotation.Nullable Integer SHIPPING_HEIGHT_INVALID) {
     this.SHIPPING_HEIGHT_INVALID = SHIPPING_HEIGHT_INVALID;
   }
 
 
-  public CatalogsFeedValidationWarnings SALES_PRICE_TOO_HIGH(Integer SALES_PRICE_TOO_HIGH) {
+  public CatalogsFeedValidationWarnings SALES_PRICE_TOO_HIGH(@javax.annotation.Nullable Integer SALES_PRICE_TOO_HIGH) {
     this.SALES_PRICE_TOO_HIGH = SALES_PRICE_TOO_HIGH;
     return this;
   }
@@ -1206,12 +1255,12 @@ public class CatalogsFeedValidationWarnings {
     return SALES_PRICE_TOO_HIGH;
   }
 
-  public void setSALESPRICETOOHIGH(Integer SALES_PRICE_TOO_HIGH) {
+  public void setSALESPRICETOOHIGH(@javax.annotation.Nullable Integer SALES_PRICE_TOO_HIGH) {
     this.SALES_PRICE_TOO_HIGH = SALES_PRICE_TOO_HIGH;
   }
 
 
-  public CatalogsFeedValidationWarnings MPN_INVALID(Integer MPN_INVALID) {
+  public CatalogsFeedValidationWarnings MPN_INVALID(@javax.annotation.Nullable Integer MPN_INVALID) {
     this.MPN_INVALID = MPN_INVALID;
     return this;
   }
@@ -1225,7 +1274,7 @@ public class CatalogsFeedValidationWarnings {
     return MPN_INVALID;
   }
 
-  public void setMPNINVALID(Integer MPN_INVALID) {
+  public void setMPNINVALID(@javax.annotation.Nullable Integer MPN_INVALID) {
     this.MPN_INVALID = MPN_INVALID;
   }
 

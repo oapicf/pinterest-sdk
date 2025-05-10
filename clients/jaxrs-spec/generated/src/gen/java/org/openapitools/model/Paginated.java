@@ -19,10 +19,20 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("Paginated")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class Paginated   {
   private @Valid List<Object> items = new ArrayList<>();
   private String bookmark;
+
+  public Paginated() {
+  }
+
+  @JsonCreator
+  public Paginated(
+    @JsonProperty(required = true, value = "items") List<Object> items
+  ) {
+    this.items = items;
+  }
 
   /**
    **/
@@ -33,12 +43,12 @@ public class Paginated   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   @NotNull public List<Object> getItems() {
     return items;
   }
 
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   public void setItems(List<Object> items) {
     this.items = items;
   }

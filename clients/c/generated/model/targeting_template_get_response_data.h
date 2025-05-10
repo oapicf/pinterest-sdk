@@ -21,14 +21,6 @@ typedef struct targeting_template_get_response_data_t targeting_template_get_res
 #include "targeting_template_keyword.h"
 #include "tracking_urls.h"
 
-// Enum  for targeting_template_get_response_data
-
-typedef enum  { pinterest_rest_api_targeting_template_get_response_data__NULL = 0, pinterest_rest_api_targeting_template_get_response_data__ALL, pinterest_rest_api_targeting_template_get_response_data__SEARCH, pinterest_rest_api_targeting_template_get_response_data__BROWSE, pinterest_rest_api_targeting_template_get_response_data__OTHER } pinterest_rest_api_targeting_template_get_response_data__e;
-
-char* targeting_template_get_response_data_placement_group_ToString(pinterest_rest_api_targeting_template_get_response_data__e placement_group);
-
-pinterest_rest_api_targeting_template_get_response_data__e targeting_template_get_response_data_placement_group_FromString(char* placement_group);
-
 // Enum STATUS for targeting_template_get_response_data
 
 typedef enum  { pinterest_rest_api_targeting_template_get_response_data_STATUS_NULL = 0, pinterest_rest_api_targeting_template_get_response_data_STATUS_ACTIVE, pinterest_rest_api_targeting_template_get_response_data_STATUS_DELETED } pinterest_rest_api_targeting_template_get_response_data_STATUS_e;
@@ -43,7 +35,7 @@ typedef struct targeting_template_get_response_data_t {
     char *name; // string
     int auto_targeting_enabled; //boolean
     struct targeting_spec_t *targeting_attributes; //model
-    placement_group_type_t *placement_group; // custom
+    pinterest_rest_api_placement_group_type__e placement_group; //referenced enum
     list_t *keywords; //nonprimitive container
     struct tracking_urls_t *tracking_urls; //model
     char *id; // string
@@ -54,13 +46,14 @@ typedef struct targeting_template_get_response_data_t {
     struct targeting_template_audience_sizing_t *sizing; //model
     int valid; //boolean
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } targeting_template_get_response_data_t;
 
-targeting_template_get_response_data_t *targeting_template_get_response_data_create(
+__attribute__((deprecated)) targeting_template_get_response_data_t *targeting_template_get_response_data_create(
     char *name,
     int auto_targeting_enabled,
     targeting_spec_t *targeting_attributes,
-    placement_group_type_t *placement_group,
+    pinterest_rest_api_placement_group_type__e placement_group,
     list_t *keywords,
     tracking_urls_t *tracking_urls,
     char *id,

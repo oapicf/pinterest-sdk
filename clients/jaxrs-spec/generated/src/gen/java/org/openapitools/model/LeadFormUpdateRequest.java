@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("LeadFormUpdateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class LeadFormUpdateRequest   {
   private String name;
   private String privacyPolicyLink;
@@ -33,6 +33,16 @@ public class LeadFormUpdateRequest   {
   private @Valid List<@Valid LeadFormQuestion> questions = new ArrayList<>();
   private @Valid List<@Valid LeadFormCommonPolicyLinksInner> policyLinks = new ArrayList<>();
   private String id;
+
+  public LeadFormUpdateRequest() {
+  }
+
+  @JsonCreator
+  public LeadFormUpdateRequest(
+    @JsonProperty(required = true, value = "id") String id
+  ) {
+    this.id = id;
+  }
 
   /**
    * Internal name of the lead form.
@@ -235,12 +245,12 @@ public class LeadFormUpdateRequest   {
 
   
   @ApiModelProperty(example = "7765300871171", required = true, value = "The ID of this lead form to be updated")
-  @JsonProperty("id")
+  @JsonProperty(required = true, value = "id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getId() {
     return id;
   }
 
-  @JsonProperty("id")
+  @JsonProperty(required = true, value = "id")
   public void setId(String id) {
     this.id = id;
   }

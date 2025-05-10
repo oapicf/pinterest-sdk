@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct KeywordsRequest: Codable, JSONEncodable, Hashable {
 
-    static let parentIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^((AG)|C)?\\d+$/")
+    public static let parentIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^((AG)|C)?\\d+$/")
     /** Keyword JSON array. Each array element has 3 fields */
     public var keywords: [KeywordsCommon]
     /** Keyword parent entity ID (advertiser, campaign, ad group). */

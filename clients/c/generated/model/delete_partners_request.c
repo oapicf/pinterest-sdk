@@ -5,7 +5,7 @@
 
 
 
-delete_partners_request_t *delete_partners_request_create(
+static delete_partners_request_t *delete_partners_request_create_internal(
     list_t *partner_ids,
     char *partner_type
     ) {
@@ -16,12 +16,26 @@ delete_partners_request_t *delete_partners_request_create(
     delete_partners_request_local_var->partner_ids = partner_ids;
     delete_partners_request_local_var->partner_type = partner_type;
 
+    delete_partners_request_local_var->_library_owned = 1;
     return delete_partners_request_local_var;
 }
 
+__attribute__((deprecated)) delete_partners_request_t *delete_partners_request_create(
+    list_t *partner_ids,
+    char *partner_type
+    ) {
+    return delete_partners_request_create_internal (
+        partner_ids,
+        partner_type
+        );
+}
 
 void delete_partners_request_free(delete_partners_request_t *delete_partners_request) {
     if(NULL == delete_partners_request){
+        return ;
+    }
+    if(delete_partners_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "delete_partners_request_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -53,7 +67,7 @@ cJSON *delete_partners_request_convertToJSON(delete_partners_request_t *delete_p
 
     listEntry_t *partner_idsListEntry;
     list_ForEach(partner_idsListEntry, delete_partners_request->partner_ids) {
-    if(cJSON_AddStringToObject(partner_ids, "", (char*)partner_idsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(partner_ids, "", partner_idsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -84,6 +98,9 @@ delete_partners_request_t *delete_partners_request_parseFromJSON(cJSON *delete_p
 
     // delete_partners_request->partner_ids
     cJSON *partner_ids = cJSON_GetObjectItemCaseSensitive(delete_partners_requestJSON, "partner_ids");
+    if (cJSON_IsNull(partner_ids)) {
+        partner_ids = NULL;
+    }
     if (!partner_ids) {
         goto end;
     }
@@ -106,6 +123,9 @@ delete_partners_request_t *delete_partners_request_parseFromJSON(cJSON *delete_p
 
     // delete_partners_request->partner_type
     cJSON *partner_type = cJSON_GetObjectItemCaseSensitive(delete_partners_requestJSON, "partner_type");
+    if (cJSON_IsNull(partner_type)) {
+        partner_type = NULL;
+    }
     if (partner_type) { 
     if(!cJSON_IsString(partner_type) && !cJSON_IsNull(partner_type))
     {
@@ -114,7 +134,7 @@ delete_partners_request_t *delete_partners_request_parseFromJSON(cJSON *delete_p
     }
 
 
-    delete_partners_request_local_var = delete_partners_request_create (
+    delete_partners_request_local_var = delete_partners_request_create_internal (
         partner_idsList,
         partner_type && !cJSON_IsNull(partner_type) ? strdup(partner_type->valuestring) : NULL
         );

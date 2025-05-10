@@ -52,20 +52,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AuthRespondInvitesBodyInvitesInnerAction
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AuthRespondInvitesBodyInvitesInnerAction {
   public static final String SERIALIZED_NAME_ACCEPT_INVITE = "accept_invite";
   @SerializedName(SERIALIZED_NAME_ACCEPT_INVITE)
+  @javax.annotation.Nonnull
   private Boolean acceptInvite;
 
   public static final String SERIALIZED_NAME_ASSET_ID_TO_PERMISSIONS = "asset_id_to_permissions";
   @SerializedName(SERIALIZED_NAME_ASSET_ID_TO_PERMISSIONS)
+  @javax.annotation.Nullable
   private Map<String, List<Permissions>> assetIdToPermissions = new HashMap<>();
 
   public AuthRespondInvitesBodyInvitesInnerAction() {
   }
 
-  public AuthRespondInvitesBodyInvitesInnerAction acceptInvite(Boolean acceptInvite) {
+  public AuthRespondInvitesBodyInvitesInnerAction acceptInvite(@javax.annotation.Nonnull Boolean acceptInvite) {
     this.acceptInvite = acceptInvite;
     return this;
   }
@@ -79,12 +81,12 @@ public class AuthRespondInvitesBodyInvitesInnerAction {
     return acceptInvite;
   }
 
-  public void setAcceptInvite(Boolean acceptInvite) {
+  public void setAcceptInvite(@javax.annotation.Nonnull Boolean acceptInvite) {
     this.acceptInvite = acceptInvite;
   }
 
 
-  public AuthRespondInvitesBodyInvitesInnerAction assetIdToPermissions(Map<String, List<Permissions>> assetIdToPermissions) {
+  public AuthRespondInvitesBodyInvitesInnerAction assetIdToPermissions(@javax.annotation.Nullable Map<String, List<Permissions>> assetIdToPermissions) {
     this.assetIdToPermissions = assetIdToPermissions;
     return this;
   }
@@ -106,7 +108,7 @@ public class AuthRespondInvitesBodyInvitesInnerAction {
     return assetIdToPermissions;
   }
 
-  public void setAssetIdToPermissions(Map<String, List<Permissions>> assetIdToPermissions) {
+  public void setAssetIdToPermissions(@javax.annotation.Nullable Map<String, List<Permissions>> assetIdToPermissions) {
     this.assetIdToPermissions = assetIdToPermissions;
   }
 

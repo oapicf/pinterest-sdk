@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * An object with a list of partners that were deleted.
  * @param deletedPartners List of partners whose business partnership have been terminated.
  */
+@Serializable
 data class DeletePartnersResponse(
     /* List of partners whose business partnership have been terminated. */
     val deletedPartners: kotlin.collections.List<kotlin.String>? = null
-) 
+)
 

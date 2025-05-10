@@ -373,11 +373,11 @@ export function UpdatableItemAttributesFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-  export function UpdatableItemAttributesToJSON(json: any): UpdatableItemAttributes {
-      return UpdatableItemAttributesToJSONTyped(json, false);
-  }
+export function UpdatableItemAttributesToJSON(json: any): UpdatableItemAttributes {
+    return UpdatableItemAttributesToJSONTyped(json, false);
+}
 
-  export function UpdatableItemAttributesToJSONTyped(value?: UpdatableItemAttributes | null, ignoreDiscriminator: boolean = false): any {
+export function UpdatableItemAttributesToJSONTyped(value?: UpdatableItemAttributes | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

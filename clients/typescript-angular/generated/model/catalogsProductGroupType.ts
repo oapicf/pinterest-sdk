@@ -15,14 +15,23 @@
 export type CatalogsProductGroupType = 'MERCHANT_CREATED' | 'ALL_PRODUCTS' | 'BEST_DEALS' | 'PINNER_FAVORITES' | 'TOP_SELLERS' | 'BACK_IN_STOCK' | 'NEW_ARRIVALS' | 'SHOPIFY_COLLECTIONS' | 'I2PC';
 
 export const CatalogsProductGroupType = {
+
     MerchantCreated: 'MERCHANT_CREATED' as CatalogsProductGroupType,
+
     AllProducts: 'ALL_PRODUCTS' as CatalogsProductGroupType,
+
     BestDeals: 'BEST_DEALS' as CatalogsProductGroupType,
+
     PinnerFavorites: 'PINNER_FAVORITES' as CatalogsProductGroupType,
+
     TopSellers: 'TOP_SELLERS' as CatalogsProductGroupType,
+
     BackInStock: 'BACK_IN_STOCK' as CatalogsProductGroupType,
+
     NewArrivals: 'NEW_ARRIVALS' as CatalogsProductGroupType,
+
     ShopifyCollections: 'SHOPIFY_COLLECTIONS' as CatalogsProductGroupType,
+
     I2Pc: 'I2PC' as CatalogsProductGroupType
 };
 

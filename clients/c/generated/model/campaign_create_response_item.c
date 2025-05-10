@@ -5,7 +5,7 @@
 
 
 
-campaign_create_response_item_t *campaign_create_response_item_create(
+static campaign_create_response_item_t *campaign_create_response_item_create_internal(
     campaign_create_response_data_t *data,
     list_t *exceptions
     ) {
@@ -16,12 +16,26 @@ campaign_create_response_item_t *campaign_create_response_item_create(
     campaign_create_response_item_local_var->data = data;
     campaign_create_response_item_local_var->exceptions = exceptions;
 
+    campaign_create_response_item_local_var->_library_owned = 1;
     return campaign_create_response_item_local_var;
 }
 
+__attribute__((deprecated)) campaign_create_response_item_t *campaign_create_response_item_create(
+    campaign_create_response_data_t *data,
+    list_t *exceptions
+    ) {
+    return campaign_create_response_item_create_internal (
+        data,
+        exceptions
+        );
+}
 
 void campaign_create_response_item_free(campaign_create_response_item_t *campaign_create_response_item) {
     if(NULL == campaign_create_response_item){
+        return ;
+    }
+    if(campaign_create_response_item->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "campaign_create_response_item_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -94,12 +108,18 @@ campaign_create_response_item_t *campaign_create_response_item_parseFromJSON(cJS
 
     // campaign_create_response_item->data
     cJSON *data = cJSON_GetObjectItemCaseSensitive(campaign_create_response_itemJSON, "data");
+    if (cJSON_IsNull(data)) {
+        data = NULL;
+    }
     if (data) { 
     data_local_nonprim = campaign_create_response_data_parseFromJSON(data); //nonprimitive
     }
 
     // campaign_create_response_item->exceptions
     cJSON *exceptions = cJSON_GetObjectItemCaseSensitive(campaign_create_response_itemJSON, "exceptions");
+    if (cJSON_IsNull(exceptions)) {
+        exceptions = NULL;
+    }
     if (exceptions) { 
     cJSON *exceptions_local_nonprimitive = NULL;
     if(!cJSON_IsArray(exceptions)){
@@ -120,7 +140,7 @@ campaign_create_response_item_t *campaign_create_response_item_parseFromJSON(cJS
     }
 
 
-    campaign_create_response_item_local_var = campaign_create_response_item_create (
+    campaign_create_response_item_local_var = campaign_create_response_item_create_internal (
         data ? data_local_nonprim : NULL,
         exceptions ? exceptionsList : NULL
         );

@@ -49,28 +49,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CustomerListRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CustomerListRequest {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nonnull
   private String name;
 
   public static final String SERIALIZED_NAME_RECORDS = "records";
   @SerializedName(SERIALIZED_NAME_RECORDS)
+  @javax.annotation.Nonnull
   private String records;
 
   public static final String SERIALIZED_NAME_LIST_TYPE = "list_type";
   @SerializedName(SERIALIZED_NAME_LIST_TYPE)
+  @javax.annotation.Nullable
   private UserListType listType = "EMAIL";
 
   public static final String SERIALIZED_NAME_EXCEPTIONS = "exceptions";
   @SerializedName(SERIALIZED_NAME_EXCEPTIONS)
+  @javax.annotation.Nullable
   private Object exceptions;
 
   public CustomerListRequest() {
   }
 
-  public CustomerListRequest name(String name) {
+  public CustomerListRequest name(@javax.annotation.Nonnull String name) {
     this.name = name;
     return this;
   }
@@ -84,12 +88,12 @@ public class CustomerListRequest {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
 
-  public CustomerListRequest records(String records) {
+  public CustomerListRequest records(@javax.annotation.Nonnull String records) {
     this.records = records;
     return this;
   }
@@ -103,12 +107,12 @@ public class CustomerListRequest {
     return records;
   }
 
-  public void setRecords(String records) {
+  public void setRecords(@javax.annotation.Nonnull String records) {
     this.records = records;
   }
 
 
-  public CustomerListRequest listType(UserListType listType) {
+  public CustomerListRequest listType(@javax.annotation.Nullable UserListType listType) {
     this.listType = listType;
     return this;
   }
@@ -122,12 +126,12 @@ public class CustomerListRequest {
     return listType;
   }
 
-  public void setListType(UserListType listType) {
+  public void setListType(@javax.annotation.Nullable UserListType listType) {
     this.listType = listType;
   }
 
 
-  public CustomerListRequest exceptions(Object exceptions) {
+  public CustomerListRequest exceptions(@javax.annotation.Nullable Object exceptions) {
     this.exceptions = exceptions;
     return this;
   }
@@ -141,7 +145,7 @@ public class CustomerListRequest {
     return exceptions;
   }
 
-  public void setExceptions(Object exceptions) {
+  public void setExceptions(@javax.annotation.Nullable Object exceptions) {
     this.exceptions = exceptions;
   }
 

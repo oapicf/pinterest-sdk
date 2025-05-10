@@ -22,7 +22,7 @@ pinterest_rest_api_data_output_format__e data_output_format_data_output_format_F
     return 0;
 }
 
-cJSON *data_output_format_data_output_format_convertToJSON(pinterest_rest_api_data_output_format__e data_output_format) {
+cJSON *data_output_format_convertToJSON(pinterest_rest_api_data_output_format__e data_output_format) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "data_output_format", data_output_format_data_output_format_ToString(data_output_format)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_data_output_format__e data_output_format_data_output_format_parseFromJSON(cJSON *data_output_formatJSON) {
-    pinterest_rest_api_data_output_format__e *data_output_format = NULL;
-    pinterest_rest_api_data_output_format__e data_output_formatVariable;
-    cJSON *data_output_formatVar = cJSON_GetObjectItemCaseSensitive(data_output_formatJSON, "data_output_format");
-    if(!cJSON_IsString(data_output_formatVar) || (data_output_formatVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_data_output_format__e data_output_format_parseFromJSON(cJSON *data_output_formatJSON) {
+    if(!cJSON_IsString(data_output_formatJSON) || (data_output_formatJSON->valuestring == NULL)) {
+        return 0;
     }
-    data_output_formatVariable = data_output_format_data_output_format_FromString(data_output_formatVar->valuestring);
-    return data_output_formatVariable;
-end:
-    return 0;
+    return data_output_format_data_output_format_FromString(data_output_formatJSON->valuestring);
 }

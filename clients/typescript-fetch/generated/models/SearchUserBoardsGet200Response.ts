@@ -64,11 +64,11 @@ export function SearchUserBoardsGet200ResponseFromJSONTyped(json: any, ignoreDis
     };
 }
 
-  export function SearchUserBoardsGet200ResponseToJSON(json: any): SearchUserBoardsGet200Response {
-      return SearchUserBoardsGet200ResponseToJSONTyped(json, false);
-  }
+export function SearchUserBoardsGet200ResponseToJSON(json: any): SearchUserBoardsGet200Response {
+    return SearchUserBoardsGet200ResponseToJSONTyped(json, false);
+}
 
-  export function SearchUserBoardsGet200ResponseToJSONTyped(value?: SearchUserBoardsGet200Response | null, ignoreDiscriminator: boolean = false): any {
+export function SearchUserBoardsGet200ResponseToJSONTyped(value?: SearchUserBoardsGet200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

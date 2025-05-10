@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.Currency
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param startDate Starting date of time period. Format: YYYY-MM-DD
@@ -38,6 +39,7 @@ import org.openapitools.server.models.Currency
  * @param acceptedTermsTime The UTC timestamp (to the nearest sec) of when terms were accepted
  * @param estimatedMonthlySpend If Ongoing (perpetual) order line, the estimated monthly spend
  */
+@Serializable
 data class SSIOCreateInsertionOrderRequest(
     /* Starting date of time period. Format: YYYY-MM-DD */
     val startDate: kotlin.String,
@@ -82,7 +84,7 @@ data class SSIOCreateInsertionOrderRequest(
     val acceptedTermsTime: kotlin.Int? = null,
     /* If Ongoing (perpetual) order line, the estimated monthly spend */
     val estimatedMonthlySpend: java.math.BigDecimal? = null
-) 
+)
 {
     /**
     * Type can be Budget or Perpetual

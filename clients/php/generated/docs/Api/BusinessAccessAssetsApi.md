@@ -637,7 +637,7 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessAssetsApi(
 );
 $business_id = 729090764583391194; // string | Unique identifier of the requesting business.
 $partner_id = 729090764583391194; // string | The partner id to be bound to the Business
-$partner_type = INTERNAL; // PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
+$partner_type = INTERNAL; // \OpenAPIClientModelPartnerTypeMixed | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
 $asset_type = AD_ACCOUNT; // string | A resource type to filter the assets by. Only assets of the specified type will be returned.
 $start_index = 0; // int | An index to start fetching the results from. Only the results starting from this index will be returned.
 $page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
@@ -657,7 +657,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **business_id** | **string**| Unique identifier of the requesting business. | |
 | **partner_id** | **string**| The partner id to be bound to the Business | |
-| **partner_type** | [**PartnerType**](../Model/.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] |
+| **partner_type** | [**\OpenAPIClientModelPartnerTypeMixed**](../Model/.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] |
 | **asset_type** | **string**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to &#39;AD_ACCOUNT&#39;] |
 | **start_index** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
 | **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |

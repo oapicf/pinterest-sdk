@@ -5,7 +5,7 @@
 
 
 
-keyword_update_body_t *keyword_update_body_create(
+static keyword_update_body_t *keyword_update_body_create_internal(
     list_t *keywords
     ) {
     keyword_update_body_t *keyword_update_body_local_var = malloc(sizeof(keyword_update_body_t));
@@ -14,12 +14,24 @@ keyword_update_body_t *keyword_update_body_create(
     }
     keyword_update_body_local_var->keywords = keywords;
 
+    keyword_update_body_local_var->_library_owned = 1;
     return keyword_update_body_local_var;
 }
 
+__attribute__((deprecated)) keyword_update_body_t *keyword_update_body_create(
+    list_t *keywords
+    ) {
+    return keyword_update_body_create_internal (
+        keywords
+        );
+}
 
 void keyword_update_body_free(keyword_update_body_t *keyword_update_body) {
     if(NULL == keyword_update_body){
+        return ;
+    }
+    if(keyword_update_body->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "keyword_update_body_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -73,6 +85,9 @@ keyword_update_body_t *keyword_update_body_parseFromJSON(cJSON *keyword_update_b
 
     // keyword_update_body->keywords
     cJSON *keywords = cJSON_GetObjectItemCaseSensitive(keyword_update_bodyJSON, "keywords");
+    if (cJSON_IsNull(keywords)) {
+        keywords = NULL;
+    }
     if (!keywords) {
         goto end;
     }
@@ -96,7 +111,7 @@ keyword_update_body_t *keyword_update_body_parseFromJSON(cJSON *keyword_update_b
     }
 
 
-    keyword_update_body_local_var = keyword_update_body_create (
+    keyword_update_body_local_var = keyword_update_body_create_internal (
         keywordsList
         );
 

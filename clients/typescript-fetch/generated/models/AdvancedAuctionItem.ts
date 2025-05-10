@@ -97,11 +97,11 @@ export function AdvancedAuctionItemFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function AdvancedAuctionItemToJSON(json: any): AdvancedAuctionItem {
-      return AdvancedAuctionItemToJSONTyped(json, false);
-  }
+export function AdvancedAuctionItemToJSON(json: any): AdvancedAuctionItem {
+    return AdvancedAuctionItemToJSONTyped(json, false);
+}
 
-  export function AdvancedAuctionItemToJSONTyped(value?: AdvancedAuctionItem | null, ignoreDiscriminator: boolean = false): any {
+export function AdvancedAuctionItemToJSONTyped(value?: AdvancedAuctionItem | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

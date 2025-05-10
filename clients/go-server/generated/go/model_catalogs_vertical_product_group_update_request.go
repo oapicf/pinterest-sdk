@@ -12,10 +12,6 @@
 package openapi
 
 
-import (
-	"gopkg.in/validator.v2"
-)
-
 
 
 // CatalogsVerticalProductGroupUpdateRequest - Request object for updating a catalog based product group.

@@ -15,7 +15,9 @@
 export type ConversionReportAttributionType = 'INDIVIDUAL' | 'HOUSEHOLD';
 
 export const ConversionReportAttributionType = {
+
     Individual: 'INDIVIDUAL' as ConversionReportAttributionType,
+
     Household: 'HOUSEHOLD' as ConversionReportAttributionType
 };
 

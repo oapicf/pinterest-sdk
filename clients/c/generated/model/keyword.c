@@ -4,27 +4,10 @@
 #include "keyword.h"
 
 
-char* keyword_match_type_ToString(pinterest_rest_api_keyword__e match_type) {
-    char* match_typeArray[] =  { "NULL", "BROAD", "PHRASE", "EXACT", "EXACT_NEGATIVE", "PHRASE_NEGATIVE", "" };
-    return match_typeArray[match_type];
-}
 
-pinterest_rest_api_keyword__e keyword_match_type_FromString(char* match_type){
-    int stringToReturn = 0;
-    char *match_typeArray[] =  { "NULL", "BROAD", "PHRASE", "EXACT", "EXACT_NEGATIVE", "PHRASE_NEGATIVE", "" };
-    size_t sizeofArray = sizeof(match_typeArray) / sizeof(match_typeArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(match_type, match_typeArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-
-keyword_t *keyword_create(
+static keyword_t *keyword_create_internal(
     int bid,
-    match_type_response_t *match_type,
+    pinterest_rest_api_match_type_response__e match_type,
     char *value,
     int archived,
     char *id,
@@ -45,19 +28,41 @@ keyword_t *keyword_create(
     keyword_local_var->parent_type = parent_type;
     keyword_local_var->type = type;
 
+    keyword_local_var->_library_owned = 1;
     return keyword_local_var;
 }
 
+__attribute__((deprecated)) keyword_t *keyword_create(
+    int bid,
+    pinterest_rest_api_match_type_response__e match_type,
+    char *value,
+    int archived,
+    char *id,
+    char *parent_id,
+    char *parent_type,
+    char *type
+    ) {
+    return keyword_create_internal (
+        bid,
+        match_type,
+        value,
+        archived,
+        id,
+        parent_id,
+        parent_type,
+        type
+        );
+}
 
 void keyword_free(keyword_t *keyword) {
     if(NULL == keyword){
         return ;
     }
-    listEntry_t *listEntry;
-    if (keyword->match_type) {
-        match_type_response_free(keyword->match_type);
-        keyword->match_type = NULL;
+    if(keyword->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "keyword_free");
+        return ;
     }
+    listEntry_t *listEntry;
     if (keyword->value) {
         free(keyword->value);
         keyword->value = NULL;
@@ -93,7 +98,7 @@ cJSON *keyword_convertToJSON(keyword_t *keyword) {
 
 
     // keyword->match_type
-    if (pinterest_rest_api_keyword__NULL == keyword->match_type) {
+    if (pinterest_rest_api_match_type_response__NULL == keyword->match_type) {
         goto fail;
     }
     cJSON *match_type_local_JSON = match_type_response_convertToJSON(keyword->match_type);
@@ -167,10 +172,13 @@ keyword_t *keyword_parseFromJSON(cJSON *keywordJSON){
     keyword_t *keyword_local_var = NULL;
 
     // define the local variable for keyword->match_type
-    match_type_response_t *match_type_local_nonprim = NULL;
+    pinterest_rest_api_match_type_response__e match_type_local_nonprim = 0;
 
     // keyword->bid
     cJSON *bid = cJSON_GetObjectItemCaseSensitive(keywordJSON, "bid");
+    if (cJSON_IsNull(bid)) {
+        bid = NULL;
+    }
     if (bid) { 
     if(!cJSON_IsNumber(bid))
     {
@@ -180,6 +188,9 @@ keyword_t *keyword_parseFromJSON(cJSON *keywordJSON){
 
     // keyword->match_type
     cJSON *match_type = cJSON_GetObjectItemCaseSensitive(keywordJSON, "match_type");
+    if (cJSON_IsNull(match_type)) {
+        match_type = NULL;
+    }
     if (!match_type) {
         goto end;
     }
@@ -189,6 +200,9 @@ keyword_t *keyword_parseFromJSON(cJSON *keywordJSON){
 
     // keyword->value
     cJSON *value = cJSON_GetObjectItemCaseSensitive(keywordJSON, "value");
+    if (cJSON_IsNull(value)) {
+        value = NULL;
+    }
     if (!value) {
         goto end;
     }
@@ -201,6 +215,9 @@ keyword_t *keyword_parseFromJSON(cJSON *keywordJSON){
 
     // keyword->archived
     cJSON *archived = cJSON_GetObjectItemCaseSensitive(keywordJSON, "archived");
+    if (cJSON_IsNull(archived)) {
+        archived = NULL;
+    }
     if (archived) { 
     if(!cJSON_IsBool(archived))
     {
@@ -210,6 +227,9 @@ keyword_t *keyword_parseFromJSON(cJSON *keywordJSON){
 
     // keyword->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(keywordJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -219,6 +239,9 @@ keyword_t *keyword_parseFromJSON(cJSON *keywordJSON){
 
     // keyword->parent_id
     cJSON *parent_id = cJSON_GetObjectItemCaseSensitive(keywordJSON, "parent_id");
+    if (cJSON_IsNull(parent_id)) {
+        parent_id = NULL;
+    }
     if (parent_id) { 
     if(!cJSON_IsString(parent_id) && !cJSON_IsNull(parent_id))
     {
@@ -228,6 +251,9 @@ keyword_t *keyword_parseFromJSON(cJSON *keywordJSON){
 
     // keyword->parent_type
     cJSON *parent_type = cJSON_GetObjectItemCaseSensitive(keywordJSON, "parent_type");
+    if (cJSON_IsNull(parent_type)) {
+        parent_type = NULL;
+    }
     if (parent_type) { 
     if(!cJSON_IsString(parent_type) && !cJSON_IsNull(parent_type))
     {
@@ -237,6 +263,9 @@ keyword_t *keyword_parseFromJSON(cJSON *keywordJSON){
 
     // keyword->type
     cJSON *type = cJSON_GetObjectItemCaseSensitive(keywordJSON, "type");
+    if (cJSON_IsNull(type)) {
+        type = NULL;
+    }
     if (type) { 
     if(!cJSON_IsString(type) && !cJSON_IsNull(type))
     {
@@ -245,7 +274,7 @@ keyword_t *keyword_parseFromJSON(cJSON *keywordJSON){
     }
 
 
-    keyword_local_var = keyword_create (
+    keyword_local_var = keyword_create_internal (
         bid ? bid->valuedouble : 0,
         match_type_local_nonprim,
         strdup(value->valuestring),
@@ -259,8 +288,7 @@ keyword_t *keyword_parseFromJSON(cJSON *keywordJSON){
     return keyword_local_var;
 end:
     if (match_type_local_nonprim) {
-        match_type_response_free(match_type_local_nonprim);
-        match_type_local_nonprim = NULL;
+        match_type_local_nonprim = 0;
     }
     return NULL;
 

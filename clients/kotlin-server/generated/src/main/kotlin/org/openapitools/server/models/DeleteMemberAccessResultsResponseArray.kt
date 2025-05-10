@@ -13,12 +13,14 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.DeleteMemberAccessResult
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items List of member asset permissions that were deleted.
  */
+@Serializable
 data class DeleteMemberAccessResultsResponseArray(
     /* List of member asset permissions that were deleted. */
     val items: kotlin.collections.List<DeleteMemberAccessResult>? = null
-) 
+)
 

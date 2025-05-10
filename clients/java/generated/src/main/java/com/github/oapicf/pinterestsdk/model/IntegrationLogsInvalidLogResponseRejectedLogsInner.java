@@ -48,28 +48,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * IntegrationLogsInvalidLogResponseRejectedLogsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class IntegrationLogsInvalidLogResponseRejectedLogsInner {
   public static final String SERIALIZED_NAME_LOG_INDEX = "log_index";
   @SerializedName(SERIALIZED_NAME_LOG_INDEX)
+  @javax.annotation.Nullable
   private Integer logIndex;
 
   public static final String SERIALIZED_NAME_FIELD = "field";
   @SerializedName(SERIALIZED_NAME_FIELD)
+  @javax.annotation.Nonnull
   private String field;
 
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
+  @javax.annotation.Nonnull
   private String value;
 
   public static final String SERIALIZED_NAME_REASON = "reason";
   @SerializedName(SERIALIZED_NAME_REASON)
+  @javax.annotation.Nonnull
   private String reason;
 
   public IntegrationLogsInvalidLogResponseRejectedLogsInner() {
   }
 
-  public IntegrationLogsInvalidLogResponseRejectedLogsInner logIndex(Integer logIndex) {
+  public IntegrationLogsInvalidLogResponseRejectedLogsInner logIndex(@javax.annotation.Nullable Integer logIndex) {
     this.logIndex = logIndex;
     return this;
   }
@@ -83,12 +87,12 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner {
     return logIndex;
   }
 
-  public void setLogIndex(Integer logIndex) {
+  public void setLogIndex(@javax.annotation.Nullable Integer logIndex) {
     this.logIndex = logIndex;
   }
 
 
-  public IntegrationLogsInvalidLogResponseRejectedLogsInner field(String field) {
+  public IntegrationLogsInvalidLogResponseRejectedLogsInner field(@javax.annotation.Nonnull String field) {
     this.field = field;
     return this;
   }
@@ -102,12 +106,12 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner {
     return field;
   }
 
-  public void setField(String field) {
+  public void setField(@javax.annotation.Nonnull String field) {
     this.field = field;
   }
 
 
-  public IntegrationLogsInvalidLogResponseRejectedLogsInner value(String value) {
+  public IntegrationLogsInvalidLogResponseRejectedLogsInner value(@javax.annotation.Nonnull String value) {
     this.value = value;
     return this;
   }
@@ -121,12 +125,12 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner {
     return value;
   }
 
-  public void setValue(String value) {
+  public void setValue(@javax.annotation.Nonnull String value) {
     this.value = value;
   }
 
 
-  public IntegrationLogsInvalidLogResponseRejectedLogsInner reason(String reason) {
+  public IntegrationLogsInvalidLogResponseRejectedLogsInner reason(@javax.annotation.Nonnull String reason) {
     this.reason = reason;
     return this;
   }
@@ -140,7 +144,7 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner {
     return reason;
   }
 
-  public void setReason(String reason) {
+  public void setReason(@javax.annotation.Nonnull String reason) {
     this.reason = reason;
   }
 

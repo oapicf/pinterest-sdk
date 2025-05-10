@@ -125,11 +125,11 @@ export function CatalogsUpdatableCreativeAssetsAttributesFromJSONTyped(json: any
     };
 }
 
-  export function CatalogsUpdatableCreativeAssetsAttributesToJSON(json: any): CatalogsUpdatableCreativeAssetsAttributes {
-      return CatalogsUpdatableCreativeAssetsAttributesToJSONTyped(json, false);
-  }
+export function CatalogsUpdatableCreativeAssetsAttributesToJSON(json: any): CatalogsUpdatableCreativeAssetsAttributes {
+    return CatalogsUpdatableCreativeAssetsAttributesToJSONTyped(json, false);
+}
 
-  export function CatalogsUpdatableCreativeAssetsAttributesToJSONTyped(value?: CatalogsUpdatableCreativeAssetsAttributes | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsUpdatableCreativeAssetsAttributesToJSONTyped(value?: CatalogsUpdatableCreativeAssetsAttributes | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

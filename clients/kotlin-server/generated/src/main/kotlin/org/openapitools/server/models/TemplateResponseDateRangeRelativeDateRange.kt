@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * The relative date range of the template
  * @param type The date range type
  * @param startDaysInPast The start date of the date range
  * @param endDaysInPast The end date of the date range
  */
+@Serializable
 data class TemplateResponseDateRangeRelativeDateRange(
     /* The date range type */
     val type: kotlin.String? = null,
@@ -25,5 +27,5 @@ data class TemplateResponseDateRangeRelativeDateRange(
     val startDaysInPast: java.math.BigDecimal? = null,
     /* The end date of the date range */
     val endDaysInPast: java.math.BigDecimal? = null
-) 
+)
 

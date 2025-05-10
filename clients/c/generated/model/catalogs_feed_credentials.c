@@ -5,7 +5,7 @@
 
 
 
-catalogs_feed_credentials_t *catalogs_feed_credentials_create(
+static catalogs_feed_credentials_t *catalogs_feed_credentials_create_internal(
     char *password,
     char *username
     ) {
@@ -16,12 +16,26 @@ catalogs_feed_credentials_t *catalogs_feed_credentials_create(
     catalogs_feed_credentials_local_var->password = password;
     catalogs_feed_credentials_local_var->username = username;
 
+    catalogs_feed_credentials_local_var->_library_owned = 1;
     return catalogs_feed_credentials_local_var;
 }
 
+__attribute__((deprecated)) catalogs_feed_credentials_t *catalogs_feed_credentials_create(
+    char *password,
+    char *username
+    ) {
+    return catalogs_feed_credentials_create_internal (
+        password,
+        username
+        );
+}
 
 void catalogs_feed_credentials_free(catalogs_feed_credentials_t *catalogs_feed_credentials) {
     if(NULL == catalogs_feed_credentials){
+        return ;
+    }
+    if(catalogs_feed_credentials->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_feed_credentials_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -70,6 +84,9 @@ catalogs_feed_credentials_t *catalogs_feed_credentials_parseFromJSON(cJSON *cata
 
     // catalogs_feed_credentials->password
     cJSON *password = cJSON_GetObjectItemCaseSensitive(catalogs_feed_credentialsJSON, "password");
+    if (cJSON_IsNull(password)) {
+        password = NULL;
+    }
     if (!password) {
         goto end;
     }
@@ -82,6 +99,9 @@ catalogs_feed_credentials_t *catalogs_feed_credentials_parseFromJSON(cJSON *cata
 
     // catalogs_feed_credentials->username
     cJSON *username = cJSON_GetObjectItemCaseSensitive(catalogs_feed_credentialsJSON, "username");
+    if (cJSON_IsNull(username)) {
+        username = NULL;
+    }
     if (!username) {
         goto end;
     }
@@ -93,7 +113,7 @@ catalogs_feed_credentials_t *catalogs_feed_credentials_parseFromJSON(cJSON *cata
     }
 
 
-    catalogs_feed_credentials_local_var = catalogs_feed_credentials_create (
+    catalogs_feed_credentials_local_var = catalogs_feed_credentials_create_internal (
         strdup(password->valuestring),
         strdup(username->valuestring)
         );

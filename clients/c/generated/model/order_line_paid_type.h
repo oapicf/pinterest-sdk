@@ -24,9 +24,9 @@ char* order_line_paid_type_order_line_paid_type_ToString(pinterest_rest_api_orde
 
 pinterest_rest_api_order_line_paid_type__e order_line_paid_type_order_line_paid_type_FromString(char* order_line_paid_type);
 
-//cJSON *order_line_paid_type_order_line_paid_type_convertToJSON(pinterest_rest_api_order_line_paid_type__e order_line_paid_type);
+cJSON *order_line_paid_type_convertToJSON(pinterest_rest_api_order_line_paid_type__e order_line_paid_type);
 
-//pinterest_rest_api_order_line_paid_type__e order_line_paid_type_order_line_paid_type_parseFromJSON(cJSON *order_line_paid_typeJSON);
+pinterest_rest_api_order_line_paid_type__e order_line_paid_type_parseFromJSON(cJSON *order_line_paid_typeJSON);
 
 #endif /* _order_line_paid_type_H_ */
 

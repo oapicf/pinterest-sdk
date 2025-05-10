@@ -22,9 +22,10 @@ typedef struct auth_respond_invites_body_t auth_respond_invites_body_t;
 typedef struct auth_respond_invites_body_t {
     list_t *invites; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } auth_respond_invites_body_t;
 
-auth_respond_invites_body_t *auth_respond_invites_body_create(
+__attribute__((deprecated)) auth_respond_invites_body_t *auth_respond_invites_body_create(
     list_t *invites
 );
 

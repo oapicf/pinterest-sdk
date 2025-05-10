@@ -5,7 +5,7 @@
 
 
 
-brand_filter_t *brand_filter_create(
+static brand_filter_t *brand_filter_create_internal(
     catalogs_product_group_multiple_string_criteria_t *brand
     ) {
     brand_filter_t *brand_filter_local_var = malloc(sizeof(brand_filter_t));
@@ -14,12 +14,24 @@ brand_filter_t *brand_filter_create(
     }
     brand_filter_local_var->brand = brand;
 
+    brand_filter_local_var->_library_owned = 1;
     return brand_filter_local_var;
 }
 
+__attribute__((deprecated)) brand_filter_t *brand_filter_create(
+    catalogs_product_group_multiple_string_criteria_t *brand
+    ) {
+    return brand_filter_create_internal (
+        brand
+        );
+}
 
 void brand_filter_free(brand_filter_t *brand_filter) {
     if(NULL == brand_filter){
+        return ;
+    }
+    if(brand_filter->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "brand_filter_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -60,6 +72,9 @@ brand_filter_t *brand_filter_parseFromJSON(cJSON *brand_filterJSON){
 
     // brand_filter->brand
     cJSON *brand = cJSON_GetObjectItemCaseSensitive(brand_filterJSON, "BRAND");
+    if (cJSON_IsNull(brand)) {
+        brand = NULL;
+    }
     if (!brand) {
         goto end;
     }
@@ -69,7 +84,7 @@ brand_filter_t *brand_filter_parseFromJSON(cJSON *brand_filterJSON){
     brand_local_object = object_parseFromJSON(brand); //object
 
 
-    brand_filter_local_var = brand_filter_create (
+    brand_filter_local_var = brand_filter_create_internal (
         brand_local_object
         );
 

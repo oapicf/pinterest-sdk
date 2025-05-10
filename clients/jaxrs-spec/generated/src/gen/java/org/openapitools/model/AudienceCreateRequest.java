@@ -17,13 +17,27 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AudienceCreateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AudienceCreateRequest   {
   private String adAccountId;
   private String name;
   private AudienceRule rule;
   private String description;
   private AudienceCreateRequest1AudienceType audienceType;
+
+  public AudienceCreateRequest() {
+  }
+
+  @JsonCreator
+  public AudienceCreateRequest(
+    @JsonProperty(required = true, value = "name") String name,
+    @JsonProperty(required = true, value = "rule") AudienceRule rule,
+    @JsonProperty(required = true, value = "audience_type") AudienceCreateRequest1AudienceType audienceType
+  ) {
+    this.name = name;
+    this.rule = rule;
+    this.audienceType = audienceType;
+  }
 
   /**
    * Ad account ID.
@@ -55,12 +69,12 @@ public class AudienceCreateRequest   {
 
   
   @ApiModelProperty(example = "string", required = true, value = "Audience name.")
-  @JsonProperty("name")
+  @JsonProperty(required = true, value = "name")
   @NotNull public String getName() {
     return name;
   }
 
-  @JsonProperty("name")
+  @JsonProperty(required = true, value = "name")
   public void setName(String name) {
     this.name = name;
   }
@@ -74,12 +88,12 @@ public class AudienceCreateRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("rule")
+  @JsonProperty(required = true, value = "rule")
   @NotNull @Valid public AudienceRule getRule() {
     return rule;
   }
 
-  @JsonProperty("rule")
+  @JsonProperty(required = true, value = "rule")
   public void setRule(AudienceRule rule) {
     this.rule = rule;
   }
@@ -113,12 +127,12 @@ public class AudienceCreateRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("audience_type")
+  @JsonProperty(required = true, value = "audience_type")
   @NotNull @Valid public AudienceCreateRequest1AudienceType getAudienceType() {
     return audienceType;
   }
 
-  @JsonProperty("audience_type")
+  @JsonProperty(required = true, value = "audience_type")
   public void setAudienceType(AudienceCreateRequest1AudienceType audienceType) {
     this.audienceType = audienceType;
   }

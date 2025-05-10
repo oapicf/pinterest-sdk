@@ -22,7 +22,7 @@ pinterest_rest_api_auth_respond_invites_body_invites_inner_action_INNER_e auth_r
     return 0;
 }
 
-auth_respond_invites_body_invites_inner_action_t *auth_respond_invites_body_invites_inner_action_create(
+static auth_respond_invites_body_invites_inner_action_t *auth_respond_invites_body_invites_inner_action_create_internal(
     int accept_invite,
     list_t* asset_id_to_permissions
     ) {
@@ -33,18 +33,32 @@ auth_respond_invites_body_invites_inner_action_t *auth_respond_invites_body_invi
     auth_respond_invites_body_invites_inner_action_local_var->accept_invite = accept_invite;
     auth_respond_invites_body_invites_inner_action_local_var->asset_id_to_permissions = asset_id_to_permissions;
 
+    auth_respond_invites_body_invites_inner_action_local_var->_library_owned = 1;
     return auth_respond_invites_body_invites_inner_action_local_var;
 }
 
+__attribute__((deprecated)) auth_respond_invites_body_invites_inner_action_t *auth_respond_invites_body_invites_inner_action_create(
+    int accept_invite,
+    list_t* asset_id_to_permissions
+    ) {
+    return auth_respond_invites_body_invites_inner_action_create_internal (
+        accept_invite,
+        asset_id_to_permissions
+        );
+}
 
 void auth_respond_invites_body_invites_inner_action_free(auth_respond_invites_body_invites_inner_action_t *auth_respond_invites_body_invites_inner_action) {
     if(NULL == auth_respond_invites_body_invites_inner_action){
         return ;
     }
+    if(auth_respond_invites_body_invites_inner_action->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "auth_respond_invites_body_invites_inner_action_free");
+        return ;
+    }
     listEntry_t *listEntry;
     if (auth_respond_invites_body_invites_inner_action->asset_id_to_permissions) {
         list_ForEach(listEntry, auth_respond_invites_body_invites_inner_action->asset_id_to_permissions) {
-            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            keyValuePair_t *localKeyValue = listEntry->data;
             free (localKeyValue->key);
             free (localKeyValue->value);
             keyValuePair_free(localKeyValue);
@@ -77,7 +91,7 @@ cJSON *auth_respond_invites_body_invites_inner_action_convertToJSON(auth_respond
     listEntry_t *asset_id_to_permissionsListEntry;
     if (auth_respond_invites_body_invites_inner_action->asset_id_to_permissions) {
     list_ForEach(asset_id_to_permissionsListEntry, auth_respond_invites_body_invites_inner_action->asset_id_to_permissions) {
-        keyValuePair_t *localKeyValue = (keyValuePair_t*)asset_id_to_permissionsListEntry->data;
+        keyValuePair_t *localKeyValue = asset_id_to_permissionsListEntry->data;
     }
     }
     }
@@ -99,6 +113,9 @@ auth_respond_invites_body_invites_inner_action_t *auth_respond_invites_body_invi
 
     // auth_respond_invites_body_invites_inner_action->accept_invite
     cJSON *accept_invite = cJSON_GetObjectItemCaseSensitive(auth_respond_invites_body_invites_inner_actionJSON, "accept_invite");
+    if (cJSON_IsNull(accept_invite)) {
+        accept_invite = NULL;
+    }
     if (!accept_invite) {
         goto end;
     }
@@ -111,6 +128,9 @@ auth_respond_invites_body_invites_inner_action_t *auth_respond_invites_body_invi
 
     // auth_respond_invites_body_invites_inner_action->asset_id_to_permissions
     cJSON *asset_id_to_permissions = cJSON_GetObjectItemCaseSensitive(auth_respond_invites_body_invites_inner_actionJSON, "asset_id_to_permissions");
+    if (cJSON_IsNull(asset_id_to_permissions)) {
+        asset_id_to_permissions = NULL;
+    }
     if (asset_id_to_permissions) { 
     cJSON *asset_id_to_permissions_local_map = NULL;
     if(!cJSON_IsObject(asset_id_to_permissions) && !cJSON_IsNull(asset_id_to_permissions))
@@ -130,7 +150,7 @@ auth_respond_invites_body_invites_inner_action_t *auth_respond_invites_body_invi
     }
 
 
-    auth_respond_invites_body_invites_inner_action_local_var = auth_respond_invites_body_invites_inner_action_create (
+    auth_respond_invites_body_invites_inner_action_local_var = auth_respond_invites_body_invites_inner_action_create_internal (
         accept_invite->valueint,
         asset_id_to_permissions ? asset_id_to_permissionsList : NULL
         );
@@ -140,7 +160,7 @@ end:
     if (asset_id_to_permissionsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, asset_id_to_permissionsList) {
-            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            keyValuePair_t *localKeyValue = listEntry->data;
             free(localKeyValue->key);
             localKeyValue->key = NULL;
             keyValuePair_free(localKeyValue);

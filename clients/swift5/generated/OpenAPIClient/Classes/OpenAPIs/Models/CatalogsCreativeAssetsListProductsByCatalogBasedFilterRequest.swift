@@ -16,7 +16,7 @@ public struct CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest: Cod
     public enum CatalogType: String, Codable, CaseIterable {
         case creativeAssets = "CREATIVE_ASSETS"
     }
-    static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public var catalogType: CatalogType
     /** Catalog id pertaining to the creative assets product group. */
     public var catalogId: String

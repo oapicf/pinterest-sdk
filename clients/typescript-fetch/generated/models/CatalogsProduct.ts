@@ -61,17 +61,21 @@ export function CatalogsProductFromJSONTyped(json: any, ignoreDiscriminator: boo
     }
 }
 
-export function CatalogsProductToJSON(value?: CatalogsProduct | null): any {
+export function CatalogsProductToJSON(json: any): any {
+    return CatalogsProductToJSONTyped(json, false);
+}
+
+export function CatalogsProductToJSONTyped(value?: CatalogsProduct | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
     switch (value['catalogType']) {
         case 'CREATIVE_ASSETS':
-            return CatalogsCreativeAssetsProductToJSON(value);
+            return Object.assign({}, CatalogsCreativeAssetsProductToJSON(value), { catalogType: 'CREATIVE_ASSETS' } as const);
         case 'HOTEL':
-            return CatalogsHotelProductToJSON(value);
+            return Object.assign({}, CatalogsHotelProductToJSON(value), { catalogType: 'HOTEL' } as const);
         case 'RETAIL':
-            return CatalogsRetailProductToJSON(value);
+            return Object.assign({}, CatalogsRetailProductToJSON(value), { catalogType: 'RETAIL' } as const);
         default:
             throw new Error(`No variant of CatalogsProduct exists with 'catalogType=${value['catalogType']}'`);
     }

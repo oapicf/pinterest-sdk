@@ -23,10 +23,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Object holding a group of filters for a catalog product group")
 @JsonTypeName("CatalogsProductGroupFilters")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsProductGroupFilters   {
   private @Valid List<CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
   private @Valid List<CatalogsProductGroupFilterKeys> allOf = new ArrayList<>();
+
+  public CatalogsProductGroupFilters() {
+  }
+
+  @JsonCreator
+  public CatalogsProductGroupFilters(
+    @JsonProperty(required = true, value = "any_of") List<@Valid CatalogsProductGroupFilterKeys> anyOf,
+    @JsonProperty(required = true, value = "all_of") List<@Valid CatalogsProductGroupFilterKeys> allOf
+  ) {
+    this.anyOf = anyOf;
+    this.allOf = allOf;
+  }
 
   /**
    **/
@@ -37,12 +49,12 @@ public class CatalogsProductGroupFilters   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("any_of")
+  @JsonProperty(required = true, value = "any_of")
   @NotNull @Valid public List<@Valid CatalogsProductGroupFilterKeys> getAnyOf() {
     return anyOf;
   }
 
-  @JsonProperty("any_of")
+  @JsonProperty(required = true, value = "any_of")
   public void setAnyOf(List<CatalogsProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
   }
@@ -72,12 +84,12 @@ public class CatalogsProductGroupFilters   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("all_of")
+  @JsonProperty(required = true, value = "all_of")
   @NotNull @Valid public List<@Valid CatalogsProductGroupFilterKeys> getAllOf() {
     return allOf;
   }
 
-  @JsonProperty("all_of")
+  @JsonProperty(required = true, value = "all_of")
   public void setAllOf(List<CatalogsProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
   }

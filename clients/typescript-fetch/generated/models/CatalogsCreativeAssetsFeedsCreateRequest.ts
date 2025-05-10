@@ -183,11 +183,11 @@ export function CatalogsCreativeAssetsFeedsCreateRequestFromJSONTyped(json: any,
     };
 }
 
-  export function CatalogsCreativeAssetsFeedsCreateRequestToJSON(json: any): CatalogsCreativeAssetsFeedsCreateRequest {
-      return CatalogsCreativeAssetsFeedsCreateRequestToJSONTyped(json, false);
-  }
+export function CatalogsCreativeAssetsFeedsCreateRequestToJSON(json: any): CatalogsCreativeAssetsFeedsCreateRequest {
+    return CatalogsCreativeAssetsFeedsCreateRequestToJSONTyped(json, false);
+}
 
-  export function CatalogsCreativeAssetsFeedsCreateRequestToJSONTyped(value?: CatalogsCreativeAssetsFeedsCreateRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsCreativeAssetsFeedsCreateRequestToJSONTyped(value?: CatalogsCreativeAssetsFeedsCreateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

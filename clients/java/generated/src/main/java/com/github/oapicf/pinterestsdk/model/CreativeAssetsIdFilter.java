@@ -49,16 +49,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CreativeAssetsIdFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CreativeAssetsIdFilter {
   public static final String SERIALIZED_NAME_C_R_E_A_T_I_V_E_A_S_S_E_T_S_I_D = "CREATIVE_ASSETS_ID";
   @SerializedName(SERIALIZED_NAME_C_R_E_A_T_I_V_E_A_S_S_E_T_S_I_D)
+  @javax.annotation.Nonnull
   private CatalogsProductGroupMultipleStringCriteria CREATIVE_ASSETS_ID;
 
   public CreativeAssetsIdFilter() {
   }
 
-  public CreativeAssetsIdFilter CREATIVE_ASSETS_ID(CatalogsProductGroupMultipleStringCriteria CREATIVE_ASSETS_ID) {
+  public CreativeAssetsIdFilter CREATIVE_ASSETS_ID(@javax.annotation.Nonnull CatalogsProductGroupMultipleStringCriteria CREATIVE_ASSETS_ID) {
     this.CREATIVE_ASSETS_ID = CREATIVE_ASSETS_ID;
     return this;
   }
@@ -72,7 +73,7 @@ public class CreativeAssetsIdFilter {
     return CREATIVE_ASSETS_ID;
   }
 
-  public void setCREATIVEASSETSID(CatalogsProductGroupMultipleStringCriteria CREATIVE_ASSETS_ID) {
+  public void setCREATIVEASSETSID(@javax.annotation.Nonnull CatalogsProductGroupMultipleStringCriteria CREATIVE_ASSETS_ID) {
     this.CREATIVE_ASSETS_ID = CREATIVE_ASSETS_ID;
   }
 

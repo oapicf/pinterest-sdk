@@ -49,20 +49,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  *  This field contains multiple options to a quiz question.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class QuizPinOption {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private BigDecimal id;
 
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
+  @javax.annotation.Nullable
   private String text;
 
   public QuizPinOption() {
   }
 
-  public QuizPinOption id(BigDecimal id) {
+  public QuizPinOption id(@javax.annotation.Nullable BigDecimal id) {
     this.id = id;
     return this;
   }
@@ -76,12 +78,12 @@ public class QuizPinOption {
     return id;
   }
 
-  public void setId(BigDecimal id) {
+  public void setId(@javax.annotation.Nullable BigDecimal id) {
     this.id = id;
   }
 
 
-  public QuizPinOption text(String text) {
+  public QuizPinOption text(@javax.annotation.Nullable String text) {
     this.text = text;
     return this;
   }
@@ -95,7 +97,7 @@ public class QuizPinOption {
     return text;
   }
 
-  public void setText(String text) {
+  public void setText(@javax.annotation.Nullable String text) {
     this.text = text;
   }
 

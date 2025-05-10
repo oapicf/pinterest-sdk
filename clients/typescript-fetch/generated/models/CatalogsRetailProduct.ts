@@ -90,11 +90,11 @@ export function CatalogsRetailProductFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function CatalogsRetailProductToJSON(json: any): CatalogsRetailProduct {
-      return CatalogsRetailProductToJSONTyped(json, false);
-  }
+export function CatalogsRetailProductToJSON(json: any): CatalogsRetailProduct {
+    return CatalogsRetailProductToJSONTyped(json, false);
+}
 
-  export function CatalogsRetailProductToJSONTyped(value?: CatalogsRetailProduct | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsRetailProductToJSONTyped(value?: CatalogsRetailProduct | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

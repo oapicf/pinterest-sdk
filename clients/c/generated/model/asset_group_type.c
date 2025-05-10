@@ -22,7 +22,7 @@ pinterest_rest_api_asset_group_type__e asset_group_type_asset_group_type_FromStr
     return 0;
 }
 
-cJSON *asset_group_type_asset_group_type_convertToJSON(pinterest_rest_api_asset_group_type__e asset_group_type) {
+cJSON *asset_group_type_convertToJSON(pinterest_rest_api_asset_group_type__e asset_group_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "asset_group_type", asset_group_type_asset_group_type_ToString(asset_group_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_asset_group_type__e asset_group_type_asset_group_type_parseFromJSON(cJSON *asset_group_typeJSON) {
-    pinterest_rest_api_asset_group_type__e *asset_group_type = NULL;
-    pinterest_rest_api_asset_group_type__e asset_group_typeVariable;
-    cJSON *asset_group_typeVar = cJSON_GetObjectItemCaseSensitive(asset_group_typeJSON, "asset_group_type");
-    if(!cJSON_IsString(asset_group_typeVar) || (asset_group_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_asset_group_type__e asset_group_type_parseFromJSON(cJSON *asset_group_typeJSON) {
+    if(!cJSON_IsString(asset_group_typeJSON) || (asset_group_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    asset_group_typeVariable = asset_group_type_asset_group_type_FromString(asset_group_typeVar->valuestring);
-    return asset_group_typeVariable;
-end:
-    return 0;
+    return asset_group_type_asset_group_type_FromString(asset_group_typeJSON->valuestring);
 }

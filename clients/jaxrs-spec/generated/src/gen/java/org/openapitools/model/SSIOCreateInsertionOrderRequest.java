@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("SSIOCreateInsertionOrderRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SSIOCreateInsertionOrderRequest   {
   private String startDate;
   private String endDate;
@@ -89,6 +89,46 @@ public class SSIOCreateInsertionOrderRequest   {
   private BigDecimal estimatedMonthlySpend;
   private Currency currencyInfo;
 
+  public SSIOCreateInsertionOrderRequest() {
+  }
+
+  @JsonCreator
+  public SSIOCreateInsertionOrderRequest(
+    @JsonProperty(required = true, value = "start_date") String startDate,
+    @JsonProperty(required = true, value = "po_number") String poNumber,
+    @JsonProperty(required = true, value = "billing_contact_firstname") String billingContactFirstname,
+    @JsonProperty(required = true, value = "billing_contact_lastname") String billingContactLastname,
+    @JsonProperty(required = true, value = "billing_contact_email") String billingContactEmail,
+    @JsonProperty(required = true, value = "media_contact_firstname") String mediaContactFirstname,
+    @JsonProperty(required = true, value = "media_contact_lastname") String mediaContactLastname,
+    @JsonProperty(required = true, value = "media_contact_email") String mediaContactEmail,
+    @JsonProperty(required = true, value = "pmp_id") String pmpId,
+    @JsonProperty(required = true, value = "order_name") String orderName,
+    @JsonProperty(required = true, value = "order_line_type") OrderLineTypeEnum orderLineType,
+    @JsonProperty(required = true, value = "accepted_terms_id") String acceptedTermsId,
+    @JsonProperty(required = true, value = "billto_company_id") String billtoCompanyId,
+    @JsonProperty(required = true, value = "billto_business_address_id") String billtoBusinessAddressId,
+    @JsonProperty(required = true, value = "billto_billing_address_id") String billtoBillingAddressId,
+    @JsonProperty(required = true, value = "currency_info") Currency currencyInfo
+  ) {
+    this.startDate = startDate;
+    this.poNumber = poNumber;
+    this.billingContactFirstname = billingContactFirstname;
+    this.billingContactLastname = billingContactLastname;
+    this.billingContactEmail = billingContactEmail;
+    this.mediaContactFirstname = mediaContactFirstname;
+    this.mediaContactLastname = mediaContactLastname;
+    this.mediaContactEmail = mediaContactEmail;
+    this.pmpId = pmpId;
+    this.orderName = orderName;
+    this.orderLineType = orderLineType;
+    this.acceptedTermsId = acceptedTermsId;
+    this.billtoCompanyId = billtoCompanyId;
+    this.billtoBusinessAddressId = billtoBusinessAddressId;
+    this.billtoBillingAddressId = billtoBillingAddressId;
+    this.currencyInfo = currencyInfo;
+  }
+
   /**
    * Starting date of time period. Format: YYYY-MM-DD
    **/
@@ -99,12 +139,12 @@ public class SSIOCreateInsertionOrderRequest   {
 
   
   @ApiModelProperty(example = "2020-12-20", required = true, value = "Starting date of time period. Format: YYYY-MM-DD")
-  @JsonProperty("start_date")
+  @JsonProperty(required = true, value = "start_date")
   @NotNull  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")public String getStartDate() {
     return startDate;
   }
 
-  @JsonProperty("start_date")
+  @JsonProperty(required = true, value = "start_date")
   public void setStartDate(String startDate) {
     this.startDate = startDate;
   }
@@ -139,12 +179,12 @@ public class SSIOCreateInsertionOrderRequest   {
 
   
   @ApiModelProperty(required = true, value = "The po number")
-  @JsonProperty("po_number")
+  @JsonProperty(required = true, value = "po_number")
   @NotNull public String getPoNumber() {
     return poNumber;
   }
 
-  @JsonProperty("po_number")
+  @JsonProperty(required = true, value = "po_number")
   public void setPoNumber(String poNumber) {
     this.poNumber = poNumber;
   }
@@ -179,12 +219,12 @@ public class SSIOCreateInsertionOrderRequest   {
 
   
   @ApiModelProperty(required = true, value = "The billing contact first name")
-  @JsonProperty("billing_contact_firstname")
+  @JsonProperty(required = true, value = "billing_contact_firstname")
   @NotNull public String getBillingContactFirstname() {
     return billingContactFirstname;
   }
 
-  @JsonProperty("billing_contact_firstname")
+  @JsonProperty(required = true, value = "billing_contact_firstname")
   public void setBillingContactFirstname(String billingContactFirstname) {
     this.billingContactFirstname = billingContactFirstname;
   }
@@ -199,12 +239,12 @@ public class SSIOCreateInsertionOrderRequest   {
 
   
   @ApiModelProperty(required = true, value = "The billing contact last name")
-  @JsonProperty("billing_contact_lastname")
+  @JsonProperty(required = true, value = "billing_contact_lastname")
   @NotNull public String getBillingContactLastname() {
     return billingContactLastname;
   }
 
-  @JsonProperty("billing_contact_lastname")
+  @JsonProperty(required = true, value = "billing_contact_lastname")
   public void setBillingContactLastname(String billingContactLastname) {
     this.billingContactLastname = billingContactLastname;
   }
@@ -219,12 +259,12 @@ public class SSIOCreateInsertionOrderRequest   {
 
   
   @ApiModelProperty(example = "test@example", required = true, value = "The billing contact email")
-  @JsonProperty("billing_contact_email")
+  @JsonProperty(required = true, value = "billing_contact_email")
   @NotNull public String getBillingContactEmail() {
     return billingContactEmail;
   }
 
-  @JsonProperty("billing_contact_email")
+  @JsonProperty(required = true, value = "billing_contact_email")
   public void setBillingContactEmail(String billingContactEmail) {
     this.billingContactEmail = billingContactEmail;
   }
@@ -239,12 +279,12 @@ public class SSIOCreateInsertionOrderRequest   {
 
   
   @ApiModelProperty(required = true, value = "The media contact first name")
-  @JsonProperty("media_contact_firstname")
+  @JsonProperty(required = true, value = "media_contact_firstname")
   @NotNull public String getMediaContactFirstname() {
     return mediaContactFirstname;
   }
 
-  @JsonProperty("media_contact_firstname")
+  @JsonProperty(required = true, value = "media_contact_firstname")
   public void setMediaContactFirstname(String mediaContactFirstname) {
     this.mediaContactFirstname = mediaContactFirstname;
   }
@@ -259,12 +299,12 @@ public class SSIOCreateInsertionOrderRequest   {
 
   
   @ApiModelProperty(required = true, value = "The media contact last name")
-  @JsonProperty("media_contact_lastname")
+  @JsonProperty(required = true, value = "media_contact_lastname")
   @NotNull public String getMediaContactLastname() {
     return mediaContactLastname;
   }
 
-  @JsonProperty("media_contact_lastname")
+  @JsonProperty(required = true, value = "media_contact_lastname")
   public void setMediaContactLastname(String mediaContactLastname) {
     this.mediaContactLastname = mediaContactLastname;
   }
@@ -279,12 +319,12 @@ public class SSIOCreateInsertionOrderRequest   {
 
   
   @ApiModelProperty(example = "test@example", required = true, value = "The media contact email")
-  @JsonProperty("media_contact_email")
+  @JsonProperty(required = true, value = "media_contact_email")
   @NotNull public String getMediaContactEmail() {
     return mediaContactEmail;
   }
 
-  @JsonProperty("media_contact_email")
+  @JsonProperty(required = true, value = "media_contact_email")
   public void setMediaContactEmail(String mediaContactEmail) {
     this.mediaContactEmail = mediaContactEmail;
   }
@@ -359,12 +399,12 @@ public class SSIOCreateInsertionOrderRequest   {
 
   
   @ApiModelProperty(required = true, value = "The pmp id")
-  @JsonProperty("pmp_id")
+  @JsonProperty(required = true, value = "pmp_id")
   @NotNull public String getPmpId() {
     return pmpId;
   }
 
-  @JsonProperty("pmp_id")
+  @JsonProperty(required = true, value = "pmp_id")
   public void setPmpId(String pmpId) {
     this.pmpId = pmpId;
   }
@@ -379,12 +419,12 @@ public class SSIOCreateInsertionOrderRequest   {
 
   
   @ApiModelProperty(required = true, value = "The order name")
-  @JsonProperty("order_name")
+  @JsonProperty(required = true, value = "order_name")
   @NotNull public String getOrderName() {
     return orderName;
   }
 
-  @JsonProperty("order_name")
+  @JsonProperty(required = true, value = "order_name")
   public void setOrderName(String orderName) {
     this.orderName = orderName;
   }
@@ -399,12 +439,12 @@ public class SSIOCreateInsertionOrderRequest   {
 
   
   @ApiModelProperty(required = true, value = "Type can be Budget or Perpetual")
-  @JsonProperty("order_line_type")
+  @JsonProperty(required = true, value = "order_line_type")
   @NotNull public OrderLineTypeEnum getOrderLineType() {
     return orderLineType;
   }
 
-  @JsonProperty("order_line_type")
+  @JsonProperty(required = true, value = "order_line_type")
   public void setOrderLineType(OrderLineTypeEnum orderLineType) {
     this.orderLineType = orderLineType;
   }
@@ -419,12 +459,12 @@ public class SSIOCreateInsertionOrderRequest   {
 
   
   @ApiModelProperty(required = true, value = "The SFDC id for the terms")
-  @JsonProperty("accepted_terms_id")
+  @JsonProperty(required = true, value = "accepted_terms_id")
   @NotNull public String getAcceptedTermsId() {
     return acceptedTermsId;
   }
 
-  @JsonProperty("accepted_terms_id")
+  @JsonProperty(required = true, value = "accepted_terms_id")
   public void setAcceptedTermsId(String acceptedTermsId) {
     this.acceptedTermsId = acceptedTermsId;
   }
@@ -439,12 +479,12 @@ public class SSIOCreateInsertionOrderRequest   {
 
   
   @ApiModelProperty(required = true, value = "The bill-to company id")
-  @JsonProperty("billto_company_id")
+  @JsonProperty(required = true, value = "billto_company_id")
   @NotNull public String getBilltoCompanyId() {
     return billtoCompanyId;
   }
 
-  @JsonProperty("billto_company_id")
+  @JsonProperty(required = true, value = "billto_company_id")
   public void setBilltoCompanyId(String billtoCompanyId) {
     this.billtoCompanyId = billtoCompanyId;
   }
@@ -459,12 +499,12 @@ public class SSIOCreateInsertionOrderRequest   {
 
   
   @ApiModelProperty(required = true, value = "The bill-to business address id")
-  @JsonProperty("billto_business_address_id")
+  @JsonProperty(required = true, value = "billto_business_address_id")
   @NotNull public String getBilltoBusinessAddressId() {
     return billtoBusinessAddressId;
   }
 
-  @JsonProperty("billto_business_address_id")
+  @JsonProperty(required = true, value = "billto_business_address_id")
   public void setBilltoBusinessAddressId(String billtoBusinessAddressId) {
     this.billtoBusinessAddressId = billtoBusinessAddressId;
   }
@@ -479,12 +519,12 @@ public class SSIOCreateInsertionOrderRequest   {
 
   
   @ApiModelProperty(required = true, value = "The bill-to billing address id")
-  @JsonProperty("billto_billing_address_id")
+  @JsonProperty(required = true, value = "billto_billing_address_id")
   @NotNull public String getBilltoBillingAddressId() {
     return billtoBillingAddressId;
   }
 
-  @JsonProperty("billto_billing_address_id")
+  @JsonProperty(required = true, value = "billto_billing_address_id")
   public void setBilltoBillingAddressId(String billtoBillingAddressId) {
     this.billtoBillingAddressId = billtoBillingAddressId;
   }
@@ -518,12 +558,12 @@ public class SSIOCreateInsertionOrderRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("currency_info")
+  @JsonProperty(required = true, value = "currency_info")
   @NotNull public Currency getCurrencyInfo() {
     return currencyInfo;
   }
 
-  @JsonProperty("currency_info")
+  @JsonProperty(required = true, value = "currency_info")
   public void setCurrencyInfo(Currency currencyInfo) {
     this.currencyInfo = currencyInfo;
   }

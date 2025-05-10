@@ -15,12 +15,19 @@
 export type ObjectiveType = 'AWARENESS' | 'CONSIDERATION' | 'VIDEO_VIEW' | 'WEB_CONVERSION' | 'CATALOG_SALES' | 'WEB_SESSIONS' | 'VIDEO_COMPLETION';
 
 export const ObjectiveType = {
+
     Awareness: 'AWARENESS' as ObjectiveType,
+
     Consideration: 'CONSIDERATION' as ObjectiveType,
+
     VideoView: 'VIDEO_VIEW' as ObjectiveType,
+
     WebConversion: 'WEB_CONVERSION' as ObjectiveType,
+
     CatalogSales: 'CATALOG_SALES' as ObjectiveType,
+
     WebSessions: 'WEB_SESSIONS' as ObjectiveType,
+
     VideoCompletion: 'VIDEO_COMPLETION' as ObjectiveType
 };
 

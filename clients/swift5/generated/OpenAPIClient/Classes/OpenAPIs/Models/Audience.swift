@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct Audience: Codable, JSONEncodable, Hashable {
 
-    static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Ad account ID. */
     public var adAccountId: String?
     /** Audience ID. */
@@ -82,3 +82,6 @@ public struct Audience: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension Audience: Identifiable {}

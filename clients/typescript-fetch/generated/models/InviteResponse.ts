@@ -126,11 +126,11 @@ export function InviteResponseFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-  export function InviteResponseToJSON(json: any): InviteResponse {
-      return InviteResponseToJSONTyped(json, false);
-  }
+export function InviteResponseToJSON(json: any): InviteResponse {
+    return InviteResponseToJSONTyped(json, false);
+}
 
-  export function InviteResponseToJSONTyped(value?: InviteResponse | null, ignoreDiscriminator: boolean = false): any {
+export function InviteResponseToJSONTyped(value?: InviteResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

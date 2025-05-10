@@ -15,15 +15,25 @@
 export type CreativeType = 'REGULAR' | 'VIDEO' | 'SHOPPING' | 'CAROUSEL' | 'MAX_VIDEO' | 'SHOP_THE_PIN' | 'COLLECTION' | 'IDEA' | 'SHOWCASE' | 'QUIZ';
 
 export const CreativeType = {
+
     Regular: 'REGULAR' as CreativeType,
+
     Video: 'VIDEO' as CreativeType,
+
     Shopping: 'SHOPPING' as CreativeType,
+
     Carousel: 'CAROUSEL' as CreativeType,
+
     MaxVideo: 'MAX_VIDEO' as CreativeType,
+
     ShopThePin: 'SHOP_THE_PIN' as CreativeType,
+
     Collection: 'COLLECTION' as CreativeType,
+
     Idea: 'IDEA' as CreativeType,
+
     Showcase: 'SHOWCASE' as CreativeType,
+
     Quiz: 'QUIZ' as CreativeType
 };
 

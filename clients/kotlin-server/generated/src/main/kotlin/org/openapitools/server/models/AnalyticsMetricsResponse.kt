@@ -13,15 +13,17 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.AnalyticsDailyMetrics
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param summaryMetrics The metric name and value over the requested period for each requested metric
  * @param dailyMetrics Array with the requested daily metric records
  */
+@Serializable
 data class AnalyticsMetricsResponse(
     /* The metric name and value over the requested period for each requested metric */
     val summaryMetrics: kotlin.collections.Map<kotlin.String, java.math.BigDecimal>? = null,
     /* Array with the requested daily metric records */
     val dailyMetrics: kotlin.collections.List<AnalyticsDailyMetrics>? = null
-) 
+)
 

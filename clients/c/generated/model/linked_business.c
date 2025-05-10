@@ -5,7 +5,7 @@
 
 
 
-linked_business_t *linked_business_create(
+static linked_business_t *linked_business_create_internal(
     char *username,
     char *image_small_url,
     char *image_medium_url,
@@ -22,12 +22,32 @@ linked_business_t *linked_business_create(
     linked_business_local_var->image_large_url = image_large_url;
     linked_business_local_var->image_xlarge_url = image_xlarge_url;
 
+    linked_business_local_var->_library_owned = 1;
     return linked_business_local_var;
 }
 
+__attribute__((deprecated)) linked_business_t *linked_business_create(
+    char *username,
+    char *image_small_url,
+    char *image_medium_url,
+    char *image_large_url,
+    char *image_xlarge_url
+    ) {
+    return linked_business_create_internal (
+        username,
+        image_small_url,
+        image_medium_url,
+        image_large_url,
+        image_xlarge_url
+        );
+}
 
 void linked_business_free(linked_business_t *linked_business) {
     if(NULL == linked_business){
+        return ;
+    }
+    if(linked_business->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "linked_business_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -110,6 +130,9 @@ linked_business_t *linked_business_parseFromJSON(cJSON *linked_businessJSON){
 
     // linked_business->username
     cJSON *username = cJSON_GetObjectItemCaseSensitive(linked_businessJSON, "username");
+    if (cJSON_IsNull(username)) {
+        username = NULL;
+    }
     if (username) { 
     if(!cJSON_IsString(username) && !cJSON_IsNull(username))
     {
@@ -119,6 +142,9 @@ linked_business_t *linked_business_parseFromJSON(cJSON *linked_businessJSON){
 
     // linked_business->image_small_url
     cJSON *image_small_url = cJSON_GetObjectItemCaseSensitive(linked_businessJSON, "image_small_url");
+    if (cJSON_IsNull(image_small_url)) {
+        image_small_url = NULL;
+    }
     if (image_small_url) { 
     if(!cJSON_IsString(image_small_url) && !cJSON_IsNull(image_small_url))
     {
@@ -128,6 +154,9 @@ linked_business_t *linked_business_parseFromJSON(cJSON *linked_businessJSON){
 
     // linked_business->image_medium_url
     cJSON *image_medium_url = cJSON_GetObjectItemCaseSensitive(linked_businessJSON, "image_medium_url");
+    if (cJSON_IsNull(image_medium_url)) {
+        image_medium_url = NULL;
+    }
     if (image_medium_url) { 
     if(!cJSON_IsString(image_medium_url) && !cJSON_IsNull(image_medium_url))
     {
@@ -137,6 +166,9 @@ linked_business_t *linked_business_parseFromJSON(cJSON *linked_businessJSON){
 
     // linked_business->image_large_url
     cJSON *image_large_url = cJSON_GetObjectItemCaseSensitive(linked_businessJSON, "image_large_url");
+    if (cJSON_IsNull(image_large_url)) {
+        image_large_url = NULL;
+    }
     if (image_large_url) { 
     if(!cJSON_IsString(image_large_url) && !cJSON_IsNull(image_large_url))
     {
@@ -146,6 +178,9 @@ linked_business_t *linked_business_parseFromJSON(cJSON *linked_businessJSON){
 
     // linked_business->image_xlarge_url
     cJSON *image_xlarge_url = cJSON_GetObjectItemCaseSensitive(linked_businessJSON, "image_xlarge_url");
+    if (cJSON_IsNull(image_xlarge_url)) {
+        image_xlarge_url = NULL;
+    }
     if (image_xlarge_url) { 
     if(!cJSON_IsString(image_xlarge_url) && !cJSON_IsNull(image_xlarge_url))
     {
@@ -154,7 +189,7 @@ linked_business_t *linked_business_parseFromJSON(cJSON *linked_businessJSON){
     }
 
 
-    linked_business_local_var = linked_business_create (
+    linked_business_local_var = linked_business_create_internal (
         username && !cJSON_IsNull(username) ? strdup(username->valuestring) : NULL,
         image_small_url && !cJSON_IsNull(image_small_url) ? strdup(image_small_url->valuestring) : NULL,
         image_medium_url && !cJSON_IsNull(image_medium_url) ? strdup(image_medium_url->valuestring) : NULL,

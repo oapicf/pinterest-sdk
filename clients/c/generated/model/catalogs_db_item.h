@@ -23,9 +23,10 @@ typedef struct catalogs_db_item_t {
     char *id; // string
     char *updated_at; //date time
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_db_item_t;
 
-catalogs_db_item_t *catalogs_db_item_create(
+__attribute__((deprecated)) catalogs_db_item_t *catalogs_db_item_create(
     char *created_at,
     char *id,
     char *updated_at

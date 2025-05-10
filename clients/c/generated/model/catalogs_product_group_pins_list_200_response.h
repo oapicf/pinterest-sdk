@@ -23,9 +23,10 @@ typedef struct catalogs_product_group_pins_list_200_response_t {
     list_t *items; //nonprimitive container
     char *bookmark; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_product_group_pins_list_200_response_t;
 
-catalogs_product_group_pins_list_200_response_t *catalogs_product_group_pins_list_200_response_create(
+__attribute__((deprecated)) catalogs_product_group_pins_list_200_response_t *catalogs_product_group_pins_list_200_response_create(
     list_t *items,
     char *bookmark
 );

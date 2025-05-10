@@ -187,7 +187,7 @@ func (c *AdGroupsAPIController) AdGroupsCreate(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	adGroupCreateRequestParam := []AdGroupCreateRequest{}
+	var adGroupCreateRequestParam []AdGroupCreateRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&adGroupCreateRequestParam); err != nil {
@@ -218,7 +218,7 @@ func (c *AdGroupsAPIController) AdGroupsUpdate(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	adGroupUpdateRequestParam := []AdGroupUpdateRequest{}
+	var adGroupUpdateRequestParam []AdGroupUpdateRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&adGroupUpdateRequestParam); err != nil {
@@ -499,7 +499,7 @@ func (c *AdGroupsAPIController) AdGroupsAudienceSizing(w http.ResponseWriter, r 
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	adGroupAudienceSizingRequestParam := AdGroupAudienceSizingRequest{}
+	var adGroupAudienceSizingRequestParam AdGroupAudienceSizingRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&adGroupAudienceSizingRequestParam); err != nil && !errors.Is(err, io.EOF) {
@@ -555,7 +555,7 @@ func (c *AdGroupsAPIController) AdGroupsBidFloorGet(w http.ResponseWriter, r *ht
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	bidFloorRequestParam := BidFloorRequest{}
+	var bidFloorRequestParam BidFloorRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&bidFloorRequestParam); err != nil {

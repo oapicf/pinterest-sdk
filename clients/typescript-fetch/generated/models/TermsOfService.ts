@@ -69,11 +69,11 @@ export function TermsOfServiceFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-  export function TermsOfServiceToJSON(json: any): TermsOfService {
-      return TermsOfServiceToJSONTyped(json, false);
-  }
+export function TermsOfServiceToJSON(json: any): TermsOfService {
+    return TermsOfServiceToJSONTyped(json, false);
+}
 
-  export function TermsOfServiceToJSONTyped(value?: TermsOfService | null, ignoreDiscriminator: boolean = false): any {
+export function TermsOfServiceToJSONTyped(value?: TermsOfService | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

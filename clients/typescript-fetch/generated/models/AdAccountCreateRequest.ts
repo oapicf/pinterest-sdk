@@ -72,11 +72,11 @@ export function AdAccountCreateRequestFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-  export function AdAccountCreateRequestToJSON(json: any): AdAccountCreateRequest {
-      return AdAccountCreateRequestToJSONTyped(json, false);
-  }
+export function AdAccountCreateRequestToJSON(json: any): AdAccountCreateRequest {
+    return AdAccountCreateRequestToJSONTyped(json, false);
+}
 
-  export function AdAccountCreateRequestToJSONTyped(value?: AdAccountCreateRequest | null, ignoreDiscriminator: boolean = false): any {
+export function AdAccountCreateRequestToJSONTyped(value?: AdAccountCreateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -406,11 +406,11 @@ export function ItemAttributesFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-  export function ItemAttributesToJSON(json: any): ItemAttributes {
-      return ItemAttributesToJSONTyped(json, false);
-  }
+export function ItemAttributesToJSON(json: any): ItemAttributes {
+    return ItemAttributesToJSONTyped(json, false);
+}
 
-  export function ItemAttributesToJSONTyped(value?: ItemAttributes | null, ignoreDiscriminator: boolean = false): any {
+export function ItemAttributesToJSONTyped(value?: ItemAttributes | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -5,7 +5,7 @@
 
 
 
-related_terms_related_terms_list_inner_t *related_terms_related_terms_list_inner_create(
+static related_terms_related_terms_list_inner_t *related_terms_related_terms_list_inner_create_internal(
     char *term,
     list_t *related_terms
     ) {
@@ -16,12 +16,26 @@ related_terms_related_terms_list_inner_t *related_terms_related_terms_list_inner
     related_terms_related_terms_list_inner_local_var->term = term;
     related_terms_related_terms_list_inner_local_var->related_terms = related_terms;
 
+    related_terms_related_terms_list_inner_local_var->_library_owned = 1;
     return related_terms_related_terms_list_inner_local_var;
 }
 
+__attribute__((deprecated)) related_terms_related_terms_list_inner_t *related_terms_related_terms_list_inner_create(
+    char *term,
+    list_t *related_terms
+    ) {
+    return related_terms_related_terms_list_inner_create_internal (
+        term,
+        related_terms
+        );
+}
 
 void related_terms_related_terms_list_inner_free(related_terms_related_terms_list_inner_t *related_terms_related_terms_list_inner) {
     if(NULL == related_terms_related_terms_list_inner){
+        return ;
+    }
+    if(related_terms_related_terms_list_inner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "related_terms_related_terms_list_inner_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -59,7 +73,7 @@ cJSON *related_terms_related_terms_list_inner_convertToJSON(related_terms_relate
 
     listEntry_t *related_termsListEntry;
     list_ForEach(related_termsListEntry, related_terms_related_terms_list_inner->related_terms) {
-    if(cJSON_AddStringToObject(related_terms, "", (char*)related_termsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(related_terms, "", related_termsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -83,6 +97,9 @@ related_terms_related_terms_list_inner_t *related_terms_related_terms_list_inner
 
     // related_terms_related_terms_list_inner->term
     cJSON *term = cJSON_GetObjectItemCaseSensitive(related_terms_related_terms_list_innerJSON, "term");
+    if (cJSON_IsNull(term)) {
+        term = NULL;
+    }
     if (term) { 
     if(!cJSON_IsString(term) && !cJSON_IsNull(term))
     {
@@ -92,6 +109,9 @@ related_terms_related_terms_list_inner_t *related_terms_related_terms_list_inner
 
     // related_terms_related_terms_list_inner->related_terms
     cJSON *related_terms = cJSON_GetObjectItemCaseSensitive(related_terms_related_terms_list_innerJSON, "related_terms");
+    if (cJSON_IsNull(related_terms)) {
+        related_terms = NULL;
+    }
     if (related_terms) { 
     cJSON *related_terms_local = NULL;
     if(!cJSON_IsArray(related_terms)) {
@@ -110,7 +130,7 @@ related_terms_related_terms_list_inner_t *related_terms_related_terms_list_inner
     }
 
 
-    related_terms_related_terms_list_inner_local_var = related_terms_related_terms_list_inner_create (
+    related_terms_related_terms_list_inner_local_var = related_terms_related_terms_list_inner_create_internal (
         term && !cJSON_IsNull(term) ? strdup(term->valuestring) : NULL,
         related_terms ? related_termsList : NULL
         );

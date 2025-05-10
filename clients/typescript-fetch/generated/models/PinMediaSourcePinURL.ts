@@ -66,11 +66,11 @@ export function PinMediaSourcePinURLFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function PinMediaSourcePinURLToJSON(json: any): PinMediaSourcePinURL {
-      return PinMediaSourcePinURLToJSONTyped(json, false);
-  }
+export function PinMediaSourcePinURLToJSON(json: any): PinMediaSourcePinURL {
+    return PinMediaSourcePinURLToJSONTyped(json, false);
+}
 
-  export function PinMediaSourcePinURLToJSONTyped(value?: PinMediaSourcePinURL | null, ignoreDiscriminator: boolean = false): any {
+export function PinMediaSourcePinURLToJSONTyped(value?: PinMediaSourcePinURL | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

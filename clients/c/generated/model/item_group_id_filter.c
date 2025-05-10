@@ -5,7 +5,7 @@
 
 
 
-item_group_id_filter_t *item_group_id_filter_create(
+static item_group_id_filter_t *item_group_id_filter_create_internal(
     catalogs_product_group_multiple_string_criteria_t *item_group_id
     ) {
     item_group_id_filter_t *item_group_id_filter_local_var = malloc(sizeof(item_group_id_filter_t));
@@ -14,12 +14,24 @@ item_group_id_filter_t *item_group_id_filter_create(
     }
     item_group_id_filter_local_var->item_group_id = item_group_id;
 
+    item_group_id_filter_local_var->_library_owned = 1;
     return item_group_id_filter_local_var;
 }
 
+__attribute__((deprecated)) item_group_id_filter_t *item_group_id_filter_create(
+    catalogs_product_group_multiple_string_criteria_t *item_group_id
+    ) {
+    return item_group_id_filter_create_internal (
+        item_group_id
+        );
+}
 
 void item_group_id_filter_free(item_group_id_filter_t *item_group_id_filter) {
     if(NULL == item_group_id_filter){
+        return ;
+    }
+    if(item_group_id_filter->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "item_group_id_filter_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -60,6 +72,9 @@ item_group_id_filter_t *item_group_id_filter_parseFromJSON(cJSON *item_group_id_
 
     // item_group_id_filter->item_group_id
     cJSON *item_group_id = cJSON_GetObjectItemCaseSensitive(item_group_id_filterJSON, "ITEM_GROUP_ID");
+    if (cJSON_IsNull(item_group_id)) {
+        item_group_id = NULL;
+    }
     if (!item_group_id) {
         goto end;
     }
@@ -69,7 +84,7 @@ item_group_id_filter_t *item_group_id_filter_parseFromJSON(cJSON *item_group_id_
     item_group_id_local_object = object_parseFromJSON(item_group_id); //object
 
 
-    item_group_id_filter_local_var = item_group_id_filter_create (
+    item_group_id_filter_local_var = item_group_id_filter_create_internal (
         item_group_id_local_object
         );
 

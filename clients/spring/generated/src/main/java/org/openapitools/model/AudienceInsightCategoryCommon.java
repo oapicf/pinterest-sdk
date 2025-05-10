@@ -5,6 +5,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -20,18 +21,18 @@ import javax.annotation.Generated;
  * @deprecated
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AudienceInsightCategoryCommon {
 
-  private String key;
+  private @Nullable String key;
 
-  private String name;
+  private @Nullable String name;
 
-  private BigDecimal ratio;
+  private @Nullable BigDecimal ratio;
 
-  private BigDecimal index;
+  private @Nullable BigDecimal index;
 
-  private String id;
+  private @Nullable String id;
 
   public AudienceInsightCategoryCommon key(String key) {
     this.key = key;

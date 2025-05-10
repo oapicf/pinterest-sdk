@@ -56,11 +56,11 @@ export function AudienceDefinitionResponseFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-  export function AudienceDefinitionResponseToJSON(json: any): AudienceDefinitionResponse {
-      return AudienceDefinitionResponseToJSONTyped(json, false);
-  }
+export function AudienceDefinitionResponseToJSON(json: any): AudienceDefinitionResponse {
+    return AudienceDefinitionResponseToJSONTyped(json, false);
+}
 
-  export function AudienceDefinitionResponseToJSONTyped(value?: AudienceDefinitionResponse | null, ignoreDiscriminator: boolean = false): any {
+export function AudienceDefinitionResponseToJSONTyped(value?: AudienceDefinitionResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

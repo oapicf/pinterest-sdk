@@ -52,194 +52,239 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * UpdatableItemAttributes
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class UpdatableItemAttributes {
   public static final String SERIALIZED_NAME_AD_LINK = "ad_link";
   @SerializedName(SERIALIZED_NAME_AD_LINK)
+  @javax.annotation.Nullable
   private String adLink;
 
   public static final String SERIALIZED_NAME_ADULT = "adult";
   @SerializedName(SERIALIZED_NAME_ADULT)
+  @javax.annotation.Nullable
   private Boolean adult;
 
   public static final String SERIALIZED_NAME_AGE_GROUP = "age_group";
   @SerializedName(SERIALIZED_NAME_AGE_GROUP)
+  @javax.annotation.Nullable
   private String ageGroup;
 
   public static final String SERIALIZED_NAME_AVAILABILITY = "availability";
   @SerializedName(SERIALIZED_NAME_AVAILABILITY)
+  @javax.annotation.Nullable
   private String availability;
 
   public static final String SERIALIZED_NAME_AVERAGE_REVIEW_RATING = "average_review_rating";
   @SerializedName(SERIALIZED_NAME_AVERAGE_REVIEW_RATING)
+  @javax.annotation.Nullable
   private BigDecimal averageReviewRating;
 
   public static final String SERIALIZED_NAME_BRAND = "brand";
   @SerializedName(SERIALIZED_NAME_BRAND)
+  @javax.annotation.Nullable
   private String brand;
 
   public static final String SERIALIZED_NAME_CHECKOUT_ENABLED = "checkout_enabled";
   @Deprecated
   @SerializedName(SERIALIZED_NAME_CHECKOUT_ENABLED)
+  @javax.annotation.Nullable
   private Boolean checkoutEnabled;
 
   public static final String SERIALIZED_NAME_COLOR = "color";
   @SerializedName(SERIALIZED_NAME_COLOR)
+  @javax.annotation.Nullable
   private String color;
 
   public static final String SERIALIZED_NAME_CONDITION = "condition";
   @SerializedName(SERIALIZED_NAME_CONDITION)
+  @javax.annotation.Nullable
   private String condition;
 
   public static final String SERIALIZED_NAME_CUSTOM_LABEL0 = "custom_label_0";
   @SerializedName(SERIALIZED_NAME_CUSTOM_LABEL0)
+  @javax.annotation.Nullable
   private String customLabel0;
 
   public static final String SERIALIZED_NAME_CUSTOM_LABEL1 = "custom_label_1";
   @SerializedName(SERIALIZED_NAME_CUSTOM_LABEL1)
+  @javax.annotation.Nullable
   private String customLabel1;
 
   public static final String SERIALIZED_NAME_CUSTOM_LABEL2 = "custom_label_2";
   @SerializedName(SERIALIZED_NAME_CUSTOM_LABEL2)
+  @javax.annotation.Nullable
   private String customLabel2;
 
   public static final String SERIALIZED_NAME_CUSTOM_LABEL3 = "custom_label_3";
   @SerializedName(SERIALIZED_NAME_CUSTOM_LABEL3)
+  @javax.annotation.Nullable
   private String customLabel3;
 
   public static final String SERIALIZED_NAME_CUSTOM_LABEL4 = "custom_label_4";
   @SerializedName(SERIALIZED_NAME_CUSTOM_LABEL4)
+  @javax.annotation.Nullable
   private String customLabel4;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nullable
   private String description;
 
   public static final String SERIALIZED_NAME_FREE_SHIPPING_LABEL = "free_shipping_label";
   @SerializedName(SERIALIZED_NAME_FREE_SHIPPING_LABEL)
+  @javax.annotation.Nullable
   private Boolean freeShippingLabel;
 
   public static final String SERIALIZED_NAME_FREE_SHIPPING_LIMIT = "free_shipping_limit";
   @SerializedName(SERIALIZED_NAME_FREE_SHIPPING_LIMIT)
+  @javax.annotation.Nullable
   private String freeShippingLimit;
 
   public static final String SERIALIZED_NAME_GENDER = "gender";
   @SerializedName(SERIALIZED_NAME_GENDER)
+  @javax.annotation.Nullable
   private String gender;
 
   public static final String SERIALIZED_NAME_GOOGLE_PRODUCT_CATEGORY = "google_product_category";
   @SerializedName(SERIALIZED_NAME_GOOGLE_PRODUCT_CATEGORY)
+  @javax.annotation.Nullable
   private String googleProductCategory;
 
   public static final String SERIALIZED_NAME_GTIN = "gtin";
   @SerializedName(SERIALIZED_NAME_GTIN)
+  @javax.annotation.Nullable
   private Integer gtin;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @Deprecated
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_ITEM_GROUP_ID = "item_group_id";
   @SerializedName(SERIALIZED_NAME_ITEM_GROUP_ID)
+  @javax.annotation.Nullable
   private String itemGroupId;
 
   public static final String SERIALIZED_NAME_LAST_UPDATED_TIME = "last_updated_time";
   @SerializedName(SERIALIZED_NAME_LAST_UPDATED_TIME)
+  @javax.annotation.Nullable
   private Long lastUpdatedTime;
 
   public static final String SERIALIZED_NAME_LINK = "link";
   @SerializedName(SERIALIZED_NAME_LINK)
+  @javax.annotation.Nullable
   private String link;
 
   public static final String SERIALIZED_NAME_MATERIAL = "material";
   @SerializedName(SERIALIZED_NAME_MATERIAL)
+  @javax.annotation.Nullable
   private String material;
 
   public static final String SERIALIZED_NAME_MIN_AD_PRICE = "min_ad_price";
   @SerializedName(SERIALIZED_NAME_MIN_AD_PRICE)
+  @javax.annotation.Nullable
   private String minAdPrice;
 
   public static final String SERIALIZED_NAME_MOBILE_LINK = "mobile_link";
   @SerializedName(SERIALIZED_NAME_MOBILE_LINK)
+  @javax.annotation.Nullable
   private String mobileLink;
 
   public static final String SERIALIZED_NAME_MPN = "mpn";
   @SerializedName(SERIALIZED_NAME_MPN)
+  @javax.annotation.Nullable
   private String mpn;
 
   public static final String SERIALIZED_NAME_NUMBER_OF_RATINGS = "number_of_ratings";
   @SerializedName(SERIALIZED_NAME_NUMBER_OF_RATINGS)
+  @javax.annotation.Nullable
   private Integer numberOfRatings;
 
   public static final String SERIALIZED_NAME_NUMBER_OF_REVIEWS = "number_of_reviews";
   @SerializedName(SERIALIZED_NAME_NUMBER_OF_REVIEWS)
+  @javax.annotation.Nullable
   private Integer numberOfReviews;
 
   public static final String SERIALIZED_NAME_PATTERN = "pattern";
   @SerializedName(SERIALIZED_NAME_PATTERN)
+  @javax.annotation.Nullable
   private String pattern;
 
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
+  @javax.annotation.Nullable
   private String price;
 
   public static final String SERIALIZED_NAME_PRODUCT_TYPE = "product_type";
   @SerializedName(SERIALIZED_NAME_PRODUCT_TYPE)
+  @javax.annotation.Nullable
   private String productType;
 
   public static final String SERIALIZED_NAME_SALE_PRICE = "sale_price";
   @SerializedName(SERIALIZED_NAME_SALE_PRICE)
+  @javax.annotation.Nullable
   private String salePrice;
 
   public static final String SERIALIZED_NAME_SHIPPING = "shipping";
   @SerializedName(SERIALIZED_NAME_SHIPPING)
+  @javax.annotation.Nullable
   private String shipping;
 
   public static final String SERIALIZED_NAME_SHIPPING_HEIGHT = "shipping_height";
   @SerializedName(SERIALIZED_NAME_SHIPPING_HEIGHT)
+  @javax.annotation.Nullable
   private String shippingHeight;
 
   public static final String SERIALIZED_NAME_SHIPPING_WEIGHT = "shipping_weight";
   @SerializedName(SERIALIZED_NAME_SHIPPING_WEIGHT)
+  @javax.annotation.Nullable
   private String shippingWeight;
 
   public static final String SERIALIZED_NAME_SHIPPING_WIDTH = "shipping_width";
   @SerializedName(SERIALIZED_NAME_SHIPPING_WIDTH)
+  @javax.annotation.Nullable
   private String shippingWidth;
 
   public static final String SERIALIZED_NAME_SIZE = "size";
   @SerializedName(SERIALIZED_NAME_SIZE)
+  @javax.annotation.Nullable
   private String size;
 
   public static final String SERIALIZED_NAME_SIZE_SYSTEM = "size_system";
   @SerializedName(SERIALIZED_NAME_SIZE_SYSTEM)
+  @javax.annotation.Nullable
   private String sizeSystem;
 
   public static final String SERIALIZED_NAME_SIZE_TYPE = "size_type";
   @SerializedName(SERIALIZED_NAME_SIZE_TYPE)
+  @javax.annotation.Nullable
   private String sizeType;
 
   public static final String SERIALIZED_NAME_TAX = "tax";
   @SerializedName(SERIALIZED_NAME_TAX)
+  @javax.annotation.Nullable
   private String tax;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
+  @javax.annotation.Nullable
   private String title;
 
   public static final String SERIALIZED_NAME_VARIANT_NAMES = "variant_names";
   @SerializedName(SERIALIZED_NAME_VARIANT_NAMES)
+  @javax.annotation.Nullable
   private List<String> variantNames;
 
   public static final String SERIALIZED_NAME_VARIANT_VALUES = "variant_values";
   @SerializedName(SERIALIZED_NAME_VARIANT_VALUES)
+  @javax.annotation.Nullable
   private List<String> variantValues;
 
   public UpdatableItemAttributes() {
   }
 
-  public UpdatableItemAttributes adLink(String adLink) {
+  public UpdatableItemAttributes adLink(@javax.annotation.Nullable String adLink) {
     this.adLink = adLink;
     return this;
   }
@@ -253,12 +298,12 @@ public class UpdatableItemAttributes {
     return adLink;
   }
 
-  public void setAdLink(String adLink) {
+  public void setAdLink(@javax.annotation.Nullable String adLink) {
     this.adLink = adLink;
   }
 
 
-  public UpdatableItemAttributes adult(Boolean adult) {
+  public UpdatableItemAttributes adult(@javax.annotation.Nullable Boolean adult) {
     this.adult = adult;
     return this;
   }
@@ -272,12 +317,12 @@ public class UpdatableItemAttributes {
     return adult;
   }
 
-  public void setAdult(Boolean adult) {
+  public void setAdult(@javax.annotation.Nullable Boolean adult) {
     this.adult = adult;
   }
 
 
-  public UpdatableItemAttributes ageGroup(String ageGroup) {
+  public UpdatableItemAttributes ageGroup(@javax.annotation.Nullable String ageGroup) {
     this.ageGroup = ageGroup;
     return this;
   }
@@ -291,12 +336,12 @@ public class UpdatableItemAttributes {
     return ageGroup;
   }
 
-  public void setAgeGroup(String ageGroup) {
+  public void setAgeGroup(@javax.annotation.Nullable String ageGroup) {
     this.ageGroup = ageGroup;
   }
 
 
-  public UpdatableItemAttributes availability(String availability) {
+  public UpdatableItemAttributes availability(@javax.annotation.Nullable String availability) {
     this.availability = availability;
     return this;
   }
@@ -310,12 +355,12 @@ public class UpdatableItemAttributes {
     return availability;
   }
 
-  public void setAvailability(String availability) {
+  public void setAvailability(@javax.annotation.Nullable String availability) {
     this.availability = availability;
   }
 
 
-  public UpdatableItemAttributes averageReviewRating(BigDecimal averageReviewRating) {
+  public UpdatableItemAttributes averageReviewRating(@javax.annotation.Nullable BigDecimal averageReviewRating) {
     this.averageReviewRating = averageReviewRating;
     return this;
   }
@@ -329,12 +374,12 @@ public class UpdatableItemAttributes {
     return averageReviewRating;
   }
 
-  public void setAverageReviewRating(BigDecimal averageReviewRating) {
+  public void setAverageReviewRating(@javax.annotation.Nullable BigDecimal averageReviewRating) {
     this.averageReviewRating = averageReviewRating;
   }
 
 
-  public UpdatableItemAttributes brand(String brand) {
+  public UpdatableItemAttributes brand(@javax.annotation.Nullable String brand) {
     this.brand = brand;
     return this;
   }
@@ -348,13 +393,13 @@ public class UpdatableItemAttributes {
     return brand;
   }
 
-  public void setBrand(String brand) {
+  public void setBrand(@javax.annotation.Nullable String brand) {
     this.brand = brand;
   }
 
 
   @Deprecated
-  public UpdatableItemAttributes checkoutEnabled(Boolean checkoutEnabled) {
+  public UpdatableItemAttributes checkoutEnabled(@javax.annotation.Nullable Boolean checkoutEnabled) {
     this.checkoutEnabled = checkoutEnabled;
     return this;
   }
@@ -371,12 +416,12 @@ public class UpdatableItemAttributes {
   }
 
   @Deprecated
-  public void setCheckoutEnabled(Boolean checkoutEnabled) {
+  public void setCheckoutEnabled(@javax.annotation.Nullable Boolean checkoutEnabled) {
     this.checkoutEnabled = checkoutEnabled;
   }
 
 
-  public UpdatableItemAttributes color(String color) {
+  public UpdatableItemAttributes color(@javax.annotation.Nullable String color) {
     this.color = color;
     return this;
   }
@@ -390,12 +435,12 @@ public class UpdatableItemAttributes {
     return color;
   }
 
-  public void setColor(String color) {
+  public void setColor(@javax.annotation.Nullable String color) {
     this.color = color;
   }
 
 
-  public UpdatableItemAttributes condition(String condition) {
+  public UpdatableItemAttributes condition(@javax.annotation.Nullable String condition) {
     this.condition = condition;
     return this;
   }
@@ -409,12 +454,12 @@ public class UpdatableItemAttributes {
     return condition;
   }
 
-  public void setCondition(String condition) {
+  public void setCondition(@javax.annotation.Nullable String condition) {
     this.condition = condition;
   }
 
 
-  public UpdatableItemAttributes customLabel0(String customLabel0) {
+  public UpdatableItemAttributes customLabel0(@javax.annotation.Nullable String customLabel0) {
     this.customLabel0 = customLabel0;
     return this;
   }
@@ -428,12 +473,12 @@ public class UpdatableItemAttributes {
     return customLabel0;
   }
 
-  public void setCustomLabel0(String customLabel0) {
+  public void setCustomLabel0(@javax.annotation.Nullable String customLabel0) {
     this.customLabel0 = customLabel0;
   }
 
 
-  public UpdatableItemAttributes customLabel1(String customLabel1) {
+  public UpdatableItemAttributes customLabel1(@javax.annotation.Nullable String customLabel1) {
     this.customLabel1 = customLabel1;
     return this;
   }
@@ -447,12 +492,12 @@ public class UpdatableItemAttributes {
     return customLabel1;
   }
 
-  public void setCustomLabel1(String customLabel1) {
+  public void setCustomLabel1(@javax.annotation.Nullable String customLabel1) {
     this.customLabel1 = customLabel1;
   }
 
 
-  public UpdatableItemAttributes customLabel2(String customLabel2) {
+  public UpdatableItemAttributes customLabel2(@javax.annotation.Nullable String customLabel2) {
     this.customLabel2 = customLabel2;
     return this;
   }
@@ -466,12 +511,12 @@ public class UpdatableItemAttributes {
     return customLabel2;
   }
 
-  public void setCustomLabel2(String customLabel2) {
+  public void setCustomLabel2(@javax.annotation.Nullable String customLabel2) {
     this.customLabel2 = customLabel2;
   }
 
 
-  public UpdatableItemAttributes customLabel3(String customLabel3) {
+  public UpdatableItemAttributes customLabel3(@javax.annotation.Nullable String customLabel3) {
     this.customLabel3 = customLabel3;
     return this;
   }
@@ -485,12 +530,12 @@ public class UpdatableItemAttributes {
     return customLabel3;
   }
 
-  public void setCustomLabel3(String customLabel3) {
+  public void setCustomLabel3(@javax.annotation.Nullable String customLabel3) {
     this.customLabel3 = customLabel3;
   }
 
 
-  public UpdatableItemAttributes customLabel4(String customLabel4) {
+  public UpdatableItemAttributes customLabel4(@javax.annotation.Nullable String customLabel4) {
     this.customLabel4 = customLabel4;
     return this;
   }
@@ -504,12 +549,12 @@ public class UpdatableItemAttributes {
     return customLabel4;
   }
 
-  public void setCustomLabel4(String customLabel4) {
+  public void setCustomLabel4(@javax.annotation.Nullable String customLabel4) {
     this.customLabel4 = customLabel4;
   }
 
 
-  public UpdatableItemAttributes description(String description) {
+  public UpdatableItemAttributes description(@javax.annotation.Nullable String description) {
     this.description = description;
     return this;
   }
@@ -523,12 +568,12 @@ public class UpdatableItemAttributes {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
 
-  public UpdatableItemAttributes freeShippingLabel(Boolean freeShippingLabel) {
+  public UpdatableItemAttributes freeShippingLabel(@javax.annotation.Nullable Boolean freeShippingLabel) {
     this.freeShippingLabel = freeShippingLabel;
     return this;
   }
@@ -542,12 +587,12 @@ public class UpdatableItemAttributes {
     return freeShippingLabel;
   }
 
-  public void setFreeShippingLabel(Boolean freeShippingLabel) {
+  public void setFreeShippingLabel(@javax.annotation.Nullable Boolean freeShippingLabel) {
     this.freeShippingLabel = freeShippingLabel;
   }
 
 
-  public UpdatableItemAttributes freeShippingLimit(String freeShippingLimit) {
+  public UpdatableItemAttributes freeShippingLimit(@javax.annotation.Nullable String freeShippingLimit) {
     this.freeShippingLimit = freeShippingLimit;
     return this;
   }
@@ -561,12 +606,12 @@ public class UpdatableItemAttributes {
     return freeShippingLimit;
   }
 
-  public void setFreeShippingLimit(String freeShippingLimit) {
+  public void setFreeShippingLimit(@javax.annotation.Nullable String freeShippingLimit) {
     this.freeShippingLimit = freeShippingLimit;
   }
 
 
-  public UpdatableItemAttributes gender(String gender) {
+  public UpdatableItemAttributes gender(@javax.annotation.Nullable String gender) {
     this.gender = gender;
     return this;
   }
@@ -580,12 +625,12 @@ public class UpdatableItemAttributes {
     return gender;
   }
 
-  public void setGender(String gender) {
+  public void setGender(@javax.annotation.Nullable String gender) {
     this.gender = gender;
   }
 
 
-  public UpdatableItemAttributes googleProductCategory(String googleProductCategory) {
+  public UpdatableItemAttributes googleProductCategory(@javax.annotation.Nullable String googleProductCategory) {
     this.googleProductCategory = googleProductCategory;
     return this;
   }
@@ -599,12 +644,12 @@ public class UpdatableItemAttributes {
     return googleProductCategory;
   }
 
-  public void setGoogleProductCategory(String googleProductCategory) {
+  public void setGoogleProductCategory(@javax.annotation.Nullable String googleProductCategory) {
     this.googleProductCategory = googleProductCategory;
   }
 
 
-  public UpdatableItemAttributes gtin(Integer gtin) {
+  public UpdatableItemAttributes gtin(@javax.annotation.Nullable Integer gtin) {
     this.gtin = gtin;
     return this;
   }
@@ -618,13 +663,13 @@ public class UpdatableItemAttributes {
     return gtin;
   }
 
-  public void setGtin(Integer gtin) {
+  public void setGtin(@javax.annotation.Nullable Integer gtin) {
     this.gtin = gtin;
   }
 
 
   @Deprecated
-  public UpdatableItemAttributes id(String id) {
+  public UpdatableItemAttributes id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -641,12 +686,12 @@ public class UpdatableItemAttributes {
   }
 
   @Deprecated
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public UpdatableItemAttributes itemGroupId(String itemGroupId) {
+  public UpdatableItemAttributes itemGroupId(@javax.annotation.Nullable String itemGroupId) {
     this.itemGroupId = itemGroupId;
     return this;
   }
@@ -660,12 +705,12 @@ public class UpdatableItemAttributes {
     return itemGroupId;
   }
 
-  public void setItemGroupId(String itemGroupId) {
+  public void setItemGroupId(@javax.annotation.Nullable String itemGroupId) {
     this.itemGroupId = itemGroupId;
   }
 
 
-  public UpdatableItemAttributes lastUpdatedTime(Long lastUpdatedTime) {
+  public UpdatableItemAttributes lastUpdatedTime(@javax.annotation.Nullable Long lastUpdatedTime) {
     this.lastUpdatedTime = lastUpdatedTime;
     return this;
   }
@@ -679,12 +724,12 @@ public class UpdatableItemAttributes {
     return lastUpdatedTime;
   }
 
-  public void setLastUpdatedTime(Long lastUpdatedTime) {
+  public void setLastUpdatedTime(@javax.annotation.Nullable Long lastUpdatedTime) {
     this.lastUpdatedTime = lastUpdatedTime;
   }
 
 
-  public UpdatableItemAttributes link(String link) {
+  public UpdatableItemAttributes link(@javax.annotation.Nullable String link) {
     this.link = link;
     return this;
   }
@@ -698,12 +743,12 @@ public class UpdatableItemAttributes {
     return link;
   }
 
-  public void setLink(String link) {
+  public void setLink(@javax.annotation.Nullable String link) {
     this.link = link;
   }
 
 
-  public UpdatableItemAttributes material(String material) {
+  public UpdatableItemAttributes material(@javax.annotation.Nullable String material) {
     this.material = material;
     return this;
   }
@@ -717,12 +762,12 @@ public class UpdatableItemAttributes {
     return material;
   }
 
-  public void setMaterial(String material) {
+  public void setMaterial(@javax.annotation.Nullable String material) {
     this.material = material;
   }
 
 
-  public UpdatableItemAttributes minAdPrice(String minAdPrice) {
+  public UpdatableItemAttributes minAdPrice(@javax.annotation.Nullable String minAdPrice) {
     this.minAdPrice = minAdPrice;
     return this;
   }
@@ -736,12 +781,12 @@ public class UpdatableItemAttributes {
     return minAdPrice;
   }
 
-  public void setMinAdPrice(String minAdPrice) {
+  public void setMinAdPrice(@javax.annotation.Nullable String minAdPrice) {
     this.minAdPrice = minAdPrice;
   }
 
 
-  public UpdatableItemAttributes mobileLink(String mobileLink) {
+  public UpdatableItemAttributes mobileLink(@javax.annotation.Nullable String mobileLink) {
     this.mobileLink = mobileLink;
     return this;
   }
@@ -755,12 +800,12 @@ public class UpdatableItemAttributes {
     return mobileLink;
   }
 
-  public void setMobileLink(String mobileLink) {
+  public void setMobileLink(@javax.annotation.Nullable String mobileLink) {
     this.mobileLink = mobileLink;
   }
 
 
-  public UpdatableItemAttributes mpn(String mpn) {
+  public UpdatableItemAttributes mpn(@javax.annotation.Nullable String mpn) {
     this.mpn = mpn;
     return this;
   }
@@ -774,12 +819,12 @@ public class UpdatableItemAttributes {
     return mpn;
   }
 
-  public void setMpn(String mpn) {
+  public void setMpn(@javax.annotation.Nullable String mpn) {
     this.mpn = mpn;
   }
 
 
-  public UpdatableItemAttributes numberOfRatings(Integer numberOfRatings) {
+  public UpdatableItemAttributes numberOfRatings(@javax.annotation.Nullable Integer numberOfRatings) {
     this.numberOfRatings = numberOfRatings;
     return this;
   }
@@ -793,12 +838,12 @@ public class UpdatableItemAttributes {
     return numberOfRatings;
   }
 
-  public void setNumberOfRatings(Integer numberOfRatings) {
+  public void setNumberOfRatings(@javax.annotation.Nullable Integer numberOfRatings) {
     this.numberOfRatings = numberOfRatings;
   }
 
 
-  public UpdatableItemAttributes numberOfReviews(Integer numberOfReviews) {
+  public UpdatableItemAttributes numberOfReviews(@javax.annotation.Nullable Integer numberOfReviews) {
     this.numberOfReviews = numberOfReviews;
     return this;
   }
@@ -812,12 +857,12 @@ public class UpdatableItemAttributes {
     return numberOfReviews;
   }
 
-  public void setNumberOfReviews(Integer numberOfReviews) {
+  public void setNumberOfReviews(@javax.annotation.Nullable Integer numberOfReviews) {
     this.numberOfReviews = numberOfReviews;
   }
 
 
-  public UpdatableItemAttributes pattern(String pattern) {
+  public UpdatableItemAttributes pattern(@javax.annotation.Nullable String pattern) {
     this.pattern = pattern;
     return this;
   }
@@ -831,12 +876,12 @@ public class UpdatableItemAttributes {
     return pattern;
   }
 
-  public void setPattern(String pattern) {
+  public void setPattern(@javax.annotation.Nullable String pattern) {
     this.pattern = pattern;
   }
 
 
-  public UpdatableItemAttributes price(String price) {
+  public UpdatableItemAttributes price(@javax.annotation.Nullable String price) {
     this.price = price;
     return this;
   }
@@ -850,12 +895,12 @@ public class UpdatableItemAttributes {
     return price;
   }
 
-  public void setPrice(String price) {
+  public void setPrice(@javax.annotation.Nullable String price) {
     this.price = price;
   }
 
 
-  public UpdatableItemAttributes productType(String productType) {
+  public UpdatableItemAttributes productType(@javax.annotation.Nullable String productType) {
     this.productType = productType;
     return this;
   }
@@ -869,12 +914,12 @@ public class UpdatableItemAttributes {
     return productType;
   }
 
-  public void setProductType(String productType) {
+  public void setProductType(@javax.annotation.Nullable String productType) {
     this.productType = productType;
   }
 
 
-  public UpdatableItemAttributes salePrice(String salePrice) {
+  public UpdatableItemAttributes salePrice(@javax.annotation.Nullable String salePrice) {
     this.salePrice = salePrice;
     return this;
   }
@@ -888,12 +933,12 @@ public class UpdatableItemAttributes {
     return salePrice;
   }
 
-  public void setSalePrice(String salePrice) {
+  public void setSalePrice(@javax.annotation.Nullable String salePrice) {
     this.salePrice = salePrice;
   }
 
 
-  public UpdatableItemAttributes shipping(String shipping) {
+  public UpdatableItemAttributes shipping(@javax.annotation.Nullable String shipping) {
     this.shipping = shipping;
     return this;
   }
@@ -907,12 +952,12 @@ public class UpdatableItemAttributes {
     return shipping;
   }
 
-  public void setShipping(String shipping) {
+  public void setShipping(@javax.annotation.Nullable String shipping) {
     this.shipping = shipping;
   }
 
 
-  public UpdatableItemAttributes shippingHeight(String shippingHeight) {
+  public UpdatableItemAttributes shippingHeight(@javax.annotation.Nullable String shippingHeight) {
     this.shippingHeight = shippingHeight;
     return this;
   }
@@ -926,12 +971,12 @@ public class UpdatableItemAttributes {
     return shippingHeight;
   }
 
-  public void setShippingHeight(String shippingHeight) {
+  public void setShippingHeight(@javax.annotation.Nullable String shippingHeight) {
     this.shippingHeight = shippingHeight;
   }
 
 
-  public UpdatableItemAttributes shippingWeight(String shippingWeight) {
+  public UpdatableItemAttributes shippingWeight(@javax.annotation.Nullable String shippingWeight) {
     this.shippingWeight = shippingWeight;
     return this;
   }
@@ -945,12 +990,12 @@ public class UpdatableItemAttributes {
     return shippingWeight;
   }
 
-  public void setShippingWeight(String shippingWeight) {
+  public void setShippingWeight(@javax.annotation.Nullable String shippingWeight) {
     this.shippingWeight = shippingWeight;
   }
 
 
-  public UpdatableItemAttributes shippingWidth(String shippingWidth) {
+  public UpdatableItemAttributes shippingWidth(@javax.annotation.Nullable String shippingWidth) {
     this.shippingWidth = shippingWidth;
     return this;
   }
@@ -964,12 +1009,12 @@ public class UpdatableItemAttributes {
     return shippingWidth;
   }
 
-  public void setShippingWidth(String shippingWidth) {
+  public void setShippingWidth(@javax.annotation.Nullable String shippingWidth) {
     this.shippingWidth = shippingWidth;
   }
 
 
-  public UpdatableItemAttributes size(String size) {
+  public UpdatableItemAttributes size(@javax.annotation.Nullable String size) {
     this.size = size;
     return this;
   }
@@ -983,12 +1028,12 @@ public class UpdatableItemAttributes {
     return size;
   }
 
-  public void setSize(String size) {
+  public void setSize(@javax.annotation.Nullable String size) {
     this.size = size;
   }
 
 
-  public UpdatableItemAttributes sizeSystem(String sizeSystem) {
+  public UpdatableItemAttributes sizeSystem(@javax.annotation.Nullable String sizeSystem) {
     this.sizeSystem = sizeSystem;
     return this;
   }
@@ -1002,12 +1047,12 @@ public class UpdatableItemAttributes {
     return sizeSystem;
   }
 
-  public void setSizeSystem(String sizeSystem) {
+  public void setSizeSystem(@javax.annotation.Nullable String sizeSystem) {
     this.sizeSystem = sizeSystem;
   }
 
 
-  public UpdatableItemAttributes sizeType(String sizeType) {
+  public UpdatableItemAttributes sizeType(@javax.annotation.Nullable String sizeType) {
     this.sizeType = sizeType;
     return this;
   }
@@ -1021,12 +1066,12 @@ public class UpdatableItemAttributes {
     return sizeType;
   }
 
-  public void setSizeType(String sizeType) {
+  public void setSizeType(@javax.annotation.Nullable String sizeType) {
     this.sizeType = sizeType;
   }
 
 
-  public UpdatableItemAttributes tax(String tax) {
+  public UpdatableItemAttributes tax(@javax.annotation.Nullable String tax) {
     this.tax = tax;
     return this;
   }
@@ -1040,12 +1085,12 @@ public class UpdatableItemAttributes {
     return tax;
   }
 
-  public void setTax(String tax) {
+  public void setTax(@javax.annotation.Nullable String tax) {
     this.tax = tax;
   }
 
 
-  public UpdatableItemAttributes title(String title) {
+  public UpdatableItemAttributes title(@javax.annotation.Nullable String title) {
     this.title = title;
     return this;
   }
@@ -1059,12 +1104,12 @@ public class UpdatableItemAttributes {
     return title;
   }
 
-  public void setTitle(String title) {
+  public void setTitle(@javax.annotation.Nullable String title) {
     this.title = title;
   }
 
 
-  public UpdatableItemAttributes variantNames(List<String> variantNames) {
+  public UpdatableItemAttributes variantNames(@javax.annotation.Nullable List<String> variantNames) {
     this.variantNames = variantNames;
     return this;
   }
@@ -1086,12 +1131,12 @@ public class UpdatableItemAttributes {
     return variantNames;
   }
 
-  public void setVariantNames(List<String> variantNames) {
+  public void setVariantNames(@javax.annotation.Nullable List<String> variantNames) {
     this.variantNames = variantNames;
   }
 
 
-  public UpdatableItemAttributes variantValues(List<String> variantValues) {
+  public UpdatableItemAttributes variantValues(@javax.annotation.Nullable List<String> variantValues) {
     this.variantValues = variantValues;
     return this;
   }
@@ -1113,7 +1158,7 @@ public class UpdatableItemAttributes {
     return variantValues;
   }
 
-  public void setVariantValues(List<String> variantValues) {
+  public void setVariantValues(@javax.annotation.Nullable List<String> variantValues) {
     this.variantValues = variantValues;
   }
 

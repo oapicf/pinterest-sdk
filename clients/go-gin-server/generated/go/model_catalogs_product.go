@@ -10,10 +10,6 @@
 
 package openapi
 
-import (
-	"gopkg.in/validator.v2"
-)
-
 // CatalogsProduct - Catalogs product for all verticals
 type CatalogsProduct struct {
 

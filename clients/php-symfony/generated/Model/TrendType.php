@@ -42,10 +42,10 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum TrendType: string
 {
-        case GROWING = "growing";
-        case MONTHLY = "monthly";
-        case YEARLY = "yearly";
-        case SEASONAL = "seasonal";
+        case GROWING = 'growing';
+        case MONTHLY = 'monthly';
+        case YEARLY = 'yearly';
+        case SEASONAL = 'seasonal';
 }
 
 

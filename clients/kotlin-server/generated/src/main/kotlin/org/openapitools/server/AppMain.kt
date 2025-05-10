@@ -1,7 +1,6 @@
 package org.openapitools.server
 
 import io.ktor.server.application.*
-import io.ktor.serialization.gson.*
 import io.ktor.http.*
 import io.ktor.server.resources.*
 import io.ktor.server.plugins.autohead.*
@@ -13,6 +12,7 @@ import com.codahale.metrics.Slf4jReporter
 import io.ktor.server.metrics.dropwizard.*
 import java.util.concurrent.TimeUnit
 import io.ktor.server.routing.*
+import io.ktor.serialization.kotlinx.json.json
 import com.typesafe.config.ConfigFactory
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.apache.Apache
@@ -55,12 +55,6 @@ import org.openapitools.server.apis.TermsOfServiceApi
 import org.openapitools.server.apis.UserAccountApi
 
 
-internal val settings = HoconApplicationConfig(ConfigFactory.defaultApplication(HTTP::class.java.classLoader))
-
-object HTTP {
-    val client = HttpClient(Apache)
-}
-
 fun Application.main() {
     install(DefaultHeaders)
     install(DropwizardMetrics) {
@@ -72,7 +66,7 @@ fun Application.main() {
         reporter.start(10, TimeUnit.SECONDS)
     }
     install(ContentNegotiation) {
-        register(ContentType.Application.Json, GsonConverter())
+        json()
     }
     install(AutoHeadResponse) // see https://ktor.io/docs/autoheadresponse.html
     install(Compression, ApplicationCompressionConfiguration()) // see https://ktor.io/docs/compression.html
@@ -106,7 +100,7 @@ fun Application.main() {
             }
         }
     }
-    install(Routing) {
+    routing {
         AdAccountsApi()
         AdGroupsApi()
         AdsApi()
@@ -142,5 +136,4 @@ fun Application.main() {
         TermsOfServiceApi()
         UserAccountApi()
     }
-
 }

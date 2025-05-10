@@ -64,11 +64,11 @@ export function GetBusinessMembers200ResponseFromJSONTyped(json: any, ignoreDisc
     };
 }
 
-  export function GetBusinessMembers200ResponseToJSON(json: any): GetBusinessMembers200Response {
-      return GetBusinessMembers200ResponseToJSONTyped(json, false);
-  }
+export function GetBusinessMembers200ResponseToJSON(json: any): GetBusinessMembers200Response {
+    return GetBusinessMembers200ResponseToJSONTyped(json, false);
+}
 
-  export function GetBusinessMembers200ResponseToJSONTyped(value?: GetBusinessMembers200Response | null, ignoreDiscriminator: boolean = false): any {
+export function GetBusinessMembers200ResponseToJSONTyped(value?: GetBusinessMembers200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

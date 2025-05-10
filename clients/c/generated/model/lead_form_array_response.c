@@ -5,7 +5,7 @@
 
 
 
-lead_form_array_response_t *lead_form_array_response_create(
+static lead_form_array_response_t *lead_form_array_response_create_internal(
     list_t *items
     ) {
     lead_form_array_response_t *lead_form_array_response_local_var = malloc(sizeof(lead_form_array_response_t));
@@ -14,12 +14,24 @@ lead_form_array_response_t *lead_form_array_response_create(
     }
     lead_form_array_response_local_var->items = items;
 
+    lead_form_array_response_local_var->_library_owned = 1;
     return lead_form_array_response_local_var;
 }
 
+__attribute__((deprecated)) lead_form_array_response_t *lead_form_array_response_create(
+    list_t *items
+    ) {
+    return lead_form_array_response_create_internal (
+        items
+        );
+}
 
 void lead_form_array_response_free(lead_form_array_response_t *lead_form_array_response) {
     if(NULL == lead_form_array_response){
+        return ;
+    }
+    if(lead_form_array_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "lead_form_array_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -72,6 +84,9 @@ lead_form_array_response_t *lead_form_array_response_parseFromJSON(cJSON *lead_f
 
     // lead_form_array_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(lead_form_array_responseJSON, "items");
+    if (cJSON_IsNull(items)) {
+        items = NULL;
+    }
     if (items) { 
     cJSON *items_local_nonprimitive = NULL;
     if(!cJSON_IsArray(items)){
@@ -92,7 +107,7 @@ lead_form_array_response_t *lead_form_array_response_parseFromJSON(cJSON *lead_f
     }
 
 
-    lead_form_array_response_local_var = lead_form_array_response_create (
+    lead_form_array_response_local_var = lead_form_array_response_create_internal (
         items ? itemsList : NULL
         );
 

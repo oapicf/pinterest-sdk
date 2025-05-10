@@ -5,7 +5,7 @@
 
 
 
-bid_floor_t *bid_floor_create(
+static bid_floor_t *bid_floor_create_internal(
     list_t *bid_floors,
     char *type
     ) {
@@ -16,12 +16,26 @@ bid_floor_t *bid_floor_create(
     bid_floor_local_var->bid_floors = bid_floors;
     bid_floor_local_var->type = type;
 
+    bid_floor_local_var->_library_owned = 1;
     return bid_floor_local_var;
 }
 
+__attribute__((deprecated)) bid_floor_t *bid_floor_create(
+    list_t *bid_floors,
+    char *type
+    ) {
+    return bid_floor_create_internal (
+        bid_floors,
+        type
+        );
+}
 
 void bid_floor_free(bid_floor_t *bid_floor) {
     if(NULL == bid_floor){
+        return ;
+    }
+    if(bid_floor->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "bid_floor_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -83,6 +97,9 @@ bid_floor_t *bid_floor_parseFromJSON(cJSON *bid_floorJSON){
 
     // bid_floor->bid_floors
     cJSON *bid_floors = cJSON_GetObjectItemCaseSensitive(bid_floorJSON, "bid_floors");
+    if (cJSON_IsNull(bid_floors)) {
+        bid_floors = NULL;
+    }
     if (bid_floors) { 
     cJSON *bid_floors_local = NULL;
     if(!cJSON_IsArray(bid_floors)) {
@@ -96,7 +113,7 @@ bid_floor_t *bid_floor_parseFromJSON(cJSON *bid_floorJSON){
         {
             goto end;
         }
-        double *bid_floors_local_value = (double *)calloc(1, sizeof(double));
+        double *bid_floors_local_value = calloc(1, sizeof(double));
         if(!bid_floors_local_value)
         {
             goto end;
@@ -108,6 +125,9 @@ bid_floor_t *bid_floor_parseFromJSON(cJSON *bid_floorJSON){
 
     // bid_floor->type
     cJSON *type = cJSON_GetObjectItemCaseSensitive(bid_floorJSON, "type");
+    if (cJSON_IsNull(type)) {
+        type = NULL;
+    }
     if (type) { 
     if(!cJSON_IsString(type) && !cJSON_IsNull(type))
     {
@@ -116,7 +136,7 @@ bid_floor_t *bid_floor_parseFromJSON(cJSON *bid_floorJSON){
     }
 
 
-    bid_floor_local_var = bid_floor_create (
+    bid_floor_local_var = bid_floor_create_internal (
         bid_floors ? bid_floorsList : NULL,
         type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL
         );

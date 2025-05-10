@@ -73,7 +73,7 @@ func (c *LeadsExportAPIController) LeadsExportCreate(w http.ResponseWriter, r *h
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	leadsExportCreateRequestParam := LeadsExportCreateRequest{}
+	var leadsExportCreateRequestParam LeadsExportCreateRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&leadsExportCreateRequestParam); err != nil {

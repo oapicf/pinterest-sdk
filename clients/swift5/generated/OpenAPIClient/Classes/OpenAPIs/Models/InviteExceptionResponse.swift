@@ -13,7 +13,7 @@ import AnyCodable
 /** An exception object if there is an error performing the action. Will only be provided if there is an error. */
 public struct InviteExceptionResponse: Codable, JSONEncodable, Hashable {
 
-    static let inviteOrRequestIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let inviteOrRequestIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Unique identifier of the invite/request. */
     public var inviteOrRequestId: String?
     /** Error code associated with the error in performing the action on the invite/request. */

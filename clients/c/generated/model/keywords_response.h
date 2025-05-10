@@ -24,9 +24,10 @@ typedef struct keywords_response_t {
     list_t *errors; //nonprimitive container
     list_t *keywords; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } keywords_response_t;
 
-keywords_response_t *keywords_response_create(
+__attribute__((deprecated)) keywords_response_t *keywords_response_create(
     list_t *errors,
     list_t *keywords
 );

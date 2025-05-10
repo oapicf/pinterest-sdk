@@ -56,11 +56,11 @@ export function IntegrationLogsInvalidLogResponseFromJSONTyped(json: any, ignore
     };
 }
 
-  export function IntegrationLogsInvalidLogResponseToJSON(json: any): IntegrationLogsInvalidLogResponse {
-      return IntegrationLogsInvalidLogResponseToJSONTyped(json, false);
-  }
+export function IntegrationLogsInvalidLogResponseToJSON(json: any): IntegrationLogsInvalidLogResponse {
+    return IntegrationLogsInvalidLogResponseToJSONTyped(json, false);
+}
 
-  export function IntegrationLogsInvalidLogResponseToJSONTyped(value?: IntegrationLogsInvalidLogResponse | null, ignoreDiscriminator: boolean = false): any {
+export function IntegrationLogsInvalidLogResponseToJSONTyped(value?: IntegrationLogsInvalidLogResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

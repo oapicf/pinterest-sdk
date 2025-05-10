@@ -5,7 +5,7 @@
 
 
 
-order_line_t *order_line_create(
+static order_line_t *order_line_create_internal(
     char *id,
     char *type,
     char *ad_account_id,
@@ -36,12 +36,46 @@ order_line_t *order_line_create(
     order_line_local_var->paid_type = paid_type;
     order_line_local_var->campaign_ids = campaign_ids;
 
+    order_line_local_var->_library_owned = 1;
     return order_line_local_var;
 }
 
+__attribute__((deprecated)) order_line_t *order_line_create(
+    char *id,
+    char *type,
+    char *ad_account_id,
+    char *purchase_order_id,
+    double start_time,
+    double end_time,
+    double budget,
+    double paid_budget,
+    order_line_status_t *status,
+    char *name,
+    order_line_paid_type_t *paid_type,
+    list_t *campaign_ids
+    ) {
+    return order_line_create_internal (
+        id,
+        type,
+        ad_account_id,
+        purchase_order_id,
+        start_time,
+        end_time,
+        budget,
+        paid_budget,
+        status,
+        name,
+        paid_type,
+        campaign_ids
+        );
+}
 
 void order_line_free(order_line_t *order_line) {
     if(NULL == order_line){
+        return ;
+    }
+    if(order_line->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "order_line_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -195,7 +229,7 @@ cJSON *order_line_convertToJSON(order_line_t *order_line) {
 
     listEntry_t *campaign_idsListEntry;
     list_ForEach(campaign_idsListEntry, order_line->campaign_ids) {
-    if(cJSON_AddStringToObject(campaign_ids, "", (char*)campaign_idsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(campaign_ids, "", campaign_idsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -224,6 +258,9 @@ order_line_t *order_line_parseFromJSON(cJSON *order_lineJSON){
 
     // order_line->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(order_lineJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -233,6 +270,9 @@ order_line_t *order_line_parseFromJSON(cJSON *order_lineJSON){
 
     // order_line->type
     cJSON *type = cJSON_GetObjectItemCaseSensitive(order_lineJSON, "type");
+    if (cJSON_IsNull(type)) {
+        type = NULL;
+    }
     if (type) { 
     if(!cJSON_IsString(type) && !cJSON_IsNull(type))
     {
@@ -242,6 +282,9 @@ order_line_t *order_line_parseFromJSON(cJSON *order_lineJSON){
 
     // order_line->ad_account_id
     cJSON *ad_account_id = cJSON_GetObjectItemCaseSensitive(order_lineJSON, "ad_account_id");
+    if (cJSON_IsNull(ad_account_id)) {
+        ad_account_id = NULL;
+    }
     if (ad_account_id) { 
     if(!cJSON_IsString(ad_account_id) && !cJSON_IsNull(ad_account_id))
     {
@@ -251,6 +294,9 @@ order_line_t *order_line_parseFromJSON(cJSON *order_lineJSON){
 
     // order_line->purchase_order_id
     cJSON *purchase_order_id = cJSON_GetObjectItemCaseSensitive(order_lineJSON, "purchase_order_id");
+    if (cJSON_IsNull(purchase_order_id)) {
+        purchase_order_id = NULL;
+    }
     if (purchase_order_id) { 
     if(!cJSON_IsString(purchase_order_id) && !cJSON_IsNull(purchase_order_id))
     {
@@ -260,6 +306,9 @@ order_line_t *order_line_parseFromJSON(cJSON *order_lineJSON){
 
     // order_line->start_time
     cJSON *start_time = cJSON_GetObjectItemCaseSensitive(order_lineJSON, "start_time");
+    if (cJSON_IsNull(start_time)) {
+        start_time = NULL;
+    }
     if (start_time) { 
     if(!cJSON_IsNumber(start_time))
     {
@@ -269,6 +318,9 @@ order_line_t *order_line_parseFromJSON(cJSON *order_lineJSON){
 
     // order_line->end_time
     cJSON *end_time = cJSON_GetObjectItemCaseSensitive(order_lineJSON, "end_time");
+    if (cJSON_IsNull(end_time)) {
+        end_time = NULL;
+    }
     if (end_time) { 
     if(!cJSON_IsNumber(end_time))
     {
@@ -278,6 +330,9 @@ order_line_t *order_line_parseFromJSON(cJSON *order_lineJSON){
 
     // order_line->budget
     cJSON *budget = cJSON_GetObjectItemCaseSensitive(order_lineJSON, "budget");
+    if (cJSON_IsNull(budget)) {
+        budget = NULL;
+    }
     if (budget) { 
     if(!cJSON_IsNumber(budget))
     {
@@ -287,6 +342,9 @@ order_line_t *order_line_parseFromJSON(cJSON *order_lineJSON){
 
     // order_line->paid_budget
     cJSON *paid_budget = cJSON_GetObjectItemCaseSensitive(order_lineJSON, "paid_budget");
+    if (cJSON_IsNull(paid_budget)) {
+        paid_budget = NULL;
+    }
     if (paid_budget) { 
     if(!cJSON_IsNumber(paid_budget))
     {
@@ -296,12 +354,18 @@ order_line_t *order_line_parseFromJSON(cJSON *order_lineJSON){
 
     // order_line->status
     cJSON *status = cJSON_GetObjectItemCaseSensitive(order_lineJSON, "status");
+    if (cJSON_IsNull(status)) {
+        status = NULL;
+    }
     if (status) { 
     status_local_nonprim = order_line_status_parseFromJSON(status); //custom
     }
 
     // order_line->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(order_lineJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
     if (name) { 
     if(!cJSON_IsString(name) && !cJSON_IsNull(name))
     {
@@ -311,12 +375,18 @@ order_line_t *order_line_parseFromJSON(cJSON *order_lineJSON){
 
     // order_line->paid_type
     cJSON *paid_type = cJSON_GetObjectItemCaseSensitive(order_lineJSON, "paid_type");
+    if (cJSON_IsNull(paid_type)) {
+        paid_type = NULL;
+    }
     if (paid_type) { 
     paid_type_local_nonprim = order_line_paid_type_parseFromJSON(paid_type); //custom
     }
 
     // order_line->campaign_ids
     cJSON *campaign_ids = cJSON_GetObjectItemCaseSensitive(order_lineJSON, "campaign_ids");
+    if (cJSON_IsNull(campaign_ids)) {
+        campaign_ids = NULL;
+    }
     if (!campaign_ids) {
         goto end;
     }
@@ -338,7 +408,7 @@ order_line_t *order_line_parseFromJSON(cJSON *order_lineJSON){
     }
 
 
-    order_line_local_var = order_line_create (
+    order_line_local_var = order_line_create_internal (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL,
         ad_account_id && !cJSON_IsNull(ad_account_id) ? strdup(ad_account_id->valuestring) : NULL,

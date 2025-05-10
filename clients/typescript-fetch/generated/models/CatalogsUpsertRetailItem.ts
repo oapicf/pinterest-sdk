@@ -83,11 +83,11 @@ export function CatalogsUpsertRetailItemFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function CatalogsUpsertRetailItemToJSON(json: any): CatalogsUpsertRetailItem {
-      return CatalogsUpsertRetailItemToJSONTyped(json, false);
-  }
+export function CatalogsUpsertRetailItemToJSON(json: any): CatalogsUpsertRetailItem {
+    return CatalogsUpsertRetailItemToJSONTyped(json, false);
+}
 
-  export function CatalogsUpsertRetailItemToJSONTyped(value?: CatalogsUpsertRetailItem | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsUpsertRetailItemToJSONTyped(value?: CatalogsUpsertRetailItem | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

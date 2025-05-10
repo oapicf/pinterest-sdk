@@ -65,11 +65,11 @@ export function CatalogsListProductsByFeedBasedFilterFromJSONTyped(json: any, ig
     };
 }
 
-  export function CatalogsListProductsByFeedBasedFilterToJSON(json: any): CatalogsListProductsByFeedBasedFilter {
-      return CatalogsListProductsByFeedBasedFilterToJSONTyped(json, false);
-  }
+export function CatalogsListProductsByFeedBasedFilterToJSON(json: any): CatalogsListProductsByFeedBasedFilter {
+    return CatalogsListProductsByFeedBasedFilterToJSONTyped(json, false);
+}
 
-  export function CatalogsListProductsByFeedBasedFilterToJSONTyped(value?: CatalogsListProductsByFeedBasedFilter | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsListProductsByFeedBasedFilterToJSONTyped(value?: CatalogsListProductsByFeedBasedFilter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -27,13 +27,23 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Object describing an item record")
 @JsonTypeName("ItemResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ItemResponse   {
   private CatalogsType catalogType;
   private String itemId;
   private @Valid List<@Valid ItemValidationEvent> errors = new ArrayList<>();
   private String hotelId;
   private String creativeAssetsId;
+
+  public ItemResponse() {
+  }
+
+  @JsonCreator
+  public ItemResponse(
+    @JsonProperty(required = true, value = "catalog_type") CatalogsType catalogType
+  ) {
+    this.catalogType = catalogType;
+  }
 
   /**
    **/
@@ -44,12 +54,12 @@ public class ItemResponse   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   @NotNull public CatalogsType getCatalogType() {
     return catalogType;
   }
 
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   public void setCatalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
   }

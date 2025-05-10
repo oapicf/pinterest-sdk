@@ -24,9 +24,9 @@ char* currency_currency_ToString(pinterest_rest_api_currency__e currency);
 
 pinterest_rest_api_currency__e currency_currency_FromString(char* currency);
 
-//cJSON *currency_currency_convertToJSON(pinterest_rest_api_currency__e currency);
+cJSON *currency_convertToJSON(pinterest_rest_api_currency__e currency);
 
-//pinterest_rest_api_currency__e currency_currency_parseFromJSON(cJSON *currencyJSON);
+pinterest_rest_api_currency__e currency_parseFromJSON(cJSON *currencyJSON);
 
 #endif /* _currency_H_ */
 

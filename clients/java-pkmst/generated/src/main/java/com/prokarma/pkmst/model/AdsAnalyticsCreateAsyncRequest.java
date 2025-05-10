@@ -32,7 +32,7 @@ import java.util.List;
  * AdsAnalyticsCreateAsyncRequest
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2025-05-10T05:39:31.012858315Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdsAnalyticsCreateAsyncRequest   {
   @JsonProperty("start_date")
   private String startDate;
@@ -121,9 +121,9 @@ public class AdsAnalyticsCreateAsyncRequest   {
    * Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
    */
   public enum PrimarySortEnum {
-    ID("BY_ID"),
+    BY_ID("BY_ID"),
     
-    DATE("BY_DATE");
+    BY_DATE("BY_DATE");
 
     private String value;
 

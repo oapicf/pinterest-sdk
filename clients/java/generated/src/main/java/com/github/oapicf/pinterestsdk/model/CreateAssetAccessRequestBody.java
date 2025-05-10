@@ -51,16 +51,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * An object containing a list of all the asset access requests
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CreateAssetAccessRequestBody {
   public static final String SERIALIZED_NAME_ASSET_REQUESTS = "asset_requests";
   @SerializedName(SERIALIZED_NAME_ASSET_REQUESTS)
+  @javax.annotation.Nonnull
   private List<CreateAssetAccessRequestBodyAssetRequestsInner> assetRequests = new ArrayList<>();
 
   public CreateAssetAccessRequestBody() {
   }
 
-  public CreateAssetAccessRequestBody assetRequests(List<CreateAssetAccessRequestBodyAssetRequestsInner> assetRequests) {
+  public CreateAssetAccessRequestBody assetRequests(@javax.annotation.Nonnull List<CreateAssetAccessRequestBodyAssetRequestsInner> assetRequests) {
     this.assetRequests = assetRequests;
     return this;
   }
@@ -82,7 +83,7 @@ public class CreateAssetAccessRequestBody {
     return assetRequests;
   }
 
-  public void setAssetRequests(List<CreateAssetAccessRequestBodyAssetRequestsInner> assetRequests) {
+  public void setAssetRequests(@javax.annotation.Nonnull List<CreateAssetAccessRequestBodyAssetRequestsInner> assetRequests) {
     this.assetRequests = assetRequests;
   }
 

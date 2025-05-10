@@ -295,27 +295,32 @@ CatalogsCreativeAssetsProductGroupFilterKeys <- R6::R6Class(
     },
 
     #' @description
-    #' Serialize CatalogsCreativeAssetsProductGroupFilterKeys to JSON string.
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
+    toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert CatalogsCreativeAssetsProductGroupFilterKeys to a base R type
     #'
-    #' @return JSON string representation of the CatalogsCreativeAssetsProductGroupFilterKeys.
-    toJSONString = function() {
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       if (!is.null(self$actual_instance)) {
-        as.character(jsonlite::minify((self$actual_instance$toJSONString())))
+        return(self$actual_instance$toSimpleType())
       } else {
         NULL
       }
     },
 
     #' @description
-    #' Serialize CatalogsCreativeAssetsProductGroupFilterKeys to JSON.
+    #' Serialize CatalogsCreativeAssetsProductGroupFilterKeys to JSON string.
     #'
-    #' @return JSON representation of the CatalogsCreativeAssetsProductGroupFilterKeys.
-    toJSON = function() {
-      if (!is.null(self$actual_instance)) {
-        self$actual_instance$toJSON()
-      } else {
-        NULL
-      }
+    #' @param ... Parameters passed to `jsonlite::toJSON`
+    #' @return JSON string representation of the CatalogsCreativeAssetsProductGroupFilterKeys.
+    toJSONString = function(...) {
+      json <- jsonlite::toJSON(self$toSimpleType(), auto_unbox = TRUE, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

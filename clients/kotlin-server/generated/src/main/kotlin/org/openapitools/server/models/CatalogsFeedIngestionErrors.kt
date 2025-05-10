@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param LINE_LEVEL_INTERNAL_ERROR We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.
@@ -23,6 +24,7 @@ package org.openapitools.server.models
  * @param IMAGE_FILE_NOT_FOUND Image files are unreadable. Please upload new files to continue.
  * @param IMAGE_INVALID_FILE Image files are unreadable. Please upload new files to continue.
  */
+@Serializable
 data class CatalogsFeedIngestionErrors(
     /* We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours. */
     val LINE_LEVEL_INTERNAL_ERROR: kotlin.Int? = null,
@@ -40,7 +42,7 @@ data class CatalogsFeedIngestionErrors(
     val IMAGE_FILE_NOT_FOUND: kotlin.Int? = null,
     /* Image files are unreadable. Please upload new files to continue. */
     val IMAGE_INVALID_FILE: kotlin.Int? = null
-) 
+)
 {
     /**
     * The product count has decreased by more than 99% compared to the last successful ingestion.

@@ -26,7 +26,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsRetailListProductsByCatalogBasedFilterRequest", description = "Request object to list products for a given retail catalog_id and product group filter.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsRetailListProductsByCatalogBasedFilterRequest implements CatalogsVerticalsListProductsByCatalogBasedFilterRequest {
 
   /**

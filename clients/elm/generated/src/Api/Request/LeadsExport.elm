@@ -26,28 +26,35 @@ import Http
 import Json.Decode
 import Json.Encode
 
-{-| <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create an export of leads collected from a lead ad. This returns a lead_export_id  token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+
+{-| Create a request to export leads collected from a lead ad
+
+<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create an export of leads collected from a lead ad. This returns a lead_export_id  token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+
 -}
 leadsExportCreate : String -> Api.Data.LeadsExportCreateRequest -> Api.Request Api.Data.LeadsExportCreateResponse
 leadsExportCreate adAccountId_path leadsExportCreateRequest_body =
     Api.request
         "POST"
         "/ad_accounts/{ad_account_id}/leads_export"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Just (Api.Data.encodeLeadsExportCreateRequest leadsExportCreateRequest_body)))
         Api.Data.leadsExportCreateResponseDecoder
 
 
-{-| <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+{-| Get the lead export from the lead export create call
+
+<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+
 -}
 leadsExportGet : String -> String -> Api.Request Api.Data.LeadsExportResponseData
 leadsExportGet adAccountId_path leadsExportId_path =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/leads_export/{leads_export_id}"
-        [ ( "adAccountId", identity adAccountId_path ), ( "leadsExportId", identity leadsExportId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ), ( "leads_export_id", identity leadsExportId_path ) ]
         []
         []
         Nothing

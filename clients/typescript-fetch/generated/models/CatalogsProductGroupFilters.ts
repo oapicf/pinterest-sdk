@@ -79,11 +79,11 @@ export function CatalogsProductGroupFiltersFromJSONTyped(json: any, ignoreDiscri
     };
 }
 
-  export function CatalogsProductGroupFiltersToJSON(json: any): CatalogsProductGroupFilters {
-      return CatalogsProductGroupFiltersToJSONTyped(json, false);
-  }
+export function CatalogsProductGroupFiltersToJSON(json: any): CatalogsProductGroupFilters {
+    return CatalogsProductGroupFiltersToJSONTyped(json, false);
+}
 
-  export function CatalogsProductGroupFiltersToJSONTyped(value?: CatalogsProductGroupFilters | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsProductGroupFiltersToJSONTyped(value?: CatalogsProductGroupFilters | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

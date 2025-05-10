@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct AdAccountCreateSubscriptionResponse: Codable, JSONEncodable, Hashable {
 
-    static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Subscription ID. */
     public var id: String?
     /** Base64 encoded key for client to decrypt lead data. */
@@ -47,3 +47,6 @@ public struct AdAccountCreateSubscriptionResponse: Codable, JSONEncodable, Hasha
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension AdAccountCreateSubscriptionResponse: Identifiable {}

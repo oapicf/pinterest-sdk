@@ -9,6 +9,7 @@ import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.ConversionEventsDataInnerCustomData;
 import org.openapitools.model.ConversionEventsUserData;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -25,7 +26,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("ConversionEvents_data_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConversionEventsDataInner {
 
   private String eventName;
@@ -38,13 +39,13 @@ public class ConversionEventsDataInner {
 
   private JsonNullable<String> eventSourceUrl = JsonNullable.<String>undefined();
 
-  private Boolean optOut;
+  private @Nullable Boolean optOut;
 
   private JsonNullable<String> partnerName = JsonNullable.<String>undefined();
 
   private ConversionEventsUserData userData;
 
-  private ConversionEventsDataInnerCustomData customData;
+  private @Nullable ConversionEventsDataInnerCustomData customData;
 
   private JsonNullable<String> appId = JsonNullable.<String>undefined();
 
@@ -62,7 +63,7 @@ public class ConversionEventsDataInner {
 
   private JsonNullable<String> osVersion = JsonNullable.<String>undefined();
 
-  private Boolean wifi;
+  private @Nullable Boolean wifi;
 
   private JsonNullable<String> language = JsonNullable.<String>undefined();
 

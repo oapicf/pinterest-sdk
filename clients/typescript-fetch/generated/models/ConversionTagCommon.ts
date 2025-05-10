@@ -128,11 +128,11 @@ export function ConversionTagCommonFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function ConversionTagCommonToJSON(json: any): ConversionTagCommon {
-      return ConversionTagCommonToJSONTyped(json, false);
-  }
+export function ConversionTagCommonToJSON(json: any): ConversionTagCommon {
+    return ConversionTagCommonToJSONTyped(json, false);
+}
 
-  export function ConversionTagCommonToJSONTyped(value?: ConversionTagCommon | null, ignoreDiscriminator: boolean = false): any {
+export function ConversionTagCommonToJSONTyped(value?: ConversionTagCommon | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

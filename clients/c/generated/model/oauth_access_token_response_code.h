@@ -35,9 +35,10 @@ typedef struct oauth_access_token_response_code_t {
     char *refresh_token; // string
     int refresh_token_expires_in; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } oauth_access_token_response_code_t;
 
-oauth_access_token_response_code_t *oauth_access_token_response_code_create(
+__attribute__((deprecated)) oauth_access_token_response_code_t *oauth_access_token_response_code_create(
     pinterest_rest_api_oauth_access_token_response_code_RESPONSETYPE_e response_type,
     char *access_token,
     char *token_type,

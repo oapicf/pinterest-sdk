@@ -52,20 +52,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * OrderLineResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class OrderLineResponse {
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
+  @javax.annotation.Nullable
   private List<OrderLineError> errors = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_ORDER_LINE = "order_line";
   @SerializedName(SERIALIZED_NAME_ORDER_LINE)
+  @javax.annotation.Nullable
   private List<OrderLine> orderLine = new ArrayList<>();
 
   public OrderLineResponse() {
   }
 
-  public OrderLineResponse errors(List<OrderLineError> errors) {
+  public OrderLineResponse errors(@javax.annotation.Nullable List<OrderLineError> errors) {
     this.errors = errors;
     return this;
   }
@@ -87,12 +89,12 @@ public class OrderLineResponse {
     return errors;
   }
 
-  public void setErrors(List<OrderLineError> errors) {
+  public void setErrors(@javax.annotation.Nullable List<OrderLineError> errors) {
     this.errors = errors;
   }
 
 
-  public OrderLineResponse orderLine(List<OrderLine> orderLine) {
+  public OrderLineResponse orderLine(@javax.annotation.Nullable List<OrderLine> orderLine) {
     this.orderLine = orderLine;
     return this;
   }
@@ -114,7 +116,7 @@ public class OrderLineResponse {
     return orderLine;
   }
 
-  public void setOrderLine(List<OrderLine> orderLine) {
+  public void setOrderLine(@javax.annotation.Nullable List<OrderLine> orderLine) {
     this.orderLine = orderLine;
   }
 

@@ -76,7 +76,7 @@ public enum SourceTypeEnum {
 
 public enum ContentTypeEnum {
 
-    @JsonProperty("image/jpeg") JPEG(String.valueOf("image/jpeg")), @JsonProperty("image/png") PNG(String.valueOf("image/png"));
+    @JsonProperty("image/jpeg") IMAGE_JPEG(String.valueOf("image/jpeg")), @JsonProperty("image/png") IMAGE_PNG(String.valueOf("image/png"));
 
 
     private String value;
@@ -117,7 +117,7 @@ public enum ContentTypeEnum {
 
 public enum CoverImageContentTypeEnum {
 
-    @JsonProperty("image/jpeg") JPEG(String.valueOf("image/jpeg")), @JsonProperty("image/png") PNG(String.valueOf("image/png"));
+    @JsonProperty("image/jpeg") IMAGE_JPEG(String.valueOf("image/jpeg")), @JsonProperty("image/png") IMAGE_PNG(String.valueOf("image/png"));
 
 
     private String value;

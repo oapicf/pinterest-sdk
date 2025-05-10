@@ -15,6 +15,7 @@ import org.openapitools.server.models.ConversionTagConfigs
 import org.openapitools.server.models.EnhancedMatchStatusType
 import org.openapitools.server.models.EntityStatus
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param adAccountId Ad account ID.
@@ -27,6 +28,7 @@ import org.openapitools.server.models.EntityStatus
  * @param version Version number.
  * @param configs 
  */
+@Serializable
 data class ConversionTagCommon(
     /* Ad account ID. */
     val adAccountId: kotlin.String? = null,
@@ -43,5 +45,5 @@ data class ConversionTagCommon(
     /* Version number. */
     val version: kotlin.String? = null,
     val configs: ConversionTagConfigs? = null
-) 
+)
 

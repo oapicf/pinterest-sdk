@@ -13,15 +13,17 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.BulkReportingJobStatus
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param reportStatus 
  * @param token 
  * @param message 
  */
+@Serializable
 data class AdsAnalyticsCreateAsyncResponse(
     val reportStatus: BulkReportingJobStatus? = null,
     val token: kotlin.String? = null,
     val message: kotlin.String? = null
-) 
+)
 

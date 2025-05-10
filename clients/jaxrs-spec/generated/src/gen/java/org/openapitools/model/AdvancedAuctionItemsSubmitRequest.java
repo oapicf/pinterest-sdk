@@ -21,10 +21,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Request containing operations to perform on bid prices and bid multipliers for a batch of retail catalog items")
 @JsonTypeName("AdvancedAuctionItemsSubmitRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdvancedAuctionItemsSubmitRequest   {
   private String catalogId;
   private @Valid List<@Valid AdvancedAuctionItemsSubmitRecord> items = new ArrayList<>();
+
+  public AdvancedAuctionItemsSubmitRequest() {
+  }
+
+  @JsonCreator
+  public AdvancedAuctionItemsSubmitRequest(
+    @JsonProperty(required = true, value = "catalog_id") String catalogId,
+    @JsonProperty(required = true, value = "items") List<@Valid AdvancedAuctionItemsSubmitRecord> items
+  ) {
+    this.catalogId = catalogId;
+    this.items = items;
+  }
 
   /**
    * Catalog id pertaining to all items
@@ -36,12 +48,12 @@ public class AdvancedAuctionItemsSubmitRequest   {
 
   
   @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to all items")
-  @JsonProperty("catalog_id")
+  @JsonProperty(required = true, value = "catalog_id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getCatalogId() {
     return catalogId;
   }
 
-  @JsonProperty("catalog_id")
+  @JsonProperty(required = true, value = "catalog_id")
   public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
   }
@@ -56,12 +68,12 @@ public class AdvancedAuctionItemsSubmitRequest   {
 
   
   @ApiModelProperty(required = true, value = "Array of item bid option operations")
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   @NotNull @Valid  @Size(min=1,max=10000)public List<@Valid AdvancedAuctionItemsSubmitRecord> getItems() {
     return items;
   }
 
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   public void setItems(List<@Valid AdvancedAuctionItemsSubmitRecord> items) {
     this.items = items;
   }

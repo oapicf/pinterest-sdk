@@ -49,7 +49,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Account
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class Account {
   /**
    * Type of account
@@ -105,50 +105,62 @@ public class Account {
 
   public static final String SERIALIZED_NAME_ACCOUNT_TYPE = "account_type";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_TYPE)
+  @javax.annotation.Nullable
   private AccountTypeEnum accountType;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_PROFILE_IMAGE = "profile_image";
   @SerializedName(SERIALIZED_NAME_PROFILE_IMAGE)
+  @javax.annotation.Nullable
   private String profileImage;
 
   public static final String SERIALIZED_NAME_WEBSITE_URL = "website_url";
   @SerializedName(SERIALIZED_NAME_WEBSITE_URL)
+  @javax.annotation.Nullable
   private String websiteUrl;
 
   public static final String SERIALIZED_NAME_USERNAME = "username";
   @SerializedName(SERIALIZED_NAME_USERNAME)
+  @javax.annotation.Nullable
   private String username;
 
   public static final String SERIALIZED_NAME_ABOUT = "about";
   @SerializedName(SERIALIZED_NAME_ABOUT)
+  @javax.annotation.Nullable
   private String about;
 
   public static final String SERIALIZED_NAME_BUSINESS_NAME = "business_name";
   @SerializedName(SERIALIZED_NAME_BUSINESS_NAME)
+  @javax.annotation.Nullable
   private String businessName;
 
   public static final String SERIALIZED_NAME_BOARD_COUNT = "board_count";
   @SerializedName(SERIALIZED_NAME_BOARD_COUNT)
+  @javax.annotation.Nullable
   private Integer boardCount;
 
   public static final String SERIALIZED_NAME_PIN_COUNT = "pin_count";
   @SerializedName(SERIALIZED_NAME_PIN_COUNT)
+  @javax.annotation.Nullable
   private Integer pinCount;
 
   public static final String SERIALIZED_NAME_FOLLOWER_COUNT = "follower_count";
   @SerializedName(SERIALIZED_NAME_FOLLOWER_COUNT)
+  @javax.annotation.Nullable
   private Integer followerCount;
 
   public static final String SERIALIZED_NAME_FOLLOWING_COUNT = "following_count";
   @SerializedName(SERIALIZED_NAME_FOLLOWING_COUNT)
+  @javax.annotation.Nullable
   private Integer followingCount;
 
   public static final String SERIALIZED_NAME_MONTHLY_VIEWS = "monthly_views";
   @SerializedName(SERIALIZED_NAME_MONTHLY_VIEWS)
+  @javax.annotation.Nullable
   private Integer monthlyViews;
 
   public Account() {
@@ -169,7 +181,7 @@ public class Account {
     this.monthlyViews = monthlyViews;
   }
 
-  public Account accountType(AccountTypeEnum accountType) {
+  public Account accountType(@javax.annotation.Nullable AccountTypeEnum accountType) {
     this.accountType = accountType;
     return this;
   }
@@ -183,12 +195,12 @@ public class Account {
     return accountType;
   }
 
-  public void setAccountType(AccountTypeEnum accountType) {
+  public void setAccountType(@javax.annotation.Nullable AccountTypeEnum accountType) {
     this.accountType = accountType;
   }
 
 
-  public Account id(String id) {
+  public Account id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -202,12 +214,12 @@ public class Account {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public Account profileImage(String profileImage) {
+  public Account profileImage(@javax.annotation.Nullable String profileImage) {
     this.profileImage = profileImage;
     return this;
   }
@@ -221,12 +233,12 @@ public class Account {
     return profileImage;
   }
 
-  public void setProfileImage(String profileImage) {
+  public void setProfileImage(@javax.annotation.Nullable String profileImage) {
     this.profileImage = profileImage;
   }
 
 
-  public Account websiteUrl(String websiteUrl) {
+  public Account websiteUrl(@javax.annotation.Nullable String websiteUrl) {
     this.websiteUrl = websiteUrl;
     return this;
   }
@@ -240,12 +252,12 @@ public class Account {
     return websiteUrl;
   }
 
-  public void setWebsiteUrl(String websiteUrl) {
+  public void setWebsiteUrl(@javax.annotation.Nullable String websiteUrl) {
     this.websiteUrl = websiteUrl;
   }
 
 
-  public Account username(String username) {
+  public Account username(@javax.annotation.Nullable String username) {
     this.username = username;
     return this;
   }
@@ -259,12 +271,12 @@ public class Account {
     return username;
   }
 
-  public void setUsername(String username) {
+  public void setUsername(@javax.annotation.Nullable String username) {
     this.username = username;
   }
 
 
-  public Account about(String about) {
+  public Account about(@javax.annotation.Nullable String about) {
     this.about = about;
     return this;
   }
@@ -278,12 +290,12 @@ public class Account {
     return about;
   }
 
-  public void setAbout(String about) {
+  public void setAbout(@javax.annotation.Nullable String about) {
     this.about = about;
   }
 
 
-  public Account businessName(String businessName) {
+  public Account businessName(@javax.annotation.Nullable String businessName) {
     this.businessName = businessName;
     return this;
   }
@@ -297,7 +309,7 @@ public class Account {
     return businessName;
   }
 
-  public void setBusinessName(String businessName) {
+  public void setBusinessName(@javax.annotation.Nullable String businessName) {
     this.businessName = businessName;
   }
 

@@ -13,15 +13,17 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.DeleteAssetGroupResponseExceptionsInner
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param deletedAssetGroups A list of ids of successfully deleted asset groups.
  * @param exceptions A list of errors associated with the asset groups. Will be returned if there is an error.
  */
+@Serializable
 data class DeleteAssetGroupResponse(
     /* A list of ids of successfully deleted asset groups. */
     val deletedAssetGroups: kotlin.collections.List<kotlin.String>? = null,
     /* A list of errors associated with the asset groups. Will be returned if there is an error. */
     val exceptions: kotlin.collections.List<DeleteAssetGroupResponseExceptionsInner>? = null
-) 
+)
 

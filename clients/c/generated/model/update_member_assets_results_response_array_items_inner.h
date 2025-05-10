@@ -22,9 +22,10 @@ typedef struct update_member_assets_results_response_array_items_inner_t update_
 typedef struct update_member_assets_results_response_array_items_inner_t {
     struct users_for_individual_asset_response_t *response; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } update_member_assets_results_response_array_items_inner_t;
 
-update_member_assets_results_response_array_items_inner_t *update_member_assets_results_response_array_items_inner_create(
+__attribute__((deprecated)) update_member_assets_results_response_array_items_inner_t *update_member_assets_results_response_array_items_inner_create(
     users_for_individual_asset_response_t *response
 );
 

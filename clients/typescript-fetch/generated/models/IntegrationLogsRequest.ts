@@ -57,11 +57,11 @@ export function IntegrationLogsRequestFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-  export function IntegrationLogsRequestToJSON(json: any): IntegrationLogsRequest {
-      return IntegrationLogsRequestToJSONTyped(json, false);
-  }
+export function IntegrationLogsRequestToJSON(json: any): IntegrationLogsRequest {
+    return IntegrationLogsRequestToJSONTyped(json, false);
+}
 
-  export function IntegrationLogsRequestToJSONTyped(value?: IntegrationLogsRequest | null, ignoreDiscriminator: boolean = false): any {
+export function IntegrationLogsRequestToJSONTyped(value?: IntegrationLogsRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

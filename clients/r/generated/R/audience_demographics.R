@@ -62,32 +62,57 @@ AudienceDemographics <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return AudienceDemographics in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return AudienceDemographics as a base R list.
+    #' @examples
+    #' # convert array of AudienceDemographics (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert AudienceDemographics to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       AudienceDemographicsObject <- list()
       if (!is.null(self$`ages`)) {
         AudienceDemographicsObject[["ages"]] <-
-          lapply(self$`ages`, function(x) x$toJSON())
+          lapply(self$`ages`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`genders`)) {
         AudienceDemographicsObject[["genders"]] <-
-          lapply(self$`genders`, function(x) x$toJSON())
+          lapply(self$`genders`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`devices`)) {
         AudienceDemographicsObject[["devices"]] <-
-          lapply(self$`devices`, function(x) x$toJSON())
+          lapply(self$`devices`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`metros`)) {
         AudienceDemographicsObject[["metros"]] <-
-          lapply(self$`metros`, function(x) x$toJSON())
+          lapply(self$`metros`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`countries`)) {
         AudienceDemographicsObject[["countries"]] <-
-          lapply(self$`countries`, function(x) x$toJSON())
+          lapply(self$`countries`, function(x) x$toSimpleType())
       }
-      AudienceDemographicsObject
+      return(AudienceDemographicsObject)
     },
 
     #' @description
@@ -117,53 +142,13 @@ AudienceDemographics <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return AudienceDemographics in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`ages`)) {
-          sprintf(
-          '"ages":
-          [%s]
-',
-          paste(sapply(self$`ages`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`genders`)) {
-          sprintf(
-          '"genders":
-          [%s]
-',
-          paste(sapply(self$`genders`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`devices`)) {
-          sprintf(
-          '"devices":
-          [%s]
-',
-          paste(sapply(self$`devices`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`metros`)) {
-          sprintf(
-          '"metros":
-          [%s]
-',
-          paste(sapply(self$`metros`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`countries`)) {
-          sprintf(
-          '"countries":
-          [%s]
-',
-          paste(sapply(self$`countries`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

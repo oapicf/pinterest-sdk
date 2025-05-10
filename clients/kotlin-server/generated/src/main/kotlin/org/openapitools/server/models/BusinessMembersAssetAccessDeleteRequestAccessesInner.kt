@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param assetId Id of the asset on which to remove member permissions.
  * @param memberId Unique identifier of the member on which to perform the asset permission removal
  */
+@Serializable
 data class BusinessMembersAssetAccessDeleteRequestAccessesInner(
     /* Id of the asset on which to remove member permissions. */
     val assetId: kotlin.String,
     /* Unique identifier of the member on which to perform the asset permission removal */
     val memberId: kotlin.String
-) 
+)
 

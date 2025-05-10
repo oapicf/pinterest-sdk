@@ -50,7 +50,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsCreativeAssetsItemsPostFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsCreativeAssetsItemsPostFilter {
   /**
    * Gets or Sets catalogType
@@ -104,20 +104,23 @@ public class CatalogsCreativeAssetsItemsPostFilter {
 
   public static final String SERIALIZED_NAME_CATALOG_TYPE = "catalog_type";
   @SerializedName(SERIALIZED_NAME_CATALOG_TYPE)
+  @javax.annotation.Nonnull
   private CatalogTypeEnum catalogType;
 
   public static final String SERIALIZED_NAME_CREATIVE_ASSETS_IDS = "creative_assets_ids";
   @SerializedName(SERIALIZED_NAME_CREATIVE_ASSETS_IDS)
+  @javax.annotation.Nonnull
   private List<String> creativeAssetsIds = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_CATALOG_ID = "catalog_id";
   @SerializedName(SERIALIZED_NAME_CATALOG_ID)
+  @javax.annotation.Nullable
   private String catalogId;
 
   public CatalogsCreativeAssetsItemsPostFilter() {
   }
 
-  public CatalogsCreativeAssetsItemsPostFilter catalogType(CatalogTypeEnum catalogType) {
+  public CatalogsCreativeAssetsItemsPostFilter catalogType(@javax.annotation.Nonnull CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -131,12 +134,12 @@ public class CatalogsCreativeAssetsItemsPostFilter {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogTypeEnum catalogType) {
+  public void setCatalogType(@javax.annotation.Nonnull CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
 
-  public CatalogsCreativeAssetsItemsPostFilter creativeAssetsIds(List<String> creativeAssetsIds) {
+  public CatalogsCreativeAssetsItemsPostFilter creativeAssetsIds(@javax.annotation.Nonnull List<String> creativeAssetsIds) {
     this.creativeAssetsIds = creativeAssetsIds;
     return this;
   }
@@ -158,12 +161,12 @@ public class CatalogsCreativeAssetsItemsPostFilter {
     return creativeAssetsIds;
   }
 
-  public void setCreativeAssetsIds(List<String> creativeAssetsIds) {
+  public void setCreativeAssetsIds(@javax.annotation.Nonnull List<String> creativeAssetsIds) {
     this.creativeAssetsIds = creativeAssetsIds;
   }
 
 
-  public CatalogsCreativeAssetsItemsPostFilter catalogId(String catalogId) {
+  public CatalogsCreativeAssetsItemsPostFilter catalogId(@javax.annotation.Nullable String catalogId) {
     this.catalogId = catalogId;
     return this;
   }
@@ -177,7 +180,7 @@ public class CatalogsCreativeAssetsItemsPostFilter {
     return catalogId;
   }
 
-  public void setCatalogId(String catalogId) {
+  public void setCatalogId(@javax.annotation.Nullable String catalogId) {
     this.catalogId = catalogId;
   }
 

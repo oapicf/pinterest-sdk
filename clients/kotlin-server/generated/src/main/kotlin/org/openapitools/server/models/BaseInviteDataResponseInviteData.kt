@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Metadata for the invite/request.
  * @param inviteExpiration The date and time when the invite/request will expire. Returned in milliseconds.
@@ -20,6 +21,7 @@ package org.openapitools.server.models
  * @param lastUpdatedTime The date and time the invite/request was last updated. Returned in milliseconds.
  * @param sentAt The date and time the invite/request was sent/created. Returned in milliseconds.
  */
+@Serializable
 data class BaseInviteDataResponseInviteData(
     /* The date and time when the invite/request will expire. Returned in milliseconds. */
     val inviteExpiration: kotlin.Int? = null,
@@ -31,5 +33,5 @@ data class BaseInviteDataResponseInviteData(
     val lastUpdatedTime: kotlin.Int? = null,
     /* The date and time the invite/request was sent/created. Returned in milliseconds. */
     val sentAt: kotlin.Int? = null
-) 
+)
 

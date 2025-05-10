@@ -86,9 +86,9 @@ class AudienceSharingApiSimulation extends Simulation {
         .feed(ad_accounts_audiences_shared_accounts/listPATHFeeder)
         .exec(http("adAccountsAudiencesSharedAccountsList")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/audiences/shared/accounts")
-        .queryParam("account_type","${account_type}")
         .queryParam("page_size","${page_size}")
         .queryParam("audience_id","${audience_id}")
+        .queryParam("account_type","${account_type}")
         .queryParam("bookmark","${bookmark}")
 )
 
@@ -105,9 +105,9 @@ class AudienceSharingApiSimulation extends Simulation {
         .feed(business_account_audiences_shared_accounts/listPATHFeeder)
         .exec(http("businessAccountAudiencesSharedAccountsList")
         .httpRequest("GET","/businesses/${business_id}/audiences/shared/accounts")
-        .queryParam("account_type","${account_type}")
         .queryParam("page_size","${page_size}")
         .queryParam("audience_id","${audience_id}")
+        .queryParam("account_type","${account_type}")
         .queryParam("bookmark","${bookmark}")
 )
 

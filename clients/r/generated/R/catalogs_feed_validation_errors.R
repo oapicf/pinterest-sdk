@@ -319,10 +319,35 @@ CatalogsFeedValidationErrors <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return CatalogsFeedValidationErrors in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return CatalogsFeedValidationErrors as a base R list.
+    #' @examples
+    #' # convert array of CatalogsFeedValidationErrors (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert CatalogsFeedValidationErrors to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       CatalogsFeedValidationErrorsObject <- list()
       if (!is.null(self$`FETCH_ERROR`)) {
         CatalogsFeedValidationErrorsObject[["FETCH_ERROR"]] <-
@@ -456,7 +481,7 @@ CatalogsFeedValidationErrors <- R6::R6Class(
         CatalogsFeedValidationErrorsObject[["PRICE_CANNOT_BE_DETERMINED"]] <-
           self$`PRICE_CANNOT_BE_DETERMINED`
       }
-      CatalogsFeedValidationErrorsObject
+      return(CatalogsFeedValidationErrorsObject)
     },
 
     #' @description
@@ -570,277 +595,13 @@ CatalogsFeedValidationErrors <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return CatalogsFeedValidationErrors in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`FETCH_ERROR`)) {
-          sprintf(
-          '"FETCH_ERROR":
-            %d
-                    ',
-          self$`FETCH_ERROR`
-          )
-        },
-        if (!is.null(self$`FETCH_INACTIVE_FEED_ERROR`)) {
-          sprintf(
-          '"FETCH_INACTIVE_FEED_ERROR":
-            %d
-                    ',
-          self$`FETCH_INACTIVE_FEED_ERROR`
-          )
-        },
-        if (!is.null(self$`ENCODING_ERROR`)) {
-          sprintf(
-          '"ENCODING_ERROR":
-            %d
-                    ',
-          self$`ENCODING_ERROR`
-          )
-        },
-        if (!is.null(self$`DELIMITER_ERROR`)) {
-          sprintf(
-          '"DELIMITER_ERROR":
-            %d
-                    ',
-          self$`DELIMITER_ERROR`
-          )
-        },
-        if (!is.null(self$`REQUIRED_COLUMNS_MISSING`)) {
-          sprintf(
-          '"REQUIRED_COLUMNS_MISSING":
-            %d
-                    ',
-          self$`REQUIRED_COLUMNS_MISSING`
-          )
-        },
-        if (!is.null(self$`DUPLICATE_PRODUCTS`)) {
-          sprintf(
-          '"DUPLICATE_PRODUCTS":
-            %d
-                    ',
-          self$`DUPLICATE_PRODUCTS`
-          )
-        },
-        if (!is.null(self$`IMAGE_LINK_INVALID`)) {
-          sprintf(
-          '"IMAGE_LINK_INVALID":
-            %d
-                    ',
-          self$`IMAGE_LINK_INVALID`
-          )
-        },
-        if (!is.null(self$`ITEMID_MISSING`)) {
-          sprintf(
-          '"ITEMID_MISSING":
-            %d
-                    ',
-          self$`ITEMID_MISSING`
-          )
-        },
-        if (!is.null(self$`TITLE_MISSING`)) {
-          sprintf(
-          '"TITLE_MISSING":
-            %d
-                    ',
-          self$`TITLE_MISSING`
-          )
-        },
-        if (!is.null(self$`DESCRIPTION_MISSING`)) {
-          sprintf(
-          '"DESCRIPTION_MISSING":
-            %d
-                    ',
-          self$`DESCRIPTION_MISSING`
-          )
-        },
-        if (!is.null(self$`PRODUCT_LINK_MISSING`)) {
-          sprintf(
-          '"PRODUCT_LINK_MISSING":
-            %d
-                    ',
-          self$`PRODUCT_LINK_MISSING`
-          )
-        },
-        if (!is.null(self$`IMAGE_LINK_MISSING`)) {
-          sprintf(
-          '"IMAGE_LINK_MISSING":
-            %d
-                    ',
-          self$`IMAGE_LINK_MISSING`
-          )
-        },
-        if (!is.null(self$`AVAILABILITY_INVALID`)) {
-          sprintf(
-          '"AVAILABILITY_INVALID":
-            %d
-                    ',
-          self$`AVAILABILITY_INVALID`
-          )
-        },
-        if (!is.null(self$`PRODUCT_PRICE_INVALID`)) {
-          sprintf(
-          '"PRODUCT_PRICE_INVALID":
-            %d
-                    ',
-          self$`PRODUCT_PRICE_INVALID`
-          )
-        },
-        if (!is.null(self$`LINK_FORMAT_INVALID`)) {
-          sprintf(
-          '"LINK_FORMAT_INVALID":
-            %d
-                    ',
-          self$`LINK_FORMAT_INVALID`
-          )
-        },
-        if (!is.null(self$`PARSE_LINE_ERROR`)) {
-          sprintf(
-          '"PARSE_LINE_ERROR":
-            %d
-                    ',
-          self$`PARSE_LINE_ERROR`
-          )
-        },
-        if (!is.null(self$`ADWORDS_FORMAT_INVALID`)) {
-          sprintf(
-          '"ADWORDS_FORMAT_INVALID":
-            %d
-                    ',
-          self$`ADWORDS_FORMAT_INVALID`
-          )
-        },
-        if (!is.null(self$`INTERNAL_SERVICE_ERROR`)) {
-          sprintf(
-          '"INTERNAL_SERVICE_ERROR":
-            %d
-                    ',
-          self$`INTERNAL_SERVICE_ERROR`
-          )
-        },
-        if (!is.null(self$`NO_VERIFIED_DOMAIN`)) {
-          sprintf(
-          '"NO_VERIFIED_DOMAIN":
-            %d
-                    ',
-          self$`NO_VERIFIED_DOMAIN`
-          )
-        },
-        if (!is.null(self$`ADULT_INVALID`)) {
-          sprintf(
-          '"ADULT_INVALID":
-            %d
-                    ',
-          self$`ADULT_INVALID`
-          )
-        },
-        if (!is.null(self$`IMAGE_LINK_LENGTH_TOO_LONG`)) {
-          sprintf(
-          '"IMAGE_LINK_LENGTH_TOO_LONG":
-            %d
-                    ',
-          self$`IMAGE_LINK_LENGTH_TOO_LONG`
-          )
-        },
-        if (!is.null(self$`INVALID_DOMAIN`)) {
-          sprintf(
-          '"INVALID_DOMAIN":
-            %d
-                    ',
-          self$`INVALID_DOMAIN`
-          )
-        },
-        if (!is.null(self$`FEED_LENGTH_TOO_LONG`)) {
-          sprintf(
-          '"FEED_LENGTH_TOO_LONG":
-            %d
-                    ',
-          self$`FEED_LENGTH_TOO_LONG`
-          )
-        },
-        if (!is.null(self$`LINK_LENGTH_TOO_LONG`)) {
-          sprintf(
-          '"LINK_LENGTH_TOO_LONG":
-            %d
-                    ',
-          self$`LINK_LENGTH_TOO_LONG`
-          )
-        },
-        if (!is.null(self$`MALFORMED_XML`)) {
-          sprintf(
-          '"MALFORMED_XML":
-            %d
-                    ',
-          self$`MALFORMED_XML`
-          )
-        },
-        if (!is.null(self$`PRICE_MISSING`)) {
-          sprintf(
-          '"PRICE_MISSING":
-            %d
-                    ',
-          self$`PRICE_MISSING`
-          )
-        },
-        if (!is.null(self$`FEED_TOO_SMALL`)) {
-          sprintf(
-          '"FEED_TOO_SMALL":
-            %d
-                    ',
-          self$`FEED_TOO_SMALL`
-          )
-        },
-        if (!is.null(self$`MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED`)) {
-          sprintf(
-          '"MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED":
-            %d
-                    ',
-          self$`MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED`
-          )
-        },
-        if (!is.null(self$`ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE`)) {
-          sprintf(
-          '"ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE":
-            %d
-                    ',
-          self$`ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE`
-          )
-        },
-        if (!is.null(self$`PINJOIN_CONTENT_UNSAFE`)) {
-          sprintf(
-          '"PINJOIN_CONTENT_UNSAFE":
-            %d
-                    ',
-          self$`PINJOIN_CONTENT_UNSAFE`
-          )
-        },
-        if (!is.null(self$`BLOCKLISTED_IMAGE_SIGNATURE`)) {
-          sprintf(
-          '"BLOCKLISTED_IMAGE_SIGNATURE":
-            %d
-                    ',
-          self$`BLOCKLISTED_IMAGE_SIGNATURE`
-          )
-        },
-        if (!is.null(self$`LIST_PRICE_INVALID`)) {
-          sprintf(
-          '"LIST_PRICE_INVALID":
-            %d
-                    ',
-          self$`LIST_PRICE_INVALID`
-          )
-        },
-        if (!is.null(self$`PRICE_CANNOT_BE_DETERMINED`)) {
-          sprintf(
-          '"PRICE_CANNOT_BE_DETERMINED":
-            %d
-                    ',
-          self$`PRICE_CANNOT_BE_DETERMINED`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

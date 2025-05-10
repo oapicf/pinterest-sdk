@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.PinMedia
 
+import kotlinx.serialization.Serializable
 /**
  * Summarized pin information
  * @param media 
@@ -21,11 +22,12 @@ import org.openapitools.server.models.PinMedia
  * @param title 
  * @param description 
  */
+@Serializable
 data class SummaryPin(
     val media: PinMedia? = null,
     val altText: kotlin.String? = null,
     val link: kotlin.String? = null,
     val title: kotlin.String? = null,
     val description: kotlin.String? = null
-) 
+)
 

@@ -15,6 +15,7 @@ import org.openapitools.server.models.CreativeType
 import org.openapitools.server.models.EntityStatus
 import org.openapitools.server.models.GridClickType
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param id ID of the product group promotion.
@@ -36,6 +37,7 @@ import org.openapitools.server.models.GridClickType
  * @param gridClickType 
  * @param creativeType 
  */
+@Serializable
 data class ProductGroupPromotionCreateRequestElement(
     /* ID of the product group promotion. */
     val id: kotlin.String? = null,
@@ -70,5 +72,5 @@ data class ProductGroupPromotionCreateRequestElement(
     val collectionsHeroDestinationUrl: kotlin.String? = null,
     val gridClickType: GridClickType? = null,
     val creativeType: CreativeType? = null
-) 
+)
 

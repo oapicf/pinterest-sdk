@@ -446,10 +446,35 @@ ItemAttributesRequest <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return ItemAttributesRequest in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return ItemAttributesRequest as a base R list.
+    #' @examples
+    #' # convert array of ItemAttributesRequest (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert ItemAttributesRequest to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       ItemAttributesRequestObject <- list()
       if (!is.null(self$`ad_link`)) {
         ItemAttributesRequestObject[["ad_link"]] <-
@@ -637,13 +662,13 @@ ItemAttributesRequest <- R6::R6Class(
       }
       if (!is.null(self$`image_link`)) {
         ItemAttributesRequestObject[["image_link"]] <-
-          self$`image_link`$toJSON()
+          self$`image_link`$toSimpleType()
       }
       if (!is.null(self$`video_link`)) {
         ItemAttributesRequestObject[["video_link"]] <-
           self$`video_link`
       }
-      ItemAttributesRequestObject
+      return(ItemAttributesRequestObject)
     },
 
     #' @description
@@ -804,397 +829,13 @@ ItemAttributesRequest <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return ItemAttributesRequest in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`ad_link`)) {
-          sprintf(
-          '"ad_link":
-            "%s"
-                    ',
-          self$`ad_link`
-          )
-        },
-        if (!is.null(self$`adult`)) {
-          sprintf(
-          '"adult":
-            %s
-                    ',
-          tolower(self$`adult`)
-          )
-        },
-        if (!is.null(self$`age_group`)) {
-          sprintf(
-          '"age_group":
-            "%s"
-                    ',
-          self$`age_group`
-          )
-        },
-        if (!is.null(self$`availability`)) {
-          sprintf(
-          '"availability":
-            "%s"
-                    ',
-          self$`availability`
-          )
-        },
-        if (!is.null(self$`average_review_rating`)) {
-          sprintf(
-          '"average_review_rating":
-            %d
-                    ',
-          self$`average_review_rating`
-          )
-        },
-        if (!is.null(self$`brand`)) {
-          sprintf(
-          '"brand":
-            "%s"
-                    ',
-          self$`brand`
-          )
-        },
-        if (!is.null(self$`checkout_enabled`)) {
-          sprintf(
-          '"checkout_enabled":
-            %s
-                    ',
-          tolower(self$`checkout_enabled`)
-          )
-        },
-        if (!is.null(self$`color`)) {
-          sprintf(
-          '"color":
-            "%s"
-                    ',
-          self$`color`
-          )
-        },
-        if (!is.null(self$`condition`)) {
-          sprintf(
-          '"condition":
-            "%s"
-                    ',
-          self$`condition`
-          )
-        },
-        if (!is.null(self$`custom_label_0`)) {
-          sprintf(
-          '"custom_label_0":
-            "%s"
-                    ',
-          self$`custom_label_0`
-          )
-        },
-        if (!is.null(self$`custom_label_1`)) {
-          sprintf(
-          '"custom_label_1":
-            "%s"
-                    ',
-          self$`custom_label_1`
-          )
-        },
-        if (!is.null(self$`custom_label_2`)) {
-          sprintf(
-          '"custom_label_2":
-            "%s"
-                    ',
-          self$`custom_label_2`
-          )
-        },
-        if (!is.null(self$`custom_label_3`)) {
-          sprintf(
-          '"custom_label_3":
-            "%s"
-                    ',
-          self$`custom_label_3`
-          )
-        },
-        if (!is.null(self$`custom_label_4`)) {
-          sprintf(
-          '"custom_label_4":
-            "%s"
-                    ',
-          self$`custom_label_4`
-          )
-        },
-        if (!is.null(self$`description`)) {
-          sprintf(
-          '"description":
-            "%s"
-                    ',
-          self$`description`
-          )
-        },
-        if (!is.null(self$`free_shipping_label`)) {
-          sprintf(
-          '"free_shipping_label":
-            %s
-                    ',
-          tolower(self$`free_shipping_label`)
-          )
-        },
-        if (!is.null(self$`free_shipping_limit`)) {
-          sprintf(
-          '"free_shipping_limit":
-            "%s"
-                    ',
-          self$`free_shipping_limit`
-          )
-        },
-        if (!is.null(self$`gender`)) {
-          sprintf(
-          '"gender":
-            "%s"
-                    ',
-          self$`gender`
-          )
-        },
-        if (!is.null(self$`google_product_category`)) {
-          sprintf(
-          '"google_product_category":
-            "%s"
-                    ',
-          self$`google_product_category`
-          )
-        },
-        if (!is.null(self$`gtin`)) {
-          sprintf(
-          '"gtin":
-            %d
-                    ',
-          self$`gtin`
-          )
-        },
-        if (!is.null(self$`id`)) {
-          sprintf(
-          '"id":
-            "%s"
-                    ',
-          self$`id`
-          )
-        },
-        if (!is.null(self$`item_group_id`)) {
-          sprintf(
-          '"item_group_id":
-            "%s"
-                    ',
-          self$`item_group_id`
-          )
-        },
-        if (!is.null(self$`last_updated_time`)) {
-          sprintf(
-          '"last_updated_time":
-            %d
-                    ',
-          self$`last_updated_time`
-          )
-        },
-        if (!is.null(self$`link`)) {
-          sprintf(
-          '"link":
-            "%s"
-                    ',
-          self$`link`
-          )
-        },
-        if (!is.null(self$`material`)) {
-          sprintf(
-          '"material":
-            "%s"
-                    ',
-          self$`material`
-          )
-        },
-        if (!is.null(self$`min_ad_price`)) {
-          sprintf(
-          '"min_ad_price":
-            "%s"
-                    ',
-          self$`min_ad_price`
-          )
-        },
-        if (!is.null(self$`mobile_link`)) {
-          sprintf(
-          '"mobile_link":
-            "%s"
-                    ',
-          self$`mobile_link`
-          )
-        },
-        if (!is.null(self$`mpn`)) {
-          sprintf(
-          '"mpn":
-            "%s"
-                    ',
-          self$`mpn`
-          )
-        },
-        if (!is.null(self$`number_of_ratings`)) {
-          sprintf(
-          '"number_of_ratings":
-            %d
-                    ',
-          self$`number_of_ratings`
-          )
-        },
-        if (!is.null(self$`number_of_reviews`)) {
-          sprintf(
-          '"number_of_reviews":
-            %d
-                    ',
-          self$`number_of_reviews`
-          )
-        },
-        if (!is.null(self$`pattern`)) {
-          sprintf(
-          '"pattern":
-            "%s"
-                    ',
-          self$`pattern`
-          )
-        },
-        if (!is.null(self$`price`)) {
-          sprintf(
-          '"price":
-            "%s"
-                    ',
-          self$`price`
-          )
-        },
-        if (!is.null(self$`product_type`)) {
-          sprintf(
-          '"product_type":
-            "%s"
-                    ',
-          self$`product_type`
-          )
-        },
-        if (!is.null(self$`sale_price`)) {
-          sprintf(
-          '"sale_price":
-            "%s"
-                    ',
-          self$`sale_price`
-          )
-        },
-        if (!is.null(self$`shipping`)) {
-          sprintf(
-          '"shipping":
-            "%s"
-                    ',
-          self$`shipping`
-          )
-        },
-        if (!is.null(self$`shipping_height`)) {
-          sprintf(
-          '"shipping_height":
-            "%s"
-                    ',
-          self$`shipping_height`
-          )
-        },
-        if (!is.null(self$`shipping_weight`)) {
-          sprintf(
-          '"shipping_weight":
-            "%s"
-                    ',
-          self$`shipping_weight`
-          )
-        },
-        if (!is.null(self$`shipping_width`)) {
-          sprintf(
-          '"shipping_width":
-            "%s"
-                    ',
-          self$`shipping_width`
-          )
-        },
-        if (!is.null(self$`size`)) {
-          sprintf(
-          '"size":
-            "%s"
-                    ',
-          self$`size`
-          )
-        },
-        if (!is.null(self$`size_system`)) {
-          sprintf(
-          '"size_system":
-            "%s"
-                    ',
-          self$`size_system`
-          )
-        },
-        if (!is.null(self$`size_type`)) {
-          sprintf(
-          '"size_type":
-            "%s"
-                    ',
-          self$`size_type`
-          )
-        },
-        if (!is.null(self$`tax`)) {
-          sprintf(
-          '"tax":
-            "%s"
-                    ',
-          self$`tax`
-          )
-        },
-        if (!is.null(self$`title`)) {
-          sprintf(
-          '"title":
-            "%s"
-                    ',
-          self$`title`
-          )
-        },
-        if (!is.null(self$`variant_names`)) {
-          sprintf(
-          '"variant_names":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`variant_names`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`variant_values`)) {
-          sprintf(
-          '"variant_values":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`variant_values`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`additional_image_link`)) {
-          sprintf(
-          '"additional_image_link":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`additional_image_link`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`image_link`)) {
-          sprintf(
-          '"image_link":
-          %s
-          ',
-          jsonlite::toJSON(self$`image_link`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`video_link`)) {
-          sprintf(
-          '"video_link":
-            "%s"
-                    ',
-          self$`video_link`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

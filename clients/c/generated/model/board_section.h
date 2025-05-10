@@ -22,9 +22,10 @@ typedef struct board_section_t {
     char *id; // string
     char *name; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } board_section_t;
 
-board_section_t *board_section_create(
+__attribute__((deprecated)) board_section_t *board_section_create(
     char *id,
     char *name
 );

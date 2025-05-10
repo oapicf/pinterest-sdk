@@ -49,16 +49,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ProductGroupReferenceFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ProductGroupReferenceFilter {
   public static final String SERIALIZED_NAME_P_R_O_D_U_C_T_G_R_O_U_P = "PRODUCT_GROUP";
   @SerializedName(SERIALIZED_NAME_P_R_O_D_U_C_T_G_R_O_U_P)
+  @javax.annotation.Nonnull
   private CatalogsProductGroupMultipleStringCriteria PRODUCT_GROUP;
 
   public ProductGroupReferenceFilter() {
   }
 
-  public ProductGroupReferenceFilter PRODUCT_GROUP(CatalogsProductGroupMultipleStringCriteria PRODUCT_GROUP) {
+  public ProductGroupReferenceFilter PRODUCT_GROUP(@javax.annotation.Nonnull CatalogsProductGroupMultipleStringCriteria PRODUCT_GROUP) {
     this.PRODUCT_GROUP = PRODUCT_GROUP;
     return this;
   }
@@ -72,7 +73,7 @@ public class ProductGroupReferenceFilter {
     return PRODUCT_GROUP;
   }
 
-  public void setPRODUCTGROUP(CatalogsProductGroupMultipleStringCriteria PRODUCT_GROUP) {
+  public void setPRODUCTGROUP(@javax.annotation.Nonnull CatalogsProductGroupMultipleStringCriteria PRODUCT_GROUP) {
     this.PRODUCT_GROUP = PRODUCT_GROUP;
   }
 

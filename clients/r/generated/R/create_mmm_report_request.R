@@ -97,10 +97,35 @@ CreateMMMReportRequest <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return CreateMMMReportRequest in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return CreateMMMReportRequest as a base R list.
+    #' @examples
+    #' # convert array of CreateMMMReportRequest (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert CreateMMMReportRequest to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       CreateMMMReportRequestObject <- list()
       if (!is.null(self$`report_name`)) {
         CreateMMMReportRequestObject[["report_name"]] <-
@@ -124,17 +149,17 @@ CreateMMMReportRequest <- R6::R6Class(
       }
       if (!is.null(self$`targeting_types`)) {
         CreateMMMReportRequestObject[["targeting_types"]] <-
-          lapply(self$`targeting_types`, function(x) x$toJSON())
+          lapply(self$`targeting_types`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`columns`)) {
         CreateMMMReportRequestObject[["columns"]] <-
-          lapply(self$`columns`, function(x) x$toJSON())
+          lapply(self$`columns`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`countries`)) {
         CreateMMMReportRequestObject[["countries"]] <-
-          lapply(self$`countries`, function(x) x$toJSON())
+          lapply(self$`countries`, function(x) x$toSimpleType())
       }
-      CreateMMMReportRequestObject
+      return(CreateMMMReportRequestObject)
     },
 
     #' @description
@@ -179,77 +204,13 @@ CreateMMMReportRequest <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return CreateMMMReportRequest in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`report_name`)) {
-          sprintf(
-          '"report_name":
-            "%s"
-                    ',
-          self$`report_name`
-          )
-        },
-        if (!is.null(self$`start_date`)) {
-          sprintf(
-          '"start_date":
-            "%s"
-                    ',
-          self$`start_date`
-          )
-        },
-        if (!is.null(self$`end_date`)) {
-          sprintf(
-          '"end_date":
-            "%s"
-                    ',
-          self$`end_date`
-          )
-        },
-        if (!is.null(self$`granularity`)) {
-          sprintf(
-          '"granularity":
-            "%s"
-                    ',
-          self$`granularity`
-          )
-        },
-        if (!is.null(self$`level`)) {
-          sprintf(
-          '"level":
-            "%s"
-                    ',
-          self$`level`
-          )
-        },
-        if (!is.null(self$`targeting_types`)) {
-          sprintf(
-          '"targeting_types":
-          [%s]
-',
-          paste(sapply(self$`targeting_types`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`columns`)) {
-          sprintf(
-          '"columns":
-          [%s]
-',
-          paste(sapply(self$`columns`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`countries`)) {
-          sprintf(
-          '"countries":
-          [%s]
-',
-          paste(sapply(self$`countries`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

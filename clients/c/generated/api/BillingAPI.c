@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 
 // Redeem ad credits
@@ -25,15 +20,20 @@ BillingAPI_adsCreditRedeem(apiClient_t *apiClient, char *ad_account_id, ads_cred
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/ads_credit/redeem")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/ads_credit/redeem");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/ads_credit/redeem");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -48,9 +48,10 @@ BillingAPI_adsCreditRedeem(apiClient_t *apiClient, char *ad_account_id, ads_cred
     cJSON *localVarSingleItemJSON_ads_credit_redeem_request = NULL;
     if (ads_credit_redeem_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_ads_credit_redeem_request = ads_credit_redeem_request_convertToJSON(ads_credit_redeem_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_ads_credit_redeem_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -62,6 +63,7 @@ BillingAPI_adsCreditRedeem(apiClient_t *apiClient, char *ad_account_id, ads_cred
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -77,11 +79,14 @@ BillingAPI_adsCreditRedeem(apiClient_t *apiClient, char *ad_account_id, ads_cred
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    ads_credit_redeem_response_t *elementToReturn = ads_credit_redeem_response_parseFromJSON(BillingAPIlocalVarJSON);
-    cJSON_Delete(BillingAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    ads_credit_redeem_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = ads_credit_redeem_response_parseFromJSON(BillingAPIlocalVarJSON);
+        cJSON_Delete(BillingAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -122,15 +127,20 @@ BillingAPI_adsCreditsDiscountsGet(apiClient_t *apiClient, char *ad_account_id, c
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/ads_credit/discounts")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/ads_credit/discounts");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/ads_credit/discounts");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -174,6 +184,7 @@ BillingAPI_adsCreditsDiscountsGet(apiClient_t *apiClient, char *ad_account_id, c
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -185,11 +196,14 @@ BillingAPI_adsCreditsDiscountsGet(apiClient_t *apiClient, char *ad_account_id, c
     //    printf("%s\n","Unexpected error.");
     //}
     //nonprimitive not container
-    cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    ads_credits_discounts_get_200_response_t *elementToReturn = ads_credits_discounts_get_200_response_parseFromJSON(BillingAPIlocalVarJSON);
-    cJSON_Delete(BillingAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    ads_credits_discounts_get_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = ads_credits_discounts_get_200_response_parseFromJSON(BillingAPIlocalVarJSON);
+        cJSON_Delete(BillingAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -249,15 +263,20 @@ BillingAPI_billingProfilesGet(apiClient_t *apiClient, char *ad_account_id, int *
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/billing_profiles")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/billing_profiles");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/billing_profiles");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -314,6 +333,7 @@ BillingAPI_billingProfilesGet(apiClient_t *apiClient, char *ad_account_id, int *
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -325,11 +345,14 @@ BillingAPI_billingProfilesGet(apiClient_t *apiClient, char *ad_account_id, int *
     //    printf("%s\n","Unexpected error.");
     //}
     //nonprimitive not container
-    cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    billing_profiles_get_200_response_t *elementToReturn = billing_profiles_get_200_response_parseFromJSON(BillingAPIlocalVarJSON);
-    cJSON_Delete(BillingAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    billing_profiles_get_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = billing_profiles_get_200_response_parseFromJSON(BillingAPIlocalVarJSON);
+        cJSON_Delete(BillingAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -401,15 +424,20 @@ BillingAPI_ssioAccountsGet(apiClient_t *apiClient, char *ad_account_id)
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/ssio/accounts")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/ssio/accounts");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/ssio/accounts");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -428,6 +456,7 @@ BillingAPI_ssioAccountsGet(apiClient_t *apiClient, char *ad_account_id)
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -443,11 +472,14 @@ BillingAPI_ssioAccountsGet(apiClient_t *apiClient, char *ad_account_id)
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    ssio_account_response_t *elementToReturn = ssio_account_response_parseFromJSON(BillingAPIlocalVarJSON);
-    cJSON_Delete(BillingAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    ssio_account_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = ssio_account_response_parseFromJSON(BillingAPIlocalVarJSON);
+        cJSON_Delete(BillingAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -483,15 +515,20 @@ BillingAPI_ssioInsertionOrderCreate(apiClient_t *apiClient, char *ad_account_id,
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/ssio/insertion_orders")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/ssio/insertion_orders");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/ssio/insertion_orders");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -506,9 +543,10 @@ BillingAPI_ssioInsertionOrderCreate(apiClient_t *apiClient, char *ad_account_id,
     cJSON *localVarSingleItemJSON_ssio_create_insertion_order_request = NULL;
     if (ssio_create_insertion_order_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_ssio_create_insertion_order_request = ssio_create_insertion_order_request_convertToJSON(ssio_create_insertion_order_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_ssio_create_insertion_order_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -520,6 +558,7 @@ BillingAPI_ssioInsertionOrderCreate(apiClient_t *apiClient, char *ad_account_id,
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -535,11 +574,14 @@ BillingAPI_ssioInsertionOrderCreate(apiClient_t *apiClient, char *ad_account_id,
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    ssio_create_insertion_order_response_t *elementToReturn = ssio_create_insertion_order_response_parseFromJSON(BillingAPIlocalVarJSON);
-    cJSON_Delete(BillingAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    ssio_create_insertion_order_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = ssio_create_insertion_order_response_parseFromJSON(BillingAPIlocalVarJSON);
+        cJSON_Delete(BillingAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -580,15 +622,20 @@ BillingAPI_ssioInsertionOrderEdit(apiClient_t *apiClient, char *ad_account_id, s
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/ssio/insertion_orders")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/ssio/insertion_orders");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/ssio/insertion_orders");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -603,9 +650,10 @@ BillingAPI_ssioInsertionOrderEdit(apiClient_t *apiClient, char *ad_account_id, s
     cJSON *localVarSingleItemJSON_ssio_edit_insertion_order_request = NULL;
     if (ssio_edit_insertion_order_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_ssio_edit_insertion_order_request = ssio_edit_insertion_order_request_convertToJSON(ssio_edit_insertion_order_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_ssio_edit_insertion_order_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -617,6 +665,7 @@ BillingAPI_ssioInsertionOrderEdit(apiClient_t *apiClient, char *ad_account_id, s
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "PATCH");
 
     // uncomment below to debug the error response
@@ -632,11 +681,14 @@ BillingAPI_ssioInsertionOrderEdit(apiClient_t *apiClient, char *ad_account_id, s
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    ssio_edit_insertion_order_response_t *elementToReturn = ssio_edit_insertion_order_response_parseFromJSON(BillingAPIlocalVarJSON);
-    cJSON_Delete(BillingAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    ssio_edit_insertion_order_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = ssio_edit_insertion_order_response_parseFromJSON(BillingAPIlocalVarJSON);
+        cJSON_Delete(BillingAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -677,15 +729,20 @@ BillingAPI_ssioInsertionOrdersStatusGetByAdAccount(apiClient_t *apiClient, char 
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/ssio/insertion_orders/status")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/ssio/insertion_orders/status");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/ssio/insertion_orders/status");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -729,6 +786,7 @@ BillingAPI_ssioInsertionOrdersStatusGetByAdAccount(apiClient_t *apiClient, char 
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -744,11 +802,14 @@ BillingAPI_ssioInsertionOrdersStatusGetByAdAccount(apiClient_t *apiClient, char 
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    ssio_insertion_orders_status_get_by_ad_account_200_response_t *elementToReturn = ssio_insertion_orders_status_get_by_ad_account_200_response_parseFromJSON(BillingAPIlocalVarJSON);
-    cJSON_Delete(BillingAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    ssio_insertion_orders_status_get_by_ad_account_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = ssio_insertion_orders_status_get_by_ad_account_200_response_parseFromJSON(BillingAPIlocalVarJSON);
+        cJSON_Delete(BillingAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -808,15 +869,22 @@ BillingAPI_ssioInsertionOrdersStatusGetByPinOrderId(apiClient_t *apiClient, char
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/ssio/insertion_orders/{pin_order_id}/status")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/ssio/insertion_orders/{pin_order_id}/status");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/ssio/insertion_orders/{pin_order_id}/status");
+
+    if(!ad_account_id)
+        goto end;
+    if(!pin_order_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(pin_order_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(pin_order_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -826,7 +894,7 @@ BillingAPI_ssioInsertionOrdersStatusGetByPinOrderId(apiClient_t *apiClient, char
     localVarPath = strReplace(localVarPath, localVarToReplace_ad_account_id, ad_account_id);
 
     // Path Params
-    long sizeOfPathParams_pin_order_id = strlen(ad_account_id)+3 + strlen(pin_order_id)+3 + strlen("{ pin_order_id }");
+    long sizeOfPathParams_pin_order_id = strlen(ad_account_id)+3 + strlen(pin_order_id)+3 + sizeof("{ pin_order_id }") - 1;
     if(pin_order_id == NULL) {
         goto end;
     }
@@ -845,6 +913,7 @@ BillingAPI_ssioInsertionOrdersStatusGetByPinOrderId(apiClient_t *apiClient, char
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -860,11 +929,14 @@ BillingAPI_ssioInsertionOrdersStatusGetByPinOrderId(apiClient_t *apiClient, char
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    ssio_insertion_order_status_response_t *elementToReturn = ssio_insertion_order_status_response_parseFromJSON(BillingAPIlocalVarJSON);
-    cJSON_Delete(BillingAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    ssio_insertion_order_status_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = ssio_insertion_order_status_response_parseFromJSON(BillingAPIlocalVarJSON);
+        cJSON_Delete(BillingAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -901,15 +973,20 @@ BillingAPI_ssioOrderLinesGetByAdAccount(apiClient_t *apiClient, char *ad_account
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/ssio/order_lines")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/ssio/order_lines");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/ssio/order_lines");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -965,6 +1042,7 @@ BillingAPI_ssioOrderLinesGetByAdAccount(apiClient_t *apiClient, char *ad_account
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -980,11 +1058,14 @@ BillingAPI_ssioOrderLinesGetByAdAccount(apiClient_t *apiClient, char *ad_account
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    ssio_order_lines_get_by_ad_account_200_response_t *elementToReturn = ssio_order_lines_get_by_ad_account_200_response_parseFromJSON(BillingAPIlocalVarJSON);
-    cJSON_Delete(BillingAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    ssio_order_lines_get_by_ad_account_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = ssio_order_lines_get_by_ad_account_200_response_parseFromJSON(BillingAPIlocalVarJSON);
+        cJSON_Delete(BillingAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type

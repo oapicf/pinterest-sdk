@@ -49,20 +49,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CampaignsAnalyticsResponseInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CampaignsAnalyticsResponseInner {
   public static final String SERIALIZED_NAME_C_A_M_P_A_I_G_N_I_D = "CAMPAIGN_ID";
   @SerializedName(SERIALIZED_NAME_C_A_M_P_A_I_G_N_I_D)
+  @javax.annotation.Nonnull
   private String CAMPAIGN_ID;
 
   public static final String SERIALIZED_NAME_D_A_T_E = "DATE";
   @SerializedName(SERIALIZED_NAME_D_A_T_E)
+  @javax.annotation.Nullable
   private LocalDate DATE;
 
   public CampaignsAnalyticsResponseInner() {
   }
 
-  public CampaignsAnalyticsResponseInner CAMPAIGN_ID(String CAMPAIGN_ID) {
+  public CampaignsAnalyticsResponseInner CAMPAIGN_ID(@javax.annotation.Nonnull String CAMPAIGN_ID) {
     this.CAMPAIGN_ID = CAMPAIGN_ID;
     return this;
   }
@@ -76,12 +78,12 @@ public class CampaignsAnalyticsResponseInner {
     return CAMPAIGN_ID;
   }
 
-  public void setCAMPAIGNID(String CAMPAIGN_ID) {
+  public void setCAMPAIGNID(@javax.annotation.Nonnull String CAMPAIGN_ID) {
     this.CAMPAIGN_ID = CAMPAIGN_ID;
   }
 
 
-  public CampaignsAnalyticsResponseInner DATE(LocalDate DATE) {
+  public CampaignsAnalyticsResponseInner DATE(@javax.annotation.Nullable LocalDate DATE) {
     this.DATE = DATE;
     return this;
   }
@@ -95,7 +97,7 @@ public class CampaignsAnalyticsResponseInner {
     return DATE;
   }
 
-  public void setDATE(LocalDate DATE) {
+  public void setDATE(@javax.annotation.Nullable LocalDate DATE) {
     this.DATE = DATE;
   }
 

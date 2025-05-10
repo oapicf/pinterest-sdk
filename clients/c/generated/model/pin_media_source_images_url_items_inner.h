@@ -24,9 +24,10 @@ typedef struct pin_media_source_images_url_items_inner_t {
     char *link; // string
     char *url; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } pin_media_source_images_url_items_inner_t;
 
-pin_media_source_images_url_items_inner_t *pin_media_source_images_url_items_inner_create(
+__attribute__((deprecated)) pin_media_source_images_url_items_inner_t *pin_media_source_images_url_items_inner_create(
     char *title,
     char *description,
     char *link,

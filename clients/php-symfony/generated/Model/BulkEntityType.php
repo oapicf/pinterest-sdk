@@ -44,11 +44,11 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum BulkEntityType: string
 {
-        case CAMPAIGN = "CAMPAIGN";
-        case AD_GROUP = "AD_GROUP";
-        case PRODUCT_GROUP = "PRODUCT_GROUP";
-        case AD = "AD";
-        case KEYWORD = "KEYWORD";
+        case CAMPAIGN = 'CAMPAIGN';
+        case AD_GROUP = 'AD_GROUP';
+        case PRODUCT_GROUP = 'PRODUCT_GROUP';
+        case AD = 'AD';
+        case KEYWORD = 'KEYWORD';
 }
 
 

@@ -173,11 +173,11 @@ export function CatalogsFeedsCreateRequestFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-  export function CatalogsFeedsCreateRequestToJSON(json: any): CatalogsFeedsCreateRequest {
-      return CatalogsFeedsCreateRequestToJSONTyped(json, false);
-  }
+export function CatalogsFeedsCreateRequestToJSON(json: any): CatalogsFeedsCreateRequest {
+    return CatalogsFeedsCreateRequestToJSONTyped(json, false);
+}
 
-  export function CatalogsFeedsCreateRequestToJSONTyped(value?: CatalogsFeedsCreateRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsFeedsCreateRequestToJSONTyped(value?: CatalogsFeedsCreateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

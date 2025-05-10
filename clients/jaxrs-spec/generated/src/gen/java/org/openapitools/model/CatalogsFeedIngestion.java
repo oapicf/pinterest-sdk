@@ -17,12 +17,28 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsFeedIngestion")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsFeedIngestion   {
   private String id;
   private String feedId;
   private Date createdAt;
   private CatalogsFeedProcessingStatus status;
+
+  public CatalogsFeedIngestion() {
+  }
+
+  @JsonCreator
+  public CatalogsFeedIngestion(
+    @JsonProperty(required = true, value = "id") String id,
+    @JsonProperty(required = true, value = "feed_id") String feedId,
+    @JsonProperty(required = true, value = "created_at") Date createdAt,
+    @JsonProperty(required = true, value = "status") CatalogsFeedProcessingStatus status
+  ) {
+    this.id = id;
+    this.feedId = feedId;
+    this.createdAt = createdAt;
+    this.status = status;
+  }
 
   /**
    **/
@@ -33,12 +49,12 @@ public class CatalogsFeedIngestion   {
 
   
   @ApiModelProperty(example = "01234", required = true, value = "")
-  @JsonProperty("id")
+  @JsonProperty(required = true, value = "id")
   @NotNull public String getId() {
     return id;
   }
 
-  @JsonProperty("id")
+  @JsonProperty(required = true, value = "id")
   public void setId(String id) {
     this.id = id;
   }
@@ -52,12 +68,12 @@ public class CatalogsFeedIngestion   {
 
   
   @ApiModelProperty(example = "56789", required = true, value = "")
-  @JsonProperty("feed_id")
+  @JsonProperty(required = true, value = "feed_id")
   @NotNull public String getFeedId() {
     return feedId;
   }
 
-  @JsonProperty("feed_id")
+  @JsonProperty(required = true, value = "feed_id")
   public void setFeedId(String feedId) {
     this.feedId = feedId;
   }
@@ -71,12 +87,12 @@ public class CatalogsFeedIngestion   {
 
   
   @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
-  @JsonProperty("created_at")
+  @JsonProperty(required = true, value = "created_at")
   @NotNull public Date getCreatedAt() {
     return createdAt;
   }
 
-  @JsonProperty("created_at")
+  @JsonProperty(required = true, value = "created_at")
   public void setCreatedAt(Date createdAt) {
     this.createdAt = createdAt;
   }
@@ -90,12 +106,12 @@ public class CatalogsFeedIngestion   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("status")
+  @JsonProperty(required = true, value = "status")
   @NotNull public CatalogsFeedProcessingStatus getStatus() {
     return status;
   }
 
-  @JsonProperty("status")
+  @JsonProperty(required = true, value = "status")
   public void setStatus(CatalogsFeedProcessingStatus status) {
     this.status = status;
   }

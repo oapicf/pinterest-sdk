@@ -15,8 +15,8 @@ public struct CatalogsRetailItemsPostFilter: Codable, JSONEncodable, Hashable {
     public enum CatalogType: String, Codable, CaseIterable {
         case retail = "RETAIL"
     }
-    static let itemIdsRule = ArrayRule(minItems: 1, maxItems: 1000, uniqueItems: false)
-    static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let itemIdsRule = ArrayRule(minItems: 1, maxItems: 1000, uniqueItems: false)
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public var catalogType: CatalogType
     public var itemIds: [String]
     /** Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog */

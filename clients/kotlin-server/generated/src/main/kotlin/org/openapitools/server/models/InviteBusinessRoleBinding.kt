@@ -14,6 +14,7 @@ package org.openapitools.server.models
 import org.openapitools.server.models.BaseInviteDataResponseInviteData
 import org.openapitools.server.models.BusinessAccessUserSummary
 
+import kotlinx.serialization.Serializable
 /**
  * An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
  * @param createdByBusinessId Unique identifier for the business that created the invite/request.
@@ -23,6 +24,7 @@ import org.openapitools.server.models.BusinessAccessUserSummary
  * @param inviteData 
  * @param isReceivedInvite Indicates whether the invite/request was received.
  */
+@Serializable
 data class InviteBusinessRoleBinding(
     /* Unique identifier for the business that created the invite/request. */
     val createdByBusinessId: kotlin.String? = null,
@@ -35,5 +37,5 @@ data class InviteBusinessRoleBinding(
     val inviteData: BaseInviteDataResponseInviteData? = null,
     /* Indicates whether the invite/request was received. */
     val isReceivedInvite: kotlin.Boolean? = null
-) 
+)
 

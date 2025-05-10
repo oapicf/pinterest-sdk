@@ -49,9 +49,10 @@ typedef struct billing_profiles_response_t {
     char *advertiser_id; // string
     pinterest_rest_api_billing_profiles_response_PAYMENTMETHODBRAND_e payment_method_brand; //enum
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } billing_profiles_response_t;
 
-billing_profiles_response_t *billing_profiles_response_create(
+__attribute__((deprecated)) billing_profiles_response_t *billing_profiles_response_create(
     char *id,
     pinterest_rest_api_billing_profiles_response_CARDTYPE_e card_type,
     pinterest_rest_api_billing_profiles_response_STATUS_e status,

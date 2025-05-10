@@ -64,11 +64,11 @@ export function CatalogsProductGroupMultipleCountriesCriteriaFromJSONTyped(json:
     };
 }
 
-  export function CatalogsProductGroupMultipleCountriesCriteriaToJSON(json: any): CatalogsProductGroupMultipleCountriesCriteria {
-      return CatalogsProductGroupMultipleCountriesCriteriaToJSONTyped(json, false);
-  }
+export function CatalogsProductGroupMultipleCountriesCriteriaToJSON(json: any): CatalogsProductGroupMultipleCountriesCriteria {
+    return CatalogsProductGroupMultipleCountriesCriteriaToJSONTyped(json, false);
+}
 
-  export function CatalogsProductGroupMultipleCountriesCriteriaToJSONTyped(value?: CatalogsProductGroupMultipleCountriesCriteria | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsProductGroupMultipleCountriesCriteriaToJSONTyped(value?: CatalogsProductGroupMultipleCountriesCriteria | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

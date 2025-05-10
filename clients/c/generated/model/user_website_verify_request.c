@@ -22,7 +22,7 @@ pinterest_rest_api_user_website_verify_request_VERIFICATIONMETHOD_e user_website
     return 0;
 }
 
-user_website_verify_request_t *user_website_verify_request_create(
+static user_website_verify_request_t *user_website_verify_request_create_internal(
     char *website,
     pinterest_rest_api_user_website_verify_request_VERIFICATIONMETHOD_e verification_method
     ) {
@@ -33,12 +33,26 @@ user_website_verify_request_t *user_website_verify_request_create(
     user_website_verify_request_local_var->website = website;
     user_website_verify_request_local_var->verification_method = verification_method;
 
+    user_website_verify_request_local_var->_library_owned = 1;
     return user_website_verify_request_local_var;
 }
 
+__attribute__((deprecated)) user_website_verify_request_t *user_website_verify_request_create(
+    char *website,
+    pinterest_rest_api_user_website_verify_request_VERIFICATIONMETHOD_e verification_method
+    ) {
+    return user_website_verify_request_create_internal (
+        website,
+        verification_method
+        );
+}
 
 void user_website_verify_request_free(user_website_verify_request_t *user_website_verify_request) {
     if(NULL == user_website_verify_request){
+        return ;
+    }
+    if(user_website_verify_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "user_website_verify_request_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -62,7 +76,7 @@ cJSON *user_website_verify_request_convertToJSON(user_website_verify_request_t *
 
     // user_website_verify_request->verification_method
     if(user_website_verify_request->verification_method != pinterest_rest_api_user_website_verify_request_VERIFICATIONMETHOD_NULL) {
-    if(cJSON_AddStringToObject(item, "verification_method", verification_methoduser_website_verify_request_ToString(user_website_verify_request->verification_method)) == NULL)
+    if(cJSON_AddStringToObject(item, "verification_method", user_website_verify_request_verification_method_ToString(user_website_verify_request->verification_method)) == NULL)
     {
     goto fail; //Enum
     }
@@ -82,6 +96,9 @@ user_website_verify_request_t *user_website_verify_request_parseFromJSON(cJSON *
 
     // user_website_verify_request->website
     cJSON *website = cJSON_GetObjectItemCaseSensitive(user_website_verify_requestJSON, "website");
+    if (cJSON_IsNull(website)) {
+        website = NULL;
+    }
     if (website) { 
     if(!cJSON_IsString(website) && !cJSON_IsNull(website))
     {
@@ -91,6 +108,9 @@ user_website_verify_request_t *user_website_verify_request_parseFromJSON(cJSON *
 
     // user_website_verify_request->verification_method
     cJSON *verification_method = cJSON_GetObjectItemCaseSensitive(user_website_verify_requestJSON, "verification_method");
+    if (cJSON_IsNull(verification_method)) {
+        verification_method = NULL;
+    }
     pinterest_rest_api_user_website_verify_request_VERIFICATIONMETHOD_e verification_methodVariable;
     if (verification_method) { 
     if(!cJSON_IsString(verification_method))
@@ -101,7 +121,7 @@ user_website_verify_request_t *user_website_verify_request_parseFromJSON(cJSON *
     }
 
 
-    user_website_verify_request_local_var = user_website_verify_request_create (
+    user_website_verify_request_local_var = user_website_verify_request_create_internal (
         website && !cJSON_IsNull(website) ? strdup(website->valuestring) : NULL,
         verification_method ? verification_methodVariable : pinterest_rest_api_user_website_verify_request_VERIFICATIONMETHOD_NULL
         );

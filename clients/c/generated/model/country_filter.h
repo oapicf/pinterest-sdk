@@ -22,9 +22,10 @@ typedef struct country_filter_t country_filter_t;
 typedef struct country_filter_t {
     catalogs_product_group_multiple_countries_criteria_t *country; //object
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } country_filter_t;
 
-country_filter_t *country_filter_create(
+__attribute__((deprecated)) country_filter_t *country_filter_create(
     catalogs_product_group_multiple_countries_criteria_t *country
 );
 

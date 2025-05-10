@@ -23,9 +23,10 @@ typedef struct image_details_t {
     int height; //numeric
     char *url; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } image_details_t;
 
-image_details_t *image_details_create(
+__attribute__((deprecated)) image_details_t *image_details_create(
     int width,
     int height,
     char *url

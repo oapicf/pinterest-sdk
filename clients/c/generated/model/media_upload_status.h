@@ -24,9 +24,9 @@ char* media_upload_status_media_upload_status_ToString(pinterest_rest_api_media_
 
 pinterest_rest_api_media_upload_status__e media_upload_status_media_upload_status_FromString(char* media_upload_status);
 
-//cJSON *media_upload_status_media_upload_status_convertToJSON(pinterest_rest_api_media_upload_status__e media_upload_status);
+cJSON *media_upload_status_convertToJSON(pinterest_rest_api_media_upload_status__e media_upload_status);
 
-//pinterest_rest_api_media_upload_status__e media_upload_status_media_upload_status_parseFromJSON(cJSON *media_upload_statusJSON);
+pinterest_rest_api_media_upload_status__e media_upload_status_parseFromJSON(cJSON *media_upload_statusJSON);
 
 #endif /* _media_upload_status_H_ */
 

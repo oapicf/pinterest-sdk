@@ -12,7 +12,7 @@ import org.openapitools.model.BusinessAccessUserSummary;
  * An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
  */
 @ApiModel(description = "An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2025-05-10T05:39:24.501669360Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class InviteBusinessRoleBinding   {
   @JsonProperty("created_by_business_id")
   private String createdByBusinessId;

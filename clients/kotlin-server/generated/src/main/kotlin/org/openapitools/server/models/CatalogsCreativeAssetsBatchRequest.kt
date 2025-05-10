@@ -15,6 +15,7 @@ import org.openapitools.server.models.CatalogsCreativeAssetsBatchItem
 import org.openapitools.server.models.CatalogsItemsRequestLanguage
 import org.openapitools.server.models.Country
 
+import kotlinx.serialization.Serializable
 /**
  * Request object to update catalogs creative assets items
  * @param catalogType 
@@ -23,6 +24,7 @@ import org.openapitools.server.models.Country
  * @param items Array with creative assets item operations
  * @param catalogId Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
  */
+@Serializable
 data class CatalogsCreativeAssetsBatchRequest(
     val catalogType: CatalogsCreativeAssetsBatchRequest.CatalogType,
     val country: Country,
@@ -31,7 +33,7 @@ data class CatalogsCreativeAssetsBatchRequest(
     val items: kotlin.collections.List<CatalogsCreativeAssetsBatchItem>,
     /* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
     val catalogId: kotlin.String? = null
-) 
+)
 {
     /**
     * 

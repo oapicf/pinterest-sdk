@@ -12,16 +12,18 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * A hotel item to be deleted
  * @param hotelId The catalog hotel id in the merchant namespace
  * @param operation 
  */
+@Serializable
 data class CatalogsDeleteHotelItem(
     /* The catalog hotel id in the merchant namespace */
     val hotelId: kotlin.String,
     val operation: CatalogsDeleteHotelItem.Operation
-) 
+)
 {
     /**
     * 

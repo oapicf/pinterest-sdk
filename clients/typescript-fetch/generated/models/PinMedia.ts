@@ -70,11 +70,11 @@ export function PinMediaFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
     };
 }
 
-  export function PinMediaToJSON(json: any): PinMedia {
-      return PinMediaToJSONTyped(json, false);
-  }
+export function PinMediaToJSON(json: any): PinMedia {
+    return PinMediaToJSONTyped(json, false);
+}
 
-  export function PinMediaToJSONTyped(value?: PinMedia | null, ignoreDiscriminator: boolean = false): any {
+export function PinMediaToJSONTyped(value?: PinMedia | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

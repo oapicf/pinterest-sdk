@@ -50,32 +50,37 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AudienceCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AudienceCreateRequest {
   public static final String SERIALIZED_NAME_AD_ACCOUNT_ID = "ad_account_id";
   @SerializedName(SERIALIZED_NAME_AD_ACCOUNT_ID)
+  @javax.annotation.Nullable
   private String adAccountId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nonnull
   private String name;
 
   public static final String SERIALIZED_NAME_RULE = "rule";
   @SerializedName(SERIALIZED_NAME_RULE)
+  @javax.annotation.Nonnull
   private AudienceRule rule;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nullable
   private String description;
 
   public static final String SERIALIZED_NAME_AUDIENCE_TYPE = "audience_type";
   @SerializedName(SERIALIZED_NAME_AUDIENCE_TYPE)
+  @javax.annotation.Nonnull
   private AudienceCreateRequest1AudienceType audienceType;
 
   public AudienceCreateRequest() {
   }
 
-  public AudienceCreateRequest adAccountId(String adAccountId) {
+  public AudienceCreateRequest adAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -89,12 +94,12 @@ public class AudienceCreateRequest {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
 
-  public AudienceCreateRequest name(String name) {
+  public AudienceCreateRequest name(@javax.annotation.Nonnull String name) {
     this.name = name;
     return this;
   }
@@ -108,12 +113,12 @@ public class AudienceCreateRequest {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
 
-  public AudienceCreateRequest rule(AudienceRule rule) {
+  public AudienceCreateRequest rule(@javax.annotation.Nonnull AudienceRule rule) {
     this.rule = rule;
     return this;
   }
@@ -127,12 +132,12 @@ public class AudienceCreateRequest {
     return rule;
   }
 
-  public void setRule(AudienceRule rule) {
+  public void setRule(@javax.annotation.Nonnull AudienceRule rule) {
     this.rule = rule;
   }
 
 
-  public AudienceCreateRequest description(String description) {
+  public AudienceCreateRequest description(@javax.annotation.Nullable String description) {
     this.description = description;
     return this;
   }
@@ -146,12 +151,12 @@ public class AudienceCreateRequest {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
 
-  public AudienceCreateRequest audienceType(AudienceCreateRequest1AudienceType audienceType) {
+  public AudienceCreateRequest audienceType(@javax.annotation.Nonnull AudienceCreateRequest1AudienceType audienceType) {
     this.audienceType = audienceType;
     return this;
   }
@@ -165,7 +170,7 @@ public class AudienceCreateRequest {
     return audienceType;
   }
 
-  public void setAudienceType(AudienceCreateRequest1AudienceType audienceType) {
+  public void setAudienceType(@javax.annotation.Nonnull AudienceCreateRequest1AudienceType audienceType) {
     this.audienceType = audienceType;
   }
 

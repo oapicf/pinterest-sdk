@@ -30,9 +30,10 @@ typedef struct targeting_template_update_request_t {
     pinterest_rest_api_targeting_template_update_request_OPERATIONTYPE_e operation_type; //enum
     char *id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } targeting_template_update_request_t;
 
-targeting_template_update_request_t *targeting_template_update_request_create(
+__attribute__((deprecated)) targeting_template_update_request_t *targeting_template_update_request_create(
     pinterest_rest_api_targeting_template_update_request_OPERATIONTYPE_e operation_type,
     char *id
 );

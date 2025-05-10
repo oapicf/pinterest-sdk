@@ -48,24 +48,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsFeedIngestionInfo
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsFeedIngestionInfo {
   public static final String SERIALIZED_NAME_I_N_S_T_O_C_K = "IN_STOCK";
   @SerializedName(SERIALIZED_NAME_I_N_S_T_O_C_K)
+  @javax.annotation.Nullable
   private Integer IN_STOCK;
 
   public static final String SERIALIZED_NAME_O_U_T_O_F_S_T_O_C_K = "OUT_OF_STOCK";
   @SerializedName(SERIALIZED_NAME_O_U_T_O_F_S_T_O_C_K)
+  @javax.annotation.Nullable
   private Integer OUT_OF_STOCK;
 
   public static final String SERIALIZED_NAME_P_R_E_O_R_D_E_R = "PREORDER";
   @SerializedName(SERIALIZED_NAME_P_R_E_O_R_D_E_R)
+  @javax.annotation.Nullable
   private Integer PREORDER;
 
   public CatalogsFeedIngestionInfo() {
   }
 
-  public CatalogsFeedIngestionInfo IN_STOCK(Integer IN_STOCK) {
+  public CatalogsFeedIngestionInfo IN_STOCK(@javax.annotation.Nullable Integer IN_STOCK) {
     this.IN_STOCK = IN_STOCK;
     return this;
   }
@@ -79,12 +82,12 @@ public class CatalogsFeedIngestionInfo {
     return IN_STOCK;
   }
 
-  public void setINSTOCK(Integer IN_STOCK) {
+  public void setINSTOCK(@javax.annotation.Nullable Integer IN_STOCK) {
     this.IN_STOCK = IN_STOCK;
   }
 
 
-  public CatalogsFeedIngestionInfo OUT_OF_STOCK(Integer OUT_OF_STOCK) {
+  public CatalogsFeedIngestionInfo OUT_OF_STOCK(@javax.annotation.Nullable Integer OUT_OF_STOCK) {
     this.OUT_OF_STOCK = OUT_OF_STOCK;
     return this;
   }
@@ -98,12 +101,12 @@ public class CatalogsFeedIngestionInfo {
     return OUT_OF_STOCK;
   }
 
-  public void setOUTOFSTOCK(Integer OUT_OF_STOCK) {
+  public void setOUTOFSTOCK(@javax.annotation.Nullable Integer OUT_OF_STOCK) {
     this.OUT_OF_STOCK = OUT_OF_STOCK;
   }
 
 
-  public CatalogsFeedIngestionInfo PREORDER(Integer PREORDER) {
+  public CatalogsFeedIngestionInfo PREORDER(@javax.annotation.Nullable Integer PREORDER) {
     this.PREORDER = PREORDER;
     return this;
   }
@@ -117,7 +120,7 @@ public class CatalogsFeedIngestionInfo {
     return PREORDER;
   }
 
-  public void setPREORDER(Integer PREORDER) {
+  public void setPREORDER(@javax.annotation.Nullable Integer PREORDER) {
     this.PREORDER = PREORDER;
   }
 

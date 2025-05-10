@@ -51,20 +51,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * KeywordsRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class KeywordsRequest {
   public static final String SERIALIZED_NAME_KEYWORDS = "keywords";
   @SerializedName(SERIALIZED_NAME_KEYWORDS)
+  @javax.annotation.Nonnull
   private List<KeywordsCommon> keywords = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_PARENT_ID = "parent_id";
   @SerializedName(SERIALIZED_NAME_PARENT_ID)
+  @javax.annotation.Nonnull
   private String parentId;
 
   public KeywordsRequest() {
   }
 
-  public KeywordsRequest keywords(List<KeywordsCommon> keywords) {
+  public KeywordsRequest keywords(@javax.annotation.Nonnull List<KeywordsCommon> keywords) {
     this.keywords = keywords;
     return this;
   }
@@ -86,12 +88,12 @@ public class KeywordsRequest {
     return keywords;
   }
 
-  public void setKeywords(List<KeywordsCommon> keywords) {
+  public void setKeywords(@javax.annotation.Nonnull List<KeywordsCommon> keywords) {
     this.keywords = keywords;
   }
 
 
-  public KeywordsRequest parentId(String parentId) {
+  public KeywordsRequest parentId(@javax.annotation.Nonnull String parentId) {
     this.parentId = parentId;
     return this;
   }
@@ -105,7 +107,7 @@ public class KeywordsRequest {
     return parentId;
   }
 
-  public void setParentId(String parentId) {
+  public void setParentId(@javax.annotation.Nonnull String parentId) {
     this.parentId = parentId;
   }
 

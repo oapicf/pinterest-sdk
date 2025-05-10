@@ -55,10 +55,35 @@ GetPartnerAssetsResponse <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return GetPartnerAssetsResponse in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return GetPartnerAssetsResponse as a base R list.
+    #' @examples
+    #' # convert array of GetPartnerAssetsResponse (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert GetPartnerAssetsResponse to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       GetPartnerAssetsResponseObject <- list()
       if (!is.null(self$`asset_id`)) {
         GetPartnerAssetsResponseObject[["asset_id"]] <-
@@ -74,9 +99,9 @@ GetPartnerAssetsResponse <- R6::R6Class(
       }
       if (!is.null(self$`asset_group_info`)) {
         GetPartnerAssetsResponseObject[["asset_group_info"]] <-
-          self$`asset_group_info`$toJSON()
+          self$`asset_group_info`$toSimpleType()
       }
-      GetPartnerAssetsResponseObject
+      return(GetPartnerAssetsResponseObject)
     },
 
     #' @description
@@ -105,45 +130,13 @@ GetPartnerAssetsResponse <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return GetPartnerAssetsResponse in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`asset_id`)) {
-          sprintf(
-          '"asset_id":
-            "%s"
-                    ',
-          self$`asset_id`
-          )
-        },
-        if (!is.null(self$`asset_type`)) {
-          sprintf(
-          '"asset_type":
-            "%s"
-                    ',
-          self$`asset_type`
-          )
-        },
-        if (!is.null(self$`permissions`)) {
-          sprintf(
-          '"permissions":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`permissions`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`asset_group_info`)) {
-          sprintf(
-          '"asset_group_info":
-          %s
-          ',
-          jsonlite::toJSON(self$`asset_group_info`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

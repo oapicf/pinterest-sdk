@@ -44,8 +44,8 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum ConversionReportAttributionType: string
 {
-        case INDIVIDUAL = "INDIVIDUAL";
-        case HOUSEHOLD = "HOUSEHOLD";
+        case INDIVIDUAL = 'INDIVIDUAL';
+        case HOUSEHOLD = 'HOUSEHOLD';
 }
 
 

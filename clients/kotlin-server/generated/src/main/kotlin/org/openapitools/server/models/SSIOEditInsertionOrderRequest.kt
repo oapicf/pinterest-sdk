@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param startDate Starting date of time period. Format: YYYY-MM-DD
@@ -31,6 +32,7 @@ package org.openapitools.server.models
  * @param salesforceOrderLineId OrderLineId in SFDC
  * @param adsManagerOrderLineId Ads manager OrderLineId
  */
+@Serializable
 data class SSIOEditInsertionOrderRequest(
     /* Starting date of time period. Format: YYYY-MM-DD */
     val startDate: kotlin.String? = null,
@@ -64,5 +66,5 @@ data class SSIOEditInsertionOrderRequest(
     val salesforceOrderLineId: kotlin.String? = null,
     /* Ads manager OrderLineId */
     val adsManagerOrderLineId: kotlin.String? = null
-) 
+)
 

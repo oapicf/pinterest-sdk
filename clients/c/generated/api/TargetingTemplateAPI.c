@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 // Functions for enum ORDER for TargetingTemplateAPI_targetingTemplateList
 
@@ -77,15 +72,20 @@ TargetingTemplateAPI_targetingTemplateCreate(apiClient_t *apiClient, char *ad_ac
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/targeting_templates")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/targeting_templates");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/targeting_templates");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -100,9 +100,10 @@ TargetingTemplateAPI_targetingTemplateCreate(apiClient_t *apiClient, char *ad_ac
     cJSON *localVarSingleItemJSON_targeting_template_create = NULL;
     if (targeting_template_create != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_targeting_template_create = targeting_template_create_convertToJSON(targeting_template_create);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_targeting_template_create);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -114,6 +115,7 @@ TargetingTemplateAPI_targetingTemplateCreate(apiClient_t *apiClient, char *ad_ac
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -129,11 +131,14 @@ TargetingTemplateAPI_targetingTemplateCreate(apiClient_t *apiClient, char *ad_ac
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *TargetingTemplateAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    targeting_template_get_response_data_t *elementToReturn = targeting_template_get_response_data_parseFromJSON(TargetingTemplateAPIlocalVarJSON);
-    cJSON_Delete(TargetingTemplateAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    targeting_template_get_response_data_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *TargetingTemplateAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = targeting_template_get_response_data_parseFromJSON(TargetingTemplateAPIlocalVarJSON);
+        cJSON_Delete(TargetingTemplateAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -174,15 +179,20 @@ TargetingTemplateAPI_targetingTemplateList(apiClient_t *apiClient, char *ad_acco
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/targeting_templates")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/targeting_templates");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/targeting_templates");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -201,7 +211,7 @@ TargetingTemplateAPI_targetingTemplateList(apiClient_t *apiClient, char *ad_acco
     {
         keyQuery_order = strdup("order");
         valueQuery_order = (order);
-        keyPairQuery_order = keyValuePair_create(keyQuery_order, (void *)strdup(targetingTemplateList_ORDER_ToString(
+        keyPairQuery_order = keyValuePair_create(keyQuery_order, strdup(targetingTemplateList_ORDER_ToString(
         valueQuery_order)));
         list_addElement(localVarQueryParameters,keyPairQuery_order);
     }
@@ -264,6 +274,7 @@ TargetingTemplateAPI_targetingTemplateList(apiClient_t *apiClient, char *ad_acco
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -279,11 +290,14 @@ TargetingTemplateAPI_targetingTemplateList(apiClient_t *apiClient, char *ad_acco
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *TargetingTemplateAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    targeting_template_list_200_response_t *elementToReturn = targeting_template_list_200_response_parseFromJSON(TargetingTemplateAPIlocalVarJSON);
-    cJSON_Delete(TargetingTemplateAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    targeting_template_list_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *TargetingTemplateAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = targeting_template_list_200_response_parseFromJSON(TargetingTemplateAPIlocalVarJSON);
+        cJSON_Delete(TargetingTemplateAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -375,15 +389,20 @@ TargetingTemplateAPI_targetingTemplateUpdate(apiClient_t *apiClient, char *ad_ac
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/targeting_templates")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/targeting_templates");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/targeting_templates");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -398,9 +417,10 @@ TargetingTemplateAPI_targetingTemplateUpdate(apiClient_t *apiClient, char *ad_ac
     cJSON *localVarSingleItemJSON_targeting_template_update_request = NULL;
     if (targeting_template_update_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_targeting_template_update_request = targeting_template_update_request_convertToJSON(targeting_template_update_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_targeting_template_update_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -412,6 +432,7 @@ TargetingTemplateAPI_targetingTemplateUpdate(apiClient_t *apiClient, char *ad_ac
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "PATCH");
 
     // uncomment below to debug the error response

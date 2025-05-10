@@ -1,9 +1,5 @@
 package models
 
-import (
-	"gopkg.in/validator.v2"
-)
-
 type CatalogsProductGroupsUpdateRequest struct {
 
 	Name string `json:"name,omitempty"`

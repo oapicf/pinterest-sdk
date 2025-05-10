@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Demographic detail for a single audience demographic
  * @param key Unique key for demographic item
  * @param name Display name for demographic
  * @param ratio Value of demographic item as a percent of total audience
  */
+@Serializable
 data class AudienceDemographicValue(
     /* Unique key for demographic item */
     val key: kotlin.String? = null,
@@ -25,5 +27,5 @@ data class AudienceDemographicValue(
     val name: kotlin.String? = null,
     /* Value of demographic item as a percent of total audience */
     val ratio: java.math.BigDecimal? = null
-) 
+)
 

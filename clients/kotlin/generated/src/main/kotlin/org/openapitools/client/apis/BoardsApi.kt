@@ -52,6 +52,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
     }
 
     /**
+     * POST /boards/{board_id}/sections
      * Create board section
      * Create a board section on a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
      * @param boardId Unique identifier of a board.
@@ -85,6 +86,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
     }
 
     /**
+     * POST /boards/{board_id}/sections
      * Create board section
      * Create a board section on a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
      * @param boardId Unique identifier of a board.
@@ -135,6 +137,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
     }
 
     /**
+     * DELETE /boards/{board_id}/sections/{section_id}
      * Delete board section
      * Delete a board section on a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
      * @param boardId Unique identifier of a board.
@@ -167,6 +170,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
     }
 
     /**
+     * DELETE /boards/{board_id}/sections/{section_id}
      * Delete board section
      * Delete a board section on a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
      * @param boardId Unique identifier of a board.
@@ -215,6 +219,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
     }
 
     /**
+     * GET /boards/{board_id}/sections
      * List board sections
      * Get a list of all board sections from a board owned by the \&quot;operation user_account\&quot; - or a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
      * @param boardId Unique identifier of a board.
@@ -249,6 +254,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
     }
 
     /**
+     * GET /boards/{board_id}/sections
      * List board sections
      * Get a list of all board sections from a board owned by the \&quot;operation user_account\&quot; - or a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
      * @param boardId Unique identifier of a board.
@@ -306,6 +312,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
     }
 
     /**
+     * GET /boards/{board_id}/sections/{section_id}/pins
      * List Pins on board section
      * Get a list of the Pins on a board section of a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
      * @param boardId Unique identifier of a board.
@@ -341,6 +348,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
     }
 
     /**
+     * GET /boards/{board_id}/sections/{section_id}/pins
      * List Pins on board section
      * Get a list of the Pins on a board section of a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
      * @param boardId Unique identifier of a board.
@@ -400,6 +408,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
     }
 
     /**
+     * PATCH /boards/{board_id}/sections/{section_id}
      * Update board section
      * Update a board section on a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
      * @param boardId Unique identifier of a board.
@@ -434,6 +443,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
     }
 
     /**
+     * PATCH /boards/{board_id}/sections/{section_id}
      * Update board section
      * Update a board section on a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
      * @param boardId Unique identifier of a board.
@@ -486,6 +496,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
     }
 
     /**
+     * POST /boards
      * Create board
      * Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
      * @param board Create a board using a single board json object.
@@ -518,6 +529,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
     }
 
     /**
+     * POST /boards
      * Create board
      * Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
      * @param board Create a board using a single board json object.
@@ -566,6 +578,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
     }
 
     /**
+     * DELETE /boards/{board_id}
      * Delete board
      * Delete a board owned by the \&quot;operation user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
      * @param boardId Unique identifier of a board.
@@ -597,6 +610,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
     }
 
     /**
+     * DELETE /boards/{board_id}
      * Delete board
      * Delete a board owned by the \&quot;operation user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
      * @param boardId Unique identifier of a board.
@@ -643,6 +657,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
     }
 
     /**
+     * GET /boards/{board_id}
      * Get board
      * Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
      * @param boardId Unique identifier of a board.
@@ -675,6 +690,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
     }
 
     /**
+     * GET /boards/{board_id}
      * Get board
      * Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
      * @param boardId Unique identifier of a board.
@@ -742,6 +758,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
      }
 
     /**
+     * GET /boards
      * List boards
      * Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
      * @param adAccountId Unique identifier of an ad account. (optional)
@@ -776,6 +793,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
     }
 
     /**
+     * GET /boards
      * List boards
      * Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
      * @param adAccountId Unique identifier of an ad account. (optional)
@@ -859,6 +877,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
      }
 
     /**
+     * GET /boards/{board_id}/pins
      * List Pins on board
      * Get a list of the Pins on a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
      * @param boardId Unique identifier of a board.
@@ -895,6 +914,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
     }
 
     /**
+     * GET /boards/{board_id}/pins
      * List Pins on board
      * Get a list of the Pins on a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
      * @param boardId Unique identifier of a board.
@@ -962,6 +982,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
     }
 
     /**
+     * PATCH /boards/{board_id}
      * Update board
      * Update a board owned by the \&quot;operating user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
      * @param boardId Unique identifier of a board.
@@ -995,6 +1016,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
     }
 
     /**
+     * PATCH /boards/{board_id}
      * Update board
      * Update a board owned by the \&quot;operating user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
      * @param boardId Unique identifier of a board.

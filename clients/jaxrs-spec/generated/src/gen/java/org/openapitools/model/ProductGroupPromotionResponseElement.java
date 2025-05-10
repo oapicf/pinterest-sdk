@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ProductGroupPromotionResponseElement")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ProductGroupPromotionResponseElement   {
   private String id;
   private String adGroupId;
@@ -39,6 +39,9 @@ public class ProductGroupPromotionResponseElement   {
   private String collectionsHeroDestinationUrl;
   private GridClickType gridClickType;
   private CreativeType creativeType;
+
+  public ProductGroupPromotionResponseElement() {
+  }
 
   /**
    * ID of the product group promotion.

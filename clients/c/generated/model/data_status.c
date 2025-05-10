@@ -22,7 +22,7 @@ pinterest_rest_api_data_status__e data_status_data_status_FromString(char* data_
     return 0;
 }
 
-cJSON *data_status_data_status_convertToJSON(pinterest_rest_api_data_status__e data_status) {
+cJSON *data_status_convertToJSON(pinterest_rest_api_data_status__e data_status) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "data_status", data_status_data_status_ToString(data_status)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_data_status__e data_status_data_status_parseFromJSON(cJSON *data_statusJSON) {
-    pinterest_rest_api_data_status__e *data_status = NULL;
-    pinterest_rest_api_data_status__e data_statusVariable;
-    cJSON *data_statusVar = cJSON_GetObjectItemCaseSensitive(data_statusJSON, "data_status");
-    if(!cJSON_IsString(data_statusVar) || (data_statusVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_data_status__e data_status_parseFromJSON(cJSON *data_statusJSON) {
+    if(!cJSON_IsString(data_statusJSON) || (data_statusJSON->valuestring == NULL)) {
+        return 0;
     }
-    data_statusVariable = data_status_data_status_FromString(data_statusVar->valuestring);
-    return data_statusVariable;
-end:
-    return 0;
+    return data_status_data_status_FromString(data_statusJSON->valuestring);
 }

@@ -50,20 +50,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CreateMMMReportResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CreateMMMReportResponse {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
+  @javax.annotation.Nullable
   private BigDecimal code;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
+  @javax.annotation.Nullable
   private CreateMMMReportResponseData data;
 
   public CreateMMMReportResponse() {
   }
 
-  public CreateMMMReportResponse code(BigDecimal code) {
+  public CreateMMMReportResponse code(@javax.annotation.Nullable BigDecimal code) {
     this.code = code;
     return this;
   }
@@ -77,12 +79,12 @@ public class CreateMMMReportResponse {
     return code;
   }
 
-  public void setCode(BigDecimal code) {
+  public void setCode(@javax.annotation.Nullable BigDecimal code) {
     this.code = code;
   }
 
 
-  public CreateMMMReportResponse data(CreateMMMReportResponseData data) {
+  public CreateMMMReportResponse data(@javax.annotation.Nullable CreateMMMReportResponseData data) {
     this.data = data;
     return this;
   }
@@ -96,7 +98,7 @@ public class CreateMMMReportResponse {
     return data;
   }
 
-  public void setData(CreateMMMReportResponseData data) {
+  public void setData(@javax.annotation.Nullable CreateMMMReportResponseData data) {
     this.data = data;
   }
 

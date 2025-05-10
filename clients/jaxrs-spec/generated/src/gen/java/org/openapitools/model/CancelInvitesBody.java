@@ -20,9 +20,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Request body used to cancel invites")
 @JsonTypeName("CancelInvitesBody")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CancelInvitesBody   {
   private @Valid List<@Pattern(regexp = "^\\d+$")@Size(max = 25)String> inviteIds = new ArrayList<>();
+
+  public CancelInvitesBody() {
+  }
+
+  @JsonCreator
+  public CancelInvitesBody(
+    @JsonProperty(required = true, value = "invite_ids") List< @Pattern(regexp="^\\d+$") @Size(max=25)String> inviteIds
+  ) {
+    this.inviteIds = inviteIds;
+  }
 
   /**
    * List of invite/request ids to be cancelled
@@ -34,12 +44,12 @@ public class CancelInvitesBody   {
 
   
   @ApiModelProperty(example = "[\"1234567890123456789\",\"1122334455667788991\"]", required = true, value = "List of invite/request ids to be cancelled")
-  @JsonProperty("invite_ids")
+  @JsonProperty(required = true, value = "invite_ids")
   @NotNull  @Size(min=1,max=50)public List< @Pattern(regexp="^\\d+$") @Size(max=25)String> getInviteIds() {
     return inviteIds;
   }
 
-  @JsonProperty("invite_ids")
+  @JsonProperty(required = true, value = "invite_ids")
   public void setInviteIds(List<@Pattern(regexp = "^\\d+$")@Size(max = 25)String> inviteIds) {
     this.inviteIds = inviteIds;
   }

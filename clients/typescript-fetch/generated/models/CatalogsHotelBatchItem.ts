@@ -101,11 +101,11 @@ export function CatalogsHotelBatchItemFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-  export function CatalogsHotelBatchItemToJSON(json: any): CatalogsHotelBatchItem {
-      return CatalogsHotelBatchItemToJSONTyped(json, false);
-  }
+export function CatalogsHotelBatchItemToJSON(json: any): CatalogsHotelBatchItem {
+    return CatalogsHotelBatchItemToJSONTyped(json, false);
+}
 
-  export function CatalogsHotelBatchItemToJSONTyped(value?: CatalogsHotelBatchItem | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsHotelBatchItemToJSONTyped(value?: CatalogsHotelBatchItem | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

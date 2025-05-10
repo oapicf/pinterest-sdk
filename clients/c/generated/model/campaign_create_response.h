@@ -22,9 +22,10 @@ typedef struct campaign_create_response_t campaign_create_response_t;
 typedef struct campaign_create_response_t {
     list_t *items; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } campaign_create_response_t;
 
-campaign_create_response_t *campaign_create_response_create(
+__attribute__((deprecated)) campaign_create_response_t *campaign_create_response_create(
     list_t *items
 );
 

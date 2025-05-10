@@ -50,20 +50,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * BusinessMemberAssetsSummaryAdAccountsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BusinessMemberAssetsSummaryAdAccountsInner {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_PERMISSIONS = "permissions";
   @SerializedName(SERIALIZED_NAME_PERMISSIONS)
+  @javax.annotation.Nullable
   private List<String> permissions = new ArrayList<>();
 
   public BusinessMemberAssetsSummaryAdAccountsInner() {
   }
 
-  public BusinessMemberAssetsSummaryAdAccountsInner id(String id) {
+  public BusinessMemberAssetsSummaryAdAccountsInner id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -77,12 +79,12 @@ public class BusinessMemberAssetsSummaryAdAccountsInner {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public BusinessMemberAssetsSummaryAdAccountsInner permissions(List<String> permissions) {
+  public BusinessMemberAssetsSummaryAdAccountsInner permissions(@javax.annotation.Nullable List<String> permissions) {
     this.permissions = permissions;
     return this;
   }
@@ -104,7 +106,7 @@ public class BusinessMemberAssetsSummaryAdAccountsInner {
     return permissions;
   }
 
-  public void setPermissions(List<String> permissions) {
+  public void setPermissions(@javax.annotation.Nullable List<String> permissions) {
     this.permissions = permissions;
   }
 

@@ -62,11 +62,11 @@ export function DeleteAssetGroupResponseExceptionsInnerFromJSONTyped(json: any, 
     };
 }
 
-  export function DeleteAssetGroupResponseExceptionsInnerToJSON(json: any): DeleteAssetGroupResponseExceptionsInner {
-      return DeleteAssetGroupResponseExceptionsInnerToJSONTyped(json, false);
-  }
+export function DeleteAssetGroupResponseExceptionsInnerToJSON(json: any): DeleteAssetGroupResponseExceptionsInner {
+    return DeleteAssetGroupResponseExceptionsInnerToJSONTyped(json, false);
+}
 
-  export function DeleteAssetGroupResponseExceptionsInnerToJSONTyped(value?: DeleteAssetGroupResponseExceptionsInner | null, ignoreDiscriminator: boolean = false): any {
+export function DeleteAssetGroupResponseExceptionsInnerToJSONTyped(value?: DeleteAssetGroupResponseExceptionsInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

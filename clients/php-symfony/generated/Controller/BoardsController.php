@@ -984,7 +984,7 @@ class BoardsController extends Controller
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "ALL", "PROTECTED", "PUBLIC", "SECRET", "PUBLIC_AND_SECRET" ]);
+        $asserts[] = new Assert\Choice([ 'ALL', 'PROTECTED', 'PUBLIC', 'SECRET', 'PUBLIC_AND_SECRET' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($privacy, $asserts);
         if ($response instanceof Response) {
@@ -1101,7 +1101,7 @@ class BoardsController extends Controller
         }
         $asserts = [];
         $asserts[] = new Assert\All([
-            new Assert\Choice([ "REGULAR", "VIDEO", "SHOPPING", "CAROUSEL", "MAX_VIDEO", "SHOP_THE_PIN", "COLLECTION", "IDEA" ])
+            new Assert\Choice([ 'REGULAR', 'VIDEO', 'SHOPPING', 'CAROUSEL', 'MAX_VIDEO', 'SHOP_THE_PIN', 'COLLECTION', 'IDEA' ])
         ]);
         $asserts[] = new Assert\All([
             new Assert\Type("string"),

@@ -17,11 +17,23 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("KeywordsCommon")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class KeywordsCommon   {
   private Integer bid;
   private MatchTypeResponse matchType;
   private String value;
+
+  public KeywordsCommon() {
+  }
+
+  @JsonCreator
+  public KeywordsCommon(
+    @JsonProperty(required = true, value = "match_type") MatchTypeResponse matchType,
+    @JsonProperty(required = true, value = "value") String value
+  ) {
+    this.matchType = matchType;
+    this.value = value;
+  }
 
   /**
    * &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
@@ -52,12 +64,12 @@ public class KeywordsCommon   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("match_type")
+  @JsonProperty(required = true, value = "match_type")
   @NotNull public MatchTypeResponse getMatchType() {
     return matchType;
   }
 
-  @JsonProperty("match_type")
+  @JsonProperty(required = true, value = "match_type")
   public void setMatchType(MatchTypeResponse matchType) {
     this.matchType = matchType;
   }
@@ -72,12 +84,12 @@ public class KeywordsCommon   {
 
   
   @ApiModelProperty(required = true, value = "Keyword value (120 chars max).")
-  @JsonProperty("value")
+  @JsonProperty(required = true, value = "value")
   @NotNull public String getValue() {
     return value;
   }
 
-  @JsonProperty("value")
+  @JsonProperty(required = true, value = "value")
   public void setValue(String value) {
     this.value = value;
   }

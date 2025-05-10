@@ -44,9 +44,9 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum OrderLineStatus: string
 {
-        case ACTIVE = "ACTIVE";
-        case PAUSED = "PAUSED";
-        case DELETED = "DELETED";
+        case ACTIVE = 'ACTIVE';
+        case PAUSED = 'PAUSED';
+        case DELETED = 'DELETED';
 }
 
 

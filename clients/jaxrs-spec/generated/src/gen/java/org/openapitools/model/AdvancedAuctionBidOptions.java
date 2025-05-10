@@ -20,11 +20,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Object describing a retail catalog item's bid options (bid price and bid multipliers).")
 @JsonTypeName("AdvancedAuctionBidOptions")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdvancedAuctionBidOptions   {
   private Long bidInMicroCurrency;
   private AppTypeMultipliers appTypeMultipliers;
   private PlacementMultipliers placementMultipliers;
+
+  public AdvancedAuctionBidOptions() {
+  }
 
   /**
    * Bid price in micro currency. A value of 0 will stop distribution for this item in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. A value of &#x60;null&#x60; will fallback to the ad group&#39;s &#x60;bid_in_micro_currency&#x60;.

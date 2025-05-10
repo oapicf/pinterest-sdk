@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * HTTP request details included in the log sent by the client.
  * @param method 
@@ -21,6 +22,7 @@ package org.openapitools.server.models
  * @param responseHeaders HTTP response headers as key-value pairs.
  * @param responseStatusCode 
  */
+@Serializable
 data class IntegrationLogClientRequest(
     val method: IntegrationLogClientRequest.Method,
     /* HTTP request host from host header. */
@@ -32,7 +34,7 @@ data class IntegrationLogClientRequest(
     /* HTTP response headers as key-value pairs. */
     val responseHeaders: kotlin.collections.Map<kotlin.String, kotlin.String>? = null,
     val responseStatusCode: kotlin.Int? = null
-) 
+)
 {
     /**
     * 

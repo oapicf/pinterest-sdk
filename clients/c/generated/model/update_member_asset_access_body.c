@@ -5,7 +5,7 @@
 
 
 
-update_member_asset_access_body_t *update_member_asset_access_body_create(
+static update_member_asset_access_body_t *update_member_asset_access_body_create_internal(
     list_t *accesses
     ) {
     update_member_asset_access_body_t *update_member_asset_access_body_local_var = malloc(sizeof(update_member_asset_access_body_t));
@@ -14,12 +14,24 @@ update_member_asset_access_body_t *update_member_asset_access_body_create(
     }
     update_member_asset_access_body_local_var->accesses = accesses;
 
+    update_member_asset_access_body_local_var->_library_owned = 1;
     return update_member_asset_access_body_local_var;
 }
 
+__attribute__((deprecated)) update_member_asset_access_body_t *update_member_asset_access_body_create(
+    list_t *accesses
+    ) {
+    return update_member_asset_access_body_create_internal (
+        accesses
+        );
+}
 
 void update_member_asset_access_body_free(update_member_asset_access_body_t *update_member_asset_access_body) {
     if(NULL == update_member_asset_access_body){
+        return ;
+    }
+    if(update_member_asset_access_body->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "update_member_asset_access_body_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -73,6 +85,9 @@ update_member_asset_access_body_t *update_member_asset_access_body_parseFromJSON
 
     // update_member_asset_access_body->accesses
     cJSON *accesses = cJSON_GetObjectItemCaseSensitive(update_member_asset_access_bodyJSON, "accesses");
+    if (cJSON_IsNull(accesses)) {
+        accesses = NULL;
+    }
     if (!accesses) {
         goto end;
     }
@@ -96,7 +111,7 @@ update_member_asset_access_body_t *update_member_asset_access_body_parseFromJSON
     }
 
 
-    update_member_asset_access_body_local_var = update_member_asset_access_body_create (
+    update_member_asset_access_body_local_var = update_member_asset_access_body_create_internal (
         accessesList
         );
 

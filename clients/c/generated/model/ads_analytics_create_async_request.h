@@ -132,9 +132,10 @@ typedef struct ads_analytics_create_async_request_t {
     int start_hour; //numeric
     int end_hour; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } ads_analytics_create_async_request_t;
 
-ads_analytics_create_async_request_t *ads_analytics_create_async_request_create(
+__attribute__((deprecated)) ads_analytics_create_async_request_t *ads_analytics_create_async_request_create(
     char *start_date,
     char *end_date,
     granularity_t *granularity,

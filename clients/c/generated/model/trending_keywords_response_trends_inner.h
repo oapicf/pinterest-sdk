@@ -26,9 +26,10 @@ typedef struct trending_keywords_response_trends_inner_t {
     int pct_growth_yoy; //numeric
     trending_keywords_response_trends_inner_time_series_t *time_series; // custom
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } trending_keywords_response_trends_inner_t;
 
-trending_keywords_response_trends_inner_t *trending_keywords_response_trends_inner_create(
+__attribute__((deprecated)) trending_keywords_response_trends_inner_t *trending_keywords_response_trends_inner_create(
     char *keyword,
     int pct_growth_wow,
     int pct_growth_mom,

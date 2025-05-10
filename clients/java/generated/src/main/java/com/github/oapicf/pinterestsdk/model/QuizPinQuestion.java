@@ -52,24 +52,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * A specific quiz inquiry.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class QuizPinQuestion {
   public static final String SERIALIZED_NAME_QUESTION_ID = "question_id";
   @SerializedName(SERIALIZED_NAME_QUESTION_ID)
+  @javax.annotation.Nullable
   private BigDecimal questionId;
 
   public static final String SERIALIZED_NAME_QUESTION_TEXT = "question_text";
   @SerializedName(SERIALIZED_NAME_QUESTION_TEXT)
+  @javax.annotation.Nullable
   private String questionText;
 
   public static final String SERIALIZED_NAME_OPTIONS = "options";
   @SerializedName(SERIALIZED_NAME_OPTIONS)
+  @javax.annotation.Nullable
   private List<QuizPinOption> options = new ArrayList<>();
 
   public QuizPinQuestion() {
   }
 
-  public QuizPinQuestion questionId(BigDecimal questionId) {
+  public QuizPinQuestion questionId(@javax.annotation.Nullable BigDecimal questionId) {
     this.questionId = questionId;
     return this;
   }
@@ -83,12 +86,12 @@ public class QuizPinQuestion {
     return questionId;
   }
 
-  public void setQuestionId(BigDecimal questionId) {
+  public void setQuestionId(@javax.annotation.Nullable BigDecimal questionId) {
     this.questionId = questionId;
   }
 
 
-  public QuizPinQuestion questionText(String questionText) {
+  public QuizPinQuestion questionText(@javax.annotation.Nullable String questionText) {
     this.questionText = questionText;
     return this;
   }
@@ -102,12 +105,12 @@ public class QuizPinQuestion {
     return questionText;
   }
 
-  public void setQuestionText(String questionText) {
+  public void setQuestionText(@javax.annotation.Nullable String questionText) {
     this.questionText = questionText;
   }
 
 
-  public QuizPinQuestion options(List<QuizPinOption> options) {
+  public QuizPinQuestion options(@javax.annotation.Nullable List<QuizPinOption> options) {
     this.options = options;
     return this;
   }
@@ -129,7 +132,7 @@ public class QuizPinQuestion {
     return options;
   }
 
-  public void setOptions(List<QuizPinOption> options) {
+  public void setOptions(@javax.annotation.Nullable List<QuizPinOption> options) {
     this.options = options;
   }
 

@@ -13,14 +13,16 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.BusinessAccessUserSummary
 
+import kotlinx.serialization.Serializable
 /**
  * An object containing the permissions a business member/partner has on the asset.
  * @param permissions Permission levels member or partner has on an asset.
  * @param user 
  */
+@Serializable
 data class UserSingleAssetBinding(
     /* Permission levels member or partner has on an asset. */
     val permissions: kotlin.collections.List<kotlin.String>? = null,
     val user: BusinessAccessUserSummary? = null
-) 
+)
 

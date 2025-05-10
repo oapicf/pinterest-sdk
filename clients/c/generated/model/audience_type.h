@@ -24,9 +24,9 @@ char* audience_type_audience_type_ToString(pinterest_rest_api_audience_type__e a
 
 pinterest_rest_api_audience_type__e audience_type_audience_type_FromString(char* audience_type);
 
-//cJSON *audience_type_audience_type_convertToJSON(pinterest_rest_api_audience_type__e audience_type);
+cJSON *audience_type_convertToJSON(pinterest_rest_api_audience_type__e audience_type);
 
-//pinterest_rest_api_audience_type__e audience_type_audience_type_parseFromJSON(cJSON *audience_typeJSON);
+pinterest_rest_api_audience_type__e audience_type_parseFromJSON(cJSON *audience_typeJSON);
 
 #endif /* _audience_type_H_ */
 

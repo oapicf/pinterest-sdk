@@ -24,9 +24,9 @@ char* ad_country_ad_country_ToString(pinterest_rest_api_ad_country__e ad_country
 
 pinterest_rest_api_ad_country__e ad_country_ad_country_FromString(char* ad_country);
 
-//cJSON *ad_country_ad_country_convertToJSON(pinterest_rest_api_ad_country__e ad_country);
+cJSON *ad_country_convertToJSON(pinterest_rest_api_ad_country__e ad_country);
 
-//pinterest_rest_api_ad_country__e ad_country_ad_country_parseFromJSON(cJSON *ad_countryJSON);
+pinterest_rest_api_ad_country__e ad_country_parseFromJSON(cJSON *ad_countryJSON);
 
 #endif /* _ad_country_H_ */
 

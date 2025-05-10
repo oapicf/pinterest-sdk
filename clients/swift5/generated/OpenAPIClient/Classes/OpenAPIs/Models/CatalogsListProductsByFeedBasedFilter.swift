@@ -13,7 +13,7 @@ import AnyCodable
 /** Request object to list products for a given feed_id and product group filter. */
 public struct CatalogsListProductsByFeedBasedFilter: Codable, JSONEncodable, Hashable {
 
-    static let feedIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let feedIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Catalog Feed id pertaining to the catalog product group filter. */
     public var feedId: String
     public var filters: CatalogsProductGroupFilters

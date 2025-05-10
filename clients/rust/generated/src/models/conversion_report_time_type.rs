@@ -16,24 +16,24 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum ConversionReportTimeType {
     #[serde(rename = "TIME_OF_AD_ACTION")]
-    AdAction,
+    TimeOfAdAction,
     #[serde(rename = "TIME_OF_CONVERSION")]
-    Conversion,
+    TimeOfConversion,
 
 }
 
 impl std::fmt::Display for ConversionReportTimeType {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
-            Self::AdAction => write!(f, "TIME_OF_AD_ACTION"),
-            Self::Conversion => write!(f, "TIME_OF_CONVERSION"),
+            Self::TimeOfAdAction => write!(f, "TIME_OF_AD_ACTION"),
+            Self::TimeOfConversion => write!(f, "TIME_OF_CONVERSION"),
         }
     }
 }
 
 impl Default for ConversionReportTimeType {
     fn default() -> ConversionReportTimeType {
-        Self::AdAction
+        Self::TimeOfAdAction
     }
 }
 

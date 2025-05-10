@@ -27,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Diagnostics aggregated numbers")
 @JsonTypeName("CatalogsReportStats")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsReportStats   {
   public enum ReportTypeEnum {
 
@@ -133,6 +133,16 @@ public class CatalogsReportStats   {
   private Boolean ineligibleForAds;
   private Boolean ineligibleForOrganic;
 
+  public CatalogsReportStats() {
+  }
+
+  @JsonCreator
+  public CatalogsReportStats(
+    @JsonProperty(required = true, value = "report_type") ReportTypeEnum reportType
+  ) {
+    this.reportType = reportType;
+  }
+
   /**
    **/
   public CatalogsReportStats reportType(ReportTypeEnum reportType) {
@@ -142,12 +152,12 @@ public class CatalogsReportStats   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("report_type")
+  @JsonProperty(required = true, value = "report_type")
   @NotNull public ReportTypeEnum getReportType() {
     return reportType;
   }
 
-  @JsonProperty("report_type")
+  @JsonProperty(required = true, value = "report_type")
   public void setReportType(ReportTypeEnum reportType) {
     this.reportType = reportType;
   }

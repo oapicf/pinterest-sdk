@@ -71,7 +71,7 @@ class BoardMedia
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->imageCoverUrl = array_key_exists('imageCoverUrl', $data) ? $data['imageCoverUrl'] : $this->imageCoverUrl;

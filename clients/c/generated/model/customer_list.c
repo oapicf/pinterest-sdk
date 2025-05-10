@@ -22,7 +22,7 @@ pinterest_rest_api_customer_list_STATUS_e customer_list_status_FromString(char* 
     return 0;
 }
 
-customer_list_t *customer_list_create(
+static customer_list_t *customer_list_create_internal(
     char *ad_account_id,
     double created_time,
     char *id,
@@ -51,12 +51,44 @@ customer_list_t *customer_list_create(
     customer_list_local_var->updated_time = updated_time;
     customer_list_local_var->exceptions = exceptions;
 
+    customer_list_local_var->_library_owned = 1;
     return customer_list_local_var;
 }
 
+__attribute__((deprecated)) customer_list_t *customer_list_create(
+    char *ad_account_id,
+    double created_time,
+    char *id,
+    char *name,
+    double num_batches,
+    double num_removed_user_records,
+    double num_uploaded_user_records,
+    pinterest_rest_api_customer_list_STATUS_e status,
+    char *type,
+    double updated_time,
+    object_t *exceptions
+    ) {
+    return customer_list_create_internal (
+        ad_account_id,
+        created_time,
+        id,
+        name,
+        num_batches,
+        num_removed_user_records,
+        num_uploaded_user_records,
+        status,
+        type,
+        updated_time,
+        exceptions
+        );
+}
 
 void customer_list_free(customer_list_t *customer_list) {
     if(NULL == customer_list){
+        return ;
+    }
+    if(customer_list->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "customer_list_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -144,7 +176,7 @@ cJSON *customer_list_convertToJSON(customer_list_t *customer_list) {
 
     // customer_list->status
     if(customer_list->status != pinterest_rest_api_customer_list_STATUS_NULL) {
-    if(cJSON_AddStringToObject(item, "status", statuscustomer_list_ToString(customer_list->status)) == NULL)
+    if(cJSON_AddStringToObject(item, "status", customer_list_status_ToString(customer_list->status)) == NULL)
     {
     goto fail; //Enum
     }
@@ -193,6 +225,9 @@ customer_list_t *customer_list_parseFromJSON(cJSON *customer_listJSON){
 
     // customer_list->ad_account_id
     cJSON *ad_account_id = cJSON_GetObjectItemCaseSensitive(customer_listJSON, "ad_account_id");
+    if (cJSON_IsNull(ad_account_id)) {
+        ad_account_id = NULL;
+    }
     if (ad_account_id) { 
     if(!cJSON_IsString(ad_account_id) && !cJSON_IsNull(ad_account_id))
     {
@@ -202,6 +237,9 @@ customer_list_t *customer_list_parseFromJSON(cJSON *customer_listJSON){
 
     // customer_list->created_time
     cJSON *created_time = cJSON_GetObjectItemCaseSensitive(customer_listJSON, "created_time");
+    if (cJSON_IsNull(created_time)) {
+        created_time = NULL;
+    }
     if (created_time) { 
     if(!cJSON_IsNumber(created_time))
     {
@@ -211,6 +249,9 @@ customer_list_t *customer_list_parseFromJSON(cJSON *customer_listJSON){
 
     // customer_list->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(customer_listJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -220,6 +261,9 @@ customer_list_t *customer_list_parseFromJSON(cJSON *customer_listJSON){
 
     // customer_list->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(customer_listJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
     if (name) { 
     if(!cJSON_IsString(name) && !cJSON_IsNull(name))
     {
@@ -229,6 +273,9 @@ customer_list_t *customer_list_parseFromJSON(cJSON *customer_listJSON){
 
     // customer_list->num_batches
     cJSON *num_batches = cJSON_GetObjectItemCaseSensitive(customer_listJSON, "num_batches");
+    if (cJSON_IsNull(num_batches)) {
+        num_batches = NULL;
+    }
     if (num_batches) { 
     if(!cJSON_IsNumber(num_batches))
     {
@@ -238,6 +285,9 @@ customer_list_t *customer_list_parseFromJSON(cJSON *customer_listJSON){
 
     // customer_list->num_removed_user_records
     cJSON *num_removed_user_records = cJSON_GetObjectItemCaseSensitive(customer_listJSON, "num_removed_user_records");
+    if (cJSON_IsNull(num_removed_user_records)) {
+        num_removed_user_records = NULL;
+    }
     if (num_removed_user_records) { 
     if(!cJSON_IsNumber(num_removed_user_records))
     {
@@ -247,6 +297,9 @@ customer_list_t *customer_list_parseFromJSON(cJSON *customer_listJSON){
 
     // customer_list->num_uploaded_user_records
     cJSON *num_uploaded_user_records = cJSON_GetObjectItemCaseSensitive(customer_listJSON, "num_uploaded_user_records");
+    if (cJSON_IsNull(num_uploaded_user_records)) {
+        num_uploaded_user_records = NULL;
+    }
     if (num_uploaded_user_records) { 
     if(!cJSON_IsNumber(num_uploaded_user_records))
     {
@@ -256,6 +309,9 @@ customer_list_t *customer_list_parseFromJSON(cJSON *customer_listJSON){
 
     // customer_list->status
     cJSON *status = cJSON_GetObjectItemCaseSensitive(customer_listJSON, "status");
+    if (cJSON_IsNull(status)) {
+        status = NULL;
+    }
     pinterest_rest_api_customer_list_STATUS_e statusVariable;
     if (status) { 
     if(!cJSON_IsString(status))
@@ -267,6 +323,9 @@ customer_list_t *customer_list_parseFromJSON(cJSON *customer_listJSON){
 
     // customer_list->type
     cJSON *type = cJSON_GetObjectItemCaseSensitive(customer_listJSON, "type");
+    if (cJSON_IsNull(type)) {
+        type = NULL;
+    }
     if (type) { 
     if(!cJSON_IsString(type) && !cJSON_IsNull(type))
     {
@@ -276,6 +335,9 @@ customer_list_t *customer_list_parseFromJSON(cJSON *customer_listJSON){
 
     // customer_list->updated_time
     cJSON *updated_time = cJSON_GetObjectItemCaseSensitive(customer_listJSON, "updated_time");
+    if (cJSON_IsNull(updated_time)) {
+        updated_time = NULL;
+    }
     if (updated_time) { 
     if(!cJSON_IsNumber(updated_time))
     {
@@ -285,13 +347,16 @@ customer_list_t *customer_list_parseFromJSON(cJSON *customer_listJSON){
 
     // customer_list->exceptions
     cJSON *exceptions = cJSON_GetObjectItemCaseSensitive(customer_listJSON, "exceptions");
+    if (cJSON_IsNull(exceptions)) {
+        exceptions = NULL;
+    }
     object_t *exceptions_local_object = NULL;
     if (exceptions) { 
     exceptions_local_object = object_parseFromJSON(exceptions); //object
     }
 
 
-    customer_list_local_var = customer_list_create (
+    customer_list_local_var = customer_list_create_internal (
         ad_account_id && !cJSON_IsNull(ad_account_id) ? strdup(ad_account_id->valuestring) : NULL,
         created_time ? created_time->valuedouble : 0,
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,

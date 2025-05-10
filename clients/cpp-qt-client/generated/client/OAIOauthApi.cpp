@@ -232,7 +232,7 @@ void OAIOauthApi::oauth_token(const QString &grant_type) {
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIOauthApi::oauth_tokenCallback);
     connect(this, &OAIOauthApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }

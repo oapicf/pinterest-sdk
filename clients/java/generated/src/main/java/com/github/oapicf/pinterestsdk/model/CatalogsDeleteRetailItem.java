@@ -48,10 +48,11 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * An item to be deleted
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsDeleteRetailItem {
   public static final String SERIALIZED_NAME_ITEM_ID = "item_id";
   @SerializedName(SERIALIZED_NAME_ITEM_ID)
+  @javax.annotation.Nonnull
   private String itemId;
 
   /**
@@ -106,12 +107,13 @@ public class CatalogsDeleteRetailItem {
 
   public static final String SERIALIZED_NAME_OPERATION = "operation";
   @SerializedName(SERIALIZED_NAME_OPERATION)
+  @javax.annotation.Nonnull
   private OperationEnum operation;
 
   public CatalogsDeleteRetailItem() {
   }
 
-  public CatalogsDeleteRetailItem itemId(String itemId) {
+  public CatalogsDeleteRetailItem itemId(@javax.annotation.Nonnull String itemId) {
     this.itemId = itemId;
     return this;
   }
@@ -125,12 +127,12 @@ public class CatalogsDeleteRetailItem {
     return itemId;
   }
 
-  public void setItemId(String itemId) {
+  public void setItemId(@javax.annotation.Nonnull String itemId) {
     this.itemId = itemId;
   }
 
 
-  public CatalogsDeleteRetailItem operation(OperationEnum operation) {
+  public CatalogsDeleteRetailItem operation(@javax.annotation.Nonnull OperationEnum operation) {
     this.operation = operation;
     return this;
   }
@@ -144,7 +146,7 @@ public class CatalogsDeleteRetailItem {
     return operation;
   }
 
-  public void setOperation(OperationEnum operation) {
+  public void setOperation(@javax.annotation.Nonnull OperationEnum operation) {
     this.operation = operation;
   }
 

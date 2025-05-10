@@ -187,10 +187,35 @@ AudienceRule <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return AudienceRule in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return AudienceRule as a base R list.
+    #' @examples
+    #' # convert array of AudienceRule (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert AudienceRule to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       AudienceRuleObject <- list()
       if (!is.null(self$`country`)) {
         AudienceRuleObject[["country"]] <-
@@ -214,7 +239,7 @@ AudienceRule <- R6::R6Class(
       }
       if (!is.null(self$`event_data`)) {
         AudienceRuleObject[["event_data"]] <-
-          self$`event_data`$toJSON()
+          self$`event_data`$toSimpleType()
       }
       if (!is.null(self$`percentage`)) {
         AudienceRuleObject[["percentage"]] <-
@@ -266,13 +291,13 @@ AudienceRule <- R6::R6Class(
       }
       if (!is.null(self$`objective_type`)) {
         AudienceRuleObject[["objective_type"]] <-
-          lapply(self$`objective_type`, function(x) x$toJSON())
+          lapply(self$`objective_type`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`ad_account_id`)) {
         AudienceRuleObject[["ad_account_id"]] <-
           self$`ad_account_id`
       }
-      AudienceRuleObject
+      return(AudienceRuleObject)
     },
 
     #' @description
@@ -349,173 +374,13 @@ AudienceRule <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return AudienceRule in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`country`)) {
-          sprintf(
-          '"country":
-            "%s"
-                    ',
-          self$`country`
-          )
-        },
-        if (!is.null(self$`customer_list_id`)) {
-          sprintf(
-          '"customer_list_id":
-            "%s"
-                    ',
-          self$`customer_list_id`
-          )
-        },
-        if (!is.null(self$`engagement_domain`)) {
-          sprintf(
-          '"engagement_domain":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`engagement_domain`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`engagement_type`)) {
-          sprintf(
-          '"engagement_type":
-            "%s"
-                    ',
-          self$`engagement_type`
-          )
-        },
-        if (!is.null(self$`event`)) {
-          sprintf(
-          '"event":
-            "%s"
-                    ',
-          self$`event`
-          )
-        },
-        if (!is.null(self$`event_data`)) {
-          sprintf(
-          '"event_data":
-          %s
-          ',
-          jsonlite::toJSON(self$`event_data`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`percentage`)) {
-          sprintf(
-          '"percentage":
-            %d
-                    ',
-          self$`percentage`
-          )
-        },
-        if (!is.null(self$`pin_id`)) {
-          sprintf(
-          '"pin_id":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`pin_id`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`prefill`)) {
-          sprintf(
-          '"prefill":
-            %s
-                    ',
-          tolower(self$`prefill`)
-          )
-        },
-        if (!is.null(self$`retention_days`)) {
-          sprintf(
-          '"retention_days":
-            %d
-                    ',
-          self$`retention_days`
-          )
-        },
-        if (!is.null(self$`seed_id`)) {
-          sprintf(
-          '"seed_id":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`seed_id`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`url`)) {
-          sprintf(
-          '"url":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`url`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`visitor_source_id`)) {
-          sprintf(
-          '"visitor_source_id":
-            "%s"
-                    ',
-          self$`visitor_source_id`
-          )
-        },
-        if (!is.null(self$`event_source`)) {
-          sprintf(
-          '"event_source":
-            "%s"
-                    ',
-          self$`event_source`
-          )
-        },
-        if (!is.null(self$`ingestion_source`)) {
-          sprintf(
-          '"ingestion_source":
-            "%s"
-                    ',
-          self$`ingestion_source`
-          )
-        },
-        if (!is.null(self$`engager_type`)) {
-          sprintf(
-          '"engager_type":
-            %d
-                    ',
-          self$`engager_type`
-          )
-        },
-        if (!is.null(self$`campaign_id`)) {
-          sprintf(
-          '"campaign_id":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`campaign_id`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`ad_id`)) {
-          sprintf(
-          '"ad_id":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`ad_id`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`objective_type`)) {
-          sprintf(
-          '"objective_type":
-          [%s]
-',
-          paste(sapply(self$`objective_type`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`ad_account_id`)) {
-          sprintf(
-          '"ad_account_id":
-            "%s"
-                    ',
-          self$`ad_account_id`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

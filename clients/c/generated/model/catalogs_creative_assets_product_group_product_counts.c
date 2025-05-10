@@ -22,7 +22,7 @@ pinterest_rest_api_catalogs_creative_assets_product_group_product_counts_CATALOG
     return 0;
 }
 
-catalogs_creative_assets_product_group_product_counts_t *catalogs_creative_assets_product_group_product_counts_create(
+static catalogs_creative_assets_product_group_product_counts_t *catalogs_creative_assets_product_group_product_counts_create_internal(
     pinterest_rest_api_catalogs_creative_assets_product_group_product_counts_CATALOGTYPE_e catalog_type,
     double total,
     double videos
@@ -35,12 +35,28 @@ catalogs_creative_assets_product_group_product_counts_t *catalogs_creative_asset
     catalogs_creative_assets_product_group_product_counts_local_var->total = total;
     catalogs_creative_assets_product_group_product_counts_local_var->videos = videos;
 
+    catalogs_creative_assets_product_group_product_counts_local_var->_library_owned = 1;
     return catalogs_creative_assets_product_group_product_counts_local_var;
 }
 
+__attribute__((deprecated)) catalogs_creative_assets_product_group_product_counts_t *catalogs_creative_assets_product_group_product_counts_create(
+    pinterest_rest_api_catalogs_creative_assets_product_group_product_counts_CATALOGTYPE_e catalog_type,
+    double total,
+    double videos
+    ) {
+    return catalogs_creative_assets_product_group_product_counts_create_internal (
+        catalog_type,
+        total,
+        videos
+        );
+}
 
 void catalogs_creative_assets_product_group_product_counts_free(catalogs_creative_assets_product_group_product_counts_t *catalogs_creative_assets_product_group_product_counts) {
     if(NULL == catalogs_creative_assets_product_group_product_counts){
+        return ;
+    }
+    if(catalogs_creative_assets_product_group_product_counts->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_creative_assets_product_group_product_counts_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -54,7 +70,7 @@ cJSON *catalogs_creative_assets_product_group_product_counts_convertToJSON(catal
     if (pinterest_rest_api_catalogs_creative_assets_product_group_product_counts_CATALOGTYPE_NULL == catalogs_creative_assets_product_group_product_counts->catalog_type) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "catalog_type", catalog_typecatalogs_creative_assets_product_group_product_counts_ToString(catalogs_creative_assets_product_group_product_counts->catalog_type)) == NULL)
+    if(cJSON_AddStringToObject(item, "catalog_type", catalogs_creative_assets_product_group_product_counts_catalog_type_ToString(catalogs_creative_assets_product_group_product_counts->catalog_type)) == NULL)
     {
     goto fail; //Enum
     }
@@ -91,6 +107,9 @@ catalogs_creative_assets_product_group_product_counts_t *catalogs_creative_asset
 
     // catalogs_creative_assets_product_group_product_counts->catalog_type
     cJSON *catalog_type = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_product_group_product_countsJSON, "catalog_type");
+    if (cJSON_IsNull(catalog_type)) {
+        catalog_type = NULL;
+    }
     if (!catalog_type) {
         goto end;
     }
@@ -105,6 +124,9 @@ catalogs_creative_assets_product_group_product_counts_t *catalogs_creative_asset
 
     // catalogs_creative_assets_product_group_product_counts->total
     cJSON *total = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_product_group_product_countsJSON, "total");
+    if (cJSON_IsNull(total)) {
+        total = NULL;
+    }
     if (!total) {
         goto end;
     }
@@ -117,6 +139,9 @@ catalogs_creative_assets_product_group_product_counts_t *catalogs_creative_asset
 
     // catalogs_creative_assets_product_group_product_counts->videos
     cJSON *videos = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_product_group_product_countsJSON, "videos");
+    if (cJSON_IsNull(videos)) {
+        videos = NULL;
+    }
     if (!videos) {
         goto end;
     }
@@ -128,7 +153,7 @@ catalogs_creative_assets_product_group_product_counts_t *catalogs_creative_asset
     }
 
 
-    catalogs_creative_assets_product_group_product_counts_local_var = catalogs_creative_assets_product_group_product_counts_create (
+    catalogs_creative_assets_product_group_product_counts_local_var = catalogs_creative_assets_product_group_product_counts_create_internal (
         catalog_typeVariable,
         total->valuedouble,
         videos->valuedouble

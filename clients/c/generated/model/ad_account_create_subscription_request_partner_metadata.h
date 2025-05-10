@@ -21,9 +21,10 @@ typedef struct ad_account_create_subscription_request_partner_metadata_t ad_acco
 typedef struct ad_account_create_subscription_request_partner_metadata_t {
     char *subscriber_key; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } ad_account_create_subscription_request_partner_metadata_t;
 
-ad_account_create_subscription_request_partner_metadata_t *ad_account_create_subscription_request_partner_metadata_create(
+__attribute__((deprecated)) ad_account_create_subscription_request_partner_metadata_t *ad_account_create_subscription_request_partner_metadata_create(
     char *subscriber_key
 );
 

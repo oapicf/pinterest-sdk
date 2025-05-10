@@ -49,11 +49,11 @@ export function CatalogsHotelProductMetadataFromJSONTyped(json: any, ignoreDiscr
     };
 }
 
-  export function CatalogsHotelProductMetadataToJSON(json: any): CatalogsHotelProductMetadata {
-      return CatalogsHotelProductMetadataToJSONTyped(json, false);
-  }
+export function CatalogsHotelProductMetadataToJSON(json: any): CatalogsHotelProductMetadata {
+    return CatalogsHotelProductMetadataToJSONTyped(json, false);
+}
 
-  export function CatalogsHotelProductMetadataToJSONTyped(value?: CatalogsHotelProductMetadata | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsHotelProductMetadataToJSONTyped(value?: CatalogsHotelProductMetadata | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

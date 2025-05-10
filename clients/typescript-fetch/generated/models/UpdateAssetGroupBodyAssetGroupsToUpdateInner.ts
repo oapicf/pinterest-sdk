@@ -92,11 +92,11 @@ export function UpdateAssetGroupBodyAssetGroupsToUpdateInnerFromJSONTyped(json: 
     };
 }
 
-  export function UpdateAssetGroupBodyAssetGroupsToUpdateInnerToJSON(json: any): UpdateAssetGroupBodyAssetGroupsToUpdateInner {
-      return UpdateAssetGroupBodyAssetGroupsToUpdateInnerToJSONTyped(json, false);
-  }
+export function UpdateAssetGroupBodyAssetGroupsToUpdateInnerToJSON(json: any): UpdateAssetGroupBodyAssetGroupsToUpdateInner {
+    return UpdateAssetGroupBodyAssetGroupsToUpdateInnerToJSONTyped(json, false);
+}
 
-  export function UpdateAssetGroupBodyAssetGroupsToUpdateInnerToJSONTyped(value?: UpdateAssetGroupBodyAssetGroupsToUpdateInner | null, ignoreDiscriminator: boolean = false): any {
+export function UpdateAssetGroupBodyAssetGroupsToUpdateInnerToJSONTyped(value?: UpdateAssetGroupBodyAssetGroupsToUpdateInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

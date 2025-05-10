@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Body to be used on path to send Members or Partners Invite or Request")
 @JsonTypeName("CreateMembershipOrPartnershipInvitesBody")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CreateMembershipOrPartnershipInvitesBody   {
   public enum BusinessRoleEnum {
 
@@ -75,6 +75,18 @@ public class CreateMembershipOrPartnershipInvitesBody   {
   private @Valid List<String> members = new ArrayList<>();
   private @Valid List<@Pattern(regexp = "^\\d+$")@Size(max = 25)String> partners = new ArrayList<>();
 
+  public CreateMembershipOrPartnershipInvitesBody() {
+  }
+
+  @JsonCreator
+  public CreateMembershipOrPartnershipInvitesBody(
+    @JsonProperty(required = true, value = "business_role") BusinessRoleEnum businessRole,
+    @JsonProperty(required = true, value = "invite_type") InviteType inviteType
+  ) {
+    this.businessRole = businessRole;
+    this.inviteType = inviteType;
+  }
+
   /**
    * The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
    **/
@@ -85,12 +97,12 @@ public class CreateMembershipOrPartnershipInvitesBody   {
 
   
   @ApiModelProperty(example = "BIZ_ADMIN", required = true, value = "The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.")
-  @JsonProperty("business_role")
+  @JsonProperty(required = true, value = "business_role")
   @NotNull public BusinessRoleEnum getBusinessRole() {
     return businessRole;
   }
 
-  @JsonProperty("business_role")
+  @JsonProperty(required = true, value = "business_role")
   public void setBusinessRole(BusinessRoleEnum businessRole) {
     this.businessRole = businessRole;
   }
@@ -104,12 +116,12 @@ public class CreateMembershipOrPartnershipInvitesBody   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("invite_type")
+  @JsonProperty(required = true, value = "invite_type")
   @NotNull public InviteType getInviteType() {
     return inviteType;
   }
 
-  @JsonProperty("invite_type")
+  @JsonProperty(required = true, value = "invite_type")
   public void setInviteType(InviteType inviteType) {
     this.inviteType = inviteType;
   }

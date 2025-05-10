@@ -12,11 +12,13 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param scrollupGoalValueInMicroCurrency 
  */
+@Serializable
 data class OptimizationGoalMetadataScrollupGoalMetadata(
     val scrollupGoalValueInMicroCurrency: kotlin.String? = null
-) 
+)
 

@@ -51,16 +51,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsHotelProductGroupFiltersAllOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsHotelProductGroupFiltersAllOf {
   public static final String SERIALIZED_NAME_ALL_OF = "all_of";
   @SerializedName(SERIALIZED_NAME_ALL_OF)
+  @javax.annotation.Nonnull
   private List<CatalogsHotelProductGroupFilterKeys> allOf = new ArrayList<>();
 
   public CatalogsHotelProductGroupFiltersAllOf() {
   }
 
-  public CatalogsHotelProductGroupFiltersAllOf allOf(List<CatalogsHotelProductGroupFilterKeys> allOf) {
+  public CatalogsHotelProductGroupFiltersAllOf allOf(@javax.annotation.Nonnull List<CatalogsHotelProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
     return this;
   }
@@ -82,7 +83,7 @@ public class CatalogsHotelProductGroupFiltersAllOf {
     return allOf;
   }
 
-  public void setAllOf(List<CatalogsHotelProductGroupFilterKeys> allOf) {
+  public void setAllOf(@javax.annotation.Nonnull List<CatalogsHotelProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
   }
 

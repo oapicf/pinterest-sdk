@@ -24,9 +24,10 @@ typedef struct bid_floor_request_t {
     list_t *bid_floor_specs; //nonprimitive container
     struct targeting_spec_t *targeting_spec; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } bid_floor_request_t;
 
-bid_floor_request_t *bid_floor_request_create(
+__attribute__((deprecated)) bid_floor_request_t *bid_floor_request_create(
     list_t *bid_floor_specs,
     targeting_spec_t *targeting_spec
 );

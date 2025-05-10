@@ -70,11 +70,11 @@ export function BusinessSharedAudienceResponseFromJSONTyped(json: any, ignoreDis
     };
 }
 
-  export function BusinessSharedAudienceResponseToJSON(json: any): BusinessSharedAudienceResponse {
-      return BusinessSharedAudienceResponseToJSONTyped(json, false);
-  }
+export function BusinessSharedAudienceResponseToJSON(json: any): BusinessSharedAudienceResponse {
+    return BusinessSharedAudienceResponseToJSONTyped(json, false);
+}
 
-  export function BusinessSharedAudienceResponseToJSONTyped(value?: BusinessSharedAudienceResponse | null, ignoreDiscriminator: boolean = false): any {
+export function BusinessSharedAudienceResponseToJSONTyped(value?: BusinessSharedAudienceResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

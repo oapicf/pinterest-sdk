@@ -22,9 +22,10 @@ typedef struct price_filter_t price_filter_t;
 typedef struct price_filter_t {
     struct catalogs_product_group_pricing_currency_criteria_t *price; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } price_filter_t;
 
-price_filter_t *price_filter_create(
+__attribute__((deprecated)) price_filter_t *price_filter_create(
     catalogs_product_group_pricing_currency_criteria_t *price
 );
 

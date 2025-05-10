@@ -48,16 +48,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Response for lead data test API.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class LeadFormTestResponse {
   public static final String SERIALIZED_NAME_SUBSCRIPTION_ID = "subscription_id";
   @SerializedName(SERIALIZED_NAME_SUBSCRIPTION_ID)
+  @javax.annotation.Nullable
   private String subscriptionId;
 
   public LeadFormTestResponse() {
   }
 
-  public LeadFormTestResponse subscriptionId(String subscriptionId) {
+  public LeadFormTestResponse subscriptionId(@javax.annotation.Nullable String subscriptionId) {
     this.subscriptionId = subscriptionId;
     return this;
   }
@@ -71,7 +72,7 @@ public class LeadFormTestResponse {
     return subscriptionId;
   }
 
-  public void setSubscriptionId(String subscriptionId) {
+  public void setSubscriptionId(@javax.annotation.Nullable String subscriptionId) {
     this.subscriptionId = subscriptionId;
   }
 

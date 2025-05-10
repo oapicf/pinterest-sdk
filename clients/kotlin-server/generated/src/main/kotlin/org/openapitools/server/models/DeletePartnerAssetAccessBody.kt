@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.DeletePartnerAssetAccessBodyAccessesInner
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param accesses 
  */
+@Serializable
 data class DeletePartnerAssetAccessBody(
     val accesses: kotlin.collections.List<DeletePartnerAssetAccessBodyAccessesInner>
-) 
+)
 

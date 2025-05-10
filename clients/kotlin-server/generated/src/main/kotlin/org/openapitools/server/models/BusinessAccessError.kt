@@ -12,13 +12,15 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param code 
  * @param message 
  */
+@Serializable
 data class BusinessAccessError(
     val code: kotlin.Int,
     val message: kotlin.String
-) 
+)
 

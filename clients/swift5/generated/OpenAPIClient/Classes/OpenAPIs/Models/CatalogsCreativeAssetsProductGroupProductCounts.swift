@@ -16,8 +16,8 @@ public struct CatalogsCreativeAssetsProductGroupProductCounts: Codable, JSONEnco
     public enum CatalogType: String, Codable, CaseIterable {
         case creativeAssets = "CREATIVE_ASSETS"
     }
-    static let totalRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
-    static let videosRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
+    public static let totalRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
+    public static let videosRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
     public var catalogType: CatalogType
     public var total: Double
     public var videos: Double

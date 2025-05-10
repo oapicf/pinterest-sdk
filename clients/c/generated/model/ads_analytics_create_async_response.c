@@ -5,7 +5,7 @@
 
 
 
-ads_analytics_create_async_response_t *ads_analytics_create_async_response_create(
+static ads_analytics_create_async_response_t *ads_analytics_create_async_response_create_internal(
     bulk_reporting_job_status_t *report_status,
     char *token,
     char *message
@@ -18,12 +18,28 @@ ads_analytics_create_async_response_t *ads_analytics_create_async_response_creat
     ads_analytics_create_async_response_local_var->token = token;
     ads_analytics_create_async_response_local_var->message = message;
 
+    ads_analytics_create_async_response_local_var->_library_owned = 1;
     return ads_analytics_create_async_response_local_var;
 }
 
+__attribute__((deprecated)) ads_analytics_create_async_response_t *ads_analytics_create_async_response_create(
+    bulk_reporting_job_status_t *report_status,
+    char *token,
+    char *message
+    ) {
+    return ads_analytics_create_async_response_create_internal (
+        report_status,
+        token,
+        message
+        );
+}
 
 void ads_analytics_create_async_response_free(ads_analytics_create_async_response_t *ads_analytics_create_async_response) {
     if(NULL == ads_analytics_create_async_response){
+        return ;
+    }
+    if(ads_analytics_create_async_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ads_analytics_create_async_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -90,12 +106,18 @@ ads_analytics_create_async_response_t *ads_analytics_create_async_response_parse
 
     // ads_analytics_create_async_response->report_status
     cJSON *report_status = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_responseJSON, "report_status");
+    if (cJSON_IsNull(report_status)) {
+        report_status = NULL;
+    }
     if (report_status) { 
     report_status_local_nonprim = bulk_reporting_job_status_parseFromJSON(report_status); //custom
     }
 
     // ads_analytics_create_async_response->token
     cJSON *token = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_responseJSON, "token");
+    if (cJSON_IsNull(token)) {
+        token = NULL;
+    }
     if (token) { 
     if(!cJSON_IsString(token) && !cJSON_IsNull(token))
     {
@@ -105,6 +127,9 @@ ads_analytics_create_async_response_t *ads_analytics_create_async_response_parse
 
     // ads_analytics_create_async_response->message
     cJSON *message = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_responseJSON, "message");
+    if (cJSON_IsNull(message)) {
+        message = NULL;
+    }
     if (message) { 
     if(!cJSON_IsString(message) && !cJSON_IsNull(message))
     {
@@ -113,7 +138,7 @@ ads_analytics_create_async_response_t *ads_analytics_create_async_response_parse
     }
 
 
-    ads_analytics_create_async_response_local_var = ads_analytics_create_async_response_create (
+    ads_analytics_create_async_response_local_var = ads_analytics_create_async_response_create_internal (
         report_status ? report_status_local_nonprim : NULL,
         token && !cJSON_IsNull(token) ? strdup(token->valuestring) : NULL,
         message && !cJSON_IsNull(message) ? strdup(message->valuestring) : NULL

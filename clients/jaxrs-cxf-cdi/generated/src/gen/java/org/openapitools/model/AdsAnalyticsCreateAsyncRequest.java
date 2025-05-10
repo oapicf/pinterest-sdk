@@ -81,7 +81,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
 public enum PrimarySortEnum {
 
-    @JsonProperty("BY_ID") ID(String.valueOf("BY_ID")), @JsonProperty("BY_DATE") DATE(String.valueOf("BY_DATE"));
+    @JsonProperty("BY_ID") BY_ID(String.valueOf("BY_ID")), @JsonProperty("BY_DATE") BY_DATE(String.valueOf("BY_DATE"));
 
 
     private String value;

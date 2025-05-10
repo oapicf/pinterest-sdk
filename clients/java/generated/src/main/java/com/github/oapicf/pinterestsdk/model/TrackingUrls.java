@@ -50,32 +50,37 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TrackingUrls {
   public static final String SERIALIZED_NAME_IMPRESSION = "impression";
   @SerializedName(SERIALIZED_NAME_IMPRESSION)
+  @javax.annotation.Nullable
   private List<String> impression = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_CLICK = "click";
   @SerializedName(SERIALIZED_NAME_CLICK)
+  @javax.annotation.Nullable
   private List<String> click = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_ENGAGEMENT = "engagement";
   @SerializedName(SERIALIZED_NAME_ENGAGEMENT)
+  @javax.annotation.Nullable
   private List<String> engagement = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_BUYABLE_BUTTON = "buyable_button";
   @SerializedName(SERIALIZED_NAME_BUYABLE_BUTTON)
+  @javax.annotation.Nullable
   private List<String> buyableButton = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_AUDIENCE_VERIFICATION = "audience_verification";
   @SerializedName(SERIALIZED_NAME_AUDIENCE_VERIFICATION)
+  @javax.annotation.Nullable
   private List<String> audienceVerification = new ArrayList<>();
 
   public TrackingUrls() {
   }
 
-  public TrackingUrls impression(List<String> impression) {
+  public TrackingUrls impression(@javax.annotation.Nullable List<String> impression) {
     this.impression = impression;
     return this;
   }
@@ -97,12 +102,12 @@ public class TrackingUrls {
     return impression;
   }
 
-  public void setImpression(List<String> impression) {
+  public void setImpression(@javax.annotation.Nullable List<String> impression) {
     this.impression = impression;
   }
 
 
-  public TrackingUrls click(List<String> click) {
+  public TrackingUrls click(@javax.annotation.Nullable List<String> click) {
     this.click = click;
     return this;
   }
@@ -124,12 +129,12 @@ public class TrackingUrls {
     return click;
   }
 
-  public void setClick(List<String> click) {
+  public void setClick(@javax.annotation.Nullable List<String> click) {
     this.click = click;
   }
 
 
-  public TrackingUrls engagement(List<String> engagement) {
+  public TrackingUrls engagement(@javax.annotation.Nullable List<String> engagement) {
     this.engagement = engagement;
     return this;
   }
@@ -151,12 +156,12 @@ public class TrackingUrls {
     return engagement;
   }
 
-  public void setEngagement(List<String> engagement) {
+  public void setEngagement(@javax.annotation.Nullable List<String> engagement) {
     this.engagement = engagement;
   }
 
 
-  public TrackingUrls buyableButton(List<String> buyableButton) {
+  public TrackingUrls buyableButton(@javax.annotation.Nullable List<String> buyableButton) {
     this.buyableButton = buyableButton;
     return this;
   }
@@ -178,12 +183,12 @@ public class TrackingUrls {
     return buyableButton;
   }
 
-  public void setBuyableButton(List<String> buyableButton) {
+  public void setBuyableButton(@javax.annotation.Nullable List<String> buyableButton) {
     this.buyableButton = buyableButton;
   }
 
 
-  public TrackingUrls audienceVerification(List<String> audienceVerification) {
+  public TrackingUrls audienceVerification(@javax.annotation.Nullable List<String> audienceVerification) {
     this.audienceVerification = audienceVerification;
     return this;
   }
@@ -205,7 +210,7 @@ public class TrackingUrls {
     return audienceVerification;
   }
 
-  public void setAudienceVerification(List<String> audienceVerification) {
+  public void setAudienceVerification(@javax.annotation.Nullable List<String> audienceVerification) {
     this.audienceVerification = audienceVerification;
   }
 

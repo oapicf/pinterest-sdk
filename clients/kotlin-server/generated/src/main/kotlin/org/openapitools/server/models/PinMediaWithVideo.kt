@@ -14,6 +14,7 @@ package org.openapitools.server.models
 import org.openapitools.server.models.PinMedia
 import org.openapitools.server.models.PinMediaWithImageAllOfImages
 
+import kotlinx.serialization.Serializable
 /**
  * Pin with video.
  * @param images 
@@ -23,6 +24,7 @@ import org.openapitools.server.models.PinMediaWithImageAllOfImages
  * @param height Height (in pixels)
  * @param width Width (in pixels)
  */
+@Serializable
 data class PinMediaWithVideo(
     val images: PinMediaWithImageAllOfImages? = null,
     val coverImageUrl: kotlin.String? = null,
@@ -35,5 +37,5 @@ data class PinMediaWithVideo(
     /* Width (in pixels) */
     val width: kotlin.Int? = null,
     val mediaType: kotlin.String? = null
-) 
+)
 

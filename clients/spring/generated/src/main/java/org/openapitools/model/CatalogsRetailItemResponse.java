@@ -12,6 +12,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsType;
 import org.openapitools.model.ItemAttributes;
 import org.openapitools.model.Pin;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -32,17 +33,17 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsRetailItemResponse", description = "Object describing a retail item record")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsRetailItemResponse implements ItemResponseAnyOf {
 
   private CatalogsType catalogType;
 
-  private String itemId;
+  private @Nullable String itemId;
 
   @Valid
   private JsonNullable<List<@Valid Pin>> pins = JsonNullable.<List<@Valid Pin>>undefined();
 
-  private ItemAttributes attributes;
+  private @Nullable ItemAttributes attributes;
 
   public CatalogsRetailItemResponse() {
     super();

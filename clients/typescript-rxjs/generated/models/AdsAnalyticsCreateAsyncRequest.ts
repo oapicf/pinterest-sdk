@@ -196,7 +196,7 @@ export interface AdsAnalyticsCreateAsyncRequest {
  * @enum {string}
  */
 export enum AdsAnalyticsCreateAsyncRequestPrimarySortEnum {
-    Id = 'BY_ID',
-    Date = 'BY_DATE'
+    ById = 'BY_ID',
+    ByDate = 'BY_DATE'
 }
 

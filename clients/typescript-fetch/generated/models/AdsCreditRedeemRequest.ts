@@ -57,11 +57,11 @@ export function AdsCreditRedeemRequestFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-  export function AdsCreditRedeemRequestToJSON(json: any): AdsCreditRedeemRequest {
-      return AdsCreditRedeemRequestToJSONTyped(json, false);
-  }
+export function AdsCreditRedeemRequestToJSON(json: any): AdsCreditRedeemRequest {
+    return AdsCreditRedeemRequestToJSONTyped(json, false);
+}
 
-  export function AdsCreditRedeemRequestToJSONTyped(value?: AdsCreditRedeemRequest | null, ignoreDiscriminator: boolean = false): any {
+export function AdsCreditRedeemRequestToJSONTyped(value?: AdsCreditRedeemRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

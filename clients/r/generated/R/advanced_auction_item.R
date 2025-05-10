@@ -58,10 +58,35 @@ AdvancedAuctionItem <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return AdvancedAuctionItem in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return AdvancedAuctionItem as a base R list.
+    #' @examples
+    #' # convert array of AdvancedAuctionItem (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert AdvancedAuctionItem to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       AdvancedAuctionItemObject <- list()
       if (!is.null(self$`item_id`)) {
         AdvancedAuctionItemObject[["item_id"]] <-
@@ -69,17 +94,17 @@ AdvancedAuctionItem <- R6::R6Class(
       }
       if (!is.null(self$`country`)) {
         AdvancedAuctionItemObject[["country"]] <-
-          self$`country`$toJSON()
+          self$`country`$toSimpleType()
       }
       if (!is.null(self$`language`)) {
         AdvancedAuctionItemObject[["language"]] <-
-          self$`language`$toJSON()
+          self$`language`$toSimpleType()
       }
       if (!is.null(self$`bid_options`)) {
         AdvancedAuctionItemObject[["bid_options"]] <-
-          self$`bid_options`$toJSON()
+          self$`bid_options`$toSimpleType()
       }
-      AdvancedAuctionItemObject
+      return(AdvancedAuctionItemObject)
     },
 
     #' @description
@@ -112,45 +137,13 @@ AdvancedAuctionItem <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return AdvancedAuctionItem in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`item_id`)) {
-          sprintf(
-          '"item_id":
-            "%s"
-                    ',
-          self$`item_id`
-          )
-        },
-        if (!is.null(self$`country`)) {
-          sprintf(
-          '"country":
-          %s
-          ',
-          jsonlite::toJSON(self$`country`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`language`)) {
-          sprintf(
-          '"language":
-          %s
-          ',
-          jsonlite::toJSON(self$`language`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`bid_options`)) {
-          sprintf(
-          '"bid_options":
-          %s
-          ',
-          jsonlite::toJSON(self$`bid_options`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

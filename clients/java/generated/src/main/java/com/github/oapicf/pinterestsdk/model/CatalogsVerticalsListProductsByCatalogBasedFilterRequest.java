@@ -63,7 +63,7 @@ import com.google.gson.JsonParseException;
 
 import com.github.oapicf.pinterestsdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsVerticalsListProductsByCatalogBasedFilterRequest extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CatalogsVerticalsListProductsByCatalogBasedFilterRequest.class.getName());
 
@@ -238,6 +238,7 @@ public class CatalogsVerticalsListProductsByCatalogBasedFilterRequest extends Ab
     public CatalogsRetailListProductsByCatalogBasedFilterRequest getCatalogsRetailListProductsByCatalogBasedFilterRequest() throws ClassCastException {
         return (CatalogsRetailListProductsByCatalogBasedFilterRequest)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CatalogsHotelListProductsByCatalogBasedFilterRequest`. If the actual instance is not `CatalogsHotelListProductsByCatalogBasedFilterRequest`,
      * the ClassCastException will be thrown.
@@ -248,6 +249,7 @@ public class CatalogsVerticalsListProductsByCatalogBasedFilterRequest extends Ab
     public CatalogsHotelListProductsByCatalogBasedFilterRequest getCatalogsHotelListProductsByCatalogBasedFilterRequest() throws ClassCastException {
         return (CatalogsHotelListProductsByCatalogBasedFilterRequest)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest`. If the actual instance is not `CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest`,
      * the ClassCastException will be thrown.

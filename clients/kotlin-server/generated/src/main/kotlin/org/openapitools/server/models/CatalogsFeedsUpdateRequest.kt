@@ -18,6 +18,7 @@ import org.openapitools.server.models.CatalogsStatus
 import org.openapitools.server.models.NullableCurrency
 import org.openapitools.server.models.ProductAvailabilityType
 
+import kotlinx.serialization.Serializable
 /**
  * Request object for updating a feed.
  * @param defaultAvailability 
@@ -29,6 +30,7 @@ import org.openapitools.server.models.ProductAvailabilityType
  * @param preferredProcessingSchedule 
  * @param status 
  */
+@Serializable
 data class CatalogsFeedsUpdateRequest(
     val defaultAvailability: ProductAvailabilityType? = null,
     val defaultCurrency: NullableCurrency? = null,
@@ -40,5 +42,5 @@ data class CatalogsFeedsUpdateRequest(
     val location: kotlin.String? = null,
     val preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = null,
     val status: CatalogsStatus? = null
-) 
+)
 

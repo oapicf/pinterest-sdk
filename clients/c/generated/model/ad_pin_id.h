@@ -21,9 +21,10 @@ typedef struct ad_pin_id_t ad_pin_id_t;
 typedef struct ad_pin_id_t {
     char *pin_id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } ad_pin_id_t;
 
-ad_pin_id_t *ad_pin_id_create(
+__attribute__((deprecated)) ad_pin_id_t *ad_pin_id_create(
     char *pin_id
 );
 

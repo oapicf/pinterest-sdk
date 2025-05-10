@@ -5,7 +5,7 @@
 
 
 
-integrations_get_list_200_response_t *integrations_get_list_200_response_create(
+static integrations_get_list_200_response_t *integrations_get_list_200_response_create_internal(
     list_t *items,
     char *bookmark
     ) {
@@ -16,12 +16,26 @@ integrations_get_list_200_response_t *integrations_get_list_200_response_create(
     integrations_get_list_200_response_local_var->items = items;
     integrations_get_list_200_response_local_var->bookmark = bookmark;
 
+    integrations_get_list_200_response_local_var->_library_owned = 1;
     return integrations_get_list_200_response_local_var;
 }
 
+__attribute__((deprecated)) integrations_get_list_200_response_t *integrations_get_list_200_response_create(
+    list_t *items,
+    char *bookmark
+    ) {
+    return integrations_get_list_200_response_create_internal (
+        items,
+        bookmark
+        );
+}
 
 void integrations_get_list_200_response_free(integrations_get_list_200_response_t *integrations_get_list_200_response) {
     if(NULL == integrations_get_list_200_response){
+        return ;
+    }
+    if(integrations_get_list_200_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "integrations_get_list_200_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -87,6 +101,9 @@ integrations_get_list_200_response_t *integrations_get_list_200_response_parseFr
 
     // integrations_get_list_200_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(integrations_get_list_200_responseJSON, "items");
+    if (cJSON_IsNull(items)) {
+        items = NULL;
+    }
     if (!items) {
         goto end;
     }
@@ -111,6 +128,9 @@ integrations_get_list_200_response_t *integrations_get_list_200_response_parseFr
 
     // integrations_get_list_200_response->bookmark
     cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(integrations_get_list_200_responseJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
     if (bookmark) { 
     if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
     {
@@ -119,7 +139,7 @@ integrations_get_list_200_response_t *integrations_get_list_200_response_parseFr
     }
 
 
-    integrations_get_list_200_response_local_var = integrations_get_list_200_response_create (
+    integrations_get_list_200_response_local_var = integrations_get_list_200_response_create_internal (
         itemsList,
         bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
         );

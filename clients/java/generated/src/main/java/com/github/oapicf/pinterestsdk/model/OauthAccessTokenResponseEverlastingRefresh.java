@@ -48,7 +48,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class OauthAccessTokenResponseEverlastingRefresh {
   /**
    * Gets or Sets responseType
@@ -106,40 +106,48 @@ public class OauthAccessTokenResponseEverlastingRefresh {
 
   public static final String SERIALIZED_NAME_RESPONSE_TYPE = "response_type";
   @SerializedName(SERIALIZED_NAME_RESPONSE_TYPE)
+  @javax.annotation.Nullable
   private ResponseTypeEnum responseType;
 
   public static final String SERIALIZED_NAME_ACCESS_TOKEN = "access_token";
   @SerializedName(SERIALIZED_NAME_ACCESS_TOKEN)
+  @javax.annotation.Nonnull
   private String accessToken;
 
   public static final String SERIALIZED_NAME_TOKEN_TYPE = "token_type";
   @SerializedName(SERIALIZED_NAME_TOKEN_TYPE)
+  @javax.annotation.Nonnull
   private String tokenType = "bearer";
 
   public static final String SERIALIZED_NAME_EXPIRES_IN = "expires_in";
   @SerializedName(SERIALIZED_NAME_EXPIRES_IN)
+  @javax.annotation.Nonnull
   private Integer expiresIn;
 
   public static final String SERIALIZED_NAME_SCOPE = "scope";
   @SerializedName(SERIALIZED_NAME_SCOPE)
+  @javax.annotation.Nonnull
   private String scope;
 
   public static final String SERIALIZED_NAME_REFRESH_TOKEN = "refresh_token";
   @SerializedName(SERIALIZED_NAME_REFRESH_TOKEN)
+  @javax.annotation.Nonnull
   private String refreshToken;
 
   public static final String SERIALIZED_NAME_REFRESH_TOKEN_EXPIRES_IN = "refresh_token_expires_in";
   @SerializedName(SERIALIZED_NAME_REFRESH_TOKEN_EXPIRES_IN)
+  @javax.annotation.Nonnull
   private Integer refreshTokenExpiresIn;
 
   public static final String SERIALIZED_NAME_REFRESH_TOKEN_EXPIRES_AT = "refresh_token_expires_at";
   @SerializedName(SERIALIZED_NAME_REFRESH_TOKEN_EXPIRES_AT)
+  @javax.annotation.Nonnull
   private Integer refreshTokenExpiresAt;
 
   public OauthAccessTokenResponseEverlastingRefresh() {
   }
 
-  public OauthAccessTokenResponseEverlastingRefresh responseType(ResponseTypeEnum responseType) {
+  public OauthAccessTokenResponseEverlastingRefresh responseType(@javax.annotation.Nullable ResponseTypeEnum responseType) {
     this.responseType = responseType;
     return this;
   }
@@ -153,12 +161,12 @@ public class OauthAccessTokenResponseEverlastingRefresh {
     return responseType;
   }
 
-  public void setResponseType(ResponseTypeEnum responseType) {
+  public void setResponseType(@javax.annotation.Nullable ResponseTypeEnum responseType) {
     this.responseType = responseType;
   }
 
 
-  public OauthAccessTokenResponseEverlastingRefresh accessToken(String accessToken) {
+  public OauthAccessTokenResponseEverlastingRefresh accessToken(@javax.annotation.Nonnull String accessToken) {
     this.accessToken = accessToken;
     return this;
   }
@@ -172,12 +180,12 @@ public class OauthAccessTokenResponseEverlastingRefresh {
     return accessToken;
   }
 
-  public void setAccessToken(String accessToken) {
+  public void setAccessToken(@javax.annotation.Nonnull String accessToken) {
     this.accessToken = accessToken;
   }
 
 
-  public OauthAccessTokenResponseEverlastingRefresh tokenType(String tokenType) {
+  public OauthAccessTokenResponseEverlastingRefresh tokenType(@javax.annotation.Nonnull String tokenType) {
     this.tokenType = tokenType;
     return this;
   }
@@ -191,12 +199,12 @@ public class OauthAccessTokenResponseEverlastingRefresh {
     return tokenType;
   }
 
-  public void setTokenType(String tokenType) {
+  public void setTokenType(@javax.annotation.Nonnull String tokenType) {
     this.tokenType = tokenType;
   }
 
 
-  public OauthAccessTokenResponseEverlastingRefresh expiresIn(Integer expiresIn) {
+  public OauthAccessTokenResponseEverlastingRefresh expiresIn(@javax.annotation.Nonnull Integer expiresIn) {
     this.expiresIn = expiresIn;
     return this;
   }
@@ -210,12 +218,12 @@ public class OauthAccessTokenResponseEverlastingRefresh {
     return expiresIn;
   }
 
-  public void setExpiresIn(Integer expiresIn) {
+  public void setExpiresIn(@javax.annotation.Nonnull Integer expiresIn) {
     this.expiresIn = expiresIn;
   }
 
 
-  public OauthAccessTokenResponseEverlastingRefresh scope(String scope) {
+  public OauthAccessTokenResponseEverlastingRefresh scope(@javax.annotation.Nonnull String scope) {
     this.scope = scope;
     return this;
   }
@@ -229,12 +237,12 @@ public class OauthAccessTokenResponseEverlastingRefresh {
     return scope;
   }
 
-  public void setScope(String scope) {
+  public void setScope(@javax.annotation.Nonnull String scope) {
     this.scope = scope;
   }
 
 
-  public OauthAccessTokenResponseEverlastingRefresh refreshToken(String refreshToken) {
+  public OauthAccessTokenResponseEverlastingRefresh refreshToken(@javax.annotation.Nonnull String refreshToken) {
     this.refreshToken = refreshToken;
     return this;
   }
@@ -248,12 +256,12 @@ public class OauthAccessTokenResponseEverlastingRefresh {
     return refreshToken;
   }
 
-  public void setRefreshToken(String refreshToken) {
+  public void setRefreshToken(@javax.annotation.Nonnull String refreshToken) {
     this.refreshToken = refreshToken;
   }
 
 
-  public OauthAccessTokenResponseEverlastingRefresh refreshTokenExpiresIn(Integer refreshTokenExpiresIn) {
+  public OauthAccessTokenResponseEverlastingRefresh refreshTokenExpiresIn(@javax.annotation.Nonnull Integer refreshTokenExpiresIn) {
     this.refreshTokenExpiresIn = refreshTokenExpiresIn;
     return this;
   }
@@ -267,12 +275,12 @@ public class OauthAccessTokenResponseEverlastingRefresh {
     return refreshTokenExpiresIn;
   }
 
-  public void setRefreshTokenExpiresIn(Integer refreshTokenExpiresIn) {
+  public void setRefreshTokenExpiresIn(@javax.annotation.Nonnull Integer refreshTokenExpiresIn) {
     this.refreshTokenExpiresIn = refreshTokenExpiresIn;
   }
 
 
-  public OauthAccessTokenResponseEverlastingRefresh refreshTokenExpiresAt(Integer refreshTokenExpiresAt) {
+  public OauthAccessTokenResponseEverlastingRefresh refreshTokenExpiresAt(@javax.annotation.Nonnull Integer refreshTokenExpiresAt) {
     this.refreshTokenExpiresAt = refreshTokenExpiresAt;
     return this;
   }
@@ -286,7 +294,7 @@ public class OauthAccessTokenResponseEverlastingRefresh {
     return refreshTokenExpiresAt;
   }
 
-  public void setRefreshTokenExpiresAt(Integer refreshTokenExpiresAt) {
+  public void setRefreshTokenExpiresAt(@javax.annotation.Nonnull Integer refreshTokenExpiresAt) {
     this.refreshTokenExpiresAt = refreshTokenExpiresAt;
   }
 

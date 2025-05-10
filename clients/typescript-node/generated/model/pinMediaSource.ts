@@ -128,11 +128,11 @@ export namespace PinMediaSource {
         PinUrl = <any> 'pin_url'
     }
     export enum ContentTypeEnum {
-        Jpeg = <any> 'image/jpeg',
-        Png = <any> 'image/png'
+        ImageJpeg = <any> 'image/jpeg',
+        ImagePng = <any> 'image/png'
     }
     export enum CoverImageContentTypeEnum {
-        Jpeg = <any> 'image/jpeg',
-        Png = <any> 'image/png'
+        ImageJpeg = <any> 'image/jpeg',
+        ImagePng = <any> 'image/png'
     }
 }

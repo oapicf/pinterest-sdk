@@ -73,25 +73,25 @@ data class PinMediaSource (
 
     /**
     * 
-    * Values: jpeg,png
+    * Values: imageSlashJpeg,imageSlashPng
     */
     enum class ContentType(val value: kotlin.String){
     
-        jpeg("image/jpeg"),
+        imageSlashJpeg("image/jpeg"),
     
-        png("image/png");
+        imageSlashPng("image/png");
     
     }
 
     /**
     * Content type for cover image Base64.
-    * Values: jpeg,png
+    * Values: imageSlashJpeg,imageSlashPng
     */
     enum class CoverImageContentType(val value: kotlin.String){
     
-        jpeg("image/jpeg"),
+        imageSlashJpeg("image/jpeg"),
     
-        png("image/png");
+        imageSlashPng("image/png");
     
     }
 

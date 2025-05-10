@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.ImageDetails
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param `150x150` 
@@ -20,10 +21,11 @@ import org.openapitools.server.models.ImageDetails
  * @param `600x` 
  * @param `1200x` 
  */
+@Serializable
 data class ImageMetadataImages(
     val `150x150`: ImageDetails? = null,
     val `400x300`: ImageDetails? = null,
     val `600x`: ImageDetails? = null,
     val `1200x`: ImageDetails? = null
-) 
+)
 

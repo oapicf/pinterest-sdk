@@ -50,28 +50,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsFeedIngestion
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsFeedIngestion {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nonnull
   private String id;
 
   public static final String SERIALIZED_NAME_FEED_ID = "feed_id";
   @SerializedName(SERIALIZED_NAME_FEED_ID)
+  @javax.annotation.Nonnull
   private String feedId;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  @javax.annotation.Nonnull
   private OffsetDateTime createdAt;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nonnull
   private CatalogsFeedProcessingStatus status;
 
   public CatalogsFeedIngestion() {
   }
 
-  public CatalogsFeedIngestion id(String id) {
+  public CatalogsFeedIngestion id(@javax.annotation.Nonnull String id) {
     this.id = id;
     return this;
   }
@@ -85,12 +89,12 @@ public class CatalogsFeedIngestion {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 
 
-  public CatalogsFeedIngestion feedId(String feedId) {
+  public CatalogsFeedIngestion feedId(@javax.annotation.Nonnull String feedId) {
     this.feedId = feedId;
     return this;
   }
@@ -104,12 +108,12 @@ public class CatalogsFeedIngestion {
     return feedId;
   }
 
-  public void setFeedId(String feedId) {
+  public void setFeedId(@javax.annotation.Nonnull String feedId) {
     this.feedId = feedId;
   }
 
 
-  public CatalogsFeedIngestion createdAt(OffsetDateTime createdAt) {
+  public CatalogsFeedIngestion createdAt(@javax.annotation.Nonnull OffsetDateTime createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -123,12 +127,12 @@ public class CatalogsFeedIngestion {
     return createdAt;
   }
 
-  public void setCreatedAt(OffsetDateTime createdAt) {
+  public void setCreatedAt(@javax.annotation.Nonnull OffsetDateTime createdAt) {
     this.createdAt = createdAt;
   }
 
 
-  public CatalogsFeedIngestion status(CatalogsFeedProcessingStatus status) {
+  public CatalogsFeedIngestion status(@javax.annotation.Nonnull CatalogsFeedProcessingStatus status) {
     this.status = status;
     return this;
   }
@@ -142,7 +146,7 @@ public class CatalogsFeedIngestion {
     return status;
   }
 
-  public void setStatus(CatalogsFeedProcessingStatus status) {
+  public void setStatus(@javax.annotation.Nonnull CatalogsFeedProcessingStatus status) {
     this.status = status;
   }
 

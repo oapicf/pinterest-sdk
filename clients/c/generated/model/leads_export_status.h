@@ -24,9 +24,9 @@ char* leads_export_status_leads_export_status_ToString(pinterest_rest_api_leads_
 
 pinterest_rest_api_leads_export_status__e leads_export_status_leads_export_status_FromString(char* leads_export_status);
 
-//cJSON *leads_export_status_leads_export_status_convertToJSON(pinterest_rest_api_leads_export_status__e leads_export_status);
+cJSON *leads_export_status_convertToJSON(pinterest_rest_api_leads_export_status__e leads_export_status);
 
-//pinterest_rest_api_leads_export_status__e leads_export_status_leads_export_status_parseFromJSON(cJSON *leads_export_statusJSON);
+pinterest_rest_api_leads_export_status__e leads_export_status_parseFromJSON(cJSON *leads_export_statusJSON);
 
 #endif /* _leads_export_status_H_ */
 

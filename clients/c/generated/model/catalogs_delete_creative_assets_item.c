@@ -22,7 +22,7 @@ pinterest_rest_api_catalogs_delete_creative_assets_item_OPERATION_e catalogs_del
     return 0;
 }
 
-catalogs_delete_creative_assets_item_t *catalogs_delete_creative_assets_item_create(
+static catalogs_delete_creative_assets_item_t *catalogs_delete_creative_assets_item_create_internal(
     char *creative_assets_id,
     pinterest_rest_api_catalogs_delete_creative_assets_item_OPERATION_e operation
     ) {
@@ -33,12 +33,26 @@ catalogs_delete_creative_assets_item_t *catalogs_delete_creative_assets_item_cre
     catalogs_delete_creative_assets_item_local_var->creative_assets_id = creative_assets_id;
     catalogs_delete_creative_assets_item_local_var->operation = operation;
 
+    catalogs_delete_creative_assets_item_local_var->_library_owned = 1;
     return catalogs_delete_creative_assets_item_local_var;
 }
 
+__attribute__((deprecated)) catalogs_delete_creative_assets_item_t *catalogs_delete_creative_assets_item_create(
+    char *creative_assets_id,
+    pinterest_rest_api_catalogs_delete_creative_assets_item_OPERATION_e operation
+    ) {
+    return catalogs_delete_creative_assets_item_create_internal (
+        creative_assets_id,
+        operation
+        );
+}
 
 void catalogs_delete_creative_assets_item_free(catalogs_delete_creative_assets_item_t *catalogs_delete_creative_assets_item) {
     if(NULL == catalogs_delete_creative_assets_item){
+        return ;
+    }
+    if(catalogs_delete_creative_assets_item->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_delete_creative_assets_item_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -65,7 +79,7 @@ cJSON *catalogs_delete_creative_assets_item_convertToJSON(catalogs_delete_creati
     if (pinterest_rest_api_catalogs_delete_creative_assets_item_OPERATION_NULL == catalogs_delete_creative_assets_item->operation) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "operation", operationcatalogs_delete_creative_assets_item_ToString(catalogs_delete_creative_assets_item->operation)) == NULL)
+    if(cJSON_AddStringToObject(item, "operation", catalogs_delete_creative_assets_item_operation_ToString(catalogs_delete_creative_assets_item->operation)) == NULL)
     {
     goto fail; //Enum
     }
@@ -84,6 +98,9 @@ catalogs_delete_creative_assets_item_t *catalogs_delete_creative_assets_item_par
 
     // catalogs_delete_creative_assets_item->creative_assets_id
     cJSON *creative_assets_id = cJSON_GetObjectItemCaseSensitive(catalogs_delete_creative_assets_itemJSON, "creative_assets_id");
+    if (cJSON_IsNull(creative_assets_id)) {
+        creative_assets_id = NULL;
+    }
     if (!creative_assets_id) {
         goto end;
     }
@@ -96,6 +113,9 @@ catalogs_delete_creative_assets_item_t *catalogs_delete_creative_assets_item_par
 
     // catalogs_delete_creative_assets_item->operation
     cJSON *operation = cJSON_GetObjectItemCaseSensitive(catalogs_delete_creative_assets_itemJSON, "operation");
+    if (cJSON_IsNull(operation)) {
+        operation = NULL;
+    }
     if (!operation) {
         goto end;
     }
@@ -109,7 +129,7 @@ catalogs_delete_creative_assets_item_t *catalogs_delete_creative_assets_item_par
     operationVariable = catalogs_delete_creative_assets_item_operation_FromString(operation->valuestring);
 
 
-    catalogs_delete_creative_assets_item_local_var = catalogs_delete_creative_assets_item_create (
+    catalogs_delete_creative_assets_item_local_var = catalogs_delete_creative_assets_item_create_internal (
         strdup(creative_assets_id->valuestring),
         operationVariable
         );

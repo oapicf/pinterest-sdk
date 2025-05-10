@@ -83,11 +83,11 @@ export function CatalogsUpdateCreativeAssetsItemFromJSONTyped(json: any, ignoreD
     };
 }
 
-  export function CatalogsUpdateCreativeAssetsItemToJSON(json: any): CatalogsUpdateCreativeAssetsItem {
-      return CatalogsUpdateCreativeAssetsItemToJSONTyped(json, false);
-  }
+export function CatalogsUpdateCreativeAssetsItemToJSON(json: any): CatalogsUpdateCreativeAssetsItem {
+    return CatalogsUpdateCreativeAssetsItemToJSONTyped(json, false);
+}
 
-  export function CatalogsUpdateCreativeAssetsItemToJSONTyped(value?: CatalogsUpdateCreativeAssetsItem | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsUpdateCreativeAssetsItemToJSONTyped(value?: CatalogsUpdateCreativeAssetsItem | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

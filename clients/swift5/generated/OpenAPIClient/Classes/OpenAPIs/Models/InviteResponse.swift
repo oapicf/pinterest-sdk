@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct InviteResponse: Codable, JSONEncodable, Hashable {
 
-    static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public var assetsSummary: InviteAssetsSummary?
     /** The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER. */
     public var businessRoles: [String]?
@@ -70,3 +70,6 @@ public struct InviteResponse: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension InviteResponse: Identifiable {}

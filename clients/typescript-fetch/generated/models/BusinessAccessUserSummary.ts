@@ -62,11 +62,11 @@ export function BusinessAccessUserSummaryFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function BusinessAccessUserSummaryToJSON(json: any): BusinessAccessUserSummary {
-      return BusinessAccessUserSummaryToJSONTyped(json, false);
-  }
+export function BusinessAccessUserSummaryToJSON(json: any): BusinessAccessUserSummary {
+    return BusinessAccessUserSummaryToJSONTyped(json, false);
+}
 
-  export function BusinessAccessUserSummaryToJSONTyped(value?: BusinessAccessUserSummary | null, ignoreDiscriminator: boolean = false): any {
+export function BusinessAccessUserSummaryToJSONTyped(value?: BusinessAccessUserSummary | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

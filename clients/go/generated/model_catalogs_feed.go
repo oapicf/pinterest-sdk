@@ -13,8 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // CatalogsFeed - Catalogs Feed object
@@ -147,6 +147,24 @@ func (obj *CatalogsFeed) GetActualInstance() (interface{}) {
 
 	if obj.CatalogsRetailFeed != nil {
 		return obj.CatalogsRetailFeed
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj CatalogsFeed) GetActualInstanceValue() (interface{}) {
+	if obj.CatalogsCreativeAssetsFeed != nil {
+		return *obj.CatalogsCreativeAssetsFeed
+	}
+
+	if obj.CatalogsHotelFeed != nil {
+		return *obj.CatalogsHotelFeed
+	}
+
+	if obj.CatalogsRetailFeed != nil {
+		return *obj.CatalogsRetailFeed
 	}
 
 	// all schemas are nil

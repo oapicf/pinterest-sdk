@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.UpdatePartnerResultsResponseArrayItemsInner
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items 
  */
+@Serializable
 data class UpdatePartnerResultsResponseArray(
     val items: kotlin.collections.List<UpdatePartnerResultsResponseArrayItemsInner>? = null
-) 
+)
 

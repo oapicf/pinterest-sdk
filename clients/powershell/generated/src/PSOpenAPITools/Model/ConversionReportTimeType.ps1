@@ -18,8 +18,8 @@ Conversion report time type
 
 enum ConversionReportTimeType {
     # enum value: "TIME_OF_AD_ACTION"
-    AD_ACTION
+    TIME_OF_AD_ACTION
     # enum value: "TIME_OF_CONVERSION"
-    CONVERSION
+    TIME_OF_CONVERSION
 }
 

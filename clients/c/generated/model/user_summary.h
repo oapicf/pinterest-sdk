@@ -22,9 +22,10 @@ typedef struct user_summary_t {
     char *username; // string
     char *type; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } user_summary_t;
 
-user_summary_t *user_summary_create(
+__attribute__((deprecated)) user_summary_t *user_summary_create(
     char *username,
     char *type
 );

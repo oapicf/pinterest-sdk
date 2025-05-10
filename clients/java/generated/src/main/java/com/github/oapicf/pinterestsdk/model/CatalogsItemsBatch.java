@@ -67,7 +67,7 @@ import com.google.gson.JsonParseException;
 
 import com.github.oapicf.pinterestsdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsItemsBatch extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CatalogsItemsBatch.class.getName());
 
@@ -242,6 +242,7 @@ public class CatalogsItemsBatch extends AbstractOpenApiSchema {
     public CatalogsRetailItemsBatch getCatalogsRetailItemsBatch() throws ClassCastException {
         return (CatalogsRetailItemsBatch)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CatalogsHotelItemsBatch`. If the actual instance is not `CatalogsHotelItemsBatch`,
      * the ClassCastException will be thrown.
@@ -252,6 +253,7 @@ public class CatalogsItemsBatch extends AbstractOpenApiSchema {
     public CatalogsHotelItemsBatch getCatalogsHotelItemsBatch() throws ClassCastException {
         return (CatalogsHotelItemsBatch)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CatalogsCreativeAssetsItemsBatch`. If the actual instance is not `CatalogsCreativeAssetsItemsBatch`,
      * the ClassCastException will be thrown.

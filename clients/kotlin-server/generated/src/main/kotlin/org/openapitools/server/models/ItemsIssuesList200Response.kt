@@ -13,13 +13,15 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsItemValidationIssues
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items 
  * @param bookmark 
  */
+@Serializable
 data class ItemsIssuesList200Response(
     val items: kotlin.collections.List<CatalogsItemValidationIssues>,
     val bookmark: kotlin.String? = null
-) 
+)
 

@@ -5,7 +5,7 @@
 
 
 
-catalogs_create_report_response_t *catalogs_create_report_response_create(
+static catalogs_create_report_response_t *catalogs_create_report_response_create_internal(
     char *token
     ) {
     catalogs_create_report_response_t *catalogs_create_report_response_local_var = malloc(sizeof(catalogs_create_report_response_t));
@@ -14,12 +14,24 @@ catalogs_create_report_response_t *catalogs_create_report_response_create(
     }
     catalogs_create_report_response_local_var->token = token;
 
+    catalogs_create_report_response_local_var->_library_owned = 1;
     return catalogs_create_report_response_local_var;
 }
 
+__attribute__((deprecated)) catalogs_create_report_response_t *catalogs_create_report_response_create(
+    char *token
+    ) {
+    return catalogs_create_report_response_create_internal (
+        token
+        );
+}
 
 void catalogs_create_report_response_free(catalogs_create_report_response_t *catalogs_create_report_response) {
     if(NULL == catalogs_create_report_response){
+        return ;
+    }
+    if(catalogs_create_report_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_create_report_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -54,6 +66,9 @@ catalogs_create_report_response_t *catalogs_create_report_response_parseFromJSON
 
     // catalogs_create_report_response->token
     cJSON *token = cJSON_GetObjectItemCaseSensitive(catalogs_create_report_responseJSON, "token");
+    if (cJSON_IsNull(token)) {
+        token = NULL;
+    }
     if (token) { 
     if(!cJSON_IsString(token) && !cJSON_IsNull(token))
     {
@@ -62,7 +77,7 @@ catalogs_create_report_response_t *catalogs_create_report_response_parseFromJSON
     }
 
 
-    catalogs_create_report_response_local_var = catalogs_create_report_response_create (
+    catalogs_create_report_response_local_var = catalogs_create_report_response_create_internal (
         token && !cJSON_IsNull(token) ? strdup(token->valuestring) : NULL
         );
 

@@ -22,7 +22,7 @@ pinterest_rest_api_bulk_entity_type__e bulk_entity_type_bulk_entity_type_FromStr
     return 0;
 }
 
-cJSON *bulk_entity_type_bulk_entity_type_convertToJSON(pinterest_rest_api_bulk_entity_type__e bulk_entity_type) {
+cJSON *bulk_entity_type_convertToJSON(pinterest_rest_api_bulk_entity_type__e bulk_entity_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "bulk_entity_type", bulk_entity_type_bulk_entity_type_ToString(bulk_entity_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_bulk_entity_type__e bulk_entity_type_bulk_entity_type_parseFromJSON(cJSON *bulk_entity_typeJSON) {
-    pinterest_rest_api_bulk_entity_type__e *bulk_entity_type = NULL;
-    pinterest_rest_api_bulk_entity_type__e bulk_entity_typeVariable;
-    cJSON *bulk_entity_typeVar = cJSON_GetObjectItemCaseSensitive(bulk_entity_typeJSON, "bulk_entity_type");
-    if(!cJSON_IsString(bulk_entity_typeVar) || (bulk_entity_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_bulk_entity_type__e bulk_entity_type_parseFromJSON(cJSON *bulk_entity_typeJSON) {
+    if(!cJSON_IsString(bulk_entity_typeJSON) || (bulk_entity_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    bulk_entity_typeVariable = bulk_entity_type_bulk_entity_type_FromString(bulk_entity_typeVar->valuestring);
-    return bulk_entity_typeVariable;
-end:
-    return 0;
+    return bulk_entity_type_bulk_entity_type_FromString(bulk_entity_typeJSON->valuestring);
 }

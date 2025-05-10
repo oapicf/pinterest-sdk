@@ -13,7 +13,7 @@ import AnyCodable
 /** Request object for creating a product group. */
 public struct CatalogsProductGroupCreateRequest: Codable, JSONEncodable, Hashable {
 
-    static let feedIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let feedIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public var name: String
     public var description: String?
     /** boolean indicator of whether the product group is being featured or not */

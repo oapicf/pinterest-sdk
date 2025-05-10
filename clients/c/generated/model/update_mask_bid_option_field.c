@@ -22,7 +22,7 @@ pinterest_rest_api_update_mask_bid_option_field__e update_mask_bid_option_field_
     return 0;
 }
 
-cJSON *update_mask_bid_option_field_update_mask_bid_option_field_convertToJSON(pinterest_rest_api_update_mask_bid_option_field__e update_mask_bid_option_field) {
+cJSON *update_mask_bid_option_field_convertToJSON(pinterest_rest_api_update_mask_bid_option_field__e update_mask_bid_option_field) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "update_mask_bid_option_field", update_mask_bid_option_field_update_mask_bid_option_field_ToString(update_mask_bid_option_field)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_update_mask_bid_option_field__e update_mask_bid_option_field_update_mask_bid_option_field_parseFromJSON(cJSON *update_mask_bid_option_fieldJSON) {
-    pinterest_rest_api_update_mask_bid_option_field__e *update_mask_bid_option_field = NULL;
-    pinterest_rest_api_update_mask_bid_option_field__e update_mask_bid_option_fieldVariable;
-    cJSON *update_mask_bid_option_fieldVar = cJSON_GetObjectItemCaseSensitive(update_mask_bid_option_fieldJSON, "update_mask_bid_option_field");
-    if(!cJSON_IsString(update_mask_bid_option_fieldVar) || (update_mask_bid_option_fieldVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_update_mask_bid_option_field__e update_mask_bid_option_field_parseFromJSON(cJSON *update_mask_bid_option_fieldJSON) {
+    if(!cJSON_IsString(update_mask_bid_option_fieldJSON) || (update_mask_bid_option_fieldJSON->valuestring == NULL)) {
+        return 0;
     }
-    update_mask_bid_option_fieldVariable = update_mask_bid_option_field_update_mask_bid_option_field_FromString(update_mask_bid_option_fieldVar->valuestring);
-    return update_mask_bid_option_fieldVariable;
-end:
-    return 0;
+    return update_mask_bid_option_field_update_mask_bid_option_field_FromString(update_mask_bid_option_fieldJSON->valuestring);
 }

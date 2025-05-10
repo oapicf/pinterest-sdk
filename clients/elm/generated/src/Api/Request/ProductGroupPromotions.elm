@@ -69,7 +69,6 @@ stringFromEntityStatuses model =
 
 
 
-
 type Order_
     = Order_ASCENDING
     | Order_DESCENDING
@@ -90,7 +89,6 @@ stringFromOrder_ model =
 
         Order_DESCENDING ->
             "DESCENDING"
-
 
 
 
@@ -862,7 +860,6 @@ stringFromColumns model =
 
 
 
-
 type ClickWindowDays
     = ClickWindowDays0
     | ClickWindowDays1
@@ -903,7 +900,6 @@ stringFromClickWindowDays model =
 
         ClickWindowDays60 ->
             60
-
 
 
 
@@ -950,7 +946,6 @@ stringFromEngagementWindowDays model =
 
 
 
-
 type ViewWindowDays
     = ViewWindowDays0
     | ViewWindowDays1
@@ -994,38 +989,40 @@ stringFromViewWindowDays model =
 
 
 
-
 type ConversionReportTime
-    = ConversionReportTimeADACTION
-    | ConversionReportTimeCONVERSION
+    = ConversionReportTimeTIMEOFADACTION
+    | ConversionReportTimeTIMEOFCONVERSION
 
 
 conversionReportTimeVariants : List ConversionReportTime
 conversionReportTimeVariants =
-    [ ConversionReportTimeADACTION
-    , ConversionReportTimeCONVERSION
+    [ ConversionReportTimeTIMEOFADACTION
+    , ConversionReportTimeTIMEOFCONVERSION
     ]
 
 
 stringFromConversionReportTime : ConversionReportTime -> String
 stringFromConversionReportTime model =
     case model of
-        ConversionReportTimeADACTION ->
+        ConversionReportTimeTIMEOFADACTION ->
             "TIME_OF_AD_ACTION"
 
-        ConversionReportTimeCONVERSION ->
+        ConversionReportTimeTIMEOFCONVERSION ->
             "TIME_OF_CONVERSION"
 
 
 
-{-| Add one or more product groups from your catalog to an existing ad group. (Product groups added to an ad group are a 'product group promotion.')
+{-| Create product group promotions
+
+Add one or more product groups from your catalog to an existing ad group. (Product groups added to an ad group are a 'product group promotion.')
+
 -}
 productGroupPromotionsCreate : String -> Api.Data.ProductGroupPromotionCreateRequest -> Api.Request Api.Data.ProductGroupPromotionResponse
 productGroupPromotionsCreate adAccountId_path productGroupPromotionCreateRequest_body =
     Api.request
         "POST"
         "/ad_accounts/{ad_account_id}/product_group_promotions"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Just (Api.Data.encodeProductGroupPromotionCreateRequest productGroupPromotionCreateRequest_body)))
@@ -1033,55 +1030,67 @@ productGroupPromotionsCreate adAccountId_path productGroupPromotionCreateRequest
 
 
 {-| Get a product group promotion by id
+
+Get a product group promotion by id
+
 -}
 productGroupPromotionsGet : String -> String -> Api.Request Api.Data.ProductGroupPromotionResponse
 productGroupPromotionsGet adAccountId_path productGroupPromotionId_path =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/product_group_promotions/{product_group_promotion_id}"
-        [ ( "adAccountId", identity adAccountId_path ), ( "productGroupPromotionId", identity productGroupPromotionId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ), ( "product_group_promotion_id", identity productGroupPromotionId_path ) ]
         []
         []
         Nothing
         Api.Data.productGroupPromotionResponseDecoder
 
 
-{-| List existing product group promotions associated with an ad account.  Include either ad_group_id or product_group_promotion_ids in your request.  <b>Note:</b> ad_group_ids and product_group_promotion_ids are mutually exclusive parameters. Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.
+{-| Get product group promotions
+
+List existing product group promotions associated with an ad account.  Include either ad_group_id or product_group_promotion_ids in your request.  <b>Note:</b> ad_group_ids and product_group_promotion_ids are mutually exclusive parameters. Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.
+
 -}
 productGroupPromotionsList : String -> Maybe (List String) -> Maybe (List EntityStatuses) -> Maybe String -> Maybe Int -> Maybe Order_ -> Maybe String -> Api.Request Api.Data.ProductGroupPromotionsList200Response
 productGroupPromotionsList adAccountId_path productGroupPromotionIds_query entityStatuses_query adGroupId_query pageSize_query order_query bookmark_query =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/product_group_promotions"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         [ ( "product_group_promotion_ids", Maybe.map (String.join "," << List.map identity) productGroupPromotionIds_query ), ( "entity_statuses", Maybe.map (String.join "," << List.map stringFromEntityStatuses) entityStatuses_query ), ( "ad_group_id", Maybe.map identity adGroupId_query ), ( "page_size", Maybe.map String.fromInt pageSize_query ), ( "order", Maybe.map stringFromOrder_ order_query ), ( "bookmark", Maybe.map identity bookmark_query ) ]
         []
         Nothing
         Api.Data.productGroupPromotionsList200ResponseDecoder
 
 
-{-| Update multiple existing Product Group Promotions (by product_group_id)
+{-| Update product group promotions
+
+Update multiple existing Product Group Promotions (by product_group_id)
+
 -}
 productGroupPromotionsUpdate : String -> Api.Data.ProductGroupPromotionUpdateRequest -> Api.Request Api.Data.ProductGroupPromotionResponse
 productGroupPromotionsUpdate adAccountId_path productGroupPromotionUpdateRequest_body =
     Api.request
         "PATCH"
         "/ad_accounts/{ad_account_id}/product_group_promotions"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Just (Api.Data.encodeProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest_body)))
         Api.Data.productGroupPromotionResponseDecoder
 
 
-{-| Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+{-| Get product group analytics
+
+Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+
 -}
 productGroupsAnalytics : String -> Posix -> Posix -> List String -> List Columns -> Granularity -> Maybe ClickWindowDays -> Maybe EngagementWindowDays -> Maybe ViewWindowDays -> Maybe ConversionReportTime -> Api.Request (List ProductGroupAnalyticsResponseInner)
 productGroupsAnalytics adAccountId_path startDate_query endDate_query productGroupIds_query columns_query granularity_query clickWindowDays_query engagementWindowDays_query viewWindowDays_query conversionReportTime_query =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/product_groups/analytics"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         [ ( "start_date", Just <| Api.Time.dateToString startDate_query ), ( "end_date", Just <| Api.Time.dateToString endDate_query ), ( "product_group_ids", Just <| (String.join "," << List.map identity) productGroupIds_query ), ( "columns", Just <| (String.join "," << List.map stringFromColumns) columns_query ), ( "granularity", Just <| Api.Data.stringFromGranularity granularity_query ), ( "click_window_days", Maybe.map String.fromInt stringFromClickWindowDays clickWindowDays_query ), ( "engagement_window_days", Maybe.map String.fromInt stringFromEngagementWindowDays engagementWindowDays_query ), ( "view_window_days", Maybe.map String.fromInt stringFromViewWindowDays viewWindowDays_query ), ( "conversion_report_time", Maybe.map stringFromConversionReportTime conversionReportTime_query ) ]
         []
         Nothing

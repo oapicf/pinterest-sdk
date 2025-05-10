@@ -24,13 +24,31 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Object describing an item bid option upsert operation")
 @JsonTypeName("AdvancedAuctionItemsSubmitUpsertRecord")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdvancedAuctionItemsSubmitUpsertRecord   {
   private String itemId;
   private Country country;
   private Language language;
   private AdvancedAuctionBidOptions bidOptions;
   private @Valid List<UpdateMaskBidOptionField> updateMask;
+
+  public AdvancedAuctionItemsSubmitUpsertRecord() {
+  }
+
+  @JsonCreator
+  public AdvancedAuctionItemsSubmitUpsertRecord(
+    @JsonProperty(required = true, value = "item_id") String itemId,
+    @JsonProperty(required = true, value = "country") Country country,
+    @JsonProperty(required = true, value = "language") Language language,
+    @JsonProperty(required = true, value = "bid_options") AdvancedAuctionBidOptions bidOptions,
+    @JsonProperty(required = true, value = "update_mask") List<UpdateMaskBidOptionField> updateMask
+  ) {
+    this.itemId = itemId;
+    this.country = country;
+    this.language = language;
+    this.bidOptions = bidOptions;
+    this.updateMask = updateMask;
+  }
 
   /**
    * The catalog retail item id in the merchant namespace
@@ -42,12 +60,12 @@ public class AdvancedAuctionItemsSubmitUpsertRecord   {
 
   
   @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog retail item id in the merchant namespace")
-  @JsonProperty("item_id")
+  @JsonProperty(required = true, value = "item_id")
   @NotNull public String getItemId() {
     return itemId;
   }
 
-  @JsonProperty("item_id")
+  @JsonProperty(required = true, value = "item_id")
   public void setItemId(String itemId) {
     this.itemId = itemId;
   }
@@ -61,12 +79,12 @@ public class AdvancedAuctionItemsSubmitUpsertRecord   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("country")
+  @JsonProperty(required = true, value = "country")
   @NotNull public Country getCountry() {
     return country;
   }
 
-  @JsonProperty("country")
+  @JsonProperty(required = true, value = "country")
   public void setCountry(Country country) {
     this.country = country;
   }
@@ -80,12 +98,12 @@ public class AdvancedAuctionItemsSubmitUpsertRecord   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("language")
+  @JsonProperty(required = true, value = "language")
   @NotNull public Language getLanguage() {
     return language;
   }
 
-  @JsonProperty("language")
+  @JsonProperty(required = true, value = "language")
   public void setLanguage(Language language) {
     this.language = language;
   }
@@ -99,12 +117,12 @@ public class AdvancedAuctionItemsSubmitUpsertRecord   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("bid_options")
+  @JsonProperty(required = true, value = "bid_options")
   @NotNull @Valid public AdvancedAuctionBidOptions getBidOptions() {
     return bidOptions;
   }
 
-  @JsonProperty("bid_options")
+  @JsonProperty(required = true, value = "bid_options")
   public void setBidOptions(AdvancedAuctionBidOptions bidOptions) {
     this.bidOptions = bidOptions;
   }
@@ -119,12 +137,12 @@ public class AdvancedAuctionItemsSubmitUpsertRecord   {
 
   
   @ApiModelProperty(example = "[\"BID\",\"APP_TYPE_BID_MULTIPLIER_SET\"]", required = true, value = "The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`.")
-  @JsonProperty("update_mask")
+  @JsonProperty(required = true, value = "update_mask")
   @NotNull public List<UpdateMaskBidOptionField> getUpdateMask() {
     return updateMask;
   }
 
-  @JsonProperty("update_mask")
+  @JsonProperty(required = true, value = "update_mask")
   public void setUpdateMask(List<UpdateMaskBidOptionField> updateMask) {
     this.updateMask = updateMask;
   }

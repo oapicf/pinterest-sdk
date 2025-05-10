@@ -22,7 +22,7 @@ pinterest_rest_api_placement_multipliers_PLACEMENT_e placement_multipliers_place
     return 0;
 }
 
-placement_multipliers_t *placement_multipliers_create(
+static placement_multipliers_t *placement_multipliers_create_internal(
     pinterest_rest_api_placement_multipliers_PLACEMENT_e placement
     ) {
     placement_multipliers_t *placement_multipliers_local_var = malloc(sizeof(placement_multipliers_t));
@@ -31,12 +31,24 @@ placement_multipliers_t *placement_multipliers_create(
     }
     placement_multipliers_local_var->placement = placement;
 
+    placement_multipliers_local_var->_library_owned = 1;
     return placement_multipliers_local_var;
 }
 
+__attribute__((deprecated)) placement_multipliers_t *placement_multipliers_create(
+    pinterest_rest_api_placement_multipliers_PLACEMENT_e placement
+    ) {
+    return placement_multipliers_create_internal (
+        placement
+        );
+}
 
 void placement_multipliers_free(placement_multipliers_t *placement_multipliers) {
     if(NULL == placement_multipliers){
+        return ;
+    }
+    if(placement_multipliers->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "placement_multipliers_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -48,7 +60,7 @@ cJSON *placement_multipliers_convertToJSON(placement_multipliers_t *placement_mu
 
     // placement_multipliers->placement
     if(placement_multipliers->placement != pinterest_rest_api_placement_multipliers_PLACEMENT_NULL) {
-    if(cJSON_AddStringToObject(item, "PLACEMENT", placementplacement_multipliers_ToString(placement_multipliers->placement)) == NULL)
+    if(cJSON_AddStringToObject(item, "PLACEMENT", placement_multipliers_placement_ToString(placement_multipliers->placement)) == NULL)
     {
     goto fail; //Enum
     }
@@ -68,6 +80,9 @@ placement_multipliers_t *placement_multipliers_parseFromJSON(cJSON *placement_mu
 
     // placement_multipliers->placement
     cJSON *placement = cJSON_GetObjectItemCaseSensitive(placement_multipliersJSON, "PLACEMENT");
+    if (cJSON_IsNull(placement)) {
+        placement = NULL;
+    }
     pinterest_rest_api_placement_multipliers_PLACEMENT_e placementVariable;
     if (placement) { 
     if(!cJSON_IsString(placement))
@@ -78,7 +93,7 @@ placement_multipliers_t *placement_multipliers_parseFromJSON(cJSON *placement_mu
     }
 
 
-    placement_multipliers_local_var = placement_multipliers_create (
+    placement_multipliers_local_var = placement_multipliers_create_internal (
         placement ? placementVariable : pinterest_rest_api_placement_multipliers_PLACEMENT_NULL
         );
 

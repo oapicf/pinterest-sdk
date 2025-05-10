@@ -63,7 +63,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   TemplateResponse.JSON_PROPERTY_INGESTION_SOURCES
 })
 @JsonTypeName("TemplateResponse")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2024-11-05T02:03:37.829873561Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2025-05-10T05:39:14.747146068Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 @Introspected
 public class TemplateResponse {
     public static final String JSON_PROPERTY_ID = "id";
@@ -1732,8 +1732,8 @@ public class TemplateResponse {
      * Conversion report time type
      */
     public enum ConversionReportTimeTypeEnum {
-        AD_ACTION("TIME_OF_AD_ACTION"),
-        CONVERSION("TIME_OF_CONVERSION");
+        TIME_OF_AD_ACTION("TIME_OF_AD_ACTION"),
+        TIME_OF_CONVERSION("TIME_OF_CONVERSION");
 
         private String value;
 
@@ -1777,9 +1777,9 @@ public class TemplateResponse {
      * The surface used to create this template
      */
     public enum CreationSourceEnum {
-        API("ADS_API"),
-        MANAGER_REPORTING_PAGE("ADS_MANAGER_REPORTING_PAGE"),
-        MANAGER_REPORT_BUILDER("ADS_MANAGER_REPORT_BUILDER");
+        ADS_API("ADS_API"),
+        ADS_MANAGER_REPORTING_PAGE("ADS_MANAGER_REPORTING_PAGE"),
+        ADS_MANAGER_REPORT_BUILDER("ADS_MANAGER_REPORT_BUILDER");
 
         private String value;
 

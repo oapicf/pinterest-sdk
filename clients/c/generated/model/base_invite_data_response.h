@@ -26,9 +26,10 @@ typedef struct base_invite_data_response_t {
     int is_received_invite; //boolean
     struct business_access_user_summary_t *user; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } base_invite_data_response_t;
 
-base_invite_data_response_t *base_invite_data_response_create(
+__attribute__((deprecated)) base_invite_data_response_t *base_invite_data_response_create(
     char *id,
     base_invite_data_response_invite_data_t *invite_data,
     int is_received_invite,

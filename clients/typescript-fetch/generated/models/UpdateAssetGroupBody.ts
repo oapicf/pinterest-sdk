@@ -56,11 +56,11 @@ export function UpdateAssetGroupBodyFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function UpdateAssetGroupBodyToJSON(json: any): UpdateAssetGroupBody {
-      return UpdateAssetGroupBodyToJSONTyped(json, false);
-  }
+export function UpdateAssetGroupBodyToJSON(json: any): UpdateAssetGroupBody {
+    return UpdateAssetGroupBodyToJSONTyped(json, false);
+}
 
-  export function UpdateAssetGroupBodyToJSONTyped(value?: UpdateAssetGroupBody | null, ignoreDiscriminator: boolean = false): any {
+export function UpdateAssetGroupBodyToJSONTyped(value?: UpdateAssetGroupBody | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

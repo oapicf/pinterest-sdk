@@ -5,7 +5,7 @@
 
 
 
-board_owner_t *board_owner_create(
+static board_owner_t *board_owner_create_internal(
     char *username
     ) {
     board_owner_t *board_owner_local_var = malloc(sizeof(board_owner_t));
@@ -14,12 +14,24 @@ board_owner_t *board_owner_create(
     }
     board_owner_local_var->username = username;
 
+    board_owner_local_var->_library_owned = 1;
     return board_owner_local_var;
 }
 
+__attribute__((deprecated)) board_owner_t *board_owner_create(
+    char *username
+    ) {
+    return board_owner_create_internal (
+        username
+        );
+}
 
 void board_owner_free(board_owner_t *board_owner) {
     if(NULL == board_owner){
+        return ;
+    }
+    if(board_owner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "board_owner_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -54,6 +66,9 @@ board_owner_t *board_owner_parseFromJSON(cJSON *board_ownerJSON){
 
     // board_owner->username
     cJSON *username = cJSON_GetObjectItemCaseSensitive(board_ownerJSON, "username");
+    if (cJSON_IsNull(username)) {
+        username = NULL;
+    }
     if (username) { 
     if(!cJSON_IsString(username) && !cJSON_IsNull(username))
     {
@@ -62,7 +77,7 @@ board_owner_t *board_owner_parseFromJSON(cJSON *board_ownerJSON){
     }
 
 
-    board_owner_local_var = board_owner_create (
+    board_owner_local_var = board_owner_create_internal (
         username && !cJSON_IsNull(username) ? strdup(username->valuestring) : NULL
         );
 

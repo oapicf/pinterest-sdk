@@ -70,11 +70,11 @@ export function OptimizationGoalMetadataFrequencyGoalMetadataFromJSONTyped(json:
     };
 }
 
-  export function OptimizationGoalMetadataFrequencyGoalMetadataToJSON(json: any): OptimizationGoalMetadataFrequencyGoalMetadata {
-      return OptimizationGoalMetadataFrequencyGoalMetadataToJSONTyped(json, false);
-  }
+export function OptimizationGoalMetadataFrequencyGoalMetadataToJSON(json: any): OptimizationGoalMetadataFrequencyGoalMetadata {
+    return OptimizationGoalMetadataFrequencyGoalMetadataToJSONTyped(json, false);
+}
 
-  export function OptimizationGoalMetadataFrequencyGoalMetadataToJSONTyped(value?: OptimizationGoalMetadataFrequencyGoalMetadata | null, ignoreDiscriminator: boolean = false): any {
+export function OptimizationGoalMetadataFrequencyGoalMetadataToJSONTyped(value?: OptimizationGoalMetadataFrequencyGoalMetadata | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

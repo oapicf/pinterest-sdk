@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct BusinessMembersAssetAccessDeleteRequestAccessesInner: Codable, JSONEncodable, Hashable {
 
-    static let assetIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
-    static let memberIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
+    public static let assetIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
+    public static let memberIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
     /** Id of the asset on which to remove member permissions. */
     public var assetId: String
     /** Unique identifier of the member on which to perform the asset permission removal */

@@ -56,11 +56,11 @@ export function AudienceInsightCategoryArrayResponseFromJSONTyped(json: any, ign
     };
 }
 
-  export function AudienceInsightCategoryArrayResponseToJSON(json: any): AudienceInsightCategoryArrayResponse {
-      return AudienceInsightCategoryArrayResponseToJSONTyped(json, false);
-  }
+export function AudienceInsightCategoryArrayResponseToJSON(json: any): AudienceInsightCategoryArrayResponse {
+    return AudienceInsightCategoryArrayResponseToJSONTyped(json, false);
+}
 
-  export function AudienceInsightCategoryArrayResponseToJSONTyped(value?: AudienceInsightCategoryArrayResponse | null, ignoreDiscriminator: boolean = false): any {
+export function AudienceInsightCategoryArrayResponseToJSONTyped(value?: AudienceInsightCategoryArrayResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

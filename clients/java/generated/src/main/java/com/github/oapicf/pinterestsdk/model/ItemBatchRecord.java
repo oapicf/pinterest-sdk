@@ -67,7 +67,7 @@ import com.google.gson.JsonParseException;
 
 import com.github.oapicf.pinterestsdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ItemBatchRecord extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(ItemBatchRecord.class.getName());
 
@@ -292,6 +292,7 @@ public class ItemBatchRecord extends AbstractOpenApiSchema {
     public ItemCreateBatchRecord getItemCreateBatchRecord() throws ClassCastException {
         return (ItemCreateBatchRecord)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `ItemDeleteDiscontinuedBatchRecord`. If the actual instance is not `ItemDeleteDiscontinuedBatchRecord`,
      * the ClassCastException will be thrown.
@@ -302,6 +303,7 @@ public class ItemBatchRecord extends AbstractOpenApiSchema {
     public ItemDeleteDiscontinuedBatchRecord getItemDeleteDiscontinuedBatchRecord() throws ClassCastException {
         return (ItemDeleteDiscontinuedBatchRecord)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `ItemUpdateBatchRecord`. If the actual instance is not `ItemUpdateBatchRecord`,
      * the ClassCastException will be thrown.
@@ -312,6 +314,7 @@ public class ItemBatchRecord extends AbstractOpenApiSchema {
     public ItemUpdateBatchRecord getItemUpdateBatchRecord() throws ClassCastException {
         return (ItemUpdateBatchRecord)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `ItemUpsertBatchRecord`. If the actual instance is not `ItemUpsertBatchRecord`,
      * the ClassCastException will be thrown.
@@ -322,6 +325,7 @@ public class ItemBatchRecord extends AbstractOpenApiSchema {
     public ItemUpsertBatchRecord getItemUpsertBatchRecord() throws ClassCastException {
         return (ItemUpsertBatchRecord)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `ItemDeleteBatchRecord`. If the actual instance is not `ItemDeleteBatchRecord`,
      * the ClassCastException will be thrown.

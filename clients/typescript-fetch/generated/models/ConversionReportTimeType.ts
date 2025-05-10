@@ -18,8 +18,8 @@
  * @export
  */
 export const ConversionReportTimeType = {
-    AdAction: 'TIME_OF_AD_ACTION',
-    Conversion: 'TIME_OF_CONVERSION'
+    TimeOfAdAction: 'TIME_OF_AD_ACTION',
+    TimeOfConversion: 'TIME_OF_CONVERSION'
 } as const;
 export type ConversionReportTimeType = typeof ConversionReportTimeType[keyof typeof ConversionReportTimeType];
 

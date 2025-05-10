@@ -51,24 +51,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * BusinessSharedAudience
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BusinessSharedAudience {
   public static final String SERIALIZED_NAME_AUDIENCE_ID = "audience_id";
   @SerializedName(SERIALIZED_NAME_AUDIENCE_ID)
+  @javax.annotation.Nonnull
   private String audienceId;
 
   public static final String SERIALIZED_NAME_OPERATION_TYPE = "operation_type";
   @SerializedName(SERIALIZED_NAME_OPERATION_TYPE)
+  @javax.annotation.Nonnull
   private OperationType operationType;
 
   public static final String SERIALIZED_NAME_RECIPIENT_BUSINESS_IDS = "recipient_business_ids";
   @SerializedName(SERIALIZED_NAME_RECIPIENT_BUSINESS_IDS)
+  @javax.annotation.Nonnull
   private List<String> recipientBusinessIds = new ArrayList<>();
 
   public BusinessSharedAudience() {
   }
 
-  public BusinessSharedAudience audienceId(String audienceId) {
+  public BusinessSharedAudience audienceId(@javax.annotation.Nonnull String audienceId) {
     this.audienceId = audienceId;
     return this;
   }
@@ -82,12 +85,12 @@ public class BusinessSharedAudience {
     return audienceId;
   }
 
-  public void setAudienceId(String audienceId) {
+  public void setAudienceId(@javax.annotation.Nonnull String audienceId) {
     this.audienceId = audienceId;
   }
 
 
-  public BusinessSharedAudience operationType(OperationType operationType) {
+  public BusinessSharedAudience operationType(@javax.annotation.Nonnull OperationType operationType) {
     this.operationType = operationType;
     return this;
   }
@@ -101,12 +104,12 @@ public class BusinessSharedAudience {
     return operationType;
   }
 
-  public void setOperationType(OperationType operationType) {
+  public void setOperationType(@javax.annotation.Nonnull OperationType operationType) {
     this.operationType = operationType;
   }
 
 
-  public BusinessSharedAudience recipientBusinessIds(List<String> recipientBusinessIds) {
+  public BusinessSharedAudience recipientBusinessIds(@javax.annotation.Nonnull List<String> recipientBusinessIds) {
     this.recipientBusinessIds = recipientBusinessIds;
     return this;
   }
@@ -128,7 +131,7 @@ public class BusinessSharedAudience {
     return recipientBusinessIds;
   }
 
-  public void setRecipientBusinessIds(List<String> recipientBusinessIds) {
+  public void setRecipientBusinessIds(@javax.annotation.Nonnull List<String> recipientBusinessIds) {
     this.recipientBusinessIds = recipientBusinessIds;
   }
 

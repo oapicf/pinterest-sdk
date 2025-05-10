@@ -51,7 +51,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Multiple Base64-encoded images media source
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMediaSourceImagesBase64 {
   /**
    * Gets or Sets sourceType
@@ -105,20 +105,23 @@ public class PinMediaSourceImagesBase64 {
 
   public static final String SERIALIZED_NAME_SOURCE_TYPE = "source_type";
   @SerializedName(SERIALIZED_NAME_SOURCE_TYPE)
+  @javax.annotation.Nullable
   private SourceTypeEnum sourceType;
 
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
+  @javax.annotation.Nonnull
   private List<PinMediaSourceImagesBase64ItemsInner> items = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_INDEX = "index";
   @SerializedName(SERIALIZED_NAME_INDEX)
+  @javax.annotation.Nullable
   private Integer index;
 
   public PinMediaSourceImagesBase64() {
   }
 
-  public PinMediaSourceImagesBase64 sourceType(SourceTypeEnum sourceType) {
+  public PinMediaSourceImagesBase64 sourceType(@javax.annotation.Nullable SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
     return this;
   }
@@ -132,12 +135,12 @@ public class PinMediaSourceImagesBase64 {
     return sourceType;
   }
 
-  public void setSourceType(SourceTypeEnum sourceType) {
+  public void setSourceType(@javax.annotation.Nullable SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
   }
 
 
-  public PinMediaSourceImagesBase64 items(List<PinMediaSourceImagesBase64ItemsInner> items) {
+  public PinMediaSourceImagesBase64 items(@javax.annotation.Nonnull List<PinMediaSourceImagesBase64ItemsInner> items) {
     this.items = items;
     return this;
   }
@@ -159,12 +162,12 @@ public class PinMediaSourceImagesBase64 {
     return items;
   }
 
-  public void setItems(List<PinMediaSourceImagesBase64ItemsInner> items) {
+  public void setItems(@javax.annotation.Nonnull List<PinMediaSourceImagesBase64ItemsInner> items) {
     this.items = items;
   }
 
 
-  public PinMediaSourceImagesBase64 index(Integer index) {
+  public PinMediaSourceImagesBase64 index(@javax.annotation.Nullable Integer index) {
     this.index = index;
     return this;
   }
@@ -179,7 +182,7 @@ public class PinMediaSourceImagesBase64 {
     return index;
   }
 
-  public void setIndex(Integer index) {
+  public void setIndex(@javax.annotation.Nullable Integer index) {
     this.index = index;
   }
 

@@ -15,15 +15,17 @@ import org.openapitools.server.models.CatalogsItemsPostFilters
 import org.openapitools.server.models.CatalogsItemsRequestLanguage
 import org.openapitools.server.models.Country
 
+import kotlinx.serialization.Serializable
 /**
  * Request object of catalogs items
  * @param country 
  * @param language 
  * @param filters 
  */
+@Serializable
 data class CatalogsItemsRequest(
     val country: Country,
     val language: CatalogsItemsRequestLanguage,
     val filters: CatalogsItemsPostFilters
-) 
+)
 

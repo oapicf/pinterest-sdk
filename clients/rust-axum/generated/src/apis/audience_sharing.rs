@@ -1,6 +1,6 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Multipart};
+use axum_extra::extract::{CookieJar, Host};
 use bytes::Bytes;
 use http::Method;
 use serde::{Deserialize, Serialize};
@@ -138,88 +138,88 @@ pub enum UpdateBusinessToBusinessSharedAudienceResponse {
 /// AudienceSharing
 #[async_trait]
 #[allow(clippy::ptr_arg)]
-pub trait AudienceSharing {
+pub trait AudienceSharing<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHandler<E> {
     /// List accounts with access to an audience owned by an ad account.
     ///
     /// AdAccountsAudiencesSharedAccountsSlashList - GET /v5/ad_accounts/{ad_account_id}/audiences/shared/accounts
     async fn ad_accounts_audiences_shared_accounts_slash_list(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::AdAccountsAudiencesSharedAccountsSlashListPathParams,
-      query_params: models::AdAccountsAudiencesSharedAccountsSlashListQueryParams,
-    ) -> Result<AdAccountsAudiencesSharedAccountsSlashListResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::AdAccountsAudiencesSharedAccountsSlashListPathParams,
+      query_params: &models::AdAccountsAudiencesSharedAccountsSlashListQueryParams,
+    ) -> Result<AdAccountsAudiencesSharedAccountsSlashListResponse, E>;
 
     /// List accounts with access to an audience owned by a business.
     ///
     /// BusinessAccountAudiencesSharedAccountsSlashList - GET /v5/businesses/{business_id}/audiences/shared/accounts
     async fn business_account_audiences_shared_accounts_slash_list(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::BusinessAccountAudiencesSharedAccountsSlashListPathParams,
-      query_params: models::BusinessAccountAudiencesSharedAccountsSlashListQueryParams,
-    ) -> Result<BusinessAccountAudiencesSharedAccountsSlashListResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::BusinessAccountAudiencesSharedAccountsSlashListPathParams,
+      query_params: &models::BusinessAccountAudiencesSharedAccountsSlashListQueryParams,
+    ) -> Result<BusinessAccountAudiencesSharedAccountsSlashListResponse, E>;
 
     /// List received audiences for a business.
     ///
     /// SharedAudiencesForBusinessSlashList - GET /v5/businesses/{business_id}/audiences
     async fn shared_audiences_for_business_slash_list(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::SharedAudiencesForBusinessSlashListPathParams,
-      query_params: models::SharedAudiencesForBusinessSlashListQueryParams,
-    ) -> Result<SharedAudiencesForBusinessSlashListResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::SharedAudiencesForBusinessSlashListPathParams,
+      query_params: &models::SharedAudiencesForBusinessSlashListQueryParams,
+    ) -> Result<SharedAudiencesForBusinessSlashListResponse, E>;
 
     /// Update audience sharing between ad accounts.
     ///
     /// UpdateAdAccountToAdAccountSharedAudience - PATCH /v5/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared
     async fn update_ad_account_to_ad_account_shared_audience(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::UpdateAdAccountToAdAccountSharedAudiencePathParams,
-            body: models::SharedAudience,
-    ) -> Result<UpdateAdAccountToAdAccountSharedAudienceResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::UpdateAdAccountToAdAccountSharedAudiencePathParams,
+            body: &models::SharedAudience,
+    ) -> Result<UpdateAdAccountToAdAccountSharedAudienceResponse, E>;
 
     /// Update audience sharing from an ad account to businesses.
     ///
     /// UpdateAdAccountToBusinessSharedAudience - PATCH /v5/ad_accounts/{ad_account_id}/audiences/businesses/shared
     async fn update_ad_account_to_business_shared_audience(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::UpdateAdAccountToBusinessSharedAudiencePathParams,
-            body: models::BusinessSharedAudience,
-    ) -> Result<UpdateAdAccountToBusinessSharedAudienceResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::UpdateAdAccountToBusinessSharedAudiencePathParams,
+            body: &models::BusinessSharedAudience,
+    ) -> Result<UpdateAdAccountToBusinessSharedAudienceResponse, E>;
 
     /// Update audience sharing from a business to ad accounts.
     ///
     /// UpdateBusinessToAdAccountSharedAudience - PATCH /v5/businesses/{business_id}/audiences/ad_accounts/shared
     async fn update_business_to_ad_account_shared_audience(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::UpdateBusinessToAdAccountSharedAudiencePathParams,
-            body: models::SharedAudience,
-    ) -> Result<UpdateBusinessToAdAccountSharedAudienceResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::UpdateBusinessToAdAccountSharedAudiencePathParams,
+            body: &models::SharedAudience,
+    ) -> Result<UpdateBusinessToAdAccountSharedAudienceResponse, E>;
 
     /// Update audience sharing between businesses.
     ///
     /// UpdateBusinessToBusinessSharedAudience - PATCH /v5/businesses/{business_id}/audiences/businesses/shared
     async fn update_business_to_business_shared_audience(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::UpdateBusinessToBusinessSharedAudiencePathParams,
-            body: models::BusinessSharedAudience,
-    ) -> Result<UpdateBusinessToBusinessSharedAudienceResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::UpdateBusinessToBusinessSharedAudiencePathParams,
+            body: &models::BusinessSharedAudience,
+    ) -> Result<UpdateBusinessToBusinessSharedAudienceResponse, E>;
 }

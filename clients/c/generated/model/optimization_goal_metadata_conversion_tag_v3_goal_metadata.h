@@ -43,9 +43,10 @@ typedef struct optimization_goal_metadata_conversion_tag_v3_goal_metadata_t {
     int is_roas_optimized; //boolean
     pinterest_rest_api_optimization_goal_metadata_conversion_tag_v3_goal_metadata_LEARNINGMODETYPE_e learning_mode_type; //enum
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } optimization_goal_metadata_conversion_tag_v3_goal_metadata_t;
 
-optimization_goal_metadata_conversion_tag_v3_goal_metadata_t *optimization_goal_metadata_conversion_tag_v3_goal_metadata_create(
+__attribute__((deprecated)) optimization_goal_metadata_conversion_tag_v3_goal_metadata_t *optimization_goal_metadata_conversion_tag_v3_goal_metadata_create(
     optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_t *attribution_windows,
     pinterest_rest_api_optimization_goal_metadata_conversion_tag_v3_goal_metadata_CONVERSIONEVENT_e conversion_event,
     char *conversion_tag_id,

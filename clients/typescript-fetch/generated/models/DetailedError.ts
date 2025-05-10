@@ -65,11 +65,11 @@ export function DetailedErrorFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-  export function DetailedErrorToJSON(json: any): DetailedError {
-      return DetailedErrorToJSONTyped(json, false);
-  }
+export function DetailedErrorToJSON(json: any): DetailedError {
+    return DetailedErrorToJSONTyped(json, false);
+}
 
-  export function DetailedErrorToJSONTyped(value?: DetailedError | null, ignoreDiscriminator: boolean = false): any {
+export function DetailedErrorToJSONTyped(value?: DetailedError | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -15,7 +15,9 @@
 export type ConversionReportTimeType = 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION';
 
 export const ConversionReportTimeType = {
-    AdAction: 'TIME_OF_AD_ACTION' as ConversionReportTimeType,
-    Conversion: 'TIME_OF_CONVERSION' as ConversionReportTimeType
+
+    TimeOfAdAction: 'TIME_OF_AD_ACTION' as ConversionReportTimeType,
+
+    TimeOfConversion: 'TIME_OF_CONVERSION' as ConversionReportTimeType
 };
 

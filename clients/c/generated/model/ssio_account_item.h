@@ -30,9 +30,10 @@ typedef struct ssio_account_item_t {
     char *io_type; // string
     list_t *addresses; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } ssio_account_item_t;
 
-ssio_account_item_t *ssio_account_item_create(
+__attribute__((deprecated)) ssio_account_item_t *ssio_account_item_create(
     char *id,
     char *io_terms_id,
     char *io_terms,

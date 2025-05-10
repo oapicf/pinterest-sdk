@@ -23,10 +23,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Object holding a group of filters for a hotel product group")
 @JsonTypeName("CatalogsHotelProductGroupFilters")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsHotelProductGroupFilters   {
   private @Valid List<CatalogsHotelProductGroupFilterKeys> anyOf = new ArrayList<>();
   private @Valid List<CatalogsHotelProductGroupFilterKeys> allOf = new ArrayList<>();
+
+  public CatalogsHotelProductGroupFilters() {
+  }
+
+  @JsonCreator
+  public CatalogsHotelProductGroupFilters(
+    @JsonProperty(required = true, value = "any_of") List<@Valid CatalogsHotelProductGroupFilterKeys> anyOf,
+    @JsonProperty(required = true, value = "all_of") List<@Valid CatalogsHotelProductGroupFilterKeys> allOf
+  ) {
+    this.anyOf = anyOf;
+    this.allOf = allOf;
+  }
 
   /**
    **/
@@ -37,12 +49,12 @@ public class CatalogsHotelProductGroupFilters   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("any_of")
+  @JsonProperty(required = true, value = "any_of")
   @NotNull @Valid public List<@Valid CatalogsHotelProductGroupFilterKeys> getAnyOf() {
     return anyOf;
   }
 
-  @JsonProperty("any_of")
+  @JsonProperty(required = true, value = "any_of")
   public void setAnyOf(List<CatalogsHotelProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
   }
@@ -72,12 +84,12 @@ public class CatalogsHotelProductGroupFilters   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("all_of")
+  @JsonProperty(required = true, value = "all_of")
   @NotNull @Valid public List<@Valid CatalogsHotelProductGroupFilterKeys> getAllOf() {
     return allOf;
   }
 
-  @JsonProperty("all_of")
+  @JsonProperty(required = true, value = "all_of")
   public void setAllOf(List<CatalogsHotelProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
   }

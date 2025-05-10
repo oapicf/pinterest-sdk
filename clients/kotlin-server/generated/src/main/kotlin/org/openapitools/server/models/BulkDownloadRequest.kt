@@ -15,6 +15,7 @@ import org.openapitools.server.models.BulkDownloadRequestCampaignFilter
 import org.openapitools.server.models.BulkEntityType
 import org.openapitools.server.models.BulkOutputFormat
 
+import kotlinx.serialization.Serializable
 /**
  * Ad entities to get in bulk request.
  * @param entityTypes All entity types specified will be downloaded. Fewer types result in faster downloads.
@@ -23,6 +24,7 @@ import org.openapitools.server.models.BulkOutputFormat
  * @param campaignFilter 
  * @param outputFormat 
  */
+@Serializable
 data class BulkDownloadRequest(
     /* All entity types specified will be downloaded. Fewer types result in faster downloads. */
     val entityTypes: kotlin.collections.List<BulkEntityType>? = null,
@@ -32,5 +34,5 @@ data class BulkDownloadRequest(
     val updatedSince: kotlin.String? = null,
     val campaignFilter: BulkDownloadRequestCampaignFilter? = null,
     val outputFormat: BulkOutputFormat? = "JSON"
-) 
+)
 

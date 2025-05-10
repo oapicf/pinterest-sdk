@@ -1,6 +1,6 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Multipart};
+use axum_extra::extract::{CookieJar, Host};
 use bytes::Bytes;
 use http::Method;
 use serde::{Deserialize, Serialize};
@@ -84,63 +84,63 @@ pub enum AudiencesSlashUpdateResponse {
 /// Audiences
 #[async_trait]
 #[allow(clippy::ptr_arg)]
-pub trait Audiences {
+pub trait Audiences<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHandler<E> {
     /// Create audience.
     ///
     /// AudiencesSlashCreate - POST /v5/ad_accounts/{ad_account_id}/audiences
     async fn audiences_slash_create(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::AudiencesSlashCreatePathParams,
-            body: models::AudienceCreateRequest,
-    ) -> Result<AudiencesSlashCreateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::AudiencesSlashCreatePathParams,
+            body: &models::AudienceCreateRequest,
+    ) -> Result<AudiencesSlashCreateResponse, E>;
 
     /// Create custom audience.
     ///
     /// AudiencesSlashCreateCustom - POST /v5/ad_accounts/{ad_account_id}/audiences/custom
     async fn audiences_slash_create_custom(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::AudiencesSlashCreateCustomPathParams,
-            body: models::AudienceCreateCustomRequest,
-    ) -> Result<AudiencesSlashCreateCustomResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::AudiencesSlashCreateCustomPathParams,
+            body: &models::AudienceCreateCustomRequest,
+    ) -> Result<AudiencesSlashCreateCustomResponse, E>;
 
     /// Get audience.
     ///
     /// AudiencesSlashGet - GET /v5/ad_accounts/{ad_account_id}/audiences/{audience_id}
     async fn audiences_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::AudiencesSlashGetPathParams,
-    ) -> Result<AudiencesSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::AudiencesSlashGetPathParams,
+    ) -> Result<AudiencesSlashGetResponse, E>;
 
     /// List audiences.
     ///
     /// AudiencesSlashList - GET /v5/ad_accounts/{ad_account_id}/audiences
     async fn audiences_slash_list(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::AudiencesSlashListPathParams,
-      query_params: models::AudiencesSlashListQueryParams,
-    ) -> Result<AudiencesSlashListResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::AudiencesSlashListPathParams,
+      query_params: &models::AudiencesSlashListQueryParams,
+    ) -> Result<AudiencesSlashListResponse, E>;
 
     /// Update audience.
     ///
     /// AudiencesSlashUpdate - PATCH /v5/ad_accounts/{ad_account_id}/audiences/{audience_id}
     async fn audiences_slash_update(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::AudiencesSlashUpdatePathParams,
-            body: Option<models::AudienceUpdateRequest>,
-    ) -> Result<AudiencesSlashUpdateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::AudiencesSlashUpdatePathParams,
+            body: &Option<models::AudienceUpdateRequest>,
+    ) -> Result<AudiencesSlashUpdateResponse, E>;
 }

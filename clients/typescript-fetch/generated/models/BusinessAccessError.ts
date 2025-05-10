@@ -57,11 +57,11 @@ export function BusinessAccessErrorFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function BusinessAccessErrorToJSON(json: any): BusinessAccessError {
-      return BusinessAccessErrorToJSONTyped(json, false);
-  }
+export function BusinessAccessErrorToJSON(json: any): BusinessAccessError {
+    return BusinessAccessErrorToJSONTyped(json, false);
+}
 
-  export function BusinessAccessErrorToJSONTyped(value?: BusinessAccessError | null, ignoreDiscriminator: boolean = false): any {
+export function BusinessAccessErrorToJSONTyped(value?: BusinessAccessError | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

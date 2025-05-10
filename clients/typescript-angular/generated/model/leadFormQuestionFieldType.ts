@@ -15,9 +15,13 @@
 export type LeadFormQuestionFieldType = 'TEXT_FIELD' | 'TEXT_AREA' | 'RADIO_LIST' | 'CHECKBOX';
 
 export const LeadFormQuestionFieldType = {
+
     TextField: 'TEXT_FIELD' as LeadFormQuestionFieldType,
+
     TextArea: 'TEXT_AREA' as LeadFormQuestionFieldType,
+
     RadioList: 'RADIO_LIST' as LeadFormQuestionFieldType,
+
     Checkbox: 'CHECKBOX' as LeadFormQuestionFieldType
 };
 

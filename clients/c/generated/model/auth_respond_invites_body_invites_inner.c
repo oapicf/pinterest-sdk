@@ -5,7 +5,7 @@
 
 
 
-auth_respond_invites_body_invites_inner_t *auth_respond_invites_body_invites_inner_create(
+static auth_respond_invites_body_invites_inner_t *auth_respond_invites_body_invites_inner_create_internal(
     auth_respond_invites_body_invites_inner_action_t *action,
     char *invite_id
     ) {
@@ -16,12 +16,26 @@ auth_respond_invites_body_invites_inner_t *auth_respond_invites_body_invites_inn
     auth_respond_invites_body_invites_inner_local_var->action = action;
     auth_respond_invites_body_invites_inner_local_var->invite_id = invite_id;
 
+    auth_respond_invites_body_invites_inner_local_var->_library_owned = 1;
     return auth_respond_invites_body_invites_inner_local_var;
 }
 
+__attribute__((deprecated)) auth_respond_invites_body_invites_inner_t *auth_respond_invites_body_invites_inner_create(
+    auth_respond_invites_body_invites_inner_action_t *action,
+    char *invite_id
+    ) {
+    return auth_respond_invites_body_invites_inner_create_internal (
+        action,
+        invite_id
+        );
+}
 
 void auth_respond_invites_body_invites_inner_free(auth_respond_invites_body_invites_inner_t *auth_respond_invites_body_invites_inner) {
     if(NULL == auth_respond_invites_body_invites_inner){
+        return ;
+    }
+    if(auth_respond_invites_body_invites_inner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "auth_respond_invites_body_invites_inner_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -78,6 +92,9 @@ auth_respond_invites_body_invites_inner_t *auth_respond_invites_body_invites_inn
 
     // auth_respond_invites_body_invites_inner->action
     cJSON *action = cJSON_GetObjectItemCaseSensitive(auth_respond_invites_body_invites_innerJSON, "action");
+    if (cJSON_IsNull(action)) {
+        action = NULL;
+    }
     if (!action) {
         goto end;
     }
@@ -87,6 +104,9 @@ auth_respond_invites_body_invites_inner_t *auth_respond_invites_body_invites_inn
 
     // auth_respond_invites_body_invites_inner->invite_id
     cJSON *invite_id = cJSON_GetObjectItemCaseSensitive(auth_respond_invites_body_invites_innerJSON, "invite_id");
+    if (cJSON_IsNull(invite_id)) {
+        invite_id = NULL;
+    }
     if (!invite_id) {
         goto end;
     }
@@ -98,7 +118,7 @@ auth_respond_invites_body_invites_inner_t *auth_respond_invites_body_invites_inn
     }
 
 
-    auth_respond_invites_body_invites_inner_local_var = auth_respond_invites_body_invites_inner_create (
+    auth_respond_invites_body_invites_inner_local_var = auth_respond_invites_body_invites_inner_create_internal (
         action_local_nonprim,
         strdup(invite_id->valuestring)
         );

@@ -13,7 +13,7 @@ import AnyCodable
 /** Request object for updating a feed. */
 public struct CatalogsFeedsUpdateRequest: Codable, JSONEncodable, Hashable {
 
-    static let locationRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(http|https|ftp|sftp):\/\//")
+    public static let locationRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(http|https|ftp|sftp):\/\//")
     public var defaultAvailability: ProductAvailabilityType?
     public var defaultCurrency: NullableCurrency?
     /** A human-friendly name associated to a given feed. */

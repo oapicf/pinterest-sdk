@@ -48,36 +48,42 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsFeedIngestionWarnings
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsFeedIngestionWarnings {
   public static final String SERIALIZED_NAME_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_L_E_V_E_L_I_N_T_E_R_N_A_L_E_R_R_O_R = "ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR";
   @SerializedName(SERIALIZED_NAME_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_L_E_V_E_L_I_N_T_E_R_N_A_L_E_R_R_O_R)
+  @javax.annotation.Nullable
   private Integer ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR;
 
   public static final String SERIALIZED_NAME_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_F_I_L_E_N_O_T_A_C_C_E_S_S_I_B_L_E = "ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE";
   @SerializedName(SERIALIZED_NAME_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_F_I_L_E_N_O_T_A_C_C_E_S_S_I_B_L_E)
+  @javax.annotation.Nullable
   private Integer ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE;
 
   public static final String SERIALIZED_NAME_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_M_A_L_F_O_R_M_E_D_U_R_L = "ADDITIONAL_IMAGE_MALFORMED_URL";
   @SerializedName(SERIALIZED_NAME_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_M_A_L_F_O_R_M_E_D_U_R_L)
+  @javax.annotation.Nullable
   private Integer ADDITIONAL_IMAGE_MALFORMED_URL;
 
   public static final String SERIALIZED_NAME_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_F_I_L_E_N_O_T_F_O_U_N_D = "ADDITIONAL_IMAGE_FILE_NOT_FOUND";
   @SerializedName(SERIALIZED_NAME_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_F_I_L_E_N_O_T_F_O_U_N_D)
+  @javax.annotation.Nullable
   private Integer ADDITIONAL_IMAGE_FILE_NOT_FOUND;
 
   public static final String SERIALIZED_NAME_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_I_N_V_A_L_I_D_F_I_L_E = "ADDITIONAL_IMAGE_INVALID_FILE";
   @SerializedName(SERIALIZED_NAME_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_I_N_V_A_L_I_D_F_I_L_E)
+  @javax.annotation.Nullable
   private Integer ADDITIONAL_IMAGE_INVALID_FILE;
 
   public static final String SERIALIZED_NAME_H_O_T_E_L_P_R_I_C_E_H_E_A_D_E_R_I_S_P_R_E_S_E_N_T = "HOTEL_PRICE_HEADER_IS_PRESENT";
   @SerializedName(SERIALIZED_NAME_H_O_T_E_L_P_R_I_C_E_H_E_A_D_E_R_I_S_P_R_E_S_E_N_T)
+  @javax.annotation.Nullable
   private Integer HOTEL_PRICE_HEADER_IS_PRESENT;
 
   public CatalogsFeedIngestionWarnings() {
   }
 
-  public CatalogsFeedIngestionWarnings ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR(Integer ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR) {
+  public CatalogsFeedIngestionWarnings ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR(@javax.annotation.Nullable Integer ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR) {
     this.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR = ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR;
     return this;
   }
@@ -91,12 +97,12 @@ public class CatalogsFeedIngestionWarnings {
     return ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR;
   }
 
-  public void setADDITIONALIMAGELEVELINTERNALERROR(Integer ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR) {
+  public void setADDITIONALIMAGELEVELINTERNALERROR(@javax.annotation.Nullable Integer ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR) {
     this.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR = ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR;
   }
 
 
-  public CatalogsFeedIngestionWarnings ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE(Integer ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE) {
+  public CatalogsFeedIngestionWarnings ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE(@javax.annotation.Nullable Integer ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE) {
     this.ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE = ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE;
     return this;
   }
@@ -110,12 +116,12 @@ public class CatalogsFeedIngestionWarnings {
     return ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE;
   }
 
-  public void setADDITIONALIMAGEFILENOTACCESSIBLE(Integer ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE) {
+  public void setADDITIONALIMAGEFILENOTACCESSIBLE(@javax.annotation.Nullable Integer ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE) {
     this.ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE = ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE;
   }
 
 
-  public CatalogsFeedIngestionWarnings ADDITIONAL_IMAGE_MALFORMED_URL(Integer ADDITIONAL_IMAGE_MALFORMED_URL) {
+  public CatalogsFeedIngestionWarnings ADDITIONAL_IMAGE_MALFORMED_URL(@javax.annotation.Nullable Integer ADDITIONAL_IMAGE_MALFORMED_URL) {
     this.ADDITIONAL_IMAGE_MALFORMED_URL = ADDITIONAL_IMAGE_MALFORMED_URL;
     return this;
   }
@@ -129,12 +135,12 @@ public class CatalogsFeedIngestionWarnings {
     return ADDITIONAL_IMAGE_MALFORMED_URL;
   }
 
-  public void setADDITIONALIMAGEMALFORMEDURL(Integer ADDITIONAL_IMAGE_MALFORMED_URL) {
+  public void setADDITIONALIMAGEMALFORMEDURL(@javax.annotation.Nullable Integer ADDITIONAL_IMAGE_MALFORMED_URL) {
     this.ADDITIONAL_IMAGE_MALFORMED_URL = ADDITIONAL_IMAGE_MALFORMED_URL;
   }
 
 
-  public CatalogsFeedIngestionWarnings ADDITIONAL_IMAGE_FILE_NOT_FOUND(Integer ADDITIONAL_IMAGE_FILE_NOT_FOUND) {
+  public CatalogsFeedIngestionWarnings ADDITIONAL_IMAGE_FILE_NOT_FOUND(@javax.annotation.Nullable Integer ADDITIONAL_IMAGE_FILE_NOT_FOUND) {
     this.ADDITIONAL_IMAGE_FILE_NOT_FOUND = ADDITIONAL_IMAGE_FILE_NOT_FOUND;
     return this;
   }
@@ -148,12 +154,12 @@ public class CatalogsFeedIngestionWarnings {
     return ADDITIONAL_IMAGE_FILE_NOT_FOUND;
   }
 
-  public void setADDITIONALIMAGEFILENOTFOUND(Integer ADDITIONAL_IMAGE_FILE_NOT_FOUND) {
+  public void setADDITIONALIMAGEFILENOTFOUND(@javax.annotation.Nullable Integer ADDITIONAL_IMAGE_FILE_NOT_FOUND) {
     this.ADDITIONAL_IMAGE_FILE_NOT_FOUND = ADDITIONAL_IMAGE_FILE_NOT_FOUND;
   }
 
 
-  public CatalogsFeedIngestionWarnings ADDITIONAL_IMAGE_INVALID_FILE(Integer ADDITIONAL_IMAGE_INVALID_FILE) {
+  public CatalogsFeedIngestionWarnings ADDITIONAL_IMAGE_INVALID_FILE(@javax.annotation.Nullable Integer ADDITIONAL_IMAGE_INVALID_FILE) {
     this.ADDITIONAL_IMAGE_INVALID_FILE = ADDITIONAL_IMAGE_INVALID_FILE;
     return this;
   }
@@ -167,12 +173,12 @@ public class CatalogsFeedIngestionWarnings {
     return ADDITIONAL_IMAGE_INVALID_FILE;
   }
 
-  public void setADDITIONALIMAGEINVALIDFILE(Integer ADDITIONAL_IMAGE_INVALID_FILE) {
+  public void setADDITIONALIMAGEINVALIDFILE(@javax.annotation.Nullable Integer ADDITIONAL_IMAGE_INVALID_FILE) {
     this.ADDITIONAL_IMAGE_INVALID_FILE = ADDITIONAL_IMAGE_INVALID_FILE;
   }
 
 
-  public CatalogsFeedIngestionWarnings HOTEL_PRICE_HEADER_IS_PRESENT(Integer HOTEL_PRICE_HEADER_IS_PRESENT) {
+  public CatalogsFeedIngestionWarnings HOTEL_PRICE_HEADER_IS_PRESENT(@javax.annotation.Nullable Integer HOTEL_PRICE_HEADER_IS_PRESENT) {
     this.HOTEL_PRICE_HEADER_IS_PRESENT = HOTEL_PRICE_HEADER_IS_PRESENT;
     return this;
   }
@@ -186,7 +192,7 @@ public class CatalogsFeedIngestionWarnings {
     return HOTEL_PRICE_HEADER_IS_PRESENT;
   }
 
-  public void setHOTELPRICEHEADERISPRESENT(Integer HOTEL_PRICE_HEADER_IS_PRESENT) {
+  public void setHOTELPRICEHEADERISPRESENT(@javax.annotation.Nullable Integer HOTEL_PRICE_HEADER_IS_PRESENT) {
     this.HOTEL_PRICE_HEADER_IS_PRESENT = HOTEL_PRICE_HEADER_IS_PRESENT;
   }
 

@@ -57,6 +57,7 @@ class BusinessAccessRelationshipsApi(basePath: kotlin.String = defaultBasePath, 
     }
 
     /**
+     * DELETE /businesses/{business_id}/members
      * Terminate business memberships
      * Terminate memberships between the specified members and your business.
      * @param businessId Business id
@@ -89,6 +90,7 @@ class BusinessAccessRelationshipsApi(basePath: kotlin.String = defaultBasePath, 
     }
 
     /**
+     * DELETE /businesses/{business_id}/members
      * Terminate business memberships
      * Terminate memberships between the specified members and your business.
      * @param businessId Business id
@@ -132,6 +134,7 @@ class BusinessAccessRelationshipsApi(basePath: kotlin.String = defaultBasePath, 
     }
 
     /**
+     * DELETE /businesses/{business_id}/partners
      * Terminate business partnerships
      * Terminate partnerships between the specified partners and your business. Note: You may only batch terminate partners of the same partner type.
      * @param businessId Unique identifier of the requesting business.
@@ -164,6 +167,7 @@ class BusinessAccessRelationshipsApi(basePath: kotlin.String = defaultBasePath, 
     }
 
     /**
+     * DELETE /businesses/{business_id}/partners
      * Terminate business partnerships
      * Terminate partnerships between the specified partners and your business. Note: You may only batch terminate partners of the same partner type.
      * @param businessId Unique identifier of the requesting business.
@@ -207,6 +211,7 @@ class BusinessAccessRelationshipsApi(basePath: kotlin.String = defaultBasePath, 
     }
 
     /**
+     * GET /businesses/employers
      * List business employers for user
      * Get all of the viewing user&#39;s business employers.
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
@@ -239,6 +244,7 @@ class BusinessAccessRelationshipsApi(basePath: kotlin.String = defaultBasePath, 
     }
 
     /**
+     * GET /businesses/employers
      * List business employers for user
      * Get all of the viewing user&#39;s business employers.
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
@@ -289,6 +295,7 @@ class BusinessAccessRelationshipsApi(basePath: kotlin.String = defaultBasePath, 
     }
 
     /**
+     * GET /businesses/{business_id}/members
      * Get business members
      * Get all members of the specified business. The return response will include the member&#39;s business_role and assets they have access to if assets_summary&#x3D;TRUE
      * @param businessId Unique identifier of the requesting business.
@@ -326,6 +333,7 @@ class BusinessAccessRelationshipsApi(basePath: kotlin.String = defaultBasePath, 
     }
 
     /**
+     * GET /businesses/{business_id}/members
      * Get business members
      * Get all members of the specified business. The return response will include the member&#39;s business_role and assets they have access to if assets_summary&#x3D;TRUE
      * @param businessId Unique identifier of the requesting business.
@@ -398,6 +406,7 @@ class BusinessAccessRelationshipsApi(basePath: kotlin.String = defaultBasePath, 
     }
 
     /**
+     * GET /businesses/{business_id}/partners
      * Get business partners
      * Get all partners of the specified business.  If the assets_summary&#x3D;TRUE and: - partner_type&#x3D;INTERNAL, the business assets returned are your business assets the partner has access to. - partner_type&#x3D;EXTERNAL, the business assets returned are your partner&#39;s business assets the partner has granted you   access to.
      * @param businessId Unique identifier of the requesting business.
@@ -435,6 +444,7 @@ class BusinessAccessRelationshipsApi(basePath: kotlin.String = defaultBasePath, 
     }
 
     /**
+     * GET /businesses/{business_id}/partners
      * Get business partners
      * Get all partners of the specified business.  If the assets_summary&#x3D;TRUE and: - partner_type&#x3D;INTERNAL, the business assets returned are your business assets the partner has access to. - partner_type&#x3D;EXTERNAL, the business assets returned are your partner&#39;s business assets the partner has granted you   access to.
      * @param businessId Unique identifier of the requesting business.
@@ -507,6 +517,7 @@ class BusinessAccessRelationshipsApi(basePath: kotlin.String = defaultBasePath, 
     }
 
     /**
+     * PATCH /businesses/{business_id}/members
      * Update member&#39;s business role
      * Update a member&#39;s business role within the business.
      * @param businessId Business id
@@ -539,6 +550,7 @@ class BusinessAccessRelationshipsApi(basePath: kotlin.String = defaultBasePath, 
     }
 
     /**
+     * PATCH /businesses/{business_id}/members
      * Update member&#39;s business role
      * Update a member&#39;s business role within the business.
      * @param businessId Business id

@@ -210,11 +210,11 @@ export function CatalogsItemValidationErrorsFromJSONTyped(json: any, ignoreDiscr
     };
 }
 
-  export function CatalogsItemValidationErrorsToJSON(json: any): CatalogsItemValidationErrors {
-      return CatalogsItemValidationErrorsToJSONTyped(json, false);
-  }
+export function CatalogsItemValidationErrorsToJSON(json: any): CatalogsItemValidationErrors {
+    return CatalogsItemValidationErrorsToJSONTyped(json, false);
+}
 
-  export function CatalogsItemValidationErrorsToJSONTyped(value?: CatalogsItemValidationErrors | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsItemValidationErrorsToJSONTyped(value?: CatalogsItemValidationErrors | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

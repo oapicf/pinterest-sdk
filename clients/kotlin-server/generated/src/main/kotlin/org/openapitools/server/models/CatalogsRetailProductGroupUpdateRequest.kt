@@ -15,6 +15,7 @@ import org.openapitools.server.models.CatalogsLocale
 import org.openapitools.server.models.CatalogsProductGroupFiltersRequest
 import org.openapitools.server.models.Country
 
+import kotlinx.serialization.Serializable
 /**
  * Request object for updating a retail product group.
  * @param catalogType Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
@@ -24,6 +25,7 @@ import org.openapitools.server.models.Country
  * @param country 
  * @param locale 
  */
+@Serializable
 data class CatalogsRetailProductGroupUpdateRequest(
     /* Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. */
     val catalogType: CatalogsRetailProductGroupUpdateRequest.CatalogType? = null,
@@ -32,7 +34,7 @@ data class CatalogsRetailProductGroupUpdateRequest(
     val filters: CatalogsProductGroupFiltersRequest? = null,
     val country: Country? = null,
     val locale: CatalogsLocale? = null
-) 
+)
 {
     /**
     * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.

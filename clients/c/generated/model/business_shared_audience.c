@@ -4,27 +4,10 @@
 #include "business_shared_audience.h"
 
 
-char* business_shared_audience_operation_type_ToString(pinterest_rest_api_business_shared_audience__e operation_type) {
-    char* operation_typeArray[] =  { "NULL", "SHARE", "REVOKE" };
-    return operation_typeArray[operation_type];
-}
 
-pinterest_rest_api_business_shared_audience__e business_shared_audience_operation_type_FromString(char* operation_type){
-    int stringToReturn = 0;
-    char *operation_typeArray[] =  { "NULL", "SHARE", "REVOKE" };
-    size_t sizeofArray = sizeof(operation_typeArray) / sizeof(operation_typeArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(operation_type, operation_typeArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-
-business_shared_audience_t *business_shared_audience_create(
+static business_shared_audience_t *business_shared_audience_create_internal(
     char *audience_id,
-    operation_type_t *operation_type,
+    pinterest_rest_api_operation_type__e operation_type,
     list_t *recipient_business_ids
     ) {
     business_shared_audience_t *business_shared_audience_local_var = malloc(sizeof(business_shared_audience_t));
@@ -35,22 +18,34 @@ business_shared_audience_t *business_shared_audience_create(
     business_shared_audience_local_var->operation_type = operation_type;
     business_shared_audience_local_var->recipient_business_ids = recipient_business_ids;
 
+    business_shared_audience_local_var->_library_owned = 1;
     return business_shared_audience_local_var;
 }
 
+__attribute__((deprecated)) business_shared_audience_t *business_shared_audience_create(
+    char *audience_id,
+    pinterest_rest_api_operation_type__e operation_type,
+    list_t *recipient_business_ids
+    ) {
+    return business_shared_audience_create_internal (
+        audience_id,
+        operation_type,
+        recipient_business_ids
+        );
+}
 
 void business_shared_audience_free(business_shared_audience_t *business_shared_audience) {
     if(NULL == business_shared_audience){
+        return ;
+    }
+    if(business_shared_audience->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "business_shared_audience_free");
         return ;
     }
     listEntry_t *listEntry;
     if (business_shared_audience->audience_id) {
         free(business_shared_audience->audience_id);
         business_shared_audience->audience_id = NULL;
-    }
-    if (business_shared_audience->operation_type) {
-        operation_type_free(business_shared_audience->operation_type);
-        business_shared_audience->operation_type = NULL;
     }
     if (business_shared_audience->recipient_business_ids) {
         list_ForEach(listEntry, business_shared_audience->recipient_business_ids) {
@@ -75,7 +70,7 @@ cJSON *business_shared_audience_convertToJSON(business_shared_audience_t *busine
 
 
     // business_shared_audience->operation_type
-    if (pinterest_rest_api_business_shared_audience__NULL == business_shared_audience->operation_type) {
+    if (pinterest_rest_api_operation_type__NULL == business_shared_audience->operation_type) {
         goto fail;
     }
     cJSON *operation_type_local_JSON = operation_type_convertToJSON(business_shared_audience->operation_type);
@@ -99,7 +94,7 @@ cJSON *business_shared_audience_convertToJSON(business_shared_audience_t *busine
 
     listEntry_t *recipient_business_idsListEntry;
     list_ForEach(recipient_business_idsListEntry, business_shared_audience->recipient_business_ids) {
-    if(cJSON_AddStringToObject(recipient_business_ids, "", (char*)recipient_business_idsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(recipient_business_ids, "", recipient_business_idsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -118,13 +113,16 @@ business_shared_audience_t *business_shared_audience_parseFromJSON(cJSON *busine
     business_shared_audience_t *business_shared_audience_local_var = NULL;
 
     // define the local variable for business_shared_audience->operation_type
-    operation_type_t *operation_type_local_nonprim = NULL;
+    pinterest_rest_api_operation_type__e operation_type_local_nonprim = 0;
 
     // define the local list for business_shared_audience->recipient_business_ids
     list_t *recipient_business_idsList = NULL;
 
     // business_shared_audience->audience_id
     cJSON *audience_id = cJSON_GetObjectItemCaseSensitive(business_shared_audienceJSON, "audience_id");
+    if (cJSON_IsNull(audience_id)) {
+        audience_id = NULL;
+    }
     if (!audience_id) {
         goto end;
     }
@@ -137,6 +135,9 @@ business_shared_audience_t *business_shared_audience_parseFromJSON(cJSON *busine
 
     // business_shared_audience->operation_type
     cJSON *operation_type = cJSON_GetObjectItemCaseSensitive(business_shared_audienceJSON, "operation_type");
+    if (cJSON_IsNull(operation_type)) {
+        operation_type = NULL;
+    }
     if (!operation_type) {
         goto end;
     }
@@ -146,6 +147,9 @@ business_shared_audience_t *business_shared_audience_parseFromJSON(cJSON *busine
 
     // business_shared_audience->recipient_business_ids
     cJSON *recipient_business_ids = cJSON_GetObjectItemCaseSensitive(business_shared_audienceJSON, "recipient_business_ids");
+    if (cJSON_IsNull(recipient_business_ids)) {
+        recipient_business_ids = NULL;
+    }
     if (!recipient_business_ids) {
         goto end;
     }
@@ -167,7 +171,7 @@ business_shared_audience_t *business_shared_audience_parseFromJSON(cJSON *busine
     }
 
 
-    business_shared_audience_local_var = business_shared_audience_create (
+    business_shared_audience_local_var = business_shared_audience_create_internal (
         strdup(audience_id->valuestring),
         operation_type_local_nonprim,
         recipient_business_idsList
@@ -176,8 +180,7 @@ business_shared_audience_t *business_shared_audience_parseFromJSON(cJSON *busine
     return business_shared_audience_local_var;
 end:
     if (operation_type_local_nonprim) {
-        operation_type_free(operation_type_local_nonprim);
-        operation_type_local_nonprim = NULL;
+        operation_type_local_nonprim = 0;
     }
     if (recipient_business_idsList) {
         listEntry_t *listEntry = NULL;

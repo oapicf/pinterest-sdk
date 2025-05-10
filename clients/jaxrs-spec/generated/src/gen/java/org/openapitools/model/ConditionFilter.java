@@ -16,9 +16,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ConditionFilter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConditionFilter   {
   private CatalogsProductGroupMultipleStringCriteria CONDITION;
+
+  public ConditionFilter() {
+  }
+
+  @JsonCreator
+  public ConditionFilter(
+    @JsonProperty(required = true, value = "CONDITION") CatalogsProductGroupMultipleStringCriteria CONDITION
+  ) {
+    this.CONDITION = CONDITION;
+  }
 
   /**
    **/
@@ -29,12 +39,12 @@ public class ConditionFilter   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("CONDITION")
+  @JsonProperty(required = true, value = "CONDITION")
   @NotNull @Valid public CatalogsProductGroupMultipleStringCriteria getCONDITION() {
     return CONDITION;
   }
 
-  @JsonProperty("CONDITION")
+  @JsonProperty(required = true, value = "CONDITION")
   public void setCONDITION(CatalogsProductGroupMultipleStringCriteria CONDITION) {
     this.CONDITION = CONDITION;
   }

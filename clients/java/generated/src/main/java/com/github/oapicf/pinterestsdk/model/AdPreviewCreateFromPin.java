@@ -48,16 +48,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdPreviewCreateFromPin
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdPreviewCreateFromPin {
   public static final String SERIALIZED_NAME_PIN_ID = "pin_id";
   @SerializedName(SERIALIZED_NAME_PIN_ID)
+  @javax.annotation.Nonnull
   private String pinId;
 
   public AdPreviewCreateFromPin() {
   }
 
-  public AdPreviewCreateFromPin pinId(String pinId) {
+  public AdPreviewCreateFromPin pinId(@javax.annotation.Nonnull String pinId) {
     this.pinId = pinId;
     return this;
   }
@@ -71,7 +72,7 @@ public class AdPreviewCreateFromPin {
     return pinId;
   }
 
-  public void setPinId(String pinId) {
+  public void setPinId(@javax.annotation.Nonnull String pinId) {
     this.pinId = pinId;
   }
 

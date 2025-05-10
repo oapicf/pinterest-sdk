@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct UserBusinessRoleBinding: Codable, JSONEncodable, Hashable {
 
-    static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public var assetsSummary: BusinessMemberAssetsSummary?
     /** The access level a user has on the business. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER. */
     public var businessRoles: [String]?
@@ -66,3 +66,6 @@ public struct UserBusinessRoleBinding: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension UserBusinessRoleBinding: Identifiable {}

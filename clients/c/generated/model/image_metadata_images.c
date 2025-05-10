@@ -5,7 +5,7 @@
 
 
 
-image_metadata_images_t *image_metadata_images_create(
+static image_metadata_images_t *image_metadata_images_create_internal(
     image_details_t *_150x150,
     image_details_t *_400x300,
     image_details_t *_600x,
@@ -20,12 +20,30 @@ image_metadata_images_t *image_metadata_images_create(
     image_metadata_images_local_var->_600x = _600x;
     image_metadata_images_local_var->_1200x = _1200x;
 
+    image_metadata_images_local_var->_library_owned = 1;
     return image_metadata_images_local_var;
 }
 
+__attribute__((deprecated)) image_metadata_images_t *image_metadata_images_create(
+    image_details_t *_150x150,
+    image_details_t *_400x300,
+    image_details_t *_600x,
+    image_details_t *_1200x
+    ) {
+    return image_metadata_images_create_internal (
+        _150x150,
+        _400x300,
+        _600x,
+        _1200x
+        );
+}
 
 void image_metadata_images_free(image_metadata_images_t *image_metadata_images) {
     if(NULL == image_metadata_images){
+        return ;
+    }
+    if(image_metadata_images->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "image_metadata_images_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -116,6 +134,9 @@ image_metadata_images_t *image_metadata_images_parseFromJSON(cJSON *image_metada
 
     // image_metadata_images->_150x150
     cJSON *_150x150 = cJSON_GetObjectItemCaseSensitive(image_metadata_imagesJSON, "150x150");
+    if (cJSON_IsNull(_150x150)) {
+        _150x150 = NULL;
+    }
     object_t *_150x150_local_object = NULL;
     if (_150x150) { 
     _150x150_local_object = object_parseFromJSON(_150x150); //object
@@ -123,6 +144,9 @@ image_metadata_images_t *image_metadata_images_parseFromJSON(cJSON *image_metada
 
     // image_metadata_images->_400x300
     cJSON *_400x300 = cJSON_GetObjectItemCaseSensitive(image_metadata_imagesJSON, "400x300");
+    if (cJSON_IsNull(_400x300)) {
+        _400x300 = NULL;
+    }
     object_t *_400x300_local_object = NULL;
     if (_400x300) { 
     _400x300_local_object = object_parseFromJSON(_400x300); //object
@@ -130,6 +154,9 @@ image_metadata_images_t *image_metadata_images_parseFromJSON(cJSON *image_metada
 
     // image_metadata_images->_600x
     cJSON *_600x = cJSON_GetObjectItemCaseSensitive(image_metadata_imagesJSON, "600x");
+    if (cJSON_IsNull(_600x)) {
+        _600x = NULL;
+    }
     object_t *_600x_local_object = NULL;
     if (_600x) { 
     _600x_local_object = object_parseFromJSON(_600x); //object
@@ -137,13 +164,16 @@ image_metadata_images_t *image_metadata_images_parseFromJSON(cJSON *image_metada
 
     // image_metadata_images->_1200x
     cJSON *_1200x = cJSON_GetObjectItemCaseSensitive(image_metadata_imagesJSON, "1200x");
+    if (cJSON_IsNull(_1200x)) {
+        _1200x = NULL;
+    }
     object_t *_1200x_local_object = NULL;
     if (_1200x) { 
     _1200x_local_object = object_parseFromJSON(_1200x); //object
     }
 
 
-    image_metadata_images_local_var = image_metadata_images_create (
+    image_metadata_images_local_var = image_metadata_images_create_internal (
         _150x150 ? _150x150_local_object : NULL,
         _400x300 ? _400x300_local_object : NULL,
         _600x ? _600x_local_object : NULL,

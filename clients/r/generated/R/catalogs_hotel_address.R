@@ -67,10 +67,35 @@ CatalogsHotelAddress <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return CatalogsHotelAddress in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return CatalogsHotelAddress as a base R list.
+    #' @examples
+    #' # convert array of CatalogsHotelAddress (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert CatalogsHotelAddress to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       CatalogsHotelAddressObject <- list()
       if (!is.null(self$`addr1`)) {
         CatalogsHotelAddressObject[["addr1"]] <-
@@ -92,7 +117,7 @@ CatalogsHotelAddress <- R6::R6Class(
         CatalogsHotelAddressObject[["postal_code"]] <-
           self$`postal_code`
       }
-      CatalogsHotelAddressObject
+      return(CatalogsHotelAddressObject)
     },
 
     #' @description
@@ -122,53 +147,13 @@ CatalogsHotelAddress <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return CatalogsHotelAddress in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`addr1`)) {
-          sprintf(
-          '"addr1":
-            "%s"
-                    ',
-          self$`addr1`
-          )
-        },
-        if (!is.null(self$`city`)) {
-          sprintf(
-          '"city":
-            "%s"
-                    ',
-          self$`city`
-          )
-        },
-        if (!is.null(self$`region`)) {
-          sprintf(
-          '"region":
-            "%s"
-                    ',
-          self$`region`
-          )
-        },
-        if (!is.null(self$`country`)) {
-          sprintf(
-          '"country":
-            "%s"
-                    ',
-          self$`country`
-          )
-        },
-        if (!is.null(self$`postal_code`)) {
-          sprintf(
-          '"postal_code":
-            "%s"
-                    ',
-          self$`postal_code`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

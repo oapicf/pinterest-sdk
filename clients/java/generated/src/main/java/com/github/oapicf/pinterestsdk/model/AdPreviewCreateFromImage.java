@@ -48,20 +48,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdPreviewCreateFromImage
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdPreviewCreateFromImage {
   public static final String SERIALIZED_NAME_IMAGE_URL = "image_url";
   @SerializedName(SERIALIZED_NAME_IMAGE_URL)
+  @javax.annotation.Nonnull
   private String imageUrl;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
+  @javax.annotation.Nonnull
   private String title;
 
   public AdPreviewCreateFromImage() {
   }
 
-  public AdPreviewCreateFromImage imageUrl(String imageUrl) {
+  public AdPreviewCreateFromImage imageUrl(@javax.annotation.Nonnull String imageUrl) {
     this.imageUrl = imageUrl;
     return this;
   }
@@ -75,12 +77,12 @@ public class AdPreviewCreateFromImage {
     return imageUrl;
   }
 
-  public void setImageUrl(String imageUrl) {
+  public void setImageUrl(@javax.annotation.Nonnull String imageUrl) {
     this.imageUrl = imageUrl;
   }
 
 
-  public AdPreviewCreateFromImage title(String title) {
+  public AdPreviewCreateFromImage title(@javax.annotation.Nonnull String title) {
     this.title = title;
     return this;
   }
@@ -94,7 +96,7 @@ public class AdPreviewCreateFromImage {
     return title;
   }
 
-  public void setTitle(String title) {
+  public void setTitle(@javax.annotation.Nonnull String title) {
     this.title = title;
   }
 

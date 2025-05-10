@@ -24,9 +24,10 @@ typedef struct audience_common_t {
     char *name; // string
     struct audience_rule_t *rule; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } audience_common_t;
 
-audience_common_t *audience_common_create(
+__attribute__((deprecated)) audience_common_t *audience_common_create(
     char *ad_account_id,
     char *name,
     audience_rule_t *rule

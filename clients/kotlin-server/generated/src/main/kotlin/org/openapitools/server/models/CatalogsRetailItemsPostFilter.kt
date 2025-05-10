@@ -12,18 +12,20 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param catalogType 
  * @param itemIds 
  * @param catalogId Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
  */
+@Serializable
 data class CatalogsRetailItemsPostFilter(
     val catalogType: CatalogsRetailItemsPostFilter.CatalogType,
     val itemIds: kotlin.collections.List<kotlin.String>,
     /* Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog */
     val catalogId: kotlin.String? = null
-) 
+)
 {
     /**
     * 

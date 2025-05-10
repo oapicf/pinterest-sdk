@@ -1,6 +1,6 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Multipart};
+use axum_extra::extract::{CookieJar, Host};
 use bytes::Bytes;
 use http::Method;
 use serde::{Deserialize, Serialize};
@@ -80,63 +80,63 @@ pub enum ProductGroupsSlashAnalyticsResponse {
 /// ProductGroupPromotions
 #[async_trait]
 #[allow(clippy::ptr_arg)]
-pub trait ProductGroupPromotions {
+pub trait ProductGroupPromotions<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHandler<E> {
     /// Create product group promotions.
     ///
     /// ProductGroupPromotionsSlashCreate - POST /v5/ad_accounts/{ad_account_id}/product_group_promotions
     async fn product_group_promotions_slash_create(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::ProductGroupPromotionsSlashCreatePathParams,
-            body: models::ProductGroupPromotionCreateRequest,
-    ) -> Result<ProductGroupPromotionsSlashCreateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::ProductGroupPromotionsSlashCreatePathParams,
+            body: &models::ProductGroupPromotionCreateRequest,
+    ) -> Result<ProductGroupPromotionsSlashCreateResponse, E>;
 
     /// Get a product group promotion by id.
     ///
     /// ProductGroupPromotionsSlashGet - GET /v5/ad_accounts/{ad_account_id}/product_group_promotions/{product_group_promotion_id}
     async fn product_group_promotions_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::ProductGroupPromotionsSlashGetPathParams,
-    ) -> Result<ProductGroupPromotionsSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::ProductGroupPromotionsSlashGetPathParams,
+    ) -> Result<ProductGroupPromotionsSlashGetResponse, E>;
 
     /// Get product group promotions.
     ///
     /// ProductGroupPromotionsSlashList - GET /v5/ad_accounts/{ad_account_id}/product_group_promotions
     async fn product_group_promotions_slash_list(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::ProductGroupPromotionsSlashListPathParams,
-      query_params: models::ProductGroupPromotionsSlashListQueryParams,
-    ) -> Result<ProductGroupPromotionsSlashListResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::ProductGroupPromotionsSlashListPathParams,
+      query_params: &models::ProductGroupPromotionsSlashListQueryParams,
+    ) -> Result<ProductGroupPromotionsSlashListResponse, E>;
 
     /// Update product group promotions.
     ///
     /// ProductGroupPromotionsSlashUpdate - PATCH /v5/ad_accounts/{ad_account_id}/product_group_promotions
     async fn product_group_promotions_slash_update(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::ProductGroupPromotionsSlashUpdatePathParams,
-            body: models::ProductGroupPromotionUpdateRequest,
-    ) -> Result<ProductGroupPromotionsSlashUpdateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::ProductGroupPromotionsSlashUpdatePathParams,
+            body: &models::ProductGroupPromotionUpdateRequest,
+    ) -> Result<ProductGroupPromotionsSlashUpdateResponse, E>;
 
     /// Get product group analytics.
     ///
     /// ProductGroupsSlashAnalytics - GET /v5/ad_accounts/{ad_account_id}/product_groups/analytics
     async fn product_groups_slash_analytics(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::ProductGroupsSlashAnalyticsPathParams,
-      query_params: models::ProductGroupsSlashAnalyticsQueryParams,
-    ) -> Result<ProductGroupsSlashAnalyticsResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::ProductGroupsSlashAnalyticsPathParams,
+      query_params: &models::ProductGroupsSlashAnalyticsQueryParams,
+    ) -> Result<ProductGroupsSlashAnalyticsResponse, E>;
 }

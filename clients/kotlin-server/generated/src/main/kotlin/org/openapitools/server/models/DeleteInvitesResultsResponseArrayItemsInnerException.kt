@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * An exception object if there is an error performing the cancellation. It will only be provided if there is an error.
  * @param inviteId Unique identifier of an invite.
  * @param message Error message associated with the error in performing the action on the invite/request.
  */
+@Serializable
 data class DeleteInvitesResultsResponseArrayItemsInnerException(
     /* Unique identifier of an invite. */
     val inviteId: kotlin.String? = null,
     /* Error message associated with the error in performing the action on the invite/request. */
     val message: kotlin.String? = null
-) 
+)
 

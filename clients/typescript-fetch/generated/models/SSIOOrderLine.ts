@@ -205,11 +205,11 @@ export function SSIOOrderLineFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-  export function SSIOOrderLineToJSON(json: any): SSIOOrderLine {
-      return SSIOOrderLineToJSONTyped(json, false);
-  }
+export function SSIOOrderLineToJSON(json: any): SSIOOrderLine {
+    return SSIOOrderLineToJSONTyped(json, false);
+}
 
-  export function SSIOOrderLineToJSONTyped(value?: SSIOOrderLine | null, ignoreDiscriminator: boolean = false): any {
+export function SSIOOrderLineToJSONTyped(value?: SSIOOrderLine | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

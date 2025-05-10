@@ -80,11 +80,11 @@ export function CatalogsCreativeAssetsItemErrorResponseFromJSONTyped(json: any, 
     };
 }
 
-  export function CatalogsCreativeAssetsItemErrorResponseToJSON(json: any): CatalogsCreativeAssetsItemErrorResponse {
-      return CatalogsCreativeAssetsItemErrorResponseToJSONTyped(json, false);
-  }
+export function CatalogsCreativeAssetsItemErrorResponseToJSON(json: any): CatalogsCreativeAssetsItemErrorResponse {
+    return CatalogsCreativeAssetsItemErrorResponseToJSONTyped(json, false);
+}
 
-  export function CatalogsCreativeAssetsItemErrorResponseToJSONTyped(value?: CatalogsCreativeAssetsItemErrorResponse | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsCreativeAssetsItemErrorResponseToJSONTyped(value?: CatalogsCreativeAssetsItemErrorResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

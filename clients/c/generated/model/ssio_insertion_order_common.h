@@ -32,9 +32,10 @@ typedef struct ssio_insertion_order_common_t {
     char *agency_link; // string
     char *user_email; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } ssio_insertion_order_common_t;
 
-ssio_insertion_order_common_t *ssio_insertion_order_common_create(
+__attribute__((deprecated)) ssio_insertion_order_common_t *ssio_insertion_order_common_create(
     char *start_date,
     char *end_date,
     char *po_number,

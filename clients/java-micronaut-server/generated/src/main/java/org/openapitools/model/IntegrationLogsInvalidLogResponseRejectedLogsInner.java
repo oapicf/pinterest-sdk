@@ -33,7 +33,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   IntegrationLogsInvalidLogResponseRejectedLogsInner.JSON_PROPERTY_REASON
 })
 @JsonTypeName("IntegrationLogsInvalidLogResponse_rejected_logs_inner")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2024-11-05T02:03:37.829873561Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2025-05-10T05:39:14.747146068Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 @Introspected
 public class IntegrationLogsInvalidLogResponseRejectedLogsInner {
     public static final String JSON_PROPERTY_LOG_INDEX = "log_index";

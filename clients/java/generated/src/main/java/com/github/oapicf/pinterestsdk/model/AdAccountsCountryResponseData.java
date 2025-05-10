@@ -50,28 +50,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdAccountsCountryResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdAccountsCountryResponseData {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
+  @javax.annotation.Nullable
   private AdCountry code;
 
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
+  @javax.annotation.Nullable
   private String currency;
 
   public static final String SERIALIZED_NAME_INDEX = "index";
   @SerializedName(SERIALIZED_NAME_INDEX)
+  @javax.annotation.Nullable
   private BigDecimal index;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public AdAccountsCountryResponseData() {
   }
 
-  public AdAccountsCountryResponseData code(AdCountry code) {
+  public AdAccountsCountryResponseData code(@javax.annotation.Nullable AdCountry code) {
     this.code = code;
     return this;
   }
@@ -85,12 +89,12 @@ public class AdAccountsCountryResponseData {
     return code;
   }
 
-  public void setCode(AdCountry code) {
+  public void setCode(@javax.annotation.Nullable AdCountry code) {
     this.code = code;
   }
 
 
-  public AdAccountsCountryResponseData currency(String currency) {
+  public AdAccountsCountryResponseData currency(@javax.annotation.Nullable String currency) {
     this.currency = currency;
     return this;
   }
@@ -104,12 +108,12 @@ public class AdAccountsCountryResponseData {
     return currency;
   }
 
-  public void setCurrency(String currency) {
+  public void setCurrency(@javax.annotation.Nullable String currency) {
     this.currency = currency;
   }
 
 
-  public AdAccountsCountryResponseData index(BigDecimal index) {
+  public AdAccountsCountryResponseData index(@javax.annotation.Nullable BigDecimal index) {
     this.index = index;
     return this;
   }
@@ -123,12 +127,12 @@ public class AdAccountsCountryResponseData {
     return index;
   }
 
-  public void setIndex(BigDecimal index) {
+  public void setIndex(@javax.annotation.Nullable BigDecimal index) {
     this.index = index;
   }
 
 
-  public AdAccountsCountryResponseData name(String name) {
+  public AdAccountsCountryResponseData name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -142,7 +146,7 @@ public class AdAccountsCountryResponseData {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 

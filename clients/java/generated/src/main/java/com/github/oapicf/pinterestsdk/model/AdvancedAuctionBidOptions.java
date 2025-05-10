@@ -51,24 +51,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Object describing a retail catalog item&#39;s bid options (bid price and bid multipliers).
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdvancedAuctionBidOptions {
   public static final String SERIALIZED_NAME_BID_IN_MICRO_CURRENCY = "bid_in_micro_currency";
   @SerializedName(SERIALIZED_NAME_BID_IN_MICRO_CURRENCY)
+  @javax.annotation.Nullable
   private Long bidInMicroCurrency;
 
   public static final String SERIALIZED_NAME_APP_TYPE_MULTIPLIERS = "app_type_multipliers";
   @SerializedName(SERIALIZED_NAME_APP_TYPE_MULTIPLIERS)
+  @javax.annotation.Nullable
   private AppTypeMultipliers appTypeMultipliers;
 
   public static final String SERIALIZED_NAME_PLACEMENT_MULTIPLIERS = "placement_multipliers";
   @SerializedName(SERIALIZED_NAME_PLACEMENT_MULTIPLIERS)
+  @javax.annotation.Nullable
   private PlacementMultipliers placementMultipliers;
 
   public AdvancedAuctionBidOptions() {
   }
 
-  public AdvancedAuctionBidOptions bidInMicroCurrency(Long bidInMicroCurrency) {
+  public AdvancedAuctionBidOptions bidInMicroCurrency(@javax.annotation.Nullable Long bidInMicroCurrency) {
     this.bidInMicroCurrency = bidInMicroCurrency;
     return this;
   }
@@ -82,12 +85,12 @@ public class AdvancedAuctionBidOptions {
     return bidInMicroCurrency;
   }
 
-  public void setBidInMicroCurrency(Long bidInMicroCurrency) {
+  public void setBidInMicroCurrency(@javax.annotation.Nullable Long bidInMicroCurrency) {
     this.bidInMicroCurrency = bidInMicroCurrency;
   }
 
 
-  public AdvancedAuctionBidOptions appTypeMultipliers(AppTypeMultipliers appTypeMultipliers) {
+  public AdvancedAuctionBidOptions appTypeMultipliers(@javax.annotation.Nullable AppTypeMultipliers appTypeMultipliers) {
     this.appTypeMultipliers = appTypeMultipliers;
     return this;
   }
@@ -101,12 +104,12 @@ public class AdvancedAuctionBidOptions {
     return appTypeMultipliers;
   }
 
-  public void setAppTypeMultipliers(AppTypeMultipliers appTypeMultipliers) {
+  public void setAppTypeMultipliers(@javax.annotation.Nullable AppTypeMultipliers appTypeMultipliers) {
     this.appTypeMultipliers = appTypeMultipliers;
   }
 
 
-  public AdvancedAuctionBidOptions placementMultipliers(PlacementMultipliers placementMultipliers) {
+  public AdvancedAuctionBidOptions placementMultipliers(@javax.annotation.Nullable PlacementMultipliers placementMultipliers) {
     this.placementMultipliers = placementMultipliers;
     return this;
   }
@@ -120,7 +123,7 @@ public class AdvancedAuctionBidOptions {
     return placementMultipliers;
   }
 
-  public void setPlacementMultipliers(PlacementMultipliers placementMultipliers) {
+  public void setPlacementMultipliers(@javax.annotation.Nullable PlacementMultipliers placementMultipliers) {
     this.placementMultipliers = placementMultipliers;
   }
 

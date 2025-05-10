@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 
 // Delete lead ads subscription
@@ -25,15 +20,22 @@ LeadAdsAPI_adAccountsSubscriptionsDelById(apiClient_t *apiClient, char *ad_accou
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}");
+
+    if(!ad_account_id)
+        goto end;
+    if(!subscription_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(subscription_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(subscription_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -43,7 +45,7 @@ LeadAdsAPI_adAccountsSubscriptionsDelById(apiClient_t *apiClient, char *ad_accou
     localVarPath = strReplace(localVarPath, localVarToReplace_ad_account_id, ad_account_id);
 
     // Path Params
-    long sizeOfPathParams_subscription_id = strlen(ad_account_id)+3 + strlen(subscription_id)+3 + strlen("{ subscription_id }");
+    long sizeOfPathParams_subscription_id = strlen(ad_account_id)+3 + strlen(subscription_id)+3 + sizeof("{ subscription_id }") - 1;
     if(subscription_id == NULL) {
         goto end;
     }
@@ -62,6 +64,7 @@ LeadAdsAPI_adAccountsSubscriptionsDelById(apiClient_t *apiClient, char *ad_accou
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "DELETE");
 
     // uncomment below to debug the error response
@@ -115,15 +118,22 @@ LeadAdsAPI_adAccountsSubscriptionsGetById(apiClient_t *apiClient, char *ad_accou
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}");
+
+    if(!ad_account_id)
+        goto end;
+    if(!subscription_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(subscription_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(subscription_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -133,7 +143,7 @@ LeadAdsAPI_adAccountsSubscriptionsGetById(apiClient_t *apiClient, char *ad_accou
     localVarPath = strReplace(localVarPath, localVarToReplace_ad_account_id, ad_account_id);
 
     // Path Params
-    long sizeOfPathParams_subscription_id = strlen(ad_account_id)+3 + strlen(subscription_id)+3 + strlen("{ subscription_id }");
+    long sizeOfPathParams_subscription_id = strlen(ad_account_id)+3 + strlen(subscription_id)+3 + sizeof("{ subscription_id }") - 1;
     if(subscription_id == NULL) {
         goto end;
     }
@@ -152,6 +162,7 @@ LeadAdsAPI_adAccountsSubscriptionsGetById(apiClient_t *apiClient, char *ad_accou
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -175,11 +186,14 @@ LeadAdsAPI_adAccountsSubscriptionsGetById(apiClient_t *apiClient, char *ad_accou
     //    printf("%s\n","Unexpected error.");
     //}
     //nonprimitive not container
-    cJSON *LeadAdsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    ad_account_get_subscription_response_t *elementToReturn = ad_account_get_subscription_response_parseFromJSON(LeadAdsAPIlocalVarJSON);
-    cJSON_Delete(LeadAdsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    ad_account_get_subscription_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *LeadAdsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = ad_account_get_subscription_response_parseFromJSON(LeadAdsAPIlocalVarJSON);
+        cJSON_Delete(LeadAdsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -216,15 +230,20 @@ LeadAdsAPI_adAccountsSubscriptionsGetList(apiClient_t *apiClient, char *ad_accou
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/leads/subscriptions")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/leads/subscriptions");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/leads/subscriptions");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -268,6 +287,7 @@ LeadAdsAPI_adAccountsSubscriptionsGetList(apiClient_t *apiClient, char *ad_accou
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -283,11 +303,14 @@ LeadAdsAPI_adAccountsSubscriptionsGetList(apiClient_t *apiClient, char *ad_accou
     //    printf("%s\n","Unexpected error.");
     //}
     //nonprimitive not container
-    cJSON *LeadAdsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    ad_accounts_subscriptions_get_list_200_response_t *elementToReturn = ad_accounts_subscriptions_get_list_200_response_parseFromJSON(LeadAdsAPIlocalVarJSON);
-    cJSON_Delete(LeadAdsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    ad_accounts_subscriptions_get_list_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *LeadAdsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = ad_accounts_subscriptions_get_list_200_response_parseFromJSON(LeadAdsAPIlocalVarJSON);
+        cJSON_Delete(LeadAdsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -347,15 +370,20 @@ LeadAdsAPI_adAccountsSubscriptionsPost(apiClient_t *apiClient, char *ad_account_
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/leads/subscriptions")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/leads/subscriptions");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/leads/subscriptions");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -370,9 +398,10 @@ LeadAdsAPI_adAccountsSubscriptionsPost(apiClient_t *apiClient, char *ad_account_
     cJSON *localVarSingleItemJSON_ad_account_create_subscription_request = NULL;
     if (ad_account_create_subscription_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_ad_account_create_subscription_request = ad_account_create_subscription_request_convertToJSON(ad_account_create_subscription_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_ad_account_create_subscription_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -384,6 +413,7 @@ LeadAdsAPI_adAccountsSubscriptionsPost(apiClient_t *apiClient, char *ad_account_
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -403,11 +433,14 @@ LeadAdsAPI_adAccountsSubscriptionsPost(apiClient_t *apiClient, char *ad_account_
     //    printf("%s\n","Unexpected error.");
     //}
     //nonprimitive not container
-    cJSON *LeadAdsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    ad_account_create_subscription_response_t *elementToReturn = ad_account_create_subscription_response_parseFromJSON(LeadAdsAPIlocalVarJSON);
-    cJSON_Delete(LeadAdsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    ad_account_create_subscription_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *LeadAdsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = ad_account_create_subscription_response_parseFromJSON(LeadAdsAPIlocalVarJSON);
+        cJSON_Delete(LeadAdsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type

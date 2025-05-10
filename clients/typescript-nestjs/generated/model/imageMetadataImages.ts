@@ -13,9 +13,9 @@ import { ImageDetails } from './imageDetails';
 
 
 export interface ImageMetadataImages { 
-    _150x150?: ImageDetails;
-    _400x300?: ImageDetails;
-    _600x?: ImageDetails;
-    _1200x?: ImageDetails;
+    '150x150'?: ImageDetails;
+    '400x300'?: ImageDetails;
+    '600x'?: ImageDetails;
+    '1200x'?: ImageDetails;
 }
 

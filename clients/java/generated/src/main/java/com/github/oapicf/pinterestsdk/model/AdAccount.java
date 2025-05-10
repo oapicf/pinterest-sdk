@@ -55,44 +55,52 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdAccount
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdAccount {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_OWNER = "owner";
   @SerializedName(SERIALIZED_NAME_OWNER)
+  @javax.annotation.Nullable
   private AdAccountOwner owner;
 
   public static final String SERIALIZED_NAME_COUNTRY = "country";
   @SerializedName(SERIALIZED_NAME_COUNTRY)
+  @javax.annotation.Nullable
   private Country country;
 
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
+  @javax.annotation.Nullable
   private Currency currency;
 
   public static final String SERIALIZED_NAME_PERMISSIONS = "permissions";
   @SerializedName(SERIALIZED_NAME_PERMISSIONS)
+  @javax.annotation.Nullable
   private List<BusinessAccessRole> permissions = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_CREATED_TIME = "created_time";
   @SerializedName(SERIALIZED_NAME_CREATED_TIME)
+  @javax.annotation.Nullable
   private Integer createdTime;
 
   public static final String SERIALIZED_NAME_UPDATED_TIME = "updated_time";
   @SerializedName(SERIALIZED_NAME_UPDATED_TIME)
+  @javax.annotation.Nullable
   private Integer updatedTime;
 
   public AdAccount() {
   }
 
-  public AdAccount id(String id) {
+  public AdAccount id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -106,12 +114,12 @@ public class AdAccount {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public AdAccount name(String name) {
+  public AdAccount name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -125,12 +133,12 @@ public class AdAccount {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public AdAccount owner(AdAccountOwner owner) {
+  public AdAccount owner(@javax.annotation.Nullable AdAccountOwner owner) {
     this.owner = owner;
     return this;
   }
@@ -144,12 +152,12 @@ public class AdAccount {
     return owner;
   }
 
-  public void setOwner(AdAccountOwner owner) {
+  public void setOwner(@javax.annotation.Nullable AdAccountOwner owner) {
     this.owner = owner;
   }
 
 
-  public AdAccount country(Country country) {
+  public AdAccount country(@javax.annotation.Nullable Country country) {
     this.country = country;
     return this;
   }
@@ -163,12 +171,12 @@ public class AdAccount {
     return country;
   }
 
-  public void setCountry(Country country) {
+  public void setCountry(@javax.annotation.Nullable Country country) {
     this.country = country;
   }
 
 
-  public AdAccount currency(Currency currency) {
+  public AdAccount currency(@javax.annotation.Nullable Currency currency) {
     this.currency = currency;
     return this;
   }
@@ -182,12 +190,12 @@ public class AdAccount {
     return currency;
   }
 
-  public void setCurrency(Currency currency) {
+  public void setCurrency(@javax.annotation.Nullable Currency currency) {
     this.currency = currency;
   }
 
 
-  public AdAccount permissions(List<BusinessAccessRole> permissions) {
+  public AdAccount permissions(@javax.annotation.Nullable List<BusinessAccessRole> permissions) {
     this.permissions = permissions;
     return this;
   }
@@ -209,12 +217,12 @@ public class AdAccount {
     return permissions;
   }
 
-  public void setPermissions(List<BusinessAccessRole> permissions) {
+  public void setPermissions(@javax.annotation.Nullable List<BusinessAccessRole> permissions) {
     this.permissions = permissions;
   }
 
 
-  public AdAccount createdTime(Integer createdTime) {
+  public AdAccount createdTime(@javax.annotation.Nullable Integer createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -228,12 +236,12 @@ public class AdAccount {
     return createdTime;
   }
 
-  public void setCreatedTime(Integer createdTime) {
+  public void setCreatedTime(@javax.annotation.Nullable Integer createdTime) {
     this.createdTime = createdTime;
   }
 
 
-  public AdAccount updatedTime(Integer updatedTime) {
+  public AdAccount updatedTime(@javax.annotation.Nullable Integer updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -247,7 +255,7 @@ public class AdAccount {
     return updatedTime;
   }
 
-  public void setUpdatedTime(Integer updatedTime) {
+  public void setUpdatedTime(@javax.annotation.Nullable Integer updatedTime) {
     this.updatedTime = updatedTime;
   }
 

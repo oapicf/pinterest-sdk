@@ -6,7 +6,7 @@ import play.api.libs.json._
   * Pin URL-based media source for product pin creation. Currently the field is only available to a list of beta users.
   * @param isAffiliateLink This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2025-05-10T05:44:38.070631387Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 case class PinMediaSourcePinURL(
   sourceType: PinMediaSourcePinURL.SourceType.Value,
   isAffiliateLink: Option[Boolean]

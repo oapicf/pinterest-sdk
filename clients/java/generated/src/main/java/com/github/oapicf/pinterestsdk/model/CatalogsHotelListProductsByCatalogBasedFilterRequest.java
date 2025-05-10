@@ -49,7 +49,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Request object to list products for a given hotel catalog_id and product group filter.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsHotelListProductsByCatalogBasedFilterRequest {
   /**
    * Gets or Sets catalogType
@@ -103,20 +103,23 @@ public class CatalogsHotelListProductsByCatalogBasedFilterRequest {
 
   public static final String SERIALIZED_NAME_CATALOG_TYPE = "catalog_type";
   @SerializedName(SERIALIZED_NAME_CATALOG_TYPE)
+  @javax.annotation.Nonnull
   private CatalogTypeEnum catalogType;
 
   public static final String SERIALIZED_NAME_CATALOG_ID = "catalog_id";
   @SerializedName(SERIALIZED_NAME_CATALOG_ID)
+  @javax.annotation.Nonnull
   private String catalogId;
 
   public static final String SERIALIZED_NAME_FILTERS = "filters";
   @SerializedName(SERIALIZED_NAME_FILTERS)
+  @javax.annotation.Nonnull
   private CatalogsHotelProductGroupFilters filters;
 
   public CatalogsHotelListProductsByCatalogBasedFilterRequest() {
   }
 
-  public CatalogsHotelListProductsByCatalogBasedFilterRequest catalogType(CatalogTypeEnum catalogType) {
+  public CatalogsHotelListProductsByCatalogBasedFilterRequest catalogType(@javax.annotation.Nonnull CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -130,12 +133,12 @@ public class CatalogsHotelListProductsByCatalogBasedFilterRequest {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogTypeEnum catalogType) {
+  public void setCatalogType(@javax.annotation.Nonnull CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
 
-  public CatalogsHotelListProductsByCatalogBasedFilterRequest catalogId(String catalogId) {
+  public CatalogsHotelListProductsByCatalogBasedFilterRequest catalogId(@javax.annotation.Nonnull String catalogId) {
     this.catalogId = catalogId;
     return this;
   }
@@ -149,12 +152,12 @@ public class CatalogsHotelListProductsByCatalogBasedFilterRequest {
     return catalogId;
   }
 
-  public void setCatalogId(String catalogId) {
+  public void setCatalogId(@javax.annotation.Nonnull String catalogId) {
     this.catalogId = catalogId;
   }
 
 
-  public CatalogsHotelListProductsByCatalogBasedFilterRequest filters(CatalogsHotelProductGroupFilters filters) {
+  public CatalogsHotelListProductsByCatalogBasedFilterRequest filters(@javax.annotation.Nonnull CatalogsHotelProductGroupFilters filters) {
     this.filters = filters;
     return this;
   }
@@ -168,7 +171,7 @@ public class CatalogsHotelListProductsByCatalogBasedFilterRequest {
     return filters;
   }
 
-  public void setFilters(CatalogsHotelProductGroupFilters filters) {
+  public void setFilters(@javax.annotation.Nonnull CatalogsHotelProductGroupFilters filters) {
     this.filters = filters;
   }
 

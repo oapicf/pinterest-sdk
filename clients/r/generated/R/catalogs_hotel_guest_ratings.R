@@ -52,10 +52,35 @@ CatalogsHotelGuestRatings <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return CatalogsHotelGuestRatings in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return CatalogsHotelGuestRatings as a base R list.
+    #' @examples
+    #' # convert array of CatalogsHotelGuestRatings (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert CatalogsHotelGuestRatings to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       CatalogsHotelGuestRatingsObject <- list()
       if (!is.null(self$`score`)) {
         CatalogsHotelGuestRatingsObject[["score"]] <-
@@ -73,7 +98,7 @@ CatalogsHotelGuestRatings <- R6::R6Class(
         CatalogsHotelGuestRatingsObject[["rating_system"]] <-
           self$`rating_system`
       }
-      CatalogsHotelGuestRatingsObject
+      return(CatalogsHotelGuestRatingsObject)
     },
 
     #' @description
@@ -100,45 +125,13 @@ CatalogsHotelGuestRatings <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return CatalogsHotelGuestRatings in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`score`)) {
-          sprintf(
-          '"score":
-            %d
-                    ',
-          self$`score`
-          )
-        },
-        if (!is.null(self$`number_of_reviewers`)) {
-          sprintf(
-          '"number_of_reviewers":
-            %d
-                    ',
-          self$`number_of_reviewers`
-          )
-        },
-        if (!is.null(self$`max_score`)) {
-          sprintf(
-          '"max_score":
-            %d
-                    ',
-          self$`max_score`
-          )
-        },
-        if (!is.null(self$`rating_system`)) {
-          sprintf(
-          '"rating_system":
-            "%s"
-                    ',
-          self$`rating_system`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

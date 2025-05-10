@@ -27,9 +27,10 @@ typedef struct audience_create_request_t {
     char *description; // string
     struct audience_create_request_1_audience_type_t *audience_type; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } audience_create_request_t;
 
-audience_create_request_t *audience_create_request_create(
+__attribute__((deprecated)) audience_create_request_t *audience_create_request_create(
     char *ad_account_id,
     char *name,
     audience_rule_t *rule,

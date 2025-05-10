@@ -11,7 +11,6 @@
 */
 package org.openapitools.server.apis
 
-import com.google.gson.Gson
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.auth.*
@@ -38,13 +37,12 @@ import org.openapitools.server.models.TrendingKeywordsResponse
 import org.openapitools.server.models.TrendsSupportedRegion
 
 fun Route.KeywordsApi() {
-    val gson = Gson()
     val empty = mutableMapOf<String, Any?>()
 
     authenticate("pinterest_oauth2") {
     get<Paths.countryKeywordsMetricsGet> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -65,7 +63,7 @@ fun Route.KeywordsApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -76,7 +74,7 @@ fun Route.KeywordsApi() {
     authenticate("pinterest_oauth2") {
     post<Paths.keywordsCreate> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -128,7 +126,7 @@ fun Route.KeywordsApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -139,7 +137,7 @@ fun Route.KeywordsApi() {
     authenticate("pinterest_oauth2") {
     get<Paths.keywordsGet> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -167,7 +165,7 @@ fun Route.KeywordsApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -178,7 +176,7 @@ fun Route.KeywordsApi() {
     authenticate("pinterest_oauth2") {
     patch<Paths.keywordsUpdate> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -230,7 +228,7 @@ fun Route.KeywordsApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -241,7 +239,7 @@ fun Route.KeywordsApi() {
     authenticate("pinterest_oauth2") {
     get<Paths.trendingKeywordsList> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -272,7 +270,7 @@ fun Route.KeywordsApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }

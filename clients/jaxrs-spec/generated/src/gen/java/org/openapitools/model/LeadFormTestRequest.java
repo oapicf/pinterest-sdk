@@ -20,9 +20,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Request to create test data for lead data test API.")
 @JsonTypeName("LeadFormTestRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class LeadFormTestRequest   {
   private @Valid List<String> answers = new ArrayList<>();
+
+  public LeadFormTestRequest() {
+  }
+
+  @JsonCreator
+  public LeadFormTestRequest(
+    @JsonProperty(required = true, value = "answers") List<String> answers
+  ) {
+    this.answers = answers;
+  }
 
   /**
    * Test lead answers. Should follow the creation order.
@@ -34,12 +44,12 @@ public class LeadFormTestRequest   {
 
   
   @ApiModelProperty(example = "[\"John\",\"Doe\",\"abc@email.com\",\"987654321\"]", required = true, value = "Test lead answers. Should follow the creation order.")
-  @JsonProperty("answers")
+  @JsonProperty(required = true, value = "answers")
   @NotNull public List<String> getAnswers() {
     return answers;
   }
 
-  @JsonProperty("answers")
+  @JsonProperty(required = true, value = "answers")
   public void setAnswers(List<String> answers) {
     this.answers = answers;
   }

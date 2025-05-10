@@ -13,12 +13,14 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.UpdateMemberAssetsResultsResponseArrayItemsInner
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.
  */
+@Serializable
 data class UpdateMemberAssetsResultsResponseArray(
     /* List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned. */
     val items: kotlin.collections.List<UpdateMemberAssetsResultsResponseArrayItemsInner>? = null
-) 
+)
 

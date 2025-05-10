@@ -22,9 +22,10 @@ typedef struct ad_group_audience_sizing_response_t {
     double audience_size_lower_bound; //numeric
     double audience_size_upper_bound; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } ad_group_audience_sizing_response_t;
 
-ad_group_audience_sizing_response_t *ad_group_audience_sizing_response_create(
+__attribute__((deprecated)) ad_group_audience_sizing_response_t *ad_group_audience_sizing_response_create(
     double audience_size_lower_bound,
     double audience_size_upper_bound
 );

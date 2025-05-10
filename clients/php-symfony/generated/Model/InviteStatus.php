@@ -44,11 +44,11 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum InviteStatus: string
 {
-        case PENDING = "PENDING";
-        case ACCEPTED = "ACCEPTED";
-        case DECLINED = "DECLINED";
-        case CANCELLED = "CANCELLED";
-        case EXPIRED = "EXPIRED";
+        case PENDING = 'PENDING';
+        case ACCEPTED = 'ACCEPTED';
+        case DECLINED = 'DECLINED';
+        case CANCELLED = 'CANCELLED';
+        case EXPIRED = 'EXPIRED';
 }
 
 

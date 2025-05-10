@@ -241,7 +241,7 @@ void OAIConversionEventsApi::events_create(const QString &ad_account_id, const O
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("test")).append(querySuffix).append(QUrl::toPercentEncoding(test.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("test")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(test.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -261,7 +261,7 @@ void OAIConversionEventsApi::events_create(const QString &ad_account_id, const O
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIConversionEventsApi::events_createCallback);
     connect(this, &OAIConversionEventsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -283,7 +283,7 @@ void OAIConversionEventsApi::events_create(const QString &ad_account_id, const O
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIConversionEventsApi::events_createCallback);
     connect(this, &OAIConversionEventsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }

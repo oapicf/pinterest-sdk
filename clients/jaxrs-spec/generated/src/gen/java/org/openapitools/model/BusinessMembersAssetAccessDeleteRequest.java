@@ -20,9 +20,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("business_members_asset_access_delete_request")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BusinessMembersAssetAccessDeleteRequest   {
   private @Valid List<@Valid BusinessMembersAssetAccessDeleteRequestAccessesInner> accesses = new ArrayList<>();
+
+  public BusinessMembersAssetAccessDeleteRequest() {
+  }
+
+  @JsonCreator
+  public BusinessMembersAssetAccessDeleteRequest(
+    @JsonProperty(required = true, value = "accesses") List<@Valid BusinessMembersAssetAccessDeleteRequestAccessesInner> accesses
+  ) {
+    this.accesses = accesses;
+  }
 
   /**
    * List of members asset access to be deleted
@@ -34,12 +44,12 @@ public class BusinessMembersAssetAccessDeleteRequest   {
 
   
   @ApiModelProperty(required = true, value = "List of members asset access to be deleted")
-  @JsonProperty("accesses")
+  @JsonProperty(required = true, value = "accesses")
   @NotNull @Valid  @Size(min=1,max=100)public List<@Valid BusinessMembersAssetAccessDeleteRequestAccessesInner> getAccesses() {
     return accesses;
   }
 
-  @JsonProperty("accesses")
+  @JsonProperty(required = true, value = "accesses")
   public void setAccesses(List<@Valid BusinessMembersAssetAccessDeleteRequestAccessesInner> accesses) {
     this.accesses = accesses;
   }

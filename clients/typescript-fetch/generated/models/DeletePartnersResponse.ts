@@ -48,11 +48,11 @@ export function DeletePartnersResponseFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-  export function DeletePartnersResponseToJSON(json: any): DeletePartnersResponse {
-      return DeletePartnersResponseToJSONTyped(json, false);
-  }
+export function DeletePartnersResponseToJSON(json: any): DeletePartnersResponse {
+    return DeletePartnersResponseToJSONTyped(json, false);
+}
 
-  export function DeletePartnersResponseToJSONTyped(value?: DeletePartnersResponse | null, ignoreDiscriminator: boolean = false): any {
+export function DeletePartnersResponseToJSONTyped(value?: DeletePartnersResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

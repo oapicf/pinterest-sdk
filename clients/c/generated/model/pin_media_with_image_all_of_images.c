@@ -5,7 +5,7 @@
 
 
 
-pin_media_with_image_all_of_images_t *pin_media_with_image_all_of_images_create(
+static pin_media_with_image_all_of_images_t *pin_media_with_image_all_of_images_create_internal(
     object_t *_150x150,
     object_t *_400x300,
     object_t *_600x,
@@ -20,12 +20,30 @@ pin_media_with_image_all_of_images_t *pin_media_with_image_all_of_images_create(
     pin_media_with_image_all_of_images_local_var->_600x = _600x;
     pin_media_with_image_all_of_images_local_var->_1200x = _1200x;
 
+    pin_media_with_image_all_of_images_local_var->_library_owned = 1;
     return pin_media_with_image_all_of_images_local_var;
 }
 
+__attribute__((deprecated)) pin_media_with_image_all_of_images_t *pin_media_with_image_all_of_images_create(
+    object_t *_150x150,
+    object_t *_400x300,
+    object_t *_600x,
+    object_t *_1200x
+    ) {
+    return pin_media_with_image_all_of_images_create_internal (
+        _150x150,
+        _400x300,
+        _600x,
+        _1200x
+        );
+}
 
 void pin_media_with_image_all_of_images_free(pin_media_with_image_all_of_images_t *pin_media_with_image_all_of_images) {
     if(NULL == pin_media_with_image_all_of_images){
+        return ;
+    }
+    if(pin_media_with_image_all_of_images->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "pin_media_with_image_all_of_images_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -116,6 +134,9 @@ pin_media_with_image_all_of_images_t *pin_media_with_image_all_of_images_parseFr
 
     // pin_media_with_image_all_of_images->_150x150
     cJSON *_150x150 = cJSON_GetObjectItemCaseSensitive(pin_media_with_image_all_of_imagesJSON, "150x150");
+    if (cJSON_IsNull(_150x150)) {
+        _150x150 = NULL;
+    }
     object_t *_150x150_local_object = NULL;
     if (_150x150) { 
     _150x150_local_object = object_parseFromJSON(_150x150); //object
@@ -123,6 +144,9 @@ pin_media_with_image_all_of_images_t *pin_media_with_image_all_of_images_parseFr
 
     // pin_media_with_image_all_of_images->_400x300
     cJSON *_400x300 = cJSON_GetObjectItemCaseSensitive(pin_media_with_image_all_of_imagesJSON, "400x300");
+    if (cJSON_IsNull(_400x300)) {
+        _400x300 = NULL;
+    }
     object_t *_400x300_local_object = NULL;
     if (_400x300) { 
     _400x300_local_object = object_parseFromJSON(_400x300); //object
@@ -130,6 +154,9 @@ pin_media_with_image_all_of_images_t *pin_media_with_image_all_of_images_parseFr
 
     // pin_media_with_image_all_of_images->_600x
     cJSON *_600x = cJSON_GetObjectItemCaseSensitive(pin_media_with_image_all_of_imagesJSON, "600x");
+    if (cJSON_IsNull(_600x)) {
+        _600x = NULL;
+    }
     object_t *_600x_local_object = NULL;
     if (_600x) { 
     _600x_local_object = object_parseFromJSON(_600x); //object
@@ -137,13 +164,16 @@ pin_media_with_image_all_of_images_t *pin_media_with_image_all_of_images_parseFr
 
     // pin_media_with_image_all_of_images->_1200x
     cJSON *_1200x = cJSON_GetObjectItemCaseSensitive(pin_media_with_image_all_of_imagesJSON, "1200x");
+    if (cJSON_IsNull(_1200x)) {
+        _1200x = NULL;
+    }
     object_t *_1200x_local_object = NULL;
     if (_1200x) { 
     _1200x_local_object = object_parseFromJSON(_1200x); //object
     }
 
 
-    pin_media_with_image_all_of_images_local_var = pin_media_with_image_all_of_images_create (
+    pin_media_with_image_all_of_images_local_var = pin_media_with_image_all_of_images_create_internal (
         _150x150 ? _150x150_local_object : NULL,
         _400x300 ? _400x300_local_object : NULL,
         _600x ? _600x_local_object : NULL,

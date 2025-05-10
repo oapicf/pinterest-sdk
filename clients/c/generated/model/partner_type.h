@@ -24,9 +24,9 @@ char* partner_type_partner_type_ToString(pinterest_rest_api_partner_type__e part
 
 pinterest_rest_api_partner_type__e partner_type_partner_type_FromString(char* partner_type);
 
-//cJSON *partner_type_partner_type_convertToJSON(pinterest_rest_api_partner_type__e partner_type);
+cJSON *partner_type_convertToJSON(pinterest_rest_api_partner_type__e partner_type);
 
-//pinterest_rest_api_partner_type__e partner_type_partner_type_parseFromJSON(cJSON *partner_typeJSON);
+pinterest_rest_api_partner_type__e partner_type_parseFromJSON(cJSON *partner_typeJSON);
 
 #endif /* _partner_type_H_ */
 

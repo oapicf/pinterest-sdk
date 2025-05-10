@@ -43,20 +43,45 @@ AppTypeMultipliers <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return AppTypeMultipliers in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return AppTypeMultipliers as a base R list.
+    #' @examples
+    #' # convert array of AppTypeMultipliers (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert AppTypeMultipliers to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       AppTypeMultipliersObject <- list()
       if (!is.null(self$`APP_TYPE`)) {
         AppTypeMultipliersObject[["APP_TYPE"]] <-
-          self$`APP_TYPE`$toJSON()
+          self$`APP_TYPE`$toSimpleType()
       }
       for (key in names(self$additional_properties)) {
         AppTypeMultipliersObject[[key]] <- self$additional_properties[[key]]
       }
 
-      AppTypeMultipliersObject
+      return(AppTypeMultipliersObject)
     },
 
     #' @description
@@ -83,26 +108,16 @@ AppTypeMultipliers <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return AppTypeMultipliers in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`APP_TYPE`)) {
-          sprintf(
-          '"APP_TYPE":
-          %s
-          ',
-          jsonlite::toJSON(self$`APP_TYPE`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
-      json_obj <- jsonlite::fromJSON(json_string)
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
       for (key in names(self$additional_properties)) {
-        json_obj[[key]] <- self$additional_properties[[key]]
+        simple[[key]] <- self$additional_properties[[key]]
       }
-      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

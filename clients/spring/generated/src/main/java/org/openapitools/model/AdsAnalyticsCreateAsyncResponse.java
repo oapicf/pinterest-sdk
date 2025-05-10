@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BulkReportingJobStatus;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -23,12 +24,12 @@ import javax.annotation.Generated;
  * AdsAnalyticsCreateAsyncResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdsAnalyticsCreateAsyncResponse {
 
-  private BulkReportingJobStatus reportStatus;
+  private @Nullable BulkReportingJobStatus reportStatus;
 
-  private String token;
+  private @Nullable String token;
 
   private JsonNullable<String> message = JsonNullable.<String>undefined();
 

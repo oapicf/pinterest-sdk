@@ -65,14 +65,39 @@ SummaryPin <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return SummaryPin in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return SummaryPin as a base R list.
+    #' @examples
+    #' # convert array of SummaryPin (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert SummaryPin to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       SummaryPinObject <- list()
       if (!is.null(self$`media`)) {
         SummaryPinObject[["media"]] <-
-          self$`media`$toJSON()
+          self$`media`$toSimpleType()
       }
       if (!is.null(self$`alt_text`)) {
         SummaryPinObject[["alt_text"]] <-
@@ -90,7 +115,7 @@ SummaryPin <- R6::R6Class(
         SummaryPinObject[["description"]] <-
           self$`description`
       }
-      SummaryPinObject
+      return(SummaryPinObject)
     },
 
     #' @description
@@ -122,53 +147,13 @@ SummaryPin <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return SummaryPin in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`media`)) {
-          sprintf(
-          '"media":
-          %s
-          ',
-          jsonlite::toJSON(self$`media`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`alt_text`)) {
-          sprintf(
-          '"alt_text":
-            "%s"
-                    ',
-          self$`alt_text`
-          )
-        },
-        if (!is.null(self$`link`)) {
-          sprintf(
-          '"link":
-            "%s"
-                    ',
-          self$`link`
-          )
-        },
-        if (!is.null(self$`title`)) {
-          sprintf(
-          '"title":
-            "%s"
-                    ',
-          self$`title`
-          )
-        },
-        if (!is.null(self$`description`)) {
-          sprintf(
-          '"description":
-            "%s"
-                    ',
-          self$`description`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

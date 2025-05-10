@@ -13,7 +13,7 @@ import AnyCodable
 /** Metadata of the member/partner that has access to the asset. */
 public struct BusinessAccessUserSummary: Codable, JSONEncodable, Hashable {
 
-    static let idRule = StringRule(minLength: 1, maxLength: 20, pattern: nil)
+    public static let idRule = StringRule(minLength: 1, maxLength: 20, pattern: nil)
     /** Email of the business member/partner. */
     public var email: String?
     /** Unique identifier of the business member/partner. */
@@ -43,3 +43,6 @@ public struct BusinessAccessUserSummary: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension BusinessAccessUserSummary: Identifiable {}

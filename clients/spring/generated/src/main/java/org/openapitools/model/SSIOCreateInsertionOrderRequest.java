@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.math.BigDecimal;
 import org.openapitools.model.Currency;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -21,16 +22,16 @@ import javax.annotation.Generated;
  * SSIOCreateInsertionOrderRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SSIOCreateInsertionOrderRequest {
 
   private String startDate;
 
-  private String endDate;
+  private @Nullable String endDate;
 
   private String poNumber;
 
-  private BigDecimal budgetAmount;
+  private @Nullable BigDecimal budgetAmount;
 
   private String billingContactFirstname;
 
@@ -44,11 +45,11 @@ public class SSIOCreateInsertionOrderRequest {
 
   private String mediaContactEmail;
 
-  private String agencyLink;
+  private @Nullable String agencyLink;
 
-  private String userEmail;
+  private @Nullable String userEmail;
 
-  private Integer acceptedTermsTime;
+  private @Nullable Integer acceptedTermsTime;
 
   private String pmpId;
 
@@ -99,7 +100,7 @@ public class SSIOCreateInsertionOrderRequest {
 
   private String billtoBillingAddressId;
 
-  private BigDecimal estimatedMonthlySpend;
+  private @Nullable BigDecimal estimatedMonthlySpend;
 
   private Currency currencyInfo;
 

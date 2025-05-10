@@ -52,7 +52,11 @@ export function AdPreviewRequestFromJSONTyped(json: any, ignoreDiscriminator: bo
     return {} as any;
 }
 
-export function AdPreviewRequestToJSON(value?: AdPreviewRequest | null): any {
+export function AdPreviewRequestToJSON(json: any): any {
+    return AdPreviewRequestToJSONTyped(json, false);
+}
+
+export function AdPreviewRequestToJSONTyped(value?: AdPreviewRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

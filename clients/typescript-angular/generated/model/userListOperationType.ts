@@ -15,7 +15,9 @@
 export type UserListOperationType = 'ADD' | 'REMOVE';
 
 export const UserListOperationType = {
+
     Add: 'ADD' as UserListOperationType,
+
     Remove: 'REMOVE' as UserListOperationType
 };
 

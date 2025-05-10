@@ -11,7 +11,6 @@
 */
 package org.openapitools.server.apis
 
-import com.google.gson.Gson
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.auth.*
@@ -36,17 +35,16 @@ import org.openapitools.server.models.PinsList200Response
 import org.openapitools.server.models.PinsSaveRequest
 
 fun Route.PinsApi() {
-    val gson = Gson()
     val empty = mutableMapOf<String, Any?>()
 
     authenticate("pinterest_oauth2") {
     authenticate("client_credentials") {
     get<Paths.multiPinsAnalytics> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -56,7 +54,7 @@ fun Route.PinsApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -68,10 +66,10 @@ fun Route.PinsApi() {
     authenticate("client_credentials") {
     get<Paths.pinsAnalytics> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -81,7 +79,7 @@ fun Route.PinsApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -92,7 +90,7 @@ fun Route.PinsApi() {
     authenticate("pinterest_oauth2") {
     post<Paths.pinsCreate> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -132,7 +130,7 @@ fun Route.PinsApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -143,7 +141,7 @@ fun Route.PinsApi() {
     authenticate("pinterest_oauth2") {
     delete<Paths.pinsDelete> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -153,7 +151,7 @@ fun Route.PinsApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -165,10 +163,10 @@ fun Route.PinsApi() {
     authenticate("client_credentials") {
     get<Paths.pinsGet> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -208,7 +206,7 @@ fun Route.PinsApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -220,10 +218,10 @@ fun Route.PinsApi() {
     authenticate("client_credentials") {
     get<Paths.pinsList> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -299,7 +297,7 @@ fun Route.PinsApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -310,7 +308,7 @@ fun Route.PinsApi() {
     authenticate("pinterest_oauth2") {
     post<Paths.pinsSave> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -350,7 +348,7 @@ fun Route.PinsApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -361,7 +359,7 @@ fun Route.PinsApi() {
     authenticate("pinterest_oauth2") {
     patch<Paths.pinsUpdate> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -401,7 +399,7 @@ fun Route.PinsApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }

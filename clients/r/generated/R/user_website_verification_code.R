@@ -67,10 +67,35 @@ UserWebsiteVerificationCode <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return UserWebsiteVerificationCode in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return UserWebsiteVerificationCode as a base R list.
+    #' @examples
+    #' # convert array of UserWebsiteVerificationCode (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert UserWebsiteVerificationCode to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       UserWebsiteVerificationCodeObject <- list()
       if (!is.null(self$`verification_code`)) {
         UserWebsiteVerificationCodeObject[["verification_code"]] <-
@@ -92,7 +117,7 @@ UserWebsiteVerificationCode <- R6::R6Class(
         UserWebsiteVerificationCodeObject[["file_content"]] <-
           self$`file_content`
       }
-      UserWebsiteVerificationCodeObject
+      return(UserWebsiteVerificationCodeObject)
     },
 
     #' @description
@@ -122,53 +147,13 @@ UserWebsiteVerificationCode <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return UserWebsiteVerificationCode in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`verification_code`)) {
-          sprintf(
-          '"verification_code":
-            "%s"
-                    ',
-          self$`verification_code`
-          )
-        },
-        if (!is.null(self$`dns_txt_record`)) {
-          sprintf(
-          '"dns_txt_record":
-            "%s"
-                    ',
-          self$`dns_txt_record`
-          )
-        },
-        if (!is.null(self$`metatag`)) {
-          sprintf(
-          '"metatag":
-            "%s"
-                    ',
-          self$`metatag`
-          )
-        },
-        if (!is.null(self$`filename`)) {
-          sprintf(
-          '"filename":
-            "%s"
-                    ',
-          self$`filename`
-          )
-        },
-        if (!is.null(self$`file_content`)) {
-          sprintf(
-          '"file_content":
-            "%s"
-                    ',
-          self$`file_content`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

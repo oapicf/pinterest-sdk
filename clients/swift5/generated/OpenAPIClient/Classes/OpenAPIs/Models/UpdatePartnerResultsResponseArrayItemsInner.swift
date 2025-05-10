@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct UpdatePartnerResultsResponseArrayItemsInner: Codable, JSONEncodable, Hashable {
 
-    static let memberOrPartnerIdRule = StringRule(minLength: nil, maxLength: 18, pattern: "/^\\d+$/")
+    public static let memberOrPartnerIdRule = StringRule(minLength: nil, maxLength: 18, pattern: "/^\\d+$/")
     public var exception: BusinessAccessError?
     public var memberOrPartnerId: String?
 

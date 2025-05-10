@@ -22,7 +22,7 @@ pinterest_rest_api_audience_rule__e audience_rule_objective_type_FromString(char
     return 0;
 }
 
-audience_rule_t *audience_rule_create(
+static audience_rule_t *audience_rule_create_internal(
     char *country,
     char *customer_list_id,
     list_t *engagement_domain,
@@ -69,12 +69,62 @@ audience_rule_t *audience_rule_create(
     audience_rule_local_var->objective_type = objective_type;
     audience_rule_local_var->ad_account_id = ad_account_id;
 
+    audience_rule_local_var->_library_owned = 1;
     return audience_rule_local_var;
 }
 
+__attribute__((deprecated)) audience_rule_t *audience_rule_create(
+    char *country,
+    char *customer_list_id,
+    list_t *engagement_domain,
+    char *engagement_type,
+    char *event,
+    pinterest_tag_event_data_t *event_data,
+    int percentage,
+    list_t *pin_id,
+    int prefill,
+    int retention_days,
+    list_t *seed_id,
+    list_t *url,
+    char *visitor_source_id,
+    object_t *event_source,
+    object_t *ingestion_source,
+    int engager_type,
+    list_t *campaign_id,
+    list_t *ad_id,
+    list_t *objective_type,
+    char *ad_account_id
+    ) {
+    return audience_rule_create_internal (
+        country,
+        customer_list_id,
+        engagement_domain,
+        engagement_type,
+        event,
+        event_data,
+        percentage,
+        pin_id,
+        prefill,
+        retention_days,
+        seed_id,
+        url,
+        visitor_source_id,
+        event_source,
+        ingestion_source,
+        engager_type,
+        campaign_id,
+        ad_id,
+        objective_type,
+        ad_account_id
+        );
+}
 
 void audience_rule_free(audience_rule_t *audience_rule) {
     if(NULL == audience_rule){
+        return ;
+    }
+    if(audience_rule->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "audience_rule_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -194,7 +244,7 @@ cJSON *audience_rule_convertToJSON(audience_rule_t *audience_rule) {
 
     listEntry_t *engagement_domainListEntry;
     list_ForEach(engagement_domainListEntry, audience_rule->engagement_domain) {
-    if(cJSON_AddStringToObject(engagement_domain, "", (char*)engagement_domainListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(engagement_domain, "", engagement_domainListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -248,7 +298,7 @@ cJSON *audience_rule_convertToJSON(audience_rule_t *audience_rule) {
 
     listEntry_t *pin_idListEntry;
     list_ForEach(pin_idListEntry, audience_rule->pin_id) {
-    if(cJSON_AddStringToObject(pin_id, "", (char*)pin_idListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(pin_id, "", pin_idListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -281,7 +331,7 @@ cJSON *audience_rule_convertToJSON(audience_rule_t *audience_rule) {
 
     listEntry_t *seed_idListEntry;
     list_ForEach(seed_idListEntry, audience_rule->seed_id) {
-    if(cJSON_AddStringToObject(seed_id, "", (char*)seed_idListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(seed_id, "", seed_idListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -298,7 +348,7 @@ cJSON *audience_rule_convertToJSON(audience_rule_t *audience_rule) {
 
     listEntry_t *urlListEntry;
     list_ForEach(urlListEntry, audience_rule->url) {
-    if(cJSON_AddStringToObject(url, "", (char*)urlListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(url, "", urlListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -357,7 +407,7 @@ cJSON *audience_rule_convertToJSON(audience_rule_t *audience_rule) {
 
     listEntry_t *campaign_idListEntry;
     list_ForEach(campaign_idListEntry, audience_rule->campaign_id) {
-    if(cJSON_AddStringToObject(campaign_id, "", (char*)campaign_idListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(campaign_id, "", campaign_idListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -374,7 +424,7 @@ cJSON *audience_rule_convertToJSON(audience_rule_t *audience_rule) {
 
     listEntry_t *ad_idListEntry;
     list_ForEach(ad_idListEntry, audience_rule->ad_id) {
-    if(cJSON_AddStringToObject(ad_id, "", (char*)ad_idListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(ad_id, "", ad_idListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -383,7 +433,7 @@ cJSON *audience_rule_convertToJSON(audience_rule_t *audience_rule) {
 
 
     // audience_rule->objective_type
-    if(audience_rule->objective_type != pinterest_rest_api_audience_rule_OBJECTIVETYPE_NULL) {
+    if(audience_rule->objective_type != pinterest_rest_api_list_OBJECTIVETYPE_NULL) {
     cJSON *objective_type = cJSON_AddArrayToObject(item, "objective_type");
     if(objective_type == NULL) {
     goto fail; //nonprimitive container
@@ -447,6 +497,9 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
 
     // audience_rule->country
     cJSON *country = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "country");
+    if (cJSON_IsNull(country)) {
+        country = NULL;
+    }
     if (country) { 
     if(!cJSON_IsString(country) && !cJSON_IsNull(country))
     {
@@ -456,6 +509,9 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
 
     // audience_rule->customer_list_id
     cJSON *customer_list_id = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "customer_list_id");
+    if (cJSON_IsNull(customer_list_id)) {
+        customer_list_id = NULL;
+    }
     if (customer_list_id) { 
     if(!cJSON_IsString(customer_list_id) && !cJSON_IsNull(customer_list_id))
     {
@@ -465,6 +521,9 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
 
     // audience_rule->engagement_domain
     cJSON *engagement_domain = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "engagement_domain");
+    if (cJSON_IsNull(engagement_domain)) {
+        engagement_domain = NULL;
+    }
     if (engagement_domain) { 
     cJSON *engagement_domain_local = NULL;
     if(!cJSON_IsArray(engagement_domain)) {
@@ -484,6 +543,9 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
 
     // audience_rule->engagement_type
     cJSON *engagement_type = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "engagement_type");
+    if (cJSON_IsNull(engagement_type)) {
+        engagement_type = NULL;
+    }
     if (engagement_type) { 
     if(!cJSON_IsString(engagement_type) && !cJSON_IsNull(engagement_type))
     {
@@ -493,6 +555,9 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
 
     // audience_rule->event
     cJSON *event = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "event");
+    if (cJSON_IsNull(event)) {
+        event = NULL;
+    }
     if (event) { 
     if(!cJSON_IsString(event) && !cJSON_IsNull(event))
     {
@@ -502,12 +567,18 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
 
     // audience_rule->event_data
     cJSON *event_data = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "event_data");
+    if (cJSON_IsNull(event_data)) {
+        event_data = NULL;
+    }
     if (event_data) { 
     event_data_local_nonprim = pinterest_tag_event_data_parseFromJSON(event_data); //nonprimitive
     }
 
     // audience_rule->percentage
     cJSON *percentage = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "percentage");
+    if (cJSON_IsNull(percentage)) {
+        percentage = NULL;
+    }
     if (percentage) { 
     if(!cJSON_IsNumber(percentage))
     {
@@ -517,6 +588,9 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
 
     // audience_rule->pin_id
     cJSON *pin_id = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "pin_id");
+    if (cJSON_IsNull(pin_id)) {
+        pin_id = NULL;
+    }
     if (pin_id) { 
     cJSON *pin_id_local = NULL;
     if(!cJSON_IsArray(pin_id)) {
@@ -536,6 +610,9 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
 
     // audience_rule->prefill
     cJSON *prefill = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "prefill");
+    if (cJSON_IsNull(prefill)) {
+        prefill = NULL;
+    }
     if (prefill) { 
     if(!cJSON_IsBool(prefill))
     {
@@ -545,6 +622,9 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
 
     // audience_rule->retention_days
     cJSON *retention_days = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "retention_days");
+    if (cJSON_IsNull(retention_days)) {
+        retention_days = NULL;
+    }
     if (retention_days) { 
     if(!cJSON_IsNumber(retention_days))
     {
@@ -554,6 +634,9 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
 
     // audience_rule->seed_id
     cJSON *seed_id = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "seed_id");
+    if (cJSON_IsNull(seed_id)) {
+        seed_id = NULL;
+    }
     if (seed_id) { 
     cJSON *seed_id_local = NULL;
     if(!cJSON_IsArray(seed_id)) {
@@ -573,6 +656,9 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
 
     // audience_rule->url
     cJSON *url = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "url");
+    if (cJSON_IsNull(url)) {
+        url = NULL;
+    }
     if (url) { 
     cJSON *url_local = NULL;
     if(!cJSON_IsArray(url)) {
@@ -592,6 +678,9 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
 
     // audience_rule->visitor_source_id
     cJSON *visitor_source_id = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "visitor_source_id");
+    if (cJSON_IsNull(visitor_source_id)) {
+        visitor_source_id = NULL;
+    }
     if (visitor_source_id) { 
     if(!cJSON_IsString(visitor_source_id) && !cJSON_IsNull(visitor_source_id))
     {
@@ -601,6 +690,9 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
 
     // audience_rule->event_source
     cJSON *event_source = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "event_source");
+    if (cJSON_IsNull(event_source)) {
+        event_source = NULL;
+    }
     object_t *event_source_local_object = NULL;
     if (event_source) { 
     event_source_local_object = object_parseFromJSON(event_source); //object
@@ -608,6 +700,9 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
 
     // audience_rule->ingestion_source
     cJSON *ingestion_source = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "ingestion_source");
+    if (cJSON_IsNull(ingestion_source)) {
+        ingestion_source = NULL;
+    }
     object_t *ingestion_source_local_object = NULL;
     if (ingestion_source) { 
     ingestion_source_local_object = object_parseFromJSON(ingestion_source); //object
@@ -615,6 +710,9 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
 
     // audience_rule->engager_type
     cJSON *engager_type = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "engager_type");
+    if (cJSON_IsNull(engager_type)) {
+        engager_type = NULL;
+    }
     if (engager_type) { 
     if(!cJSON_IsNumber(engager_type))
     {
@@ -624,6 +722,9 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
 
     // audience_rule->campaign_id
     cJSON *campaign_id = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "campaign_id");
+    if (cJSON_IsNull(campaign_id)) {
+        campaign_id = NULL;
+    }
     if (campaign_id) { 
     cJSON *campaign_id_local = NULL;
     if(!cJSON_IsArray(campaign_id)) {
@@ -643,6 +744,9 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
 
     // audience_rule->ad_id
     cJSON *ad_id = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "ad_id");
+    if (cJSON_IsNull(ad_id)) {
+        ad_id = NULL;
+    }
     if (ad_id) { 
     cJSON *ad_id_local = NULL;
     if(!cJSON_IsArray(ad_id)) {
@@ -662,6 +766,9 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
 
     // audience_rule->objective_type
     cJSON *objective_type = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "objective_type");
+    if (cJSON_IsNull(objective_type)) {
+        objective_type = NULL;
+    }
     if (objective_type) { 
     cJSON *objective_type_local_nonprimitive = NULL;
     if(!cJSON_IsArray(objective_type)){
@@ -683,6 +790,9 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
 
     // audience_rule->ad_account_id
     cJSON *ad_account_id = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "ad_account_id");
+    if (cJSON_IsNull(ad_account_id)) {
+        ad_account_id = NULL;
+    }
     if (ad_account_id) { 
     if(!cJSON_IsString(ad_account_id) && !cJSON_IsNull(ad_account_id))
     {
@@ -691,7 +801,7 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
     }
 
 
-    audience_rule_local_var = audience_rule_create (
+    audience_rule_local_var = audience_rule_create_internal (
         country && !cJSON_IsNull(country) ? strdup(country->valuestring) : NULL,
         customer_list_id && !cJSON_IsNull(customer_list_id) ? strdup(customer_list_id->valuestring) : NULL,
         engagement_domain ? engagement_domainList : NULL,

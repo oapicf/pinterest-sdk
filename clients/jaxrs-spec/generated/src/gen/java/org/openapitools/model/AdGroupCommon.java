@@ -27,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdGroupCommon")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdGroupCommon   {
   private String name;
   private EntityStatus status;
@@ -94,6 +94,9 @@ public class AdGroupCommon   {
 
   private BidStrategyTypeEnum bidStrategyType;
   private @Valid List<@Pattern(regexp = "^\\d+$")String> targetingTemplateIds;
+
+  public AdGroupCommon() {
+  }
 
   /**
    * Ad group name.

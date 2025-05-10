@@ -15,6 +15,7 @@ import org.openapitools.server.models.BatchOperationStatus
 import org.openapitools.server.models.CatalogsType
 import org.openapitools.server.models.CreativeAssetsProcessingRecord
 
+import kotlinx.serialization.Serializable
 /**
  * Object describing the catalogs creative assets items batch
  * @param catalogType 
@@ -24,16 +25,17 @@ import org.openapitools.server.models.CreativeAssetsProcessingRecord
  * @param status 
  * @param items Array with the catalogs items processing records part of the catalogs items batch
  */
+@Serializable
 data class CatalogsCreativeAssetsItemsBatch(
     val catalogType: CatalogsType,
     /* Id of the catalogs items batch */
     val batchId: kotlin.String? = null,
     /* Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss */
-    val createdTime: java.time.OffsetDateTime? = null,
+    val createdTime: kotlin.String? = null,
     /* Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss */
-    val completedTime: java.time.OffsetDateTime? = null,
+    val completedTime: kotlin.String? = null,
     val status: BatchOperationStatus? = null,
     /* Array with the catalogs items processing records part of the catalogs items batch */
     val items: kotlin.collections.List<CreativeAssetsProcessingRecord>? = null
-) 
+)
 

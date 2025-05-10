@@ -49,28 +49,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdAccountCreateSubscriptionResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdAccountCreateSubscriptionResponse {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_CRYPTOGRAPHIC_KEY = "cryptographic_key";
   @SerializedName(SERIALIZED_NAME_CRYPTOGRAPHIC_KEY)
+  @javax.annotation.Nullable
   private String cryptographicKey;
 
   public static final String SERIALIZED_NAME_CRYPTOGRAPHIC_ALGORITHM = "cryptographic_algorithm";
   @SerializedName(SERIALIZED_NAME_CRYPTOGRAPHIC_ALGORITHM)
+  @javax.annotation.Nullable
   private String cryptographicAlgorithm;
 
   public static final String SERIALIZED_NAME_CREATED_TIME = "created_time";
   @SerializedName(SERIALIZED_NAME_CREATED_TIME)
+  @javax.annotation.Nullable
   private Integer createdTime;
 
   public AdAccountCreateSubscriptionResponse() {
   }
 
-  public AdAccountCreateSubscriptionResponse id(String id) {
+  public AdAccountCreateSubscriptionResponse id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -84,12 +88,12 @@ public class AdAccountCreateSubscriptionResponse {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public AdAccountCreateSubscriptionResponse cryptographicKey(String cryptographicKey) {
+  public AdAccountCreateSubscriptionResponse cryptographicKey(@javax.annotation.Nullable String cryptographicKey) {
     this.cryptographicKey = cryptographicKey;
     return this;
   }
@@ -103,12 +107,12 @@ public class AdAccountCreateSubscriptionResponse {
     return cryptographicKey;
   }
 
-  public void setCryptographicKey(String cryptographicKey) {
+  public void setCryptographicKey(@javax.annotation.Nullable String cryptographicKey) {
     this.cryptographicKey = cryptographicKey;
   }
 
 
-  public AdAccountCreateSubscriptionResponse cryptographicAlgorithm(String cryptographicAlgorithm) {
+  public AdAccountCreateSubscriptionResponse cryptographicAlgorithm(@javax.annotation.Nullable String cryptographicAlgorithm) {
     this.cryptographicAlgorithm = cryptographicAlgorithm;
     return this;
   }
@@ -122,12 +126,12 @@ public class AdAccountCreateSubscriptionResponse {
     return cryptographicAlgorithm;
   }
 
-  public void setCryptographicAlgorithm(String cryptographicAlgorithm) {
+  public void setCryptographicAlgorithm(@javax.annotation.Nullable String cryptographicAlgorithm) {
     this.cryptographicAlgorithm = cryptographicAlgorithm;
   }
 
 
-  public AdAccountCreateSubscriptionResponse createdTime(Integer createdTime) {
+  public AdAccountCreateSubscriptionResponse createdTime(@javax.annotation.Nullable Integer createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -141,7 +145,7 @@ public class AdAccountCreateSubscriptionResponse {
     return createdTime;
   }
 
-  public void setCreatedTime(Integer createdTime) {
+  public void setCreatedTime(@javax.annotation.Nullable Integer createdTime) {
     this.createdTime = createdTime;
   }
 

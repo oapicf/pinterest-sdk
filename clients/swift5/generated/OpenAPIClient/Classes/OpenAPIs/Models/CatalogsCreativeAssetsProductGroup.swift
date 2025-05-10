@@ -15,8 +15,8 @@ public struct CatalogsCreativeAssetsProductGroup: Codable, JSONEncodable, Hashab
     public enum CatalogType: String, Codable, CaseIterable {
         case creativeAssets = "CREATIVE_ASSETS"
     }
-    static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public var catalogType: CatalogType
     /** ID of the creative assets product group. */
     public var id: String
@@ -68,3 +68,6 @@ public struct CatalogsCreativeAssetsProductGroup: Codable, JSONEncodable, Hashab
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension CatalogsCreativeAssetsProductGroup: Identifiable {}

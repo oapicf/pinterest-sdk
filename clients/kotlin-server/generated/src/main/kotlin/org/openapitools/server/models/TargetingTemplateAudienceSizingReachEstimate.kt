@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param estimate 
  * @param lowerBound 
  * @param upperBound 
  */
+@Serializable
 data class TargetingTemplateAudienceSizingReachEstimate(
     val estimate: kotlin.Long? = null,
     val lowerBound: kotlin.Long? = null,
     val upperBound: kotlin.Long? = null
-) 
+)
 

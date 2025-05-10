@@ -5,7 +5,7 @@
 
 
 
-ssio_account_pmp_name_t *ssio_account_pmp_name_create(
+static ssio_account_pmp_name_t *ssio_account_pmp_name_create_internal(
     char *name,
     char *id
     ) {
@@ -16,12 +16,26 @@ ssio_account_pmp_name_t *ssio_account_pmp_name_create(
     ssio_account_pmp_name_local_var->name = name;
     ssio_account_pmp_name_local_var->id = id;
 
+    ssio_account_pmp_name_local_var->_library_owned = 1;
     return ssio_account_pmp_name_local_var;
 }
 
+__attribute__((deprecated)) ssio_account_pmp_name_t *ssio_account_pmp_name_create(
+    char *name,
+    char *id
+    ) {
+    return ssio_account_pmp_name_create_internal (
+        name,
+        id
+        );
+}
 
 void ssio_account_pmp_name_free(ssio_account_pmp_name_t *ssio_account_pmp_name) {
     if(NULL == ssio_account_pmp_name){
+        return ;
+    }
+    if(ssio_account_pmp_name->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ssio_account_pmp_name_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -68,6 +82,9 @@ ssio_account_pmp_name_t *ssio_account_pmp_name_parseFromJSON(cJSON *ssio_account
 
     // ssio_account_pmp_name->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(ssio_account_pmp_nameJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
     if (name) { 
     if(!cJSON_IsString(name) && !cJSON_IsNull(name))
     {
@@ -77,6 +94,9 @@ ssio_account_pmp_name_t *ssio_account_pmp_name_parseFromJSON(cJSON *ssio_account
 
     // ssio_account_pmp_name->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(ssio_account_pmp_nameJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -85,7 +105,7 @@ ssio_account_pmp_name_t *ssio_account_pmp_name_parseFromJSON(cJSON *ssio_account
     }
 
 
-    ssio_account_pmp_name_local_var = ssio_account_pmp_name_create (
+    ssio_account_pmp_name_local_var = ssio_account_pmp_name_create_internal (
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL
         );

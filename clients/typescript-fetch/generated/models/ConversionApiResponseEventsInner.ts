@@ -74,11 +74,11 @@ export function ConversionApiResponseEventsInnerFromJSONTyped(json: any, ignoreD
     };
 }
 
-  export function ConversionApiResponseEventsInnerToJSON(json: any): ConversionApiResponseEventsInner {
-      return ConversionApiResponseEventsInnerToJSONTyped(json, false);
-  }
+export function ConversionApiResponseEventsInnerToJSON(json: any): ConversionApiResponseEventsInner {
+    return ConversionApiResponseEventsInnerToJSONTyped(json, false);
+}
 
-  export function ConversionApiResponseEventsInnerToJSONTyped(value?: ConversionApiResponseEventsInner | null, ignoreDiscriminator: boolean = false): any {
+export function ConversionApiResponseEventsInnerToJSONTyped(value?: ConversionApiResponseEventsInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

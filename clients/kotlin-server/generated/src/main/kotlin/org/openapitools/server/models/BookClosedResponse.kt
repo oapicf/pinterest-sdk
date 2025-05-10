@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Creation fields
  * @param conversionMetricsReady Are conversion metrics ready?
  * @param nonConversionMetricsReady Are non-conversion metrics ready?
  */
+@Serializable
 data class BookClosedResponse(
     /* Are conversion metrics ready? */
     val conversionMetricsReady: kotlin.Boolean? = null,
     /* Are non-conversion metrics ready? */
     val nonConversionMetricsReady: kotlin.Boolean? = null
-) 
+)
 

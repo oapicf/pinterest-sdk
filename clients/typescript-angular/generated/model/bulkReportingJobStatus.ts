@@ -15,11 +15,17 @@
 export type BulkReportingJobStatus = 'DOES_NOT_EXIST' | 'FINISHED' | 'IN_PROGRESS' | 'EXPIRED' | 'FAILED' | 'CANCELLED';
 
 export const BulkReportingJobStatus = {
+
     DoesNotExist: 'DOES_NOT_EXIST' as BulkReportingJobStatus,
+
     Finished: 'FINISHED' as BulkReportingJobStatus,
+
     InProgress: 'IN_PROGRESS' as BulkReportingJobStatus,
+
     Expired: 'EXPIRED' as BulkReportingJobStatus,
+
     Failed: 'FAILED' as BulkReportingJobStatus,
+
     Cancelled: 'CANCELLED' as BulkReportingJobStatus
 };
 

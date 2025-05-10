@@ -27,8 +27,8 @@ export interface PinMediaSourceImagesBase64ItemsInner {
 export namespace PinMediaSourceImagesBase64ItemsInner {
     export type ContentTypeEnum = 'image/jpeg' | 'image/png';
     export const ContentTypeEnum = {
-        Jpeg: 'image/jpeg' as ContentTypeEnum,
-        Png: 'image/png' as ContentTypeEnum
+        ImageJpeg: 'image/jpeg' as ContentTypeEnum,
+        ImagePng: 'image/png' as ContentTypeEnum
     };
 }
 

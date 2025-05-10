@@ -14,6 +14,7 @@ package org.openapitools.server.models
 import org.openapitools.server.models.CampaignSummaryStatus
 import org.openapitools.server.models.ObjectiveType
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param startTime Unix UTC timestamp.
@@ -22,6 +23,7 @@ import org.openapitools.server.models.ObjectiveType
  * @param campaignStatus 
  * @param objectiveType 
  */
+@Serializable
 data class BulkDownloadRequestCampaignFilter(
     /* Unix UTC timestamp. */
     val startTime: kotlin.String? = null,
@@ -31,5 +33,5 @@ data class BulkDownloadRequestCampaignFilter(
     val name: kotlin.String? = null,
     val campaignStatus: kotlin.collections.List<CampaignSummaryStatus>? = null,
     val objectiveType: kotlin.collections.List<ObjectiveType>? = null
-) 
+)
 

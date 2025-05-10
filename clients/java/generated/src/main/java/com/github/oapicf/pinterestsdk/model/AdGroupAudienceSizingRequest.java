@@ -54,14 +54,16 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdGroupAudienceSizingRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdGroupAudienceSizingRequest {
   public static final String SERIALIZED_NAME_AUTO_TARGETING_ENABLED = "auto_targeting_enabled";
   @SerializedName(SERIALIZED_NAME_AUTO_TARGETING_ENABLED)
+  @javax.annotation.Nullable
   private Boolean autoTargetingEnabled = true;
 
   public static final String SERIALIZED_NAME_PLACEMENT_GROUP = "placement_group";
   @SerializedName(SERIALIZED_NAME_PLACEMENT_GROUP)
+  @javax.annotation.Nullable
   private PlacementGroupType placementGroup = "ALL";
 
   /**
@@ -130,24 +132,28 @@ public class AdGroupAudienceSizingRequest {
 
   public static final String SERIALIZED_NAME_CREATIVE_TYPES = "creative_types";
   @SerializedName(SERIALIZED_NAME_CREATIVE_TYPES)
+  @javax.annotation.Nullable
   private List<CreativeTypesEnum> creativeTypes;
 
   public static final String SERIALIZED_NAME_TARGETING_SPEC = "targeting_spec";
   @SerializedName(SERIALIZED_NAME_TARGETING_SPEC)
+  @javax.annotation.Nullable
   private TargetingSpec targetingSpec;
 
   public static final String SERIALIZED_NAME_PRODUCT_GROUP_IDS = "product_group_ids";
   @SerializedName(SERIALIZED_NAME_PRODUCT_GROUP_IDS)
+  @javax.annotation.Nullable
   private List<String> productGroupIds;
 
   public static final String SERIALIZED_NAME_KEYWORDS = "keywords";
   @SerializedName(SERIALIZED_NAME_KEYWORDS)
+  @javax.annotation.Nullable
   private List<AdGroupAudienceSizingRequestKeywordsInner> keywords;
 
   public AdGroupAudienceSizingRequest() {
   }
 
-  public AdGroupAudienceSizingRequest autoTargetingEnabled(Boolean autoTargetingEnabled) {
+  public AdGroupAudienceSizingRequest autoTargetingEnabled(@javax.annotation.Nullable Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
     return this;
   }
@@ -161,12 +167,12 @@ public class AdGroupAudienceSizingRequest {
     return autoTargetingEnabled;
   }
 
-  public void setAutoTargetingEnabled(Boolean autoTargetingEnabled) {
+  public void setAutoTargetingEnabled(@javax.annotation.Nullable Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
   }
 
 
-  public AdGroupAudienceSizingRequest placementGroup(PlacementGroupType placementGroup) {
+  public AdGroupAudienceSizingRequest placementGroup(@javax.annotation.Nullable PlacementGroupType placementGroup) {
     this.placementGroup = placementGroup;
     return this;
   }
@@ -180,12 +186,12 @@ public class AdGroupAudienceSizingRequest {
     return placementGroup;
   }
 
-  public void setPlacementGroup(PlacementGroupType placementGroup) {
+  public void setPlacementGroup(@javax.annotation.Nullable PlacementGroupType placementGroup) {
     this.placementGroup = placementGroup;
   }
 
 
-  public AdGroupAudienceSizingRequest creativeTypes(List<CreativeTypesEnum> creativeTypes) {
+  public AdGroupAudienceSizingRequest creativeTypes(@javax.annotation.Nullable List<CreativeTypesEnum> creativeTypes) {
     this.creativeTypes = creativeTypes;
     return this;
   }
@@ -207,12 +213,12 @@ public class AdGroupAudienceSizingRequest {
     return creativeTypes;
   }
 
-  public void setCreativeTypes(List<CreativeTypesEnum> creativeTypes) {
+  public void setCreativeTypes(@javax.annotation.Nullable List<CreativeTypesEnum> creativeTypes) {
     this.creativeTypes = creativeTypes;
   }
 
 
-  public AdGroupAudienceSizingRequest targetingSpec(TargetingSpec targetingSpec) {
+  public AdGroupAudienceSizingRequest targetingSpec(@javax.annotation.Nullable TargetingSpec targetingSpec) {
     this.targetingSpec = targetingSpec;
     return this;
   }
@@ -226,12 +232,12 @@ public class AdGroupAudienceSizingRequest {
     return targetingSpec;
   }
 
-  public void setTargetingSpec(TargetingSpec targetingSpec) {
+  public void setTargetingSpec(@javax.annotation.Nullable TargetingSpec targetingSpec) {
     this.targetingSpec = targetingSpec;
   }
 
 
-  public AdGroupAudienceSizingRequest productGroupIds(List<String> productGroupIds) {
+  public AdGroupAudienceSizingRequest productGroupIds(@javax.annotation.Nullable List<String> productGroupIds) {
     this.productGroupIds = productGroupIds;
     return this;
   }
@@ -253,12 +259,12 @@ public class AdGroupAudienceSizingRequest {
     return productGroupIds;
   }
 
-  public void setProductGroupIds(List<String> productGroupIds) {
+  public void setProductGroupIds(@javax.annotation.Nullable List<String> productGroupIds) {
     this.productGroupIds = productGroupIds;
   }
 
 
-  public AdGroupAudienceSizingRequest keywords(List<AdGroupAudienceSizingRequestKeywordsInner> keywords) {
+  public AdGroupAudienceSizingRequest keywords(@javax.annotation.Nullable List<AdGroupAudienceSizingRequestKeywordsInner> keywords) {
     this.keywords = keywords;
     return this;
   }
@@ -280,7 +286,7 @@ public class AdGroupAudienceSizingRequest {
     return keywords;
   }
 
-  public void setKeywords(List<AdGroupAudienceSizingRequestKeywordsInner> keywords) {
+  public void setKeywords(@javax.annotation.Nullable List<AdGroupAudienceSizingRequestKeywordsInner> keywords) {
     this.keywords = keywords;
   }
 

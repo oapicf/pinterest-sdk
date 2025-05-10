@@ -806,7 +806,6 @@ stringFromColumns model =
 
 
 
-
 type ClickWindowDays
     = ClickWindowDays0
     | ClickWindowDays1
@@ -847,7 +846,6 @@ stringFromClickWindowDays model =
 
         ClickWindowDays60 ->
             60
-
 
 
 
@@ -894,7 +892,6 @@ stringFromEngagementWindowDays model =
 
 
 
-
 type ViewWindowDays
     = ViewWindowDays0
     | ViewWindowDays1
@@ -938,28 +935,26 @@ stringFromViewWindowDays model =
 
 
 
-
 type ConversionReportTime
-    = ConversionReportTimeADACTION
-    | ConversionReportTimeCONVERSION
+    = ConversionReportTimeTIMEOFADACTION
+    | ConversionReportTimeTIMEOFCONVERSION
 
 
 conversionReportTimeVariants : List ConversionReportTime
 conversionReportTimeVariants =
-    [ ConversionReportTimeADACTION
-    , ConversionReportTimeCONVERSION
+    [ ConversionReportTimeTIMEOFADACTION
+    , ConversionReportTimeTIMEOFCONVERSION
     ]
 
 
 stringFromConversionReportTime : ConversionReportTime -> String
 stringFromConversionReportTime model =
     case model of
-        ConversionReportTimeADACTION ->
+        ConversionReportTimeTIMEOFADACTION ->
             "TIME_OF_AD_ACTION"
 
-        ConversionReportTimeCONVERSION ->
+        ConversionReportTimeTIMEOFCONVERSION ->
             "TIME_OF_CONVERSION"
-
 
 
 
@@ -1731,7 +1726,6 @@ stringFromColumns model =
 
 
 
-
 type ClickWindowDays
     = ClickWindowDays0
     | ClickWindowDays1
@@ -1772,7 +1766,6 @@ stringFromClickWindowDays model =
 
         ClickWindowDays60 ->
             60
-
 
 
 
@@ -1819,7 +1812,6 @@ stringFromEngagementWindowDays model =
 
 
 
-
 type ViewWindowDays
     = ViewWindowDays0
     | ViewWindowDays1
@@ -1863,28 +1855,26 @@ stringFromViewWindowDays model =
 
 
 
-
 type ConversionReportTime
-    = ConversionReportTimeADACTION
-    | ConversionReportTimeCONVERSION
+    = ConversionReportTimeTIMEOFADACTION
+    | ConversionReportTimeTIMEOFCONVERSION
 
 
 conversionReportTimeVariants : List ConversionReportTime
 conversionReportTimeVariants =
-    [ ConversionReportTimeADACTION
-    , ConversionReportTimeCONVERSION
+    [ ConversionReportTimeTIMEOFADACTION
+    , ConversionReportTimeTIMEOFCONVERSION
     ]
 
 
 stringFromConversionReportTime : ConversionReportTime -> String
 stringFromConversionReportTime model =
     case model of
-        ConversionReportTimeADACTION ->
+        ConversionReportTimeTIMEOFADACTION ->
             "TIME_OF_AD_ACTION"
 
-        ConversionReportTimeCONVERSION ->
+        ConversionReportTimeTIMEOFCONVERSION ->
             "TIME_OF_CONVERSION"
-
 
 
 
@@ -1911,35 +1901,44 @@ stringFromOrder_ model =
 
 
 
-{-| Get analytics for the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time.
+{-| Get ad account analytics
+
+Get analytics for the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time.
+
 -}
 adAccountAnalytics : String -> Posix -> Posix -> List Columns -> Granularity -> Maybe ClickWindowDays -> Maybe EngagementWindowDays -> Maybe ViewWindowDays -> Maybe ConversionReportTime -> Api.Request (List AdAccountAnalyticsResponseInner)
 adAccountAnalytics adAccountId_path startDate_query endDate_query columns_query granularity_query clickWindowDays_query engagementWindowDays_query viewWindowDays_query conversionReportTime_query =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/analytics"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         [ ( "start_date", Just <| Api.Time.dateToString startDate_query ), ( "end_date", Just <| Api.Time.dateToString endDate_query ), ( "columns", Just <| (String.join "," << List.map stringFromColumns) columns_query ), ( "granularity", Just <| Api.Data.stringFromGranularity granularity_query ), ( "click_window_days", Maybe.map String.fromInt stringFromClickWindowDays clickWindowDays_query ), ( "engagement_window_days", Maybe.map String.fromInt stringFromEngagementWindowDays engagementWindowDays_query ), ( "view_window_days", Maybe.map String.fromInt stringFromViewWindowDays viewWindowDays_query ), ( "conversion_report_time", Maybe.map stringFromConversionReportTime conversionReportTime_query ) ]
         []
         Nothing
         (Json.Decode.list Api.Data.adAccountAnalyticsResponseInnerDecoder)
 
 
-{-| Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+{-| Get targeting analytics for an ad account
+
+Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+
 -}
 adAccountTargetingAnalyticsGet : String -> Posix -> Posix -> List AdsAnalyticsTargetingType -> List Columns -> Granularity -> Maybe ClickWindowDays -> Maybe EngagementWindowDays -> Maybe ViewWindowDays -> Maybe ConversionReportTime -> Maybe ConversionReportAttributionType -> Api.Request Api.Data.MetricsResponse
 adAccountTargetingAnalyticsGet adAccountId_path startDate_query endDate_query targetingTypes_query columns_query granularity_query clickWindowDays_query engagementWindowDays_query viewWindowDays_query conversionReportTime_query attributionTypes_query =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/targeting_analytics"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         [ ( "start_date", Just <| Api.Time.dateToString startDate_query ), ( "end_date", Just <| Api.Time.dateToString endDate_query ), ( "targeting_types", Just <| (String.join "," << List.map Api.Data.stringFromAdsAnalyticsTargetingType) targetingTypes_query ), ( "columns", Just <| (String.join "," << List.map stringFromColumns) columns_query ), ( "granularity", Just <| Api.Data.stringFromGranularity granularity_query ), ( "click_window_days", Maybe.map String.fromInt stringFromClickWindowDays clickWindowDays_query ), ( "engagement_window_days", Maybe.map String.fromInt stringFromEngagementWindowDays engagementWindowDays_query ), ( "view_window_days", Maybe.map String.fromInt stringFromViewWindowDays viewWindowDays_query ), ( "conversion_report_time", Maybe.map stringFromConversionReportTime conversionReportTime_query ), ( "attribution_types", Maybe.map Api.Data.stringFromConversionReportAttributionType attributionTypes_query ) ]
         []
         Nothing
         Api.Data.metricsResponseDecoder
 
 
-{-| Create a new ad account. Different ad accounts can support different currencies, payment methods, etc. An ad account is needed to create campaigns, ad groups, and ads; other accounts (your employees or partners) can be assigned business access and appropriate roles to access an ad account. <p/> You can set up up to 50 ad accounts per user. (The user must have a business account to create an ad account.) <p/> For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/create-an-advertiser-account\">Create an advertiser account</a>.
+{-| Create ad account
+
+Create a new ad account. Different ad accounts can support different currencies, payment methods, etc. An ad account is needed to create campaigns, ad groups, and ads; other accounts (your employees or partners) can be assigned business access and appropriate roles to access an ad account. <p/> You can set up up to 50 ad accounts per user. (The user must have a business account to create an ad account.) <p/> For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/create-an-advertiser-account\">Create an advertiser account</a>.
+
 -}
 adAccountsCreate : Api.Data.AdAccountCreateRequest -> Api.Request Api.Data.AdAccount
 adAccountsCreate adAccountCreateRequest_body =
@@ -1953,21 +1952,27 @@ adAccountsCreate adAccountCreateRequest_body =
         Api.Data.adAccountDecoder
 
 
-{-| Get an ad account
+{-| Get ad account
+
+Get an ad account
+
 -}
 adAccountsGet : String -> Api.Request Api.Data.AdAccount
 adAccountsGet adAccountId_path =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         Nothing
         Api.Data.adAccountDecoder
 
 
-{-| Get a list of the ad_accounts that the \"operation user_account\" has access to. - This includes ad_accounts they own and ad_accounts that are owned by others who have granted them <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>.
+{-| List ad accounts
+
+Get a list of the ad_accounts that the \"operation user_account\" has access to. - This includes ad_accounts they own and ad_accounts that are owned by others who have granted them <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>.
+
 -}
 adAccountsList : Maybe String -> Maybe Int -> Maybe Bool -> Api.Request Api.Data.AdAccountsList200Response
 adAccountsList bookmark_query pageSize_query includeSharedAccounts_query =
@@ -1981,98 +1986,119 @@ adAccountsList bookmark_query pageSize_query includeSharedAccounts_query =
         Api.Data.adAccountsList200ResponseDecoder
 
 
-{-| This creates an asynchronous mmm report based on the given request. It returns a token that you can use to download the report when it is ready. NOTE: An additional limit of 5 queries per minute per advertiser applies to this endpoint while it's in beta release.
+{-| Create a request for a Marketing Mix Modeling (MMM) report
+
+This creates an asynchronous mmm report based on the given request. It returns a token that you can use to download the report when it is ready. NOTE: An additional limit of 5 queries per minute per advertiser applies to this endpoint while it's in beta release.
+
 -}
 analyticsCreateMmmReport : String -> Api.Data.CreateMMMReportRequest -> Api.Request Api.Data.CreateMMMReportResponse
 analyticsCreateMmmReport adAccountId_path createMMMReportRequest_body =
     Api.request
         "POST"
         "/ad_accounts/{ad_account_id}/mmm_reports"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Just (Api.Data.encodeCreateMMMReportRequest createMMMReportRequest_body)))
         Api.Data.createMMMReportResponseDecoder
 
 
-{-| This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 914 days before the current date in UTC time and the max time range supported is 186 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. - If level is PRODUCT_ITEM, the furthest back you can are allowed to pull data is 92 days before the current date in UTC time and the max time range supported is 31 days. - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
+{-| Create async request for an account analytics report
+
+This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 914 days before the current date in UTC time and the max time range supported is 186 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. - If level is PRODUCT_ITEM, the furthest back you can are allowed to pull data is 92 days before the current date in UTC time and the max time range supported is 31 days. - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
+
 -}
 analyticsCreateReport : String -> Api.Data.AdsAnalyticsCreateAsyncRequest -> Api.Request Api.Data.AdsAnalyticsCreateAsyncResponse
 analyticsCreateReport adAccountId_path adsAnalyticsCreateAsyncRequest_body =
     Api.request
         "POST"
         "/ad_accounts/{ad_account_id}/reports"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Just (Api.Data.encodeAdsAnalyticsCreateAsyncRequest adsAnalyticsCreateAsyncRequest_body)))
         Api.Data.adsAnalyticsCreateAsyncResponseDecoder
 
 
-{-| This takes a template ID and an optional custom timeframe and constructs an asynchronous report based on the template. It returns a token that you can use to download the report when it is ready.
+{-| Create async request for an analytics report using a template
+
+This takes a template ID and an optional custom timeframe and constructs an asynchronous report based on the template. It returns a token that you can use to download the report when it is ready.
+
 -}
 analyticsCreateTemplateReport : String -> String -> Maybe Posix -> Maybe Posix -> Maybe Granularity -> Api.Request Api.Data.AdsAnalyticsCreateAsyncResponse
 analyticsCreateTemplateReport adAccountId_path templateId_path startDate_query endDate_query granularity_query =
     Api.request
         "POST"
         "/ad_accounts/{ad_account_id}/templates/{template_id}/reports"
-        [ ( "adAccountId", identity adAccountId_path ), ( "templateId", identity templateId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ), ( "template_id", identity templateId_path ) ]
         [ ( "start_date", Maybe.map Api.Time.dateToString startDate_query ), ( "end_date", Maybe.map Api.Time.dateToString endDate_query ), ( "granularity", Maybe.map Api.Data.stringFromGranularity granularity_query ) ]
         []
         Nothing
         Api.Data.adsAnalyticsCreateAsyncResponseDecoder
 
 
-{-| Get an mmm report for an ad account. This returns a URL to an mmm metrics report given a token returned from the create mmm report endpoint.
+{-| Get advertiser Marketing Mix Modeling (MMM) report.
+
+Get an mmm report for an ad account. This returns a URL to an mmm metrics report given a token returned from the create mmm report endpoint.
+
 -}
 analyticsGetMmmReport : String -> String -> Api.Request Api.Data.GetMMMReportResponse
 analyticsGetMmmReport adAccountId_path token_query =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/mmm_reports"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         [ ( "token", Just <| identity token_query ) ]
         []
         Nothing
         Api.Data.getMMMReportResponseDecoder
 
 
-{-| This returns a URL to an analytics report given a token returned from the post request report creation call. You can use the URL to download the report. The link is valid for five minutes and the report is valid for one hour. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+{-| Get the account analytics report created by the async call
+
+This returns a URL to an analytics report given a token returned from the post request report creation call. You can use the URL to download the report. The link is valid for five minutes and the report is valid for one hour. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+
 -}
 analyticsGetReport : String -> String -> Api.Request Api.Data.AdsAnalyticsGetAsyncResponse
 analyticsGetReport adAccountId_path token_query =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/reports"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         [ ( "token", Just <| identity token_query ) ]
         []
         Nothing
         Api.Data.adsAnalyticsGetAsyncResponseDecoder
 
 
-{-| Delete an ad account and all the ads data associated with that account. A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5). Go to /docs/developer-tools/sandbox/ for more information.
+{-| Delete ads data for ad account in API Sandbox
+
+Delete an ad account and all the ads data associated with that account. A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5). Go to /docs/developer-tools/sandbox/ for more information.
+
 -}
 sandboxDelete : String -> Api.Request String
 sandboxDelete adAccountId_path =
     Api.request
         "DELETE"
         "/ad_accounts/{ad_account_id}/sandbox"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         Nothing
         Json.Decode.string
 
 
-{-| Gets all Templates associated with an ad account ID.
+{-| List templates
+
+Gets all Templates associated with an ad account ID.
+
 -}
 templatesList : String -> Maybe Int -> Maybe Order_ -> Maybe String -> Api.Request Api.Data.TemplatesList200Response
 templatesList adAccountId_path pageSize_query order_query bookmark_query =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/templates"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         [ ( "page_size", Maybe.map String.fromInt pageSize_query ), ( "order", Maybe.map stringFromOrder_ order_query ), ( "bookmark", Maybe.map identity bookmark_query ) ]
         []
         Nothing

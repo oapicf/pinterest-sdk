@@ -56,11 +56,11 @@ export function AdArrayResponseFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-  export function AdArrayResponseToJSON(json: any): AdArrayResponse {
-      return AdArrayResponseToJSONTyped(json, false);
-  }
+export function AdArrayResponseToJSON(json: any): AdArrayResponse {
+    return AdArrayResponseToJSONTyped(json, false);
+}
 
-  export function AdArrayResponseToJSONTyped(value?: AdArrayResponse | null, ignoreDiscriminator: boolean = false): any {
+export function AdArrayResponseToJSONTyped(value?: AdArrayResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

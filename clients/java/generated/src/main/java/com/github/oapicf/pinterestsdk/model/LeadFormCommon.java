@@ -54,44 +54,52 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Creation fields
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class LeadFormCommon {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_PRIVACY_POLICY_LINK = "privacy_policy_link";
   @SerializedName(SERIALIZED_NAME_PRIVACY_POLICY_LINK)
+  @javax.annotation.Nullable
   private String privacyPolicyLink;
 
   public static final String SERIALIZED_NAME_HAS_ACCEPTED_TERMS = "has_accepted_terms";
   @SerializedName(SERIALIZED_NAME_HAS_ACCEPTED_TERMS)
+  @javax.annotation.Nullable
   private Boolean hasAcceptedTerms;
 
   public static final String SERIALIZED_NAME_COMPLETION_MESSAGE = "completion_message";
   @SerializedName(SERIALIZED_NAME_COMPLETION_MESSAGE)
+  @javax.annotation.Nullable
   private String completionMessage;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private LeadFormStatus status;
 
   public static final String SERIALIZED_NAME_DISCLOSURE_LANGUAGE = "disclosure_language";
   @SerializedName(SERIALIZED_NAME_DISCLOSURE_LANGUAGE)
+  @javax.annotation.Nullable
   private String disclosureLanguage;
 
   public static final String SERIALIZED_NAME_QUESTIONS = "questions";
   @SerializedName(SERIALIZED_NAME_QUESTIONS)
+  @javax.annotation.Nullable
   private List<LeadFormQuestion> questions = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_POLICY_LINKS = "policy_links";
   @SerializedName(SERIALIZED_NAME_POLICY_LINKS)
+  @javax.annotation.Nullable
   private List<LeadFormCommonPolicyLinksInner> policyLinks = new ArrayList<>();
 
   public LeadFormCommon() {
   }
 
-  public LeadFormCommon name(String name) {
+  public LeadFormCommon name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -105,12 +113,12 @@ public class LeadFormCommon {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public LeadFormCommon privacyPolicyLink(String privacyPolicyLink) {
+  public LeadFormCommon privacyPolicyLink(@javax.annotation.Nullable String privacyPolicyLink) {
     this.privacyPolicyLink = privacyPolicyLink;
     return this;
   }
@@ -124,12 +132,12 @@ public class LeadFormCommon {
     return privacyPolicyLink;
   }
 
-  public void setPrivacyPolicyLink(String privacyPolicyLink) {
+  public void setPrivacyPolicyLink(@javax.annotation.Nullable String privacyPolicyLink) {
     this.privacyPolicyLink = privacyPolicyLink;
   }
 
 
-  public LeadFormCommon hasAcceptedTerms(Boolean hasAcceptedTerms) {
+  public LeadFormCommon hasAcceptedTerms(@javax.annotation.Nullable Boolean hasAcceptedTerms) {
     this.hasAcceptedTerms = hasAcceptedTerms;
     return this;
   }
@@ -143,12 +151,12 @@ public class LeadFormCommon {
     return hasAcceptedTerms;
   }
 
-  public void setHasAcceptedTerms(Boolean hasAcceptedTerms) {
+  public void setHasAcceptedTerms(@javax.annotation.Nullable Boolean hasAcceptedTerms) {
     this.hasAcceptedTerms = hasAcceptedTerms;
   }
 
 
-  public LeadFormCommon completionMessage(String completionMessage) {
+  public LeadFormCommon completionMessage(@javax.annotation.Nullable String completionMessage) {
     this.completionMessage = completionMessage;
     return this;
   }
@@ -162,12 +170,12 @@ public class LeadFormCommon {
     return completionMessage;
   }
 
-  public void setCompletionMessage(String completionMessage) {
+  public void setCompletionMessage(@javax.annotation.Nullable String completionMessage) {
     this.completionMessage = completionMessage;
   }
 
 
-  public LeadFormCommon status(LeadFormStatus status) {
+  public LeadFormCommon status(@javax.annotation.Nullable LeadFormStatus status) {
     this.status = status;
     return this;
   }
@@ -181,12 +189,12 @@ public class LeadFormCommon {
     return status;
   }
 
-  public void setStatus(LeadFormStatus status) {
+  public void setStatus(@javax.annotation.Nullable LeadFormStatus status) {
     this.status = status;
   }
 
 
-  public LeadFormCommon disclosureLanguage(String disclosureLanguage) {
+  public LeadFormCommon disclosureLanguage(@javax.annotation.Nullable String disclosureLanguage) {
     this.disclosureLanguage = disclosureLanguage;
     return this;
   }
@@ -200,12 +208,12 @@ public class LeadFormCommon {
     return disclosureLanguage;
   }
 
-  public void setDisclosureLanguage(String disclosureLanguage) {
+  public void setDisclosureLanguage(@javax.annotation.Nullable String disclosureLanguage) {
     this.disclosureLanguage = disclosureLanguage;
   }
 
 
-  public LeadFormCommon questions(List<LeadFormQuestion> questions) {
+  public LeadFormCommon questions(@javax.annotation.Nullable List<LeadFormQuestion> questions) {
     this.questions = questions;
     return this;
   }
@@ -227,12 +235,12 @@ public class LeadFormCommon {
     return questions;
   }
 
-  public void setQuestions(List<LeadFormQuestion> questions) {
+  public void setQuestions(@javax.annotation.Nullable List<LeadFormQuestion> questions) {
     this.questions = questions;
   }
 
 
-  public LeadFormCommon policyLinks(List<LeadFormCommonPolicyLinksInner> policyLinks) {
+  public LeadFormCommon policyLinks(@javax.annotation.Nullable List<LeadFormCommonPolicyLinksInner> policyLinks) {
     this.policyLinks = policyLinks;
     return this;
   }
@@ -254,7 +262,7 @@ public class LeadFormCommon {
     return policyLinks;
   }
 
-  public void setPolicyLinks(List<LeadFormCommonPolicyLinksInner> policyLinks) {
+  public void setPolicyLinks(@javax.annotation.Nullable List<LeadFormCommonPolicyLinksInner> policyLinks) {
     this.policyLinks = policyLinks;
   }
 

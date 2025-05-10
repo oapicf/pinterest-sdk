@@ -15,7 +15,9 @@
 export type AdsAnalyticsFilterOperator = 'LESS_THAN' | 'GREATER_THAN';
 
 export const AdsAnalyticsFilterOperator = {
+
     LessThan: 'LESS_THAN' as AdsAnalyticsFilterOperator,
+
     GreaterThan: 'GREATER_THAN' as AdsAnalyticsFilterOperator
 };
 

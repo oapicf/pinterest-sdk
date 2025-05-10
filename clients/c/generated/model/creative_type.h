@@ -24,9 +24,9 @@ char* creative_type_creative_type_ToString(pinterest_rest_api_creative_type__e c
 
 pinterest_rest_api_creative_type__e creative_type_creative_type_FromString(char* creative_type);
 
-//cJSON *creative_type_creative_type_convertToJSON(pinterest_rest_api_creative_type__e creative_type);
+cJSON *creative_type_convertToJSON(pinterest_rest_api_creative_type__e creative_type);
 
-//pinterest_rest_api_creative_type__e creative_type_creative_type_parseFromJSON(cJSON *creative_typeJSON);
+pinterest_rest_api_creative_type__e creative_type_parseFromJSON(cJSON *creative_typeJSON);
 
 #endif /* _creative_type_H_ */
 

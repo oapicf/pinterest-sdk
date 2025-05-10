@@ -15,6 +15,7 @@ import org.openapitools.server.models.EntityStatus
 import org.openapitools.server.models.ObjectiveType
 import org.openapitools.server.models.TrackingUrls
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param adAccountId Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.
@@ -31,6 +32,7 @@ import org.openapitools.server.models.TrackingUrls
  * @param defaultAdGroupBudgetInMicroCurrency When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
  * @param isAutomatedCampaign Specifies whether the campaign was created in the automated campaign flow
  */
+@Serializable
 data class CampaignCreateRequest(
     /* Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema. */
     val adAccountId: kotlin.String,
@@ -55,5 +57,5 @@ data class CampaignCreateRequest(
     val defaultAdGroupBudgetInMicroCurrency: kotlin.Int? = null,
     /* Specifies whether the campaign was created in the automated campaign flow */
     val isAutomatedCampaign: kotlin.Boolean? = false
-) 
+)
 

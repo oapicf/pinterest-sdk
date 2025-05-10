@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param title The name of the creative assets.
@@ -27,6 +28,7 @@ package org.openapitools.server.models
  * @param customLabel4 Custom grouping of creative assets.
  * @param visibility Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
  */
+@Serializable
 data class CatalogsUpdatableCreativeAssetsAttributes(
     /* The name of the creative assets. */
     val title: kotlin.String? = null,
@@ -52,5 +54,5 @@ data class CatalogsUpdatableCreativeAssetsAttributes(
     val customLabel4: kotlin.String? = null,
     /* Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’. */
     val visibility: kotlin.String? = null
-) 
+)
 

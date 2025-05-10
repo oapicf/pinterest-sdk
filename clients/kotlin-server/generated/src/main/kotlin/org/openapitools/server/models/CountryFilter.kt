@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsProductGroupMultipleCountriesCriteria
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param COUNTRY 
  */
+@Serializable
 data class CountryFilter(
     val COUNTRY: CatalogsProductGroupMultipleCountriesCriteria
-) 
+)
 

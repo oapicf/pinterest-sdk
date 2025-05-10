@@ -65,11 +65,11 @@ export function AdvancedAuctionItemsGetRequestFromJSONTyped(json: any, ignoreDis
     };
 }
 
-  export function AdvancedAuctionItemsGetRequestToJSON(json: any): AdvancedAuctionItemsGetRequest {
-      return AdvancedAuctionItemsGetRequestToJSONTyped(json, false);
-  }
+export function AdvancedAuctionItemsGetRequestToJSON(json: any): AdvancedAuctionItemsGetRequest {
+    return AdvancedAuctionItemsGetRequestToJSONTyped(json, false);
+}
 
-  export function AdvancedAuctionItemsGetRequestToJSONTyped(value?: AdvancedAuctionItemsGetRequest | null, ignoreDiscriminator: boolean = false): any {
+export function AdvancedAuctionItemsGetRequestToJSONTyped(value?: AdvancedAuctionItemsGetRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

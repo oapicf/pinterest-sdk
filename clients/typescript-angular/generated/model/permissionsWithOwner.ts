@@ -12,14 +12,23 @@
 export type PermissionsWithOwner = 'ADMIN' | 'ANALYST' | 'FINANCE_MANAGER' | 'AUDIENCE_MANAGER' | 'CAMPAIGN_MANAGER' | 'CATALOGS_MANAGER' | 'CATALOGS_VIEWER' | 'PROFILE_PUBLISHER' | 'OWNER';
 
 export const PermissionsWithOwner = {
+
     Admin: 'ADMIN' as PermissionsWithOwner,
+
     Analyst: 'ANALYST' as PermissionsWithOwner,
+
     FinanceManager: 'FINANCE_MANAGER' as PermissionsWithOwner,
+
     AudienceManager: 'AUDIENCE_MANAGER' as PermissionsWithOwner,
+
     CampaignManager: 'CAMPAIGN_MANAGER' as PermissionsWithOwner,
+
     CatalogsManager: 'CATALOGS_MANAGER' as PermissionsWithOwner,
+
     CatalogsViewer: 'CATALOGS_VIEWER' as PermissionsWithOwner,
+
     ProfilePublisher: 'PROFILE_PUBLISHER' as PermissionsWithOwner,
+
     Owner: 'OWNER' as PermissionsWithOwner
 };
 

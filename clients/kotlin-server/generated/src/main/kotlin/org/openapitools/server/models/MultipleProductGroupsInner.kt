@@ -17,6 +17,7 @@ import org.openapitools.server.models.CatalogsProductGroupFiltersRequest
 import org.openapitools.server.models.CatalogsVerticalProductGroupCreateRequest
 import org.openapitools.server.models.Country
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param name 
@@ -25,6 +26,7 @@ import org.openapitools.server.models.Country
  * @param description 
  * @param isFeatured boolean indicator of whether the product group is being featured or not
  */
+@Serializable
 data class MultipleProductGroupsInner(
     val name: kotlin.String,
     val filters: CatalogsProductGroupFiltersRequest,
@@ -38,5 +40,5 @@ data class MultipleProductGroupsInner(
     val description: kotlin.String? = null,
     /* boolean indicator of whether the product group is being featured or not */
     val isFeatured: kotlin.Boolean? = false
-) 
+)
 

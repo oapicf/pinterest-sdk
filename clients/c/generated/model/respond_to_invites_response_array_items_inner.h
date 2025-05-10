@@ -24,9 +24,10 @@ typedef struct respond_to_invites_response_array_items_inner_t {
     struct invite_exception_response_t *exception; //model
     struct base_invite_data_response_t *invite; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } respond_to_invites_response_array_items_inner_t;
 
-respond_to_invites_response_array_items_inner_t *respond_to_invites_response_array_items_inner_create(
+__attribute__((deprecated)) respond_to_invites_response_array_items_inner_t *respond_to_invites_response_array_items_inner_create(
     invite_exception_response_t *exception,
     base_invite_data_response_t *invite
 );

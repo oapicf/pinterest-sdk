@@ -5,7 +5,7 @@
 
 
 
-create_invites_results_response_array_t *create_invites_results_response_array_create(
+static create_invites_results_response_array_t *create_invites_results_response_array_create_internal(
     list_t *items
     ) {
     create_invites_results_response_array_t *create_invites_results_response_array_local_var = malloc(sizeof(create_invites_results_response_array_t));
@@ -14,12 +14,24 @@ create_invites_results_response_array_t *create_invites_results_response_array_c
     }
     create_invites_results_response_array_local_var->items = items;
 
+    create_invites_results_response_array_local_var->_library_owned = 1;
     return create_invites_results_response_array_local_var;
 }
 
+__attribute__((deprecated)) create_invites_results_response_array_t *create_invites_results_response_array_create(
+    list_t *items
+    ) {
+    return create_invites_results_response_array_create_internal (
+        items
+        );
+}
 
 void create_invites_results_response_array_free(create_invites_results_response_array_t *create_invites_results_response_array) {
     if(NULL == create_invites_results_response_array){
+        return ;
+    }
+    if(create_invites_results_response_array->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "create_invites_results_response_array_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -72,6 +84,9 @@ create_invites_results_response_array_t *create_invites_results_response_array_p
 
     // create_invites_results_response_array->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(create_invites_results_response_arrayJSON, "items");
+    if (cJSON_IsNull(items)) {
+        items = NULL;
+    }
     if (items) { 
     cJSON *items_local_nonprimitive = NULL;
     if(!cJSON_IsArray(items)){
@@ -92,7 +107,7 @@ create_invites_results_response_array_t *create_invites_results_response_array_p
     }
 
 
-    create_invites_results_response_array_local_var = create_invites_results_response_array_create (
+    create_invites_results_response_array_local_var = create_invites_results_response_array_create_internal (
         items ? itemsList : NULL
         );
 

@@ -19,12 +19,24 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ConversionEventsUserData_anyOf_2")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConversionEventsUserDataAnyOf2   {
   private @Valid List<String> em = new ArrayList<>();
   private @Valid List<String> hashedMaids = new ArrayList<>();
   private String clientIpAddress;
   private String clientUserAgent;
+
+  public ConversionEventsUserDataAnyOf2() {
+  }
+
+  @JsonCreator
+  public ConversionEventsUserDataAnyOf2(
+    @JsonProperty(required = true, value = "client_ip_address") String clientIpAddress,
+    @JsonProperty(required = true, value = "client_user_agent") String clientUserAgent
+  ) {
+    this.clientIpAddress = clientIpAddress;
+    this.clientUserAgent = clientUserAgent;
+  }
 
   /**
    * Sha256 hashes of lowercase version of user&#39;s email addresses. Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
@@ -108,12 +120,12 @@ public class ConversionEventsUserDataAnyOf2   {
 
   
   @ApiModelProperty(example = "216.3.128.12", required = true, value = "The user's IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.")
-  @JsonProperty("client_ip_address")
+  @JsonProperty(required = true, value = "client_ip_address")
   @NotNull public String getClientIpAddress() {
     return clientIpAddress;
   }
 
-  @JsonProperty("client_ip_address")
+  @JsonProperty(required = true, value = "client_ip_address")
   public void setClientIpAddress(String clientIpAddress) {
     this.clientIpAddress = clientIpAddress;
   }
@@ -128,12 +140,12 @@ public class ConversionEventsUserDataAnyOf2   {
 
   
   @ApiModelProperty(example = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36", required = true, value = "The user agent string of the user's web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.")
-  @JsonProperty("client_user_agent")
+  @JsonProperty(required = true, value = "client_user_agent")
   @NotNull public String getClientUserAgent() {
     return clientUserAgent;
   }
 
-  @JsonProperty("client_user_agent")
+  @JsonProperty(required = true, value = "client_user_agent")
   public void setClientUserAgent(String clientUserAgent) {
     this.clientUserAgent = clientUserAgent;
   }

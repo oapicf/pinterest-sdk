@@ -21,10 +21,20 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ad_accounts_subscriptions_get_list_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdAccountsSubscriptionsGetList200Response   {
   private @Valid List<@Valid AdAccountGetSubscriptionResponse> items = new ArrayList<>();
   private String bookmark;
+
+  public AdAccountsSubscriptionsGetList200Response() {
+  }
+
+  @JsonCreator
+  public AdAccountsSubscriptionsGetList200Response(
+    @JsonProperty(required = true, value = "items") List<@Valid AdAccountGetSubscriptionResponse> items
+  ) {
+    this.items = items;
+  }
 
   /**
    **/
@@ -35,12 +45,12 @@ public class AdAccountsSubscriptionsGetList200Response   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   @NotNull @Valid public List<@Valid AdAccountGetSubscriptionResponse> getItems() {
     return items;
   }
 
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   public void setItems(List<@Valid AdAccountGetSubscriptionResponse> items) {
     this.items = items;
   }

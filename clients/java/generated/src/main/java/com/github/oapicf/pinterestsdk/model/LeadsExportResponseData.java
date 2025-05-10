@@ -50,20 +50,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * LeadsExportResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class LeadsExportResponseData {
   public static final String SERIALIZED_NAME_EXPORT_STATUS = "export_status";
   @SerializedName(SERIALIZED_NAME_EXPORT_STATUS)
+  @javax.annotation.Nullable
   private LeadsExportStatus exportStatus;
 
   public static final String SERIALIZED_NAME_DOWNLOAD_URL = "download_url";
   @SerializedName(SERIALIZED_NAME_DOWNLOAD_URL)
+  @javax.annotation.Nullable
   private String downloadUrl;
 
   public LeadsExportResponseData() {
   }
 
-  public LeadsExportResponseData exportStatus(LeadsExportStatus exportStatus) {
+  public LeadsExportResponseData exportStatus(@javax.annotation.Nullable LeadsExportStatus exportStatus) {
     this.exportStatus = exportStatus;
     return this;
   }
@@ -77,12 +79,12 @@ public class LeadsExportResponseData {
     return exportStatus;
   }
 
-  public void setExportStatus(LeadsExportStatus exportStatus) {
+  public void setExportStatus(@javax.annotation.Nullable LeadsExportStatus exportStatus) {
     this.exportStatus = exportStatus;
   }
 
 
-  public LeadsExportResponseData downloadUrl(String downloadUrl) {
+  public LeadsExportResponseData downloadUrl(@javax.annotation.Nullable String downloadUrl) {
     this.downloadUrl = downloadUrl;
     return this;
   }
@@ -96,7 +98,7 @@ public class LeadsExportResponseData {
     return downloadUrl;
   }
 
-  public void setDownloadUrl(String downloadUrl) {
+  public void setDownloadUrl(@javax.annotation.Nullable String downloadUrl) {
     this.downloadUrl = downloadUrl;
   }
 

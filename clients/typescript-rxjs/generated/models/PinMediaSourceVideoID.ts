@@ -65,7 +65,7 @@ export enum PinMediaSourceVideoIDSourceTypeEnum {
  * @enum {string}
  */
 export enum PinMediaSourceVideoIDCoverImageContentTypeEnum {
-    Jpeg = 'image/jpeg',
-    Png = 'image/png'
+    ImageJpeg = 'image/jpeg',
+    ImagePng = 'image/png'
 }
 

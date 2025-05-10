@@ -17,10 +17,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "This field is **OPTIONAL**. Use this if your feed file requires username and password.")
 @JsonTypeName("CatalogsFeedCredentials")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsFeedCredentials   {
   private String password;
   private String username;
+
+  public CatalogsFeedCredentials() {
+  }
+
+  @JsonCreator
+  public CatalogsFeedCredentials(
+    @JsonProperty(required = true, value = "password") String password,
+    @JsonProperty(required = true, value = "username") String username
+  ) {
+    this.password = password;
+    this.username = username;
+  }
 
   /**
    * The required password for downloading a feed.
@@ -32,12 +44,12 @@ public class CatalogsFeedCredentials   {
 
   
   @ApiModelProperty(required = true, value = "The required password for downloading a feed.")
-  @JsonProperty("password")
+  @JsonProperty(required = true, value = "password")
   @NotNull public String getPassword() {
     return password;
   }
 
-  @JsonProperty("password")
+  @JsonProperty(required = true, value = "password")
   public void setPassword(String password) {
     this.password = password;
   }
@@ -52,12 +64,12 @@ public class CatalogsFeedCredentials   {
 
   
   @ApiModelProperty(required = true, value = "The required username for downloading a feed.")
-  @JsonProperty("username")
+  @JsonProperty(required = true, value = "username")
   @NotNull public String getUsername() {
     return username;
   }
 
-  @JsonProperty("username")
+  @JsonProperty(required = true, value = "username")
   public void setUsername(String username) {
     this.username = username;
   }

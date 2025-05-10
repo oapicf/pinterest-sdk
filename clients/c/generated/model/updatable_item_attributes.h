@@ -65,9 +65,10 @@ typedef struct updatable_item_attributes_t {
     list_t *variant_names; //primitive container
     list_t *variant_values; //primitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } updatable_item_attributes_t;
 
-updatable_item_attributes_t *updatable_item_attributes_create(
+__attribute__((deprecated)) updatable_item_attributes_t *updatable_item_attributes_create(
     char *ad_link,
     int adult,
     char *age_group,

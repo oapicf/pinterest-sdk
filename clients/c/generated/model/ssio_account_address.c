@@ -5,7 +5,7 @@
 
 
 
-ssio_account_address_t *ssio_account_address_create(
+static ssio_account_address_t *ssio_account_address_create_internal(
     char *display,
     char *purpose,
     char *address_id,
@@ -20,12 +20,30 @@ ssio_account_address_t *ssio_account_address_create(
     ssio_account_address_local_var->address_id = address_id;
     ssio_account_address_local_var->order_legal_entity = order_legal_entity;
 
+    ssio_account_address_local_var->_library_owned = 1;
     return ssio_account_address_local_var;
 }
 
+__attribute__((deprecated)) ssio_account_address_t *ssio_account_address_create(
+    char *display,
+    char *purpose,
+    char *address_id,
+    char *order_legal_entity
+    ) {
+    return ssio_account_address_create_internal (
+        display,
+        purpose,
+        address_id,
+        order_legal_entity
+        );
+}
 
 void ssio_account_address_free(ssio_account_address_t *ssio_account_address) {
     if(NULL == ssio_account_address){
+        return ;
+    }
+    if(ssio_account_address->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ssio_account_address_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -96,6 +114,9 @@ ssio_account_address_t *ssio_account_address_parseFromJSON(cJSON *ssio_account_a
 
     // ssio_account_address->display
     cJSON *display = cJSON_GetObjectItemCaseSensitive(ssio_account_addressJSON, "display");
+    if (cJSON_IsNull(display)) {
+        display = NULL;
+    }
     if (display) { 
     if(!cJSON_IsString(display) && !cJSON_IsNull(display))
     {
@@ -105,6 +126,9 @@ ssio_account_address_t *ssio_account_address_parseFromJSON(cJSON *ssio_account_a
 
     // ssio_account_address->purpose
     cJSON *purpose = cJSON_GetObjectItemCaseSensitive(ssio_account_addressJSON, "purpose");
+    if (cJSON_IsNull(purpose)) {
+        purpose = NULL;
+    }
     if (purpose) { 
     if(!cJSON_IsString(purpose) && !cJSON_IsNull(purpose))
     {
@@ -114,6 +138,9 @@ ssio_account_address_t *ssio_account_address_parseFromJSON(cJSON *ssio_account_a
 
     // ssio_account_address->address_id
     cJSON *address_id = cJSON_GetObjectItemCaseSensitive(ssio_account_addressJSON, "address_id");
+    if (cJSON_IsNull(address_id)) {
+        address_id = NULL;
+    }
     if (address_id) { 
     if(!cJSON_IsString(address_id) && !cJSON_IsNull(address_id))
     {
@@ -123,6 +150,9 @@ ssio_account_address_t *ssio_account_address_parseFromJSON(cJSON *ssio_account_a
 
     // ssio_account_address->order_legal_entity
     cJSON *order_legal_entity = cJSON_GetObjectItemCaseSensitive(ssio_account_addressJSON, "order_legal_entity");
+    if (cJSON_IsNull(order_legal_entity)) {
+        order_legal_entity = NULL;
+    }
     if (order_legal_entity) { 
     if(!cJSON_IsString(order_legal_entity) && !cJSON_IsNull(order_legal_entity))
     {
@@ -131,7 +161,7 @@ ssio_account_address_t *ssio_account_address_parseFromJSON(cJSON *ssio_account_a
     }
 
 
-    ssio_account_address_local_var = ssio_account_address_create (
+    ssio_account_address_local_var = ssio_account_address_create_internal (
         display && !cJSON_IsNull(display) ? strdup(display->valuestring) : NULL,
         purpose && !cJSON_IsNull(purpose) ? strdup(purpose->valuestring) : NULL,
         address_id && !cJSON_IsNull(address_id) ? strdup(address_id->valuestring) : NULL,

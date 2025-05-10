@@ -2823,7 +2823,7 @@
               <xs:documentation>Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="0" default="ConversionReportTimeType.AD_ACTION" name="conversion_report_time" type="schemas:ConversionReportTimeType">
+          <xs:element minOccurs="0" default="ConversionReportTimeType.TIME_OF_AD_ACTION" name="conversion_report_time" type="schemas:ConversionReportTimeType">
             <xs:annotation>
               <xs:documentation>The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.</xs:documentation>
             </xs:annotation>
@@ -20962,8 +20962,8 @@
       </xs:simpleType>
       <xs:simpleType name="Conversion_report_time">
         <xs:restriction base="xs:string">
-          <xs:enumeration value="AD_ACTION" />
-          <xs:enumeration value="CONVERSION" />
+          <xs:enumeration value="TIME_OF_AD_ACTION" />
+          <xs:enumeration value="TIME_OF_CONVERSION" />
         </xs:restriction>
       </xs:simpleType>
       <xs:simpleType name="Columns">
@@ -21153,8 +21153,8 @@
       </xs:simpleType>
       <xs:simpleType name="Conversion_report_time">
         <xs:restriction base="xs:string">
-          <xs:enumeration value="AD_ACTION" />
-          <xs:enumeration value="CONVERSION" />
+          <xs:enumeration value="TIME_OF_AD_ACTION" />
+          <xs:enumeration value="TIME_OF_CONVERSION" />
         </xs:restriction>
       </xs:simpleType>
       <xs:simpleType name="Order">
@@ -21350,8 +21350,8 @@
       </xs:simpleType>
       <xs:simpleType name="Conversion_report_time">
         <xs:restriction base="xs:string">
-          <xs:enumeration value="AD_ACTION" />
-          <xs:enumeration value="CONVERSION" />
+          <xs:enumeration value="TIME_OF_AD_ACTION" />
+          <xs:enumeration value="TIME_OF_CONVERSION" />
         </xs:restriction>
       </xs:simpleType>
       <xs:simpleType name="Entity_statuses">
@@ -21556,8 +21556,8 @@
       </xs:simpleType>
       <xs:simpleType name="Conversion_report_time">
         <xs:restriction base="xs:string">
-          <xs:enumeration value="AD_ACTION" />
-          <xs:enumeration value="CONVERSION" />
+          <xs:enumeration value="TIME_OF_AD_ACTION" />
+          <xs:enumeration value="TIME_OF_CONVERSION" />
         </xs:restriction>
       </xs:simpleType>
       <xs:simpleType name="Columns">
@@ -21747,8 +21747,8 @@
       </xs:simpleType>
       <xs:simpleType name="Conversion_report_time">
         <xs:restriction base="xs:string">
-          <xs:enumeration value="AD_ACTION" />
-          <xs:enumeration value="CONVERSION" />
+          <xs:enumeration value="TIME_OF_AD_ACTION" />
+          <xs:enumeration value="TIME_OF_CONVERSION" />
         </xs:restriction>
       </xs:simpleType>
       <xs:simpleType name="Columns">
@@ -21938,8 +21938,8 @@
       </xs:simpleType>
       <xs:simpleType name="Conversion_report_time">
         <xs:restriction base="xs:string">
-          <xs:enumeration value="AD_ACTION" />
-          <xs:enumeration value="CONVERSION" />
+          <xs:enumeration value="TIME_OF_AD_ACTION" />
+          <xs:enumeration value="TIME_OF_CONVERSION" />
         </xs:restriction>
       </xs:simpleType>
       <xs:simpleType name="Entity_statuses">
@@ -22210,8 +22210,8 @@
       </xs:simpleType>
       <xs:simpleType name="Conversion_report_time">
         <xs:restriction base="xs:string">
-          <xs:enumeration value="AD_ACTION" />
-          <xs:enumeration value="CONVERSION" />
+          <xs:enumeration value="TIME_OF_AD_ACTION" />
+          <xs:enumeration value="TIME_OF_CONVERSION" />
         </xs:restriction>
       </xs:simpleType>
       <xs:simpleType name="Columns">
@@ -22401,8 +22401,8 @@
       </xs:simpleType>
       <xs:simpleType name="Conversion_report_time">
         <xs:restriction base="xs:string">
-          <xs:enumeration value="AD_ACTION" />
-          <xs:enumeration value="CONVERSION" />
+          <xs:enumeration value="TIME_OF_AD_ACTION" />
+          <xs:enumeration value="TIME_OF_CONVERSION" />
         </xs:restriction>
       </xs:simpleType>
       <xs:simpleType name="Entity_statuses">
@@ -22745,8 +22745,8 @@
       </xs:simpleType>
       <xs:simpleType name="Conversion_report_time">
         <xs:restriction base="xs:string">
-          <xs:enumeration value="AD_ACTION" />
-          <xs:enumeration value="CONVERSION" />
+          <xs:enumeration value="TIME_OF_AD_ACTION" />
+          <xs:enumeration value="TIME_OF_CONVERSION" />
         </xs:restriction>
       </xs:simpleType>
       <xs:simpleType name="Report_type">

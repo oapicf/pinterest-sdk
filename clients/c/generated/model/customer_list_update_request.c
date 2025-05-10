@@ -5,7 +5,7 @@
 
 
 
-customer_list_update_request_t *customer_list_update_request_create(
+static customer_list_update_request_t *customer_list_update_request_create_internal(
     char *records,
     user_list_operation_type_t *operation_type,
     exception_t *exceptions
@@ -18,12 +18,28 @@ customer_list_update_request_t *customer_list_update_request_create(
     customer_list_update_request_local_var->operation_type = operation_type;
     customer_list_update_request_local_var->exceptions = exceptions;
 
+    customer_list_update_request_local_var->_library_owned = 1;
     return customer_list_update_request_local_var;
 }
 
+__attribute__((deprecated)) customer_list_update_request_t *customer_list_update_request_create(
+    char *records,
+    user_list_operation_type_t *operation_type,
+    exception_t *exceptions
+    ) {
+    return customer_list_update_request_create_internal (
+        records,
+        operation_type,
+        exceptions
+        );
+}
 
 void customer_list_update_request_free(customer_list_update_request_t *customer_list_update_request) {
     if(NULL == customer_list_update_request){
+        return ;
+    }
+    if(customer_list_update_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "customer_list_update_request_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -97,6 +113,9 @@ customer_list_update_request_t *customer_list_update_request_parseFromJSON(cJSON
 
     // customer_list_update_request->records
     cJSON *records = cJSON_GetObjectItemCaseSensitive(customer_list_update_requestJSON, "records");
+    if (cJSON_IsNull(records)) {
+        records = NULL;
+    }
     if (!records) {
         goto end;
     }
@@ -109,6 +128,9 @@ customer_list_update_request_t *customer_list_update_request_parseFromJSON(cJSON
 
     // customer_list_update_request->operation_type
     cJSON *operation_type = cJSON_GetObjectItemCaseSensitive(customer_list_update_requestJSON, "operation_type");
+    if (cJSON_IsNull(operation_type)) {
+        operation_type = NULL;
+    }
     if (!operation_type) {
         goto end;
     }
@@ -118,13 +140,16 @@ customer_list_update_request_t *customer_list_update_request_parseFromJSON(cJSON
 
     // customer_list_update_request->exceptions
     cJSON *exceptions = cJSON_GetObjectItemCaseSensitive(customer_list_update_requestJSON, "exceptions");
+    if (cJSON_IsNull(exceptions)) {
+        exceptions = NULL;
+    }
     object_t *exceptions_local_object = NULL;
     if (exceptions) { 
     exceptions_local_object = object_parseFromJSON(exceptions); //object
     }
 
 
-    customer_list_update_request_local_var = customer_list_update_request_create (
+    customer_list_update_request_local_var = customer_list_update_request_create_internal (
         strdup(records->valuestring),
         operation_type_local_nonprim,
         exceptions ? exceptions_local_object : NULL

@@ -15,7 +15,9 @@
 export type DataOutputFormat = 'JSON' | 'CSV';
 
 export const DataOutputFormat = {
+
     Json: 'JSON' as DataOutputFormat,
+
     Csv: 'CSV' as DataOutputFormat
 };
 

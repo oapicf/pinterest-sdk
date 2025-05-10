@@ -69,7 +69,7 @@ class BookClosedResponse
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->conversionMetricsReady = array_key_exists('conversionMetricsReady', $data) ? $data['conversionMetricsReady'] : $this->conversionMetricsReady;

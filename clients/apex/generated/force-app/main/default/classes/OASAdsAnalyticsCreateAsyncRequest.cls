@@ -156,8 +156,8 @@ public class OASAdsAnalyticsCreateAsyncRequest implements OAS.MappedProperties {
      * Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
      */
     public enum PrimarySortEnum {
-        ID,
-        DATE
+        BY_ID,
+        BY_DATE
     }
 
     /**

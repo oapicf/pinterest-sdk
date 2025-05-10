@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.BulkReportingJobStatus
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param reportStatus 
@@ -20,10 +21,11 @@ import org.openapitools.server.models.BulkReportingJobStatus
  * @param message 
  * @param status 
  */
+@Serializable
 data class CreateMMMReportResponseData(
     val reportStatus: BulkReportingJobStatus? = null,
     val token: kotlin.String? = null,
     val message: kotlin.String? = null,
     val status: kotlin.String? = null
-) 
+)
 

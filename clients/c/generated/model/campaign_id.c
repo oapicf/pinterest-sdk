@@ -5,7 +5,7 @@
 
 
 
-campaign_id_t *campaign_id_create(
+static campaign_id_t *campaign_id_create_internal(
     char *id
     ) {
     campaign_id_t *campaign_id_local_var = malloc(sizeof(campaign_id_t));
@@ -14,12 +14,24 @@ campaign_id_t *campaign_id_create(
     }
     campaign_id_local_var->id = id;
 
+    campaign_id_local_var->_library_owned = 1;
     return campaign_id_local_var;
 }
 
+__attribute__((deprecated)) campaign_id_t *campaign_id_create(
+    char *id
+    ) {
+    return campaign_id_create_internal (
+        id
+        );
+}
 
 void campaign_id_free(campaign_id_t *campaign_id) {
     if(NULL == campaign_id){
+        return ;
+    }
+    if(campaign_id->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "campaign_id_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -54,6 +66,9 @@ campaign_id_t *campaign_id_parseFromJSON(cJSON *campaign_idJSON){
 
     // campaign_id->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(campaign_idJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -62,7 +77,7 @@ campaign_id_t *campaign_id_parseFromJSON(cJSON *campaign_idJSON){
     }
 
 
-    campaign_id_local_var = campaign_id_create (
+    campaign_id_local_var = campaign_id_create_internal (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL
         );
 

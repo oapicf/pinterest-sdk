@@ -20,11 +20,25 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("UpdateMemberAssetAccessBody_accesses_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class UpdateMemberAssetAccessBodyAccessesInner   {
   private String assetId;
   private String memberId;
   private @Valid List<Permissions> permissions = new ArrayList<>();
+
+  public UpdateMemberAssetAccessBodyAccessesInner() {
+  }
+
+  @JsonCreator
+  public UpdateMemberAssetAccessBodyAccessesInner(
+    @JsonProperty(required = true, value = "asset_id") String assetId,
+    @JsonProperty(required = true, value = "member_id") String memberId,
+    @JsonProperty(required = true, value = "permissions") List<Permissions> permissions
+  ) {
+    this.assetId = assetId;
+    this.memberId = memberId;
+    this.permissions = permissions;
+  }
 
   /**
    * Id of the asset to update.
@@ -36,12 +50,12 @@ public class UpdateMemberAssetAccessBodyAccessesInner   {
 
   
   @ApiModelProperty(example = "549755885175", required = true, value = "Id of the asset to update.")
-  @JsonProperty("asset_id")
+  @JsonProperty(required = true, value = "asset_id")
   @NotNull  @Pattern(regexp="^\\d+$") @Size(max=25)public String getAssetId() {
     return assetId;
   }
 
-  @JsonProperty("asset_id")
+  @JsonProperty(required = true, value = "asset_id")
   public void setAssetId(String assetId) {
     this.assetId = assetId;
   }
@@ -56,12 +70,12 @@ public class UpdateMemberAssetAccessBodyAccessesInner   {
 
   
   @ApiModelProperty(example = "140943737684417", required = true, value = "Unique identifier of the member on which to perform the update")
-  @JsonProperty("member_id")
+  @JsonProperty(required = true, value = "member_id")
   @NotNull  @Pattern(regexp="^\\d+$") @Size(max=25)public String getMemberId() {
     return memberId;
   }
 
-  @JsonProperty("member_id")
+  @JsonProperty(required = true, value = "member_id")
   public void setMemberId(String memberId) {
     this.memberId = memberId;
   }
@@ -76,12 +90,12 @@ public class UpdateMemberAssetAccessBodyAccessesInner   {
 
   
   @ApiModelProperty(example = "[\"ANALYST\",\"ADMIN\"]", required = true, value = "A non-empty array of permissions to assign to the member.")
-  @JsonProperty("permissions")
+  @JsonProperty(required = true, value = "permissions")
   @NotNull  @Size(min=1,max=50)public List<Permissions> getPermissions() {
     return permissions;
   }
 
-  @JsonProperty("permissions")
+  @JsonProperty(required = true, value = "permissions")
   public void setPermissions(List<Permissions> permissions) {
     this.permissions = permissions;
   }

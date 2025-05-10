@@ -22,9 +22,10 @@ typedef struct availability_filter_t availability_filter_t;
 typedef struct availability_filter_t {
     catalogs_product_group_multiple_string_criteria_t *availability; //object
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } availability_filter_t;
 
-availability_filter_t *availability_filter_create(
+__attribute__((deprecated)) availability_filter_t *availability_filter_create(
     catalogs_product_group_multiple_string_criteria_t *availability
 );
 

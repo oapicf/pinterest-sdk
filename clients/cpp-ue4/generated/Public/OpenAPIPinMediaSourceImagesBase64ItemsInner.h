@@ -35,8 +35,8 @@ public:
 	TOptional<FString> Link;
 	enum class ContentTypeEnum
 	{
-		Jpeg,
-		Png,
+		ImageJpeg,
+		ImagePng,
   	};
 
 	static FString EnumToString(const ContentTypeEnum& EnumValue);

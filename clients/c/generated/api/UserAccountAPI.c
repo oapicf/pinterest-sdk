@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 // Functions for enum FROMCLAIMEDCONTENT for UserAccountAPI_userAccountAnalytics
 
@@ -1228,11 +1223,14 @@ UserAccountAPI_boardsUserFollowsList(apiClient_t *apiClient, char *bookmark, int
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/user_account/following/boards")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/user_account/following/boards");
+    char *localVarPath = strdup("/user_account/following/boards");
+
 
 
 
@@ -1295,6 +1293,7 @@ UserAccountAPI_boardsUserFollowsList(apiClient_t *apiClient, char *bookmark, int
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -1310,11 +1309,14 @@ UserAccountAPI_boardsUserFollowsList(apiClient_t *apiClient, char *bookmark, int
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    boards_user_follows_list_200_response_t *elementToReturn = boards_user_follows_list_200_response_parseFromJSON(UserAccountAPIlocalVarJSON);
-    cJSON_Delete(UserAccountAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    boards_user_follows_list_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = boards_user_follows_list_200_response_parseFromJSON(UserAccountAPIlocalVarJSON);
+        cJSON_Delete(UserAccountAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1397,15 +1399,20 @@ UserAccountAPI_followUserUpdate(apiClient_t *apiClient, char *username, follow_u
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/user_account/following/{username}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/user_account/following/{username}");
+    char *localVarPath = strdup("/user_account/following/{username}");
+
+    if(!username)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_username = strlen(username)+3 + strlen("{ username }");
+    long sizeOfPathParams_username = strlen(username)+3 + sizeof("{ username }") - 1;
     if(username == NULL) {
         goto end;
     }
@@ -1420,9 +1427,10 @@ UserAccountAPI_followUserUpdate(apiClient_t *apiClient, char *username, follow_u
     cJSON *localVarSingleItemJSON_follow_user_request = NULL;
     if (follow_user_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_follow_user_request = follow_user_request_convertToJSON(follow_user_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_follow_user_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -1434,6 +1442,7 @@ UserAccountAPI_followUserUpdate(apiClient_t *apiClient, char *username, follow_u
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -1449,11 +1458,14 @@ UserAccountAPI_followUserUpdate(apiClient_t *apiClient, char *username, follow_u
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    user_summary_t *elementToReturn = user_summary_parseFromJSON(UserAccountAPIlocalVarJSON);
-    cJSON_Delete(UserAccountAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    user_summary_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = user_summary_parseFromJSON(UserAccountAPIlocalVarJSON);
+        cJSON_Delete(UserAccountAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1494,11 +1506,14 @@ UserAccountAPI_followersList(apiClient_t *apiClient, char *bookmark, int *page_s
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/user_account/followers")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/user_account/followers");
+    char *localVarPath = strdup("/user_account/followers");
+
 
 
 
@@ -1536,6 +1551,7 @@ UserAccountAPI_followersList(apiClient_t *apiClient, char *bookmark, int *page_s
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -1551,11 +1567,14 @@ UserAccountAPI_followersList(apiClient_t *apiClient, char *bookmark, int *page_s
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    followers_list_200_response_t *elementToReturn = followers_list_200_response_parseFromJSON(UserAccountAPIlocalVarJSON);
-    cJSON_Delete(UserAccountAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    followers_list_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = followers_list_200_response_parseFromJSON(UserAccountAPIlocalVarJSON);
+        cJSON_Delete(UserAccountAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1614,11 +1633,14 @@ UserAccountAPI_linkedBusinessAccountsGet(apiClient_t *apiClient)
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/user_account/businesses")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/user_account/businesses");
+    char *localVarPath = strdup("/user_account/businesses");
+
 
 
 
@@ -1631,6 +1653,7 @@ UserAccountAPI_linkedBusinessAccountsGet(apiClient_t *apiClient)
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -1641,24 +1664,27 @@ UserAccountAPI_linkedBusinessAccountsGet(apiClient_t *apiClient)
     //if (apiClient->response_code == 0) {
     //    printf("%s\n","Unexpected error");
     //}
-    cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    if(!cJSON_IsArray(UserAccountAPIlocalVarJSON)) {
-        return 0;//nonprimitive container
-    }
-    list_t *elementToReturn = list_createList();
-    cJSON *VarJSON;
-    cJSON_ArrayForEach(VarJSON, UserAccountAPIlocalVarJSON)
-    {
-        if(!cJSON_IsObject(VarJSON))
-        {
-           // return 0;
+    list_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        if(!cJSON_IsArray(UserAccountAPIlocalVarJSON)) {
+            return 0;//nonprimitive container
         }
-        char *localVarJSONToChar = cJSON_Print(VarJSON);
-        list_addElement(elementToReturn , localVarJSONToChar);
-    }
+        elementToReturn = list_createList();
+        cJSON *VarJSON;
+        cJSON_ArrayForEach(VarJSON, UserAccountAPIlocalVarJSON)
+        {
+            if(!cJSON_IsObject(VarJSON))
+            {
+               // return 0;
+            }
+            char *localVarJSONToChar = cJSON_Print(VarJSON);
+            list_addElement(elementToReturn , localVarJSONToChar);
+        }
 
-    cJSON_Delete( UserAccountAPIlocalVarJSON);
-    cJSON_Delete( VarJSON);
+        cJSON_Delete( UserAccountAPIlocalVarJSON);
+        cJSON_Delete( VarJSON);
+    }
     //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
@@ -1691,11 +1717,14 @@ UserAccountAPI_unverifyWebsiteDelete(apiClient_t *apiClient, char *website)
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/user_account/websites")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/user_account/websites");
+    char *localVarPath = strdup("/user_account/websites");
+
 
 
 
@@ -1720,6 +1749,7 @@ UserAccountAPI_unverifyWebsiteDelete(apiClient_t *apiClient, char *website)
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "DELETE");
 
     // uncomment below to debug the error response
@@ -1783,11 +1813,14 @@ UserAccountAPI_userAccountAnalytics(apiClient_t *apiClient, char start_date, cha
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/user_account/analytics")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/user_account/analytics");
+    char *localVarPath = strdup("/user_account/analytics");
+
 
 
 
@@ -1824,7 +1857,7 @@ UserAccountAPI_userAccountAnalytics(apiClient_t *apiClient, char start_date, cha
     {
         keyQuery_from_claimed_content = strdup("from_claimed_content");
         valueQuery_from_claimed_content = (from_claimed_content);
-        keyPairQuery_from_claimed_content = keyValuePair_create(keyQuery_from_claimed_content, (void *)strdup(userAccountAnalytics_FROMCLAIMEDCONTENT_ToString(
+        keyPairQuery_from_claimed_content = keyValuePair_create(keyQuery_from_claimed_content, strdup(userAccountAnalytics_FROMCLAIMEDCONTENT_ToString(
         valueQuery_from_claimed_content)));
         list_addElement(localVarQueryParameters,keyPairQuery_from_claimed_content);
     }
@@ -1837,7 +1870,7 @@ UserAccountAPI_userAccountAnalytics(apiClient_t *apiClient, char start_date, cha
     {
         keyQuery_pin_format = strdup("pin_format");
         valueQuery_pin_format = (pin_format);
-        keyPairQuery_pin_format = keyValuePair_create(keyQuery_pin_format, (void *)strdup(userAccountAnalytics_PINFORMAT_ToString(
+        keyPairQuery_pin_format = keyValuePair_create(keyQuery_pin_format, strdup(userAccountAnalytics_PINFORMAT_ToString(
         valueQuery_pin_format)));
         list_addElement(localVarQueryParameters,keyPairQuery_pin_format);
     }
@@ -1850,7 +1883,7 @@ UserAccountAPI_userAccountAnalytics(apiClient_t *apiClient, char start_date, cha
     {
         keyQuery_app_types = strdup("app_types");
         valueQuery_app_types = (app_types);
-        keyPairQuery_app_types = keyValuePair_create(keyQuery_app_types, (void *)strdup(userAccountAnalytics_APPTYPES_ToString(
+        keyPairQuery_app_types = keyValuePair_create(keyQuery_app_types, strdup(userAccountAnalytics_APPTYPES_ToString(
         valueQuery_app_types)));
         list_addElement(localVarQueryParameters,keyPairQuery_app_types);
     }
@@ -1863,7 +1896,7 @@ UserAccountAPI_userAccountAnalytics(apiClient_t *apiClient, char start_date, cha
     {
         keyQuery_content_type = strdup("content_type");
         valueQuery_content_type = (content_type);
-        keyPairQuery_content_type = keyValuePair_create(keyQuery_content_type, (void *)strdup(userAccountAnalytics_CONTENTTYPE_ToString(
+        keyPairQuery_content_type = keyValuePair_create(keyQuery_content_type, strdup(userAccountAnalytics_CONTENTTYPE_ToString(
         valueQuery_content_type)));
         list_addElement(localVarQueryParameters,keyPairQuery_content_type);
     }
@@ -1876,7 +1909,7 @@ UserAccountAPI_userAccountAnalytics(apiClient_t *apiClient, char start_date, cha
     {
         keyQuery_source = strdup("source");
         valueQuery_source = (source);
-        keyPairQuery_source = keyValuePair_create(keyQuery_source, (void *)strdup(userAccountAnalytics_SOURCE_ToString(
+        keyPairQuery_source = keyValuePair_create(keyQuery_source, strdup(userAccountAnalytics_SOURCE_ToString(
         valueQuery_source)));
         list_addElement(localVarQueryParameters,keyPairQuery_source);
     }
@@ -1895,7 +1928,7 @@ UserAccountAPI_userAccountAnalytics(apiClient_t *apiClient, char start_date, cha
     {
         keyQuery_split_field = strdup("split_field");
         valueQuery_split_field = (split_field);
-        keyPairQuery_split_field = keyValuePair_create(keyQuery_split_field, (void *)strdup(userAccountAnalytics_SPLITFIELD_ToString(
+        keyPairQuery_split_field = keyValuePair_create(keyQuery_split_field, strdup(userAccountAnalytics_SPLITFIELD_ToString(
         valueQuery_split_field)));
         list_addElement(localVarQueryParameters,keyPairQuery_split_field);
     }
@@ -1920,6 +1953,7 @@ UserAccountAPI_userAccountAnalytics(apiClient_t *apiClient, char start_date, cha
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -1938,24 +1972,27 @@ UserAccountAPI_userAccountAnalytics(apiClient_t *apiClient, char start_date, cha
     //if (apiClient->response_code == 0) {
     //    printf("%s\n","Unexpected error");
     //}
-    cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    if(!cJSON_IsArray(UserAccountAPIlocalVarJSON)) {
-        return 0;//nonprimitive container
-    }
-    list_t *elementToReturn = list_createList();
-    cJSON *VarJSON;
-    cJSON_ArrayForEach(VarJSON, UserAccountAPIlocalVarJSON)
-    {
-        if(!cJSON_IsObject(VarJSON))
-        {
-           // return 0;
+    list_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        if(!cJSON_IsArray(UserAccountAPIlocalVarJSON)) {
+            return 0;//nonprimitive container
         }
-        char *localVarJSONToChar = cJSON_Print(VarJSON);
-        list_addElement(elementToReturn , localVarJSONToChar);
-    }
+        elementToReturn = list_createList();
+        cJSON *VarJSON;
+        cJSON_ArrayForEach(VarJSON, UserAccountAPIlocalVarJSON)
+        {
+            if(!cJSON_IsObject(VarJSON))
+            {
+               // return 0;
+            }
+            char *localVarJSONToChar = cJSON_Print(VarJSON);
+            list_addElement(elementToReturn , localVarJSONToChar);
+        }
 
-    cJSON_Delete( UserAccountAPIlocalVarJSON);
-    cJSON_Delete( VarJSON);
+        cJSON_Delete( UserAccountAPIlocalVarJSON);
+        cJSON_Delete( VarJSON);
+    }
     //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
@@ -2064,11 +2101,14 @@ UserAccountAPI_userAccountAnalyticsTopPins(apiClient_t *apiClient, char start_da
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/user_account/analytics/top_pins")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/user_account/analytics/top_pins");
+    char *localVarPath = strdup("/user_account/analytics/top_pins");
+
 
 
 
@@ -2105,7 +2145,7 @@ UserAccountAPI_userAccountAnalyticsTopPins(apiClient_t *apiClient, char start_da
     {
         keyQuery_sort_by = strdup("sort_by");
         valueQuery_sort_by = (sort_by);
-        keyPairQuery_sort_by = keyValuePair_create(keyQuery_sort_by, (void *)strdup(userAccountAnalyticsTopPins_SORTBY_ToString(
+        keyPairQuery_sort_by = keyValuePair_create(keyQuery_sort_by, strdup(userAccountAnalyticsTopPins_SORTBY_ToString(
         valueQuery_sort_by)));
         list_addElement(localVarQueryParameters,keyPairQuery_sort_by);
     }
@@ -2118,7 +2158,7 @@ UserAccountAPI_userAccountAnalyticsTopPins(apiClient_t *apiClient, char start_da
     {
         keyQuery_from_claimed_content = strdup("from_claimed_content");
         valueQuery_from_claimed_content = (from_claimed_content);
-        keyPairQuery_from_claimed_content = keyValuePair_create(keyQuery_from_claimed_content, (void *)strdup(userAccountAnalyticsTopPins_FROMCLAIMEDCONTENT_ToString(
+        keyPairQuery_from_claimed_content = keyValuePair_create(keyQuery_from_claimed_content, strdup(userAccountAnalyticsTopPins_FROMCLAIMEDCONTENT_ToString(
         valueQuery_from_claimed_content)));
         list_addElement(localVarQueryParameters,keyPairQuery_from_claimed_content);
     }
@@ -2131,7 +2171,7 @@ UserAccountAPI_userAccountAnalyticsTopPins(apiClient_t *apiClient, char start_da
     {
         keyQuery_pin_format = strdup("pin_format");
         valueQuery_pin_format = (pin_format);
-        keyPairQuery_pin_format = keyValuePair_create(keyQuery_pin_format, (void *)strdup(userAccountAnalyticsTopPins_PINFORMAT_ToString(
+        keyPairQuery_pin_format = keyValuePair_create(keyQuery_pin_format, strdup(userAccountAnalyticsTopPins_PINFORMAT_ToString(
         valueQuery_pin_format)));
         list_addElement(localVarQueryParameters,keyPairQuery_pin_format);
     }
@@ -2144,7 +2184,7 @@ UserAccountAPI_userAccountAnalyticsTopPins(apiClient_t *apiClient, char start_da
     {
         keyQuery_app_types = strdup("app_types");
         valueQuery_app_types = (app_types);
-        keyPairQuery_app_types = keyValuePair_create(keyQuery_app_types, (void *)strdup(userAccountAnalyticsTopPins_APPTYPES_ToString(
+        keyPairQuery_app_types = keyValuePair_create(keyQuery_app_types, strdup(userAccountAnalyticsTopPins_APPTYPES_ToString(
         valueQuery_app_types)));
         list_addElement(localVarQueryParameters,keyPairQuery_app_types);
     }
@@ -2157,7 +2197,7 @@ UserAccountAPI_userAccountAnalyticsTopPins(apiClient_t *apiClient, char start_da
     {
         keyQuery_content_type = strdup("content_type");
         valueQuery_content_type = (content_type);
-        keyPairQuery_content_type = keyValuePair_create(keyQuery_content_type, (void *)strdup(userAccountAnalyticsTopPins_CONTENTTYPE_ToString(
+        keyPairQuery_content_type = keyValuePair_create(keyQuery_content_type, strdup(userAccountAnalyticsTopPins_CONTENTTYPE_ToString(
         valueQuery_content_type)));
         list_addElement(localVarQueryParameters,keyPairQuery_content_type);
     }
@@ -2170,7 +2210,7 @@ UserAccountAPI_userAccountAnalyticsTopPins(apiClient_t *apiClient, char start_da
     {
         keyQuery_source = strdup("source");
         valueQuery_source = (source);
-        keyPairQuery_source = keyValuePair_create(keyQuery_source, (void *)strdup(userAccountAnalyticsTopPins_SOURCE_ToString(
+        keyPairQuery_source = keyValuePair_create(keyQuery_source, strdup(userAccountAnalyticsTopPins_SOURCE_ToString(
         valueQuery_source)));
         list_addElement(localVarQueryParameters,keyPairQuery_source);
     }
@@ -2203,7 +2243,7 @@ UserAccountAPI_userAccountAnalyticsTopPins(apiClient_t *apiClient, char start_da
         keyQuery_created_in_last_n_days = strdup("created_in_last_n_days");
         valueQuery_created_in_last_n_days = calloc(1,MAX_NUMBER_LENGTH);
         snprintf(valueQuery_created_in_last_n_days, MAX_NUMBER_LENGTH, "%d", *created_in_last_n_days);
-        keyPairQuery_created_in_last_n_days = keyValuePair_create(keyQuery_created_in_last_n_days, (void *)strdup(userAccountAnalyticsTopPins_CREATEDINLASTNDAYS_ToString(
+        keyPairQuery_created_in_last_n_days = keyValuePair_create(keyQuery_created_in_last_n_days, strdup(userAccountAnalyticsTopPins_CREATEDINLASTNDAYS_ToString(
         valueQuery_created_in_last_n_days)));
         list_addElement(localVarQueryParameters,keyPairQuery_created_in_last_n_days);
     }
@@ -2228,6 +2268,7 @@ UserAccountAPI_userAccountAnalyticsTopPins(apiClient_t *apiClient, char start_da
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -2243,11 +2284,14 @@ UserAccountAPI_userAccountAnalyticsTopPins(apiClient_t *apiClient, char start_da
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    top_pins_analytics_response_t *elementToReturn = top_pins_analytics_response_parseFromJSON(UserAccountAPIlocalVarJSON);
-    cJSON_Delete(UserAccountAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    top_pins_analytics_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = top_pins_analytics_response_parseFromJSON(UserAccountAPIlocalVarJSON);
+        cJSON_Delete(UserAccountAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -2382,11 +2426,14 @@ UserAccountAPI_userAccountAnalyticsTopVideoPins(apiClient_t *apiClient, char sta
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/user_account/analytics/top_video_pins")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/user_account/analytics/top_video_pins");
+    char *localVarPath = strdup("/user_account/analytics/top_video_pins");
+
 
 
 
@@ -2423,7 +2470,7 @@ UserAccountAPI_userAccountAnalyticsTopVideoPins(apiClient_t *apiClient, char sta
     {
         keyQuery_sort_by = strdup("sort_by");
         valueQuery_sort_by = (sort_by);
-        keyPairQuery_sort_by = keyValuePair_create(keyQuery_sort_by, (void *)strdup(userAccountAnalyticsTopVideoPins_SORTBY_ToString(
+        keyPairQuery_sort_by = keyValuePair_create(keyQuery_sort_by, strdup(userAccountAnalyticsTopVideoPins_SORTBY_ToString(
         valueQuery_sort_by)));
         list_addElement(localVarQueryParameters,keyPairQuery_sort_by);
     }
@@ -2436,7 +2483,7 @@ UserAccountAPI_userAccountAnalyticsTopVideoPins(apiClient_t *apiClient, char sta
     {
         keyQuery_from_claimed_content = strdup("from_claimed_content");
         valueQuery_from_claimed_content = (from_claimed_content);
-        keyPairQuery_from_claimed_content = keyValuePair_create(keyQuery_from_claimed_content, (void *)strdup(userAccountAnalyticsTopVideoPins_FROMCLAIMEDCONTENT_ToString(
+        keyPairQuery_from_claimed_content = keyValuePair_create(keyQuery_from_claimed_content, strdup(userAccountAnalyticsTopVideoPins_FROMCLAIMEDCONTENT_ToString(
         valueQuery_from_claimed_content)));
         list_addElement(localVarQueryParameters,keyPairQuery_from_claimed_content);
     }
@@ -2449,7 +2496,7 @@ UserAccountAPI_userAccountAnalyticsTopVideoPins(apiClient_t *apiClient, char sta
     {
         keyQuery_pin_format = strdup("pin_format");
         valueQuery_pin_format = (pin_format);
-        keyPairQuery_pin_format = keyValuePair_create(keyQuery_pin_format, (void *)strdup(userAccountAnalyticsTopVideoPins_PINFORMAT_ToString(
+        keyPairQuery_pin_format = keyValuePair_create(keyQuery_pin_format, strdup(userAccountAnalyticsTopVideoPins_PINFORMAT_ToString(
         valueQuery_pin_format)));
         list_addElement(localVarQueryParameters,keyPairQuery_pin_format);
     }
@@ -2462,7 +2509,7 @@ UserAccountAPI_userAccountAnalyticsTopVideoPins(apiClient_t *apiClient, char sta
     {
         keyQuery_app_types = strdup("app_types");
         valueQuery_app_types = (app_types);
-        keyPairQuery_app_types = keyValuePair_create(keyQuery_app_types, (void *)strdup(userAccountAnalyticsTopVideoPins_APPTYPES_ToString(
+        keyPairQuery_app_types = keyValuePair_create(keyQuery_app_types, strdup(userAccountAnalyticsTopVideoPins_APPTYPES_ToString(
         valueQuery_app_types)));
         list_addElement(localVarQueryParameters,keyPairQuery_app_types);
     }
@@ -2475,7 +2522,7 @@ UserAccountAPI_userAccountAnalyticsTopVideoPins(apiClient_t *apiClient, char sta
     {
         keyQuery_content_type = strdup("content_type");
         valueQuery_content_type = (content_type);
-        keyPairQuery_content_type = keyValuePair_create(keyQuery_content_type, (void *)strdup(userAccountAnalyticsTopVideoPins_CONTENTTYPE_ToString(
+        keyPairQuery_content_type = keyValuePair_create(keyQuery_content_type, strdup(userAccountAnalyticsTopVideoPins_CONTENTTYPE_ToString(
         valueQuery_content_type)));
         list_addElement(localVarQueryParameters,keyPairQuery_content_type);
     }
@@ -2488,7 +2535,7 @@ UserAccountAPI_userAccountAnalyticsTopVideoPins(apiClient_t *apiClient, char sta
     {
         keyQuery_source = strdup("source");
         valueQuery_source = (source);
-        keyPairQuery_source = keyValuePair_create(keyQuery_source, (void *)strdup(userAccountAnalyticsTopVideoPins_SOURCE_ToString(
+        keyPairQuery_source = keyValuePair_create(keyQuery_source, strdup(userAccountAnalyticsTopVideoPins_SOURCE_ToString(
         valueQuery_source)));
         list_addElement(localVarQueryParameters,keyPairQuery_source);
     }
@@ -2521,7 +2568,7 @@ UserAccountAPI_userAccountAnalyticsTopVideoPins(apiClient_t *apiClient, char sta
         keyQuery_created_in_last_n_days = strdup("created_in_last_n_days");
         valueQuery_created_in_last_n_days = calloc(1,MAX_NUMBER_LENGTH);
         snprintf(valueQuery_created_in_last_n_days, MAX_NUMBER_LENGTH, "%d", *created_in_last_n_days);
-        keyPairQuery_created_in_last_n_days = keyValuePair_create(keyQuery_created_in_last_n_days, (void *)strdup(userAccountAnalyticsTopVideoPins_CREATEDINLASTNDAYS_ToString(
+        keyPairQuery_created_in_last_n_days = keyValuePair_create(keyQuery_created_in_last_n_days, strdup(userAccountAnalyticsTopVideoPins_CREATEDINLASTNDAYS_ToString(
         valueQuery_created_in_last_n_days)));
         list_addElement(localVarQueryParameters,keyPairQuery_created_in_last_n_days);
     }
@@ -2546,6 +2593,7 @@ UserAccountAPI_userAccountAnalyticsTopVideoPins(apiClient_t *apiClient, char sta
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -2561,11 +2609,14 @@ UserAccountAPI_userAccountAnalyticsTopVideoPins(apiClient_t *apiClient, char sta
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    top_video_pins_analytics_response_t *elementToReturn = top_video_pins_analytics_response_parseFromJSON(UserAccountAPIlocalVarJSON);
-    cJSON_Delete(UserAccountAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    top_video_pins_analytics_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = top_video_pins_analytics_response_parseFromJSON(UserAccountAPIlocalVarJSON);
+        cJSON_Delete(UserAccountAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -2700,15 +2751,20 @@ UserAccountAPI_userAccountFollowedInterests(apiClient_t *apiClient, char *userna
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/users/{username}/interests/follow")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/users/{username}/interests/follow");
+    char *localVarPath = strdup("/users/{username}/interests/follow");
+
+    if(!username)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_username = strlen(username)+3 + strlen("{ username }");
+    long sizeOfPathParams_username = strlen(username)+3 + sizeof("{ username }") - 1;
     if(username == NULL) {
         goto end;
     }
@@ -2752,6 +2808,7 @@ UserAccountAPI_userAccountFollowedInterests(apiClient_t *apiClient, char *userna
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -2775,11 +2832,14 @@ UserAccountAPI_userAccountFollowedInterests(apiClient_t *apiClient, char *userna
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    user_account_followed_interests_200_response_t *elementToReturn = user_account_followed_interests_200_response_parseFromJSON(UserAccountAPIlocalVarJSON);
-    cJSON_Delete(UserAccountAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    user_account_followed_interests_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = user_account_followed_interests_200_response_parseFromJSON(UserAccountAPIlocalVarJSON);
+        cJSON_Delete(UserAccountAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -2839,11 +2899,14 @@ UserAccountAPI_userAccountGet(apiClient_t *apiClient, char *ad_account_id)
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/user_account")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/user_account");
+    char *localVarPath = strdup("/user_account");
+
 
 
 
@@ -2868,6 +2931,7 @@ UserAccountAPI_userAccountGet(apiClient_t *apiClient, char *ad_account_id)
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -2883,11 +2947,14 @@ UserAccountAPI_userAccountGet(apiClient_t *apiClient, char *ad_account_id)
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    account_t *elementToReturn = account_parseFromJSON(UserAccountAPIlocalVarJSON);
-    cJSON_Delete(UserAccountAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    account_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = account_parseFromJSON(UserAccountAPIlocalVarJSON);
+        cJSON_Delete(UserAccountAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -2934,11 +3001,14 @@ UserAccountAPI_userFollowingGet(apiClient_t *apiClient, char *bookmark, int *pag
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/user_account/following")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/user_account/following");
+    char *localVarPath = strdup("/user_account/following");
+
 
 
 
@@ -2976,7 +3046,7 @@ UserAccountAPI_userFollowingGet(apiClient_t *apiClient, char *bookmark, int *pag
     {
         keyQuery_feed_type = strdup("feed_type");
         valueQuery_feed_type = (feed_type);
-        keyPairQuery_feed_type = keyValuePair_create(keyQuery_feed_type, (void *)strdup(userFollowingGet__ToString(
+        keyPairQuery_feed_type = keyValuePair_create(keyQuery_feed_type, strdup(userFollowingGet__ToString(
         valueQuery_feed_type)));
         list_addElement(localVarQueryParameters,keyPairQuery_feed_type);
     }
@@ -3014,6 +3084,7 @@ UserAccountAPI_userFollowingGet(apiClient_t *apiClient, char *bookmark, int *pag
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -3025,11 +3096,14 @@ UserAccountAPI_userFollowingGet(apiClient_t *apiClient, char *bookmark, int *pag
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    user_following_get_200_response_t *elementToReturn = user_following_get_200_response_parseFromJSON(UserAccountAPIlocalVarJSON);
-    cJSON_Delete(UserAccountAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    user_following_get_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = user_following_get_200_response_parseFromJSON(UserAccountAPIlocalVarJSON);
+        cJSON_Delete(UserAccountAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -3120,11 +3194,14 @@ UserAccountAPI_userWebsitesGet(apiClient_t *apiClient, char *bookmark, int *page
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/user_account/websites")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/user_account/websites");
+    char *localVarPath = strdup("/user_account/websites");
+
 
 
 
@@ -3162,6 +3239,7 @@ UserAccountAPI_userWebsitesGet(apiClient_t *apiClient, char *bookmark, int *page
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -3177,11 +3255,14 @@ UserAccountAPI_userWebsitesGet(apiClient_t *apiClient, char *bookmark, int *page
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    user_websites_get_200_response_t *elementToReturn = user_websites_get_200_response_parseFromJSON(UserAccountAPIlocalVarJSON);
-    cJSON_Delete(UserAccountAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    user_websites_get_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = user_websites_get_200_response_parseFromJSON(UserAccountAPIlocalVarJSON);
+        cJSON_Delete(UserAccountAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -3240,11 +3321,14 @@ UserAccountAPI_verifyWebsiteUpdate(apiClient_t *apiClient, user_website_verify_r
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/user_account/websites")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/user_account/websites");
+    char *localVarPath = strdup("/user_account/websites");
+
 
 
 
@@ -3265,9 +3349,10 @@ UserAccountAPI_verifyWebsiteUpdate(apiClient_t *apiClient, user_website_verify_r
     cJSON *localVarSingleItemJSON_user_website_verify_request = NULL;
     if (user_website_verify_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_user_website_verify_request = user_website_verify_request_convertToJSON(user_website_verify_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_user_website_verify_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -3279,6 +3364,7 @@ UserAccountAPI_verifyWebsiteUpdate(apiClient_t *apiClient, user_website_verify_r
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -3290,11 +3376,14 @@ UserAccountAPI_verifyWebsiteUpdate(apiClient_t *apiClient, user_website_verify_r
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    user_website_summary_t *elementToReturn = user_website_summary_parseFromJSON(UserAccountAPIlocalVarJSON);
-    cJSON_Delete(UserAccountAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    user_website_summary_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = user_website_summary_parseFromJSON(UserAccountAPIlocalVarJSON);
+        cJSON_Delete(UserAccountAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -3346,11 +3435,14 @@ UserAccountAPI_websiteVerificationGet(apiClient_t *apiClient, char *ad_account_i
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/user_account/websites/verification")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/user_account/websites/verification");
+    char *localVarPath = strdup("/user_account/websites/verification");
+
 
 
 
@@ -3375,6 +3467,7 @@ UserAccountAPI_websiteVerificationGet(apiClient_t *apiClient, char *ad_account_i
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -3390,11 +3483,14 @@ UserAccountAPI_websiteVerificationGet(apiClient_t *apiClient, char *ad_account_i
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    user_website_verification_code_t *elementToReturn = user_website_verification_code_parseFromJSON(UserAccountAPIlocalVarJSON);
-    cJSON_Delete(UserAccountAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    user_website_verification_code_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = user_website_verification_code_parseFromJSON(UserAccountAPIlocalVarJSON);
+        cJSON_Delete(UserAccountAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type

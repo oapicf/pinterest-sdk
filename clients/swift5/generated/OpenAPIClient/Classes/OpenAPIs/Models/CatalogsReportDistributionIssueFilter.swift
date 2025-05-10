@@ -15,7 +15,7 @@ public struct CatalogsReportDistributionIssueFilter: Codable, JSONEncodable, Has
     public enum ReportType: String, Codable, CaseIterable {
         case distributionIssues = "DISTRIBUTION_ISSUES"
     }
-    static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public var reportType: ReportType
     /** Unique identifier of a catalog. If not given, oldest catalog will be used */
     public var catalogId: String?

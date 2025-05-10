@@ -64,11 +64,11 @@ export function KeywordsGet200ResponseFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-  export function KeywordsGet200ResponseToJSON(json: any): KeywordsGet200Response {
-      return KeywordsGet200ResponseToJSONTyped(json, false);
-  }
+export function KeywordsGet200ResponseToJSON(json: any): KeywordsGet200Response {
+    return KeywordsGet200ResponseToJSONTyped(json, false);
+}
 
-  export function KeywordsGet200ResponseToJSONTyped(value?: KeywordsGet200Response | null, ignoreDiscriminator: boolean = false): any {
+export function KeywordsGet200ResponseToJSONTyped(value?: KeywordsGet200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

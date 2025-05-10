@@ -4,42 +4,8 @@
 #include "campaign_response.h"
 
 
-char* campaign_response_objective_type_ToString(pinterest_rest_api_campaign_response__e objective_type) {
-    char* objective_typeArray[] =  { "NULL", "AWARENESS", "CONSIDERATION", "VIDEO_VIEW", "WEB_CONVERSION", "CATALOG_SALES", "WEB_SESSIONS", "VIDEO_COMPLETION" };
-    return objective_typeArray[objective_type];
-}
 
-pinterest_rest_api_campaign_response__e campaign_response_objective_type_FromString(char* objective_type){
-    int stringToReturn = 0;
-    char *objective_typeArray[] =  { "NULL", "AWARENESS", "CONSIDERATION", "VIDEO_VIEW", "WEB_CONVERSION", "CATALOG_SALES", "WEB_SESSIONS", "VIDEO_COMPLETION" };
-    size_t sizeofArray = sizeof(objective_typeArray) / sizeof(objective_typeArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(objective_type, objective_typeArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-char* campaign_response_summary_status_ToString(pinterest_rest_api_campaign_response__e summary_status) {
-    char* summary_statusArray[] =  { "NULL", "RUNNING", "PAUSED", "NOT_STARTED", "COMPLETED", "ADVERTISER_DISABLED", "ARCHIVED", "DRAFT", "DELETED_DRAFT" };
-    return summary_statusArray[summary_status];
-}
-
-pinterest_rest_api_campaign_response__e campaign_response_summary_status_FromString(char* summary_status){
-    int stringToReturn = 0;
-    char *summary_statusArray[] =  { "NULL", "RUNNING", "PAUSED", "NOT_STARTED", "COMPLETED", "ADVERTISER_DISABLED", "ARCHIVED", "DRAFT", "DELETED_DRAFT" };
-    size_t sizeofArray = sizeof(summary_statusArray) / sizeof(summary_statusArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(summary_status, summary_statusArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-
-campaign_response_t *campaign_response_create(
+static campaign_response_t *campaign_response_create_internal(
     char *id,
     char *ad_account_id,
     char *name,
@@ -51,12 +17,12 @@ campaign_response_t *campaign_response_create(
     int start_time,
     int end_time,
     int is_flexible_daily_budgets,
-    objective_type_t *objective_type,
+    pinterest_rest_api_objective_type__e objective_type,
     int created_time,
     int updated_time,
     char *type,
     int is_campaign_budget_optimization,
-    campaign_summary_status_t *summary_status
+    pinterest_rest_api_campaign_summary_status__e summary_status
     ) {
     campaign_response_t *campaign_response_local_var = malloc(sizeof(campaign_response_t));
     if (!campaign_response_local_var) {
@@ -80,12 +46,56 @@ campaign_response_t *campaign_response_create(
     campaign_response_local_var->is_campaign_budget_optimization = is_campaign_budget_optimization;
     campaign_response_local_var->summary_status = summary_status;
 
+    campaign_response_local_var->_library_owned = 1;
     return campaign_response_local_var;
 }
 
+__attribute__((deprecated)) campaign_response_t *campaign_response_create(
+    char *id,
+    char *ad_account_id,
+    char *name,
+    entity_status_t *status,
+    int lifetime_spend_cap,
+    int daily_spend_cap,
+    char *order_line_id,
+    tracking_urls_t *tracking_urls,
+    int start_time,
+    int end_time,
+    int is_flexible_daily_budgets,
+    pinterest_rest_api_objective_type__e objective_type,
+    int created_time,
+    int updated_time,
+    char *type,
+    int is_campaign_budget_optimization,
+    pinterest_rest_api_campaign_summary_status__e summary_status
+    ) {
+    return campaign_response_create_internal (
+        id,
+        ad_account_id,
+        name,
+        status,
+        lifetime_spend_cap,
+        daily_spend_cap,
+        order_line_id,
+        tracking_urls,
+        start_time,
+        end_time,
+        is_flexible_daily_budgets,
+        objective_type,
+        created_time,
+        updated_time,
+        type,
+        is_campaign_budget_optimization,
+        summary_status
+        );
+}
 
 void campaign_response_free(campaign_response_t *campaign_response) {
     if(NULL == campaign_response){
+        return ;
+    }
+    if(campaign_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "campaign_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -113,17 +123,9 @@ void campaign_response_free(campaign_response_t *campaign_response) {
         tracking_urls_free(campaign_response->tracking_urls);
         campaign_response->tracking_urls = NULL;
     }
-    if (campaign_response->objective_type) {
-        objective_type_free(campaign_response->objective_type);
-        campaign_response->objective_type = NULL;
-    }
     if (campaign_response->type) {
         free(campaign_response->type);
         campaign_response->type = NULL;
-    }
-    if (campaign_response->summary_status) {
-        campaign_summary_status_free(campaign_response->summary_status);
-        campaign_response->summary_status = NULL;
     }
     free(campaign_response);
 }
@@ -230,7 +232,7 @@ cJSON *campaign_response_convertToJSON(campaign_response_t *campaign_response) {
 
 
     // campaign_response->objective_type
-    if(campaign_response->objective_type != pinterest_rest_api_campaign_response__NULL) {
+    if(campaign_response->objective_type != pinterest_rest_api_objective_type__NULL) {
     cJSON *objective_type_local_JSON = objective_type_convertToJSON(campaign_response->objective_type);
     if(objective_type_local_JSON == NULL) {
         goto fail; // custom
@@ -275,7 +277,7 @@ cJSON *campaign_response_convertToJSON(campaign_response_t *campaign_response) {
 
 
     // campaign_response->summary_status
-    if(campaign_response->summary_status != pinterest_rest_api_campaign_response__NULL) {
+    if(campaign_response->summary_status != pinterest_rest_api_campaign_summary_status__NULL) {
     cJSON *summary_status_local_JSON = campaign_summary_status_convertToJSON(campaign_response->summary_status);
     if(summary_status_local_JSON == NULL) {
         goto fail; // custom
@@ -305,13 +307,16 @@ campaign_response_t *campaign_response_parseFromJSON(cJSON *campaign_responseJSO
     tracking_urls_t *tracking_urls_local_nonprim = NULL;
 
     // define the local variable for campaign_response->objective_type
-    objective_type_t *objective_type_local_nonprim = NULL;
+    pinterest_rest_api_objective_type__e objective_type_local_nonprim = 0;
 
     // define the local variable for campaign_response->summary_status
-    campaign_summary_status_t *summary_status_local_nonprim = NULL;
+    pinterest_rest_api_campaign_summary_status__e summary_status_local_nonprim = 0;
 
     // campaign_response->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(campaign_responseJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -321,6 +326,9 @@ campaign_response_t *campaign_response_parseFromJSON(cJSON *campaign_responseJSO
 
     // campaign_response->ad_account_id
     cJSON *ad_account_id = cJSON_GetObjectItemCaseSensitive(campaign_responseJSON, "ad_account_id");
+    if (cJSON_IsNull(ad_account_id)) {
+        ad_account_id = NULL;
+    }
     if (ad_account_id) { 
     if(!cJSON_IsString(ad_account_id) && !cJSON_IsNull(ad_account_id))
     {
@@ -330,6 +338,9 @@ campaign_response_t *campaign_response_parseFromJSON(cJSON *campaign_responseJSO
 
     // campaign_response->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(campaign_responseJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
     if (name) { 
     if(!cJSON_IsString(name) && !cJSON_IsNull(name))
     {
@@ -339,12 +350,18 @@ campaign_response_t *campaign_response_parseFromJSON(cJSON *campaign_responseJSO
 
     // campaign_response->status
     cJSON *status = cJSON_GetObjectItemCaseSensitive(campaign_responseJSON, "status");
+    if (cJSON_IsNull(status)) {
+        status = NULL;
+    }
     if (status) { 
     status_local_nonprim = entity_status_parseFromJSON(status); //custom
     }
 
     // campaign_response->lifetime_spend_cap
     cJSON *lifetime_spend_cap = cJSON_GetObjectItemCaseSensitive(campaign_responseJSON, "lifetime_spend_cap");
+    if (cJSON_IsNull(lifetime_spend_cap)) {
+        lifetime_spend_cap = NULL;
+    }
     if (lifetime_spend_cap) { 
     if(!cJSON_IsNumber(lifetime_spend_cap))
     {
@@ -354,6 +371,9 @@ campaign_response_t *campaign_response_parseFromJSON(cJSON *campaign_responseJSO
 
     // campaign_response->daily_spend_cap
     cJSON *daily_spend_cap = cJSON_GetObjectItemCaseSensitive(campaign_responseJSON, "daily_spend_cap");
+    if (cJSON_IsNull(daily_spend_cap)) {
+        daily_spend_cap = NULL;
+    }
     if (daily_spend_cap) { 
     if(!cJSON_IsNumber(daily_spend_cap))
     {
@@ -363,6 +383,9 @@ campaign_response_t *campaign_response_parseFromJSON(cJSON *campaign_responseJSO
 
     // campaign_response->order_line_id
     cJSON *order_line_id = cJSON_GetObjectItemCaseSensitive(campaign_responseJSON, "order_line_id");
+    if (cJSON_IsNull(order_line_id)) {
+        order_line_id = NULL;
+    }
     if (order_line_id) { 
     if(!cJSON_IsString(order_line_id) && !cJSON_IsNull(order_line_id))
     {
@@ -372,12 +395,18 @@ campaign_response_t *campaign_response_parseFromJSON(cJSON *campaign_responseJSO
 
     // campaign_response->tracking_urls
     cJSON *tracking_urls = cJSON_GetObjectItemCaseSensitive(campaign_responseJSON, "tracking_urls");
+    if (cJSON_IsNull(tracking_urls)) {
+        tracking_urls = NULL;
+    }
     if (tracking_urls) { 
     tracking_urls_local_nonprim = tracking_urls_parseFromJSON(tracking_urls); //nonprimitive
     }
 
     // campaign_response->start_time
     cJSON *start_time = cJSON_GetObjectItemCaseSensitive(campaign_responseJSON, "start_time");
+    if (cJSON_IsNull(start_time)) {
+        start_time = NULL;
+    }
     if (start_time) { 
     if(!cJSON_IsNumber(start_time))
     {
@@ -387,6 +416,9 @@ campaign_response_t *campaign_response_parseFromJSON(cJSON *campaign_responseJSO
 
     // campaign_response->end_time
     cJSON *end_time = cJSON_GetObjectItemCaseSensitive(campaign_responseJSON, "end_time");
+    if (cJSON_IsNull(end_time)) {
+        end_time = NULL;
+    }
     if (end_time) { 
     if(!cJSON_IsNumber(end_time))
     {
@@ -396,6 +428,9 @@ campaign_response_t *campaign_response_parseFromJSON(cJSON *campaign_responseJSO
 
     // campaign_response->is_flexible_daily_budgets
     cJSON *is_flexible_daily_budgets = cJSON_GetObjectItemCaseSensitive(campaign_responseJSON, "is_flexible_daily_budgets");
+    if (cJSON_IsNull(is_flexible_daily_budgets)) {
+        is_flexible_daily_budgets = NULL;
+    }
     if (is_flexible_daily_budgets) { 
     if(!cJSON_IsBool(is_flexible_daily_budgets))
     {
@@ -405,12 +440,18 @@ campaign_response_t *campaign_response_parseFromJSON(cJSON *campaign_responseJSO
 
     // campaign_response->objective_type
     cJSON *objective_type = cJSON_GetObjectItemCaseSensitive(campaign_responseJSON, "objective_type");
+    if (cJSON_IsNull(objective_type)) {
+        objective_type = NULL;
+    }
     if (objective_type) { 
     objective_type_local_nonprim = objective_type_parseFromJSON(objective_type); //custom
     }
 
     // campaign_response->created_time
     cJSON *created_time = cJSON_GetObjectItemCaseSensitive(campaign_responseJSON, "created_time");
+    if (cJSON_IsNull(created_time)) {
+        created_time = NULL;
+    }
     if (created_time) { 
     if(!cJSON_IsNumber(created_time))
     {
@@ -420,6 +461,9 @@ campaign_response_t *campaign_response_parseFromJSON(cJSON *campaign_responseJSO
 
     // campaign_response->updated_time
     cJSON *updated_time = cJSON_GetObjectItemCaseSensitive(campaign_responseJSON, "updated_time");
+    if (cJSON_IsNull(updated_time)) {
+        updated_time = NULL;
+    }
     if (updated_time) { 
     if(!cJSON_IsNumber(updated_time))
     {
@@ -429,6 +473,9 @@ campaign_response_t *campaign_response_parseFromJSON(cJSON *campaign_responseJSO
 
     // campaign_response->type
     cJSON *type = cJSON_GetObjectItemCaseSensitive(campaign_responseJSON, "type");
+    if (cJSON_IsNull(type)) {
+        type = NULL;
+    }
     if (type) { 
     if(!cJSON_IsString(type) && !cJSON_IsNull(type))
     {
@@ -438,6 +485,9 @@ campaign_response_t *campaign_response_parseFromJSON(cJSON *campaign_responseJSO
 
     // campaign_response->is_campaign_budget_optimization
     cJSON *is_campaign_budget_optimization = cJSON_GetObjectItemCaseSensitive(campaign_responseJSON, "is_campaign_budget_optimization");
+    if (cJSON_IsNull(is_campaign_budget_optimization)) {
+        is_campaign_budget_optimization = NULL;
+    }
     if (is_campaign_budget_optimization) { 
     if(!cJSON_IsBool(is_campaign_budget_optimization))
     {
@@ -447,12 +497,15 @@ campaign_response_t *campaign_response_parseFromJSON(cJSON *campaign_responseJSO
 
     // campaign_response->summary_status
     cJSON *summary_status = cJSON_GetObjectItemCaseSensitive(campaign_responseJSON, "summary_status");
+    if (cJSON_IsNull(summary_status)) {
+        summary_status = NULL;
+    }
     if (summary_status) { 
     summary_status_local_nonprim = campaign_summary_status_parseFromJSON(summary_status); //custom
     }
 
 
-    campaign_response_local_var = campaign_response_create (
+    campaign_response_local_var = campaign_response_create_internal (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         ad_account_id && !cJSON_IsNull(ad_account_id) ? strdup(ad_account_id->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
@@ -464,12 +517,12 @@ campaign_response_t *campaign_response_parseFromJSON(cJSON *campaign_responseJSO
         start_time ? start_time->valuedouble : 0,
         end_time ? end_time->valuedouble : 0,
         is_flexible_daily_budgets ? is_flexible_daily_budgets->valueint : 0,
-        objective_type ? objective_type_local_nonprim : NULL,
+        objective_type ? objective_type_local_nonprim : 0,
         created_time ? created_time->valuedouble : 0,
         updated_time ? updated_time->valuedouble : 0,
         type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL,
         is_campaign_budget_optimization ? is_campaign_budget_optimization->valueint : 0,
-        summary_status ? summary_status_local_nonprim : NULL
+        summary_status ? summary_status_local_nonprim : 0
         );
 
     return campaign_response_local_var;
@@ -483,12 +536,10 @@ end:
         tracking_urls_local_nonprim = NULL;
     }
     if (objective_type_local_nonprim) {
-        objective_type_free(objective_type_local_nonprim);
-        objective_type_local_nonprim = NULL;
+        objective_type_local_nonprim = 0;
     }
     if (summary_status_local_nonprim) {
-        campaign_summary_status_free(summary_status_local_nonprim);
-        summary_status_local_nonprim = NULL;
+        summary_status_local_nonprim = 0;
     }
     return NULL;
 

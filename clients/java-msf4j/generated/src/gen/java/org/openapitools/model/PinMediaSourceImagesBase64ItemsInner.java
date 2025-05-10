@@ -11,7 +11,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * PinMediaSourceImagesBase64ItemsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2025-05-10T05:39:24.501669360Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMediaSourceImagesBase64ItemsInner   {
   @JsonProperty("title")
   private String title;
@@ -26,9 +26,9 @@ public class PinMediaSourceImagesBase64ItemsInner   {
    * Gets or Sets contentType
    */
   public enum ContentTypeEnum {
-    JPEG("image/jpeg"),
+    IMAGE_JPEG("image/jpeg"),
     
-    PNG("image/png");
+    IMAGE_PNG("image/png");
 
     private String value;
 

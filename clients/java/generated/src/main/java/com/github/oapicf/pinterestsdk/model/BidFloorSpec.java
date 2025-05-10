@@ -56,36 +56,42 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * BidFloorSpec
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BidFloorSpec {
   public static final String SERIALIZED_NAME_COUNTRIES = "countries";
   @SerializedName(SERIALIZED_NAME_COUNTRIES)
+  @javax.annotation.Nullable
   private List<Country> countries = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
+  @javax.annotation.Nonnull
   private Currency currency;
 
   public static final String SERIALIZED_NAME_OBJECTIVE_TYPE = "objective_type";
   @SerializedName(SERIALIZED_NAME_OBJECTIVE_TYPE)
+  @javax.annotation.Nullable
   private ObjectiveType objectiveType;
 
   public static final String SERIALIZED_NAME_BILLABLE_EVENT = "billable_event";
   @SerializedName(SERIALIZED_NAME_BILLABLE_EVENT)
+  @javax.annotation.Nonnull
   private ActionType billableEvent;
 
   public static final String SERIALIZED_NAME_OPTIMIZATION_GOAL_METADATA = "optimization_goal_metadata";
   @SerializedName(SERIALIZED_NAME_OPTIMIZATION_GOAL_METADATA)
+  @javax.annotation.Nullable
   private OptimizationGoalMetadata optimizationGoalMetadata;
 
   public static final String SERIALIZED_NAME_CREATIVE_TYPE = "creative_type";
   @SerializedName(SERIALIZED_NAME_CREATIVE_TYPE)
+  @javax.annotation.Nullable
   private CreativeType creativeType;
 
   public BidFloorSpec() {
   }
 
-  public BidFloorSpec countries(List<Country> countries) {
+  public BidFloorSpec countries(@javax.annotation.Nullable List<Country> countries) {
     this.countries = countries;
     return this;
   }
@@ -107,12 +113,12 @@ public class BidFloorSpec {
     return countries;
   }
 
-  public void setCountries(List<Country> countries) {
+  public void setCountries(@javax.annotation.Nullable List<Country> countries) {
     this.countries = countries;
   }
 
 
-  public BidFloorSpec currency(Currency currency) {
+  public BidFloorSpec currency(@javax.annotation.Nonnull Currency currency) {
     this.currency = currency;
     return this;
   }
@@ -126,12 +132,12 @@ public class BidFloorSpec {
     return currency;
   }
 
-  public void setCurrency(Currency currency) {
+  public void setCurrency(@javax.annotation.Nonnull Currency currency) {
     this.currency = currency;
   }
 
 
-  public BidFloorSpec objectiveType(ObjectiveType objectiveType) {
+  public BidFloorSpec objectiveType(@javax.annotation.Nullable ObjectiveType objectiveType) {
     this.objectiveType = objectiveType;
     return this;
   }
@@ -145,12 +151,12 @@ public class BidFloorSpec {
     return objectiveType;
   }
 
-  public void setObjectiveType(ObjectiveType objectiveType) {
+  public void setObjectiveType(@javax.annotation.Nullable ObjectiveType objectiveType) {
     this.objectiveType = objectiveType;
   }
 
 
-  public BidFloorSpec billableEvent(ActionType billableEvent) {
+  public BidFloorSpec billableEvent(@javax.annotation.Nonnull ActionType billableEvent) {
     this.billableEvent = billableEvent;
     return this;
   }
@@ -164,12 +170,12 @@ public class BidFloorSpec {
     return billableEvent;
   }
 
-  public void setBillableEvent(ActionType billableEvent) {
+  public void setBillableEvent(@javax.annotation.Nonnull ActionType billableEvent) {
     this.billableEvent = billableEvent;
   }
 
 
-  public BidFloorSpec optimizationGoalMetadata(OptimizationGoalMetadata optimizationGoalMetadata) {
+  public BidFloorSpec optimizationGoalMetadata(@javax.annotation.Nullable OptimizationGoalMetadata optimizationGoalMetadata) {
     this.optimizationGoalMetadata = optimizationGoalMetadata;
     return this;
   }
@@ -183,12 +189,12 @@ public class BidFloorSpec {
     return optimizationGoalMetadata;
   }
 
-  public void setOptimizationGoalMetadata(OptimizationGoalMetadata optimizationGoalMetadata) {
+  public void setOptimizationGoalMetadata(@javax.annotation.Nullable OptimizationGoalMetadata optimizationGoalMetadata) {
     this.optimizationGoalMetadata = optimizationGoalMetadata;
   }
 
 
-  public BidFloorSpec creativeType(CreativeType creativeType) {
+  public BidFloorSpec creativeType(@javax.annotation.Nullable CreativeType creativeType) {
     this.creativeType = creativeType;
     return this;
   }
@@ -202,7 +208,7 @@ public class BidFloorSpec {
     return creativeType;
   }
 
-  public void setCreativeType(CreativeType creativeType) {
+  public void setCreativeType(@javax.annotation.Nullable CreativeType creativeType) {
     this.creativeType = creativeType;
   }
 

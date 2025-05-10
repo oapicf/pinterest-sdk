@@ -62,11 +62,11 @@ export function AdsCreditRedeemResponseFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-  export function AdsCreditRedeemResponseToJSON(json: any): AdsCreditRedeemResponse {
-      return AdsCreditRedeemResponseToJSONTyped(json, false);
-  }
+export function AdsCreditRedeemResponseToJSON(json: any): AdsCreditRedeemResponse {
+    return AdsCreditRedeemResponseToJSONTyped(json, false);
+}
 
-  export function AdsCreditRedeemResponseToJSONTyped(value?: AdsCreditRedeemResponse | null, ignoreDiscriminator: boolean = false): any {
+export function AdsCreditRedeemResponseToJSONTyped(value?: AdsCreditRedeemResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Pin media source.")
 @JsonTypeName("PinMediaSource")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMediaSource   {
   public enum SourceTypeEnum {
 
@@ -91,7 +91,7 @@ public class PinMediaSource   {
   private SourceTypeEnum sourceType;
   public enum ContentTypeEnum {
 
-    JPEG(String.valueOf("image/jpeg")), PNG(String.valueOf("image/png"));
+    IMAGE_JPEG(String.valueOf("image/jpeg")), IMAGE_PNG(String.valueOf("image/png"));
 
 
     private String value;
@@ -143,7 +143,7 @@ public class PinMediaSource   {
   private String coverImageUrl;
   public enum CoverImageContentTypeEnum {
 
-    JPEG(String.valueOf("image/jpeg")), PNG(String.valueOf("image/png"));
+    IMAGE_JPEG(String.valueOf("image/jpeg")), IMAGE_PNG(String.valueOf("image/png"));
 
 
     private String value;
@@ -195,6 +195,26 @@ public class PinMediaSource   {
   private Integer index;
   private Boolean isAffiliateLink = false;
 
+  public PinMediaSource() {
+  }
+
+  @JsonCreator
+  public PinMediaSource(
+    @JsonProperty(required = true, value = "source_type") SourceTypeEnum sourceType,
+    @JsonProperty(required = true, value = "content_type") ContentTypeEnum contentType,
+    @JsonProperty(required = true, value = "data") String data,
+    @JsonProperty(required = true, value = "url") String url,
+    @JsonProperty(required = true, value = "media_id") String mediaId,
+    @JsonProperty(required = true, value = "items") List<@Valid PinMediaSourceImagesURLItemsInner> items
+  ) {
+    this.sourceType = sourceType;
+    this.contentType = contentType;
+    this.data = data;
+    this.url = url;
+    this.mediaId = mediaId;
+    this.items = items;
+  }
+
   /**
    **/
   public PinMediaSource sourceType(SourceTypeEnum sourceType) {
@@ -204,12 +224,12 @@ public class PinMediaSource   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("source_type")
+  @JsonProperty(required = true, value = "source_type")
   @NotNull public SourceTypeEnum getSourceType() {
     return sourceType;
   }
 
-  @JsonProperty("source_type")
+  @JsonProperty(required = true, value = "source_type")
   public void setSourceType(SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
   }
@@ -223,12 +243,12 @@ public class PinMediaSource   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("content_type")
+  @JsonProperty(required = true, value = "content_type")
   @NotNull public ContentTypeEnum getContentType() {
     return contentType;
   }
 
-  @JsonProperty("content_type")
+  @JsonProperty(required = true, value = "content_type")
   public void setContentType(ContentTypeEnum contentType) {
     this.contentType = contentType;
   }
@@ -242,12 +262,12 @@ public class PinMediaSource   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("data")
+  @JsonProperty(required = true, value = "data")
   @NotNull  @Pattern(regexp="[a-zA-Z0-9+/=]+")public String getData() {
     return data;
   }
 
-  @JsonProperty("data")
+  @JsonProperty(required = true, value = "data")
   public void setData(String data) {
     this.data = data;
   }
@@ -281,12 +301,12 @@ public class PinMediaSource   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("url")
+  @JsonProperty(required = true, value = "url")
   @NotNull public String getUrl() {
     return url;
   }
 
-  @JsonProperty("url")
+  @JsonProperty(required = true, value = "url")
   public void setUrl(String url) {
     this.url = url;
   }
@@ -360,12 +380,12 @@ public class PinMediaSource   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("media_id")
+  @JsonProperty(required = true, value = "media_id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getMediaId() {
     return mediaId;
   }
 
-  @JsonProperty("media_id")
+  @JsonProperty(required = true, value = "media_id")
   public void setMediaId(String mediaId) {
     this.mediaId = mediaId;
   }
@@ -380,12 +400,12 @@ public class PinMediaSource   {
 
   
   @ApiModelProperty(required = true, value = "Array with image objects.")
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   @NotNull @Valid  @Size(min=2,max=5)public List<@Valid PinMediaSourceImagesURLItemsInner> getItems() {
     return items;
   }
 
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   public void setItems(List<@Valid PinMediaSourceImagesURLItemsInner> items) {
     this.items = items;
   }

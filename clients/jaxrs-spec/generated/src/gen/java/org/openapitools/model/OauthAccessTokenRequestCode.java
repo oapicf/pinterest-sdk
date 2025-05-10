@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "A request to exchange an authorization code for an access token.")
 @JsonTypeName("OauthAccessTokenRequestCode")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class OauthAccessTokenRequestCode   {
   public enum GrantTypeEnum {
 
@@ -70,6 +70,20 @@ public class OauthAccessTokenRequestCode   {
   private String code;
   private String redirectUri;
 
+  public OauthAccessTokenRequestCode() {
+  }
+
+  @JsonCreator
+  public OauthAccessTokenRequestCode(
+    @JsonProperty(required = true, value = "grant_type") GrantTypeEnum grantType,
+    @JsonProperty(required = true, value = "code") String code,
+    @JsonProperty(required = true, value = "redirect_uri") String redirectUri
+  ) {
+    this.grantType = grantType;
+    this.code = code;
+    this.redirectUri = redirectUri;
+  }
+
   /**
    **/
   public OauthAccessTokenRequestCode grantType(GrantTypeEnum grantType) {
@@ -79,12 +93,12 @@ public class OauthAccessTokenRequestCode   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("grant_type")
+  @JsonProperty(required = true, value = "grant_type")
   @NotNull public GrantTypeEnum getGrantType() {
     return grantType;
   }
 
-  @JsonProperty("grant_type")
+  @JsonProperty(required = true, value = "grant_type")
   public void setGrantType(GrantTypeEnum grantType) {
     this.grantType = grantType;
   }
@@ -98,12 +112,12 @@ public class OauthAccessTokenRequestCode   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("code")
+  @JsonProperty(required = true, value = "code")
   @NotNull public String getCode() {
     return code;
   }
 
-  @JsonProperty("code")
+  @JsonProperty(required = true, value = "code")
   public void setCode(String code) {
     this.code = code;
   }
@@ -117,12 +131,12 @@ public class OauthAccessTokenRequestCode   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("redirect_uri")
+  @JsonProperty(required = true, value = "redirect_uri")
   @NotNull public String getRedirectUri() {
     return redirectUri;
   }
 
-  @JsonProperty("redirect_uri")
+  @JsonProperty(required = true, value = "redirect_uri")
   public void setRedirectUri(String redirectUri) {
     this.redirectUri = redirectUri;
   }

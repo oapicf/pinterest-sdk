@@ -48,44 +48,52 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * LineItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class LineItem {
   public static final String SERIALIZED_NAME_PRODUCT_BRAND = "product_brand";
   @SerializedName(SERIALIZED_NAME_PRODUCT_BRAND)
+  @javax.annotation.Nullable
   private String productBrand;
 
   public static final String SERIALIZED_NAME_PRODUCT_CATEGORY = "product_category";
   @SerializedName(SERIALIZED_NAME_PRODUCT_CATEGORY)
+  @javax.annotation.Nullable
   private String productCategory;
 
   public static final String SERIALIZED_NAME_PRODUCT_ID = "product_id";
   @SerializedName(SERIALIZED_NAME_PRODUCT_ID)
+  @javax.annotation.Nullable
   private Integer productId;
 
   public static final String SERIALIZED_NAME_PRODUCT_NAME = "product_name";
   @SerializedName(SERIALIZED_NAME_PRODUCT_NAME)
+  @javax.annotation.Nullable
   private String productName;
 
   public static final String SERIALIZED_NAME_PRODUCT_PRICE = "product_price";
   @SerializedName(SERIALIZED_NAME_PRODUCT_PRICE)
+  @javax.annotation.Nullable
   private String productPrice;
 
   public static final String SERIALIZED_NAME_PRODUCT_QUANTITY = "product_quantity";
   @SerializedName(SERIALIZED_NAME_PRODUCT_QUANTITY)
+  @javax.annotation.Nullable
   private Integer productQuantity;
 
   public static final String SERIALIZED_NAME_PRODUCT_VARIANT = "product_variant";
   @SerializedName(SERIALIZED_NAME_PRODUCT_VARIANT)
+  @javax.annotation.Nullable
   private String productVariant;
 
   public static final String SERIALIZED_NAME_PRODUCT_VARIANT_ID = "product_variant_id";
   @SerializedName(SERIALIZED_NAME_PRODUCT_VARIANT_ID)
+  @javax.annotation.Nullable
   private String productVariantId;
 
   public LineItem() {
   }
 
-  public LineItem productBrand(String productBrand) {
+  public LineItem productBrand(@javax.annotation.Nullable String productBrand) {
     this.productBrand = productBrand;
     return this;
   }
@@ -99,12 +107,12 @@ public class LineItem {
     return productBrand;
   }
 
-  public void setProductBrand(String productBrand) {
+  public void setProductBrand(@javax.annotation.Nullable String productBrand) {
     this.productBrand = productBrand;
   }
 
 
-  public LineItem productCategory(String productCategory) {
+  public LineItem productCategory(@javax.annotation.Nullable String productCategory) {
     this.productCategory = productCategory;
     return this;
   }
@@ -118,12 +126,12 @@ public class LineItem {
     return productCategory;
   }
 
-  public void setProductCategory(String productCategory) {
+  public void setProductCategory(@javax.annotation.Nullable String productCategory) {
     this.productCategory = productCategory;
   }
 
 
-  public LineItem productId(Integer productId) {
+  public LineItem productId(@javax.annotation.Nullable Integer productId) {
     this.productId = productId;
     return this;
   }
@@ -137,12 +145,12 @@ public class LineItem {
     return productId;
   }
 
-  public void setProductId(Integer productId) {
+  public void setProductId(@javax.annotation.Nullable Integer productId) {
     this.productId = productId;
   }
 
 
-  public LineItem productName(String productName) {
+  public LineItem productName(@javax.annotation.Nullable String productName) {
     this.productName = productName;
     return this;
   }
@@ -156,12 +164,12 @@ public class LineItem {
     return productName;
   }
 
-  public void setProductName(String productName) {
+  public void setProductName(@javax.annotation.Nullable String productName) {
     this.productName = productName;
   }
 
 
-  public LineItem productPrice(String productPrice) {
+  public LineItem productPrice(@javax.annotation.Nullable String productPrice) {
     this.productPrice = productPrice;
     return this;
   }
@@ -175,12 +183,12 @@ public class LineItem {
     return productPrice;
   }
 
-  public void setProductPrice(String productPrice) {
+  public void setProductPrice(@javax.annotation.Nullable String productPrice) {
     this.productPrice = productPrice;
   }
 
 
-  public LineItem productQuantity(Integer productQuantity) {
+  public LineItem productQuantity(@javax.annotation.Nullable Integer productQuantity) {
     this.productQuantity = productQuantity;
     return this;
   }
@@ -194,12 +202,12 @@ public class LineItem {
     return productQuantity;
   }
 
-  public void setProductQuantity(Integer productQuantity) {
+  public void setProductQuantity(@javax.annotation.Nullable Integer productQuantity) {
     this.productQuantity = productQuantity;
   }
 
 
-  public LineItem productVariant(String productVariant) {
+  public LineItem productVariant(@javax.annotation.Nullable String productVariant) {
     this.productVariant = productVariant;
     return this;
   }
@@ -213,12 +221,12 @@ public class LineItem {
     return productVariant;
   }
 
-  public void setProductVariant(String productVariant) {
+  public void setProductVariant(@javax.annotation.Nullable String productVariant) {
     this.productVariant = productVariant;
   }
 
 
-  public LineItem productVariantId(String productVariantId) {
+  public LineItem productVariantId(@javax.annotation.Nullable String productVariantId) {
     this.productVariantId = productVariantId;
     return this;
   }
@@ -232,7 +240,7 @@ public class LineItem {
     return productVariantId;
   }
 
-  public void setProductVariantId(String productVariantId) {
+  public void setProductVariantId(@javax.annotation.Nullable String productVariantId) {
     this.productVariantId = productVariantId;
   }
 

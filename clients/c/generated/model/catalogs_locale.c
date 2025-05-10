@@ -22,7 +22,7 @@ pinterest_rest_api_catalogs_locale__e catalogs_locale_catalogs_locale_FromString
     return 0;
 }
 
-cJSON *catalogs_locale_catalogs_locale_convertToJSON(pinterest_rest_api_catalogs_locale__e catalogs_locale) {
+cJSON *catalogs_locale_convertToJSON(pinterest_rest_api_catalogs_locale__e catalogs_locale) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "catalogs_locale", catalogs_locale_catalogs_locale_ToString(catalogs_locale)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_catalogs_locale__e catalogs_locale_catalogs_locale_parseFromJSON(cJSON *catalogs_localeJSON) {
-    pinterest_rest_api_catalogs_locale__e *catalogs_locale = NULL;
-    pinterest_rest_api_catalogs_locale__e catalogs_localeVariable;
-    cJSON *catalogs_localeVar = cJSON_GetObjectItemCaseSensitive(catalogs_localeJSON, "catalogs_locale");
-    if(!cJSON_IsString(catalogs_localeVar) || (catalogs_localeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_catalogs_locale__e catalogs_locale_parseFromJSON(cJSON *catalogs_localeJSON) {
+    if(!cJSON_IsString(catalogs_localeJSON) || (catalogs_localeJSON->valuestring == NULL)) {
+        return 0;
     }
-    catalogs_localeVariable = catalogs_locale_catalogs_locale_FromString(catalogs_localeVar->valuestring);
-    return catalogs_localeVariable;
-end:
-    return 0;
+    return catalogs_locale_catalogs_locale_FromString(catalogs_localeJSON->valuestring);
 }

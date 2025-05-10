@@ -17,24 +17,17 @@ typedef struct update_member_business_role_body_t update_member_business_role_bo
 
 #include "business_role_for_members.h"
 
-// Enum  for update_member_business_role_body
-
-typedef enum  { pinterest_rest_api_update_member_business_role_body__NULL = 0, pinterest_rest_api_update_member_business_role_body__EMPLOYEE, pinterest_rest_api_update_member_business_role_body__BIZ_ADMIN } pinterest_rest_api_update_member_business_role_body__e;
-
-char* update_member_business_role_body_business_role_ToString(pinterest_rest_api_update_member_business_role_body__e business_role);
-
-pinterest_rest_api_update_member_business_role_body__e update_member_business_role_body_business_role_FromString(char* business_role);
-
 
 
 typedef struct update_member_business_role_body_t {
-    business_role_for_members_t *business_role; // custom
+    pinterest_rest_api_business_role_for_members__e business_role; //referenced enum
     char *member_id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } update_member_business_role_body_t;
 
-update_member_business_role_body_t *update_member_business_role_body_create(
-    business_role_for_members_t *business_role,
+__attribute__((deprecated)) update_member_business_role_body_t *update_member_business_role_body_create(
+    pinterest_rest_api_business_role_for_members__e business_role,
     char *member_id
 );
 

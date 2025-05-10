@@ -69,11 +69,11 @@ export function InviteExceptionResponseFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-  export function InviteExceptionResponseToJSON(json: any): InviteExceptionResponse {
-      return InviteExceptionResponseToJSONTyped(json, false);
-  }
+export function InviteExceptionResponseToJSON(json: any): InviteExceptionResponse {
+    return InviteExceptionResponseToJSONTyped(json, false);
+}
 
-  export function InviteExceptionResponseToJSONTyped(value?: InviteExceptionResponse | null, ignoreDiscriminator: boolean = false): any {
+export function InviteExceptionResponseToJSONTyped(value?: InviteExceptionResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

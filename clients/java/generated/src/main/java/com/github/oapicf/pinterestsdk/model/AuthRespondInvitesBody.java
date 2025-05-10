@@ -51,16 +51,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * An object with a list of all the invites the user would like to respond to and the action to take.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AuthRespondInvitesBody {
   public static final String SERIALIZED_NAME_INVITES = "invites";
   @SerializedName(SERIALIZED_NAME_INVITES)
+  @javax.annotation.Nonnull
   private List<AuthRespondInvitesBodyInvitesInner> invites = new ArrayList<>();
 
   public AuthRespondInvitesBody() {
   }
 
-  public AuthRespondInvitesBody invites(List<AuthRespondInvitesBodyInvitesInner> invites) {
+  public AuthRespondInvitesBody invites(@javax.annotation.Nonnull List<AuthRespondInvitesBodyInvitesInner> invites) {
     this.invites = invites;
     return this;
   }
@@ -82,7 +83,7 @@ public class AuthRespondInvitesBody {
     return invites;
   }
 
-  public void setInvites(List<AuthRespondInvitesBodyInvitesInner> invites) {
+  public void setInvites(@javax.annotation.Nonnull List<AuthRespondInvitesBodyInvitesInner> invites) {
     this.invites = invites;
   }
 

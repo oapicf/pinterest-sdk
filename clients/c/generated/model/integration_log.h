@@ -51,9 +51,10 @@ typedef struct integration_log_t {
     struct integration_log_client_error_t *error; //model
     struct integration_log_client_request_t *request; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } integration_log_t;
 
-integration_log_t *integration_log_create(
+__attribute__((deprecated)) integration_log_t *integration_log_create(
     int client_timestamp,
     pinterest_rest_api_integration_log_EVENTTYPE_e event_type,
     pinterest_rest_api_integration_log_LOGLEVEL_e log_level,

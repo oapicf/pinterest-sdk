@@ -12,9 +12,9 @@ import AnyCodable
 
 public struct LeadsExportCreateRequest: Codable, JSONEncodable, Hashable {
 
-    static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
-    static let endDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
-    static let adIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
+    public static let endDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
+    public static let adIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Export leads collected on and after start date (UTC). Format: YYYY-MM-DD */
     public var startDate: String
     /** Export leads collected on and before end date (UTC). Format: YYYY-MM-DD */

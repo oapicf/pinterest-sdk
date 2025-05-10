@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param id Campaign ID.
  */
+@Serializable
 data class CampaignId(
     /* Campaign ID. */
     val id: kotlin.String? = null
-) 
+)
 

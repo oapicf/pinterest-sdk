@@ -5,7 +5,7 @@
 
 
 
-ad_preview_create_from_image_t *ad_preview_create_from_image_create(
+static ad_preview_create_from_image_t *ad_preview_create_from_image_create_internal(
     char *image_url,
     char *title
     ) {
@@ -16,12 +16,26 @@ ad_preview_create_from_image_t *ad_preview_create_from_image_create(
     ad_preview_create_from_image_local_var->image_url = image_url;
     ad_preview_create_from_image_local_var->title = title;
 
+    ad_preview_create_from_image_local_var->_library_owned = 1;
     return ad_preview_create_from_image_local_var;
 }
 
+__attribute__((deprecated)) ad_preview_create_from_image_t *ad_preview_create_from_image_create(
+    char *image_url,
+    char *title
+    ) {
+    return ad_preview_create_from_image_create_internal (
+        image_url,
+        title
+        );
+}
 
 void ad_preview_create_from_image_free(ad_preview_create_from_image_t *ad_preview_create_from_image) {
     if(NULL == ad_preview_create_from_image){
+        return ;
+    }
+    if(ad_preview_create_from_image->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ad_preview_create_from_image_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -70,6 +84,9 @@ ad_preview_create_from_image_t *ad_preview_create_from_image_parseFromJSON(cJSON
 
     // ad_preview_create_from_image->image_url
     cJSON *image_url = cJSON_GetObjectItemCaseSensitive(ad_preview_create_from_imageJSON, "image_url");
+    if (cJSON_IsNull(image_url)) {
+        image_url = NULL;
+    }
     if (!image_url) {
         goto end;
     }
@@ -82,6 +99,9 @@ ad_preview_create_from_image_t *ad_preview_create_from_image_parseFromJSON(cJSON
 
     // ad_preview_create_from_image->title
     cJSON *title = cJSON_GetObjectItemCaseSensitive(ad_preview_create_from_imageJSON, "title");
+    if (cJSON_IsNull(title)) {
+        title = NULL;
+    }
     if (!title) {
         goto end;
     }
@@ -93,7 +113,7 @@ ad_preview_create_from_image_t *ad_preview_create_from_image_parseFromJSON(cJSON
     }
 
 
-    ad_preview_create_from_image_local_var = ad_preview_create_from_image_create (
+    ad_preview_create_from_image_local_var = ad_preview_create_from_image_create_internal (
         strdup(image_url->valuestring),
         strdup(title->valuestring)
         );

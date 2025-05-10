@@ -77,11 +77,11 @@ export function OauthAccessTokenRequestCodeFromJSONTyped(json: any, ignoreDiscri
     };
 }
 
-  export function OauthAccessTokenRequestCodeToJSON(json: any): OauthAccessTokenRequestCode {
-      return OauthAccessTokenRequestCodeToJSONTyped(json, false);
-  }
+export function OauthAccessTokenRequestCodeToJSON(json: any): OauthAccessTokenRequestCode {
+    return OauthAccessTokenRequestCodeToJSONTyped(json, false);
+}
 
-  export function OauthAccessTokenRequestCodeToJSONTyped(value?: OauthAccessTokenRequestCode | null, ignoreDiscriminator: boolean = false): any {
+export function OauthAccessTokenRequestCodeToJSONTyped(value?: OauthAccessTokenRequestCode | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

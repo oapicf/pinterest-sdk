@@ -33,8 +33,8 @@ PIN_URL | `"pin_url"`
 
 Name | Value
 ---- | -----
-JPEG | `"image/jpeg"`
-PNG | `"image/png"`
+IMAGE_JPEG | `"image/jpeg"`
+IMAGE_PNG | `"image/png"`
 
 
 
@@ -44,8 +44,8 @@ PNG | `"image/png"`
 
 Name | Value
 ---- | -----
-JPEG | `"image/jpeg"`
-PNG | `"image/png"`
+IMAGE_JPEG | `"image/jpeg"`
+IMAGE_PNG | `"image/png"`
 
 
 

@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Product counts for a Retail CatalogsProductGroup")
 @JsonTypeName("CatalogsRetailProductGroupProductCounts")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsRetailProductGroupProductCounts   {
   public enum CatalogTypeEnum {
 
@@ -74,6 +74,24 @@ public class CatalogsRetailProductGroupProductCounts   {
   private BigDecimal total;
   private BigDecimal videos;
 
+  public CatalogsRetailProductGroupProductCounts() {
+  }
+
+  @JsonCreator
+  public CatalogsRetailProductGroupProductCounts(
+    @JsonProperty(required = true, value = "catalog_type") CatalogTypeEnum catalogType,
+    @JsonProperty(required = true, value = "in_stock") BigDecimal inStock,
+    @JsonProperty(required = true, value = "out_of_stock") BigDecimal outOfStock,
+    @JsonProperty(required = true, value = "preorder") BigDecimal preorder,
+    @JsonProperty(required = true, value = "total") BigDecimal total
+  ) {
+    this.catalogType = catalogType;
+    this.inStock = inStock;
+    this.outOfStock = outOfStock;
+    this.preorder = preorder;
+    this.total = total;
+  }
+
   /**
    **/
   public CatalogsRetailProductGroupProductCounts catalogType(CatalogTypeEnum catalogType) {
@@ -83,12 +101,12 @@ public class CatalogsRetailProductGroupProductCounts   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   @NotNull public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
@@ -103,12 +121,12 @@ public class CatalogsRetailProductGroupProductCounts   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("in_stock")
+  @JsonProperty(required = true, value = "in_stock")
   @NotNull @Valid  @DecimalMin("0")public BigDecimal getInStock() {
     return inStock;
   }
 
-  @JsonProperty("in_stock")
+  @JsonProperty(required = true, value = "in_stock")
   public void setInStock(BigDecimal inStock) {
     this.inStock = inStock;
   }
@@ -123,12 +141,12 @@ public class CatalogsRetailProductGroupProductCounts   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("out_of_stock")
+  @JsonProperty(required = true, value = "out_of_stock")
   @NotNull @Valid  @DecimalMin("0")public BigDecimal getOutOfStock() {
     return outOfStock;
   }
 
-  @JsonProperty("out_of_stock")
+  @JsonProperty(required = true, value = "out_of_stock")
   public void setOutOfStock(BigDecimal outOfStock) {
     this.outOfStock = outOfStock;
   }
@@ -143,12 +161,12 @@ public class CatalogsRetailProductGroupProductCounts   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("preorder")
+  @JsonProperty(required = true, value = "preorder")
   @NotNull @Valid  @DecimalMin("0")public BigDecimal getPreorder() {
     return preorder;
   }
 
-  @JsonProperty("preorder")
+  @JsonProperty(required = true, value = "preorder")
   public void setPreorder(BigDecimal preorder) {
     this.preorder = preorder;
   }
@@ -163,12 +181,12 @@ public class CatalogsRetailProductGroupProductCounts   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("total")
+  @JsonProperty(required = true, value = "total")
   @NotNull @Valid  @DecimalMin("0")public BigDecimal getTotal() {
     return total;
   }
 
-  @JsonProperty("total")
+  @JsonProperty(required = true, value = "total")
   public void setTotal(BigDecimal total) {
     this.total = total;
   }

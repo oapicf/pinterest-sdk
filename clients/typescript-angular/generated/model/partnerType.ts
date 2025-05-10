@@ -12,7 +12,9 @@
 export type PartnerType = 'INTERNAL' | 'EXTERNAL';
 
 export const PartnerType = {
+
     Internal: 'INTERNAL' as PartnerType,
+
     External: 'EXTERNAL' as PartnerType
 };
 

@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Response to delete invites sent to Members or Partners, if there is an exception, return the exception mapped with the invite id")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-11-05T02:20:54.377772266Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@ApiModel(description="Response to delete invites sent to Members or Partners, if there is an exception, return the exception mapped with the invite id")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2025-05-10T05:40:48.086340579Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class DeleteInvitesResultsResponseArray   {
   
   private List<@Valid DeleteInvitesResultsResponseArrayItemsInner> items = new ArrayList<>();

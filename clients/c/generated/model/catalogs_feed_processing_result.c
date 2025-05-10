@@ -4,30 +4,13 @@
 #include "catalogs_feed_processing_result.h"
 
 
-char* catalogs_feed_processing_result_status_ToString(pinterest_rest_api_catalogs_feed_processing_result__e status) {
-    char* statusArray[] =  { "NULL", "COMPLETED", "FAILED", "PROCESSING" };
-    return statusArray[status];
-}
 
-pinterest_rest_api_catalogs_feed_processing_result__e catalogs_feed_processing_result_status_FromString(char* status){
-    int stringToReturn = 0;
-    char *statusArray[] =  { "NULL", "COMPLETED", "FAILED", "PROCESSING" };
-    size_t sizeofArray = sizeof(statusArray) / sizeof(statusArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(status, statusArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-
-catalogs_feed_processing_result_t *catalogs_feed_processing_result_create(
+static catalogs_feed_processing_result_t *catalogs_feed_processing_result_create_internal(
     char *created_at,
     char *id,
     char *updated_at,
     catalogs_feed_ingestion_details_t *ingestion_details,
-    catalogs_feed_processing_status_t *status,
+    pinterest_rest_api_catalogs_feed_processing_status__e status,
     catalogs_feed_product_counts_t *product_counts,
     catalogs_feed_validation_details_t *validation_details
     ) {
@@ -43,12 +26,36 @@ catalogs_feed_processing_result_t *catalogs_feed_processing_result_create(
     catalogs_feed_processing_result_local_var->product_counts = product_counts;
     catalogs_feed_processing_result_local_var->validation_details = validation_details;
 
+    catalogs_feed_processing_result_local_var->_library_owned = 1;
     return catalogs_feed_processing_result_local_var;
 }
 
+__attribute__((deprecated)) catalogs_feed_processing_result_t *catalogs_feed_processing_result_create(
+    char *created_at,
+    char *id,
+    char *updated_at,
+    catalogs_feed_ingestion_details_t *ingestion_details,
+    pinterest_rest_api_catalogs_feed_processing_status__e status,
+    catalogs_feed_product_counts_t *product_counts,
+    catalogs_feed_validation_details_t *validation_details
+    ) {
+    return catalogs_feed_processing_result_create_internal (
+        created_at,
+        id,
+        updated_at,
+        ingestion_details,
+        status,
+        product_counts,
+        validation_details
+        );
+}
 
 void catalogs_feed_processing_result_free(catalogs_feed_processing_result_t *catalogs_feed_processing_result) {
     if(NULL == catalogs_feed_processing_result){
+        return ;
+    }
+    if(catalogs_feed_processing_result->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_feed_processing_result_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -67,10 +74,6 @@ void catalogs_feed_processing_result_free(catalogs_feed_processing_result_t *cat
     if (catalogs_feed_processing_result->ingestion_details) {
         catalogs_feed_ingestion_details_free(catalogs_feed_processing_result->ingestion_details);
         catalogs_feed_processing_result->ingestion_details = NULL;
-    }
-    if (catalogs_feed_processing_result->status) {
-        catalogs_feed_processing_status_free(catalogs_feed_processing_result->status);
-        catalogs_feed_processing_result->status = NULL;
     }
     if (catalogs_feed_processing_result->product_counts) {
         catalogs_feed_product_counts_free(catalogs_feed_processing_result->product_counts);
@@ -128,7 +131,7 @@ cJSON *catalogs_feed_processing_result_convertToJSON(catalogs_feed_processing_re
 
 
     // catalogs_feed_processing_result->status
-    if (pinterest_rest_api_catalogs_feed_processing_result__NULL == catalogs_feed_processing_result->status) {
+    if (pinterest_rest_api_catalogs_feed_processing_status__NULL == catalogs_feed_processing_result->status) {
         goto fail;
     }
     cJSON *status_local_JSON = catalogs_feed_processing_status_convertToJSON(catalogs_feed_processing_result->status);
@@ -184,7 +187,7 @@ catalogs_feed_processing_result_t *catalogs_feed_processing_result_parseFromJSON
     catalogs_feed_ingestion_details_t *ingestion_details_local_nonprim = NULL;
 
     // define the local variable for catalogs_feed_processing_result->status
-    catalogs_feed_processing_status_t *status_local_nonprim = NULL;
+    pinterest_rest_api_catalogs_feed_processing_status__e status_local_nonprim = 0;
 
     // define the local variable for catalogs_feed_processing_result->product_counts
     catalogs_feed_product_counts_t *product_counts_local_nonprim = NULL;
@@ -194,6 +197,9 @@ catalogs_feed_processing_result_t *catalogs_feed_processing_result_parseFromJSON
 
     // catalogs_feed_processing_result->created_at
     cJSON *created_at = cJSON_GetObjectItemCaseSensitive(catalogs_feed_processing_resultJSON, "created_at");
+    if (cJSON_IsNull(created_at)) {
+        created_at = NULL;
+    }
     if (!created_at) {
         goto end;
     }
@@ -206,6 +212,9 @@ catalogs_feed_processing_result_t *catalogs_feed_processing_result_parseFromJSON
 
     // catalogs_feed_processing_result->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(catalogs_feed_processing_resultJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (!id) {
         goto end;
     }
@@ -218,6 +227,9 @@ catalogs_feed_processing_result_t *catalogs_feed_processing_result_parseFromJSON
 
     // catalogs_feed_processing_result->updated_at
     cJSON *updated_at = cJSON_GetObjectItemCaseSensitive(catalogs_feed_processing_resultJSON, "updated_at");
+    if (cJSON_IsNull(updated_at)) {
+        updated_at = NULL;
+    }
     if (!updated_at) {
         goto end;
     }
@@ -230,6 +242,9 @@ catalogs_feed_processing_result_t *catalogs_feed_processing_result_parseFromJSON
 
     // catalogs_feed_processing_result->ingestion_details
     cJSON *ingestion_details = cJSON_GetObjectItemCaseSensitive(catalogs_feed_processing_resultJSON, "ingestion_details");
+    if (cJSON_IsNull(ingestion_details)) {
+        ingestion_details = NULL;
+    }
     if (!ingestion_details) {
         goto end;
     }
@@ -239,6 +254,9 @@ catalogs_feed_processing_result_t *catalogs_feed_processing_result_parseFromJSON
 
     // catalogs_feed_processing_result->status
     cJSON *status = cJSON_GetObjectItemCaseSensitive(catalogs_feed_processing_resultJSON, "status");
+    if (cJSON_IsNull(status)) {
+        status = NULL;
+    }
     if (!status) {
         goto end;
     }
@@ -248,6 +266,9 @@ catalogs_feed_processing_result_t *catalogs_feed_processing_result_parseFromJSON
 
     // catalogs_feed_processing_result->product_counts
     cJSON *product_counts = cJSON_GetObjectItemCaseSensitive(catalogs_feed_processing_resultJSON, "product_counts");
+    if (cJSON_IsNull(product_counts)) {
+        product_counts = NULL;
+    }
     if (!product_counts) {
         goto end;
     }
@@ -257,6 +278,9 @@ catalogs_feed_processing_result_t *catalogs_feed_processing_result_parseFromJSON
 
     // catalogs_feed_processing_result->validation_details
     cJSON *validation_details = cJSON_GetObjectItemCaseSensitive(catalogs_feed_processing_resultJSON, "validation_details");
+    if (cJSON_IsNull(validation_details)) {
+        validation_details = NULL;
+    }
     if (!validation_details) {
         goto end;
     }
@@ -265,7 +289,7 @@ catalogs_feed_processing_result_t *catalogs_feed_processing_result_parseFromJSON
     validation_details_local_nonprim = catalogs_feed_validation_details_parseFromJSON(validation_details); //nonprimitive
 
 
-    catalogs_feed_processing_result_local_var = catalogs_feed_processing_result_create (
+    catalogs_feed_processing_result_local_var = catalogs_feed_processing_result_create_internal (
         strdup(created_at->valuestring),
         strdup(id->valuestring),
         strdup(updated_at->valuestring),
@@ -282,8 +306,7 @@ end:
         ingestion_details_local_nonprim = NULL;
     }
     if (status_local_nonprim) {
-        catalogs_feed_processing_status_free(status_local_nonprim);
-        status_local_nonprim = NULL;
+        status_local_nonprim = 0;
     }
     if (product_counts_local_nonprim) {
         catalogs_feed_product_counts_free(product_counts_local_nonprim);

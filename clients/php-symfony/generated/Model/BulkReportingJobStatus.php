@@ -44,12 +44,12 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum BulkReportingJobStatus: string
 {
-        case DOES_NOT_EXIST = "DOES_NOT_EXIST";
-        case FINISHED = "FINISHED";
-        case IN_PROGRESS = "IN_PROGRESS";
-        case EXPIRED = "EXPIRED";
-        case FAILED = "FAILED";
-        case CANCELLED = "CANCELLED";
+        case DOES_NOT_EXIST = 'DOES_NOT_EXIST';
+        case FINISHED = 'FINISHED';
+        case IN_PROGRESS = 'IN_PROGRESS';
+        case EXPIRED = 'EXPIRED';
+        case FAILED = 'FAILED';
+        case CANCELLED = 'CANCELLED';
 }
 
 

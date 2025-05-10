@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "A creative assets item to be deleted")
 @JsonTypeName("CatalogsDeleteCreativeAssetsItem")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsDeleteCreativeAssetsItem   {
   private String creativeAssetsId;
   public enum OperationEnum {
@@ -69,6 +69,18 @@ public class CatalogsDeleteCreativeAssetsItem   {
 
   private OperationEnum operation;
 
+  public CatalogsDeleteCreativeAssetsItem() {
+  }
+
+  @JsonCreator
+  public CatalogsDeleteCreativeAssetsItem(
+    @JsonProperty(required = true, value = "creative_assets_id") String creativeAssetsId,
+    @JsonProperty(required = true, value = "operation") OperationEnum operation
+  ) {
+    this.creativeAssetsId = creativeAssetsId;
+    this.operation = operation;
+  }
+
   /**
    * The catalog creative assets id in the merchant namespace
    **/
@@ -79,12 +91,12 @@ public class CatalogsDeleteCreativeAssetsItem   {
 
   
   @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog creative assets id in the merchant namespace")
-  @JsonProperty("creative_assets_id")
+  @JsonProperty(required = true, value = "creative_assets_id")
   @NotNull public String getCreativeAssetsId() {
     return creativeAssetsId;
   }
 
-  @JsonProperty("creative_assets_id")
+  @JsonProperty(required = true, value = "creative_assets_id")
   public void setCreativeAssetsId(String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
   }
@@ -98,12 +110,12 @@ public class CatalogsDeleteCreativeAssetsItem   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("operation")
+  @JsonProperty(required = true, value = "operation")
   @NotNull public OperationEnum getOperation() {
     return operation;
   }
 
-  @JsonProperty("operation")
+  @JsonProperty(required = true, value = "operation")
   public void setOperation(OperationEnum operation) {
     this.operation = operation;
   }

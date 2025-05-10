@@ -32,9 +32,10 @@ typedef struct audience_t {
     int created_timestamp; //numeric
     int updated_timestamp; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } audience_t;
 
-audience_t *audience_create(
+__attribute__((deprecated)) audience_t *audience_create(
     char *ad_account_id,
     char *id,
     char *name,

@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsCreativeAssetsItemsPostFilter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsCreativeAssetsItemsPostFilter   {
   public enum CatalogTypeEnum {
 
@@ -71,6 +71,18 @@ public class CatalogsCreativeAssetsItemsPostFilter   {
   private @Valid List<String> creativeAssetsIds = new ArrayList<>();
   private String catalogId;
 
+  public CatalogsCreativeAssetsItemsPostFilter() {
+  }
+
+  @JsonCreator
+  public CatalogsCreativeAssetsItemsPostFilter(
+    @JsonProperty(required = true, value = "catalog_type") CatalogTypeEnum catalogType,
+    @JsonProperty(required = true, value = "creative_assets_ids") List<String> creativeAssetsIds
+  ) {
+    this.catalogType = catalogType;
+    this.creativeAssetsIds = creativeAssetsIds;
+  }
+
   /**
    **/
   public CatalogsCreativeAssetsItemsPostFilter catalogType(CatalogTypeEnum catalogType) {
@@ -80,12 +92,12 @@ public class CatalogsCreativeAssetsItemsPostFilter   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   @NotNull public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
@@ -99,12 +111,12 @@ public class CatalogsCreativeAssetsItemsPostFilter   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("creative_assets_ids")
+  @JsonProperty(required = true, value = "creative_assets_ids")
   @NotNull  @Size(min=1,max=1000)public List<String> getCreativeAssetsIds() {
     return creativeAssetsIds;
   }
 
-  @JsonProperty("creative_assets_ids")
+  @JsonProperty(required = true, value = "creative_assets_ids")
   public void setCreativeAssetsIds(List<String> creativeAssetsIds) {
     this.creativeAssetsIds = creativeAssetsIds;
   }

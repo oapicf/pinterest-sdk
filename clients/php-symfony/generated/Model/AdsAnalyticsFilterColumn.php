@@ -44,8 +44,8 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum AdsAnalyticsFilterColumn: string
 {
-        case SPEND_IN_DOLLAR = "SPEND_IN_DOLLAR";
-        case TOTAL_IMPRESSION = "TOTAL_IMPRESSION";
+        case SPEND_IN_DOLLAR = 'SPEND_IN_DOLLAR';
+        case TOTAL_IMPRESSION = 'TOTAL_IMPRESSION';
 }
 
 

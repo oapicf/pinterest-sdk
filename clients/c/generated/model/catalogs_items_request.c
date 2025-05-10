@@ -4,26 +4,9 @@
 #include "catalogs_items_request.h"
 
 
-char* catalogs_items_request_country_ToString(pinterest_rest_api_catalogs_items_request__e country) {
-    char* countryArray[] =  { "NULL", "AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "YE", "YT", "ZA", "ZM", "ZW" };
-    return countryArray[country];
-}
 
-pinterest_rest_api_catalogs_items_request__e catalogs_items_request_country_FromString(char* country){
-    int stringToReturn = 0;
-    char *countryArray[] =  { "NULL", "AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "YE", "YT", "ZA", "ZM", "ZW" };
-    size_t sizeofArray = sizeof(countryArray) / sizeof(countryArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(country, countryArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-
-catalogs_items_request_t *catalogs_items_request_create(
-    country_t *country,
+static catalogs_items_request_t *catalogs_items_request_create_internal(
+    pinterest_rest_api_country__e country,
     catalogs_items_request_language_t *language,
     catalogs_items_post_filters_t *filters
     ) {
@@ -35,19 +18,31 @@ catalogs_items_request_t *catalogs_items_request_create(
     catalogs_items_request_local_var->language = language;
     catalogs_items_request_local_var->filters = filters;
 
+    catalogs_items_request_local_var->_library_owned = 1;
     return catalogs_items_request_local_var;
 }
 
+__attribute__((deprecated)) catalogs_items_request_t *catalogs_items_request_create(
+    pinterest_rest_api_country__e country,
+    catalogs_items_request_language_t *language,
+    catalogs_items_post_filters_t *filters
+    ) {
+    return catalogs_items_request_create_internal (
+        country,
+        language,
+        filters
+        );
+}
 
 void catalogs_items_request_free(catalogs_items_request_t *catalogs_items_request) {
     if(NULL == catalogs_items_request){
         return ;
     }
-    listEntry_t *listEntry;
-    if (catalogs_items_request->country) {
-        country_free(catalogs_items_request->country);
-        catalogs_items_request->country = NULL;
+    if(catalogs_items_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_items_request_free");
+        return ;
     }
+    listEntry_t *listEntry;
     if (catalogs_items_request->language) {
         catalogs_items_request_language_free(catalogs_items_request->language);
         catalogs_items_request->language = NULL;
@@ -63,7 +58,7 @@ cJSON *catalogs_items_request_convertToJSON(catalogs_items_request_t *catalogs_i
     cJSON *item = cJSON_CreateObject();
 
     // catalogs_items_request->country
-    if (pinterest_rest_api_catalogs_items_request__NULL == catalogs_items_request->country) {
+    if (pinterest_rest_api_country__NULL == catalogs_items_request->country) {
         goto fail;
     }
     cJSON *country_local_JSON = country_convertToJSON(catalogs_items_request->country);
@@ -116,7 +111,7 @@ catalogs_items_request_t *catalogs_items_request_parseFromJSON(cJSON *catalogs_i
     catalogs_items_request_t *catalogs_items_request_local_var = NULL;
 
     // define the local variable for catalogs_items_request->country
-    country_t *country_local_nonprim = NULL;
+    pinterest_rest_api_country__e country_local_nonprim = 0;
 
     // define the local variable for catalogs_items_request->language
     catalogs_items_request_language_t *language_local_nonprim = NULL;
@@ -126,6 +121,9 @@ catalogs_items_request_t *catalogs_items_request_parseFromJSON(cJSON *catalogs_i
 
     // catalogs_items_request->country
     cJSON *country = cJSON_GetObjectItemCaseSensitive(catalogs_items_requestJSON, "country");
+    if (cJSON_IsNull(country)) {
+        country = NULL;
+    }
     if (!country) {
         goto end;
     }
@@ -135,6 +133,9 @@ catalogs_items_request_t *catalogs_items_request_parseFromJSON(cJSON *catalogs_i
 
     // catalogs_items_request->language
     cJSON *language = cJSON_GetObjectItemCaseSensitive(catalogs_items_requestJSON, "language");
+    if (cJSON_IsNull(language)) {
+        language = NULL;
+    }
     if (!language) {
         goto end;
     }
@@ -144,6 +145,9 @@ catalogs_items_request_t *catalogs_items_request_parseFromJSON(cJSON *catalogs_i
 
     // catalogs_items_request->filters
     cJSON *filters = cJSON_GetObjectItemCaseSensitive(catalogs_items_requestJSON, "filters");
+    if (cJSON_IsNull(filters)) {
+        filters = NULL;
+    }
     if (!filters) {
         goto end;
     }
@@ -152,7 +156,7 @@ catalogs_items_request_t *catalogs_items_request_parseFromJSON(cJSON *catalogs_i
     filters_local_nonprim = catalogs_items_post_filters_parseFromJSON(filters); //nonprimitive
 
 
-    catalogs_items_request_local_var = catalogs_items_request_create (
+    catalogs_items_request_local_var = catalogs_items_request_create_internal (
         country_local_nonprim,
         language_local_nonprim,
         filters_local_nonprim
@@ -161,8 +165,7 @@ catalogs_items_request_t *catalogs_items_request_parseFromJSON(cJSON *catalogs_i
     return catalogs_items_request_local_var;
 end:
     if (country_local_nonprim) {
-        country_free(country_local_nonprim);
-        country_local_nonprim = NULL;
+        country_local_nonprim = 0;
     }
     if (language_local_nonprim) {
         catalogs_items_request_language_free(language_local_nonprim);

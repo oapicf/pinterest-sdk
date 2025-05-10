@@ -56,68 +56,82 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Catalogs Creative Asset Feed object
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsCreativeAssetsFeed {
   public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  @javax.annotation.Nonnull
   private OffsetDateTime createdAt;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nonnull
   private String id;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updated_at";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+  @javax.annotation.Nonnull
   private OffsetDateTime updatedAt;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_FORMAT = "format";
   @SerializedName(SERIALIZED_NAME_FORMAT)
+  @javax.annotation.Nonnull
   private CatalogsFormat format;
 
   public static final String SERIALIZED_NAME_CATALOG_TYPE = "catalog_type";
   @SerializedName(SERIALIZED_NAME_CATALOG_TYPE)
+  @javax.annotation.Nonnull
   private CatalogsType catalogType;
 
   public static final String SERIALIZED_NAME_CREDENTIALS = "credentials";
   @SerializedName(SERIALIZED_NAME_CREDENTIALS)
+  @javax.annotation.Nullable
   private CatalogsFeedCredentials credentials;
 
   public static final String SERIALIZED_NAME_LOCATION = "location";
   @SerializedName(SERIALIZED_NAME_LOCATION)
+  @javax.annotation.Nonnull
   private String location;
 
   public static final String SERIALIZED_NAME_PREFERRED_PROCESSING_SCHEDULE = "preferred_processing_schedule";
   @SerializedName(SERIALIZED_NAME_PREFERRED_PROCESSING_SCHEDULE)
+  @javax.annotation.Nullable
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nonnull
   private CatalogsStatus status;
 
   public static final String SERIALIZED_NAME_DEFAULT_CURRENCY = "default_currency";
   @SerializedName(SERIALIZED_NAME_DEFAULT_CURRENCY)
+  @javax.annotation.Nullable
   private NullableCurrency defaultCurrency;
 
   public static final String SERIALIZED_NAME_DEFAULT_LOCALE = "default_locale";
   @SerializedName(SERIALIZED_NAME_DEFAULT_LOCALE)
+  @javax.annotation.Nonnull
   private String defaultLocale;
 
   public static final String SERIALIZED_NAME_DEFAULT_COUNTRY = "default_country";
   @SerializedName(SERIALIZED_NAME_DEFAULT_COUNTRY)
+  @javax.annotation.Nonnull
   private Country defaultCountry;
 
   public static final String SERIALIZED_NAME_CATALOG_ID = "catalog_id";
   @SerializedName(SERIALIZED_NAME_CATALOG_ID)
+  @javax.annotation.Nullable
   private String catalogId;
 
   public CatalogsCreativeAssetsFeed() {
   }
 
-  public CatalogsCreativeAssetsFeed createdAt(OffsetDateTime createdAt) {
+  public CatalogsCreativeAssetsFeed createdAt(@javax.annotation.Nonnull OffsetDateTime createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -131,12 +145,12 @@ public class CatalogsCreativeAssetsFeed {
     return createdAt;
   }
 
-  public void setCreatedAt(OffsetDateTime createdAt) {
+  public void setCreatedAt(@javax.annotation.Nonnull OffsetDateTime createdAt) {
     this.createdAt = createdAt;
   }
 
 
-  public CatalogsCreativeAssetsFeed id(String id) {
+  public CatalogsCreativeAssetsFeed id(@javax.annotation.Nonnull String id) {
     this.id = id;
     return this;
   }
@@ -150,12 +164,12 @@ public class CatalogsCreativeAssetsFeed {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 
 
-  public CatalogsCreativeAssetsFeed updatedAt(OffsetDateTime updatedAt) {
+  public CatalogsCreativeAssetsFeed updatedAt(@javax.annotation.Nonnull OffsetDateTime updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
@@ -169,12 +183,12 @@ public class CatalogsCreativeAssetsFeed {
     return updatedAt;
   }
 
-  public void setUpdatedAt(OffsetDateTime updatedAt) {
+  public void setUpdatedAt(@javax.annotation.Nonnull OffsetDateTime updatedAt) {
     this.updatedAt = updatedAt;
   }
 
 
-  public CatalogsCreativeAssetsFeed name(String name) {
+  public CatalogsCreativeAssetsFeed name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -188,12 +202,12 @@ public class CatalogsCreativeAssetsFeed {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public CatalogsCreativeAssetsFeed format(CatalogsFormat format) {
+  public CatalogsCreativeAssetsFeed format(@javax.annotation.Nonnull CatalogsFormat format) {
     this.format = format;
     return this;
   }
@@ -207,12 +221,12 @@ public class CatalogsCreativeAssetsFeed {
     return format;
   }
 
-  public void setFormat(CatalogsFormat format) {
+  public void setFormat(@javax.annotation.Nonnull CatalogsFormat format) {
     this.format = format;
   }
 
 
-  public CatalogsCreativeAssetsFeed catalogType(CatalogsType catalogType) {
+  public CatalogsCreativeAssetsFeed catalogType(@javax.annotation.Nonnull CatalogsType catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -226,12 +240,12 @@ public class CatalogsCreativeAssetsFeed {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(@javax.annotation.Nonnull CatalogsType catalogType) {
     this.catalogType = catalogType;
   }
 
 
-  public CatalogsCreativeAssetsFeed credentials(CatalogsFeedCredentials credentials) {
+  public CatalogsCreativeAssetsFeed credentials(@javax.annotation.Nullable CatalogsFeedCredentials credentials) {
     this.credentials = credentials;
     return this;
   }
@@ -245,12 +259,12 @@ public class CatalogsCreativeAssetsFeed {
     return credentials;
   }
 
-  public void setCredentials(CatalogsFeedCredentials credentials) {
+  public void setCredentials(@javax.annotation.Nullable CatalogsFeedCredentials credentials) {
     this.credentials = credentials;
   }
 
 
-  public CatalogsCreativeAssetsFeed location(String location) {
+  public CatalogsCreativeAssetsFeed location(@javax.annotation.Nonnull String location) {
     this.location = location;
     return this;
   }
@@ -264,12 +278,12 @@ public class CatalogsCreativeAssetsFeed {
     return location;
   }
 
-  public void setLocation(String location) {
+  public void setLocation(@javax.annotation.Nonnull String location) {
     this.location = location;
   }
 
 
-  public CatalogsCreativeAssetsFeed preferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
+  public CatalogsCreativeAssetsFeed preferredProcessingSchedule(@javax.annotation.Nullable CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
     this.preferredProcessingSchedule = preferredProcessingSchedule;
     return this;
   }
@@ -283,12 +297,12 @@ public class CatalogsCreativeAssetsFeed {
     return preferredProcessingSchedule;
   }
 
-  public void setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
+  public void setPreferredProcessingSchedule(@javax.annotation.Nullable CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
     this.preferredProcessingSchedule = preferredProcessingSchedule;
   }
 
 
-  public CatalogsCreativeAssetsFeed status(CatalogsStatus status) {
+  public CatalogsCreativeAssetsFeed status(@javax.annotation.Nonnull CatalogsStatus status) {
     this.status = status;
     return this;
   }
@@ -302,12 +316,12 @@ public class CatalogsCreativeAssetsFeed {
     return status;
   }
 
-  public void setStatus(CatalogsStatus status) {
+  public void setStatus(@javax.annotation.Nonnull CatalogsStatus status) {
     this.status = status;
   }
 
 
-  public CatalogsCreativeAssetsFeed defaultCurrency(NullableCurrency defaultCurrency) {
+  public CatalogsCreativeAssetsFeed defaultCurrency(@javax.annotation.Nullable NullableCurrency defaultCurrency) {
     this.defaultCurrency = defaultCurrency;
     return this;
   }
@@ -321,12 +335,12 @@ public class CatalogsCreativeAssetsFeed {
     return defaultCurrency;
   }
 
-  public void setDefaultCurrency(NullableCurrency defaultCurrency) {
+  public void setDefaultCurrency(@javax.annotation.Nullable NullableCurrency defaultCurrency) {
     this.defaultCurrency = defaultCurrency;
   }
 
 
-  public CatalogsCreativeAssetsFeed defaultLocale(String defaultLocale) {
+  public CatalogsCreativeAssetsFeed defaultLocale(@javax.annotation.Nonnull String defaultLocale) {
     this.defaultLocale = defaultLocale;
     return this;
   }
@@ -340,12 +354,12 @@ public class CatalogsCreativeAssetsFeed {
     return defaultLocale;
   }
 
-  public void setDefaultLocale(String defaultLocale) {
+  public void setDefaultLocale(@javax.annotation.Nonnull String defaultLocale) {
     this.defaultLocale = defaultLocale;
   }
 
 
-  public CatalogsCreativeAssetsFeed defaultCountry(Country defaultCountry) {
+  public CatalogsCreativeAssetsFeed defaultCountry(@javax.annotation.Nonnull Country defaultCountry) {
     this.defaultCountry = defaultCountry;
     return this;
   }
@@ -359,12 +373,12 @@ public class CatalogsCreativeAssetsFeed {
     return defaultCountry;
   }
 
-  public void setDefaultCountry(Country defaultCountry) {
+  public void setDefaultCountry(@javax.annotation.Nonnull Country defaultCountry) {
     this.defaultCountry = defaultCountry;
   }
 
 
-  public CatalogsCreativeAssetsFeed catalogId(String catalogId) {
+  public CatalogsCreativeAssetsFeed catalogId(@javax.annotation.Nullable String catalogId) {
     this.catalogId = catalogId;
     return this;
   }
@@ -378,7 +392,7 @@ public class CatalogsCreativeAssetsFeed {
     return catalogId;
   }
 
-  public void setCatalogId(String catalogId) {
+  public void setCatalogId(@javax.annotation.Nullable String catalogId) {
     this.catalogId = catalogId;
   }
 

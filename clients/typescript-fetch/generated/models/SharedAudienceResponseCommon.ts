@@ -63,11 +63,11 @@ export function SharedAudienceResponseCommonFromJSONTyped(json: any, ignoreDiscr
     };
 }
 
-  export function SharedAudienceResponseCommonToJSON(json: any): SharedAudienceResponseCommon {
-      return SharedAudienceResponseCommonToJSONTyped(json, false);
-  }
+export function SharedAudienceResponseCommonToJSON(json: any): SharedAudienceResponseCommon {
+    return SharedAudienceResponseCommonToJSONTyped(json, false);
+}
 
-  export function SharedAudienceResponseCommonToJSONTyped(value?: SharedAudienceResponseCommon | null, ignoreDiscriminator: boolean = false): any {
+export function SharedAudienceResponseCommonToJSONTyped(value?: SharedAudienceResponseCommon | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.AssetGroupBinding
 
+import kotlinx.serialization.Serializable
 /**
  * An object containing the permissions a business member has on the asset.
  * @param assetId Unique identifier of a business asset.
@@ -20,6 +21,7 @@ import org.openapitools.server.models.AssetGroupBinding
  * @param permissions Permission levels member or partner has on an asset.
  * @param assetGroupInfo 
  */
+@Serializable
 data class AssetIdPermissions(
     /* Unique identifier of a business asset. */
     val assetId: kotlin.String? = null,
@@ -28,5 +30,5 @@ data class AssetIdPermissions(
     /* Permission levels member or partner has on an asset. */
     val permissions: kotlin.collections.List<kotlin.String>? = null,
     val assetGroupInfo: AssetGroupBinding? = null
-) 
+)
 

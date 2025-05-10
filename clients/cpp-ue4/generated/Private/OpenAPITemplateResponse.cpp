@@ -4829,9 +4829,9 @@ inline FString ToString(const OpenAPITemplateResponse::ConversionReportTimeTypeE
 {
 	switch (Value)
 	{
-	case OpenAPITemplateResponse::ConversionReportTimeTypeEnum::AdAction:
+	case OpenAPITemplateResponse::ConversionReportTimeTypeEnum::TimeOfAdAction:
 		return TEXT("TIME_OF_AD_ACTION");
-	case OpenAPITemplateResponse::ConversionReportTimeTypeEnum::Conversion:
+	case OpenAPITemplateResponse::ConversionReportTimeTypeEnum::TimeOfConversion:
 		return TEXT("TIME_OF_CONVERSION");
 	}
 
@@ -4847,8 +4847,8 @@ FString OpenAPITemplateResponse::EnumToString(const OpenAPITemplateResponse::Con
 inline bool FromString(const FString& EnumAsString, OpenAPITemplateResponse::ConversionReportTimeTypeEnum& Value)
 {
 	static TMap<FString, OpenAPITemplateResponse::ConversionReportTimeTypeEnum> StringToEnum = { 
-		{ TEXT("TIME_OF_AD_ACTION"), OpenAPITemplateResponse::ConversionReportTimeTypeEnum::AdAction },
-		{ TEXT("TIME_OF_CONVERSION"), OpenAPITemplateResponse::ConversionReportTimeTypeEnum::Conversion }, };
+		{ TEXT("TIME_OF_AD_ACTION"), OpenAPITemplateResponse::ConversionReportTimeTypeEnum::TimeOfAdAction },
+		{ TEXT("TIME_OF_CONVERSION"), OpenAPITemplateResponse::ConversionReportTimeTypeEnum::TimeOfConversion }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)
@@ -4882,11 +4882,11 @@ inline FString ToString(const OpenAPITemplateResponse::CreationSourceEnum& Value
 {
 	switch (Value)
 	{
-	case OpenAPITemplateResponse::CreationSourceEnum::Api:
+	case OpenAPITemplateResponse::CreationSourceEnum::AdsApi:
 		return TEXT("ADS_API");
-	case OpenAPITemplateResponse::CreationSourceEnum::ManagerReportingPage:
+	case OpenAPITemplateResponse::CreationSourceEnum::AdsManagerReportingPage:
 		return TEXT("ADS_MANAGER_REPORTING_PAGE");
-	case OpenAPITemplateResponse::CreationSourceEnum::ManagerReportBuilder:
+	case OpenAPITemplateResponse::CreationSourceEnum::AdsManagerReportBuilder:
 		return TEXT("ADS_MANAGER_REPORT_BUILDER");
 	}
 
@@ -4902,9 +4902,9 @@ FString OpenAPITemplateResponse::EnumToString(const OpenAPITemplateResponse::Cre
 inline bool FromString(const FString& EnumAsString, OpenAPITemplateResponse::CreationSourceEnum& Value)
 {
 	static TMap<FString, OpenAPITemplateResponse::CreationSourceEnum> StringToEnum = { 
-		{ TEXT("ADS_API"), OpenAPITemplateResponse::CreationSourceEnum::Api },
-		{ TEXT("ADS_MANAGER_REPORTING_PAGE"), OpenAPITemplateResponse::CreationSourceEnum::ManagerReportingPage },
-		{ TEXT("ADS_MANAGER_REPORT_BUILDER"), OpenAPITemplateResponse::CreationSourceEnum::ManagerReportBuilder }, };
+		{ TEXT("ADS_API"), OpenAPITemplateResponse::CreationSourceEnum::AdsApi },
+		{ TEXT("ADS_MANAGER_REPORTING_PAGE"), OpenAPITemplateResponse::CreationSourceEnum::AdsManagerReportingPage },
+		{ TEXT("ADS_MANAGER_REPORT_BUILDER"), OpenAPITemplateResponse::CreationSourceEnum::AdsManagerReportBuilder }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)

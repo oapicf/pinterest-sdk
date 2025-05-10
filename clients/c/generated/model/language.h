@@ -24,9 +24,9 @@ char* language_language_ToString(pinterest_rest_api_language__e language);
 
 pinterest_rest_api_language__e language_language_FromString(char* language);
 
-//cJSON *language_language_convertToJSON(pinterest_rest_api_language__e language);
+cJSON *language_convertToJSON(pinterest_rest_api_language__e language);
 
-//pinterest_rest_api_language__e language_language_parseFromJSON(cJSON *languageJSON);
+pinterest_rest_api_language__e language_parseFromJSON(cJSON *languageJSON);
 
 #endif /* _language_H_ */
 

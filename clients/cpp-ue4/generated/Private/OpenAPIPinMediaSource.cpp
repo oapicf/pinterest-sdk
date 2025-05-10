@@ -74,9 +74,9 @@ inline FString ToString(const OpenAPIPinMediaSource::ContentTypeEnum& Value)
 {
 	switch (Value)
 	{
-	case OpenAPIPinMediaSource::ContentTypeEnum::Jpeg:
+	case OpenAPIPinMediaSource::ContentTypeEnum::ImageJpeg:
 		return TEXT("image/jpeg");
-	case OpenAPIPinMediaSource::ContentTypeEnum::Png:
+	case OpenAPIPinMediaSource::ContentTypeEnum::ImagePng:
 		return TEXT("image/png");
 	}
 
@@ -92,8 +92,8 @@ FString OpenAPIPinMediaSource::EnumToString(const OpenAPIPinMediaSource::Content
 inline bool FromString(const FString& EnumAsString, OpenAPIPinMediaSource::ContentTypeEnum& Value)
 {
 	static TMap<FString, OpenAPIPinMediaSource::ContentTypeEnum> StringToEnum = { 
-		{ TEXT("image/jpeg"), OpenAPIPinMediaSource::ContentTypeEnum::Jpeg },
-		{ TEXT("image/png"), OpenAPIPinMediaSource::ContentTypeEnum::Png }, };
+		{ TEXT("image/jpeg"), OpenAPIPinMediaSource::ContentTypeEnum::ImageJpeg },
+		{ TEXT("image/png"), OpenAPIPinMediaSource::ContentTypeEnum::ImagePng }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)
@@ -127,9 +127,9 @@ inline FString ToString(const OpenAPIPinMediaSource::CoverImageContentTypeEnum& 
 {
 	switch (Value)
 	{
-	case OpenAPIPinMediaSource::CoverImageContentTypeEnum::Jpeg:
+	case OpenAPIPinMediaSource::CoverImageContentTypeEnum::ImageJpeg:
 		return TEXT("image/jpeg");
-	case OpenAPIPinMediaSource::CoverImageContentTypeEnum::Png:
+	case OpenAPIPinMediaSource::CoverImageContentTypeEnum::ImagePng:
 		return TEXT("image/png");
 	}
 
@@ -145,8 +145,8 @@ FString OpenAPIPinMediaSource::EnumToString(const OpenAPIPinMediaSource::CoverIm
 inline bool FromString(const FString& EnumAsString, OpenAPIPinMediaSource::CoverImageContentTypeEnum& Value)
 {
 	static TMap<FString, OpenAPIPinMediaSource::CoverImageContentTypeEnum> StringToEnum = { 
-		{ TEXT("image/jpeg"), OpenAPIPinMediaSource::CoverImageContentTypeEnum::Jpeg },
-		{ TEXT("image/png"), OpenAPIPinMediaSource::CoverImageContentTypeEnum::Png }, };
+		{ TEXT("image/jpeg"), OpenAPIPinMediaSource::CoverImageContentTypeEnum::ImageJpeg },
+		{ TEXT("image/png"), OpenAPIPinMediaSource::CoverImageContentTypeEnum::ImagePng }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)

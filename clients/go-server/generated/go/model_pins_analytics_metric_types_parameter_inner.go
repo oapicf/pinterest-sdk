@@ -12,10 +12,6 @@
 package openapi
 
 
-import (
-	"gopkg.in/validator.v2"
-)
-
 
 
 type PinsAnalyticsMetricTypesParameterInner struct {

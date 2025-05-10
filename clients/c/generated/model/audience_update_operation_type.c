@@ -22,7 +22,7 @@ pinterest_rest_api_audience_update_operation_type__e audience_update_operation_t
     return 0;
 }
 
-cJSON *audience_update_operation_type_audience_update_operation_type_convertToJSON(pinterest_rest_api_audience_update_operation_type__e audience_update_operation_type) {
+cJSON *audience_update_operation_type_convertToJSON(pinterest_rest_api_audience_update_operation_type__e audience_update_operation_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "audience_update_operation_type", audience_update_operation_type_audience_update_operation_type_ToString(audience_update_operation_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_audience_update_operation_type__e audience_update_operation_type_audience_update_operation_type_parseFromJSON(cJSON *audience_update_operation_typeJSON) {
-    pinterest_rest_api_audience_update_operation_type__e *audience_update_operation_type = NULL;
-    pinterest_rest_api_audience_update_operation_type__e audience_update_operation_typeVariable;
-    cJSON *audience_update_operation_typeVar = cJSON_GetObjectItemCaseSensitive(audience_update_operation_typeJSON, "audience_update_operation_type");
-    if(!cJSON_IsString(audience_update_operation_typeVar) || (audience_update_operation_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_audience_update_operation_type__e audience_update_operation_type_parseFromJSON(cJSON *audience_update_operation_typeJSON) {
+    if(!cJSON_IsString(audience_update_operation_typeJSON) || (audience_update_operation_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    audience_update_operation_typeVariable = audience_update_operation_type_audience_update_operation_type_FromString(audience_update_operation_typeVar->valuestring);
-    return audience_update_operation_typeVariable;
-end:
-    return 0;
+    return audience_update_operation_type_audience_update_operation_type_FromString(audience_update_operation_typeJSON->valuestring);
 }

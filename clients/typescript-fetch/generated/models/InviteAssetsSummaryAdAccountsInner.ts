@@ -55,11 +55,11 @@ export function InviteAssetsSummaryAdAccountsInnerFromJSONTyped(json: any, ignor
     };
 }
 
-  export function InviteAssetsSummaryAdAccountsInnerToJSON(json: any): InviteAssetsSummaryAdAccountsInner {
-      return InviteAssetsSummaryAdAccountsInnerToJSONTyped(json, false);
-  }
+export function InviteAssetsSummaryAdAccountsInnerToJSON(json: any): InviteAssetsSummaryAdAccountsInner {
+    return InviteAssetsSummaryAdAccountsInnerToJSONTyped(json, false);
+}
 
-  export function InviteAssetsSummaryAdAccountsInnerToJSONTyped(value?: InviteAssetsSummaryAdAccountsInner | null, ignoreDiscriminator: boolean = false): any {
+export function InviteAssetsSummaryAdAccountsInnerToJSONTyped(value?: InviteAssetsSummaryAdAccountsInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

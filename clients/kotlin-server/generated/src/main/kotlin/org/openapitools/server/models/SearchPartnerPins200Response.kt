@@ -13,13 +13,15 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.SummaryPin
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items 
  * @param bookmark 
  */
+@Serializable
 data class SearchPartnerPins200Response(
     val items: kotlin.collections.List<SummaryPin>,
     val bookmark: kotlin.String? = null
-) 
+)
 

@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct AudienceCreateCustomRequest: Codable, JSONEncodable, Hashable {
 
-    static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Ad account ID. */
     public var adAccountId: String?
     /** Audience name. */

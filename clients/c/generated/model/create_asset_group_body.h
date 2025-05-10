@@ -32,9 +32,10 @@ typedef struct create_asset_group_body_t {
     char *asset_group_description; // string
     list_t *asset_group_types; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } create_asset_group_body_t;
 
-create_asset_group_body_t *create_asset_group_body_create(
+__attribute__((deprecated)) create_asset_group_body_t *create_asset_group_body_create(
     char *asset_group_name,
     char *asset_group_description,
     list_t *asset_group_types

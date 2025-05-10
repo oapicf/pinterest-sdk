@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -18,24 +19,24 @@ import javax.annotation.Generated;
  * LineItem
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class LineItem {
 
-  private String productBrand;
+  private @Nullable String productBrand;
 
-  private String productCategory;
+  private @Nullable String productCategory;
 
-  private Integer productId;
+  private @Nullable Integer productId;
 
-  private String productName;
+  private @Nullable String productName;
 
-  private String productPrice;
+  private @Nullable String productPrice;
 
-  private Integer productQuantity;
+  private @Nullable Integer productQuantity;
 
-  private String productVariant;
+  private @Nullable String productVariant;
 
-  private String productVariantId;
+  private @Nullable String productVariantId;
 
   public LineItem productBrand(String productBrand) {
     this.productBrand = productBrand;

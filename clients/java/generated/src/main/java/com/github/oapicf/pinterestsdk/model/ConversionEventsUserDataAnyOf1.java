@@ -50,28 +50,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ConversionEventsUserDataAnyOf1
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConversionEventsUserDataAnyOf1 {
   public static final String SERIALIZED_NAME_EM = "em";
   @SerializedName(SERIALIZED_NAME_EM)
+  @javax.annotation.Nullable
   private List<String> em = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_HASHED_MAIDS = "hashed_maids";
   @SerializedName(SERIALIZED_NAME_HASHED_MAIDS)
+  @javax.annotation.Nonnull
   private List<String> hashedMaids = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_CLIENT_IP_ADDRESS = "client_ip_address";
   @SerializedName(SERIALIZED_NAME_CLIENT_IP_ADDRESS)
+  @javax.annotation.Nullable
   private String clientIpAddress;
 
   public static final String SERIALIZED_NAME_CLIENT_USER_AGENT = "client_user_agent";
   @SerializedName(SERIALIZED_NAME_CLIENT_USER_AGENT)
+  @javax.annotation.Nullable
   private String clientUserAgent;
 
   public ConversionEventsUserDataAnyOf1() {
   }
 
-  public ConversionEventsUserDataAnyOf1 em(List<String> em) {
+  public ConversionEventsUserDataAnyOf1 em(@javax.annotation.Nullable List<String> em) {
     this.em = em;
     return this;
   }
@@ -93,12 +97,12 @@ public class ConversionEventsUserDataAnyOf1 {
     return em;
   }
 
-  public void setEm(List<String> em) {
+  public void setEm(@javax.annotation.Nullable List<String> em) {
     this.em = em;
   }
 
 
-  public ConversionEventsUserDataAnyOf1 hashedMaids(List<String> hashedMaids) {
+  public ConversionEventsUserDataAnyOf1 hashedMaids(@javax.annotation.Nonnull List<String> hashedMaids) {
     this.hashedMaids = hashedMaids;
     return this;
   }
@@ -120,12 +124,12 @@ public class ConversionEventsUserDataAnyOf1 {
     return hashedMaids;
   }
 
-  public void setHashedMaids(List<String> hashedMaids) {
+  public void setHashedMaids(@javax.annotation.Nonnull List<String> hashedMaids) {
     this.hashedMaids = hashedMaids;
   }
 
 
-  public ConversionEventsUserDataAnyOf1 clientIpAddress(String clientIpAddress) {
+  public ConversionEventsUserDataAnyOf1 clientIpAddress(@javax.annotation.Nullable String clientIpAddress) {
     this.clientIpAddress = clientIpAddress;
     return this;
   }
@@ -139,12 +143,12 @@ public class ConversionEventsUserDataAnyOf1 {
     return clientIpAddress;
   }
 
-  public void setClientIpAddress(String clientIpAddress) {
+  public void setClientIpAddress(@javax.annotation.Nullable String clientIpAddress) {
     this.clientIpAddress = clientIpAddress;
   }
 
 
-  public ConversionEventsUserDataAnyOf1 clientUserAgent(String clientUserAgent) {
+  public ConversionEventsUserDataAnyOf1 clientUserAgent(@javax.annotation.Nullable String clientUserAgent) {
     this.clientUserAgent = clientUserAgent;
     return this;
   }
@@ -158,7 +162,7 @@ public class ConversionEventsUserDataAnyOf1 {
     return clientUserAgent;
   }
 
-  public void setClientUserAgent(String clientUserAgent) {
+  public void setClientUserAgent(@javax.annotation.Nullable String clientUserAgent) {
     this.clientUserAgent = clientUserAgent;
   }
 

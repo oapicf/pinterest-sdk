@@ -24,9 +24,9 @@ char* order_line_status_order_line_status_ToString(pinterest_rest_api_order_line
 
 pinterest_rest_api_order_line_status__e order_line_status_order_line_status_FromString(char* order_line_status);
 
-//cJSON *order_line_status_order_line_status_convertToJSON(pinterest_rest_api_order_line_status__e order_line_status);
+cJSON *order_line_status_convertToJSON(pinterest_rest_api_order_line_status__e order_line_status);
 
-//pinterest_rest_api_order_line_status__e order_line_status_order_line_status_parseFromJSON(cJSON *order_line_statusJSON);
+pinterest_rest_api_order_line_status__e order_line_status_parseFromJSON(cJSON *order_line_statusJSON);
 
 #endif /* _order_line_status_H_ */
 

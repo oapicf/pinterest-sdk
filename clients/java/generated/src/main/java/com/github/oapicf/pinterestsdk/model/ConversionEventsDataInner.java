@@ -51,88 +51,107 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ConversionEventsDataInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConversionEventsDataInner {
   public static final String SERIALIZED_NAME_EVENT_NAME = "event_name";
   @SerializedName(SERIALIZED_NAME_EVENT_NAME)
+  @javax.annotation.Nonnull
   private String eventName;
 
   public static final String SERIALIZED_NAME_ACTION_SOURCE = "action_source";
   @SerializedName(SERIALIZED_NAME_ACTION_SOURCE)
+  @javax.annotation.Nonnull
   private String actionSource;
 
   public static final String SERIALIZED_NAME_EVENT_TIME = "event_time";
   @SerializedName(SERIALIZED_NAME_EVENT_TIME)
+  @javax.annotation.Nonnull
   private Long eventTime;
 
   public static final String SERIALIZED_NAME_EVENT_ID = "event_id";
   @SerializedName(SERIALIZED_NAME_EVENT_ID)
+  @javax.annotation.Nonnull
   private String eventId;
 
   public static final String SERIALIZED_NAME_EVENT_SOURCE_URL = "event_source_url";
   @SerializedName(SERIALIZED_NAME_EVENT_SOURCE_URL)
+  @javax.annotation.Nullable
   private String eventSourceUrl;
 
   public static final String SERIALIZED_NAME_OPT_OUT = "opt_out";
   @SerializedName(SERIALIZED_NAME_OPT_OUT)
+  @javax.annotation.Nullable
   private Boolean optOut;
 
   public static final String SERIALIZED_NAME_PARTNER_NAME = "partner_name";
   @SerializedName(SERIALIZED_NAME_PARTNER_NAME)
+  @javax.annotation.Nullable
   private String partnerName;
 
   public static final String SERIALIZED_NAME_USER_DATA = "user_data";
   @SerializedName(SERIALIZED_NAME_USER_DATA)
+  @javax.annotation.Nonnull
   private ConversionEventsUserData userData;
 
   public static final String SERIALIZED_NAME_CUSTOM_DATA = "custom_data";
   @SerializedName(SERIALIZED_NAME_CUSTOM_DATA)
+  @javax.annotation.Nullable
   private ConversionEventsDataInnerCustomData customData;
 
   public static final String SERIALIZED_NAME_APP_ID = "app_id";
   @SerializedName(SERIALIZED_NAME_APP_ID)
+  @javax.annotation.Nullable
   private String appId;
 
   public static final String SERIALIZED_NAME_APP_NAME = "app_name";
   @SerializedName(SERIALIZED_NAME_APP_NAME)
+  @javax.annotation.Nullable
   private String appName;
 
   public static final String SERIALIZED_NAME_APP_VERSION = "app_version";
   @SerializedName(SERIALIZED_NAME_APP_VERSION)
+  @javax.annotation.Nullable
   private String appVersion;
 
   public static final String SERIALIZED_NAME_DEVICE_BRAND = "device_brand";
   @SerializedName(SERIALIZED_NAME_DEVICE_BRAND)
+  @javax.annotation.Nullable
   private String deviceBrand;
 
   public static final String SERIALIZED_NAME_DEVICE_CARRIER = "device_carrier";
   @SerializedName(SERIALIZED_NAME_DEVICE_CARRIER)
+  @javax.annotation.Nullable
   private String deviceCarrier;
 
   public static final String SERIALIZED_NAME_DEVICE_MODEL = "device_model";
   @SerializedName(SERIALIZED_NAME_DEVICE_MODEL)
+  @javax.annotation.Nullable
   private String deviceModel;
 
   public static final String SERIALIZED_NAME_DEVICE_TYPE = "device_type";
   @SerializedName(SERIALIZED_NAME_DEVICE_TYPE)
+  @javax.annotation.Nullable
   private String deviceType;
 
   public static final String SERIALIZED_NAME_OS_VERSION = "os_version";
   @SerializedName(SERIALIZED_NAME_OS_VERSION)
+  @javax.annotation.Nullable
   private String osVersion;
 
   public static final String SERIALIZED_NAME_WIFI = "wifi";
   @SerializedName(SERIALIZED_NAME_WIFI)
+  @javax.annotation.Nullable
   private Boolean wifi;
 
   public static final String SERIALIZED_NAME_LANGUAGE = "language";
   @SerializedName(SERIALIZED_NAME_LANGUAGE)
+  @javax.annotation.Nullable
   private String language;
 
   public ConversionEventsDataInner() {
   }
 
-  public ConversionEventsDataInner eventName(String eventName) {
+  public ConversionEventsDataInner eventName(@javax.annotation.Nonnull String eventName) {
     this.eventName = eventName;
     return this;
   }
@@ -146,12 +165,12 @@ public class ConversionEventsDataInner {
     return eventName;
   }
 
-  public void setEventName(String eventName) {
+  public void setEventName(@javax.annotation.Nonnull String eventName) {
     this.eventName = eventName;
   }
 
 
-  public ConversionEventsDataInner actionSource(String actionSource) {
+  public ConversionEventsDataInner actionSource(@javax.annotation.Nonnull String actionSource) {
     this.actionSource = actionSource;
     return this;
   }
@@ -165,12 +184,12 @@ public class ConversionEventsDataInner {
     return actionSource;
   }
 
-  public void setActionSource(String actionSource) {
+  public void setActionSource(@javax.annotation.Nonnull String actionSource) {
     this.actionSource = actionSource;
   }
 
 
-  public ConversionEventsDataInner eventTime(Long eventTime) {
+  public ConversionEventsDataInner eventTime(@javax.annotation.Nonnull Long eventTime) {
     this.eventTime = eventTime;
     return this;
   }
@@ -184,12 +203,12 @@ public class ConversionEventsDataInner {
     return eventTime;
   }
 
-  public void setEventTime(Long eventTime) {
+  public void setEventTime(@javax.annotation.Nonnull Long eventTime) {
     this.eventTime = eventTime;
   }
 
 
-  public ConversionEventsDataInner eventId(String eventId) {
+  public ConversionEventsDataInner eventId(@javax.annotation.Nonnull String eventId) {
     this.eventId = eventId;
     return this;
   }
@@ -203,12 +222,12 @@ public class ConversionEventsDataInner {
     return eventId;
   }
 
-  public void setEventId(String eventId) {
+  public void setEventId(@javax.annotation.Nonnull String eventId) {
     this.eventId = eventId;
   }
 
 
-  public ConversionEventsDataInner eventSourceUrl(String eventSourceUrl) {
+  public ConversionEventsDataInner eventSourceUrl(@javax.annotation.Nullable String eventSourceUrl) {
     this.eventSourceUrl = eventSourceUrl;
     return this;
   }
@@ -222,12 +241,12 @@ public class ConversionEventsDataInner {
     return eventSourceUrl;
   }
 
-  public void setEventSourceUrl(String eventSourceUrl) {
+  public void setEventSourceUrl(@javax.annotation.Nullable String eventSourceUrl) {
     this.eventSourceUrl = eventSourceUrl;
   }
 
 
-  public ConversionEventsDataInner optOut(Boolean optOut) {
+  public ConversionEventsDataInner optOut(@javax.annotation.Nullable Boolean optOut) {
     this.optOut = optOut;
     return this;
   }
@@ -241,12 +260,12 @@ public class ConversionEventsDataInner {
     return optOut;
   }
 
-  public void setOptOut(Boolean optOut) {
+  public void setOptOut(@javax.annotation.Nullable Boolean optOut) {
     this.optOut = optOut;
   }
 
 
-  public ConversionEventsDataInner partnerName(String partnerName) {
+  public ConversionEventsDataInner partnerName(@javax.annotation.Nullable String partnerName) {
     this.partnerName = partnerName;
     return this;
   }
@@ -260,12 +279,12 @@ public class ConversionEventsDataInner {
     return partnerName;
   }
 
-  public void setPartnerName(String partnerName) {
+  public void setPartnerName(@javax.annotation.Nullable String partnerName) {
     this.partnerName = partnerName;
   }
 
 
-  public ConversionEventsDataInner userData(ConversionEventsUserData userData) {
+  public ConversionEventsDataInner userData(@javax.annotation.Nonnull ConversionEventsUserData userData) {
     this.userData = userData;
     return this;
   }
@@ -279,12 +298,12 @@ public class ConversionEventsDataInner {
     return userData;
   }
 
-  public void setUserData(ConversionEventsUserData userData) {
+  public void setUserData(@javax.annotation.Nonnull ConversionEventsUserData userData) {
     this.userData = userData;
   }
 
 
-  public ConversionEventsDataInner customData(ConversionEventsDataInnerCustomData customData) {
+  public ConversionEventsDataInner customData(@javax.annotation.Nullable ConversionEventsDataInnerCustomData customData) {
     this.customData = customData;
     return this;
   }
@@ -298,12 +317,12 @@ public class ConversionEventsDataInner {
     return customData;
   }
 
-  public void setCustomData(ConversionEventsDataInnerCustomData customData) {
+  public void setCustomData(@javax.annotation.Nullable ConversionEventsDataInnerCustomData customData) {
     this.customData = customData;
   }
 
 
-  public ConversionEventsDataInner appId(String appId) {
+  public ConversionEventsDataInner appId(@javax.annotation.Nullable String appId) {
     this.appId = appId;
     return this;
   }
@@ -317,12 +336,12 @@ public class ConversionEventsDataInner {
     return appId;
   }
 
-  public void setAppId(String appId) {
+  public void setAppId(@javax.annotation.Nullable String appId) {
     this.appId = appId;
   }
 
 
-  public ConversionEventsDataInner appName(String appName) {
+  public ConversionEventsDataInner appName(@javax.annotation.Nullable String appName) {
     this.appName = appName;
     return this;
   }
@@ -336,12 +355,12 @@ public class ConversionEventsDataInner {
     return appName;
   }
 
-  public void setAppName(String appName) {
+  public void setAppName(@javax.annotation.Nullable String appName) {
     this.appName = appName;
   }
 
 
-  public ConversionEventsDataInner appVersion(String appVersion) {
+  public ConversionEventsDataInner appVersion(@javax.annotation.Nullable String appVersion) {
     this.appVersion = appVersion;
     return this;
   }
@@ -355,12 +374,12 @@ public class ConversionEventsDataInner {
     return appVersion;
   }
 
-  public void setAppVersion(String appVersion) {
+  public void setAppVersion(@javax.annotation.Nullable String appVersion) {
     this.appVersion = appVersion;
   }
 
 
-  public ConversionEventsDataInner deviceBrand(String deviceBrand) {
+  public ConversionEventsDataInner deviceBrand(@javax.annotation.Nullable String deviceBrand) {
     this.deviceBrand = deviceBrand;
     return this;
   }
@@ -374,12 +393,12 @@ public class ConversionEventsDataInner {
     return deviceBrand;
   }
 
-  public void setDeviceBrand(String deviceBrand) {
+  public void setDeviceBrand(@javax.annotation.Nullable String deviceBrand) {
     this.deviceBrand = deviceBrand;
   }
 
 
-  public ConversionEventsDataInner deviceCarrier(String deviceCarrier) {
+  public ConversionEventsDataInner deviceCarrier(@javax.annotation.Nullable String deviceCarrier) {
     this.deviceCarrier = deviceCarrier;
     return this;
   }
@@ -393,12 +412,12 @@ public class ConversionEventsDataInner {
     return deviceCarrier;
   }
 
-  public void setDeviceCarrier(String deviceCarrier) {
+  public void setDeviceCarrier(@javax.annotation.Nullable String deviceCarrier) {
     this.deviceCarrier = deviceCarrier;
   }
 
 
-  public ConversionEventsDataInner deviceModel(String deviceModel) {
+  public ConversionEventsDataInner deviceModel(@javax.annotation.Nullable String deviceModel) {
     this.deviceModel = deviceModel;
     return this;
   }
@@ -412,12 +431,12 @@ public class ConversionEventsDataInner {
     return deviceModel;
   }
 
-  public void setDeviceModel(String deviceModel) {
+  public void setDeviceModel(@javax.annotation.Nullable String deviceModel) {
     this.deviceModel = deviceModel;
   }
 
 
-  public ConversionEventsDataInner deviceType(String deviceType) {
+  public ConversionEventsDataInner deviceType(@javax.annotation.Nullable String deviceType) {
     this.deviceType = deviceType;
     return this;
   }
@@ -431,12 +450,12 @@ public class ConversionEventsDataInner {
     return deviceType;
   }
 
-  public void setDeviceType(String deviceType) {
+  public void setDeviceType(@javax.annotation.Nullable String deviceType) {
     this.deviceType = deviceType;
   }
 
 
-  public ConversionEventsDataInner osVersion(String osVersion) {
+  public ConversionEventsDataInner osVersion(@javax.annotation.Nullable String osVersion) {
     this.osVersion = osVersion;
     return this;
   }
@@ -450,12 +469,12 @@ public class ConversionEventsDataInner {
     return osVersion;
   }
 
-  public void setOsVersion(String osVersion) {
+  public void setOsVersion(@javax.annotation.Nullable String osVersion) {
     this.osVersion = osVersion;
   }
 
 
-  public ConversionEventsDataInner wifi(Boolean wifi) {
+  public ConversionEventsDataInner wifi(@javax.annotation.Nullable Boolean wifi) {
     this.wifi = wifi;
     return this;
   }
@@ -469,12 +488,12 @@ public class ConversionEventsDataInner {
     return wifi;
   }
 
-  public void setWifi(Boolean wifi) {
+  public void setWifi(@javax.annotation.Nullable Boolean wifi) {
     this.wifi = wifi;
   }
 
 
-  public ConversionEventsDataInner language(String language) {
+  public ConversionEventsDataInner language(@javax.annotation.Nullable String language) {
     this.language = language;
     return this;
   }
@@ -488,7 +507,7 @@ public class ConversionEventsDataInner {
     return language;
   }
 
-  public void setLanguage(String language) {
+  public void setLanguage(@javax.annotation.Nullable String language) {
     this.language = language;
   }
 

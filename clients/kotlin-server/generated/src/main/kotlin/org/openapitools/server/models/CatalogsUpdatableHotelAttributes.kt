@@ -14,6 +14,7 @@ package org.openapitools.server.models
 import org.openapitools.server.models.CatalogsHotelAddress
 import org.openapitools.server.models.CatalogsHotelGuestRatings
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param name The hotel's name.
@@ -34,6 +35,7 @@ import org.openapitools.server.models.CatalogsHotelGuestRatings
  * @param salePrice Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
  * @param guestRatings 
  */
+@Serializable
 data class CatalogsUpdatableHotelAttributes(
     /* The hotel's name. */
     val name: kotlin.String? = null,
@@ -67,5 +69,5 @@ data class CatalogsUpdatableHotelAttributes(
     /* Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel. */
     val salePrice: kotlin.String? = null,
     val guestRatings: CatalogsHotelGuestRatings? = null
-) 
+)
 

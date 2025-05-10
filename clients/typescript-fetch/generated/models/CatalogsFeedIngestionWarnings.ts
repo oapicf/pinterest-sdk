@@ -83,11 +83,11 @@ export function CatalogsFeedIngestionWarningsFromJSONTyped(json: any, ignoreDisc
     };
 }
 
-  export function CatalogsFeedIngestionWarningsToJSON(json: any): CatalogsFeedIngestionWarnings {
-      return CatalogsFeedIngestionWarningsToJSONTyped(json, false);
-  }
+export function CatalogsFeedIngestionWarningsToJSON(json: any): CatalogsFeedIngestionWarnings {
+    return CatalogsFeedIngestionWarningsToJSONTyped(json, false);
+}
 
-  export function CatalogsFeedIngestionWarningsToJSONTyped(value?: CatalogsFeedIngestionWarnings | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsFeedIngestionWarningsToJSONTyped(value?: CatalogsFeedIngestionWarnings | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

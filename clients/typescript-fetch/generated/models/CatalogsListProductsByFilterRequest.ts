@@ -52,7 +52,11 @@ export function CatalogsListProductsByFilterRequestFromJSONTyped(json: any, igno
     return {} as any;
 }
 
-export function CatalogsListProductsByFilterRequestToJSON(value?: CatalogsListProductsByFilterRequest | null): any {
+export function CatalogsListProductsByFilterRequestToJSON(json: any): any {
+    return CatalogsListProductsByFilterRequestToJSONTyped(json, false);
+}
+
+export function CatalogsListProductsByFilterRequestToJSONTyped(value?: CatalogsListProductsByFilterRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

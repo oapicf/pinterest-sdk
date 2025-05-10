@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("InviteResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class InviteResponse   {
   private InviteAssetsSummary assetsSummary;
   private @Valid List<String> businessRoles = new ArrayList<>();
@@ -33,6 +33,9 @@ public class InviteResponse   {
   private BaseInviteDataResponseInviteData inviteData;
   private Boolean isReceivedInvite;
   private BusinessAccessUserSummary user;
+
+  public InviteResponse() {
+  }
 
   /**
    **/

@@ -52,15 +52,19 @@ export function CatalogsHotelReportParametersReportFromJSONTyped(json: any, igno
     }
 }
 
-export function CatalogsHotelReportParametersReportToJSON(value?: CatalogsHotelReportParametersReport | null): any {
+export function CatalogsHotelReportParametersReportToJSON(json: any): any {
+    return CatalogsHotelReportParametersReportToJSONTyped(json, false);
+}
+
+export function CatalogsHotelReportParametersReportToJSONTyped(value?: CatalogsHotelReportParametersReport | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
     switch (value['reportType']) {
         case 'DISTRIBUTION_ISSUES':
-            return CatalogsReportDistributionIssueFilterToJSON(value);
+            return Object.assign({}, CatalogsReportDistributionIssueFilterToJSON(value), { reportType: 'DISTRIBUTION_ISSUES' } as const);
         case 'FEED_INGESTION_ISSUES':
-            return CatalogsReportFeedIngestionFilterToJSON(value);
+            return Object.assign({}, CatalogsReportFeedIngestionFilterToJSON(value), { reportType: 'FEED_INGESTION_ISSUES' } as const);
         default:
             throw new Error(`No variant of CatalogsHotelReportParametersReport exists with 'reportType=${value['reportType']}'`);
     }

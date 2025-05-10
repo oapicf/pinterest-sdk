@@ -64,11 +64,11 @@ export function BoardsListPins200ResponseFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function BoardsListPins200ResponseToJSON(json: any): BoardsListPins200Response {
-      return BoardsListPins200ResponseToJSONTyped(json, false);
-  }
+export function BoardsListPins200ResponseToJSON(json: any): BoardsListPins200Response {
+    return BoardsListPins200ResponseToJSONTyped(json, false);
+}
 
-  export function BoardsListPins200ResponseToJSONTyped(value?: BoardsListPins200Response | null, ignoreDiscriminator: boolean = false): any {
+export function BoardsListPins200ResponseToJSONTyped(value?: BoardsListPins200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

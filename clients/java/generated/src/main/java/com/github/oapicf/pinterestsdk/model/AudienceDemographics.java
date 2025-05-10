@@ -51,32 +51,37 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Audience demographics
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AudienceDemographics {
   public static final String SERIALIZED_NAME_AGES = "ages";
   @SerializedName(SERIALIZED_NAME_AGES)
+  @javax.annotation.Nullable
   private List<AudienceDemographicValue> ages = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_GENDERS = "genders";
   @SerializedName(SERIALIZED_NAME_GENDERS)
+  @javax.annotation.Nullable
   private List<AudienceDemographicValue> genders = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_DEVICES = "devices";
   @SerializedName(SERIALIZED_NAME_DEVICES)
+  @javax.annotation.Nullable
   private List<AudienceDemographicValue> devices = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_METROS = "metros";
   @SerializedName(SERIALIZED_NAME_METROS)
+  @javax.annotation.Nullable
   private List<AudienceDemographicValue> metros = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_COUNTRIES = "countries";
   @SerializedName(SERIALIZED_NAME_COUNTRIES)
+  @javax.annotation.Nullable
   private List<AudienceDemographicValue> countries = new ArrayList<>();
 
   public AudienceDemographics() {
   }
 
-  public AudienceDemographics ages(List<AudienceDemographicValue> ages) {
+  public AudienceDemographics ages(@javax.annotation.Nullable List<AudienceDemographicValue> ages) {
     this.ages = ages;
     return this;
   }
@@ -98,12 +103,12 @@ public class AudienceDemographics {
     return ages;
   }
 
-  public void setAges(List<AudienceDemographicValue> ages) {
+  public void setAges(@javax.annotation.Nullable List<AudienceDemographicValue> ages) {
     this.ages = ages;
   }
 
 
-  public AudienceDemographics genders(List<AudienceDemographicValue> genders) {
+  public AudienceDemographics genders(@javax.annotation.Nullable List<AudienceDemographicValue> genders) {
     this.genders = genders;
     return this;
   }
@@ -125,12 +130,12 @@ public class AudienceDemographics {
     return genders;
   }
 
-  public void setGenders(List<AudienceDemographicValue> genders) {
+  public void setGenders(@javax.annotation.Nullable List<AudienceDemographicValue> genders) {
     this.genders = genders;
   }
 
 
-  public AudienceDemographics devices(List<AudienceDemographicValue> devices) {
+  public AudienceDemographics devices(@javax.annotation.Nullable List<AudienceDemographicValue> devices) {
     this.devices = devices;
     return this;
   }
@@ -152,12 +157,12 @@ public class AudienceDemographics {
     return devices;
   }
 
-  public void setDevices(List<AudienceDemographicValue> devices) {
+  public void setDevices(@javax.annotation.Nullable List<AudienceDemographicValue> devices) {
     this.devices = devices;
   }
 
 
-  public AudienceDemographics metros(List<AudienceDemographicValue> metros) {
+  public AudienceDemographics metros(@javax.annotation.Nullable List<AudienceDemographicValue> metros) {
     this.metros = metros;
     return this;
   }
@@ -179,12 +184,12 @@ public class AudienceDemographics {
     return metros;
   }
 
-  public void setMetros(List<AudienceDemographicValue> metros) {
+  public void setMetros(@javax.annotation.Nullable List<AudienceDemographicValue> metros) {
     this.metros = metros;
   }
 
 
-  public AudienceDemographics countries(List<AudienceDemographicValue> countries) {
+  public AudienceDemographics countries(@javax.annotation.Nullable List<AudienceDemographicValue> countries) {
     this.countries = countries;
     return this;
   }
@@ -206,7 +211,7 @@ public class AudienceDemographics {
     return countries;
   }
 
-  public void setCountries(List<AudienceDemographicValue> countries) {
+  public void setCountries(@javax.annotation.Nullable List<AudienceDemographicValue> countries) {
     this.countries = countries;
   }
 

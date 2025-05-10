@@ -13,13 +13,15 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.NonNullableCatalogsCurrency
 
+import kotlinx.serialization.Serializable
 /**
  * A currency filter. This filter cannot be negated
  * @param propertyValues 
  * @param negated 
  */
+@Serializable
 data class CatalogsProductGroupCurrencyCriteria(
     val propertyValues: NonNullableCatalogsCurrency,
     val negated: kotlin.Boolean? = false
-) 
+)
 

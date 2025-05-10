@@ -13,12 +13,14 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.UpdatePartnerAssetsResult
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items List of assigned/updated partner asset access.
  */
+@Serializable
 data class UpdatePartnerAssetsResultsResponseArray(
     /* List of assigned/updated partner asset access. */
     val items: kotlin.collections.List<UpdatePartnerAssetsResult>? = null
-) 
+)
 

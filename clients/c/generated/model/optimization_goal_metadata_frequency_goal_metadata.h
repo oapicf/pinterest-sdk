@@ -30,9 +30,10 @@ typedef struct optimization_goal_metadata_frequency_goal_metadata_t {
     int frequency; //numeric
     pinterest_rest_api_optimization_goal_metadata_frequency_goal_metadata_TIMERANGE_e timerange; //enum
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } optimization_goal_metadata_frequency_goal_metadata_t;
 
-optimization_goal_metadata_frequency_goal_metadata_t *optimization_goal_metadata_frequency_goal_metadata_create(
+__attribute__((deprecated)) optimization_goal_metadata_frequency_goal_metadata_t *optimization_goal_metadata_frequency_goal_metadata_create(
     int frequency,
     pinterest_rest_api_optimization_goal_metadata_frequency_goal_metadata_TIMERANGE_e timerange
 );

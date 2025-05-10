@@ -20,22 +20,6 @@ typedef struct campaign_response_t campaign_response_t;
 #include "objective_type.h"
 #include "tracking_urls.h"
 
-// Enum  for campaign_response
-
-typedef enum  { pinterest_rest_api_campaign_response__NULL = 0, pinterest_rest_api_campaign_response__AWARENESS, pinterest_rest_api_campaign_response__CONSIDERATION, pinterest_rest_api_campaign_response__VIDEO_VIEW, pinterest_rest_api_campaign_response__WEB_CONVERSION, pinterest_rest_api_campaign_response__CATALOG_SALES, pinterest_rest_api_campaign_response__WEB_SESSIONS, pinterest_rest_api_campaign_response__VIDEO_COMPLETION } pinterest_rest_api_campaign_response__e;
-
-char* campaign_response_objective_type_ToString(pinterest_rest_api_campaign_response__e objective_type);
-
-pinterest_rest_api_campaign_response__e campaign_response_objective_type_FromString(char* objective_type);
-
-// Enum  for campaign_response
-
-typedef enum  { pinterest_rest_api_campaign_response__NULL = 0, pinterest_rest_api_campaign_response__RUNNING, pinterest_rest_api_campaign_response__PAUSED, pinterest_rest_api_campaign_response__NOT_STARTED, pinterest_rest_api_campaign_response__COMPLETED, pinterest_rest_api_campaign_response__ADVERTISER_DISABLED, pinterest_rest_api_campaign_response__ARCHIVED, pinterest_rest_api_campaign_response__DRAFT, pinterest_rest_api_campaign_response__DELETED_DRAFT } pinterest_rest_api_campaign_response__e;
-
-char* campaign_response_summary_status_ToString(pinterest_rest_api_campaign_response__e summary_status);
-
-pinterest_rest_api_campaign_response__e campaign_response_summary_status_FromString(char* summary_status);
-
 
 
 typedef struct campaign_response_t {
@@ -50,16 +34,17 @@ typedef struct campaign_response_t {
     int start_time; //numeric
     int end_time; //numeric
     int is_flexible_daily_budgets; //boolean
-    objective_type_t *objective_type; // custom
+    pinterest_rest_api_objective_type__e objective_type; //referenced enum
     int created_time; //numeric
     int updated_time; //numeric
     char *type; // string
     int is_campaign_budget_optimization; //boolean
-    campaign_summary_status_t *summary_status; // custom
+    pinterest_rest_api_campaign_summary_status__e summary_status; //referenced enum
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } campaign_response_t;
 
-campaign_response_t *campaign_response_create(
+__attribute__((deprecated)) campaign_response_t *campaign_response_create(
     char *id,
     char *ad_account_id,
     char *name,
@@ -71,12 +56,12 @@ campaign_response_t *campaign_response_create(
     int start_time,
     int end_time,
     int is_flexible_daily_budgets,
-    objective_type_t *objective_type,
+    pinterest_rest_api_objective_type__e objective_type,
     int created_time,
     int updated_time,
     char *type,
     int is_campaign_budget_optimization,
-    campaign_summary_status_t *summary_status
+    pinterest_rest_api_campaign_summary_status__e summary_status
 );
 
 void campaign_response_free(campaign_response_t *campaign_response);

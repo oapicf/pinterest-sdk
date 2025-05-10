@@ -257,7 +257,7 @@ void OAILeadAdsApi::adAccountsSubscriptions_delById(const QString &ad_account_id
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAILeadAdsApi::adAccountsSubscriptions_delByIdCallback);
     connect(this, &OAILeadAdsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -279,7 +279,7 @@ void OAILeadAdsApi::adAccountsSubscriptions_delById(const QString &ad_account_id
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAILeadAdsApi::adAccountsSubscriptions_delByIdCallback);
     connect(this, &OAILeadAdsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -395,7 +395,7 @@ void OAILeadAdsApi::adAccountsSubscriptions_getById(const QString &ad_account_id
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAILeadAdsApi::adAccountsSubscriptions_getByIdCallback);
     connect(this, &OAILeadAdsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -417,7 +417,7 @@ void OAILeadAdsApi::adAccountsSubscriptions_getById(const QString &ad_account_id
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAILeadAdsApi::adAccountsSubscriptions_getByIdCallback);
     connect(this, &OAILeadAdsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -521,7 +521,7 @@ void OAILeadAdsApi::adAccountsSubscriptions_getList(const QString &ad_account_id
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     if (bookmark.hasValue())
     {
@@ -536,7 +536,7 @@ void OAILeadAdsApi::adAccountsSubscriptions_getList(const QString &ad_account_id
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -551,7 +551,7 @@ void OAILeadAdsApi::adAccountsSubscriptions_getList(const QString &ad_account_id
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAILeadAdsApi::adAccountsSubscriptions_getListCallback);
     connect(this, &OAILeadAdsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -573,7 +573,7 @@ void OAILeadAdsApi::adAccountsSubscriptions_getList(const QString &ad_account_id
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAILeadAdsApi::adAccountsSubscriptions_getListCallback);
     connect(this, &OAILeadAdsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -681,7 +681,7 @@ void OAILeadAdsApi::adAccountsSubscriptions_post(const QString &ad_account_id, c
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAILeadAdsApi::adAccountsSubscriptions_postCallback);
     connect(this, &OAILeadAdsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -703,7 +703,7 @@ void OAILeadAdsApi::adAccountsSubscriptions_post(const QString &ad_account_id, c
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAILeadAdsApi::adAccountsSubscriptions_postCallback);
     connect(this, &OAILeadAdsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }

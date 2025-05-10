@@ -13,7 +13,7 @@ import AnyCodable
 /** Catalogs Hotel Feed object */
 public struct CatalogsHotelFeed: Codable, JSONEncodable, Hashable {
 
-    static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public var createdAt: Date
     public var id: String
     public var updatedAt: Date
@@ -84,3 +84,6 @@ public struct CatalogsHotelFeed: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension CatalogsHotelFeed: Identifiable {}

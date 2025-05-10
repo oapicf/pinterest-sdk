@@ -362,8 +362,8 @@ $apiInstance = new OpenAPI\Client\Api\UserAccountApi(
     new GuzzleHttp\Client(),
     $config
 );
-$start_date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
-$end_date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
+$start_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
+$end_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
 $from_claimed_content = 'BOTH'; // string | Filter on Pins that match your claimed domain.
 $pin_format = 'ALL'; // string | Pin formats to get data for, default is all.
 $app_types = 'ALL'; // string | Apps or devices to get data for, default is all.
@@ -443,8 +443,8 @@ $apiInstance = new OpenAPI\Client\Api\UserAccountApi(
     new GuzzleHttp\Client(),
     $config
 );
-$start_date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
-$end_date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
+$start_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
+$end_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
 $sort_by = 'sort_by_example'; // string | Specify sorting order for metrics
 $from_claimed_content = 'BOTH'; // string | Filter on Pins that match your claimed domain.
 $pin_format = 'ALL'; // string | Pin formats to get data for, default is all.
@@ -528,8 +528,8 @@ $apiInstance = new OpenAPI\Client\Api\UserAccountApi(
     new GuzzleHttp\Client(),
     $config
 );
-$start_date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
-$end_date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
+$start_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
+$end_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
 $sort_by = 'sort_by_example'; // string | Specify sorting order for video metrics
 $from_claimed_content = 'BOTH'; // string | Filter on Pins that match your claimed domain.
 $pin_format = 'ALL'; // string | Pin formats to get data for, default is all.

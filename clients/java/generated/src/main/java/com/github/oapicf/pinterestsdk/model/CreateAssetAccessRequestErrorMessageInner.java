@@ -50,20 +50,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CreateAssetAccessRequestErrorMessageInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CreateAssetAccessRequestErrorMessageInner {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
+  @javax.annotation.Nullable
   private Integer code;
 
   public static final String SERIALIZED_NAME_MESSAGES = "messages";
   @SerializedName(SERIALIZED_NAME_MESSAGES)
+  @javax.annotation.Nullable
   private List<String> messages = new ArrayList<>();
 
   public CreateAssetAccessRequestErrorMessageInner() {
   }
 
-  public CreateAssetAccessRequestErrorMessageInner code(Integer code) {
+  public CreateAssetAccessRequestErrorMessageInner code(@javax.annotation.Nullable Integer code) {
     this.code = code;
     return this;
   }
@@ -77,12 +79,12 @@ public class CreateAssetAccessRequestErrorMessageInner {
     return code;
   }
 
-  public void setCode(Integer code) {
+  public void setCode(@javax.annotation.Nullable Integer code) {
     this.code = code;
   }
 
 
-  public CreateAssetAccessRequestErrorMessageInner messages(List<String> messages) {
+  public CreateAssetAccessRequestErrorMessageInner messages(@javax.annotation.Nullable List<String> messages) {
     this.messages = messages;
     return this;
   }
@@ -104,7 +106,7 @@ public class CreateAssetAccessRequestErrorMessageInner {
     return messages;
   }
 
-  public void setMessages(List<String> messages) {
+  public void setMessages(@javax.annotation.Nullable List<String> messages) {
     this.messages = messages;
   }
 

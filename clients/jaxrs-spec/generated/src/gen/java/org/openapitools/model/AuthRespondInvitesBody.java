@@ -21,9 +21,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "An object with a list of all the invites the user would like to respond to and the action to take.")
 @JsonTypeName("AuthRespondInvitesBody")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AuthRespondInvitesBody   {
   private @Valid List<@Valid AuthRespondInvitesBodyInvitesInner> invites = new ArrayList<>();
+
+  public AuthRespondInvitesBody() {
+  }
+
+  @JsonCreator
+  public AuthRespondInvitesBody(
+    @JsonProperty(required = true, value = "invites") List<@Valid AuthRespondInvitesBodyInvitesInner> invites
+  ) {
+    this.invites = invites;
+  }
 
   /**
    **/
@@ -34,12 +44,12 @@ public class AuthRespondInvitesBody   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("invites")
+  @JsonProperty(required = true, value = "invites")
   @NotNull @Valid  @Size(min=1,max=100)public List<@Valid AuthRespondInvitesBodyInvitesInner> getInvites() {
     return invites;
   }
 
-  @JsonProperty("invites")
+  @JsonProperty(required = true, value = "invites")
   public void setInvites(List<@Valid AuthRespondInvitesBodyInvitesInner> invites) {
     this.invites = invites;
   }

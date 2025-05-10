@@ -12,10 +12,6 @@
 package openapi
 
 
-import (
-	"gopkg.in/validator.v2"
-)
-
 
 
 // CatalogsVerticalsListProductsByCatalogBasedFilterRequest - Request object to list products for a given catalog_id and product group filter.

@@ -42,14 +42,14 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum GetAudiencesOrderBy: string
 {
-        case NONE = "NONE";
-        case ID = "ID";
-        case SIZE = "SIZE";
-        case CREATION_DATE = "CREATION_DATE";
-        case UPDATED_TIME = "UPDATED_TIME";
-        case NAME = "NAME";
-        case STATUS = "STATUS";
-        case TYPE = "TYPE";
+        case NONE = 'NONE';
+        case ID = 'ID';
+        case SIZE = 'SIZE';
+        case CREATION_DATE = 'CREATION_DATE';
+        case UPDATED_TIME = 'UPDATED_TIME';
+        case NAME = 'NAME';
+        case STATUS = 'STATUS';
+        case TYPE = 'TYPE';
 }
 
 

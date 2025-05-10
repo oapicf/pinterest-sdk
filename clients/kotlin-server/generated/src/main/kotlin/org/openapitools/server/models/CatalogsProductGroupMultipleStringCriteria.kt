@@ -12,13 +12,15 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param propertyValues 
  * @param negated 
  */
+@Serializable
 data class CatalogsProductGroupMultipleStringCriteria(
     val propertyValues: kotlin.collections.List<kotlin.String>,
     val negated: kotlin.Boolean? = false
-) 
+)
 

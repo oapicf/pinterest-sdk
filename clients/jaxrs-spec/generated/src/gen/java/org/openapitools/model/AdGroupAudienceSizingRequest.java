@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdGroupAudienceSizingRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdGroupAudienceSizingRequest   {
   private Boolean autoTargetingEnabled = true;
   private PlacementGroupType placementGroup = "ALL";
@@ -77,6 +77,9 @@ public class AdGroupAudienceSizingRequest   {
   private TargetingSpec targetingSpec;
   private @Valid List<@Pattern(regexp = "^\\d+$")String> productGroupIds;
   private @Valid List<@Valid AdGroupAudienceSizingRequestKeywordsInner> keywords;
+
+  public AdGroupAudienceSizingRequest() {
+  }
 
   /**
    * Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.

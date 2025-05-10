@@ -22,7 +22,7 @@ pinterest_rest_api_order_line_status__e order_line_status_order_line_status_From
     return 0;
 }
 
-cJSON *order_line_status_order_line_status_convertToJSON(pinterest_rest_api_order_line_status__e order_line_status) {
+cJSON *order_line_status_convertToJSON(pinterest_rest_api_order_line_status__e order_line_status) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "order_line_status", order_line_status_order_line_status_ToString(order_line_status)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_order_line_status__e order_line_status_order_line_status_parseFromJSON(cJSON *order_line_statusJSON) {
-    pinterest_rest_api_order_line_status__e *order_line_status = NULL;
-    pinterest_rest_api_order_line_status__e order_line_statusVariable;
-    cJSON *order_line_statusVar = cJSON_GetObjectItemCaseSensitive(order_line_statusJSON, "order_line_status");
-    if(!cJSON_IsString(order_line_statusVar) || (order_line_statusVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_order_line_status__e order_line_status_parseFromJSON(cJSON *order_line_statusJSON) {
+    if(!cJSON_IsString(order_line_statusJSON) || (order_line_statusJSON->valuestring == NULL)) {
+        return 0;
     }
-    order_line_statusVariable = order_line_status_order_line_status_FromString(order_line_statusVar->valuestring);
-    return order_line_statusVariable;
-end:
-    return 0;
+    return order_line_status_order_line_status_FromString(order_line_statusJSON->valuestring);
 }

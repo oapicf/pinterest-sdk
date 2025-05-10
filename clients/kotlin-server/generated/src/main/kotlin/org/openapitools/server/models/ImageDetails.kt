@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param width 
  * @param height 
  * @param url 
  */
+@Serializable
 data class ImageDetails(
     val width: kotlin.Int,
-    val height: kotlin.Int,
+    val height: kotlin.Int?,
     val url: kotlin.String
-) 
+)
 

@@ -63,11 +63,11 @@ export function AdvancedAuctionProcessedItemsFromJSONTyped(json: any, ignoreDisc
     };
 }
 
-  export function AdvancedAuctionProcessedItemsToJSON(json: any): AdvancedAuctionProcessedItems {
-      return AdvancedAuctionProcessedItemsToJSONTyped(json, false);
-  }
+export function AdvancedAuctionProcessedItemsToJSON(json: any): AdvancedAuctionProcessedItems {
+    return AdvancedAuctionProcessedItemsToJSONTyped(json, false);
+}
 
-  export function AdvancedAuctionProcessedItemsToJSONTyped(value?: AdvancedAuctionProcessedItems | null, ignoreDiscriminator: boolean = false): any {
+export function AdvancedAuctionProcessedItemsToJSONTyped(value?: AdvancedAuctionProcessedItems | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

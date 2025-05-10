@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { AudienceDefinitionResponse } from '../model/audienceDefinitionResponse';
 import { AudienceInsightType } from '../model/audienceInsightType';
@@ -28,10 +28,12 @@ export class AudienceInsightsService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -50,9 +52,10 @@ export class AudienceInsightsService {
      * @param audienceInsightType Type of audience insights.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [audienceInsightsGetOpts.config] Override http request option.
      */
-    public audienceInsightsGet(adAccountId: string, audienceInsightType: AudienceInsightType, ): Observable<AxiosResponse<AudienceInsightsResponse>>;
-    public audienceInsightsGet(adAccountId: string, audienceInsightType: AudienceInsightType, ): Observable<any> {
+    public audienceInsightsGet(adAccountId: string, audienceInsightType: AudienceInsightType, audienceInsightsGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<AudienceInsightsResponse>>;
+    public audienceInsightsGet(adAccountId: string, audienceInsightType: AudienceInsightType, audienceInsightsGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling audienceInsightsGet.');
         }
@@ -99,7 +102,8 @@ export class AudienceInsightsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...audienceInsightsGetOpts?.config,
+                        headers: {...headers, ...audienceInsightsGetOpts?.config?.headers},
                     }
                 );
             })
@@ -111,9 +115,10 @@ export class AudienceInsightsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [audienceInsightsScopeAndTypeGetOpts.config] Override http request option.
      */
-    public audienceInsightsScopeAndTypeGet(adAccountId: string, ): Observable<AxiosResponse<AudienceDefinitionResponse>>;
-    public audienceInsightsScopeAndTypeGet(adAccountId: string, ): Observable<any> {
+    public audienceInsightsScopeAndTypeGet(adAccountId: string, audienceInsightsScopeAndTypeGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<AudienceDefinitionResponse>>;
+    public audienceInsightsScopeAndTypeGet(adAccountId: string, audienceInsightsScopeAndTypeGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling audienceInsightsScopeAndTypeGet.');
         }
@@ -150,7 +155,8 @@ export class AudienceInsightsService {
                 return this.httpClient.get<AudienceDefinitionResponse>(`${this.basePath}/ad_accounts/${encodeURIComponent(String(ad_account_id))}/insights/audiences`,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...audienceInsightsScopeAndTypeGetOpts?.config,
+                        headers: {...headers, ...audienceInsightsScopeAndTypeGetOpts?.config?.headers},
                     }
                 );
             })

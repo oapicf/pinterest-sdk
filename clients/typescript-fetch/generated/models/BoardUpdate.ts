@@ -73,11 +73,11 @@ export function BoardUpdateFromJSONTyped(json: any, ignoreDiscriminator: boolean
     };
 }
 
-  export function BoardUpdateToJSON(json: any): BoardUpdate {
-      return BoardUpdateToJSONTyped(json, false);
-  }
+export function BoardUpdateToJSON(json: any): BoardUpdate {
+    return BoardUpdateToJSONTyped(json, false);
+}
 
-  export function BoardUpdateToJSONTyped(value?: BoardUpdate | null, ignoreDiscriminator: boolean = false): any {
+export function BoardUpdateToJSONTyped(value?: BoardUpdate | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

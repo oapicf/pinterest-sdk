@@ -77,10 +77,35 @@ CatalogsHotelItemsBatch <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return CatalogsHotelItemsBatch in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return CatalogsHotelItemsBatch as a base R list.
+    #' @examples
+    #' # convert array of CatalogsHotelItemsBatch (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert CatalogsHotelItemsBatch to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       CatalogsHotelItemsBatchObject <- list()
       if (!is.null(self$`batch_id`)) {
         CatalogsHotelItemsBatchObject[["batch_id"]] <-
@@ -96,17 +121,17 @@ CatalogsHotelItemsBatch <- R6::R6Class(
       }
       if (!is.null(self$`status`)) {
         CatalogsHotelItemsBatchObject[["status"]] <-
-          self$`status`$toJSON()
+          self$`status`$toSimpleType()
       }
       if (!is.null(self$`catalog_type`)) {
         CatalogsHotelItemsBatchObject[["catalog_type"]] <-
-          self$`catalog_type`$toJSON()
+          self$`catalog_type`$toSimpleType()
       }
       if (!is.null(self$`items`)) {
         CatalogsHotelItemsBatchObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toJSON())
+          lapply(self$`items`, function(x) x$toSimpleType())
       }
-      CatalogsHotelItemsBatchObject
+      return(CatalogsHotelItemsBatchObject)
     },
 
     #' @description
@@ -143,61 +168,13 @@ CatalogsHotelItemsBatch <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return CatalogsHotelItemsBatch in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`batch_id`)) {
-          sprintf(
-          '"batch_id":
-            "%s"
-                    ',
-          self$`batch_id`
-          )
-        },
-        if (!is.null(self$`created_time`)) {
-          sprintf(
-          '"created_time":
-            "%s"
-                    ',
-          self$`created_time`
-          )
-        },
-        if (!is.null(self$`completed_time`)) {
-          sprintf(
-          '"completed_time":
-            "%s"
-                    ',
-          self$`completed_time`
-          )
-        },
-        if (!is.null(self$`status`)) {
-          sprintf(
-          '"status":
-          %s
-          ',
-          jsonlite::toJSON(self$`status`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`catalog_type`)) {
-          sprintf(
-          '"catalog_type":
-          %s
-          ',
-          jsonlite::toJSON(self$`catalog_type`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`items`)) {
-          sprintf(
-          '"items":
-          [%s]
-',
-          paste(sapply(self$`items`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

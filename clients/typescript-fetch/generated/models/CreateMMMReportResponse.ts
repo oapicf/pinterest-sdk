@@ -63,11 +63,11 @@ export function CreateMMMReportResponseFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-  export function CreateMMMReportResponseToJSON(json: any): CreateMMMReportResponse {
-      return CreateMMMReportResponseToJSONTyped(json, false);
-  }
+export function CreateMMMReportResponseToJSON(json: any): CreateMMMReportResponse {
+    return CreateMMMReportResponseToJSONTyped(json, false);
+}
 
-  export function CreateMMMReportResponseToJSONTyped(value?: CreateMMMReportResponse | null, ignoreDiscriminator: boolean = false): any {
+export function CreateMMMReportResponseToJSONTyped(value?: CreateMMMReportResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

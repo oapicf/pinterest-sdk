@@ -47,14 +47,39 @@ AdsAnalyticsGetAsyncResponse <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return AdsAnalyticsGetAsyncResponse in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return AdsAnalyticsGetAsyncResponse as a base R list.
+    #' @examples
+    #' # convert array of AdsAnalyticsGetAsyncResponse (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert AdsAnalyticsGetAsyncResponse to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       AdsAnalyticsGetAsyncResponseObject <- list()
       if (!is.null(self$`report_status`)) {
         AdsAnalyticsGetAsyncResponseObject[["report_status"]] <-
-          self$`report_status`$toJSON()
+          self$`report_status`$toSimpleType()
       }
       if (!is.null(self$`url`)) {
         AdsAnalyticsGetAsyncResponseObject[["url"]] <-
@@ -64,7 +89,7 @@ AdsAnalyticsGetAsyncResponse <- R6::R6Class(
         AdsAnalyticsGetAsyncResponseObject[["size"]] <-
           self$`size`
       }
-      AdsAnalyticsGetAsyncResponseObject
+      return(AdsAnalyticsGetAsyncResponseObject)
     },
 
     #' @description
@@ -90,37 +115,13 @@ AdsAnalyticsGetAsyncResponse <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return AdsAnalyticsGetAsyncResponse in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`report_status`)) {
-          sprintf(
-          '"report_status":
-          %s
-          ',
-          jsonlite::toJSON(self$`report_status`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`url`)) {
-          sprintf(
-          '"url":
-            "%s"
-                    ',
-          self$`url`
-          )
-        },
-        if (!is.null(self$`size`)) {
-          sprintf(
-          '"size":
-            %d
-                    ',
-          self$`size`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

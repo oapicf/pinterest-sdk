@@ -64,11 +64,11 @@ export function IntegrationsGetList200ResponseFromJSONTyped(json: any, ignoreDis
     };
 }
 
-  export function IntegrationsGetList200ResponseToJSON(json: any): IntegrationsGetList200Response {
-      return IntegrationsGetList200ResponseToJSONTyped(json, false);
-  }
+export function IntegrationsGetList200ResponseToJSON(json: any): IntegrationsGetList200Response {
+    return IntegrationsGetList200ResponseToJSONTyped(json, false);
+}
 
-  export function IntegrationsGetList200ResponseToJSONTyped(value?: IntegrationsGetList200Response | null, ignoreDiscriminator: boolean = false): any {
+export function IntegrationsGetList200ResponseToJSONTyped(value?: IntegrationsGetList200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

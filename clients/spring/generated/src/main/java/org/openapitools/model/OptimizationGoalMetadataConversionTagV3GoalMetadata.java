@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -25,10 +26,10 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("OptimizationGoalMetadata_conversion_tag_v3_goal_metadata")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
 
-  private OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows attributionWindows;
+  private @Nullable OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows attributionWindows;
 
   /**
    * Gets or Sets conversionEvent
@@ -81,11 +82,11 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
     }
   }
 
-  private ConversionEventEnum conversionEvent;
+  private @Nullable ConversionEventEnum conversionEvent;
 
-  private String conversionTagId;
+  private @Nullable String conversionTagId;
 
-  private String cpaGoalValueInMicroCurrency;
+  private @Nullable String cpaGoalValueInMicroCurrency;
 
   private JsonNullable<Boolean> isRoasOptimized = JsonNullable.<Boolean>undefined();
 

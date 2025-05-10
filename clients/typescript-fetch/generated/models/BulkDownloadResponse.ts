@@ -48,11 +48,11 @@ export function BulkDownloadResponseFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function BulkDownloadResponseToJSON(json: any): BulkDownloadResponse {
-      return BulkDownloadResponseToJSONTyped(json, false);
-  }
+export function BulkDownloadResponseToJSON(json: any): BulkDownloadResponse {
+    return BulkDownloadResponseToJSONTyped(json, false);
+}
 
-  export function BulkDownloadResponseToJSONTyped(value?: BulkDownloadResponse | null, ignoreDiscriminator: boolean = false): any {
+export function BulkDownloadResponseToJSONTyped(value?: BulkDownloadResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

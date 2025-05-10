@@ -10,9 +10,9 @@
 
 
 use reqwest;
-use serde::{Deserialize, Serialize};
+use serde::{Deserialize, Serialize, de::Error as _};
 use crate::{apis::ResponseContent, models};
-use super::{Error, configuration};
+use super::{Error, configuration, ContentType};
 
 
 /// struct for typed errors of method [`ad_accounts_audiences_shared_accounts_slash_list`]
@@ -83,247 +83,325 @@ pub enum UpdateBusinessToBusinessSharedAudienceError {
 
 /// List all ad accounts and/or businesses that have access to a specific audience. The audience must be owned by the requesting ad account.
 pub async fn ad_accounts_audiences_shared_accounts_slash_list(configuration: &configuration::Configuration, ad_account_id: &str, audience_id: &str, account_type: models::AudienceAccountType, page_size: Option<i32>, bookmark: Option<&str>) -> Result<models::AdAccountsAudiencesSharedAccountsList200Response, Error<AdAccountsAudiencesSharedAccountsSlashListError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_ad_account_id = ad_account_id;
+    let p_audience_id = audience_id;
+    let p_account_type = account_type;
+    let p_page_size = page_size;
+    let p_bookmark = bookmark;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/audiences/shared/accounts", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    let local_var_uri_str = format!("{}/ad_accounts/{ad_account_id}/audiences/shared/accounts", local_var_configuration.base_path, ad_account_id=crate::apis::urlencode(ad_account_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    local_var_req_builder = local_var_req_builder.query(&[("audience_id", &audience_id.to_string())]);
-    local_var_req_builder = local_var_req_builder.query(&[("account_type", &account_type.to_string())]);
-    if let Some(ref local_var_str) = page_size {
-        local_var_req_builder = local_var_req_builder.query(&[("page_size", &local_var_str.to_string())]);
+    req_builder = req_builder.query(&[("audience_id", &p_audience_id.to_string())]);
+    req_builder = req_builder.query(&[("account_type", &p_account_type.to_string())]);
+    if let Some(ref param_value) = p_page_size {
+        req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = bookmark {
-        local_var_req_builder = local_var_req_builder.query(&[("bookmark", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_bookmark {
+        req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::AdAccountsAudiencesSharedAccountsList200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::AdAccountsAudiencesSharedAccountsList200Response`")))),
+        }
     } else {
-        let local_var_entity: Option<AdAccountsAudiencesSharedAccountsSlashListError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<AdAccountsAudiencesSharedAccountsSlashListError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// List all ad accounts and/or businesses that have access to a specific audience. The audience must either be owned by an ad account in the requesting business, or it must have been shared with the requesting business. If the requesting business is not the owner of the audience, only ad accounts owned by the requesting business will be returned.
 pub async fn business_account_audiences_shared_accounts_slash_list(configuration: &configuration::Configuration, business_id: &str, audience_id: &str, account_type: models::AudienceAccountType, page_size: Option<i32>, bookmark: Option<&str>) -> Result<models::AdAccountsAudiencesSharedAccountsList200Response, Error<BusinessAccountAudiencesSharedAccountsSlashListError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_business_id = business_id;
+    let p_audience_id = audience_id;
+    let p_account_type = account_type;
+    let p_page_size = page_size;
+    let p_bookmark = bookmark;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/businesses/{business_id}/audiences/shared/accounts", configuration.base_path, business_id=crate::apis::urlencode(p_business_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    let local_var_uri_str = format!("{}/businesses/{business_id}/audiences/shared/accounts", local_var_configuration.base_path, business_id=crate::apis::urlencode(business_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    local_var_req_builder = local_var_req_builder.query(&[("audience_id", &audience_id.to_string())]);
-    local_var_req_builder = local_var_req_builder.query(&[("account_type", &account_type.to_string())]);
-    if let Some(ref local_var_str) = page_size {
-        local_var_req_builder = local_var_req_builder.query(&[("page_size", &local_var_str.to_string())]);
+    req_builder = req_builder.query(&[("audience_id", &p_audience_id.to_string())]);
+    req_builder = req_builder.query(&[("account_type", &p_account_type.to_string())]);
+    if let Some(ref param_value) = p_page_size {
+        req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = bookmark {
-        local_var_req_builder = local_var_req_builder.query(&[("bookmark", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_bookmark {
+        req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::AdAccountsAudiencesSharedAccountsList200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::AdAccountsAudiencesSharedAccountsList200Response`")))),
+        }
     } else {
-        let local_var_entity: Option<BusinessAccountAudiencesSharedAccountsSlashListError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<BusinessAccountAudiencesSharedAccountsSlashListError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// Get a list of received audiences for the given business.
 pub async fn shared_audiences_for_business_slash_list(configuration: &configuration::Configuration, business_id: &str, bookmark: Option<&str>, order: Option<&str>, page_size: Option<i32>) -> Result<models::AudiencesList200Response, Error<SharedAudiencesForBusinessSlashListError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_business_id = business_id;
+    let p_bookmark = bookmark;
+    let p_order = order;
+    let p_page_size = page_size;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/businesses/{business_id}/audiences", configuration.base_path, business_id=crate::apis::urlencode(p_business_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    let local_var_uri_str = format!("{}/businesses/{business_id}/audiences", local_var_configuration.base_path, business_id=crate::apis::urlencode(business_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_str) = bookmark {
-        local_var_req_builder = local_var_req_builder.query(&[("bookmark", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_bookmark {
+        req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = order {
-        local_var_req_builder = local_var_req_builder.query(&[("order", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_order {
+        req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = page_size {
-        local_var_req_builder = local_var_req_builder.query(&[("page_size", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_page_size {
+        req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::AudiencesList200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::AudiencesList200Response`")))),
+        }
     } else {
-        let local_var_entity: Option<SharedAudiencesForBusinessSlashListError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<SharedAudiencesForBusinessSlashListError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
 pub async fn update_ad_account_to_ad_account_shared_audience(configuration: &configuration::Configuration, ad_account_id: &str, shared_audience: models::SharedAudience) -> Result<models::SharedAudienceResponse, Error<UpdateAdAccountToAdAccountSharedAudienceError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_ad_account_id = ad_account_id;
+    let p_shared_audience = shared_audience;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
-    let local_var_uri_str = format!("{}/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared", local_var_configuration.base_path, ad_account_id=crate::apis::urlencode(ad_account_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::PATCH, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&shared_audience);
+    req_builder = req_builder.json(&p_shared_audience);
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::SharedAudienceResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::SharedAudienceResponse`")))),
+        }
     } else {
-        let local_var_entity: Option<UpdateAdAccountToAdAccountSharedAudienceError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<UpdateAdAccountToAdAccountSharedAudienceError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
 pub async fn update_ad_account_to_business_shared_audience(configuration: &configuration::Configuration, ad_account_id: &str, business_shared_audience: models::BusinessSharedAudience) -> Result<models::BusinessSharedAudienceResponse, Error<UpdateAdAccountToBusinessSharedAudienceError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_ad_account_id = ad_account_id;
+    let p_business_shared_audience = business_shared_audience;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/audiences/businesses/shared", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
-    let local_var_uri_str = format!("{}/ad_accounts/{ad_account_id}/audiences/businesses/shared", local_var_configuration.base_path, ad_account_id=crate::apis::urlencode(ad_account_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::PATCH, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&business_shared_audience);
+    req_builder = req_builder.json(&p_business_shared_audience);
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::BusinessSharedAudienceResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::BusinessSharedAudienceResponse`")))),
+        }
     } else {
-        let local_var_entity: Option<UpdateAdAccountToBusinessSharedAudienceError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<UpdateAdAccountToBusinessSharedAudienceError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
 pub async fn update_business_to_ad_account_shared_audience(configuration: &configuration::Configuration, business_id: &str, shared_audience: models::SharedAudience) -> Result<models::SharedAudienceResponse, Error<UpdateBusinessToAdAccountSharedAudienceError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_business_id = business_id;
+    let p_shared_audience = shared_audience;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/businesses/{business_id}/audiences/ad_accounts/shared", configuration.base_path, business_id=crate::apis::urlencode(p_business_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
-    let local_var_uri_str = format!("{}/businesses/{business_id}/audiences/ad_accounts/shared", local_var_configuration.base_path, business_id=crate::apis::urlencode(business_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::PATCH, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&shared_audience);
+    req_builder = req_builder.json(&p_shared_audience);
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::SharedAudienceResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::SharedAudienceResponse`")))),
+        }
     } else {
-        let local_var_entity: Option<UpdateBusinessToAdAccountSharedAudienceError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<UpdateBusinessToAdAccountSharedAudienceError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
 pub async fn update_business_to_business_shared_audience(configuration: &configuration::Configuration, business_id: &str, business_shared_audience: models::BusinessSharedAudience) -> Result<models::BusinessSharedAudienceResponse, Error<UpdateBusinessToBusinessSharedAudienceError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_business_id = business_id;
+    let p_business_shared_audience = business_shared_audience;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/businesses/{business_id}/audiences/businesses/shared", configuration.base_path, business_id=crate::apis::urlencode(p_business_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
-    let local_var_uri_str = format!("{}/businesses/{business_id}/audiences/businesses/shared", local_var_configuration.base_path, business_id=crate::apis::urlencode(business_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::PATCH, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&business_shared_audience);
+    req_builder = req_builder.json(&p_business_shared_audience);
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::BusinessSharedAudienceResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::BusinessSharedAudienceResponse`")))),
+        }
     } else {
-        let local_var_entity: Option<UpdateBusinessToBusinessSharedAudienceError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<UpdateBusinessToBusinessSharedAudienceError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 

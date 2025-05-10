@@ -13,15 +13,17 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.AdvancedAuctionItemsSubmitRecord
 
+import kotlinx.serialization.Serializable
 /**
  * Request containing operations to perform on bid prices and bid multipliers for a batch of retail catalog items
  * @param catalogId Catalog id pertaining to all items
  * @param items Array of item bid option operations
  */
+@Serializable
 data class AdvancedAuctionItemsSubmitRequest(
     /* Catalog id pertaining to all items */
     val catalogId: kotlin.String,
     /* Array of item bid option operations */
     val items: kotlin.collections.List<AdvancedAuctionItemsSubmitRecord>
-) 
+)
 

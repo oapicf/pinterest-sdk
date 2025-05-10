@@ -65,11 +65,11 @@ export function CatalogsDbItemFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-  export function CatalogsDbItemToJSON(json: any): CatalogsDbItem {
-      return CatalogsDbItemToJSONTyped(json, false);
-  }
+export function CatalogsDbItemToJSON(json: any): CatalogsDbItem {
+    return CatalogsDbItemToJSONTyped(json, false);
+}
 
-  export function CatalogsDbItemToJSONTyped(value?: CatalogsDbItem | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsDbItemToJSONTyped(value?: CatalogsDbItem | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

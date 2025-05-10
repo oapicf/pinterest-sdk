@@ -57,12 +57,12 @@ data class PinMediaSourceImageBase64(
 
     /**
     * 
-    * Values: jpeg,png
+    * Values: imageSlashJpeg,imageSlashPng
     */
     enum class ContentType(@get:JsonValue val value: kotlin.String) {
 
-        jpeg("image/jpeg"),
-        png("image/png");
+        imageSlashJpeg("image/jpeg"),
+        imageSlashPng("image/png");
 
         companion object {
             @JvmStatic

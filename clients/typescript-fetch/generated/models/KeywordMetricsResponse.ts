@@ -63,11 +63,11 @@ export function KeywordMetricsResponseFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-  export function KeywordMetricsResponseToJSON(json: any): KeywordMetricsResponse {
-      return KeywordMetricsResponseToJSONTyped(json, false);
-  }
+export function KeywordMetricsResponseToJSON(json: any): KeywordMetricsResponse {
+    return KeywordMetricsResponseToJSONTyped(json, false);
+}
 
-  export function KeywordMetricsResponseToJSONTyped(value?: KeywordMetricsResponse | null, ignoreDiscriminator: boolean = false): any {
+export function KeywordMetricsResponseToJSONTyped(value?: KeywordMetricsResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -1798,8 +1798,8 @@ export type TemplateResponseColumnsEnum = typeof TemplateResponseColumnsEnum[key
  * @export
  */
 export const TemplateResponseConversionReportTimeTypeEnum = {
-    AdAction: 'TIME_OF_AD_ACTION',
-    Conversion: 'TIME_OF_CONVERSION'
+    TimeOfAdAction: 'TIME_OF_AD_ACTION',
+    TimeOfConversion: 'TIME_OF_CONVERSION'
 } as const;
 export type TemplateResponseConversionReportTimeTypeEnum = typeof TemplateResponseConversionReportTimeTypeEnum[keyof typeof TemplateResponseConversionReportTimeTypeEnum];
 
@@ -1807,9 +1807,9 @@ export type TemplateResponseConversionReportTimeTypeEnum = typeof TemplateRespon
  * @export
  */
 export const TemplateResponseCreationSourceEnum = {
-    Api: 'ADS_API',
-    ManagerReportingPage: 'ADS_MANAGER_REPORTING_PAGE',
-    ManagerReportBuilder: 'ADS_MANAGER_REPORT_BUILDER'
+    AdsApi: 'ADS_API',
+    AdsManagerReportingPage: 'ADS_MANAGER_REPORTING_PAGE',
+    AdsManagerReportBuilder: 'ADS_MANAGER_REPORT_BUILDER'
 } as const;
 export type TemplateResponseCreationSourceEnum = typeof TemplateResponseCreationSourceEnum[keyof typeof TemplateResponseCreationSourceEnum];
 
@@ -1882,11 +1882,11 @@ export function TemplateResponseFromJSONTyped(json: any, ignoreDiscriminator: bo
     };
 }
 
-  export function TemplateResponseToJSON(json: any): TemplateResponse {
-      return TemplateResponseToJSONTyped(json, false);
-  }
+export function TemplateResponseToJSON(json: any): TemplateResponse {
+    return TemplateResponseToJSONTyped(json, false);
+}
 
-  export function TemplateResponseToJSONTyped(value?: TemplateResponse | null, ignoreDiscriminator: boolean = false): any {
+export function TemplateResponseToJSONTyped(value?: TemplateResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

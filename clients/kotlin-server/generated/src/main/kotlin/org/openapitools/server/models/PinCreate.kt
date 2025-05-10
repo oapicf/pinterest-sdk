@@ -15,6 +15,7 @@ import org.openapitools.server.models.BoardOwner
 import org.openapitools.server.models.PinMedia
 import org.openapitools.server.models.PinMediaSource
 
+import kotlinx.serialization.Serializable
 /**
  * Pin
  * @param id 
@@ -32,9 +33,10 @@ import org.openapitools.server.models.PinMediaSource
  * @param parentPinId The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
  * @param note Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
  */
+@Serializable
 data class PinCreate(
     val id: kotlin.String? = null,
-    val createdAt: java.time.OffsetDateTime? = null,
+    val createdAt: kotlin.String? = null,
     val link: kotlin.String? = null,
     val title: kotlin.String? = null,
     val description: kotlin.String? = null,
@@ -52,5 +54,5 @@ data class PinCreate(
     val parentPinId: kotlin.String? = null,
     /* Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>. */
     val note: kotlin.String? = null
-) 
+)
 

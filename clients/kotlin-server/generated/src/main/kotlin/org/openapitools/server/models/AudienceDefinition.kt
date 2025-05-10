@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Queryable audience representation.
  * @param date Generation date
  * @param type Generated audience type to request.
  * @param scope Generated audience scope to request.
  */
+@Serializable
 data class AudienceDefinition(
     /* Generation date */
     val date: kotlin.String? = null,
@@ -25,5 +27,5 @@ data class AudienceDefinition(
     val type: kotlin.String? = null,
     /* Generated audience scope to request. */
     val scope: kotlin.String? = null
-) 
+)
 

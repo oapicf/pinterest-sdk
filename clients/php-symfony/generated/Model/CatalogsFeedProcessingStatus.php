@@ -42,9 +42,9 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum CatalogsFeedProcessingStatus: string
 {
-        case COMPLETED = "COMPLETED";
-        case FAILED = "FAILED";
-        case PROCESSING = "PROCESSING";
+        case COMPLETED = 'COMPLETED';
+        case FAILED = 'FAILED';
+        case PROCESSING = 'PROCESSING';
 }
 
 

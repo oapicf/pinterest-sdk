@@ -21,27 +21,20 @@ typedef struct item_response_any_of_1_t item_response_any_of_1_t;
 #include "catalogs_type.h"
 #include "item_validation_event.h"
 
-// Enum  for item_response_any_of_1
-
-typedef enum  { pinterest_rest_api_item_response_any_of_1__NULL = 0, pinterest_rest_api_item_response_any_of_1__RETAIL, pinterest_rest_api_item_response_any_of_1__HOTEL, pinterest_rest_api_item_response_any_of_1__CREATIVE_ASSETS } pinterest_rest_api_item_response_any_of_1__e;
-
-char* item_response_any_of_1_catalog_type_ToString(pinterest_rest_api_item_response_any_of_1__e catalog_type);
-
-pinterest_rest_api_item_response_any_of_1__e item_response_any_of_1_catalog_type_FromString(char* catalog_type);
-
 
 
 typedef struct item_response_any_of_1_t {
-    catalogs_type_t *catalog_type; // custom
+    pinterest_rest_api_catalogs_type__e catalog_type; //referenced enum
     char *item_id; // string
     list_t *errors; //nonprimitive container
     char *hotel_id; // string
     char *creative_assets_id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } item_response_any_of_1_t;
 
-item_response_any_of_1_t *item_response_any_of_1_create(
-    catalogs_type_t *catalog_type,
+__attribute__((deprecated)) item_response_any_of_1_t *item_response_any_of_1_create(
+    pinterest_rest_api_catalogs_type__e catalog_type,
     char *item_id,
     list_t *errors,
     char *hotel_id,

@@ -48,10 +48,35 @@ TargetingSpecSHOPPINGRETARGETING <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return TargetingSpecSHOPPINGRETARGETING in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return TargetingSpecSHOPPINGRETARGETING as a base R list.
+    #' @examples
+    #' # convert array of TargetingSpecSHOPPINGRETARGETING (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert TargetingSpecSHOPPINGRETARGETING to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       TargetingSpecSHOPPINGRETARGETINGObject <- list()
       if (!is.null(self$`lookback_window`)) {
         TargetingSpecSHOPPINGRETARGETINGObject[["lookback_window"]] <-
@@ -65,7 +90,7 @@ TargetingSpecSHOPPINGRETARGETING <- R6::R6Class(
         TargetingSpecSHOPPINGRETARGETINGObject[["exclusion_window"]] <-
           self$`exclusion_window`
       }
-      TargetingSpecSHOPPINGRETARGETINGObject
+      return(TargetingSpecSHOPPINGRETARGETINGObject)
     },
 
     #' @description
@@ -89,37 +114,13 @@ TargetingSpecSHOPPINGRETARGETING <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return TargetingSpecSHOPPINGRETARGETING in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`lookback_window`)) {
-          sprintf(
-          '"lookback_window":
-            %d
-                    ',
-          self$`lookback_window`
-          )
-        },
-        if (!is.null(self$`tag_types`)) {
-          sprintf(
-          '"tag_types":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`tag_types`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`exclusion_window`)) {
-          sprintf(
-          '"exclusion_window":
-            %d
-                    ',
-          self$`exclusion_window`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

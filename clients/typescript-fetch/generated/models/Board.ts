@@ -146,11 +146,11 @@ export function BoardFromJSONTyped(json: any, ignoreDiscriminator: boolean): Boa
     };
 }
 
-  export function BoardToJSON(json: any): Board {
-      return BoardToJSONTyped(json, false);
-  }
+export function BoardToJSON(json: any): Board {
+    return BoardToJSONTyped(json, false);
+}
 
-  export function BoardToJSONTyped(value?: Omit<Board, 'id'|'created_at'|'board_pins_modified_at'|'collaborator_count'|'pin_count'|'follower_count'|'owner'> | null, ignoreDiscriminator: boolean = false): any {
+export function BoardToJSONTyped(value?: Omit<Board, 'id'|'created_at'|'board_pins_modified_at'|'collaborator_count'|'pin_count'|'follower_count'|'owner'> | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

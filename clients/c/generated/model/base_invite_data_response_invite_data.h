@@ -25,9 +25,10 @@ typedef struct base_invite_data_response_invite_data_t {
     int last_updated_time; //numeric
     int sent_at; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } base_invite_data_response_invite_data_t;
 
-base_invite_data_response_invite_data_t *base_invite_data_response_invite_data_create(
+__attribute__((deprecated)) base_invite_data_response_invite_data_t *base_invite_data_response_invite_data_create(
     int invite_expiration,
     char *invite_status,
     char *invite_type,

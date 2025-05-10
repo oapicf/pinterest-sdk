@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param token Token to be used to get the report
  */
+@Serializable
 data class CatalogsCreateReportResponse(
     /* Token to be used to get the report */
     val token: kotlin.String? = null
-) 
+)
 

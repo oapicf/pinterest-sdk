@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param success Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
  * @param errorCode Error code type if error occurs
  * @param errorMessage Reason for failure
  */
+@Serializable
 data class AdsCreditRedeemResponse(
     /* Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true). */
     val success: kotlin.Boolean? = null,
@@ -25,5 +27,5 @@ data class AdsCreditRedeemResponse(
     val errorCode: kotlin.Int? = null,
     /* Reason for failure */
     val errorMessage: kotlin.String? = null
-) 
+)
 

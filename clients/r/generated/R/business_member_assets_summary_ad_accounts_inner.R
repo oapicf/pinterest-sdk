@@ -39,10 +39,35 @@ BusinessMemberAssetsSummaryAdAccountsInner <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return BusinessMemberAssetsSummaryAdAccountsInner in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return BusinessMemberAssetsSummaryAdAccountsInner as a base R list.
+    #' @examples
+    #' # convert array of BusinessMemberAssetsSummaryAdAccountsInner (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert BusinessMemberAssetsSummaryAdAccountsInner to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       BusinessMemberAssetsSummaryAdAccountsInnerObject <- list()
       if (!is.null(self$`id`)) {
         BusinessMemberAssetsSummaryAdAccountsInnerObject[["id"]] <-
@@ -52,7 +77,7 @@ BusinessMemberAssetsSummaryAdAccountsInner <- R6::R6Class(
         BusinessMemberAssetsSummaryAdAccountsInnerObject[["permissions"]] <-
           self$`permissions`
       }
-      BusinessMemberAssetsSummaryAdAccountsInnerObject
+      return(BusinessMemberAssetsSummaryAdAccountsInnerObject)
     },
 
     #' @description
@@ -73,29 +98,13 @@ BusinessMemberAssetsSummaryAdAccountsInner <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return BusinessMemberAssetsSummaryAdAccountsInner in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`id`)) {
-          sprintf(
-          '"id":
-            "%s"
-                    ',
-          self$`id`
-          )
-        },
-        if (!is.null(self$`permissions`)) {
-          sprintf(
-          '"permissions":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`permissions`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

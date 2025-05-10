@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 
 // Search pins by a given search term
@@ -25,11 +20,14 @@ SearchAPI_searchPartnerPins(apiClient_t *apiClient, char *term, char *country_co
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/search/partner/pins")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/search/partner/pins");
+    char *localVarPath = strdup("/search/partner/pins");
+
 
 
 
@@ -103,6 +101,7 @@ SearchAPI_searchPartnerPins(apiClient_t *apiClient, char *term, char *country_co
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -118,11 +117,14 @@ SearchAPI_searchPartnerPins(apiClient_t *apiClient, char *term, char *country_co
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *SearchAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    search_partner_pins_200_response_t *elementToReturn = search_partner_pins_200_response_parseFromJSON(SearchAPIlocalVarJSON);
-    cJSON_Delete(SearchAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    search_partner_pins_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *SearchAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = search_partner_pins_200_response_parseFromJSON(SearchAPIlocalVarJSON);
+        cJSON_Delete(SearchAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -217,11 +219,14 @@ SearchAPI_searchUserBoardsGet(apiClient_t *apiClient, char *ad_account_id, char 
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/search/boards")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/search/boards");
+    char *localVarPath = strdup("/search/boards");
+
 
 
 
@@ -283,6 +288,7 @@ SearchAPI_searchUserBoardsGet(apiClient_t *apiClient, char *ad_account_id, char 
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -294,11 +300,14 @@ SearchAPI_searchUserBoardsGet(apiClient_t *apiClient, char *ad_account_id, char 
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *SearchAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    search_user_boards_get_200_response_t *elementToReturn = search_user_boards_get_200_response_parseFromJSON(SearchAPIlocalVarJSON);
-    cJSON_Delete(SearchAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    search_user_boards_get_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *SearchAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = search_user_boards_get_200_response_parseFromJSON(SearchAPIlocalVarJSON);
+        cJSON_Delete(SearchAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -381,11 +390,14 @@ SearchAPI_searchUserPinsList(apiClient_t *apiClient, char *query, char *ad_accou
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/search/pins")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/search/pins");
+    char *localVarPath = strdup("/search/pins");
+
 
 
 
@@ -434,6 +446,7 @@ SearchAPI_searchUserPinsList(apiClient_t *apiClient, char *query, char *ad_accou
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -449,11 +462,14 @@ SearchAPI_searchUserPinsList(apiClient_t *apiClient, char *query, char *ad_accou
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *SearchAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    pins_list_200_response_t *elementToReturn = pins_list_200_response_parseFromJSON(SearchAPIlocalVarJSON);
-    cJSON_Delete(SearchAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    pins_list_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *SearchAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = pins_list_200_response_parseFromJSON(SearchAPIlocalVarJSON);
+        cJSON_Delete(SearchAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type

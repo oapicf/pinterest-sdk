@@ -55,11 +55,11 @@ export function LeadFormCommonPolicyLinksInnerFromJSONTyped(json: any, ignoreDis
     };
 }
 
-  export function LeadFormCommonPolicyLinksInnerToJSON(json: any): LeadFormCommonPolicyLinksInner {
-      return LeadFormCommonPolicyLinksInnerToJSONTyped(json, false);
-  }
+export function LeadFormCommonPolicyLinksInnerToJSON(json: any): LeadFormCommonPolicyLinksInner {
+    return LeadFormCommonPolicyLinksInnerToJSONTyped(json, false);
+}
 
-  export function LeadFormCommonPolicyLinksInnerToJSONTyped(value?: LeadFormCommonPolicyLinksInner | null, ignoreDiscriminator: boolean = false): any {
+export function LeadFormCommonPolicyLinksInnerToJSONTyped(value?: LeadFormCommonPolicyLinksInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

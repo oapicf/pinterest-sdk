@@ -24,9 +24,9 @@ char* pacing_delivery_type_pacing_delivery_type_ToString(pinterest_rest_api_paci
 
 pinterest_rest_api_pacing_delivery_type__e pacing_delivery_type_pacing_delivery_type_FromString(char* pacing_delivery_type);
 
-//cJSON *pacing_delivery_type_pacing_delivery_type_convertToJSON(pinterest_rest_api_pacing_delivery_type__e pacing_delivery_type);
+cJSON *pacing_delivery_type_convertToJSON(pinterest_rest_api_pacing_delivery_type__e pacing_delivery_type);
 
-//pinterest_rest_api_pacing_delivery_type__e pacing_delivery_type_pacing_delivery_type_parseFromJSON(cJSON *pacing_delivery_typeJSON);
+pinterest_rest_api_pacing_delivery_type__e pacing_delivery_type_parseFromJSON(cJSON *pacing_delivery_typeJSON);
 
 #endif /* _pacing_delivery_type_H_ */
 

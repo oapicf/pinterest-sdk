@@ -82,11 +82,11 @@ export function AdvancedAuctionKeyFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-  export function AdvancedAuctionKeyToJSON(json: any): AdvancedAuctionKey {
-      return AdvancedAuctionKeyToJSONTyped(json, false);
-  }
+export function AdvancedAuctionKeyToJSON(json: any): AdvancedAuctionKey {
+    return AdvancedAuctionKeyToJSONTyped(json, false);
+}
 
-  export function AdvancedAuctionKeyToJSONTyped(value?: AdvancedAuctionKey | null, ignoreDiscriminator: boolean = false): any {
+export function AdvancedAuctionKeyToJSONTyped(value?: AdvancedAuctionKey | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

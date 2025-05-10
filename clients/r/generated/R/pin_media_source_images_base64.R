@@ -51,10 +51,35 @@ PinMediaSourceImagesBase64 <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return PinMediaSourceImagesBase64 in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return PinMediaSourceImagesBase64 as a base R list.
+    #' @examples
+    #' # convert array of PinMediaSourceImagesBase64 (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert PinMediaSourceImagesBase64 to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       PinMediaSourceImagesBase64Object <- list()
       if (!is.null(self$`source_type`)) {
         PinMediaSourceImagesBase64Object[["source_type"]] <-
@@ -62,13 +87,13 @@ PinMediaSourceImagesBase64 <- R6::R6Class(
       }
       if (!is.null(self$`items`)) {
         PinMediaSourceImagesBase64Object[["items"]] <-
-          lapply(self$`items`, function(x) x$toJSON())
+          lapply(self$`items`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`index`)) {
         PinMediaSourceImagesBase64Object[["index"]] <-
           self$`index`
       }
-      PinMediaSourceImagesBase64Object
+      return(PinMediaSourceImagesBase64Object)
     },
 
     #' @description
@@ -95,37 +120,13 @@ PinMediaSourceImagesBase64 <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return PinMediaSourceImagesBase64 in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`source_type`)) {
-          sprintf(
-          '"source_type":
-            "%s"
-                    ',
-          self$`source_type`
-          )
-        },
-        if (!is.null(self$`items`)) {
-          sprintf(
-          '"items":
-          [%s]
-',
-          paste(sapply(self$`items`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`index`)) {
-          sprintf(
-          '"index":
-            %d
-                    ',
-          self$`index`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

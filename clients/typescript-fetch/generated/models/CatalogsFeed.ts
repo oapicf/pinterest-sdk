@@ -61,17 +61,21 @@ export function CatalogsFeedFromJSONTyped(json: any, ignoreDiscriminator: boolea
     }
 }
 
-export function CatalogsFeedToJSON(value?: CatalogsFeed | null): any {
+export function CatalogsFeedToJSON(json: any): any {
+    return CatalogsFeedToJSONTyped(json, false);
+}
+
+export function CatalogsFeedToJSONTyped(value?: CatalogsFeed | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
     switch (value['catalogType']) {
         case 'CREATIVE_ASSETS':
-            return CatalogsCreativeAssetsFeedToJSON(value);
+            return Object.assign({}, CatalogsCreativeAssetsFeedToJSON(value), { catalogType: 'CREATIVE_ASSETS' } as const);
         case 'HOTEL':
-            return CatalogsHotelFeedToJSON(value);
+            return Object.assign({}, CatalogsHotelFeedToJSON(value), { catalogType: 'HOTEL' } as const);
         case 'RETAIL':
-            return CatalogsRetailFeedToJSON(value);
+            return Object.assign({}, CatalogsRetailFeedToJSON(value), { catalogType: 'RETAIL' } as const);
         default:
             throw new Error(`No variant of CatalogsFeed exists with 'catalogType=${value['catalogType']}'`);
     }

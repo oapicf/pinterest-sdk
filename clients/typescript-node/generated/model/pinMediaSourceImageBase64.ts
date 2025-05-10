@@ -58,7 +58,7 @@ export namespace PinMediaSourceImageBase64 {
         ImageBase64 = <any> 'image_base64'
     }
     export enum ContentTypeEnum {
-        Jpeg = <any> 'image/jpeg',
-        Png = <any> 'image/png'
+        ImageJpeg = <any> 'image/jpeg',
+        ImagePng = <any> 'image/png'
     }
 }

@@ -17,8 +17,8 @@
  * @enum {string}
  */
 export enum ConversionReportTimeType {
-    AdAction = 'TIME_OF_AD_ACTION',
-    Conversion = 'TIME_OF_CONVERSION'
+    TimeOfAdAction = 'TIME_OF_AD_ACTION',
+    TimeOfConversion = 'TIME_OF_CONVERSION'
 }
 
 export function ConversionReportTimeTypeFromJSON(json: any): ConversionReportTimeType {

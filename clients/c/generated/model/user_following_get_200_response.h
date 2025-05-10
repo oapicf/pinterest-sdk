@@ -23,9 +23,10 @@ typedef struct user_following_get_200_response_t {
     list_t *items; //nonprimitive container
     char *bookmark; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } user_following_get_200_response_t;
 
-user_following_get_200_response_t *user_following_get_200_response_create(
+__attribute__((deprecated)) user_following_get_200_response_t *user_following_get_200_response_create(
     list_t *items,
     char *bookmark
 );

@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { AdAccountsCountryResponse } from '../model/adAccountsCountryResponse';
 import { BookClosedResponse } from '../model/bookClosedResponse';
@@ -29,10 +29,12 @@ export class ResourcesService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -49,9 +51,10 @@ export class ResourcesService {
      * Get Ad Accounts countries
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [adAccountCountriesGetOpts.config] Override http request option.
      */
-    public adAccountCountriesGet(): Observable<AxiosResponse<AdAccountsCountryResponse>>;
-    public adAccountCountriesGet(): Observable<any> {
+    public adAccountCountriesGet(adAccountCountriesGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<AdAccountsCountryResponse>>;
+    public adAccountCountriesGet(adAccountCountriesGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let headers = {...this.defaultHeaders};
 
         let accessTokenObservable: Observable<any> = of(null);
@@ -84,7 +87,8 @@ export class ResourcesService {
                 return this.httpClient.get<AdAccountsCountryResponse>(`${this.basePath}/resources/ad_account_countries`,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...adAccountCountriesGetOpts?.config,
+                        headers: {...headers, ...adAccountCountriesGetOpts?.config?.headers},
                     }
                 );
             })
@@ -96,9 +100,10 @@ export class ResourcesService {
      * @param reportType Report type.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [deliveryMetricsGetOpts.config] Override http request option.
      */
-    public deliveryMetricsGet(reportType?: 'SYNC' | 'ASYNC', ): Observable<AxiosResponse<DeliveryMetricsResponse>>;
-    public deliveryMetricsGet(reportType?: 'SYNC' | 'ASYNC', ): Observable<any> {
+    public deliveryMetricsGet(reportType?: 'SYNC' | 'ASYNC', deliveryMetricsGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<DeliveryMetricsResponse>>;
+    public deliveryMetricsGet(reportType?: 'SYNC' | 'ASYNC', deliveryMetricsGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let queryParameters = new URLSearchParams();
         if (reportType !== undefined && reportType !== null) {
             queryParameters.append('report_type', <any>reportType);
@@ -137,7 +142,8 @@ export class ResourcesService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...deliveryMetricsGetOpts?.config,
+                        headers: {...headers, ...deliveryMetricsGetOpts?.config?.headers},
                     }
                 );
             })
@@ -149,9 +155,10 @@ export class ResourcesService {
      * @param interestId Unique identifier of an interest.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [interestTargetingOptionsGetOpts.config] Override http request option.
      */
-    public interestTargetingOptionsGet(interestId: string, ): Observable<AxiosResponse<SingleInterestTargetingOptionResponse>>;
-    public interestTargetingOptionsGet(interestId: string, ): Observable<any> {
+    public interestTargetingOptionsGet(interestId: string, interestTargetingOptionsGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<SingleInterestTargetingOptionResponse>>;
+    public interestTargetingOptionsGet(interestId: string, interestTargetingOptionsGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (interestId === null || interestId === undefined) {
             throw new Error('Required parameter interestId was null or undefined when calling interestTargetingOptionsGet.');
         }
@@ -188,7 +195,8 @@ export class ResourcesService {
                 return this.httpClient.get<SingleInterestTargetingOptionResponse>(`${this.basePath}/resources/targeting/interests/${encodeURIComponent(String(interest_id))}`,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...interestTargetingOptionsGetOpts?.config,
+                        headers: {...headers, ...interestTargetingOptionsGetOpts?.config?.headers},
                     }
                 );
             })
@@ -199,9 +207,10 @@ export class ResourcesService {
      * Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/beta-and-advanced-access/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [leadFormQuestionsGetOpts.config] Override http request option.
      */
-    public leadFormQuestionsGet(): Observable<AxiosResponse<any>>;
-    public leadFormQuestionsGet(): Observable<any> {
+    public leadFormQuestionsGet(leadFormQuestionsGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public leadFormQuestionsGet(leadFormQuestionsGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let headers = {...this.defaultHeaders};
 
         let accessTokenObservable: Observable<any> = of(null);
@@ -234,7 +243,8 @@ export class ResourcesService {
                 return this.httpClient.get<any>(`${this.basePath}/resources/lead_form_questions`,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...leadFormQuestionsGetOpts?.config,
+                        headers: {...headers, ...leadFormQuestionsGetOpts?.config?.headers},
                     }
                 );
             })
@@ -246,9 +256,10 @@ export class ResourcesService {
      * @param date Analytics reports request date (UTC). Format: YYYY-MM-DD
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [metricsReadyStateGetOpts.config] Override http request option.
      */
-    public metricsReadyStateGet(date: string, ): Observable<AxiosResponse<BookClosedResponse>>;
-    public metricsReadyStateGet(date: string, ): Observable<any> {
+    public metricsReadyStateGet(date: string, metricsReadyStateGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<BookClosedResponse>>;
+    public metricsReadyStateGet(date: string, metricsReadyStateGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (date === null || date === undefined) {
             throw new Error('Required parameter date was null or undefined when calling metricsReadyStateGet.');
         }
@@ -291,7 +302,8 @@ export class ResourcesService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...metricsReadyStateGetOpts?.config,
+                        headers: {...headers, ...metricsReadyStateGetOpts?.config?.headers},
                     }
                 );
             })
@@ -307,9 +319,10 @@ export class ResourcesService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [targetingOptionsGetOpts.config] Override http request option.
      */
-    public targetingOptionsGet(targetingType: 'APPTYPE' | 'GENDER' | 'LOCALE' | 'AGE_BUCKET' | 'LOCATION' | 'GEO' | 'INTEREST' | 'KEYWORD' | 'AUDIENCE_INCLUDE' | 'AUDIENCE_EXCLUDE', clientId?: string, oauthSignature?: string, timestamp?: string, adAccountId?: string, ): Observable<AxiosResponse<Array<object>>>;
-    public targetingOptionsGet(targetingType: 'APPTYPE' | 'GENDER' | 'LOCALE' | 'AGE_BUCKET' | 'LOCATION' | 'GEO' | 'INTEREST' | 'KEYWORD' | 'AUDIENCE_INCLUDE' | 'AUDIENCE_EXCLUDE', clientId?: string, oauthSignature?: string, timestamp?: string, adAccountId?: string, ): Observable<any> {
+    public targetingOptionsGet(targetingType: 'APPTYPE' | 'GENDER' | 'LOCALE' | 'AGE_BUCKET' | 'LOCATION' | 'GEO' | 'INTEREST' | 'KEYWORD' | 'AUDIENCE_INCLUDE' | 'AUDIENCE_EXCLUDE', clientId?: string, oauthSignature?: string, timestamp?: string, adAccountId?: string, targetingOptionsGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<Array<object>>>;
+    public targetingOptionsGet(targetingType: 'APPTYPE' | 'GENDER' | 'LOCALE' | 'AGE_BUCKET' | 'LOCATION' | 'GEO' | 'INTEREST' | 'KEYWORD' | 'AUDIENCE_INCLUDE' | 'AUDIENCE_EXCLUDE', clientId?: string, oauthSignature?: string, timestamp?: string, adAccountId?: string, targetingOptionsGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (targetingType === null || targetingType === undefined) {
             throw new Error('Required parameter targetingType was null or undefined when calling targetingOptionsGet.');
         }
@@ -361,7 +374,8 @@ export class ResourcesService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...targetingOptionsGetOpts?.config,
+                        headers: {...headers, ...targetingOptionsGetOpts?.config?.headers},
                     }
                 );
             })

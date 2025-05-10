@@ -22,7 +22,7 @@ pinterest_rest_api_language__e language_language_FromString(char* language) {
     return 0;
 }
 
-cJSON *language_language_convertToJSON(pinterest_rest_api_language__e language) {
+cJSON *language_convertToJSON(pinterest_rest_api_language__e language) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "language", language_language_ToString(language)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_language__e language_language_parseFromJSON(cJSON *languageJSON) {
-    pinterest_rest_api_language__e *language = NULL;
-    pinterest_rest_api_language__e languageVariable;
-    cJSON *languageVar = cJSON_GetObjectItemCaseSensitive(languageJSON, "language");
-    if(!cJSON_IsString(languageVar) || (languageVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_language__e language_parseFromJSON(cJSON *languageJSON) {
+    if(!cJSON_IsString(languageJSON) || (languageJSON->valuestring == NULL)) {
+        return 0;
     }
-    languageVariable = language_language_FromString(languageVar->valuestring);
-    return languageVariable;
-end:
-    return 0;
+    return language_language_FromString(languageJSON->valuestring);
 }

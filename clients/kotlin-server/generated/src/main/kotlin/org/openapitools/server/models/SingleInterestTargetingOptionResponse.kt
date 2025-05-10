@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param id 
@@ -19,10 +20,11 @@ package org.openapitools.server.models
  * @param childInterests 
  * @param level 
  */
+@Serializable
 data class SingleInterestTargetingOptionResponse(
     val id: kotlin.String? = null,
     val name: kotlin.String? = null,
     val childInterests: kotlin.collections.List<kotlin.String>? = null,
     val level: kotlin.Int? = null
-) 
+)
 

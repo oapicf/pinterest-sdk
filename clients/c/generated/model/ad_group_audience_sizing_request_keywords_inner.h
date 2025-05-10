@@ -17,24 +17,17 @@ typedef struct ad_group_audience_sizing_request_keywords_inner_t ad_group_audien
 
 #include "match_type_response.h"
 
-// Enum  for ad_group_audience_sizing_request_keywords_inner
-
-typedef enum  { pinterest_rest_api_ad_group_audience_sizing_request_keywords_inner__NULL = 0, pinterest_rest_api_ad_group_audience_sizing_request_keywords_inner__BROAD, pinterest_rest_api_ad_group_audience_sizing_request_keywords_inner__PHRASE, pinterest_rest_api_ad_group_audience_sizing_request_keywords_inner__EXACT, pinterest_rest_api_ad_group_audience_sizing_request_keywords_inner__EXACT_NEGATIVE, pinterest_rest_api_ad_group_audience_sizing_request_keywords_inner__PHRASE_NEGATIVE } pinterest_rest_api_ad_group_audience_sizing_request_keywords_inner__e;
-
-char* ad_group_audience_sizing_request_keywords_inner_match_type_ToString(pinterest_rest_api_ad_group_audience_sizing_request_keywords_inner__e match_type);
-
-pinterest_rest_api_ad_group_audience_sizing_request_keywords_inner__e ad_group_audience_sizing_request_keywords_inner_match_type_FromString(char* match_type);
-
 
 
 typedef struct ad_group_audience_sizing_request_keywords_inner_t {
-    match_type_response_t *match_type; // custom
+    pinterest_rest_api_match_type_response__e match_type; //referenced enum
     char *value; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } ad_group_audience_sizing_request_keywords_inner_t;
 
-ad_group_audience_sizing_request_keywords_inner_t *ad_group_audience_sizing_request_keywords_inner_create(
-    match_type_response_t *match_type,
+__attribute__((deprecated)) ad_group_audience_sizing_request_keywords_inner_t *ad_group_audience_sizing_request_keywords_inner_create(
+    pinterest_rest_api_match_type_response__e match_type,
     char *value
 );
 

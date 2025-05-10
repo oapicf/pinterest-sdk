@@ -5,7 +5,7 @@
 
 
 
-board_media_t *board_media_create(
+static board_media_t *board_media_create_internal(
     char *image_cover_url,
     list_t *pin_thumbnail_urls
     ) {
@@ -16,12 +16,26 @@ board_media_t *board_media_create(
     board_media_local_var->image_cover_url = image_cover_url;
     board_media_local_var->pin_thumbnail_urls = pin_thumbnail_urls;
 
+    board_media_local_var->_library_owned = 1;
     return board_media_local_var;
 }
 
+__attribute__((deprecated)) board_media_t *board_media_create(
+    char *image_cover_url,
+    list_t *pin_thumbnail_urls
+    ) {
+    return board_media_create_internal (
+        image_cover_url,
+        pin_thumbnail_urls
+        );
+}
 
 void board_media_free(board_media_t *board_media) {
     if(NULL == board_media){
+        return ;
+    }
+    if(board_media->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "board_media_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -59,7 +73,7 @@ cJSON *board_media_convertToJSON(board_media_t *board_media) {
 
     listEntry_t *pin_thumbnail_urlsListEntry;
     list_ForEach(pin_thumbnail_urlsListEntry, board_media->pin_thumbnail_urls) {
-    if(cJSON_AddStringToObject(pin_thumbnail_urls, "", (char*)pin_thumbnail_urlsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(pin_thumbnail_urls, "", pin_thumbnail_urlsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -83,6 +97,9 @@ board_media_t *board_media_parseFromJSON(cJSON *board_mediaJSON){
 
     // board_media->image_cover_url
     cJSON *image_cover_url = cJSON_GetObjectItemCaseSensitive(board_mediaJSON, "image_cover_url");
+    if (cJSON_IsNull(image_cover_url)) {
+        image_cover_url = NULL;
+    }
     if (image_cover_url) { 
     if(!cJSON_IsString(image_cover_url) && !cJSON_IsNull(image_cover_url))
     {
@@ -92,6 +109,9 @@ board_media_t *board_media_parseFromJSON(cJSON *board_mediaJSON){
 
     // board_media->pin_thumbnail_urls
     cJSON *pin_thumbnail_urls = cJSON_GetObjectItemCaseSensitive(board_mediaJSON, "pin_thumbnail_urls");
+    if (cJSON_IsNull(pin_thumbnail_urls)) {
+        pin_thumbnail_urls = NULL;
+    }
     if (pin_thumbnail_urls) { 
     cJSON *pin_thumbnail_urls_local = NULL;
     if(!cJSON_IsArray(pin_thumbnail_urls)) {
@@ -110,7 +130,7 @@ board_media_t *board_media_parseFromJSON(cJSON *board_mediaJSON){
     }
 
 
-    board_media_local_var = board_media_create (
+    board_media_local_var = board_media_create_internal (
         image_cover_url && !cJSON_IsNull(image_cover_url) ? strdup(image_cover_url->valuestring) : NULL,
         pin_thumbnail_urls ? pin_thumbnail_urlsList : NULL
         );

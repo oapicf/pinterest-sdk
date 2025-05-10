@@ -4,57 +4,6 @@
 #include "ad_common.h"
 
 
-char* ad_common_creative_type_ToString(pinterest_rest_api_ad_common__e creative_type) {
-    char* creative_typeArray[] =  { "NULL", "REGULAR", "VIDEO", "SHOPPING", "CAROUSEL", "MAX_VIDEO", "SHOP_THE_PIN", "COLLECTION", "IDEA", "SHOWCASE", "QUIZ" };
-    return creative_typeArray[creative_type];
-}
-
-pinterest_rest_api_ad_common__e ad_common_creative_type_FromString(char* creative_type){
-    int stringToReturn = 0;
-    char *creative_typeArray[] =  { "NULL", "REGULAR", "VIDEO", "SHOPPING", "CAROUSEL", "MAX_VIDEO", "SHOP_THE_PIN", "COLLECTION", "IDEA", "SHOWCASE", "QUIZ" };
-    size_t sizeofArray = sizeof(creative_typeArray) / sizeof(creative_typeArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(creative_type, creative_typeArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-char* ad_common_status_ToString(pinterest_rest_api_ad_common__e status) {
-    char* statusArray[] =  { "NULL", "ACTIVE", "PAUSED", "ARCHIVED", "DRAFT", "DELETED_DRAFT" };
-    return statusArray[status];
-}
-
-pinterest_rest_api_ad_common__e ad_common_status_FromString(char* status){
-    int stringToReturn = 0;
-    char *statusArray[] =  { "NULL", "ACTIVE", "PAUSED", "ARCHIVED", "DRAFT", "DELETED_DRAFT" };
-    size_t sizeofArray = sizeof(statusArray) / sizeof(statusArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(status, statusArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-char* ad_common_grid_click_type_ToString(pinterest_rest_api_ad_common__e grid_click_type) {
-    char* grid_click_typeArray[] =  { "NULL", "CLOSEUP", "DIRECT_TO_DESTINATION" };
-    return grid_click_typeArray[grid_click_type];
-}
-
-pinterest_rest_api_ad_common__e ad_common_grid_click_type_FromString(char* grid_click_type){
-    int stringToReturn = 0;
-    char *grid_click_typeArray[] =  { "NULL", "CLOSEUP", "DIRECT_TO_DESTINATION" };
-    size_t sizeofArray = sizeof(grid_click_typeArray) / sizeof(grid_click_typeArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(grid_click_type, grid_click_typeArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
 char* ad_common_customizable_cta_type_ToString(pinterest_rest_api_ad_common_CUSTOMIZABLECTATYPE_e customizable_cta_type) {
     char* customizable_cta_typeArray[] =  { "NULL", "GET_OFFER", "LEARN_MORE", "ORDER_NOW", "SHOP_NOW", "SIGN_UP", "SUBSCRIBE", "BUY_NOW", "CONTACT_US", "GET_QUOTE", "VISIT_SITE", "APPLY_NOW", "BOOK_NOW", "REQUEST_DEMO", "REGISTER_NOW", "FIND_A_DEALER", "ADD_TO_CART", "WATCH_NOW", "READ_MORE", "" };
     return customizable_cta_typeArray[customizable_cta_type];
@@ -73,24 +22,24 @@ pinterest_rest_api_ad_common_CUSTOMIZABLECTATYPE_e ad_common_customizable_cta_ty
     return 0;
 }
 
-ad_common_t *ad_common_create(
+static ad_common_t *ad_common_create_internal(
     char *ad_group_id,
     char *android_deep_link,
     list_t *carousel_android_deep_links,
     list_t *carousel_destination_urls,
     list_t *carousel_ios_deep_links,
     char *click_tracking_url,
-    creative_type_t *creative_type,
+    pinterest_rest_api_creative_type__e creative_type,
     char *destination_url,
     char *ios_deep_link,
     int is_pin_deleted,
     int is_removable,
     char *name,
-    entity_status_t *status,
+    pinterest_rest_api_entity_status__e status,
     tracking_urls_t *tracking_urls,
     char *view_tracking_url,
     char *lead_form_id,
-    grid_click_type_t *grid_click_type,
+    pinterest_rest_api_grid_click_type__e grid_click_type,
     pinterest_rest_api_ad_common_CUSTOMIZABLECTATYPE_e customizable_cta_type,
     quiz_pin_data_t *quiz_pin_data
     ) {
@@ -118,12 +67,60 @@ ad_common_t *ad_common_create(
     ad_common_local_var->customizable_cta_type = customizable_cta_type;
     ad_common_local_var->quiz_pin_data = quiz_pin_data;
 
+    ad_common_local_var->_library_owned = 1;
     return ad_common_local_var;
 }
 
+__attribute__((deprecated)) ad_common_t *ad_common_create(
+    char *ad_group_id,
+    char *android_deep_link,
+    list_t *carousel_android_deep_links,
+    list_t *carousel_destination_urls,
+    list_t *carousel_ios_deep_links,
+    char *click_tracking_url,
+    pinterest_rest_api_creative_type__e creative_type,
+    char *destination_url,
+    char *ios_deep_link,
+    int is_pin_deleted,
+    int is_removable,
+    char *name,
+    pinterest_rest_api_entity_status__e status,
+    tracking_urls_t *tracking_urls,
+    char *view_tracking_url,
+    char *lead_form_id,
+    pinterest_rest_api_grid_click_type__e grid_click_type,
+    pinterest_rest_api_ad_common_CUSTOMIZABLECTATYPE_e customizable_cta_type,
+    quiz_pin_data_t *quiz_pin_data
+    ) {
+    return ad_common_create_internal (
+        ad_group_id,
+        android_deep_link,
+        carousel_android_deep_links,
+        carousel_destination_urls,
+        carousel_ios_deep_links,
+        click_tracking_url,
+        creative_type,
+        destination_url,
+        ios_deep_link,
+        is_pin_deleted,
+        is_removable,
+        name,
+        status,
+        tracking_urls,
+        view_tracking_url,
+        lead_form_id,
+        grid_click_type,
+        customizable_cta_type,
+        quiz_pin_data
+        );
+}
 
 void ad_common_free(ad_common_t *ad_common) {
     if(NULL == ad_common){
+        return ;
+    }
+    if(ad_common->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ad_common_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -160,10 +157,6 @@ void ad_common_free(ad_common_t *ad_common) {
         free(ad_common->click_tracking_url);
         ad_common->click_tracking_url = NULL;
     }
-    if (ad_common->creative_type) {
-        creative_type_free(ad_common->creative_type);
-        ad_common->creative_type = NULL;
-    }
     if (ad_common->destination_url) {
         free(ad_common->destination_url);
         ad_common->destination_url = NULL;
@@ -176,10 +169,6 @@ void ad_common_free(ad_common_t *ad_common) {
         free(ad_common->name);
         ad_common->name = NULL;
     }
-    if (ad_common->status) {
-        entity_status_free(ad_common->status);
-        ad_common->status = NULL;
-    }
     if (ad_common->tracking_urls) {
         tracking_urls_free(ad_common->tracking_urls);
         ad_common->tracking_urls = NULL;
@@ -191,10 +180,6 @@ void ad_common_free(ad_common_t *ad_common) {
     if (ad_common->lead_form_id) {
         free(ad_common->lead_form_id);
         ad_common->lead_form_id = NULL;
-    }
-    if (ad_common->grid_click_type) {
-        grid_click_type_free(ad_common->grid_click_type);
-        ad_common->grid_click_type = NULL;
     }
     if (ad_common->quiz_pin_data) {
         quiz_pin_data_free(ad_common->quiz_pin_data);
@@ -231,7 +216,7 @@ cJSON *ad_common_convertToJSON(ad_common_t *ad_common) {
 
     listEntry_t *carousel_android_deep_linksListEntry;
     list_ForEach(carousel_android_deep_linksListEntry, ad_common->carousel_android_deep_links) {
-    if(cJSON_AddStringToObject(carousel_android_deep_links, "", (char*)carousel_android_deep_linksListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(carousel_android_deep_links, "", carousel_android_deep_linksListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -248,7 +233,7 @@ cJSON *ad_common_convertToJSON(ad_common_t *ad_common) {
 
     listEntry_t *carousel_destination_urlsListEntry;
     list_ForEach(carousel_destination_urlsListEntry, ad_common->carousel_destination_urls) {
-    if(cJSON_AddStringToObject(carousel_destination_urls, "", (char*)carousel_destination_urlsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(carousel_destination_urls, "", carousel_destination_urlsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -265,7 +250,7 @@ cJSON *ad_common_convertToJSON(ad_common_t *ad_common) {
 
     listEntry_t *carousel_ios_deep_linksListEntry;
     list_ForEach(carousel_ios_deep_linksListEntry, ad_common->carousel_ios_deep_links) {
-    if(cJSON_AddStringToObject(carousel_ios_deep_links, "", (char*)carousel_ios_deep_linksListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(carousel_ios_deep_links, "", carousel_ios_deep_linksListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -282,7 +267,7 @@ cJSON *ad_common_convertToJSON(ad_common_t *ad_common) {
 
 
     // ad_common->creative_type
-    if(ad_common->creative_type != pinterest_rest_api_ad_common__NULL) {
+    if(ad_common->creative_type != pinterest_rest_api_creative_type__NULL) {
     cJSON *creative_type_local_JSON = creative_type_convertToJSON(ad_common->creative_type);
     if(creative_type_local_JSON == NULL) {
         goto fail; // custom
@@ -335,7 +320,7 @@ cJSON *ad_common_convertToJSON(ad_common_t *ad_common) {
 
 
     // ad_common->status
-    if(ad_common->status != pinterest_rest_api_ad_common__NULL) {
+    if(ad_common->status != pinterest_rest_api_entity_status__NULL) {
     cJSON *status_local_JSON = entity_status_convertToJSON(ad_common->status);
     if(status_local_JSON == NULL) {
         goto fail; // custom
@@ -377,7 +362,7 @@ cJSON *ad_common_convertToJSON(ad_common_t *ad_common) {
 
 
     // ad_common->grid_click_type
-    if(ad_common->grid_click_type != pinterest_rest_api_ad_common__NULL) {
+    if(ad_common->grid_click_type != pinterest_rest_api_grid_click_type__NULL) {
     cJSON *grid_click_type_local_JSON = grid_click_type_convertToJSON(ad_common->grid_click_type);
     if(grid_click_type_local_JSON == NULL) {
         goto fail; // custom
@@ -391,7 +376,7 @@ cJSON *ad_common_convertToJSON(ad_common_t *ad_common) {
 
     // ad_common->customizable_cta_type
     if(ad_common->customizable_cta_type != pinterest_rest_api_ad_common_CUSTOMIZABLECTATYPE_NULL) {
-    if(cJSON_AddStringToObject(item, "customizable_cta_type", customizable_cta_typead_common_ToString(ad_common->customizable_cta_type)) == NULL)
+    if(cJSON_AddStringToObject(item, "customizable_cta_type", ad_common_customizable_cta_type_ToString(ad_common->customizable_cta_type)) == NULL)
     {
     goto fail; //Enum
     }
@@ -432,22 +417,25 @@ ad_common_t *ad_common_parseFromJSON(cJSON *ad_commonJSON){
     list_t *carousel_ios_deep_linksList = NULL;
 
     // define the local variable for ad_common->creative_type
-    creative_type_t *creative_type_local_nonprim = NULL;
+    pinterest_rest_api_creative_type__e creative_type_local_nonprim = 0;
 
     // define the local variable for ad_common->status
-    entity_status_t *status_local_nonprim = NULL;
+    pinterest_rest_api_entity_status__e status_local_nonprim = 0;
 
     // define the local variable for ad_common->tracking_urls
     tracking_urls_t *tracking_urls_local_nonprim = NULL;
 
     // define the local variable for ad_common->grid_click_type
-    grid_click_type_t *grid_click_type_local_nonprim = NULL;
+    pinterest_rest_api_grid_click_type__e grid_click_type_local_nonprim = 0;
 
     // define the local variable for ad_common->quiz_pin_data
     quiz_pin_data_t *quiz_pin_data_local_nonprim = NULL;
 
     // ad_common->ad_group_id
     cJSON *ad_group_id = cJSON_GetObjectItemCaseSensitive(ad_commonJSON, "ad_group_id");
+    if (cJSON_IsNull(ad_group_id)) {
+        ad_group_id = NULL;
+    }
     if (ad_group_id) { 
     if(!cJSON_IsString(ad_group_id) && !cJSON_IsNull(ad_group_id))
     {
@@ -457,6 +445,9 @@ ad_common_t *ad_common_parseFromJSON(cJSON *ad_commonJSON){
 
     // ad_common->android_deep_link
     cJSON *android_deep_link = cJSON_GetObjectItemCaseSensitive(ad_commonJSON, "android_deep_link");
+    if (cJSON_IsNull(android_deep_link)) {
+        android_deep_link = NULL;
+    }
     if (android_deep_link) { 
     if(!cJSON_IsString(android_deep_link) && !cJSON_IsNull(android_deep_link))
     {
@@ -466,6 +457,9 @@ ad_common_t *ad_common_parseFromJSON(cJSON *ad_commonJSON){
 
     // ad_common->carousel_android_deep_links
     cJSON *carousel_android_deep_links = cJSON_GetObjectItemCaseSensitive(ad_commonJSON, "carousel_android_deep_links");
+    if (cJSON_IsNull(carousel_android_deep_links)) {
+        carousel_android_deep_links = NULL;
+    }
     if (carousel_android_deep_links) { 
     cJSON *carousel_android_deep_links_local = NULL;
     if(!cJSON_IsArray(carousel_android_deep_links)) {
@@ -485,6 +479,9 @@ ad_common_t *ad_common_parseFromJSON(cJSON *ad_commonJSON){
 
     // ad_common->carousel_destination_urls
     cJSON *carousel_destination_urls = cJSON_GetObjectItemCaseSensitive(ad_commonJSON, "carousel_destination_urls");
+    if (cJSON_IsNull(carousel_destination_urls)) {
+        carousel_destination_urls = NULL;
+    }
     if (carousel_destination_urls) { 
     cJSON *carousel_destination_urls_local = NULL;
     if(!cJSON_IsArray(carousel_destination_urls)) {
@@ -504,6 +501,9 @@ ad_common_t *ad_common_parseFromJSON(cJSON *ad_commonJSON){
 
     // ad_common->carousel_ios_deep_links
     cJSON *carousel_ios_deep_links = cJSON_GetObjectItemCaseSensitive(ad_commonJSON, "carousel_ios_deep_links");
+    if (cJSON_IsNull(carousel_ios_deep_links)) {
+        carousel_ios_deep_links = NULL;
+    }
     if (carousel_ios_deep_links) { 
     cJSON *carousel_ios_deep_links_local = NULL;
     if(!cJSON_IsArray(carousel_ios_deep_links)) {
@@ -523,6 +523,9 @@ ad_common_t *ad_common_parseFromJSON(cJSON *ad_commonJSON){
 
     // ad_common->click_tracking_url
     cJSON *click_tracking_url = cJSON_GetObjectItemCaseSensitive(ad_commonJSON, "click_tracking_url");
+    if (cJSON_IsNull(click_tracking_url)) {
+        click_tracking_url = NULL;
+    }
     if (click_tracking_url) { 
     if(!cJSON_IsString(click_tracking_url) && !cJSON_IsNull(click_tracking_url))
     {
@@ -532,12 +535,18 @@ ad_common_t *ad_common_parseFromJSON(cJSON *ad_commonJSON){
 
     // ad_common->creative_type
     cJSON *creative_type = cJSON_GetObjectItemCaseSensitive(ad_commonJSON, "creative_type");
+    if (cJSON_IsNull(creative_type)) {
+        creative_type = NULL;
+    }
     if (creative_type) { 
     creative_type_local_nonprim = creative_type_parseFromJSON(creative_type); //custom
     }
 
     // ad_common->destination_url
     cJSON *destination_url = cJSON_GetObjectItemCaseSensitive(ad_commonJSON, "destination_url");
+    if (cJSON_IsNull(destination_url)) {
+        destination_url = NULL;
+    }
     if (destination_url) { 
     if(!cJSON_IsString(destination_url) && !cJSON_IsNull(destination_url))
     {
@@ -547,6 +556,9 @@ ad_common_t *ad_common_parseFromJSON(cJSON *ad_commonJSON){
 
     // ad_common->ios_deep_link
     cJSON *ios_deep_link = cJSON_GetObjectItemCaseSensitive(ad_commonJSON, "ios_deep_link");
+    if (cJSON_IsNull(ios_deep_link)) {
+        ios_deep_link = NULL;
+    }
     if (ios_deep_link) { 
     if(!cJSON_IsString(ios_deep_link) && !cJSON_IsNull(ios_deep_link))
     {
@@ -556,6 +568,9 @@ ad_common_t *ad_common_parseFromJSON(cJSON *ad_commonJSON){
 
     // ad_common->is_pin_deleted
     cJSON *is_pin_deleted = cJSON_GetObjectItemCaseSensitive(ad_commonJSON, "is_pin_deleted");
+    if (cJSON_IsNull(is_pin_deleted)) {
+        is_pin_deleted = NULL;
+    }
     if (is_pin_deleted) { 
     if(!cJSON_IsBool(is_pin_deleted))
     {
@@ -565,6 +580,9 @@ ad_common_t *ad_common_parseFromJSON(cJSON *ad_commonJSON){
 
     // ad_common->is_removable
     cJSON *is_removable = cJSON_GetObjectItemCaseSensitive(ad_commonJSON, "is_removable");
+    if (cJSON_IsNull(is_removable)) {
+        is_removable = NULL;
+    }
     if (is_removable) { 
     if(!cJSON_IsBool(is_removable))
     {
@@ -574,6 +592,9 @@ ad_common_t *ad_common_parseFromJSON(cJSON *ad_commonJSON){
 
     // ad_common->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(ad_commonJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
     if (name) { 
     if(!cJSON_IsString(name) && !cJSON_IsNull(name))
     {
@@ -583,18 +604,27 @@ ad_common_t *ad_common_parseFromJSON(cJSON *ad_commonJSON){
 
     // ad_common->status
     cJSON *status = cJSON_GetObjectItemCaseSensitive(ad_commonJSON, "status");
+    if (cJSON_IsNull(status)) {
+        status = NULL;
+    }
     if (status) { 
     status_local_nonprim = entity_status_parseFromJSON(status); //custom
     }
 
     // ad_common->tracking_urls
     cJSON *tracking_urls = cJSON_GetObjectItemCaseSensitive(ad_commonJSON, "tracking_urls");
+    if (cJSON_IsNull(tracking_urls)) {
+        tracking_urls = NULL;
+    }
     if (tracking_urls) { 
     tracking_urls_local_nonprim = tracking_urls_parseFromJSON(tracking_urls); //nonprimitive
     }
 
     // ad_common->view_tracking_url
     cJSON *view_tracking_url = cJSON_GetObjectItemCaseSensitive(ad_commonJSON, "view_tracking_url");
+    if (cJSON_IsNull(view_tracking_url)) {
+        view_tracking_url = NULL;
+    }
     if (view_tracking_url) { 
     if(!cJSON_IsString(view_tracking_url) && !cJSON_IsNull(view_tracking_url))
     {
@@ -604,6 +634,9 @@ ad_common_t *ad_common_parseFromJSON(cJSON *ad_commonJSON){
 
     // ad_common->lead_form_id
     cJSON *lead_form_id = cJSON_GetObjectItemCaseSensitive(ad_commonJSON, "lead_form_id");
+    if (cJSON_IsNull(lead_form_id)) {
+        lead_form_id = NULL;
+    }
     if (lead_form_id) { 
     if(!cJSON_IsString(lead_form_id) && !cJSON_IsNull(lead_form_id))
     {
@@ -613,12 +646,18 @@ ad_common_t *ad_common_parseFromJSON(cJSON *ad_commonJSON){
 
     // ad_common->grid_click_type
     cJSON *grid_click_type = cJSON_GetObjectItemCaseSensitive(ad_commonJSON, "grid_click_type");
+    if (cJSON_IsNull(grid_click_type)) {
+        grid_click_type = NULL;
+    }
     if (grid_click_type) { 
     grid_click_type_local_nonprim = grid_click_type_parseFromJSON(grid_click_type); //custom
     }
 
     // ad_common->customizable_cta_type
     cJSON *customizable_cta_type = cJSON_GetObjectItemCaseSensitive(ad_commonJSON, "customizable_cta_type");
+    if (cJSON_IsNull(customizable_cta_type)) {
+        customizable_cta_type = NULL;
+    }
     pinterest_rest_api_ad_common_CUSTOMIZABLECTATYPE_e customizable_cta_typeVariable;
     if (customizable_cta_type) { 
     if(!cJSON_IsString(customizable_cta_type))
@@ -630,29 +669,32 @@ ad_common_t *ad_common_parseFromJSON(cJSON *ad_commonJSON){
 
     // ad_common->quiz_pin_data
     cJSON *quiz_pin_data = cJSON_GetObjectItemCaseSensitive(ad_commonJSON, "quiz_pin_data");
+    if (cJSON_IsNull(quiz_pin_data)) {
+        quiz_pin_data = NULL;
+    }
     if (quiz_pin_data) { 
     quiz_pin_data_local_nonprim = quiz_pin_data_parseFromJSON(quiz_pin_data); //nonprimitive
     }
 
 
-    ad_common_local_var = ad_common_create (
+    ad_common_local_var = ad_common_create_internal (
         ad_group_id && !cJSON_IsNull(ad_group_id) ? strdup(ad_group_id->valuestring) : NULL,
         android_deep_link && !cJSON_IsNull(android_deep_link) ? strdup(android_deep_link->valuestring) : NULL,
         carousel_android_deep_links ? carousel_android_deep_linksList : NULL,
         carousel_destination_urls ? carousel_destination_urlsList : NULL,
         carousel_ios_deep_links ? carousel_ios_deep_linksList : NULL,
         click_tracking_url && !cJSON_IsNull(click_tracking_url) ? strdup(click_tracking_url->valuestring) : NULL,
-        creative_type ? creative_type_local_nonprim : NULL,
+        creative_type ? creative_type_local_nonprim : 0,
         destination_url && !cJSON_IsNull(destination_url) ? strdup(destination_url->valuestring) : NULL,
         ios_deep_link && !cJSON_IsNull(ios_deep_link) ? strdup(ios_deep_link->valuestring) : NULL,
         is_pin_deleted ? is_pin_deleted->valueint : 0,
         is_removable ? is_removable->valueint : 0,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
-        status ? status_local_nonprim : NULL,
+        status ? status_local_nonprim : 0,
         tracking_urls ? tracking_urls_local_nonprim : NULL,
         view_tracking_url && !cJSON_IsNull(view_tracking_url) ? strdup(view_tracking_url->valuestring) : NULL,
         lead_form_id && !cJSON_IsNull(lead_form_id) ? strdup(lead_form_id->valuestring) : NULL,
-        grid_click_type ? grid_click_type_local_nonprim : NULL,
+        grid_click_type ? grid_click_type_local_nonprim : 0,
         customizable_cta_type ? customizable_cta_typeVariable : pinterest_rest_api_ad_common_CUSTOMIZABLECTATYPE_NULL,
         quiz_pin_data ? quiz_pin_data_local_nonprim : NULL
         );
@@ -687,20 +729,17 @@ end:
         carousel_ios_deep_linksList = NULL;
     }
     if (creative_type_local_nonprim) {
-        creative_type_free(creative_type_local_nonprim);
-        creative_type_local_nonprim = NULL;
+        creative_type_local_nonprim = 0;
     }
     if (status_local_nonprim) {
-        entity_status_free(status_local_nonprim);
-        status_local_nonprim = NULL;
+        status_local_nonprim = 0;
     }
     if (tracking_urls_local_nonprim) {
         tracking_urls_free(tracking_urls_local_nonprim);
         tracking_urls_local_nonprim = NULL;
     }
     if (grid_click_type_local_nonprim) {
-        grid_click_type_free(grid_click_type_local_nonprim);
-        grid_click_type_local_nonprim = NULL;
+        grid_click_type_local_nonprim = 0;
     }
     if (quiz_pin_data_local_nonprim) {
         quiz_pin_data_free(quiz_pin_data_local_nonprim);

@@ -15,13 +15,15 @@ import org.openapitools.server.models.CatalogsProductGroupFilterKeys
 import org.openapitools.server.models.CatalogsProductGroupFiltersRequestAnyOf
 import org.openapitools.server.models.CatalogsProductGroupFiltersRequestAnyOf1
 
+import kotlinx.serialization.Serializable
 /**
  * Object holding a group of filters for request on catalog product group. This is a distinct schema It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.
  * @param anyOf 
  * @param allOf 
  */
+@Serializable
 data class CatalogsProductGroupFiltersRequest(
     val anyOf: kotlin.collections.List<CatalogsProductGroupFilterKeys>,
     val allOf: kotlin.collections.List<CatalogsProductGroupFilterKeys>
-) 
+)
 

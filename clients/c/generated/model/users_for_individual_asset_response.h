@@ -23,9 +23,10 @@ typedef struct users_for_individual_asset_response_t {
     char *member_id; // string
     list_t *permissions; //primitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } users_for_individual_asset_response_t;
 
-users_for_individual_asset_response_t *users_for_individual_asset_response_create(
+__attribute__((deprecated)) users_for_individual_asset_response_t *users_for_individual_asset_response_create(
     char *asset_id,
     char *member_id,
     list_t *permissions

@@ -14,6 +14,7 @@ package org.openapitools.server.models
 import org.openapitools.server.models.CatalogsReportDistributionStats
 import org.openapitools.server.models.CatalogsReportFeedIngestionStats
 
+import kotlinx.serialization.Serializable
 /**
  * Diagnostics aggregated numbers
  * @param reportType 
@@ -26,6 +27,7 @@ import org.openapitools.server.models.CatalogsReportFeedIngestionStats
  * @param ineligibleForAds Indicates if issue makes items ineligible for ads distribution
  * @param ineligibleForOrganic Indicates if issue makes items ineligible for organic distribution
  */
+@Serializable
 data class CatalogsReportStats(
     val reportType: CatalogsReportStats.ReportType,
     /* ID of the catalog entity. */
@@ -44,7 +46,7 @@ data class CatalogsReportStats(
     val ineligibleForAds: kotlin.Boolean? = null,
     /* Indicates if issue makes items ineligible for organic distribution */
     val ineligibleForOrganic: kotlin.Boolean? = null
-) 
+)
 {
     /**
     * 

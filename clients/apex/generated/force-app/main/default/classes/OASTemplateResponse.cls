@@ -1700,8 +1700,8 @@ public class OASTemplateResponse implements OAS.MappedProperties {
      * Conversion report time type
      */
     public enum ConversionReportTimeTypeEnum {
-        AD_ACTION,
-        CONVERSION
+        TIME_OF_AD_ACTION,
+        TIME_OF_CONVERSION
     }
 
     /**
@@ -1732,9 +1732,9 @@ public class OASTemplateResponse implements OAS.MappedProperties {
      * The surface used to create this template
      */
     public enum CreationSourceEnum {
-        API,
-        MANAGER_REPORTING_PAGE,
-        MANAGER_REPORT_BUILDER
+        ADS_API,
+        ADS_MANAGER_REPORTING_PAGE,
+        ADS_MANAGER_REPORT_BUILDER
     }
 
     /**

@@ -42,13 +42,13 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum Permissions: string
 {
-        case ADMIN = "ADMIN";
-        case ANALYST = "ANALYST";
-        case FINANCE_MANAGER = "FINANCE_MANAGER";
-        case AUDIENCE_MANAGER = "AUDIENCE_MANAGER";
-        case CAMPAIGN_MANAGER = "CAMPAIGN_MANAGER";
-        case CATALOGS_MANAGER = "CATALOGS_MANAGER";
-        case PROFILE_PUBLISHER = "PROFILE_PUBLISHER";
+        case ADMIN = 'ADMIN';
+        case ANALYST = 'ANALYST';
+        case FINANCE_MANAGER = 'FINANCE_MANAGER';
+        case AUDIENCE_MANAGER = 'AUDIENCE_MANAGER';
+        case CAMPAIGN_MANAGER = 'CAMPAIGN_MANAGER';
+        case CATALOGS_MANAGER = 'CATALOGS_MANAGER';
+        case PROFILE_PUBLISHER = 'PROFILE_PUBLISHER';
 }
 
 

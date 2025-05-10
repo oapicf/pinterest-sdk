@@ -22,7 +22,7 @@ pinterest_rest_api_media_type__e media_type_media_type_FromString(char* media_ty
     return 0;
 }
 
-cJSON *media_type_media_type_convertToJSON(pinterest_rest_api_media_type__e media_type) {
+cJSON *media_type_convertToJSON(pinterest_rest_api_media_type__e media_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "media_type", media_type_media_type_ToString(media_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_media_type__e media_type_media_type_parseFromJSON(cJSON *media_typeJSON) {
-    pinterest_rest_api_media_type__e *media_type = NULL;
-    pinterest_rest_api_media_type__e media_typeVariable;
-    cJSON *media_typeVar = cJSON_GetObjectItemCaseSensitive(media_typeJSON, "media_type");
-    if(!cJSON_IsString(media_typeVar) || (media_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_media_type__e media_type_parseFromJSON(cJSON *media_typeJSON) {
+    if(!cJSON_IsString(media_typeJSON) || (media_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    media_typeVariable = media_type_media_type_FromString(media_typeVar->valuestring);
-    return media_typeVariable;
-end:
-    return 0;
+    return media_type_media_type_FromString(media_typeJSON->valuestring);
 }

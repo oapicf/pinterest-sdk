@@ -5,7 +5,7 @@
 
 
 
-catalogs_product_group_create_request_t *catalogs_product_group_create_request_create(
+static catalogs_product_group_create_request_t *catalogs_product_group_create_request_create_internal(
     char *name,
     char *description,
     int is_featured,
@@ -22,12 +22,32 @@ catalogs_product_group_create_request_t *catalogs_product_group_create_request_c
     catalogs_product_group_create_request_local_var->filters = filters;
     catalogs_product_group_create_request_local_var->feed_id = feed_id;
 
+    catalogs_product_group_create_request_local_var->_library_owned = 1;
     return catalogs_product_group_create_request_local_var;
 }
 
+__attribute__((deprecated)) catalogs_product_group_create_request_t *catalogs_product_group_create_request_create(
+    char *name,
+    char *description,
+    int is_featured,
+    catalogs_product_group_filters_request_t *filters,
+    char *feed_id
+    ) {
+    return catalogs_product_group_create_request_create_internal (
+        name,
+        description,
+        is_featured,
+        filters,
+        feed_id
+        );
+}
 
 void catalogs_product_group_create_request_free(catalogs_product_group_create_request_t *catalogs_product_group_create_request) {
     if(NULL == catalogs_product_group_create_request){
+        return ;
+    }
+    if(catalogs_product_group_create_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_product_group_create_request_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -117,6 +137,9 @@ catalogs_product_group_create_request_t *catalogs_product_group_create_request_p
 
     // catalogs_product_group_create_request->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_create_requestJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
     if (!name) {
         goto end;
     }
@@ -129,6 +152,9 @@ catalogs_product_group_create_request_t *catalogs_product_group_create_request_p
 
     // catalogs_product_group_create_request->description
     cJSON *description = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_create_requestJSON, "description");
+    if (cJSON_IsNull(description)) {
+        description = NULL;
+    }
     if (description) { 
     if(!cJSON_IsString(description) && !cJSON_IsNull(description))
     {
@@ -138,6 +164,9 @@ catalogs_product_group_create_request_t *catalogs_product_group_create_request_p
 
     // catalogs_product_group_create_request->is_featured
     cJSON *is_featured = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_create_requestJSON, "is_featured");
+    if (cJSON_IsNull(is_featured)) {
+        is_featured = NULL;
+    }
     if (is_featured) { 
     if(!cJSON_IsBool(is_featured))
     {
@@ -147,6 +176,9 @@ catalogs_product_group_create_request_t *catalogs_product_group_create_request_p
 
     // catalogs_product_group_create_request->filters
     cJSON *filters = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_create_requestJSON, "filters");
+    if (cJSON_IsNull(filters)) {
+        filters = NULL;
+    }
     if (!filters) {
         goto end;
     }
@@ -156,6 +188,9 @@ catalogs_product_group_create_request_t *catalogs_product_group_create_request_p
 
     // catalogs_product_group_create_request->feed_id
     cJSON *feed_id = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_create_requestJSON, "feed_id");
+    if (cJSON_IsNull(feed_id)) {
+        feed_id = NULL;
+    }
     if (!feed_id) {
         goto end;
     }
@@ -167,7 +202,7 @@ catalogs_product_group_create_request_t *catalogs_product_group_create_request_p
     }
 
 
-    catalogs_product_group_create_request_local_var = catalogs_product_group_create_request_create (
+    catalogs_product_group_create_request_local_var = catalogs_product_group_create_request_create_internal (
         strdup(name->valuestring),
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         is_featured ? is_featured->valueint : 0,

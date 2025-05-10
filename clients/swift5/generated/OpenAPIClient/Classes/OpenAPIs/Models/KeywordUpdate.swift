@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct KeywordUpdate: Codable, JSONEncodable, Hashable {
 
-    static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Keyword ID. */
     public var id: String
     /** Is keyword archived? */
@@ -42,3 +42,6 @@ public struct KeywordUpdate: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension KeywordUpdate: Identifiable {}

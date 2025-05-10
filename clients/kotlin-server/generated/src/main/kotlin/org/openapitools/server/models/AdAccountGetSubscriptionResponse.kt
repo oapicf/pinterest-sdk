@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param leadFormId Lead form ID.
@@ -24,6 +25,7 @@ package org.openapitools.server.models
  * @param cryptographicAlgorithm Lead data encryption algorithm.
  * @param createdTime Lead form creation time. Unix timestamp in milliseconds.
  */
+@Serializable
 data class AdAccountGetSubscriptionResponse(
     /* Lead form ID. */
     val leadFormId: kotlin.String? = null,
@@ -43,5 +45,5 @@ data class AdAccountGetSubscriptionResponse(
     val cryptographicAlgorithm: kotlin.String? = null,
     /* Lead form creation time. Unix timestamp in milliseconds. */
     val createdTime: kotlin.Int? = null
-) 
+)
 

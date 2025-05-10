@@ -22,9 +22,10 @@ typedef struct create_asset_group_response_t create_asset_group_response_t;
 typedef struct create_asset_group_response_t {
     struct asset_group_binding_t *asset_group; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } create_asset_group_response_t;
 
-create_asset_group_response_t *create_asset_group_response_create(
+__attribute__((deprecated)) create_asset_group_response_t *create_asset_group_response_create(
     asset_group_binding_t *asset_group
 );
 

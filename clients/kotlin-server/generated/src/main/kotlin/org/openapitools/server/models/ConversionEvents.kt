@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.ConversionEventsDataInner
 
+import kotlinx.serialization.Serializable
 /**
  * A list of events (one or more) encapsulated by a data object.
  * @param `data` 
  */
+@Serializable
 data class ConversionEvents(
     val `data`: kotlin.collections.List<ConversionEventsDataInner>
-) 
+)
 

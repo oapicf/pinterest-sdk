@@ -5,7 +5,7 @@
 
 
 
-availability_filter_t *availability_filter_create(
+static availability_filter_t *availability_filter_create_internal(
     catalogs_product_group_multiple_string_criteria_t *availability
     ) {
     availability_filter_t *availability_filter_local_var = malloc(sizeof(availability_filter_t));
@@ -14,12 +14,24 @@ availability_filter_t *availability_filter_create(
     }
     availability_filter_local_var->availability = availability;
 
+    availability_filter_local_var->_library_owned = 1;
     return availability_filter_local_var;
 }
 
+__attribute__((deprecated)) availability_filter_t *availability_filter_create(
+    catalogs_product_group_multiple_string_criteria_t *availability
+    ) {
+    return availability_filter_create_internal (
+        availability
+        );
+}
 
 void availability_filter_free(availability_filter_t *availability_filter) {
     if(NULL == availability_filter){
+        return ;
+    }
+    if(availability_filter->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "availability_filter_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -60,6 +72,9 @@ availability_filter_t *availability_filter_parseFromJSON(cJSON *availability_fil
 
     // availability_filter->availability
     cJSON *availability = cJSON_GetObjectItemCaseSensitive(availability_filterJSON, "AVAILABILITY");
+    if (cJSON_IsNull(availability)) {
+        availability = NULL;
+    }
     if (!availability) {
         goto end;
     }
@@ -69,7 +84,7 @@ availability_filter_t *availability_filter_parseFromJSON(cJSON *availability_fil
     availability_local_object = object_parseFromJSON(availability); //object
 
 
-    availability_filter_local_var = availability_filter_create (
+    availability_filter_local_var = availability_filter_create_internal (
         availability_local_object
         );
 

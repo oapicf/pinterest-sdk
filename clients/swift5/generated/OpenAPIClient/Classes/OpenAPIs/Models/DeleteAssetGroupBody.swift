@@ -13,7 +13,7 @@ import AnyCodable
 /** Request body used to delete asset groups */
 public struct DeleteAssetGroupBody: Codable, JSONEncodable, Hashable {
 
-    static let assetGroupsToDeleteRule = ArrayRule(minItems: 1, maxItems: 50, uniqueItems: false)
+    public static let assetGroupsToDeleteRule = ArrayRule(minItems: 1, maxItems: 50, uniqueItems: false)
     /** List of ids of asset groups to be deleted */
     public var assetGroupsToDelete: [String]
 

@@ -18,6 +18,7 @@ import org.openapitools.server.models.CatalogsLocale
 import org.openapitools.server.models.CatalogsRetailProductGroupUpdateRequest
 import org.openapitools.server.models.Country
 
+import kotlinx.serialization.Serializable
 /**
  * Request object for updating a catalog based product group.
  * @param catalogType 
@@ -27,6 +28,7 @@ import org.openapitools.server.models.Country
  * @param country 
  * @param locale 
  */
+@Serializable
 data class CatalogsVerticalProductGroupUpdateRequest(
     val catalogType: CatalogsVerticalProductGroupUpdateRequest.CatalogType? = null,
     val name: kotlin.String? = null,
@@ -34,7 +36,7 @@ data class CatalogsVerticalProductGroupUpdateRequest(
     val filters: CatalogsCreativeAssetsProductGroupFilters? = null,
     val country: Country? = null,
     val locale: CatalogsLocale? = null
-) 
+)
 {
     /**
     * 

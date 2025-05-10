@@ -64,10 +64,35 @@ QuizPinResult <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return QuizPinResult in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return QuizPinResult as a base R list.
+    #' @examples
+    #' # convert array of QuizPinResult (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert QuizPinResult to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       QuizPinResultObject <- list()
       if (!is.null(self$`organic_pin_id`)) {
         QuizPinResultObject[["organic_pin_id"]] <-
@@ -89,7 +114,7 @@ QuizPinResult <- R6::R6Class(
         QuizPinResultObject[["result_id"]] <-
           self$`result_id`
       }
-      QuizPinResultObject
+      return(QuizPinResultObject)
     },
 
     #' @description
@@ -119,53 +144,13 @@ QuizPinResult <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return QuizPinResult in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`organic_pin_id`)) {
-          sprintf(
-          '"organic_pin_id":
-            "%s"
-                    ',
-          self$`organic_pin_id`
-          )
-        },
-        if (!is.null(self$`android_deep_link`)) {
-          sprintf(
-          '"android_deep_link":
-            "%s"
-                    ',
-          self$`android_deep_link`
-          )
-        },
-        if (!is.null(self$`ios_deep_link`)) {
-          sprintf(
-          '"ios_deep_link":
-            "%s"
-                    ',
-          self$`ios_deep_link`
-          )
-        },
-        if (!is.null(self$`destination_url`)) {
-          sprintf(
-          '"destination_url":
-            "%s"
-                    ',
-          self$`destination_url`
-          )
-        },
-        if (!is.null(self$`result_id`)) {
-          sprintf(
-          '"result_id":
-            %d
-                    ',
-          self$`result_id`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

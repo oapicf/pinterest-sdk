@@ -12,6 +12,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.AdGroupAudienceSizingRequestKeywordsInner;
 import org.openapitools.model.PlacementGroupType;
 import org.openapitools.model.TargetingSpec;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -27,7 +28,7 @@ import javax.annotation.Generated;
  * AdGroupAudienceSizingRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdGroupAudienceSizingRequest {
 
   private Boolean autoTargetingEnabled = true;
@@ -84,7 +85,7 @@ public class AdGroupAudienceSizingRequest {
   @Valid
   private JsonNullable<List<CreativeTypesEnum>> creativeTypes = JsonNullable.<List<CreativeTypesEnum>>undefined();
 
-  private TargetingSpec targetingSpec;
+  private @Nullable TargetingSpec targetingSpec;
 
   @Valid
   private JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> productGroupIds = JsonNullable.<List<@Pattern(regexp = "^\\d+$")String>>undefined();

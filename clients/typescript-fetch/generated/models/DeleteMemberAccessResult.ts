@@ -55,11 +55,11 @@ export function DeleteMemberAccessResultFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function DeleteMemberAccessResultToJSON(json: any): DeleteMemberAccessResult {
-      return DeleteMemberAccessResultToJSONTyped(json, false);
-  }
+export function DeleteMemberAccessResultToJSON(json: any): DeleteMemberAccessResult {
+    return DeleteMemberAccessResultToJSONTyped(json, false);
+}
 
-  export function DeleteMemberAccessResultToJSONTyped(value?: DeleteMemberAccessResult | null, ignoreDiscriminator: boolean = false): any {
+export function DeleteMemberAccessResultToJSONTyped(value?: DeleteMemberAccessResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -13,14 +13,16 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.AdAccount
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items Ad accounts
  * @param bookmark 
  */
+@Serializable
 data class AdAccountsList200Response(
     /* Ad accounts */
     val items: kotlin.collections.List<AdAccount>,
     val bookmark: kotlin.String? = null
-) 
+)
 

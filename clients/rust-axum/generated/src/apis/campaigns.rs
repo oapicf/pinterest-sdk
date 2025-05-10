@@ -1,6 +1,6 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Multipart};
+use axum_extra::extract::{CookieJar, Host};
 use bytes::Bytes;
 use http::Method;
 use serde::{Deserialize, Serialize};
@@ -97,75 +97,75 @@ pub enum CampaignsSlashUpdateResponse {
 /// Campaigns
 #[async_trait]
 #[allow(clippy::ptr_arg)]
-pub trait Campaigns {
+pub trait Campaigns<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHandler<E> {
     /// Get targeting analytics for campaigns.
     ///
     /// CampaignTargetingAnalyticsSlashGet - GET /v5/ad_accounts/{ad_account_id}/campaigns/targeting_analytics
     async fn campaign_targeting_analytics_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::CampaignTargetingAnalyticsSlashGetPathParams,
-      query_params: models::CampaignTargetingAnalyticsSlashGetQueryParams,
-    ) -> Result<CampaignTargetingAnalyticsSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::CampaignTargetingAnalyticsSlashGetPathParams,
+      query_params: &models::CampaignTargetingAnalyticsSlashGetQueryParams,
+    ) -> Result<CampaignTargetingAnalyticsSlashGetResponse, E>;
 
     /// Get campaign analytics.
     ///
     /// CampaignsSlashAnalytics - GET /v5/ad_accounts/{ad_account_id}/campaigns/analytics
     async fn campaigns_slash_analytics(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::CampaignsSlashAnalyticsPathParams,
-      query_params: models::CampaignsSlashAnalyticsQueryParams,
-    ) -> Result<CampaignsSlashAnalyticsResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::CampaignsSlashAnalyticsPathParams,
+      query_params: &models::CampaignsSlashAnalyticsQueryParams,
+    ) -> Result<CampaignsSlashAnalyticsResponse, E>;
 
     /// Create campaigns.
     ///
     /// CampaignsSlashCreate - POST /v5/ad_accounts/{ad_account_id}/campaigns
     async fn campaigns_slash_create(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::CampaignsSlashCreatePathParams,
-            body: Vec<models::CampaignCreateRequest>,
-    ) -> Result<CampaignsSlashCreateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::CampaignsSlashCreatePathParams,
+            body: &Vec<models::CampaignCreateRequest>,
+    ) -> Result<CampaignsSlashCreateResponse, E>;
 
     /// Get campaign.
     ///
     /// CampaignsSlashGet - GET /v5/ad_accounts/{ad_account_id}/campaigns/{campaign_id}
     async fn campaigns_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::CampaignsSlashGetPathParams,
-    ) -> Result<CampaignsSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::CampaignsSlashGetPathParams,
+    ) -> Result<CampaignsSlashGetResponse, E>;
 
     /// List campaigns.
     ///
     /// CampaignsSlashList - GET /v5/ad_accounts/{ad_account_id}/campaigns
     async fn campaigns_slash_list(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::CampaignsSlashListPathParams,
-      query_params: models::CampaignsSlashListQueryParams,
-    ) -> Result<CampaignsSlashListResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::CampaignsSlashListPathParams,
+      query_params: &models::CampaignsSlashListQueryParams,
+    ) -> Result<CampaignsSlashListResponse, E>;
 
     /// Update campaigns.
     ///
     /// CampaignsSlashUpdate - PATCH /v5/ad_accounts/{ad_account_id}/campaigns
     async fn campaigns_slash_update(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::CampaignsSlashUpdatePathParams,
-            body: Vec<models::CampaignUpdateRequest>,
-    ) -> Result<CampaignsSlashUpdateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::CampaignsSlashUpdatePathParams,
+            body: &Vec<models::CampaignUpdateRequest>,
+    ) -> Result<CampaignsSlashUpdateResponse, E>;
 }

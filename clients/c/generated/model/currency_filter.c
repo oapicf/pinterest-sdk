@@ -5,7 +5,7 @@
 
 
 
-currency_filter_t *currency_filter_create(
+static currency_filter_t *currency_filter_create_internal(
     catalogs_product_group_currency_criteria_t *currency
     ) {
     currency_filter_t *currency_filter_local_var = malloc(sizeof(currency_filter_t));
@@ -14,12 +14,24 @@ currency_filter_t *currency_filter_create(
     }
     currency_filter_local_var->currency = currency;
 
+    currency_filter_local_var->_library_owned = 1;
     return currency_filter_local_var;
 }
 
+__attribute__((deprecated)) currency_filter_t *currency_filter_create(
+    catalogs_product_group_currency_criteria_t *currency
+    ) {
+    return currency_filter_create_internal (
+        currency
+        );
+}
 
 void currency_filter_free(currency_filter_t *currency_filter) {
     if(NULL == currency_filter){
+        return ;
+    }
+    if(currency_filter->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "currency_filter_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -60,6 +72,9 @@ currency_filter_t *currency_filter_parseFromJSON(cJSON *currency_filterJSON){
 
     // currency_filter->currency
     cJSON *currency = cJSON_GetObjectItemCaseSensitive(currency_filterJSON, "CURRENCY");
+    if (cJSON_IsNull(currency)) {
+        currency = NULL;
+    }
     if (!currency) {
         goto end;
     }
@@ -69,7 +84,7 @@ currency_filter_t *currency_filter_parseFromJSON(cJSON *currency_filterJSON){
     currency_local_object = object_parseFromJSON(currency); //object
 
 
-    currency_filter_local_var = currency_filter_create (
+    currency_filter_local_var = currency_filter_create_internal (
         currency_local_object
         );
 

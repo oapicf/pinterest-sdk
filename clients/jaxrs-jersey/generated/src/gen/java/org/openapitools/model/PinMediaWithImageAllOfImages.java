@@ -32,7 +32,7 @@ import javax.validation.Valid;
   PinMediaWithImageAllOfImages.JSON_PROPERTY_600X,
   PinMediaWithImageAllOfImages.JSON_PROPERTY_1200X
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-11-05T02:20:07.425136412Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMediaWithImageAllOfImages   {
   public static final String JSON_PROPERTY_150X150 = "150x150";
   @JsonProperty(JSON_PROPERTY_150X150)

@@ -77,36 +77,61 @@ BidFloorSpec <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return BidFloorSpec in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return BidFloorSpec as a base R list.
+    #' @examples
+    #' # convert array of BidFloorSpec (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert BidFloorSpec to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       BidFloorSpecObject <- list()
       if (!is.null(self$`countries`)) {
         BidFloorSpecObject[["countries"]] <-
-          lapply(self$`countries`, function(x) x$toJSON())
+          lapply(self$`countries`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`currency`)) {
         BidFloorSpecObject[["currency"]] <-
-          self$`currency`$toJSON()
+          self$`currency`$toSimpleType()
       }
       if (!is.null(self$`objective_type`)) {
         BidFloorSpecObject[["objective_type"]] <-
-          self$`objective_type`$toJSON()
+          self$`objective_type`$toSimpleType()
       }
       if (!is.null(self$`billable_event`)) {
         BidFloorSpecObject[["billable_event"]] <-
-          self$`billable_event`$toJSON()
+          self$`billable_event`$toSimpleType()
       }
       if (!is.null(self$`optimization_goal_metadata`)) {
         BidFloorSpecObject[["optimization_goal_metadata"]] <-
-          self$`optimization_goal_metadata`$toJSON()
+          self$`optimization_goal_metadata`$toSimpleType()
       }
       if (!is.null(self$`creative_type`)) {
         BidFloorSpecObject[["creative_type"]] <-
-          self$`creative_type`$toJSON()
+          self$`creative_type`$toSimpleType()
       }
-      BidFloorSpecObject
+      return(BidFloorSpecObject)
     },
 
     #' @description
@@ -149,61 +174,13 @@ BidFloorSpec <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return BidFloorSpec in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`countries`)) {
-          sprintf(
-          '"countries":
-          [%s]
-',
-          paste(sapply(self$`countries`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`currency`)) {
-          sprintf(
-          '"currency":
-          %s
-          ',
-          jsonlite::toJSON(self$`currency`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`objective_type`)) {
-          sprintf(
-          '"objective_type":
-          %s
-          ',
-          jsonlite::toJSON(self$`objective_type`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`billable_event`)) {
-          sprintf(
-          '"billable_event":
-          %s
-          ',
-          jsonlite::toJSON(self$`billable_event`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`optimization_goal_metadata`)) {
-          sprintf(
-          '"optimization_goal_metadata":
-          %s
-          ',
-          jsonlite::toJSON(self$`optimization_goal_metadata`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`creative_type`)) {
-          sprintf(
-          '"creative_type":
-          %s
-          ',
-          jsonlite::toJSON(self$`creative_type`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

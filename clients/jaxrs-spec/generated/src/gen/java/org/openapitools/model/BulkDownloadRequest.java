@@ -23,13 +23,16 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Ad entities to get in bulk request.")
 @JsonTypeName("BulkDownloadRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BulkDownloadRequest   {
   private @Valid List<BulkEntityType> entityTypes = new ArrayList<>();
   private @Valid List<@Pattern(regexp = "^\\d+$")String> entityIds = new ArrayList<>();
   private String updatedSince;
   private BulkDownloadRequestCampaignFilter campaignFilter;
   private BulkOutputFormat outputFormat = "JSON";
+
+  public BulkDownloadRequest() {
+  }
 
   /**
    * All entity types specified will be downloaded. Fewer types result in faster downloads.

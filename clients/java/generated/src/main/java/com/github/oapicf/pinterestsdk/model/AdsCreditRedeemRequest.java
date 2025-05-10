@@ -48,20 +48,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdsCreditRedeemRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdsCreditRedeemRequest {
   public static final String SERIALIZED_NAME_OFFER_CODE_HASH = "offerCodeHash";
   @SerializedName(SERIALIZED_NAME_OFFER_CODE_HASH)
+  @javax.annotation.Nonnull
   private String offerCodeHash;
 
   public static final String SERIALIZED_NAME_VALIDATE_ONLY = "validateOnly";
   @SerializedName(SERIALIZED_NAME_VALIDATE_ONLY)
+  @javax.annotation.Nonnull
   private Boolean validateOnly;
 
   public AdsCreditRedeemRequest() {
   }
 
-  public AdsCreditRedeemRequest offerCodeHash(String offerCodeHash) {
+  public AdsCreditRedeemRequest offerCodeHash(@javax.annotation.Nonnull String offerCodeHash) {
     this.offerCodeHash = offerCodeHash;
     return this;
   }
@@ -75,12 +77,12 @@ public class AdsCreditRedeemRequest {
     return offerCodeHash;
   }
 
-  public void setOfferCodeHash(String offerCodeHash) {
+  public void setOfferCodeHash(@javax.annotation.Nonnull String offerCodeHash) {
     this.offerCodeHash = offerCodeHash;
   }
 
 
-  public AdsCreditRedeemRequest validateOnly(Boolean validateOnly) {
+  public AdsCreditRedeemRequest validateOnly(@javax.annotation.Nonnull Boolean validateOnly) {
     this.validateOnly = validateOnly;
     return this;
   }
@@ -94,7 +96,7 @@ public class AdsCreditRedeemRequest {
     return validateOnly;
   }
 
-  public void setValidateOnly(Boolean validateOnly) {
+  public void setValidateOnly(@javax.annotation.Nonnull Boolean validateOnly) {
     this.validateOnly = validateOnly;
   }
 

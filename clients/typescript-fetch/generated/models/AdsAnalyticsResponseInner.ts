@@ -58,11 +58,11 @@ export function AdsAnalyticsResponseInnerFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function AdsAnalyticsResponseInnerToJSON(json: any): AdsAnalyticsResponseInner {
-      return AdsAnalyticsResponseInnerToJSONTyped(json, false);
-  }
+export function AdsAnalyticsResponseInnerToJSON(json: any): AdsAnalyticsResponseInner {
+    return AdsAnalyticsResponseInnerToJSONTyped(json, false);
+}
 
-  export function AdsAnalyticsResponseInnerToJSONTyped(value?: AdsAnalyticsResponseInner | null, ignoreDiscriminator: boolean = false): any {
+export function AdsAnalyticsResponseInnerToJSONTyped(value?: AdsAnalyticsResponseInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

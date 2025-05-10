@@ -15,8 +15,11 @@
 export type CatalogsType = 'RETAIL' | 'HOTEL' | 'CREATIVE_ASSETS';
 
 export const CatalogsType = {
+
     Retail: 'RETAIL' as CatalogsType,
+
     Hotel: 'HOTEL' as CatalogsType,
+
     CreativeAssets: 'CREATIVE_ASSETS' as CatalogsType
 };
 

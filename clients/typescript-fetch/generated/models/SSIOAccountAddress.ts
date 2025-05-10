@@ -69,11 +69,11 @@ export function SSIOAccountAddressFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-  export function SSIOAccountAddressToJSON(json: any): SSIOAccountAddress {
-      return SSIOAccountAddressToJSONTyped(json, false);
-  }
+export function SSIOAccountAddressToJSON(json: any): SSIOAccountAddress {
+    return SSIOAccountAddressToJSONTyped(json, false);
+}
 
-  export function SSIOAccountAddressToJSONTyped(value?: SSIOAccountAddress | null, ignoreDiscriminator: boolean = false): any {
+export function SSIOAccountAddressToJSONTyped(value?: SSIOAccountAddress | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

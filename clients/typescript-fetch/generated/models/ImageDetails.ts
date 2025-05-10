@@ -65,11 +65,11 @@ export function ImageDetailsFromJSONTyped(json: any, ignoreDiscriminator: boolea
     };
 }
 
-  export function ImageDetailsToJSON(json: any): ImageDetails {
-      return ImageDetailsToJSONTyped(json, false);
-  }
+export function ImageDetailsToJSON(json: any): ImageDetails {
+    return ImageDetailsToJSONTyped(json, false);
+}
 
-  export function ImageDetailsToJSONTyped(value?: ImageDetails | null, ignoreDiscriminator: boolean = false): any {
+export function ImageDetailsToJSONTyped(value?: ImageDetails | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

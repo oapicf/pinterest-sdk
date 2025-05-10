@@ -5,7 +5,7 @@
 
 
 
-update_member_assets_results_response_array_items_inner_t *update_member_assets_results_response_array_items_inner_create(
+static update_member_assets_results_response_array_items_inner_t *update_member_assets_results_response_array_items_inner_create_internal(
     users_for_individual_asset_response_t *response
     ) {
     update_member_assets_results_response_array_items_inner_t *update_member_assets_results_response_array_items_inner_local_var = malloc(sizeof(update_member_assets_results_response_array_items_inner_t));
@@ -14,12 +14,24 @@ update_member_assets_results_response_array_items_inner_t *update_member_assets_
     }
     update_member_assets_results_response_array_items_inner_local_var->response = response;
 
+    update_member_assets_results_response_array_items_inner_local_var->_library_owned = 1;
     return update_member_assets_results_response_array_items_inner_local_var;
 }
 
+__attribute__((deprecated)) update_member_assets_results_response_array_items_inner_t *update_member_assets_results_response_array_items_inner_create(
+    users_for_individual_asset_response_t *response
+    ) {
+    return update_member_assets_results_response_array_items_inner_create_internal (
+        response
+        );
+}
 
 void update_member_assets_results_response_array_items_inner_free(update_member_assets_results_response_array_items_inner_t *update_member_assets_results_response_array_items_inner) {
     if(NULL == update_member_assets_results_response_array_items_inner){
+        return ;
+    }
+    if(update_member_assets_results_response_array_items_inner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "update_member_assets_results_response_array_items_inner_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -62,12 +74,15 @@ update_member_assets_results_response_array_items_inner_t *update_member_assets_
 
     // update_member_assets_results_response_array_items_inner->response
     cJSON *response = cJSON_GetObjectItemCaseSensitive(update_member_assets_results_response_array_items_innerJSON, "response");
+    if (cJSON_IsNull(response)) {
+        response = NULL;
+    }
     if (response) { 
     response_local_nonprim = users_for_individual_asset_response_parseFromJSON(response); //nonprimitive
     }
 
 
-    update_member_assets_results_response_array_items_inner_local_var = update_member_assets_results_response_array_items_inner_create (
+    update_member_assets_results_response_array_items_inner_local_var = update_member_assets_results_response_array_items_inner_create_internal (
         response ? response_local_nonprim : NULL
         );
 

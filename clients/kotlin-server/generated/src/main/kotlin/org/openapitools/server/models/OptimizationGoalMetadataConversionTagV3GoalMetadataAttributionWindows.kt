@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param clickWindowDays 
  * @param engagementWindowDays 
  * @param viewWindowDays 
  */
+@Serializable
 data class OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows(
     val clickWindowDays: kotlin.Int? = null,
     val engagementWindowDays: kotlin.Int? = null,
     val viewWindowDays: kotlin.Int? = null
-) 
+)
 

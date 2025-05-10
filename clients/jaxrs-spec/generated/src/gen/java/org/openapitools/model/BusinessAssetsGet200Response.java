@@ -21,10 +21,20 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("business_assets_get_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BusinessAssetsGet200Response   {
   private @Valid List<@Valid GetBusinessAssetsResponse> items = new ArrayList<>();
   private String bookmark;
+
+  public BusinessAssetsGet200Response() {
+  }
+
+  @JsonCreator
+  public BusinessAssetsGet200Response(
+    @JsonProperty(required = true, value = "items") List<@Valid GetBusinessAssetsResponse> items
+  ) {
+    this.items = items;
+  }
 
   /**
    * List of assets the requesting business has access to.
@@ -36,12 +46,12 @@ public class BusinessAssetsGet200Response   {
 
   
   @ApiModelProperty(required = true, value = "List of assets the requesting business has access to.")
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   @NotNull @Valid public List<@Valid GetBusinessAssetsResponse> getItems() {
     return items;
   }
 
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   public void setItems(List<@Valid GetBusinessAssetsResponse> items) {
     this.items = items;
   }

@@ -172,11 +172,11 @@ export function TargetingTemplateResponseDataFromJSONTyped(json: any, ignoreDisc
     };
 }
 
-  export function TargetingTemplateResponseDataToJSON(json: any): TargetingTemplateResponseData {
-      return TargetingTemplateResponseDataToJSONTyped(json, false);
-  }
+export function TargetingTemplateResponseDataToJSON(json: any): TargetingTemplateResponseData {
+    return TargetingTemplateResponseDataToJSONTyped(json, false);
+}
 
-  export function TargetingTemplateResponseDataToJSONTyped(value?: TargetingTemplateResponseData | null, ignoreDiscriminator: boolean = false): any {
+export function TargetingTemplateResponseDataToJSONTyped(value?: TargetingTemplateResponseData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

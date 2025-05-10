@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param pinOrderId Salesforce order id
  */
+@Serializable
 data class SSIOCreateInsertionOrderResponse(
     /* Salesforce order id */
     val pinOrderId: kotlin.String? = null
-) 
+)
 

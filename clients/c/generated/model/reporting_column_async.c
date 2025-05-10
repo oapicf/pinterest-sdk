@@ -22,7 +22,7 @@ pinterest_rest_api_reporting_column_async__e reporting_column_async_reporting_co
     return 0;
 }
 
-cJSON *reporting_column_async_reporting_column_async_convertToJSON(pinterest_rest_api_reporting_column_async__e reporting_column_async) {
+cJSON *reporting_column_async_convertToJSON(pinterest_rest_api_reporting_column_async__e reporting_column_async) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "reporting_column_async", reporting_column_async_reporting_column_async_ToString(reporting_column_async)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_reporting_column_async__e reporting_column_async_reporting_column_async_parseFromJSON(cJSON *reporting_column_asyncJSON) {
-    pinterest_rest_api_reporting_column_async__e *reporting_column_async = NULL;
-    pinterest_rest_api_reporting_column_async__e reporting_column_asyncVariable;
-    cJSON *reporting_column_asyncVar = cJSON_GetObjectItemCaseSensitive(reporting_column_asyncJSON, "reporting_column_async");
-    if(!cJSON_IsString(reporting_column_asyncVar) || (reporting_column_asyncVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_reporting_column_async__e reporting_column_async_parseFromJSON(cJSON *reporting_column_asyncJSON) {
+    if(!cJSON_IsString(reporting_column_asyncJSON) || (reporting_column_asyncJSON->valuestring == NULL)) {
+        return 0;
     }
-    reporting_column_asyncVariable = reporting_column_async_reporting_column_async_FromString(reporting_column_asyncVar->valuestring);
-    return reporting_column_asyncVariable;
-end:
-    return 0;
+    return reporting_column_async_reporting_column_async_FromString(reporting_column_asyncJSON->valuestring);
 }

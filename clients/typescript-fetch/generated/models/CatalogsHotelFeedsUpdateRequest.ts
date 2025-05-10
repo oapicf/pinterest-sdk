@@ -143,11 +143,11 @@ export function CatalogsHotelFeedsUpdateRequestFromJSONTyped(json: any, ignoreDi
     };
 }
 
-  export function CatalogsHotelFeedsUpdateRequestToJSON(json: any): CatalogsHotelFeedsUpdateRequest {
-      return CatalogsHotelFeedsUpdateRequestToJSONTyped(json, false);
-  }
+export function CatalogsHotelFeedsUpdateRequestToJSON(json: any): CatalogsHotelFeedsUpdateRequest {
+    return CatalogsHotelFeedsUpdateRequestToJSONTyped(json, false);
+}
 
-  export function CatalogsHotelFeedsUpdateRequestToJSONTyped(value?: CatalogsHotelFeedsUpdateRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsHotelFeedsUpdateRequestToJSONTyped(value?: CatalogsHotelFeedsUpdateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

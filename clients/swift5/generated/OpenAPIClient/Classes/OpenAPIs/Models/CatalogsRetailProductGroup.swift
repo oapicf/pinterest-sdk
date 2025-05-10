@@ -15,9 +15,9 @@ public struct CatalogsRetailProductGroup: Codable, JSONEncodable, Hashable {
     public enum CatalogType: String, Codable, CaseIterable {
         case retail = "RETAIL"
     }
-    static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let feedIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let feedIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public var catalogType: CatalogType
     /** ID of the catalog product group. */
     public var id: String
@@ -96,3 +96,6 @@ public struct CatalogsRetailProductGroup: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension CatalogsRetailProductGroup: Identifiable {}

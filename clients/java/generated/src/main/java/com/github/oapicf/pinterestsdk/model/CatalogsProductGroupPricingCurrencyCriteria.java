@@ -50,7 +50,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsProductGroupPricingCurrencyCriteria
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsProductGroupPricingCurrencyCriteria {
   /**
    * Gets or Sets operator
@@ -110,24 +110,28 @@ public class CatalogsProductGroupPricingCurrencyCriteria {
 
   public static final String SERIALIZED_NAME_OPERATOR = "operator";
   @SerializedName(SERIALIZED_NAME_OPERATOR)
+  @javax.annotation.Nonnull
   private OperatorEnum operator;
 
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
+  @javax.annotation.Nonnull
   private BigDecimal value;
 
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
+  @javax.annotation.Nonnull
   private NonNullableCatalogsCurrency currency;
 
   public static final String SERIALIZED_NAME_NEGATED = "negated";
   @SerializedName(SERIALIZED_NAME_NEGATED)
+  @javax.annotation.Nullable
   private Boolean negated = false;
 
   public CatalogsProductGroupPricingCurrencyCriteria() {
   }
 
-  public CatalogsProductGroupPricingCurrencyCriteria operator(OperatorEnum operator) {
+  public CatalogsProductGroupPricingCurrencyCriteria operator(@javax.annotation.Nonnull OperatorEnum operator) {
     this.operator = operator;
     return this;
   }
@@ -141,12 +145,12 @@ public class CatalogsProductGroupPricingCurrencyCriteria {
     return operator;
   }
 
-  public void setOperator(OperatorEnum operator) {
+  public void setOperator(@javax.annotation.Nonnull OperatorEnum operator) {
     this.operator = operator;
   }
 
 
-  public CatalogsProductGroupPricingCurrencyCriteria value(BigDecimal value) {
+  public CatalogsProductGroupPricingCurrencyCriteria value(@javax.annotation.Nonnull BigDecimal value) {
     this.value = value;
     return this;
   }
@@ -161,12 +165,12 @@ public class CatalogsProductGroupPricingCurrencyCriteria {
     return value;
   }
 
-  public void setValue(BigDecimal value) {
+  public void setValue(@javax.annotation.Nonnull BigDecimal value) {
     this.value = value;
   }
 
 
-  public CatalogsProductGroupPricingCurrencyCriteria currency(NonNullableCatalogsCurrency currency) {
+  public CatalogsProductGroupPricingCurrencyCriteria currency(@javax.annotation.Nonnull NonNullableCatalogsCurrency currency) {
     this.currency = currency;
     return this;
   }
@@ -180,12 +184,12 @@ public class CatalogsProductGroupPricingCurrencyCriteria {
     return currency;
   }
 
-  public void setCurrency(NonNullableCatalogsCurrency currency) {
+  public void setCurrency(@javax.annotation.Nonnull NonNullableCatalogsCurrency currency) {
     this.currency = currency;
   }
 
 
-  public CatalogsProductGroupPricingCurrencyCriteria negated(Boolean negated) {
+  public CatalogsProductGroupPricingCurrencyCriteria negated(@javax.annotation.Nullable Boolean negated) {
     this.negated = negated;
     return this;
   }
@@ -199,7 +203,7 @@ public class CatalogsProductGroupPricingCurrencyCriteria {
     return negated;
   }
 
-  public void setNegated(Boolean negated) {
+  public void setNegated(@javax.annotation.Nullable Boolean negated) {
     this.negated = negated;
   }
 

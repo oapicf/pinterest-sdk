@@ -17,6 +17,7 @@ import org.openapitools.server.models.TargetingTemplateAudienceSizing
 import org.openapitools.server.models.TargetingTemplateKeyword
 import org.openapitools.server.models.TrackingUrls
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param name targeting template name
@@ -32,6 +33,7 @@ import org.openapitools.server.models.TrackingUrls
  * @param status Indicate targeting template is active or Deleted
  * @param sizing 
  */
+@Serializable
 data class TargetingTemplateResponseData(
     /* targeting template name */
     val name: kotlin.String? = null,
@@ -52,7 +54,7 @@ data class TargetingTemplateResponseData(
     /* Indicate targeting template is active or Deleted */
     val status: TargetingTemplateResponseData.Status? = Status.ACTIVE,
     val sizing: TargetingTemplateAudienceSizing? = null
-) 
+)
 {
     /**
     * Indicate targeting template is active or Deleted

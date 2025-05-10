@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.model.CatalogsLocale;
 import org.openapitools.model.CatalogsProductGroupFilters;
 import org.openapitools.model.Country;
+import org.springframework.lang.Nullable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -26,7 +27,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsRetailListProductsByCatalogBasedFilterRequest", description = "Request object to list products for a given retail catalog_id and product group filter.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsRetailListProductsByCatalogBasedFilterRequest implements CatalogsVerticalsListProductsByCatalogBasedFilterRequest {
 
   /**

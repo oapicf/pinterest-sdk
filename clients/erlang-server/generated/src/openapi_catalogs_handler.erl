@@ -166,7 +166,7 @@ List aggregated numbers of issues for a catalog owned by the \&quot;operation us
         {operation_id :: operation_id(),
          accept_callback :: openapi_logic_handler:accept_callback(),
          provide_callback :: openapi_logic_handler:provide_callback(),
-         api_key_handler :: openapi_logic_handler:api_key_callback(),
+         api_key_callback :: openapi_logic_handler:api_key_callback(),
          context = #{} :: openapi_logic_handler:context()}).
 
 -type state() :: #state{}.
@@ -182,7 +182,7 @@ init(Req, {Operations, Module}) ->
     State = #state{operation_id = OperationID,
                    accept_callback = fun Module:accept_callback/4,
                    provide_callback = fun Module:provide_callback/4,
-                   api_key_handler = fun Module:authorize_api_key/2},
+                   api_key_callback = fun Module:api_key_callback/2},
     {cowboy_rest, Req, State}.
 
 -spec allowed_methods(cowboy_req:req(), state()) ->
@@ -248,8 +248,8 @@ allowed_methods(Req, State) ->
     {true | {false, iodata()}, cowboy_req:req(), state()}.
 is_authorized(Req0,
               #state{operation_id = 'catalogs/create' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -257,8 +257,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'catalogs/list' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -266,8 +266,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'catalogs_product_group_pins/list' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -275,8 +275,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'catalogs_product_groups/create' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -284,8 +284,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'catalogs_product_groups/create_many' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -293,8 +293,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'catalogs_product_groups/delete' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -302,8 +302,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'catalogs_product_groups/delete_many' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -311,8 +311,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'catalogs_product_groups/get' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -320,8 +320,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'catalogs_product_groups/list' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -329,8 +329,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'catalogs_product_groups/product_counts_get' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -338,8 +338,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'catalogs_product_groups/update' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -347,8 +347,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'feed_processing_results/list' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -356,8 +356,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'feeds/create' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -365,8 +365,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'feeds/delete' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -374,8 +374,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'feeds/get' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -383,8 +383,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'feeds/ingest' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -392,8 +392,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'feeds/list' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -401,8 +401,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'feeds/update' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -410,8 +410,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'items_batch/get' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -419,8 +419,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'items_batch/post' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -428,8 +428,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'items/get' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -437,8 +437,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'items_issues/list' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -446,8 +446,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'items/post' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -455,8 +455,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'products_by_product_group_filter/list' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -464,8 +464,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'reports/create' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -473,8 +473,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'reports/get' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -482,8 +482,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'reports/stats' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -758,7 +758,7 @@ handle_type_accepted(Req, #state{operation_id = OperationID,
     {Res, Req1, State#state{context = Context1}}.
 
 -spec handle_type_provided(cowboy_req:req(), state()) ->
-    {cowboy_req:resp_body(), cowboy_req:req(), state()}.
+    { openapi_logic_handler:provide_callback_return(), cowboy_req:req(), state()}.
 handle_type_provided(Req, #state{operation_id = OperationID,
                                  provide_callback = Handler,
                                  context = Context} = State) ->

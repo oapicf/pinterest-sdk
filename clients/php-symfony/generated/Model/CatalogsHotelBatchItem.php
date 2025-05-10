@@ -62,7 +62,7 @@ class CatalogsHotelBatchItem
      * @Type("string")
     */
     #[Assert\NotNull]
-    #[Assert\Choice(["DELETE"])]
+    #[Assert\Choice(['DELETE'])]
     #[Assert\Type("string")]
     protected ?string $operation = null;
 
@@ -80,7 +80,7 @@ class CatalogsHotelBatchItem
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->hotelId = array_key_exists('hotelId', $data) ? $data['hotelId'] : $this->hotelId;

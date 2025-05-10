@@ -247,11 +247,11 @@ export function AdCreateRequestFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-  export function AdCreateRequestToJSON(json: any): AdCreateRequest {
-      return AdCreateRequestToJSONTyped(json, false);
-  }
+export function AdCreateRequestToJSON(json: any): AdCreateRequest {
+    return AdCreateRequestToJSONTyped(json, false);
+}
 
-  export function AdCreateRequestToJSONTyped(value?: AdCreateRequest | null, ignoreDiscriminator: boolean = false): any {
+export function AdCreateRequestToJSONTyped(value?: AdCreateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

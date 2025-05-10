@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param title Carousel Pin slot title.
  * @param description Carousel Pin slot description.
  * @param link Carousel Pin slot link.
  */
+@Serializable
 data class PinUpdateCarouselSlotsInner(
     /* Carousel Pin slot title. */
     val title: kotlin.String? = null,
@@ -25,5 +27,5 @@ data class PinUpdateCarouselSlotsInner(
     val description: kotlin.String? = null,
     /* Carousel Pin slot link. */
     val link: kotlin.String? = null
-) 
+)
 

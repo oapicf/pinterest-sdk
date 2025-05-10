@@ -79,11 +79,11 @@ export function MediaUploadDetailsFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-  export function MediaUploadDetailsToJSON(json: any): MediaUploadDetails {
-      return MediaUploadDetailsToJSONTyped(json, false);
-  }
+export function MediaUploadDetailsToJSON(json: any): MediaUploadDetails {
+    return MediaUploadDetailsToJSONTyped(json, false);
+}
 
-  export function MediaUploadDetailsToJSONTyped(value?: Omit<MediaUploadDetails, 'media_id'|'media_type'|'status'> | null, ignoreDiscriminator: boolean = false): any {
+export function MediaUploadDetailsToJSONTyped(value?: Omit<MediaUploadDetails, 'media_id'|'media_type'|'status'> | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

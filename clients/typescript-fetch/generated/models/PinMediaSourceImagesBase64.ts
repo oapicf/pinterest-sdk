@@ -81,11 +81,11 @@ export function PinMediaSourceImagesBase64FromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-  export function PinMediaSourceImagesBase64ToJSON(json: any): PinMediaSourceImagesBase64 {
-      return PinMediaSourceImagesBase64ToJSONTyped(json, false);
-  }
+export function PinMediaSourceImagesBase64ToJSON(json: any): PinMediaSourceImagesBase64 {
+    return PinMediaSourceImagesBase64ToJSONTyped(json, false);
+}
 
-  export function PinMediaSourceImagesBase64ToJSONTyped(value?: PinMediaSourceImagesBase64 | null, ignoreDiscriminator: boolean = false): any {
+export function PinMediaSourceImagesBase64ToJSONTyped(value?: PinMediaSourceImagesBase64 | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

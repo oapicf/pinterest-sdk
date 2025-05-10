@@ -70,7 +70,7 @@ func (c *AdvancedAuctionAPIController) AdvancedAuctionItemsGetPost(w http.Respon
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	advancedAuctionItemsGetRequestParam := AdvancedAuctionItemsGetRequest{}
+	var advancedAuctionItemsGetRequestParam AdvancedAuctionItemsGetRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&advancedAuctionItemsGetRequestParam); err != nil {
@@ -109,7 +109,7 @@ func (c *AdvancedAuctionAPIController) AdvancedAuctionItemsSubmitPost(w http.Res
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	advancedAuctionItemsSubmitRequestParam := AdvancedAuctionItemsSubmitRequest{}
+	var advancedAuctionItemsSubmitRequestParam AdvancedAuctionItemsSubmitRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&advancedAuctionItemsSubmitRequestParam); err != nil {

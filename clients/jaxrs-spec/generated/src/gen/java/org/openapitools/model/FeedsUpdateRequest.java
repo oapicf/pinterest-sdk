@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("feeds_update_request")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class FeedsUpdateRequest   {
   private ProductAvailabilityType defaultAvailability;
   private NullableCurrency defaultCurrency;
@@ -36,6 +36,15 @@ public class FeedsUpdateRequest   {
   private String location;
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
   private CatalogsStatus status;
+
+  public FeedsUpdateRequest() {
+  }
+
+  @JsonCreator
+  public FeedsUpdateRequest(
+    @JsonProperty(required = true, value = "catalog_type") CatalogsType catalogType
+  ) {
+  }
 
   /**
    **/

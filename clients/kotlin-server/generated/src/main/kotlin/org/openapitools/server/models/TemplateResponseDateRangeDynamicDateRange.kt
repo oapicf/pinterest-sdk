@@ -12,17 +12,19 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * The dynamic date range of the template
  * @param type The date range type
  * @param range The dynamic range type
  */
+@Serializable
 data class TemplateResponseDateRangeDynamicDateRange(
     /* The date range type */
     val type: kotlin.String? = null,
     /* The dynamic range type */
     val range: TemplateResponseDateRangeDynamicDateRange.Range? = null
-) 
+)
 {
     /**
     * The dynamic range type

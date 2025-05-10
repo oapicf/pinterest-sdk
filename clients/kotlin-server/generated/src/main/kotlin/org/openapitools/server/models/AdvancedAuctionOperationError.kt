@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Error which occurred when applying a bid options operation to a specific item.
  * @param code The error code for the item bid option operation validation error
  * @param message Message describing the item bid option operation validation error
  */
+@Serializable
 data class AdvancedAuctionOperationError(
     /* The error code for the item bid option operation validation error */
     val code: kotlin.Int? = null,
     /* Message describing the item bid option operation validation error */
     val message: kotlin.String? = null
-) 
+)
 

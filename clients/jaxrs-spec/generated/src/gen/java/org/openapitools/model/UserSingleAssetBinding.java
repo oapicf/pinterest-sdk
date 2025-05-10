@@ -21,10 +21,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "An object containing the permissions a business member/partner has on the asset.")
 @JsonTypeName("UserSingleAssetBinding")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class UserSingleAssetBinding   {
   private @Valid List<String> permissions = new ArrayList<>();
   private BusinessAccessUserSummary user;
+
+  public UserSingleAssetBinding() {
+  }
 
   /**
    * Permission levels member or partner has on an asset.

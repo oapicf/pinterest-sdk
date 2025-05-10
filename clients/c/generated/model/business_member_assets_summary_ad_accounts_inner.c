@@ -5,7 +5,7 @@
 
 
 
-business_member_assets_summary_ad_accounts_inner_t *business_member_assets_summary_ad_accounts_inner_create(
+static business_member_assets_summary_ad_accounts_inner_t *business_member_assets_summary_ad_accounts_inner_create_internal(
     char *id,
     list_t *permissions
     ) {
@@ -16,12 +16,26 @@ business_member_assets_summary_ad_accounts_inner_t *business_member_assets_summa
     business_member_assets_summary_ad_accounts_inner_local_var->id = id;
     business_member_assets_summary_ad_accounts_inner_local_var->permissions = permissions;
 
+    business_member_assets_summary_ad_accounts_inner_local_var->_library_owned = 1;
     return business_member_assets_summary_ad_accounts_inner_local_var;
 }
 
+__attribute__((deprecated)) business_member_assets_summary_ad_accounts_inner_t *business_member_assets_summary_ad_accounts_inner_create(
+    char *id,
+    list_t *permissions
+    ) {
+    return business_member_assets_summary_ad_accounts_inner_create_internal (
+        id,
+        permissions
+        );
+}
 
 void business_member_assets_summary_ad_accounts_inner_free(business_member_assets_summary_ad_accounts_inner_t *business_member_assets_summary_ad_accounts_inner) {
     if(NULL == business_member_assets_summary_ad_accounts_inner){
+        return ;
+    }
+    if(business_member_assets_summary_ad_accounts_inner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "business_member_assets_summary_ad_accounts_inner_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -59,7 +73,7 @@ cJSON *business_member_assets_summary_ad_accounts_inner_convertToJSON(business_m
 
     listEntry_t *permissionsListEntry;
     list_ForEach(permissionsListEntry, business_member_assets_summary_ad_accounts_inner->permissions) {
-    if(cJSON_AddStringToObject(permissions, "", (char*)permissionsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(permissions, "", permissionsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -83,6 +97,9 @@ business_member_assets_summary_ad_accounts_inner_t *business_member_assets_summa
 
     // business_member_assets_summary_ad_accounts_inner->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(business_member_assets_summary_ad_accounts_innerJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -92,6 +109,9 @@ business_member_assets_summary_ad_accounts_inner_t *business_member_assets_summa
 
     // business_member_assets_summary_ad_accounts_inner->permissions
     cJSON *permissions = cJSON_GetObjectItemCaseSensitive(business_member_assets_summary_ad_accounts_innerJSON, "permissions");
+    if (cJSON_IsNull(permissions)) {
+        permissions = NULL;
+    }
     if (permissions) { 
     cJSON *permissions_local = NULL;
     if(!cJSON_IsArray(permissions)) {
@@ -110,7 +130,7 @@ business_member_assets_summary_ad_accounts_inner_t *business_member_assets_summa
     }
 
 
-    business_member_assets_summary_ad_accounts_inner_local_var = business_member_assets_summary_ad_accounts_inner_create (
+    business_member_assets_summary_ad_accounts_inner_local_var = business_member_assets_summary_ad_accounts_inner_create_internal (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         permissions ? permissionsList : NULL
         );

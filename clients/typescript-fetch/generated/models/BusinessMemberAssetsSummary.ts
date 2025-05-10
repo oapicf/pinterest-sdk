@@ -70,11 +70,11 @@ export function BusinessMemberAssetsSummaryFromJSONTyped(json: any, ignoreDiscri
     };
 }
 
-  export function BusinessMemberAssetsSummaryToJSON(json: any): BusinessMemberAssetsSummary {
-      return BusinessMemberAssetsSummaryToJSONTyped(json, false);
-  }
+export function BusinessMemberAssetsSummaryToJSON(json: any): BusinessMemberAssetsSummary {
+    return BusinessMemberAssetsSummaryToJSONTyped(json, false);
+}
 
-  export function BusinessMemberAssetsSummaryToJSONTyped(value?: BusinessMemberAssetsSummary | null, ignoreDiscriminator: boolean = false): any {
+export function BusinessMemberAssetsSummaryToJSONTyped(value?: BusinessMemberAssetsSummary | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

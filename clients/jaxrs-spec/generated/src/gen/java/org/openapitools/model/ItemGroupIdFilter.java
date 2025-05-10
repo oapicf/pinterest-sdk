@@ -16,9 +16,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ItemGroupIdFilter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ItemGroupIdFilter   {
   private CatalogsProductGroupMultipleStringCriteria ITEM_GROUP_ID;
+
+  public ItemGroupIdFilter() {
+  }
+
+  @JsonCreator
+  public ItemGroupIdFilter(
+    @JsonProperty(required = true, value = "ITEM_GROUP_ID") CatalogsProductGroupMultipleStringCriteria ITEM_GROUP_ID
+  ) {
+    this.ITEM_GROUP_ID = ITEM_GROUP_ID;
+  }
 
   /**
    **/
@@ -29,12 +39,12 @@ public class ItemGroupIdFilter   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("ITEM_GROUP_ID")
+  @JsonProperty(required = true, value = "ITEM_GROUP_ID")
   @NotNull @Valid public CatalogsProductGroupMultipleStringCriteria getITEMGROUPID() {
     return ITEM_GROUP_ID;
   }
 
-  @JsonProperty("ITEM_GROUP_ID")
+  @JsonProperty(required = true, value = "ITEM_GROUP_ID")
   public void setITEMGROUPID(CatalogsProductGroupMultipleStringCriteria ITEM_GROUP_ID) {
     this.ITEM_GROUP_ID = ITEM_GROUP_ID;
   }

@@ -51,20 +51,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * SharedAudienceResponseCommon
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SharedAudienceResponseCommon {
   public static final String SERIALIZED_NAME_AUDIENCE_ID = "audience_id";
   @SerializedName(SERIALIZED_NAME_AUDIENCE_ID)
+  @javax.annotation.Nullable
   private String audienceId;
 
   public static final String SERIALIZED_NAME_PERMISSIONS = "permissions";
   @SerializedName(SERIALIZED_NAME_PERMISSIONS)
+  @javax.annotation.Nullable
   private List<Role> permissions = new ArrayList<>();
 
   public SharedAudienceResponseCommon() {
   }
 
-  public SharedAudienceResponseCommon audienceId(String audienceId) {
+  public SharedAudienceResponseCommon audienceId(@javax.annotation.Nullable String audienceId) {
     this.audienceId = audienceId;
     return this;
   }
@@ -78,12 +80,12 @@ public class SharedAudienceResponseCommon {
     return audienceId;
   }
 
-  public void setAudienceId(String audienceId) {
+  public void setAudienceId(@javax.annotation.Nullable String audienceId) {
     this.audienceId = audienceId;
   }
 
 
-  public SharedAudienceResponseCommon permissions(List<Role> permissions) {
+  public SharedAudienceResponseCommon permissions(@javax.annotation.Nullable List<Role> permissions) {
     this.permissions = permissions;
     return this;
   }
@@ -105,7 +107,7 @@ public class SharedAudienceResponseCommon {
     return permissions;
   }
 
-  public void setPermissions(List<Role> permissions) {
+  public void setPermissions(@javax.annotation.Nullable List<Role> permissions) {
     this.permissions = permissions;
   }
 

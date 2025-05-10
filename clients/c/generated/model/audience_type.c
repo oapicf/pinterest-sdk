@@ -22,7 +22,7 @@ pinterest_rest_api_audience_type__e audience_type_audience_type_FromString(char*
     return 0;
 }
 
-cJSON *audience_type_audience_type_convertToJSON(pinterest_rest_api_audience_type__e audience_type) {
+cJSON *audience_type_convertToJSON(pinterest_rest_api_audience_type__e audience_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "audience_type", audience_type_audience_type_ToString(audience_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_audience_type__e audience_type_audience_type_parseFromJSON(cJSON *audience_typeJSON) {
-    pinterest_rest_api_audience_type__e *audience_type = NULL;
-    pinterest_rest_api_audience_type__e audience_typeVariable;
-    cJSON *audience_typeVar = cJSON_GetObjectItemCaseSensitive(audience_typeJSON, "audience_type");
-    if(!cJSON_IsString(audience_typeVar) || (audience_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_audience_type__e audience_type_parseFromJSON(cJSON *audience_typeJSON) {
+    if(!cJSON_IsString(audience_typeJSON) || (audience_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    audience_typeVariable = audience_type_audience_type_FromString(audience_typeVar->valuestring);
-    return audience_typeVariable;
-end:
-    return 0;
+    return audience_type_audience_type_FromString(audience_typeJSON->valuestring);
 }

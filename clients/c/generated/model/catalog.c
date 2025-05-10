@@ -4,30 +4,13 @@
 #include "catalog.h"
 
 
-char* catalog_catalog_type_ToString(pinterest_rest_api_catalog__e catalog_type) {
-    char* catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL", "CREATIVE_ASSETS" };
-    return catalog_typeArray[catalog_type];
-}
 
-pinterest_rest_api_catalog__e catalog_catalog_type_FromString(char* catalog_type){
-    int stringToReturn = 0;
-    char *catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL", "CREATIVE_ASSETS" };
-    size_t sizeofArray = sizeof(catalog_typeArray) / sizeof(catalog_typeArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(catalog_type, catalog_typeArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-
-catalog_t *catalog_create(
+static catalog_t *catalog_create_internal(
     char *created_at,
     char *id,
     char *updated_at,
     char *name,
-    catalogs_type_t *catalog_type
+    pinterest_rest_api_catalogs_type__e catalog_type
     ) {
     catalog_t *catalog_local_var = malloc(sizeof(catalog_t));
     if (!catalog_local_var) {
@@ -39,12 +22,32 @@ catalog_t *catalog_create(
     catalog_local_var->name = name;
     catalog_local_var->catalog_type = catalog_type;
 
+    catalog_local_var->_library_owned = 1;
     return catalog_local_var;
 }
 
+__attribute__((deprecated)) catalog_t *catalog_create(
+    char *created_at,
+    char *id,
+    char *updated_at,
+    char *name,
+    pinterest_rest_api_catalogs_type__e catalog_type
+    ) {
+    return catalog_create_internal (
+        created_at,
+        id,
+        updated_at,
+        name,
+        catalog_type
+        );
+}
 
 void catalog_free(catalog_t *catalog) {
     if(NULL == catalog){
+        return ;
+    }
+    if(catalog->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalog_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -63,10 +66,6 @@ void catalog_free(catalog_t *catalog) {
     if (catalog->name) {
         free(catalog->name);
         catalog->name = NULL;
-    }
-    if (catalog->catalog_type) {
-        catalogs_type_free(catalog->catalog_type);
-        catalog->catalog_type = NULL;
     }
     free(catalog);
 }
@@ -111,7 +110,7 @@ cJSON *catalog_convertToJSON(catalog_t *catalog) {
 
 
     // catalog->catalog_type
-    if (pinterest_rest_api_catalog__NULL == catalog->catalog_type) {
+    if (pinterest_rest_api_catalogs_type__NULL == catalog->catalog_type) {
         goto fail;
     }
     cJSON *catalog_type_local_JSON = catalogs_type_convertToJSON(catalog->catalog_type);
@@ -136,10 +135,13 @@ catalog_t *catalog_parseFromJSON(cJSON *catalogJSON){
     catalog_t *catalog_local_var = NULL;
 
     // define the local variable for catalog->catalog_type
-    catalogs_type_t *catalog_type_local_nonprim = NULL;
+    pinterest_rest_api_catalogs_type__e catalog_type_local_nonprim = 0;
 
     // catalog->created_at
     cJSON *created_at = cJSON_GetObjectItemCaseSensitive(catalogJSON, "created_at");
+    if (cJSON_IsNull(created_at)) {
+        created_at = NULL;
+    }
     if (!created_at) {
         goto end;
     }
@@ -152,6 +154,9 @@ catalog_t *catalog_parseFromJSON(cJSON *catalogJSON){
 
     // catalog->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(catalogJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (!id) {
         goto end;
     }
@@ -164,6 +169,9 @@ catalog_t *catalog_parseFromJSON(cJSON *catalogJSON){
 
     // catalog->updated_at
     cJSON *updated_at = cJSON_GetObjectItemCaseSensitive(catalogJSON, "updated_at");
+    if (cJSON_IsNull(updated_at)) {
+        updated_at = NULL;
+    }
     if (!updated_at) {
         goto end;
     }
@@ -176,6 +184,9 @@ catalog_t *catalog_parseFromJSON(cJSON *catalogJSON){
 
     // catalog->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(catalogJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
     if (!name) {
         goto end;
     }
@@ -188,6 +199,9 @@ catalog_t *catalog_parseFromJSON(cJSON *catalogJSON){
 
     // catalog->catalog_type
     cJSON *catalog_type = cJSON_GetObjectItemCaseSensitive(catalogJSON, "catalog_type");
+    if (cJSON_IsNull(catalog_type)) {
+        catalog_type = NULL;
+    }
     if (!catalog_type) {
         goto end;
     }
@@ -196,7 +210,7 @@ catalog_t *catalog_parseFromJSON(cJSON *catalogJSON){
     catalog_type_local_nonprim = catalogs_type_parseFromJSON(catalog_type); //custom
 
 
-    catalog_local_var = catalog_create (
+    catalog_local_var = catalog_create_internal (
         strdup(created_at->valuestring),
         strdup(id->valuestring),
         strdup(updated_at->valuestring),
@@ -207,8 +221,7 @@ catalog_t *catalog_parseFromJSON(cJSON *catalogJSON){
     return catalog_local_var;
 end:
     if (catalog_type_local_nonprim) {
-        catalogs_type_free(catalog_type_local_nonprim);
-        catalog_type_local_nonprim = NULL;
+        catalog_type_local_nonprim = 0;
     }
     return NULL;
 

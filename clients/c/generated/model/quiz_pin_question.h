@@ -24,9 +24,10 @@ typedef struct quiz_pin_question_t {
     char *question_text; // string
     list_t *options; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } quiz_pin_question_t;
 
-quiz_pin_question_t *quiz_pin_question_create(
+__attribute__((deprecated)) quiz_pin_question_t *quiz_pin_question_create(
     double question_id,
     char *question_text,
     list_t *options

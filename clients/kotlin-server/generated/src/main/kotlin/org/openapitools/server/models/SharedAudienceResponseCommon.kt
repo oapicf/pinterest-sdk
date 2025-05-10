@@ -13,14 +13,16 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.Role
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param audienceId Audience ID that was shared
  * @param permissions 
  */
+@Serializable
 data class SharedAudienceResponseCommon(
     /* Audience ID that was shared */
     val audienceId: kotlin.String? = null,
     val permissions: kotlin.collections.List<Role>? = null
-) 
+)
 

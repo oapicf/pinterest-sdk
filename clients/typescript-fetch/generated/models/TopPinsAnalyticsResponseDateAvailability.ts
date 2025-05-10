@@ -55,11 +55,11 @@ export function TopPinsAnalyticsResponseDateAvailabilityFromJSONTyped(json: any,
     };
 }
 
-  export function TopPinsAnalyticsResponseDateAvailabilityToJSON(json: any): TopPinsAnalyticsResponseDateAvailability {
-      return TopPinsAnalyticsResponseDateAvailabilityToJSONTyped(json, false);
-  }
+export function TopPinsAnalyticsResponseDateAvailabilityToJSON(json: any): TopPinsAnalyticsResponseDateAvailability {
+    return TopPinsAnalyticsResponseDateAvailabilityToJSONTyped(json, false);
+}
 
-  export function TopPinsAnalyticsResponseDateAvailabilityToJSONTyped(value?: TopPinsAnalyticsResponseDateAvailability | null, ignoreDiscriminator: boolean = false): any {
+export function TopPinsAnalyticsResponseDateAvailabilityToJSONTyped(value?: TopPinsAnalyticsResponseDateAvailability | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

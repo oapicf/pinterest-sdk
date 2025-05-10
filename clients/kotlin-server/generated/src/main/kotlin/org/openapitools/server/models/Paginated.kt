@@ -12,13 +12,15 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items 
  * @param bookmark 
  */
+@Serializable
 data class Paginated(
     val items: kotlin.collections.List<kotlin.Any>,
     val bookmark: kotlin.String? = null
-) 
+)
 

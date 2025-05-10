@@ -49,16 +49,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * UpdateMemberAssetsResultsResponseArrayItemsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class UpdateMemberAssetsResultsResponseArrayItemsInner {
   public static final String SERIALIZED_NAME_RESPONSE = "response";
   @SerializedName(SERIALIZED_NAME_RESPONSE)
+  @javax.annotation.Nullable
   private UsersForIndividualAssetResponse response;
 
   public UpdateMemberAssetsResultsResponseArrayItemsInner() {
   }
 
-  public UpdateMemberAssetsResultsResponseArrayItemsInner response(UsersForIndividualAssetResponse response) {
+  public UpdateMemberAssetsResultsResponseArrayItemsInner response(@javax.annotation.Nullable UsersForIndividualAssetResponse response) {
     this.response = response;
     return this;
   }
@@ -72,7 +73,7 @@ public class UpdateMemberAssetsResultsResponseArrayItemsInner {
     return response;
   }
 
-  public void setResponse(UsersForIndividualAssetResponse response) {
+  public void setResponse(@javax.annotation.Nullable UsersForIndividualAssetResponse response) {
     this.response = response;
   }
 

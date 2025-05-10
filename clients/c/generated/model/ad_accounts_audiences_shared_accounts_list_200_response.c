@@ -5,7 +5,7 @@
 
 
 
-ad_accounts_audiences_shared_accounts_list_200_response_t *ad_accounts_audiences_shared_accounts_list_200_response_create(
+static ad_accounts_audiences_shared_accounts_list_200_response_t *ad_accounts_audiences_shared_accounts_list_200_response_create_internal(
     list_t *items,
     char *bookmark
     ) {
@@ -16,12 +16,26 @@ ad_accounts_audiences_shared_accounts_list_200_response_t *ad_accounts_audiences
     ad_accounts_audiences_shared_accounts_list_200_response_local_var->items = items;
     ad_accounts_audiences_shared_accounts_list_200_response_local_var->bookmark = bookmark;
 
+    ad_accounts_audiences_shared_accounts_list_200_response_local_var->_library_owned = 1;
     return ad_accounts_audiences_shared_accounts_list_200_response_local_var;
 }
 
+__attribute__((deprecated)) ad_accounts_audiences_shared_accounts_list_200_response_t *ad_accounts_audiences_shared_accounts_list_200_response_create(
+    list_t *items,
+    char *bookmark
+    ) {
+    return ad_accounts_audiences_shared_accounts_list_200_response_create_internal (
+        items,
+        bookmark
+        );
+}
 
 void ad_accounts_audiences_shared_accounts_list_200_response_free(ad_accounts_audiences_shared_accounts_list_200_response_t *ad_accounts_audiences_shared_accounts_list_200_response) {
     if(NULL == ad_accounts_audiences_shared_accounts_list_200_response){
+        return ;
+    }
+    if(ad_accounts_audiences_shared_accounts_list_200_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ad_accounts_audiences_shared_accounts_list_200_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -87,6 +101,9 @@ ad_accounts_audiences_shared_accounts_list_200_response_t *ad_accounts_audiences
 
     // ad_accounts_audiences_shared_accounts_list_200_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(ad_accounts_audiences_shared_accounts_list_200_responseJSON, "items");
+    if (cJSON_IsNull(items)) {
+        items = NULL;
+    }
     if (!items) {
         goto end;
     }
@@ -111,6 +128,9 @@ ad_accounts_audiences_shared_accounts_list_200_response_t *ad_accounts_audiences
 
     // ad_accounts_audiences_shared_accounts_list_200_response->bookmark
     cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(ad_accounts_audiences_shared_accounts_list_200_responseJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
     if (bookmark) { 
     if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
     {
@@ -119,7 +139,7 @@ ad_accounts_audiences_shared_accounts_list_200_response_t *ad_accounts_audiences
     }
 
 
-    ad_accounts_audiences_shared_accounts_list_200_response_local_var = ad_accounts_audiences_shared_accounts_list_200_response_create (
+    ad_accounts_audiences_shared_accounts_list_200_response_local_var = ad_accounts_audiences_shared_accounts_list_200_response_create_internal (
         itemsList,
         bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
         );

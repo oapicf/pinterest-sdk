@@ -12,16 +12,18 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param reportType 
  * @param catalogId Unique identifier of a catalog. If not given, oldest catalog will be used
  */
+@Serializable
 data class CatalogsReportDistributionIssueFilter(
     val reportType: CatalogsReportDistributionIssueFilter.ReportType,
     /* Unique identifier of a catalog. If not given, oldest catalog will be used */
     val catalogId: kotlin.String? = null
-) 
+)
 {
     /**
     * 

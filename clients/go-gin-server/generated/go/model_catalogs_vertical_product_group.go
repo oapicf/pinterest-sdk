@@ -10,10 +10,6 @@
 
 package openapi
 
-import (
-	"gopkg.in/validator.v2"
-)
-
 type CatalogsVerticalProductGroup struct {
 
 	CatalogType string `json:"catalog_type"`

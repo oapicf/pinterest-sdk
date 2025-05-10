@@ -94,10 +94,35 @@ MediaUploadAllOfUploadParameters <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return MediaUploadAllOfUploadParameters in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return MediaUploadAllOfUploadParameters as a base R list.
+    #' @examples
+    #' # convert array of MediaUploadAllOfUploadParameters (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert MediaUploadAllOfUploadParameters to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       MediaUploadAllOfUploadParametersObject <- list()
       if (!is.null(self$`x-amz-date`)) {
         MediaUploadAllOfUploadParametersObject[["x-amz-date"]] <-
@@ -131,7 +156,7 @@ MediaUploadAllOfUploadParameters <- R6::R6Class(
         MediaUploadAllOfUploadParametersObject[["Content-Type"]] <-
           self$`Content-Type`
       }
-      MediaUploadAllOfUploadParametersObject
+      return(MediaUploadAllOfUploadParametersObject)
     },
 
     #' @description
@@ -170,77 +195,13 @@ MediaUploadAllOfUploadParameters <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return MediaUploadAllOfUploadParameters in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`x-amz-date`)) {
-          sprintf(
-          '"x-amz-date":
-            "%s"
-                    ',
-          self$`x-amz-date`
-          )
-        },
-        if (!is.null(self$`x-amz-signature`)) {
-          sprintf(
-          '"x-amz-signature":
-            "%s"
-                    ',
-          self$`x-amz-signature`
-          )
-        },
-        if (!is.null(self$`x-amz-security-token`)) {
-          sprintf(
-          '"x-amz-security-token":
-            "%s"
-                    ',
-          self$`x-amz-security-token`
-          )
-        },
-        if (!is.null(self$`x-amz-algorithm`)) {
-          sprintf(
-          '"x-amz-algorithm":
-            "%s"
-                    ',
-          self$`x-amz-algorithm`
-          )
-        },
-        if (!is.null(self$`key`)) {
-          sprintf(
-          '"key":
-            "%s"
-                    ',
-          self$`key`
-          )
-        },
-        if (!is.null(self$`policy`)) {
-          sprintf(
-          '"policy":
-            "%s"
-                    ',
-          self$`policy`
-          )
-        },
-        if (!is.null(self$`x-amz-credential`)) {
-          sprintf(
-          '"x-amz-credential":
-            "%s"
-                    ',
-          self$`x-amz-credential`
-          )
-        },
-        if (!is.null(self$`Content-Type`)) {
-          sprintf(
-          '"Content-Type":
-            "%s"
-                    ',
-          self$`Content-Type`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

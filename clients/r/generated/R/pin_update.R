@@ -93,10 +93,35 @@ PinUpdate <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return PinUpdate in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return PinUpdate as a base R list.
+    #' @examples
+    #' # convert array of PinUpdate (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert PinUpdate to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       PinUpdateObject <- list()
       if (!is.null(self$`alt_text`)) {
         PinUpdateObject[["alt_text"]] <-
@@ -124,13 +149,13 @@ PinUpdate <- R6::R6Class(
       }
       if (!is.null(self$`carousel_slots`)) {
         PinUpdateObject[["carousel_slots"]] <-
-          lapply(self$`carousel_slots`, function(x) x$toJSON())
+          lapply(self$`carousel_slots`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`note`)) {
         PinUpdateObject[["note"]] <-
           self$`note`
       }
-      PinUpdateObject
+      return(PinUpdateObject)
     },
 
     #' @description
@@ -169,77 +194,13 @@ PinUpdate <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return PinUpdate in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`alt_text`)) {
-          sprintf(
-          '"alt_text":
-            "%s"
-                    ',
-          self$`alt_text`
-          )
-        },
-        if (!is.null(self$`board_id`)) {
-          sprintf(
-          '"board_id":
-            "%s"
-                    ',
-          self$`board_id`
-          )
-        },
-        if (!is.null(self$`board_section_id`)) {
-          sprintf(
-          '"board_section_id":
-            "%s"
-                    ',
-          self$`board_section_id`
-          )
-        },
-        if (!is.null(self$`description`)) {
-          sprintf(
-          '"description":
-            "%s"
-                    ',
-          self$`description`
-          )
-        },
-        if (!is.null(self$`link`)) {
-          sprintf(
-          '"link":
-            "%s"
-                    ',
-          self$`link`
-          )
-        },
-        if (!is.null(self$`title`)) {
-          sprintf(
-          '"title":
-            "%s"
-                    ',
-          self$`title`
-          )
-        },
-        if (!is.null(self$`carousel_slots`)) {
-          sprintf(
-          '"carousel_slots":
-          [%s]
-',
-          paste(sapply(self$`carousel_slots`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`note`)) {
-          sprintf(
-          '"note":
-            "%s"
-                    ',
-          self$`note`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

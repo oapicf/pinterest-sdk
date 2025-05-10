@@ -10,10 +10,6 @@
 
 package openapi
 
-import (
-	"gopkg.in/validator.v2"
-)
-
 // PinMediaSource - Pin media source.
 type PinMediaSource struct {
 

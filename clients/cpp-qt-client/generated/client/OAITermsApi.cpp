@@ -311,7 +311,7 @@ void OAITermsApi::termsRelated_list(const QList<QString> &terms) {
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAITermsApi::termsRelated_listCallback);
     connect(this, &OAITermsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -333,7 +333,7 @@ void OAITermsApi::termsRelated_list(const QList<QString> &terms) {
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAITermsApi::termsRelated_listCallback);
     connect(this, &OAITermsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -423,7 +423,7 @@ void OAITermsApi::termsSuggested_list(const QString &term, const ::OpenAPI::Opti
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("term")).append(querySuffix).append(QUrl::toPercentEncoding(term));
+        fullPath.append(QUrl::toPercentEncoding("term")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(term)));
     }
     if (limit.hasValue())
     {
@@ -438,7 +438,7 @@ void OAITermsApi::termsSuggested_list(const QString &term, const ::OpenAPI::Opti
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("limit")).append(querySuffix).append(QUrl::toPercentEncoding(limit.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("limit")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(limit.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -453,7 +453,7 @@ void OAITermsApi::termsSuggested_list(const QString &term, const ::OpenAPI::Opti
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAITermsApi::termsSuggested_listCallback);
     connect(this, &OAITermsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -475,7 +475,7 @@ void OAITermsApi::termsSuggested_list(const QString &term, const ::OpenAPI::Opti
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAITermsApi::termsSuggested_listCallback);
     connect(this, &OAITermsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }

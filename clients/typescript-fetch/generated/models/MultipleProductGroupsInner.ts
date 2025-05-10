@@ -52,7 +52,11 @@ export function MultipleProductGroupsInnerFromJSONTyped(json: any, ignoreDiscrim
     return {} as any;
 }
 
-export function MultipleProductGroupsInnerToJSON(value?: MultipleProductGroupsInner | null): any {
+export function MultipleProductGroupsInnerToJSON(json: any): any {
+    return MultipleProductGroupsInnerToJSONTyped(json, false);
+}
+
+export function MultipleProductGroupsInnerToJSONTyped(value?: MultipleProductGroupsInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

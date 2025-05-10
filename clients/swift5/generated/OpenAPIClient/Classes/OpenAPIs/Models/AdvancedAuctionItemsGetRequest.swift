@@ -13,8 +13,8 @@ import AnyCodable
 /** Request object used to get bid options values for a batch of retail catalog items */
 public struct AdvancedAuctionItemsGetRequest: Codable, JSONEncodable, Hashable {
 
-    static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let itemsRule = ArrayRule(minItems: 1, maxItems: 10000, uniqueItems: false)
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let itemsRule = ArrayRule(minItems: 1, maxItems: 10000, uniqueItems: false)
     /** Catalog id pertaining to the retail item */
     public var catalogId: String
     /** A list of retail catalog items to fetch bid options for */

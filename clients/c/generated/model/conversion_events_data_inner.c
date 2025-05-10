@@ -5,7 +5,7 @@
 
 
 
-conversion_events_data_inner_t *conversion_events_data_inner_create(
+static conversion_events_data_inner_t *conversion_events_data_inner_create_internal(
     char *event_name,
     char *action_source,
     long event_time,
@@ -50,12 +50,60 @@ conversion_events_data_inner_t *conversion_events_data_inner_create(
     conversion_events_data_inner_local_var->wifi = wifi;
     conversion_events_data_inner_local_var->language = language;
 
+    conversion_events_data_inner_local_var->_library_owned = 1;
     return conversion_events_data_inner_local_var;
 }
 
+__attribute__((deprecated)) conversion_events_data_inner_t *conversion_events_data_inner_create(
+    char *event_name,
+    char *action_source,
+    long event_time,
+    char *event_id,
+    char *event_source_url,
+    int opt_out,
+    char *partner_name,
+    conversion_events_user_data_t *user_data,
+    conversion_events_data_inner_custom_data_t *custom_data,
+    char *app_id,
+    char *app_name,
+    char *app_version,
+    char *device_brand,
+    char *device_carrier,
+    char *device_model,
+    char *device_type,
+    char *os_version,
+    int wifi,
+    char *language
+    ) {
+    return conversion_events_data_inner_create_internal (
+        event_name,
+        action_source,
+        event_time,
+        event_id,
+        event_source_url,
+        opt_out,
+        partner_name,
+        user_data,
+        custom_data,
+        app_id,
+        app_name,
+        app_version,
+        device_brand,
+        device_carrier,
+        device_model,
+        device_type,
+        os_version,
+        wifi,
+        language
+        );
+}
 
 void conversion_events_data_inner_free(conversion_events_data_inner_t *conversion_events_data_inner) {
     if(NULL == conversion_events_data_inner){
+        return ;
+    }
+    if(conversion_events_data_inner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "conversion_events_data_inner_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -315,6 +363,9 @@ conversion_events_data_inner_t *conversion_events_data_inner_parseFromJSON(cJSON
 
     // conversion_events_data_inner->event_name
     cJSON *event_name = cJSON_GetObjectItemCaseSensitive(conversion_events_data_innerJSON, "event_name");
+    if (cJSON_IsNull(event_name)) {
+        event_name = NULL;
+    }
     if (!event_name) {
         goto end;
     }
@@ -327,6 +378,9 @@ conversion_events_data_inner_t *conversion_events_data_inner_parseFromJSON(cJSON
 
     // conversion_events_data_inner->action_source
     cJSON *action_source = cJSON_GetObjectItemCaseSensitive(conversion_events_data_innerJSON, "action_source");
+    if (cJSON_IsNull(action_source)) {
+        action_source = NULL;
+    }
     if (!action_source) {
         goto end;
     }
@@ -339,6 +393,9 @@ conversion_events_data_inner_t *conversion_events_data_inner_parseFromJSON(cJSON
 
     // conversion_events_data_inner->event_time
     cJSON *event_time = cJSON_GetObjectItemCaseSensitive(conversion_events_data_innerJSON, "event_time");
+    if (cJSON_IsNull(event_time)) {
+        event_time = NULL;
+    }
     if (!event_time) {
         goto end;
     }
@@ -351,6 +408,9 @@ conversion_events_data_inner_t *conversion_events_data_inner_parseFromJSON(cJSON
 
     // conversion_events_data_inner->event_id
     cJSON *event_id = cJSON_GetObjectItemCaseSensitive(conversion_events_data_innerJSON, "event_id");
+    if (cJSON_IsNull(event_id)) {
+        event_id = NULL;
+    }
     if (!event_id) {
         goto end;
     }
@@ -363,6 +423,9 @@ conversion_events_data_inner_t *conversion_events_data_inner_parseFromJSON(cJSON
 
     // conversion_events_data_inner->event_source_url
     cJSON *event_source_url = cJSON_GetObjectItemCaseSensitive(conversion_events_data_innerJSON, "event_source_url");
+    if (cJSON_IsNull(event_source_url)) {
+        event_source_url = NULL;
+    }
     if (event_source_url) { 
     if(!cJSON_IsString(event_source_url) && !cJSON_IsNull(event_source_url))
     {
@@ -372,6 +435,9 @@ conversion_events_data_inner_t *conversion_events_data_inner_parseFromJSON(cJSON
 
     // conversion_events_data_inner->opt_out
     cJSON *opt_out = cJSON_GetObjectItemCaseSensitive(conversion_events_data_innerJSON, "opt_out");
+    if (cJSON_IsNull(opt_out)) {
+        opt_out = NULL;
+    }
     if (opt_out) { 
     if(!cJSON_IsBool(opt_out))
     {
@@ -381,6 +447,9 @@ conversion_events_data_inner_t *conversion_events_data_inner_parseFromJSON(cJSON
 
     // conversion_events_data_inner->partner_name
     cJSON *partner_name = cJSON_GetObjectItemCaseSensitive(conversion_events_data_innerJSON, "partner_name");
+    if (cJSON_IsNull(partner_name)) {
+        partner_name = NULL;
+    }
     if (partner_name) { 
     if(!cJSON_IsString(partner_name) && !cJSON_IsNull(partner_name))
     {
@@ -390,6 +459,9 @@ conversion_events_data_inner_t *conversion_events_data_inner_parseFromJSON(cJSON
 
     // conversion_events_data_inner->user_data
     cJSON *user_data = cJSON_GetObjectItemCaseSensitive(conversion_events_data_innerJSON, "user_data");
+    if (cJSON_IsNull(user_data)) {
+        user_data = NULL;
+    }
     if (!user_data) {
         goto end;
     }
@@ -399,12 +471,18 @@ conversion_events_data_inner_t *conversion_events_data_inner_parseFromJSON(cJSON
 
     // conversion_events_data_inner->custom_data
     cJSON *custom_data = cJSON_GetObjectItemCaseSensitive(conversion_events_data_innerJSON, "custom_data");
+    if (cJSON_IsNull(custom_data)) {
+        custom_data = NULL;
+    }
     if (custom_data) { 
     custom_data_local_nonprim = conversion_events_data_inner_custom_data_parseFromJSON(custom_data); //nonprimitive
     }
 
     // conversion_events_data_inner->app_id
     cJSON *app_id = cJSON_GetObjectItemCaseSensitive(conversion_events_data_innerJSON, "app_id");
+    if (cJSON_IsNull(app_id)) {
+        app_id = NULL;
+    }
     if (app_id) { 
     if(!cJSON_IsString(app_id) && !cJSON_IsNull(app_id))
     {
@@ -414,6 +492,9 @@ conversion_events_data_inner_t *conversion_events_data_inner_parseFromJSON(cJSON
 
     // conversion_events_data_inner->app_name
     cJSON *app_name = cJSON_GetObjectItemCaseSensitive(conversion_events_data_innerJSON, "app_name");
+    if (cJSON_IsNull(app_name)) {
+        app_name = NULL;
+    }
     if (app_name) { 
     if(!cJSON_IsString(app_name) && !cJSON_IsNull(app_name))
     {
@@ -423,6 +504,9 @@ conversion_events_data_inner_t *conversion_events_data_inner_parseFromJSON(cJSON
 
     // conversion_events_data_inner->app_version
     cJSON *app_version = cJSON_GetObjectItemCaseSensitive(conversion_events_data_innerJSON, "app_version");
+    if (cJSON_IsNull(app_version)) {
+        app_version = NULL;
+    }
     if (app_version) { 
     if(!cJSON_IsString(app_version) && !cJSON_IsNull(app_version))
     {
@@ -432,6 +516,9 @@ conversion_events_data_inner_t *conversion_events_data_inner_parseFromJSON(cJSON
 
     // conversion_events_data_inner->device_brand
     cJSON *device_brand = cJSON_GetObjectItemCaseSensitive(conversion_events_data_innerJSON, "device_brand");
+    if (cJSON_IsNull(device_brand)) {
+        device_brand = NULL;
+    }
     if (device_brand) { 
     if(!cJSON_IsString(device_brand) && !cJSON_IsNull(device_brand))
     {
@@ -441,6 +528,9 @@ conversion_events_data_inner_t *conversion_events_data_inner_parseFromJSON(cJSON
 
     // conversion_events_data_inner->device_carrier
     cJSON *device_carrier = cJSON_GetObjectItemCaseSensitive(conversion_events_data_innerJSON, "device_carrier");
+    if (cJSON_IsNull(device_carrier)) {
+        device_carrier = NULL;
+    }
     if (device_carrier) { 
     if(!cJSON_IsString(device_carrier) && !cJSON_IsNull(device_carrier))
     {
@@ -450,6 +540,9 @@ conversion_events_data_inner_t *conversion_events_data_inner_parseFromJSON(cJSON
 
     // conversion_events_data_inner->device_model
     cJSON *device_model = cJSON_GetObjectItemCaseSensitive(conversion_events_data_innerJSON, "device_model");
+    if (cJSON_IsNull(device_model)) {
+        device_model = NULL;
+    }
     if (device_model) { 
     if(!cJSON_IsString(device_model) && !cJSON_IsNull(device_model))
     {
@@ -459,6 +552,9 @@ conversion_events_data_inner_t *conversion_events_data_inner_parseFromJSON(cJSON
 
     // conversion_events_data_inner->device_type
     cJSON *device_type = cJSON_GetObjectItemCaseSensitive(conversion_events_data_innerJSON, "device_type");
+    if (cJSON_IsNull(device_type)) {
+        device_type = NULL;
+    }
     if (device_type) { 
     if(!cJSON_IsString(device_type) && !cJSON_IsNull(device_type))
     {
@@ -468,6 +564,9 @@ conversion_events_data_inner_t *conversion_events_data_inner_parseFromJSON(cJSON
 
     // conversion_events_data_inner->os_version
     cJSON *os_version = cJSON_GetObjectItemCaseSensitive(conversion_events_data_innerJSON, "os_version");
+    if (cJSON_IsNull(os_version)) {
+        os_version = NULL;
+    }
     if (os_version) { 
     if(!cJSON_IsString(os_version) && !cJSON_IsNull(os_version))
     {
@@ -477,6 +576,9 @@ conversion_events_data_inner_t *conversion_events_data_inner_parseFromJSON(cJSON
 
     // conversion_events_data_inner->wifi
     cJSON *wifi = cJSON_GetObjectItemCaseSensitive(conversion_events_data_innerJSON, "wifi");
+    if (cJSON_IsNull(wifi)) {
+        wifi = NULL;
+    }
     if (wifi) { 
     if(!cJSON_IsBool(wifi))
     {
@@ -486,6 +588,9 @@ conversion_events_data_inner_t *conversion_events_data_inner_parseFromJSON(cJSON
 
     // conversion_events_data_inner->language
     cJSON *language = cJSON_GetObjectItemCaseSensitive(conversion_events_data_innerJSON, "language");
+    if (cJSON_IsNull(language)) {
+        language = NULL;
+    }
     if (language) { 
     if(!cJSON_IsString(language) && !cJSON_IsNull(language))
     {
@@ -494,7 +599,7 @@ conversion_events_data_inner_t *conversion_events_data_inner_parseFromJSON(cJSON
     }
 
 
-    conversion_events_data_inner_local_var = conversion_events_data_inner_create (
+    conversion_events_data_inner_local_var = conversion_events_data_inner_create_internal (
         strdup(event_name->valuestring),
         strdup(action_source->valuestring),
         event_time->valuedouble,

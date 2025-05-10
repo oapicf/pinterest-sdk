@@ -24,9 +24,9 @@ char* country_country_ToString(pinterest_rest_api_country__e country);
 
 pinterest_rest_api_country__e country_country_FromString(char* country);
 
-//cJSON *country_country_convertToJSON(pinterest_rest_api_country__e country);
+cJSON *country_convertToJSON(pinterest_rest_api_country__e country);
 
-//pinterest_rest_api_country__e country_country_parseFromJSON(cJSON *countryJSON);
+pinterest_rest_api_country__e country_parseFromJSON(cJSON *countryJSON);
 
 #endif /* _country_H_ */
 

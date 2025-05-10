@@ -23,9 +23,10 @@ typedef struct advanced_auction_processed_items_t {
     char *catalog_id; // string
     list_t *items; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } advanced_auction_processed_items_t;
 
-advanced_auction_processed_items_t *advanced_auction_processed_items_create(
+__attribute__((deprecated)) advanced_auction_processed_items_t *advanced_auction_processed_items_create(
     char *catalog_id,
     list_t *items
 );

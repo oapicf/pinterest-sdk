@@ -13,8 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // CatalogsItemsBatch - Object describing the catalogs items batch
@@ -147,6 +147,24 @@ func (obj *CatalogsItemsBatch) GetActualInstance() (interface{}) {
 
 	if obj.CatalogsRetailItemsBatch != nil {
 		return obj.CatalogsRetailItemsBatch
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj CatalogsItemsBatch) GetActualInstanceValue() (interface{}) {
+	if obj.CatalogsCreativeAssetsItemsBatch != nil {
+		return *obj.CatalogsCreativeAssetsItemsBatch
+	}
+
+	if obj.CatalogsHotelItemsBatch != nil {
+		return *obj.CatalogsHotelItemsBatch
+	}
+
+	if obj.CatalogsRetailItemsBatch != nil {
+		return *obj.CatalogsRetailItemsBatch
 	}
 
 	// all schemas are nil

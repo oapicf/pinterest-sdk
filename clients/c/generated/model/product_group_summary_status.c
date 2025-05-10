@@ -22,7 +22,7 @@ pinterest_rest_api_product_group_summary_status__e product_group_summary_status_
     return 0;
 }
 
-cJSON *product_group_summary_status_product_group_summary_status_convertToJSON(pinterest_rest_api_product_group_summary_status__e product_group_summary_status) {
+cJSON *product_group_summary_status_convertToJSON(pinterest_rest_api_product_group_summary_status__e product_group_summary_status) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "product_group_summary_status", product_group_summary_status_product_group_summary_status_ToString(product_group_summary_status)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_product_group_summary_status__e product_group_summary_status_product_group_summary_status_parseFromJSON(cJSON *product_group_summary_statusJSON) {
-    pinterest_rest_api_product_group_summary_status__e *product_group_summary_status = NULL;
-    pinterest_rest_api_product_group_summary_status__e product_group_summary_statusVariable;
-    cJSON *product_group_summary_statusVar = cJSON_GetObjectItemCaseSensitive(product_group_summary_statusJSON, "product_group_summary_status");
-    if(!cJSON_IsString(product_group_summary_statusVar) || (product_group_summary_statusVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_product_group_summary_status__e product_group_summary_status_parseFromJSON(cJSON *product_group_summary_statusJSON) {
+    if(!cJSON_IsString(product_group_summary_statusJSON) || (product_group_summary_statusJSON->valuestring == NULL)) {
+        return 0;
     }
-    product_group_summary_statusVariable = product_group_summary_status_product_group_summary_status_FromString(product_group_summary_statusVar->valuestring);
-    return product_group_summary_statusVariable;
-end:
-    return 0;
+    return product_group_summary_status_product_group_summary_status_FromString(product_group_summary_statusJSON->valuestring);
 }

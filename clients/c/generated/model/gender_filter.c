@@ -5,7 +5,7 @@
 
 
 
-gender_filter_t *gender_filter_create(
+static gender_filter_t *gender_filter_create_internal(
     catalogs_product_group_multiple_gender_criteria_t *gender
     ) {
     gender_filter_t *gender_filter_local_var = malloc(sizeof(gender_filter_t));
@@ -14,12 +14,24 @@ gender_filter_t *gender_filter_create(
     }
     gender_filter_local_var->gender = gender;
 
+    gender_filter_local_var->_library_owned = 1;
     return gender_filter_local_var;
 }
 
+__attribute__((deprecated)) gender_filter_t *gender_filter_create(
+    catalogs_product_group_multiple_gender_criteria_t *gender
+    ) {
+    return gender_filter_create_internal (
+        gender
+        );
+}
 
 void gender_filter_free(gender_filter_t *gender_filter) {
     if(NULL == gender_filter){
+        return ;
+    }
+    if(gender_filter->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "gender_filter_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -60,6 +72,9 @@ gender_filter_t *gender_filter_parseFromJSON(cJSON *gender_filterJSON){
 
     // gender_filter->gender
     cJSON *gender = cJSON_GetObjectItemCaseSensitive(gender_filterJSON, "GENDER");
+    if (cJSON_IsNull(gender)) {
+        gender = NULL;
+    }
     if (!gender) {
         goto end;
     }
@@ -69,7 +84,7 @@ gender_filter_t *gender_filter_parseFromJSON(cJSON *gender_filterJSON){
     gender_local_object = object_parseFromJSON(gender); //object
 
 
-    gender_filter_local_var = gender_filter_create (
+    gender_filter_local_var = gender_filter_create_internal (
         gender_local_object
         );
 

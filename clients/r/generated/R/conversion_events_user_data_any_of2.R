@@ -56,10 +56,35 @@ ConversionEventsUserDataAnyOf2 <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return ConversionEventsUserDataAnyOf2 in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return ConversionEventsUserDataAnyOf2 as a base R list.
+    #' @examples
+    #' # convert array of ConversionEventsUserDataAnyOf2 (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert ConversionEventsUserDataAnyOf2 to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       ConversionEventsUserDataAnyOf2Object <- list()
       if (!is.null(self$`em`)) {
         ConversionEventsUserDataAnyOf2Object[["em"]] <-
@@ -77,7 +102,7 @@ ConversionEventsUserDataAnyOf2 <- R6::R6Class(
         ConversionEventsUserDataAnyOf2Object[["client_user_agent"]] <-
           self$`client_user_agent`
       }
-      ConversionEventsUserDataAnyOf2Object
+      return(ConversionEventsUserDataAnyOf2Object)
     },
 
     #' @description
@@ -104,45 +129,13 @@ ConversionEventsUserDataAnyOf2 <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return ConversionEventsUserDataAnyOf2 in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`em`)) {
-          sprintf(
-          '"em":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`em`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`hashed_maids`)) {
-          sprintf(
-          '"hashed_maids":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`hashed_maids`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`client_ip_address`)) {
-          sprintf(
-          '"client_ip_address":
-            "%s"
-                    ',
-          self$`client_ip_address`
-          )
-        },
-        if (!is.null(self$`client_user_agent`)) {
-          sprintf(
-          '"client_user_agent":
-            "%s"
-                    ',
-          self$`client_user_agent`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

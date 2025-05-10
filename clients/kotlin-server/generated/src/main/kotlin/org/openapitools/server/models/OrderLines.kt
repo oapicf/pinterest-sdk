@@ -14,6 +14,7 @@ package org.openapitools.server.models
 import org.openapitools.server.models.OrderLinePaidType
 import org.openapitools.server.models.OrderLineStatus
 
+import kotlinx.serialization.Serializable
 /**
  * Order Line
  * @param id Order line ID.
@@ -28,6 +29,7 @@ import org.openapitools.server.models.OrderLineStatus
  * @param name Order line name.
  * @param paidType Order line paid type.
  */
+@Serializable
 data class OrderLines(
     /* Order line ID. */
     val id: kotlin.String? = null,
@@ -51,5 +53,5 @@ data class OrderLines(
     val name: kotlin.String? = null,
     /* Order line paid type. */
     val paidType: OrderLinePaidType? = null
-) 
+)
 

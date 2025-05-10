@@ -57,11 +57,11 @@ export function KeywordUpdateBodyFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-  export function KeywordUpdateBodyToJSON(json: any): KeywordUpdateBody {
-      return KeywordUpdateBodyToJSONTyped(json, false);
-  }
+export function KeywordUpdateBodyToJSON(json: any): KeywordUpdateBody {
+    return KeywordUpdateBodyToJSONTyped(json, false);
+}
 
-  export function KeywordUpdateBodyToJSONTyped(value?: KeywordUpdateBody | null, ignoreDiscriminator: boolean = false): any {
+export function KeywordUpdateBodyToJSONTyped(value?: KeywordUpdateBody | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

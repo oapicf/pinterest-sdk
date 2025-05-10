@@ -5,7 +5,7 @@
 
 
 
-business_members_asset_access_delete_request_accesses_inner_t *business_members_asset_access_delete_request_accesses_inner_create(
+static business_members_asset_access_delete_request_accesses_inner_t *business_members_asset_access_delete_request_accesses_inner_create_internal(
     char *asset_id,
     char *member_id
     ) {
@@ -16,12 +16,26 @@ business_members_asset_access_delete_request_accesses_inner_t *business_members_
     business_members_asset_access_delete_request_accesses_inner_local_var->asset_id = asset_id;
     business_members_asset_access_delete_request_accesses_inner_local_var->member_id = member_id;
 
+    business_members_asset_access_delete_request_accesses_inner_local_var->_library_owned = 1;
     return business_members_asset_access_delete_request_accesses_inner_local_var;
 }
 
+__attribute__((deprecated)) business_members_asset_access_delete_request_accesses_inner_t *business_members_asset_access_delete_request_accesses_inner_create(
+    char *asset_id,
+    char *member_id
+    ) {
+    return business_members_asset_access_delete_request_accesses_inner_create_internal (
+        asset_id,
+        member_id
+        );
+}
 
 void business_members_asset_access_delete_request_accesses_inner_free(business_members_asset_access_delete_request_accesses_inner_t *business_members_asset_access_delete_request_accesses_inner) {
     if(NULL == business_members_asset_access_delete_request_accesses_inner){
+        return ;
+    }
+    if(business_members_asset_access_delete_request_accesses_inner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "business_members_asset_access_delete_request_accesses_inner_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -70,6 +84,9 @@ business_members_asset_access_delete_request_accesses_inner_t *business_members_
 
     // business_members_asset_access_delete_request_accesses_inner->asset_id
     cJSON *asset_id = cJSON_GetObjectItemCaseSensitive(business_members_asset_access_delete_request_accesses_innerJSON, "asset_id");
+    if (cJSON_IsNull(asset_id)) {
+        asset_id = NULL;
+    }
     if (!asset_id) {
         goto end;
     }
@@ -82,6 +99,9 @@ business_members_asset_access_delete_request_accesses_inner_t *business_members_
 
     // business_members_asset_access_delete_request_accesses_inner->member_id
     cJSON *member_id = cJSON_GetObjectItemCaseSensitive(business_members_asset_access_delete_request_accesses_innerJSON, "member_id");
+    if (cJSON_IsNull(member_id)) {
+        member_id = NULL;
+    }
     if (!member_id) {
         goto end;
     }
@@ -93,7 +113,7 @@ business_members_asset_access_delete_request_accesses_inner_t *business_members_
     }
 
 
-    business_members_asset_access_delete_request_accesses_inner_local_var = business_members_asset_access_delete_request_accesses_inner_create (
+    business_members_asset_access_delete_request_accesses_inner_local_var = business_members_asset_access_delete_request_accesses_inner_create_internal (
         strdup(asset_id->valuestring),
         strdup(member_id->valuestring)
         );

@@ -486,9 +486,9 @@ Protected Class AdAccountsApi
 		Private Function Conversion_report_timeEnum_AdAccountAnalyticsToString(value As Conversion_report_timeEnum_AdAccountAnalytics) As String
 		  Select Case value
 		    
-		    Case Conversion_report_timeEnum_AdAccountAnalytics.AdAction
+		    Case Conversion_report_timeEnum_AdAccountAnalytics.TimeOfAdAction
 		      Return "TIME_OF_AD_ACTION"
-		    Case Conversion_report_timeEnum_AdAccountAnalytics.Conversion
+		    Case Conversion_report_timeEnum_AdAccountAnalytics.TimeOfConversion
 		      Return "TIME_OF_CONVERSION"
 		    
 		  End Select
@@ -1007,9 +1007,9 @@ Protected Class AdAccountsApi
 		Private Function Conversion_report_timeEnum_AdAccountTargetingAnalyticsGetToString(value As Conversion_report_timeEnum_AdAccountTargetingAnalyticsGet) As String
 		  Select Case value
 		    
-		    Case Conversion_report_timeEnum_AdAccountTargetingAnalyticsGet.AdAction
+		    Case Conversion_report_timeEnum_AdAccountTargetingAnalyticsGet.TimeOfAdAction
 		      Return "TIME_OF_AD_ACTION"
-		    Case Conversion_report_timeEnum_AdAccountTargetingAnalyticsGet.Conversion
+		    Case Conversion_report_timeEnum_AdAccountTargetingAnalyticsGet.TimeOfConversion
 		      Return "TIME_OF_CONVERSION"
 		    
 		  End Select
@@ -2634,8 +2634,8 @@ Protected Class AdAccountsApi
 
 	#tag Enum, Name = Conversion_report_timeEnum_AdAccountAnalytics, Type = Integer, Flags = &h0
 		
-        AdAction
-        Conversion
+        TimeOfAdAction
+        TimeOfConversion
 		
 	#tag EndEnum
 
@@ -2830,8 +2830,8 @@ Protected Class AdAccountsApi
 
 	#tag Enum, Name = Conversion_report_timeEnum_AdAccountTargetingAnalyticsGet, Type = Integer, Flags = &h0
 		
-        AdAction
-        Conversion
+        TimeOfAdAction
+        TimeOfConversion
 		
 	#tag EndEnum
 

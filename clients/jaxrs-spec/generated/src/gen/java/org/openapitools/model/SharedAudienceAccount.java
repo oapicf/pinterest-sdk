@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("SharedAudienceAccount")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SharedAudienceAccount   {
   private String accountId;
   private String accountName;
@@ -69,6 +69,22 @@ public class SharedAudienceAccount   {
   private AccountTypeEnum accountType;
   private Integer sharedOnTimestamp;
 
+  public SharedAudienceAccount() {
+  }
+
+  @JsonCreator
+  public SharedAudienceAccount(
+    @JsonProperty(required = true, value = "account_id") String accountId,
+    @JsonProperty(required = true, value = "account_name") String accountName,
+    @JsonProperty(required = true, value = "account_type") AccountTypeEnum accountType,
+    @JsonProperty(required = true, value = "shared_on_timestamp") Integer sharedOnTimestamp
+  ) {
+    this.accountId = accountId;
+    this.accountName = accountName;
+    this.accountType = accountType;
+    this.sharedOnTimestamp = sharedOnTimestamp;
+  }
+
   /**
    * Account ID (ad account or business ID).
    **/
@@ -79,12 +95,12 @@ public class SharedAudienceAccount   {
 
   
   @ApiModelProperty(example = "549755885175", required = true, value = "Account ID (ad account or business ID).")
-  @JsonProperty("account_id")
+  @JsonProperty(required = true, value = "account_id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getAccountId() {
     return accountId;
   }
 
-  @JsonProperty("account_id")
+  @JsonProperty(required = true, value = "account_id")
   public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
@@ -99,12 +115,12 @@ public class SharedAudienceAccount   {
 
   
   @ApiModelProperty(example = "Home Depot USA", required = true, value = "Account name.")
-  @JsonProperty("account_name")
+  @JsonProperty(required = true, value = "account_name")
   @NotNull public String getAccountName() {
     return accountName;
   }
 
-  @JsonProperty("account_name")
+  @JsonProperty(required = true, value = "account_name")
   public void setAccountName(String accountName) {
     this.accountName = accountName;
   }
@@ -119,12 +135,12 @@ public class SharedAudienceAccount   {
 
   
   @ApiModelProperty(required = true, value = "account type")
-  @JsonProperty("account_type")
+  @JsonProperty(required = true, value = "account_type")
   @NotNull public AccountTypeEnum getAccountType() {
     return accountType;
   }
 
-  @JsonProperty("account_type")
+  @JsonProperty(required = true, value = "account_type")
   public void setAccountType(AccountTypeEnum accountType) {
     this.accountType = accountType;
   }
@@ -139,12 +155,12 @@ public class SharedAudienceAccount   {
 
   
   @ApiModelProperty(example = "1677003860", required = true, value = "Epoch timestamp in seconds for the shared audience event")
-  @JsonProperty("shared_on_timestamp")
+  @JsonProperty(required = true, value = "shared_on_timestamp")
   @NotNull public Integer getSharedOnTimestamp() {
     return sharedOnTimestamp;
   }
 
-  @JsonProperty("shared_on_timestamp")
+  @JsonProperty(required = true, value = "shared_on_timestamp")
   public void setSharedOnTimestamp(Integer sharedOnTimestamp) {
     this.sharedOnTimestamp = sharedOnTimestamp;
   }

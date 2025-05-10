@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.AdArrayResponseElement
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items 
  */
+@Serializable
 data class AdArrayResponse(
     val items: kotlin.collections.List<AdArrayResponseElement>? = null
-) 
+)
 

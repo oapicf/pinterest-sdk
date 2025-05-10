@@ -15,9 +15,13 @@
 export type AssetGroupType = 'BRAND' | 'LOCATION_OR_LANGUAGE' | 'PRODUCT_LINE' | 'OTHER';
 
 export const AssetGroupType = {
+
     Brand: 'BRAND' as AssetGroupType,
+
     LocationOrLanguage: 'LOCATION_OR_LANGUAGE' as AssetGroupType,
+
     ProductLine: 'PRODUCT_LINE' as AssetGroupType,
+
     Other: 'OTHER' as AssetGroupType
 };
 

@@ -191,11 +191,11 @@ export function ProductGroupPromotionCreateRequestElementFromJSONTyped(json: any
     };
 }
 
-  export function ProductGroupPromotionCreateRequestElementToJSON(json: any): ProductGroupPromotionCreateRequestElement {
-      return ProductGroupPromotionCreateRequestElementToJSONTyped(json, false);
-  }
+export function ProductGroupPromotionCreateRequestElementToJSON(json: any): ProductGroupPromotionCreateRequestElement {
+    return ProductGroupPromotionCreateRequestElementToJSONTyped(json, false);
+}
 
-  export function ProductGroupPromotionCreateRequestElementToJSONTyped(value?: ProductGroupPromotionCreateRequestElement | null, ignoreDiscriminator: boolean = false): any {
+export function ProductGroupPromotionCreateRequestElementToJSONTyped(value?: ProductGroupPromotionCreateRequestElement | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -25,9 +25,10 @@ typedef struct audience_subcategory_t {
     double index; //numeric
     char *id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } audience_subcategory_t;
 
-audience_subcategory_t *audience_subcategory_create(
+__attribute__((deprecated)) audience_subcategory_t *audience_subcategory_create(
     char *key,
     char *name,
     double ratio,

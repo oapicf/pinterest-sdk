@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { Pin } from '../model/pin';
 import { PinAnalyticsMetricsResponse } from '../model/pinAnalyticsMetricsResponse';
@@ -32,10 +32,12 @@ export class PinsService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -58,9 +60,10 @@ export class PinsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [multiPinsAnalyticsOpts.config] Override http request option.
      */
-    public multiPinsAnalytics(pinIds: Array<string>, startDate: string, endDate: string, metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', adAccountId?: string, ): Observable<AxiosResponse<{ [key: string]: { [key: string]: PinAnalyticsMetricsResponse; }; }>>;
-    public multiPinsAnalytics(pinIds: Array<string>, startDate: string, endDate: string, metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', adAccountId?: string, ): Observable<any> {
+    public multiPinsAnalytics(pinIds: Array<string>, startDate: string, endDate: string, metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', adAccountId?: string, multiPinsAnalyticsOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<{ [key: string]: { [key: string]: PinAnalyticsMetricsResponse; }; }>>;
+    public multiPinsAnalytics(pinIds: Array<string>, startDate: string, endDate: string, metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', adAccountId?: string, multiPinsAnalyticsOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (pinIds === null || pinIds === undefined) {
             throw new Error('Required parameter pinIds was null or undefined when calling multiPinsAnalytics.');
         }
@@ -139,7 +142,8 @@ export class PinsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...multiPinsAnalyticsOpts?.config,
+                        headers: {...headers, ...multiPinsAnalyticsOpts?.config?.headers},
                     }
                 );
             })
@@ -157,9 +161,10 @@ export class PinsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [pinsAnalyticsOpts.config] Override http request option.
      */
-    public pinsAnalytics(pinId: string, startDate: string, endDate: string, metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', splitField?: 'NO_SPLIT' | 'APP_TYPE', adAccountId?: string, ): Observable<AxiosResponse<{ [key: string]: PinAnalyticsMetricsResponse; }>>;
-    public pinsAnalytics(pinId: string, startDate: string, endDate: string, metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', splitField?: 'NO_SPLIT' | 'APP_TYPE', adAccountId?: string, ): Observable<any> {
+    public pinsAnalytics(pinId: string, startDate: string, endDate: string, metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', splitField?: 'NO_SPLIT' | 'APP_TYPE', adAccountId?: string, pinsAnalyticsOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<{ [key: string]: PinAnalyticsMetricsResponse; }>>;
+    public pinsAnalytics(pinId: string, startDate: string, endDate: string, metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', splitField?: 'NO_SPLIT' | 'APP_TYPE', adAccountId?: string, pinsAnalyticsOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (pinId === null || pinId === undefined) {
             throw new Error('Required parameter pinId was null or undefined when calling pinsAnalytics.');
         }
@@ -236,7 +241,8 @@ export class PinsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...pinsAnalyticsOpts?.config,
+                        headers: {...headers, ...pinsAnalyticsOpts?.config?.headers},
                     }
                 );
             })
@@ -249,9 +255,10 @@ export class PinsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [pinsCreateOpts.config] Override http request option.
      */
-    public pinsCreate(pinCreate: PinCreate, adAccountId?: string, ): Observable<AxiosResponse<Pin>>;
-    public pinsCreate(pinCreate: PinCreate, adAccountId?: string, ): Observable<any> {
+    public pinsCreate(pinCreate: PinCreate, adAccountId?: string, pinsCreateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<Pin>>;
+    public pinsCreate(pinCreate: PinCreate, adAccountId?: string, pinsCreateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (pinCreate === null || pinCreate === undefined) {
             throw new Error('Required parameter pinCreate was null or undefined when calling pinsCreate.');
         }
@@ -300,7 +307,8 @@ export class PinsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...pinsCreateOpts?.config,
+                        headers: {...headers, ...pinsCreateOpts?.config?.headers},
                     }
                 );
             })
@@ -313,9 +321,10 @@ export class PinsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [pinsDeleteOpts.config] Override http request option.
      */
-    public pinsDelete(pinId: string, adAccountId?: string, ): Observable<AxiosResponse<any>>;
-    public pinsDelete(pinId: string, adAccountId?: string, ): Observable<any> {
+    public pinsDelete(pinId: string, adAccountId?: string, pinsDeleteOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public pinsDelete(pinId: string, adAccountId?: string, pinsDeleteOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (pinId === null || pinId === undefined) {
             throw new Error('Required parameter pinId was null or undefined when calling pinsDelete.');
         }
@@ -358,7 +367,8 @@ export class PinsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...pinsDeleteOpts?.config,
+                        headers: {...headers, ...pinsDeleteOpts?.config?.headers},
                     }
                 );
             })
@@ -372,9 +382,10 @@ export class PinsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [pinsGetOpts.config] Override http request option.
      */
-    public pinsGet(pinId: string, pinMetrics?: boolean, adAccountId?: string, ): Observable<AxiosResponse<Pin>>;
-    public pinsGet(pinId: string, pinMetrics?: boolean, adAccountId?: string, ): Observable<any> {
+    public pinsGet(pinId: string, pinMetrics?: boolean, adAccountId?: string, pinsGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<Pin>>;
+    public pinsGet(pinId: string, pinMetrics?: boolean, adAccountId?: string, pinsGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (pinId === null || pinId === undefined) {
             throw new Error('Required parameter pinId was null or undefined when calling pinsGet.');
         }
@@ -427,7 +438,8 @@ export class PinsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...pinsGetOpts?.config,
+                        headers: {...headers, ...pinsGetOpts?.config?.headers},
                     }
                 );
             })
@@ -446,9 +458,10 @@ export class PinsService {
      * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [pinsListOpts.config] Override http request option.
      */
-    public pinsList(bookmark?: string, pageSize?: number, pinFilter?: 'exclude_native' | 'exclude_repins' | 'has_been_promoted', includeProtectedPins?: boolean, pinType?: 'PRIVATE', creativeTypes?: Array<'REGULAR' | 'VIDEO' | 'SHOPPING' | 'CAROUSEL' | 'MAX_VIDEO' | 'SHOP_THE_PIN' | 'COLLECTION' | 'IDEA'>, adAccountId?: string, pinMetrics?: boolean, ): Observable<AxiosResponse<PinsList200Response>>;
-    public pinsList(bookmark?: string, pageSize?: number, pinFilter?: 'exclude_native' | 'exclude_repins' | 'has_been_promoted', includeProtectedPins?: boolean, pinType?: 'PRIVATE', creativeTypes?: Array<'REGULAR' | 'VIDEO' | 'SHOPPING' | 'CAROUSEL' | 'MAX_VIDEO' | 'SHOP_THE_PIN' | 'COLLECTION' | 'IDEA'>, adAccountId?: string, pinMetrics?: boolean, ): Observable<any> {
+    public pinsList(bookmark?: string, pageSize?: number, pinFilter?: 'exclude_native' | 'exclude_repins' | 'has_been_promoted', includeProtectedPins?: boolean, pinType?: 'PRIVATE', creativeTypes?: Array<'REGULAR' | 'VIDEO' | 'SHOPPING' | 'CAROUSEL' | 'MAX_VIDEO' | 'SHOP_THE_PIN' | 'COLLECTION' | 'IDEA'>, adAccountId?: string, pinMetrics?: boolean, pinsListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<PinsList200Response>>;
+    public pinsList(bookmark?: string, pageSize?: number, pinFilter?: 'exclude_native' | 'exclude_repins' | 'has_been_promoted', includeProtectedPins?: boolean, pinType?: 'PRIVATE', creativeTypes?: Array<'REGULAR' | 'VIDEO' | 'SHOPPING' | 'CAROUSEL' | 'MAX_VIDEO' | 'SHOP_THE_PIN' | 'COLLECTION' | 'IDEA'>, adAccountId?: string, pinMetrics?: boolean, pinsListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let queryParameters = new URLSearchParams();
         if (bookmark !== undefined && bookmark !== null) {
             queryParameters.append('bookmark', <any>bookmark);
@@ -517,7 +530,8 @@ export class PinsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...pinsListOpts?.config,
+                        headers: {...headers, ...pinsListOpts?.config?.headers},
                     }
                 );
             })
@@ -531,9 +545,10 @@ export class PinsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [pinsSaveOpts.config] Override http request option.
      */
-    public pinsSave(pinId: string, pinsSaveRequest: PinsSaveRequest, adAccountId?: string, ): Observable<AxiosResponse<Pin>>;
-    public pinsSave(pinId: string, pinsSaveRequest: PinsSaveRequest, adAccountId?: string, ): Observable<any> {
+    public pinsSave(pinId: string, pinsSaveRequest: PinsSaveRequest, adAccountId?: string, pinsSaveOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<Pin>>;
+    public pinsSave(pinId: string, pinsSaveRequest: PinsSaveRequest, adAccountId?: string, pinsSaveOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (pinId === null || pinId === undefined) {
             throw new Error('Required parameter pinId was null or undefined when calling pinsSave.');
         }
@@ -586,7 +601,8 @@ export class PinsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...pinsSaveOpts?.config,
+                        headers: {...headers, ...pinsSaveOpts?.config?.headers},
                     }
                 );
             })
@@ -600,9 +616,10 @@ export class PinsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [pinsUpdateOpts.config] Override http request option.
      */
-    public pinsUpdate(pinId: string, pinUpdate: PinUpdate, adAccountId?: string, ): Observable<AxiosResponse<Pin>>;
-    public pinsUpdate(pinId: string, pinUpdate: PinUpdate, adAccountId?: string, ): Observable<any> {
+    public pinsUpdate(pinId: string, pinUpdate: PinUpdate, adAccountId?: string, pinsUpdateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<Pin>>;
+    public pinsUpdate(pinId: string, pinUpdate: PinUpdate, adAccountId?: string, pinsUpdateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (pinId === null || pinId === undefined) {
             throw new Error('Required parameter pinId was null or undefined when calling pinsUpdate.');
         }
@@ -655,7 +672,8 @@ export class PinsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...pinsUpdateOpts?.config,
+                        headers: {...headers, ...pinsUpdateOpts?.config?.headers},
                     }
                 );
             })

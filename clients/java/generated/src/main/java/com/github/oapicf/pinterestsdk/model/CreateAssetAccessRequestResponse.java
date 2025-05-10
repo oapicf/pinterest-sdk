@@ -54,20 +54,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CreateAssetAccessRequestResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CreateAssetAccessRequestResponse {
   public static final String SERIALIZED_NAME_EXCEPTIONS = "exceptions";
   @SerializedName(SERIALIZED_NAME_EXCEPTIONS)
+  @javax.annotation.Nullable
   private List<CreateAssetAccessRequestErrorMessageInner> exceptions;
 
   public static final String SERIALIZED_NAME_INVITES = "invites";
   @SerializedName(SERIALIZED_NAME_INVITES)
+  @javax.annotation.Nullable
   private Map<String, String> invites;
 
   public CreateAssetAccessRequestResponse() {
   }
 
-  public CreateAssetAccessRequestResponse exceptions(List<CreateAssetAccessRequestErrorMessageInner> exceptions) {
+  public CreateAssetAccessRequestResponse exceptions(@javax.annotation.Nullable List<CreateAssetAccessRequestErrorMessageInner> exceptions) {
     this.exceptions = exceptions;
     return this;
   }
@@ -89,12 +91,12 @@ public class CreateAssetAccessRequestResponse {
     return exceptions;
   }
 
-  public void setExceptions(List<CreateAssetAccessRequestErrorMessageInner> exceptions) {
+  public void setExceptions(@javax.annotation.Nullable List<CreateAssetAccessRequestErrorMessageInner> exceptions) {
     this.exceptions = exceptions;
   }
 
 
-  public CreateAssetAccessRequestResponse invites(Map<String, String> invites) {
+  public CreateAssetAccessRequestResponse invites(@javax.annotation.Nullable Map<String, String> invites) {
     this.invites = invites;
     return this;
   }
@@ -116,7 +118,7 @@ public class CreateAssetAccessRequestResponse {
     return invites;
   }
 
-  public void setInvites(Map<String, String> invites) {
+  public void setInvites(@javax.annotation.Nullable Map<String, String> invites) {
     this.invites = invites;
   }
 

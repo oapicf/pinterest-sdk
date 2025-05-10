@@ -49,7 +49,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Product counts for a Creative Assets CatalogsProductGroup
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsCreativeAssetsProductGroupProductCounts {
   /**
    * Gets or Sets catalogType
@@ -103,20 +103,23 @@ public class CatalogsCreativeAssetsProductGroupProductCounts {
 
   public static final String SERIALIZED_NAME_CATALOG_TYPE = "catalog_type";
   @SerializedName(SERIALIZED_NAME_CATALOG_TYPE)
+  @javax.annotation.Nonnull
   private CatalogTypeEnum catalogType;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
+  @javax.annotation.Nonnull
   private BigDecimal total;
 
   public static final String SERIALIZED_NAME_VIDEOS = "videos";
   @SerializedName(SERIALIZED_NAME_VIDEOS)
+  @javax.annotation.Nonnull
   private BigDecimal videos;
 
   public CatalogsCreativeAssetsProductGroupProductCounts() {
   }
 
-  public CatalogsCreativeAssetsProductGroupProductCounts catalogType(CatalogTypeEnum catalogType) {
+  public CatalogsCreativeAssetsProductGroupProductCounts catalogType(@javax.annotation.Nonnull CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -130,12 +133,12 @@ public class CatalogsCreativeAssetsProductGroupProductCounts {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogTypeEnum catalogType) {
+  public void setCatalogType(@javax.annotation.Nonnull CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
 
-  public CatalogsCreativeAssetsProductGroupProductCounts total(BigDecimal total) {
+  public CatalogsCreativeAssetsProductGroupProductCounts total(@javax.annotation.Nonnull BigDecimal total) {
     this.total = total;
     return this;
   }
@@ -150,12 +153,12 @@ public class CatalogsCreativeAssetsProductGroupProductCounts {
     return total;
   }
 
-  public void setTotal(BigDecimal total) {
+  public void setTotal(@javax.annotation.Nonnull BigDecimal total) {
     this.total = total;
   }
 
 
-  public CatalogsCreativeAssetsProductGroupProductCounts videos(BigDecimal videos) {
+  public CatalogsCreativeAssetsProductGroupProductCounts videos(@javax.annotation.Nonnull BigDecimal videos) {
     this.videos = videos;
     return this;
   }
@@ -170,7 +173,7 @@ public class CatalogsCreativeAssetsProductGroupProductCounts {
     return videos;
   }
 
-  public void setVideos(BigDecimal videos) {
+  public void setVideos(@javax.annotation.Nonnull BigDecimal videos) {
     this.videos = videos;
   }
 

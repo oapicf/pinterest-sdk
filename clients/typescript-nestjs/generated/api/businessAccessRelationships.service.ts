@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { DeletePartnersRequest } from '../model/deletePartnersRequest';
 import { DeletePartnersResponse } from '../model/deletePartnersResponse';
@@ -36,10 +36,12 @@ export class BusinessAccessRelationshipsService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -58,9 +60,10 @@ export class BusinessAccessRelationshipsService {
      * @param membersToDeleteBody List of members with role to delete.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [deleteBusinessMembershipOpts.config] Override http request option.
      */
-    public deleteBusinessMembership(businessId: string, membersToDeleteBody: MembersToDeleteBody, ): Observable<AxiosResponse<DeletedMembersResponse>>;
-    public deleteBusinessMembership(businessId: string, membersToDeleteBody: MembersToDeleteBody, ): Observable<any> {
+    public deleteBusinessMembership(businessId: string, membersToDeleteBody: MembersToDeleteBody, deleteBusinessMembershipOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<DeletedMembersResponse>>;
+    public deleteBusinessMembership(businessId: string, membersToDeleteBody: MembersToDeleteBody, deleteBusinessMembershipOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling deleteBusinessMembership.');
         }
@@ -106,7 +109,8 @@ export class BusinessAccessRelationshipsService {
                 return this.httpClient.delete<DeletedMembersResponse>(`${this.basePath}/businesses/${encodeURIComponent(String(business_id))}/members`,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...deleteBusinessMembershipOpts?.config,
+                        headers: {...headers, ...deleteBusinessMembershipOpts?.config?.headers},
                     }
                 );
             })
@@ -119,9 +123,10 @@ export class BusinessAccessRelationshipsService {
      * @param deletePartnersRequest An object containing a \&quot;partner_ids\&quot; property composed of a list of partner IDs and a \&quot;partners_type\&quot; property specifying the type of partners to delete. 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [deleteBusinessPartnersOpts.config] Override http request option.
      */
-    public deleteBusinessPartners(businessId: string, deletePartnersRequest: DeletePartnersRequest, ): Observable<AxiosResponse<DeletePartnersResponse>>;
-    public deleteBusinessPartners(businessId: string, deletePartnersRequest: DeletePartnersRequest, ): Observable<any> {
+    public deleteBusinessPartners(businessId: string, deletePartnersRequest: DeletePartnersRequest, deleteBusinessPartnersOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<DeletePartnersResponse>>;
+    public deleteBusinessPartners(businessId: string, deletePartnersRequest: DeletePartnersRequest, deleteBusinessPartnersOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling deleteBusinessPartners.');
         }
@@ -167,7 +172,8 @@ export class BusinessAccessRelationshipsService {
                 return this.httpClient.delete<DeletePartnersResponse>(`${this.basePath}/businesses/${encodeURIComponent(String(business_id))}/partners`,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...deleteBusinessPartnersOpts?.config,
+                        headers: {...headers, ...deleteBusinessPartnersOpts?.config?.headers},
                     }
                 );
             })
@@ -180,9 +186,10 @@ export class BusinessAccessRelationshipsService {
      * @param bookmark Cursor used to fetch the next page of items
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [getBusinessEmployersOpts.config] Override http request option.
      */
-    public getBusinessEmployers(pageSize?: number, bookmark?: string, ): Observable<AxiosResponse<GetBusinessEmployers200Response>>;
-    public getBusinessEmployers(pageSize?: number, bookmark?: string, ): Observable<any> {
+    public getBusinessEmployers(pageSize?: number, bookmark?: string, getBusinessEmployersOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<GetBusinessEmployers200Response>>;
+    public getBusinessEmployers(pageSize?: number, bookmark?: string, getBusinessEmployersOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let queryParameters = new URLSearchParams();
         if (pageSize !== undefined && pageSize !== null) {
             queryParameters.append('page_size', <any>pageSize);
@@ -224,7 +231,8 @@ export class BusinessAccessRelationshipsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...getBusinessEmployersOpts?.config,
+                        headers: {...headers, ...getBusinessEmployersOpts?.config?.headers},
                     }
                 );
             })
@@ -242,9 +250,10 @@ export class BusinessAccessRelationshipsService {
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [getBusinessMembersOpts.config] Override http request option.
      */
-    public getBusinessMembers(businessId: string, assetsSummary?: boolean, businessRoles?: Array<MemberBusinessRole>, memberIds?: string, startIndex?: number, bookmark?: string, pageSize?: number, ): Observable<AxiosResponse<GetBusinessMembers200Response>>;
-    public getBusinessMembers(businessId: string, assetsSummary?: boolean, businessRoles?: Array<MemberBusinessRole>, memberIds?: string, startIndex?: number, bookmark?: string, pageSize?: number, ): Observable<any> {
+    public getBusinessMembers(businessId: string, assetsSummary?: boolean, businessRoles?: Array<MemberBusinessRole>, memberIds?: string, startIndex?: number, bookmark?: string, pageSize?: number, getBusinessMembersOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<GetBusinessMembers200Response>>;
+    public getBusinessMembers(businessId: string, assetsSummary?: boolean, businessRoles?: Array<MemberBusinessRole>, memberIds?: string, startIndex?: number, bookmark?: string, pageSize?: number, getBusinessMembersOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling getBusinessMembers.');
         }
@@ -304,7 +313,8 @@ export class BusinessAccessRelationshipsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...getBusinessMembersOpts?.config,
+                        headers: {...headers, ...getBusinessMembersOpts?.config?.headers},
                     }
                 );
             })
@@ -322,9 +332,10 @@ export class BusinessAccessRelationshipsService {
      * @param bookmark Cursor used to fetch the next page of items
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [getBusinessPartnersOpts.config] Override http request option.
      */
-    public getBusinessPartners(businessId: string, assetsSummary?: boolean, partnerType?: PartnerType, partnerIds?: string, startIndex?: number, pageSize?: number, bookmark?: string, ): Observable<AxiosResponse<GetBusinessPartners200Response>>;
-    public getBusinessPartners(businessId: string, assetsSummary?: boolean, partnerType?: PartnerType, partnerIds?: string, startIndex?: number, pageSize?: number, bookmark?: string, ): Observable<any> {
+    public getBusinessPartners(businessId: string, assetsSummary?: boolean, partnerType?: PartnerType, partnerIds?: string, startIndex?: number, pageSize?: number, bookmark?: string, getBusinessPartnersOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<GetBusinessPartners200Response>>;
+    public getBusinessPartners(businessId: string, assetsSummary?: boolean, partnerType?: PartnerType, partnerIds?: string, startIndex?: number, pageSize?: number, bookmark?: string, getBusinessPartnersOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling getBusinessPartners.');
         }
@@ -382,7 +393,8 @@ export class BusinessAccessRelationshipsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...getBusinessPartnersOpts?.config,
+                        headers: {...headers, ...getBusinessPartnersOpts?.config?.headers},
                     }
                 );
             })
@@ -395,9 +407,10 @@ export class BusinessAccessRelationshipsService {
      * @param updateMemberBusinessRoleBody List of objects with the member id and the business_role.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [updateBusinessMembershipsOpts.config] Override http request option.
      */
-    public updateBusinessMemberships(businessId: string, updateMemberBusinessRoleBody: Array<UpdateMemberBusinessRoleBody>, ): Observable<AxiosResponse<UpdateMemberResultsResponseArray>>;
-    public updateBusinessMemberships(businessId: string, updateMemberBusinessRoleBody: Array<UpdateMemberBusinessRoleBody>, ): Observable<any> {
+    public updateBusinessMemberships(businessId: string, updateMemberBusinessRoleBody: Array<UpdateMemberBusinessRoleBody>, updateBusinessMembershipsOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<UpdateMemberResultsResponseArray>>;
+    public updateBusinessMemberships(businessId: string, updateMemberBusinessRoleBody: Array<UpdateMemberBusinessRoleBody>, updateBusinessMembershipsOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling updateBusinessMemberships.');
         }
@@ -444,7 +457,8 @@ export class BusinessAccessRelationshipsService {
                     updateMemberBusinessRoleBody,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...updateBusinessMembershipsOpts?.config,
+                        headers: {...headers, ...updateBusinessMembershipsOpts?.config?.headers},
                     }
                 );
             })

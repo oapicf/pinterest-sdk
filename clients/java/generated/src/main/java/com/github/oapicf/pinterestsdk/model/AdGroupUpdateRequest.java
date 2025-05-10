@@ -59,70 +59,86 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdGroupUpdateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdGroupUpdateRequest {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private EntityStatus status;
 
   public static final String SERIALIZED_NAME_BUDGET_IN_MICRO_CURRENCY = "budget_in_micro_currency";
   @SerializedName(SERIALIZED_NAME_BUDGET_IN_MICRO_CURRENCY)
+  @javax.annotation.Nullable
   private Integer budgetInMicroCurrency;
 
   public static final String SERIALIZED_NAME_BID_IN_MICRO_CURRENCY = "bid_in_micro_currency";
   @SerializedName(SERIALIZED_NAME_BID_IN_MICRO_CURRENCY)
+  @javax.annotation.Nullable
   private Integer bidInMicroCurrency;
 
   public static final String SERIALIZED_NAME_OPTIMIZATION_GOAL_METADATA = "optimization_goal_metadata";
   @SerializedName(SERIALIZED_NAME_OPTIMIZATION_GOAL_METADATA)
+  @javax.annotation.Nullable
   private OptimizationGoalMetadata optimizationGoalMetadata;
 
   public static final String SERIALIZED_NAME_BUDGET_TYPE = "budget_type";
   @SerializedName(SERIALIZED_NAME_BUDGET_TYPE)
+  @javax.annotation.Nullable
   private BudgetType budgetType;
 
   public static final String SERIALIZED_NAME_START_TIME = "start_time";
   @SerializedName(SERIALIZED_NAME_START_TIME)
+  @javax.annotation.Nullable
   private Integer startTime;
 
   public static final String SERIALIZED_NAME_END_TIME = "end_time";
   @SerializedName(SERIALIZED_NAME_END_TIME)
+  @javax.annotation.Nullable
   private Integer endTime;
 
   public static final String SERIALIZED_NAME_TARGETING_SPEC = "targeting_spec";
   @SerializedName(SERIALIZED_NAME_TARGETING_SPEC)
+  @javax.annotation.Nullable
   private TargetingSpec targetingSpec;
 
   public static final String SERIALIZED_NAME_LIFETIME_FREQUENCY_CAP = "lifetime_frequency_cap";
   @SerializedName(SERIALIZED_NAME_LIFETIME_FREQUENCY_CAP)
+  @javax.annotation.Nullable
   private Integer lifetimeFrequencyCap;
 
   public static final String SERIALIZED_NAME_TRACKING_URLS = "tracking_urls";
   @SerializedName(SERIALIZED_NAME_TRACKING_URLS)
+  @javax.annotation.Nullable
   private TrackingUrls trackingUrls;
 
   public static final String SERIALIZED_NAME_AUTO_TARGETING_ENABLED = "auto_targeting_enabled";
   @SerializedName(SERIALIZED_NAME_AUTO_TARGETING_ENABLED)
+  @javax.annotation.Nullable
   private Boolean autoTargetingEnabled;
 
   public static final String SERIALIZED_NAME_PLACEMENT_GROUP = "placement_group";
   @SerializedName(SERIALIZED_NAME_PLACEMENT_GROUP)
+  @javax.annotation.Nullable
   private PlacementGroupType placementGroup;
 
   public static final String SERIALIZED_NAME_PACING_DELIVERY_TYPE = "pacing_delivery_type";
   @SerializedName(SERIALIZED_NAME_PACING_DELIVERY_TYPE)
+  @javax.annotation.Nullable
   private PacingDeliveryType pacingDeliveryType;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaign_id";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
+  @javax.annotation.Nullable
   private String campaignId;
 
   public static final String SERIALIZED_NAME_BILLABLE_EVENT = "billable_event";
   @SerializedName(SERIALIZED_NAME_BILLABLE_EVENT)
+  @javax.annotation.Nullable
   private ActionType billableEvent;
 
   /**
@@ -181,20 +197,23 @@ public class AdGroupUpdateRequest {
 
   public static final String SERIALIZED_NAME_BID_STRATEGY_TYPE = "bid_strategy_type";
   @SerializedName(SERIALIZED_NAME_BID_STRATEGY_TYPE)
+  @javax.annotation.Nullable
   private BidStrategyTypeEnum bidStrategyType;
 
   public static final String SERIALIZED_NAME_TARGETING_TEMPLATE_IDS = "targeting_template_ids";
   @SerializedName(SERIALIZED_NAME_TARGETING_TEMPLATE_IDS)
+  @javax.annotation.Nullable
   private List<String> targetingTemplateIds;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nonnull
   private String id;
 
   public AdGroupUpdateRequest() {
   }
 
-  public AdGroupUpdateRequest name(String name) {
+  public AdGroupUpdateRequest name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -208,12 +227,12 @@ public class AdGroupUpdateRequest {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public AdGroupUpdateRequest status(EntityStatus status) {
+  public AdGroupUpdateRequest status(@javax.annotation.Nullable EntityStatus status) {
     this.status = status;
     return this;
   }
@@ -227,12 +246,12 @@ public class AdGroupUpdateRequest {
     return status;
   }
 
-  public void setStatus(EntityStatus status) {
+  public void setStatus(@javax.annotation.Nullable EntityStatus status) {
     this.status = status;
   }
 
 
-  public AdGroupUpdateRequest budgetInMicroCurrency(Integer budgetInMicroCurrency) {
+  public AdGroupUpdateRequest budgetInMicroCurrency(@javax.annotation.Nullable Integer budgetInMicroCurrency) {
     this.budgetInMicroCurrency = budgetInMicroCurrency;
     return this;
   }
@@ -246,12 +265,12 @@ public class AdGroupUpdateRequest {
     return budgetInMicroCurrency;
   }
 
-  public void setBudgetInMicroCurrency(Integer budgetInMicroCurrency) {
+  public void setBudgetInMicroCurrency(@javax.annotation.Nullable Integer budgetInMicroCurrency) {
     this.budgetInMicroCurrency = budgetInMicroCurrency;
   }
 
 
-  public AdGroupUpdateRequest bidInMicroCurrency(Integer bidInMicroCurrency) {
+  public AdGroupUpdateRequest bidInMicroCurrency(@javax.annotation.Nullable Integer bidInMicroCurrency) {
     this.bidInMicroCurrency = bidInMicroCurrency;
     return this;
   }
@@ -265,12 +284,12 @@ public class AdGroupUpdateRequest {
     return bidInMicroCurrency;
   }
 
-  public void setBidInMicroCurrency(Integer bidInMicroCurrency) {
+  public void setBidInMicroCurrency(@javax.annotation.Nullable Integer bidInMicroCurrency) {
     this.bidInMicroCurrency = bidInMicroCurrency;
   }
 
 
-  public AdGroupUpdateRequest optimizationGoalMetadata(OptimizationGoalMetadata optimizationGoalMetadata) {
+  public AdGroupUpdateRequest optimizationGoalMetadata(@javax.annotation.Nullable OptimizationGoalMetadata optimizationGoalMetadata) {
     this.optimizationGoalMetadata = optimizationGoalMetadata;
     return this;
   }
@@ -284,12 +303,12 @@ public class AdGroupUpdateRequest {
     return optimizationGoalMetadata;
   }
 
-  public void setOptimizationGoalMetadata(OptimizationGoalMetadata optimizationGoalMetadata) {
+  public void setOptimizationGoalMetadata(@javax.annotation.Nullable OptimizationGoalMetadata optimizationGoalMetadata) {
     this.optimizationGoalMetadata = optimizationGoalMetadata;
   }
 
 
-  public AdGroupUpdateRequest budgetType(BudgetType budgetType) {
+  public AdGroupUpdateRequest budgetType(@javax.annotation.Nullable BudgetType budgetType) {
     this.budgetType = budgetType;
     return this;
   }
@@ -303,12 +322,12 @@ public class AdGroupUpdateRequest {
     return budgetType;
   }
 
-  public void setBudgetType(BudgetType budgetType) {
+  public void setBudgetType(@javax.annotation.Nullable BudgetType budgetType) {
     this.budgetType = budgetType;
   }
 
 
-  public AdGroupUpdateRequest startTime(Integer startTime) {
+  public AdGroupUpdateRequest startTime(@javax.annotation.Nullable Integer startTime) {
     this.startTime = startTime;
     return this;
   }
@@ -322,12 +341,12 @@ public class AdGroupUpdateRequest {
     return startTime;
   }
 
-  public void setStartTime(Integer startTime) {
+  public void setStartTime(@javax.annotation.Nullable Integer startTime) {
     this.startTime = startTime;
   }
 
 
-  public AdGroupUpdateRequest endTime(Integer endTime) {
+  public AdGroupUpdateRequest endTime(@javax.annotation.Nullable Integer endTime) {
     this.endTime = endTime;
     return this;
   }
@@ -341,12 +360,12 @@ public class AdGroupUpdateRequest {
     return endTime;
   }
 
-  public void setEndTime(Integer endTime) {
+  public void setEndTime(@javax.annotation.Nullable Integer endTime) {
     this.endTime = endTime;
   }
 
 
-  public AdGroupUpdateRequest targetingSpec(TargetingSpec targetingSpec) {
+  public AdGroupUpdateRequest targetingSpec(@javax.annotation.Nullable TargetingSpec targetingSpec) {
     this.targetingSpec = targetingSpec;
     return this;
   }
@@ -360,12 +379,12 @@ public class AdGroupUpdateRequest {
     return targetingSpec;
   }
 
-  public void setTargetingSpec(TargetingSpec targetingSpec) {
+  public void setTargetingSpec(@javax.annotation.Nullable TargetingSpec targetingSpec) {
     this.targetingSpec = targetingSpec;
   }
 
 
-  public AdGroupUpdateRequest lifetimeFrequencyCap(Integer lifetimeFrequencyCap) {
+  public AdGroupUpdateRequest lifetimeFrequencyCap(@javax.annotation.Nullable Integer lifetimeFrequencyCap) {
     this.lifetimeFrequencyCap = lifetimeFrequencyCap;
     return this;
   }
@@ -379,12 +398,12 @@ public class AdGroupUpdateRequest {
     return lifetimeFrequencyCap;
   }
 
-  public void setLifetimeFrequencyCap(Integer lifetimeFrequencyCap) {
+  public void setLifetimeFrequencyCap(@javax.annotation.Nullable Integer lifetimeFrequencyCap) {
     this.lifetimeFrequencyCap = lifetimeFrequencyCap;
   }
 
 
-  public AdGroupUpdateRequest trackingUrls(TrackingUrls trackingUrls) {
+  public AdGroupUpdateRequest trackingUrls(@javax.annotation.Nullable TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
@@ -398,12 +417,12 @@ public class AdGroupUpdateRequest {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(TrackingUrls trackingUrls) {
+  public void setTrackingUrls(@javax.annotation.Nullable TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
 
-  public AdGroupUpdateRequest autoTargetingEnabled(Boolean autoTargetingEnabled) {
+  public AdGroupUpdateRequest autoTargetingEnabled(@javax.annotation.Nullable Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
     return this;
   }
@@ -417,12 +436,12 @@ public class AdGroupUpdateRequest {
     return autoTargetingEnabled;
   }
 
-  public void setAutoTargetingEnabled(Boolean autoTargetingEnabled) {
+  public void setAutoTargetingEnabled(@javax.annotation.Nullable Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
   }
 
 
-  public AdGroupUpdateRequest placementGroup(PlacementGroupType placementGroup) {
+  public AdGroupUpdateRequest placementGroup(@javax.annotation.Nullable PlacementGroupType placementGroup) {
     this.placementGroup = placementGroup;
     return this;
   }
@@ -436,12 +455,12 @@ public class AdGroupUpdateRequest {
     return placementGroup;
   }
 
-  public void setPlacementGroup(PlacementGroupType placementGroup) {
+  public void setPlacementGroup(@javax.annotation.Nullable PlacementGroupType placementGroup) {
     this.placementGroup = placementGroup;
   }
 
 
-  public AdGroupUpdateRequest pacingDeliveryType(PacingDeliveryType pacingDeliveryType) {
+  public AdGroupUpdateRequest pacingDeliveryType(@javax.annotation.Nullable PacingDeliveryType pacingDeliveryType) {
     this.pacingDeliveryType = pacingDeliveryType;
     return this;
   }
@@ -455,12 +474,12 @@ public class AdGroupUpdateRequest {
     return pacingDeliveryType;
   }
 
-  public void setPacingDeliveryType(PacingDeliveryType pacingDeliveryType) {
+  public void setPacingDeliveryType(@javax.annotation.Nullable PacingDeliveryType pacingDeliveryType) {
     this.pacingDeliveryType = pacingDeliveryType;
   }
 
 
-  public AdGroupUpdateRequest campaignId(String campaignId) {
+  public AdGroupUpdateRequest campaignId(@javax.annotation.Nullable String campaignId) {
     this.campaignId = campaignId;
     return this;
   }
@@ -474,12 +493,12 @@ public class AdGroupUpdateRequest {
     return campaignId;
   }
 
-  public void setCampaignId(String campaignId) {
+  public void setCampaignId(@javax.annotation.Nullable String campaignId) {
     this.campaignId = campaignId;
   }
 
 
-  public AdGroupUpdateRequest billableEvent(ActionType billableEvent) {
+  public AdGroupUpdateRequest billableEvent(@javax.annotation.Nullable ActionType billableEvent) {
     this.billableEvent = billableEvent;
     return this;
   }
@@ -493,12 +512,12 @@ public class AdGroupUpdateRequest {
     return billableEvent;
   }
 
-  public void setBillableEvent(ActionType billableEvent) {
+  public void setBillableEvent(@javax.annotation.Nullable ActionType billableEvent) {
     this.billableEvent = billableEvent;
   }
 
 
-  public AdGroupUpdateRequest bidStrategyType(BidStrategyTypeEnum bidStrategyType) {
+  public AdGroupUpdateRequest bidStrategyType(@javax.annotation.Nullable BidStrategyTypeEnum bidStrategyType) {
     this.bidStrategyType = bidStrategyType;
     return this;
   }
@@ -512,12 +531,12 @@ public class AdGroupUpdateRequest {
     return bidStrategyType;
   }
 
-  public void setBidStrategyType(BidStrategyTypeEnum bidStrategyType) {
+  public void setBidStrategyType(@javax.annotation.Nullable BidStrategyTypeEnum bidStrategyType) {
     this.bidStrategyType = bidStrategyType;
   }
 
 
-  public AdGroupUpdateRequest targetingTemplateIds(List<String> targetingTemplateIds) {
+  public AdGroupUpdateRequest targetingTemplateIds(@javax.annotation.Nullable List<String> targetingTemplateIds) {
     this.targetingTemplateIds = targetingTemplateIds;
     return this;
   }
@@ -539,12 +558,12 @@ public class AdGroupUpdateRequest {
     return targetingTemplateIds;
   }
 
-  public void setTargetingTemplateIds(List<String> targetingTemplateIds) {
+  public void setTargetingTemplateIds(@javax.annotation.Nullable List<String> targetingTemplateIds) {
     this.targetingTemplateIds = targetingTemplateIds;
   }
 
 
-  public AdGroupUpdateRequest id(String id) {
+  public AdGroupUpdateRequest id(@javax.annotation.Nonnull String id) {
     this.id = id;
     return this;
   }
@@ -558,7 +577,7 @@ public class AdGroupUpdateRequest {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 

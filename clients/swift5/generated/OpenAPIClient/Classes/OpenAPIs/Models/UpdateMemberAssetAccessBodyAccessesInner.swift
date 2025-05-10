@@ -12,9 +12,9 @@ import AnyCodable
 
 public struct UpdateMemberAssetAccessBodyAccessesInner: Codable, JSONEncodable, Hashable {
 
-    static let assetIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
-    static let memberIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
-    static let permissionsRule = ArrayRule(minItems: 1, maxItems: 50, uniqueItems: false)
+    public static let assetIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
+    public static let memberIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
+    public static let permissionsRule = ArrayRule(minItems: 1, maxItems: 50, uniqueItems: false)
     /** Id of the asset to update. */
     public var assetId: String
     /** Unique identifier of the member on which to perform the update */

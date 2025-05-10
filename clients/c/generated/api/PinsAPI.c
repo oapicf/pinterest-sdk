@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 // Functions for enum APPTYPES for PinsAPI_multiPinsAnalytics
 
@@ -328,11 +323,14 @@ PinsAPI_multiPinsAnalytics(apiClient_t *apiClient, list_t *pin_ids, char start_d
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/pins/analytics")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/pins/analytics");
+    char *localVarPath = strdup("/pins/analytics");
+
 
 
 
@@ -375,7 +373,7 @@ PinsAPI_multiPinsAnalytics(apiClient_t *apiClient, list_t *pin_ids, char start_d
     {
         keyQuery_app_types = strdup("app_types");
         valueQuery_app_types = (app_types);
-        keyPairQuery_app_types = keyValuePair_create(keyQuery_app_types, (void *)strdup(multiPinsAnalytics_APPTYPES_ToString(
+        keyPairQuery_app_types = keyValuePair_create(keyQuery_app_types, strdup(multiPinsAnalytics_APPTYPES_ToString(
         valueQuery_app_types)));
         list_addElement(localVarQueryParameters,keyPairQuery_app_types);
     }
@@ -406,6 +404,7 @@ PinsAPI_multiPinsAnalytics(apiClient_t *apiClient, list_t *pin_ids, char start_d
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -433,14 +432,17 @@ PinsAPI_multiPinsAnalytics(apiClient_t *apiClient, list_t *pin_ids, char start_d
     //    printf("%s\n","Unexpected error");
     //}
     //primitive return type not simple
-    cJSON *localVarJSON = cJSON_Parse(apiClient->dataReceived);
-    cJSON *VarJSON;
-    list_t *elementToReturn = list_createList();
-    cJSON_ArrayForEach(VarJSON, localVarJSON){
-        keyValuePair_t *keyPair = keyValuePair_create(strdup(VarJSON->string), cJSON_Print(VarJSON));
-        list_addElement(elementToReturn, keyPair);
+    list_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *localVarJSON = cJSON_Parse(apiClient->dataReceived);
+        cJSON *VarJSON;
+        elementToReturn = list_createList();
+        cJSON_ArrayForEach(VarJSON, localVarJSON){
+            keyValuePair_t *keyPair = keyValuePair_create(strdup(VarJSON->string), cJSON_Print(VarJSON));
+            list_addElement(elementToReturn, keyPair);
+        }
+        cJSON_Delete(localVarJSON);
     }
-    cJSON_Delete(localVarJSON);
 
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
@@ -509,15 +511,20 @@ PinsAPI_pinsAnalytics(apiClient_t *apiClient, char *pin_id, char start_date, cha
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/pins/{pin_id}/analytics")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/pins/{pin_id}/analytics");
+    char *localVarPath = strdup("/pins/{pin_id}/analytics");
+
+    if(!pin_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_pin_id = strlen(pin_id)+3 + strlen("{ pin_id }");
+    long sizeOfPathParams_pin_id = strlen(pin_id)+3 + sizeof("{ pin_id }") - 1;
     if(pin_id == NULL) {
         goto end;
     }
@@ -560,7 +567,7 @@ PinsAPI_pinsAnalytics(apiClient_t *apiClient, char *pin_id, char start_date, cha
     {
         keyQuery_app_types = strdup("app_types");
         valueQuery_app_types = (app_types);
-        keyPairQuery_app_types = keyValuePair_create(keyQuery_app_types, (void *)strdup(pinsAnalytics_APPTYPES_ToString(
+        keyPairQuery_app_types = keyValuePair_create(keyQuery_app_types, strdup(pinsAnalytics_APPTYPES_ToString(
         valueQuery_app_types)));
         list_addElement(localVarQueryParameters,keyPairQuery_app_types);
     }
@@ -579,7 +586,7 @@ PinsAPI_pinsAnalytics(apiClient_t *apiClient, char *pin_id, char start_date, cha
     {
         keyQuery_split_field = strdup("split_field");
         valueQuery_split_field = (split_field);
-        keyPairQuery_split_field = keyValuePair_create(keyQuery_split_field, (void *)strdup(pinsAnalytics_SPLITFIELD_ToString(
+        keyPairQuery_split_field = keyValuePair_create(keyQuery_split_field, strdup(pinsAnalytics_SPLITFIELD_ToString(
         valueQuery_split_field)));
         list_addElement(localVarQueryParameters,keyPairQuery_split_field);
     }
@@ -604,6 +611,7 @@ PinsAPI_pinsAnalytics(apiClient_t *apiClient, char *pin_id, char start_date, cha
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -626,24 +634,27 @@ PinsAPI_pinsAnalytics(apiClient_t *apiClient, char *pin_id, char start_date, cha
     //if (apiClient->response_code == 0) {
     //    printf("%s\n","Unexpected error");
     //}
-    cJSON *PinsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    if(!cJSON_IsArray(PinsAPIlocalVarJSON)) {
-        return 0;//nonprimitive container
-    }
-    list_t *elementToReturn = list_createList();
-    cJSON *VarJSON;
-    cJSON_ArrayForEach(VarJSON, PinsAPIlocalVarJSON)
-    {
-        if(!cJSON_IsObject(VarJSON))
-        {
-           // return 0;
+    list_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *PinsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        if(!cJSON_IsArray(PinsAPIlocalVarJSON)) {
+            return 0;//nonprimitive container
         }
-        char *localVarJSONToChar = cJSON_Print(VarJSON);
-        list_addElement(elementToReturn , localVarJSONToChar);
-    }
+        elementToReturn = list_createList();
+        cJSON *VarJSON;
+        cJSON_ArrayForEach(VarJSON, PinsAPIlocalVarJSON)
+        {
+            if(!cJSON_IsObject(VarJSON))
+            {
+               // return 0;
+            }
+            char *localVarJSONToChar = cJSON_Print(VarJSON);
+            list_addElement(elementToReturn , localVarJSONToChar);
+        }
 
-    cJSON_Delete( PinsAPIlocalVarJSON);
-    cJSON_Delete( VarJSON);
+        cJSON_Delete( PinsAPIlocalVarJSON);
+        cJSON_Delete( VarJSON);
+    }
     //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
@@ -721,11 +732,14 @@ PinsAPI_pinsCreate(apiClient_t *apiClient, pin_create_t *pin_create, char *ad_ac
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/pins")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/pins");
+    char *localVarPath = strdup("/pins");
+
 
 
 
@@ -746,9 +760,10 @@ PinsAPI_pinsCreate(apiClient_t *apiClient, pin_create_t *pin_create, char *ad_ac
     cJSON *localVarSingleItemJSON_pin_create = NULL;
     if (pin_create != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_pin_create = pin_create_convertToJSON(pin_create);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_pin_create);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -760,6 +775,7 @@ PinsAPI_pinsCreate(apiClient_t *apiClient, pin_create_t *pin_create, char *ad_ac
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -787,11 +803,14 @@ PinsAPI_pinsCreate(apiClient_t *apiClient, pin_create_t *pin_create, char *ad_ac
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *PinsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    pin_t *elementToReturn = pin_parseFromJSON(PinsAPIlocalVarJSON);
-    cJSON_Delete(PinsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    pin_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *PinsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = pin_parseFromJSON(PinsAPIlocalVarJSON);
+        cJSON_Delete(PinsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -843,15 +862,20 @@ PinsAPI_pinsDelete(apiClient_t *apiClient, char *pin_id, char *ad_account_id)
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/pins/{pin_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/pins/{pin_id}");
+    char *localVarPath = strdup("/pins/{pin_id}");
+
+    if(!pin_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_pin_id = strlen(pin_id)+3 + strlen("{ pin_id }");
+    long sizeOfPathParams_pin_id = strlen(pin_id)+3 + sizeof("{ pin_id }") - 1;
     if(pin_id == NULL) {
         goto end;
     }
@@ -882,6 +906,7 @@ PinsAPI_pinsDelete(apiClient_t *apiClient, char *pin_id, char *ad_account_id)
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "DELETE");
 
     // uncomment below to debug the error response
@@ -950,15 +975,20 @@ PinsAPI_pinsGet(apiClient_t *apiClient, char *pin_id, int *pin_metrics, char *ad
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/pins/{pin_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/pins/{pin_id}");
+    char *localVarPath = strdup("/pins/{pin_id}");
+
+    if(!pin_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_pin_id = strlen(pin_id)+3 + strlen("{ pin_id }");
+    long sizeOfPathParams_pin_id = strlen(pin_id)+3 + sizeof("{ pin_id }") - 1;
     if(pin_id == NULL) {
         goto end;
     }
@@ -1002,6 +1032,7 @@ PinsAPI_pinsGet(apiClient_t *apiClient, char *pin_id, int *pin_metrics, char *ad
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -1021,11 +1052,14 @@ PinsAPI_pinsGet(apiClient_t *apiClient, char *pin_id, int *pin_metrics, char *ad
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *PinsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    pin_t *elementToReturn = pin_parseFromJSON(PinsAPIlocalVarJSON);
-    cJSON_Delete(PinsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    pin_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *PinsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = pin_parseFromJSON(PinsAPIlocalVarJSON);
+        cJSON_Delete(PinsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1085,11 +1119,14 @@ PinsAPI_pinsList(apiClient_t *apiClient, char *bookmark, int *page_size, pintere
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/pins")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/pins");
+    char *localVarPath = strdup("/pins");
+
 
 
 
@@ -1127,7 +1164,7 @@ PinsAPI_pinsList(apiClient_t *apiClient, char *bookmark, int *page_size, pintere
     {
         keyQuery_pin_filter = strdup("pin_filter");
         valueQuery_pin_filter = (pin_filter);
-        keyPairQuery_pin_filter = keyValuePair_create(keyQuery_pin_filter, (void *)strdup(pinsList_PINFILTER_ToString(
+        keyPairQuery_pin_filter = keyValuePair_create(keyQuery_pin_filter, strdup(pinsList_PINFILTER_ToString(
         valueQuery_pin_filter)));
         list_addElement(localVarQueryParameters,keyPairQuery_pin_filter);
     }
@@ -1153,7 +1190,7 @@ PinsAPI_pinsList(apiClient_t *apiClient, char *bookmark, int *page_size, pintere
     {
         keyQuery_pin_type = strdup("pin_type");
         valueQuery_pin_type = (pin_type);
-        keyPairQuery_pin_type = keyValuePair_create(keyQuery_pin_type, (void *)strdup(pinsList_PINTYPE_ToString(
+        keyPairQuery_pin_type = keyValuePair_create(keyQuery_pin_type, strdup(pinsList_PINTYPE_ToString(
         valueQuery_pin_type)));
         list_addElement(localVarQueryParameters,keyPairQuery_pin_type);
     }
@@ -1197,6 +1234,7 @@ PinsAPI_pinsList(apiClient_t *apiClient, char *bookmark, int *page_size, pintere
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -1212,11 +1250,14 @@ PinsAPI_pinsList(apiClient_t *apiClient, char *bookmark, int *page_size, pintere
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *PinsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    pins_list_200_response_t *elementToReturn = pins_list_200_response_parseFromJSON(PinsAPIlocalVarJSON);
-    cJSON_Delete(PinsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    pins_list_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *PinsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = pins_list_200_response_parseFromJSON(PinsAPIlocalVarJSON);
+        cJSON_Delete(PinsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1327,15 +1368,20 @@ PinsAPI_pinsSave(apiClient_t *apiClient, char *pin_id, pins_save_request_t *pins
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/pins/{pin_id}/save")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/pins/{pin_id}/save");
+    char *localVarPath = strdup("/pins/{pin_id}/save");
+
+    if(!pin_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_pin_id = strlen(pin_id)+3 + strlen("{ pin_id }");
+    long sizeOfPathParams_pin_id = strlen(pin_id)+3 + sizeof("{ pin_id }") - 1;
     if(pin_id == NULL) {
         goto end;
     }
@@ -1362,9 +1408,10 @@ PinsAPI_pinsSave(apiClient_t *apiClient, char *pin_id, pins_save_request_t *pins
     cJSON *localVarSingleItemJSON_pins_save_request = NULL;
     if (pins_save_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_pins_save_request = pins_save_request_convertToJSON(pins_save_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_pins_save_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -1376,6 +1423,7 @@ PinsAPI_pinsSave(apiClient_t *apiClient, char *pin_id, pins_save_request_t *pins
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -1395,11 +1443,14 @@ PinsAPI_pinsSave(apiClient_t *apiClient, char *pin_id, pins_save_request_t *pins
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *PinsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    pin_t *elementToReturn = pin_parseFromJSON(PinsAPIlocalVarJSON);
-    cJSON_Delete(PinsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    pin_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *PinsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = pin_parseFromJSON(PinsAPIlocalVarJSON);
+        cJSON_Delete(PinsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1452,15 +1503,20 @@ PinsAPI_pinsUpdate(apiClient_t *apiClient, char *pin_id, pin_update_t *pin_updat
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/pins/{pin_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/pins/{pin_id}");
+    char *localVarPath = strdup("/pins/{pin_id}");
+
+    if(!pin_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_pin_id = strlen(pin_id)+3 + strlen("{ pin_id }");
+    long sizeOfPathParams_pin_id = strlen(pin_id)+3 + sizeof("{ pin_id }") - 1;
     if(pin_id == NULL) {
         goto end;
     }
@@ -1487,9 +1543,10 @@ PinsAPI_pinsUpdate(apiClient_t *apiClient, char *pin_id, pin_update_t *pin_updat
     cJSON *localVarSingleItemJSON_pin_update = NULL;
     if (pin_update != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_pin_update = pin_update_convertToJSON(pin_update);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_pin_update);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -1501,6 +1558,7 @@ PinsAPI_pinsUpdate(apiClient_t *apiClient, char *pin_id, pin_update_t *pin_updat
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "PATCH");
 
     // uncomment below to debug the error response
@@ -1524,11 +1582,14 @@ PinsAPI_pinsUpdate(apiClient_t *apiClient, char *pin_id, pin_update_t *pin_updat
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *PinsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    pin_t *elementToReturn = pin_parseFromJSON(PinsAPIlocalVarJSON);
-    cJSON_Delete(PinsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    pin_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *PinsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = pin_parseFromJSON(PinsAPIlocalVarJSON);
+        cJSON_Delete(PinsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type

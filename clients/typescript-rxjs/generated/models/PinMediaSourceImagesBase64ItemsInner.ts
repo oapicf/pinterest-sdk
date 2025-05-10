@@ -50,7 +50,7 @@ export interface PinMediaSourceImagesBase64ItemsInner {
  * @enum {string}
  */
 export enum PinMediaSourceImagesBase64ItemsInnerContentTypeEnum {
-    Jpeg = 'image/jpeg',
-    Png = 'image/png'
+    ImageJpeg = 'image/jpeg',
+    ImagePng = 'image/png'
 }
 

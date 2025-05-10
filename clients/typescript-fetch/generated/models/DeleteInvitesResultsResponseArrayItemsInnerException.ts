@@ -55,11 +55,11 @@ export function DeleteInvitesResultsResponseArrayItemsInnerExceptionFromJSONType
     };
 }
 
-  export function DeleteInvitesResultsResponseArrayItemsInnerExceptionToJSON(json: any): DeleteInvitesResultsResponseArrayItemsInnerException {
-      return DeleteInvitesResultsResponseArrayItemsInnerExceptionToJSONTyped(json, false);
-  }
+export function DeleteInvitesResultsResponseArrayItemsInnerExceptionToJSON(json: any): DeleteInvitesResultsResponseArrayItemsInnerException {
+    return DeleteInvitesResultsResponseArrayItemsInnerExceptionToJSONTyped(json, false);
+}
 
-  export function DeleteInvitesResultsResponseArrayItemsInnerExceptionToJSONTyped(value?: DeleteInvitesResultsResponseArrayItemsInnerException | null, ignoreDiscriminator: boolean = false): any {
+export function DeleteInvitesResultsResponseArrayItemsInnerExceptionToJSONTyped(value?: DeleteInvitesResultsResponseArrayItemsInnerException | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

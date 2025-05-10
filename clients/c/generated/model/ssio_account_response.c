@@ -5,7 +5,7 @@
 
 
 
-ssio_account_response_t *ssio_account_response_create(
+static ssio_account_response_t *ssio_account_response_create_internal(
     int eligible,
     int can_edit,
     list_t *billto_infos,
@@ -24,12 +24,34 @@ ssio_account_response_t *ssio_account_response_create(
     ssio_account_response_local_var->pmp_names = pmp_names;
     ssio_account_response_local_var->error = error;
 
+    ssio_account_response_local_var->_library_owned = 1;
     return ssio_account_response_local_var;
 }
 
+__attribute__((deprecated)) ssio_account_response_t *ssio_account_response_create(
+    int eligible,
+    int can_edit,
+    list_t *billto_infos,
+    char *currency,
+    list_t *pmp_names,
+    char *error
+    ) {
+    return ssio_account_response_create_internal (
+        eligible,
+        can_edit,
+        billto_infos,
+        currency,
+        pmp_names,
+        error
+        );
+}
 
 void ssio_account_response_free(ssio_account_response_t *ssio_account_response) {
     if(NULL == ssio_account_response){
+        return ;
+    }
+    if(ssio_account_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ssio_account_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -152,6 +174,9 @@ ssio_account_response_t *ssio_account_response_parseFromJSON(cJSON *ssio_account
 
     // ssio_account_response->eligible
     cJSON *eligible = cJSON_GetObjectItemCaseSensitive(ssio_account_responseJSON, "eligible");
+    if (cJSON_IsNull(eligible)) {
+        eligible = NULL;
+    }
     if (eligible) { 
     if(!cJSON_IsBool(eligible))
     {
@@ -161,6 +186,9 @@ ssio_account_response_t *ssio_account_response_parseFromJSON(cJSON *ssio_account
 
     // ssio_account_response->can_edit
     cJSON *can_edit = cJSON_GetObjectItemCaseSensitive(ssio_account_responseJSON, "can_edit");
+    if (cJSON_IsNull(can_edit)) {
+        can_edit = NULL;
+    }
     if (can_edit) { 
     if(!cJSON_IsBool(can_edit))
     {
@@ -170,6 +198,9 @@ ssio_account_response_t *ssio_account_response_parseFromJSON(cJSON *ssio_account
 
     // ssio_account_response->billto_infos
     cJSON *billto_infos = cJSON_GetObjectItemCaseSensitive(ssio_account_responseJSON, "billto_infos");
+    if (cJSON_IsNull(billto_infos)) {
+        billto_infos = NULL;
+    }
     if (billto_infos) { 
     cJSON *billto_infos_local_nonprimitive = NULL;
     if(!cJSON_IsArray(billto_infos)){
@@ -191,6 +222,9 @@ ssio_account_response_t *ssio_account_response_parseFromJSON(cJSON *ssio_account
 
     // ssio_account_response->currency
     cJSON *currency = cJSON_GetObjectItemCaseSensitive(ssio_account_responseJSON, "currency");
+    if (cJSON_IsNull(currency)) {
+        currency = NULL;
+    }
     if (currency) { 
     if(!cJSON_IsString(currency) && !cJSON_IsNull(currency))
     {
@@ -200,6 +234,9 @@ ssio_account_response_t *ssio_account_response_parseFromJSON(cJSON *ssio_account
 
     // ssio_account_response->pmp_names
     cJSON *pmp_names = cJSON_GetObjectItemCaseSensitive(ssio_account_responseJSON, "pmp_names");
+    if (cJSON_IsNull(pmp_names)) {
+        pmp_names = NULL;
+    }
     if (pmp_names) { 
     cJSON *pmp_names_local_nonprimitive = NULL;
     if(!cJSON_IsArray(pmp_names)){
@@ -221,6 +258,9 @@ ssio_account_response_t *ssio_account_response_parseFromJSON(cJSON *ssio_account
 
     // ssio_account_response->error
     cJSON *error = cJSON_GetObjectItemCaseSensitive(ssio_account_responseJSON, "error");
+    if (cJSON_IsNull(error)) {
+        error = NULL;
+    }
     if (error) { 
     if(!cJSON_IsString(error) && !cJSON_IsNull(error))
     {
@@ -229,7 +269,7 @@ ssio_account_response_t *ssio_account_response_parseFromJSON(cJSON *ssio_account
     }
 
 
-    ssio_account_response_local_var = ssio_account_response_create (
+    ssio_account_response_local_var = ssio_account_response_create_internal (
         eligible ? eligible->valueint : 0,
         can_edit ? can_edit->valueint : 0,
         billto_infos ? billto_infosList : NULL,

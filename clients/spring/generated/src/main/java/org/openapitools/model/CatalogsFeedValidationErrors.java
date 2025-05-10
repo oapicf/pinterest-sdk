@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -18,74 +19,74 @@ import javax.annotation.Generated;
  * CatalogsFeedValidationErrors
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsFeedValidationErrors {
 
-  private Integer FETCH_ERROR;
+  private @Nullable Integer FETCH_ERROR;
 
-  private Integer FETCH_INACTIVE_FEED_ERROR;
+  private @Nullable Integer FETCH_INACTIVE_FEED_ERROR;
 
-  private Integer ENCODING_ERROR;
+  private @Nullable Integer ENCODING_ERROR;
 
-  private Integer DELIMITER_ERROR;
+  private @Nullable Integer DELIMITER_ERROR;
 
-  private Integer REQUIRED_COLUMNS_MISSING;
+  private @Nullable Integer REQUIRED_COLUMNS_MISSING;
 
-  private Integer DUPLICATE_PRODUCTS;
+  private @Nullable Integer DUPLICATE_PRODUCTS;
 
-  private Integer IMAGE_LINK_INVALID;
+  private @Nullable Integer IMAGE_LINK_INVALID;
 
-  private Integer ITEMID_MISSING;
+  private @Nullable Integer ITEMID_MISSING;
 
-  private Integer TITLE_MISSING;
+  private @Nullable Integer TITLE_MISSING;
 
-  private Integer DESCRIPTION_MISSING;
+  private @Nullable Integer DESCRIPTION_MISSING;
 
-  private Integer PRODUCT_LINK_MISSING;
+  private @Nullable Integer PRODUCT_LINK_MISSING;
 
-  private Integer IMAGE_LINK_MISSING;
+  private @Nullable Integer IMAGE_LINK_MISSING;
 
-  private Integer AVAILABILITY_INVALID;
+  private @Nullable Integer AVAILABILITY_INVALID;
 
-  private Integer PRODUCT_PRICE_INVALID;
+  private @Nullable Integer PRODUCT_PRICE_INVALID;
 
-  private Integer LINK_FORMAT_INVALID;
+  private @Nullable Integer LINK_FORMAT_INVALID;
 
-  private Integer PARSE_LINE_ERROR;
+  private @Nullable Integer PARSE_LINE_ERROR;
 
-  private Integer ADWORDS_FORMAT_INVALID;
+  private @Nullable Integer ADWORDS_FORMAT_INVALID;
 
-  private Integer INTERNAL_SERVICE_ERROR;
+  private @Nullable Integer INTERNAL_SERVICE_ERROR;
 
-  private Integer NO_VERIFIED_DOMAIN;
+  private @Nullable Integer NO_VERIFIED_DOMAIN;
 
-  private Integer ADULT_INVALID;
+  private @Nullable Integer ADULT_INVALID;
 
-  private Integer IMAGE_LINK_LENGTH_TOO_LONG;
+  private @Nullable Integer IMAGE_LINK_LENGTH_TOO_LONG;
 
-  private Integer INVALID_DOMAIN;
+  private @Nullable Integer INVALID_DOMAIN;
 
-  private Integer FEED_LENGTH_TOO_LONG;
+  private @Nullable Integer FEED_LENGTH_TOO_LONG;
 
-  private Integer LINK_LENGTH_TOO_LONG;
+  private @Nullable Integer LINK_LENGTH_TOO_LONG;
 
-  private Integer MALFORMED_XML;
+  private @Nullable Integer MALFORMED_XML;
 
-  private Integer PRICE_MISSING;
+  private @Nullable Integer PRICE_MISSING;
 
-  private Integer FEED_TOO_SMALL;
+  private @Nullable Integer FEED_TOO_SMALL;
 
-  private Integer MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
+  private @Nullable Integer MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
 
-  private Integer ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
+  private @Nullable Integer ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
 
-  private Integer PINJOIN_CONTENT_UNSAFE;
+  private @Nullable Integer PINJOIN_CONTENT_UNSAFE;
 
-  private Integer BLOCKLISTED_IMAGE_SIGNATURE;
+  private @Nullable Integer BLOCKLISTED_IMAGE_SIGNATURE;
 
-  private Integer LIST_PRICE_INVALID;
+  private @Nullable Integer LIST_PRICE_INVALID;
 
-  private Integer PRICE_CANNOT_BE_DETERMINED;
+  private @Nullable Integer PRICE_CANNOT_BE_DETERMINED;
 
   public CatalogsFeedValidationErrors FETCH_ERROR(Integer FETCH_ERROR) {
     this.FETCH_ERROR = FETCH_ERROR;

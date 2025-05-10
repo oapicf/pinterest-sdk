@@ -13,6 +13,7 @@ import org.openapitools.model.CatalogsFormat;
 import org.openapitools.model.CatalogsStatus;
 import org.openapitools.model.NullableCurrency;
 import org.openapitools.model.ProductAvailabilityType;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -30,24 +31,24 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsFeedsUpdateRequest", description = "Request object for updating a feed.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsFeedsUpdateRequest implements FeedsUpdateRequest {
 
   private JsonNullable<ProductAvailabilityType> defaultAvailability = JsonNullable.<ProductAvailabilityType>undefined();
 
   private JsonNullable<NullableCurrency> defaultCurrency = JsonNullable.<NullableCurrency>undefined();
 
-  private String name;
+  private @Nullable String name;
 
-  private CatalogsFormat format;
+  private @Nullable CatalogsFormat format;
 
   private JsonNullable<CatalogsFeedCredentials> credentials = JsonNullable.<CatalogsFeedCredentials>undefined();
 
-  private String location;
+  private @Nullable String location;
 
   private JsonNullable<CatalogsFeedProcessingSchedule> preferredProcessingSchedule = JsonNullable.<CatalogsFeedProcessingSchedule>undefined();
 
-  private CatalogsStatus status;
+  private @Nullable CatalogsStatus status;
 
   public CatalogsFeedsUpdateRequest defaultAvailability(ProductAvailabilityType defaultAvailability) {
     this.defaultAvailability = JsonNullable.of(defaultAvailability);

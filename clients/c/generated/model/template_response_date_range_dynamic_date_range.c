@@ -22,7 +22,7 @@ pinterest_rest_api_template_response_date_range_dynamic_date_range_RANGE_e templ
     return 0;
 }
 
-template_response_date_range_dynamic_date_range_t *template_response_date_range_dynamic_date_range_create(
+static template_response_date_range_dynamic_date_range_t *template_response_date_range_dynamic_date_range_create_internal(
     char *type,
     pinterest_rest_api_template_response_date_range_dynamic_date_range_RANGE_e range
     ) {
@@ -33,12 +33,26 @@ template_response_date_range_dynamic_date_range_t *template_response_date_range_
     template_response_date_range_dynamic_date_range_local_var->type = type;
     template_response_date_range_dynamic_date_range_local_var->range = range;
 
+    template_response_date_range_dynamic_date_range_local_var->_library_owned = 1;
     return template_response_date_range_dynamic_date_range_local_var;
 }
 
+__attribute__((deprecated)) template_response_date_range_dynamic_date_range_t *template_response_date_range_dynamic_date_range_create(
+    char *type,
+    pinterest_rest_api_template_response_date_range_dynamic_date_range_RANGE_e range
+    ) {
+    return template_response_date_range_dynamic_date_range_create_internal (
+        type,
+        range
+        );
+}
 
 void template_response_date_range_dynamic_date_range_free(template_response_date_range_dynamic_date_range_t *template_response_date_range_dynamic_date_range) {
     if(NULL == template_response_date_range_dynamic_date_range){
+        return ;
+    }
+    if(template_response_date_range_dynamic_date_range->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "template_response_date_range_dynamic_date_range_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -62,7 +76,7 @@ cJSON *template_response_date_range_dynamic_date_range_convertToJSON(template_re
 
     // template_response_date_range_dynamic_date_range->range
     if(template_response_date_range_dynamic_date_range->range != pinterest_rest_api_template_response_date_range_dynamic_date_range_RANGE_NULL) {
-    if(cJSON_AddStringToObject(item, "range", rangetemplate_response_date_range_dynamic_date_range_ToString(template_response_date_range_dynamic_date_range->range)) == NULL)
+    if(cJSON_AddStringToObject(item, "range", template_response_date_range_dynamic_date_range_range_ToString(template_response_date_range_dynamic_date_range->range)) == NULL)
     {
     goto fail; //Enum
     }
@@ -82,6 +96,9 @@ template_response_date_range_dynamic_date_range_t *template_response_date_range_
 
     // template_response_date_range_dynamic_date_range->type
     cJSON *type = cJSON_GetObjectItemCaseSensitive(template_response_date_range_dynamic_date_rangeJSON, "type");
+    if (cJSON_IsNull(type)) {
+        type = NULL;
+    }
     if (type) { 
     if(!cJSON_IsString(type) && !cJSON_IsNull(type))
     {
@@ -91,6 +108,9 @@ template_response_date_range_dynamic_date_range_t *template_response_date_range_
 
     // template_response_date_range_dynamic_date_range->range
     cJSON *range = cJSON_GetObjectItemCaseSensitive(template_response_date_range_dynamic_date_rangeJSON, "range");
+    if (cJSON_IsNull(range)) {
+        range = NULL;
+    }
     pinterest_rest_api_template_response_date_range_dynamic_date_range_RANGE_e rangeVariable;
     if (range) { 
     if(!cJSON_IsString(range))
@@ -101,7 +121,7 @@ template_response_date_range_dynamic_date_range_t *template_response_date_range_
     }
 
 
-    template_response_date_range_dynamic_date_range_local_var = template_response_date_range_dynamic_date_range_create (
+    template_response_date_range_dynamic_date_range_local_var = template_response_date_range_dynamic_date_range_create_internal (
         type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL,
         range ? rangeVariable : pinterest_rest_api_template_response_date_range_dynamic_date_range_RANGE_NULL
         );

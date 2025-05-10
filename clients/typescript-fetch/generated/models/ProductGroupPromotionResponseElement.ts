@@ -191,11 +191,11 @@ export function ProductGroupPromotionResponseElementFromJSONTyped(json: any, ign
     };
 }
 
-  export function ProductGroupPromotionResponseElementToJSON(json: any): ProductGroupPromotionResponseElement {
-      return ProductGroupPromotionResponseElementToJSONTyped(json, false);
-  }
+export function ProductGroupPromotionResponseElementToJSON(json: any): ProductGroupPromotionResponseElement {
+    return ProductGroupPromotionResponseElementToJSONTyped(json, false);
+}
 
-  export function ProductGroupPromotionResponseElementToJSONTyped(value?: ProductGroupPromotionResponseElement | null, ignoreDiscriminator: boolean = false): any {
+export function ProductGroupPromotionResponseElementToJSONTyped(value?: ProductGroupPromotionResponseElement | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -5,7 +5,7 @@
 
 
 
-exception_t *exception_create(
+static exception_t *exception_create_internal(
     int code,
     char *message
     ) {
@@ -16,12 +16,26 @@ exception_t *exception_create(
     exception_local_var->code = code;
     exception_local_var->message = message;
 
+    exception_local_var->_library_owned = 1;
     return exception_local_var;
 }
 
+__attribute__((deprecated)) exception_t *exception_create(
+    int code,
+    char *message
+    ) {
+    return exception_create_internal (
+        code,
+        message
+        );
+}
 
 void exception_free(exception_t *exception) {
     if(NULL == exception){
+        return ;
+    }
+    if(exception->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "exception_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -64,6 +78,9 @@ exception_t *exception_parseFromJSON(cJSON *exceptionJSON){
 
     // exception->code
     cJSON *code = cJSON_GetObjectItemCaseSensitive(exceptionJSON, "code");
+    if (cJSON_IsNull(code)) {
+        code = NULL;
+    }
     if (code) { 
     if(!cJSON_IsNumber(code))
     {
@@ -73,6 +90,9 @@ exception_t *exception_parseFromJSON(cJSON *exceptionJSON){
 
     // exception->message
     cJSON *message = cJSON_GetObjectItemCaseSensitive(exceptionJSON, "message");
+    if (cJSON_IsNull(message)) {
+        message = NULL;
+    }
     if (message) { 
     if(!cJSON_IsString(message) && !cJSON_IsNull(message))
     {
@@ -81,7 +101,7 @@ exception_t *exception_parseFromJSON(cJSON *exceptionJSON){
     }
 
 
-    exception_local_var = exception_create (
+    exception_local_var = exception_create_internal (
         code ? code->valuedouble : 0,
         message && !cJSON_IsNull(message) ? strdup(message->valuestring) : NULL
         );

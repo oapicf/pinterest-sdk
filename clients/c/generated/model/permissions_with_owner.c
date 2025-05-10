@@ -22,7 +22,7 @@ pinterest_rest_api_permissions_with_owner__e permissions_with_owner_permissions_
     return 0;
 }
 
-cJSON *permissions_with_owner_permissions_with_owner_convertToJSON(pinterest_rest_api_permissions_with_owner__e permissions_with_owner) {
+cJSON *permissions_with_owner_convertToJSON(pinterest_rest_api_permissions_with_owner__e permissions_with_owner) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "permissions_with_owner", permissions_with_owner_permissions_with_owner_ToString(permissions_with_owner)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_permissions_with_owner__e permissions_with_owner_permissions_with_owner_parseFromJSON(cJSON *permissions_with_ownerJSON) {
-    pinterest_rest_api_permissions_with_owner__e *permissions_with_owner = NULL;
-    pinterest_rest_api_permissions_with_owner__e permissions_with_ownerVariable;
-    cJSON *permissions_with_ownerVar = cJSON_GetObjectItemCaseSensitive(permissions_with_ownerJSON, "permissions_with_owner");
-    if(!cJSON_IsString(permissions_with_ownerVar) || (permissions_with_ownerVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_permissions_with_owner__e permissions_with_owner_parseFromJSON(cJSON *permissions_with_ownerJSON) {
+    if(!cJSON_IsString(permissions_with_ownerJSON) || (permissions_with_ownerJSON->valuestring == NULL)) {
+        return 0;
     }
-    permissions_with_ownerVariable = permissions_with_owner_permissions_with_owner_FromString(permissions_with_ownerVar->valuestring);
-    return permissions_with_ownerVariable;
-end:
-    return 0;
+    return permissions_with_owner_permissions_with_owner_FromString(permissions_with_ownerJSON->valuestring);
 }

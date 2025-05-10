@@ -5,7 +5,7 @@
 
 
 
-catalogs_product_group_filters_request_any_of_1_t *catalogs_product_group_filters_request_any_of_1_create(
+static catalogs_product_group_filters_request_any_of_1_t *catalogs_product_group_filters_request_any_of_1_create_internal(
     list_t *all_of
     ) {
     catalogs_product_group_filters_request_any_of_1_t *catalogs_product_group_filters_request_any_of_1_local_var = malloc(sizeof(catalogs_product_group_filters_request_any_of_1_t));
@@ -14,12 +14,24 @@ catalogs_product_group_filters_request_any_of_1_t *catalogs_product_group_filter
     }
     catalogs_product_group_filters_request_any_of_1_local_var->all_of = all_of;
 
+    catalogs_product_group_filters_request_any_of_1_local_var->_library_owned = 1;
     return catalogs_product_group_filters_request_any_of_1_local_var;
 }
 
+__attribute__((deprecated)) catalogs_product_group_filters_request_any_of_1_t *catalogs_product_group_filters_request_any_of_1_create(
+    list_t *all_of
+    ) {
+    return catalogs_product_group_filters_request_any_of_1_create_internal (
+        all_of
+        );
+}
 
 void catalogs_product_group_filters_request_any_of_1_free(catalogs_product_group_filters_request_any_of_1_t *catalogs_product_group_filters_request_any_of_1) {
     if(NULL == catalogs_product_group_filters_request_any_of_1){
+        return ;
+    }
+    if(catalogs_product_group_filters_request_any_of_1->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_product_group_filters_request_any_of_1_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -73,6 +85,9 @@ catalogs_product_group_filters_request_any_of_1_t *catalogs_product_group_filter
 
     // catalogs_product_group_filters_request_any_of_1->all_of
     cJSON *all_of = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filters_request_any_of_1JSON, "all_of");
+    if (cJSON_IsNull(all_of)) {
+        all_of = NULL;
+    }
     if (!all_of) {
         goto end;
     }
@@ -96,7 +111,7 @@ catalogs_product_group_filters_request_any_of_1_t *catalogs_product_group_filter
     }
 
 
-    catalogs_product_group_filters_request_any_of_1_local_var = catalogs_product_group_filters_request_any_of_1_create (
+    catalogs_product_group_filters_request_any_of_1_local_var = catalogs_product_group_filters_request_any_of_1_create_internal (
         all_ofList
         );
 

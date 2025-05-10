@@ -25,9 +25,10 @@ typedef struct delete_partner_assets_result_t {
     int is_shared_partner; //boolean
     char *partner_id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } delete_partner_assets_result_t;
 
-delete_partner_assets_result_t *delete_partner_assets_result_create(
+__attribute__((deprecated)) delete_partner_assets_result_t *delete_partner_assets_result_create(
     char *asset_id,
     char *asset_type,
     list_t *permissions,

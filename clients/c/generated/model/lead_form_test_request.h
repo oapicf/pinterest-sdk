@@ -21,9 +21,10 @@ typedef struct lead_form_test_request_t lead_form_test_request_t;
 typedef struct lead_form_test_request_t {
     list_t *answers; //primitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } lead_form_test_request_t;
 
-lead_form_test_request_t *lead_form_test_request_create(
+__attribute__((deprecated)) lead_form_test_request_t *lead_form_test_request_create(
     list_t *answers
 );
 

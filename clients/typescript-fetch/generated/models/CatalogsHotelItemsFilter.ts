@@ -74,11 +74,11 @@ export function CatalogsHotelItemsFilterFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function CatalogsHotelItemsFilterToJSON(json: any): CatalogsHotelItemsFilter {
-      return CatalogsHotelItemsFilterToJSONTyped(json, false);
-  }
+export function CatalogsHotelItemsFilterToJSON(json: any): CatalogsHotelItemsFilter {
+    return CatalogsHotelItemsFilterToJSONTyped(json, false);
+}
 
-  export function CatalogsHotelItemsFilterToJSONTyped(value?: CatalogsHotelItemsFilter | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsHotelItemsFilterToJSONTyped(value?: CatalogsHotelItemsFilter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

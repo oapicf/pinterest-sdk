@@ -19,11 +19,25 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Object describing an item bid option deletion operation")
 @JsonTypeName("AdvancedAuctionItemsSubmitDeleteRecord")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdvancedAuctionItemsSubmitDeleteRecord   {
   private String itemId;
   private Country country;
   private Language language;
+
+  public AdvancedAuctionItemsSubmitDeleteRecord() {
+  }
+
+  @JsonCreator
+  public AdvancedAuctionItemsSubmitDeleteRecord(
+    @JsonProperty(required = true, value = "item_id") String itemId,
+    @JsonProperty(required = true, value = "country") Country country,
+    @JsonProperty(required = true, value = "language") Language language
+  ) {
+    this.itemId = itemId;
+    this.country = country;
+    this.language = language;
+  }
 
   /**
    * The catalog retail item id in the merchant namespace
@@ -35,12 +49,12 @@ public class AdvancedAuctionItemsSubmitDeleteRecord   {
 
   
   @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog retail item id in the merchant namespace")
-  @JsonProperty("item_id")
+  @JsonProperty(required = true, value = "item_id")
   @NotNull public String getItemId() {
     return itemId;
   }
 
-  @JsonProperty("item_id")
+  @JsonProperty(required = true, value = "item_id")
   public void setItemId(String itemId) {
     this.itemId = itemId;
   }
@@ -54,12 +68,12 @@ public class AdvancedAuctionItemsSubmitDeleteRecord   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("country")
+  @JsonProperty(required = true, value = "country")
   @NotNull public Country getCountry() {
     return country;
   }
 
-  @JsonProperty("country")
+  @JsonProperty(required = true, value = "country")
   public void setCountry(Country country) {
     this.country = country;
   }
@@ -73,12 +87,12 @@ public class AdvancedAuctionItemsSubmitDeleteRecord   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("language")
+  @JsonProperty(required = true, value = "language")
   @NotNull public Language getLanguage() {
     return language;
   }
 
-  @JsonProperty("language")
+  @JsonProperty(required = true, value = "language")
   public void setLanguage(Language language) {
     this.language = language;
   }

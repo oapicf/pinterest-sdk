@@ -79,11 +79,11 @@ export function ConversionEventResponseFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-  export function ConversionEventResponseToJSON(json: any): ConversionEventResponse {
-      return ConversionEventResponseToJSONTyped(json, false);
-  }
+export function ConversionEventResponseToJSON(json: any): ConversionEventResponse {
+    return ConversionEventResponseToJSONTyped(json, false);
+}
 
-  export function ConversionEventResponseToJSONTyped(value?: ConversionEventResponse | null, ignoreDiscriminator: boolean = false): any {
+export function ConversionEventResponseToJSONTyped(value?: ConversionEventResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

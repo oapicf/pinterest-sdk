@@ -62,11 +62,11 @@ export function TemplateResponseDateRangeAbsoluteDateRangeFromJSONTyped(json: an
     };
 }
 
-  export function TemplateResponseDateRangeAbsoluteDateRangeToJSON(json: any): TemplateResponseDateRangeAbsoluteDateRange {
-      return TemplateResponseDateRangeAbsoluteDateRangeToJSONTyped(json, false);
-  }
+export function TemplateResponseDateRangeAbsoluteDateRangeToJSON(json: any): TemplateResponseDateRangeAbsoluteDateRange {
+    return TemplateResponseDateRangeAbsoluteDateRangeToJSONTyped(json, false);
+}
 
-  export function TemplateResponseDateRangeAbsoluteDateRangeToJSONTyped(value?: TemplateResponseDateRangeAbsoluteDateRange | null, ignoreDiscriminator: boolean = false): any {
+export function TemplateResponseDateRangeAbsoluteDateRangeToJSONTyped(value?: TemplateResponseDateRangeAbsoluteDateRange | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

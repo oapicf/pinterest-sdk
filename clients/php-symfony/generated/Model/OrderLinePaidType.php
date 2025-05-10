@@ -44,10 +44,10 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum OrderLinePaidType: string
 {
-        case PAID = "PAID";
-        case BONUS = "BONUS";
-        case MAKE_GOOD = "MAKE_GOOD";
-        case TEST = "TEST";
+        case PAID = 'PAID';
+        case BONUS = 'BONUS';
+        case MAKE_GOOD = 'MAKE_GOOD';
+        case TEST = 'TEST';
 }
 
 

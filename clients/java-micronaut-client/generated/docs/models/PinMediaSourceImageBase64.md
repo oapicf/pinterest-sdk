@@ -25,8 +25,8 @@ IMAGE_BASE64 | `"image_base64"`
 
 Name | Value
 ---- | -----
-JPEG | `"image/jpeg"`
-PNG | `"image/png"`
+IMAGE_JPEG | `"image/jpeg"`
+IMAGE_PNG | `"image/png"`
 
 
 

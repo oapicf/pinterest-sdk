@@ -15,7 +15,9 @@
 export type OperationType = 'SHARE' | 'REVOKE';
 
 export const OperationType = {
+
     Share: 'SHARE' as OperationType,
+
     Revoke: 'REVOKE' as OperationType
 };
 

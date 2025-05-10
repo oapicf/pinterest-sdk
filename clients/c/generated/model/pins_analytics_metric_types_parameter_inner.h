@@ -20,9 +20,10 @@ typedef struct pins_analytics_metric_types_parameter_inner_t pins_analytics_metr
 
 typedef struct pins_analytics_metric_types_parameter_inner_t {
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } pins_analytics_metric_types_parameter_inner_t;
 
-pins_analytics_metric_types_parameter_inner_t *pins_analytics_metric_types_parameter_inner_create(
+__attribute__((deprecated)) pins_analytics_metric_types_parameter_inner_t *pins_analytics_metric_types_parameter_inner_create(
 );
 
 void pins_analytics_metric_types_parameter_inner_free(pins_analytics_metric_types_parameter_inner_t *pins_analytics_metric_types_parameter_inner);

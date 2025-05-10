@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.AudienceDemographicValue
 
+import kotlinx.serialization.Serializable
 /**
  * Audience demographics
  * @param ages Ages distribution.
@@ -21,6 +22,7 @@ import org.openapitools.server.models.AudienceDemographicValue
  * @param metros Geographic metro area distribution.
  * @param countries Country area distribution.
  */
+@Serializable
 data class AudienceDemographics(
     /* Ages distribution. */
     val ages: kotlin.collections.List<AudienceDemographicValue>? = null,
@@ -32,5 +34,5 @@ data class AudienceDemographics(
     val metros: kotlin.collections.List<AudienceDemographicValue>? = null,
     /* Country area distribution. */
     val countries: kotlin.collections.List<AudienceDemographicValue>? = null
-) 
+)
 

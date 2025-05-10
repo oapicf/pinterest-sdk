@@ -94,11 +94,11 @@ export function CreateMembershipOrPartnershipInvitesBodyFromJSONTyped(json: any,
     };
 }
 
-  export function CreateMembershipOrPartnershipInvitesBodyToJSON(json: any): CreateMembershipOrPartnershipInvitesBody {
-      return CreateMembershipOrPartnershipInvitesBodyToJSONTyped(json, false);
-  }
+export function CreateMembershipOrPartnershipInvitesBodyToJSON(json: any): CreateMembershipOrPartnershipInvitesBody {
+    return CreateMembershipOrPartnershipInvitesBodyToJSONTyped(json, false);
+}
 
-  export function CreateMembershipOrPartnershipInvitesBodyToJSONTyped(value?: CreateMembershipOrPartnershipInvitesBody | null, ignoreDiscriminator: boolean = false): any {
+export function CreateMembershipOrPartnershipInvitesBodyToJSONTyped(value?: CreateMembershipOrPartnershipInvitesBody | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

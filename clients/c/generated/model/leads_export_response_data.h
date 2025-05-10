@@ -17,24 +17,17 @@ typedef struct leads_export_response_data_t leads_export_response_data_t;
 
 #include "leads_export_status.h"
 
-// Enum  for leads_export_response_data
-
-typedef enum  { pinterest_rest_api_leads_export_response_data__NULL = 0, pinterest_rest_api_leads_export_response_data__IN_PROGRESS, pinterest_rest_api_leads_export_response_data__FINISHED, pinterest_rest_api_leads_export_response_data__FAILED } pinterest_rest_api_leads_export_response_data__e;
-
-char* leads_export_response_data_export_status_ToString(pinterest_rest_api_leads_export_response_data__e export_status);
-
-pinterest_rest_api_leads_export_response_data__e leads_export_response_data_export_status_FromString(char* export_status);
-
 
 
 typedef struct leads_export_response_data_t {
-    leads_export_status_t *export_status; // custom
+    pinterest_rest_api_leads_export_status__e export_status; //referenced enum
     char *download_url; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } leads_export_response_data_t;
 
-leads_export_response_data_t *leads_export_response_data_create(
-    leads_export_status_t *export_status,
+__attribute__((deprecated)) leads_export_response_data_t *leads_export_response_data_create(
+    pinterest_rest_api_leads_export_status__e export_status,
     char *download_url
 );
 

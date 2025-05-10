@@ -16,7 +16,7 @@ public struct Account: Codable, JSONEncodable, Hashable {
         case pinner = "PINNER"
         case business = "BUSINESS"
     }
-    static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Type of account */
     public var accountType: AccountType?
     /** User account ID. */
@@ -87,3 +87,6 @@ public struct Account: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension Account: Identifiable {}

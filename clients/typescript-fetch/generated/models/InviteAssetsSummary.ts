@@ -70,11 +70,11 @@ export function InviteAssetsSummaryFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function InviteAssetsSummaryToJSON(json: any): InviteAssetsSummary {
-      return InviteAssetsSummaryToJSONTyped(json, false);
-  }
+export function InviteAssetsSummaryToJSON(json: any): InviteAssetsSummary {
+    return InviteAssetsSummaryToJSONTyped(json, false);
+}
 
-  export function InviteAssetsSummaryToJSONTyped(value?: InviteAssetsSummary | null, ignoreDiscriminator: boolean = false): any {
+export function InviteAssetsSummaryToJSONTyped(value?: InviteAssetsSummary | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

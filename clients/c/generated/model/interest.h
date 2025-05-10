@@ -24,9 +24,10 @@ typedef struct interest_t {
     char *key; // string
     char *name; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } interest_t;
 
-interest_t *interest_create(
+__attribute__((deprecated)) interest_t *interest_create(
     char *canonical_url,
     char *id,
     char *key,

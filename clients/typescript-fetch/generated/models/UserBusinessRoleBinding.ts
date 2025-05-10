@@ -116,11 +116,11 @@ export function UserBusinessRoleBindingFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-  export function UserBusinessRoleBindingToJSON(json: any): UserBusinessRoleBinding {
-      return UserBusinessRoleBindingToJSONTyped(json, false);
-  }
+export function UserBusinessRoleBindingToJSON(json: any): UserBusinessRoleBinding {
+    return UserBusinessRoleBindingToJSONTyped(json, false);
+}
 
-  export function UserBusinessRoleBindingToJSONTyped(value?: UserBusinessRoleBinding | null, ignoreDiscriminator: boolean = false): any {
+export function UserBusinessRoleBindingToJSONTyped(value?: UserBusinessRoleBinding | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

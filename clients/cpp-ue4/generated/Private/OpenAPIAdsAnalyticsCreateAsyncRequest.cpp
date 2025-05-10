@@ -24,9 +24,9 @@ inline FString ToString(const OpenAPIAdsAnalyticsCreateAsyncRequest::PrimarySort
 {
 	switch (Value)
 	{
-	case OpenAPIAdsAnalyticsCreateAsyncRequest::PrimarySortEnum::Id:
+	case OpenAPIAdsAnalyticsCreateAsyncRequest::PrimarySortEnum::ById:
 		return TEXT("BY_ID");
-	case OpenAPIAdsAnalyticsCreateAsyncRequest::PrimarySortEnum::Date:
+	case OpenAPIAdsAnalyticsCreateAsyncRequest::PrimarySortEnum::ByDate:
 		return TEXT("BY_DATE");
 	}
 
@@ -42,8 +42,8 @@ FString OpenAPIAdsAnalyticsCreateAsyncRequest::EnumToString(const OpenAPIAdsAnal
 inline bool FromString(const FString& EnumAsString, OpenAPIAdsAnalyticsCreateAsyncRequest::PrimarySortEnum& Value)
 {
 	static TMap<FString, OpenAPIAdsAnalyticsCreateAsyncRequest::PrimarySortEnum> StringToEnum = { 
-		{ TEXT("BY_ID"), OpenAPIAdsAnalyticsCreateAsyncRequest::PrimarySortEnum::Id },
-		{ TEXT("BY_DATE"), OpenAPIAdsAnalyticsCreateAsyncRequest::PrimarySortEnum::Date }, };
+		{ TEXT("BY_ID"), OpenAPIAdsAnalyticsCreateAsyncRequest::PrimarySortEnum::ById },
+		{ TEXT("BY_DATE"), OpenAPIAdsAnalyticsCreateAsyncRequest::PrimarySortEnum::ByDate }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)

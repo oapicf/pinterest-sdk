@@ -5,6 +5,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -19,10 +20,10 @@ import javax.annotation.Generated;
  * CatalogsFeedIngestionErrors
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsFeedIngestionErrors {
 
-  private Integer LINE_LEVEL_INTERNAL_ERROR;
+  private @Nullable Integer LINE_LEVEL_INTERNAL_ERROR;
 
   /**
    * The product count has decreased by more than 99% compared to the last successful ingestion.
@@ -57,19 +58,19 @@ public class CatalogsFeedIngestionErrors {
     }
   }
 
-  private LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE;
+  private @Nullable LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE;
 
-  private Integer ACCOUNT_FLAGGED;
+  private @Nullable Integer ACCOUNT_FLAGGED;
 
-  private Integer IMAGE_LEVEL_INTERNAL_ERROR;
+  private @Nullable Integer IMAGE_LEVEL_INTERNAL_ERROR;
 
-  private Integer IMAGE_FILE_NOT_ACCESSIBLE;
+  private @Nullable Integer IMAGE_FILE_NOT_ACCESSIBLE;
 
-  private Integer IMAGE_MALFORMED_URL;
+  private @Nullable Integer IMAGE_MALFORMED_URL;
 
-  private Integer IMAGE_FILE_NOT_FOUND;
+  private @Nullable Integer IMAGE_FILE_NOT_FOUND;
 
-  private Integer IMAGE_INVALID_FILE;
+  private @Nullable Integer IMAGE_INVALID_FILE;
 
   public CatalogsFeedIngestionErrors LINE_LEVEL_INTERNAL_ERROR(Integer LINE_LEVEL_INTERNAL_ERROR) {
     this.LINE_LEVEL_INTERNAL_ERROR = LINE_LEVEL_INTERNAL_ERROR;

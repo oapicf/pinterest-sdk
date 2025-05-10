@@ -11,7 +11,6 @@
 */
 package org.openapitools.server.apis
 
-import com.google.gson.Gson
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.auth.*
@@ -34,13 +33,12 @@ import org.openapitools.server.models.AudiencesList200Response
 import org.openapitools.server.models.Error
 
 fun Route.AudiencesApi() {
-    val gson = Gson()
     val empty = mutableMapOf<String, Any?>()
 
     authenticate("pinterest_oauth2") {
     post<Paths.audiencesCreate> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -105,7 +103,7 @@ fun Route.AudiencesApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -116,7 +114,7 @@ fun Route.AudiencesApi() {
     authenticate("pinterest_oauth2") {
     post<Paths.audiencesCreateCustom> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -181,7 +179,7 @@ fun Route.AudiencesApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -192,7 +190,7 @@ fun Route.AudiencesApi() {
     authenticate("pinterest_oauth2") {
     get<Paths.audiencesGet> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -257,7 +255,7 @@ fun Route.AudiencesApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -268,7 +266,7 @@ fun Route.AudiencesApi() {
     authenticate("pinterest_oauth2") {
     get<Paths.audiencesList> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -394,7 +392,7 @@ fun Route.AudiencesApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -405,7 +403,7 @@ fun Route.AudiencesApi() {
     authenticate("pinterest_oauth2") {
     patch<Paths.audiencesUpdate> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -470,7 +468,7 @@ fun Route.AudiencesApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }

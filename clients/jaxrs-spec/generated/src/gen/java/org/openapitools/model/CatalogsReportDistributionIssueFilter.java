@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsReportDistributionIssueFilter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsReportDistributionIssueFilter   {
   public enum ReportTypeEnum {
 
@@ -67,6 +67,16 @@ public class CatalogsReportDistributionIssueFilter   {
   private ReportTypeEnum reportType;
   private String catalogId;
 
+  public CatalogsReportDistributionIssueFilter() {
+  }
+
+  @JsonCreator
+  public CatalogsReportDistributionIssueFilter(
+    @JsonProperty(required = true, value = "report_type") ReportTypeEnum reportType
+  ) {
+    this.reportType = reportType;
+  }
+
   /**
    **/
   public CatalogsReportDistributionIssueFilter reportType(ReportTypeEnum reportType) {
@@ -76,12 +86,12 @@ public class CatalogsReportDistributionIssueFilter   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("report_type")
+  @JsonProperty(required = true, value = "report_type")
   @NotNull public ReportTypeEnum getReportType() {
     return reportType;
   }
 
-  @JsonProperty("report_type")
+  @JsonProperty(required = true, value = "report_type")
   public void setReportType(ReportTypeEnum reportType) {
     this.reportType = reportType;
   }

@@ -5,7 +5,7 @@
 
 
 
-ad_preview_create_from_pin_t *ad_preview_create_from_pin_create(
+static ad_preview_create_from_pin_t *ad_preview_create_from_pin_create_internal(
     char *pin_id
     ) {
     ad_preview_create_from_pin_t *ad_preview_create_from_pin_local_var = malloc(sizeof(ad_preview_create_from_pin_t));
@@ -14,12 +14,24 @@ ad_preview_create_from_pin_t *ad_preview_create_from_pin_create(
     }
     ad_preview_create_from_pin_local_var->pin_id = pin_id;
 
+    ad_preview_create_from_pin_local_var->_library_owned = 1;
     return ad_preview_create_from_pin_local_var;
 }
 
+__attribute__((deprecated)) ad_preview_create_from_pin_t *ad_preview_create_from_pin_create(
+    char *pin_id
+    ) {
+    return ad_preview_create_from_pin_create_internal (
+        pin_id
+        );
+}
 
 void ad_preview_create_from_pin_free(ad_preview_create_from_pin_t *ad_preview_create_from_pin) {
     if(NULL == ad_preview_create_from_pin){
+        return ;
+    }
+    if(ad_preview_create_from_pin->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ad_preview_create_from_pin_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -55,6 +67,9 @@ ad_preview_create_from_pin_t *ad_preview_create_from_pin_parseFromJSON(cJSON *ad
 
     // ad_preview_create_from_pin->pin_id
     cJSON *pin_id = cJSON_GetObjectItemCaseSensitive(ad_preview_create_from_pinJSON, "pin_id");
+    if (cJSON_IsNull(pin_id)) {
+        pin_id = NULL;
+    }
     if (!pin_id) {
         goto end;
     }
@@ -66,7 +81,7 @@ ad_preview_create_from_pin_t *ad_preview_create_from_pin_parseFromJSON(cJSON *ad
     }
 
 
-    ad_preview_create_from_pin_local_var = ad_preview_create_from_pin_create (
+    ad_preview_create_from_pin_local_var = ad_preview_create_from_pin_create_internal (
         strdup(pin_id->valuestring)
         );
 

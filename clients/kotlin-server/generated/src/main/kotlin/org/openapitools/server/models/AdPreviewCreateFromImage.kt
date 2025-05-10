@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param imageUrl Image URL.
  * @param title Title displayed below ad.
  */
+@Serializable
 data class AdPreviewCreateFromImage(
     /* Image URL. */
     val imageUrl: kotlin.String,
     /* Title displayed below ad. */
     val title: kotlin.String
-) 
+)
 

@@ -5,7 +5,7 @@
 
 
 
-trending_keywords_response_trends_inner_time_series_t *trending_keywords_response_trends_inner_time_series_create(
+static trending_keywords_response_trends_inner_time_series_t *trending_keywords_response_trends_inner_time_series_create_internal(
     char *date
     ) {
     trending_keywords_response_trends_inner_time_series_t *trending_keywords_response_trends_inner_time_series_local_var = malloc(sizeof(trending_keywords_response_trends_inner_time_series_t));
@@ -14,12 +14,24 @@ trending_keywords_response_trends_inner_time_series_t *trending_keywords_respons
     }
     trending_keywords_response_trends_inner_time_series_local_var->date = date;
 
+    trending_keywords_response_trends_inner_time_series_local_var->_library_owned = 1;
     return trending_keywords_response_trends_inner_time_series_local_var;
 }
 
+__attribute__((deprecated)) trending_keywords_response_trends_inner_time_series_t *trending_keywords_response_trends_inner_time_series_create(
+    char *date
+    ) {
+    return trending_keywords_response_trends_inner_time_series_create_internal (
+        date
+        );
+}
 
 void trending_keywords_response_trends_inner_time_series_free(trending_keywords_response_trends_inner_time_series_t *trending_keywords_response_trends_inner_time_series) {
     if(NULL == trending_keywords_response_trends_inner_time_series){
+        return ;
+    }
+    if(trending_keywords_response_trends_inner_time_series->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "trending_keywords_response_trends_inner_time_series_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -54,6 +66,9 @@ trending_keywords_response_trends_inner_time_series_t *trending_keywords_respons
 
     // trending_keywords_response_trends_inner_time_series->date
     cJSON *date = cJSON_GetObjectItemCaseSensitive(trending_keywords_response_trends_inner_time_seriesJSON, "date");
+    if (cJSON_IsNull(date)) {
+        date = NULL;
+    }
     if (date) { 
     if(!cJSON_IsString(date))
     {
@@ -62,7 +77,7 @@ trending_keywords_response_trends_inner_time_series_t *trending_keywords_respons
     }
 
 
-    trending_keywords_response_trends_inner_time_series_local_var = trending_keywords_response_trends_inner_time_series_create (
+    trending_keywords_response_trends_inner_time_series_local_var = trending_keywords_response_trends_inner_time_series_create_internal (
         date ? strdup(date->valuestring) : NULL
         );
 

@@ -63,11 +63,11 @@ export function CreateAssetAccessRequestResponseFromJSONTyped(json: any, ignoreD
     };
 }
 
-  export function CreateAssetAccessRequestResponseToJSON(json: any): CreateAssetAccessRequestResponse {
-      return CreateAssetAccessRequestResponseToJSONTyped(json, false);
-  }
+export function CreateAssetAccessRequestResponseToJSON(json: any): CreateAssetAccessRequestResponse {
+    return CreateAssetAccessRequestResponseToJSONTyped(json, false);
+}
 
-  export function CreateAssetAccessRequestResponseToJSONTyped(value?: CreateAssetAccessRequestResponse | null, ignoreDiscriminator: boolean = false): any {
+export function CreateAssetAccessRequestResponseToJSONTyped(value?: CreateAssetAccessRequestResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

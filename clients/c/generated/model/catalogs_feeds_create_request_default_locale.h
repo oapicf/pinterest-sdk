@@ -21,9 +21,10 @@ typedef struct catalogs_feeds_create_request_default_locale_t catalogs_feeds_cre
 
 typedef struct catalogs_feeds_create_request_default_locale_t {
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_feeds_create_request_default_locale_t;
 
-catalogs_feeds_create_request_default_locale_t *catalogs_feeds_create_request_default_locale_create(
+__attribute__((deprecated)) catalogs_feeds_create_request_default_locale_t *catalogs_feeds_create_request_default_locale_create(
 );
 
 void catalogs_feeds_create_request_default_locale_free(catalogs_feeds_create_request_default_locale_t *catalogs_feeds_create_request_default_locale);

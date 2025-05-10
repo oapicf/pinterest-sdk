@@ -74,11 +74,11 @@ export function CatalogsReportFeedIngestionFilterFromJSONTyped(json: any, ignore
     };
 }
 
-  export function CatalogsReportFeedIngestionFilterToJSON(json: any): CatalogsReportFeedIngestionFilter {
-      return CatalogsReportFeedIngestionFilterToJSONTyped(json, false);
-  }
+export function CatalogsReportFeedIngestionFilterToJSON(json: any): CatalogsReportFeedIngestionFilter {
+    return CatalogsReportFeedIngestionFilterToJSONTyped(json, false);
+}
 
-  export function CatalogsReportFeedIngestionFilterToJSONTyped(value?: CatalogsReportFeedIngestionFilter | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsReportFeedIngestionFilterToJSONTyped(value?: CatalogsReportFeedIngestionFilter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -51,20 +51,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Request object used to get bid options values for a batch of retail catalog items
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdvancedAuctionItemsGetRequest {
   public static final String SERIALIZED_NAME_CATALOG_ID = "catalog_id";
   @SerializedName(SERIALIZED_NAME_CATALOG_ID)
+  @javax.annotation.Nonnull
   private String catalogId;
 
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
+  @javax.annotation.Nonnull
   private List<AdvancedAuctionItemsGetRecord> items = new ArrayList<>();
 
   public AdvancedAuctionItemsGetRequest() {
   }
 
-  public AdvancedAuctionItemsGetRequest catalogId(String catalogId) {
+  public AdvancedAuctionItemsGetRequest catalogId(@javax.annotation.Nonnull String catalogId) {
     this.catalogId = catalogId;
     return this;
   }
@@ -78,12 +80,12 @@ public class AdvancedAuctionItemsGetRequest {
     return catalogId;
   }
 
-  public void setCatalogId(String catalogId) {
+  public void setCatalogId(@javax.annotation.Nonnull String catalogId) {
     this.catalogId = catalogId;
   }
 
 
-  public AdvancedAuctionItemsGetRequest items(List<AdvancedAuctionItemsGetRecord> items) {
+  public AdvancedAuctionItemsGetRequest items(@javax.annotation.Nonnull List<AdvancedAuctionItemsGetRecord> items) {
     this.items = items;
     return this;
   }
@@ -105,7 +107,7 @@ public class AdvancedAuctionItemsGetRequest {
     return items;
   }
 
-  public void setItems(List<AdvancedAuctionItemsGetRecord> items) {
+  public void setItems(@javax.annotation.Nonnull List<AdvancedAuctionItemsGetRecord> items) {
     this.items = items;
   }
 

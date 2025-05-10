@@ -18,6 +18,7 @@ import org.openapitools.server.models.ItemResponseAnyOf1
 import org.openapitools.server.models.ItemValidationEvent
 import org.openapitools.server.models.Pin
 
+import kotlinx.serialization.Serializable
 /**
  * Object describing an item record
  * @param catalogType 
@@ -26,6 +27,7 @@ import org.openapitools.server.models.Pin
  * @param hotelId The catalog hotel id in the merchant namespace
  * @param creativeAssetsId The catalog creative assets id in the merchant namespace
  */
+@Serializable
 data class ItemResponse(
     val catalogType: CatalogsType,
     /* The catalog item id in the merchant namespace */
@@ -39,5 +41,5 @@ data class ItemResponse(
     /* The pins mapped to the item */
     val pins: kotlin.collections.List<Pin>? = null,
     val attributes: CatalogsCreativeAssetsAttributes? = null
-) 
+)
 

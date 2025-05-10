@@ -20,9 +20,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Request body used to delete asset groups")
 @JsonTypeName("DeleteAssetGroupBody")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class DeleteAssetGroupBody   {
   private @Valid List<@Pattern(regexp = "^\\d+$")String> assetGroupsToDelete = new ArrayList<>();
+
+  public DeleteAssetGroupBody() {
+  }
+
+  @JsonCreator
+  public DeleteAssetGroupBody(
+    @JsonProperty(required = true, value = "asset_groups_to_delete") List< @Pattern(regexp="^\\d+$")String> assetGroupsToDelete
+  ) {
+    this.assetGroupsToDelete = assetGroupsToDelete;
+  }
 
   /**
    * List of ids of asset groups to be deleted
@@ -34,12 +44,12 @@ public class DeleteAssetGroupBody   {
 
   
   @ApiModelProperty(example = "[\"666791336903426391\",\"666791336903426392\"]", required = true, value = "List of ids of asset groups to be deleted")
-  @JsonProperty("asset_groups_to_delete")
+  @JsonProperty(required = true, value = "asset_groups_to_delete")
   @NotNull  @Size(min=1,max=50)public List< @Pattern(regexp="^\\d+$")String> getAssetGroupsToDelete() {
     return assetGroupsToDelete;
   }
 
-  @JsonProperty("asset_groups_to_delete")
+  @JsonProperty(required = true, value = "asset_groups_to_delete")
   public void setAssetGroupsToDelete(List<@Pattern(regexp = "^\\d+$")String> assetGroupsToDelete) {
     this.assetGroupsToDelete = assetGroupsToDelete;
   }

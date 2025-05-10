@@ -65,10 +65,35 @@ TrendingKeywordsResponseTrendsInner <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return TrendingKeywordsResponseTrendsInner in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return TrendingKeywordsResponseTrendsInner as a base R list.
+    #' @examples
+    #' # convert array of TrendingKeywordsResponseTrendsInner (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert TrendingKeywordsResponseTrendsInner to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       TrendingKeywordsResponseTrendsInnerObject <- list()
       if (!is.null(self$`keyword`)) {
         TrendingKeywordsResponseTrendsInnerObject[["keyword"]] <-
@@ -88,9 +113,9 @@ TrendingKeywordsResponseTrendsInner <- R6::R6Class(
       }
       if (!is.null(self$`time_series`)) {
         TrendingKeywordsResponseTrendsInnerObject[["time_series"]] <-
-          self$`time_series`$toJSON()
+          self$`time_series`$toSimpleType()
       }
-      TrendingKeywordsResponseTrendsInnerObject
+      return(TrendingKeywordsResponseTrendsInnerObject)
     },
 
     #' @description
@@ -122,53 +147,13 @@ TrendingKeywordsResponseTrendsInner <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return TrendingKeywordsResponseTrendsInner in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`keyword`)) {
-          sprintf(
-          '"keyword":
-            "%s"
-                    ',
-          self$`keyword`
-          )
-        },
-        if (!is.null(self$`pct_growth_wow`)) {
-          sprintf(
-          '"pct_growth_wow":
-            %d
-                    ',
-          self$`pct_growth_wow`
-          )
-        },
-        if (!is.null(self$`pct_growth_mom`)) {
-          sprintf(
-          '"pct_growth_mom":
-            %d
-                    ',
-          self$`pct_growth_mom`
-          )
-        },
-        if (!is.null(self$`pct_growth_yoy`)) {
-          sprintf(
-          '"pct_growth_yoy":
-            %d
-                    ',
-          self$`pct_growth_yoy`
-          )
-        },
-        if (!is.null(self$`time_series`)) {
-          sprintf(
-          '"time_series":
-          %s
-          ',
-          jsonlite::toJSON(self$`time_series`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

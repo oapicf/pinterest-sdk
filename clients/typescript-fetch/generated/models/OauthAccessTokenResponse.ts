@@ -114,11 +114,11 @@ export function OauthAccessTokenResponseFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function OauthAccessTokenResponseToJSON(json: any): OauthAccessTokenResponse {
-      return OauthAccessTokenResponseToJSONTyped(json, false);
-  }
+export function OauthAccessTokenResponseToJSON(json: any): OauthAccessTokenResponse {
+    return OauthAccessTokenResponseToJSONTyped(json, false);
+}
 
-  export function OauthAccessTokenResponseToJSONTyped(value?: OauthAccessTokenResponse | null, ignoreDiscriminator: boolean = false): any {
+export function OauthAccessTokenResponseToJSONTyped(value?: OauthAccessTokenResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

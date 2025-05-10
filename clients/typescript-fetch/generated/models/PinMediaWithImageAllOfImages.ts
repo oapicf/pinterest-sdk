@@ -69,11 +69,11 @@ export function PinMediaWithImageAllOfImagesFromJSONTyped(json: any, ignoreDiscr
     };
 }
 
-  export function PinMediaWithImageAllOfImagesToJSON(json: any): PinMediaWithImageAllOfImages {
-      return PinMediaWithImageAllOfImagesToJSONTyped(json, false);
-  }
+export function PinMediaWithImageAllOfImagesToJSON(json: any): PinMediaWithImageAllOfImages {
+    return PinMediaWithImageAllOfImagesToJSONTyped(json, false);
+}
 
-  export function PinMediaWithImageAllOfImagesToJSONTyped(value?: PinMediaWithImageAllOfImages | null, ignoreDiscriminator: boolean = false): any {
+export function PinMediaWithImageAllOfImagesToJSONTyped(value?: PinMediaWithImageAllOfImages | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

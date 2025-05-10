@@ -64,7 +64,7 @@ class IntegrationLog
      * @Type("string")
     */
     #[Assert\NotNull]
-    #[Assert\Choice(["APP", "API"])]
+    #[Assert\Choice(['APP', 'API'])]
     #[Assert\Type("string")]
     protected ?string $eventType = null;
 
@@ -76,7 +76,7 @@ class IntegrationLog
      * @Type("string")
     */
     #[Assert\NotNull]
-    #[Assert\Choice(["INFO", "WARN", "ERROR"])]
+    #[Assert\Choice(['INFO', 'WARN', 'ERROR'])]
     #[Assert\Type("string")]
     protected ?string $logLevel = null;
 
@@ -178,7 +178,7 @@ class IntegrationLog
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->clientTimestamp = array_key_exists('clientTimestamp', $data) ? $data['clientTimestamp'] : $this->clientTimestamp;

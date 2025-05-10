@@ -21,10 +21,20 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("business_partner_asset_access_get_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BusinessPartnerAssetAccessGet200Response   {
   private @Valid List<@Valid GetPartnerAssetsResponse> items = new ArrayList<>();
   private String bookmark;
+
+  public BusinessPartnerAssetAccessGet200Response() {
+  }
+
+  @JsonCreator
+  public BusinessPartnerAssetAccessGet200Response(
+    @JsonProperty(required = true, value = "items") List<@Valid GetPartnerAssetsResponse> items
+  ) {
+    this.items = items;
+  }
 
   /**
    * List assets on which you granted access to your partner or assets on which your partner has granted you access.
@@ -36,12 +46,12 @@ public class BusinessPartnerAssetAccessGet200Response   {
 
   
   @ApiModelProperty(required = true, value = "List assets on which you granted access to your partner or assets on which your partner has granted you access.")
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   @NotNull @Valid public List<@Valid GetPartnerAssetsResponse> getItems() {
     return items;
   }
 
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   public void setItems(List<@Valid GetPartnerAssetsResponse> items) {
     this.items = items;
   }

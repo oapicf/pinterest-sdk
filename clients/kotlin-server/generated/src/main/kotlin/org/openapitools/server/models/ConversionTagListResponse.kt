@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.ConversionTagResponse
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items 
  */
+@Serializable
 data class ConversionTagListResponse(
     val items: kotlin.collections.List<ConversionTagResponse>? = null
-) 
+)
 

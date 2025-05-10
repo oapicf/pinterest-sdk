@@ -56,11 +56,11 @@ export function TargetingTemplateAudienceSizingFromJSONTyped(json: any, ignoreDi
     };
 }
 
-  export function TargetingTemplateAudienceSizingToJSON(json: any): TargetingTemplateAudienceSizing {
-      return TargetingTemplateAudienceSizingToJSONTyped(json, false);
-  }
+export function TargetingTemplateAudienceSizingToJSON(json: any): TargetingTemplateAudienceSizing {
+    return TargetingTemplateAudienceSizingToJSONTyped(json, false);
+}
 
-  export function TargetingTemplateAudienceSizingToJSONTyped(value?: TargetingTemplateAudienceSizing | null, ignoreDiscriminator: boolean = false): any {
+export function TargetingTemplateAudienceSizingToJSONTyped(value?: TargetingTemplateAudienceSizing | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -22,7 +22,7 @@ pinterest_rest_api_audience_share_type__e audience_share_type_audience_share_typ
     return 0;
 }
 
-cJSON *audience_share_type_audience_share_type_convertToJSON(pinterest_rest_api_audience_share_type__e audience_share_type) {
+cJSON *audience_share_type_convertToJSON(pinterest_rest_api_audience_share_type__e audience_share_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "audience_share_type", audience_share_type_audience_share_type_ToString(audience_share_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_audience_share_type__e audience_share_type_audience_share_type_parseFromJSON(cJSON *audience_share_typeJSON) {
-    pinterest_rest_api_audience_share_type__e *audience_share_type = NULL;
-    pinterest_rest_api_audience_share_type__e audience_share_typeVariable;
-    cJSON *audience_share_typeVar = cJSON_GetObjectItemCaseSensitive(audience_share_typeJSON, "audience_share_type");
-    if(!cJSON_IsString(audience_share_typeVar) || (audience_share_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_audience_share_type__e audience_share_type_parseFromJSON(cJSON *audience_share_typeJSON) {
+    if(!cJSON_IsString(audience_share_typeJSON) || (audience_share_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    audience_share_typeVariable = audience_share_type_audience_share_type_FromString(audience_share_typeVar->valuestring);
-    return audience_share_typeVariable;
-end:
-    return 0;
+    return audience_share_type_audience_share_type_FromString(audience_share_typeJSON->valuestring);
 }

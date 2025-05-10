@@ -72,7 +72,7 @@ class CampaignCreateRequest
     * @Accessor(getter="getSerializedStatus", setter="setDeserializedStatus")
     * @Type("string")
     */
-    protected ?EntityStatus $status = 'ACTIVE';
+    protected ?EntityStatus $status = self::OpenAPI\Server\Model\EntityStatus_ACTIVE;
 
     /**
      * Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;daily_spend_cap\&quot; cannot be set at the same time.
@@ -177,7 +177,7 @@ class CampaignCreateRequest
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->adAccountId = array_key_exists('adAccountId', $data) ? $data['adAccountId'] : $this->adAccountId;

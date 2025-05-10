@@ -13,8 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // CatalogsProductGroupsUpdateRequest - struct for CatalogsProductGroupsUpdateRequest
@@ -113,6 +113,20 @@ func (obj *CatalogsProductGroupsUpdateRequest) GetActualInstance() (interface{})
 
 	if obj.CatalogsVerticalProductGroupUpdateRequest != nil {
 		return obj.CatalogsVerticalProductGroupUpdateRequest
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj CatalogsProductGroupsUpdateRequest) GetActualInstanceValue() (interface{}) {
+	if obj.CatalogsProductGroupUpdateRequest != nil {
+		return *obj.CatalogsProductGroupUpdateRequest
+	}
+
+	if obj.CatalogsVerticalProductGroupUpdateRequest != nil {
+		return *obj.CatalogsVerticalProductGroupUpdateRequest
 	}
 
 	// all schemas are nil

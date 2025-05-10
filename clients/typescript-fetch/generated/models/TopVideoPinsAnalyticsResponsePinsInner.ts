@@ -70,11 +70,11 @@ export function TopVideoPinsAnalyticsResponsePinsInnerFromJSONTyped(json: any, i
     };
 }
 
-  export function TopVideoPinsAnalyticsResponsePinsInnerToJSON(json: any): TopVideoPinsAnalyticsResponsePinsInner {
-      return TopVideoPinsAnalyticsResponsePinsInnerToJSONTyped(json, false);
-  }
+export function TopVideoPinsAnalyticsResponsePinsInnerToJSON(json: any): TopVideoPinsAnalyticsResponsePinsInner {
+    return TopVideoPinsAnalyticsResponsePinsInnerToJSONTyped(json, false);
+}
 
-  export function TopVideoPinsAnalyticsResponsePinsInnerToJSONTyped(value?: TopVideoPinsAnalyticsResponsePinsInner | null, ignoreDiscriminator: boolean = false): any {
+export function TopVideoPinsAnalyticsResponsePinsInnerToJSONTyped(value?: TopVideoPinsAnalyticsResponsePinsInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

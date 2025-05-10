@@ -5,7 +5,7 @@
 
 
 
-media_upload_details_t *media_upload_details_create(
+static media_upload_details_t *media_upload_details_create_internal(
     char *media_id,
     media_upload_type_t *media_type,
     media_upload_status_t *status
@@ -18,12 +18,28 @@ media_upload_details_t *media_upload_details_create(
     media_upload_details_local_var->media_type = media_type;
     media_upload_details_local_var->status = status;
 
+    media_upload_details_local_var->_library_owned = 1;
     return media_upload_details_local_var;
 }
 
+__attribute__((deprecated)) media_upload_details_t *media_upload_details_create(
+    char *media_id,
+    media_upload_type_t *media_type,
+    media_upload_status_t *status
+    ) {
+    return media_upload_details_create_internal (
+        media_id,
+        media_type,
+        status
+        );
+}
 
 void media_upload_details_free(media_upload_details_t *media_upload_details) {
     if(NULL == media_upload_details){
+        return ;
+    }
+    if(media_upload_details->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "media_upload_details_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -98,6 +114,9 @@ media_upload_details_t *media_upload_details_parseFromJSON(cJSON *media_upload_d
 
     // media_upload_details->media_id
     cJSON *media_id = cJSON_GetObjectItemCaseSensitive(media_upload_detailsJSON, "media_id");
+    if (cJSON_IsNull(media_id)) {
+        media_id = NULL;
+    }
     if (media_id) { 
     if(!cJSON_IsString(media_id) && !cJSON_IsNull(media_id))
     {
@@ -107,18 +126,24 @@ media_upload_details_t *media_upload_details_parseFromJSON(cJSON *media_upload_d
 
     // media_upload_details->media_type
     cJSON *media_type = cJSON_GetObjectItemCaseSensitive(media_upload_detailsJSON, "media_type");
+    if (cJSON_IsNull(media_type)) {
+        media_type = NULL;
+    }
     if (media_type) { 
     media_type_local_nonprim = media_upload_type_parseFromJSON(media_type); //custom
     }
 
     // media_upload_details->status
     cJSON *status = cJSON_GetObjectItemCaseSensitive(media_upload_detailsJSON, "status");
+    if (cJSON_IsNull(status)) {
+        status = NULL;
+    }
     if (status) { 
     status_local_nonprim = media_upload_status_parseFromJSON(status); //custom
     }
 
 
-    media_upload_details_local_var = media_upload_details_create (
+    media_upload_details_local_var = media_upload_details_create_internal (
         media_id && !cJSON_IsNull(media_id) ? strdup(media_id->valuestring) : NULL,
         media_type ? media_type_local_nonprim : NULL,
         status ? status_local_nonprim : NULL

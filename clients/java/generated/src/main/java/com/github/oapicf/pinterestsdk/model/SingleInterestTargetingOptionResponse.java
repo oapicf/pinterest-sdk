@@ -50,28 +50,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * SingleInterestTargetingOptionResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SingleInterestTargetingOptionResponse {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_CHILD_INTERESTS = "child_interests";
   @SerializedName(SERIALIZED_NAME_CHILD_INTERESTS)
+  @javax.annotation.Nullable
   private List<String> childInterests = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_LEVEL = "level";
   @SerializedName(SERIALIZED_NAME_LEVEL)
+  @javax.annotation.Nullable
   private Integer level;
 
   public SingleInterestTargetingOptionResponse() {
   }
 
-  public SingleInterestTargetingOptionResponse id(String id) {
+  public SingleInterestTargetingOptionResponse id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -85,12 +89,12 @@ public class SingleInterestTargetingOptionResponse {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public SingleInterestTargetingOptionResponse name(String name) {
+  public SingleInterestTargetingOptionResponse name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -104,12 +108,12 @@ public class SingleInterestTargetingOptionResponse {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public SingleInterestTargetingOptionResponse childInterests(List<String> childInterests) {
+  public SingleInterestTargetingOptionResponse childInterests(@javax.annotation.Nullable List<String> childInterests) {
     this.childInterests = childInterests;
     return this;
   }
@@ -131,12 +135,12 @@ public class SingleInterestTargetingOptionResponse {
     return childInterests;
   }
 
-  public void setChildInterests(List<String> childInterests) {
+  public void setChildInterests(@javax.annotation.Nullable List<String> childInterests) {
     this.childInterests = childInterests;
   }
 
 
-  public SingleInterestTargetingOptionResponse level(Integer level) {
+  public SingleInterestTargetingOptionResponse level(@javax.annotation.Nullable Integer level) {
     this.level = level;
     return this;
   }
@@ -150,7 +154,7 @@ public class SingleInterestTargetingOptionResponse {
     return level;
   }
 
-  public void setLevel(Integer level) {
+  public void setLevel(@javax.annotation.Nullable Integer level) {
     this.level = level;
   }
 

@@ -22,7 +22,7 @@ pinterest_rest_api_country__e country_country_FromString(char* country) {
     return 0;
 }
 
-cJSON *country_country_convertToJSON(pinterest_rest_api_country__e country) {
+cJSON *country_convertToJSON(pinterest_rest_api_country__e country) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "country", country_country_ToString(country)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_country__e country_country_parseFromJSON(cJSON *countryJSON) {
-    pinterest_rest_api_country__e *country = NULL;
-    pinterest_rest_api_country__e countryVariable;
-    cJSON *countryVar = cJSON_GetObjectItemCaseSensitive(countryJSON, "country");
-    if(!cJSON_IsString(countryVar) || (countryVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_country__e country_parseFromJSON(cJSON *countryJSON) {
+    if(!cJSON_IsString(countryJSON) || (countryJSON->valuestring == NULL)) {
+        return 0;
     }
-    countryVariable = country_country_FromString(countryVar->valuestring);
-    return countryVariable;
-end:
-    return 0;
+    return country_country_FromString(countryJSON->valuestring);
 }

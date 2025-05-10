@@ -1,6 +1,6 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Multipart};
+use axum_extra::extract::{CookieJar, Host};
 use bytes::Bytes;
 use http::Method;
 use serde::{Deserialize, Serialize};
@@ -58,37 +58,37 @@ pub enum SearchUserPinsSlashListResponse {
 /// Search
 #[async_trait]
 #[allow(clippy::ptr_arg)]
-pub trait Search {
+pub trait Search<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHandler<E> {
     /// Search pins by a given search term.
     ///
     /// SearchPartnerPins - GET /v5/search/partner/pins
     async fn search_partner_pins(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::SearchPartnerPinsQueryParams,
-    ) -> Result<SearchPartnerPinsResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::SearchPartnerPinsQueryParams,
+    ) -> Result<SearchPartnerPinsResponse, E>;
 
     /// Search user's boards.
     ///
     /// SearchUserBoardsSlashGet - GET /v5/search/boards
     async fn search_user_boards_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::SearchUserBoardsSlashGetQueryParams,
-    ) -> Result<SearchUserBoardsSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::SearchUserBoardsSlashGetQueryParams,
+    ) -> Result<SearchUserBoardsSlashGetResponse, E>;
 
     /// Search user's Pins.
     ///
     /// SearchUserPinsSlashList - GET /v5/search/pins
     async fn search_user_pins_slash_list(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::SearchUserPinsSlashListQueryParams,
-    ) -> Result<SearchUserPinsSlashListResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::SearchUserPinsSlashListQueryParams,
+    ) -> Result<SearchUserPinsSlashListResponse, E>;
 }

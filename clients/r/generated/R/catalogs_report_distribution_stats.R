@@ -97,10 +97,35 @@ CatalogsReportDistributionStats <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return CatalogsReportDistributionStats in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return CatalogsReportDistributionStats as a base R list.
+    #' @examples
+    #' # convert array of CatalogsReportDistributionStats (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert CatalogsReportDistributionStats to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       CatalogsReportDistributionStatsObject <- list()
       if (!is.null(self$`report_type`)) {
         CatalogsReportDistributionStatsObject[["report_type"]] <-
@@ -134,7 +159,7 @@ CatalogsReportDistributionStats <- R6::R6Class(
         CatalogsReportDistributionStatsObject[["ineligible_for_organic"]] <-
           self$`ineligible_for_organic`
       }
-      CatalogsReportDistributionStatsObject
+      return(CatalogsReportDistributionStatsObject)
     },
 
     #' @description
@@ -176,77 +201,13 @@ CatalogsReportDistributionStats <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return CatalogsReportDistributionStats in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`report_type`)) {
-          sprintf(
-          '"report_type":
-            "%s"
-                    ',
-          self$`report_type`
-          )
-        },
-        if (!is.null(self$`catalog_id`)) {
-          sprintf(
-          '"catalog_id":
-            "%s"
-                    ',
-          self$`catalog_id`
-          )
-        },
-        if (!is.null(self$`code`)) {
-          sprintf(
-          '"code":
-            %d
-                    ',
-          self$`code`
-          )
-        },
-        if (!is.null(self$`code_label`)) {
-          sprintf(
-          '"code_label":
-            "%s"
-                    ',
-          self$`code_label`
-          )
-        },
-        if (!is.null(self$`message`)) {
-          sprintf(
-          '"message":
-            "%s"
-                    ',
-          self$`message`
-          )
-        },
-        if (!is.null(self$`occurrences`)) {
-          sprintf(
-          '"occurrences":
-            %d
-                    ',
-          self$`occurrences`
-          )
-        },
-        if (!is.null(self$`ineligible_for_ads`)) {
-          sprintf(
-          '"ineligible_for_ads":
-            %s
-                    ',
-          tolower(self$`ineligible_for_ads`)
-          )
-        },
-        if (!is.null(self$`ineligible_for_organic`)) {
-          sprintf(
-          '"ineligible_for_organic":
-            %s
-                    ',
-          tolower(self$`ineligible_for_organic`)
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

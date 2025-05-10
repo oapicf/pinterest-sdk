@@ -67,11 +67,11 @@ export function CatalogsCreateRequestFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function CatalogsCreateRequestToJSON(json: any): CatalogsCreateRequest {
-      return CatalogsCreateRequestToJSONTyped(json, false);
-  }
+export function CatalogsCreateRequestToJSON(json: any): CatalogsCreateRequest {
+    return CatalogsCreateRequestToJSONTyped(json, false);
+}
 
-  export function CatalogsCreateRequestToJSONTyped(value?: CatalogsCreateRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsCreateRequestToJSONTyped(value?: CatalogsCreateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

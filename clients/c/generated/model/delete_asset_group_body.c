@@ -5,7 +5,7 @@
 
 
 
-delete_asset_group_body_t *delete_asset_group_body_create(
+static delete_asset_group_body_t *delete_asset_group_body_create_internal(
     list_t *asset_groups_to_delete
     ) {
     delete_asset_group_body_t *delete_asset_group_body_local_var = malloc(sizeof(delete_asset_group_body_t));
@@ -14,12 +14,24 @@ delete_asset_group_body_t *delete_asset_group_body_create(
     }
     delete_asset_group_body_local_var->asset_groups_to_delete = asset_groups_to_delete;
 
+    delete_asset_group_body_local_var->_library_owned = 1;
     return delete_asset_group_body_local_var;
 }
 
+__attribute__((deprecated)) delete_asset_group_body_t *delete_asset_group_body_create(
+    list_t *asset_groups_to_delete
+    ) {
+    return delete_asset_group_body_create_internal (
+        asset_groups_to_delete
+        );
+}
 
 void delete_asset_group_body_free(delete_asset_group_body_t *delete_asset_group_body) {
     if(NULL == delete_asset_group_body){
+        return ;
+    }
+    if(delete_asset_group_body->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "delete_asset_group_body_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -47,7 +59,7 @@ cJSON *delete_asset_group_body_convertToJSON(delete_asset_group_body_t *delete_a
 
     listEntry_t *asset_groups_to_deleteListEntry;
     list_ForEach(asset_groups_to_deleteListEntry, delete_asset_group_body->asset_groups_to_delete) {
-    if(cJSON_AddStringToObject(asset_groups_to_delete, "", (char*)asset_groups_to_deleteListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(asset_groups_to_delete, "", asset_groups_to_deleteListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -70,6 +82,9 @@ delete_asset_group_body_t *delete_asset_group_body_parseFromJSON(cJSON *delete_a
 
     // delete_asset_group_body->asset_groups_to_delete
     cJSON *asset_groups_to_delete = cJSON_GetObjectItemCaseSensitive(delete_asset_group_bodyJSON, "asset_groups_to_delete");
+    if (cJSON_IsNull(asset_groups_to_delete)) {
+        asset_groups_to_delete = NULL;
+    }
     if (!asset_groups_to_delete) {
         goto end;
     }
@@ -91,7 +106,7 @@ delete_asset_group_body_t *delete_asset_group_body_parseFromJSON(cJSON *delete_a
     }
 
 
-    delete_asset_group_body_local_var = delete_asset_group_body_create (
+    delete_asset_group_body_local_var = delete_asset_group_body_create_internal (
         asset_groups_to_deleteList
         );
 

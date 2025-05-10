@@ -18,6 +18,7 @@ import org.openapitools.model.ItemResponseAnyOf;
 import org.openapitools.model.ItemResponseAnyOf1;
 import org.openapitools.model.ItemValidationEvent;
 import org.openapitools.model.Pin;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -46,19 +47,19 @@ import javax.annotation.Generated;
   @JsonSubTypes.Type(value = ItemResponseAnyOf1.class, name = "ItemResponse_anyOf_1")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ItemResponse {
 
   private CatalogsType catalogType;
 
-  private String itemId;
+  private @Nullable String itemId;
 
   @Valid
   private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
 
-  private String hotelId;
+  private @Nullable String hotelId;
 
-  private String creativeAssetsId;
+  private @Nullable String creativeAssetsId;
 
   public ItemResponse() {
     super();

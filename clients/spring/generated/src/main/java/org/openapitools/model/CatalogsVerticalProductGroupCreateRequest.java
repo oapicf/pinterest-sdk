@@ -16,6 +16,7 @@ import org.openapitools.model.CatalogsHotelProductGroupCreateRequest;
 import org.openapitools.model.CatalogsLocale;
 import org.openapitools.model.CatalogsRetailProductGroupCreateRequest;
 import org.openapitools.model.Country;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -43,7 +44,7 @@ import javax.annotation.Generated;
   @JsonSubTypes.Type(value = CatalogsRetailProductGroupCreateRequest.class, name = "CatalogsRetailProductGroupCreateRequest")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public interface CatalogsVerticalProductGroupCreateRequest extends MultipleProductGroupsInner {
     public String getCatalogType();
 }

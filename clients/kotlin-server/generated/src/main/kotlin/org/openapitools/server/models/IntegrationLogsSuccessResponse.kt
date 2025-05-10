@@ -12,11 +12,13 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Response when logs are successfully processed.
  * @param message 
  */
+@Serializable
 data class IntegrationLogsSuccessResponse(
     val message: kotlin.String? = null
-) 
+)
 

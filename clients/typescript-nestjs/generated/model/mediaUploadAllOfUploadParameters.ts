@@ -15,13 +15,13 @@
  * The list of parameter key/value pairs you will need to send with your POST request to upload your media file.
  */
 export interface MediaUploadAllOfUploadParameters { 
-    x_amz_date?: string;
-    x_amz_signature?: string;
-    x_amz_security_token?: string;
-    x_amz_algorithm?: string;
+    'x-amz-date'?: string;
+    'x-amz-signature'?: string;
+    'x-amz-security-token'?: string;
+    'x-amz-algorithm'?: string;
     key?: string;
     policy?: string;
-    x_amz_credential?: string;
-    Content_Type?: string;
+    'x-amz-credential'?: string;
+    'Content-Type'?: string;
 }
 

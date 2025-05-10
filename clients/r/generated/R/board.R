@@ -120,10 +120,35 @@ Board <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return Board in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return Board as a base R list.
+    #' @examples
+    #' # convert array of Board (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert Board to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       BoardObject <- list()
       if (!is.null(self$`id`)) {
         BoardObject[["id"]] <-
@@ -159,17 +184,17 @@ Board <- R6::R6Class(
       }
       if (!is.null(self$`media`)) {
         BoardObject[["media"]] <-
-          self$`media`$toJSON()
+          self$`media`$toSimpleType()
       }
       if (!is.null(self$`owner`)) {
         BoardObject[["owner"]] <-
-          self$`owner`$toJSON()
+          self$`owner`$toSimpleType()
       }
       if (!is.null(self$`privacy`)) {
         BoardObject[["privacy"]] <-
           self$`privacy`
       }
-      BoardObject
+      return(BoardObject)
     },
 
     #' @description
@@ -224,101 +249,13 @@ Board <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return Board in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`id`)) {
-          sprintf(
-          '"id":
-            "%s"
-                    ',
-          self$`id`
-          )
-        },
-        if (!is.null(self$`created_at`)) {
-          sprintf(
-          '"created_at":
-            "%s"
-                    ',
-          self$`created_at`
-          )
-        },
-        if (!is.null(self$`board_pins_modified_at`)) {
-          sprintf(
-          '"board_pins_modified_at":
-            "%s"
-                    ',
-          self$`board_pins_modified_at`
-          )
-        },
-        if (!is.null(self$`name`)) {
-          sprintf(
-          '"name":
-            "%s"
-                    ',
-          self$`name`
-          )
-        },
-        if (!is.null(self$`description`)) {
-          sprintf(
-          '"description":
-            "%s"
-                    ',
-          self$`description`
-          )
-        },
-        if (!is.null(self$`collaborator_count`)) {
-          sprintf(
-          '"collaborator_count":
-            %d
-                    ',
-          self$`collaborator_count`
-          )
-        },
-        if (!is.null(self$`pin_count`)) {
-          sprintf(
-          '"pin_count":
-            %d
-                    ',
-          self$`pin_count`
-          )
-        },
-        if (!is.null(self$`follower_count`)) {
-          sprintf(
-          '"follower_count":
-            %d
-                    ',
-          self$`follower_count`
-          )
-        },
-        if (!is.null(self$`media`)) {
-          sprintf(
-          '"media":
-          %s
-          ',
-          jsonlite::toJSON(self$`media`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`owner`)) {
-          sprintf(
-          '"owner":
-          %s
-          ',
-          jsonlite::toJSON(self$`owner`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`privacy`)) {
-          sprintf(
-          '"privacy":
-            "%s"
-                    ',
-          self$`privacy`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

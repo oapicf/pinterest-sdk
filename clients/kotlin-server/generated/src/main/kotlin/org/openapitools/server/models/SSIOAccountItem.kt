@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.SSIOAccountAddress
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param id Salesforce id for billto_info
@@ -25,6 +26,7 @@ import org.openapitools.server.models.SSIOAccountAddress
  * @param ioType Insertion Order Type - Pinterest Paper or Agency Paper
  * @param addresses Address information that is associated with this account.
  */
+@Serializable
 data class SSIOAccountItem(
     /* Salesforce id for billto_info */
     val id: kotlin.String? = null,
@@ -44,5 +46,5 @@ data class SSIOAccountItem(
     val ioType: kotlin.String? = null,
     /* Address information that is associated with this account. */
     val addresses: kotlin.collections.List<SSIOAccountAddress>? = null
-) 
+)
 

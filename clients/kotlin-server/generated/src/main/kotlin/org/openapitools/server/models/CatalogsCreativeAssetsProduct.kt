@@ -14,17 +14,19 @@ package org.openapitools.server.models
 import org.openapitools.server.models.CatalogsCreativeAssetsProductMetadata
 import org.openapitools.server.models.Pin
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param catalogType 
  * @param metadata 
  * @param pin 
  */
+@Serializable
 data class CatalogsCreativeAssetsProduct(
     val catalogType: CatalogsCreativeAssetsProduct.CatalogType,
     val metadata: CatalogsCreativeAssetsProductMetadata,
-    val pin: Pin
-) 
+    val pin: Pin?
+)
 {
     /**
     * 

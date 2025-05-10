@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.GetMMMReportResponseData
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param code 
@@ -20,10 +21,11 @@ import org.openapitools.server.models.GetMMMReportResponseData
  * @param message 
  * @param status 
  */
+@Serializable
 data class GetMMMReportResponse(
     val code: java.math.BigDecimal? = null,
     val `data`: GetMMMReportResponseData? = null,
     val message: kotlin.String? = null,
     val status: kotlin.String? = null
-) 
+)
 

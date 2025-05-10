@@ -5,7 +5,7 @@
 
 
 
-targeting_spec_shopping_retargeting_t *targeting_spec_shopping_retargeting_create(
+static targeting_spec_shopping_retargeting_t *targeting_spec_shopping_retargeting_create_internal(
     int lookback_window,
     list_t *tag_types,
     int exclusion_window
@@ -18,12 +18,28 @@ targeting_spec_shopping_retargeting_t *targeting_spec_shopping_retargeting_creat
     targeting_spec_shopping_retargeting_local_var->tag_types = tag_types;
     targeting_spec_shopping_retargeting_local_var->exclusion_window = exclusion_window;
 
+    targeting_spec_shopping_retargeting_local_var->_library_owned = 1;
     return targeting_spec_shopping_retargeting_local_var;
 }
 
+__attribute__((deprecated)) targeting_spec_shopping_retargeting_t *targeting_spec_shopping_retargeting_create(
+    int lookback_window,
+    list_t *tag_types,
+    int exclusion_window
+    ) {
+    return targeting_spec_shopping_retargeting_create_internal (
+        lookback_window,
+        tag_types,
+        exclusion_window
+        );
+}
 
 void targeting_spec_shopping_retargeting_free(targeting_spec_shopping_retargeting_t *targeting_spec_shopping_retargeting) {
     if(NULL == targeting_spec_shopping_retargeting){
+        return ;
+    }
+    if(targeting_spec_shopping_retargeting->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "targeting_spec_shopping_retargeting_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -89,6 +105,9 @@ targeting_spec_shopping_retargeting_t *targeting_spec_shopping_retargeting_parse
 
     // targeting_spec_shopping_retargeting->lookback_window
     cJSON *lookback_window = cJSON_GetObjectItemCaseSensitive(targeting_spec_shopping_retargetingJSON, "lookback_window");
+    if (cJSON_IsNull(lookback_window)) {
+        lookback_window = NULL;
+    }
     if (lookback_window) { 
     if(!cJSON_IsNumber(lookback_window))
     {
@@ -98,6 +117,9 @@ targeting_spec_shopping_retargeting_t *targeting_spec_shopping_retargeting_parse
 
     // targeting_spec_shopping_retargeting->tag_types
     cJSON *tag_types = cJSON_GetObjectItemCaseSensitive(targeting_spec_shopping_retargetingJSON, "tag_types");
+    if (cJSON_IsNull(tag_types)) {
+        tag_types = NULL;
+    }
     if (tag_types) { 
     cJSON *tag_types_local = NULL;
     if(!cJSON_IsArray(tag_types)) {
@@ -111,7 +133,7 @@ targeting_spec_shopping_retargeting_t *targeting_spec_shopping_retargeting_parse
         {
             goto end;
         }
-        double *tag_types_local_value = (double *)calloc(1, sizeof(double));
+        double *tag_types_local_value = calloc(1, sizeof(double));
         if(!tag_types_local_value)
         {
             goto end;
@@ -123,6 +145,9 @@ targeting_spec_shopping_retargeting_t *targeting_spec_shopping_retargeting_parse
 
     // targeting_spec_shopping_retargeting->exclusion_window
     cJSON *exclusion_window = cJSON_GetObjectItemCaseSensitive(targeting_spec_shopping_retargetingJSON, "exclusion_window");
+    if (cJSON_IsNull(exclusion_window)) {
+        exclusion_window = NULL;
+    }
     if (exclusion_window) { 
     if(!cJSON_IsNumber(exclusion_window))
     {
@@ -131,7 +156,7 @@ targeting_spec_shopping_retargeting_t *targeting_spec_shopping_retargeting_parse
     }
 
 
-    targeting_spec_shopping_retargeting_local_var = targeting_spec_shopping_retargeting_create (
+    targeting_spec_shopping_retargeting_local_var = targeting_spec_shopping_retargeting_create_internal (
         lookback_window ? lookback_window->valuedouble : 0,
         tag_types ? tag_typesList : NULL,
         exclusion_window ? exclusion_window->valuedouble : 0

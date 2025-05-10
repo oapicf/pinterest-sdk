@@ -50,28 +50,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsItemValidationIssues
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsItemValidationIssues {
   public static final String SERIALIZED_NAME_ITEM_NUMBER = "item_number";
   @SerializedName(SERIALIZED_NAME_ITEM_NUMBER)
+  @javax.annotation.Nonnull
   private Integer itemNumber;
 
   public static final String SERIALIZED_NAME_ITEM_ID = "item_id";
   @SerializedName(SERIALIZED_NAME_ITEM_ID)
+  @javax.annotation.Nullable
   private String itemId;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
+  @javax.annotation.Nonnull
   private CatalogsItemValidationErrors errors;
 
   public static final String SERIALIZED_NAME_WARNINGS = "warnings";
   @SerializedName(SERIALIZED_NAME_WARNINGS)
+  @javax.annotation.Nonnull
   private CatalogsItemValidationWarnings warnings;
 
   public CatalogsItemValidationIssues() {
   }
 
-  public CatalogsItemValidationIssues itemNumber(Integer itemNumber) {
+  public CatalogsItemValidationIssues itemNumber(@javax.annotation.Nonnull Integer itemNumber) {
     this.itemNumber = itemNumber;
     return this;
   }
@@ -85,12 +89,12 @@ public class CatalogsItemValidationIssues {
     return itemNumber;
   }
 
-  public void setItemNumber(Integer itemNumber) {
+  public void setItemNumber(@javax.annotation.Nonnull Integer itemNumber) {
     this.itemNumber = itemNumber;
   }
 
 
-  public CatalogsItemValidationIssues itemId(String itemId) {
+  public CatalogsItemValidationIssues itemId(@javax.annotation.Nullable String itemId) {
     this.itemId = itemId;
     return this;
   }
@@ -104,12 +108,12 @@ public class CatalogsItemValidationIssues {
     return itemId;
   }
 
-  public void setItemId(String itemId) {
+  public void setItemId(@javax.annotation.Nullable String itemId) {
     this.itemId = itemId;
   }
 
 
-  public CatalogsItemValidationIssues errors(CatalogsItemValidationErrors errors) {
+  public CatalogsItemValidationIssues errors(@javax.annotation.Nonnull CatalogsItemValidationErrors errors) {
     this.errors = errors;
     return this;
   }
@@ -123,12 +127,12 @@ public class CatalogsItemValidationIssues {
     return errors;
   }
 
-  public void setErrors(CatalogsItemValidationErrors errors) {
+  public void setErrors(@javax.annotation.Nonnull CatalogsItemValidationErrors errors) {
     this.errors = errors;
   }
 
 
-  public CatalogsItemValidationIssues warnings(CatalogsItemValidationWarnings warnings) {
+  public CatalogsItemValidationIssues warnings(@javax.annotation.Nonnull CatalogsItemValidationWarnings warnings) {
     this.warnings = warnings;
     return this;
   }
@@ -142,7 +146,7 @@ public class CatalogsItemValidationIssues {
     return warnings;
   }
 
-  public void setWarnings(CatalogsItemValidationWarnings warnings) {
+  public void setWarnings(@javax.annotation.Nonnull CatalogsItemValidationWarnings warnings) {
     this.warnings = warnings;
   }
 

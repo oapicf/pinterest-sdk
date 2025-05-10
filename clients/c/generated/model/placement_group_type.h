@@ -24,9 +24,9 @@ char* placement_group_type_placement_group_type_ToString(pinterest_rest_api_plac
 
 pinterest_rest_api_placement_group_type__e placement_group_type_placement_group_type_FromString(char* placement_group_type);
 
-//cJSON *placement_group_type_placement_group_type_convertToJSON(pinterest_rest_api_placement_group_type__e placement_group_type);
+cJSON *placement_group_type_convertToJSON(pinterest_rest_api_placement_group_type__e placement_group_type);
 
-//pinterest_rest_api_placement_group_type__e placement_group_type_placement_group_type_parseFromJSON(cJSON *placement_group_typeJSON);
+pinterest_rest_api_placement_group_type__e placement_group_type_parseFromJSON(cJSON *placement_group_typeJSON);
 
 #endif /* _placement_group_type_H_ */
 

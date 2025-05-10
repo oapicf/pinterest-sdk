@@ -5,7 +5,7 @@
 
 
 
-audience_demographics_t *audience_demographics_create(
+static audience_demographics_t *audience_demographics_create_internal(
     list_t *ages,
     list_t *genders,
     list_t *devices,
@@ -22,12 +22,32 @@ audience_demographics_t *audience_demographics_create(
     audience_demographics_local_var->metros = metros;
     audience_demographics_local_var->countries = countries;
 
+    audience_demographics_local_var->_library_owned = 1;
     return audience_demographics_local_var;
 }
 
+__attribute__((deprecated)) audience_demographics_t *audience_demographics_create(
+    list_t *ages,
+    list_t *genders,
+    list_t *devices,
+    list_t *metros,
+    list_t *countries
+    ) {
+    return audience_demographics_create_internal (
+        ages,
+        genders,
+        devices,
+        metros,
+        countries
+        );
+}
 
 void audience_demographics_free(audience_demographics_t *audience_demographics) {
     if(NULL == audience_demographics){
+        return ;
+    }
+    if(audience_demographics->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "audience_demographics_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -200,6 +220,9 @@ audience_demographics_t *audience_demographics_parseFromJSON(cJSON *audience_dem
 
     // audience_demographics->ages
     cJSON *ages = cJSON_GetObjectItemCaseSensitive(audience_demographicsJSON, "ages");
+    if (cJSON_IsNull(ages)) {
+        ages = NULL;
+    }
     if (ages) { 
     cJSON *ages_local_nonprimitive = NULL;
     if(!cJSON_IsArray(ages)){
@@ -221,6 +244,9 @@ audience_demographics_t *audience_demographics_parseFromJSON(cJSON *audience_dem
 
     // audience_demographics->genders
     cJSON *genders = cJSON_GetObjectItemCaseSensitive(audience_demographicsJSON, "genders");
+    if (cJSON_IsNull(genders)) {
+        genders = NULL;
+    }
     if (genders) { 
     cJSON *genders_local_nonprimitive = NULL;
     if(!cJSON_IsArray(genders)){
@@ -242,6 +268,9 @@ audience_demographics_t *audience_demographics_parseFromJSON(cJSON *audience_dem
 
     // audience_demographics->devices
     cJSON *devices = cJSON_GetObjectItemCaseSensitive(audience_demographicsJSON, "devices");
+    if (cJSON_IsNull(devices)) {
+        devices = NULL;
+    }
     if (devices) { 
     cJSON *devices_local_nonprimitive = NULL;
     if(!cJSON_IsArray(devices)){
@@ -263,6 +292,9 @@ audience_demographics_t *audience_demographics_parseFromJSON(cJSON *audience_dem
 
     // audience_demographics->metros
     cJSON *metros = cJSON_GetObjectItemCaseSensitive(audience_demographicsJSON, "metros");
+    if (cJSON_IsNull(metros)) {
+        metros = NULL;
+    }
     if (metros) { 
     cJSON *metros_local_nonprimitive = NULL;
     if(!cJSON_IsArray(metros)){
@@ -284,6 +316,9 @@ audience_demographics_t *audience_demographics_parseFromJSON(cJSON *audience_dem
 
     // audience_demographics->countries
     cJSON *countries = cJSON_GetObjectItemCaseSensitive(audience_demographicsJSON, "countries");
+    if (cJSON_IsNull(countries)) {
+        countries = NULL;
+    }
     if (countries) { 
     cJSON *countries_local_nonprimitive = NULL;
     if(!cJSON_IsArray(countries)){
@@ -304,7 +339,7 @@ audience_demographics_t *audience_demographics_parseFromJSON(cJSON *audience_dem
     }
 
 
-    audience_demographics_local_var = audience_demographics_create (
+    audience_demographics_local_var = audience_demographics_create_internal (
         ages ? agesList : NULL,
         genders ? gendersList : NULL,
         devices ? devicesList : NULL,

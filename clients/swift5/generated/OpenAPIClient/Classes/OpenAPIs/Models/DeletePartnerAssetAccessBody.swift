@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct DeletePartnerAssetAccessBody: Codable, JSONEncodable, Hashable {
 
-    static let accessesRule = ArrayRule(minItems: 1, maxItems: 50, uniqueItems: false)
+    public static let accessesRule = ArrayRule(minItems: 1, maxItems: 50, uniqueItems: false)
     public var accesses: [DeletePartnerAssetAccessBodyAccessesInner]
 
     public init(accesses: [DeletePartnerAssetAccessBodyAccessesInner]) {

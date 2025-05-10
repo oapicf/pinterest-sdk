@@ -25,9 +25,10 @@ typedef struct user_website_verification_code_t {
     char *filename; // string
     char *file_content; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } user_website_verification_code_t;
 
-user_website_verification_code_t *user_website_verification_code_create(
+__attribute__((deprecated)) user_website_verification_code_t *user_website_verification_code_create(
     char *verification_code,
     char *dns_txt_record,
     char *metatag,

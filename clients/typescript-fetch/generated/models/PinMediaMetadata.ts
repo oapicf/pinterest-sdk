@@ -133,11 +133,11 @@ export function PinMediaMetadataFromJSONTyped(json: any, ignoreDiscriminator: bo
     };
 }
 
-  export function PinMediaMetadataToJSON(json: any): PinMediaMetadata {
-      return PinMediaMetadataToJSONTyped(json, false);
-  }
+export function PinMediaMetadataToJSON(json: any): PinMediaMetadata {
+    return PinMediaMetadataToJSONTyped(json, false);
+}
 
-  export function PinMediaMetadataToJSONTyped(value?: PinMediaMetadata | null, ignoreDiscriminator: boolean = false): any {
+export function PinMediaMetadataToJSONTyped(value?: PinMediaMetadata | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

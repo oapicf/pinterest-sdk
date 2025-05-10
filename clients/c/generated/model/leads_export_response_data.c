@@ -4,26 +4,9 @@
 #include "leads_export_response_data.h"
 
 
-char* leads_export_response_data_export_status_ToString(pinterest_rest_api_leads_export_response_data__e export_status) {
-    char* export_statusArray[] =  { "NULL", "IN_PROGRESS", "FINISHED", "FAILED" };
-    return export_statusArray[export_status];
-}
 
-pinterest_rest_api_leads_export_response_data__e leads_export_response_data_export_status_FromString(char* export_status){
-    int stringToReturn = 0;
-    char *export_statusArray[] =  { "NULL", "IN_PROGRESS", "FINISHED", "FAILED" };
-    size_t sizeofArray = sizeof(export_statusArray) / sizeof(export_statusArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(export_status, export_statusArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-
-leads_export_response_data_t *leads_export_response_data_create(
-    leads_export_status_t *export_status,
+static leads_export_response_data_t *leads_export_response_data_create_internal(
+    pinterest_rest_api_leads_export_status__e export_status,
     char *download_url
     ) {
     leads_export_response_data_t *leads_export_response_data_local_var = malloc(sizeof(leads_export_response_data_t));
@@ -33,19 +16,29 @@ leads_export_response_data_t *leads_export_response_data_create(
     leads_export_response_data_local_var->export_status = export_status;
     leads_export_response_data_local_var->download_url = download_url;
 
+    leads_export_response_data_local_var->_library_owned = 1;
     return leads_export_response_data_local_var;
 }
 
+__attribute__((deprecated)) leads_export_response_data_t *leads_export_response_data_create(
+    pinterest_rest_api_leads_export_status__e export_status,
+    char *download_url
+    ) {
+    return leads_export_response_data_create_internal (
+        export_status,
+        download_url
+        );
+}
 
 void leads_export_response_data_free(leads_export_response_data_t *leads_export_response_data) {
     if(NULL == leads_export_response_data){
         return ;
     }
-    listEntry_t *listEntry;
-    if (leads_export_response_data->export_status) {
-        leads_export_status_free(leads_export_response_data->export_status);
-        leads_export_response_data->export_status = NULL;
+    if(leads_export_response_data->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "leads_export_response_data_free");
+        return ;
     }
+    listEntry_t *listEntry;
     if (leads_export_response_data->download_url) {
         free(leads_export_response_data->download_url);
         leads_export_response_data->download_url = NULL;
@@ -57,7 +50,7 @@ cJSON *leads_export_response_data_convertToJSON(leads_export_response_data_t *le
     cJSON *item = cJSON_CreateObject();
 
     // leads_export_response_data->export_status
-    if(leads_export_response_data->export_status != pinterest_rest_api_leads_export_response_data__NULL) {
+    if(leads_export_response_data->export_status != pinterest_rest_api_leads_export_status__NULL) {
     cJSON *export_status_local_JSON = leads_export_status_convertToJSON(leads_export_response_data->export_status);
     if(export_status_local_JSON == NULL) {
         goto fail; // custom
@@ -89,16 +82,22 @@ leads_export_response_data_t *leads_export_response_data_parseFromJSON(cJSON *le
     leads_export_response_data_t *leads_export_response_data_local_var = NULL;
 
     // define the local variable for leads_export_response_data->export_status
-    leads_export_status_t *export_status_local_nonprim = NULL;
+    pinterest_rest_api_leads_export_status__e export_status_local_nonprim = 0;
 
     // leads_export_response_data->export_status
     cJSON *export_status = cJSON_GetObjectItemCaseSensitive(leads_export_response_dataJSON, "export_status");
+    if (cJSON_IsNull(export_status)) {
+        export_status = NULL;
+    }
     if (export_status) { 
     export_status_local_nonprim = leads_export_status_parseFromJSON(export_status); //custom
     }
 
     // leads_export_response_data->download_url
     cJSON *download_url = cJSON_GetObjectItemCaseSensitive(leads_export_response_dataJSON, "download_url");
+    if (cJSON_IsNull(download_url)) {
+        download_url = NULL;
+    }
     if (download_url) { 
     if(!cJSON_IsString(download_url) && !cJSON_IsNull(download_url))
     {
@@ -107,16 +106,15 @@ leads_export_response_data_t *leads_export_response_data_parseFromJSON(cJSON *le
     }
 
 
-    leads_export_response_data_local_var = leads_export_response_data_create (
-        export_status ? export_status_local_nonprim : NULL,
+    leads_export_response_data_local_var = leads_export_response_data_create_internal (
+        export_status ? export_status_local_nonprim : 0,
         download_url && !cJSON_IsNull(download_url) ? strdup(download_url->valuestring) : NULL
         );
 
     return leads_export_response_data_local_var;
 end:
     if (export_status_local_nonprim) {
-        leads_export_status_free(export_status_local_nonprim);
-        export_status_local_nonprim = NULL;
+        export_status_local_nonprim = 0;
     }
     return NULL;
 

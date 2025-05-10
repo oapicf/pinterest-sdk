@@ -22,9 +22,10 @@ typedef struct lead_form_common_policy_links_inner_t {
     char *label; // string
     char *link; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } lead_form_common_policy_links_inner_t;
 
-lead_form_common_policy_links_inner_t *lead_form_common_policy_links_inner_create(
+__attribute__((deprecated)) lead_form_common_policy_links_inner_t *lead_form_common_policy_links_inner_create(
     char *label,
     char *link
 );

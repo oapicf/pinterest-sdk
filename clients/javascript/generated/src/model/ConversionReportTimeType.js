@@ -23,14 +23,14 @@ export default class ConversionReportTimeType {
          * value: "TIME_OF_AD_ACTION"
          * @const
          */
-        "AD_ACTION" = "TIME_OF_AD_ACTION";
+        "TIME_OF_AD_ACTION" = "TIME_OF_AD_ACTION";
 
     
         /**
          * value: "TIME_OF_CONVERSION"
          * @const
          */
-        "CONVERSION" = "TIME_OF_CONVERSION";
+        "TIME_OF_CONVERSION" = "TIME_OF_CONVERSION";
 
     
 

@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * System error details included in the log sent by the client.
  * @param cause Original cause of the error.
@@ -24,6 +25,7 @@ package org.openapitools.server.models
  * @param number Integer that specifies the error code.
  * @param stackTrace Stack trace of where the error happened.
  */
+@Serializable
 data class IntegrationLogClientError(
     /* Original cause of the error. */
     val cause: kotlin.String? = null,
@@ -43,5 +45,5 @@ data class IntegrationLogClientError(
     val number: kotlin.Int? = null,
     /* Stack trace of where the error happened. */
     val stackTrace: kotlin.String? = null
-) 
+)
 

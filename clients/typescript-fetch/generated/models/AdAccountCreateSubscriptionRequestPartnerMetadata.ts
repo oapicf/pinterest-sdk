@@ -48,11 +48,11 @@ export function AdAccountCreateSubscriptionRequestPartnerMetadataFromJSONTyped(j
     };
 }
 
-  export function AdAccountCreateSubscriptionRequestPartnerMetadataToJSON(json: any): AdAccountCreateSubscriptionRequestPartnerMetadata {
-      return AdAccountCreateSubscriptionRequestPartnerMetadataToJSONTyped(json, false);
-  }
+export function AdAccountCreateSubscriptionRequestPartnerMetadataToJSON(json: any): AdAccountCreateSubscriptionRequestPartnerMetadata {
+    return AdAccountCreateSubscriptionRequestPartnerMetadataToJSONTyped(json, false);
+}
 
-  export function AdAccountCreateSubscriptionRequestPartnerMetadataToJSONTyped(value?: AdAccountCreateSubscriptionRequestPartnerMetadata | null, ignoreDiscriminator: boolean = false): any {
+export function AdAccountCreateSubscriptionRequestPartnerMetadataToJSONTyped(value?: AdAccountCreateSubscriptionRequestPartnerMetadata | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

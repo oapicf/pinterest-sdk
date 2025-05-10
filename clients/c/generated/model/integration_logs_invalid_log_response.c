@@ -5,7 +5,7 @@
 
 
 
-integration_logs_invalid_log_response_t *integration_logs_invalid_log_response_create(
+static integration_logs_invalid_log_response_t *integration_logs_invalid_log_response_create_internal(
     list_t *rejected_logs
     ) {
     integration_logs_invalid_log_response_t *integration_logs_invalid_log_response_local_var = malloc(sizeof(integration_logs_invalid_log_response_t));
@@ -14,12 +14,24 @@ integration_logs_invalid_log_response_t *integration_logs_invalid_log_response_c
     }
     integration_logs_invalid_log_response_local_var->rejected_logs = rejected_logs;
 
+    integration_logs_invalid_log_response_local_var->_library_owned = 1;
     return integration_logs_invalid_log_response_local_var;
 }
 
+__attribute__((deprecated)) integration_logs_invalid_log_response_t *integration_logs_invalid_log_response_create(
+    list_t *rejected_logs
+    ) {
+    return integration_logs_invalid_log_response_create_internal (
+        rejected_logs
+        );
+}
 
 void integration_logs_invalid_log_response_free(integration_logs_invalid_log_response_t *integration_logs_invalid_log_response) {
     if(NULL == integration_logs_invalid_log_response){
+        return ;
+    }
+    if(integration_logs_invalid_log_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "integration_logs_invalid_log_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -72,6 +84,9 @@ integration_logs_invalid_log_response_t *integration_logs_invalid_log_response_p
 
     // integration_logs_invalid_log_response->rejected_logs
     cJSON *rejected_logs = cJSON_GetObjectItemCaseSensitive(integration_logs_invalid_log_responseJSON, "rejected_logs");
+    if (cJSON_IsNull(rejected_logs)) {
+        rejected_logs = NULL;
+    }
     if (rejected_logs) { 
     cJSON *rejected_logs_local_nonprimitive = NULL;
     if(!cJSON_IsArray(rejected_logs)){
@@ -92,7 +107,7 @@ integration_logs_invalid_log_response_t *integration_logs_invalid_log_response_p
     }
 
 
-    integration_logs_invalid_log_response_local_var = integration_logs_invalid_log_response_create (
+    integration_logs_invalid_log_response_local_var = integration_logs_invalid_log_response_create_internal (
         rejected_logs ? rejected_logsList : NULL
         );
 

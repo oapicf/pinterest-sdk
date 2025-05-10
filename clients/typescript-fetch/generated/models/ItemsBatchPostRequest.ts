@@ -52,7 +52,11 @@ export function ItemsBatchPostRequestFromJSONTyped(json: any, ignoreDiscriminato
     return {} as any;
 }
 
-export function ItemsBatchPostRequestToJSON(value?: ItemsBatchPostRequest | null): any {
+export function ItemsBatchPostRequestToJSON(json: any): any {
+    return ItemsBatchPostRequestToJSONTyped(json, false);
+}
+
+export function ItemsBatchPostRequestToJSONTyped(value?: ItemsBatchPostRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

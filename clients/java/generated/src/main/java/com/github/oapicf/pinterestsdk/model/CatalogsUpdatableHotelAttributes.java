@@ -54,80 +54,97 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsUpdatableHotelAttributes
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsUpdatableHotelAttributes {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_LINK = "link";
   @SerializedName(SERIALIZED_NAME_LINK)
+  @javax.annotation.Nullable
   private String link;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nullable
   private String description;
 
   public static final String SERIALIZED_NAME_BRAND = "brand";
   @SerializedName(SERIALIZED_NAME_BRAND)
+  @javax.annotation.Nullable
   private String brand;
 
   public static final String SERIALIZED_NAME_LATITUDE = "latitude";
   @SerializedName(SERIALIZED_NAME_LATITUDE)
+  @javax.annotation.Nullable
   private BigDecimal latitude;
 
   public static final String SERIALIZED_NAME_LONGITUDE = "longitude";
   @SerializedName(SERIALIZED_NAME_LONGITUDE)
+  @javax.annotation.Nullable
   private BigDecimal longitude;
 
   public static final String SERIALIZED_NAME_NEIGHBORHOOD = "neighborhood";
   @SerializedName(SERIALIZED_NAME_NEIGHBORHOOD)
+  @javax.annotation.Nullable
   private List<String> neighborhood;
 
   public static final String SERIALIZED_NAME_ADDRESS = "address";
   @SerializedName(SERIALIZED_NAME_ADDRESS)
+  @javax.annotation.Nullable
   private CatalogsHotelAddress address;
 
   public static final String SERIALIZED_NAME_CUSTOM_LABEL0 = "custom_label_0";
   @SerializedName(SERIALIZED_NAME_CUSTOM_LABEL0)
+  @javax.annotation.Nullable
   private String customLabel0;
 
   public static final String SERIALIZED_NAME_CUSTOM_LABEL1 = "custom_label_1";
   @SerializedName(SERIALIZED_NAME_CUSTOM_LABEL1)
+  @javax.annotation.Nullable
   private String customLabel1;
 
   public static final String SERIALIZED_NAME_CUSTOM_LABEL2 = "custom_label_2";
   @SerializedName(SERIALIZED_NAME_CUSTOM_LABEL2)
+  @javax.annotation.Nullable
   private String customLabel2;
 
   public static final String SERIALIZED_NAME_CUSTOM_LABEL3 = "custom_label_3";
   @SerializedName(SERIALIZED_NAME_CUSTOM_LABEL3)
+  @javax.annotation.Nullable
   private String customLabel3;
 
   public static final String SERIALIZED_NAME_CUSTOM_LABEL4 = "custom_label_4";
   @SerializedName(SERIALIZED_NAME_CUSTOM_LABEL4)
+  @javax.annotation.Nullable
   private String customLabel4;
 
   public static final String SERIALIZED_NAME_CATEGORY = "category";
   @SerializedName(SERIALIZED_NAME_CATEGORY)
+  @javax.annotation.Nullable
   private String category;
 
   public static final String SERIALIZED_NAME_BASE_PRICE = "base_price";
   @SerializedName(SERIALIZED_NAME_BASE_PRICE)
+  @javax.annotation.Nullable
   private String basePrice;
 
   public static final String SERIALIZED_NAME_SALE_PRICE = "sale_price";
   @SerializedName(SERIALIZED_NAME_SALE_PRICE)
+  @javax.annotation.Nullable
   private String salePrice;
 
   public static final String SERIALIZED_NAME_GUEST_RATINGS = "guest_ratings";
   @SerializedName(SERIALIZED_NAME_GUEST_RATINGS)
+  @javax.annotation.Nullable
   private CatalogsHotelGuestRatings guestRatings;
 
   public CatalogsUpdatableHotelAttributes() {
   }
 
-  public CatalogsUpdatableHotelAttributes name(String name) {
+  public CatalogsUpdatableHotelAttributes name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -141,12 +158,12 @@ public class CatalogsUpdatableHotelAttributes {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public CatalogsUpdatableHotelAttributes link(String link) {
+  public CatalogsUpdatableHotelAttributes link(@javax.annotation.Nullable String link) {
     this.link = link;
     return this;
   }
@@ -160,12 +177,12 @@ public class CatalogsUpdatableHotelAttributes {
     return link;
   }
 
-  public void setLink(String link) {
+  public void setLink(@javax.annotation.Nullable String link) {
     this.link = link;
   }
 
 
-  public CatalogsUpdatableHotelAttributes description(String description) {
+  public CatalogsUpdatableHotelAttributes description(@javax.annotation.Nullable String description) {
     this.description = description;
     return this;
   }
@@ -179,12 +196,12 @@ public class CatalogsUpdatableHotelAttributes {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
 
-  public CatalogsUpdatableHotelAttributes brand(String brand) {
+  public CatalogsUpdatableHotelAttributes brand(@javax.annotation.Nullable String brand) {
     this.brand = brand;
     return this;
   }
@@ -198,12 +215,12 @@ public class CatalogsUpdatableHotelAttributes {
     return brand;
   }
 
-  public void setBrand(String brand) {
+  public void setBrand(@javax.annotation.Nullable String brand) {
     this.brand = brand;
   }
 
 
-  public CatalogsUpdatableHotelAttributes latitude(BigDecimal latitude) {
+  public CatalogsUpdatableHotelAttributes latitude(@javax.annotation.Nullable BigDecimal latitude) {
     this.latitude = latitude;
     return this;
   }
@@ -217,12 +234,12 @@ public class CatalogsUpdatableHotelAttributes {
     return latitude;
   }
 
-  public void setLatitude(BigDecimal latitude) {
+  public void setLatitude(@javax.annotation.Nullable BigDecimal latitude) {
     this.latitude = latitude;
   }
 
 
-  public CatalogsUpdatableHotelAttributes longitude(BigDecimal longitude) {
+  public CatalogsUpdatableHotelAttributes longitude(@javax.annotation.Nullable BigDecimal longitude) {
     this.longitude = longitude;
     return this;
   }
@@ -236,12 +253,12 @@ public class CatalogsUpdatableHotelAttributes {
     return longitude;
   }
 
-  public void setLongitude(BigDecimal longitude) {
+  public void setLongitude(@javax.annotation.Nullable BigDecimal longitude) {
     this.longitude = longitude;
   }
 
 
-  public CatalogsUpdatableHotelAttributes neighborhood(List<String> neighborhood) {
+  public CatalogsUpdatableHotelAttributes neighborhood(@javax.annotation.Nullable List<String> neighborhood) {
     this.neighborhood = neighborhood;
     return this;
   }
@@ -263,12 +280,12 @@ public class CatalogsUpdatableHotelAttributes {
     return neighborhood;
   }
 
-  public void setNeighborhood(List<String> neighborhood) {
+  public void setNeighborhood(@javax.annotation.Nullable List<String> neighborhood) {
     this.neighborhood = neighborhood;
   }
 
 
-  public CatalogsUpdatableHotelAttributes address(CatalogsHotelAddress address) {
+  public CatalogsUpdatableHotelAttributes address(@javax.annotation.Nullable CatalogsHotelAddress address) {
     this.address = address;
     return this;
   }
@@ -282,12 +299,12 @@ public class CatalogsUpdatableHotelAttributes {
     return address;
   }
 
-  public void setAddress(CatalogsHotelAddress address) {
+  public void setAddress(@javax.annotation.Nullable CatalogsHotelAddress address) {
     this.address = address;
   }
 
 
-  public CatalogsUpdatableHotelAttributes customLabel0(String customLabel0) {
+  public CatalogsUpdatableHotelAttributes customLabel0(@javax.annotation.Nullable String customLabel0) {
     this.customLabel0 = customLabel0;
     return this;
   }
@@ -301,12 +318,12 @@ public class CatalogsUpdatableHotelAttributes {
     return customLabel0;
   }
 
-  public void setCustomLabel0(String customLabel0) {
+  public void setCustomLabel0(@javax.annotation.Nullable String customLabel0) {
     this.customLabel0 = customLabel0;
   }
 
 
-  public CatalogsUpdatableHotelAttributes customLabel1(String customLabel1) {
+  public CatalogsUpdatableHotelAttributes customLabel1(@javax.annotation.Nullable String customLabel1) {
     this.customLabel1 = customLabel1;
     return this;
   }
@@ -320,12 +337,12 @@ public class CatalogsUpdatableHotelAttributes {
     return customLabel1;
   }
 
-  public void setCustomLabel1(String customLabel1) {
+  public void setCustomLabel1(@javax.annotation.Nullable String customLabel1) {
     this.customLabel1 = customLabel1;
   }
 
 
-  public CatalogsUpdatableHotelAttributes customLabel2(String customLabel2) {
+  public CatalogsUpdatableHotelAttributes customLabel2(@javax.annotation.Nullable String customLabel2) {
     this.customLabel2 = customLabel2;
     return this;
   }
@@ -339,12 +356,12 @@ public class CatalogsUpdatableHotelAttributes {
     return customLabel2;
   }
 
-  public void setCustomLabel2(String customLabel2) {
+  public void setCustomLabel2(@javax.annotation.Nullable String customLabel2) {
     this.customLabel2 = customLabel2;
   }
 
 
-  public CatalogsUpdatableHotelAttributes customLabel3(String customLabel3) {
+  public CatalogsUpdatableHotelAttributes customLabel3(@javax.annotation.Nullable String customLabel3) {
     this.customLabel3 = customLabel3;
     return this;
   }
@@ -358,12 +375,12 @@ public class CatalogsUpdatableHotelAttributes {
     return customLabel3;
   }
 
-  public void setCustomLabel3(String customLabel3) {
+  public void setCustomLabel3(@javax.annotation.Nullable String customLabel3) {
     this.customLabel3 = customLabel3;
   }
 
 
-  public CatalogsUpdatableHotelAttributes customLabel4(String customLabel4) {
+  public CatalogsUpdatableHotelAttributes customLabel4(@javax.annotation.Nullable String customLabel4) {
     this.customLabel4 = customLabel4;
     return this;
   }
@@ -377,12 +394,12 @@ public class CatalogsUpdatableHotelAttributes {
     return customLabel4;
   }
 
-  public void setCustomLabel4(String customLabel4) {
+  public void setCustomLabel4(@javax.annotation.Nullable String customLabel4) {
     this.customLabel4 = customLabel4;
   }
 
 
-  public CatalogsUpdatableHotelAttributes category(String category) {
+  public CatalogsUpdatableHotelAttributes category(@javax.annotation.Nullable String category) {
     this.category = category;
     return this;
   }
@@ -396,12 +413,12 @@ public class CatalogsUpdatableHotelAttributes {
     return category;
   }
 
-  public void setCategory(String category) {
+  public void setCategory(@javax.annotation.Nullable String category) {
     this.category = category;
   }
 
 
-  public CatalogsUpdatableHotelAttributes basePrice(String basePrice) {
+  public CatalogsUpdatableHotelAttributes basePrice(@javax.annotation.Nullable String basePrice) {
     this.basePrice = basePrice;
     return this;
   }
@@ -415,12 +432,12 @@ public class CatalogsUpdatableHotelAttributes {
     return basePrice;
   }
 
-  public void setBasePrice(String basePrice) {
+  public void setBasePrice(@javax.annotation.Nullable String basePrice) {
     this.basePrice = basePrice;
   }
 
 
-  public CatalogsUpdatableHotelAttributes salePrice(String salePrice) {
+  public CatalogsUpdatableHotelAttributes salePrice(@javax.annotation.Nullable String salePrice) {
     this.salePrice = salePrice;
     return this;
   }
@@ -434,12 +451,12 @@ public class CatalogsUpdatableHotelAttributes {
     return salePrice;
   }
 
-  public void setSalePrice(String salePrice) {
+  public void setSalePrice(@javax.annotation.Nullable String salePrice) {
     this.salePrice = salePrice;
   }
 
 
-  public CatalogsUpdatableHotelAttributes guestRatings(CatalogsHotelGuestRatings guestRatings) {
+  public CatalogsUpdatableHotelAttributes guestRatings(@javax.annotation.Nullable CatalogsHotelGuestRatings guestRatings) {
     this.guestRatings = guestRatings;
     return this;
   }
@@ -453,7 +470,7 @@ public class CatalogsUpdatableHotelAttributes {
     return guestRatings;
   }
 
-  public void setGuestRatings(CatalogsHotelGuestRatings guestRatings) {
+  public void setGuestRatings(@javax.annotation.Nullable CatalogsHotelGuestRatings guestRatings) {
     this.guestRatings = guestRatings;
   }
 

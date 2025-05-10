@@ -101,11 +101,11 @@ export function AdvancedAuctionProcessedItemFromJSONTyped(json: any, ignoreDiscr
     };
 }
 
-  export function AdvancedAuctionProcessedItemToJSON(json: any): AdvancedAuctionProcessedItem {
-      return AdvancedAuctionProcessedItemToJSONTyped(json, false);
-  }
+export function AdvancedAuctionProcessedItemToJSON(json: any): AdvancedAuctionProcessedItem {
+    return AdvancedAuctionProcessedItemToJSONTyped(json, false);
+}
 
-  export function AdvancedAuctionProcessedItemToJSONTyped(value?: AdvancedAuctionProcessedItem | null, ignoreDiscriminator: boolean = false): any {
+export function AdvancedAuctionProcessedItemToJSONTyped(value?: AdvancedAuctionProcessedItem | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

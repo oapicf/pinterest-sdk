@@ -48,11 +48,11 @@ export function CampaignIdFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     };
 }
 
-  export function CampaignIdToJSON(json: any): CampaignId {
-      return CampaignIdToJSONTyped(json, false);
-  }
+export function CampaignIdToJSON(json: any): CampaignId {
+    return CampaignIdToJSONTyped(json, false);
+}
 
-  export function CampaignIdToJSONTyped(value?: CampaignId | null, ignoreDiscriminator: boolean = false): any {
+export function CampaignIdToJSONTyped(value?: CampaignId | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

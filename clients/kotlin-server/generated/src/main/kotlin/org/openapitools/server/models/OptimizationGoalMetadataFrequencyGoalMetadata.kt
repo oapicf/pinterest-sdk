@@ -12,16 +12,18 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param frequency 
  * @param timerange User entity counts time range
  */
+@Serializable
 data class OptimizationGoalMetadataFrequencyGoalMetadata(
     val frequency: kotlin.Int? = null,
     /* User entity counts time range */
     val timerange: OptimizationGoalMetadataFrequencyGoalMetadata.Timerange? = null
-) 
+)
 {
     /**
     * User entity counts time range

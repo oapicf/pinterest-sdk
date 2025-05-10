@@ -64,11 +64,11 @@ export function UserFollowingGet200ResponseFromJSONTyped(json: any, ignoreDiscri
     };
 }
 
-  export function UserFollowingGet200ResponseToJSON(json: any): UserFollowingGet200Response {
-      return UserFollowingGet200ResponseToJSONTyped(json, false);
-  }
+export function UserFollowingGet200ResponseToJSON(json: any): UserFollowingGet200Response {
+    return UserFollowingGet200ResponseToJSONTyped(json, false);
+}
 
-  export function UserFollowingGet200ResponseToJSONTyped(value?: UserFollowingGet200Response | null, ignoreDiscriminator: boolean = false): any {
+export function UserFollowingGet200ResponseToJSONTyped(value?: UserFollowingGet200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

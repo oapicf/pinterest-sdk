@@ -19,10 +19,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ProductGroupAnalyticsResponse_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ProductGroupAnalyticsResponseInner extends HashMap<String, Object>  {
   private String PRODUCT_GROUP_ID;
   private LocalDate DATE;
+
+  public ProductGroupAnalyticsResponseInner() {
+  }
+
+  @JsonCreator
+  public ProductGroupAnalyticsResponseInner(
+    @JsonProperty(required = true, value = "PRODUCT_GROUP_ID") String PRODUCT_GROUP_ID
+  ) {
+    super(
+    );
+    this.PRODUCT_GROUP_ID = PRODUCT_GROUP_ID;
+  }
 
   /**
    * The ID of the product group that this metrics belongs to.
@@ -34,12 +46,12 @@ public class ProductGroupAnalyticsResponseInner extends HashMap<String, Object> 
 
   
   @ApiModelProperty(required = true, value = "The ID of the product group that this metrics belongs to.")
-  @JsonProperty("PRODUCT_GROUP_ID")
+  @JsonProperty(required = true, value = "PRODUCT_GROUP_ID")
   @NotNull  @Pattern(regexp="^\\d+$")public String getPRODUCTGROUPID() {
     return PRODUCT_GROUP_ID;
   }
 
-  @JsonProperty("PRODUCT_GROUP_ID")
+  @JsonProperty(required = true, value = "PRODUCT_GROUP_ID")
   public void setPRODUCTGROUPID(String PRODUCT_GROUP_ID) {
     this.PRODUCT_GROUP_ID = PRODUCT_GROUP_ID;
   }

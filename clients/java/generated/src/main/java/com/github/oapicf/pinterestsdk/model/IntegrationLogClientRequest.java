@@ -50,7 +50,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * HTTP request details included in the log sent by the client.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class IntegrationLogClientRequest {
   /**
    * Gets or Sets method
@@ -120,32 +120,38 @@ public class IntegrationLogClientRequest {
 
   public static final String SERIALIZED_NAME_METHOD = "method";
   @SerializedName(SERIALIZED_NAME_METHOD)
+  @javax.annotation.Nonnull
   private MethodEnum method;
 
   public static final String SERIALIZED_NAME_HOST = "host";
   @SerializedName(SERIALIZED_NAME_HOST)
+  @javax.annotation.Nonnull
   private String host;
 
   public static final String SERIALIZED_NAME_PATH = "path";
   @SerializedName(SERIALIZED_NAME_PATH)
+  @javax.annotation.Nonnull
   private String path;
 
   public static final String SERIALIZED_NAME_REQUEST_HEADERS = "request_headers";
   @SerializedName(SERIALIZED_NAME_REQUEST_HEADERS)
+  @javax.annotation.Nullable
   private Map<String, String> requestHeaders = new HashMap<>();
 
   public static final String SERIALIZED_NAME_RESPONSE_HEADERS = "response_headers";
   @SerializedName(SERIALIZED_NAME_RESPONSE_HEADERS)
+  @javax.annotation.Nullable
   private Map<String, String> responseHeaders = new HashMap<>();
 
   public static final String SERIALIZED_NAME_RESPONSE_STATUS_CODE = "response_status_code";
   @SerializedName(SERIALIZED_NAME_RESPONSE_STATUS_CODE)
+  @javax.annotation.Nullable
   private Integer responseStatusCode;
 
   public IntegrationLogClientRequest() {
   }
 
-  public IntegrationLogClientRequest method(MethodEnum method) {
+  public IntegrationLogClientRequest method(@javax.annotation.Nonnull MethodEnum method) {
     this.method = method;
     return this;
   }
@@ -159,12 +165,12 @@ public class IntegrationLogClientRequest {
     return method;
   }
 
-  public void setMethod(MethodEnum method) {
+  public void setMethod(@javax.annotation.Nonnull MethodEnum method) {
     this.method = method;
   }
 
 
-  public IntegrationLogClientRequest host(String host) {
+  public IntegrationLogClientRequest host(@javax.annotation.Nonnull String host) {
     this.host = host;
     return this;
   }
@@ -178,12 +184,12 @@ public class IntegrationLogClientRequest {
     return host;
   }
 
-  public void setHost(String host) {
+  public void setHost(@javax.annotation.Nonnull String host) {
     this.host = host;
   }
 
 
-  public IntegrationLogClientRequest path(String path) {
+  public IntegrationLogClientRequest path(@javax.annotation.Nonnull String path) {
     this.path = path;
     return this;
   }
@@ -197,12 +203,12 @@ public class IntegrationLogClientRequest {
     return path;
   }
 
-  public void setPath(String path) {
+  public void setPath(@javax.annotation.Nonnull String path) {
     this.path = path;
   }
 
 
-  public IntegrationLogClientRequest requestHeaders(Map<String, String> requestHeaders) {
+  public IntegrationLogClientRequest requestHeaders(@javax.annotation.Nullable Map<String, String> requestHeaders) {
     this.requestHeaders = requestHeaders;
     return this;
   }
@@ -224,12 +230,12 @@ public class IntegrationLogClientRequest {
     return requestHeaders;
   }
 
-  public void setRequestHeaders(Map<String, String> requestHeaders) {
+  public void setRequestHeaders(@javax.annotation.Nullable Map<String, String> requestHeaders) {
     this.requestHeaders = requestHeaders;
   }
 
 
-  public IntegrationLogClientRequest responseHeaders(Map<String, String> responseHeaders) {
+  public IntegrationLogClientRequest responseHeaders(@javax.annotation.Nullable Map<String, String> responseHeaders) {
     this.responseHeaders = responseHeaders;
     return this;
   }
@@ -251,12 +257,12 @@ public class IntegrationLogClientRequest {
     return responseHeaders;
   }
 
-  public void setResponseHeaders(Map<String, String> responseHeaders) {
+  public void setResponseHeaders(@javax.annotation.Nullable Map<String, String> responseHeaders) {
     this.responseHeaders = responseHeaders;
   }
 
 
-  public IntegrationLogClientRequest responseStatusCode(Integer responseStatusCode) {
+  public IntegrationLogClientRequest responseStatusCode(@javax.annotation.Nullable Integer responseStatusCode) {
     this.responseStatusCode = responseStatusCode;
     return this;
   }
@@ -270,7 +276,7 @@ public class IntegrationLogClientRequest {
     return responseStatusCode;
   }
 
-  public void setResponseStatusCode(Integer responseStatusCode) {
+  public void setResponseStatusCode(@javax.annotation.Nullable Integer responseStatusCode) {
     this.responseStatusCode = responseStatusCode;
   }
 

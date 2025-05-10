@@ -49,28 +49,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * TermsOfService
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TermsOfService {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_HTML = "html";
   @SerializedName(SERIALIZED_NAME_HTML)
+  @javax.annotation.Nullable
   private String html;
 
   public static final String SERIALIZED_NAME_HAS_ACCEPTED = "has_accepted";
   @SerializedName(SERIALIZED_NAME_HAS_ACCEPTED)
+  @javax.annotation.Nullable
   private Boolean hasAccepted;
 
   public static final String SERIALIZED_NAME_AD_ACCOUNT_ID = "ad_account_id";
   @SerializedName(SERIALIZED_NAME_AD_ACCOUNT_ID)
+  @javax.annotation.Nullable
   private String adAccountId;
 
   public TermsOfService() {
   }
 
-  public TermsOfService id(String id) {
+  public TermsOfService id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -84,12 +88,12 @@ public class TermsOfService {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public TermsOfService html(String html) {
+  public TermsOfService html(@javax.annotation.Nullable String html) {
     this.html = html;
     return this;
   }
@@ -103,12 +107,12 @@ public class TermsOfService {
     return html;
   }
 
-  public void setHtml(String html) {
+  public void setHtml(@javax.annotation.Nullable String html) {
     this.html = html;
   }
 
 
-  public TermsOfService hasAccepted(Boolean hasAccepted) {
+  public TermsOfService hasAccepted(@javax.annotation.Nullable Boolean hasAccepted) {
     this.hasAccepted = hasAccepted;
     return this;
   }
@@ -122,12 +126,12 @@ public class TermsOfService {
     return hasAccepted;
   }
 
-  public void setHasAccepted(Boolean hasAccepted) {
+  public void setHasAccepted(@javax.annotation.Nullable Boolean hasAccepted) {
     this.hasAccepted = hasAccepted;
   }
 
 
-  public TermsOfService adAccountId(String adAccountId) {
+  public TermsOfService adAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -141,7 +145,7 @@ public class TermsOfService {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 

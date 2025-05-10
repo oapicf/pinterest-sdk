@@ -23,9 +23,10 @@ typedef struct ssio_insertion_order_status_response_t {
     char *status; // string
     char *creation_time; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } ssio_insertion_order_status_response_t;
 
-ssio_insertion_order_status_response_t *ssio_insertion_order_status_response_create(
+__attribute__((deprecated)) ssio_insertion_order_status_response_t *ssio_insertion_order_status_response_create(
     char *pin_order_id,
     char *status,
     char *creation_time

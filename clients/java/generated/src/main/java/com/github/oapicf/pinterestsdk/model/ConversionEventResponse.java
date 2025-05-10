@@ -49,28 +49,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ConversionEventResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConversionEventResponse {
   public static final String SERIALIZED_NAME_CONVERSION_EVENT = "conversion_event";
   @SerializedName(SERIALIZED_NAME_CONVERSION_EVENT)
+  @javax.annotation.Nullable
   private ConversionTagType conversionEvent;
 
   public static final String SERIALIZED_NAME_CONVERSION_TAG_ID = "conversion_tag_id";
   @SerializedName(SERIALIZED_NAME_CONVERSION_TAG_ID)
+  @javax.annotation.Nullable
   private String conversionTagId;
 
   public static final String SERIALIZED_NAME_AD_ACCOUNT_ID = "ad_account_id";
   @SerializedName(SERIALIZED_NAME_AD_ACCOUNT_ID)
+  @javax.annotation.Nullable
   private String adAccountId;
 
   public static final String SERIALIZED_NAME_CREATED_TIME = "created_time";
   @SerializedName(SERIALIZED_NAME_CREATED_TIME)
+  @javax.annotation.Nullable
   private Integer createdTime;
 
   public ConversionEventResponse() {
   }
 
-  public ConversionEventResponse conversionEvent(ConversionTagType conversionEvent) {
+  public ConversionEventResponse conversionEvent(@javax.annotation.Nullable ConversionTagType conversionEvent) {
     this.conversionEvent = conversionEvent;
     return this;
   }
@@ -84,12 +88,12 @@ public class ConversionEventResponse {
     return conversionEvent;
   }
 
-  public void setConversionEvent(ConversionTagType conversionEvent) {
+  public void setConversionEvent(@javax.annotation.Nullable ConversionTagType conversionEvent) {
     this.conversionEvent = conversionEvent;
   }
 
 
-  public ConversionEventResponse conversionTagId(String conversionTagId) {
+  public ConversionEventResponse conversionTagId(@javax.annotation.Nullable String conversionTagId) {
     this.conversionTagId = conversionTagId;
     return this;
   }
@@ -103,12 +107,12 @@ public class ConversionEventResponse {
     return conversionTagId;
   }
 
-  public void setConversionTagId(String conversionTagId) {
+  public void setConversionTagId(@javax.annotation.Nullable String conversionTagId) {
     this.conversionTagId = conversionTagId;
   }
 
 
-  public ConversionEventResponse adAccountId(String adAccountId) {
+  public ConversionEventResponse adAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -122,12 +126,12 @@ public class ConversionEventResponse {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
 
-  public ConversionEventResponse createdTime(Integer createdTime) {
+  public ConversionEventResponse createdTime(@javax.annotation.Nullable Integer createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -141,7 +145,7 @@ public class ConversionEventResponse {
     return createdTime;
   }
 
-  public void setCreatedTime(Integer createdTime) {
+  public void setCreatedTime(@javax.annotation.Nullable Integer createdTime) {
     this.createdTime = createdTime;
   }
 

@@ -57,11 +57,11 @@ export function PriceFilterFromJSONTyped(json: any, ignoreDiscriminator: boolean
     };
 }
 
-  export function PriceFilterToJSON(json: any): PriceFilter {
-      return PriceFilterToJSONTyped(json, false);
-  }
+export function PriceFilterToJSON(json: any): PriceFilter {
+    return PriceFilterToJSONTyped(json, false);
+}
 
-  export function PriceFilterToJSONTyped(value?: PriceFilter | null, ignoreDiscriminator: boolean = false): any {
+export function PriceFilterToJSONTyped(value?: PriceFilter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

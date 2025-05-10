@@ -16,6 +16,7 @@ import org.openapitools.server.models.TargetingSpec
 import org.openapitools.server.models.TargetingTemplateKeyword
 import org.openapitools.server.models.TrackingUrls
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param name targeting template name
@@ -25,6 +26,7 @@ import org.openapitools.server.models.TrackingUrls
  * @param keywords 
  * @param trackingUrls 
  */
+@Serializable
 data class TargetingTemplateCommon(
     /* targeting template name */
     val name: kotlin.String? = null,
@@ -34,5 +36,5 @@ data class TargetingTemplateCommon(
     val placementGroup: PlacementGroupType? = PlacementGroupType.ALL,
     val keywords: kotlin.collections.List<TargetingTemplateKeyword>? = null,
     val trackingUrls: TrackingUrls? = null
-) 
+)
 

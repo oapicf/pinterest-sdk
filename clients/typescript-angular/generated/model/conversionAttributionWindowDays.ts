@@ -12,11 +12,17 @@
 export type ConversionAttributionWindowDays = 0 | 1 | 7 | 14 | 30 | 60;
 
 export const ConversionAttributionWindowDays = {
+
     NUMBER_0: 0 as ConversionAttributionWindowDays,
+
     NUMBER_1: 1 as ConversionAttributionWindowDays,
+
     NUMBER_7: 7 as ConversionAttributionWindowDays,
+
     NUMBER_14: 14 as ConversionAttributionWindowDays,
+
     NUMBER_30: 30 as ConversionAttributionWindowDays,
+
     NUMBER_60: 60 as ConversionAttributionWindowDays
 };
 

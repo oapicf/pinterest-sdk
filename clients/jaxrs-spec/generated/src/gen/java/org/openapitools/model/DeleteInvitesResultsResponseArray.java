@@ -21,9 +21,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Response to delete invites sent to Members or Partners, if there is an exception, return the exception mapped with the invite id")
 @JsonTypeName("DeleteInvitesResultsResponseArray")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class DeleteInvitesResultsResponseArray   {
   private @Valid List<@Valid DeleteInvitesResultsResponseArrayItemsInner> items = new ArrayList<>();
+
+  public DeleteInvitesResultsResponseArray() {
+  }
 
   /**
    * List of invite/Request deletion status. If there is an error, an exception object will be returned. If the invite/request was successfully cancelled, an invite object will be returned for the invite that was cancelled.

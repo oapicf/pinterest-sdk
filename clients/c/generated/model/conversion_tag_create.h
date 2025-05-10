@@ -28,9 +28,10 @@ typedef struct conversion_tag_create_t {
     int aem_db_enabled; //boolean
     int aem_loc_enabled; //boolean
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } conversion_tag_create_t;
 
-conversion_tag_create_t *conversion_tag_create_create(
+__attribute__((deprecated)) conversion_tag_create_t *conversion_tag_create_create(
     char *name,
     int aem_enabled,
     double md_frequency,

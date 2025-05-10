@@ -752,8 +752,8 @@ export type CampaignTargetingAnalyticsGetViewWindowDaysEnum = typeof CampaignTar
  * @export
  */
 export const CampaignTargetingAnalyticsGetConversionReportTimeEnum = {
-    AdAction: 'TIME_OF_AD_ACTION',
-    Conversion: 'TIME_OF_CONVERSION'
+    TimeOfAdAction: 'TIME_OF_AD_ACTION',
+    TimeOfConversion: 'TIME_OF_CONVERSION'
 } as const;
 export type CampaignTargetingAnalyticsGetConversionReportTimeEnum = typeof CampaignTargetingAnalyticsGetConversionReportTimeEnum[keyof typeof CampaignTargetingAnalyticsGetConversionReportTimeEnum];
 /**
@@ -953,8 +953,8 @@ export type CampaignsAnalyticsViewWindowDaysEnum = typeof CampaignsAnalyticsView
  * @export
  */
 export const CampaignsAnalyticsConversionReportTimeEnum = {
-    AdAction: 'TIME_OF_AD_ACTION',
-    Conversion: 'TIME_OF_CONVERSION'
+    TimeOfAdAction: 'TIME_OF_AD_ACTION',
+    TimeOfConversion: 'TIME_OF_CONVERSION'
 } as const;
 export type CampaignsAnalyticsConversionReportTimeEnum = typeof CampaignsAnalyticsConversionReportTimeEnum[keyof typeof CampaignsAnalyticsConversionReportTimeEnum];
 /**

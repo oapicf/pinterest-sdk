@@ -5,7 +5,7 @@
 
 
 
-catalogs_feed_ingestion_warnings_t *catalogs_feed_ingestion_warnings_create(
+static catalogs_feed_ingestion_warnings_t *catalogs_feed_ingestion_warnings_create_internal(
     int additional_image_level_internal_error,
     int additional_image_file_not_accessible,
     int additional_image_malformed_url,
@@ -24,12 +24,34 @@ catalogs_feed_ingestion_warnings_t *catalogs_feed_ingestion_warnings_create(
     catalogs_feed_ingestion_warnings_local_var->additional_image_invalid_file = additional_image_invalid_file;
     catalogs_feed_ingestion_warnings_local_var->hotel_price_header_is_present = hotel_price_header_is_present;
 
+    catalogs_feed_ingestion_warnings_local_var->_library_owned = 1;
     return catalogs_feed_ingestion_warnings_local_var;
 }
 
+__attribute__((deprecated)) catalogs_feed_ingestion_warnings_t *catalogs_feed_ingestion_warnings_create(
+    int additional_image_level_internal_error,
+    int additional_image_file_not_accessible,
+    int additional_image_malformed_url,
+    int additional_image_file_not_found,
+    int additional_image_invalid_file,
+    int hotel_price_header_is_present
+    ) {
+    return catalogs_feed_ingestion_warnings_create_internal (
+        additional_image_level_internal_error,
+        additional_image_file_not_accessible,
+        additional_image_malformed_url,
+        additional_image_file_not_found,
+        additional_image_invalid_file,
+        hotel_price_header_is_present
+        );
+}
 
 void catalogs_feed_ingestion_warnings_free(catalogs_feed_ingestion_warnings_t *catalogs_feed_ingestion_warnings) {
     if(NULL == catalogs_feed_ingestion_warnings){
+        return ;
+    }
+    if(catalogs_feed_ingestion_warnings->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_feed_ingestion_warnings_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -100,6 +122,9 @@ catalogs_feed_ingestion_warnings_t *catalogs_feed_ingestion_warnings_parseFromJS
 
     // catalogs_feed_ingestion_warnings->additional_image_level_internal_error
     cJSON *additional_image_level_internal_error = cJSON_GetObjectItemCaseSensitive(catalogs_feed_ingestion_warningsJSON, "ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR");
+    if (cJSON_IsNull(additional_image_level_internal_error)) {
+        additional_image_level_internal_error = NULL;
+    }
     if (additional_image_level_internal_error) { 
     if(!cJSON_IsNumber(additional_image_level_internal_error))
     {
@@ -109,6 +134,9 @@ catalogs_feed_ingestion_warnings_t *catalogs_feed_ingestion_warnings_parseFromJS
 
     // catalogs_feed_ingestion_warnings->additional_image_file_not_accessible
     cJSON *additional_image_file_not_accessible = cJSON_GetObjectItemCaseSensitive(catalogs_feed_ingestion_warningsJSON, "ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE");
+    if (cJSON_IsNull(additional_image_file_not_accessible)) {
+        additional_image_file_not_accessible = NULL;
+    }
     if (additional_image_file_not_accessible) { 
     if(!cJSON_IsNumber(additional_image_file_not_accessible))
     {
@@ -118,6 +146,9 @@ catalogs_feed_ingestion_warnings_t *catalogs_feed_ingestion_warnings_parseFromJS
 
     // catalogs_feed_ingestion_warnings->additional_image_malformed_url
     cJSON *additional_image_malformed_url = cJSON_GetObjectItemCaseSensitive(catalogs_feed_ingestion_warningsJSON, "ADDITIONAL_IMAGE_MALFORMED_URL");
+    if (cJSON_IsNull(additional_image_malformed_url)) {
+        additional_image_malformed_url = NULL;
+    }
     if (additional_image_malformed_url) { 
     if(!cJSON_IsNumber(additional_image_malformed_url))
     {
@@ -127,6 +158,9 @@ catalogs_feed_ingestion_warnings_t *catalogs_feed_ingestion_warnings_parseFromJS
 
     // catalogs_feed_ingestion_warnings->additional_image_file_not_found
     cJSON *additional_image_file_not_found = cJSON_GetObjectItemCaseSensitive(catalogs_feed_ingestion_warningsJSON, "ADDITIONAL_IMAGE_FILE_NOT_FOUND");
+    if (cJSON_IsNull(additional_image_file_not_found)) {
+        additional_image_file_not_found = NULL;
+    }
     if (additional_image_file_not_found) { 
     if(!cJSON_IsNumber(additional_image_file_not_found))
     {
@@ -136,6 +170,9 @@ catalogs_feed_ingestion_warnings_t *catalogs_feed_ingestion_warnings_parseFromJS
 
     // catalogs_feed_ingestion_warnings->additional_image_invalid_file
     cJSON *additional_image_invalid_file = cJSON_GetObjectItemCaseSensitive(catalogs_feed_ingestion_warningsJSON, "ADDITIONAL_IMAGE_INVALID_FILE");
+    if (cJSON_IsNull(additional_image_invalid_file)) {
+        additional_image_invalid_file = NULL;
+    }
     if (additional_image_invalid_file) { 
     if(!cJSON_IsNumber(additional_image_invalid_file))
     {
@@ -145,6 +182,9 @@ catalogs_feed_ingestion_warnings_t *catalogs_feed_ingestion_warnings_parseFromJS
 
     // catalogs_feed_ingestion_warnings->hotel_price_header_is_present
     cJSON *hotel_price_header_is_present = cJSON_GetObjectItemCaseSensitive(catalogs_feed_ingestion_warningsJSON, "HOTEL_PRICE_HEADER_IS_PRESENT");
+    if (cJSON_IsNull(hotel_price_header_is_present)) {
+        hotel_price_header_is_present = NULL;
+    }
     if (hotel_price_header_is_present) { 
     if(!cJSON_IsNumber(hotel_price_header_is_present))
     {
@@ -153,7 +193,7 @@ catalogs_feed_ingestion_warnings_t *catalogs_feed_ingestion_warnings_parseFromJS
     }
 
 
-    catalogs_feed_ingestion_warnings_local_var = catalogs_feed_ingestion_warnings_create (
+    catalogs_feed_ingestion_warnings_local_var = catalogs_feed_ingestion_warnings_create_internal (
         additional_image_level_internal_error ? additional_image_level_internal_error->valuedouble : 0,
         additional_image_file_not_accessible ? additional_image_file_not_accessible->valuedouble : 0,
         additional_image_malformed_url ? additional_image_malformed_url->valuedouble : 0,

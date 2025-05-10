@@ -15,6 +15,7 @@ import org.openapitools.server.models.MMMReportingColumn
 import org.openapitools.server.models.MMMReportingTargetingType
 import org.openapitools.server.models.TargetingAdvertiserCountry
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param reportName Name of the Marketing Mix Modeling (MMM) report
@@ -26,6 +27,7 @@ import org.openapitools.server.models.TargetingAdvertiserCountry
  * @param columns Metric and entity columns
  * @param countries A List of countries for filtering
  */
+@Serializable
 data class CreateMMMReportRequest(
     /* Name of the Marketing Mix Modeling (MMM) report */
     val reportName: kotlin.String,
@@ -43,7 +45,7 @@ data class CreateMMMReportRequest(
     val columns: kotlin.collections.List<MMMReportingColumn>,
     /* A List of countries for filtering */
     val countries: kotlin.collections.List<TargetingAdvertiserCountry>? = null
-) 
+)
 {
     /**
     * DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly.

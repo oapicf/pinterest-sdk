@@ -14,6 +14,7 @@ import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
 import org.openapitools.model.QuizPinData;
 import org.openapitools.model.TrackingUrls;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -29,7 +30,7 @@ import javax.annotation.Generated;
  * AdCreateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdCreateRequest {
 
   private String adGroupId;
@@ -53,13 +54,13 @@ public class AdCreateRequest {
 
   private JsonNullable<String> iosDeepLink = JsonNullable.<String>undefined();
 
-  private Boolean isPinDeleted;
+  private @Nullable Boolean isPinDeleted;
 
-  private Boolean isRemovable;
+  private @Nullable Boolean isRemovable;
 
   private JsonNullable<String> name = JsonNullable.<String>undefined();
 
-  private EntityStatus status;
+  private @Nullable EntityStatus status;
 
   private JsonNullable<TrackingUrls> trackingUrls = JsonNullable.<TrackingUrls>undefined();
 

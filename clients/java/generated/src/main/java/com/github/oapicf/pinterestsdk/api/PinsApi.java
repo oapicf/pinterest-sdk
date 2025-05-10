@@ -92,7 +92,8 @@ public class PinsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> response </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid pins analytics parameters. </td><td>  -  </td></tr>
@@ -208,7 +209,8 @@ public class PinsApi {
      * @return Map&lt;String, Map&lt;String, PinAnalyticsMetricsResponse&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> response </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid pins analytics parameters. </td><td>  -  </td></tr>
@@ -235,7 +237,8 @@ public class PinsApi {
      * @return ApiResponse&lt;Map&lt;String, Map&lt;String, PinAnalyticsMetricsResponse&gt;&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> response </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid pins analytics parameters. </td><td>  -  </td></tr>
@@ -264,7 +267,8 @@ public class PinsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> response </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid pins analytics parameters. </td><td>  -  </td></tr>
@@ -294,7 +298,8 @@ public class PinsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> response </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid pins analytics parameters. </td><td>  -  </td></tr>
@@ -411,7 +416,8 @@ public class PinsApi {
      * @return Map&lt;String, PinAnalyticsMetricsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> response </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid pins analytics parameters. </td><td>  -  </td></tr>
@@ -438,7 +444,8 @@ public class PinsApi {
      * @return ApiResponse&lt;Map&lt;String, PinAnalyticsMetricsResponse&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> response </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid pins analytics parameters. </td><td>  -  </td></tr>
@@ -467,7 +474,8 @@ public class PinsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> response </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid pins analytics parameters. </td><td>  -  </td></tr>
@@ -491,7 +499,8 @@ public class PinsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Successful pin creation. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid Pin parameters response </td><td>  -  </td></tr>
@@ -569,7 +578,8 @@ public class PinsApi {
      * @return Pin
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Successful pin creation. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid Pin parameters response </td><td>  -  </td></tr>
@@ -592,7 +602,8 @@ public class PinsApi {
      * @return ApiResponse&lt;Pin&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Successful pin creation. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid Pin parameters response </td><td>  -  </td></tr>
@@ -617,7 +628,8 @@ public class PinsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Successful pin creation. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid Pin parameters response </td><td>  -  </td></tr>
@@ -642,7 +654,8 @@ public class PinsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Successfully deleted Pin </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Not authorized to access board or Pin. </td><td>  -  </td></tr>
@@ -717,7 +730,8 @@ public class PinsApi {
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Successfully deleted Pin </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Not authorized to access board or Pin. </td><td>  -  </td></tr>
@@ -737,7 +751,8 @@ public class PinsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Successfully deleted Pin </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Not authorized to access board or Pin. </td><td>  -  </td></tr>
@@ -759,7 +774,8 @@ public class PinsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Successfully deleted Pin </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Not authorized to access board or Pin. </td><td>  -  </td></tr>
@@ -782,7 +798,8 @@ public class PinsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> response </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Not authorized to access board or Pin. </td><td>  -  </td></tr>
@@ -863,7 +880,8 @@ public class PinsApi {
      * @return Pin
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> response </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Not authorized to access board or Pin. </td><td>  -  </td></tr>
@@ -885,7 +903,8 @@ public class PinsApi {
      * @return ApiResponse&lt;Pin&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> response </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Not authorized to access board or Pin. </td><td>  -  </td></tr>
@@ -909,7 +928,8 @@ public class PinsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> response </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Not authorized to access board or Pin. </td><td>  -  </td></tr>
@@ -938,7 +958,8 @@ public class PinsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid pin filter value </td><td>  -  </td></tr>
@@ -1041,7 +1062,8 @@ public class PinsApi {
      * @return PinsList200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid pin filter value </td><td>  -  </td></tr>
@@ -1067,7 +1089,8 @@ public class PinsApi {
      * @return ApiResponse&lt;PinsList200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid pin filter value </td><td>  -  </td></tr>
@@ -1095,7 +1118,8 @@ public class PinsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid pin filter value </td><td>  -  </td></tr>
@@ -1118,7 +1142,8 @@ public class PinsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Successfully saved pin. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Not authorized to access Board or Pin. </td><td>  -  </td></tr>
@@ -1201,7 +1226,8 @@ public class PinsApi {
      * @return Pin
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Successfully saved pin. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Not authorized to access Board or Pin. </td><td>  -  </td></tr>
@@ -1223,7 +1249,8 @@ public class PinsApi {
      * @return ApiResponse&lt;Pin&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Successfully saved pin. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Not authorized to access Board or Pin. </td><td>  -  </td></tr>
@@ -1247,7 +1274,8 @@ public class PinsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Successfully saved pin. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Not authorized to access Board or Pin. </td><td>  -  </td></tr>
@@ -1271,7 +1299,8 @@ public class PinsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> response </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Not authorized to update Pin. </td><td>  -  </td></tr>
@@ -1355,7 +1384,8 @@ public class PinsApi {
      * @return Pin
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> response </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Not authorized to update Pin. </td><td>  -  </td></tr>
@@ -1378,7 +1408,8 @@ public class PinsApi {
      * @return ApiResponse&lt;Pin&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> response </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Not authorized to update Pin. </td><td>  -  </td></tr>
@@ -1403,7 +1434,8 @@ public class PinsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> response </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Not authorized to update Pin. </td><td>  -  </td></tr>

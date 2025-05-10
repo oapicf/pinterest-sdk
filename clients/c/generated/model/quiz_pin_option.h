@@ -22,9 +22,10 @@ typedef struct quiz_pin_option_t {
     double id; //numeric
     char *text; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } quiz_pin_option_t;
 
-quiz_pin_option_t *quiz_pin_option_create(
+__attribute__((deprecated)) quiz_pin_option_t *quiz_pin_option_create(
     double id,
     char *text
 );

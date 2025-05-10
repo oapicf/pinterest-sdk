@@ -32,9 +32,10 @@ typedef struct catalogs_upsert_hotel_item_t {
     pinterest_rest_api_catalogs_upsert_hotel_item_OPERATION_e operation; //enum
     struct catalogs_hotel_attributes_t *attributes; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_upsert_hotel_item_t;
 
-catalogs_upsert_hotel_item_t *catalogs_upsert_hotel_item_create(
+__attribute__((deprecated)) catalogs_upsert_hotel_item_t *catalogs_upsert_hotel_item_create(
     char *hotel_id,
     pinterest_rest_api_catalogs_upsert_hotel_item_OPERATION_e operation,
     catalogs_hotel_attributes_t *attributes

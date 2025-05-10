@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 // Functions for enum GRANTTYPE for OauthAPI_oauthToken
 
@@ -77,11 +72,14 @@ OauthAPI_oauthToken(apiClient_t *apiClient, pinterest_rest_api_oauthToken_grant_
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/oauth/token")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/oauth/token");
+    char *localVarPath = strdup("/oauth/token");
+
 
 
 
@@ -90,7 +88,7 @@ OauthAPI_oauthToken(apiClient_t *apiClient, pinterest_rest_api_oauthToken_grant_
     char *keyForm_grant_type = NULL;
     pinterest_rest_api_oauthToken_grant_type_e valueForm_grant_type = 0;
     keyValuePair_t *keyPairForm_grant_type = 0;
-    if (grant_type != NULL)
+    if (grant_type != 0)
     {
         keyForm_grant_type = strdup("grant_type");
         valueForm_grant_type = (grant_type);
@@ -107,6 +105,7 @@ OauthAPI_oauthToken(apiClient_t *apiClient, pinterest_rest_api_oauthToken_grant_
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -118,11 +117,14 @@ OauthAPI_oauthToken(apiClient_t *apiClient, pinterest_rest_api_oauthToken_grant_
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *OauthAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    oauth_access_token_response_t *elementToReturn = oauth_access_token_response_parseFromJSON(OauthAPIlocalVarJSON);
-    cJSON_Delete(OauthAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    oauth_access_token_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *OauthAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = oauth_access_token_response_parseFromJSON(OauthAPIlocalVarJSON);
+        cJSON_Delete(OauthAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -142,8 +144,7 @@ OauthAPI_oauthToken(apiClient_t *apiClient, pinterest_rest_api_oauthToken_grant_
         keyForm_grant_type = NULL;
     }
     if (valueForm_grant_type) {
-        free(valueForm_grant_type);
-        valueForm_grant_type = NULL;
+        valueForm_grant_type = 0;
     }
     free(keyPairForm_grant_type);
     return elementToReturn;

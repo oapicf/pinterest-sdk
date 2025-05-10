@@ -74,11 +74,11 @@ export function KeywordsCommonFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-  export function KeywordsCommonToJSON(json: any): KeywordsCommon {
-      return KeywordsCommonToJSONTyped(json, false);
-  }
+export function KeywordsCommonToJSON(json: any): KeywordsCommon {
+    return KeywordsCommonToJSONTyped(json, false);
+}
 
-  export function KeywordsCommonToJSONTyped(value?: KeywordsCommon | null, ignoreDiscriminator: boolean = false): any {
+export function KeywordsCommonToJSONTyped(value?: KeywordsCommon | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

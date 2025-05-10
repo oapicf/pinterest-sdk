@@ -24,9 +24,9 @@ char* lead_form_status_lead_form_status_ToString(pinterest_rest_api_lead_form_st
 
 pinterest_rest_api_lead_form_status__e lead_form_status_lead_form_status_FromString(char* lead_form_status);
 
-//cJSON *lead_form_status_lead_form_status_convertToJSON(pinterest_rest_api_lead_form_status__e lead_form_status);
+cJSON *lead_form_status_convertToJSON(pinterest_rest_api_lead_form_status__e lead_form_status);
 
-//pinterest_rest_api_lead_form_status__e lead_form_status_lead_form_status_parseFromJSON(cJSON *lead_form_statusJSON);
+pinterest_rest_api_lead_form_status__e lead_form_status_parseFromJSON(cJSON *lead_form_statusJSON);
 
 #endif /* _lead_form_status_H_ */
 

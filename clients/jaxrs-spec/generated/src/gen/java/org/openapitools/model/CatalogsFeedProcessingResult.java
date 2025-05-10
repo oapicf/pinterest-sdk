@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsFeedProcessingResult")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsFeedProcessingResult   {
   private Date createdAt;
   private String id;
@@ -29,6 +29,28 @@ public class CatalogsFeedProcessingResult   {
   private CatalogsFeedProcessingStatus status;
   private CatalogsFeedProductCounts productCounts;
   private CatalogsFeedValidationDetails validationDetails;
+
+  public CatalogsFeedProcessingResult() {
+  }
+
+  @JsonCreator
+  public CatalogsFeedProcessingResult(
+    @JsonProperty(required = true, value = "created_at") Date createdAt,
+    @JsonProperty(required = true, value = "id") String id,
+    @JsonProperty(required = true, value = "updated_at") Date updatedAt,
+    @JsonProperty(required = true, value = "ingestion_details") CatalogsFeedIngestionDetails ingestionDetails,
+    @JsonProperty(required = true, value = "status") CatalogsFeedProcessingStatus status,
+    @JsonProperty(required = true, value = "product_counts") CatalogsFeedProductCounts productCounts,
+    @JsonProperty(required = true, value = "validation_details") CatalogsFeedValidationDetails validationDetails
+  ) {
+    this.createdAt = createdAt;
+    this.id = id;
+    this.updatedAt = updatedAt;
+    this.ingestionDetails = ingestionDetails;
+    this.status = status;
+    this.productCounts = productCounts;
+    this.validationDetails = validationDetails;
+  }
 
   /**
    **/
@@ -39,12 +61,12 @@ public class CatalogsFeedProcessingResult   {
 
   
   @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "")
-  @JsonProperty("created_at")
+  @JsonProperty(required = true, value = "created_at")
   @NotNull public Date getCreatedAt() {
     return createdAt;
   }
 
-  @JsonProperty("created_at")
+  @JsonProperty(required = true, value = "created_at")
   public void setCreatedAt(Date createdAt) {
     this.createdAt = createdAt;
   }
@@ -58,12 +80,12 @@ public class CatalogsFeedProcessingResult   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("id")
+  @JsonProperty(required = true, value = "id")
   @NotNull public String getId() {
     return id;
   }
 
-  @JsonProperty("id")
+  @JsonProperty(required = true, value = "id")
   public void setId(String id) {
     this.id = id;
   }
@@ -77,12 +99,12 @@ public class CatalogsFeedProcessingResult   {
 
   
   @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
-  @JsonProperty("updated_at")
+  @JsonProperty(required = true, value = "updated_at")
   @NotNull public Date getUpdatedAt() {
     return updatedAt;
   }
 
-  @JsonProperty("updated_at")
+  @JsonProperty(required = true, value = "updated_at")
   public void setUpdatedAt(Date updatedAt) {
     this.updatedAt = updatedAt;
   }
@@ -96,12 +118,12 @@ public class CatalogsFeedProcessingResult   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("ingestion_details")
+  @JsonProperty(required = true, value = "ingestion_details")
   @NotNull @Valid public CatalogsFeedIngestionDetails getIngestionDetails() {
     return ingestionDetails;
   }
 
-  @JsonProperty("ingestion_details")
+  @JsonProperty(required = true, value = "ingestion_details")
   public void setIngestionDetails(CatalogsFeedIngestionDetails ingestionDetails) {
     this.ingestionDetails = ingestionDetails;
   }
@@ -115,12 +137,12 @@ public class CatalogsFeedProcessingResult   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("status")
+  @JsonProperty(required = true, value = "status")
   @NotNull public CatalogsFeedProcessingStatus getStatus() {
     return status;
   }
 
-  @JsonProperty("status")
+  @JsonProperty(required = true, value = "status")
   public void setStatus(CatalogsFeedProcessingStatus status) {
     this.status = status;
   }
@@ -134,12 +156,12 @@ public class CatalogsFeedProcessingResult   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("product_counts")
+  @JsonProperty(required = true, value = "product_counts")
   @NotNull @Valid public CatalogsFeedProductCounts getProductCounts() {
     return productCounts;
   }
 
-  @JsonProperty("product_counts")
+  @JsonProperty(required = true, value = "product_counts")
   public void setProductCounts(CatalogsFeedProductCounts productCounts) {
     this.productCounts = productCounts;
   }
@@ -153,12 +175,12 @@ public class CatalogsFeedProcessingResult   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("validation_details")
+  @JsonProperty(required = true, value = "validation_details")
   @NotNull @Valid public CatalogsFeedValidationDetails getValidationDetails() {
     return validationDetails;
   }
 
-  @JsonProperty("validation_details")
+  @JsonProperty(required = true, value = "validation_details")
   public void setValidationDetails(CatalogsFeedValidationDetails validationDetails) {
     this.validationDetails = validationDetails;
   }

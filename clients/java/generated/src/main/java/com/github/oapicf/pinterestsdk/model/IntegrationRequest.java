@@ -49,64 +49,77 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Schema used for creating the integration metadata.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class IntegrationRequest {
   public static final String SERIALIZED_NAME_EXTERNAL_BUSINESS_ID = "external_business_id";
   @SerializedName(SERIALIZED_NAME_EXTERNAL_BUSINESS_ID)
+  @javax.annotation.Nullable
   private String externalBusinessId;
 
   public static final String SERIALIZED_NAME_CONNECTED_MERCHANT_ID = "connected_merchant_id";
   @SerializedName(SERIALIZED_NAME_CONNECTED_MERCHANT_ID)
+  @javax.annotation.Nullable
   private String connectedMerchantId;
 
   public static final String SERIALIZED_NAME_CONNECTED_ADVERTISER_ID = "connected_advertiser_id";
   @SerializedName(SERIALIZED_NAME_CONNECTED_ADVERTISER_ID)
+  @javax.annotation.Nullable
   private String connectedAdvertiserId;
 
   public static final String SERIALIZED_NAME_CONNECTED_LBA_ID = "connected_lba_id";
   @SerializedName(SERIALIZED_NAME_CONNECTED_LBA_ID)
+  @javax.annotation.Nullable
   private String connectedLbaId;
 
   public static final String SERIALIZED_NAME_CONNECTED_TAG_ID = "connected_tag_id";
   @SerializedName(SERIALIZED_NAME_CONNECTED_TAG_ID)
+  @javax.annotation.Nullable
   private String connectedTagId;
 
   public static final String SERIALIZED_NAME_PARTNER_ACCESS_TOKEN = "partner_access_token";
   @SerializedName(SERIALIZED_NAME_PARTNER_ACCESS_TOKEN)
+  @javax.annotation.Nullable
   private String partnerAccessToken;
 
   public static final String SERIALIZED_NAME_PARTNER_REFRESH_TOKEN = "partner_refresh_token";
   @SerializedName(SERIALIZED_NAME_PARTNER_REFRESH_TOKEN)
+  @javax.annotation.Nullable
   private String partnerRefreshToken;
 
   public static final String SERIALIZED_NAME_PARTNER_PRIMARY_EMAIL = "partner_primary_email";
   @SerializedName(SERIALIZED_NAME_PARTNER_PRIMARY_EMAIL)
+  @javax.annotation.Nullable
   private String partnerPrimaryEmail;
 
   public static final String SERIALIZED_NAME_PARTNER_ACCESS_TOKEN_EXPIRY = "partner_access_token_expiry";
   @SerializedName(SERIALIZED_NAME_PARTNER_ACCESS_TOKEN_EXPIRY)
+  @javax.annotation.Nullable
   private Integer partnerAccessTokenExpiry;
 
   public static final String SERIALIZED_NAME_PARTNER_REFRESH_TOKEN_EXPIRY = "partner_refresh_token_expiry";
   @SerializedName(SERIALIZED_NAME_PARTNER_REFRESH_TOKEN_EXPIRY)
+  @javax.annotation.Nullable
   private Integer partnerRefreshTokenExpiry;
 
   public static final String SERIALIZED_NAME_SCOPES = "scopes";
   @SerializedName(SERIALIZED_NAME_SCOPES)
+  @javax.annotation.Nullable
   private String scopes;
 
   public static final String SERIALIZED_NAME_ADDITIONAL_ID1 = "additional_id_1";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_ID1)
+  @javax.annotation.Nullable
   private String additionalId1;
 
   public static final String SERIALIZED_NAME_PARTNER_METADATA = "partner_metadata";
   @SerializedName(SERIALIZED_NAME_PARTNER_METADATA)
+  @javax.annotation.Nullable
   private String partnerMetadata;
 
   public IntegrationRequest() {
   }
 
-  public IntegrationRequest externalBusinessId(String externalBusinessId) {
+  public IntegrationRequest externalBusinessId(@javax.annotation.Nullable String externalBusinessId) {
     this.externalBusinessId = externalBusinessId;
     return this;
   }
@@ -120,12 +133,12 @@ public class IntegrationRequest {
     return externalBusinessId;
   }
 
-  public void setExternalBusinessId(String externalBusinessId) {
+  public void setExternalBusinessId(@javax.annotation.Nullable String externalBusinessId) {
     this.externalBusinessId = externalBusinessId;
   }
 
 
-  public IntegrationRequest connectedMerchantId(String connectedMerchantId) {
+  public IntegrationRequest connectedMerchantId(@javax.annotation.Nullable String connectedMerchantId) {
     this.connectedMerchantId = connectedMerchantId;
     return this;
   }
@@ -139,12 +152,12 @@ public class IntegrationRequest {
     return connectedMerchantId;
   }
 
-  public void setConnectedMerchantId(String connectedMerchantId) {
+  public void setConnectedMerchantId(@javax.annotation.Nullable String connectedMerchantId) {
     this.connectedMerchantId = connectedMerchantId;
   }
 
 
-  public IntegrationRequest connectedAdvertiserId(String connectedAdvertiserId) {
+  public IntegrationRequest connectedAdvertiserId(@javax.annotation.Nullable String connectedAdvertiserId) {
     this.connectedAdvertiserId = connectedAdvertiserId;
     return this;
   }
@@ -158,12 +171,12 @@ public class IntegrationRequest {
     return connectedAdvertiserId;
   }
 
-  public void setConnectedAdvertiserId(String connectedAdvertiserId) {
+  public void setConnectedAdvertiserId(@javax.annotation.Nullable String connectedAdvertiserId) {
     this.connectedAdvertiserId = connectedAdvertiserId;
   }
 
 
-  public IntegrationRequest connectedLbaId(String connectedLbaId) {
+  public IntegrationRequest connectedLbaId(@javax.annotation.Nullable String connectedLbaId) {
     this.connectedLbaId = connectedLbaId;
     return this;
   }
@@ -177,12 +190,12 @@ public class IntegrationRequest {
     return connectedLbaId;
   }
 
-  public void setConnectedLbaId(String connectedLbaId) {
+  public void setConnectedLbaId(@javax.annotation.Nullable String connectedLbaId) {
     this.connectedLbaId = connectedLbaId;
   }
 
 
-  public IntegrationRequest connectedTagId(String connectedTagId) {
+  public IntegrationRequest connectedTagId(@javax.annotation.Nullable String connectedTagId) {
     this.connectedTagId = connectedTagId;
     return this;
   }
@@ -196,12 +209,12 @@ public class IntegrationRequest {
     return connectedTagId;
   }
 
-  public void setConnectedTagId(String connectedTagId) {
+  public void setConnectedTagId(@javax.annotation.Nullable String connectedTagId) {
     this.connectedTagId = connectedTagId;
   }
 
 
-  public IntegrationRequest partnerAccessToken(String partnerAccessToken) {
+  public IntegrationRequest partnerAccessToken(@javax.annotation.Nullable String partnerAccessToken) {
     this.partnerAccessToken = partnerAccessToken;
     return this;
   }
@@ -215,12 +228,12 @@ public class IntegrationRequest {
     return partnerAccessToken;
   }
 
-  public void setPartnerAccessToken(String partnerAccessToken) {
+  public void setPartnerAccessToken(@javax.annotation.Nullable String partnerAccessToken) {
     this.partnerAccessToken = partnerAccessToken;
   }
 
 
-  public IntegrationRequest partnerRefreshToken(String partnerRefreshToken) {
+  public IntegrationRequest partnerRefreshToken(@javax.annotation.Nullable String partnerRefreshToken) {
     this.partnerRefreshToken = partnerRefreshToken;
     return this;
   }
@@ -234,12 +247,12 @@ public class IntegrationRequest {
     return partnerRefreshToken;
   }
 
-  public void setPartnerRefreshToken(String partnerRefreshToken) {
+  public void setPartnerRefreshToken(@javax.annotation.Nullable String partnerRefreshToken) {
     this.partnerRefreshToken = partnerRefreshToken;
   }
 
 
-  public IntegrationRequest partnerPrimaryEmail(String partnerPrimaryEmail) {
+  public IntegrationRequest partnerPrimaryEmail(@javax.annotation.Nullable String partnerPrimaryEmail) {
     this.partnerPrimaryEmail = partnerPrimaryEmail;
     return this;
   }
@@ -253,12 +266,12 @@ public class IntegrationRequest {
     return partnerPrimaryEmail;
   }
 
-  public void setPartnerPrimaryEmail(String partnerPrimaryEmail) {
+  public void setPartnerPrimaryEmail(@javax.annotation.Nullable String partnerPrimaryEmail) {
     this.partnerPrimaryEmail = partnerPrimaryEmail;
   }
 
 
-  public IntegrationRequest partnerAccessTokenExpiry(Integer partnerAccessTokenExpiry) {
+  public IntegrationRequest partnerAccessTokenExpiry(@javax.annotation.Nullable Integer partnerAccessTokenExpiry) {
     this.partnerAccessTokenExpiry = partnerAccessTokenExpiry;
     return this;
   }
@@ -272,12 +285,12 @@ public class IntegrationRequest {
     return partnerAccessTokenExpiry;
   }
 
-  public void setPartnerAccessTokenExpiry(Integer partnerAccessTokenExpiry) {
+  public void setPartnerAccessTokenExpiry(@javax.annotation.Nullable Integer partnerAccessTokenExpiry) {
     this.partnerAccessTokenExpiry = partnerAccessTokenExpiry;
   }
 
 
-  public IntegrationRequest partnerRefreshTokenExpiry(Integer partnerRefreshTokenExpiry) {
+  public IntegrationRequest partnerRefreshTokenExpiry(@javax.annotation.Nullable Integer partnerRefreshTokenExpiry) {
     this.partnerRefreshTokenExpiry = partnerRefreshTokenExpiry;
     return this;
   }
@@ -291,12 +304,12 @@ public class IntegrationRequest {
     return partnerRefreshTokenExpiry;
   }
 
-  public void setPartnerRefreshTokenExpiry(Integer partnerRefreshTokenExpiry) {
+  public void setPartnerRefreshTokenExpiry(@javax.annotation.Nullable Integer partnerRefreshTokenExpiry) {
     this.partnerRefreshTokenExpiry = partnerRefreshTokenExpiry;
   }
 
 
-  public IntegrationRequest scopes(String scopes) {
+  public IntegrationRequest scopes(@javax.annotation.Nullable String scopes) {
     this.scopes = scopes;
     return this;
   }
@@ -310,12 +323,12 @@ public class IntegrationRequest {
     return scopes;
   }
 
-  public void setScopes(String scopes) {
+  public void setScopes(@javax.annotation.Nullable String scopes) {
     this.scopes = scopes;
   }
 
 
-  public IntegrationRequest additionalId1(String additionalId1) {
+  public IntegrationRequest additionalId1(@javax.annotation.Nullable String additionalId1) {
     this.additionalId1 = additionalId1;
     return this;
   }
@@ -329,12 +342,12 @@ public class IntegrationRequest {
     return additionalId1;
   }
 
-  public void setAdditionalId1(String additionalId1) {
+  public void setAdditionalId1(@javax.annotation.Nullable String additionalId1) {
     this.additionalId1 = additionalId1;
   }
 
 
-  public IntegrationRequest partnerMetadata(String partnerMetadata) {
+  public IntegrationRequest partnerMetadata(@javax.annotation.Nullable String partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
     return this;
   }
@@ -348,7 +361,7 @@ public class IntegrationRequest {
     return partnerMetadata;
   }
 
-  public void setPartnerMetadata(String partnerMetadata) {
+  public void setPartnerMetadata(@javax.annotation.Nullable String partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
   }
 

@@ -22,9 +22,10 @@ typedef struct create_asset_access_request_error_message_inner_t {
     int code; //numeric
     list_t *messages; //primitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } create_asset_access_request_error_message_inner_t;
 
-create_asset_access_request_error_message_inner_t *create_asset_access_request_error_message_inner_create(
+__attribute__((deprecated)) create_asset_access_request_error_message_inner_t *create_asset_access_request_error_message_inner_create(
     int code,
     list_t *messages
 );

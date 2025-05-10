@@ -22,7 +22,7 @@ pinterest_rest_api_objective_type__e objective_type_objective_type_FromString(ch
     return 0;
 }
 
-cJSON *objective_type_objective_type_convertToJSON(pinterest_rest_api_objective_type__e objective_type) {
+cJSON *objective_type_convertToJSON(pinterest_rest_api_objective_type__e objective_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "objective_type", objective_type_objective_type_ToString(objective_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_objective_type__e objective_type_objective_type_parseFromJSON(cJSON *objective_typeJSON) {
-    pinterest_rest_api_objective_type__e *objective_type = NULL;
-    pinterest_rest_api_objective_type__e objective_typeVariable;
-    cJSON *objective_typeVar = cJSON_GetObjectItemCaseSensitive(objective_typeJSON, "objective_type");
-    if(!cJSON_IsString(objective_typeVar) || (objective_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_objective_type__e objective_type_parseFromJSON(cJSON *objective_typeJSON) {
+    if(!cJSON_IsString(objective_typeJSON) || (objective_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    objective_typeVariable = objective_type_objective_type_FromString(objective_typeVar->valuestring);
-    return objective_typeVariable;
-end:
-    return 0;
+    return objective_type_objective_type_FromString(objective_typeJSON->valuestring);
 }

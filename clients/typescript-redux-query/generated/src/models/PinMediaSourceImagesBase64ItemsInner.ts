@@ -78,8 +78,8 @@ export function PinMediaSourceImagesBase64ItemsInnerToJSON(value?: PinMediaSourc
 * @enum {string}
 */
 export enum PinMediaSourceImagesBase64ItemsInnerContentTypeEnum {
-    Jpeg = 'image/jpeg',
-    Png = 'image/png'
+    ImageJpeg = 'image/jpeg',
+    ImagePng = 'image/png'
 }
 
 

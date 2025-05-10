@@ -72,11 +72,11 @@ export function IntegrationLogsInvalidLogResponseRejectedLogsInnerFromJSONTyped(
     };
 }
 
-  export function IntegrationLogsInvalidLogResponseRejectedLogsInnerToJSON(json: any): IntegrationLogsInvalidLogResponseRejectedLogsInner {
-      return IntegrationLogsInvalidLogResponseRejectedLogsInnerToJSONTyped(json, false);
-  }
+export function IntegrationLogsInvalidLogResponseRejectedLogsInnerToJSON(json: any): IntegrationLogsInvalidLogResponseRejectedLogsInner {
+    return IntegrationLogsInvalidLogResponseRejectedLogsInnerToJSONTyped(json, false);
+}
 
-  export function IntegrationLogsInvalidLogResponseRejectedLogsInnerToJSONTyped(value?: IntegrationLogsInvalidLogResponseRejectedLogsInner | null, ignoreDiscriminator: boolean = false): any {
+export function IntegrationLogsInvalidLogResponseRejectedLogsInnerToJSONTyped(value?: IntegrationLogsInvalidLogResponseRejectedLogsInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

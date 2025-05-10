@@ -49,20 +49,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AuthRespondInvitesBodyInvitesInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AuthRespondInvitesBodyInvitesInner {
   public static final String SERIALIZED_NAME_ACTION = "action";
   @SerializedName(SERIALIZED_NAME_ACTION)
+  @javax.annotation.Nonnull
   private AuthRespondInvitesBodyInvitesInnerAction action;
 
   public static final String SERIALIZED_NAME_INVITE_ID = "invite_id";
   @SerializedName(SERIALIZED_NAME_INVITE_ID)
+  @javax.annotation.Nonnull
   private String inviteId;
 
   public AuthRespondInvitesBodyInvitesInner() {
   }
 
-  public AuthRespondInvitesBodyInvitesInner action(AuthRespondInvitesBodyInvitesInnerAction action) {
+  public AuthRespondInvitesBodyInvitesInner action(@javax.annotation.Nonnull AuthRespondInvitesBodyInvitesInnerAction action) {
     this.action = action;
     return this;
   }
@@ -76,12 +78,12 @@ public class AuthRespondInvitesBodyInvitesInner {
     return action;
   }
 
-  public void setAction(AuthRespondInvitesBodyInvitesInnerAction action) {
+  public void setAction(@javax.annotation.Nonnull AuthRespondInvitesBodyInvitesInnerAction action) {
     this.action = action;
   }
 
 
-  public AuthRespondInvitesBodyInvitesInner inviteId(String inviteId) {
+  public AuthRespondInvitesBodyInvitesInner inviteId(@javax.annotation.Nonnull String inviteId) {
     this.inviteId = inviteId;
     return this;
   }
@@ -95,7 +97,7 @@ public class AuthRespondInvitesBodyInvitesInner {
     return inviteId;
   }
 
-  public void setInviteId(String inviteId) {
+  public void setInviteId(@javax.annotation.Nonnull String inviteId) {
     this.inviteId = inviteId;
   }
 

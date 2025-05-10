@@ -1,6 +1,6 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Multipart};
+use axum_extra::extract::{CookieJar, Host};
 use bytes::Bytes;
 use http::Method;
 use serde::{Deserialize, Serialize};
@@ -69,28 +69,28 @@ pub enum AdvancedAuctionItemsSubmitSlashPostResponse {
 /// AdvancedAuction
 #[async_trait]
 #[allow(clippy::ptr_arg)]
-pub trait AdvancedAuction {
+pub trait AdvancedAuction<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHandler<E> {
     /// Get item bid options (POST).
     ///
     /// AdvancedAuctionItemsGetSlashPost - POST /v5/advanced_auction/items/get
     async fn advanced_auction_items_get_slash_post(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::AdvancedAuctionItemsGetSlashPostQueryParams,
-            body: models::AdvancedAuctionItemsGetRequest,
-    ) -> Result<AdvancedAuctionItemsGetSlashPostResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::AdvancedAuctionItemsGetSlashPostQueryParams,
+            body: &models::AdvancedAuctionItemsGetRequest,
+    ) -> Result<AdvancedAuctionItemsGetSlashPostResponse, E>;
 
     /// Operate on item level bid options.
     ///
     /// AdvancedAuctionItemsSubmitSlashPost - POST /v5/advanced_auction/items/submit
     async fn advanced_auction_items_submit_slash_post(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::AdvancedAuctionItemsSubmitSlashPostQueryParams,
-            body: models::AdvancedAuctionItemsSubmitRequest,
-    ) -> Result<AdvancedAuctionItemsSubmitSlashPostResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::AdvancedAuctionItemsSubmitSlashPostQueryParams,
+            body: &models::AdvancedAuctionItemsSubmitRequest,
+    ) -> Result<AdvancedAuctionItemsSubmitSlashPostResponse, E>;
 }

@@ -21,9 +21,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Request body for updating asset roles for existing invites.")
 @JsonTypeName("CreateAssetInvitesRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CreateAssetInvitesRequest   {
   private @Valid List<@Valid CreateAssetInvitesRequestItem> invites = new ArrayList<>();
+
+  public CreateAssetInvitesRequest() {
+  }
+
+  @JsonCreator
+  public CreateAssetInvitesRequest(
+    @JsonProperty(required = true, value = "invites") List<@Valid CreateAssetInvitesRequestItem> invites
+  ) {
+    this.invites = invites;
+  }
 
   /**
    **/
@@ -34,12 +44,12 @@ public class CreateAssetInvitesRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("invites")
+  @JsonProperty(required = true, value = "invites")
   @NotNull @Valid  @Size(min=1,max=50)public List<@Valid CreateAssetInvitesRequestItem> getInvites() {
     return invites;
   }
 
-  @JsonProperty("invites")
+  @JsonProperty(required = true, value = "invites")
   public void setInvites(List<@Valid CreateAssetInvitesRequestItem> invites) {
     this.invites = invites;
   }

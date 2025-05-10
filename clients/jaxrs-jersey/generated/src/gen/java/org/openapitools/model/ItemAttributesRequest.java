@@ -80,7 +80,7 @@ import javax.validation.Valid;
   ItemAttributesRequest.JSON_PROPERTY_IMAGE_LINK,
   ItemAttributesRequest.JSON_PROPERTY_VIDEO_LINK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-11-05T02:20:07.425136412Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ItemAttributesRequest   {
   public static final String JSON_PROPERTY_AD_LINK = "ad_link";
   @JsonProperty(JSON_PROPERTY_AD_LINK)

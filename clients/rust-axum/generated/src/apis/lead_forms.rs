@@ -1,6 +1,6 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Multipart};
+use axum_extra::extract::{CookieJar, Host};
 use bytes::Bytes;
 use http::Method;
 use serde::{Deserialize, Serialize};
@@ -104,63 +104,63 @@ pub enum LeadFormsSlashUpdateResponse {
 /// LeadForms
 #[async_trait]
 #[allow(clippy::ptr_arg)]
-pub trait LeadForms {
+pub trait LeadForms<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHandler<E> {
     /// Get lead form by id.
     ///
     /// LeadFormSlashGet - GET /v5/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}
     async fn lead_form_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::LeadFormSlashGetPathParams,
-    ) -> Result<LeadFormSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::LeadFormSlashGetPathParams,
+    ) -> Result<LeadFormSlashGetResponse, E>;
 
     /// Create lead form test data.
     ///
     /// LeadFormTestSlashCreate - POST /v5/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test
     async fn lead_form_test_slash_create(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::LeadFormTestSlashCreatePathParams,
-            body: models::LeadFormTestRequest,
-    ) -> Result<LeadFormTestSlashCreateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::LeadFormTestSlashCreatePathParams,
+            body: &models::LeadFormTestRequest,
+    ) -> Result<LeadFormTestSlashCreateResponse, E>;
 
     /// Create lead forms.
     ///
     /// LeadFormsSlashCreate - POST /v5/ad_accounts/{ad_account_id}/lead_forms
     async fn lead_forms_slash_create(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::LeadFormsSlashCreatePathParams,
-            body: Vec<models::LeadFormCreateRequest>,
-    ) -> Result<LeadFormsSlashCreateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::LeadFormsSlashCreatePathParams,
+            body: &Vec<models::LeadFormCreateRequest>,
+    ) -> Result<LeadFormsSlashCreateResponse, E>;
 
     /// List lead forms.
     ///
     /// LeadFormsSlashList - GET /v5/ad_accounts/{ad_account_id}/lead_forms
     async fn lead_forms_slash_list(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::LeadFormsSlashListPathParams,
-      query_params: models::LeadFormsSlashListQueryParams,
-    ) -> Result<LeadFormsSlashListResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::LeadFormsSlashListPathParams,
+      query_params: &models::LeadFormsSlashListQueryParams,
+    ) -> Result<LeadFormsSlashListResponse, E>;
 
     /// Update lead forms.
     ///
     /// LeadFormsSlashUpdate - PATCH /v5/ad_accounts/{ad_account_id}/lead_forms
     async fn lead_forms_slash_update(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::LeadFormsSlashUpdatePathParams,
-            body: Vec<models::LeadFormUpdateRequest>,
-    ) -> Result<LeadFormsSlashUpdateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::LeadFormsSlashUpdatePathParams,
+            body: &Vec<models::LeadFormUpdateRequest>,
+    ) -> Result<LeadFormsSlashUpdateResponse, E>;
 }

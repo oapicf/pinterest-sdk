@@ -13,25 +13,25 @@ import AnyCodable
 public struct AdsAnalyticsCreateAsyncRequest: Codable, JSONEncodable, Hashable {
 
     public enum PrimarySort: String, Codable, CaseIterable {
-        case id = "BY_ID"
-        case date = "BY_DATE"
+        case byId = "BY_ID"
+        case byDate = "BY_DATE"
     }
-    static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
-    static let endDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
-    static let campaignIdsRule = ArrayRule(minItems: 1, maxItems: 500, uniqueItems: false)
-    static let campaignStatusesRule = ArrayRule(minItems: 1, maxItems: 6, uniqueItems: false)
-    static let campaignObjectiveTypesRule = ArrayRule(minItems: 1, maxItems: 7, uniqueItems: false)
-    static let adGroupIdsRule = ArrayRule(minItems: 1, maxItems: 500, uniqueItems: false)
-    static let adGroupStatusesRule = ArrayRule(minItems: 1, maxItems: 6, uniqueItems: false)
-    static let adIdsRule = ArrayRule(minItems: 1, maxItems: 500, uniqueItems: false)
-    static let adStatusesRule = ArrayRule(minItems: 1, maxItems: 6, uniqueItems: false)
-    static let productGroupIdsRule = ArrayRule(minItems: 1, maxItems: 500, uniqueItems: false)
-    static let productGroupStatusesRule = ArrayRule(minItems: 1, maxItems: 6, uniqueItems: false)
-    static let productItemIdsRule = ArrayRule(minItems: 1, maxItems: 500, uniqueItems: false)
-    static let targetingTypesRule = ArrayRule(minItems: 1, maxItems: 5, uniqueItems: false)
-    static let metricsFiltersRule = ArrayRule(minItems: 1, maxItems: nil, uniqueItems: false)
-    static let startHourRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: 23, exclusiveMaximum: false, multipleOf: nil)
-    static let endHourRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: 23, exclusiveMaximum: false, multipleOf: nil)
+    public static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
+    public static let endDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
+    public static let campaignIdsRule = ArrayRule(minItems: 1, maxItems: 500, uniqueItems: false)
+    public static let campaignStatusesRule = ArrayRule(minItems: 1, maxItems: 6, uniqueItems: false)
+    public static let campaignObjectiveTypesRule = ArrayRule(minItems: 1, maxItems: 7, uniqueItems: false)
+    public static let adGroupIdsRule = ArrayRule(minItems: 1, maxItems: 500, uniqueItems: false)
+    public static let adGroupStatusesRule = ArrayRule(minItems: 1, maxItems: 6, uniqueItems: false)
+    public static let adIdsRule = ArrayRule(minItems: 1, maxItems: 500, uniqueItems: false)
+    public static let adStatusesRule = ArrayRule(minItems: 1, maxItems: 6, uniqueItems: false)
+    public static let productGroupIdsRule = ArrayRule(minItems: 1, maxItems: 500, uniqueItems: false)
+    public static let productGroupStatusesRule = ArrayRule(minItems: 1, maxItems: 6, uniqueItems: false)
+    public static let productItemIdsRule = ArrayRule(minItems: 1, maxItems: 500, uniqueItems: false)
+    public static let targetingTypesRule = ArrayRule(minItems: 1, maxItems: 5, uniqueItems: false)
+    public static let metricsFiltersRule = ArrayRule(minItems: 1, maxItems: nil, uniqueItems: false)
+    public static let startHourRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: 23, exclusiveMaximum: false, multipleOf: nil)
+    public static let endHourRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: 23, exclusiveMaximum: false, multipleOf: nil)
     /** Metric report start date (UTC). Format: YYYY-MM-DD */
     public var startDate: String
     /** Metric report end date (UTC). Format: YYYY-MM-DD */

@@ -87,11 +87,11 @@ export function HotelProcessingRecordFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function HotelProcessingRecordToJSON(json: any): HotelProcessingRecord {
-      return HotelProcessingRecordToJSONTyped(json, false);
-  }
+export function HotelProcessingRecordToJSON(json: any): HotelProcessingRecord {
+    return HotelProcessingRecordToJSONTyped(json, false);
+}
 
-  export function HotelProcessingRecordToJSONTyped(value?: HotelProcessingRecord | null, ignoreDiscriminator: boolean = false): any {
+export function HotelProcessingRecordToJSONTyped(value?: HotelProcessingRecord | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

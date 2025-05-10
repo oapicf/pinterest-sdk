@@ -10,6 +10,7 @@ import java.util.List;
 import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilterKeys;
 import org.openapitools.model.CatalogsCreativeAssetsProductGroupFiltersAllOf;
 import org.openapitools.model.CatalogsCreativeAssetsProductGroupFiltersAnyOf;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -25,7 +26,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsCreativeAssetsProductGroupFilters", description = "Object holding a group of filters for a creative assets product group")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsCreativeAssetsProductGroupFilters {
 
   @Valid

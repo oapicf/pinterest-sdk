@@ -76,11 +76,11 @@ export function LinkedBusinessFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-  export function LinkedBusinessToJSON(json: any): LinkedBusiness {
-      return LinkedBusinessToJSONTyped(json, false);
-  }
+export function LinkedBusinessToJSON(json: any): LinkedBusiness {
+    return LinkedBusinessToJSONTyped(json, false);
+}
 
-  export function LinkedBusinessToJSONTyped(value?: LinkedBusiness | null, ignoreDiscriminator: boolean = false): any {
+export function LinkedBusinessToJSONTyped(value?: LinkedBusiness | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

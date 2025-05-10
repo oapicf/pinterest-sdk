@@ -15,8 +15,11 @@
 export type CatalogsFormat = 'TSV' | 'CSV' | 'XML';
 
 export const CatalogsFormat = {
+
     Tsv: 'TSV' as CatalogsFormat,
+
     Csv: 'CSV' as CatalogsFormat,
+
     Xml: 'XML' as CatalogsFormat
 };
 

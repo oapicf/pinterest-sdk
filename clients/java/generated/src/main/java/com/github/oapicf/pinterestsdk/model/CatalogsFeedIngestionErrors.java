@@ -48,10 +48,11 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsFeedIngestionErrors
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsFeedIngestionErrors {
   public static final String SERIALIZED_NAME_L_I_N_E_L_E_V_E_L_I_N_T_E_R_N_A_L_E_R_R_O_R = "LINE_LEVEL_INTERNAL_ERROR";
   @SerializedName(SERIALIZED_NAME_L_I_N_E_L_E_V_E_L_I_N_T_E_R_N_A_L_E_R_R_O_R)
+  @javax.annotation.Nullable
   private Integer LINE_LEVEL_INTERNAL_ERROR;
 
   /**
@@ -106,36 +107,43 @@ public class CatalogsFeedIngestionErrors {
 
   public static final String SERIALIZED_NAME_L_A_R_G_E_P_R_O_D_U_C_T_C_O_U_N_T_D_E_C_R_E_A_S_E = "LARGE_PRODUCT_COUNT_DECREASE";
   @SerializedName(SERIALIZED_NAME_L_A_R_G_E_P_R_O_D_U_C_T_C_O_U_N_T_D_E_C_R_E_A_S_E)
+  @javax.annotation.Nullable
   private LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE;
 
   public static final String SERIALIZED_NAME_A_C_C_O_U_N_T_F_L_A_G_G_E_D = "ACCOUNT_FLAGGED";
   @SerializedName(SERIALIZED_NAME_A_C_C_O_U_N_T_F_L_A_G_G_E_D)
+  @javax.annotation.Nullable
   private Integer ACCOUNT_FLAGGED;
 
   public static final String SERIALIZED_NAME_I_M_A_G_E_L_E_V_E_L_I_N_T_E_R_N_A_L_E_R_R_O_R = "IMAGE_LEVEL_INTERNAL_ERROR";
   @SerializedName(SERIALIZED_NAME_I_M_A_G_E_L_E_V_E_L_I_N_T_E_R_N_A_L_E_R_R_O_R)
+  @javax.annotation.Nullable
   private Integer IMAGE_LEVEL_INTERNAL_ERROR;
 
   public static final String SERIALIZED_NAME_I_M_A_G_E_F_I_L_E_N_O_T_A_C_C_E_S_S_I_B_L_E = "IMAGE_FILE_NOT_ACCESSIBLE";
   @SerializedName(SERIALIZED_NAME_I_M_A_G_E_F_I_L_E_N_O_T_A_C_C_E_S_S_I_B_L_E)
+  @javax.annotation.Nullable
   private Integer IMAGE_FILE_NOT_ACCESSIBLE;
 
   public static final String SERIALIZED_NAME_I_M_A_G_E_M_A_L_F_O_R_M_E_D_U_R_L = "IMAGE_MALFORMED_URL";
   @SerializedName(SERIALIZED_NAME_I_M_A_G_E_M_A_L_F_O_R_M_E_D_U_R_L)
+  @javax.annotation.Nullable
   private Integer IMAGE_MALFORMED_URL;
 
   public static final String SERIALIZED_NAME_I_M_A_G_E_F_I_L_E_N_O_T_F_O_U_N_D = "IMAGE_FILE_NOT_FOUND";
   @SerializedName(SERIALIZED_NAME_I_M_A_G_E_F_I_L_E_N_O_T_F_O_U_N_D)
+  @javax.annotation.Nullable
   private Integer IMAGE_FILE_NOT_FOUND;
 
   public static final String SERIALIZED_NAME_I_M_A_G_E_I_N_V_A_L_I_D_F_I_L_E = "IMAGE_INVALID_FILE";
   @SerializedName(SERIALIZED_NAME_I_M_A_G_E_I_N_V_A_L_I_D_F_I_L_E)
+  @javax.annotation.Nullable
   private Integer IMAGE_INVALID_FILE;
 
   public CatalogsFeedIngestionErrors() {
   }
 
-  public CatalogsFeedIngestionErrors LINE_LEVEL_INTERNAL_ERROR(Integer LINE_LEVEL_INTERNAL_ERROR) {
+  public CatalogsFeedIngestionErrors LINE_LEVEL_INTERNAL_ERROR(@javax.annotation.Nullable Integer LINE_LEVEL_INTERNAL_ERROR) {
     this.LINE_LEVEL_INTERNAL_ERROR = LINE_LEVEL_INTERNAL_ERROR;
     return this;
   }
@@ -149,12 +157,12 @@ public class CatalogsFeedIngestionErrors {
     return LINE_LEVEL_INTERNAL_ERROR;
   }
 
-  public void setLINELEVELINTERNALERROR(Integer LINE_LEVEL_INTERNAL_ERROR) {
+  public void setLINELEVELINTERNALERROR(@javax.annotation.Nullable Integer LINE_LEVEL_INTERNAL_ERROR) {
     this.LINE_LEVEL_INTERNAL_ERROR = LINE_LEVEL_INTERNAL_ERROR;
   }
 
 
-  public CatalogsFeedIngestionErrors LARGE_PRODUCT_COUNT_DECREASE(LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE) {
+  public CatalogsFeedIngestionErrors LARGE_PRODUCT_COUNT_DECREASE(@javax.annotation.Nullable LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE) {
     this.LARGE_PRODUCT_COUNT_DECREASE = LARGE_PRODUCT_COUNT_DECREASE;
     return this;
   }
@@ -168,12 +176,12 @@ public class CatalogsFeedIngestionErrors {
     return LARGE_PRODUCT_COUNT_DECREASE;
   }
 
-  public void setLARGEPRODUCTCOUNTDECREASE(LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE) {
+  public void setLARGEPRODUCTCOUNTDECREASE(@javax.annotation.Nullable LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE) {
     this.LARGE_PRODUCT_COUNT_DECREASE = LARGE_PRODUCT_COUNT_DECREASE;
   }
 
 
-  public CatalogsFeedIngestionErrors ACCOUNT_FLAGGED(Integer ACCOUNT_FLAGGED) {
+  public CatalogsFeedIngestionErrors ACCOUNT_FLAGGED(@javax.annotation.Nullable Integer ACCOUNT_FLAGGED) {
     this.ACCOUNT_FLAGGED = ACCOUNT_FLAGGED;
     return this;
   }
@@ -187,12 +195,12 @@ public class CatalogsFeedIngestionErrors {
     return ACCOUNT_FLAGGED;
   }
 
-  public void setACCOUNTFLAGGED(Integer ACCOUNT_FLAGGED) {
+  public void setACCOUNTFLAGGED(@javax.annotation.Nullable Integer ACCOUNT_FLAGGED) {
     this.ACCOUNT_FLAGGED = ACCOUNT_FLAGGED;
   }
 
 
-  public CatalogsFeedIngestionErrors IMAGE_LEVEL_INTERNAL_ERROR(Integer IMAGE_LEVEL_INTERNAL_ERROR) {
+  public CatalogsFeedIngestionErrors IMAGE_LEVEL_INTERNAL_ERROR(@javax.annotation.Nullable Integer IMAGE_LEVEL_INTERNAL_ERROR) {
     this.IMAGE_LEVEL_INTERNAL_ERROR = IMAGE_LEVEL_INTERNAL_ERROR;
     return this;
   }
@@ -206,12 +214,12 @@ public class CatalogsFeedIngestionErrors {
     return IMAGE_LEVEL_INTERNAL_ERROR;
   }
 
-  public void setIMAGELEVELINTERNALERROR(Integer IMAGE_LEVEL_INTERNAL_ERROR) {
+  public void setIMAGELEVELINTERNALERROR(@javax.annotation.Nullable Integer IMAGE_LEVEL_INTERNAL_ERROR) {
     this.IMAGE_LEVEL_INTERNAL_ERROR = IMAGE_LEVEL_INTERNAL_ERROR;
   }
 
 
-  public CatalogsFeedIngestionErrors IMAGE_FILE_NOT_ACCESSIBLE(Integer IMAGE_FILE_NOT_ACCESSIBLE) {
+  public CatalogsFeedIngestionErrors IMAGE_FILE_NOT_ACCESSIBLE(@javax.annotation.Nullable Integer IMAGE_FILE_NOT_ACCESSIBLE) {
     this.IMAGE_FILE_NOT_ACCESSIBLE = IMAGE_FILE_NOT_ACCESSIBLE;
     return this;
   }
@@ -225,12 +233,12 @@ public class CatalogsFeedIngestionErrors {
     return IMAGE_FILE_NOT_ACCESSIBLE;
   }
 
-  public void setIMAGEFILENOTACCESSIBLE(Integer IMAGE_FILE_NOT_ACCESSIBLE) {
+  public void setIMAGEFILENOTACCESSIBLE(@javax.annotation.Nullable Integer IMAGE_FILE_NOT_ACCESSIBLE) {
     this.IMAGE_FILE_NOT_ACCESSIBLE = IMAGE_FILE_NOT_ACCESSIBLE;
   }
 
 
-  public CatalogsFeedIngestionErrors IMAGE_MALFORMED_URL(Integer IMAGE_MALFORMED_URL) {
+  public CatalogsFeedIngestionErrors IMAGE_MALFORMED_URL(@javax.annotation.Nullable Integer IMAGE_MALFORMED_URL) {
     this.IMAGE_MALFORMED_URL = IMAGE_MALFORMED_URL;
     return this;
   }
@@ -244,12 +252,12 @@ public class CatalogsFeedIngestionErrors {
     return IMAGE_MALFORMED_URL;
   }
 
-  public void setIMAGEMALFORMEDURL(Integer IMAGE_MALFORMED_URL) {
+  public void setIMAGEMALFORMEDURL(@javax.annotation.Nullable Integer IMAGE_MALFORMED_URL) {
     this.IMAGE_MALFORMED_URL = IMAGE_MALFORMED_URL;
   }
 
 
-  public CatalogsFeedIngestionErrors IMAGE_FILE_NOT_FOUND(Integer IMAGE_FILE_NOT_FOUND) {
+  public CatalogsFeedIngestionErrors IMAGE_FILE_NOT_FOUND(@javax.annotation.Nullable Integer IMAGE_FILE_NOT_FOUND) {
     this.IMAGE_FILE_NOT_FOUND = IMAGE_FILE_NOT_FOUND;
     return this;
   }
@@ -263,12 +271,12 @@ public class CatalogsFeedIngestionErrors {
     return IMAGE_FILE_NOT_FOUND;
   }
 
-  public void setIMAGEFILENOTFOUND(Integer IMAGE_FILE_NOT_FOUND) {
+  public void setIMAGEFILENOTFOUND(@javax.annotation.Nullable Integer IMAGE_FILE_NOT_FOUND) {
     this.IMAGE_FILE_NOT_FOUND = IMAGE_FILE_NOT_FOUND;
   }
 
 
-  public CatalogsFeedIngestionErrors IMAGE_INVALID_FILE(Integer IMAGE_INVALID_FILE) {
+  public CatalogsFeedIngestionErrors IMAGE_INVALID_FILE(@javax.annotation.Nullable Integer IMAGE_INVALID_FILE) {
     this.IMAGE_INVALID_FILE = IMAGE_INVALID_FILE;
     return this;
   }
@@ -282,7 +290,7 @@ public class CatalogsFeedIngestionErrors {
     return IMAGE_INVALID_FILE;
   }
 
-  public void setIMAGEINVALIDFILE(Integer IMAGE_INVALID_FILE) {
+  public void setIMAGEINVALIDFILE(@javax.annotation.Nullable Integer IMAGE_INVALID_FILE) {
     this.IMAGE_INVALID_FILE = IMAGE_INVALID_FILE;
   }
 

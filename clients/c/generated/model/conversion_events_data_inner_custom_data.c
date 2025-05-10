@@ -5,7 +5,7 @@
 
 
 
-conversion_events_data_inner_custom_data_t *conversion_events_data_inner_custom_data_create(
+static conversion_events_data_inner_custom_data_t *conversion_events_data_inner_custom_data_create_internal(
     char *currency,
     char *value,
     list_t *content_ids,
@@ -36,12 +36,46 @@ conversion_events_data_inner_custom_data_t *conversion_events_data_inner_custom_
     conversion_events_data_inner_custom_data_local_var->opt_out_type = opt_out_type;
     conversion_events_data_inner_custom_data_local_var->np = np;
 
+    conversion_events_data_inner_custom_data_local_var->_library_owned = 1;
     return conversion_events_data_inner_custom_data_local_var;
 }
 
+__attribute__((deprecated)) conversion_events_data_inner_custom_data_t *conversion_events_data_inner_custom_data_create(
+    char *currency,
+    char *value,
+    list_t *content_ids,
+    char *content_name,
+    char *content_category,
+    char *content_brand,
+    list_t *contents,
+    long num_items,
+    char *order_id,
+    char *search_string,
+    char *opt_out_type,
+    char *np
+    ) {
+    return conversion_events_data_inner_custom_data_create_internal (
+        currency,
+        value,
+        content_ids,
+        content_name,
+        content_category,
+        content_brand,
+        contents,
+        num_items,
+        order_id,
+        search_string,
+        opt_out_type,
+        np
+        );
+}
 
 void conversion_events_data_inner_custom_data_free(conversion_events_data_inner_custom_data_t *conversion_events_data_inner_custom_data) {
     if(NULL == conversion_events_data_inner_custom_data){
+        return ;
+    }
+    if(conversion_events_data_inner_custom_data->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "conversion_events_data_inner_custom_data_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -126,7 +160,7 @@ cJSON *conversion_events_data_inner_custom_data_convertToJSON(conversion_events_
 
     listEntry_t *content_idsListEntry;
     list_ForEach(content_idsListEntry, conversion_events_data_inner_custom_data->content_ids) {
-    if(cJSON_AddStringToObject(content_ids, "", (char*)content_idsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(content_ids, "", content_idsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -237,6 +271,9 @@ conversion_events_data_inner_custom_data_t *conversion_events_data_inner_custom_
 
     // conversion_events_data_inner_custom_data->currency
     cJSON *currency = cJSON_GetObjectItemCaseSensitive(conversion_events_data_inner_custom_dataJSON, "currency");
+    if (cJSON_IsNull(currency)) {
+        currency = NULL;
+    }
     if (currency) { 
     if(!cJSON_IsString(currency) && !cJSON_IsNull(currency))
     {
@@ -246,6 +283,9 @@ conversion_events_data_inner_custom_data_t *conversion_events_data_inner_custom_
 
     // conversion_events_data_inner_custom_data->value
     cJSON *value = cJSON_GetObjectItemCaseSensitive(conversion_events_data_inner_custom_dataJSON, "value");
+    if (cJSON_IsNull(value)) {
+        value = NULL;
+    }
     if (value) { 
     if(!cJSON_IsString(value) && !cJSON_IsNull(value))
     {
@@ -255,6 +295,9 @@ conversion_events_data_inner_custom_data_t *conversion_events_data_inner_custom_
 
     // conversion_events_data_inner_custom_data->content_ids
     cJSON *content_ids = cJSON_GetObjectItemCaseSensitive(conversion_events_data_inner_custom_dataJSON, "content_ids");
+    if (cJSON_IsNull(content_ids)) {
+        content_ids = NULL;
+    }
     if (content_ids) { 
     cJSON *content_ids_local = NULL;
     if(!cJSON_IsArray(content_ids)) {
@@ -274,6 +317,9 @@ conversion_events_data_inner_custom_data_t *conversion_events_data_inner_custom_
 
     // conversion_events_data_inner_custom_data->content_name
     cJSON *content_name = cJSON_GetObjectItemCaseSensitive(conversion_events_data_inner_custom_dataJSON, "content_name");
+    if (cJSON_IsNull(content_name)) {
+        content_name = NULL;
+    }
     if (content_name) { 
     if(!cJSON_IsString(content_name) && !cJSON_IsNull(content_name))
     {
@@ -283,6 +329,9 @@ conversion_events_data_inner_custom_data_t *conversion_events_data_inner_custom_
 
     // conversion_events_data_inner_custom_data->content_category
     cJSON *content_category = cJSON_GetObjectItemCaseSensitive(conversion_events_data_inner_custom_dataJSON, "content_category");
+    if (cJSON_IsNull(content_category)) {
+        content_category = NULL;
+    }
     if (content_category) { 
     if(!cJSON_IsString(content_category) && !cJSON_IsNull(content_category))
     {
@@ -292,6 +341,9 @@ conversion_events_data_inner_custom_data_t *conversion_events_data_inner_custom_
 
     // conversion_events_data_inner_custom_data->content_brand
     cJSON *content_brand = cJSON_GetObjectItemCaseSensitive(conversion_events_data_inner_custom_dataJSON, "content_brand");
+    if (cJSON_IsNull(content_brand)) {
+        content_brand = NULL;
+    }
     if (content_brand) { 
     if(!cJSON_IsString(content_brand) && !cJSON_IsNull(content_brand))
     {
@@ -301,6 +353,9 @@ conversion_events_data_inner_custom_data_t *conversion_events_data_inner_custom_
 
     // conversion_events_data_inner_custom_data->contents
     cJSON *contents = cJSON_GetObjectItemCaseSensitive(conversion_events_data_inner_custom_dataJSON, "contents");
+    if (cJSON_IsNull(contents)) {
+        contents = NULL;
+    }
     if (contents) { 
     cJSON *contents_local_nonprimitive = NULL;
     if(!cJSON_IsArray(contents)){
@@ -322,6 +377,9 @@ conversion_events_data_inner_custom_data_t *conversion_events_data_inner_custom_
 
     // conversion_events_data_inner_custom_data->num_items
     cJSON *num_items = cJSON_GetObjectItemCaseSensitive(conversion_events_data_inner_custom_dataJSON, "num_items");
+    if (cJSON_IsNull(num_items)) {
+        num_items = NULL;
+    }
     if (num_items) { 
     if(!cJSON_IsNumber(num_items))
     {
@@ -331,6 +389,9 @@ conversion_events_data_inner_custom_data_t *conversion_events_data_inner_custom_
 
     // conversion_events_data_inner_custom_data->order_id
     cJSON *order_id = cJSON_GetObjectItemCaseSensitive(conversion_events_data_inner_custom_dataJSON, "order_id");
+    if (cJSON_IsNull(order_id)) {
+        order_id = NULL;
+    }
     if (order_id) { 
     if(!cJSON_IsString(order_id) && !cJSON_IsNull(order_id))
     {
@@ -340,6 +401,9 @@ conversion_events_data_inner_custom_data_t *conversion_events_data_inner_custom_
 
     // conversion_events_data_inner_custom_data->search_string
     cJSON *search_string = cJSON_GetObjectItemCaseSensitive(conversion_events_data_inner_custom_dataJSON, "search_string");
+    if (cJSON_IsNull(search_string)) {
+        search_string = NULL;
+    }
     if (search_string) { 
     if(!cJSON_IsString(search_string) && !cJSON_IsNull(search_string))
     {
@@ -349,6 +413,9 @@ conversion_events_data_inner_custom_data_t *conversion_events_data_inner_custom_
 
     // conversion_events_data_inner_custom_data->opt_out_type
     cJSON *opt_out_type = cJSON_GetObjectItemCaseSensitive(conversion_events_data_inner_custom_dataJSON, "opt_out_type");
+    if (cJSON_IsNull(opt_out_type)) {
+        opt_out_type = NULL;
+    }
     if (opt_out_type) { 
     if(!cJSON_IsString(opt_out_type) && !cJSON_IsNull(opt_out_type))
     {
@@ -358,6 +425,9 @@ conversion_events_data_inner_custom_data_t *conversion_events_data_inner_custom_
 
     // conversion_events_data_inner_custom_data->np
     cJSON *np = cJSON_GetObjectItemCaseSensitive(conversion_events_data_inner_custom_dataJSON, "np");
+    if (cJSON_IsNull(np)) {
+        np = NULL;
+    }
     if (np) { 
     if(!cJSON_IsString(np) && !cJSON_IsNull(np))
     {
@@ -366,7 +436,7 @@ conversion_events_data_inner_custom_data_t *conversion_events_data_inner_custom_
     }
 
 
-    conversion_events_data_inner_custom_data_local_var = conversion_events_data_inner_custom_data_create (
+    conversion_events_data_inner_custom_data_local_var = conversion_events_data_inner_custom_data_create_internal (
         currency && !cJSON_IsNull(currency) ? strdup(currency->valuestring) : NULL,
         value && !cJSON_IsNull(value) ? strdup(value->valuestring) : NULL,
         content_ids ? content_idsList : NULL,

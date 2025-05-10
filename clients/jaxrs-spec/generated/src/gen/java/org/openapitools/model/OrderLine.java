@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("OrderLine")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class OrderLine   {
   private String id;
   private String type;
@@ -36,6 +36,16 @@ public class OrderLine   {
   private String name;
   private OrderLinePaidType paidType;
   private @Valid List<String> campaignIds = new ArrayList<>();
+
+  public OrderLine() {
+  }
+
+  @JsonCreator
+  public OrderLine(
+    @JsonProperty(required = true, value = "campaign_ids") List<String> campaignIds
+  ) {
+    this.campaignIds = campaignIds;
+  }
 
   /**
    * Order line ID.
@@ -267,12 +277,12 @@ public class OrderLine   {
 
   
   @ApiModelProperty(example = "[\"626735565838\"]", required = true, value = "Associated List of campaign IDs.")
-  @JsonProperty("campaign_ids")
+  @JsonProperty(required = true, value = "campaign_ids")
   @NotNull public List<String> getCampaignIds() {
     return campaignIds;
   }
 
-  @JsonProperty("campaign_ids")
+  @JsonProperty(required = true, value = "campaign_ids")
   public void setCampaignIds(List<String> campaignIds) {
     this.campaignIds = campaignIds;
   }

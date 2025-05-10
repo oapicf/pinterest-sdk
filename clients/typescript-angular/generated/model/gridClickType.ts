@@ -15,7 +15,9 @@
 export type GridClickType = 'CLOSEUP' | 'DIRECT_TO_DESTINATION';
 
 export const GridClickType = {
+
     Closeup: 'CLOSEUP' as GridClickType,
+
     DirectToDestination: 'DIRECT_TO_DESTINATION' as GridClickType
 };
 

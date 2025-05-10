@@ -11,7 +11,7 @@ module PinMediaSourceImageBase64 =
   type SourceTypeEnum = ImageBase64Enum of string  
   //#endregion
   //#region enums
-  type ContentTypeEnum = JpegEnum of string  |  PngEnum of string  
+  type ContentTypeEnum = ImageJpegEnum of string  |  ImagePngEnum of string  
   //#endregion
 
   type PinMediaSourceImageBase64 = {

@@ -179,10 +179,35 @@ CatalogsHotelAttributes <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return CatalogsHotelAttributes in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return CatalogsHotelAttributes as a base R list.
+    #' @examples
+    #' # convert array of CatalogsHotelAttributes (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert CatalogsHotelAttributes to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       CatalogsHotelAttributesObject <- list()
       if (!is.null(self$`name`)) {
         CatalogsHotelAttributesObject[["name"]] <-
@@ -214,7 +239,7 @@ CatalogsHotelAttributes <- R6::R6Class(
       }
       if (!is.null(self$`address`)) {
         CatalogsHotelAttributesObject[["address"]] <-
-          self$`address`$toJSON()
+          self$`address`$toSimpleType()
       }
       if (!is.null(self$`custom_label_0`)) {
         CatalogsHotelAttributesObject[["custom_label_0"]] <-
@@ -250,17 +275,17 @@ CatalogsHotelAttributes <- R6::R6Class(
       }
       if (!is.null(self$`guest_ratings`)) {
         CatalogsHotelAttributesObject[["guest_ratings"]] <-
-          self$`guest_ratings`$toJSON()
+          self$`guest_ratings`$toSimpleType()
       }
       if (!is.null(self$`main_image`)) {
         CatalogsHotelAttributesObject[["main_image"]] <-
-          self$`main_image`$toJSON()
+          self$`main_image`$toSimpleType()
       }
       if (!is.null(self$`additional_image_link`)) {
         CatalogsHotelAttributesObject[["additional_image_link"]] <-
           self$`additional_image_link`
       }
-      CatalogsHotelAttributesObject
+      return(CatalogsHotelAttributesObject)
     },
 
     #' @description
@@ -338,165 +363,13 @@ CatalogsHotelAttributes <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return CatalogsHotelAttributes in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`name`)) {
-          sprintf(
-          '"name":
-            "%s"
-                    ',
-          self$`name`
-          )
-        },
-        if (!is.null(self$`link`)) {
-          sprintf(
-          '"link":
-            "%s"
-                    ',
-          self$`link`
-          )
-        },
-        if (!is.null(self$`description`)) {
-          sprintf(
-          '"description":
-            "%s"
-                    ',
-          self$`description`
-          )
-        },
-        if (!is.null(self$`brand`)) {
-          sprintf(
-          '"brand":
-            "%s"
-                    ',
-          self$`brand`
-          )
-        },
-        if (!is.null(self$`latitude`)) {
-          sprintf(
-          '"latitude":
-            %d
-                    ',
-          self$`latitude`
-          )
-        },
-        if (!is.null(self$`longitude`)) {
-          sprintf(
-          '"longitude":
-            %d
-                    ',
-          self$`longitude`
-          )
-        },
-        if (!is.null(self$`neighborhood`)) {
-          sprintf(
-          '"neighborhood":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`neighborhood`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`address`)) {
-          sprintf(
-          '"address":
-          %s
-          ',
-          jsonlite::toJSON(self$`address`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`custom_label_0`)) {
-          sprintf(
-          '"custom_label_0":
-            "%s"
-                    ',
-          self$`custom_label_0`
-          )
-        },
-        if (!is.null(self$`custom_label_1`)) {
-          sprintf(
-          '"custom_label_1":
-            "%s"
-                    ',
-          self$`custom_label_1`
-          )
-        },
-        if (!is.null(self$`custom_label_2`)) {
-          sprintf(
-          '"custom_label_2":
-            "%s"
-                    ',
-          self$`custom_label_2`
-          )
-        },
-        if (!is.null(self$`custom_label_3`)) {
-          sprintf(
-          '"custom_label_3":
-            "%s"
-                    ',
-          self$`custom_label_3`
-          )
-        },
-        if (!is.null(self$`custom_label_4`)) {
-          sprintf(
-          '"custom_label_4":
-            "%s"
-                    ',
-          self$`custom_label_4`
-          )
-        },
-        if (!is.null(self$`category`)) {
-          sprintf(
-          '"category":
-            "%s"
-                    ',
-          self$`category`
-          )
-        },
-        if (!is.null(self$`base_price`)) {
-          sprintf(
-          '"base_price":
-            "%s"
-                    ',
-          self$`base_price`
-          )
-        },
-        if (!is.null(self$`sale_price`)) {
-          sprintf(
-          '"sale_price":
-            "%s"
-                    ',
-          self$`sale_price`
-          )
-        },
-        if (!is.null(self$`guest_ratings`)) {
-          sprintf(
-          '"guest_ratings":
-          %s
-          ',
-          jsonlite::toJSON(self$`guest_ratings`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`main_image`)) {
-          sprintf(
-          '"main_image":
-          %s
-          ',
-          jsonlite::toJSON(self$`main_image`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`additional_image_link`)) {
-          sprintf(
-          '"additional_image_link":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`additional_image_link`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

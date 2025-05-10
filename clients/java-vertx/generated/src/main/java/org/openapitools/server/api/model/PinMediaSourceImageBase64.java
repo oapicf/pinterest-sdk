@@ -33,8 +33,8 @@ public class PinMediaSourceImageBase64   {
 
 
   public enum ContentTypeEnum {
-    JPEG("image/jpeg"),
-    PNG("image/png");
+    IMAGE_JPEG("image/jpeg"),
+    IMAGE_PNG("image/png");
 
     private String value;
 

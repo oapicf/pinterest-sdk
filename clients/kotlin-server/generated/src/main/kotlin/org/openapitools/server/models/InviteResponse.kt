@@ -15,6 +15,7 @@ import org.openapitools.server.models.BaseInviteDataResponseInviteData
 import org.openapitools.server.models.BusinessAccessUserSummary
 import org.openapitools.server.models.InviteAssetsSummary
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param assetsSummary 
@@ -27,6 +28,7 @@ import org.openapitools.server.models.InviteAssetsSummary
  * @param isReceivedInvite Indicates whether the invite/request was received.
  * @param user Metadata for the member/partner that was sent the invite/request.
  */
+@Serializable
 data class InviteResponse(
     val assetsSummary: InviteAssetsSummary? = null,
     /* The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER. */
@@ -44,5 +46,5 @@ data class InviteResponse(
     val isReceivedInvite: kotlin.Boolean? = null,
     /* Metadata for the member/partner that was sent the invite/request. */
     val user: BusinessAccessUserSummary? = null
-) 
+)
 

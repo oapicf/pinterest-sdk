@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct CampaignId: Codable, JSONEncodable, Hashable {
 
-    static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Campaign ID. */
     public var id: String?
 
@@ -32,3 +32,6 @@ public struct CampaignId: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension CampaignId: Identifiable {}

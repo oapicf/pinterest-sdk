@@ -22,9 +22,10 @@ typedef struct min_price_filter_t min_price_filter_t;
 typedef struct min_price_filter_t {
     catalogs_product_group_pricing_criteria_t *min_price; //object
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } min_price_filter_t;
 
-min_price_filter_t *min_price_filter_create(
+__attribute__((deprecated)) min_price_filter_t *min_price_filter_create(
     catalogs_product_group_pricing_criteria_t *min_price
 );
 

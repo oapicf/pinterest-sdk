@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsRetailProduct")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsRetailProduct   {
   public enum CatalogTypeEnum {
 
@@ -70,6 +70,20 @@ public class CatalogsRetailProduct   {
   private CatalogsRetailProductMetadata metadata;
   private Pin pin;
 
+  public CatalogsRetailProduct() {
+  }
+
+  @JsonCreator
+  public CatalogsRetailProduct(
+    @JsonProperty(required = true, value = "catalog_type") CatalogTypeEnum catalogType,
+    @JsonProperty(required = true, value = "metadata") CatalogsRetailProductMetadata metadata,
+    @JsonProperty(required = true, value = "pin") Pin pin
+  ) {
+    this.catalogType = catalogType;
+    this.metadata = metadata;
+    this.pin = pin;
+  }
+
   /**
    **/
   public CatalogsRetailProduct catalogType(CatalogTypeEnum catalogType) {
@@ -79,12 +93,12 @@ public class CatalogsRetailProduct   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   @NotNull public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
@@ -98,12 +112,12 @@ public class CatalogsRetailProduct   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("metadata")
+  @JsonProperty(required = true, value = "metadata")
   @NotNull @Valid public CatalogsRetailProductMetadata getMetadata() {
     return metadata;
   }
 
-  @JsonProperty("metadata")
+  @JsonProperty(required = true, value = "metadata")
   public void setMetadata(CatalogsRetailProductMetadata metadata) {
     this.metadata = metadata;
   }
@@ -117,12 +131,12 @@ public class CatalogsRetailProduct   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("pin")
+  @JsonProperty(required = true, value = "pin")
   @NotNull @Valid public Pin getPin() {
     return pin;
   }
 
-  @JsonProperty("pin")
+  @JsonProperty(required = true, value = "pin")
   public void setPin(Pin pin) {
     this.pin = pin;
   }

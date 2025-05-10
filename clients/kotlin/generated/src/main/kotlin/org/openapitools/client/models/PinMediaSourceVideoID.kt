@@ -69,12 +69,12 @@ data class PinMediaSourceVideoID (
     /**
      * Content type for cover image Base64.
      *
-     * Values: jpeg,png
+     * Values: imageSlashJpeg,imageSlashPng
      */
     @JsonClass(generateAdapter = false)
     enum class CoverImageContentType(val value: kotlin.String) {
-        @Json(name = "image/jpeg") jpeg("image/jpeg"),
-        @Json(name = "image/png") png("image/png");
+        @Json(name = "image/jpeg") imageSlashJpeg("image/jpeg"),
+        @Json(name = "image/png") imageSlashPng("image/png");
     }
 
 }

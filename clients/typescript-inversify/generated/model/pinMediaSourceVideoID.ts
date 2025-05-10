@@ -41,7 +41,7 @@ export namespace PinMediaSourceVideoID {
     }
     export type CoverImageContentTypeEnum = 'image/jpeg' | 'image/png';
     export const CoverImageContentTypeEnum = {
-        Jpeg: 'image/jpeg' as CoverImageContentTypeEnum,
-        Png: 'image/png' as CoverImageContentTypeEnum
+        ImageJpeg: 'image/jpeg' as CoverImageContentTypeEnum,
+        ImagePng: 'image/png' as CoverImageContentTypeEnum
     }
 }

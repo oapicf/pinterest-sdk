@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "Base64-encoded image media source")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2025-05-10T05:39:31.012858315Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMediaSourceImageBase64   {
   /**
    * Gets or Sets sourceType
@@ -54,9 +54,9 @@ public class PinMediaSourceImageBase64   {
    * Gets or Sets contentType
    */
   public enum ContentTypeEnum {
-    JPEG("image/jpeg"),
+    IMAGE_JPEG("image/jpeg"),
     
-    PNG("image/png");
+    IMAGE_PNG("image/png");
 
     private String value;
 

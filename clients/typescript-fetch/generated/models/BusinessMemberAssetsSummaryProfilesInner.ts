@@ -55,11 +55,11 @@ export function BusinessMemberAssetsSummaryProfilesInnerFromJSONTyped(json: any,
     };
 }
 
-  export function BusinessMemberAssetsSummaryProfilesInnerToJSON(json: any): BusinessMemberAssetsSummaryProfilesInner {
-      return BusinessMemberAssetsSummaryProfilesInnerToJSONTyped(json, false);
-  }
+export function BusinessMemberAssetsSummaryProfilesInnerToJSON(json: any): BusinessMemberAssetsSummaryProfilesInner {
+    return BusinessMemberAssetsSummaryProfilesInnerToJSONTyped(json, false);
+}
 
-  export function BusinessMemberAssetsSummaryProfilesInnerToJSONTyped(value?: BusinessMemberAssetsSummaryProfilesInner | null, ignoreDiscriminator: boolean = false): any {
+export function BusinessMemberAssetsSummaryProfilesInnerToJSONTyped(value?: BusinessMemberAssetsSummaryProfilesInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

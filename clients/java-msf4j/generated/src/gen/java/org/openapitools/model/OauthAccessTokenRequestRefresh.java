@@ -11,7 +11,7 @@ import io.swagger.annotations.ApiModelProperty;
  * A request to exchange a refresh token for a new access token.
  */
 @ApiModel(description = "A request to exchange a refresh token for a new access token.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2025-05-10T05:39:24.501669360Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class OauthAccessTokenRequestRefresh   {
   /**
    * Gets or Sets grantType

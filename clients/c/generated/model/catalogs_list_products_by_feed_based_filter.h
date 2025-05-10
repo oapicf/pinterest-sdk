@@ -23,9 +23,10 @@ typedef struct catalogs_list_products_by_feed_based_filter_t {
     char *feed_id; // string
     struct catalogs_product_group_filters_t *filters; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_list_products_by_feed_based_filter_t;
 
-catalogs_list_products_by_feed_based_filter_t *catalogs_list_products_by_feed_based_filter_create(
+__attribute__((deprecated)) catalogs_list_products_by_feed_based_filter_t *catalogs_list_products_by_feed_based_filter_create(
     char *feed_id,
     catalogs_product_group_filters_t *filters
 );

@@ -5,7 +5,7 @@
 
 
 
-catalogs_db_item_t *catalogs_db_item_create(
+static catalogs_db_item_t *catalogs_db_item_create_internal(
     char *created_at,
     char *id,
     char *updated_at
@@ -18,12 +18,28 @@ catalogs_db_item_t *catalogs_db_item_create(
     catalogs_db_item_local_var->id = id;
     catalogs_db_item_local_var->updated_at = updated_at;
 
+    catalogs_db_item_local_var->_library_owned = 1;
     return catalogs_db_item_local_var;
 }
 
+__attribute__((deprecated)) catalogs_db_item_t *catalogs_db_item_create(
+    char *created_at,
+    char *id,
+    char *updated_at
+    ) {
+    return catalogs_db_item_create_internal (
+        created_at,
+        id,
+        updated_at
+        );
+}
 
 void catalogs_db_item_free(catalogs_db_item_t *catalogs_db_item) {
     if(NULL == catalogs_db_item){
+        return ;
+    }
+    if(catalogs_db_item->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_db_item_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -85,6 +101,9 @@ catalogs_db_item_t *catalogs_db_item_parseFromJSON(cJSON *catalogs_db_itemJSON){
 
     // catalogs_db_item->created_at
     cJSON *created_at = cJSON_GetObjectItemCaseSensitive(catalogs_db_itemJSON, "created_at");
+    if (cJSON_IsNull(created_at)) {
+        created_at = NULL;
+    }
     if (!created_at) {
         goto end;
     }
@@ -97,6 +116,9 @@ catalogs_db_item_t *catalogs_db_item_parseFromJSON(cJSON *catalogs_db_itemJSON){
 
     // catalogs_db_item->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(catalogs_db_itemJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (!id) {
         goto end;
     }
@@ -109,6 +131,9 @@ catalogs_db_item_t *catalogs_db_item_parseFromJSON(cJSON *catalogs_db_itemJSON){
 
     // catalogs_db_item->updated_at
     cJSON *updated_at = cJSON_GetObjectItemCaseSensitive(catalogs_db_itemJSON, "updated_at");
+    if (cJSON_IsNull(updated_at)) {
+        updated_at = NULL;
+    }
     if (!updated_at) {
         goto end;
     }
@@ -120,7 +145,7 @@ catalogs_db_item_t *catalogs_db_item_parseFromJSON(cJSON *catalogs_db_itemJSON){
     }
 
 
-    catalogs_db_item_local_var = catalogs_db_item_create (
+    catalogs_db_item_local_var = catalogs_db_item_create_internal (
         strdup(created_at->valuestring),
         strdup(id->valuestring),
         strdup(updated_at->valuestring)

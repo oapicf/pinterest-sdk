@@ -36,9 +36,10 @@ typedef struct catalogs_creative_assets_batch_item_t {
     pinterest_rest_api_catalogs_creative_assets_batch_item_OPERATION_e operation; //enum
     struct catalogs_updatable_creative_assets_attributes_t *attributes; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_creative_assets_batch_item_t;
 
-catalogs_creative_assets_batch_item_t *catalogs_creative_assets_batch_item_create(
+__attribute__((deprecated)) catalogs_creative_assets_batch_item_t *catalogs_creative_assets_batch_item_create(
     char *creative_assets_id,
     pinterest_rest_api_catalogs_creative_assets_batch_item_OPERATION_e operation,
     catalogs_updatable_creative_assets_attributes_t *attributes

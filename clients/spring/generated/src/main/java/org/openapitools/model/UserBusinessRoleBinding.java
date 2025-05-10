@@ -10,6 +10,7 @@ import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BusinessAccessUserSummary;
 import org.openapitools.model.BusinessMemberAssetsSummary;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -25,7 +26,7 @@ import javax.annotation.Generated;
  * UserBusinessRoleBinding
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class UserBusinessRoleBinding {
 
   private JsonNullable<BusinessMemberAssetsSummary> assetsSummary = JsonNullable.<BusinessMemberAssetsSummary>undefined();
@@ -39,9 +40,9 @@ public class UserBusinessRoleBinding {
 
   private JsonNullable<Integer> createdTime = JsonNullable.<Integer>undefined();
 
-  private String id;
+  private @Nullable String id;
 
-  private Boolean isSharedPartner;
+  private @Nullable Boolean isSharedPartner;
 
   private JsonNullable<BusinessAccessUserSummary> user = JsonNullable.<BusinessAccessUserSummary>undefined();
 

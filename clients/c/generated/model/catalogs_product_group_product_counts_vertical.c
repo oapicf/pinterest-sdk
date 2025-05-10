@@ -4,26 +4,9 @@
 #include "catalogs_product_group_product_counts_vertical.h"
 
 
-char* catalogs_product_group_product_counts_vertical_catalog_type_ToString(pinterest_rest_api_catalogs_product_group_product_counts_vertical__e catalog_type) {
-    char* catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL", "CREATIVE_ASSETS" };
-    return catalog_typeArray[catalog_type];
-}
 
-pinterest_rest_api_catalogs_product_group_product_counts_vertical__e catalogs_product_group_product_counts_vertical_catalog_type_FromString(char* catalog_type){
-    int stringToReturn = 0;
-    char *catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL", "CREATIVE_ASSETS" };
-    size_t sizeofArray = sizeof(catalog_typeArray) / sizeof(catalog_typeArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(catalog_type, catalog_typeArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-
-catalogs_product_group_product_counts_vertical_t *catalogs_product_group_product_counts_vertical_create(
-    catalogs_type_t *catalog_type,
+static catalogs_product_group_product_counts_vertical_t *catalogs_product_group_product_counts_vertical_create_internal(
+    pinterest_rest_api_catalogs_type__e catalog_type,
     double in_stock,
     double out_of_stock,
     double preorder,
@@ -41,19 +24,37 @@ catalogs_product_group_product_counts_vertical_t *catalogs_product_group_product
     catalogs_product_group_product_counts_vertical_local_var->total = total;
     catalogs_product_group_product_counts_vertical_local_var->videos = videos;
 
+    catalogs_product_group_product_counts_vertical_local_var->_library_owned = 1;
     return catalogs_product_group_product_counts_vertical_local_var;
 }
 
+__attribute__((deprecated)) catalogs_product_group_product_counts_vertical_t *catalogs_product_group_product_counts_vertical_create(
+    pinterest_rest_api_catalogs_type__e catalog_type,
+    double in_stock,
+    double out_of_stock,
+    double preorder,
+    double total,
+    double videos
+    ) {
+    return catalogs_product_group_product_counts_vertical_create_internal (
+        catalog_type,
+        in_stock,
+        out_of_stock,
+        preorder,
+        total,
+        videos
+        );
+}
 
 void catalogs_product_group_product_counts_vertical_free(catalogs_product_group_product_counts_vertical_t *catalogs_product_group_product_counts_vertical) {
     if(NULL == catalogs_product_group_product_counts_vertical){
         return ;
     }
-    listEntry_t *listEntry;
-    if (catalogs_product_group_product_counts_vertical->catalog_type) {
-        catalogs_type_free(catalogs_product_group_product_counts_vertical->catalog_type);
-        catalogs_product_group_product_counts_vertical->catalog_type = NULL;
+    if(catalogs_product_group_product_counts_vertical->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_product_group_product_counts_vertical_free");
+        return ;
     }
+    listEntry_t *listEntry;
     free(catalogs_product_group_product_counts_vertical);
 }
 
@@ -61,7 +62,7 @@ cJSON *catalogs_product_group_product_counts_vertical_convertToJSON(catalogs_pro
     cJSON *item = cJSON_CreateObject();
 
     // catalogs_product_group_product_counts_vertical->catalog_type
-    if (pinterest_rest_api_catalogs_product_group_product_counts_vertical__NULL == catalogs_product_group_product_counts_vertical->catalog_type) {
+    if (pinterest_rest_api_catalogs_type__NULL == catalogs_product_group_product_counts_vertical->catalog_type) {
         goto fail;
     }
     cJSON *catalog_type_local_JSON = catalogs_type_convertToJSON(catalogs_product_group_product_counts_vertical->catalog_type);
@@ -131,10 +132,13 @@ catalogs_product_group_product_counts_vertical_t *catalogs_product_group_product
     catalogs_product_group_product_counts_vertical_t *catalogs_product_group_product_counts_vertical_local_var = NULL;
 
     // define the local variable for catalogs_product_group_product_counts_vertical->catalog_type
-    catalogs_type_t *catalog_type_local_nonprim = NULL;
+    pinterest_rest_api_catalogs_type__e catalog_type_local_nonprim = 0;
 
     // catalogs_product_group_product_counts_vertical->catalog_type
     cJSON *catalog_type = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_product_counts_verticalJSON, "catalog_type");
+    if (cJSON_IsNull(catalog_type)) {
+        catalog_type = NULL;
+    }
     if (!catalog_type) {
         goto end;
     }
@@ -144,6 +148,9 @@ catalogs_product_group_product_counts_vertical_t *catalogs_product_group_product
 
     // catalogs_product_group_product_counts_vertical->in_stock
     cJSON *in_stock = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_product_counts_verticalJSON, "in_stock");
+    if (cJSON_IsNull(in_stock)) {
+        in_stock = NULL;
+    }
     if (!in_stock) {
         goto end;
     }
@@ -156,6 +163,9 @@ catalogs_product_group_product_counts_vertical_t *catalogs_product_group_product
 
     // catalogs_product_group_product_counts_vertical->out_of_stock
     cJSON *out_of_stock = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_product_counts_verticalJSON, "out_of_stock");
+    if (cJSON_IsNull(out_of_stock)) {
+        out_of_stock = NULL;
+    }
     if (!out_of_stock) {
         goto end;
     }
@@ -168,6 +178,9 @@ catalogs_product_group_product_counts_vertical_t *catalogs_product_group_product
 
     // catalogs_product_group_product_counts_vertical->preorder
     cJSON *preorder = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_product_counts_verticalJSON, "preorder");
+    if (cJSON_IsNull(preorder)) {
+        preorder = NULL;
+    }
     if (!preorder) {
         goto end;
     }
@@ -180,6 +193,9 @@ catalogs_product_group_product_counts_vertical_t *catalogs_product_group_product
 
     // catalogs_product_group_product_counts_vertical->total
     cJSON *total = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_product_counts_verticalJSON, "total");
+    if (cJSON_IsNull(total)) {
+        total = NULL;
+    }
     if (!total) {
         goto end;
     }
@@ -192,6 +208,9 @@ catalogs_product_group_product_counts_vertical_t *catalogs_product_group_product
 
     // catalogs_product_group_product_counts_vertical->videos
     cJSON *videos = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_product_counts_verticalJSON, "videos");
+    if (cJSON_IsNull(videos)) {
+        videos = NULL;
+    }
     if (!videos) {
         goto end;
     }
@@ -203,7 +222,7 @@ catalogs_product_group_product_counts_vertical_t *catalogs_product_group_product
     }
 
 
-    catalogs_product_group_product_counts_vertical_local_var = catalogs_product_group_product_counts_vertical_create (
+    catalogs_product_group_product_counts_vertical_local_var = catalogs_product_group_product_counts_vertical_create_internal (
         catalog_type_local_nonprim,
         in_stock->valuedouble,
         out_of_stock->valuedouble,
@@ -215,8 +234,7 @@ catalogs_product_group_product_counts_vertical_t *catalogs_product_group_product
     return catalogs_product_group_product_counts_vertical_local_var;
 end:
     if (catalog_type_local_nonprim) {
-        catalogs_type_free(catalog_type_local_nonprim);
-        catalog_type_local_nonprim = NULL;
+        catalog_type_local_nonprim = 0;
     }
     return NULL;
 

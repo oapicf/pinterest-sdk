@@ -49,74 +49,91 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Integration record
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class IntegrationRecord {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_EXTERNAL_BUSINESS_ID = "external_business_id";
   @SerializedName(SERIALIZED_NAME_EXTERNAL_BUSINESS_ID)
+  @javax.annotation.Nullable
   private String externalBusinessId;
 
   public static final String SERIALIZED_NAME_CONNECTED_MERCHANT_ID = "connected_merchant_id";
   @SerializedName(SERIALIZED_NAME_CONNECTED_MERCHANT_ID)
+  @javax.annotation.Nullable
   private String connectedMerchantId;
 
   public static final String SERIALIZED_NAME_CONNECTED_USER_ID = "connected_user_id";
   @SerializedName(SERIALIZED_NAME_CONNECTED_USER_ID)
+  @javax.annotation.Nullable
   private String connectedUserId;
 
   public static final String SERIALIZED_NAME_CONNECTED_ADVERTISER_ID = "connected_advertiser_id";
   @SerializedName(SERIALIZED_NAME_CONNECTED_ADVERTISER_ID)
+  @javax.annotation.Nullable
   private String connectedAdvertiserId;
 
   public static final String SERIALIZED_NAME_CONNECTED_LBA_ID = "connected_lba_id";
   @SerializedName(SERIALIZED_NAME_CONNECTED_LBA_ID)
+  @javax.annotation.Nullable
   private String connectedLbaId;
 
   public static final String SERIALIZED_NAME_CONNECTED_TAG_ID = "connected_tag_id";
   @SerializedName(SERIALIZED_NAME_CONNECTED_TAG_ID)
+  @javax.annotation.Nullable
   private String connectedTagId;
 
   public static final String SERIALIZED_NAME_PARTNER_ACCESS_TOKEN = "partner_access_token";
   @SerializedName(SERIALIZED_NAME_PARTNER_ACCESS_TOKEN)
+  @javax.annotation.Nullable
   private String partnerAccessToken;
 
   public static final String SERIALIZED_NAME_PARTNER_REFRESH_TOKEN = "partner_refresh_token";
   @SerializedName(SERIALIZED_NAME_PARTNER_REFRESH_TOKEN)
+  @javax.annotation.Nullable
   private String partnerRefreshToken;
 
   public static final String SERIALIZED_NAME_PARTNER_PRIMARY_EMAIL = "partner_primary_email";
   @SerializedName(SERIALIZED_NAME_PARTNER_PRIMARY_EMAIL)
+  @javax.annotation.Nullable
   private String partnerPrimaryEmail;
 
   public static final String SERIALIZED_NAME_PARTNER_ACCESS_TOKEN_EXPIRY = "partner_access_token_expiry";
   @SerializedName(SERIALIZED_NAME_PARTNER_ACCESS_TOKEN_EXPIRY)
+  @javax.annotation.Nullable
   private Integer partnerAccessTokenExpiry;
 
   public static final String SERIALIZED_NAME_PARTNER_REFRESH_TOKEN_EXPIRY = "partner_refresh_token_expiry";
   @SerializedName(SERIALIZED_NAME_PARTNER_REFRESH_TOKEN_EXPIRY)
+  @javax.annotation.Nullable
   private Integer partnerRefreshTokenExpiry;
 
   public static final String SERIALIZED_NAME_SCOPES = "scopes";
   @SerializedName(SERIALIZED_NAME_SCOPES)
+  @javax.annotation.Nullable
   private String scopes;
 
   public static final String SERIALIZED_NAME_PARTNER_METADATA = "partner_metadata";
   @SerializedName(SERIALIZED_NAME_PARTNER_METADATA)
+  @javax.annotation.Nullable
   private String partnerMetadata;
 
   public static final String SERIALIZED_NAME_ADDITIONAL_ID1 = "additional_id_1";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_ID1)
+  @javax.annotation.Nullable
   private String additionalId1;
 
   public static final String SERIALIZED_NAME_CREATED_TIME = "created_time";
   @SerializedName(SERIALIZED_NAME_CREATED_TIME)
+  @javax.annotation.Nullable
   private Integer createdTime;
 
   public static final String SERIALIZED_NAME_UPDATED_TIME = "updated_time";
   @SerializedName(SERIALIZED_NAME_UPDATED_TIME)
+  @javax.annotation.Nullable
   private Integer updatedTime;
 
   public IntegrationRecord() {
@@ -131,7 +148,7 @@ public class IntegrationRecord {
     this.connectedAdvertiserId = connectedAdvertiserId;
   }
 
-  public IntegrationRecord id(String id) {
+  public IntegrationRecord id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -145,12 +162,12 @@ public class IntegrationRecord {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public IntegrationRecord externalBusinessId(String externalBusinessId) {
+  public IntegrationRecord externalBusinessId(@javax.annotation.Nullable String externalBusinessId) {
     this.externalBusinessId = externalBusinessId;
     return this;
   }
@@ -164,12 +181,12 @@ public class IntegrationRecord {
     return externalBusinessId;
   }
 
-  public void setExternalBusinessId(String externalBusinessId) {
+  public void setExternalBusinessId(@javax.annotation.Nullable String externalBusinessId) {
     this.externalBusinessId = externalBusinessId;
   }
 
 
-  public IntegrationRecord connectedMerchantId(String connectedMerchantId) {
+  public IntegrationRecord connectedMerchantId(@javax.annotation.Nullable String connectedMerchantId) {
     this.connectedMerchantId = connectedMerchantId;
     return this;
   }
@@ -183,7 +200,7 @@ public class IntegrationRecord {
     return connectedMerchantId;
   }
 
-  public void setConnectedMerchantId(String connectedMerchantId) {
+  public void setConnectedMerchantId(@javax.annotation.Nullable String connectedMerchantId) {
     this.connectedMerchantId = connectedMerchantId;
   }
 
@@ -210,7 +227,7 @@ public class IntegrationRecord {
 
 
 
-  public IntegrationRecord connectedLbaId(String connectedLbaId) {
+  public IntegrationRecord connectedLbaId(@javax.annotation.Nullable String connectedLbaId) {
     this.connectedLbaId = connectedLbaId;
     return this;
   }
@@ -224,12 +241,12 @@ public class IntegrationRecord {
     return connectedLbaId;
   }
 
-  public void setConnectedLbaId(String connectedLbaId) {
+  public void setConnectedLbaId(@javax.annotation.Nullable String connectedLbaId) {
     this.connectedLbaId = connectedLbaId;
   }
 
 
-  public IntegrationRecord connectedTagId(String connectedTagId) {
+  public IntegrationRecord connectedTagId(@javax.annotation.Nullable String connectedTagId) {
     this.connectedTagId = connectedTagId;
     return this;
   }
@@ -243,12 +260,12 @@ public class IntegrationRecord {
     return connectedTagId;
   }
 
-  public void setConnectedTagId(String connectedTagId) {
+  public void setConnectedTagId(@javax.annotation.Nullable String connectedTagId) {
     this.connectedTagId = connectedTagId;
   }
 
 
-  public IntegrationRecord partnerAccessToken(String partnerAccessToken) {
+  public IntegrationRecord partnerAccessToken(@javax.annotation.Nullable String partnerAccessToken) {
     this.partnerAccessToken = partnerAccessToken;
     return this;
   }
@@ -262,12 +279,12 @@ public class IntegrationRecord {
     return partnerAccessToken;
   }
 
-  public void setPartnerAccessToken(String partnerAccessToken) {
+  public void setPartnerAccessToken(@javax.annotation.Nullable String partnerAccessToken) {
     this.partnerAccessToken = partnerAccessToken;
   }
 
 
-  public IntegrationRecord partnerRefreshToken(String partnerRefreshToken) {
+  public IntegrationRecord partnerRefreshToken(@javax.annotation.Nullable String partnerRefreshToken) {
     this.partnerRefreshToken = partnerRefreshToken;
     return this;
   }
@@ -281,12 +298,12 @@ public class IntegrationRecord {
     return partnerRefreshToken;
   }
 
-  public void setPartnerRefreshToken(String partnerRefreshToken) {
+  public void setPartnerRefreshToken(@javax.annotation.Nullable String partnerRefreshToken) {
     this.partnerRefreshToken = partnerRefreshToken;
   }
 
 
-  public IntegrationRecord partnerPrimaryEmail(String partnerPrimaryEmail) {
+  public IntegrationRecord partnerPrimaryEmail(@javax.annotation.Nullable String partnerPrimaryEmail) {
     this.partnerPrimaryEmail = partnerPrimaryEmail;
     return this;
   }
@@ -300,12 +317,12 @@ public class IntegrationRecord {
     return partnerPrimaryEmail;
   }
 
-  public void setPartnerPrimaryEmail(String partnerPrimaryEmail) {
+  public void setPartnerPrimaryEmail(@javax.annotation.Nullable String partnerPrimaryEmail) {
     this.partnerPrimaryEmail = partnerPrimaryEmail;
   }
 
 
-  public IntegrationRecord partnerAccessTokenExpiry(Integer partnerAccessTokenExpiry) {
+  public IntegrationRecord partnerAccessTokenExpiry(@javax.annotation.Nullable Integer partnerAccessTokenExpiry) {
     this.partnerAccessTokenExpiry = partnerAccessTokenExpiry;
     return this;
   }
@@ -319,12 +336,12 @@ public class IntegrationRecord {
     return partnerAccessTokenExpiry;
   }
 
-  public void setPartnerAccessTokenExpiry(Integer partnerAccessTokenExpiry) {
+  public void setPartnerAccessTokenExpiry(@javax.annotation.Nullable Integer partnerAccessTokenExpiry) {
     this.partnerAccessTokenExpiry = partnerAccessTokenExpiry;
   }
 
 
-  public IntegrationRecord partnerRefreshTokenExpiry(Integer partnerRefreshTokenExpiry) {
+  public IntegrationRecord partnerRefreshTokenExpiry(@javax.annotation.Nullable Integer partnerRefreshTokenExpiry) {
     this.partnerRefreshTokenExpiry = partnerRefreshTokenExpiry;
     return this;
   }
@@ -338,12 +355,12 @@ public class IntegrationRecord {
     return partnerRefreshTokenExpiry;
   }
 
-  public void setPartnerRefreshTokenExpiry(Integer partnerRefreshTokenExpiry) {
+  public void setPartnerRefreshTokenExpiry(@javax.annotation.Nullable Integer partnerRefreshTokenExpiry) {
     this.partnerRefreshTokenExpiry = partnerRefreshTokenExpiry;
   }
 
 
-  public IntegrationRecord scopes(String scopes) {
+  public IntegrationRecord scopes(@javax.annotation.Nullable String scopes) {
     this.scopes = scopes;
     return this;
   }
@@ -357,12 +374,12 @@ public class IntegrationRecord {
     return scopes;
   }
 
-  public void setScopes(String scopes) {
+  public void setScopes(@javax.annotation.Nullable String scopes) {
     this.scopes = scopes;
   }
 
 
-  public IntegrationRecord partnerMetadata(String partnerMetadata) {
+  public IntegrationRecord partnerMetadata(@javax.annotation.Nullable String partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
     return this;
   }
@@ -376,12 +393,12 @@ public class IntegrationRecord {
     return partnerMetadata;
   }
 
-  public void setPartnerMetadata(String partnerMetadata) {
+  public void setPartnerMetadata(@javax.annotation.Nullable String partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
   }
 
 
-  public IntegrationRecord additionalId1(String additionalId1) {
+  public IntegrationRecord additionalId1(@javax.annotation.Nullable String additionalId1) {
     this.additionalId1 = additionalId1;
     return this;
   }
@@ -395,12 +412,12 @@ public class IntegrationRecord {
     return additionalId1;
   }
 
-  public void setAdditionalId1(String additionalId1) {
+  public void setAdditionalId1(@javax.annotation.Nullable String additionalId1) {
     this.additionalId1 = additionalId1;
   }
 
 
-  public IntegrationRecord createdTime(Integer createdTime) {
+  public IntegrationRecord createdTime(@javax.annotation.Nullable Integer createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -414,12 +431,12 @@ public class IntegrationRecord {
     return createdTime;
   }
 
-  public void setCreatedTime(Integer createdTime) {
+  public void setCreatedTime(@javax.annotation.Nullable Integer createdTime) {
     this.createdTime = createdTime;
   }
 
 
-  public IntegrationRecord updatedTime(Integer updatedTime) {
+  public IntegrationRecord updatedTime(@javax.annotation.Nullable Integer updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -433,7 +450,7 @@ public class IntegrationRecord {
     return updatedTime;
   }
 
-  public void setUpdatedTime(Integer updatedTime) {
+  public void setUpdatedTime(@javax.annotation.Nullable Integer updatedTime) {
     this.updatedTime = updatedTime;
   }
 

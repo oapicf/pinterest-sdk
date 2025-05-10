@@ -75,11 +75,11 @@ export function CatalogsHotelReportParametersFromJSONTyped(json: any, ignoreDisc
     };
 }
 
-  export function CatalogsHotelReportParametersToJSON(json: any): CatalogsHotelReportParameters {
-      return CatalogsHotelReportParametersToJSONTyped(json, false);
-  }
+export function CatalogsHotelReportParametersToJSON(json: any): CatalogsHotelReportParameters {
+    return CatalogsHotelReportParametersToJSONTyped(json, false);
+}
 
-  export function CatalogsHotelReportParametersToJSONTyped(value?: CatalogsHotelReportParameters | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsHotelReportParametersToJSONTyped(value?: CatalogsHotelReportParameters | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -29,9 +29,10 @@ typedef struct pin_update_t {
     list_t *carousel_slots; //nonprimitive container
     char *note; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } pin_update_t;
 
-pin_update_t *pin_update_create(
+__attribute__((deprecated)) pin_update_t *pin_update_create(
     char *alt_text,
     char *board_id,
     char *board_section_id,

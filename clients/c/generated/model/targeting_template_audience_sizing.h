@@ -22,9 +22,10 @@ typedef struct targeting_template_audience_sizing_t targeting_template_audience_
 typedef struct targeting_template_audience_sizing_t {
     struct targeting_template_audience_sizing_reach_estimate_t *reach_estimate; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } targeting_template_audience_sizing_t;
 
-targeting_template_audience_sizing_t *targeting_template_audience_sizing_create(
+__attribute__((deprecated)) targeting_template_audience_sizing_t *targeting_template_audience_sizing_create(
     targeting_template_audience_sizing_reach_estimate_t *reach_estimate
 );
 

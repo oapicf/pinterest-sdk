@@ -56,11 +56,11 @@ export function ProductGroupPromotionResponseFromJSONTyped(json: any, ignoreDisc
     };
 }
 
-  export function ProductGroupPromotionResponseToJSON(json: any): ProductGroupPromotionResponse {
-      return ProductGroupPromotionResponseToJSONTyped(json, false);
-  }
+export function ProductGroupPromotionResponseToJSON(json: any): ProductGroupPromotionResponse {
+    return ProductGroupPromotionResponseToJSONTyped(json, false);
+}
 
-  export function ProductGroupPromotionResponseToJSONTyped(value?: ProductGroupPromotionResponse | null, ignoreDiscriminator: boolean = false): any {
+export function ProductGroupPromotionResponseToJSONTyped(value?: ProductGroupPromotionResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

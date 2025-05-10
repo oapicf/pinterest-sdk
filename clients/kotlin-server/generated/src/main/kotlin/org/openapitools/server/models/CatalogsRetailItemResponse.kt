@@ -15,6 +15,7 @@ import org.openapitools.server.models.CatalogsType
 import org.openapitools.server.models.ItemAttributes
 import org.openapitools.server.models.Pin
 
+import kotlinx.serialization.Serializable
 /**
  * Object describing a retail item record
  * @param catalogType 
@@ -22,6 +23,7 @@ import org.openapitools.server.models.Pin
  * @param pins The pins mapped to the item
  * @param attributes 
  */
+@Serializable
 data class CatalogsRetailItemResponse(
     val catalogType: CatalogsType,
     /* The catalog retail item id in the merchant namespace */
@@ -29,5 +31,5 @@ data class CatalogsRetailItemResponse(
     /* The pins mapped to the item */
     val pins: kotlin.collections.List<Pin>? = null,
     val attributes: ItemAttributes? = null
-) 
+)
 

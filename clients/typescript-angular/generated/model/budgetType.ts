@@ -15,8 +15,11 @@
 export type BudgetType = 'DAILY' | 'LIFETIME' | 'CBO_ADGROUP';
 
 export const BudgetType = {
+
     Daily: 'DAILY' as BudgetType,
+
     Lifetime: 'LIFETIME' as BudgetType,
+
     CboAdgroup: 'CBO_ADGROUP' as BudgetType
 };
 

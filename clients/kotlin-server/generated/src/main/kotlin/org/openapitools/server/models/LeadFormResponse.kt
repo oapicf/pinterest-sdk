@@ -15,6 +15,7 @@ import org.openapitools.server.models.LeadFormCommonPolicyLinksInner
 import org.openapitools.server.models.LeadFormQuestion
 import org.openapitools.server.models.LeadFormStatus
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param name Internal name of the lead form.
@@ -30,6 +31,7 @@ import org.openapitools.server.models.LeadFormStatus
  * @param createdTime Lead form creation time. Unix timestamp in seconds.
  * @param updatedTime Last update time. Unix timestamp in seconds.
  */
+@Serializable
 data class LeadFormResponse(
     /* Internal name of the lead form. */
     val name: kotlin.String? = null,
@@ -54,5 +56,5 @@ data class LeadFormResponse(
     val createdTime: kotlin.Int? = null,
     /* Last update time. Unix timestamp in seconds. */
     val updatedTime: kotlin.Int? = null
-) 
+)
 

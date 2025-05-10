@@ -54,28 +54,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Object describing a retail item record
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsRetailItemResponse {
   public static final String SERIALIZED_NAME_CATALOG_TYPE = "catalog_type";
   @SerializedName(SERIALIZED_NAME_CATALOG_TYPE)
+  @javax.annotation.Nonnull
   private CatalogsType catalogType;
 
   public static final String SERIALIZED_NAME_ITEM_ID = "item_id";
   @SerializedName(SERIALIZED_NAME_ITEM_ID)
+  @javax.annotation.Nullable
   private String itemId;
 
   public static final String SERIALIZED_NAME_PINS = "pins";
   @SerializedName(SERIALIZED_NAME_PINS)
+  @javax.annotation.Nullable
   private List<Pin> pins;
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  @javax.annotation.Nullable
   private ItemAttributes attributes;
 
   public CatalogsRetailItemResponse() {
   }
 
-  public CatalogsRetailItemResponse catalogType(CatalogsType catalogType) {
+  public CatalogsRetailItemResponse catalogType(@javax.annotation.Nonnull CatalogsType catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -89,12 +93,12 @@ public class CatalogsRetailItemResponse {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(@javax.annotation.Nonnull CatalogsType catalogType) {
     this.catalogType = catalogType;
   }
 
 
-  public CatalogsRetailItemResponse itemId(String itemId) {
+  public CatalogsRetailItemResponse itemId(@javax.annotation.Nullable String itemId) {
     this.itemId = itemId;
     return this;
   }
@@ -108,12 +112,12 @@ public class CatalogsRetailItemResponse {
     return itemId;
   }
 
-  public void setItemId(String itemId) {
+  public void setItemId(@javax.annotation.Nullable String itemId) {
     this.itemId = itemId;
   }
 
 
-  public CatalogsRetailItemResponse pins(List<Pin> pins) {
+  public CatalogsRetailItemResponse pins(@javax.annotation.Nullable List<Pin> pins) {
     this.pins = pins;
     return this;
   }
@@ -135,12 +139,12 @@ public class CatalogsRetailItemResponse {
     return pins;
   }
 
-  public void setPins(List<Pin> pins) {
+  public void setPins(@javax.annotation.Nullable List<Pin> pins) {
     this.pins = pins;
   }
 
 
-  public CatalogsRetailItemResponse attributes(ItemAttributes attributes) {
+  public CatalogsRetailItemResponse attributes(@javax.annotation.Nullable ItemAttributes attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -154,7 +158,7 @@ public class CatalogsRetailItemResponse {
     return attributes;
   }
 
-  public void setAttributes(ItemAttributes attributes) {
+  public void setAttributes(@javax.annotation.Nullable ItemAttributes attributes) {
     this.attributes = attributes;
   }
 

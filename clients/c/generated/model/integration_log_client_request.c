@@ -22,7 +22,7 @@ pinterest_rest_api_integration_log_client_request_METHOD_e integration_log_clien
     return 0;
 }
 
-integration_log_client_request_t *integration_log_client_request_create(
+static integration_log_client_request_t *integration_log_client_request_create_internal(
     pinterest_rest_api_integration_log_client_request_METHOD_e method,
     char *host,
     char *path,
@@ -41,12 +41,34 @@ integration_log_client_request_t *integration_log_client_request_create(
     integration_log_client_request_local_var->response_headers = response_headers;
     integration_log_client_request_local_var->response_status_code = response_status_code;
 
+    integration_log_client_request_local_var->_library_owned = 1;
     return integration_log_client_request_local_var;
 }
 
+__attribute__((deprecated)) integration_log_client_request_t *integration_log_client_request_create(
+    pinterest_rest_api_integration_log_client_request_METHOD_e method,
+    char *host,
+    char *path,
+    list_t* request_headers,
+    list_t* response_headers,
+    int response_status_code
+    ) {
+    return integration_log_client_request_create_internal (
+        method,
+        host,
+        path,
+        request_headers,
+        response_headers,
+        response_status_code
+        );
+}
 
 void integration_log_client_request_free(integration_log_client_request_t *integration_log_client_request) {
     if(NULL == integration_log_client_request){
+        return ;
+    }
+    if(integration_log_client_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "integration_log_client_request_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -60,7 +82,7 @@ void integration_log_client_request_free(integration_log_client_request_t *integ
     }
     if (integration_log_client_request->request_headers) {
         list_ForEach(listEntry, integration_log_client_request->request_headers) {
-            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            keyValuePair_t *localKeyValue = listEntry->data;
             free (localKeyValue->key);
             free (localKeyValue->value);
             keyValuePair_free(localKeyValue);
@@ -70,7 +92,7 @@ void integration_log_client_request_free(integration_log_client_request_t *integ
     }
     if (integration_log_client_request->response_headers) {
         list_ForEach(listEntry, integration_log_client_request->response_headers) {
-            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            keyValuePair_t *localKeyValue = listEntry->data;
             free (localKeyValue->key);
             free (localKeyValue->value);
             keyValuePair_free(localKeyValue);
@@ -88,7 +110,7 @@ cJSON *integration_log_client_request_convertToJSON(integration_log_client_reque
     if (pinterest_rest_api_integration_log_client_request_METHOD_NULL == integration_log_client_request->method) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "method", methodintegration_log_client_request_ToString(integration_log_client_request->method)) == NULL)
+    if(cJSON_AddStringToObject(item, "method", integration_log_client_request_method_ToString(integration_log_client_request->method)) == NULL)
     {
     goto fail; //Enum
     }
@@ -122,8 +144,8 @@ cJSON *integration_log_client_request_convertToJSON(integration_log_client_reque
     listEntry_t *request_headersListEntry;
     if (integration_log_client_request->request_headers) {
     list_ForEach(request_headersListEntry, integration_log_client_request->request_headers) {
-        keyValuePair_t *localKeyValue = (keyValuePair_t*)request_headersListEntry->data;
-        if(cJSON_AddStringToObject(localMapObject, localKeyValue->key, (char*)localKeyValue->value) == NULL)
+        keyValuePair_t *localKeyValue = request_headersListEntry->data;
+        if(cJSON_AddStringToObject(localMapObject, localKeyValue->key, localKeyValue->value) == NULL)
         {
             goto fail;
         }
@@ -142,8 +164,8 @@ cJSON *integration_log_client_request_convertToJSON(integration_log_client_reque
     listEntry_t *response_headersListEntry;
     if (integration_log_client_request->response_headers) {
     list_ForEach(response_headersListEntry, integration_log_client_request->response_headers) {
-        keyValuePair_t *localKeyValue = (keyValuePair_t*)response_headersListEntry->data;
-        if(cJSON_AddStringToObject(localMapObject, localKeyValue->key, (char*)localKeyValue->value) == NULL)
+        keyValuePair_t *localKeyValue = response_headersListEntry->data;
+        if(cJSON_AddStringToObject(localMapObject, localKeyValue->key, localKeyValue->value) == NULL)
         {
             goto fail;
         }
@@ -179,6 +201,9 @@ integration_log_client_request_t *integration_log_client_request_parseFromJSON(c
 
     // integration_log_client_request->method
     cJSON *method = cJSON_GetObjectItemCaseSensitive(integration_log_client_requestJSON, "method");
+    if (cJSON_IsNull(method)) {
+        method = NULL;
+    }
     if (!method) {
         goto end;
     }
@@ -193,6 +218,9 @@ integration_log_client_request_t *integration_log_client_request_parseFromJSON(c
 
     // integration_log_client_request->host
     cJSON *host = cJSON_GetObjectItemCaseSensitive(integration_log_client_requestJSON, "host");
+    if (cJSON_IsNull(host)) {
+        host = NULL;
+    }
     if (!host) {
         goto end;
     }
@@ -205,6 +233,9 @@ integration_log_client_request_t *integration_log_client_request_parseFromJSON(c
 
     // integration_log_client_request->path
     cJSON *path = cJSON_GetObjectItemCaseSensitive(integration_log_client_requestJSON, "path");
+    if (cJSON_IsNull(path)) {
+        path = NULL;
+    }
     if (!path) {
         goto end;
     }
@@ -217,6 +248,9 @@ integration_log_client_request_t *integration_log_client_request_parseFromJSON(c
 
     // integration_log_client_request->request_headers
     cJSON *request_headers = cJSON_GetObjectItemCaseSensitive(integration_log_client_requestJSON, "request_headers");
+    if (cJSON_IsNull(request_headers)) {
+        request_headers = NULL;
+    }
     if (request_headers) { 
     cJSON *request_headers_local_map = NULL;
     if(!cJSON_IsObject(request_headers) && !cJSON_IsNull(request_headers))
@@ -242,6 +276,9 @@ integration_log_client_request_t *integration_log_client_request_parseFromJSON(c
 
     // integration_log_client_request->response_headers
     cJSON *response_headers = cJSON_GetObjectItemCaseSensitive(integration_log_client_requestJSON, "response_headers");
+    if (cJSON_IsNull(response_headers)) {
+        response_headers = NULL;
+    }
     if (response_headers) { 
     cJSON *response_headers_local_map = NULL;
     if(!cJSON_IsObject(response_headers) && !cJSON_IsNull(response_headers))
@@ -267,6 +304,9 @@ integration_log_client_request_t *integration_log_client_request_parseFromJSON(c
 
     // integration_log_client_request->response_status_code
     cJSON *response_status_code = cJSON_GetObjectItemCaseSensitive(integration_log_client_requestJSON, "response_status_code");
+    if (cJSON_IsNull(response_status_code)) {
+        response_status_code = NULL;
+    }
     if (response_status_code) { 
     if(!cJSON_IsNumber(response_status_code))
     {
@@ -275,7 +315,7 @@ integration_log_client_request_t *integration_log_client_request_parseFromJSON(c
     }
 
 
-    integration_log_client_request_local_var = integration_log_client_request_create (
+    integration_log_client_request_local_var = integration_log_client_request_create_internal (
         methodVariable,
         strdup(host->valuestring),
         strdup(path->valuestring),
@@ -289,7 +329,7 @@ end:
     if (request_headersList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, request_headersList) {
-            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            keyValuePair_t *localKeyValue = listEntry->data;
             free(localKeyValue->key);
             localKeyValue->key = NULL;
             free(localKeyValue->value);
@@ -303,7 +343,7 @@ end:
     if (response_headersList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, response_headersList) {
-            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            keyValuePair_t *localKeyValue = listEntry->data;
             free(localKeyValue->key);
             localKeyValue->key = NULL;
             free(localKeyValue->value);

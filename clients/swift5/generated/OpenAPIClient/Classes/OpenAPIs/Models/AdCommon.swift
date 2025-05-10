@@ -33,8 +33,8 @@ public struct AdCommon: Codable, JSONEncodable, Hashable {
         case watchNow = "WATCH_NOW"
         case readMore = "READ_MORE"
     }
-    static let adGroupIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(AG)?\\d+$/")
-    static let leadFormIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(AG)?\\d+$/")
+    public static let adGroupIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(AG)?\\d+$/")
+    public static let leadFormIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(AG)?\\d+$/")
     /** ID of the ad group that contains the ad. */
     public var adGroupId: String?
     /** Deep link URL for Android devices. */

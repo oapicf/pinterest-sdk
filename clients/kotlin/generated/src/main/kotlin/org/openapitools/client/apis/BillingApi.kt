@@ -58,6 +58,7 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     }
 
     /**
+     * POST /ad_accounts/{ad_account_id}/ads_credit/redeem
      * Redeem ad credits
      * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      * @param adAccountId Unique identifier of an ad account.
@@ -90,6 +91,7 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     }
 
     /**
+     * POST /ad_accounts/{ad_account_id}/ads_credit/redeem
      * Redeem ad credits
      * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      * @param adAccountId Unique identifier of an ad account.
@@ -133,6 +135,7 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/ads_credit/discounts
      * Get ads credit discounts
      * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      * @param adAccountId Unique identifier of an ad account.
@@ -166,6 +169,7 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/ads_credit/discounts
      * Get ads credit discounts
      * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      * @param adAccountId Unique identifier of an ad account.
@@ -218,6 +222,7 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/billing_profiles
      * Get billing profiles
      * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      * @param adAccountId Unique identifier of an ad account.
@@ -252,6 +257,7 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/billing_profiles
      * Get billing profiles
      * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      * @param adAccountId Unique identifier of an ad account.
@@ -307,6 +313,7 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/ssio/accounts
      * Get Salesforce account details including bill-to information.
      * Get Salesforce account details including bill-to information to be used in insertion orders process for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account.
@@ -338,6 +345,7 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/ssio/accounts
      * Get Salesforce account details including bill-to information.
      * Get Salesforce account details including bill-to information to be used in insertion orders process for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account.
@@ -378,6 +386,7 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     }
 
     /**
+     * POST /ad_accounts/{ad_account_id}/ssio/insertion_orders
      * Create insertion order through SSIO.
      * Create insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account.
@@ -410,6 +419,7 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     }
 
     /**
+     * POST /ad_accounts/{ad_account_id}/ssio/insertion_orders
      * Create insertion order through SSIO.
      * Create insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account.
@@ -453,6 +463,7 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     }
 
     /**
+     * PATCH /ad_accounts/{ad_account_id}/ssio/insertion_orders
      * Edit insertion order through SSIO.
      * Edit insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account.
@@ -485,6 +496,7 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     }
 
     /**
+     * PATCH /ad_accounts/{ad_account_id}/ssio/insertion_orders
      * Edit insertion order through SSIO.
      * Edit insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account.
@@ -528,6 +540,7 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/ssio/insertion_orders/status
      * Get insertion order status by ad account id.
      * Get insertion order status for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account.
@@ -561,6 +574,7 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/ssio/insertion_orders/status
      * Get insertion order status by ad account id.
      * Get insertion order status for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account.
@@ -613,6 +627,7 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/ssio/insertion_orders/{pin_order_id}/status
      * Get insertion order status by pin order id.
      * Get insertion order status for pin order id &lt;code&gt;pin_order_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account.
@@ -645,6 +660,7 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/ssio/insertion_orders/{pin_order_id}/status
      * Get insertion order status by pin order id.
      * Get insertion order status for pin order id &lt;code&gt;pin_order_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account.
@@ -687,6 +703,7 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/ssio/order_lines
      * Get Salesforce order lines by ad account id.
      * Get Salesforce order lines for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account.
@@ -721,6 +738,7 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/ssio/order_lines
      * Get Salesforce order lines by ad account id.
      * Get Salesforce order lines for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account.

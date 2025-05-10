@@ -51,16 +51,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Batch of logs sent from an integration application.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class IntegrationLogsRequest {
   public static final String SERIALIZED_NAME_LOGS = "logs";
   @SerializedName(SERIALIZED_NAME_LOGS)
+  @javax.annotation.Nonnull
   private List<IntegrationLog> logs = new ArrayList<>();
 
   public IntegrationLogsRequest() {
   }
 
-  public IntegrationLogsRequest logs(List<IntegrationLog> logs) {
+  public IntegrationLogsRequest logs(@javax.annotation.Nonnull List<IntegrationLog> logs) {
     this.logs = logs;
     return this;
   }
@@ -82,7 +83,7 @@ public class IntegrationLogsRequest {
     return logs;
   }
 
-  public void setLogs(List<IntegrationLog> logs) {
+  public void setLogs(@javax.annotation.Nonnull List<IntegrationLog> logs) {
     this.logs = logs;
   }
 

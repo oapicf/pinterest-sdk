@@ -51,32 +51,37 @@ import com.github.oapicf.pinterestsdk.JSON;
  * @deprecated
  */
 @Deprecated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AudienceInsightCategoryCommon {
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)
+  @javax.annotation.Nullable
   private String key;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_RATIO = "ratio";
   @SerializedName(SERIALIZED_NAME_RATIO)
+  @javax.annotation.Nullable
   private BigDecimal ratio;
 
   public static final String SERIALIZED_NAME_INDEX = "index";
   @SerializedName(SERIALIZED_NAME_INDEX)
+  @javax.annotation.Nullable
   private BigDecimal index;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public AudienceInsightCategoryCommon() {
   }
 
-  public AudienceInsightCategoryCommon key(String key) {
+  public AudienceInsightCategoryCommon key(@javax.annotation.Nullable String key) {
     this.key = key;
     return this;
   }
@@ -90,12 +95,12 @@ public class AudienceInsightCategoryCommon {
     return key;
   }
 
-  public void setKey(String key) {
+  public void setKey(@javax.annotation.Nullable String key) {
     this.key = key;
   }
 
 
-  public AudienceInsightCategoryCommon name(String name) {
+  public AudienceInsightCategoryCommon name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -109,12 +114,12 @@ public class AudienceInsightCategoryCommon {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public AudienceInsightCategoryCommon ratio(BigDecimal ratio) {
+  public AudienceInsightCategoryCommon ratio(@javax.annotation.Nullable BigDecimal ratio) {
     this.ratio = ratio;
     return this;
   }
@@ -128,12 +133,12 @@ public class AudienceInsightCategoryCommon {
     return ratio;
   }
 
-  public void setRatio(BigDecimal ratio) {
+  public void setRatio(@javax.annotation.Nullable BigDecimal ratio) {
     this.ratio = ratio;
   }
 
 
-  public AudienceInsightCategoryCommon index(BigDecimal index) {
+  public AudienceInsightCategoryCommon index(@javax.annotation.Nullable BigDecimal index) {
     this.index = index;
     return this;
   }
@@ -147,12 +152,12 @@ public class AudienceInsightCategoryCommon {
     return index;
   }
 
-  public void setIndex(BigDecimal index) {
+  public void setIndex(@javax.annotation.Nullable BigDecimal index) {
     this.index = index;
   }
 
 
-  public AudienceInsightCategoryCommon id(String id) {
+  public AudienceInsightCategoryCommon id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -166,7 +171,7 @@ public class AudienceInsightCategoryCommon {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 

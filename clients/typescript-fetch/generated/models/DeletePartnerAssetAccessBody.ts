@@ -57,11 +57,11 @@ export function DeletePartnerAssetAccessBodyFromJSONTyped(json: any, ignoreDiscr
     };
 }
 
-  export function DeletePartnerAssetAccessBodyToJSON(json: any): DeletePartnerAssetAccessBody {
-      return DeletePartnerAssetAccessBodyToJSONTyped(json, false);
-  }
+export function DeletePartnerAssetAccessBodyToJSON(json: any): DeletePartnerAssetAccessBody {
+    return DeletePartnerAssetAccessBodyToJSONTyped(json, false);
+}
 
-  export function DeletePartnerAssetAccessBodyToJSONTyped(value?: DeletePartnerAssetAccessBody | null, ignoreDiscriminator: boolean = false): any {
+export function DeletePartnerAssetAccessBodyToJSONTyped(value?: DeletePartnerAssetAccessBody | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

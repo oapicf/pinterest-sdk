@@ -53,7 +53,6 @@ stringFromOrder_ model =
 
 
 
-
 type OwnershipType
     = OwnershipTypeOWNED
     | OwnershipTypeRECEIVED
@@ -77,70 +76,85 @@ stringFromOwnershipType model =
 
 
 
-{-| Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. <p/> For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.
+{-| Create audience
+
+Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. <p/> For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.
+
 -}
 audiencesCreate : String -> Api.Data.AudienceCreateRequest -> Api.Request Api.Data.Audience
 audiencesCreate adAccountId_path audienceCreateRequest_body =
     Api.request
         "POST"
         "/ad_accounts/{ad_account_id}/audiences"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Just (Api.Data.encodeAudienceCreateRequest audienceCreateRequest_body)))
         Api.Data.audienceDecoder
 
 
-{-| Create a custom audience and find the audiences you want your ads to reach.
+{-| Create custom audience
+
+Create a custom audience and find the audiences you want your ads to reach.
+
 -}
 audiencesCreateCustom : String -> Api.Data.AudienceCreateCustomRequest -> Api.Request Api.Data.Audience
 audiencesCreateCustom adAccountId_path audienceCreateCustomRequest_body =
     Api.request
         "POST"
         "/ad_accounts/{ad_account_id}/audiences/custom"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Just (Api.Data.encodeAudienceCreateCustomRequest audienceCreateCustomRequest_body)))
         Api.Data.audienceDecoder
 
 
-{-| Get a specific audience given the audience ID.
+{-| Get audience
+
+Get a specific audience given the audience ID.
+
 -}
 audiencesGet : String -> String -> Api.Request Api.Data.Audience
 audiencesGet adAccountId_path audienceId_path =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/audiences/{audience_id}"
-        [ ( "adAccountId", identity adAccountId_path ), ( "audienceId", identity audienceId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ), ( "audience_id", identity audienceId_path ) ]
         []
         []
         Nothing
         Api.Data.audienceDecoder
 
 
-{-| Get list of audiences for the ad account.
+{-| List audiences
+
+Get list of audiences for the ad account.
+
 -}
 audiencesList : String -> Maybe String -> Maybe Order_ -> Maybe Int -> Maybe OwnershipType -> Api.Request Api.Data.AudiencesList200Response
 audiencesList adAccountId_path bookmark_query order_query pageSize_query ownershipType_query =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/audiences"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         [ ( "bookmark", Maybe.map identity bookmark_query ), ( "order", Maybe.map stringFromOrder_ order_query ), ( "page_size", Maybe.map String.fromInt pageSize_query ), ( "ownership_type", Maybe.map stringFromOwnershipType ownershipType_query ) ]
         []
         Nothing
         Api.Data.audiencesList200ResponseDecoder
 
 
-{-| Update (edit or remove) an existing targeting audience.
+{-| Update audience
+
+Update (edit or remove) an existing targeting audience.
+
 -}
 audiencesUpdate : String -> String -> Maybe Api.Data.AudienceUpdateRequest -> Api.Request Api.Data.Audience
 audiencesUpdate adAccountId_path audienceId_path audienceUpdateRequest_body =
     Api.request
         "PATCH"
         "/ad_accounts/{ad_account_id}/audiences/{audience_id}"
-        [ ( "adAccountId", identity adAccountId_path ), ( "audienceId", identity audienceId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ), ( "audience_id", identity audienceId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Maybe.map Api.Data.encodeAudienceUpdateRequest audienceUpdateRequest_body))

@@ -205,11 +205,11 @@ export function PinFromJSONTyped(json: any, ignoreDiscriminator: boolean): Pin {
     };
 }
 
-  export function PinToJSON(json: any): Pin {
-      return PinToJSONTyped(json, false);
-  }
+export function PinToJSON(json: any): Pin {
+    return PinToJSONTyped(json, false);
+}
 
-  export function PinToJSONTyped(value?: Omit<Pin, 'id'|'created_at'|'creative_type'|'board_owner'|'is_owner'|'media'|'has_been_promoted'> | null, ignoreDiscriminator: boolean = false): any {
+export function PinToJSONTyped(value?: Omit<Pin, 'id'|'created_at'|'creative_type'|'board_owner'|'is_owner'|'media'|'has_been_promoted'> | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

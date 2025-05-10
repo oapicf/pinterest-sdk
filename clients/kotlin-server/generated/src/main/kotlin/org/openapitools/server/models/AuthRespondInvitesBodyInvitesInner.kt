@@ -13,14 +13,16 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.AuthRespondInvitesBodyInvitesInnerAction
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param action 
  * @param inviteId Unique identifier of an invite.
  */
+@Serializable
 data class AuthRespondInvitesBodyInvitesInner(
     val action: AuthRespondInvitesBodyInvitesInnerAction,
     /* Unique identifier of an invite. */
     val inviteId: kotlin.String
-) 
+)
 

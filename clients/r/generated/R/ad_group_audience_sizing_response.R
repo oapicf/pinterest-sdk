@@ -34,10 +34,35 @@ AdGroupAudienceSizingResponse <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return AdGroupAudienceSizingResponse in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return AdGroupAudienceSizingResponse as a base R list.
+    #' @examples
+    #' # convert array of AdGroupAudienceSizingResponse (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert AdGroupAudienceSizingResponse to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       AdGroupAudienceSizingResponseObject <- list()
       if (!is.null(self$`audience_size_lower_bound`)) {
         AdGroupAudienceSizingResponseObject[["audience_size_lower_bound"]] <-
@@ -47,7 +72,7 @@ AdGroupAudienceSizingResponse <- R6::R6Class(
         AdGroupAudienceSizingResponseObject[["audience_size_upper_bound"]] <-
           self$`audience_size_upper_bound`
       }
-      AdGroupAudienceSizingResponseObject
+      return(AdGroupAudienceSizingResponseObject)
     },
 
     #' @description
@@ -68,29 +93,13 @@ AdGroupAudienceSizingResponse <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return AdGroupAudienceSizingResponse in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`audience_size_lower_bound`)) {
-          sprintf(
-          '"audience_size_lower_bound":
-            %d
-                    ',
-          self$`audience_size_lower_bound`
-          )
-        },
-        if (!is.null(self$`audience_size_upper_bound`)) {
-          sprintf(
-          '"audience_size_upper_bound":
-            %d
-                    ',
-          self$`audience_size_upper_bound`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

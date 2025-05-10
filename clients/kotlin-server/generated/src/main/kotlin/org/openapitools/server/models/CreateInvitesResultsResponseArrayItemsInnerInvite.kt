@@ -13,15 +13,17 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.BusinessAccessUserSummary
 
+import kotlinx.serialization.Serializable
 /**
  * An invite object if the invite/request was successfully created. Will only be provided if the an invite/request is successfully created.
  * @param id Unique identifier of the invite/request.
  * @param user Metadata for the member/partner that was sent the invite/request.
  */
+@Serializable
 data class CreateInvitesResultsResponseArrayItemsInnerInvite(
     /* Unique identifier of the invite/request. */
     val id: kotlin.String? = null,
     /* Metadata for the member/partner that was sent the invite/request. */
     val user: BusinessAccessUserSummary? = null
-) 
+)
 

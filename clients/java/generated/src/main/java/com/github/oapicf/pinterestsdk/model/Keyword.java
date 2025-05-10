@@ -50,44 +50,52 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Keyword
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class Keyword {
   public static final String SERIALIZED_NAME_BID = "bid";
   @SerializedName(SERIALIZED_NAME_BID)
+  @javax.annotation.Nullable
   private Integer bid;
 
   public static final String SERIALIZED_NAME_MATCH_TYPE = "match_type";
   @SerializedName(SERIALIZED_NAME_MATCH_TYPE)
+  @javax.annotation.Nullable
   private MatchTypeResponse matchType;
 
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
+  @javax.annotation.Nonnull
   private String value;
 
   public static final String SERIALIZED_NAME_ARCHIVED = "archived";
   @SerializedName(SERIALIZED_NAME_ARCHIVED)
+  @javax.annotation.Nullable
   private Boolean archived;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_PARENT_ID = "parent_id";
   @SerializedName(SERIALIZED_NAME_PARENT_ID)
+  @javax.annotation.Nullable
   private String parentId;
 
   public static final String SERIALIZED_NAME_PARENT_TYPE = "parent_type";
   @SerializedName(SERIALIZED_NAME_PARENT_TYPE)
+  @javax.annotation.Nullable
   private String parentType;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nullable
   private String type;
 
   public Keyword() {
   }
 
-  public Keyword bid(Integer bid) {
+  public Keyword bid(@javax.annotation.Nullable Integer bid) {
     this.bid = bid;
     return this;
   }
@@ -101,12 +109,12 @@ public class Keyword {
     return bid;
   }
 
-  public void setBid(Integer bid) {
+  public void setBid(@javax.annotation.Nullable Integer bid) {
     this.bid = bid;
   }
 
 
-  public Keyword matchType(MatchTypeResponse matchType) {
+  public Keyword matchType(@javax.annotation.Nullable MatchTypeResponse matchType) {
     this.matchType = matchType;
     return this;
   }
@@ -120,12 +128,12 @@ public class Keyword {
     return matchType;
   }
 
-  public void setMatchType(MatchTypeResponse matchType) {
+  public void setMatchType(@javax.annotation.Nullable MatchTypeResponse matchType) {
     this.matchType = matchType;
   }
 
 
-  public Keyword value(String value) {
+  public Keyword value(@javax.annotation.Nonnull String value) {
     this.value = value;
     return this;
   }
@@ -139,12 +147,12 @@ public class Keyword {
     return value;
   }
 
-  public void setValue(String value) {
+  public void setValue(@javax.annotation.Nonnull String value) {
     this.value = value;
   }
 
 
-  public Keyword archived(Boolean archived) {
+  public Keyword archived(@javax.annotation.Nullable Boolean archived) {
     this.archived = archived;
     return this;
   }
@@ -158,12 +166,12 @@ public class Keyword {
     return archived;
   }
 
-  public void setArchived(Boolean archived) {
+  public void setArchived(@javax.annotation.Nullable Boolean archived) {
     this.archived = archived;
   }
 
 
-  public Keyword id(String id) {
+  public Keyword id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -177,12 +185,12 @@ public class Keyword {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public Keyword parentId(String parentId) {
+  public Keyword parentId(@javax.annotation.Nullable String parentId) {
     this.parentId = parentId;
     return this;
   }
@@ -196,12 +204,12 @@ public class Keyword {
     return parentId;
   }
 
-  public void setParentId(String parentId) {
+  public void setParentId(@javax.annotation.Nullable String parentId) {
     this.parentId = parentId;
   }
 
 
-  public Keyword parentType(String parentType) {
+  public Keyword parentType(@javax.annotation.Nullable String parentType) {
     this.parentType = parentType;
     return this;
   }
@@ -215,12 +223,12 @@ public class Keyword {
     return parentType;
   }
 
-  public void setParentType(String parentType) {
+  public void setParentType(@javax.annotation.Nullable String parentType) {
     this.parentType = parentType;
   }
 
 
-  public Keyword type(String type) {
+  public Keyword type(@javax.annotation.Nullable String type) {
     this.type = type;
     return this;
   }
@@ -234,7 +242,7 @@ public class Keyword {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@javax.annotation.Nullable String type) {
     this.type = type;
   }
 

@@ -50,36 +50,42 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * VideoMetadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class VideoMetadata {
   public static final String SERIALIZED_NAME_ITEM_TYPE = "item_type";
   @SerializedName(SERIALIZED_NAME_ITEM_TYPE)
+  @javax.annotation.Nullable
   private String itemType;
 
   public static final String SERIALIZED_NAME_COVER_IMAGE_URL = "cover_image_url";
   @SerializedName(SERIALIZED_NAME_COVER_IMAGE_URL)
+  @javax.annotation.Nullable
   private String coverImageUrl;
 
   public static final String SERIALIZED_NAME_VIDEO_URL = "video_url";
   @SerializedName(SERIALIZED_NAME_VIDEO_URL)
+  @javax.annotation.Nullable
   private String videoUrl;
 
   public static final String SERIALIZED_NAME_DURATION = "duration";
   @SerializedName(SERIALIZED_NAME_DURATION)
+  @javax.annotation.Nullable
   private BigDecimal duration;
 
   public static final String SERIALIZED_NAME_HEIGHT = "height";
   @SerializedName(SERIALIZED_NAME_HEIGHT)
+  @javax.annotation.Nullable
   private Integer height;
 
   public static final String SERIALIZED_NAME_WIDTH = "width";
   @SerializedName(SERIALIZED_NAME_WIDTH)
+  @javax.annotation.Nullable
   private Integer width;
 
   public VideoMetadata() {
   }
 
-  public VideoMetadata itemType(String itemType) {
+  public VideoMetadata itemType(@javax.annotation.Nullable String itemType) {
     this.itemType = itemType;
     return this;
   }
@@ -93,12 +99,12 @@ public class VideoMetadata {
     return itemType;
   }
 
-  public void setItemType(String itemType) {
+  public void setItemType(@javax.annotation.Nullable String itemType) {
     this.itemType = itemType;
   }
 
 
-  public VideoMetadata coverImageUrl(String coverImageUrl) {
+  public VideoMetadata coverImageUrl(@javax.annotation.Nullable String coverImageUrl) {
     this.coverImageUrl = coverImageUrl;
     return this;
   }
@@ -112,12 +118,12 @@ public class VideoMetadata {
     return coverImageUrl;
   }
 
-  public void setCoverImageUrl(String coverImageUrl) {
+  public void setCoverImageUrl(@javax.annotation.Nullable String coverImageUrl) {
     this.coverImageUrl = coverImageUrl;
   }
 
 
-  public VideoMetadata videoUrl(String videoUrl) {
+  public VideoMetadata videoUrl(@javax.annotation.Nullable String videoUrl) {
     this.videoUrl = videoUrl;
     return this;
   }
@@ -131,12 +137,12 @@ public class VideoMetadata {
     return videoUrl;
   }
 
-  public void setVideoUrl(String videoUrl) {
+  public void setVideoUrl(@javax.annotation.Nullable String videoUrl) {
     this.videoUrl = videoUrl;
   }
 
 
-  public VideoMetadata duration(BigDecimal duration) {
+  public VideoMetadata duration(@javax.annotation.Nullable BigDecimal duration) {
     this.duration = duration;
     return this;
   }
@@ -150,12 +156,12 @@ public class VideoMetadata {
     return duration;
   }
 
-  public void setDuration(BigDecimal duration) {
+  public void setDuration(@javax.annotation.Nullable BigDecimal duration) {
     this.duration = duration;
   }
 
 
-  public VideoMetadata height(Integer height) {
+  public VideoMetadata height(@javax.annotation.Nullable Integer height) {
     this.height = height;
     return this;
   }
@@ -169,12 +175,12 @@ public class VideoMetadata {
     return height;
   }
 
-  public void setHeight(Integer height) {
+  public void setHeight(@javax.annotation.Nullable Integer height) {
     this.height = height;
   }
 
 
-  public VideoMetadata width(Integer width) {
+  public VideoMetadata width(@javax.annotation.Nullable Integer width) {
     this.width = width;
     return this;
   }
@@ -188,7 +194,7 @@ public class VideoMetadata {
     return width;
   }
 
-  public void setWidth(Integer width) {
+  public void setWidth(@javax.annotation.Nullable Integer width) {
     this.width = width;
   }
 

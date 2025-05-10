@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("SSIOEditInsertionOrderRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SSIOEditInsertionOrderRequest   {
   private String startDate;
   private String endDate;
@@ -34,6 +34,9 @@ public class SSIOEditInsertionOrderRequest   {
   private String salesforceOrderId;
   private String salesforceOrderLineId;
   private String adsManagerOrderLineId;
+
+  public SSIOEditInsertionOrderRequest() {
+  }
 
   /**
    * Starting date of time period. Format: YYYY-MM-DD

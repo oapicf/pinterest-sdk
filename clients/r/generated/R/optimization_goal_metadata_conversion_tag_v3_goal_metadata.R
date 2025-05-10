@@ -80,14 +80,39 @@ OptimizationGoalMetadataConversionTagV3GoalMetadata <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return OptimizationGoalMetadataConversionTagV3GoalMetadata in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return OptimizationGoalMetadataConversionTagV3GoalMetadata as a base R list.
+    #' @examples
+    #' # convert array of OptimizationGoalMetadataConversionTagV3GoalMetadata (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert OptimizationGoalMetadataConversionTagV3GoalMetadata to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       OptimizationGoalMetadataConversionTagV3GoalMetadataObject <- list()
       if (!is.null(self$`attribution_windows`)) {
         OptimizationGoalMetadataConversionTagV3GoalMetadataObject[["attribution_windows"]] <-
-          self$`attribution_windows`$toJSON()
+          self$`attribution_windows`$toSimpleType()
       }
       if (!is.null(self$`conversion_event`)) {
         OptimizationGoalMetadataConversionTagV3GoalMetadataObject[["conversion_event"]] <-
@@ -109,7 +134,7 @@ OptimizationGoalMetadataConversionTagV3GoalMetadata <- R6::R6Class(
         OptimizationGoalMetadataConversionTagV3GoalMetadataObject[["learning_mode_type"]] <-
           self$`learning_mode_type`
       }
-      OptimizationGoalMetadataConversionTagV3GoalMetadataObject
+      return(OptimizationGoalMetadataConversionTagV3GoalMetadataObject)
     },
 
     #' @description
@@ -150,61 +175,13 @@ OptimizationGoalMetadataConversionTagV3GoalMetadata <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return OptimizationGoalMetadataConversionTagV3GoalMetadata in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`attribution_windows`)) {
-          sprintf(
-          '"attribution_windows":
-          %s
-          ',
-          jsonlite::toJSON(self$`attribution_windows`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`conversion_event`)) {
-          sprintf(
-          '"conversion_event":
-            "%s"
-                    ',
-          self$`conversion_event`
-          )
-        },
-        if (!is.null(self$`conversion_tag_id`)) {
-          sprintf(
-          '"conversion_tag_id":
-            "%s"
-                    ',
-          self$`conversion_tag_id`
-          )
-        },
-        if (!is.null(self$`cpa_goal_value_in_micro_currency`)) {
-          sprintf(
-          '"cpa_goal_value_in_micro_currency":
-            "%s"
-                    ',
-          self$`cpa_goal_value_in_micro_currency`
-          )
-        },
-        if (!is.null(self$`is_roas_optimized`)) {
-          sprintf(
-          '"is_roas_optimized":
-            %s
-                    ',
-          tolower(self$`is_roas_optimized`)
-          )
-        },
-        if (!is.null(self$`learning_mode_type`)) {
-          sprintf(
-          '"learning_mode_type":
-            "%s"
-                    ',
-          self$`learning_mode_type`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 
 // Get item bid options (POST)
@@ -25,11 +20,14 @@ AdvancedAuctionAPI_advancedAuctionItemsGetPost(apiClient_t *apiClient, advanced_
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/advanced_auction/items/get")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/advanced_auction/items/get");
+    char *localVarPath = strdup("/advanced_auction/items/get");
+
 
 
 
@@ -50,9 +48,10 @@ AdvancedAuctionAPI_advancedAuctionItemsGetPost(apiClient_t *apiClient, advanced_
     cJSON *localVarSingleItemJSON_advanced_auction_items_get_request = NULL;
     if (advanced_auction_items_get_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_advanced_auction_items_get_request = advanced_auction_items_get_request_convertToJSON(advanced_auction_items_get_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_advanced_auction_items_get_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -64,6 +63,7 @@ AdvancedAuctionAPI_advancedAuctionItemsGetPost(apiClient_t *apiClient, advanced_
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -91,11 +91,14 @@ AdvancedAuctionAPI_advancedAuctionItemsGetPost(apiClient_t *apiClient, advanced_
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *AdvancedAuctionAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    advanced_auction_items_t *elementToReturn = advanced_auction_items_parseFromJSON(AdvancedAuctionAPIlocalVarJSON);
-    cJSON_Delete(AdvancedAuctionAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    advanced_auction_items_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AdvancedAuctionAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = advanced_auction_items_parseFromJSON(AdvancedAuctionAPIlocalVarJSON);
+        cJSON_Delete(AdvancedAuctionAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -147,11 +150,14 @@ AdvancedAuctionAPI_advancedAuctionItemsSubmitPost(apiClient_t *apiClient, advanc
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/advanced_auction/items/submit")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/advanced_auction/items/submit");
+    char *localVarPath = strdup("/advanced_auction/items/submit");
+
 
 
 
@@ -172,9 +178,10 @@ AdvancedAuctionAPI_advancedAuctionItemsSubmitPost(apiClient_t *apiClient, advanc
     cJSON *localVarSingleItemJSON_advanced_auction_items_submit_request = NULL;
     if (advanced_auction_items_submit_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_advanced_auction_items_submit_request = advanced_auction_items_submit_request_convertToJSON(advanced_auction_items_submit_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_advanced_auction_items_submit_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -186,6 +193,7 @@ AdvancedAuctionAPI_advancedAuctionItemsSubmitPost(apiClient_t *apiClient, advanc
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -213,11 +221,14 @@ AdvancedAuctionAPI_advancedAuctionItemsSubmitPost(apiClient_t *apiClient, advanc
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *AdvancedAuctionAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    advanced_auction_processed_items_t *elementToReturn = advanced_auction_processed_items_parseFromJSON(AdvancedAuctionAPIlocalVarJSON);
-    cJSON_Delete(AdvancedAuctionAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    advanced_auction_processed_items_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AdvancedAuctionAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = advanced_auction_processed_items_parseFromJSON(AdvancedAuctionAPIlocalVarJSON);
+        cJSON_Delete(AdvancedAuctionAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type

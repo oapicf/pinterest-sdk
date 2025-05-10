@@ -75,11 +75,11 @@ export function CatalogsCreativeAssetsProductGroupProductCountsFromJSONTyped(jso
     };
 }
 
-  export function CatalogsCreativeAssetsProductGroupProductCountsToJSON(json: any): CatalogsCreativeAssetsProductGroupProductCounts {
-      return CatalogsCreativeAssetsProductGroupProductCountsToJSONTyped(json, false);
-  }
+export function CatalogsCreativeAssetsProductGroupProductCountsToJSON(json: any): CatalogsCreativeAssetsProductGroupProductCounts {
+    return CatalogsCreativeAssetsProductGroupProductCountsToJSONTyped(json, false);
+}
 
-  export function CatalogsCreativeAssetsProductGroupProductCountsToJSONTyped(value?: CatalogsCreativeAssetsProductGroupProductCounts | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsCreativeAssetsProductGroupProductCountsToJSONTyped(value?: CatalogsCreativeAssetsProductGroupProductCounts | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

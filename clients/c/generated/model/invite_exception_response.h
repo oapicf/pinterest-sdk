@@ -24,9 +24,10 @@ typedef struct invite_exception_response_t {
     char *message; // string
     list_t *users_or_partner_ids; //primitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } invite_exception_response_t;
 
-invite_exception_response_t *invite_exception_response_create(
+__attribute__((deprecated)) invite_exception_response_t *invite_exception_response_create(
     char *invite_or_request_id,
     int code,
     char *message,

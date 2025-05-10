@@ -49,16 +49,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * A sequence of weekly observations of the relative search volume for this keyword over the past year.&lt;br /&gt; These values are normalized to a [0-100] range, and can be used to visualize the history of user interest in this keyword. By default, normalization is applied independently to the time series of each keyword, but the &#x60;normalize_against_group&#x60; query parameter can be used in cases where you wish to compare relative volume between keywords.&lt;br /&gt; **Note**: The date of each observation is in ISO-8601 format and represents the *end* of the week.  For example, a value of &#x60;2023-10-31&#x60; would include searches that happened between &#x60;2023-10-25&#x60; and &#x60;2023-10-31&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TrendingKeywordsResponseTrendsInnerTimeSeries {
   public static final String SERIALIZED_NAME_DATE = "date";
   @SerializedName(SERIALIZED_NAME_DATE)
+  @javax.annotation.Nullable
   private LocalDate date;
 
   public TrendingKeywordsResponseTrendsInnerTimeSeries() {
   }
 
-  public TrendingKeywordsResponseTrendsInnerTimeSeries date(LocalDate date) {
+  public TrendingKeywordsResponseTrendsInnerTimeSeries date(@javax.annotation.Nullable LocalDate date) {
     this.date = date;
     return this;
   }
@@ -72,7 +73,7 @@ public class TrendingKeywordsResponseTrendsInnerTimeSeries {
     return date;
   }
 
-  public void setDate(LocalDate date) {
+  public void setDate(@javax.annotation.Nullable LocalDate date) {
     this.date = date;
   }
 

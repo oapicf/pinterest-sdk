@@ -44,10 +44,10 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum GetBusinessAssetTypeResponse: string
 {
-        case AD_ACCOUNT = "AD_ACCOUNT";
-        case PROFILE = "PROFILE";
-        case ASSET_GROUP = "ASSET_GROUP";
-        case CONVERSION_TAG = "CONVERSION_TAG";
+        case AD_ACCOUNT = 'AD_ACCOUNT';
+        case PROFILE = 'PROFILE';
+        case ASSET_GROUP = 'ASSET_GROUP';
+        case CONVERSION_TAG = 'CONVERSION_TAG';
 }
 
 

@@ -84,11 +84,11 @@ export function SharedAudienceAccountFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function SharedAudienceAccountToJSON(json: any): SharedAudienceAccount {
-      return SharedAudienceAccountToJSONTyped(json, false);
-  }
+export function SharedAudienceAccountToJSON(json: any): SharedAudienceAccount {
+    return SharedAudienceAccountToJSONTyped(json, false);
+}
 
-  export function SharedAudienceAccountToJSONTyped(value?: SharedAudienceAccount | null, ignoreDiscriminator: boolean = false): any {
+export function SharedAudienceAccountToJSONTyped(value?: SharedAudienceAccount | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

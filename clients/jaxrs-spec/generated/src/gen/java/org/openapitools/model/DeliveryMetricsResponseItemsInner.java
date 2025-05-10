@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("DeliveryMetricsResponse_items_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class DeliveryMetricsResponseItemsInner   {
   private String name;
   public enum CategoryEnum {
@@ -69,6 +69,9 @@ public class DeliveryMetricsResponseItemsInner   {
   private CategoryEnum category;
   private String definition;
   private String displayName;
+
+  public DeliveryMetricsResponseItemsInner() {
+  }
 
   /**
    * Metric&#39;s name.

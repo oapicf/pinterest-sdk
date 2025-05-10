@@ -21,9 +21,10 @@ typedef struct catalogs_hotel_product_metadata_t catalogs_hotel_product_metadata
 typedef struct catalogs_hotel_product_metadata_t {
     char *hotel_id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_hotel_product_metadata_t;
 
-catalogs_hotel_product_metadata_t *catalogs_hotel_product_metadata_create(
+__attribute__((deprecated)) catalogs_hotel_product_metadata_t *catalogs_hotel_product_metadata_create(
     char *hotel_id
 );
 

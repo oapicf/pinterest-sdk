@@ -59,7 +59,7 @@ class AdAccountCreateSubscriptionRequestPartnerMetadata
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->subscriberKey = array_key_exists('subscriberKey', $data) ? $data['subscriberKey'] : $this->subscriberKey;

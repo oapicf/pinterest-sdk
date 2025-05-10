@@ -44,8 +44,8 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum ConversionReportTimeType: string
 {
-        case AD_ACTION = "TIME_OF_AD_ACTION";
-        case CONVERSION = "TIME_OF_CONVERSION";
+        case TIME_OF_AD_ACTION = 'TIME_OF_AD_ACTION';
+        case TIME_OF_CONVERSION = 'TIME_OF_CONVERSION';
 }
 
 

@@ -36,8 +36,8 @@ public class OASPinMediaSourceImagesBase64ItemsIn implements OAS.MappedPropertie
      * Gets or Sets contentType
      */
     public enum ContentTypeEnum {
-        JPEG,
-        PNG
+        IMAGE_JPEG,
+        IMAGE_PNG
     }
 
     /**

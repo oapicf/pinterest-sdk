@@ -49,20 +49,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * TargetingTemplateKeyword
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TargetingTemplateKeyword {
   public static final String SERIALIZED_NAME_MATCH_TYPE = "match_type";
   @SerializedName(SERIALIZED_NAME_MATCH_TYPE)
+  @javax.annotation.Nullable
   private MatchType matchType;
 
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
+  @javax.annotation.Nullable
   private String value;
 
   public TargetingTemplateKeyword() {
   }
 
-  public TargetingTemplateKeyword matchType(MatchType matchType) {
+  public TargetingTemplateKeyword matchType(@javax.annotation.Nullable MatchType matchType) {
     this.matchType = matchType;
     return this;
   }
@@ -76,12 +78,12 @@ public class TargetingTemplateKeyword {
     return matchType;
   }
 
-  public void setMatchType(MatchType matchType) {
+  public void setMatchType(@javax.annotation.Nullable MatchType matchType) {
     this.matchType = matchType;
   }
 
 
-  public TargetingTemplateKeyword value(String value) {
+  public TargetingTemplateKeyword value(@javax.annotation.Nullable String value) {
     this.value = value;
     return this;
   }
@@ -95,7 +97,7 @@ public class TargetingTemplateKeyword {
     return value;
   }
 
-  public void setValue(String value) {
+  public void setValue(@javax.annotation.Nullable String value) {
     this.value = value;
   }
 

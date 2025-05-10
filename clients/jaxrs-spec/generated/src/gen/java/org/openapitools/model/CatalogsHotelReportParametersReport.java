@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsHotelReportParameters_report")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsHotelReportParametersReport   {
   public enum ReportTypeEnum {
 
@@ -80,6 +80,17 @@ public class CatalogsHotelReportParametersReport   {
   private String processingResultId;
   private String catalogId;
 
+  public CatalogsHotelReportParametersReport() {
+  }
+
+  @JsonCreator
+  public CatalogsHotelReportParametersReport(
+    @JsonProperty(required = true, value = "report_type") ReportTypeEnum reportType,
+    @JsonProperty(required = true, value = "feed_id") String feedId
+  ) {
+    this.feedId = feedId;
+  }
+
   /**
    **/
   public CatalogsHotelReportParametersReport reportType(ReportTypeEnum reportType) {
@@ -109,12 +120,12 @@ public class CatalogsHotelReportParametersReport   {
 
   
   @ApiModelProperty(required = true, value = "ID of the feed entity.")
-  @JsonProperty("feed_id")
+  @JsonProperty(required = true, value = "feed_id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getFeedId() {
     return feedId;
   }
 
-  @JsonProperty("feed_id")
+  @JsonProperty(required = true, value = "feed_id")
   public void setFeedId(String feedId) {
     this.feedId = feedId;
   }

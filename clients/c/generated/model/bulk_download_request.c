@@ -5,7 +5,7 @@
 
 
 
-bulk_download_request_t *bulk_download_request_create(
+static bulk_download_request_t *bulk_download_request_create_internal(
     list_t *entity_types,
     list_t *entity_ids,
     char *updated_since,
@@ -22,12 +22,32 @@ bulk_download_request_t *bulk_download_request_create(
     bulk_download_request_local_var->campaign_filter = campaign_filter;
     bulk_download_request_local_var->output_format = output_format;
 
+    bulk_download_request_local_var->_library_owned = 1;
     return bulk_download_request_local_var;
 }
 
+__attribute__((deprecated)) bulk_download_request_t *bulk_download_request_create(
+    list_t *entity_types,
+    list_t *entity_ids,
+    char *updated_since,
+    bulk_download_request_campaign_filter_t *campaign_filter,
+    bulk_output_format_t *output_format
+    ) {
+    return bulk_download_request_create_internal (
+        entity_types,
+        entity_ids,
+        updated_since,
+        campaign_filter,
+        output_format
+        );
+}
 
 void bulk_download_request_free(bulk_download_request_t *bulk_download_request) {
     if(NULL == bulk_download_request){
+        return ;
+    }
+    if(bulk_download_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "bulk_download_request_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -92,7 +112,7 @@ cJSON *bulk_download_request_convertToJSON(bulk_download_request_t *bulk_downloa
 
     listEntry_t *entity_idsListEntry;
     list_ForEach(entity_idsListEntry, bulk_download_request->entity_ids) {
-    if(cJSON_AddStringToObject(entity_ids, "", (char*)entity_idsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(entity_ids, "", entity_idsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -159,6 +179,9 @@ bulk_download_request_t *bulk_download_request_parseFromJSON(cJSON *bulk_downloa
 
     // bulk_download_request->entity_types
     cJSON *entity_types = cJSON_GetObjectItemCaseSensitive(bulk_download_requestJSON, "entity_types");
+    if (cJSON_IsNull(entity_types)) {
+        entity_types = NULL;
+    }
     if (entity_types) { 
     cJSON *entity_types_local_nonprimitive = NULL;
     if(!cJSON_IsArray(entity_types)){
@@ -180,6 +203,9 @@ bulk_download_request_t *bulk_download_request_parseFromJSON(cJSON *bulk_downloa
 
     // bulk_download_request->entity_ids
     cJSON *entity_ids = cJSON_GetObjectItemCaseSensitive(bulk_download_requestJSON, "entity_ids");
+    if (cJSON_IsNull(entity_ids)) {
+        entity_ids = NULL;
+    }
     if (entity_ids) { 
     cJSON *entity_ids_local = NULL;
     if(!cJSON_IsArray(entity_ids)) {
@@ -199,6 +225,9 @@ bulk_download_request_t *bulk_download_request_parseFromJSON(cJSON *bulk_downloa
 
     // bulk_download_request->updated_since
     cJSON *updated_since = cJSON_GetObjectItemCaseSensitive(bulk_download_requestJSON, "updated_since");
+    if (cJSON_IsNull(updated_since)) {
+        updated_since = NULL;
+    }
     if (updated_since) { 
     if(!cJSON_IsString(updated_since) && !cJSON_IsNull(updated_since))
     {
@@ -208,18 +237,24 @@ bulk_download_request_t *bulk_download_request_parseFromJSON(cJSON *bulk_downloa
 
     // bulk_download_request->campaign_filter
     cJSON *campaign_filter = cJSON_GetObjectItemCaseSensitive(bulk_download_requestJSON, "campaign_filter");
+    if (cJSON_IsNull(campaign_filter)) {
+        campaign_filter = NULL;
+    }
     if (campaign_filter) { 
     campaign_filter_local_nonprim = bulk_download_request_campaign_filter_parseFromJSON(campaign_filter); //nonprimitive
     }
 
     // bulk_download_request->output_format
     cJSON *output_format = cJSON_GetObjectItemCaseSensitive(bulk_download_requestJSON, "output_format");
+    if (cJSON_IsNull(output_format)) {
+        output_format = NULL;
+    }
     if (output_format) { 
     output_format_local_nonprim = bulk_output_format_parseFromJSON(output_format); //custom
     }
 
 
-    bulk_download_request_local_var = bulk_download_request_create (
+    bulk_download_request_local_var = bulk_download_request_create_internal (
         entity_types ? entity_typesList : NULL,
         entity_ids ? entity_idsList : NULL,
         updated_since && !cJSON_IsNull(updated_since) ? strdup(updated_since->valuestring) : NULL,

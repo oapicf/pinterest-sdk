@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "HTTP request details included in the log sent by the client.")
 @JsonTypeName("IntegrationLogClientRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class IntegrationLogClientRequest   {
   public enum MethodEnum {
 
@@ -75,6 +75,20 @@ public class IntegrationLogClientRequest   {
   private @Valid Map<String, String> responseHeaders = new HashMap<>();
   private Integer responseStatusCode;
 
+  public IntegrationLogClientRequest() {
+  }
+
+  @JsonCreator
+  public IntegrationLogClientRequest(
+    @JsonProperty(required = true, value = "method") MethodEnum method,
+    @JsonProperty(required = true, value = "host") String host,
+    @JsonProperty(required = true, value = "path") String path
+  ) {
+    this.method = method;
+    this.host = host;
+    this.path = path;
+  }
+
   /**
    **/
   public IntegrationLogClientRequest method(MethodEnum method) {
@@ -84,12 +98,12 @@ public class IntegrationLogClientRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("method")
+  @JsonProperty(required = true, value = "method")
   @NotNull public MethodEnum getMethod() {
     return method;
   }
 
-  @JsonProperty("method")
+  @JsonProperty(required = true, value = "method")
   public void setMethod(MethodEnum method) {
     this.method = method;
   }
@@ -104,12 +118,12 @@ public class IntegrationLogClientRequest   {
 
   
   @ApiModelProperty(required = true, value = "HTTP request host from host header.")
-  @JsonProperty("host")
+  @JsonProperty(required = true, value = "host")
   @NotNull public String getHost() {
     return host;
   }
 
-  @JsonProperty("host")
+  @JsonProperty(required = true, value = "host")
   public void setHost(String host) {
     this.host = host;
   }
@@ -124,12 +138,12 @@ public class IntegrationLogClientRequest   {
 
   
   @ApiModelProperty(required = true, value = "HTTP request path.")
-  @JsonProperty("path")
+  @JsonProperty(required = true, value = "path")
   @NotNull public String getPath() {
     return path;
   }
 
-  @JsonProperty("path")
+  @JsonProperty(required = true, value = "path")
   public void setPath(String path) {
     this.path = path;
   }

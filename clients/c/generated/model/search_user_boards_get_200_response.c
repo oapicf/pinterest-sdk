@@ -5,7 +5,7 @@
 
 
 
-search_user_boards_get_200_response_t *search_user_boards_get_200_response_create(
+static search_user_boards_get_200_response_t *search_user_boards_get_200_response_create_internal(
     list_t *items,
     char *bookmark
     ) {
@@ -16,12 +16,26 @@ search_user_boards_get_200_response_t *search_user_boards_get_200_response_creat
     search_user_boards_get_200_response_local_var->items = items;
     search_user_boards_get_200_response_local_var->bookmark = bookmark;
 
+    search_user_boards_get_200_response_local_var->_library_owned = 1;
     return search_user_boards_get_200_response_local_var;
 }
 
+__attribute__((deprecated)) search_user_boards_get_200_response_t *search_user_boards_get_200_response_create(
+    list_t *items,
+    char *bookmark
+    ) {
+    return search_user_boards_get_200_response_create_internal (
+        items,
+        bookmark
+        );
+}
 
 void search_user_boards_get_200_response_free(search_user_boards_get_200_response_t *search_user_boards_get_200_response) {
     if(NULL == search_user_boards_get_200_response){
+        return ;
+    }
+    if(search_user_boards_get_200_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "search_user_boards_get_200_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -87,6 +101,9 @@ search_user_boards_get_200_response_t *search_user_boards_get_200_response_parse
 
     // search_user_boards_get_200_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(search_user_boards_get_200_responseJSON, "items");
+    if (cJSON_IsNull(items)) {
+        items = NULL;
+    }
     if (!items) {
         goto end;
     }
@@ -111,6 +128,9 @@ search_user_boards_get_200_response_t *search_user_boards_get_200_response_parse
 
     // search_user_boards_get_200_response->bookmark
     cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(search_user_boards_get_200_responseJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
     if (bookmark) { 
     if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
     {
@@ -119,7 +139,7 @@ search_user_boards_get_200_response_t *search_user_boards_get_200_response_parse
     }
 
 
-    search_user_boards_get_200_response_local_var = search_user_boards_get_200_response_create (
+    search_user_boards_get_200_response_local_var = search_user_boards_get_200_response_create_internal (
         itemsList,
         bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
         );

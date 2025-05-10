@@ -55,11 +55,11 @@ export function BoardMediaFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     };
 }
 
-  export function BoardMediaToJSON(json: any): BoardMedia {
-      return BoardMediaToJSONTyped(json, false);
-  }
+export function BoardMediaToJSON(json: any): BoardMedia {
+    return BoardMediaToJSONTyped(json, false);
+}
 
-  export function BoardMediaToJSONTyped(value?: BoardMedia | null, ignoreDiscriminator: boolean = false): any {
+export function BoardMediaToJSONTyped(value?: BoardMedia | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

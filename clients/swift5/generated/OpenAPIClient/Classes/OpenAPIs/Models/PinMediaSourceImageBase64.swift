@@ -17,10 +17,10 @@ public struct PinMediaSourceImageBase64: Codable, JSONEncodable, Hashable {
         case imageBase64 = "image_base64"
     }
     public enum ContentType: String, Codable, CaseIterable {
-        case jpeg = "image/jpeg"
-        case png = "image/png"
+        case imageSlashJpeg = "image/jpeg"
+        case imageSlashPng = "image/png"
     }
-    static let dataRule = StringRule(minLength: nil, maxLength: nil, pattern: "/[a-zA-Z0-9+\/=]+/")
+    public static let dataRule = StringRule(minLength: nil, maxLength: nil, pattern: "/[a-zA-Z0-9+\/=]+/")
     public var sourceType: SourceType
     public var contentType: ContentType
     public var data: String

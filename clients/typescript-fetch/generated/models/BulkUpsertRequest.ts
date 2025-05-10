@@ -70,11 +70,11 @@ export function BulkUpsertRequestFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-  export function BulkUpsertRequestToJSON(json: any): BulkUpsertRequest {
-      return BulkUpsertRequestToJSONTyped(json, false);
-  }
+export function BulkUpsertRequestToJSON(json: any): BulkUpsertRequest {
+    return BulkUpsertRequestToJSONTyped(json, false);
+}
 
-  export function BulkUpsertRequestToJSONTyped(value?: BulkUpsertRequest | null, ignoreDiscriminator: boolean = false): any {
+export function BulkUpsertRequestToJSONTyped(value?: BulkUpsertRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AudienceCategory")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AudienceCategory   {
   private String key;
   private String name;
@@ -28,6 +28,9 @@ public class AudienceCategory   {
   private BigDecimal index;
   private String id;
   private @Valid List<@Valid AudienceSubcategory> subcategories = new ArrayList<>();
+
+  public AudienceCategory() {
+  }
 
   /**
    * Interest unique key (same as ID).

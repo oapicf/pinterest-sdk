@@ -76,7 +76,7 @@ import javax.annotation.Generated;
   CatalogsFeedValidationWarnings.JSON_PROPERTY_M_P_N_I_N_V_A_L_I_D
 })
 @JsonTypeName("CatalogsFeedValidationWarnings")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2024-11-05T02:02:57.601423453Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2025-05-10T05:39:05.070592818Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 @Introspected
 public class CatalogsFeedValidationWarnings {
     public static final String JSON_PROPERTY_A_D_L_I_N_K_F_O_R_M_A_T_W_A_R_N_I_N_G = "AD_LINK_FORMAT_WARNING";

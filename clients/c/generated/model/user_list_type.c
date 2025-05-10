@@ -22,7 +22,7 @@ pinterest_rest_api_user_list_type__e user_list_type_user_list_type_FromString(ch
     return 0;
 }
 
-cJSON *user_list_type_user_list_type_convertToJSON(pinterest_rest_api_user_list_type__e user_list_type) {
+cJSON *user_list_type_convertToJSON(pinterest_rest_api_user_list_type__e user_list_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "user_list_type", user_list_type_user_list_type_ToString(user_list_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_user_list_type__e user_list_type_user_list_type_parseFromJSON(cJSON *user_list_typeJSON) {
-    pinterest_rest_api_user_list_type__e *user_list_type = NULL;
-    pinterest_rest_api_user_list_type__e user_list_typeVariable;
-    cJSON *user_list_typeVar = cJSON_GetObjectItemCaseSensitive(user_list_typeJSON, "user_list_type");
-    if(!cJSON_IsString(user_list_typeVar) || (user_list_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_user_list_type__e user_list_type_parseFromJSON(cJSON *user_list_typeJSON) {
+    if(!cJSON_IsString(user_list_typeJSON) || (user_list_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    user_list_typeVariable = user_list_type_user_list_type_FromString(user_list_typeVar->valuestring);
-    return user_list_typeVariable;
-end:
-    return 0;
+    return user_list_type_user_list_type_FromString(user_list_typeJSON->valuestring);
 }

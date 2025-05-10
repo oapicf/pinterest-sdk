@@ -56,7 +56,7 @@ func (dst *CatalogsFeedsCreateRequestDefaultLocale) UnmarshalJSON(data []byte) e
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src *CatalogsFeedsCreateRequestDefaultLocale) MarshalJSON() ([]byte, error) {
+func (src CatalogsFeedsCreateRequestDefaultLocale) MarshalJSON() ([]byte, error) {
 	if src.CatalogsLocale != nil {
 		return json.Marshal(&src.CatalogsLocale)
 	}

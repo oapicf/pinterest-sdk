@@ -24,7 +24,7 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2024-11-05T02:19:42.400563355Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2025-05-10T05:40:26.530137127Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public interface BoardsApiService {
       public Response boardSectionsCreate(String boardId, BoardSection boardSection, String adAccountId, SecurityContext securityContext);
       public Response boardSectionsDelete(String boardId, String sectionId, String adAccountId, SecurityContext securityContext);

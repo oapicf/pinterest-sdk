@@ -712,7 +712,7 @@ func (c *UserAccountAPIController) FollowUserUpdate(w http.ResponseWriter, r *ht
 		c.errorHandler(w, r, &RequiredError{"username"}, nil)
 		return
 	}
-	followUserRequestParam := FollowUserRequest{}
+	var followUserRequestParam FollowUserRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&followUserRequestParam); err != nil {
@@ -786,7 +786,7 @@ func (c *UserAccountAPIController) VerifyWebsiteUpdate(w http.ResponseWriter, r 
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	userWebsiteVerifyRequestParam := UserWebsiteVerifyRequest{}
+	var userWebsiteVerifyRequestParam UserWebsiteVerifyRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&userWebsiteVerifyRequestParam); err != nil {

@@ -5,7 +5,7 @@
 
 
 
-advanced_auction_items_get_request_t *advanced_auction_items_get_request_create(
+static advanced_auction_items_get_request_t *advanced_auction_items_get_request_create_internal(
     char *catalog_id,
     list_t *items
     ) {
@@ -16,12 +16,26 @@ advanced_auction_items_get_request_t *advanced_auction_items_get_request_create(
     advanced_auction_items_get_request_local_var->catalog_id = catalog_id;
     advanced_auction_items_get_request_local_var->items = items;
 
+    advanced_auction_items_get_request_local_var->_library_owned = 1;
     return advanced_auction_items_get_request_local_var;
 }
 
+__attribute__((deprecated)) advanced_auction_items_get_request_t *advanced_auction_items_get_request_create(
+    char *catalog_id,
+    list_t *items
+    ) {
+    return advanced_auction_items_get_request_create_internal (
+        catalog_id,
+        items
+        );
+}
 
 void advanced_auction_items_get_request_free(advanced_auction_items_get_request_t *advanced_auction_items_get_request) {
     if(NULL == advanced_auction_items_get_request){
+        return ;
+    }
+    if(advanced_auction_items_get_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "advanced_auction_items_get_request_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -88,6 +102,9 @@ advanced_auction_items_get_request_t *advanced_auction_items_get_request_parseFr
 
     // advanced_auction_items_get_request->catalog_id
     cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(advanced_auction_items_get_requestJSON, "catalog_id");
+    if (cJSON_IsNull(catalog_id)) {
+        catalog_id = NULL;
+    }
     if (!catalog_id) {
         goto end;
     }
@@ -100,6 +117,9 @@ advanced_auction_items_get_request_t *advanced_auction_items_get_request_parseFr
 
     // advanced_auction_items_get_request->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(advanced_auction_items_get_requestJSON, "items");
+    if (cJSON_IsNull(items)) {
+        items = NULL;
+    }
     if (!items) {
         goto end;
     }
@@ -123,7 +143,7 @@ advanced_auction_items_get_request_t *advanced_auction_items_get_request_parseFr
     }
 
 
-    advanced_auction_items_get_request_local_var = advanced_auction_items_get_request_create (
+    advanced_auction_items_get_request_local_var = advanced_auction_items_get_request_create_internal (
         strdup(catalog_id->valuestring),
         itemsList
         );

@@ -17,24 +17,17 @@ typedef struct targeting_template_keyword_t targeting_template_keyword_t;
 
 #include "match_type.h"
 
-// Enum  for targeting_template_keyword
-
-typedef enum  { pinterest_rest_api_targeting_template_keyword__NULL = 0, pinterest_rest_api_targeting_template_keyword__BROAD, pinterest_rest_api_targeting_template_keyword__PHRASE, pinterest_rest_api_targeting_template_keyword__EXACT, pinterest_rest_api_targeting_template_keyword__EXACT_NEGATIVE, pinterest_rest_api_targeting_template_keyword__PHRASE_NEGATIVE } pinterest_rest_api_targeting_template_keyword__e;
-
-char* targeting_template_keyword_match_type_ToString(pinterest_rest_api_targeting_template_keyword__e match_type);
-
-pinterest_rest_api_targeting_template_keyword__e targeting_template_keyword_match_type_FromString(char* match_type);
-
 
 
 typedef struct targeting_template_keyword_t {
-    match_type_t *match_type; // custom
+    pinterest_rest_api_match_type__e match_type; //referenced enum
     char *value; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } targeting_template_keyword_t;
 
-targeting_template_keyword_t *targeting_template_keyword_create(
-    match_type_t *match_type,
+__attribute__((deprecated)) targeting_template_keyword_t *targeting_template_keyword_create(
+    pinterest_rest_api_match_type__e match_type,
     char *value
 );
 

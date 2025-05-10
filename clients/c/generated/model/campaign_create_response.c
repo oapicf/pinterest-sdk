@@ -5,7 +5,7 @@
 
 
 
-campaign_create_response_t *campaign_create_response_create(
+static campaign_create_response_t *campaign_create_response_create_internal(
     list_t *items
     ) {
     campaign_create_response_t *campaign_create_response_local_var = malloc(sizeof(campaign_create_response_t));
@@ -14,12 +14,24 @@ campaign_create_response_t *campaign_create_response_create(
     }
     campaign_create_response_local_var->items = items;
 
+    campaign_create_response_local_var->_library_owned = 1;
     return campaign_create_response_local_var;
 }
 
+__attribute__((deprecated)) campaign_create_response_t *campaign_create_response_create(
+    list_t *items
+    ) {
+    return campaign_create_response_create_internal (
+        items
+        );
+}
 
 void campaign_create_response_free(campaign_create_response_t *campaign_create_response) {
     if(NULL == campaign_create_response){
+        return ;
+    }
+    if(campaign_create_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "campaign_create_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -72,6 +84,9 @@ campaign_create_response_t *campaign_create_response_parseFromJSON(cJSON *campai
 
     // campaign_create_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(campaign_create_responseJSON, "items");
+    if (cJSON_IsNull(items)) {
+        items = NULL;
+    }
     if (items) { 
     cJSON *items_local_nonprimitive = NULL;
     if(!cJSON_IsArray(items)){
@@ -92,7 +107,7 @@ campaign_create_response_t *campaign_create_response_parseFromJSON(cJSON *campai
     }
 
 
-    campaign_create_response_local_var = campaign_create_response_create (
+    campaign_create_response_local_var = campaign_create_response_create_internal (
         items ? itemsList : NULL
         );
 

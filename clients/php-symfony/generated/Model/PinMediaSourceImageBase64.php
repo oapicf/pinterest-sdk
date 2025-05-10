@@ -51,7 +51,7 @@ class PinMediaSourceImageBase64
      * @Type("string")
     */
     #[Assert\NotNull]
-    #[Assert\Choice(["image_base64"])]
+    #[Assert\Choice(['image_base64'])]
     #[Assert\Type("string")]
     protected ?string $sourceType = null;
 
@@ -61,7 +61,7 @@ class PinMediaSourceImageBase64
      * @Type("string")
     */
     #[Assert\NotNull]
-    #[Assert\Choice(["image/jpeg", "image/png"])]
+    #[Assert\Choice(['image/jpeg', 'image/png'])]
     #[Assert\Type("string")]
     protected ?string $contentType = null;
 
@@ -89,7 +89,7 @@ class PinMediaSourceImageBase64
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->sourceType = array_key_exists('sourceType', $data) ? $data['sourceType'] : $this->sourceType;

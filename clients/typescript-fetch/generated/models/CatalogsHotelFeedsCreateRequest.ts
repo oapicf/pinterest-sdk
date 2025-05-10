@@ -168,11 +168,11 @@ export function CatalogsHotelFeedsCreateRequestFromJSONTyped(json: any, ignoreDi
     };
 }
 
-  export function CatalogsHotelFeedsCreateRequestToJSON(json: any): CatalogsHotelFeedsCreateRequest {
-      return CatalogsHotelFeedsCreateRequestToJSONTyped(json, false);
-  }
+export function CatalogsHotelFeedsCreateRequestToJSON(json: any): CatalogsHotelFeedsCreateRequest {
+    return CatalogsHotelFeedsCreateRequestToJSONTyped(json, false);
+}
 
-  export function CatalogsHotelFeedsCreateRequestToJSONTyped(value?: CatalogsHotelFeedsCreateRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsHotelFeedsCreateRequestToJSONTyped(value?: CatalogsHotelFeedsCreateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

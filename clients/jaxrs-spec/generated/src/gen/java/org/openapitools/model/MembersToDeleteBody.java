@@ -19,9 +19,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("MembersToDeleteBody")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class MembersToDeleteBody   {
   private @Valid List<@Valid MembersToDeleteBodyMembersInner> members = new ArrayList<>();
+
+  public MembersToDeleteBody() {
+  }
+
+  @JsonCreator
+  public MembersToDeleteBody(
+    @JsonProperty(required = true, value = "members") List<@Valid MembersToDeleteBodyMembersInner> members
+  ) {
+    this.members = members;
+  }
 
   /**
    **/
@@ -32,12 +42,12 @@ public class MembersToDeleteBody   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("members")
+  @JsonProperty(required = true, value = "members")
   @NotNull @Valid  @Size(min=1,max=50)public List<@Valid MembersToDeleteBodyMembersInner> getMembers() {
     return members;
   }
 
-  @JsonProperty("members")
+  @JsonProperty(required = true, value = "members")
   public void setMembers(List<@Valid MembersToDeleteBodyMembersInner> members) {
     this.members = members;
   }

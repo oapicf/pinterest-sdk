@@ -22,7 +22,7 @@ pinterest_rest_api_catalogs_report_feed_ingestion_filter_REPORTTYPE_e catalogs_r
     return 0;
 }
 
-catalogs_report_feed_ingestion_filter_t *catalogs_report_feed_ingestion_filter_create(
+static catalogs_report_feed_ingestion_filter_t *catalogs_report_feed_ingestion_filter_create_internal(
     pinterest_rest_api_catalogs_report_feed_ingestion_filter_REPORTTYPE_e report_type,
     char *feed_id,
     char *processing_result_id
@@ -35,12 +35,28 @@ catalogs_report_feed_ingestion_filter_t *catalogs_report_feed_ingestion_filter_c
     catalogs_report_feed_ingestion_filter_local_var->feed_id = feed_id;
     catalogs_report_feed_ingestion_filter_local_var->processing_result_id = processing_result_id;
 
+    catalogs_report_feed_ingestion_filter_local_var->_library_owned = 1;
     return catalogs_report_feed_ingestion_filter_local_var;
 }
 
+__attribute__((deprecated)) catalogs_report_feed_ingestion_filter_t *catalogs_report_feed_ingestion_filter_create(
+    pinterest_rest_api_catalogs_report_feed_ingestion_filter_REPORTTYPE_e report_type,
+    char *feed_id,
+    char *processing_result_id
+    ) {
+    return catalogs_report_feed_ingestion_filter_create_internal (
+        report_type,
+        feed_id,
+        processing_result_id
+        );
+}
 
 void catalogs_report_feed_ingestion_filter_free(catalogs_report_feed_ingestion_filter_t *catalogs_report_feed_ingestion_filter) {
     if(NULL == catalogs_report_feed_ingestion_filter){
+        return ;
+    }
+    if(catalogs_report_feed_ingestion_filter->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_report_feed_ingestion_filter_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -62,7 +78,7 @@ cJSON *catalogs_report_feed_ingestion_filter_convertToJSON(catalogs_report_feed_
     if (pinterest_rest_api_catalogs_report_feed_ingestion_filter_REPORTTYPE_NULL == catalogs_report_feed_ingestion_filter->report_type) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "report_type", report_typecatalogs_report_feed_ingestion_filter_ToString(catalogs_report_feed_ingestion_filter->report_type)) == NULL)
+    if(cJSON_AddStringToObject(item, "report_type", catalogs_report_feed_ingestion_filter_report_type_ToString(catalogs_report_feed_ingestion_filter->report_type)) == NULL)
     {
     goto fail; //Enum
     }
@@ -98,6 +114,9 @@ catalogs_report_feed_ingestion_filter_t *catalogs_report_feed_ingestion_filter_p
 
     // catalogs_report_feed_ingestion_filter->report_type
     cJSON *report_type = cJSON_GetObjectItemCaseSensitive(catalogs_report_feed_ingestion_filterJSON, "report_type");
+    if (cJSON_IsNull(report_type)) {
+        report_type = NULL;
+    }
     if (!report_type) {
         goto end;
     }
@@ -112,6 +131,9 @@ catalogs_report_feed_ingestion_filter_t *catalogs_report_feed_ingestion_filter_p
 
     // catalogs_report_feed_ingestion_filter->feed_id
     cJSON *feed_id = cJSON_GetObjectItemCaseSensitive(catalogs_report_feed_ingestion_filterJSON, "feed_id");
+    if (cJSON_IsNull(feed_id)) {
+        feed_id = NULL;
+    }
     if (!feed_id) {
         goto end;
     }
@@ -124,6 +146,9 @@ catalogs_report_feed_ingestion_filter_t *catalogs_report_feed_ingestion_filter_p
 
     // catalogs_report_feed_ingestion_filter->processing_result_id
     cJSON *processing_result_id = cJSON_GetObjectItemCaseSensitive(catalogs_report_feed_ingestion_filterJSON, "processing_result_id");
+    if (cJSON_IsNull(processing_result_id)) {
+        processing_result_id = NULL;
+    }
     if (processing_result_id) { 
     if(!cJSON_IsString(processing_result_id) && !cJSON_IsNull(processing_result_id))
     {
@@ -132,7 +157,7 @@ catalogs_report_feed_ingestion_filter_t *catalogs_report_feed_ingestion_filter_p
     }
 
 
-    catalogs_report_feed_ingestion_filter_local_var = catalogs_report_feed_ingestion_filter_create (
+    catalogs_report_feed_ingestion_filter_local_var = catalogs_report_feed_ingestion_filter_create_internal (
         report_typeVariable,
         strdup(feed_id->valuestring),
         processing_result_id && !cJSON_IsNull(processing_result_id) ? strdup(processing_result_id->valuestring) : NULL

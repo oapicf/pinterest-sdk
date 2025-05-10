@@ -70,11 +70,11 @@ export function SharedAudienceResponseFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-  export function SharedAudienceResponseToJSON(json: any): SharedAudienceResponse {
-      return SharedAudienceResponseToJSONTyped(json, false);
-  }
+export function SharedAudienceResponseToJSON(json: any): SharedAudienceResponse {
+    return SharedAudienceResponseToJSONTyped(json, false);
+}
 
-  export function SharedAudienceResponseToJSONTyped(value?: SharedAudienceResponse | null, ignoreDiscriminator: boolean = false): any {
+export function SharedAudienceResponseToJSONTyped(value?: SharedAudienceResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

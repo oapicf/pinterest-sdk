@@ -21,10 +21,20 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("board_sections_list_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BoardSectionsList200Response   {
   private @Valid List<@Valid BoardSection> items = new ArrayList<>();
   private String bookmark;
+
+  public BoardSectionsList200Response() {
+  }
+
+  @JsonCreator
+  public BoardSectionsList200Response(
+    @JsonProperty(required = true, value = "items") List<@Valid BoardSection> items
+  ) {
+    this.items = items;
+  }
 
   /**
    * Board sections
@@ -36,12 +46,12 @@ public class BoardSectionsList200Response   {
 
   
   @ApiModelProperty(required = true, value = "Board sections")
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   @NotNull @Valid public List<@Valid BoardSection> getItems() {
     return items;
   }
 
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   public void setItems(List<@Valid BoardSection> items) {
     this.items = items;
   }

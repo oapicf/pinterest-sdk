@@ -33,9 +33,10 @@ typedef struct conversion_events_data_inner_custom_data_t {
     char *opt_out_type; // string
     char *np; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } conversion_events_data_inner_custom_data_t;
 
-conversion_events_data_inner_custom_data_t *conversion_events_data_inner_custom_data_create(
+__attribute__((deprecated)) conversion_events_data_inner_custom_data_t *conversion_events_data_inner_custom_data_create(
     char *currency,
     char *value,
     list_t *content_ids,

@@ -15,6 +15,7 @@ import org.openapitools.model.CatalogsStatus;
 import org.openapitools.model.Country;
 import org.openapitools.model.NullableCurrency;
 import org.openapitools.model.ProductAvailabilityType;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -32,7 +33,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsFeedsCreateRequest", description = "Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsFeedsCreateRequest implements FeedsCreateRequest {
 
   private JsonNullable<NullableCurrency> defaultCurrency = JsonNullable.<NullableCurrency>undefined();
@@ -41,7 +42,7 @@ public class CatalogsFeedsCreateRequest implements FeedsCreateRequest {
 
   private CatalogsFormat format;
 
-  private CatalogsFeedsCreateRequestDefaultLocale defaultLocale;
+  private @Nullable CatalogsFeedsCreateRequestDefaultLocale defaultLocale;
 
   private JsonNullable<CatalogsFeedCredentials> credentials = JsonNullable.<CatalogsFeedCredentials>undefined();
 
@@ -49,11 +50,11 @@ public class CatalogsFeedsCreateRequest implements FeedsCreateRequest {
 
   private JsonNullable<CatalogsFeedProcessingSchedule> preferredProcessingSchedule = JsonNullable.<CatalogsFeedProcessingSchedule>undefined();
 
-  private Country defaultCountry;
+  private @Nullable Country defaultCountry;
 
   private JsonNullable<ProductAvailabilityType> defaultAvailability = JsonNullable.<ProductAvailabilityType>undefined();
 
-  private CatalogsStatus status;
+  private @Nullable CatalogsStatus status;
 
   public CatalogsFeedsCreateRequest() {
     super();

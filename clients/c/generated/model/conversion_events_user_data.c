@@ -5,7 +5,7 @@
 
 
 
-conversion_events_user_data_t *conversion_events_user_data_create(
+static conversion_events_user_data_t *conversion_events_user_data_create_internal(
     list_t *ph,
     list_t *ge,
     list_t *db,
@@ -44,12 +44,54 @@ conversion_events_user_data_t *conversion_events_user_data_create(
     conversion_events_user_data_local_var->client_ip_address = client_ip_address;
     conversion_events_user_data_local_var->client_user_agent = client_user_agent;
 
+    conversion_events_user_data_local_var->_library_owned = 1;
     return conversion_events_user_data_local_var;
 }
 
+__attribute__((deprecated)) conversion_events_user_data_t *conversion_events_user_data_create(
+    list_t *ph,
+    list_t *ge,
+    list_t *db,
+    list_t *ln,
+    list_t *fn,
+    list_t *ct,
+    list_t *st,
+    list_t *zp,
+    list_t *country,
+    list_t *external_id,
+    char *click_id,
+    char *partner_id,
+    list_t *em,
+    list_t *hashed_maids,
+    char *client_ip_address,
+    char *client_user_agent
+    ) {
+    return conversion_events_user_data_create_internal (
+        ph,
+        ge,
+        db,
+        ln,
+        fn,
+        ct,
+        st,
+        zp,
+        country,
+        external_id,
+        click_id,
+        partner_id,
+        em,
+        hashed_maids,
+        client_ip_address,
+        client_user_agent
+        );
+}
 
 void conversion_events_user_data_free(conversion_events_user_data_t *conversion_events_user_data) {
     if(NULL == conversion_events_user_data){
+        return ;
+    }
+    if(conversion_events_user_data->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "conversion_events_user_data_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -168,7 +210,7 @@ cJSON *conversion_events_user_data_convertToJSON(conversion_events_user_data_t *
 
     listEntry_t *phListEntry;
     list_ForEach(phListEntry, conversion_events_user_data->ph) {
-    if(cJSON_AddStringToObject(ph, "", (char*)phListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(ph, "", phListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -185,7 +227,7 @@ cJSON *conversion_events_user_data_convertToJSON(conversion_events_user_data_t *
 
     listEntry_t *geListEntry;
     list_ForEach(geListEntry, conversion_events_user_data->ge) {
-    if(cJSON_AddStringToObject(ge, "", (char*)geListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(ge, "", geListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -202,7 +244,7 @@ cJSON *conversion_events_user_data_convertToJSON(conversion_events_user_data_t *
 
     listEntry_t *dbListEntry;
     list_ForEach(dbListEntry, conversion_events_user_data->db) {
-    if(cJSON_AddStringToObject(db, "", (char*)dbListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(db, "", dbListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -219,7 +261,7 @@ cJSON *conversion_events_user_data_convertToJSON(conversion_events_user_data_t *
 
     listEntry_t *lnListEntry;
     list_ForEach(lnListEntry, conversion_events_user_data->ln) {
-    if(cJSON_AddStringToObject(ln, "", (char*)lnListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(ln, "", lnListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -236,7 +278,7 @@ cJSON *conversion_events_user_data_convertToJSON(conversion_events_user_data_t *
 
     listEntry_t *fnListEntry;
     list_ForEach(fnListEntry, conversion_events_user_data->fn) {
-    if(cJSON_AddStringToObject(fn, "", (char*)fnListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(fn, "", fnListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -253,7 +295,7 @@ cJSON *conversion_events_user_data_convertToJSON(conversion_events_user_data_t *
 
     listEntry_t *ctListEntry;
     list_ForEach(ctListEntry, conversion_events_user_data->ct) {
-    if(cJSON_AddStringToObject(ct, "", (char*)ctListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(ct, "", ctListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -270,7 +312,7 @@ cJSON *conversion_events_user_data_convertToJSON(conversion_events_user_data_t *
 
     listEntry_t *stListEntry;
     list_ForEach(stListEntry, conversion_events_user_data->st) {
-    if(cJSON_AddStringToObject(st, "", (char*)stListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(st, "", stListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -287,7 +329,7 @@ cJSON *conversion_events_user_data_convertToJSON(conversion_events_user_data_t *
 
     listEntry_t *zpListEntry;
     list_ForEach(zpListEntry, conversion_events_user_data->zp) {
-    if(cJSON_AddStringToObject(zp, "", (char*)zpListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(zp, "", zpListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -304,7 +346,7 @@ cJSON *conversion_events_user_data_convertToJSON(conversion_events_user_data_t *
 
     listEntry_t *countryListEntry;
     list_ForEach(countryListEntry, conversion_events_user_data->country) {
-    if(cJSON_AddStringToObject(country, "", (char*)countryListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(country, "", countryListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -321,7 +363,7 @@ cJSON *conversion_events_user_data_convertToJSON(conversion_events_user_data_t *
 
     listEntry_t *external_idListEntry;
     list_ForEach(external_idListEntry, conversion_events_user_data->external_id) {
-    if(cJSON_AddStringToObject(external_id, "", (char*)external_idListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(external_id, "", external_idListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -356,7 +398,7 @@ cJSON *conversion_events_user_data_convertToJSON(conversion_events_user_data_t *
 
     listEntry_t *emListEntry;
     list_ForEach(emListEntry, conversion_events_user_data->em) {
-    if(cJSON_AddStringToObject(em, "", (char*)emListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(em, "", emListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -374,7 +416,7 @@ cJSON *conversion_events_user_data_convertToJSON(conversion_events_user_data_t *
 
     listEntry_t *hashed_maidsListEntry;
     list_ForEach(hashed_maidsListEntry, conversion_events_user_data->hashed_maids) {
-    if(cJSON_AddStringToObject(hashed_maids, "", (char*)hashed_maidsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(hashed_maids, "", hashed_maidsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -448,6 +490,9 @@ conversion_events_user_data_t *conversion_events_user_data_parseFromJSON(cJSON *
 
     // conversion_events_user_data->ph
     cJSON *ph = cJSON_GetObjectItemCaseSensitive(conversion_events_user_dataJSON, "ph");
+    if (cJSON_IsNull(ph)) {
+        ph = NULL;
+    }
     if (ph) { 
     cJSON *ph_local = NULL;
     if(!cJSON_IsArray(ph)) {
@@ -467,6 +512,9 @@ conversion_events_user_data_t *conversion_events_user_data_parseFromJSON(cJSON *
 
     // conversion_events_user_data->ge
     cJSON *ge = cJSON_GetObjectItemCaseSensitive(conversion_events_user_dataJSON, "ge");
+    if (cJSON_IsNull(ge)) {
+        ge = NULL;
+    }
     if (ge) { 
     cJSON *ge_local = NULL;
     if(!cJSON_IsArray(ge)) {
@@ -486,6 +534,9 @@ conversion_events_user_data_t *conversion_events_user_data_parseFromJSON(cJSON *
 
     // conversion_events_user_data->db
     cJSON *db = cJSON_GetObjectItemCaseSensitive(conversion_events_user_dataJSON, "db");
+    if (cJSON_IsNull(db)) {
+        db = NULL;
+    }
     if (db) { 
     cJSON *db_local = NULL;
     if(!cJSON_IsArray(db)) {
@@ -505,6 +556,9 @@ conversion_events_user_data_t *conversion_events_user_data_parseFromJSON(cJSON *
 
     // conversion_events_user_data->ln
     cJSON *ln = cJSON_GetObjectItemCaseSensitive(conversion_events_user_dataJSON, "ln");
+    if (cJSON_IsNull(ln)) {
+        ln = NULL;
+    }
     if (ln) { 
     cJSON *ln_local = NULL;
     if(!cJSON_IsArray(ln)) {
@@ -524,6 +578,9 @@ conversion_events_user_data_t *conversion_events_user_data_parseFromJSON(cJSON *
 
     // conversion_events_user_data->fn
     cJSON *fn = cJSON_GetObjectItemCaseSensitive(conversion_events_user_dataJSON, "fn");
+    if (cJSON_IsNull(fn)) {
+        fn = NULL;
+    }
     if (fn) { 
     cJSON *fn_local = NULL;
     if(!cJSON_IsArray(fn)) {
@@ -543,6 +600,9 @@ conversion_events_user_data_t *conversion_events_user_data_parseFromJSON(cJSON *
 
     // conversion_events_user_data->ct
     cJSON *ct = cJSON_GetObjectItemCaseSensitive(conversion_events_user_dataJSON, "ct");
+    if (cJSON_IsNull(ct)) {
+        ct = NULL;
+    }
     if (ct) { 
     cJSON *ct_local = NULL;
     if(!cJSON_IsArray(ct)) {
@@ -562,6 +622,9 @@ conversion_events_user_data_t *conversion_events_user_data_parseFromJSON(cJSON *
 
     // conversion_events_user_data->st
     cJSON *st = cJSON_GetObjectItemCaseSensitive(conversion_events_user_dataJSON, "st");
+    if (cJSON_IsNull(st)) {
+        st = NULL;
+    }
     if (st) { 
     cJSON *st_local = NULL;
     if(!cJSON_IsArray(st)) {
@@ -581,6 +644,9 @@ conversion_events_user_data_t *conversion_events_user_data_parseFromJSON(cJSON *
 
     // conversion_events_user_data->zp
     cJSON *zp = cJSON_GetObjectItemCaseSensitive(conversion_events_user_dataJSON, "zp");
+    if (cJSON_IsNull(zp)) {
+        zp = NULL;
+    }
     if (zp) { 
     cJSON *zp_local = NULL;
     if(!cJSON_IsArray(zp)) {
@@ -600,6 +666,9 @@ conversion_events_user_data_t *conversion_events_user_data_parseFromJSON(cJSON *
 
     // conversion_events_user_data->country
     cJSON *country = cJSON_GetObjectItemCaseSensitive(conversion_events_user_dataJSON, "country");
+    if (cJSON_IsNull(country)) {
+        country = NULL;
+    }
     if (country) { 
     cJSON *country_local = NULL;
     if(!cJSON_IsArray(country)) {
@@ -619,6 +688,9 @@ conversion_events_user_data_t *conversion_events_user_data_parseFromJSON(cJSON *
 
     // conversion_events_user_data->external_id
     cJSON *external_id = cJSON_GetObjectItemCaseSensitive(conversion_events_user_dataJSON, "external_id");
+    if (cJSON_IsNull(external_id)) {
+        external_id = NULL;
+    }
     if (external_id) { 
     cJSON *external_id_local = NULL;
     if(!cJSON_IsArray(external_id)) {
@@ -638,6 +710,9 @@ conversion_events_user_data_t *conversion_events_user_data_parseFromJSON(cJSON *
 
     // conversion_events_user_data->click_id
     cJSON *click_id = cJSON_GetObjectItemCaseSensitive(conversion_events_user_dataJSON, "click_id");
+    if (cJSON_IsNull(click_id)) {
+        click_id = NULL;
+    }
     if (click_id) { 
     if(!cJSON_IsString(click_id) && !cJSON_IsNull(click_id))
     {
@@ -647,6 +722,9 @@ conversion_events_user_data_t *conversion_events_user_data_parseFromJSON(cJSON *
 
     // conversion_events_user_data->partner_id
     cJSON *partner_id = cJSON_GetObjectItemCaseSensitive(conversion_events_user_dataJSON, "partner_id");
+    if (cJSON_IsNull(partner_id)) {
+        partner_id = NULL;
+    }
     if (partner_id) { 
     if(!cJSON_IsString(partner_id) && !cJSON_IsNull(partner_id))
     {
@@ -656,6 +734,9 @@ conversion_events_user_data_t *conversion_events_user_data_parseFromJSON(cJSON *
 
     // conversion_events_user_data->em
     cJSON *em = cJSON_GetObjectItemCaseSensitive(conversion_events_user_dataJSON, "em");
+    if (cJSON_IsNull(em)) {
+        em = NULL;
+    }
     if (!em) {
         goto end;
     }
@@ -678,6 +759,9 @@ conversion_events_user_data_t *conversion_events_user_data_parseFromJSON(cJSON *
 
     // conversion_events_user_data->hashed_maids
     cJSON *hashed_maids = cJSON_GetObjectItemCaseSensitive(conversion_events_user_dataJSON, "hashed_maids");
+    if (cJSON_IsNull(hashed_maids)) {
+        hashed_maids = NULL;
+    }
     if (!hashed_maids) {
         goto end;
     }
@@ -700,6 +784,9 @@ conversion_events_user_data_t *conversion_events_user_data_parseFromJSON(cJSON *
 
     // conversion_events_user_data->client_ip_address
     cJSON *client_ip_address = cJSON_GetObjectItemCaseSensitive(conversion_events_user_dataJSON, "client_ip_address");
+    if (cJSON_IsNull(client_ip_address)) {
+        client_ip_address = NULL;
+    }
     if (!client_ip_address) {
         goto end;
     }
@@ -712,6 +799,9 @@ conversion_events_user_data_t *conversion_events_user_data_parseFromJSON(cJSON *
 
     // conversion_events_user_data->client_user_agent
     cJSON *client_user_agent = cJSON_GetObjectItemCaseSensitive(conversion_events_user_dataJSON, "client_user_agent");
+    if (cJSON_IsNull(client_user_agent)) {
+        client_user_agent = NULL;
+    }
     if (!client_user_agent) {
         goto end;
     }
@@ -723,7 +813,7 @@ conversion_events_user_data_t *conversion_events_user_data_parseFromJSON(cJSON *
     }
 
 
-    conversion_events_user_data_local_var = conversion_events_user_data_create (
+    conversion_events_user_data_local_var = conversion_events_user_data_create_internal (
         ph ? phList : NULL,
         ge ? geList : NULL,
         db ? dbList : NULL,

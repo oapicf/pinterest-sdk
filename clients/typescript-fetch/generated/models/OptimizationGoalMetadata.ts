@@ -84,11 +84,11 @@ export function OptimizationGoalMetadataFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function OptimizationGoalMetadataToJSON(json: any): OptimizationGoalMetadata {
-      return OptimizationGoalMetadataToJSONTyped(json, false);
-  }
+export function OptimizationGoalMetadataToJSON(json: any): OptimizationGoalMetadata {
+    return OptimizationGoalMetadataToJSONTyped(json, false);
+}
 
-  export function OptimizationGoalMetadataToJSONTyped(value?: OptimizationGoalMetadata | null, ignoreDiscriminator: boolean = false): any {
+export function OptimizationGoalMetadataToJSONTyped(value?: OptimizationGoalMetadata | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

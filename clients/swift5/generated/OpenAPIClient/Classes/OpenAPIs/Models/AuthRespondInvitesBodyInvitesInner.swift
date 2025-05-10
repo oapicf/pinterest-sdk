@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct AuthRespondInvitesBodyInvitesInner: Codable, JSONEncodable, Hashable {
 
-    static let inviteIdRule = StringRule(minLength: 1, maxLength: 25, pattern: "/^\\d+$/")
+    public static let inviteIdRule = StringRule(minLength: 1, maxLength: 25, pattern: "/^\\d+$/")
     public var action: AuthRespondInvitesBodyInvitesInnerAction
     /** Unique identifier of an invite. */
     public var inviteId: String

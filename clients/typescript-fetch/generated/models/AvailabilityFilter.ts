@@ -57,11 +57,11 @@ export function AvailabilityFilterFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-  export function AvailabilityFilterToJSON(json: any): AvailabilityFilter {
-      return AvailabilityFilterToJSONTyped(json, false);
-  }
+export function AvailabilityFilterToJSON(json: any): AvailabilityFilter {
+    return AvailabilityFilterToJSONTyped(json, false);
+}
 
-  export function AvailabilityFilterToJSONTyped(value?: AvailabilityFilter | null, ignoreDiscriminator: boolean = false): any {
+export function AvailabilityFilterToJSONTyped(value?: AvailabilityFilter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -42,14 +42,14 @@ impl PinMediaSourceImagesBase64ItemsInner {
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum ContentType {
     #[serde(rename = "image/jpeg")]
-    Jpeg,
+    ImageSlashJpeg,
     #[serde(rename = "image/png")]
-    Png,
+    ImageSlashPng,
 }
 
 impl Default for ContentType {
     fn default() -> ContentType {
-        Self::Jpeg
+        Self::ImageSlashJpeg
     }
 }
 

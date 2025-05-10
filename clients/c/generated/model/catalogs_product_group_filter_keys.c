@@ -5,7 +5,7 @@
 
 
 
-catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_create(
+static catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_create_internal(
     catalogs_product_group_pricing_criteria_t *min_price,
     catalogs_product_group_pricing_criteria_t *max_price,
     catalogs_product_group_currency_criteria_t *currency,
@@ -68,12 +68,78 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_create(
     catalogs_product_group_filter_keys_local_var->google_product_category_0 = google_product_category_0;
     catalogs_product_group_filter_keys_local_var->product_group = product_group;
 
+    catalogs_product_group_filter_keys_local_var->_library_owned = 1;
     return catalogs_product_group_filter_keys_local_var;
 }
 
+__attribute__((deprecated)) catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_create(
+    catalogs_product_group_pricing_criteria_t *min_price,
+    catalogs_product_group_pricing_criteria_t *max_price,
+    catalogs_product_group_currency_criteria_t *currency,
+    catalogs_product_group_multiple_string_criteria_t *item_id,
+    catalogs_product_group_multiple_string_criteria_t *availability,
+    catalogs_product_group_multiple_string_criteria_t *brand,
+    catalogs_product_group_multiple_string_criteria_t *condition,
+    catalogs_product_group_multiple_string_criteria_t *custom_label_0,
+    catalogs_product_group_multiple_string_criteria_t *custom_label_1,
+    catalogs_product_group_multiple_string_criteria_t *custom_label_2,
+    catalogs_product_group_multiple_string_criteria_t *custom_label_3,
+    catalogs_product_group_multiple_string_criteria_t *custom_label_4,
+    catalogs_product_group_multiple_string_criteria_t *item_group_id,
+    catalogs_product_group_multiple_gender_criteria_t *gender,
+    catalogs_product_group_multiple_media_types_criteria_t *media_type,
+    catalogs_product_group_multiple_string_list_criteria_t *product_type_4,
+    catalogs_product_group_multiple_string_list_criteria_t *product_type_3,
+    catalogs_product_group_multiple_string_list_criteria_t *product_type_2,
+    catalogs_product_group_multiple_string_list_criteria_t *product_type_1,
+    catalogs_product_group_multiple_string_list_criteria_t *product_type_0,
+    catalogs_product_group_multiple_string_list_criteria_t *google_product_category_6,
+    catalogs_product_group_multiple_string_list_criteria_t *google_product_category_5,
+    catalogs_product_group_multiple_string_list_criteria_t *google_product_category_4,
+    catalogs_product_group_multiple_string_list_criteria_t *google_product_category_3,
+    catalogs_product_group_multiple_string_list_criteria_t *google_product_category_2,
+    catalogs_product_group_multiple_string_list_criteria_t *google_product_category_1,
+    catalogs_product_group_multiple_string_list_criteria_t *google_product_category_0,
+    catalogs_product_group_multiple_string_criteria_t *product_group
+    ) {
+    return catalogs_product_group_filter_keys_create_internal (
+        min_price,
+        max_price,
+        currency,
+        item_id,
+        availability,
+        brand,
+        condition,
+        custom_label_0,
+        custom_label_1,
+        custom_label_2,
+        custom_label_3,
+        custom_label_4,
+        item_group_id,
+        gender,
+        media_type,
+        product_type_4,
+        product_type_3,
+        product_type_2,
+        product_type_1,
+        product_type_0,
+        google_product_category_6,
+        google_product_category_5,
+        google_product_category_4,
+        google_product_category_3,
+        google_product_category_2,
+        google_product_category_1,
+        google_product_category_0,
+        product_group
+        );
+}
 
 void catalogs_product_group_filter_keys_free(catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys) {
     if(NULL == catalogs_product_group_filter_keys){
+        return ;
+    }
+    if(catalogs_product_group_filter_keys->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_product_group_filter_keys_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -600,6 +666,9 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
 
     // catalogs_product_group_filter_keys->min_price
     cJSON *min_price = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filter_keysJSON, "MIN_PRICE");
+    if (cJSON_IsNull(min_price)) {
+        min_price = NULL;
+    }
     if (!min_price) {
         goto end;
     }
@@ -610,6 +679,9 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
 
     // catalogs_product_group_filter_keys->max_price
     cJSON *max_price = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filter_keysJSON, "MAX_PRICE");
+    if (cJSON_IsNull(max_price)) {
+        max_price = NULL;
+    }
     if (!max_price) {
         goto end;
     }
@@ -620,6 +692,9 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
 
     // catalogs_product_group_filter_keys->currency
     cJSON *currency = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filter_keysJSON, "CURRENCY");
+    if (cJSON_IsNull(currency)) {
+        currency = NULL;
+    }
     if (!currency) {
         goto end;
     }
@@ -630,6 +705,9 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
 
     // catalogs_product_group_filter_keys->item_id
     cJSON *item_id = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filter_keysJSON, "ITEM_ID");
+    if (cJSON_IsNull(item_id)) {
+        item_id = NULL;
+    }
     if (!item_id) {
         goto end;
     }
@@ -640,6 +718,9 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
 
     // catalogs_product_group_filter_keys->availability
     cJSON *availability = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filter_keysJSON, "AVAILABILITY");
+    if (cJSON_IsNull(availability)) {
+        availability = NULL;
+    }
     if (!availability) {
         goto end;
     }
@@ -650,6 +731,9 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
 
     // catalogs_product_group_filter_keys->brand
     cJSON *brand = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filter_keysJSON, "BRAND");
+    if (cJSON_IsNull(brand)) {
+        brand = NULL;
+    }
     if (!brand) {
         goto end;
     }
@@ -660,6 +744,9 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
 
     // catalogs_product_group_filter_keys->condition
     cJSON *condition = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filter_keysJSON, "CONDITION");
+    if (cJSON_IsNull(condition)) {
+        condition = NULL;
+    }
     if (!condition) {
         goto end;
     }
@@ -670,6 +757,9 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
 
     // catalogs_product_group_filter_keys->custom_label_0
     cJSON *custom_label_0 = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filter_keysJSON, "CUSTOM_LABEL_0");
+    if (cJSON_IsNull(custom_label_0)) {
+        custom_label_0 = NULL;
+    }
     if (!custom_label_0) {
         goto end;
     }
@@ -680,6 +770,9 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
 
     // catalogs_product_group_filter_keys->custom_label_1
     cJSON *custom_label_1 = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filter_keysJSON, "CUSTOM_LABEL_1");
+    if (cJSON_IsNull(custom_label_1)) {
+        custom_label_1 = NULL;
+    }
     if (!custom_label_1) {
         goto end;
     }
@@ -690,6 +783,9 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
 
     // catalogs_product_group_filter_keys->custom_label_2
     cJSON *custom_label_2 = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filter_keysJSON, "CUSTOM_LABEL_2");
+    if (cJSON_IsNull(custom_label_2)) {
+        custom_label_2 = NULL;
+    }
     if (!custom_label_2) {
         goto end;
     }
@@ -700,6 +796,9 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
 
     // catalogs_product_group_filter_keys->custom_label_3
     cJSON *custom_label_3 = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filter_keysJSON, "CUSTOM_LABEL_3");
+    if (cJSON_IsNull(custom_label_3)) {
+        custom_label_3 = NULL;
+    }
     if (!custom_label_3) {
         goto end;
     }
@@ -710,6 +809,9 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
 
     // catalogs_product_group_filter_keys->custom_label_4
     cJSON *custom_label_4 = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filter_keysJSON, "CUSTOM_LABEL_4");
+    if (cJSON_IsNull(custom_label_4)) {
+        custom_label_4 = NULL;
+    }
     if (!custom_label_4) {
         goto end;
     }
@@ -720,6 +822,9 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
 
     // catalogs_product_group_filter_keys->item_group_id
     cJSON *item_group_id = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filter_keysJSON, "ITEM_GROUP_ID");
+    if (cJSON_IsNull(item_group_id)) {
+        item_group_id = NULL;
+    }
     if (!item_group_id) {
         goto end;
     }
@@ -730,6 +835,9 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
 
     // catalogs_product_group_filter_keys->gender
     cJSON *gender = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filter_keysJSON, "GENDER");
+    if (cJSON_IsNull(gender)) {
+        gender = NULL;
+    }
     if (!gender) {
         goto end;
     }
@@ -740,6 +848,9 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
 
     // catalogs_product_group_filter_keys->media_type
     cJSON *media_type = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filter_keysJSON, "MEDIA_TYPE");
+    if (cJSON_IsNull(media_type)) {
+        media_type = NULL;
+    }
     if (!media_type) {
         goto end;
     }
@@ -750,6 +861,9 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
 
     // catalogs_product_group_filter_keys->product_type_4
     cJSON *product_type_4 = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filter_keysJSON, "PRODUCT_TYPE_4");
+    if (cJSON_IsNull(product_type_4)) {
+        product_type_4 = NULL;
+    }
     if (!product_type_4) {
         goto end;
     }
@@ -760,6 +874,9 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
 
     // catalogs_product_group_filter_keys->product_type_3
     cJSON *product_type_3 = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filter_keysJSON, "PRODUCT_TYPE_3");
+    if (cJSON_IsNull(product_type_3)) {
+        product_type_3 = NULL;
+    }
     if (!product_type_3) {
         goto end;
     }
@@ -770,6 +887,9 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
 
     // catalogs_product_group_filter_keys->product_type_2
     cJSON *product_type_2 = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filter_keysJSON, "PRODUCT_TYPE_2");
+    if (cJSON_IsNull(product_type_2)) {
+        product_type_2 = NULL;
+    }
     if (!product_type_2) {
         goto end;
     }
@@ -780,6 +900,9 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
 
     // catalogs_product_group_filter_keys->product_type_1
     cJSON *product_type_1 = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filter_keysJSON, "PRODUCT_TYPE_1");
+    if (cJSON_IsNull(product_type_1)) {
+        product_type_1 = NULL;
+    }
     if (!product_type_1) {
         goto end;
     }
@@ -790,6 +913,9 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
 
     // catalogs_product_group_filter_keys->product_type_0
     cJSON *product_type_0 = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filter_keysJSON, "PRODUCT_TYPE_0");
+    if (cJSON_IsNull(product_type_0)) {
+        product_type_0 = NULL;
+    }
     if (!product_type_0) {
         goto end;
     }
@@ -800,6 +926,9 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
 
     // catalogs_product_group_filter_keys->google_product_category_6
     cJSON *google_product_category_6 = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filter_keysJSON, "GOOGLE_PRODUCT_CATEGORY_6");
+    if (cJSON_IsNull(google_product_category_6)) {
+        google_product_category_6 = NULL;
+    }
     if (!google_product_category_6) {
         goto end;
     }
@@ -810,6 +939,9 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
 
     // catalogs_product_group_filter_keys->google_product_category_5
     cJSON *google_product_category_5 = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filter_keysJSON, "GOOGLE_PRODUCT_CATEGORY_5");
+    if (cJSON_IsNull(google_product_category_5)) {
+        google_product_category_5 = NULL;
+    }
     if (!google_product_category_5) {
         goto end;
     }
@@ -820,6 +952,9 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
 
     // catalogs_product_group_filter_keys->google_product_category_4
     cJSON *google_product_category_4 = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filter_keysJSON, "GOOGLE_PRODUCT_CATEGORY_4");
+    if (cJSON_IsNull(google_product_category_4)) {
+        google_product_category_4 = NULL;
+    }
     if (!google_product_category_4) {
         goto end;
     }
@@ -830,6 +965,9 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
 
     // catalogs_product_group_filter_keys->google_product_category_3
     cJSON *google_product_category_3 = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filter_keysJSON, "GOOGLE_PRODUCT_CATEGORY_3");
+    if (cJSON_IsNull(google_product_category_3)) {
+        google_product_category_3 = NULL;
+    }
     if (!google_product_category_3) {
         goto end;
     }
@@ -840,6 +978,9 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
 
     // catalogs_product_group_filter_keys->google_product_category_2
     cJSON *google_product_category_2 = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filter_keysJSON, "GOOGLE_PRODUCT_CATEGORY_2");
+    if (cJSON_IsNull(google_product_category_2)) {
+        google_product_category_2 = NULL;
+    }
     if (!google_product_category_2) {
         goto end;
     }
@@ -850,6 +991,9 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
 
     // catalogs_product_group_filter_keys->google_product_category_1
     cJSON *google_product_category_1 = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filter_keysJSON, "GOOGLE_PRODUCT_CATEGORY_1");
+    if (cJSON_IsNull(google_product_category_1)) {
+        google_product_category_1 = NULL;
+    }
     if (!google_product_category_1) {
         goto end;
     }
@@ -860,6 +1004,9 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
 
     // catalogs_product_group_filter_keys->google_product_category_0
     cJSON *google_product_category_0 = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filter_keysJSON, "GOOGLE_PRODUCT_CATEGORY_0");
+    if (cJSON_IsNull(google_product_category_0)) {
+        google_product_category_0 = NULL;
+    }
     if (!google_product_category_0) {
         goto end;
     }
@@ -870,6 +1017,9 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
 
     // catalogs_product_group_filter_keys->product_group
     cJSON *product_group = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filter_keysJSON, "PRODUCT_GROUP");
+    if (cJSON_IsNull(product_group)) {
+        product_group = NULL;
+    }
     if (!product_group) {
         goto end;
     }
@@ -879,7 +1029,7 @@ catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_parseFr
     product_group_local_object = object_parseFromJSON(product_group); //object
 
 
-    catalogs_product_group_filter_keys_local_var = catalogs_product_group_filter_keys_create (
+    catalogs_product_group_filter_keys_local_var = catalogs_product_group_filter_keys_create_internal (
         min_price_local_object,
         max_price_local_object,
         currency_local_object,

@@ -12,18 +12,20 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param catalogType 
  * @param creativeAssetsIds 
  * @param catalogId Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
  */
+@Serializable
 data class CatalogsCreativeAssetsItemsPostFilter(
     val catalogType: CatalogsCreativeAssetsItemsPostFilter.CatalogType,
     val creativeAssetsIds: kotlin.collections.List<kotlin.String>,
     /* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
     val catalogId: kotlin.String? = null
-) 
+)
 {
     /**
     * 

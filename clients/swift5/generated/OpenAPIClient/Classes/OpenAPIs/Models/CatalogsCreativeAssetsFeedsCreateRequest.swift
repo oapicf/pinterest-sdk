@@ -13,8 +13,8 @@ import AnyCodable
 /** Request object for creating a feed. */
 public struct CatalogsCreativeAssetsFeedsCreateRequest: Codable, JSONEncodable, Hashable {
 
-    static let locationRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(http|https|ftp|sftp):\/\//")
-    static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let locationRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(http|https|ftp|sftp):\/\//")
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public var defaultCurrency: NullableCurrency?
     /** A human-friendly name associated to a given feed. */
     public var name: String

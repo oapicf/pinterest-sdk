@@ -13,14 +13,16 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.BoardSection
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items Board sections
  * @param bookmark 
  */
+@Serializable
 data class BoardSectionsList200Response(
     /* Board sections */
     val items: kotlin.collections.List<BoardSection>,
     val bookmark: kotlin.String? = null
-) 
+)
 

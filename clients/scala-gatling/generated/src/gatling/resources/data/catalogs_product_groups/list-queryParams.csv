@@ -1,1 +1,1 @@
-feed_id,ad_account_id,catalog_id,page_size,bookmark,id
+page_size,id,feed_id,ad_account_id,catalog_id,bookmark

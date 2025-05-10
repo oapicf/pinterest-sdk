@@ -34,9 +34,10 @@ typedef struct quiz_pin_data_t {
     pinterest_rest_api_quiz_pin_data_TIEBREAKERTYPE_e tie_breaker_type; //enum
     struct quiz_pin_result_t *tie_breaker_custom_result; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } quiz_pin_data_t;
 
-quiz_pin_data_t *quiz_pin_data_create(
+__attribute__((deprecated)) quiz_pin_data_t *quiz_pin_data_create(
     list_t *questions,
     list_t *results,
     pinterest_rest_api_quiz_pin_data_TIEBREAKERTYPE_e tie_breaker_type,

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -22,34 +23,34 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "IntegrationRequest", description = "Schema used for creating the integration metadata.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class IntegrationRequest {
 
   private JsonNullable<String> externalBusinessId = JsonNullable.<String>undefined();
 
-  private String connectedMerchantId;
+  private @Nullable String connectedMerchantId;
 
-  private String connectedAdvertiserId;
+  private @Nullable String connectedAdvertiserId;
 
-  private String connectedLbaId;
+  private @Nullable String connectedLbaId;
 
-  private String connectedTagId;
+  private @Nullable String connectedTagId;
 
-  private String partnerAccessToken;
+  private @Nullable String partnerAccessToken;
 
-  private String partnerRefreshToken;
+  private @Nullable String partnerRefreshToken;
 
-  private String partnerPrimaryEmail;
+  private @Nullable String partnerPrimaryEmail;
 
-  private Integer partnerAccessTokenExpiry;
+  private @Nullable Integer partnerAccessTokenExpiry;
 
-  private Integer partnerRefreshTokenExpiry;
+  private @Nullable Integer partnerRefreshTokenExpiry;
 
-  private String scopes;
+  private @Nullable String scopes;
 
-  private String additionalId1;
+  private @Nullable String additionalId1;
 
-  private String partnerMetadata;
+  private @Nullable String partnerMetadata;
 
   public IntegrationRequest externalBusinessId(String externalBusinessId) {
     this.externalBusinessId = JsonNullable.of(externalBusinessId);

@@ -36,9 +36,9 @@ Name | Type | Description | Notes
 ## Enum: PrimarySortEnum
 
 
-* `ID` (value: `"BY_ID"`)
+* `BY_ID` (value: `"BY_ID"`)
 
-* `DATE` (value: `"BY_DATE"`)
+* `BY_DATE` (value: `"BY_DATE"`)
 
 
 

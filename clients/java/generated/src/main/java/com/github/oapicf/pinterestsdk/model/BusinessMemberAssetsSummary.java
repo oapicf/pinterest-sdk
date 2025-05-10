@@ -52,20 +52,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Ad accounts and profiles the business member/partner has access to.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BusinessMemberAssetsSummary {
   public static final String SERIALIZED_NAME_AD_ACCOUNTS = "ad_accounts";
   @SerializedName(SERIALIZED_NAME_AD_ACCOUNTS)
+  @javax.annotation.Nullable
   private List<BusinessMemberAssetsSummaryAdAccountsInner> adAccounts = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_PROFILES = "profiles";
   @SerializedName(SERIALIZED_NAME_PROFILES)
+  @javax.annotation.Nullable
   private List<BusinessMemberAssetsSummaryProfilesInner> profiles = new ArrayList<>();
 
   public BusinessMemberAssetsSummary() {
   }
 
-  public BusinessMemberAssetsSummary adAccounts(List<BusinessMemberAssetsSummaryAdAccountsInner> adAccounts) {
+  public BusinessMemberAssetsSummary adAccounts(@javax.annotation.Nullable List<BusinessMemberAssetsSummaryAdAccountsInner> adAccounts) {
     this.adAccounts = adAccounts;
     return this;
   }
@@ -87,12 +89,12 @@ public class BusinessMemberAssetsSummary {
     return adAccounts;
   }
 
-  public void setAdAccounts(List<BusinessMemberAssetsSummaryAdAccountsInner> adAccounts) {
+  public void setAdAccounts(@javax.annotation.Nullable List<BusinessMemberAssetsSummaryAdAccountsInner> adAccounts) {
     this.adAccounts = adAccounts;
   }
 
 
-  public BusinessMemberAssetsSummary profiles(List<BusinessMemberAssetsSummaryProfilesInner> profiles) {
+  public BusinessMemberAssetsSummary profiles(@javax.annotation.Nullable List<BusinessMemberAssetsSummaryProfilesInner> profiles) {
     this.profiles = profiles;
     return this;
   }
@@ -114,7 +116,7 @@ public class BusinessMemberAssetsSummary {
     return profiles;
   }
 
-  public void setProfiles(List<BusinessMemberAssetsSummaryProfilesInner> profiles) {
+  public void setProfiles(@javax.annotation.Nullable List<BusinessMemberAssetsSummaryProfilesInner> profiles) {
     this.profiles = profiles;
   }
 

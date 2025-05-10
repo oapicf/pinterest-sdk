@@ -281,8 +281,8 @@ export interface AdsAnalyticsCreateAsyncRequest {
  * @export
  */
 export const AdsAnalyticsCreateAsyncRequestPrimarySortEnum = {
-    Id: 'BY_ID',
-    Date: 'BY_DATE'
+    ById: 'BY_ID',
+    ByDate: 'BY_DATE'
 } as const;
 export type AdsAnalyticsCreateAsyncRequestPrimarySortEnum = typeof AdsAnalyticsCreateAsyncRequestPrimarySortEnum[keyof typeof AdsAnalyticsCreateAsyncRequestPrimarySortEnum];
 
@@ -338,11 +338,11 @@ export function AdsAnalyticsCreateAsyncRequestFromJSONTyped(json: any, ignoreDis
     };
 }
 
-  export function AdsAnalyticsCreateAsyncRequestToJSON(json: any): AdsAnalyticsCreateAsyncRequest {
-      return AdsAnalyticsCreateAsyncRequestToJSONTyped(json, false);
-  }
+export function AdsAnalyticsCreateAsyncRequestToJSON(json: any): AdsAnalyticsCreateAsyncRequest {
+    return AdsAnalyticsCreateAsyncRequestToJSONTyped(json, false);
+}
 
-  export function AdsAnalyticsCreateAsyncRequestToJSONTyped(value?: AdsAnalyticsCreateAsyncRequest | null, ignoreDiscriminator: boolean = false): any {
+export function AdsAnalyticsCreateAsyncRequestToJSONTyped(value?: AdsAnalyticsCreateAsyncRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -4,45 +4,11 @@
 #include "catalogs_items_delete_discontinued_batch_request.h"
 
 
-char* catalogs_items_delete_discontinued_batch_request_country_ToString(pinterest_rest_api_catalogs_items_delete_discontinued_batch_request__e country) {
-    char* countryArray[] =  { "NULL", "AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "YE", "YT", "ZA", "ZM", "ZW" };
-    return countryArray[country];
-}
 
-pinterest_rest_api_catalogs_items_delete_discontinued_batch_request__e catalogs_items_delete_discontinued_batch_request_country_FromString(char* country){
-    int stringToReturn = 0;
-    char *countryArray[] =  { "NULL", "AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "YE", "YT", "ZA", "ZM", "ZW" };
-    size_t sizeofArray = sizeof(countryArray) / sizeof(countryArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(country, countryArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-char* catalogs_items_delete_discontinued_batch_request_operation_ToString(pinterest_rest_api_catalogs_items_delete_discontinued_batch_request__e operation) {
-    char* operationArray[] =  { "NULL", "UPDATE", "UPSERT", "CREATE", "DELETE_DISCONTINUED", "DELETE" };
-    return operationArray[operation];
-}
-
-pinterest_rest_api_catalogs_items_delete_discontinued_batch_request__e catalogs_items_delete_discontinued_batch_request_operation_FromString(char* operation){
-    int stringToReturn = 0;
-    char *operationArray[] =  { "NULL", "UPDATE", "UPSERT", "CREATE", "DELETE_DISCONTINUED", "DELETE" };
-    size_t sizeofArray = sizeof(operationArray) / sizeof(operationArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(operation, operationArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-
-catalogs_items_delete_discontinued_batch_request_t *catalogs_items_delete_discontinued_batch_request_create(
-    country_t *country,
+static catalogs_items_delete_discontinued_batch_request_t *catalogs_items_delete_discontinued_batch_request_create_internal(
+    pinterest_rest_api_country__e country,
     catalogs_items_request_language_t *language,
-    batch_operation_t *operation,
+    pinterest_rest_api_batch_operation__e operation,
     list_t *items
     ) {
     catalogs_items_delete_discontinued_batch_request_t *catalogs_items_delete_discontinued_batch_request_local_var = malloc(sizeof(catalogs_items_delete_discontinued_batch_request_t));
@@ -54,26 +20,36 @@ catalogs_items_delete_discontinued_batch_request_t *catalogs_items_delete_discon
     catalogs_items_delete_discontinued_batch_request_local_var->operation = operation;
     catalogs_items_delete_discontinued_batch_request_local_var->items = items;
 
+    catalogs_items_delete_discontinued_batch_request_local_var->_library_owned = 1;
     return catalogs_items_delete_discontinued_batch_request_local_var;
 }
 
+__attribute__((deprecated)) catalogs_items_delete_discontinued_batch_request_t *catalogs_items_delete_discontinued_batch_request_create(
+    pinterest_rest_api_country__e country,
+    catalogs_items_request_language_t *language,
+    pinterest_rest_api_batch_operation__e operation,
+    list_t *items
+    ) {
+    return catalogs_items_delete_discontinued_batch_request_create_internal (
+        country,
+        language,
+        operation,
+        items
+        );
+}
 
 void catalogs_items_delete_discontinued_batch_request_free(catalogs_items_delete_discontinued_batch_request_t *catalogs_items_delete_discontinued_batch_request) {
     if(NULL == catalogs_items_delete_discontinued_batch_request){
         return ;
     }
-    listEntry_t *listEntry;
-    if (catalogs_items_delete_discontinued_batch_request->country) {
-        country_free(catalogs_items_delete_discontinued_batch_request->country);
-        catalogs_items_delete_discontinued_batch_request->country = NULL;
+    if(catalogs_items_delete_discontinued_batch_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_items_delete_discontinued_batch_request_free");
+        return ;
     }
+    listEntry_t *listEntry;
     if (catalogs_items_delete_discontinued_batch_request->language) {
         catalogs_items_request_language_free(catalogs_items_delete_discontinued_batch_request->language);
         catalogs_items_delete_discontinued_batch_request->language = NULL;
-    }
-    if (catalogs_items_delete_discontinued_batch_request->operation) {
-        batch_operation_free(catalogs_items_delete_discontinued_batch_request->operation);
-        catalogs_items_delete_discontinued_batch_request->operation = NULL;
     }
     if (catalogs_items_delete_discontinued_batch_request->items) {
         list_ForEach(listEntry, catalogs_items_delete_discontinued_batch_request->items) {
@@ -89,7 +65,7 @@ cJSON *catalogs_items_delete_discontinued_batch_request_convertToJSON(catalogs_i
     cJSON *item = cJSON_CreateObject();
 
     // catalogs_items_delete_discontinued_batch_request->country
-    if (pinterest_rest_api_catalogs_items_delete_discontinued_batch_request__NULL == catalogs_items_delete_discontinued_batch_request->country) {
+    if (pinterest_rest_api_country__NULL == catalogs_items_delete_discontinued_batch_request->country) {
         goto fail;
     }
     cJSON *country_local_JSON = country_convertToJSON(catalogs_items_delete_discontinued_batch_request->country);
@@ -117,7 +93,7 @@ cJSON *catalogs_items_delete_discontinued_batch_request_convertToJSON(catalogs_i
 
 
     // catalogs_items_delete_discontinued_batch_request->operation
-    if (pinterest_rest_api_catalogs_items_delete_discontinued_batch_request__NULL == catalogs_items_delete_discontinued_batch_request->operation) {
+    if (pinterest_rest_api_batch_operation__NULL == catalogs_items_delete_discontinued_batch_request->operation) {
         goto fail;
     }
     cJSON *operation_local_JSON = batch_operation_convertToJSON(catalogs_items_delete_discontinued_batch_request->operation);
@@ -163,19 +139,22 @@ catalogs_items_delete_discontinued_batch_request_t *catalogs_items_delete_discon
     catalogs_items_delete_discontinued_batch_request_t *catalogs_items_delete_discontinued_batch_request_local_var = NULL;
 
     // define the local variable for catalogs_items_delete_discontinued_batch_request->country
-    country_t *country_local_nonprim = NULL;
+    pinterest_rest_api_country__e country_local_nonprim = 0;
 
     // define the local variable for catalogs_items_delete_discontinued_batch_request->language
     catalogs_items_request_language_t *language_local_nonprim = NULL;
 
     // define the local variable for catalogs_items_delete_discontinued_batch_request->operation
-    batch_operation_t *operation_local_nonprim = NULL;
+    pinterest_rest_api_batch_operation__e operation_local_nonprim = 0;
 
     // define the local list for catalogs_items_delete_discontinued_batch_request->items
     list_t *itemsList = NULL;
 
     // catalogs_items_delete_discontinued_batch_request->country
     cJSON *country = cJSON_GetObjectItemCaseSensitive(catalogs_items_delete_discontinued_batch_requestJSON, "country");
+    if (cJSON_IsNull(country)) {
+        country = NULL;
+    }
     if (!country) {
         goto end;
     }
@@ -185,6 +164,9 @@ catalogs_items_delete_discontinued_batch_request_t *catalogs_items_delete_discon
 
     // catalogs_items_delete_discontinued_batch_request->language
     cJSON *language = cJSON_GetObjectItemCaseSensitive(catalogs_items_delete_discontinued_batch_requestJSON, "language");
+    if (cJSON_IsNull(language)) {
+        language = NULL;
+    }
     if (!language) {
         goto end;
     }
@@ -194,6 +176,9 @@ catalogs_items_delete_discontinued_batch_request_t *catalogs_items_delete_discon
 
     // catalogs_items_delete_discontinued_batch_request->operation
     cJSON *operation = cJSON_GetObjectItemCaseSensitive(catalogs_items_delete_discontinued_batch_requestJSON, "operation");
+    if (cJSON_IsNull(operation)) {
+        operation = NULL;
+    }
     if (!operation) {
         goto end;
     }
@@ -203,6 +188,9 @@ catalogs_items_delete_discontinued_batch_request_t *catalogs_items_delete_discon
 
     // catalogs_items_delete_discontinued_batch_request->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(catalogs_items_delete_discontinued_batch_requestJSON, "items");
+    if (cJSON_IsNull(items)) {
+        items = NULL;
+    }
     if (!items) {
         goto end;
     }
@@ -226,7 +214,7 @@ catalogs_items_delete_discontinued_batch_request_t *catalogs_items_delete_discon
     }
 
 
-    catalogs_items_delete_discontinued_batch_request_local_var = catalogs_items_delete_discontinued_batch_request_create (
+    catalogs_items_delete_discontinued_batch_request_local_var = catalogs_items_delete_discontinued_batch_request_create_internal (
         country_local_nonprim,
         language_local_nonprim,
         operation_local_nonprim,
@@ -236,16 +224,14 @@ catalogs_items_delete_discontinued_batch_request_t *catalogs_items_delete_discon
     return catalogs_items_delete_discontinued_batch_request_local_var;
 end:
     if (country_local_nonprim) {
-        country_free(country_local_nonprim);
-        country_local_nonprim = NULL;
+        country_local_nonprim = 0;
     }
     if (language_local_nonprim) {
         catalogs_items_request_language_free(language_local_nonprim);
         language_local_nonprim = NULL;
     }
     if (operation_local_nonprim) {
-        batch_operation_free(operation_local_nonprim);
-        operation_local_nonprim = NULL;
+        operation_local_nonprim = 0;
     }
     if (itemsList) {
         listEntry_t *listEntry = NULL;

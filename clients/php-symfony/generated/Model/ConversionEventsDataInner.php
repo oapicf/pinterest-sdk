@@ -239,7 +239,7 @@ class ConversionEventsDataInner
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->eventName = array_key_exists('eventName', $data) ? $data['eventName'] : $this->eventName;

@@ -74,7 +74,7 @@ import com.google.gson.JsonParseException;
 
 import com.github.oapicf.pinterestsdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CatalogsCreativeAssetsProductGroupFilterKeys.class.getName());
 
@@ -531,6 +531,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
     public CreativeAssetsIdFilter getCreativeAssetsIdFilter() throws ClassCastException {
         return (CreativeAssetsIdFilter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CustomLabel0Filter`. If the actual instance is not `CustomLabel0Filter`,
      * the ClassCastException will be thrown.
@@ -541,6 +542,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
     public CustomLabel0Filter getCustomLabel0Filter() throws ClassCastException {
         return (CustomLabel0Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CustomLabel1Filter`. If the actual instance is not `CustomLabel1Filter`,
      * the ClassCastException will be thrown.
@@ -551,6 +553,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
     public CustomLabel1Filter getCustomLabel1Filter() throws ClassCastException {
         return (CustomLabel1Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CustomLabel2Filter`. If the actual instance is not `CustomLabel2Filter`,
      * the ClassCastException will be thrown.
@@ -561,6 +564,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
     public CustomLabel2Filter getCustomLabel2Filter() throws ClassCastException {
         return (CustomLabel2Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CustomLabel3Filter`. If the actual instance is not `CustomLabel3Filter`,
      * the ClassCastException will be thrown.
@@ -571,6 +575,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
     public CustomLabel3Filter getCustomLabel3Filter() throws ClassCastException {
         return (CustomLabel3Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CustomLabel4Filter`. If the actual instance is not `CustomLabel4Filter`,
      * the ClassCastException will be thrown.
@@ -581,6 +586,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
     public CustomLabel4Filter getCustomLabel4Filter() throws ClassCastException {
         return (CustomLabel4Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `GoogleProductCategory6Filter`. If the actual instance is not `GoogleProductCategory6Filter`,
      * the ClassCastException will be thrown.
@@ -591,6 +597,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
     public GoogleProductCategory6Filter getGoogleProductCategory6Filter() throws ClassCastException {
         return (GoogleProductCategory6Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `GoogleProductCategory5Filter`. If the actual instance is not `GoogleProductCategory5Filter`,
      * the ClassCastException will be thrown.
@@ -601,6 +608,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
     public GoogleProductCategory5Filter getGoogleProductCategory5Filter() throws ClassCastException {
         return (GoogleProductCategory5Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `GoogleProductCategory4Filter`. If the actual instance is not `GoogleProductCategory4Filter`,
      * the ClassCastException will be thrown.
@@ -611,6 +619,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
     public GoogleProductCategory4Filter getGoogleProductCategory4Filter() throws ClassCastException {
         return (GoogleProductCategory4Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `GoogleProductCategory3Filter`. If the actual instance is not `GoogleProductCategory3Filter`,
      * the ClassCastException will be thrown.
@@ -621,6 +630,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
     public GoogleProductCategory3Filter getGoogleProductCategory3Filter() throws ClassCastException {
         return (GoogleProductCategory3Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `GoogleProductCategory2Filter`. If the actual instance is not `GoogleProductCategory2Filter`,
      * the ClassCastException will be thrown.
@@ -631,6 +641,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
     public GoogleProductCategory2Filter getGoogleProductCategory2Filter() throws ClassCastException {
         return (GoogleProductCategory2Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `GoogleProductCategory1Filter`. If the actual instance is not `GoogleProductCategory1Filter`,
      * the ClassCastException will be thrown.
@@ -641,6 +652,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
     public GoogleProductCategory1Filter getGoogleProductCategory1Filter() throws ClassCastException {
         return (GoogleProductCategory1Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `GoogleProductCategory0Filter`. If the actual instance is not `GoogleProductCategory0Filter`,
      * the ClassCastException will be thrown.
@@ -651,6 +663,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
     public GoogleProductCategory0Filter getGoogleProductCategory0Filter() throws ClassCastException {
         return (GoogleProductCategory0Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `MediaTypeFilter`. If the actual instance is not `MediaTypeFilter`,
      * the ClassCastException will be thrown.

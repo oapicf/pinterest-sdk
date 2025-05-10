@@ -5,7 +5,7 @@
 
 
 
-reports_stats_200_response_t *reports_stats_200_response_create(
+static reports_stats_200_response_t *reports_stats_200_response_create_internal(
     list_t *items,
     char *bookmark
     ) {
@@ -16,12 +16,26 @@ reports_stats_200_response_t *reports_stats_200_response_create(
     reports_stats_200_response_local_var->items = items;
     reports_stats_200_response_local_var->bookmark = bookmark;
 
+    reports_stats_200_response_local_var->_library_owned = 1;
     return reports_stats_200_response_local_var;
 }
 
+__attribute__((deprecated)) reports_stats_200_response_t *reports_stats_200_response_create(
+    list_t *items,
+    char *bookmark
+    ) {
+    return reports_stats_200_response_create_internal (
+        items,
+        bookmark
+        );
+}
 
 void reports_stats_200_response_free(reports_stats_200_response_t *reports_stats_200_response) {
     if(NULL == reports_stats_200_response){
+        return ;
+    }
+    if(reports_stats_200_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "reports_stats_200_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -87,6 +101,9 @@ reports_stats_200_response_t *reports_stats_200_response_parseFromJSON(cJSON *re
 
     // reports_stats_200_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(reports_stats_200_responseJSON, "items");
+    if (cJSON_IsNull(items)) {
+        items = NULL;
+    }
     if (!items) {
         goto end;
     }
@@ -111,6 +128,9 @@ reports_stats_200_response_t *reports_stats_200_response_parseFromJSON(cJSON *re
 
     // reports_stats_200_response->bookmark
     cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(reports_stats_200_responseJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
     if (bookmark) { 
     if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
     {
@@ -119,7 +139,7 @@ reports_stats_200_response_t *reports_stats_200_response_parseFromJSON(cJSON *re
     }
 
 
-    reports_stats_200_response_local_var = reports_stats_200_response_create (
+    reports_stats_200_response_local_var = reports_stats_200_response_create_internal (
         itemsList,
         bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
         );

@@ -13,17 +13,19 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.MatchTypeResponse
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param matchType 
  * @param `value` Keyword value (120 chars max).
  * @param bid </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
  */
+@Serializable
 data class KeywordsCommon(
-    val matchType: MatchTypeResponse,
+    val matchType: MatchTypeResponse?,
     /* Keyword value (120 chars max). */
     val `value`: kotlin.String,
     /* </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. */
     val bid: kotlin.Int? = null
-) 
+)
 

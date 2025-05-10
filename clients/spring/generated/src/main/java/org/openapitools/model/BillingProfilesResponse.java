@@ -5,6 +5,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -19,10 +20,10 @@ import javax.annotation.Generated;
  * BillingProfilesResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BillingProfilesResponse {
 
-  private String id;
+  private @Nullable String id;
 
   /**
    * Type of the card.
@@ -67,7 +68,7 @@ public class BillingProfilesResponse {
     }
   }
 
-  private CardTypeEnum cardType;
+  private @Nullable CardTypeEnum cardType;
 
   /**
    * Status of the billing.
@@ -114,9 +115,9 @@ public class BillingProfilesResponse {
     }
   }
 
-  private StatusEnum status;
+  private @Nullable StatusEnum status;
 
-  private String advertiserId;
+  private @Nullable String advertiserId;
 
   /**
    * Brand of the payment method.
@@ -167,7 +168,7 @@ public class BillingProfilesResponse {
     }
   }
 
-  private PaymentMethodBrandEnum paymentMethodBrand;
+  private @Nullable PaymentMethodBrandEnum paymentMethodBrand;
 
   public BillingProfilesResponse id(String id) {
     this.id = id;

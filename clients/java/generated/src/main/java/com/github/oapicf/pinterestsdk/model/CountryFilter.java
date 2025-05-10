@@ -49,16 +49,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CountryFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CountryFilter {
   public static final String SERIALIZED_NAME_C_O_U_N_T_R_Y = "COUNTRY";
   @SerializedName(SERIALIZED_NAME_C_O_U_N_T_R_Y)
+  @javax.annotation.Nonnull
   private CatalogsProductGroupMultipleCountriesCriteria COUNTRY;
 
   public CountryFilter() {
   }
 
-  public CountryFilter COUNTRY(CatalogsProductGroupMultipleCountriesCriteria COUNTRY) {
+  public CountryFilter COUNTRY(@javax.annotation.Nonnull CatalogsProductGroupMultipleCountriesCriteria COUNTRY) {
     this.COUNTRY = COUNTRY;
     return this;
   }
@@ -72,7 +73,7 @@ public class CountryFilter {
     return COUNTRY;
   }
 
-  public void setCOUNTRY(CatalogsProductGroupMultipleCountriesCriteria COUNTRY) {
+  public void setCOUNTRY(@javax.annotation.Nonnull CatalogsProductGroupMultipleCountriesCriteria COUNTRY) {
     this.COUNTRY = COUNTRY;
   }
 

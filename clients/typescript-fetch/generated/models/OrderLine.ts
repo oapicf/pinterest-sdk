@@ -143,11 +143,11 @@ export function OrderLineFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     };
 }
 
-  export function OrderLineToJSON(json: any): OrderLine {
-      return OrderLineToJSONTyped(json, false);
-  }
+export function OrderLineToJSON(json: any): OrderLine {
+    return OrderLineToJSONTyped(json, false);
+}
 
-  export function OrderLineToJSONTyped(value?: OrderLine | null, ignoreDiscriminator: boolean = false): any {
+export function OrderLineToJSONTyped(value?: OrderLine | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

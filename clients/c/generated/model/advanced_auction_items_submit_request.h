@@ -23,9 +23,10 @@ typedef struct advanced_auction_items_submit_request_t {
     char *catalog_id; // string
     list_t *items; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } advanced_auction_items_submit_request_t;
 
-advanced_auction_items_submit_request_t *advanced_auction_items_submit_request_create(
+__attribute__((deprecated)) advanced_auction_items_submit_request_t *advanced_auction_items_submit_request_create(
     char *catalog_id,
     list_t *items
 );

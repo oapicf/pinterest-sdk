@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsProductGroupPricingCriteria
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param MAX_PRICE 
  */
+@Serializable
 data class MaxPriceFilter(
     val MAX_PRICE: CatalogsProductGroupPricingCriteria
-) 
+)
 

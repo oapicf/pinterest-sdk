@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Request object to list products for a given hotel catalog_id and product group filter.")
 @JsonTypeName("CatalogsHotelListProductsByCatalogBasedFilterRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsHotelListProductsByCatalogBasedFilterRequest   {
   public enum CatalogTypeEnum {
 
@@ -71,6 +71,20 @@ public class CatalogsHotelListProductsByCatalogBasedFilterRequest   {
   private String catalogId;
   private CatalogsHotelProductGroupFilters filters;
 
+  public CatalogsHotelListProductsByCatalogBasedFilterRequest() {
+  }
+
+  @JsonCreator
+  public CatalogsHotelListProductsByCatalogBasedFilterRequest(
+    @JsonProperty(required = true, value = "catalog_type") CatalogTypeEnum catalogType,
+    @JsonProperty(required = true, value = "catalog_id") String catalogId,
+    @JsonProperty(required = true, value = "filters") CatalogsHotelProductGroupFilters filters
+  ) {
+    this.catalogType = catalogType;
+    this.catalogId = catalogId;
+    this.filters = filters;
+  }
+
   /**
    **/
   public CatalogsHotelListProductsByCatalogBasedFilterRequest catalogType(CatalogTypeEnum catalogType) {
@@ -80,12 +94,12 @@ public class CatalogsHotelListProductsByCatalogBasedFilterRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   @NotNull public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
@@ -100,12 +114,12 @@ public class CatalogsHotelListProductsByCatalogBasedFilterRequest   {
 
   
   @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the hotel product group.")
-  @JsonProperty("catalog_id")
+  @JsonProperty(required = true, value = "catalog_id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getCatalogId() {
     return catalogId;
   }
 
-  @JsonProperty("catalog_id")
+  @JsonProperty(required = true, value = "catalog_id")
   public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
   }
@@ -119,12 +133,12 @@ public class CatalogsHotelListProductsByCatalogBasedFilterRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("filters")
+  @JsonProperty(required = true, value = "filters")
   @NotNull @Valid public CatalogsHotelProductGroupFilters getFilters() {
     return filters;
   }
 
-  @JsonProperty("filters")
+  @JsonProperty(required = true, value = "filters")
   public void setFilters(CatalogsHotelProductGroupFilters filters) {
     this.filters = filters;
   }

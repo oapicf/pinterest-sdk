@@ -50,20 +50,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdArrayResponseElement
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdArrayResponseElement {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
+  @javax.annotation.Nullable
   private AdResponse data;
 
   public static final String SERIALIZED_NAME_EXCEPTIONS = "exceptions";
   @SerializedName(SERIALIZED_NAME_EXCEPTIONS)
+  @javax.annotation.Nullable
   private Exception exceptions;
 
   public AdArrayResponseElement() {
   }
 
-  public AdArrayResponseElement data(AdResponse data) {
+  public AdArrayResponseElement data(@javax.annotation.Nullable AdResponse data) {
     this.data = data;
     return this;
   }
@@ -77,12 +79,12 @@ public class AdArrayResponseElement {
     return data;
   }
 
-  public void setData(AdResponse data) {
+  public void setData(@javax.annotation.Nullable AdResponse data) {
     this.data = data;
   }
 
 
-  public AdArrayResponseElement exceptions(Exception exceptions) {
+  public AdArrayResponseElement exceptions(@javax.annotation.Nullable Exception exceptions) {
     this.exceptions = exceptions;
     return this;
   }
@@ -96,7 +98,7 @@ public class AdArrayResponseElement {
     return exceptions;
   }
 
-  public void setExceptions(Exception exceptions) {
+  public void setExceptions(@javax.annotation.Nullable Exception exceptions) {
     this.exceptions = exceptions;
   }
 

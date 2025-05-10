@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.model.ImageDetails;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -21,16 +22,16 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("ImageMetadata_images")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ImageMetadataImages {
 
-  private ImageDetails _150x150;
+  private @Nullable ImageDetails _150x150;
 
-  private ImageDetails _400x300;
+  private @Nullable ImageDetails _400x300;
 
-  private ImageDetails _600x;
+  private @Nullable ImageDetails _600x;
 
-  private ImageDetails _1200x;
+  private @Nullable ImageDetails _1200x;
 
   public ImageMetadataImages _150x150(ImageDetails _150x150) {
     this._150x150 = _150x150;

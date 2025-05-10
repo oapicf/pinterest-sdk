@@ -22,7 +22,7 @@ pinterest_rest_api_business_role_check_mode__e business_role_check_mode_business
     return 0;
 }
 
-cJSON *business_role_check_mode_business_role_check_mode_convertToJSON(pinterest_rest_api_business_role_check_mode__e business_role_check_mode) {
+cJSON *business_role_check_mode_convertToJSON(pinterest_rest_api_business_role_check_mode__e business_role_check_mode) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "business_role_check_mode", business_role_check_mode_business_role_check_mode_ToString(business_role_check_mode)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_business_role_check_mode__e business_role_check_mode_business_role_check_mode_parseFromJSON(cJSON *business_role_check_modeJSON) {
-    pinterest_rest_api_business_role_check_mode__e *business_role_check_mode = NULL;
-    pinterest_rest_api_business_role_check_mode__e business_role_check_modeVariable;
-    cJSON *business_role_check_modeVar = cJSON_GetObjectItemCaseSensitive(business_role_check_modeJSON, "business_role_check_mode");
-    if(!cJSON_IsString(business_role_check_modeVar) || (business_role_check_modeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_business_role_check_mode__e business_role_check_mode_parseFromJSON(cJSON *business_role_check_modeJSON) {
+    if(!cJSON_IsString(business_role_check_modeJSON) || (business_role_check_modeJSON->valuestring == NULL)) {
+        return 0;
     }
-    business_role_check_modeVariable = business_role_check_mode_business_role_check_mode_FromString(business_role_check_modeVar->valuestring);
-    return business_role_check_modeVariable;
-end:
-    return 0;
+    return business_role_check_mode_business_role_check_mode_FromString(business_role_check_modeJSON->valuestring);
 }

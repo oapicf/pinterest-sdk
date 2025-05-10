@@ -48,7 +48,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Pin URL-based media source for product pin creation. Currently the field is only available to a list of beta users.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMediaSourcePinURL {
   /**
    * Gets or Sets sourceType
@@ -102,16 +102,18 @@ public class PinMediaSourcePinURL {
 
   public static final String SERIALIZED_NAME_SOURCE_TYPE = "source_type";
   @SerializedName(SERIALIZED_NAME_SOURCE_TYPE)
+  @javax.annotation.Nonnull
   private SourceTypeEnum sourceType;
 
   public static final String SERIALIZED_NAME_IS_AFFILIATE_LINK = "is_affiliate_link";
   @SerializedName(SERIALIZED_NAME_IS_AFFILIATE_LINK)
+  @javax.annotation.Nullable
   private Boolean isAffiliateLink = false;
 
   public PinMediaSourcePinURL() {
   }
 
-  public PinMediaSourcePinURL sourceType(SourceTypeEnum sourceType) {
+  public PinMediaSourcePinURL sourceType(@javax.annotation.Nonnull SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
     return this;
   }
@@ -125,12 +127,12 @@ public class PinMediaSourcePinURL {
     return sourceType;
   }
 
-  public void setSourceType(SourceTypeEnum sourceType) {
+  public void setSourceType(@javax.annotation.Nonnull SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
   }
 
 
-  public PinMediaSourcePinURL isAffiliateLink(Boolean isAffiliateLink) {
+  public PinMediaSourcePinURL isAffiliateLink(@javax.annotation.Nullable Boolean isAffiliateLink) {
     this.isAffiliateLink = isAffiliateLink;
     return this;
   }
@@ -144,7 +146,7 @@ public class PinMediaSourcePinURL {
     return isAffiliateLink;
   }
 
-  public void setIsAffiliateLink(Boolean isAffiliateLink) {
+  public void setIsAffiliateLink(@javax.annotation.Nullable Boolean isAffiliateLink) {
     this.isAffiliateLink = isAffiliateLink;
   }
 

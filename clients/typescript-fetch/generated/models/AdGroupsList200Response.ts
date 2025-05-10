@@ -64,11 +64,11 @@ export function AdGroupsList200ResponseFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-  export function AdGroupsList200ResponseToJSON(json: any): AdGroupsList200Response {
-      return AdGroupsList200ResponseToJSONTyped(json, false);
-  }
+export function AdGroupsList200ResponseToJSON(json: any): AdGroupsList200Response {
+    return AdGroupsList200ResponseToJSONTyped(json, false);
+}
 
-  export function AdGroupsList200ResponseToJSONTyped(value?: AdGroupsList200Response | null, ignoreDiscriminator: boolean = false): any {
+export function AdGroupsList200ResponseToJSONTyped(value?: AdGroupsList200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

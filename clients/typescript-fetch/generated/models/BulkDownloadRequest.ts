@@ -100,11 +100,11 @@ export function BulkDownloadRequestFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function BulkDownloadRequestToJSON(json: any): BulkDownloadRequest {
-      return BulkDownloadRequestToJSONTyped(json, false);
-  }
+export function BulkDownloadRequestToJSON(json: any): BulkDownloadRequest {
+    return BulkDownloadRequestToJSONTyped(json, false);
+}
 
-  export function BulkDownloadRequestToJSONTyped(value?: BulkDownloadRequest | null, ignoreDiscriminator: boolean = false): any {
+export function BulkDownloadRequestToJSONTyped(value?: BulkDownloadRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

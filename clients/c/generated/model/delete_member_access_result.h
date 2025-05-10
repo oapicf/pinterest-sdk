@@ -22,9 +22,10 @@ typedef struct delete_member_access_result_t {
     char *asset_id; // string
     char *member_id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } delete_member_access_result_t;
 
-delete_member_access_result_t *delete_member_access_result_create(
+__attribute__((deprecated)) delete_member_access_result_t *delete_member_access_result_create(
     char *asset_id,
     char *member_id
 );

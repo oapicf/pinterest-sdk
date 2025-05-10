@@ -22,7 +22,7 @@ pinterest_rest_api_gender__e gender_gender_FromString(char* gender) {
     return 0;
 }
 
-cJSON *gender_gender_convertToJSON(pinterest_rest_api_gender__e gender) {
+cJSON *gender_convertToJSON(pinterest_rest_api_gender__e gender) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "gender", gender_gender_ToString(gender)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_gender__e gender_gender_parseFromJSON(cJSON *genderJSON) {
-    pinterest_rest_api_gender__e *gender = NULL;
-    pinterest_rest_api_gender__e genderVariable;
-    cJSON *genderVar = cJSON_GetObjectItemCaseSensitive(genderJSON, "gender");
-    if(!cJSON_IsString(genderVar) || (genderVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_gender__e gender_parseFromJSON(cJSON *genderJSON) {
+    if(!cJSON_IsString(genderJSON) || (genderJSON->valuestring == NULL)) {
+        return 0;
     }
-    genderVariable = gender_gender_FromString(genderVar->valuestring);
-    return genderVariable;
-end:
-    return 0;
+    return gender_gender_FromString(genderJSON->valuestring);
 }

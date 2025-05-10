@@ -5,7 +5,7 @@
 
 
 
-feed_processing_results_list_200_response_t *feed_processing_results_list_200_response_create(
+static feed_processing_results_list_200_response_t *feed_processing_results_list_200_response_create_internal(
     list_t *items,
     char *bookmark
     ) {
@@ -16,12 +16,26 @@ feed_processing_results_list_200_response_t *feed_processing_results_list_200_re
     feed_processing_results_list_200_response_local_var->items = items;
     feed_processing_results_list_200_response_local_var->bookmark = bookmark;
 
+    feed_processing_results_list_200_response_local_var->_library_owned = 1;
     return feed_processing_results_list_200_response_local_var;
 }
 
+__attribute__((deprecated)) feed_processing_results_list_200_response_t *feed_processing_results_list_200_response_create(
+    list_t *items,
+    char *bookmark
+    ) {
+    return feed_processing_results_list_200_response_create_internal (
+        items,
+        bookmark
+        );
+}
 
 void feed_processing_results_list_200_response_free(feed_processing_results_list_200_response_t *feed_processing_results_list_200_response) {
     if(NULL == feed_processing_results_list_200_response){
+        return ;
+    }
+    if(feed_processing_results_list_200_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "feed_processing_results_list_200_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -87,6 +101,9 @@ feed_processing_results_list_200_response_t *feed_processing_results_list_200_re
 
     // feed_processing_results_list_200_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(feed_processing_results_list_200_responseJSON, "items");
+    if (cJSON_IsNull(items)) {
+        items = NULL;
+    }
     if (!items) {
         goto end;
     }
@@ -111,6 +128,9 @@ feed_processing_results_list_200_response_t *feed_processing_results_list_200_re
 
     // feed_processing_results_list_200_response->bookmark
     cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(feed_processing_results_list_200_responseJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
     if (bookmark) { 
     if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
     {
@@ -119,7 +139,7 @@ feed_processing_results_list_200_response_t *feed_processing_results_list_200_re
     }
 
 
-    feed_processing_results_list_200_response_local_var = feed_processing_results_list_200_response_create (
+    feed_processing_results_list_200_response_local_var = feed_processing_results_list_200_response_create_internal (
         itemsList,
         bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
         );

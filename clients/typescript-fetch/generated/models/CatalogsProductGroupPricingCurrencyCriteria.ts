@@ -93,11 +93,11 @@ export function CatalogsProductGroupPricingCurrencyCriteriaFromJSONTyped(json: a
     };
 }
 
-  export function CatalogsProductGroupPricingCurrencyCriteriaToJSON(json: any): CatalogsProductGroupPricingCurrencyCriteria {
-      return CatalogsProductGroupPricingCurrencyCriteriaToJSONTyped(json, false);
-  }
+export function CatalogsProductGroupPricingCurrencyCriteriaToJSON(json: any): CatalogsProductGroupPricingCurrencyCriteria {
+    return CatalogsProductGroupPricingCurrencyCriteriaToJSONTyped(json, false);
+}
 
-  export function CatalogsProductGroupPricingCurrencyCriteriaToJSONTyped(value?: CatalogsProductGroupPricingCurrencyCriteria | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsProductGroupPricingCurrencyCriteriaToJSONTyped(value?: CatalogsProductGroupPricingCurrencyCriteria | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

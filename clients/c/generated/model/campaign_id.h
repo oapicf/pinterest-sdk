@@ -21,9 +21,10 @@ typedef struct campaign_id_t campaign_id_t;
 typedef struct campaign_id_t {
     char *id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } campaign_id_t;
 
-campaign_id_t *campaign_id_create(
+__attribute__((deprecated)) campaign_id_t *campaign_id_create(
     char *id
 );
 

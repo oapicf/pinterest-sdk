@@ -232,7 +232,7 @@ void OAIMediaApi::media_create(const OAIMediaUploadRequest &oai_media_upload_req
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIMediaApi::media_createCallback);
     connect(this, &OAIMediaApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -255,7 +255,7 @@ void OAIMediaApi::media_create(const OAIMediaUploadRequest &oai_media_upload_req
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIMediaApi::media_createCallback);
     connect(this, &OAIMediaApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -359,7 +359,7 @@ void OAIMediaApi::media_get(const QString &media_id) {
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIMediaApi::media_getCallback);
     connect(this, &OAIMediaApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -381,7 +381,7 @@ void OAIMediaApi::media_get(const QString &media_id) {
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIMediaApi::media_getCallback);
     connect(this, &OAIMediaApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -471,7 +471,7 @@ void OAIMediaApi::media_list(const ::OpenAPI::OptionalParam<QString> &bookmark, 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     if (page_size.hasValue())
     {
@@ -486,7 +486,7 @@ void OAIMediaApi::media_list(const ::OpenAPI::OptionalParam<QString> &bookmark, 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -501,7 +501,7 @@ void OAIMediaApi::media_list(const ::OpenAPI::OptionalParam<QString> &bookmark, 
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIMediaApi::media_listCallback);
     connect(this, &OAIMediaApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -523,7 +523,7 @@ void OAIMediaApi::media_list(const ::OpenAPI::OptionalParam<QString> &bookmark, 
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIMediaApi::media_listCallback);
     connect(this, &OAIMediaApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }

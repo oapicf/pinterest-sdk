@@ -15,8 +15,11 @@
 export type OrderLineStatus = 'ACTIVE' | 'PAUSED' | 'DELETED';
 
 export const OrderLineStatus = {
+
     Active: 'ACTIVE' as OrderLineStatus,
+
     Paused: 'PAUSED' as OrderLineStatus,
+
     Deleted: 'DELETED' as OrderLineStatus
 };
 

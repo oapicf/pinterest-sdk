@@ -53,7 +53,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Request object to update catalogs creative assets items
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsCreativeAssetsBatchRequest {
   /**
    * Gets or Sets catalogType
@@ -107,28 +107,33 @@ public class CatalogsCreativeAssetsBatchRequest {
 
   public static final String SERIALIZED_NAME_CATALOG_TYPE = "catalog_type";
   @SerializedName(SERIALIZED_NAME_CATALOG_TYPE)
+  @javax.annotation.Nonnull
   private CatalogTypeEnum catalogType;
 
   public static final String SERIALIZED_NAME_COUNTRY = "country";
   @SerializedName(SERIALIZED_NAME_COUNTRY)
+  @javax.annotation.Nonnull
   private Country country;
 
   public static final String SERIALIZED_NAME_LANGUAGE = "language";
   @SerializedName(SERIALIZED_NAME_LANGUAGE)
+  @javax.annotation.Nonnull
   private CatalogsItemsRequestLanguage language;
 
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
+  @javax.annotation.Nonnull
   private List<CatalogsCreativeAssetsBatchItem> items = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_CATALOG_ID = "catalog_id";
   @SerializedName(SERIALIZED_NAME_CATALOG_ID)
+  @javax.annotation.Nullable
   private String catalogId;
 
   public CatalogsCreativeAssetsBatchRequest() {
   }
 
-  public CatalogsCreativeAssetsBatchRequest catalogType(CatalogTypeEnum catalogType) {
+  public CatalogsCreativeAssetsBatchRequest catalogType(@javax.annotation.Nonnull CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -142,12 +147,12 @@ public class CatalogsCreativeAssetsBatchRequest {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogTypeEnum catalogType) {
+  public void setCatalogType(@javax.annotation.Nonnull CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
 
-  public CatalogsCreativeAssetsBatchRequest country(Country country) {
+  public CatalogsCreativeAssetsBatchRequest country(@javax.annotation.Nonnull Country country) {
     this.country = country;
     return this;
   }
@@ -161,12 +166,12 @@ public class CatalogsCreativeAssetsBatchRequest {
     return country;
   }
 
-  public void setCountry(Country country) {
+  public void setCountry(@javax.annotation.Nonnull Country country) {
     this.country = country;
   }
 
 
-  public CatalogsCreativeAssetsBatchRequest language(CatalogsItemsRequestLanguage language) {
+  public CatalogsCreativeAssetsBatchRequest language(@javax.annotation.Nonnull CatalogsItemsRequestLanguage language) {
     this.language = language;
     return this;
   }
@@ -180,12 +185,12 @@ public class CatalogsCreativeAssetsBatchRequest {
     return language;
   }
 
-  public void setLanguage(CatalogsItemsRequestLanguage language) {
+  public void setLanguage(@javax.annotation.Nonnull CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 
 
-  public CatalogsCreativeAssetsBatchRequest items(List<CatalogsCreativeAssetsBatchItem> items) {
+  public CatalogsCreativeAssetsBatchRequest items(@javax.annotation.Nonnull List<CatalogsCreativeAssetsBatchItem> items) {
     this.items = items;
     return this;
   }
@@ -207,12 +212,12 @@ public class CatalogsCreativeAssetsBatchRequest {
     return items;
   }
 
-  public void setItems(List<CatalogsCreativeAssetsBatchItem> items) {
+  public void setItems(@javax.annotation.Nonnull List<CatalogsCreativeAssetsBatchItem> items) {
     this.items = items;
   }
 
 
-  public CatalogsCreativeAssetsBatchRequest catalogId(String catalogId) {
+  public CatalogsCreativeAssetsBatchRequest catalogId(@javax.annotation.Nullable String catalogId) {
     this.catalogId = catalogId;
     return this;
   }
@@ -226,7 +231,7 @@ public class CatalogsCreativeAssetsBatchRequest {
     return catalogId;
   }
 
-  public void setCatalogId(String catalogId) {
+  public void setCatalogId(@javax.annotation.Nullable String catalogId) {
     this.catalogId = catalogId;
   }
 

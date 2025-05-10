@@ -5,7 +5,7 @@
 
 
 
-update_partner_assets_results_response_array_t *update_partner_assets_results_response_array_create(
+static update_partner_assets_results_response_array_t *update_partner_assets_results_response_array_create_internal(
     list_t *items
     ) {
     update_partner_assets_results_response_array_t *update_partner_assets_results_response_array_local_var = malloc(sizeof(update_partner_assets_results_response_array_t));
@@ -14,12 +14,24 @@ update_partner_assets_results_response_array_t *update_partner_assets_results_re
     }
     update_partner_assets_results_response_array_local_var->items = items;
 
+    update_partner_assets_results_response_array_local_var->_library_owned = 1;
     return update_partner_assets_results_response_array_local_var;
 }
 
+__attribute__((deprecated)) update_partner_assets_results_response_array_t *update_partner_assets_results_response_array_create(
+    list_t *items
+    ) {
+    return update_partner_assets_results_response_array_create_internal (
+        items
+        );
+}
 
 void update_partner_assets_results_response_array_free(update_partner_assets_results_response_array_t *update_partner_assets_results_response_array) {
     if(NULL == update_partner_assets_results_response_array){
+        return ;
+    }
+    if(update_partner_assets_results_response_array->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "update_partner_assets_results_response_array_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -72,6 +84,9 @@ update_partner_assets_results_response_array_t *update_partner_assets_results_re
 
     // update_partner_assets_results_response_array->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(update_partner_assets_results_response_arrayJSON, "items");
+    if (cJSON_IsNull(items)) {
+        items = NULL;
+    }
     if (items) { 
     cJSON *items_local_nonprimitive = NULL;
     if(!cJSON_IsArray(items)){
@@ -92,7 +107,7 @@ update_partner_assets_results_response_array_t *update_partner_assets_results_re
     }
 
 
-    update_partner_assets_results_response_array_local_var = update_partner_assets_results_response_array_create (
+    update_partner_assets_results_response_array_local_var = update_partner_assets_results_response_array_create_internal (
         items ? itemsList : NULL
         );
 

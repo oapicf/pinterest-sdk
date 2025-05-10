@@ -14,17 +14,19 @@ package org.openapitools.server.models
 import org.openapitools.server.models.UpdatableItemAttributes
 import org.openapitools.server.models.UpdateMaskFieldType
 
+import kotlinx.serialization.Serializable
 /**
  * Object describing an item batch record to update items
  * @param itemId The catalog item id in the merchant namespace
  * @param attributes 
  * @param updateMask The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
  */
+@Serializable
 data class ItemUpdateBatchRecord(
     /* The catalog item id in the merchant namespace */
     val itemId: kotlin.String? = null,
     val attributes: UpdatableItemAttributes? = null,
     /* The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item. */
     val updateMask: kotlin.collections.List<UpdateMaskFieldType>? = null
-) 
+)
 

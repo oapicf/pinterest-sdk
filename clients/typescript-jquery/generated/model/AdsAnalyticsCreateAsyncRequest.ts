@@ -146,7 +146,7 @@ export interface AdsAnalyticsCreateAsyncRequest {
 }
 export namespace AdsAnalyticsCreateAsyncRequest {
     export enum PrimarySortEnum {
-        Id = <any> 'BY_ID',
-        Date = <any> 'BY_DATE'
+        ById = <any> 'BY_ID',
+        ByDate = <any> 'BY_DATE'
     }
 }

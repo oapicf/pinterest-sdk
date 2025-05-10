@@ -54,36 +54,42 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Audience interests and demographics.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AudienceInsightsResponse {
   public static final String SERIALIZED_NAME_CATEGORIES = "categories";
   @SerializedName(SERIALIZED_NAME_CATEGORIES)
+  @javax.annotation.Nullable
   private List<AudienceCategory> categories = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_DEMOGRAPHICS = "demographics";
   @SerializedName(SERIALIZED_NAME_DEMOGRAPHICS)
+  @javax.annotation.Nullable
   private AudienceDemographics demographics;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nullable
   private AudienceInsightType type = AudienceInsightType.YOUR_TOTAL_AUDIENCE;
 
   public static final String SERIALIZED_NAME_DATE = "date";
   @SerializedName(SERIALIZED_NAME_DATE)
+  @javax.annotation.Nullable
   private String date;
 
   public static final String SERIALIZED_NAME_SIZE = "size";
   @SerializedName(SERIALIZED_NAME_SIZE)
+  @javax.annotation.Nullable
   private Integer size;
 
   public static final String SERIALIZED_NAME_SIZE_IS_UPPER_BOUND = "size_is_upper_bound";
   @SerializedName(SERIALIZED_NAME_SIZE_IS_UPPER_BOUND)
+  @javax.annotation.Nullable
   private Boolean sizeIsUpperBound;
 
   public AudienceInsightsResponse() {
   }
 
-  public AudienceInsightsResponse categories(List<AudienceCategory> categories) {
+  public AudienceInsightsResponse categories(@javax.annotation.Nullable List<AudienceCategory> categories) {
     this.categories = categories;
     return this;
   }
@@ -105,12 +111,12 @@ public class AudienceInsightsResponse {
     return categories;
   }
 
-  public void setCategories(List<AudienceCategory> categories) {
+  public void setCategories(@javax.annotation.Nullable List<AudienceCategory> categories) {
     this.categories = categories;
   }
 
 
-  public AudienceInsightsResponse demographics(AudienceDemographics demographics) {
+  public AudienceInsightsResponse demographics(@javax.annotation.Nullable AudienceDemographics demographics) {
     this.demographics = demographics;
     return this;
   }
@@ -124,12 +130,12 @@ public class AudienceInsightsResponse {
     return demographics;
   }
 
-  public void setDemographics(AudienceDemographics demographics) {
+  public void setDemographics(@javax.annotation.Nullable AudienceDemographics demographics) {
     this.demographics = demographics;
   }
 
 
-  public AudienceInsightsResponse type(AudienceInsightType type) {
+  public AudienceInsightsResponse type(@javax.annotation.Nullable AudienceInsightType type) {
     this.type = type;
     return this;
   }
@@ -143,12 +149,12 @@ public class AudienceInsightsResponse {
     return type;
   }
 
-  public void setType(AudienceInsightType type) {
+  public void setType(@javax.annotation.Nullable AudienceInsightType type) {
     this.type = type;
   }
 
 
-  public AudienceInsightsResponse date(String date) {
+  public AudienceInsightsResponse date(@javax.annotation.Nullable String date) {
     this.date = date;
     return this;
   }
@@ -162,12 +168,12 @@ public class AudienceInsightsResponse {
     return date;
   }
 
-  public void setDate(String date) {
+  public void setDate(@javax.annotation.Nullable String date) {
     this.date = date;
   }
 
 
-  public AudienceInsightsResponse size(Integer size) {
+  public AudienceInsightsResponse size(@javax.annotation.Nullable Integer size) {
     this.size = size;
     return this;
   }
@@ -181,12 +187,12 @@ public class AudienceInsightsResponse {
     return size;
   }
 
-  public void setSize(Integer size) {
+  public void setSize(@javax.annotation.Nullable Integer size) {
     this.size = size;
   }
 
 
-  public AudienceInsightsResponse sizeIsUpperBound(Boolean sizeIsUpperBound) {
+  public AudienceInsightsResponse sizeIsUpperBound(@javax.annotation.Nullable Boolean sizeIsUpperBound) {
     this.sizeIsUpperBound = sizeIsUpperBound;
     return this;
   }
@@ -200,7 +206,7 @@ public class AudienceInsightsResponse {
     return sizeIsUpperBound;
   }
 
-  public void setSizeIsUpperBound(Boolean sizeIsUpperBound) {
+  public void setSizeIsUpperBound(@javax.annotation.Nullable Boolean sizeIsUpperBound) {
     this.sizeIsUpperBound = sizeIsUpperBound;
   }
 

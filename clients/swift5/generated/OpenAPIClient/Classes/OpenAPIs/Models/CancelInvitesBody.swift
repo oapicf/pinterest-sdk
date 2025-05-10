@@ -13,7 +13,7 @@ import AnyCodable
 /** Request body used to cancel invites */
 public struct CancelInvitesBody: Codable, JSONEncodable, Hashable {
 
-    static let inviteIdsRule = ArrayRule(minItems: 1, maxItems: 50, uniqueItems: false)
+    public static let inviteIdsRule = ArrayRule(minItems: 1, maxItems: 50, uniqueItems: false)
     /** List of invite/request ids to be cancelled */
     public var inviteIds: [String]
 

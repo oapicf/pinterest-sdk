@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsProductGroupFiltersRequest
 
+import kotlinx.serialization.Serializable
 /**
  * Request object for updating a product group.
  * @param name 
@@ -20,11 +21,12 @@ import org.openapitools.server.models.CatalogsProductGroupFiltersRequest
  * @param isFeatured boolean indicator of whether the product group is being featured or not
  * @param filters 
  */
+@Serializable
 data class CatalogsProductGroupUpdateRequest(
     val name: kotlin.String? = null,
     val description: kotlin.String? = null,
     /* boolean indicator of whether the product group is being featured or not */
     val isFeatured: kotlin.Boolean? = null,
     val filters: CatalogsProductGroupFiltersRequest? = null
-) 
+)
 

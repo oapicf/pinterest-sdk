@@ -48,36 +48,42 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ConversionEventsDataInnerCustomDataContentsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConversionEventsDataInnerCustomDataContentsInner {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_ITEM_PRICE = "item_price";
   @SerializedName(SERIALIZED_NAME_ITEM_PRICE)
+  @javax.annotation.Nullable
   private String itemPrice;
 
   public static final String SERIALIZED_NAME_QUANTITY = "quantity";
   @SerializedName(SERIALIZED_NAME_QUANTITY)
+  @javax.annotation.Nullable
   private Long quantity;
 
   public static final String SERIALIZED_NAME_ITEM_NAME = "item_name";
   @SerializedName(SERIALIZED_NAME_ITEM_NAME)
+  @javax.annotation.Nullable
   private String itemName;
 
   public static final String SERIALIZED_NAME_ITEM_CATEGORY = "item_category";
   @SerializedName(SERIALIZED_NAME_ITEM_CATEGORY)
+  @javax.annotation.Nullable
   private String itemCategory;
 
   public static final String SERIALIZED_NAME_ITEM_BRAND = "item_brand";
   @SerializedName(SERIALIZED_NAME_ITEM_BRAND)
+  @javax.annotation.Nullable
   private String itemBrand;
 
   public ConversionEventsDataInnerCustomDataContentsInner() {
   }
 
-  public ConversionEventsDataInnerCustomDataContentsInner id(String id) {
+  public ConversionEventsDataInnerCustomDataContentsInner id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -91,12 +97,12 @@ public class ConversionEventsDataInnerCustomDataContentsInner {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public ConversionEventsDataInnerCustomDataContentsInner itemPrice(String itemPrice) {
+  public ConversionEventsDataInnerCustomDataContentsInner itemPrice(@javax.annotation.Nullable String itemPrice) {
     this.itemPrice = itemPrice;
     return this;
   }
@@ -110,12 +116,12 @@ public class ConversionEventsDataInnerCustomDataContentsInner {
     return itemPrice;
   }
 
-  public void setItemPrice(String itemPrice) {
+  public void setItemPrice(@javax.annotation.Nullable String itemPrice) {
     this.itemPrice = itemPrice;
   }
 
 
-  public ConversionEventsDataInnerCustomDataContentsInner quantity(Long quantity) {
+  public ConversionEventsDataInnerCustomDataContentsInner quantity(@javax.annotation.Nullable Long quantity) {
     this.quantity = quantity;
     return this;
   }
@@ -129,12 +135,12 @@ public class ConversionEventsDataInnerCustomDataContentsInner {
     return quantity;
   }
 
-  public void setQuantity(Long quantity) {
+  public void setQuantity(@javax.annotation.Nullable Long quantity) {
     this.quantity = quantity;
   }
 
 
-  public ConversionEventsDataInnerCustomDataContentsInner itemName(String itemName) {
+  public ConversionEventsDataInnerCustomDataContentsInner itemName(@javax.annotation.Nullable String itemName) {
     this.itemName = itemName;
     return this;
   }
@@ -148,12 +154,12 @@ public class ConversionEventsDataInnerCustomDataContentsInner {
     return itemName;
   }
 
-  public void setItemName(String itemName) {
+  public void setItemName(@javax.annotation.Nullable String itemName) {
     this.itemName = itemName;
   }
 
 
-  public ConversionEventsDataInnerCustomDataContentsInner itemCategory(String itemCategory) {
+  public ConversionEventsDataInnerCustomDataContentsInner itemCategory(@javax.annotation.Nullable String itemCategory) {
     this.itemCategory = itemCategory;
     return this;
   }
@@ -167,12 +173,12 @@ public class ConversionEventsDataInnerCustomDataContentsInner {
     return itemCategory;
   }
 
-  public void setItemCategory(String itemCategory) {
+  public void setItemCategory(@javax.annotation.Nullable String itemCategory) {
     this.itemCategory = itemCategory;
   }
 
 
-  public ConversionEventsDataInnerCustomDataContentsInner itemBrand(String itemBrand) {
+  public ConversionEventsDataInnerCustomDataContentsInner itemBrand(@javax.annotation.Nullable String itemBrand) {
     this.itemBrand = itemBrand;
     return this;
   }
@@ -186,7 +192,7 @@ public class ConversionEventsDataInnerCustomDataContentsInner {
     return itemBrand;
   }
 
-  public void setItemBrand(String itemBrand) {
+  public void setItemBrand(@javax.annotation.Nullable String itemBrand) {
     this.itemBrand = itemBrand;
   }
 

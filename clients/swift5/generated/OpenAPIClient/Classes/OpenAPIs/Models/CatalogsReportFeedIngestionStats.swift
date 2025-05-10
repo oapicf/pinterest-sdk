@@ -19,7 +19,7 @@ public struct CatalogsReportFeedIngestionStats: Codable, JSONEncodable, Hashable
         case warn = "WARN"
         case error = "ERROR"
     }
-    static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public var reportType: ReportType?
     /** ID of the catalog entity. */
     public var catalogId: String?

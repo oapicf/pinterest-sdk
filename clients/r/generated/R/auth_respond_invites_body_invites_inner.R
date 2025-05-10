@@ -38,20 +38,45 @@ AuthRespondInvitesBodyInvitesInner <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return AuthRespondInvitesBodyInvitesInner in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return AuthRespondInvitesBodyInvitesInner as a base R list.
+    #' @examples
+    #' # convert array of AuthRespondInvitesBodyInvitesInner (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert AuthRespondInvitesBodyInvitesInner to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       AuthRespondInvitesBodyInvitesInnerObject <- list()
       if (!is.null(self$`action`)) {
         AuthRespondInvitesBodyInvitesInnerObject[["action"]] <-
-          self$`action`$toJSON()
+          self$`action`$toSimpleType()
       }
       if (!is.null(self$`invite_id`)) {
         AuthRespondInvitesBodyInvitesInnerObject[["invite_id"]] <-
           self$`invite_id`
       }
-      AuthRespondInvitesBodyInvitesInnerObject
+      return(AuthRespondInvitesBodyInvitesInnerObject)
     },
 
     #' @description
@@ -74,29 +99,13 @@ AuthRespondInvitesBodyInvitesInner <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return AuthRespondInvitesBodyInvitesInner in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`action`)) {
-          sprintf(
-          '"action":
-          %s
-          ',
-          jsonlite::toJSON(self$`action`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`invite_id`)) {
-          sprintf(
-          '"invite_id":
-            "%s"
-                    ',
-          self$`invite_id`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

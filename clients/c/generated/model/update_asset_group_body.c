@@ -5,7 +5,7 @@
 
 
 
-update_asset_group_body_t *update_asset_group_body_create(
+static update_asset_group_body_t *update_asset_group_body_create_internal(
     list_t *asset_groups_to_update
     ) {
     update_asset_group_body_t *update_asset_group_body_local_var = malloc(sizeof(update_asset_group_body_t));
@@ -14,12 +14,24 @@ update_asset_group_body_t *update_asset_group_body_create(
     }
     update_asset_group_body_local_var->asset_groups_to_update = asset_groups_to_update;
 
+    update_asset_group_body_local_var->_library_owned = 1;
     return update_asset_group_body_local_var;
 }
 
+__attribute__((deprecated)) update_asset_group_body_t *update_asset_group_body_create(
+    list_t *asset_groups_to_update
+    ) {
+    return update_asset_group_body_create_internal (
+        asset_groups_to_update
+        );
+}
 
 void update_asset_group_body_free(update_asset_group_body_t *update_asset_group_body) {
     if(NULL == update_asset_group_body){
+        return ;
+    }
+    if(update_asset_group_body->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "update_asset_group_body_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -72,6 +84,9 @@ update_asset_group_body_t *update_asset_group_body_parseFromJSON(cJSON *update_a
 
     // update_asset_group_body->asset_groups_to_update
     cJSON *asset_groups_to_update = cJSON_GetObjectItemCaseSensitive(update_asset_group_bodyJSON, "asset_groups_to_update");
+    if (cJSON_IsNull(asset_groups_to_update)) {
+        asset_groups_to_update = NULL;
+    }
     if (asset_groups_to_update) { 
     cJSON *asset_groups_to_update_local_nonprimitive = NULL;
     if(!cJSON_IsArray(asset_groups_to_update)){
@@ -92,7 +107,7 @@ update_asset_group_body_t *update_asset_group_body_parseFromJSON(cJSON *update_a
     }
 
 
-    update_asset_group_body_local_var = update_asset_group_body_create (
+    update_asset_group_body_local_var = update_asset_group_body_create_internal (
         asset_groups_to_update ? asset_groups_to_updateList : NULL
         );
 

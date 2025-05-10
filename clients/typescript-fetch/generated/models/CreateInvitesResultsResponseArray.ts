@@ -56,11 +56,11 @@ export function CreateInvitesResultsResponseArrayFromJSONTyped(json: any, ignore
     };
 }
 
-  export function CreateInvitesResultsResponseArrayToJSON(json: any): CreateInvitesResultsResponseArray {
-      return CreateInvitesResultsResponseArrayToJSONTyped(json, false);
-  }
+export function CreateInvitesResultsResponseArrayToJSON(json: any): CreateInvitesResultsResponseArray {
+    return CreateInvitesResultsResponseArrayToJSONTyped(json, false);
+}
 
-  export function CreateInvitesResultsResponseArrayToJSONTyped(value?: CreateInvitesResultsResponseArray | null, ignoreDiscriminator: boolean = false): any {
+export function CreateInvitesResultsResponseArrayToJSONTyped(value?: CreateInvitesResultsResponseArray | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

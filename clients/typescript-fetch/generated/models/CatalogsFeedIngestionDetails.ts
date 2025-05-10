@@ -87,11 +87,11 @@ export function CatalogsFeedIngestionDetailsFromJSONTyped(json: any, ignoreDiscr
     };
 }
 
-  export function CatalogsFeedIngestionDetailsToJSON(json: any): CatalogsFeedIngestionDetails {
-      return CatalogsFeedIngestionDetailsToJSONTyped(json, false);
-  }
+export function CatalogsFeedIngestionDetailsToJSON(json: any): CatalogsFeedIngestionDetails {
+    return CatalogsFeedIngestionDetailsToJSONTyped(json, false);
+}
 
-  export function CatalogsFeedIngestionDetailsToJSONTyped(value?: CatalogsFeedIngestionDetails | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsFeedIngestionDetailsToJSONTyped(value?: CatalogsFeedIngestionDetails | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

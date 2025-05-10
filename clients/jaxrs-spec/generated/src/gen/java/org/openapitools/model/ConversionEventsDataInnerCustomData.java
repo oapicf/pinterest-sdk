@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Object containing other custom data.")
 @JsonTypeName("ConversionEvents_data_inner_custom_data")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConversionEventsDataInnerCustomData   {
   private String currency;
   private String value;
@@ -37,6 +37,9 @@ public class ConversionEventsDataInnerCustomData   {
   private String searchString;
   private String optOutType;
   private String np;
+
+  public ConversionEventsDataInnerCustomData() {
+  }
 
   /**
    * The ISO-4217 currency code. If not provided, we will default to the advertiser&#39;s currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.

@@ -44,14 +44,14 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum PinPromotionSummaryStatus: string
 {
-        case APPROVED = "APPROVED";
-        case PAUSED = "PAUSED";
-        case PENDING = "PENDING";
-        case REJECTED = "REJECTED";
-        case ADVERTISER_DISABLED = "ADVERTISER_DISABLED";
-        case ARCHIVED = "ARCHIVED";
-        case DRAFT = "DRAFT";
-        case DELETED_DRAFT = "DELETED_DRAFT";
+        case APPROVED = 'APPROVED';
+        case PAUSED = 'PAUSED';
+        case PENDING = 'PENDING';
+        case REJECTED = 'REJECTED';
+        case ADVERTISER_DISABLED = 'ADVERTISER_DISABLED';
+        case ARCHIVED = 'ARCHIVED';
+        case DRAFT = 'DRAFT';
+        case DELETED_DRAFT = 'DELETED_DRAFT';
 }
 
 

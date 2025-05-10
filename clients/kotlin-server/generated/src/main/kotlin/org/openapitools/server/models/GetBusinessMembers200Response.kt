@@ -13,14 +13,16 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.UserBusinessRoleBinding
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items List of business members.
  * @param bookmark 
  */
+@Serializable
 data class GetBusinessMembers200Response(
     /* List of business members. */
     val items: kotlin.collections.List<UserBusinessRoleBinding>,
     val bookmark: kotlin.String? = null
-) 
+)
 

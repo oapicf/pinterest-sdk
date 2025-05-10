@@ -119,11 +119,11 @@ export function CatalogsCreativeAssetsProductGroupFromJSONTyped(json: any, ignor
     };
 }
 
-  export function CatalogsCreativeAssetsProductGroupToJSON(json: any): CatalogsCreativeAssetsProductGroup {
-      return CatalogsCreativeAssetsProductGroupToJSONTyped(json, false);
-  }
+export function CatalogsCreativeAssetsProductGroupToJSON(json: any): CatalogsCreativeAssetsProductGroup {
+    return CatalogsCreativeAssetsProductGroupToJSONTyped(json, false);
+}
 
-  export function CatalogsCreativeAssetsProductGroupToJSONTyped(value?: CatalogsCreativeAssetsProductGroup | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsCreativeAssetsProductGroupToJSONTyped(value?: CatalogsCreativeAssetsProductGroup | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

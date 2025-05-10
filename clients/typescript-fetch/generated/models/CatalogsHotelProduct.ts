@@ -90,11 +90,11 @@ export function CatalogsHotelProductFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function CatalogsHotelProductToJSON(json: any): CatalogsHotelProduct {
-      return CatalogsHotelProductToJSONTyped(json, false);
-  }
+export function CatalogsHotelProductToJSON(json: any): CatalogsHotelProduct {
+    return CatalogsHotelProductToJSONTyped(json, false);
+}
 
-  export function CatalogsHotelProductToJSONTyped(value?: CatalogsHotelProduct | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsHotelProductToJSONTyped(value?: CatalogsHotelProduct | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

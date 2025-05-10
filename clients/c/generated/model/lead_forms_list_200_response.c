@@ -5,7 +5,7 @@
 
 
 
-lead_forms_list_200_response_t *lead_forms_list_200_response_create(
+static lead_forms_list_200_response_t *lead_forms_list_200_response_create_internal(
     list_t *items,
     char *bookmark
     ) {
@@ -16,12 +16,26 @@ lead_forms_list_200_response_t *lead_forms_list_200_response_create(
     lead_forms_list_200_response_local_var->items = items;
     lead_forms_list_200_response_local_var->bookmark = bookmark;
 
+    lead_forms_list_200_response_local_var->_library_owned = 1;
     return lead_forms_list_200_response_local_var;
 }
 
+__attribute__((deprecated)) lead_forms_list_200_response_t *lead_forms_list_200_response_create(
+    list_t *items,
+    char *bookmark
+    ) {
+    return lead_forms_list_200_response_create_internal (
+        items,
+        bookmark
+        );
+}
 
 void lead_forms_list_200_response_free(lead_forms_list_200_response_t *lead_forms_list_200_response) {
     if(NULL == lead_forms_list_200_response){
+        return ;
+    }
+    if(lead_forms_list_200_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "lead_forms_list_200_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -87,6 +101,9 @@ lead_forms_list_200_response_t *lead_forms_list_200_response_parseFromJSON(cJSON
 
     // lead_forms_list_200_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(lead_forms_list_200_responseJSON, "items");
+    if (cJSON_IsNull(items)) {
+        items = NULL;
+    }
     if (!items) {
         goto end;
     }
@@ -111,6 +128,9 @@ lead_forms_list_200_response_t *lead_forms_list_200_response_parseFromJSON(cJSON
 
     // lead_forms_list_200_response->bookmark
     cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(lead_forms_list_200_responseJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
     if (bookmark) { 
     if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
     {
@@ -119,7 +139,7 @@ lead_forms_list_200_response_t *lead_forms_list_200_response_parseFromJSON(cJSON
     }
 
 
-    lead_forms_list_200_response_local_var = lead_forms_list_200_response_create (
+    lead_forms_list_200_response_local_var = lead_forms_list_200_response_create_internal (
         itemsList,
         bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
         );

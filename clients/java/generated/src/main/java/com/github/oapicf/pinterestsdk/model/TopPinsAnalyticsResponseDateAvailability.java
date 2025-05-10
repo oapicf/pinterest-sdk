@@ -49,20 +49,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * TopPinsAnalyticsResponseDateAvailability
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TopPinsAnalyticsResponseDateAvailability {
   public static final String SERIALIZED_NAME_LATEST_AVAILABLE_TIMESTAMP = "latest_available_timestamp";
   @SerializedName(SERIALIZED_NAME_LATEST_AVAILABLE_TIMESTAMP)
+  @javax.annotation.Nullable
   private BigDecimal latestAvailableTimestamp;
 
   public static final String SERIALIZED_NAME_IS_REALTIME = "is_realtime";
   @SerializedName(SERIALIZED_NAME_IS_REALTIME)
+  @javax.annotation.Nullable
   private Boolean isRealtime;
 
   public TopPinsAnalyticsResponseDateAvailability() {
   }
 
-  public TopPinsAnalyticsResponseDateAvailability latestAvailableTimestamp(BigDecimal latestAvailableTimestamp) {
+  public TopPinsAnalyticsResponseDateAvailability latestAvailableTimestamp(@javax.annotation.Nullable BigDecimal latestAvailableTimestamp) {
     this.latestAvailableTimestamp = latestAvailableTimestamp;
     return this;
   }
@@ -76,12 +78,12 @@ public class TopPinsAnalyticsResponseDateAvailability {
     return latestAvailableTimestamp;
   }
 
-  public void setLatestAvailableTimestamp(BigDecimal latestAvailableTimestamp) {
+  public void setLatestAvailableTimestamp(@javax.annotation.Nullable BigDecimal latestAvailableTimestamp) {
     this.latestAvailableTimestamp = latestAvailableTimestamp;
   }
 
 
-  public TopPinsAnalyticsResponseDateAvailability isRealtime(Boolean isRealtime) {
+  public TopPinsAnalyticsResponseDateAvailability isRealtime(@javax.annotation.Nullable Boolean isRealtime) {
     this.isRealtime = isRealtime;
     return this;
   }
@@ -95,7 +97,7 @@ public class TopPinsAnalyticsResponseDateAvailability {
     return isRealtime;
   }
 
-  public void setIsRealtime(Boolean isRealtime) {
+  public void setIsRealtime(@javax.annotation.Nullable Boolean isRealtime) {
     this.isRealtime = isRealtime;
   }
 

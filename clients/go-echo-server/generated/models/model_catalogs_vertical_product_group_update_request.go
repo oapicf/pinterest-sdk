@@ -1,9 +1,5 @@
 package models
 
-import (
-	"gopkg.in/validator.v2"
-)
-
 // CatalogsVerticalProductGroupUpdateRequest - Request object for updating a catalog based product group.
 type CatalogsVerticalProductGroupUpdateRequest struct {
 

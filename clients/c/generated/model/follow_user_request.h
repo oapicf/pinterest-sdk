@@ -21,9 +21,10 @@ typedef struct follow_user_request_t follow_user_request_t;
 typedef struct follow_user_request_t {
     int auto_follow; //boolean
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } follow_user_request_t;
 
-follow_user_request_t *follow_user_request_create(
+__attribute__((deprecated)) follow_user_request_t *follow_user_request_create(
     int auto_follow
 );
 

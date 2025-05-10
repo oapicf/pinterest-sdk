@@ -323,7 +323,7 @@ void OAIPinsApi::multiPins_analytics(const QList<QString> &pin_ids, const QDate 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("start_date")).append(querySuffix).append(QUrl::toPercentEncoding(start_date));
+        fullPath.append(QUrl::toPercentEncoding("start_date")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(start_date)));
     }
     
     {
@@ -338,7 +338,7 @@ void OAIPinsApi::multiPins_analytics(const QList<QString> &pin_ids, const QDate 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("end_date")).append(querySuffix).append(QUrl::toPercentEncoding(end_date));
+        fullPath.append(QUrl::toPercentEncoding("end_date")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(end_date)));
     }
     if (app_types.hasValue())
     {
@@ -353,7 +353,7 @@ void OAIPinsApi::multiPins_analytics(const QList<QString> &pin_ids, const QDate 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("app_types")).append(querySuffix).append(QUrl::toPercentEncoding(app_types.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("app_types")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(app_types.stringValue())));
     }
     
     {
@@ -453,7 +453,7 @@ void OAIPinsApi::multiPins_analytics(const QList<QString> &pin_ids, const QDate 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -468,7 +468,7 @@ void OAIPinsApi::multiPins_analytics(const QList<QString> &pin_ids, const QDate 
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIPinsApi::multiPins_analyticsCallback);
     connect(this, &OAIPinsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -491,7 +491,7 @@ void OAIPinsApi::multiPins_analytics(const QList<QString> &pin_ids, const QDate 
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIPinsApi::multiPins_analyticsCallback);
     connect(this, &OAIPinsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -521,7 +521,7 @@ void OAIPinsApi::multiPins_analytics(const QList<QString> &pin_ids, const QDate 
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIPinsApi::multiPins_analyticsCallback);
     connect(this, &OAIPinsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -645,7 +645,7 @@ void OAIPinsApi::pins_analytics(const QString &pin_id, const QDate &start_date, 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("start_date")).append(querySuffix).append(QUrl::toPercentEncoding(start_date));
+        fullPath.append(QUrl::toPercentEncoding("start_date")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(start_date)));
     }
     
     {
@@ -660,7 +660,7 @@ void OAIPinsApi::pins_analytics(const QString &pin_id, const QDate &start_date, 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("end_date")).append(querySuffix).append(QUrl::toPercentEncoding(end_date));
+        fullPath.append(QUrl::toPercentEncoding("end_date")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(end_date)));
     }
     if (app_types.hasValue())
     {
@@ -675,7 +675,7 @@ void OAIPinsApi::pins_analytics(const QString &pin_id, const QDate &start_date, 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("app_types")).append(querySuffix).append(QUrl::toPercentEncoding(app_types.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("app_types")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(app_types.stringValue())));
     }
     
     {
@@ -775,7 +775,7 @@ void OAIPinsApi::pins_analytics(const QString &pin_id, const QDate &start_date, 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("split_field")).append(querySuffix).append(QUrl::toPercentEncoding(split_field.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("split_field")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(split_field.stringValue())));
     }
     if (ad_account_id.hasValue())
     {
@@ -790,7 +790,7 @@ void OAIPinsApi::pins_analytics(const QString &pin_id, const QDate &start_date, 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -805,7 +805,7 @@ void OAIPinsApi::pins_analytics(const QString &pin_id, const QDate &start_date, 
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIPinsApi::pins_analyticsCallback);
     connect(this, &OAIPinsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -828,7 +828,7 @@ void OAIPinsApi::pins_analytics(const QString &pin_id, const QDate &start_date, 
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIPinsApi::pins_analyticsCallback);
     connect(this, &OAIPinsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -858,7 +858,7 @@ void OAIPinsApi::pins_analytics(const QString &pin_id, const QDate &start_date, 
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIPinsApi::pins_analyticsCallback);
     connect(this, &OAIPinsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -968,7 +968,7 @@ void OAIPinsApi::pins_create(const OAIPinCreate &oai_pin_create, const ::OpenAPI
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -988,7 +988,7 @@ void OAIPinsApi::pins_create(const OAIPinCreate &oai_pin_create, const ::OpenAPI
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIPinsApi::pins_createCallback);
     connect(this, &OAIPinsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1013,7 +1013,7 @@ void OAIPinsApi::pins_create(const OAIPinCreate &oai_pin_create, const ::OpenAPI
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIPinsApi::pins_createCallback);
     connect(this, &OAIPinsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1120,7 +1120,7 @@ void OAIPinsApi::pins_delete(const QString &pin_id, const ::OpenAPI::OptionalPar
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -1135,7 +1135,7 @@ void OAIPinsApi::pins_delete(const QString &pin_id, const ::OpenAPI::OptionalPar
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIPinsApi::pins_deleteCallback);
     connect(this, &OAIPinsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1160,7 +1160,7 @@ void OAIPinsApi::pins_delete(const QString &pin_id, const ::OpenAPI::OptionalPar
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIPinsApi::pins_deleteCallback);
     connect(this, &OAIPinsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1266,7 +1266,7 @@ void OAIPinsApi::pins_get(const QString &pin_id, const ::OpenAPI::OptionalParam<
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("pin_metrics")).append(querySuffix).append(QUrl::toPercentEncoding(pin_metrics.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("pin_metrics")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(pin_metrics.stringValue())));
     }
     if (ad_account_id.hasValue())
     {
@@ -1281,7 +1281,7 @@ void OAIPinsApi::pins_get(const QString &pin_id, const ::OpenAPI::OptionalParam<
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -1296,7 +1296,7 @@ void OAIPinsApi::pins_get(const QString &pin_id, const ::OpenAPI::OptionalParam<
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIPinsApi::pins_getCallback);
     connect(this, &OAIPinsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1319,7 +1319,7 @@ void OAIPinsApi::pins_get(const QString &pin_id, const ::OpenAPI::OptionalParam<
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIPinsApi::pins_getCallback);
     connect(this, &OAIPinsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1349,7 +1349,7 @@ void OAIPinsApi::pins_get(const QString &pin_id, const ::OpenAPI::OptionalParam<
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIPinsApi::pins_getCallback);
     connect(this, &OAIPinsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1450,7 +1450,7 @@ void OAIPinsApi::pins_list(const ::OpenAPI::OptionalParam<QString> &bookmark, co
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     if (page_size.hasValue())
     {
@@ -1465,7 +1465,7 @@ void OAIPinsApi::pins_list(const ::OpenAPI::OptionalParam<QString> &bookmark, co
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     if (pin_filter.hasValue())
     {
@@ -1480,7 +1480,7 @@ void OAIPinsApi::pins_list(const ::OpenAPI::OptionalParam<QString> &bookmark, co
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("pin_filter")).append(querySuffix).append(QUrl::toPercentEncoding(pin_filter.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("pin_filter")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(pin_filter.stringValue())));
     }
     if (include_protected_pins.hasValue())
     {
@@ -1495,7 +1495,7 @@ void OAIPinsApi::pins_list(const ::OpenAPI::OptionalParam<QString> &bookmark, co
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("include_protected_pins")).append(querySuffix).append(QUrl::toPercentEncoding(include_protected_pins.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("include_protected_pins")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(include_protected_pins.stringValue())));
     }
     if (pin_type.hasValue())
     {
@@ -1510,7 +1510,7 @@ void OAIPinsApi::pins_list(const ::OpenAPI::OptionalParam<QString> &bookmark, co
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("pin_type")).append(querySuffix).append(QUrl::toPercentEncoding(pin_type.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("pin_type")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(pin_type.stringValue())));
     }
     if (creative_types.hasValue())
     {
@@ -1610,7 +1610,7 @@ void OAIPinsApi::pins_list(const ::OpenAPI::OptionalParam<QString> &bookmark, co
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     if (pin_metrics.hasValue())
     {
@@ -1625,7 +1625,7 @@ void OAIPinsApi::pins_list(const ::OpenAPI::OptionalParam<QString> &bookmark, co
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("pin_metrics")).append(querySuffix).append(QUrl::toPercentEncoding(pin_metrics.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("pin_metrics")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(pin_metrics.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -1640,7 +1640,7 @@ void OAIPinsApi::pins_list(const ::OpenAPI::OptionalParam<QString> &bookmark, co
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIPinsApi::pins_listCallback);
     connect(this, &OAIPinsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1663,7 +1663,7 @@ void OAIPinsApi::pins_list(const ::OpenAPI::OptionalParam<QString> &bookmark, co
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIPinsApi::pins_listCallback);
     connect(this, &OAIPinsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1693,7 +1693,7 @@ void OAIPinsApi::pins_list(const ::OpenAPI::OptionalParam<QString> &bookmark, co
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIPinsApi::pins_listCallback);
     connect(this, &OAIPinsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1808,7 +1808,7 @@ void OAIPinsApi::pins_save(const QString &pin_id, const OAIPins_save_request &oa
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -1828,7 +1828,7 @@ void OAIPinsApi::pins_save(const QString &pin_id, const OAIPins_save_request &oa
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIPinsApi::pins_saveCallback);
     connect(this, &OAIPinsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1853,7 +1853,7 @@ void OAIPinsApi::pins_save(const QString &pin_id, const OAIPins_save_request &oa
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIPinsApi::pins_saveCallback);
     connect(this, &OAIPinsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1960,7 +1960,7 @@ void OAIPinsApi::pins_update(const QString &pin_id, const OAIPinUpdate &oai_pin_
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -1980,7 +1980,7 @@ void OAIPinsApi::pins_update(const QString &pin_id, const OAIPinUpdate &oai_pin_
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIPinsApi::pins_updateCallback);
     connect(this, &OAIPinsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -2005,7 +2005,7 @@ void OAIPinsApi::pins_update(const QString &pin_id, const OAIPinUpdate &oai_pin_
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIPinsApi::pins_updateCallback);
     connect(this, &OAIPinsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }

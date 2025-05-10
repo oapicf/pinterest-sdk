@@ -22,7 +22,7 @@ pinterest_rest_api_oauth_access_token_response_integration_refresh_RESPONSETYPE_
     return 0;
 }
 
-oauth_access_token_response_integration_refresh_t *oauth_access_token_response_integration_refresh_create(
+static oauth_access_token_response_integration_refresh_t *oauth_access_token_response_integration_refresh_create_internal(
     pinterest_rest_api_oauth_access_token_response_integration_refresh_RESPONSETYPE_e response_type,
     char *access_token,
     char *token_type,
@@ -43,12 +43,36 @@ oauth_access_token_response_integration_refresh_t *oauth_access_token_response_i
     oauth_access_token_response_integration_refresh_local_var->refresh_token = refresh_token;
     oauth_access_token_response_integration_refresh_local_var->refresh_token_expires_in = refresh_token_expires_in;
 
+    oauth_access_token_response_integration_refresh_local_var->_library_owned = 1;
     return oauth_access_token_response_integration_refresh_local_var;
 }
 
+__attribute__((deprecated)) oauth_access_token_response_integration_refresh_t *oauth_access_token_response_integration_refresh_create(
+    pinterest_rest_api_oauth_access_token_response_integration_refresh_RESPONSETYPE_e response_type,
+    char *access_token,
+    char *token_type,
+    int expires_in,
+    char *scope,
+    char *refresh_token,
+    int refresh_token_expires_in
+    ) {
+    return oauth_access_token_response_integration_refresh_create_internal (
+        response_type,
+        access_token,
+        token_type,
+        expires_in,
+        scope,
+        refresh_token,
+        refresh_token_expires_in
+        );
+}
 
 void oauth_access_token_response_integration_refresh_free(oauth_access_token_response_integration_refresh_t *oauth_access_token_response_integration_refresh) {
     if(NULL == oauth_access_token_response_integration_refresh){
+        return ;
+    }
+    if(oauth_access_token_response_integration_refresh->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "oauth_access_token_response_integration_refresh_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -76,7 +100,7 @@ cJSON *oauth_access_token_response_integration_refresh_convertToJSON(oauth_acces
 
     // oauth_access_token_response_integration_refresh->response_type
     if(oauth_access_token_response_integration_refresh->response_type != pinterest_rest_api_oauth_access_token_response_integration_refresh_RESPONSETYPE_NULL) {
-    if(cJSON_AddStringToObject(item, "response_type", response_typeoauth_access_token_response_integration_refresh_ToString(oauth_access_token_response_integration_refresh->response_type)) == NULL)
+    if(cJSON_AddStringToObject(item, "response_type", oauth_access_token_response_integration_refresh_response_type_ToString(oauth_access_token_response_integration_refresh->response_type)) == NULL)
     {
     goto fail; //Enum
     }
@@ -150,6 +174,9 @@ oauth_access_token_response_integration_refresh_t *oauth_access_token_response_i
 
     // oauth_access_token_response_integration_refresh->response_type
     cJSON *response_type = cJSON_GetObjectItemCaseSensitive(oauth_access_token_response_integration_refreshJSON, "response_type");
+    if (cJSON_IsNull(response_type)) {
+        response_type = NULL;
+    }
     pinterest_rest_api_oauth_access_token_response_integration_refresh_RESPONSETYPE_e response_typeVariable;
     if (response_type) { 
     if(!cJSON_IsString(response_type))
@@ -161,6 +188,9 @@ oauth_access_token_response_integration_refresh_t *oauth_access_token_response_i
 
     // oauth_access_token_response_integration_refresh->access_token
     cJSON *access_token = cJSON_GetObjectItemCaseSensitive(oauth_access_token_response_integration_refreshJSON, "access_token");
+    if (cJSON_IsNull(access_token)) {
+        access_token = NULL;
+    }
     if (!access_token) {
         goto end;
     }
@@ -173,6 +203,9 @@ oauth_access_token_response_integration_refresh_t *oauth_access_token_response_i
 
     // oauth_access_token_response_integration_refresh->token_type
     cJSON *token_type = cJSON_GetObjectItemCaseSensitive(oauth_access_token_response_integration_refreshJSON, "token_type");
+    if (cJSON_IsNull(token_type)) {
+        token_type = NULL;
+    }
     if (!token_type) {
         goto end;
     }
@@ -185,6 +218,9 @@ oauth_access_token_response_integration_refresh_t *oauth_access_token_response_i
 
     // oauth_access_token_response_integration_refresh->expires_in
     cJSON *expires_in = cJSON_GetObjectItemCaseSensitive(oauth_access_token_response_integration_refreshJSON, "expires_in");
+    if (cJSON_IsNull(expires_in)) {
+        expires_in = NULL;
+    }
     if (!expires_in) {
         goto end;
     }
@@ -197,6 +233,9 @@ oauth_access_token_response_integration_refresh_t *oauth_access_token_response_i
 
     // oauth_access_token_response_integration_refresh->scope
     cJSON *scope = cJSON_GetObjectItemCaseSensitive(oauth_access_token_response_integration_refreshJSON, "scope");
+    if (cJSON_IsNull(scope)) {
+        scope = NULL;
+    }
     if (!scope) {
         goto end;
     }
@@ -209,6 +248,9 @@ oauth_access_token_response_integration_refresh_t *oauth_access_token_response_i
 
     // oauth_access_token_response_integration_refresh->refresh_token
     cJSON *refresh_token = cJSON_GetObjectItemCaseSensitive(oauth_access_token_response_integration_refreshJSON, "refresh_token");
+    if (cJSON_IsNull(refresh_token)) {
+        refresh_token = NULL;
+    }
     if (!refresh_token) {
         goto end;
     }
@@ -221,6 +263,9 @@ oauth_access_token_response_integration_refresh_t *oauth_access_token_response_i
 
     // oauth_access_token_response_integration_refresh->refresh_token_expires_in
     cJSON *refresh_token_expires_in = cJSON_GetObjectItemCaseSensitive(oauth_access_token_response_integration_refreshJSON, "refresh_token_expires_in");
+    if (cJSON_IsNull(refresh_token_expires_in)) {
+        refresh_token_expires_in = NULL;
+    }
     if (!refresh_token_expires_in) {
         goto end;
     }
@@ -232,7 +277,7 @@ oauth_access_token_response_integration_refresh_t *oauth_access_token_response_i
     }
 
 
-    oauth_access_token_response_integration_refresh_local_var = oauth_access_token_response_integration_refresh_create (
+    oauth_access_token_response_integration_refresh_local_var = oauth_access_token_response_integration_refresh_create_internal (
         response_type ? response_typeVariable : pinterest_rest_api_oauth_access_token_response_integration_refresh_RESPONSETYPE_NULL,
         strdup(access_token->valuestring),
         strdup(token_type->valuestring),

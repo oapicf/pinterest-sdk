@@ -56,11 +56,11 @@ export function DeliveryMetricsResponseFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-  export function DeliveryMetricsResponseToJSON(json: any): DeliveryMetricsResponse {
-      return DeliveryMetricsResponseToJSONTyped(json, false);
-  }
+export function DeliveryMetricsResponseToJSON(json: any): DeliveryMetricsResponse {
+    return DeliveryMetricsResponseToJSONTyped(json, false);
+}
 
-  export function DeliveryMetricsResponseToJSONTyped(value?: DeliveryMetricsResponse | null, ignoreDiscriminator: boolean = false): any {
+export function DeliveryMetricsResponseToJSONTyped(value?: DeliveryMetricsResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

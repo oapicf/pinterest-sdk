@@ -72,11 +72,11 @@ export function AnalyticsDailyMetricsFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function AnalyticsDailyMetricsToJSON(json: any): AnalyticsDailyMetrics {
-      return AnalyticsDailyMetricsToJSONTyped(json, false);
-  }
+export function AnalyticsDailyMetricsToJSON(json: any): AnalyticsDailyMetrics {
+    return AnalyticsDailyMetricsToJSONTyped(json, false);
+}
 
-  export function AnalyticsDailyMetricsToJSONTyped(value?: AnalyticsDailyMetrics | null, ignoreDiscriminator: boolean = false): any {
+export function AnalyticsDailyMetricsToJSONTyped(value?: AnalyticsDailyMetrics | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

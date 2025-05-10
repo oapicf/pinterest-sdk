@@ -10,9 +10,9 @@
 
 
 use reqwest;
-use serde::{Deserialize, Serialize};
+use serde::{Deserialize, Serialize, de::Error as _};
 use crate::{apis::ResponseContent, models};
-use super::{Error, configuration};
+use super::{Error, configuration, ContentType};
 
 
 /// struct for typed errors of method [`boards_user_follows_slash_list`]
@@ -144,614 +144,771 @@ pub enum WebsiteVerificationSlashGetError {
 
 /// Get a list of the boards a user follows. The request returns a board summary object array.
 pub async fn boards_user_follows_slash_list(configuration: &configuration::Configuration, bookmark: Option<&str>, page_size: Option<i32>, explicit_following: Option<bool>, ad_account_id: Option<&str>) -> Result<models::BoardsUserFollowsList200Response, Error<BoardsUserFollowsSlashListError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_bookmark = bookmark;
+    let p_page_size = page_size;
+    let p_explicit_following = explicit_following;
+    let p_ad_account_id = ad_account_id;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/user_account/following/boards", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    let local_var_uri_str = format!("{}/user_account/following/boards", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_str) = bookmark {
-        local_var_req_builder = local_var_req_builder.query(&[("bookmark", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_bookmark {
+        req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = page_size {
-        local_var_req_builder = local_var_req_builder.query(&[("page_size", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_page_size {
+        req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = explicit_following {
-        local_var_req_builder = local_var_req_builder.query(&[("explicit_following", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_explicit_following {
+        req_builder = req_builder.query(&[("explicit_following", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = ad_account_id {
-        local_var_req_builder = local_var_req_builder.query(&[("ad_account_id", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_ad_account_id {
+        req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::BoardsUserFollowsList200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::BoardsUserFollowsList200Response`")))),
+        }
     } else {
-        let local_var_entity: Option<BoardsUserFollowsSlashListError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<BoardsUserFollowsSlashListError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
 pub async fn follow_user_slash_update(configuration: &configuration::Configuration, username: &str, follow_user_request: models::FollowUserRequest) -> Result<models::UserSummary, Error<FollowUserSlashUpdateError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_username = username;
+    let p_follow_user_request = follow_user_request;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/user_account/following/{username}", configuration.base_path, username=crate::apis::urlencode(p_username));
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    let local_var_uri_str = format!("{}/user_account/following/{username}", local_var_configuration.base_path, username=crate::apis::urlencode(username));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&follow_user_request);
+    req_builder = req_builder.json(&p_follow_user_request);
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::UserSummary`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::UserSummary`")))),
+        }
     } else {
-        let local_var_entity: Option<FollowUserSlashUpdateError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<FollowUserSlashUpdateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// Get a list of your followers.
 pub async fn followers_slash_list(configuration: &configuration::Configuration, bookmark: Option<&str>, page_size: Option<i32>) -> Result<models::FollowersList200Response, Error<FollowersSlashListError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_bookmark = bookmark;
+    let p_page_size = page_size;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/user_account/followers", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    let local_var_uri_str = format!("{}/user_account/followers", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_str) = bookmark {
-        local_var_req_builder = local_var_req_builder.query(&[("bookmark", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_bookmark {
+        req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = page_size {
-        local_var_req_builder = local_var_req_builder.query(&[("page_size", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_page_size {
+        req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::FollowersList200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::FollowersList200Response`")))),
+        }
     } else {
-        let local_var_entity: Option<FollowersSlashListError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<FollowersSlashListError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// Get a list of your linked business accounts.
 pub async fn linked_business_accounts_slash_get(configuration: &configuration::Configuration, ) -> Result<Vec<models::LinkedBusiness>, Error<LinkedBusinessAccountsSlashGetError>> {
-    let local_var_configuration = configuration;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/user_account/businesses", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    let local_var_uri_str = format!("{}/user_account/businesses", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `Vec&lt;models::LinkedBusiness&gt;`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `Vec&lt;models::LinkedBusiness&gt;`")))),
+        }
     } else {
-        let local_var_entity: Option<LinkedBusinessAccountsSlashGetError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<LinkedBusinessAccountsSlashGetError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// Unverifu a website verified by the signed-in user.
 pub async fn unverify_website_slash_delete(configuration: &configuration::Configuration, website: &str) -> Result<(), Error<UnverifyWebsiteSlashDeleteError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_website = website;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/user_account/websites", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
 
-    let local_var_uri_str = format!("{}/user_account/websites", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::DELETE, local_var_uri_str.as_str());
-
-    local_var_req_builder = local_var_req_builder.query(&[("website", &website.to_string())]);
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    req_builder = req_builder.query(&[("website", &p_website.to_string())]);
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+    if !status.is_client_error() && !status.is_server_error() {
         Ok(())
     } else {
-        let local_var_entity: Option<UnverifyWebsiteSlashDeleteError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<UnverifyWebsiteSlashDeleteError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// Get analytics for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
 pub async fn user_account_slash_analytics(configuration: &configuration::Configuration, start_date: String, end_date: String, from_claimed_content: Option<&str>, pin_format: Option<&str>, app_types: Option<&str>, content_type: Option<&str>, source: Option<&str>, metric_types: Option<Vec<String>>, split_field: Option<&str>, ad_account_id: Option<&str>) -> Result<std::collections::HashMap<String, models::AnalyticsMetricsResponse>, Error<UserAccountSlashAnalyticsError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_start_date = start_date;
+    let p_end_date = end_date;
+    let p_from_claimed_content = from_claimed_content;
+    let p_pin_format = pin_format;
+    let p_app_types = app_types;
+    let p_content_type = content_type;
+    let p_source = source;
+    let p_metric_types = metric_types;
+    let p_split_field = split_field;
+    let p_ad_account_id = ad_account_id;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/user_account/analytics", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    let local_var_uri_str = format!("{}/user_account/analytics", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    local_var_req_builder = local_var_req_builder.query(&[("start_date", &start_date.to_string())]);
-    local_var_req_builder = local_var_req_builder.query(&[("end_date", &end_date.to_string())]);
-    if let Some(ref local_var_str) = from_claimed_content {
-        local_var_req_builder = local_var_req_builder.query(&[("from_claimed_content", &local_var_str.to_string())]);
+    req_builder = req_builder.query(&[("start_date", &p_start_date.to_string())]);
+    req_builder = req_builder.query(&[("end_date", &p_end_date.to_string())]);
+    if let Some(ref param_value) = p_from_claimed_content {
+        req_builder = req_builder.query(&[("from_claimed_content", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = pin_format {
-        local_var_req_builder = local_var_req_builder.query(&[("pin_format", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_pin_format {
+        req_builder = req_builder.query(&[("pin_format", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = app_types {
-        local_var_req_builder = local_var_req_builder.query(&[("app_types", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_app_types {
+        req_builder = req_builder.query(&[("app_types", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = content_type {
-        local_var_req_builder = local_var_req_builder.query(&[("content_type", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_content_type {
+        req_builder = req_builder.query(&[("content_type", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = source {
-        local_var_req_builder = local_var_req_builder.query(&[("source", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_source {
+        req_builder = req_builder.query(&[("source", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = metric_types {
-        local_var_req_builder = match "csv" {
-            "multi" => local_var_req_builder.query(&local_var_str.into_iter().map(|p| ("metric_types".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
-            _ => local_var_req_builder.query(&[("metric_types", &local_var_str.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+    if let Some(ref param_value) = p_metric_types {
+        req_builder = match "csv" {
+            "multi" => req_builder.query(&param_value.into_iter().map(|p| ("metric_types".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+            _ => req_builder.query(&[("metric_types", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref local_var_str) = split_field {
-        local_var_req_builder = local_var_req_builder.query(&[("split_field", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_split_field {
+        req_builder = req_builder.query(&[("split_field", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = ad_account_id {
-        local_var_req_builder = local_var_req_builder.query(&[("ad_account_id", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_ad_account_id {
+        req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `std::collections::HashMap&lt;String, models::AnalyticsMetricsResponse&gt;`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `std::collections::HashMap&lt;String, models::AnalyticsMetricsResponse&gt;`")))),
+        }
     } else {
-        let local_var_entity: Option<UserAccountSlashAnalyticsError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<UserAccountSlashAnalyticsError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// Gets analytics data about a user's top pins (limited to the top 50). - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
 pub async fn user_account_slash_analytics_slash_top_pins(configuration: &configuration::Configuration, start_date: String, end_date: String, sort_by: &str, from_claimed_content: Option<&str>, pin_format: Option<&str>, app_types: Option<&str>, content_type: Option<&str>, source: Option<&str>, metric_types: Option<Vec<String>>, num_of_pins: Option<i32>, created_in_last_n_days: Option<i32>, ad_account_id: Option<&str>) -> Result<models::TopPinsAnalyticsResponse, Error<UserAccountSlashAnalyticsSlashTopPinsError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_start_date = start_date;
+    let p_end_date = end_date;
+    let p_sort_by = sort_by;
+    let p_from_claimed_content = from_claimed_content;
+    let p_pin_format = pin_format;
+    let p_app_types = app_types;
+    let p_content_type = content_type;
+    let p_source = source;
+    let p_metric_types = metric_types;
+    let p_num_of_pins = num_of_pins;
+    let p_created_in_last_n_days = created_in_last_n_days;
+    let p_ad_account_id = ad_account_id;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/user_account/analytics/top_pins", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    let local_var_uri_str = format!("{}/user_account/analytics/top_pins", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    local_var_req_builder = local_var_req_builder.query(&[("start_date", &start_date.to_string())]);
-    local_var_req_builder = local_var_req_builder.query(&[("end_date", &end_date.to_string())]);
-    local_var_req_builder = local_var_req_builder.query(&[("sort_by", &sort_by.to_string())]);
-    if let Some(ref local_var_str) = from_claimed_content {
-        local_var_req_builder = local_var_req_builder.query(&[("from_claimed_content", &local_var_str.to_string())]);
+    req_builder = req_builder.query(&[("start_date", &p_start_date.to_string())]);
+    req_builder = req_builder.query(&[("end_date", &p_end_date.to_string())]);
+    req_builder = req_builder.query(&[("sort_by", &p_sort_by.to_string())]);
+    if let Some(ref param_value) = p_from_claimed_content {
+        req_builder = req_builder.query(&[("from_claimed_content", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = pin_format {
-        local_var_req_builder = local_var_req_builder.query(&[("pin_format", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_pin_format {
+        req_builder = req_builder.query(&[("pin_format", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = app_types {
-        local_var_req_builder = local_var_req_builder.query(&[("app_types", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_app_types {
+        req_builder = req_builder.query(&[("app_types", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = content_type {
-        local_var_req_builder = local_var_req_builder.query(&[("content_type", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_content_type {
+        req_builder = req_builder.query(&[("content_type", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = source {
-        local_var_req_builder = local_var_req_builder.query(&[("source", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_source {
+        req_builder = req_builder.query(&[("source", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = metric_types {
-        local_var_req_builder = match "csv" {
-            "multi" => local_var_req_builder.query(&local_var_str.into_iter().map(|p| ("metric_types".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
-            _ => local_var_req_builder.query(&[("metric_types", &local_var_str.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+    if let Some(ref param_value) = p_metric_types {
+        req_builder = match "csv" {
+            "multi" => req_builder.query(&param_value.into_iter().map(|p| ("metric_types".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+            _ => req_builder.query(&[("metric_types", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref local_var_str) = num_of_pins {
-        local_var_req_builder = local_var_req_builder.query(&[("num_of_pins", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_num_of_pins {
+        req_builder = req_builder.query(&[("num_of_pins", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = created_in_last_n_days {
-        local_var_req_builder = local_var_req_builder.query(&[("created_in_last_n_days", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_created_in_last_n_days {
+        req_builder = req_builder.query(&[("created_in_last_n_days", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = ad_account_id {
-        local_var_req_builder = local_var_req_builder.query(&[("ad_account_id", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_ad_account_id {
+        req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::TopPinsAnalyticsResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::TopPinsAnalyticsResponse`")))),
+        }
     } else {
-        let local_var_entity: Option<UserAccountSlashAnalyticsSlashTopPinsError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<UserAccountSlashAnalyticsSlashTopPinsError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// Gets analytics data about a user's top video pins (limited to the top 50). - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
 pub async fn user_account_slash_analytics_slash_top_video_pins(configuration: &configuration::Configuration, start_date: String, end_date: String, sort_by: &str, from_claimed_content: Option<&str>, pin_format: Option<&str>, app_types: Option<&str>, content_type: Option<&str>, source: Option<&str>, metric_types: Option<Vec<String>>, num_of_pins: Option<i32>, created_in_last_n_days: Option<i32>, ad_account_id: Option<&str>) -> Result<models::TopVideoPinsAnalyticsResponse, Error<UserAccountSlashAnalyticsSlashTopVideoPinsError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_start_date = start_date;
+    let p_end_date = end_date;
+    let p_sort_by = sort_by;
+    let p_from_claimed_content = from_claimed_content;
+    let p_pin_format = pin_format;
+    let p_app_types = app_types;
+    let p_content_type = content_type;
+    let p_source = source;
+    let p_metric_types = metric_types;
+    let p_num_of_pins = num_of_pins;
+    let p_created_in_last_n_days = created_in_last_n_days;
+    let p_ad_account_id = ad_account_id;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/user_account/analytics/top_video_pins", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    let local_var_uri_str = format!("{}/user_account/analytics/top_video_pins", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    local_var_req_builder = local_var_req_builder.query(&[("start_date", &start_date.to_string())]);
-    local_var_req_builder = local_var_req_builder.query(&[("end_date", &end_date.to_string())]);
-    local_var_req_builder = local_var_req_builder.query(&[("sort_by", &sort_by.to_string())]);
-    if let Some(ref local_var_str) = from_claimed_content {
-        local_var_req_builder = local_var_req_builder.query(&[("from_claimed_content", &local_var_str.to_string())]);
+    req_builder = req_builder.query(&[("start_date", &p_start_date.to_string())]);
+    req_builder = req_builder.query(&[("end_date", &p_end_date.to_string())]);
+    req_builder = req_builder.query(&[("sort_by", &p_sort_by.to_string())]);
+    if let Some(ref param_value) = p_from_claimed_content {
+        req_builder = req_builder.query(&[("from_claimed_content", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = pin_format {
-        local_var_req_builder = local_var_req_builder.query(&[("pin_format", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_pin_format {
+        req_builder = req_builder.query(&[("pin_format", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = app_types {
-        local_var_req_builder = local_var_req_builder.query(&[("app_types", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_app_types {
+        req_builder = req_builder.query(&[("app_types", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = content_type {
-        local_var_req_builder = local_var_req_builder.query(&[("content_type", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_content_type {
+        req_builder = req_builder.query(&[("content_type", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = source {
-        local_var_req_builder = local_var_req_builder.query(&[("source", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_source {
+        req_builder = req_builder.query(&[("source", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = metric_types {
-        local_var_req_builder = match "csv" {
-            "multi" => local_var_req_builder.query(&local_var_str.into_iter().map(|p| ("metric_types".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
-            _ => local_var_req_builder.query(&[("metric_types", &local_var_str.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+    if let Some(ref param_value) = p_metric_types {
+        req_builder = match "csv" {
+            "multi" => req_builder.query(&param_value.into_iter().map(|p| ("metric_types".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+            _ => req_builder.query(&[("metric_types", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref local_var_str) = num_of_pins {
-        local_var_req_builder = local_var_req_builder.query(&[("num_of_pins", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_num_of_pins {
+        req_builder = req_builder.query(&[("num_of_pins", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = created_in_last_n_days {
-        local_var_req_builder = local_var_req_builder.query(&[("created_in_last_n_days", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_created_in_last_n_days {
+        req_builder = req_builder.query(&[("created_in_last_n_days", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = ad_account_id {
-        local_var_req_builder = local_var_req_builder.query(&[("ad_account_id", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_ad_account_id {
+        req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::TopVideoPinsAnalyticsResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::TopVideoPinsAnalyticsResponse`")))),
+        }
     } else {
-        let local_var_entity: Option<UserAccountSlashAnalyticsSlashTopVideoPinsError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<UserAccountSlashAnalyticsSlashTopVideoPinsError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// Get a list of a user's following interests in one place.
 pub async fn user_account_slash_followed_interests(configuration: &configuration::Configuration, username: &str, bookmark: Option<&str>, page_size: Option<i32>) -> Result<models::UserAccountFollowedInterests200Response, Error<UserAccountSlashFollowedInterestsError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_username = username;
+    let p_bookmark = bookmark;
+    let p_page_size = page_size;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/users/{username}/interests/follow", configuration.base_path, username=crate::apis::urlencode(p_username));
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    let local_var_uri_str = format!("{}/users/{username}/interests/follow", local_var_configuration.base_path, username=crate::apis::urlencode(username));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_str) = bookmark {
-        local_var_req_builder = local_var_req_builder.query(&[("bookmark", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_bookmark {
+        req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = page_size {
-        local_var_req_builder = local_var_req_builder.query(&[("page_size", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_page_size {
+        req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::UserAccountFollowedInterests200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::UserAccountFollowedInterests200Response`")))),
+        }
     } else {
-        let local_var_entity: Option<UserAccountSlashFollowedInterestsError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<UserAccountSlashFollowedInterestsError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 pub async fn user_account_slash_get(configuration: &configuration::Configuration, ad_account_id: Option<&str>) -> Result<models::Account, Error<UserAccountSlashGetError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_ad_account_id = ad_account_id;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/user_account", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    let local_var_uri_str = format!("{}/user_account", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_str) = ad_account_id {
-        local_var_req_builder = local_var_req_builder.query(&[("ad_account_id", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_ad_account_id {
+        req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::Account`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::Account`")))),
+        }
     } else {
-        let local_var_entity: Option<UserAccountSlashGetError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<UserAccountSlashGetError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// Get a list of who a certain user follows.
 pub async fn user_following_slash_get(configuration: &configuration::Configuration, bookmark: Option<&str>, page_size: Option<i32>, feed_type: Option<&str>, explicit_following: Option<bool>, ad_account_id: Option<&str>) -> Result<models::UserFollowingGet200Response, Error<UserFollowingSlashGetError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_bookmark = bookmark;
+    let p_page_size = page_size;
+    let p_feed_type = feed_type;
+    let p_explicit_following = explicit_following;
+    let p_ad_account_id = ad_account_id;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/user_account/following", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    let local_var_uri_str = format!("{}/user_account/following", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_str) = bookmark {
-        local_var_req_builder = local_var_req_builder.query(&[("bookmark", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_bookmark {
+        req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = page_size {
-        local_var_req_builder = local_var_req_builder.query(&[("page_size", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_page_size {
+        req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = feed_type {
-        local_var_req_builder = local_var_req_builder.query(&[("feed_type", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_feed_type {
+        req_builder = req_builder.query(&[("feed_type", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = explicit_following {
-        local_var_req_builder = local_var_req_builder.query(&[("explicit_following", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_explicit_following {
+        req_builder = req_builder.query(&[("explicit_following", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = ad_account_id {
-        local_var_req_builder = local_var_req_builder.query(&[("ad_account_id", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_ad_account_id {
+        req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::UserFollowingGet200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::UserFollowingGet200Response`")))),
+        }
     } else {
-        let local_var_entity: Option<UserFollowingSlashGetError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<UserFollowingSlashGetError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// Get user websites, claimed or not
 pub async fn user_websites_slash_get(configuration: &configuration::Configuration, bookmark: Option<&str>, page_size: Option<i32>) -> Result<models::UserWebsitesGet200Response, Error<UserWebsitesSlashGetError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_bookmark = bookmark;
+    let p_page_size = page_size;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/user_account/websites", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    let local_var_uri_str = format!("{}/user_account/websites", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_str) = bookmark {
-        local_var_req_builder = local_var_req_builder.query(&[("bookmark", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_bookmark {
+        req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = page_size {
-        local_var_req_builder = local_var_req_builder.query(&[("page_size", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_page_size {
+        req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::UserWebsitesGet200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::UserWebsitesGet200Response`")))),
+        }
     } else {
-        let local_var_entity: Option<UserWebsitesSlashGetError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<UserWebsitesSlashGetError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// Verify a website as a signed-in user.
 pub async fn verify_website_slash_update(configuration: &configuration::Configuration, user_website_verify_request: models::UserWebsiteVerifyRequest, ad_account_id: Option<&str>) -> Result<models::UserWebsiteSummary, Error<VerifyWebsiteSlashUpdateError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_user_website_verify_request = user_website_verify_request;
+    let p_ad_account_id = ad_account_id;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/user_account/websites", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    let local_var_uri_str = format!("{}/user_account/websites", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_str) = ad_account_id {
-        local_var_req_builder = local_var_req_builder.query(&[("ad_account_id", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_ad_account_id {
+        req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&user_website_verify_request);
+    req_builder = req_builder.json(&p_user_website_verify_request);
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::UserWebsiteSummary`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::UserWebsiteSummary`")))),
+        }
     } else {
-        let local_var_entity: Option<VerifyWebsiteSlashUpdateError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<VerifyWebsiteSlashUpdateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// Get verification code for user to install on the website to claim it.
 pub async fn website_verification_slash_get(configuration: &configuration::Configuration, ad_account_id: Option<&str>) -> Result<models::UserWebsiteVerificationCode, Error<WebsiteVerificationSlashGetError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_ad_account_id = ad_account_id;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/user_account/websites/verification", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    let local_var_uri_str = format!("{}/user_account/websites/verification", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_str) = ad_account_id {
-        local_var_req_builder = local_var_req_builder.query(&[("ad_account_id", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_ad_account_id {
+        req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::UserWebsiteVerificationCode`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::UserWebsiteVerificationCode`")))),
+        }
     } else {
-        let local_var_entity: Option<WebsiteVerificationSlashGetError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<WebsiteVerificationSlashGetError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 

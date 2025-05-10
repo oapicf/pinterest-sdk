@@ -22,9 +22,10 @@ typedef struct order_line_single_response_t order_line_single_response_t;
 typedef struct order_line_single_response_t {
     order_line_response_t *data; //object
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } order_line_single_response_t;
 
-order_line_single_response_t *order_line_single_response_create(
+__attribute__((deprecated)) order_line_single_response_t *order_line_single_response_create(
     order_line_response_t *data
 );
 

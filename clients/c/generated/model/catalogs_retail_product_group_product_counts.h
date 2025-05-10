@@ -34,9 +34,10 @@ typedef struct catalogs_retail_product_group_product_counts_t {
     double total; //numeric
     double videos; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_retail_product_group_product_counts_t;
 
-catalogs_retail_product_group_product_counts_t *catalogs_retail_product_group_product_counts_create(
+__attribute__((deprecated)) catalogs_retail_product_group_product_counts_t *catalogs_retail_product_group_product_counts_create(
     pinterest_rest_api_catalogs_retail_product_group_product_counts_CATALOGTYPE_e catalog_type,
     double in_stock,
     double out_of_stock,

@@ -5,7 +5,7 @@
 
 
 
-country_filter_t *country_filter_create(
+static country_filter_t *country_filter_create_internal(
     catalogs_product_group_multiple_countries_criteria_t *country
     ) {
     country_filter_t *country_filter_local_var = malloc(sizeof(country_filter_t));
@@ -14,12 +14,24 @@ country_filter_t *country_filter_create(
     }
     country_filter_local_var->country = country;
 
+    country_filter_local_var->_library_owned = 1;
     return country_filter_local_var;
 }
 
+__attribute__((deprecated)) country_filter_t *country_filter_create(
+    catalogs_product_group_multiple_countries_criteria_t *country
+    ) {
+    return country_filter_create_internal (
+        country
+        );
+}
 
 void country_filter_free(country_filter_t *country_filter) {
     if(NULL == country_filter){
+        return ;
+    }
+    if(country_filter->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "country_filter_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -60,6 +72,9 @@ country_filter_t *country_filter_parseFromJSON(cJSON *country_filterJSON){
 
     // country_filter->country
     cJSON *country = cJSON_GetObjectItemCaseSensitive(country_filterJSON, "COUNTRY");
+    if (cJSON_IsNull(country)) {
+        country = NULL;
+    }
     if (!country) {
         goto end;
     }
@@ -69,7 +84,7 @@ country_filter_t *country_filter_parseFromJSON(cJSON *country_filterJSON){
     country_local_object = object_parseFromJSON(country); //object
 
 
-    country_filter_local_var = country_filter_create (
+    country_filter_local_var = country_filter_create_internal (
         country_local_object
         );
 

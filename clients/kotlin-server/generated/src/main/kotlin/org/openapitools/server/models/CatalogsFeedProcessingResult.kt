@@ -16,6 +16,7 @@ import org.openapitools.server.models.CatalogsFeedProcessingStatus
 import org.openapitools.server.models.CatalogsFeedProductCounts
 import org.openapitools.server.models.CatalogsFeedValidationDetails
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param createdAt 
@@ -26,13 +27,14 @@ import org.openapitools.server.models.CatalogsFeedValidationDetails
  * @param productCounts 
  * @param validationDetails 
  */
+@Serializable
 data class CatalogsFeedProcessingResult(
-    val createdAt: java.time.OffsetDateTime,
+    val createdAt: kotlin.String,
     val id: kotlin.String,
-    val updatedAt: java.time.OffsetDateTime,
+    val updatedAt: kotlin.String,
     val ingestionDetails: CatalogsFeedIngestionDetails,
     val status: CatalogsFeedProcessingStatus,
-    val productCounts: CatalogsFeedProductCounts,
+    val productCounts: CatalogsFeedProductCounts?,
     val validationDetails: CatalogsFeedValidationDetails
-) 
+)
 

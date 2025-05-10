@@ -24,9 +24,9 @@ char* invite_status_invite_status_ToString(pinterest_rest_api_invite_status__e i
 
 pinterest_rest_api_invite_status__e invite_status_invite_status_FromString(char* invite_status);
 
-//cJSON *invite_status_invite_status_convertToJSON(pinterest_rest_api_invite_status__e invite_status);
+cJSON *invite_status_convertToJSON(pinterest_rest_api_invite_status__e invite_status);
 
-//pinterest_rest_api_invite_status__e invite_status_invite_status_parseFromJSON(cJSON *invite_statusJSON);
+pinterest_rest_api_invite_status__e invite_status_parseFromJSON(cJSON *invite_statusJSON);
 
 #endif /* _invite_status_H_ */
 

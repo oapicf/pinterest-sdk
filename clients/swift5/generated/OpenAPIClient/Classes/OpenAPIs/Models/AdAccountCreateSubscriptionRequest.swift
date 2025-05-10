@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct AdAccountCreateSubscriptionRequest: Codable, JSONEncodable, Hashable {
 
-    static let leadFormIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let leadFormIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Standard HTTPS webhook URL. */
     public var webhookUrl: String
     /** Lead form ID. */

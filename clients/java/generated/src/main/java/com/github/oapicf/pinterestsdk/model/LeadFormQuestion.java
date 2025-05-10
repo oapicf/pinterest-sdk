@@ -53,28 +53,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * LeadFormQuestion
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class LeadFormQuestion {
   public static final String SERIALIZED_NAME_QUESTION_TYPE = "question_type";
   @SerializedName(SERIALIZED_NAME_QUESTION_TYPE)
+  @javax.annotation.Nullable
   private LeadFormQuestionType questionType;
 
   public static final String SERIALIZED_NAME_CUSTOM_QUESTION_FIELD_TYPE = "custom_question_field_type";
   @SerializedName(SERIALIZED_NAME_CUSTOM_QUESTION_FIELD_TYPE)
+  @javax.annotation.Nullable
   private LeadFormQuestionFieldType customQuestionFieldType;
 
   public static final String SERIALIZED_NAME_CUSTOM_QUESTION_LABEL = "custom_question_label";
   @SerializedName(SERIALIZED_NAME_CUSTOM_QUESTION_LABEL)
+  @javax.annotation.Nullable
   private String customQuestionLabel;
 
   public static final String SERIALIZED_NAME_CUSTOM_QUESTION_OPTIONS = "custom_question_options";
   @SerializedName(SERIALIZED_NAME_CUSTOM_QUESTION_OPTIONS)
+  @javax.annotation.Nullable
   private List<String> customQuestionOptions;
 
   public LeadFormQuestion() {
   }
 
-  public LeadFormQuestion questionType(LeadFormQuestionType questionType) {
+  public LeadFormQuestion questionType(@javax.annotation.Nullable LeadFormQuestionType questionType) {
     this.questionType = questionType;
     return this;
   }
@@ -88,12 +92,12 @@ public class LeadFormQuestion {
     return questionType;
   }
 
-  public void setQuestionType(LeadFormQuestionType questionType) {
+  public void setQuestionType(@javax.annotation.Nullable LeadFormQuestionType questionType) {
     this.questionType = questionType;
   }
 
 
-  public LeadFormQuestion customQuestionFieldType(LeadFormQuestionFieldType customQuestionFieldType) {
+  public LeadFormQuestion customQuestionFieldType(@javax.annotation.Nullable LeadFormQuestionFieldType customQuestionFieldType) {
     this.customQuestionFieldType = customQuestionFieldType;
     return this;
   }
@@ -107,12 +111,12 @@ public class LeadFormQuestion {
     return customQuestionFieldType;
   }
 
-  public void setCustomQuestionFieldType(LeadFormQuestionFieldType customQuestionFieldType) {
+  public void setCustomQuestionFieldType(@javax.annotation.Nullable LeadFormQuestionFieldType customQuestionFieldType) {
     this.customQuestionFieldType = customQuestionFieldType;
   }
 
 
-  public LeadFormQuestion customQuestionLabel(String customQuestionLabel) {
+  public LeadFormQuestion customQuestionLabel(@javax.annotation.Nullable String customQuestionLabel) {
     this.customQuestionLabel = customQuestionLabel;
     return this;
   }
@@ -126,12 +130,12 @@ public class LeadFormQuestion {
     return customQuestionLabel;
   }
 
-  public void setCustomQuestionLabel(String customQuestionLabel) {
+  public void setCustomQuestionLabel(@javax.annotation.Nullable String customQuestionLabel) {
     this.customQuestionLabel = customQuestionLabel;
   }
 
 
-  public LeadFormQuestion customQuestionOptions(List<String> customQuestionOptions) {
+  public LeadFormQuestion customQuestionOptions(@javax.annotation.Nullable List<String> customQuestionOptions) {
     this.customQuestionOptions = customQuestionOptions;
     return this;
   }
@@ -153,7 +157,7 @@ public class LeadFormQuestion {
     return customQuestionOptions;
   }
 
-  public void setCustomQuestionOptions(List<String> customQuestionOptions) {
+  public void setCustomQuestionOptions(@javax.annotation.Nullable List<String> customQuestionOptions) {
     this.customQuestionOptions = customQuestionOptions;
   }
 

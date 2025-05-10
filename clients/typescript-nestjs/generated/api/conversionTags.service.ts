@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { ConversionEventResponse } from '../model/conversionEventResponse';
 import { ConversionTagCreate } from '../model/conversionTagCreate';
@@ -30,10 +30,12 @@ export class ConversionTagsService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -52,9 +54,10 @@ export class ConversionTagsService {
      * @param conversionTagCreate Conversion Tag to create
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [conversionTagsCreateOpts.config] Override http request option.
      */
-    public conversionTagsCreate(adAccountId: string, conversionTagCreate: ConversionTagCreate, ): Observable<AxiosResponse<ConversionTagResponse>>;
-    public conversionTagsCreate(adAccountId: string, conversionTagCreate: ConversionTagCreate, ): Observable<any> {
+    public conversionTagsCreate(adAccountId: string, conversionTagCreate: ConversionTagCreate, conversionTagsCreateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<ConversionTagResponse>>;
+    public conversionTagsCreate(adAccountId: string, conversionTagCreate: ConversionTagCreate, conversionTagsCreateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling conversionTagsCreate.');
         }
@@ -101,7 +104,8 @@ export class ConversionTagsService {
                     conversionTagCreate,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...conversionTagsCreateOpts?.config,
+                        headers: {...headers, ...conversionTagsCreateOpts?.config?.headers},
                     }
                 );
             })
@@ -114,9 +118,10 @@ export class ConversionTagsService {
      * @param conversionTagId Id of the conversion tag.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [conversionTagsGetOpts.config] Override http request option.
      */
-    public conversionTagsGet(adAccountId: string, conversionTagId: string, ): Observable<AxiosResponse<ConversionTagResponse>>;
-    public conversionTagsGet(adAccountId: string, conversionTagId: string, ): Observable<any> {
+    public conversionTagsGet(adAccountId: string, conversionTagId: string, conversionTagsGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<ConversionTagResponse>>;
+    public conversionTagsGet(adAccountId: string, conversionTagId: string, conversionTagsGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling conversionTagsGet.');
         }
@@ -157,7 +162,8 @@ export class ConversionTagsService {
                 return this.httpClient.get<ConversionTagResponse>(`${this.basePath}/ad_accounts/${encodeURIComponent(String(ad_account_id))}/conversion_tags/${encodeURIComponent(String(conversion_tag_id))}`,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...conversionTagsGetOpts?.config,
+                        headers: {...headers, ...conversionTagsGetOpts?.config?.headers},
                     }
                 );
             })
@@ -170,9 +176,10 @@ export class ConversionTagsService {
      * @param filterDeleted Filter out deleted tags.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [conversionTagsListOpts.config] Override http request option.
      */
-    public conversionTagsList(adAccountId: string, filterDeleted?: boolean, ): Observable<AxiosResponse<ConversionTagListResponse>>;
-    public conversionTagsList(adAccountId: string, filterDeleted?: boolean, ): Observable<any> {
+    public conversionTagsList(adAccountId: string, filterDeleted?: boolean, conversionTagsListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<ConversionTagListResponse>>;
+    public conversionTagsList(adAccountId: string, filterDeleted?: boolean, conversionTagsListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling conversionTagsList.');
         }
@@ -215,7 +222,8 @@ export class ConversionTagsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...conversionTagsListOpts?.config,
+                        headers: {...headers, ...conversionTagsListOpts?.config?.headers},
                     }
                 );
             })
@@ -227,9 +235,10 @@ export class ConversionTagsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [ocpmEligibleConversionTagsGetOpts.config] Override http request option.
      */
-    public ocpmEligibleConversionTagsGet(adAccountId: string, ): Observable<AxiosResponse<{ [key: string]: Array<ConversionEventResponse>; }>>;
-    public ocpmEligibleConversionTagsGet(adAccountId: string, ): Observable<any> {
+    public ocpmEligibleConversionTagsGet(adAccountId: string, ocpmEligibleConversionTagsGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<{ [key: string]: Array<ConversionEventResponse>; }>>;
+    public ocpmEligibleConversionTagsGet(adAccountId: string, ocpmEligibleConversionTagsGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling ocpmEligibleConversionTagsGet.');
         }
@@ -266,7 +275,8 @@ export class ConversionTagsService {
                 return this.httpClient.get<{ [key: string]: Array<ConversionEventResponse>; }>(`${this.basePath}/ad_accounts/${encodeURIComponent(String(ad_account_id))}/conversion_tags/ocpm_eligible`,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...ocpmEligibleConversionTagsGetOpts?.config,
+                        headers: {...headers, ...ocpmEligibleConversionTagsGetOpts?.config?.headers},
                     }
                 );
             })
@@ -281,9 +291,10 @@ export class ConversionTagsService {
      * @param bookmark Cursor used to fetch the next page of items
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [pageVisitConversionTagsGetOpts.config] Override http request option.
      */
-    public pageVisitConversionTagsGet(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, ): Observable<AxiosResponse<PageVisitConversionTagsGet200Response>>;
-    public pageVisitConversionTagsGet(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, ): Observable<any> {
+    public pageVisitConversionTagsGet(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, pageVisitConversionTagsGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<PageVisitConversionTagsGet200Response>>;
+    public pageVisitConversionTagsGet(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, pageVisitConversionTagsGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling pageVisitConversionTagsGet.');
         }
@@ -332,7 +343,8 @@ export class ConversionTagsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...pageVisitConversionTagsGetOpts?.config,
+                        headers: {...headers, ...pageVisitConversionTagsGetOpts?.config?.headers},
                     }
                 );
             })

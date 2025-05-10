@@ -55,16 +55,16 @@ namespace Org.OpenAPITools.Models
         {
             
             /// <summary>
-            /// Enum JpegEnum for image/jpeg
+            /// Enum ImageJpegEnum for image/jpeg
             /// </summary>
             [EnumMember(Value = "image/jpeg")]
-            JpegEnum = 1,
+            ImageJpegEnum = 1,
             
             /// <summary>
-            /// Enum PngEnum for image/png
+            /// Enum ImagePngEnum for image/png
             /// </summary>
             [EnumMember(Value = "image/png")]
-            PngEnum = 2
+            ImagePngEnum = 2
         }
 
         /// <summary>

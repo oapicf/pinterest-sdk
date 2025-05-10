@@ -15,8 +15,8 @@ public struct CatalogsReportFeedIngestionFilter: Codable, JSONEncodable, Hashabl
     public enum ReportType: String, Codable, CaseIterable {
         case feedIngestionIssues = "FEED_INGESTION_ISSUES"
     }
-    static let feedIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let processingResultIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let feedIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let processingResultIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public var reportType: ReportType
     /** ID of the feed entity. */
     public var feedId: String

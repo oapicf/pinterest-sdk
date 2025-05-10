@@ -226,7 +226,7 @@ void OAIAdvancedAuctionApi::advancedAuctionItemsGet_post(const OAIAdvancedAuctio
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -246,7 +246,7 @@ void OAIAdvancedAuctionApi::advancedAuctionItemsGet_post(const OAIAdvancedAuctio
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAdvancedAuctionApi::advancedAuctionItemsGet_postCallback);
     connect(this, &OAIAdvancedAuctionApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -269,7 +269,7 @@ void OAIAdvancedAuctionApi::advancedAuctionItemsGet_post(const OAIAdvancedAuctio
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAdvancedAuctionApi::advancedAuctionItemsGet_postCallback);
     connect(this, &OAIAdvancedAuctionApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -360,7 +360,7 @@ void OAIAdvancedAuctionApi::advancedAuctionItemsSubmit_post(const OAIAdvancedAuc
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -380,7 +380,7 @@ void OAIAdvancedAuctionApi::advancedAuctionItemsSubmit_post(const OAIAdvancedAuc
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAdvancedAuctionApi::advancedAuctionItemsSubmit_postCallback);
     connect(this, &OAIAdvancedAuctionApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -403,7 +403,7 @@ void OAIAdvancedAuctionApi::advancedAuctionItemsSubmit_post(const OAIAdvancedAuc
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAdvancedAuctionApi::advancedAuctionItemsSubmit_postCallback);
     connect(this, &OAIAdvancedAuctionApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }

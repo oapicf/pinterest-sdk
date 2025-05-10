@@ -52,15 +52,19 @@ export function CatalogsReportParametersFromJSONTyped(json: any, ignoreDiscrimin
     }
 }
 
-export function CatalogsReportParametersToJSON(value?: CatalogsReportParameters | null): any {
+export function CatalogsReportParametersToJSON(json: any): any {
+    return CatalogsReportParametersToJSONTyped(json, false);
+}
+
+export function CatalogsReportParametersToJSONTyped(value?: CatalogsReportParameters | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
     switch (value['catalogType']) {
         case 'HOTEL':
-            return CatalogsHotelReportParametersToJSON(value);
+            return Object.assign({}, CatalogsHotelReportParametersToJSON(value), { catalogType: 'HOTEL' } as const);
         case 'RETAIL':
-            return CatalogsRetailReportParametersToJSON(value);
+            return Object.assign({}, CatalogsRetailReportParametersToJSON(value), { catalogType: 'RETAIL' } as const);
         default:
             throw new Error(`No variant of CatalogsReportParameters exists with 'catalogType=${value['catalogType']}'`);
     }

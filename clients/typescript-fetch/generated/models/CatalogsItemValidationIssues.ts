@@ -88,11 +88,11 @@ export function CatalogsItemValidationIssuesFromJSONTyped(json: any, ignoreDiscr
     };
 }
 
-  export function CatalogsItemValidationIssuesToJSON(json: any): CatalogsItemValidationIssues {
-      return CatalogsItemValidationIssuesToJSONTyped(json, false);
-  }
+export function CatalogsItemValidationIssuesToJSON(json: any): CatalogsItemValidationIssues {
+    return CatalogsItemValidationIssuesToJSONTyped(json, false);
+}
 
-  export function CatalogsItemValidationIssuesToJSONTyped(value?: CatalogsItemValidationIssues | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsItemValidationIssuesToJSONTyped(value?: CatalogsItemValidationIssues | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

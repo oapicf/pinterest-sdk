@@ -5,7 +5,7 @@
 
 
 
-page_visit_conversion_tags_get_200_response_t *page_visit_conversion_tags_get_200_response_create(
+static page_visit_conversion_tags_get_200_response_t *page_visit_conversion_tags_get_200_response_create_internal(
     list_t *items,
     char *bookmark
     ) {
@@ -16,12 +16,26 @@ page_visit_conversion_tags_get_200_response_t *page_visit_conversion_tags_get_20
     page_visit_conversion_tags_get_200_response_local_var->items = items;
     page_visit_conversion_tags_get_200_response_local_var->bookmark = bookmark;
 
+    page_visit_conversion_tags_get_200_response_local_var->_library_owned = 1;
     return page_visit_conversion_tags_get_200_response_local_var;
 }
 
+__attribute__((deprecated)) page_visit_conversion_tags_get_200_response_t *page_visit_conversion_tags_get_200_response_create(
+    list_t *items,
+    char *bookmark
+    ) {
+    return page_visit_conversion_tags_get_200_response_create_internal (
+        items,
+        bookmark
+        );
+}
 
 void page_visit_conversion_tags_get_200_response_free(page_visit_conversion_tags_get_200_response_t *page_visit_conversion_tags_get_200_response) {
     if(NULL == page_visit_conversion_tags_get_200_response){
+        return ;
+    }
+    if(page_visit_conversion_tags_get_200_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "page_visit_conversion_tags_get_200_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -87,6 +101,9 @@ page_visit_conversion_tags_get_200_response_t *page_visit_conversion_tags_get_20
 
     // page_visit_conversion_tags_get_200_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(page_visit_conversion_tags_get_200_responseJSON, "items");
+    if (cJSON_IsNull(items)) {
+        items = NULL;
+    }
     if (!items) {
         goto end;
     }
@@ -111,6 +128,9 @@ page_visit_conversion_tags_get_200_response_t *page_visit_conversion_tags_get_20
 
     // page_visit_conversion_tags_get_200_response->bookmark
     cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(page_visit_conversion_tags_get_200_responseJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
     if (bookmark) { 
     if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
     {
@@ -119,7 +139,7 @@ page_visit_conversion_tags_get_200_response_t *page_visit_conversion_tags_get_20
     }
 
 
-    page_visit_conversion_tags_get_200_response_local_var = page_visit_conversion_tags_get_200_response_create (
+    page_visit_conversion_tags_get_200_response_local_var = page_visit_conversion_tags_get_200_response_create_internal (
         itemsList,
         bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
         );

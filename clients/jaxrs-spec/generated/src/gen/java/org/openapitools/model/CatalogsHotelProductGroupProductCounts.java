@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Product counts for a Hotel CatalogsProductGroup")
 @JsonTypeName("CatalogsHotelProductGroupProductCounts")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsHotelProductGroupProductCounts   {
   public enum CatalogTypeEnum {
 
@@ -70,6 +70,18 @@ public class CatalogsHotelProductGroupProductCounts   {
   private CatalogTypeEnum catalogType;
   private BigDecimal total;
 
+  public CatalogsHotelProductGroupProductCounts() {
+  }
+
+  @JsonCreator
+  public CatalogsHotelProductGroupProductCounts(
+    @JsonProperty(required = true, value = "catalog_type") CatalogTypeEnum catalogType,
+    @JsonProperty(required = true, value = "total") BigDecimal total
+  ) {
+    this.catalogType = catalogType;
+    this.total = total;
+  }
+
   /**
    **/
   public CatalogsHotelProductGroupProductCounts catalogType(CatalogTypeEnum catalogType) {
@@ -79,12 +91,12 @@ public class CatalogsHotelProductGroupProductCounts   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   @NotNull public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
@@ -99,12 +111,12 @@ public class CatalogsHotelProductGroupProductCounts   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("total")
+  @JsonProperty(required = true, value = "total")
   @NotNull @Valid  @DecimalMin("0")public BigDecimal getTotal() {
     return total;
   }
 
-  @JsonProperty("total")
+  @JsonProperty(required = true, value = "total")
   public void setTotal(BigDecimal total) {
     this.total = total;
   }

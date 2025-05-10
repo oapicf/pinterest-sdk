@@ -37,9 +37,10 @@ typedef struct integration_record_t {
     int created_time; //numeric
     int updated_time; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } integration_record_t;
 
-integration_record_t *integration_record_create(
+__attribute__((deprecated)) integration_record_t *integration_record_create(
     char *id,
     char *external_business_id,
     char *connected_merchant_id,

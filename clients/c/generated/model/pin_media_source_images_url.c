@@ -22,7 +22,7 @@ pinterest_rest_api_pin_media_source_images_url_SOURCETYPE_e pin_media_source_ima
     return 0;
 }
 
-pin_media_source_images_url_t *pin_media_source_images_url_create(
+static pin_media_source_images_url_t *pin_media_source_images_url_create_internal(
     pinterest_rest_api_pin_media_source_images_url_SOURCETYPE_e source_type,
     list_t *items,
     int index
@@ -35,12 +35,28 @@ pin_media_source_images_url_t *pin_media_source_images_url_create(
     pin_media_source_images_url_local_var->items = items;
     pin_media_source_images_url_local_var->index = index;
 
+    pin_media_source_images_url_local_var->_library_owned = 1;
     return pin_media_source_images_url_local_var;
 }
 
+__attribute__((deprecated)) pin_media_source_images_url_t *pin_media_source_images_url_create(
+    pinterest_rest_api_pin_media_source_images_url_SOURCETYPE_e source_type,
+    list_t *items,
+    int index
+    ) {
+    return pin_media_source_images_url_create_internal (
+        source_type,
+        items,
+        index
+        );
+}
 
 void pin_media_source_images_url_free(pin_media_source_images_url_t *pin_media_source_images_url) {
     if(NULL == pin_media_source_images_url){
+        return ;
+    }
+    if(pin_media_source_images_url->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "pin_media_source_images_url_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -59,7 +75,7 @@ cJSON *pin_media_source_images_url_convertToJSON(pin_media_source_images_url_t *
 
     // pin_media_source_images_url->source_type
     if(pin_media_source_images_url->source_type != pinterest_rest_api_pin_media_source_images_url_SOURCETYPE_NULL) {
-    if(cJSON_AddStringToObject(item, "source_type", source_typepin_media_source_images_url_ToString(pin_media_source_images_url->source_type)) == NULL)
+    if(cJSON_AddStringToObject(item, "source_type", pin_media_source_images_url_source_type_ToString(pin_media_source_images_url->source_type)) == NULL)
     {
     goto fail; //Enum
     }
@@ -111,6 +127,9 @@ pin_media_source_images_url_t *pin_media_source_images_url_parseFromJSON(cJSON *
 
     // pin_media_source_images_url->source_type
     cJSON *source_type = cJSON_GetObjectItemCaseSensitive(pin_media_source_images_urlJSON, "source_type");
+    if (cJSON_IsNull(source_type)) {
+        source_type = NULL;
+    }
     pinterest_rest_api_pin_media_source_images_url_SOURCETYPE_e source_typeVariable;
     if (source_type) { 
     if(!cJSON_IsString(source_type))
@@ -122,6 +141,9 @@ pin_media_source_images_url_t *pin_media_source_images_url_parseFromJSON(cJSON *
 
     // pin_media_source_images_url->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(pin_media_source_images_urlJSON, "items");
+    if (cJSON_IsNull(items)) {
+        items = NULL;
+    }
     if (!items) {
         goto end;
     }
@@ -146,6 +168,9 @@ pin_media_source_images_url_t *pin_media_source_images_url_parseFromJSON(cJSON *
 
     // pin_media_source_images_url->index
     cJSON *index = cJSON_GetObjectItemCaseSensitive(pin_media_source_images_urlJSON, "index");
+    if (cJSON_IsNull(index)) {
+        index = NULL;
+    }
     if (index) { 
     if(!cJSON_IsNumber(index))
     {
@@ -154,7 +179,7 @@ pin_media_source_images_url_t *pin_media_source_images_url_parseFromJSON(cJSON *
     }
 
 
-    pin_media_source_images_url_local_var = pin_media_source_images_url_create (
+    pin_media_source_images_url_local_var = pin_media_source_images_url_create_internal (
         source_type ? source_typeVariable : pinterest_rest_api_pin_media_source_images_url_SOURCETYPE_NULL,
         itemsList,
         index ? index->valuedouble : 0

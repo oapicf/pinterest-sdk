@@ -13,8 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // PinsAnalyticsMetricTypesParameterInner - struct for PinsAnalyticsMetricTypesParameterInner
@@ -79,6 +79,16 @@ func (obj *PinsAnalyticsMetricTypesParameterInner) GetActualInstance() (interfac
 	}
 	if obj.String != nil {
 		return obj.String
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj PinsAnalyticsMetricTypesParameterInner) GetActualInstanceValue() (interface{}) {
+	if obj.String != nil {
+		return *obj.String
 	}
 
 	// all schemas are nil

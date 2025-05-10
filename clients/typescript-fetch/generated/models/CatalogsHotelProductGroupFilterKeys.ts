@@ -198,11 +198,11 @@ export function CatalogsHotelProductGroupFilterKeysFromJSONTyped(json: any, igno
     };
 }
 
-  export function CatalogsHotelProductGroupFilterKeysToJSON(json: any): CatalogsHotelProductGroupFilterKeys {
-      return CatalogsHotelProductGroupFilterKeysToJSONTyped(json, false);
-  }
+export function CatalogsHotelProductGroupFilterKeysToJSON(json: any): CatalogsHotelProductGroupFilterKeys {
+    return CatalogsHotelProductGroupFilterKeysToJSONTyped(json, false);
+}
 
-  export function CatalogsHotelProductGroupFilterKeysToJSONTyped(value?: CatalogsHotelProductGroupFilterKeys | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsHotelProductGroupFilterKeysToJSONTyped(value?: CatalogsHotelProductGroupFilterKeys | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -68,11 +68,11 @@ export function TemplateResponseDateRangeDynamicDateRangeFromJSONTyped(json: any
     };
 }
 
-  export function TemplateResponseDateRangeDynamicDateRangeToJSON(json: any): TemplateResponseDateRangeDynamicDateRange {
-      return TemplateResponseDateRangeDynamicDateRangeToJSONTyped(json, false);
-  }
+export function TemplateResponseDateRangeDynamicDateRangeToJSON(json: any): TemplateResponseDateRangeDynamicDateRange {
+    return TemplateResponseDateRangeDynamicDateRangeToJSONTyped(json, false);
+}
 
-  export function TemplateResponseDateRangeDynamicDateRangeToJSONTyped(value?: TemplateResponseDateRangeDynamicDateRange | null, ignoreDiscriminator: boolean = false): any {
+export function TemplateResponseDateRangeDynamicDateRangeToJSONTyped(value?: TemplateResponseDateRangeDynamicDateRange | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

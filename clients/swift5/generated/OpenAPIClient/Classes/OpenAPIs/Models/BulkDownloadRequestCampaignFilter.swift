@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct BulkDownloadRequestCampaignFilter: Codable, JSONEncodable, Hashable {
 
-    static let startTimeRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let endTimeRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let startTimeRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let endTimeRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Unix UTC timestamp. */
     public var startTime: String?
     /** Unix UTC timestamp. */

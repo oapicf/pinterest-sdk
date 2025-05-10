@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsRetailBatchRequest_items_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsRetailBatchRequestItemsInner   {
   private String itemId;
   public enum OperationEnum {
@@ -90,6 +90,20 @@ public class CatalogsRetailBatchRequestItemsInner   {
   private ItemAttributesRequest attributes;
   private @Valid List<UpdateMaskFieldType> updateMask;
 
+  public CatalogsRetailBatchRequestItemsInner() {
+  }
+
+  @JsonCreator
+  public CatalogsRetailBatchRequestItemsInner(
+    @JsonProperty(required = true, value = "item_id") String itemId,
+    @JsonProperty(required = true, value = "operation") OperationEnum operation,
+    @JsonProperty(required = true, value = "attributes") ItemAttributesRequest attributes
+  ) {
+    this.itemId = itemId;
+    this.operation = operation;
+    this.attributes = attributes;
+  }
+
   /**
    * The catalog item id in the merchant namespace
    **/
@@ -100,12 +114,12 @@ public class CatalogsRetailBatchRequestItemsInner   {
 
   
   @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog item id in the merchant namespace")
-  @JsonProperty("item_id")
+  @JsonProperty(required = true, value = "item_id")
   @NotNull public String getItemId() {
     return itemId;
   }
 
-  @JsonProperty("item_id")
+  @JsonProperty(required = true, value = "item_id")
   public void setItemId(String itemId) {
     this.itemId = itemId;
   }
@@ -119,12 +133,12 @@ public class CatalogsRetailBatchRequestItemsInner   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("operation")
+  @JsonProperty(required = true, value = "operation")
   @NotNull public OperationEnum getOperation() {
     return operation;
   }
 
-  @JsonProperty("operation")
+  @JsonProperty(required = true, value = "operation")
   public void setOperation(OperationEnum operation) {
     this.operation = operation;
   }
@@ -138,12 +152,12 @@ public class CatalogsRetailBatchRequestItemsInner   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("attributes")
+  @JsonProperty(required = true, value = "attributes")
   @NotNull @Valid public ItemAttributesRequest getAttributes() {
     return attributes;
   }
 
-  @JsonProperty("attributes")
+  @JsonProperty(required = true, value = "attributes")
   public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }

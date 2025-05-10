@@ -24,9 +24,9 @@ char* catalogs_type_catalogs_type_ToString(pinterest_rest_api_catalogs_type__e c
 
 pinterest_rest_api_catalogs_type__e catalogs_type_catalogs_type_FromString(char* catalogs_type);
 
-//cJSON *catalogs_type_catalogs_type_convertToJSON(pinterest_rest_api_catalogs_type__e catalogs_type);
+cJSON *catalogs_type_convertToJSON(pinterest_rest_api_catalogs_type__e catalogs_type);
 
-//pinterest_rest_api_catalogs_type__e catalogs_type_catalogs_type_parseFromJSON(cJSON *catalogs_typeJSON);
+pinterest_rest_api_catalogs_type__e catalogs_type_parseFromJSON(cJSON *catalogs_typeJSON);
 
 #endif /* _catalogs_type_H_ */
 

@@ -128,11 +128,11 @@ export function ConversionTagResponseFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function ConversionTagResponseToJSON(json: any): ConversionTagResponse {
-      return ConversionTagResponseToJSONTyped(json, false);
-  }
+export function ConversionTagResponseToJSON(json: any): ConversionTagResponse {
+    return ConversionTagResponseToJSONTyped(json, false);
+}
 
-  export function ConversionTagResponseToJSONTyped(value?: ConversionTagResponse | null, ignoreDiscriminator: boolean = false): any {
+export function ConversionTagResponseToJSONTyped(value?: ConversionTagResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

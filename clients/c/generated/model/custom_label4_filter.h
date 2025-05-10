@@ -22,9 +22,10 @@ typedef struct custom_label4_filter_t custom_label4_filter_t;
 typedef struct custom_label4_filter_t {
     catalogs_product_group_multiple_string_criteria_t *custom_label_4; //object
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } custom_label4_filter_t;
 
-custom_label4_filter_t *custom_label4_filter_create(
+__attribute__((deprecated)) custom_label4_filter_t *custom_label4_filter_create(
     catalogs_product_group_multiple_string_criteria_t *custom_label_4
 );
 

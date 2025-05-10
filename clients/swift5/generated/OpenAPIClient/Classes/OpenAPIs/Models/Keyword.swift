@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct Keyword: Codable, JSONEncodable, Hashable {
 
-    static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let parentIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let parentIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. */
     public var bid: Int?
     public var matchType: MatchTypeResponse?
@@ -66,3 +66,6 @@ public struct Keyword: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension Keyword: Identifiable {}

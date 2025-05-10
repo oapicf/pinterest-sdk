@@ -15,7 +15,7 @@ import org.openapitools.model.Country;
  * Request object for creating a product group.
  */
 @ApiModel(description = "Request object for creating a product group.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2025-05-10T05:39:24.501669360Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsRetailProductGroupCreateRequest   {
   /**
    * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.

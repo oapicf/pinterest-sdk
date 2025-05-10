@@ -5,7 +5,7 @@
 
 
 
-media_upload_t *media_upload_create(
+static media_upload_t *media_upload_create_internal(
     char *media_id,
     media_upload_type_t *media_type,
     char *upload_url,
@@ -20,12 +20,30 @@ media_upload_t *media_upload_create(
     media_upload_local_var->upload_url = upload_url;
     media_upload_local_var->upload_parameters = upload_parameters;
 
+    media_upload_local_var->_library_owned = 1;
     return media_upload_local_var;
 }
 
+__attribute__((deprecated)) media_upload_t *media_upload_create(
+    char *media_id,
+    media_upload_type_t *media_type,
+    char *upload_url,
+    media_upload_all_of_upload_parameters_t *upload_parameters
+    ) {
+    return media_upload_create_internal (
+        media_id,
+        media_type,
+        upload_url,
+        upload_parameters
+        );
+}
 
 void media_upload_free(media_upload_t *media_upload) {
     if(NULL == media_upload){
+        return ;
+    }
+    if(media_upload->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "media_upload_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -112,6 +130,9 @@ media_upload_t *media_upload_parseFromJSON(cJSON *media_uploadJSON){
 
     // media_upload->media_id
     cJSON *media_id = cJSON_GetObjectItemCaseSensitive(media_uploadJSON, "media_id");
+    if (cJSON_IsNull(media_id)) {
+        media_id = NULL;
+    }
     if (media_id) { 
     if(!cJSON_IsString(media_id) && !cJSON_IsNull(media_id))
     {
@@ -121,12 +142,18 @@ media_upload_t *media_upload_parseFromJSON(cJSON *media_uploadJSON){
 
     // media_upload->media_type
     cJSON *media_type = cJSON_GetObjectItemCaseSensitive(media_uploadJSON, "media_type");
+    if (cJSON_IsNull(media_type)) {
+        media_type = NULL;
+    }
     if (media_type) { 
     media_type_local_nonprim = media_upload_type_parseFromJSON(media_type); //custom
     }
 
     // media_upload->upload_url
     cJSON *upload_url = cJSON_GetObjectItemCaseSensitive(media_uploadJSON, "upload_url");
+    if (cJSON_IsNull(upload_url)) {
+        upload_url = NULL;
+    }
     if (upload_url) { 
     if(!cJSON_IsString(upload_url) && !cJSON_IsNull(upload_url))
     {
@@ -136,12 +163,15 @@ media_upload_t *media_upload_parseFromJSON(cJSON *media_uploadJSON){
 
     // media_upload->upload_parameters
     cJSON *upload_parameters = cJSON_GetObjectItemCaseSensitive(media_uploadJSON, "upload_parameters");
+    if (cJSON_IsNull(upload_parameters)) {
+        upload_parameters = NULL;
+    }
     if (upload_parameters) { 
     upload_parameters_local_nonprim = media_upload_all_of_upload_parameters_parseFromJSON(upload_parameters); //nonprimitive
     }
 
 
-    media_upload_local_var = media_upload_create (
+    media_upload_local_var = media_upload_create_internal (
         media_id && !cJSON_IsNull(media_id) ? strdup(media_id->valuestring) : NULL,
         media_type ? media_type_local_nonprim : NULL,
         upload_url && !cJSON_IsNull(upload_url) ? strdup(upload_url->valuestring) : NULL,

@@ -22,25 +22,18 @@ typedef struct catalogs_product_t catalogs_product_t;
 #include "catalogs_type.h"
 #include "pin.h"
 
-// Enum  for catalogs_product
-
-typedef enum  { pinterest_rest_api_catalogs_product__NULL = 0, pinterest_rest_api_catalogs_product__RETAIL, pinterest_rest_api_catalogs_product__HOTEL, pinterest_rest_api_catalogs_product__CREATIVE_ASSETS } pinterest_rest_api_catalogs_product__e;
-
-char* catalogs_product_catalog_type_ToString(pinterest_rest_api_catalogs_product__e catalog_type);
-
-pinterest_rest_api_catalogs_product__e catalogs_product_catalog_type_FromString(char* catalog_type);
-
 
 
 typedef struct catalogs_product_t {
-    catalogs_type_t *catalog_type; // custom
+    pinterest_rest_api_catalogs_type__e catalog_type; //referenced enum
     struct catalogs_creative_assets_product_metadata_t *metadata; //model
     struct pin_t *pin; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_product_t;
 
-catalogs_product_t *catalogs_product_create(
-    catalogs_type_t *catalog_type,
+__attribute__((deprecated)) catalogs_product_t *catalogs_product_create(
+    pinterest_rest_api_catalogs_type__e catalog_type,
     catalogs_creative_assets_product_metadata_t *metadata,
     pin_t *pin
 );

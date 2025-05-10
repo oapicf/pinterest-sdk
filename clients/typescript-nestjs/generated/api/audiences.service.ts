@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { Audience } from '../model/audience';
 import { AudienceCreateCustomRequest } from '../model/audienceCreateCustomRequest';
@@ -30,10 +30,12 @@ export class AudiencesService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -52,9 +54,10 @@ export class AudiencesService {
      * @param audienceCreateRequest List of ads to create, size limit [1, 30]
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [audiencesCreateOpts.config] Override http request option.
      */
-    public audiencesCreate(adAccountId: string, audienceCreateRequest: AudienceCreateRequest, ): Observable<AxiosResponse<Audience>>;
-    public audiencesCreate(adAccountId: string, audienceCreateRequest: AudienceCreateRequest, ): Observable<any> {
+    public audiencesCreate(adAccountId: string, audienceCreateRequest: AudienceCreateRequest, audiencesCreateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<Audience>>;
+    public audiencesCreate(adAccountId: string, audienceCreateRequest: AudienceCreateRequest, audiencesCreateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling audiencesCreate.');
         }
@@ -101,7 +104,8 @@ export class AudiencesService {
                     audienceCreateRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...audiencesCreateOpts?.config,
+                        headers: {...headers, ...audiencesCreateOpts?.config?.headers},
                     }
                 );
             })
@@ -114,9 +118,10 @@ export class AudiencesService {
      * @param audienceCreateCustomRequest Custom audience to create.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [audiencesCreateCustomOpts.config] Override http request option.
      */
-    public audiencesCreateCustom(adAccountId: string, audienceCreateCustomRequest: AudienceCreateCustomRequest, ): Observable<AxiosResponse<Audience>>;
-    public audiencesCreateCustom(adAccountId: string, audienceCreateCustomRequest: AudienceCreateCustomRequest, ): Observable<any> {
+    public audiencesCreateCustom(adAccountId: string, audienceCreateCustomRequest: AudienceCreateCustomRequest, audiencesCreateCustomOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<Audience>>;
+    public audiencesCreateCustom(adAccountId: string, audienceCreateCustomRequest: AudienceCreateCustomRequest, audiencesCreateCustomOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling audiencesCreateCustom.');
         }
@@ -163,7 +168,8 @@ export class AudiencesService {
                     audienceCreateCustomRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...audiencesCreateCustomOpts?.config,
+                        headers: {...headers, ...audiencesCreateCustomOpts?.config?.headers},
                     }
                 );
             })
@@ -176,9 +182,10 @@ export class AudiencesService {
      * @param audienceId Unique identifier of an audience
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [audiencesGetOpts.config] Override http request option.
      */
-    public audiencesGet(adAccountId: string, audienceId: string, ): Observable<AxiosResponse<Audience>>;
-    public audiencesGet(adAccountId: string, audienceId: string, ): Observable<any> {
+    public audiencesGet(adAccountId: string, audienceId: string, audiencesGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<Audience>>;
+    public audiencesGet(adAccountId: string, audienceId: string, audiencesGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling audiencesGet.');
         }
@@ -219,7 +226,8 @@ export class AudiencesService {
                 return this.httpClient.get<Audience>(`${this.basePath}/ad_accounts/${encodeURIComponent(String(ad_account_id))}/audiences/${encodeURIComponent(String(audience_id))}`,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...audiencesGetOpts?.config,
+                        headers: {...headers, ...audiencesGetOpts?.config?.headers},
                     }
                 );
             })
@@ -235,9 +243,10 @@ export class AudiencesService {
      * @param ownershipType Filter audiences by ownership type.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [audiencesListOpts.config] Override http request option.
      */
-    public audiencesList(adAccountId: string, bookmark?: string, order?: 'ASCENDING' | 'DESCENDING', pageSize?: number, ownershipType?: 'OWNED' | 'RECEIVED', ): Observable<AxiosResponse<AudiencesList200Response>>;
-    public audiencesList(adAccountId: string, bookmark?: string, order?: 'ASCENDING' | 'DESCENDING', pageSize?: number, ownershipType?: 'OWNED' | 'RECEIVED', ): Observable<any> {
+    public audiencesList(adAccountId: string, bookmark?: string, order?: 'ASCENDING' | 'DESCENDING', pageSize?: number, ownershipType?: 'OWNED' | 'RECEIVED', audiencesListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<AudiencesList200Response>>;
+    public audiencesList(adAccountId: string, bookmark?: string, order?: 'ASCENDING' | 'DESCENDING', pageSize?: number, ownershipType?: 'OWNED' | 'RECEIVED', audiencesListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling audiencesList.');
         }
@@ -289,7 +298,8 @@ export class AudiencesService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...audiencesListOpts?.config,
+                        headers: {...headers, ...audiencesListOpts?.config?.headers},
                     }
                 );
             })
@@ -303,9 +313,10 @@ export class AudiencesService {
      * @param audienceUpdateRequest The audience to be updated.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [audiencesUpdateOpts.config] Override http request option.
      */
-    public audiencesUpdate(adAccountId: string, audienceId: string, audienceUpdateRequest?: AudienceUpdateRequest, ): Observable<AxiosResponse<Audience>>;
-    public audiencesUpdate(adAccountId: string, audienceId: string, audienceUpdateRequest?: AudienceUpdateRequest, ): Observable<any> {
+    public audiencesUpdate(adAccountId: string, audienceId: string, audienceUpdateRequest?: AudienceUpdateRequest, audiencesUpdateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<Audience>>;
+    public audiencesUpdate(adAccountId: string, audienceId: string, audienceUpdateRequest?: AudienceUpdateRequest, audiencesUpdateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling audiencesUpdate.');
         }
@@ -352,7 +363,8 @@ export class AudiencesService {
                     audienceUpdateRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...audiencesUpdateOpts?.config,
+                        headers: {...headers, ...audiencesUpdateOpts?.config?.headers},
                     }
                 );
             })

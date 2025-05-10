@@ -41,7 +41,7 @@ import javax.validation.Valid;
   AudienceInsightsResponse.JSON_PROPERTY_SIZE,
   AudienceInsightsResponse.JSON_PROPERTY_SIZE_IS_UPPER_BOUND
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-11-05T02:20:07.425136412Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AudienceInsightsResponse   {
   public static final String JSON_PROPERTY_CATEGORIES = "categories";
   @JsonProperty(JSON_PROPERTY_CATEGORIES)

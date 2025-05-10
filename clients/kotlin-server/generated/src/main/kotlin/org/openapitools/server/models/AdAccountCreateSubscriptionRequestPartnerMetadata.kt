@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
  * @param subscriberKey Text field value that uniquely identifies a subscriber.
  */
+@Serializable
 data class AdAccountCreateSubscriptionRequestPartnerMetadata(
     /* Text field value that uniquely identifies a subscriber. */
     val subscriberKey: kotlin.String? = null
-) 
+)
 

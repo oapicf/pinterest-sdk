@@ -76,11 +76,11 @@ export function DeletePartnerAssetAccessBodyAccessesInnerFromJSONTyped(json: any
     };
 }
 
-  export function DeletePartnerAssetAccessBodyAccessesInnerToJSON(json: any): DeletePartnerAssetAccessBodyAccessesInner {
-      return DeletePartnerAssetAccessBodyAccessesInnerToJSONTyped(json, false);
-  }
+export function DeletePartnerAssetAccessBodyAccessesInnerToJSON(json: any): DeletePartnerAssetAccessBodyAccessesInner {
+    return DeletePartnerAssetAccessBodyAccessesInnerToJSONTyped(json, false);
+}
 
-  export function DeletePartnerAssetAccessBodyAccessesInnerToJSONTyped(value?: DeletePartnerAssetAccessBodyAccessesInner | null, ignoreDiscriminator: boolean = false): any {
+export function DeletePartnerAssetAccessBodyAccessesInnerToJSONTyped(value?: DeletePartnerAssetAccessBodyAccessesInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -22,9 +22,10 @@ typedef struct update_member_result_t {
     char *business_role; // string
     char *member_id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } update_member_result_t;
 
-update_member_result_t *update_member_result_create(
+__attribute__((deprecated)) update_member_result_t *update_member_result_create(
     char *business_role,
     char *member_id
 );

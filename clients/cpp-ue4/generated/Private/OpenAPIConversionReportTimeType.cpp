@@ -24,9 +24,9 @@ inline FString ToString(const OpenAPIConversionReportTimeType::Values& Value)
 {
 	switch (Value)
 	{
-	case OpenAPIConversionReportTimeType::Values::AdAction:
+	case OpenAPIConversionReportTimeType::Values::TimeOfAdAction:
 		return TEXT("TIME_OF_AD_ACTION");
-	case OpenAPIConversionReportTimeType::Values::Conversion:
+	case OpenAPIConversionReportTimeType::Values::TimeOfConversion:
 		return TEXT("TIME_OF_CONVERSION");
 	}
 
@@ -42,8 +42,8 @@ FString OpenAPIConversionReportTimeType::EnumToString(const OpenAPIConversionRep
 inline bool FromString(const FString& EnumAsString, OpenAPIConversionReportTimeType::Values& Value)
 {
 	static TMap<FString, OpenAPIConversionReportTimeType::Values> StringToEnum = { 
-		{ TEXT("TIME_OF_AD_ACTION"), OpenAPIConversionReportTimeType::Values::AdAction },
-		{ TEXT("TIME_OF_CONVERSION"), OpenAPIConversionReportTimeType::Values::Conversion }, };
+		{ TEXT("TIME_OF_AD_ACTION"), OpenAPIConversionReportTimeType::Values::TimeOfAdAction },
+		{ TEXT("TIME_OF_CONVERSION"), OpenAPIConversionReportTimeType::Values::TimeOfConversion }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)

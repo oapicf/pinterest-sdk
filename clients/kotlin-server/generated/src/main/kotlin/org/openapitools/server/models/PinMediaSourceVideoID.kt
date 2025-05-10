@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Video ID-based media source
  * @param sourceType 
@@ -21,6 +22,7 @@ package org.openapitools.server.models
  * @param coverImageData Cover image Base64.
  * @param isStandard Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
  */
+@Serializable
 data class PinMediaSourceVideoID(
     val sourceType: PinMediaSourceVideoID.SourceType,
     val mediaId: kotlin.String,
@@ -32,7 +34,7 @@ data class PinMediaSourceVideoID(
     val coverImageData: kotlin.String? = null,
     /* Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users. */
     val isStandard: kotlin.Boolean? = true
-) 
+)
 {
     /**
     * 
@@ -43,11 +45,11 @@ data class PinMediaSourceVideoID(
     }
     /**
     * Content type for cover image Base64.
-    * Values: jpeg,png
+    * Values: imageSlashJpeg,imageSlashPng
     */
     enum class CoverImageContentType(val value: kotlin.String){
-        jpeg("image/jpeg"),
-        png("image/png");
+        imageSlashJpeg("image/jpeg"),
+        imageSlashPng("image/png");
     }
 }
 

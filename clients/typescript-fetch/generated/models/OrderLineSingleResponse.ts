@@ -56,11 +56,11 @@ export function OrderLineSingleResponseFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-  export function OrderLineSingleResponseToJSON(json: any): OrderLineSingleResponse {
-      return OrderLineSingleResponseToJSONTyped(json, false);
-  }
+export function OrderLineSingleResponseToJSON(json: any): OrderLineSingleResponse {
+    return OrderLineSingleResponseToJSONTyped(json, false);
+}
 
-  export function OrderLineSingleResponseToJSONTyped(value?: OrderLineSingleResponse | null, ignoreDiscriminator: boolean = false): any {
+export function OrderLineSingleResponseToJSONTyped(value?: OrderLineSingleResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

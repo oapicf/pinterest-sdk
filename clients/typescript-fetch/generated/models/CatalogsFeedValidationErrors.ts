@@ -272,11 +272,11 @@ export function CatalogsFeedValidationErrorsFromJSONTyped(json: any, ignoreDiscr
     };
 }
 
-  export function CatalogsFeedValidationErrorsToJSON(json: any): CatalogsFeedValidationErrors {
-      return CatalogsFeedValidationErrorsToJSONTyped(json, false);
-  }
+export function CatalogsFeedValidationErrorsToJSON(json: any): CatalogsFeedValidationErrors {
+    return CatalogsFeedValidationErrorsToJSONTyped(json, false);
+}
 
-  export function CatalogsFeedValidationErrorsToJSONTyped(value?: CatalogsFeedValidationErrors | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsFeedValidationErrorsToJSONTyped(value?: CatalogsFeedValidationErrors | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

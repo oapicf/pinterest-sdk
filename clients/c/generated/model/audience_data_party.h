@@ -24,9 +24,9 @@ char* audience_data_party_audience_data_party_ToString(pinterest_rest_api_audien
 
 pinterest_rest_api_audience_data_party__e audience_data_party_audience_data_party_FromString(char* audience_data_party);
 
-//cJSON *audience_data_party_audience_data_party_convertToJSON(pinterest_rest_api_audience_data_party__e audience_data_party);
+cJSON *audience_data_party_convertToJSON(pinterest_rest_api_audience_data_party__e audience_data_party);
 
-//pinterest_rest_api_audience_data_party__e audience_data_party_audience_data_party_parseFromJSON(cJSON *audience_data_partyJSON);
+pinterest_rest_api_audience_data_party__e audience_data_party_parseFromJSON(cJSON *audience_data_partyJSON);
 
 #endif /* _audience_data_party_H_ */
 

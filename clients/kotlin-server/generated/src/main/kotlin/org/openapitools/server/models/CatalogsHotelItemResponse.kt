@@ -15,6 +15,7 @@ import org.openapitools.server.models.CatalogsHotelAttributes
 import org.openapitools.server.models.CatalogsType
 import org.openapitools.server.models.Pin
 
+import kotlinx.serialization.Serializable
 /**
  * Object describing a hotel record
  * @param catalogType 
@@ -22,6 +23,7 @@ import org.openapitools.server.models.Pin
  * @param pins The pins mapped to the item
  * @param attributes 
  */
+@Serializable
 data class CatalogsHotelItemResponse(
     val catalogType: CatalogsType,
     /* The catalog hotel id in the merchant namespace */
@@ -29,5 +31,5 @@ data class CatalogsHotelItemResponse(
     /* The pins mapped to the item */
     val pins: kotlin.collections.List<Pin>? = null,
     val attributes: CatalogsHotelAttributes? = null
-) 
+)
 

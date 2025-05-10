@@ -48,16 +48,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ID of the bulk request.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BulkUpsertResponse {
   public static final String SERIALIZED_NAME_REQUEST_ID = "request_id";
   @SerializedName(SERIALIZED_NAME_REQUEST_ID)
+  @javax.annotation.Nullable
   private String requestId;
 
   public BulkUpsertResponse() {
   }
 
-  public BulkUpsertResponse requestId(String requestId) {
+  public BulkUpsertResponse requestId(@javax.annotation.Nullable String requestId) {
     this.requestId = requestId;
     return this;
   }
@@ -71,7 +72,7 @@ public class BulkUpsertResponse {
     return requestId;
   }
 
-  public void setRequestId(String requestId) {
+  public void setRequestId(@javax.annotation.Nullable String requestId) {
     this.requestId = requestId;
   }
 

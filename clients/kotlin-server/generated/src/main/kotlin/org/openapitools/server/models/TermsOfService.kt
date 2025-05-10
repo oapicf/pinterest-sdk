@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param id The ID of the terms of service
@@ -19,6 +20,7 @@ package org.openapitools.server.models
  * @param hasAccepted Whether the ad account has accepted terms of service.
  * @param adAccountId The ID of the ad account.
  */
+@Serializable
 data class TermsOfService(
     /* The ID of the terms of service */
     val id: kotlin.String? = null,
@@ -28,5 +30,5 @@ data class TermsOfService(
     val hasAccepted: kotlin.Boolean? = null,
     /* The ID of the ad account. */
     val adAccountId: kotlin.String? = null
-) 
+)
 

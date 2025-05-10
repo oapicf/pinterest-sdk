@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * If specified, you must provide all properties
  * @param score Your hotel's rating.
@@ -19,6 +20,7 @@ package org.openapitools.server.models
  * @param maxScore Max value for the hotel rating score.
  * @param ratingSystem System you use for guest reviews.
  */
+@Serializable
 data class CatalogsHotelGuestRatings(
     /* Your hotel's rating. */
     val score: java.math.BigDecimal? = null,
@@ -28,5 +30,5 @@ data class CatalogsHotelGuestRatings(
     val maxScore: java.math.BigDecimal? = null,
     /* System you use for guest reviews. */
     val ratingSystem: kotlin.String? = null
-) 
+)
 

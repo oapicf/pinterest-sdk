@@ -15,7 +15,9 @@
 export type AudienceSharingType = 'CUSTOM' | 'SYNDICATED';
 
 export const AudienceSharingType = {
+
     Custom: 'CUSTOM' as AudienceSharingType,
+
     Syndicated: 'SYNDICATED' as AudienceSharingType
 };
 

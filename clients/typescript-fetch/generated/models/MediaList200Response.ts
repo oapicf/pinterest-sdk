@@ -64,11 +64,11 @@ export function MediaList200ResponseFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function MediaList200ResponseToJSON(json: any): MediaList200Response {
-      return MediaList200ResponseToJSONTyped(json, false);
-  }
+export function MediaList200ResponseToJSON(json: any): MediaList200Response {
+    return MediaList200ResponseToJSONTyped(json, false);
+}
 
-  export function MediaList200ResponseToJSONTyped(value?: MediaList200Response | null, ignoreDiscriminator: boolean = false): any {
+export function MediaList200ResponseToJSONTyped(value?: MediaList200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

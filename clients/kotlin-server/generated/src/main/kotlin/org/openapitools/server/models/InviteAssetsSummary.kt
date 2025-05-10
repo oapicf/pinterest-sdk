@@ -14,15 +14,17 @@ package org.openapitools.server.models
 import org.openapitools.server.models.InviteAssetsSummaryAdAccountsInner
 import org.openapitools.server.models.InviteAssetsSummaryProfilesInner
 
+import kotlinx.serialization.Serializable
 /**
  * Ad accounts and profiles the member/partner will be granted access to with this invite/request.
  * @param adAccounts List of ad account IDs and respective permission levels that will be assigned.
  * @param profiles List of profile IDs and respective permission levels that will be assigned.
  */
+@Serializable
 data class InviteAssetsSummary(
     /* List of ad account IDs and respective permission levels that will be assigned. */
     val adAccounts: kotlin.collections.List<InviteAssetsSummaryAdAccountsInner>? = null,
     /* List of profile IDs and respective permission levels that will be assigned. */
     val profiles: kotlin.collections.List<InviteAssetsSummaryProfilesInner>? = null
-) 
+)
 

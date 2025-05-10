@@ -5,7 +5,7 @@
 
 
 
-ads_credit_redeem_response_t *ads_credit_redeem_response_create(
+static ads_credit_redeem_response_t *ads_credit_redeem_response_create_internal(
     int success,
     int error_code,
     char *error_message
@@ -18,12 +18,28 @@ ads_credit_redeem_response_t *ads_credit_redeem_response_create(
     ads_credit_redeem_response_local_var->error_code = error_code;
     ads_credit_redeem_response_local_var->error_message = error_message;
 
+    ads_credit_redeem_response_local_var->_library_owned = 1;
     return ads_credit_redeem_response_local_var;
 }
 
+__attribute__((deprecated)) ads_credit_redeem_response_t *ads_credit_redeem_response_create(
+    int success,
+    int error_code,
+    char *error_message
+    ) {
+    return ads_credit_redeem_response_create_internal (
+        success,
+        error_code,
+        error_message
+        );
+}
 
 void ads_credit_redeem_response_free(ads_credit_redeem_response_t *ads_credit_redeem_response) {
     if(NULL == ads_credit_redeem_response){
+        return ;
+    }
+    if(ads_credit_redeem_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ads_credit_redeem_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -74,6 +90,9 @@ ads_credit_redeem_response_t *ads_credit_redeem_response_parseFromJSON(cJSON *ad
 
     // ads_credit_redeem_response->success
     cJSON *success = cJSON_GetObjectItemCaseSensitive(ads_credit_redeem_responseJSON, "success");
+    if (cJSON_IsNull(success)) {
+        success = NULL;
+    }
     if (success) { 
     if(!cJSON_IsBool(success))
     {
@@ -83,6 +102,9 @@ ads_credit_redeem_response_t *ads_credit_redeem_response_parseFromJSON(cJSON *ad
 
     // ads_credit_redeem_response->error_code
     cJSON *error_code = cJSON_GetObjectItemCaseSensitive(ads_credit_redeem_responseJSON, "errorCode");
+    if (cJSON_IsNull(error_code)) {
+        error_code = NULL;
+    }
     if (error_code) { 
     if(!cJSON_IsNumber(error_code))
     {
@@ -92,6 +114,9 @@ ads_credit_redeem_response_t *ads_credit_redeem_response_parseFromJSON(cJSON *ad
 
     // ads_credit_redeem_response->error_message
     cJSON *error_message = cJSON_GetObjectItemCaseSensitive(ads_credit_redeem_responseJSON, "errorMessage");
+    if (cJSON_IsNull(error_message)) {
+        error_message = NULL;
+    }
     if (error_message) { 
     if(!cJSON_IsString(error_message) && !cJSON_IsNull(error_message))
     {
@@ -100,7 +125,7 @@ ads_credit_redeem_response_t *ads_credit_redeem_response_parseFromJSON(cJSON *ad
     }
 
 
-    ads_credit_redeem_response_local_var = ads_credit_redeem_response_create (
+    ads_credit_redeem_response_local_var = ads_credit_redeem_response_create_internal (
         success ? success->valueint : 0,
         error_code ? error_code->valuedouble : 0,
         error_message && !cJSON_IsNull(error_message) ? strdup(error_message->valuestring) : NULL

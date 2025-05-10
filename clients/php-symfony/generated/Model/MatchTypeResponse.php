@@ -44,11 +44,11 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum MatchTypeResponse: string
 {
-        case BROAD = "BROAD";
-        case PHRASE = "PHRASE";
-        case EXACT = "EXACT";
-        case EXACT_NEGATIVE = "EXACT_NEGATIVE";
-        case PHRASE_NEGATIVE = "PHRASE_NEGATIVE";
+        case BROAD = 'BROAD';
+        case PHRASE = 'PHRASE';
+        case EXACT = 'EXACT';
+        case EXACT_NEGATIVE = 'EXACT_NEGATIVE';
+        case PHRASE_NEGATIVE = 'PHRASE_NEGATIVE';
 }
 
 

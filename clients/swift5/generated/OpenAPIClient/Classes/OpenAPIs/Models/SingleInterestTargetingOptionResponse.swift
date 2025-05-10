@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct SingleInterestTargetingOptionResponse: Codable, JSONEncodable, Hashable {
 
-    static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/\\d+/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/\\d+/")
     public var id: String?
     public var name: String?
     public var childInterests: [String]?
@@ -43,3 +43,6 @@ public struct SingleInterestTargetingOptionResponse: Codable, JSONEncodable, Has
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension SingleInterestTargetingOptionResponse: Identifiable {}

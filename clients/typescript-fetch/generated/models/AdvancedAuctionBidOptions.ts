@@ -77,11 +77,11 @@ export function AdvancedAuctionBidOptionsFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function AdvancedAuctionBidOptionsToJSON(json: any): AdvancedAuctionBidOptions {
-      return AdvancedAuctionBidOptionsToJSONTyped(json, false);
-  }
+export function AdvancedAuctionBidOptionsToJSON(json: any): AdvancedAuctionBidOptions {
+    return AdvancedAuctionBidOptionsToJSONTyped(json, false);
+}
 
-  export function AdvancedAuctionBidOptionsToJSONTyped(value?: AdvancedAuctionBidOptions | null, ignoreDiscriminator: boolean = false): any {
+export function AdvancedAuctionBidOptionsToJSONTyped(value?: AdvancedAuctionBidOptions | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

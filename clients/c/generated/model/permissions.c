@@ -22,7 +22,7 @@ pinterest_rest_api_permissions__e permissions_permissions_FromString(char* permi
     return 0;
 }
 
-cJSON *permissions_permissions_convertToJSON(pinterest_rest_api_permissions__e permissions) {
+cJSON *permissions_convertToJSON(pinterest_rest_api_permissions__e permissions) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "permissions", permissions_permissions_ToString(permissions)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_permissions__e permissions_permissions_parseFromJSON(cJSON *permissionsJSON) {
-    pinterest_rest_api_permissions__e *permissions = NULL;
-    pinterest_rest_api_permissions__e permissionsVariable;
-    cJSON *permissionsVar = cJSON_GetObjectItemCaseSensitive(permissionsJSON, "permissions");
-    if(!cJSON_IsString(permissionsVar) || (permissionsVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_permissions__e permissions_parseFromJSON(cJSON *permissionsJSON) {
+    if(!cJSON_IsString(permissionsJSON) || (permissionsJSON->valuestring == NULL)) {
+        return 0;
     }
-    permissionsVariable = permissions_permissions_FromString(permissionsVar->valuestring);
-    return permissionsVariable;
-end:
-    return 0;
+    return permissions_permissions_FromString(permissionsJSON->valuestring);
 }

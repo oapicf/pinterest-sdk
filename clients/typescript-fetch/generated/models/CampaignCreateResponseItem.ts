@@ -70,11 +70,11 @@ export function CampaignCreateResponseItemFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-  export function CampaignCreateResponseItemToJSON(json: any): CampaignCreateResponseItem {
-      return CampaignCreateResponseItemToJSONTyped(json, false);
-  }
+export function CampaignCreateResponseItemToJSON(json: any): CampaignCreateResponseItem {
+    return CampaignCreateResponseItemToJSONTyped(json, false);
+}
 
-  export function CampaignCreateResponseItemToJSONTyped(value?: CampaignCreateResponseItem | null, ignoreDiscriminator: boolean = false): any {
+export function CampaignCreateResponseItemToJSONTyped(value?: CampaignCreateResponseItem | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

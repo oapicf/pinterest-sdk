@@ -75,11 +75,11 @@ export function SharedAudienceFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-  export function SharedAudienceToJSON(json: any): SharedAudience {
-      return SharedAudienceToJSONTyped(json, false);
-  }
+export function SharedAudienceToJSON(json: any): SharedAudience {
+    return SharedAudienceToJSONTyped(json, false);
+}
 
-  export function SharedAudienceToJSONTyped(value?: SharedAudience | null, ignoreDiscriminator: boolean = false): any {
+export function SharedAudienceToJSONTyped(value?: SharedAudience | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

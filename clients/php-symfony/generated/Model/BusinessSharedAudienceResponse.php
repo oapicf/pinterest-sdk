@@ -80,7 +80,7 @@ class BusinessSharedAudienceResponse
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->audienceId = array_key_exists('audienceId', $data) ? $data['audienceId'] : $this->audienceId;

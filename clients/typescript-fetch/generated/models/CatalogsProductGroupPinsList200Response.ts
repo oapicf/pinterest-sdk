@@ -64,11 +64,11 @@ export function CatalogsProductGroupPinsList200ResponseFromJSONTyped(json: any, 
     };
 }
 
-  export function CatalogsProductGroupPinsList200ResponseToJSON(json: any): CatalogsProductGroupPinsList200Response {
-      return CatalogsProductGroupPinsList200ResponseToJSONTyped(json, false);
-  }
+export function CatalogsProductGroupPinsList200ResponseToJSON(json: any): CatalogsProductGroupPinsList200Response {
+    return CatalogsProductGroupPinsList200ResponseToJSONTyped(json, false);
+}
 
-  export function CatalogsProductGroupPinsList200ResponseToJSONTyped(value?: CatalogsProductGroupPinsList200Response | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsProductGroupPinsList200ResponseToJSONTyped(value?: CatalogsProductGroupPinsList200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

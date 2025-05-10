@@ -94,11 +94,11 @@ export function CatalogsRetailItemResponseFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-  export function CatalogsRetailItemResponseToJSON(json: any): CatalogsRetailItemResponse {
-      return CatalogsRetailItemResponseToJSONTyped(json, false);
-  }
+export function CatalogsRetailItemResponseToJSON(json: any): CatalogsRetailItemResponse {
+    return CatalogsRetailItemResponseToJSONTyped(json, false);
+}
 
-  export function CatalogsRetailItemResponseToJSONTyped(value?: CatalogsRetailItemResponse | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsRetailItemResponseToJSONTyped(value?: CatalogsRetailItemResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

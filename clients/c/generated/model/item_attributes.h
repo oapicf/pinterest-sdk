@@ -68,9 +68,10 @@ typedef struct item_attributes_t {
     list_t *image_link; //primitive container
     char *video_link; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } item_attributes_t;
 
-item_attributes_t *item_attributes_create(
+__attribute__((deprecated)) item_attributes_t *item_attributes_create(
     char *ad_link,
     int adult,
     char *age_group,

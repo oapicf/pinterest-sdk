@@ -50,24 +50,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CustomerListUpdateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CustomerListUpdateRequest {
   public static final String SERIALIZED_NAME_RECORDS = "records";
   @SerializedName(SERIALIZED_NAME_RECORDS)
+  @javax.annotation.Nonnull
   private String records;
 
   public static final String SERIALIZED_NAME_OPERATION_TYPE = "operation_type";
   @SerializedName(SERIALIZED_NAME_OPERATION_TYPE)
+  @javax.annotation.Nonnull
   private UserListOperationType operationType;
 
   public static final String SERIALIZED_NAME_EXCEPTIONS = "exceptions";
   @SerializedName(SERIALIZED_NAME_EXCEPTIONS)
+  @javax.annotation.Nullable
   private Exception exceptions;
 
   public CustomerListUpdateRequest() {
   }
 
-  public CustomerListUpdateRequest records(String records) {
+  public CustomerListUpdateRequest records(@javax.annotation.Nonnull String records) {
     this.records = records;
     return this;
   }
@@ -81,12 +84,12 @@ public class CustomerListUpdateRequest {
     return records;
   }
 
-  public void setRecords(String records) {
+  public void setRecords(@javax.annotation.Nonnull String records) {
     this.records = records;
   }
 
 
-  public CustomerListUpdateRequest operationType(UserListOperationType operationType) {
+  public CustomerListUpdateRequest operationType(@javax.annotation.Nonnull UserListOperationType operationType) {
     this.operationType = operationType;
     return this;
   }
@@ -100,12 +103,12 @@ public class CustomerListUpdateRequest {
     return operationType;
   }
 
-  public void setOperationType(UserListOperationType operationType) {
+  public void setOperationType(@javax.annotation.Nonnull UserListOperationType operationType) {
     this.operationType = operationType;
   }
 
 
-  public CustomerListUpdateRequest exceptions(Exception exceptions) {
+  public CustomerListUpdateRequest exceptions(@javax.annotation.Nullable Exception exceptions) {
     this.exceptions = exceptions;
     return this;
   }
@@ -119,7 +122,7 @@ public class CustomerListUpdateRequest {
     return exceptions;
   }
 
-  public void setExceptions(Exception exceptions) {
+  public void setExceptions(@javax.annotation.Nullable Exception exceptions) {
     this.exceptions = exceptions;
   }
 

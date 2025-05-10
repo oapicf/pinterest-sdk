@@ -51,16 +51,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * KeywordsMetricsArrayResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class KeywordsMetricsArrayResponse {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
+  @javax.annotation.Nullable
   private List<KeywordMetricsResponse> data = new ArrayList<>();
 
   public KeywordsMetricsArrayResponse() {
   }
 
-  public KeywordsMetricsArrayResponse data(List<KeywordMetricsResponse> data) {
+  public KeywordsMetricsArrayResponse data(@javax.annotation.Nullable List<KeywordMetricsResponse> data) {
     this.data = data;
     return this;
   }
@@ -82,7 +83,7 @@ public class KeywordsMetricsArrayResponse {
     return data;
   }
 
-  public void setData(List<KeywordMetricsResponse> data) {
+  public void setData(@javax.annotation.Nullable List<KeywordMetricsResponse> data) {
     this.data = data;
   }
 

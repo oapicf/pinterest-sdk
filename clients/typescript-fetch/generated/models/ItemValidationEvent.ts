@@ -62,11 +62,11 @@ export function ItemValidationEventFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function ItemValidationEventToJSON(json: any): ItemValidationEvent {
-      return ItemValidationEventToJSONTyped(json, false);
-  }
+export function ItemValidationEventToJSON(json: any): ItemValidationEvent {
+    return ItemValidationEventToJSONTyped(json, false);
+}
 
-  export function ItemValidationEventToJSONTyped(value?: ItemValidationEvent | null, ignoreDiscriminator: boolean = false): any {
+export function ItemValidationEventToJSONTyped(value?: ItemValidationEvent | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

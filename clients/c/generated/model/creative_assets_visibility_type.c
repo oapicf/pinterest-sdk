@@ -22,7 +22,7 @@ pinterest_rest_api_creative_assets_visibility_type__e creative_assets_visibility
     return 0;
 }
 
-cJSON *creative_assets_visibility_type_creative_assets_visibility_type_convertToJSON(pinterest_rest_api_creative_assets_visibility_type__e creative_assets_visibility_type) {
+cJSON *creative_assets_visibility_type_convertToJSON(pinterest_rest_api_creative_assets_visibility_type__e creative_assets_visibility_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "creative_assets_visibility_type", creative_assets_visibility_type_creative_assets_visibility_type_ToString(creative_assets_visibility_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_creative_assets_visibility_type__e creative_assets_visibility_type_creative_assets_visibility_type_parseFromJSON(cJSON *creative_assets_visibility_typeJSON) {
-    pinterest_rest_api_creative_assets_visibility_type__e *creative_assets_visibility_type = NULL;
-    pinterest_rest_api_creative_assets_visibility_type__e creative_assets_visibility_typeVariable;
-    cJSON *creative_assets_visibility_typeVar = cJSON_GetObjectItemCaseSensitive(creative_assets_visibility_typeJSON, "creative_assets_visibility_type");
-    if(!cJSON_IsString(creative_assets_visibility_typeVar) || (creative_assets_visibility_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_creative_assets_visibility_type__e creative_assets_visibility_type_parseFromJSON(cJSON *creative_assets_visibility_typeJSON) {
+    if(!cJSON_IsString(creative_assets_visibility_typeJSON) || (creative_assets_visibility_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    creative_assets_visibility_typeVariable = creative_assets_visibility_type_creative_assets_visibility_type_FromString(creative_assets_visibility_typeVar->valuestring);
-    return creative_assets_visibility_typeVariable;
-end:
-    return 0;
+    return creative_assets_visibility_type_creative_assets_visibility_type_FromString(creative_assets_visibility_typeJSON->valuestring);
 }

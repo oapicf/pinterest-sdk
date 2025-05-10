@@ -12,13 +12,15 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param latestAvailableTimestamp 
  * @param isRealtime 
  */
+@Serializable
 data class TopPinsAnalyticsResponseDateAvailability(
     val latestAvailableTimestamp: java.math.BigDecimal? = null,
     val isRealtime: kotlin.Boolean? = null
-) 
+)
 

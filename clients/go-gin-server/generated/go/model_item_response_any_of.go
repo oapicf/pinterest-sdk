@@ -10,10 +10,6 @@
 
 package openapi
 
-import (
-	"gopkg.in/validator.v2"
-)
-
 type ItemResponseAnyOf struct {
 
 	CatalogType CatalogsType `json:"catalog_type"`

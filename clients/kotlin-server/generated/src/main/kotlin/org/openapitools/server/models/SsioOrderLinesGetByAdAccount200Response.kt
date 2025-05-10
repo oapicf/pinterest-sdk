@@ -13,14 +13,16 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.SSIOOrderLine
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items SSIO order lines by ad acount id
  * @param bookmark 
  */
+@Serializable
 data class SsioOrderLinesGetByAdAccount200Response(
     /* SSIO order lines by ad acount id */
     val items: kotlin.collections.List<SSIOOrderLine>,
     val bookmark: kotlin.String? = null
-) 
+)
 

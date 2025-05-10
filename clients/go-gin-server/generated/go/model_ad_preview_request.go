@@ -10,10 +10,6 @@
 
 package openapi
 
-import (
-	"gopkg.in/validator.v2"
-)
-
 type AdPreviewRequest struct {
 
 	// Image URL.

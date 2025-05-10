@@ -30,9 +30,10 @@ typedef struct oauth_access_token_request_client_credentials_t {
     pinterest_rest_api_oauth_access_token_request_client_credentials_GRANTTYPE_e grant_type; //enum
     char *scope; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } oauth_access_token_request_client_credentials_t;
 
-oauth_access_token_request_client_credentials_t *oauth_access_token_request_client_credentials_create(
+__attribute__((deprecated)) oauth_access_token_request_client_credentials_t *oauth_access_token_request_client_credentials_create(
     pinterest_rest_api_oauth_access_token_request_client_credentials_GRANTTYPE_e grant_type,
     char *scope
 );

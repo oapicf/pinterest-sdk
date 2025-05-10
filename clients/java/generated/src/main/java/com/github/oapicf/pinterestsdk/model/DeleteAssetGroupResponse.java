@@ -52,20 +52,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * DeleteAssetGroupResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class DeleteAssetGroupResponse {
   public static final String SERIALIZED_NAME_DELETED_ASSET_GROUPS = "deleted_asset_groups";
   @SerializedName(SERIALIZED_NAME_DELETED_ASSET_GROUPS)
+  @javax.annotation.Nullable
   private List<String> deletedAssetGroups = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_EXCEPTIONS = "exceptions";
   @SerializedName(SERIALIZED_NAME_EXCEPTIONS)
+  @javax.annotation.Nullable
   private List<DeleteAssetGroupResponseExceptionsInner> exceptions;
 
   public DeleteAssetGroupResponse() {
   }
 
-  public DeleteAssetGroupResponse deletedAssetGroups(List<String> deletedAssetGroups) {
+  public DeleteAssetGroupResponse deletedAssetGroups(@javax.annotation.Nullable List<String> deletedAssetGroups) {
     this.deletedAssetGroups = deletedAssetGroups;
     return this;
   }
@@ -87,12 +89,12 @@ public class DeleteAssetGroupResponse {
     return deletedAssetGroups;
   }
 
-  public void setDeletedAssetGroups(List<String> deletedAssetGroups) {
+  public void setDeletedAssetGroups(@javax.annotation.Nullable List<String> deletedAssetGroups) {
     this.deletedAssetGroups = deletedAssetGroups;
   }
 
 
-  public DeleteAssetGroupResponse exceptions(List<DeleteAssetGroupResponseExceptionsInner> exceptions) {
+  public DeleteAssetGroupResponse exceptions(@javax.annotation.Nullable List<DeleteAssetGroupResponseExceptionsInner> exceptions) {
     this.exceptions = exceptions;
     return this;
   }
@@ -114,7 +116,7 @@ public class DeleteAssetGroupResponse {
     return exceptions;
   }
 
-  public void setExceptions(List<DeleteAssetGroupResponseExceptionsInner> exceptions) {
+  public void setExceptions(@javax.annotation.Nullable List<DeleteAssetGroupResponseExceptionsInner> exceptions) {
     this.exceptions = exceptions;
   }
 

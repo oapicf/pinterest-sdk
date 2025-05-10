@@ -50,7 +50,7 @@ use OpenAPI\Server\Model\DeleteMemberAccessResultsResponseArray;
 use OpenAPI\Server\Model\DeletePartnerAssetAccessBody;
 use OpenAPI\Server\Model\DeletePartnerAssetsResultsResponseArray;
 use OpenAPI\Server\Model\Error;
-use OpenAPI\Server\Model\PartnerType;
+use OpenAPI\Server\Model\OpenAPIServerModelPartnerTypeAnyType;
 use OpenAPI\Server\Model\PermissionsWithOwner;
 use OpenAPI\Server\Model\UpdateAssetGroupBody;
 use OpenAPI\Server\Model\UpdateAssetGroupResponse;
@@ -741,7 +741,7 @@ class BusinessAccessAssetsController extends Controller
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "AD_ACCOUNT", "PROFILE", "ASSET_GROUP" ]);
+        $asserts[] = new Assert\Choice([ 'AD_ACCOUNT', 'PROFILE', 'ASSET_GROUP' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($assetType, $asserts);
         if ($response instanceof Response) {
@@ -878,7 +878,7 @@ class BusinessAccessAssetsController extends Controller
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "AD_ACCOUNT", "PROFILE", "ASSET_GROUP" ]);
+        $asserts[] = new Assert\Choice([ 'AD_ACCOUNT', 'PROFILE', 'ASSET_GROUP' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($assetType, $asserts);
         if ($response instanceof Response) {
@@ -1186,7 +1186,7 @@ class BusinessAccessAssetsController extends Controller
         try {
             $businessId = $this->deserialize($businessId, 'string', 'string');
             $partnerId = $this->deserialize($partnerId, 'string', 'string');
-            $partnerType = $this->deserialize($partnerType, 'PartnerType', 'string');
+            $partnerType = $this->deserialize($partnerType, 'OpenAPIServerModelPartnerTypeAnyType', 'string');
             $assetType = $this->deserialize($assetType, 'string', 'string');
             $startIndex = $this->deserialize($startIndex, 'int', 'string');
             $pageSize = $this->deserialize($pageSize, 'int', 'string');
@@ -1225,14 +1225,14 @@ class BusinessAccessAssetsController extends Controller
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Type("PartnerType");
+        $asserts[] = new Assert\Type("OpenAPIServerModelPartnerTypeAnyType");
         $asserts[] = new Assert\Valid();
         $response = $this->validate($partnerType, $asserts);
         if ($response instanceof Response) {
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "AD_ACCOUNT", "PROFILE", "ASSET_GROUP" ]);
+        $asserts[] = new Assert\Choice([ 'AD_ACCOUNT', 'PROFILE', 'ASSET_GROUP' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($assetType, $asserts);
         if ($response instanceof Response) {

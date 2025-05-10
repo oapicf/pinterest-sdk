@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param AD_LINK_FORMAT_WARNING Some items have ad links that are formatted incorrectly.
@@ -64,6 +65,7 @@ package org.openapitools.server.models
  * @param SALES_PRICE_TOO_HIGH Some items include a sales price that is higher than the list price. The sales price has been defaulted to the list price.
  * @param MPN_INVALID Some items include incorrectly formatted MPNs.
  */
+@Serializable
 data class CatalogsFeedValidationWarnings(
     /* Some items have ad links that are formatted incorrectly. */
     val AD_LINK_FORMAT_WARNING: kotlin.Int? = null,
@@ -163,7 +165,7 @@ data class CatalogsFeedValidationWarnings(
     val SALES_PRICE_TOO_HIGH: kotlin.Int? = null,
     /* Some items include incorrectly formatted MPNs. */
     val MPN_INVALID: kotlin.Int? = null
-) 
+)
 {
     /**
     * Ingestion completed early because there are no changes to your feed since the last successful update.

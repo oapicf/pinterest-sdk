@@ -18,6 +18,7 @@ import org.openapitools.server.models.CatalogsRetailItemResponse
 import org.openapitools.server.models.CatalogsType
 import org.openapitools.server.models.Pin
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param catalogType 
@@ -27,6 +28,7 @@ import org.openapitools.server.models.Pin
  * @param hotelId The catalog hotel id in the merchant namespace
  * @param creativeAssetsId The catalog creative assets id in the merchant namespace
  */
+@Serializable
 data class ItemResponseAnyOf(
     val catalogType: CatalogsType,
     /* The catalog retail item id in the merchant namespace */
@@ -38,7 +40,7 @@ data class ItemResponseAnyOf(
     val hotelId: kotlin.String? = null,
     /* The catalog creative assets id in the merchant namespace */
     val creativeAssetsId: kotlin.String? = null
-) 
+)
 {
 }
 

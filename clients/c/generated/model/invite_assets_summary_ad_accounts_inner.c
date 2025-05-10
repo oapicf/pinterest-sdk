@@ -5,7 +5,7 @@
 
 
 
-invite_assets_summary_ad_accounts_inner_t *invite_assets_summary_ad_accounts_inner_create(
+static invite_assets_summary_ad_accounts_inner_t *invite_assets_summary_ad_accounts_inner_create_internal(
     char *id,
     list_t *permissions
     ) {
@@ -16,12 +16,26 @@ invite_assets_summary_ad_accounts_inner_t *invite_assets_summary_ad_accounts_inn
     invite_assets_summary_ad_accounts_inner_local_var->id = id;
     invite_assets_summary_ad_accounts_inner_local_var->permissions = permissions;
 
+    invite_assets_summary_ad_accounts_inner_local_var->_library_owned = 1;
     return invite_assets_summary_ad_accounts_inner_local_var;
 }
 
+__attribute__((deprecated)) invite_assets_summary_ad_accounts_inner_t *invite_assets_summary_ad_accounts_inner_create(
+    char *id,
+    list_t *permissions
+    ) {
+    return invite_assets_summary_ad_accounts_inner_create_internal (
+        id,
+        permissions
+        );
+}
 
 void invite_assets_summary_ad_accounts_inner_free(invite_assets_summary_ad_accounts_inner_t *invite_assets_summary_ad_accounts_inner) {
     if(NULL == invite_assets_summary_ad_accounts_inner){
+        return ;
+    }
+    if(invite_assets_summary_ad_accounts_inner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "invite_assets_summary_ad_accounts_inner_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -59,7 +73,7 @@ cJSON *invite_assets_summary_ad_accounts_inner_convertToJSON(invite_assets_summa
 
     listEntry_t *permissionsListEntry;
     list_ForEach(permissionsListEntry, invite_assets_summary_ad_accounts_inner->permissions) {
-    if(cJSON_AddStringToObject(permissions, "", (char*)permissionsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(permissions, "", permissionsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -83,6 +97,9 @@ invite_assets_summary_ad_accounts_inner_t *invite_assets_summary_ad_accounts_inn
 
     // invite_assets_summary_ad_accounts_inner->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(invite_assets_summary_ad_accounts_innerJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -92,6 +109,9 @@ invite_assets_summary_ad_accounts_inner_t *invite_assets_summary_ad_accounts_inn
 
     // invite_assets_summary_ad_accounts_inner->permissions
     cJSON *permissions = cJSON_GetObjectItemCaseSensitive(invite_assets_summary_ad_accounts_innerJSON, "permissions");
+    if (cJSON_IsNull(permissions)) {
+        permissions = NULL;
+    }
     if (permissions) { 
     cJSON *permissions_local = NULL;
     if(!cJSON_IsArray(permissions)) {
@@ -110,7 +130,7 @@ invite_assets_summary_ad_accounts_inner_t *invite_assets_summary_ad_accounts_inn
     }
 
 
-    invite_assets_summary_ad_accounts_inner_local_var = invite_assets_summary_ad_accounts_inner_create (
+    invite_assets_summary_ad_accounts_inner_local_var = invite_assets_summary_ad_accounts_inner_create_internal (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         permissions ? permissionsList : NULL
         );

@@ -44,8 +44,8 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum BusinessRoleCheckMode: string
 {
-        case INTERNAL = "INTERNAL";
-        case EXTERNAL = "EXTERNAL";
+        case INTERNAL = 'INTERNAL';
+        case EXTERNAL = 'EXTERNAL';
 }
 
 

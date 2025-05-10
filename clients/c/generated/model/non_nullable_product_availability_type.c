@@ -22,7 +22,7 @@ pinterest_rest_api_non_nullable_product_availability_type__e non_nullable_produc
     return 0;
 }
 
-cJSON *non_nullable_product_availability_type_non_nullable_product_availability_type_convertToJSON(pinterest_rest_api_non_nullable_product_availability_type__e non_nullable_product_availability_type) {
+cJSON *non_nullable_product_availability_type_convertToJSON(pinterest_rest_api_non_nullable_product_availability_type__e non_nullable_product_availability_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "non_nullable_product_availability_type", non_nullable_product_availability_type_non_nullable_product_availability_type_ToString(non_nullable_product_availability_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_non_nullable_product_availability_type__e non_nullable_product_availability_type_non_nullable_product_availability_type_parseFromJSON(cJSON *non_nullable_product_availability_typeJSON) {
-    pinterest_rest_api_non_nullable_product_availability_type__e *non_nullable_product_availability_type = NULL;
-    pinterest_rest_api_non_nullable_product_availability_type__e non_nullable_product_availability_typeVariable;
-    cJSON *non_nullable_product_availability_typeVar = cJSON_GetObjectItemCaseSensitive(non_nullable_product_availability_typeJSON, "non_nullable_product_availability_type");
-    if(!cJSON_IsString(non_nullable_product_availability_typeVar) || (non_nullable_product_availability_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_non_nullable_product_availability_type__e non_nullable_product_availability_type_parseFromJSON(cJSON *non_nullable_product_availability_typeJSON) {
+    if(!cJSON_IsString(non_nullable_product_availability_typeJSON) || (non_nullable_product_availability_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    non_nullable_product_availability_typeVariable = non_nullable_product_availability_type_non_nullable_product_availability_type_FromString(non_nullable_product_availability_typeVar->valuestring);
-    return non_nullable_product_availability_typeVariable;
-end:
-    return 0;
+    return non_nullable_product_availability_type_non_nullable_product_availability_type_FromString(non_nullable_product_availability_typeJSON->valuestring);
 }

@@ -49,11 +49,11 @@ export function LeadFormTestRequestFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function LeadFormTestRequestToJSON(json: any): LeadFormTestRequest {
-      return LeadFormTestRequestToJSONTyped(json, false);
-  }
+export function LeadFormTestRequestToJSON(json: any): LeadFormTestRequest {
+    return LeadFormTestRequestToJSONTyped(json, false);
+}
 
-  export function LeadFormTestRequestToJSONTyped(value?: LeadFormTestRequest | null, ignoreDiscriminator: boolean = false): any {
+export function LeadFormTestRequestToJSONTyped(value?: LeadFormTestRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

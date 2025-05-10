@@ -22,7 +22,7 @@ pinterest_rest_api_role__e role_role_FromString(char* role) {
     return 0;
 }
 
-cJSON *role_role_convertToJSON(pinterest_rest_api_role__e role) {
+cJSON *role_convertToJSON(pinterest_rest_api_role__e role) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "role", role_role_ToString(role)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_role__e role_role_parseFromJSON(cJSON *roleJSON) {
-    pinterest_rest_api_role__e *role = NULL;
-    pinterest_rest_api_role__e roleVariable;
-    cJSON *roleVar = cJSON_GetObjectItemCaseSensitive(roleJSON, "role");
-    if(!cJSON_IsString(roleVar) || (roleVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_role__e role_parseFromJSON(cJSON *roleJSON) {
+    if(!cJSON_IsString(roleJSON) || (roleJSON->valuestring == NULL)) {
+        return 0;
     }
-    roleVariable = role_role_FromString(roleVar->valuestring);
-    return roleVariable;
-end:
-    return 0;
+    return role_role_FromString(roleJSON->valuestring);
 }

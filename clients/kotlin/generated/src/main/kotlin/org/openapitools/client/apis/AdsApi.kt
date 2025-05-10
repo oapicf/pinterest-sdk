@@ -58,6 +58,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = A
     }
 
     /**
+     * POST /ad_accounts/{ad_account_id}/ad_previews
      * Create ad preview with pin or image
      * Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
      * @param adAccountId Unique identifier of an ad account.
@@ -90,6 +91,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = A
     }
 
     /**
+     * POST /ad_accounts/{ad_account_id}/ad_previews
      * Create ad preview with pin or image
      * Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
      * @param adAccountId Unique identifier of an ad account.
@@ -365,8 +367,8 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = A
      * enum for parameter conversionReportTime
      */
      enum class ConversionReportTimeAdTargetingAnalyticsGet(val value: kotlin.String) {
-         @Json(name = "TIME_OF_AD_ACTION") AD_ACTION("TIME_OF_AD_ACTION"),
-         @Json(name = "TIME_OF_CONVERSION") CONVERSION("TIME_OF_CONVERSION");
+         @Json(name = "TIME_OF_AD_ACTION") TIME_OF_AD_ACTION("TIME_OF_AD_ACTION"),
+         @Json(name = "TIME_OF_CONVERSION") TIME_OF_CONVERSION("TIME_OF_CONVERSION");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -379,6 +381,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = A
      }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/ads/targeting_analytics
      * Get targeting analytics for ads
      * Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt; - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
      * @param adAccountId Unique identifier of an ad account.
@@ -402,7 +405,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = A
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun adTargetingAnalyticsGet(adAccountId: kotlin.String, adIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, targetingTypes: kotlin.collections.List<AdsAnalyticsAdTargetingType>, columns: kotlin.collections.List<ColumnsAdTargetingAnalyticsGet>, granularity: Granularity, clickWindowDays: ClickWindowDaysAdTargetingAnalyticsGet? = ClickWindowDaysAdTargetingAnalyticsGet._30, engagementWindowDays: EngagementWindowDaysAdTargetingAnalyticsGet? = EngagementWindowDaysAdTargetingAnalyticsGet._30, viewWindowDays: ViewWindowDaysAdTargetingAnalyticsGet? = ViewWindowDaysAdTargetingAnalyticsGet._1, conversionReportTime: ConversionReportTimeAdTargetingAnalyticsGet? = ConversionReportTimeAdTargetingAnalyticsGet.AD_ACTION, attributionTypes: ConversionReportAttributionType? = null) : MetricsResponse {
+    fun adTargetingAnalyticsGet(adAccountId: kotlin.String, adIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, targetingTypes: kotlin.collections.List<AdsAnalyticsAdTargetingType>, columns: kotlin.collections.List<ColumnsAdTargetingAnalyticsGet>, granularity: Granularity, clickWindowDays: ClickWindowDaysAdTargetingAnalyticsGet? = ClickWindowDaysAdTargetingAnalyticsGet._30, engagementWindowDays: EngagementWindowDaysAdTargetingAnalyticsGet? = EngagementWindowDaysAdTargetingAnalyticsGet._30, viewWindowDays: ViewWindowDaysAdTargetingAnalyticsGet? = ViewWindowDaysAdTargetingAnalyticsGet._1, conversionReportTime: ConversionReportTimeAdTargetingAnalyticsGet? = ConversionReportTimeAdTargetingAnalyticsGet.TIME_OF_AD_ACTION, attributionTypes: ConversionReportAttributionType? = null) : MetricsResponse {
         val localVarResponse = adTargetingAnalyticsGetWithHttpInfo(adAccountId = adAccountId, adIds = adIds, startDate = startDate, endDate = endDate, targetingTypes = targetingTypes, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime, attributionTypes = attributionTypes)
 
         return when (localVarResponse.responseType) {
@@ -421,6 +424,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = A
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/ads/targeting_analytics
      * Get targeting analytics for ads
      * Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt; - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
      * @param adAccountId Unique identifier of an ad account.
@@ -738,8 +742,8 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = A
      * enum for parameter conversionReportTime
      */
      enum class ConversionReportTimeAdsAnalytics(val value: kotlin.String) {
-         @Json(name = "TIME_OF_AD_ACTION") AD_ACTION("TIME_OF_AD_ACTION"),
-         @Json(name = "TIME_OF_CONVERSION") CONVERSION("TIME_OF_CONVERSION");
+         @Json(name = "TIME_OF_AD_ACTION") TIME_OF_AD_ACTION("TIME_OF_AD_ACTION"),
+         @Json(name = "TIME_OF_CONVERSION") TIME_OF_CONVERSION("TIME_OF_CONVERSION");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -752,6 +756,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = A
      }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/ads/analytics
      * Get ad analytics
      * Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
      * @param adAccountId Unique identifier of an ad account.
@@ -775,7 +780,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = A
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun adsAnalytics(adAccountId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, columns: kotlin.collections.List<ColumnsAdsAnalytics>, granularity: Granularity, adIds: kotlin.collections.List<kotlin.String>? = null, clickWindowDays: ClickWindowDaysAdsAnalytics? = ClickWindowDaysAdsAnalytics._30, engagementWindowDays: EngagementWindowDaysAdsAnalytics? = EngagementWindowDaysAdsAnalytics._30, viewWindowDays: ViewWindowDaysAdsAnalytics? = ViewWindowDaysAdsAnalytics._1, conversionReportTime: ConversionReportTimeAdsAnalytics? = ConversionReportTimeAdsAnalytics.AD_ACTION, pinIds: kotlin.collections.List<kotlin.String>? = null, campaignIds: kotlin.collections.List<kotlin.String>? = null) : kotlin.collections.List<AdsAnalyticsResponseInner> {
+    fun adsAnalytics(adAccountId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, columns: kotlin.collections.List<ColumnsAdsAnalytics>, granularity: Granularity, adIds: kotlin.collections.List<kotlin.String>? = null, clickWindowDays: ClickWindowDaysAdsAnalytics? = ClickWindowDaysAdsAnalytics._30, engagementWindowDays: EngagementWindowDaysAdsAnalytics? = EngagementWindowDaysAdsAnalytics._30, viewWindowDays: ViewWindowDaysAdsAnalytics? = ViewWindowDaysAdsAnalytics._1, conversionReportTime: ConversionReportTimeAdsAnalytics? = ConversionReportTimeAdsAnalytics.TIME_OF_AD_ACTION, pinIds: kotlin.collections.List<kotlin.String>? = null, campaignIds: kotlin.collections.List<kotlin.String>? = null) : kotlin.collections.List<AdsAnalyticsResponseInner> {
         val localVarResponse = adsAnalyticsWithHttpInfo(adAccountId = adAccountId, startDate = startDate, endDate = endDate, columns = columns, granularity = granularity, adIds = adIds, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime, pinIds = pinIds, campaignIds = campaignIds)
 
         return when (localVarResponse.responseType) {
@@ -794,6 +799,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = A
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/ads/analytics
      * Get ad analytics
      * Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
      * @param adAccountId Unique identifier of an ad account.
@@ -883,6 +889,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = A
     }
 
     /**
+     * POST /ad_accounts/{ad_account_id}/ads
      * Create ads
      * Create multiple new ads. Request must contain ad_group_id, creative_type, and the source Pin pin_id.
      * @param adAccountId Unique identifier of an ad account.
@@ -915,6 +922,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = A
     }
 
     /**
+     * POST /ad_accounts/{ad_account_id}/ads
      * Create ads
      * Create multiple new ads. Request must contain ad_group_id, creative_type, and the source Pin pin_id.
      * @param adAccountId Unique identifier of an ad account.
@@ -958,6 +966,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = A
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/ads/{ad_id}
      * Get ad
      * Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will contain additional information from the Ad Review process. For more information about our policies and rejection reasons see the &lt;a href&#x3D;\&quot;https://www.pinterest.com/_/_/policy/advertising-guidelines/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Pinterest advertising standards&lt;/a&gt;.
      * @param adAccountId Unique identifier of an ad account.
@@ -990,6 +999,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = A
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/ads/{ad_id}
      * Get ad
      * Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will contain additional information from the Ad Review process. For more information about our policies and rejection reasons see the &lt;a href&#x3D;\&quot;https://www.pinterest.com/_/_/policy/advertising-guidelines/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Pinterest advertising standards&lt;/a&gt;.
      * @param adAccountId Unique identifier of an ad account.
@@ -1069,6 +1079,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = A
      }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/ads
      * List ads
      * List ads that meet the filters provided:   - Listed campaign ids or ad group ids or ad ids   - Listed entity statuses &lt;p/&gt; If no filter is provided, all ads in the ad account are returned. &lt;p/&gt; &lt;strong&gt;Note:&lt;/strong&gt;&lt;p/&gt; Provide only campaign_id or ad_group_id or ad_id. Do not provide more than one type. &lt;p/&gt; Review status is provided for each ad; if review_status is REJECTED, the rejected_reasons field will contain additional information. For more, see &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/advertising-guidelines\&quot;&gt;Pinterest advertising standards&lt;/a&gt;.
      * @param adAccountId Unique identifier of an ad account.
@@ -1107,6 +1118,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = A
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/ads
      * List ads
      * List ads that meet the filters provided:   - Listed campaign ids or ad group ids or ad ids   - Listed entity statuses &lt;p/&gt; If no filter is provided, all ads in the ad account are returned. &lt;p/&gt; &lt;strong&gt;Note:&lt;/strong&gt;&lt;p/&gt; Provide only campaign_id or ad_group_id or ad_id. Do not provide more than one type. &lt;p/&gt; Review status is provided for each ad; if review_status is REJECTED, the rejected_reasons field will contain additional information. For more, see &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/advertising-guidelines\&quot;&gt;Pinterest advertising standards&lt;/a&gt;.
      * @param adAccountId Unique identifier of an ad account.
@@ -1184,6 +1196,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = A
     }
 
     /**
+     * PATCH /ad_accounts/{ad_account_id}/ads
      * Update ads
      * Update multiple existing ads
      * @param adAccountId Unique identifier of an ad account.
@@ -1216,6 +1229,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = A
     }
 
     /**
+     * PATCH /ad_accounts/{ad_account_id}/ads
      * Update ads
      * Update multiple existing ads
      * @param adAccountId Unique identifier of an ad account.

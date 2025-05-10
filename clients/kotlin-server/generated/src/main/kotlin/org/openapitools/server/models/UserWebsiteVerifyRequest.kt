@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * User website verification request
  * @param website 
  * @param verificationMethod 
  */
+@Serializable
 data class UserWebsiteVerifyRequest(
     val website: kotlin.String? = null,
     val verificationMethod: UserWebsiteVerifyRequest.VerificationMethod? = VerificationMethod.METATAG
-) 
+)
 {
     /**
     * 

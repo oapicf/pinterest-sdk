@@ -20,9 +20,10 @@ typedef struct item_attributes_request_all_of_image_link_t item_attributes_reque
 
 typedef struct item_attributes_request_all_of_image_link_t {
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } item_attributes_request_all_of_image_link_t;
 
-item_attributes_request_all_of_image_link_t *item_attributes_request_all_of_image_link_create(
+__attribute__((deprecated)) item_attributes_request_all_of_image_link_t *item_attributes_request_all_of_image_link_create(
 );
 
 void item_attributes_request_all_of_image_link_free(item_attributes_request_all_of_image_link_t *item_attributes_request_all_of_image_link);

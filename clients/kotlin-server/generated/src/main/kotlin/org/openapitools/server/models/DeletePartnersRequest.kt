@@ -12,13 +12,15 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param partnerIds 
  * @param partnerType 
  */
+@Serializable
 data class DeletePartnersRequest(
     val partnerIds: kotlin.collections.List<kotlin.String>,
     val partnerType: kotlin.String? = null
-) 
+)
 

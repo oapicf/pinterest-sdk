@@ -44,11 +44,11 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum BatchOperation: string
 {
-        case UPDATE = "UPDATE";
-        case UPSERT = "UPSERT";
-        case CREATE = "CREATE";
-        case DELETE_DISCONTINUED = "DELETE_DISCONTINUED";
-        case DELETE = "DELETE";
+        case UPDATE = 'UPDATE';
+        case UPSERT = 'UPSERT';
+        case CREATE = 'CREATE';
+        case DELETE_DISCONTINUED = 'DELETE_DISCONTINUED';
+        case DELETE = 'DELETE';
 }
 
 

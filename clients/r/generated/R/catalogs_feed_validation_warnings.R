@@ -466,10 +466,35 @@ CatalogsFeedValidationWarnings <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return CatalogsFeedValidationWarnings in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return CatalogsFeedValidationWarnings as a base R list.
+    #' @examples
+    #' # convert array of CatalogsFeedValidationWarnings (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert CatalogsFeedValidationWarnings to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       CatalogsFeedValidationWarningsObject <- list()
       if (!is.null(self$`AD_LINK_FORMAT_WARNING`)) {
         CatalogsFeedValidationWarningsObject[["AD_LINK_FORMAT_WARNING"]] <-
@@ -667,7 +692,7 @@ CatalogsFeedValidationWarnings <- R6::R6Class(
         CatalogsFeedValidationWarningsObject[["MPN_INVALID"]] <-
           self$`MPN_INVALID`
       }
-      CatalogsFeedValidationWarningsObject
+      return(CatalogsFeedValidationWarningsObject)
     },
 
     #' @description
@@ -832,405 +857,13 @@ CatalogsFeedValidationWarnings <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return CatalogsFeedValidationWarnings in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`AD_LINK_FORMAT_WARNING`)) {
-          sprintf(
-          '"AD_LINK_FORMAT_WARNING":
-            %d
-                    ',
-          self$`AD_LINK_FORMAT_WARNING`
-          )
-        },
-        if (!is.null(self$`AD_LINK_SAME_AS_LINK`)) {
-          sprintf(
-          '"AD_LINK_SAME_AS_LINK":
-            %d
-                    ',
-          self$`AD_LINK_SAME_AS_LINK`
-          )
-        },
-        if (!is.null(self$`TITLE_LENGTH_TOO_LONG`)) {
-          sprintf(
-          '"TITLE_LENGTH_TOO_LONG":
-            %d
-                    ',
-          self$`TITLE_LENGTH_TOO_LONG`
-          )
-        },
-        if (!is.null(self$`DESCRIPTION_LENGTH_TOO_LONG`)) {
-          sprintf(
-          '"DESCRIPTION_LENGTH_TOO_LONG":
-            %d
-                    ',
-          self$`DESCRIPTION_LENGTH_TOO_LONG`
-          )
-        },
-        if (!is.null(self$`GENDER_INVALID`)) {
-          sprintf(
-          '"GENDER_INVALID":
-            %d
-                    ',
-          self$`GENDER_INVALID`
-          )
-        },
-        if (!is.null(self$`AGE_GROUP_INVALID`)) {
-          sprintf(
-          '"AGE_GROUP_INVALID":
-            %d
-                    ',
-          self$`AGE_GROUP_INVALID`
-          )
-        },
-        if (!is.null(self$`SIZE_TYPE_INVALID`)) {
-          sprintf(
-          '"SIZE_TYPE_INVALID":
-            %d
-                    ',
-          self$`SIZE_TYPE_INVALID`
-          )
-        },
-        if (!is.null(self$`SIZE_SYSTEM_INVALID`)) {
-          sprintf(
-          '"SIZE_SYSTEM_INVALID":
-            %d
-                    ',
-          self$`SIZE_SYSTEM_INVALID`
-          )
-        },
-        if (!is.null(self$`LINK_FORMAT_WARNING`)) {
-          sprintf(
-          '"LINK_FORMAT_WARNING":
-            %d
-                    ',
-          self$`LINK_FORMAT_WARNING`
-          )
-        },
-        if (!is.null(self$`SALES_PRICE_INVALID`)) {
-          sprintf(
-          '"SALES_PRICE_INVALID":
-            %d
-                    ',
-          self$`SALES_PRICE_INVALID`
-          )
-        },
-        if (!is.null(self$`PRODUCT_CATEGORY_DEPTH_WARNING`)) {
-          sprintf(
-          '"PRODUCT_CATEGORY_DEPTH_WARNING":
-            %d
-                    ',
-          self$`PRODUCT_CATEGORY_DEPTH_WARNING`
-          )
-        },
-        if (!is.null(self$`ADWORDS_FORMAT_WARNING`)) {
-          sprintf(
-          '"ADWORDS_FORMAT_WARNING":
-            %d
-                    ',
-          self$`ADWORDS_FORMAT_WARNING`
-          )
-        },
-        if (!is.null(self$`ADWORDS_SAME_AS_LINK`)) {
-          sprintf(
-          '"ADWORDS_SAME_AS_LINK":
-            %d
-                    ',
-          self$`ADWORDS_SAME_AS_LINK`
-          )
-        },
-        if (!is.null(self$`DUPLICATE_HEADERS`)) {
-          sprintf(
-          '"DUPLICATE_HEADERS":
-            %d
-                    ',
-          self$`DUPLICATE_HEADERS`
-          )
-        },
-        if (!is.null(self$`FETCH_SAME_SIGNATURE`)) {
-          sprintf(
-          '"FETCH_SAME_SIGNATURE":
-            %d
-                    ',
-          self$`FETCH_SAME_SIGNATURE`
-          )
-        },
-        if (!is.null(self$`ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG`)) {
-          sprintf(
-          '"ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG":
-            %d
-                    ',
-          self$`ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG`
-          )
-        },
-        if (!is.null(self$`ADDITIONAL_IMAGE_LINK_WARNING`)) {
-          sprintf(
-          '"ADDITIONAL_IMAGE_LINK_WARNING":
-            %d
-                    ',
-          self$`ADDITIONAL_IMAGE_LINK_WARNING`
-          )
-        },
-        if (!is.null(self$`IMAGE_LINK_WARNING`)) {
-          sprintf(
-          '"IMAGE_LINK_WARNING":
-            %d
-                    ',
-          self$`IMAGE_LINK_WARNING`
-          )
-        },
-        if (!is.null(self$`SHIPPING_INVALID`)) {
-          sprintf(
-          '"SHIPPING_INVALID":
-            %d
-                    ',
-          self$`SHIPPING_INVALID`
-          )
-        },
-        if (!is.null(self$`TAX_INVALID`)) {
-          sprintf(
-          '"TAX_INVALID":
-            %d
-                    ',
-          self$`TAX_INVALID`
-          )
-        },
-        if (!is.null(self$`SHIPPING_WEIGHT_INVALID`)) {
-          sprintf(
-          '"SHIPPING_WEIGHT_INVALID":
-            %d
-                    ',
-          self$`SHIPPING_WEIGHT_INVALID`
-          )
-        },
-        if (!is.null(self$`EXPIRATION_DATE_INVALID`)) {
-          sprintf(
-          '"EXPIRATION_DATE_INVALID":
-            %d
-                    ',
-          self$`EXPIRATION_DATE_INVALID`
-          )
-        },
-        if (!is.null(self$`AVAILABILITY_DATE_INVALID`)) {
-          sprintf(
-          '"AVAILABILITY_DATE_INVALID":
-            %d
-                    ',
-          self$`AVAILABILITY_DATE_INVALID`
-          )
-        },
-        if (!is.null(self$`SALE_DATE_INVALID`)) {
-          sprintf(
-          '"SALE_DATE_INVALID":
-            %d
-                    ',
-          self$`SALE_DATE_INVALID`
-          )
-        },
-        if (!is.null(self$`WEIGHT_UNIT_INVALID`)) {
-          sprintf(
-          '"WEIGHT_UNIT_INVALID":
-            %d
-                    ',
-          self$`WEIGHT_UNIT_INVALID`
-          )
-        },
-        if (!is.null(self$`IS_BUNDLE_INVALID`)) {
-          sprintf(
-          '"IS_BUNDLE_INVALID":
-            %d
-                    ',
-          self$`IS_BUNDLE_INVALID`
-          )
-        },
-        if (!is.null(self$`UPDATED_TIME_INVALID`)) {
-          sprintf(
-          '"UPDATED_TIME_INVALID":
-            %d
-                    ',
-          self$`UPDATED_TIME_INVALID`
-          )
-        },
-        if (!is.null(self$`CUSTOM_LABEL_LENGTH_TOO_LONG`)) {
-          sprintf(
-          '"CUSTOM_LABEL_LENGTH_TOO_LONG":
-            %d
-                    ',
-          self$`CUSTOM_LABEL_LENGTH_TOO_LONG`
-          )
-        },
-        if (!is.null(self$`PRODUCT_TYPE_LENGTH_TOO_LONG`)) {
-          sprintf(
-          '"PRODUCT_TYPE_LENGTH_TOO_LONG":
-            %d
-                    ',
-          self$`PRODUCT_TYPE_LENGTH_TOO_LONG`
-          )
-        },
-        if (!is.null(self$`TOO_MANY_ADDITIONAL_IMAGE_LINKS`)) {
-          sprintf(
-          '"TOO_MANY_ADDITIONAL_IMAGE_LINKS":
-            %d
-                    ',
-          self$`TOO_MANY_ADDITIONAL_IMAGE_LINKS`
-          )
-        },
-        if (!is.null(self$`MULTIPACK_INVALID`)) {
-          sprintf(
-          '"MULTIPACK_INVALID":
-            %d
-                    ',
-          self$`MULTIPACK_INVALID`
-          )
-        },
-        if (!is.null(self$`INDEXED_PRODUCT_COUNT_LARGE_DELTA`)) {
-          sprintf(
-          '"INDEXED_PRODUCT_COUNT_LARGE_DELTA":
-            %d
-                    ',
-          self$`INDEXED_PRODUCT_COUNT_LARGE_DELTA`
-          )
-        },
-        if (!is.null(self$`ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE`)) {
-          sprintf(
-          '"ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE":
-            %d
-                    ',
-          self$`ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE`
-          )
-        },
-        if (!is.null(self$`OPTIONAL_PRODUCT_CATEGORY_MISSING`)) {
-          sprintf(
-          '"OPTIONAL_PRODUCT_CATEGORY_MISSING":
-            %d
-                    ',
-          self$`OPTIONAL_PRODUCT_CATEGORY_MISSING`
-          )
-        },
-        if (!is.null(self$`OPTIONAL_PRODUCT_CATEGORY_INVALID`)) {
-          sprintf(
-          '"OPTIONAL_PRODUCT_CATEGORY_INVALID":
-            %d
-                    ',
-          self$`OPTIONAL_PRODUCT_CATEGORY_INVALID`
-          )
-        },
-        if (!is.null(self$`OPTIONAL_CONDITION_MISSING`)) {
-          sprintf(
-          '"OPTIONAL_CONDITION_MISSING":
-            %d
-                    ',
-          self$`OPTIONAL_CONDITION_MISSING`
-          )
-        },
-        if (!is.null(self$`OPTIONAL_CONDITION_INVALID`)) {
-          sprintf(
-          '"OPTIONAL_CONDITION_INVALID":
-            %d
-                    ',
-          self$`OPTIONAL_CONDITION_INVALID`
-          )
-        },
-        if (!is.null(self$`IOS_DEEP_LINK_INVALID`)) {
-          sprintf(
-          '"IOS_DEEP_LINK_INVALID":
-            %d
-                    ',
-          self$`IOS_DEEP_LINK_INVALID`
-          )
-        },
-        if (!is.null(self$`ANDROID_DEEP_LINK_INVALID`)) {
-          sprintf(
-          '"ANDROID_DEEP_LINK_INVALID":
-            %d
-                    ',
-          self$`ANDROID_DEEP_LINK_INVALID`
-          )
-        },
-        if (!is.null(self$`UTM_SOURCE_AUTO_CORRECTED`)) {
-          sprintf(
-          '"UTM_SOURCE_AUTO_CORRECTED":
-            %d
-                    ',
-          self$`UTM_SOURCE_AUTO_CORRECTED`
-          )
-        },
-        if (!is.null(self$`COUNTRY_DOES_NOT_MAP_TO_CURRENCY`)) {
-          sprintf(
-          '"COUNTRY_DOES_NOT_MAP_TO_CURRENCY":
-            %d
-                    ',
-          self$`COUNTRY_DOES_NOT_MAP_TO_CURRENCY`
-          )
-        },
-        if (!is.null(self$`MIN_AD_PRICE_INVALID`)) {
-          sprintf(
-          '"MIN_AD_PRICE_INVALID":
-            %d
-                    ',
-          self$`MIN_AD_PRICE_INVALID`
-          )
-        },
-        if (!is.null(self$`GTIN_INVALID`)) {
-          sprintf(
-          '"GTIN_INVALID":
-            %d
-                    ',
-          self$`GTIN_INVALID`
-          )
-        },
-        if (!is.null(self$`INCONSISTENT_CURRENCY_VALUES`)) {
-          sprintf(
-          '"INCONSISTENT_CURRENCY_VALUES":
-            %d
-                    ',
-          self$`INCONSISTENT_CURRENCY_VALUES`
-          )
-        },
-        if (!is.null(self$`SALES_PRICE_TOO_LOW`)) {
-          sprintf(
-          '"SALES_PRICE_TOO_LOW":
-            %d
-                    ',
-          self$`SALES_PRICE_TOO_LOW`
-          )
-        },
-        if (!is.null(self$`SHIPPING_WIDTH_INVALID`)) {
-          sprintf(
-          '"SHIPPING_WIDTH_INVALID":
-            %d
-                    ',
-          self$`SHIPPING_WIDTH_INVALID`
-          )
-        },
-        if (!is.null(self$`SHIPPING_HEIGHT_INVALID`)) {
-          sprintf(
-          '"SHIPPING_HEIGHT_INVALID":
-            %d
-                    ',
-          self$`SHIPPING_HEIGHT_INVALID`
-          )
-        },
-        if (!is.null(self$`SALES_PRICE_TOO_HIGH`)) {
-          sprintf(
-          '"SALES_PRICE_TOO_HIGH":
-            %d
-                    ',
-          self$`SALES_PRICE_TOO_HIGH`
-          )
-        },
-        if (!is.null(self$`MPN_INVALID`)) {
-          sprintf(
-          '"MPN_INVALID":
-            %d
-                    ',
-          self$`MPN_INVALID`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

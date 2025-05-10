@@ -15,13 +15,15 @@ import org.openapitools.server.models.CatalogsProductGroupFilterKeys
 import org.openapitools.server.models.CatalogsProductGroupFiltersAllOf
 import org.openapitools.server.models.CatalogsProductGroupFiltersAnyOf
 
+import kotlinx.serialization.Serializable
 /**
  * Object holding a group of filters for a catalog product group
  * @param anyOf 
  * @param allOf 
  */
+@Serializable
 data class CatalogsProductGroupFilters(
     val anyOf: kotlin.collections.List<CatalogsProductGroupFilterKeys>,
     val allOf: kotlin.collections.List<CatalogsProductGroupFilterKeys>
-) 
+)
 

@@ -63,7 +63,7 @@ import com.google.gson.JsonParseException;
 
 import com.github.oapicf.pinterestsdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConversionEventsUserData extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(ConversionEventsUserData.class.getName());
 
@@ -234,6 +234,7 @@ public class ConversionEventsUserData extends AbstractOpenApiSchema {
     public ConversionEventsUserDataAnyOf getConversionEventsUserDataAnyOf() throws ClassCastException {
         return (ConversionEventsUserDataAnyOf)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `ConversionEventsUserDataAnyOf1`. If the actual instance is not `ConversionEventsUserDataAnyOf1`,
      * the ClassCastException will be thrown.
@@ -244,6 +245,7 @@ public class ConversionEventsUserData extends AbstractOpenApiSchema {
     public ConversionEventsUserDataAnyOf1 getConversionEventsUserDataAnyOf1() throws ClassCastException {
         return (ConversionEventsUserDataAnyOf1)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `ConversionEventsUserDataAnyOf2`. If the actual instance is not `ConversionEventsUserDataAnyOf2`,
      * the ClassCastException will be thrown.

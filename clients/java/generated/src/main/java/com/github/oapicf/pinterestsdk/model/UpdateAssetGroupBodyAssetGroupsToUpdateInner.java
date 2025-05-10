@@ -51,36 +51,42 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * UpdateAssetGroupBodyAssetGroupsToUpdateInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class UpdateAssetGroupBodyAssetGroupsToUpdateInner {
   public static final String SERIALIZED_NAME_ASSET_GROUP_ID = "asset_group_id";
   @SerializedName(SERIALIZED_NAME_ASSET_GROUP_ID)
+  @javax.annotation.Nonnull
   private String assetGroupId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nullable
   private String description;
 
   public static final String SERIALIZED_NAME_ASSET_GROUP_TYPES = "asset_group_types";
   @SerializedName(SERIALIZED_NAME_ASSET_GROUP_TYPES)
+  @javax.annotation.Nullable
   private List<AssetGroupType> assetGroupTypes = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_ASSETS_TO_ADD = "assets_to_add";
   @SerializedName(SERIALIZED_NAME_ASSETS_TO_ADD)
+  @javax.annotation.Nullable
   private List<String> assetsToAdd = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_ASSETS_TO_REMOVE = "assets_to_remove";
   @SerializedName(SERIALIZED_NAME_ASSETS_TO_REMOVE)
+  @javax.annotation.Nullable
   private List<String> assetsToRemove = new ArrayList<>();
 
   public UpdateAssetGroupBodyAssetGroupsToUpdateInner() {
   }
 
-  public UpdateAssetGroupBodyAssetGroupsToUpdateInner assetGroupId(String assetGroupId) {
+  public UpdateAssetGroupBodyAssetGroupsToUpdateInner assetGroupId(@javax.annotation.Nonnull String assetGroupId) {
     this.assetGroupId = assetGroupId;
     return this;
   }
@@ -94,12 +100,12 @@ public class UpdateAssetGroupBodyAssetGroupsToUpdateInner {
     return assetGroupId;
   }
 
-  public void setAssetGroupId(String assetGroupId) {
+  public void setAssetGroupId(@javax.annotation.Nonnull String assetGroupId) {
     this.assetGroupId = assetGroupId;
   }
 
 
-  public UpdateAssetGroupBodyAssetGroupsToUpdateInner name(String name) {
+  public UpdateAssetGroupBodyAssetGroupsToUpdateInner name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -113,12 +119,12 @@ public class UpdateAssetGroupBodyAssetGroupsToUpdateInner {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public UpdateAssetGroupBodyAssetGroupsToUpdateInner description(String description) {
+  public UpdateAssetGroupBodyAssetGroupsToUpdateInner description(@javax.annotation.Nullable String description) {
     this.description = description;
     return this;
   }
@@ -132,12 +138,12 @@ public class UpdateAssetGroupBodyAssetGroupsToUpdateInner {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
 
-  public UpdateAssetGroupBodyAssetGroupsToUpdateInner assetGroupTypes(List<AssetGroupType> assetGroupTypes) {
+  public UpdateAssetGroupBodyAssetGroupsToUpdateInner assetGroupTypes(@javax.annotation.Nullable List<AssetGroupType> assetGroupTypes) {
     this.assetGroupTypes = assetGroupTypes;
     return this;
   }
@@ -159,12 +165,12 @@ public class UpdateAssetGroupBodyAssetGroupsToUpdateInner {
     return assetGroupTypes;
   }
 
-  public void setAssetGroupTypes(List<AssetGroupType> assetGroupTypes) {
+  public void setAssetGroupTypes(@javax.annotation.Nullable List<AssetGroupType> assetGroupTypes) {
     this.assetGroupTypes = assetGroupTypes;
   }
 
 
-  public UpdateAssetGroupBodyAssetGroupsToUpdateInner assetsToAdd(List<String> assetsToAdd) {
+  public UpdateAssetGroupBodyAssetGroupsToUpdateInner assetsToAdd(@javax.annotation.Nullable List<String> assetsToAdd) {
     this.assetsToAdd = assetsToAdd;
     return this;
   }
@@ -186,12 +192,12 @@ public class UpdateAssetGroupBodyAssetGroupsToUpdateInner {
     return assetsToAdd;
   }
 
-  public void setAssetsToAdd(List<String> assetsToAdd) {
+  public void setAssetsToAdd(@javax.annotation.Nullable List<String> assetsToAdd) {
     this.assetsToAdd = assetsToAdd;
   }
 
 
-  public UpdateAssetGroupBodyAssetGroupsToUpdateInner assetsToRemove(List<String> assetsToRemove) {
+  public UpdateAssetGroupBodyAssetGroupsToUpdateInner assetsToRemove(@javax.annotation.Nullable List<String> assetsToRemove) {
     this.assetsToRemove = assetsToRemove;
     return this;
   }
@@ -213,7 +219,7 @@ public class UpdateAssetGroupBodyAssetGroupsToUpdateInner {
     return assetsToRemove;
   }
 
-  public void setAssetsToRemove(List<String> assetsToRemove) {
+  public void setAssetsToRemove(@javax.annotation.Nullable List<String> assetsToRemove) {
     this.assetsToRemove = assetsToRemove;
   }
 

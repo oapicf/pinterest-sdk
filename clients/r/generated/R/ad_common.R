@@ -192,10 +192,35 @@ AdCommon <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return AdCommon in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return AdCommon as a base R list.
+    #' @examples
+    #' # convert array of AdCommon (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert AdCommon to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       AdCommonObject <- list()
       if (!is.null(self$`ad_group_id`)) {
         AdCommonObject[["ad_group_id"]] <-
@@ -223,7 +248,7 @@ AdCommon <- R6::R6Class(
       }
       if (!is.null(self$`creative_type`)) {
         AdCommonObject[["creative_type"]] <-
-          self$`creative_type`$toJSON()
+          self$`creative_type`$toSimpleType()
       }
       if (!is.null(self$`destination_url`)) {
         AdCommonObject[["destination_url"]] <-
@@ -247,11 +272,11 @@ AdCommon <- R6::R6Class(
       }
       if (!is.null(self$`status`)) {
         AdCommonObject[["status"]] <-
-          self$`status`$toJSON()
+          self$`status`$toSimpleType()
       }
       if (!is.null(self$`tracking_urls`)) {
         AdCommonObject[["tracking_urls"]] <-
-          self$`tracking_urls`$toJSON()
+          self$`tracking_urls`$toSimpleType()
       }
       if (!is.null(self$`view_tracking_url`)) {
         AdCommonObject[["view_tracking_url"]] <-
@@ -263,7 +288,7 @@ AdCommon <- R6::R6Class(
       }
       if (!is.null(self$`grid_click_type`)) {
         AdCommonObject[["grid_click_type"]] <-
-          self$`grid_click_type`$toJSON()
+          self$`grid_click_type`$toSimpleType()
       }
       if (!is.null(self$`customizable_cta_type`)) {
         AdCommonObject[["customizable_cta_type"]] <-
@@ -271,9 +296,9 @@ AdCommon <- R6::R6Class(
       }
       if (!is.null(self$`quiz_pin_data`)) {
         AdCommonObject[["quiz_pin_data"]] <-
-          self$`quiz_pin_data`$toJSON()
+          self$`quiz_pin_data`$toSimpleType()
       }
-      AdCommonObject
+      return(AdCommonObject)
     },
 
     #' @description
@@ -358,165 +383,13 @@ AdCommon <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return AdCommon in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`ad_group_id`)) {
-          sprintf(
-          '"ad_group_id":
-            "%s"
-                    ',
-          self$`ad_group_id`
-          )
-        },
-        if (!is.null(self$`android_deep_link`)) {
-          sprintf(
-          '"android_deep_link":
-            "%s"
-                    ',
-          self$`android_deep_link`
-          )
-        },
-        if (!is.null(self$`carousel_android_deep_links`)) {
-          sprintf(
-          '"carousel_android_deep_links":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`carousel_android_deep_links`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`carousel_destination_urls`)) {
-          sprintf(
-          '"carousel_destination_urls":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`carousel_destination_urls`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`carousel_ios_deep_links`)) {
-          sprintf(
-          '"carousel_ios_deep_links":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`carousel_ios_deep_links`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`click_tracking_url`)) {
-          sprintf(
-          '"click_tracking_url":
-            "%s"
-                    ',
-          self$`click_tracking_url`
-          )
-        },
-        if (!is.null(self$`creative_type`)) {
-          sprintf(
-          '"creative_type":
-          %s
-          ',
-          jsonlite::toJSON(self$`creative_type`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`destination_url`)) {
-          sprintf(
-          '"destination_url":
-            "%s"
-                    ',
-          self$`destination_url`
-          )
-        },
-        if (!is.null(self$`ios_deep_link`)) {
-          sprintf(
-          '"ios_deep_link":
-            "%s"
-                    ',
-          self$`ios_deep_link`
-          )
-        },
-        if (!is.null(self$`is_pin_deleted`)) {
-          sprintf(
-          '"is_pin_deleted":
-            %s
-                    ',
-          tolower(self$`is_pin_deleted`)
-          )
-        },
-        if (!is.null(self$`is_removable`)) {
-          sprintf(
-          '"is_removable":
-            %s
-                    ',
-          tolower(self$`is_removable`)
-          )
-        },
-        if (!is.null(self$`name`)) {
-          sprintf(
-          '"name":
-            "%s"
-                    ',
-          self$`name`
-          )
-        },
-        if (!is.null(self$`status`)) {
-          sprintf(
-          '"status":
-          %s
-          ',
-          jsonlite::toJSON(self$`status`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`tracking_urls`)) {
-          sprintf(
-          '"tracking_urls":
-          %s
-          ',
-          jsonlite::toJSON(self$`tracking_urls`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`view_tracking_url`)) {
-          sprintf(
-          '"view_tracking_url":
-            "%s"
-                    ',
-          self$`view_tracking_url`
-          )
-        },
-        if (!is.null(self$`lead_form_id`)) {
-          sprintf(
-          '"lead_form_id":
-            "%s"
-                    ',
-          self$`lead_form_id`
-          )
-        },
-        if (!is.null(self$`grid_click_type`)) {
-          sprintf(
-          '"grid_click_type":
-          %s
-          ',
-          jsonlite::toJSON(self$`grid_click_type`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`customizable_cta_type`)) {
-          sprintf(
-          '"customizable_cta_type":
-            "%s"
-                    ',
-          self$`customizable_cta_type`
-          )
-        },
-        if (!is.null(self$`quiz_pin_data`)) {
-          sprintf(
-          '"quiz_pin_data":
-          %s
-          ',
-          jsonlite::toJSON(self$`quiz_pin_data`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

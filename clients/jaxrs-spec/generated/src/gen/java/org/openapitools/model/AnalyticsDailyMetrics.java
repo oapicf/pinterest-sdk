@@ -19,11 +19,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AnalyticsDailyMetrics")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AnalyticsDailyMetrics   {
   private DataStatus dataStatus;
   private String date;
   private @Valid Map<String, BigDecimal> metrics = new HashMap<>();
+
+  public AnalyticsDailyMetrics() {
+  }
 
   /**
    **/

@@ -5,7 +5,7 @@
 
 
 
-bulk_upsert_request_create_t *bulk_upsert_request_create_create(
+static bulk_upsert_request_create_t *bulk_upsert_request_create_create_internal(
     list_t *campaigns,
     list_t *ad_groups,
     list_t *ads,
@@ -22,12 +22,32 @@ bulk_upsert_request_create_t *bulk_upsert_request_create_create(
     bulk_upsert_request_create_local_var->product_groups = product_groups;
     bulk_upsert_request_create_local_var->keywords = keywords;
 
+    bulk_upsert_request_create_local_var->_library_owned = 1;
     return bulk_upsert_request_create_local_var;
 }
 
+__attribute__((deprecated)) bulk_upsert_request_create_t *bulk_upsert_request_create_create(
+    list_t *campaigns,
+    list_t *ad_groups,
+    list_t *ads,
+    list_t *product_groups,
+    list_t *keywords
+    ) {
+    return bulk_upsert_request_create_create_internal (
+        campaigns,
+        ad_groups,
+        ads,
+        product_groups,
+        keywords
+        );
+}
 
 void bulk_upsert_request_create_free(bulk_upsert_request_create_t *bulk_upsert_request_create) {
     if(NULL == bulk_upsert_request_create){
+        return ;
+    }
+    if(bulk_upsert_request_create->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "bulk_upsert_request_create_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -200,6 +220,9 @@ bulk_upsert_request_create_t *bulk_upsert_request_create_parseFromJSON(cJSON *bu
 
     // bulk_upsert_request_create->campaigns
     cJSON *campaigns = cJSON_GetObjectItemCaseSensitive(bulk_upsert_request_createJSON, "campaigns");
+    if (cJSON_IsNull(campaigns)) {
+        campaigns = NULL;
+    }
     if (campaigns) { 
     cJSON *campaigns_local_nonprimitive = NULL;
     if(!cJSON_IsArray(campaigns)){
@@ -221,6 +244,9 @@ bulk_upsert_request_create_t *bulk_upsert_request_create_parseFromJSON(cJSON *bu
 
     // bulk_upsert_request_create->ad_groups
     cJSON *ad_groups = cJSON_GetObjectItemCaseSensitive(bulk_upsert_request_createJSON, "ad_groups");
+    if (cJSON_IsNull(ad_groups)) {
+        ad_groups = NULL;
+    }
     if (ad_groups) { 
     cJSON *ad_groups_local_nonprimitive = NULL;
     if(!cJSON_IsArray(ad_groups)){
@@ -242,6 +268,9 @@ bulk_upsert_request_create_t *bulk_upsert_request_create_parseFromJSON(cJSON *bu
 
     // bulk_upsert_request_create->ads
     cJSON *ads = cJSON_GetObjectItemCaseSensitive(bulk_upsert_request_createJSON, "ads");
+    if (cJSON_IsNull(ads)) {
+        ads = NULL;
+    }
     if (ads) { 
     cJSON *ads_local_nonprimitive = NULL;
     if(!cJSON_IsArray(ads)){
@@ -263,6 +292,9 @@ bulk_upsert_request_create_t *bulk_upsert_request_create_parseFromJSON(cJSON *bu
 
     // bulk_upsert_request_create->product_groups
     cJSON *product_groups = cJSON_GetObjectItemCaseSensitive(bulk_upsert_request_createJSON, "product_groups");
+    if (cJSON_IsNull(product_groups)) {
+        product_groups = NULL;
+    }
     if (product_groups) { 
     cJSON *product_groups_local_nonprimitive = NULL;
     if(!cJSON_IsArray(product_groups)){
@@ -284,6 +316,9 @@ bulk_upsert_request_create_t *bulk_upsert_request_create_parseFromJSON(cJSON *bu
 
     // bulk_upsert_request_create->keywords
     cJSON *keywords = cJSON_GetObjectItemCaseSensitive(bulk_upsert_request_createJSON, "keywords");
+    if (cJSON_IsNull(keywords)) {
+        keywords = NULL;
+    }
     if (keywords) { 
     cJSON *keywords_local_nonprimitive = NULL;
     if(!cJSON_IsArray(keywords)){
@@ -304,7 +339,7 @@ bulk_upsert_request_create_t *bulk_upsert_request_create_parseFromJSON(cJSON *bu
     }
 
 
-    bulk_upsert_request_create_local_var = bulk_upsert_request_create_create (
+    bulk_upsert_request_create_local_var = bulk_upsert_request_create_create_internal (
         campaigns ? campaignsList : NULL,
         ad_groups ? ad_groupsList : NULL,
         ads ? adsList : NULL,

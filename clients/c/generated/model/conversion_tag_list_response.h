@@ -22,9 +22,10 @@ typedef struct conversion_tag_list_response_t conversion_tag_list_response_t;
 typedef struct conversion_tag_list_response_t {
     list_t *items; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } conversion_tag_list_response_t;
 
-conversion_tag_list_response_t *conversion_tag_list_response_create(
+__attribute__((deprecated)) conversion_tag_list_response_t *conversion_tag_list_response_create(
     list_t *items
 );
 

@@ -5,7 +5,7 @@
 
 
 
-catalogs_items_t *catalogs_items_create(
+static catalogs_items_t *catalogs_items_create_internal(
     list_t *items
     ) {
     catalogs_items_t *catalogs_items_local_var = malloc(sizeof(catalogs_items_t));
@@ -14,12 +14,24 @@ catalogs_items_t *catalogs_items_create(
     }
     catalogs_items_local_var->items = items;
 
+    catalogs_items_local_var->_library_owned = 1;
     return catalogs_items_local_var;
 }
 
+__attribute__((deprecated)) catalogs_items_t *catalogs_items_create(
+    list_t *items
+    ) {
+    return catalogs_items_create_internal (
+        items
+        );
+}
 
 void catalogs_items_free(catalogs_items_t *catalogs_items) {
     if(NULL == catalogs_items){
+        return ;
+    }
+    if(catalogs_items->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_items_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -72,6 +84,9 @@ catalogs_items_t *catalogs_items_parseFromJSON(cJSON *catalogs_itemsJSON){
 
     // catalogs_items->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(catalogs_itemsJSON, "items");
+    if (cJSON_IsNull(items)) {
+        items = NULL;
+    }
     if (items) { 
     cJSON *items_local_nonprimitive = NULL;
     if(!cJSON_IsArray(items)){
@@ -92,7 +107,7 @@ catalogs_items_t *catalogs_items_parseFromJSON(cJSON *catalogs_itemsJSON){
     }
 
 
-    catalogs_items_local_var = catalogs_items_create (
+    catalogs_items_local_var = catalogs_items_create_internal (
         items ? itemsList : NULL
         );
 

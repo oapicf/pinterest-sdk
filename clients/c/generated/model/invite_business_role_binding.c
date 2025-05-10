@@ -5,7 +5,7 @@
 
 
 
-invite_business_role_binding_t *invite_business_role_binding_create(
+static invite_business_role_binding_t *invite_business_role_binding_create_internal(
     char *created_by_business_id,
     char *created_by_user_id,
     business_access_user_summary_t *user,
@@ -24,12 +24,34 @@ invite_business_role_binding_t *invite_business_role_binding_create(
     invite_business_role_binding_local_var->invite_data = invite_data;
     invite_business_role_binding_local_var->is_received_invite = is_received_invite;
 
+    invite_business_role_binding_local_var->_library_owned = 1;
     return invite_business_role_binding_local_var;
 }
 
+__attribute__((deprecated)) invite_business_role_binding_t *invite_business_role_binding_create(
+    char *created_by_business_id,
+    char *created_by_user_id,
+    business_access_user_summary_t *user,
+    char *id,
+    base_invite_data_response_invite_data_t *invite_data,
+    int is_received_invite
+    ) {
+    return invite_business_role_binding_create_internal (
+        created_by_business_id,
+        created_by_user_id,
+        user,
+        id,
+        invite_data,
+        is_received_invite
+        );
+}
 
 void invite_business_role_binding_free(invite_business_role_binding_t *invite_business_role_binding) {
     if(NULL == invite_business_role_binding){
+        return ;
+    }
+    if(invite_business_role_binding->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "invite_business_role_binding_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -136,6 +158,9 @@ invite_business_role_binding_t *invite_business_role_binding_parseFromJSON(cJSON
 
     // invite_business_role_binding->created_by_business_id
     cJSON *created_by_business_id = cJSON_GetObjectItemCaseSensitive(invite_business_role_bindingJSON, "created_by_business_id");
+    if (cJSON_IsNull(created_by_business_id)) {
+        created_by_business_id = NULL;
+    }
     if (created_by_business_id) { 
     if(!cJSON_IsString(created_by_business_id) && !cJSON_IsNull(created_by_business_id))
     {
@@ -145,6 +170,9 @@ invite_business_role_binding_t *invite_business_role_binding_parseFromJSON(cJSON
 
     // invite_business_role_binding->created_by_user_id
     cJSON *created_by_user_id = cJSON_GetObjectItemCaseSensitive(invite_business_role_bindingJSON, "created_by_user_id");
+    if (cJSON_IsNull(created_by_user_id)) {
+        created_by_user_id = NULL;
+    }
     if (created_by_user_id) { 
     if(!cJSON_IsString(created_by_user_id) && !cJSON_IsNull(created_by_user_id))
     {
@@ -154,12 +182,18 @@ invite_business_role_binding_t *invite_business_role_binding_parseFromJSON(cJSON
 
     // invite_business_role_binding->user
     cJSON *user = cJSON_GetObjectItemCaseSensitive(invite_business_role_bindingJSON, "user");
+    if (cJSON_IsNull(user)) {
+        user = NULL;
+    }
     if (user) { 
     user_local_nonprim = business_access_user_summary_parseFromJSON(user); //nonprimitive
     }
 
     // invite_business_role_binding->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(invite_business_role_bindingJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -169,12 +203,18 @@ invite_business_role_binding_t *invite_business_role_binding_parseFromJSON(cJSON
 
     // invite_business_role_binding->invite_data
     cJSON *invite_data = cJSON_GetObjectItemCaseSensitive(invite_business_role_bindingJSON, "invite_data");
+    if (cJSON_IsNull(invite_data)) {
+        invite_data = NULL;
+    }
     if (invite_data) { 
     invite_data_local_nonprim = base_invite_data_response_invite_data_parseFromJSON(invite_data); //nonprimitive
     }
 
     // invite_business_role_binding->is_received_invite
     cJSON *is_received_invite = cJSON_GetObjectItemCaseSensitive(invite_business_role_bindingJSON, "is_received_invite");
+    if (cJSON_IsNull(is_received_invite)) {
+        is_received_invite = NULL;
+    }
     if (is_received_invite) { 
     if(!cJSON_IsBool(is_received_invite))
     {
@@ -183,7 +223,7 @@ invite_business_role_binding_t *invite_business_role_binding_parseFromJSON(cJSON
     }
 
 
-    invite_business_role_binding_local_var = invite_business_role_binding_create (
+    invite_business_role_binding_local_var = invite_business_role_binding_create_internal (
         created_by_business_id && !cJSON_IsNull(created_by_business_id) ? strdup(created_by_business_id->valuestring) : NULL,
         created_by_user_id && !cJSON_IsNull(created_by_user_id) ? strdup(created_by_user_id->valuestring) : NULL,
         user ? user_local_nonprim : NULL,

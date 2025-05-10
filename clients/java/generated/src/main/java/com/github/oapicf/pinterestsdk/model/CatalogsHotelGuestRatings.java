@@ -49,28 +49,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * If specified, you must provide all properties
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsHotelGuestRatings {
   public static final String SERIALIZED_NAME_SCORE = "score";
   @SerializedName(SERIALIZED_NAME_SCORE)
+  @javax.annotation.Nullable
   private BigDecimal score;
 
   public static final String SERIALIZED_NAME_NUMBER_OF_REVIEWERS = "number_of_reviewers";
   @SerializedName(SERIALIZED_NAME_NUMBER_OF_REVIEWERS)
+  @javax.annotation.Nullable
   private Integer numberOfReviewers;
 
   public static final String SERIALIZED_NAME_MAX_SCORE = "max_score";
   @SerializedName(SERIALIZED_NAME_MAX_SCORE)
+  @javax.annotation.Nullable
   private BigDecimal maxScore;
 
   public static final String SERIALIZED_NAME_RATING_SYSTEM = "rating_system";
   @SerializedName(SERIALIZED_NAME_RATING_SYSTEM)
+  @javax.annotation.Nullable
   private String ratingSystem;
 
   public CatalogsHotelGuestRatings() {
   }
 
-  public CatalogsHotelGuestRatings score(BigDecimal score) {
+  public CatalogsHotelGuestRatings score(@javax.annotation.Nullable BigDecimal score) {
     this.score = score;
     return this;
   }
@@ -84,12 +88,12 @@ public class CatalogsHotelGuestRatings {
     return score;
   }
 
-  public void setScore(BigDecimal score) {
+  public void setScore(@javax.annotation.Nullable BigDecimal score) {
     this.score = score;
   }
 
 
-  public CatalogsHotelGuestRatings numberOfReviewers(Integer numberOfReviewers) {
+  public CatalogsHotelGuestRatings numberOfReviewers(@javax.annotation.Nullable Integer numberOfReviewers) {
     this.numberOfReviewers = numberOfReviewers;
     return this;
   }
@@ -103,12 +107,12 @@ public class CatalogsHotelGuestRatings {
     return numberOfReviewers;
   }
 
-  public void setNumberOfReviewers(Integer numberOfReviewers) {
+  public void setNumberOfReviewers(@javax.annotation.Nullable Integer numberOfReviewers) {
     this.numberOfReviewers = numberOfReviewers;
   }
 
 
-  public CatalogsHotelGuestRatings maxScore(BigDecimal maxScore) {
+  public CatalogsHotelGuestRatings maxScore(@javax.annotation.Nullable BigDecimal maxScore) {
     this.maxScore = maxScore;
     return this;
   }
@@ -122,12 +126,12 @@ public class CatalogsHotelGuestRatings {
     return maxScore;
   }
 
-  public void setMaxScore(BigDecimal maxScore) {
+  public void setMaxScore(@javax.annotation.Nullable BigDecimal maxScore) {
     this.maxScore = maxScore;
   }
 
 
-  public CatalogsHotelGuestRatings ratingSystem(String ratingSystem) {
+  public CatalogsHotelGuestRatings ratingSystem(@javax.annotation.Nullable String ratingSystem) {
     this.ratingSystem = ratingSystem;
     return this;
   }
@@ -141,7 +145,7 @@ public class CatalogsHotelGuestRatings {
     return ratingSystem;
   }
 
-  public void setRatingSystem(String ratingSystem) {
+  public void setRatingSystem(@javax.annotation.Nullable String ratingSystem) {
     this.ratingSystem = ratingSystem;
   }
 

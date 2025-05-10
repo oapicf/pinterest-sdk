@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Response for lead data test API.
  * @param subscriptionId Subscription ID.
  */
+@Serializable
 data class LeadFormTestResponse(
     /* Subscription ID. */
     val subscriptionId: kotlin.String? = null
-) 
+)
 

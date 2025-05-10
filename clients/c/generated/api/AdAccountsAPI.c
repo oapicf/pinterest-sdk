@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 // Functions for enum COLUMNS for AdAccountsAPI_adAccountAnalytics
 
@@ -740,15 +735,20 @@ AdAccountsAPI_adAccountAnalytics(apiClient_t *apiClient, char *ad_account_id, ch
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/analytics")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/analytics");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/analytics");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -797,7 +797,7 @@ AdAccountsAPI_adAccountAnalytics(apiClient_t *apiClient, char *ad_account_id, ch
     {
         keyQuery_granularity = strdup("granularity");
         valueQuery_granularity = (granularity);
-        keyPairQuery_granularity = keyValuePair_create(keyQuery_granularity, (void *)strdup(adAccountAnalytics__ToString(
+        keyPairQuery_granularity = keyValuePair_create(keyQuery_granularity, strdup(adAccountAnalytics__ToString(
         &valueQuery_granularity)));
         list_addElement(localVarQueryParameters,keyPairQuery_granularity);
     }
@@ -811,7 +811,7 @@ AdAccountsAPI_adAccountAnalytics(apiClient_t *apiClient, char *ad_account_id, ch
         keyQuery_click_window_days = strdup("click_window_days");
         valueQuery_click_window_days = calloc(1,MAX_NUMBER_LENGTH);
         snprintf(valueQuery_click_window_days, MAX_NUMBER_LENGTH, "%d", *click_window_days);
-        keyPairQuery_click_window_days = keyValuePair_create(keyQuery_click_window_days, (void *)strdup(adAccountAnalytics_CLICKWINDOWDAYS_ToString(
+        keyPairQuery_click_window_days = keyValuePair_create(keyQuery_click_window_days, strdup(adAccountAnalytics_CLICKWINDOWDAYS_ToString(
         valueQuery_click_window_days)));
         list_addElement(localVarQueryParameters,keyPairQuery_click_window_days);
     }
@@ -825,7 +825,7 @@ AdAccountsAPI_adAccountAnalytics(apiClient_t *apiClient, char *ad_account_id, ch
         keyQuery_engagement_window_days = strdup("engagement_window_days");
         valueQuery_engagement_window_days = calloc(1,MAX_NUMBER_LENGTH);
         snprintf(valueQuery_engagement_window_days, MAX_NUMBER_LENGTH, "%d", *engagement_window_days);
-        keyPairQuery_engagement_window_days = keyValuePair_create(keyQuery_engagement_window_days, (void *)strdup(adAccountAnalytics_ENGAGEMENTWINDOWDAYS_ToString(
+        keyPairQuery_engagement_window_days = keyValuePair_create(keyQuery_engagement_window_days, strdup(adAccountAnalytics_ENGAGEMENTWINDOWDAYS_ToString(
         valueQuery_engagement_window_days)));
         list_addElement(localVarQueryParameters,keyPairQuery_engagement_window_days);
     }
@@ -839,7 +839,7 @@ AdAccountsAPI_adAccountAnalytics(apiClient_t *apiClient, char *ad_account_id, ch
         keyQuery_view_window_days = strdup("view_window_days");
         valueQuery_view_window_days = calloc(1,MAX_NUMBER_LENGTH);
         snprintf(valueQuery_view_window_days, MAX_NUMBER_LENGTH, "%d", *view_window_days);
-        keyPairQuery_view_window_days = keyValuePair_create(keyQuery_view_window_days, (void *)strdup(adAccountAnalytics_VIEWWINDOWDAYS_ToString(
+        keyPairQuery_view_window_days = keyValuePair_create(keyQuery_view_window_days, strdup(adAccountAnalytics_VIEWWINDOWDAYS_ToString(
         valueQuery_view_window_days)));
         list_addElement(localVarQueryParameters,keyPairQuery_view_window_days);
     }
@@ -852,7 +852,7 @@ AdAccountsAPI_adAccountAnalytics(apiClient_t *apiClient, char *ad_account_id, ch
     {
         keyQuery_conversion_report_time = strdup("conversion_report_time");
         valueQuery_conversion_report_time = (conversion_report_time);
-        keyPairQuery_conversion_report_time = keyValuePair_create(keyQuery_conversion_report_time, (void *)strdup(adAccountAnalytics_CONVERSIONREPORTTIME_ToString(
+        keyPairQuery_conversion_report_time = keyValuePair_create(keyQuery_conversion_report_time, strdup(adAccountAnalytics_CONVERSIONREPORTTIME_ToString(
         valueQuery_conversion_report_time)));
         list_addElement(localVarQueryParameters,keyPairQuery_conversion_report_time);
     }
@@ -865,6 +865,7 @@ AdAccountsAPI_adAccountAnalytics(apiClient_t *apiClient, char *ad_account_id, ch
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -879,24 +880,27 @@ AdAccountsAPI_adAccountAnalytics(apiClient_t *apiClient, char *ad_account_id, ch
     //if (apiClient->response_code == 0) {
     //    printf("%s\n","Unexpected error");
     //}
-    cJSON *AdAccountsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    if(!cJSON_IsArray(AdAccountsAPIlocalVarJSON)) {
-        return 0;//nonprimitive container
-    }
-    list_t *elementToReturn = list_createList();
-    cJSON *VarJSON;
-    cJSON_ArrayForEach(VarJSON, AdAccountsAPIlocalVarJSON)
-    {
-        if(!cJSON_IsObject(VarJSON))
-        {
-           // return 0;
+    list_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AdAccountsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        if(!cJSON_IsArray(AdAccountsAPIlocalVarJSON)) {
+            return 0;//nonprimitive container
         }
-        char *localVarJSONToChar = cJSON_Print(VarJSON);
-        list_addElement(elementToReturn , localVarJSONToChar);
-    }
+        elementToReturn = list_createList();
+        cJSON *VarJSON;
+        cJSON_ArrayForEach(VarJSON, AdAccountsAPIlocalVarJSON)
+        {
+            if(!cJSON_IsObject(VarJSON))
+            {
+               // return 0;
+            }
+            char *localVarJSONToChar = cJSON_Print(VarJSON);
+            list_addElement(elementToReturn , localVarJSONToChar);
+        }
 
-    cJSON_Delete( AdAccountsAPIlocalVarJSON);
-    cJSON_Delete( VarJSON);
+        cJSON_Delete( AdAccountsAPIlocalVarJSON);
+        cJSON_Delete( VarJSON);
+    }
     //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
@@ -998,15 +1002,20 @@ AdAccountsAPI_adAccountTargetingAnalyticsGet(apiClient_t *apiClient, char *ad_ac
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/targeting_analytics")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/targeting_analytics");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/targeting_analytics");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -1061,7 +1070,7 @@ AdAccountsAPI_adAccountTargetingAnalyticsGet(apiClient_t *apiClient, char *ad_ac
     {
         keyQuery_granularity = strdup("granularity");
         valueQuery_granularity = (granularity);
-        keyPairQuery_granularity = keyValuePair_create(keyQuery_granularity, (void *)strdup(adAccountTargetingAnalyticsGet__ToString(
+        keyPairQuery_granularity = keyValuePair_create(keyQuery_granularity, strdup(adAccountTargetingAnalyticsGet__ToString(
         &valueQuery_granularity)));
         list_addElement(localVarQueryParameters,keyPairQuery_granularity);
     }
@@ -1075,7 +1084,7 @@ AdAccountsAPI_adAccountTargetingAnalyticsGet(apiClient_t *apiClient, char *ad_ac
         keyQuery_click_window_days = strdup("click_window_days");
         valueQuery_click_window_days = calloc(1,MAX_NUMBER_LENGTH);
         snprintf(valueQuery_click_window_days, MAX_NUMBER_LENGTH, "%d", *click_window_days);
-        keyPairQuery_click_window_days = keyValuePair_create(keyQuery_click_window_days, (void *)strdup(adAccountTargetingAnalyticsGet_CLICKWINDOWDAYS_ToString(
+        keyPairQuery_click_window_days = keyValuePair_create(keyQuery_click_window_days, strdup(adAccountTargetingAnalyticsGet_CLICKWINDOWDAYS_ToString(
         valueQuery_click_window_days)));
         list_addElement(localVarQueryParameters,keyPairQuery_click_window_days);
     }
@@ -1089,7 +1098,7 @@ AdAccountsAPI_adAccountTargetingAnalyticsGet(apiClient_t *apiClient, char *ad_ac
         keyQuery_engagement_window_days = strdup("engagement_window_days");
         valueQuery_engagement_window_days = calloc(1,MAX_NUMBER_LENGTH);
         snprintf(valueQuery_engagement_window_days, MAX_NUMBER_LENGTH, "%d", *engagement_window_days);
-        keyPairQuery_engagement_window_days = keyValuePair_create(keyQuery_engagement_window_days, (void *)strdup(adAccountTargetingAnalyticsGet_ENGAGEMENTWINDOWDAYS_ToString(
+        keyPairQuery_engagement_window_days = keyValuePair_create(keyQuery_engagement_window_days, strdup(adAccountTargetingAnalyticsGet_ENGAGEMENTWINDOWDAYS_ToString(
         valueQuery_engagement_window_days)));
         list_addElement(localVarQueryParameters,keyPairQuery_engagement_window_days);
     }
@@ -1103,7 +1112,7 @@ AdAccountsAPI_adAccountTargetingAnalyticsGet(apiClient_t *apiClient, char *ad_ac
         keyQuery_view_window_days = strdup("view_window_days");
         valueQuery_view_window_days = calloc(1,MAX_NUMBER_LENGTH);
         snprintf(valueQuery_view_window_days, MAX_NUMBER_LENGTH, "%d", *view_window_days);
-        keyPairQuery_view_window_days = keyValuePair_create(keyQuery_view_window_days, (void *)strdup(adAccountTargetingAnalyticsGet_VIEWWINDOWDAYS_ToString(
+        keyPairQuery_view_window_days = keyValuePair_create(keyQuery_view_window_days, strdup(adAccountTargetingAnalyticsGet_VIEWWINDOWDAYS_ToString(
         valueQuery_view_window_days)));
         list_addElement(localVarQueryParameters,keyPairQuery_view_window_days);
     }
@@ -1116,7 +1125,7 @@ AdAccountsAPI_adAccountTargetingAnalyticsGet(apiClient_t *apiClient, char *ad_ac
     {
         keyQuery_conversion_report_time = strdup("conversion_report_time");
         valueQuery_conversion_report_time = (conversion_report_time);
-        keyPairQuery_conversion_report_time = keyValuePair_create(keyQuery_conversion_report_time, (void *)strdup(adAccountTargetingAnalyticsGet_CONVERSIONREPORTTIME_ToString(
+        keyPairQuery_conversion_report_time = keyValuePair_create(keyQuery_conversion_report_time, strdup(adAccountTargetingAnalyticsGet_CONVERSIONREPORTTIME_ToString(
         valueQuery_conversion_report_time)));
         list_addElement(localVarQueryParameters,keyPairQuery_conversion_report_time);
     }
@@ -1129,7 +1138,7 @@ AdAccountsAPI_adAccountTargetingAnalyticsGet(apiClient_t *apiClient, char *ad_ac
     {
         keyQuery_attribution_types = strdup("attribution_types");
         valueQuery_attribution_types = (attribution_types);
-        keyPairQuery_attribution_types = keyValuePair_create(keyQuery_attribution_types, (void *)strdup(adAccountTargetingAnalyticsGet__ToString(
+        keyPairQuery_attribution_types = keyValuePair_create(keyQuery_attribution_types, strdup(adAccountTargetingAnalyticsGet__ToString(
         &valueQuery_attribution_types)));
         list_addElement(localVarQueryParameters,keyPairQuery_attribution_types);
     }
@@ -1142,6 +1151,7 @@ AdAccountsAPI_adAccountTargetingAnalyticsGet(apiClient_t *apiClient, char *ad_ac
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -1153,11 +1163,14 @@ AdAccountsAPI_adAccountTargetingAnalyticsGet(apiClient_t *apiClient, char *ad_ac
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *AdAccountsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    metrics_response_t *elementToReturn = metrics_response_parseFromJSON(AdAccountsAPIlocalVarJSON);
-    cJSON_Delete(AdAccountsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    metrics_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AdAccountsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = metrics_response_parseFromJSON(AdAccountsAPIlocalVarJSON);
+        cJSON_Delete(AdAccountsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1269,11 +1282,14 @@ AdAccountsAPI_adAccountsCreate(apiClient_t *apiClient, ad_account_create_request
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts");
+    char *localVarPath = strdup("/ad_accounts");
+
 
 
 
@@ -1282,9 +1298,10 @@ AdAccountsAPI_adAccountsCreate(apiClient_t *apiClient, ad_account_create_request
     cJSON *localVarSingleItemJSON_ad_account_create_request = NULL;
     if (ad_account_create_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_ad_account_create_request = ad_account_create_request_convertToJSON(ad_account_create_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_ad_account_create_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -1296,6 +1313,7 @@ AdAccountsAPI_adAccountsCreate(apiClient_t *apiClient, ad_account_create_request
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -1307,11 +1325,14 @@ AdAccountsAPI_adAccountsCreate(apiClient_t *apiClient, ad_account_create_request
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *AdAccountsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    ad_account_t *elementToReturn = ad_account_parseFromJSON(AdAccountsAPIlocalVarJSON);
-    cJSON_Delete(AdAccountsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    ad_account_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AdAccountsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = ad_account_parseFromJSON(AdAccountsAPIlocalVarJSON);
+        cJSON_Delete(AdAccountsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1351,15 +1372,20 @@ AdAccountsAPI_adAccountsGet(apiClient_t *apiClient, char *ad_account_id)
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -1378,6 +1404,7 @@ AdAccountsAPI_adAccountsGet(apiClient_t *apiClient, char *ad_account_id)
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -1389,11 +1416,14 @@ AdAccountsAPI_adAccountsGet(apiClient_t *apiClient, char *ad_account_id)
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *AdAccountsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    ad_account_t *elementToReturn = ad_account_parseFromJSON(AdAccountsAPIlocalVarJSON);
-    cJSON_Delete(AdAccountsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    ad_account_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AdAccountsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = ad_account_parseFromJSON(AdAccountsAPIlocalVarJSON);
+        cJSON_Delete(AdAccountsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1429,11 +1459,14 @@ AdAccountsAPI_adAccountsList(apiClient_t *apiClient, char *bookmark, int *page_s
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts");
+    char *localVarPath = strdup("/ad_accounts");
+
 
 
 
@@ -1484,6 +1517,7 @@ AdAccountsAPI_adAccountsList(apiClient_t *apiClient, char *bookmark, int *page_s
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -1495,11 +1529,14 @@ AdAccountsAPI_adAccountsList(apiClient_t *apiClient, char *bookmark, int *page_s
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *AdAccountsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    ad_accounts_list_200_response_t *elementToReturn = ad_accounts_list_200_response_parseFromJSON(AdAccountsAPIlocalVarJSON);
-    cJSON_Delete(AdAccountsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    ad_accounts_list_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AdAccountsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = ad_accounts_list_200_response_parseFromJSON(AdAccountsAPIlocalVarJSON);
+        cJSON_Delete(AdAccountsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1570,15 +1607,20 @@ AdAccountsAPI_analyticsCreateMmmReport(apiClient_t *apiClient, char *ad_account_
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/mmm_reports")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/mmm_reports");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/mmm_reports");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -1593,9 +1635,10 @@ AdAccountsAPI_analyticsCreateMmmReport(apiClient_t *apiClient, char *ad_account_
     cJSON *localVarSingleItemJSON_create_mmm_report_request = NULL;
     if (create_mmm_report_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_create_mmm_report_request = create_mmm_report_request_convertToJSON(create_mmm_report_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_create_mmm_report_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -1607,6 +1650,7 @@ AdAccountsAPI_analyticsCreateMmmReport(apiClient_t *apiClient, char *ad_account_
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -1622,11 +1666,14 @@ AdAccountsAPI_analyticsCreateMmmReport(apiClient_t *apiClient, char *ad_account_
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *AdAccountsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    create_mmm_report_response_t *elementToReturn = create_mmm_report_response_parseFromJSON(AdAccountsAPIlocalVarJSON);
-    cJSON_Delete(AdAccountsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    create_mmm_report_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AdAccountsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = create_mmm_report_response_parseFromJSON(AdAccountsAPIlocalVarJSON);
+        cJSON_Delete(AdAccountsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1667,15 +1714,20 @@ AdAccountsAPI_analyticsCreateReport(apiClient_t *apiClient, char *ad_account_id,
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/reports")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/reports");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/reports");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -1690,9 +1742,10 @@ AdAccountsAPI_analyticsCreateReport(apiClient_t *apiClient, char *ad_account_id,
     cJSON *localVarSingleItemJSON_ads_analytics_create_async_request = NULL;
     if (ads_analytics_create_async_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_ads_analytics_create_async_request = ads_analytics_create_async_request_convertToJSON(ads_analytics_create_async_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_ads_analytics_create_async_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -1704,6 +1757,7 @@ AdAccountsAPI_analyticsCreateReport(apiClient_t *apiClient, char *ad_account_id,
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -1719,11 +1773,14 @@ AdAccountsAPI_analyticsCreateReport(apiClient_t *apiClient, char *ad_account_id,
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *AdAccountsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    ads_analytics_create_async_response_t *elementToReturn = ads_analytics_create_async_response_parseFromJSON(AdAccountsAPIlocalVarJSON);
-    cJSON_Delete(AdAccountsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    ads_analytics_create_async_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AdAccountsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = ads_analytics_create_async_response_parseFromJSON(AdAccountsAPIlocalVarJSON);
+        cJSON_Delete(AdAccountsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1764,15 +1821,22 @@ AdAccountsAPI_analyticsCreateTemplateReport(apiClient_t *apiClient, char *ad_acc
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/templates/{template_id}/reports")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/templates/{template_id}/reports");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/templates/{template_id}/reports");
+
+    if(!ad_account_id)
+        goto end;
+    if(!template_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(template_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(template_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -1782,7 +1846,7 @@ AdAccountsAPI_analyticsCreateTemplateReport(apiClient_t *apiClient, char *ad_acc
     localVarPath = strReplace(localVarPath, localVarToReplace_ad_account_id, ad_account_id);
 
     // Path Params
-    long sizeOfPathParams_template_id = strlen(ad_account_id)+3 + strlen(template_id)+3 + strlen("{ template_id }");
+    long sizeOfPathParams_template_id = strlen(ad_account_id)+3 + strlen(template_id)+3 + sizeof("{ template_id }") - 1;
     if(template_id == NULL) {
         goto end;
     }
@@ -1825,7 +1889,7 @@ AdAccountsAPI_analyticsCreateTemplateReport(apiClient_t *apiClient, char *ad_acc
     {
         keyQuery_granularity = strdup("granularity");
         valueQuery_granularity = (granularity);
-        keyPairQuery_granularity = keyValuePair_create(keyQuery_granularity, (void *)strdup(analyticsCreateTemplateReport__ToString(
+        keyPairQuery_granularity = keyValuePair_create(keyQuery_granularity, strdup(analyticsCreateTemplateReport__ToString(
         &valueQuery_granularity)));
         list_addElement(localVarQueryParameters,keyPairQuery_granularity);
     }
@@ -1838,6 +1902,7 @@ AdAccountsAPI_analyticsCreateTemplateReport(apiClient_t *apiClient, char *ad_acc
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -1853,11 +1918,14 @@ AdAccountsAPI_analyticsCreateTemplateReport(apiClient_t *apiClient, char *ad_acc
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *AdAccountsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    ads_analytics_create_async_response_t *elementToReturn = ads_analytics_create_async_response_parseFromJSON(AdAccountsAPIlocalVarJSON);
-    cJSON_Delete(AdAccountsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    ads_analytics_create_async_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AdAccountsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = ads_analytics_create_async_response_parseFromJSON(AdAccountsAPIlocalVarJSON);
+        cJSON_Delete(AdAccountsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1918,15 +1986,20 @@ AdAccountsAPI_analyticsGetMmmReport(apiClient_t *apiClient, char *ad_account_id,
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/mmm_reports")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/mmm_reports");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/mmm_reports");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -1957,6 +2030,7 @@ AdAccountsAPI_analyticsGetMmmReport(apiClient_t *apiClient, char *ad_account_id,
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -1972,11 +2046,14 @@ AdAccountsAPI_analyticsGetMmmReport(apiClient_t *apiClient, char *ad_account_id,
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *AdAccountsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    get_mmm_report_response_t *elementToReturn = get_mmm_report_response_parseFromJSON(AdAccountsAPIlocalVarJSON);
-    cJSON_Delete(AdAccountsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    get_mmm_report_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AdAccountsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = get_mmm_report_response_parseFromJSON(AdAccountsAPIlocalVarJSON);
+        cJSON_Delete(AdAccountsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -2024,15 +2101,20 @@ AdAccountsAPI_analyticsGetReport(apiClient_t *apiClient, char *ad_account_id, ch
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/reports")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/reports");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/reports");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -2063,6 +2145,7 @@ AdAccountsAPI_analyticsGetReport(apiClient_t *apiClient, char *ad_account_id, ch
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -2078,11 +2161,14 @@ AdAccountsAPI_analyticsGetReport(apiClient_t *apiClient, char *ad_account_id, ch
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *AdAccountsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    ads_analytics_get_async_response_t *elementToReturn = ads_analytics_get_async_response_parseFromJSON(AdAccountsAPIlocalVarJSON);
-    cJSON_Delete(AdAccountsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    ads_analytics_get_async_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AdAccountsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = ads_analytics_get_async_response_parseFromJSON(AdAccountsAPIlocalVarJSON);
+        cJSON_Delete(AdAccountsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -2130,15 +2216,20 @@ AdAccountsAPI_sandboxDelete(apiClient_t *apiClient, char *ad_account_id)
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/sandbox")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/sandbox");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/sandbox");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -2157,6 +2248,7 @@ AdAccountsAPI_sandboxDelete(apiClient_t *apiClient, char *ad_account_id)
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "DELETE");
 
     // uncomment below to debug the error response
@@ -2171,8 +2263,10 @@ AdAccountsAPI_sandboxDelete(apiClient_t *apiClient, char *ad_account_id)
     //if (apiClient->response_code == 0) {
     //    printf("%s\n","Unexpected error");
     //}
-    //primitive return type simple
-    char* elementToReturn =  strdup((char*)apiClient->dataReceived);
+    //primitive return type simple string
+    char* elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300)
+        elementToReturn = strdup((char*)apiClient->dataReceived);
 
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
@@ -2206,15 +2300,20 @@ AdAccountsAPI_templatesList(apiClient_t *apiClient, char *ad_account_id, int *pa
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/templates")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/templates");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/templates");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -2246,7 +2345,7 @@ AdAccountsAPI_templatesList(apiClient_t *apiClient, char *ad_account_id, int *pa
     {
         keyQuery_order = strdup("order");
         valueQuery_order = (order);
-        keyPairQuery_order = keyValuePair_create(keyQuery_order, (void *)strdup(templatesList_ORDER_ToString(
+        keyPairQuery_order = keyValuePair_create(keyQuery_order, strdup(templatesList_ORDER_ToString(
         valueQuery_order)));
         list_addElement(localVarQueryParameters,keyPairQuery_order);
     }
@@ -2271,6 +2370,7 @@ AdAccountsAPI_templatesList(apiClient_t *apiClient, char *ad_account_id, int *pa
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -2286,11 +2386,14 @@ AdAccountsAPI_templatesList(apiClient_t *apiClient, char *ad_account_id, int *pa
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *AdAccountsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    templates_list_200_response_t *elementToReturn = templates_list_200_response_parseFromJSON(AdAccountsAPIlocalVarJSON);
-    cJSON_Delete(AdAccountsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    templates_list_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AdAccountsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = templates_list_200_response_parseFromJSON(AdAccountsAPIlocalVarJSON);
+        cJSON_Delete(AdAccountsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type

@@ -50,32 +50,37 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ImageMetadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ImageMetadata {
   public static final String SERIALIZED_NAME_ITEM_TYPE = "item_type";
   @SerializedName(SERIALIZED_NAME_ITEM_TYPE)
+  @javax.annotation.Nullable
   private String itemType;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
+  @javax.annotation.Nullable
   private String title;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nullable
   private String description;
 
   public static final String SERIALIZED_NAME_LINK = "link";
   @SerializedName(SERIALIZED_NAME_LINK)
+  @javax.annotation.Nullable
   private String link;
 
   public static final String SERIALIZED_NAME_IMAGES = "images";
   @SerializedName(SERIALIZED_NAME_IMAGES)
+  @javax.annotation.Nullable
   private ImageMetadataImages images;
 
   public ImageMetadata() {
   }
 
-  public ImageMetadata itemType(String itemType) {
+  public ImageMetadata itemType(@javax.annotation.Nullable String itemType) {
     this.itemType = itemType;
     return this;
   }
@@ -89,12 +94,12 @@ public class ImageMetadata {
     return itemType;
   }
 
-  public void setItemType(String itemType) {
+  public void setItemType(@javax.annotation.Nullable String itemType) {
     this.itemType = itemType;
   }
 
 
-  public ImageMetadata title(String title) {
+  public ImageMetadata title(@javax.annotation.Nullable String title) {
     this.title = title;
     return this;
   }
@@ -108,12 +113,12 @@ public class ImageMetadata {
     return title;
   }
 
-  public void setTitle(String title) {
+  public void setTitle(@javax.annotation.Nullable String title) {
     this.title = title;
   }
 
 
-  public ImageMetadata description(String description) {
+  public ImageMetadata description(@javax.annotation.Nullable String description) {
     this.description = description;
     return this;
   }
@@ -127,12 +132,12 @@ public class ImageMetadata {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
 
-  public ImageMetadata link(String link) {
+  public ImageMetadata link(@javax.annotation.Nullable String link) {
     this.link = link;
     return this;
   }
@@ -146,12 +151,12 @@ public class ImageMetadata {
     return link;
   }
 
-  public void setLink(String link) {
+  public void setLink(@javax.annotation.Nullable String link) {
     this.link = link;
   }
 
 
-  public ImageMetadata images(ImageMetadataImages images) {
+  public ImageMetadata images(@javax.annotation.Nullable ImageMetadataImages images) {
     this.images = images;
     return this;
   }
@@ -165,7 +170,7 @@ public class ImageMetadata {
     return images;
   }
 
-  public void setImages(ImageMetadataImages images) {
+  public void setImages(@javax.annotation.Nullable ImageMetadataImages images) {
     this.images = images;
   }
 

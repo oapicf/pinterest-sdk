@@ -5,7 +5,7 @@
 
 
 
-user_website_summary_t *user_website_summary_create(
+static user_website_summary_t *user_website_summary_create_internal(
     char *website,
     char *status,
     char *verified_at
@@ -18,12 +18,28 @@ user_website_summary_t *user_website_summary_create(
     user_website_summary_local_var->status = status;
     user_website_summary_local_var->verified_at = verified_at;
 
+    user_website_summary_local_var->_library_owned = 1;
     return user_website_summary_local_var;
 }
 
+__attribute__((deprecated)) user_website_summary_t *user_website_summary_create(
+    char *website,
+    char *status,
+    char *verified_at
+    ) {
+    return user_website_summary_create_internal (
+        website,
+        status,
+        verified_at
+        );
+}
 
 void user_website_summary_free(user_website_summary_t *user_website_summary) {
     if(NULL == user_website_summary){
+        return ;
+    }
+    if(user_website_summary->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "user_website_summary_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -82,6 +98,9 @@ user_website_summary_t *user_website_summary_parseFromJSON(cJSON *user_website_s
 
     // user_website_summary->website
     cJSON *website = cJSON_GetObjectItemCaseSensitive(user_website_summaryJSON, "website");
+    if (cJSON_IsNull(website)) {
+        website = NULL;
+    }
     if (website) { 
     if(!cJSON_IsString(website) && !cJSON_IsNull(website))
     {
@@ -91,6 +110,9 @@ user_website_summary_t *user_website_summary_parseFromJSON(cJSON *user_website_s
 
     // user_website_summary->status
     cJSON *status = cJSON_GetObjectItemCaseSensitive(user_website_summaryJSON, "status");
+    if (cJSON_IsNull(status)) {
+        status = NULL;
+    }
     if (status) { 
     if(!cJSON_IsString(status) && !cJSON_IsNull(status))
     {
@@ -100,6 +122,9 @@ user_website_summary_t *user_website_summary_parseFromJSON(cJSON *user_website_s
 
     // user_website_summary->verified_at
     cJSON *verified_at = cJSON_GetObjectItemCaseSensitive(user_website_summaryJSON, "verified_at");
+    if (cJSON_IsNull(verified_at)) {
+        verified_at = NULL;
+    }
     if (verified_at) { 
     if(!cJSON_IsString(verified_at) && !cJSON_IsNull(verified_at))
     {
@@ -108,7 +133,7 @@ user_website_summary_t *user_website_summary_parseFromJSON(cJSON *user_website_s
     }
 
 
-    user_website_summary_local_var = user_website_summary_create (
+    user_website_summary_local_var = user_website_summary_create_internal (
         website && !cJSON_IsNull(website) ? strdup(website->valuestring) : NULL,
         status && !cJSON_IsNull(status) ? strdup(status->valuestring) : NULL,
         verified_at && !cJSON_IsNull(verified_at) ? strdup(verified_at->valuestring) : NULL

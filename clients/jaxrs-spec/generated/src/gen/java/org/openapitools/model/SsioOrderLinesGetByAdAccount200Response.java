@@ -21,10 +21,20 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ssio_order_lines_get_by_ad_account_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SsioOrderLinesGetByAdAccount200Response   {
   private @Valid List<@Valid SSIOOrderLine> items = new ArrayList<>();
   private String bookmark;
+
+  public SsioOrderLinesGetByAdAccount200Response() {
+  }
+
+  @JsonCreator
+  public SsioOrderLinesGetByAdAccount200Response(
+    @JsonProperty(required = true, value = "items") List<@Valid SSIOOrderLine> items
+  ) {
+    this.items = items;
+  }
 
   /**
    * SSIO order lines by ad acount id
@@ -36,12 +46,12 @@ public class SsioOrderLinesGetByAdAccount200Response   {
 
   
   @ApiModelProperty(required = true, value = "SSIO order lines by ad acount id")
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   @NotNull @Valid public List<@Valid SSIOOrderLine> getItems() {
     return items;
   }
 
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   public void setItems(List<@Valid SSIOOrderLine> items) {
     this.items = items;
   }

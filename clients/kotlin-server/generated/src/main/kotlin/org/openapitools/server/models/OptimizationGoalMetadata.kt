@@ -15,15 +15,17 @@ import org.openapitools.server.models.OptimizationGoalMetadataConversionTagV3Goa
 import org.openapitools.server.models.OptimizationGoalMetadataFrequencyGoalMetadata
 import org.openapitools.server.models.OptimizationGoalMetadataScrollupGoalMetadata
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param conversionTagV3GoalMetadata 
  * @param frequencyGoalMetadata 
  * @param scrollupGoalMetadata 
  */
+@Serializable
 data class OptimizationGoalMetadata(
     val conversionTagV3GoalMetadata: OptimizationGoalMetadataConversionTagV3GoalMetadata? = null,
     val frequencyGoalMetadata: OptimizationGoalMetadataFrequencyGoalMetadata? = null,
     val scrollupGoalMetadata: OptimizationGoalMetadataScrollupGoalMetadata? = null
-) 
+)
 

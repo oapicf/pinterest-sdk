@@ -259,8 +259,8 @@ public:
 	TOptional<ViewWindowDaysEnum> ViewWindowDays;
 	enum class ConversionReportTimeEnum
 	{
-		AdAction,
-		Conversion,
+		TimeOfAdAction,
+		TimeOfConversion,
   	};
 
 	static FString EnumToString(const ConversionReportTimeEnum& EnumValue);
@@ -503,8 +503,8 @@ public:
 	TOptional<ViewWindowDaysEnum> ViewWindowDays;
 	enum class ConversionReportTimeEnum
 	{
-		AdAction,
-		Conversion,
+		TimeOfAdAction,
+		TimeOfConversion,
   	};
 
 	static FString EnumToString(const ConversionReportTimeEnum& EnumValue);

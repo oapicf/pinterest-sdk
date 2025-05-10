@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct AdAccountCreateRequest: Codable, JSONEncodable, Hashable {
 
-    static let nameRule = StringRule(minLength: nil, maxLength: 256, pattern: nil)
-    static let ownerUserIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let nameRule = StringRule(minLength: nil, maxLength: 256, pattern: nil)
+    public static let ownerUserIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public var country: Country?
     /** Ad Account name. */
     public var name: String?

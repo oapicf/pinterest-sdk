@@ -5,7 +5,7 @@
 
 
 
-ad_preview_url_response_t *ad_preview_url_response_create(
+static ad_preview_url_response_t *ad_preview_url_response_create_internal(
     char *url
     ) {
     ad_preview_url_response_t *ad_preview_url_response_local_var = malloc(sizeof(ad_preview_url_response_t));
@@ -14,12 +14,24 @@ ad_preview_url_response_t *ad_preview_url_response_create(
     }
     ad_preview_url_response_local_var->url = url;
 
+    ad_preview_url_response_local_var->_library_owned = 1;
     return ad_preview_url_response_local_var;
 }
 
+__attribute__((deprecated)) ad_preview_url_response_t *ad_preview_url_response_create(
+    char *url
+    ) {
+    return ad_preview_url_response_create_internal (
+        url
+        );
+}
 
 void ad_preview_url_response_free(ad_preview_url_response_t *ad_preview_url_response) {
     if(NULL == ad_preview_url_response){
+        return ;
+    }
+    if(ad_preview_url_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ad_preview_url_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -54,6 +66,9 @@ ad_preview_url_response_t *ad_preview_url_response_parseFromJSON(cJSON *ad_previ
 
     // ad_preview_url_response->url
     cJSON *url = cJSON_GetObjectItemCaseSensitive(ad_preview_url_responseJSON, "url");
+    if (cJSON_IsNull(url)) {
+        url = NULL;
+    }
     if (url) { 
     if(!cJSON_IsString(url) && !cJSON_IsNull(url))
     {
@@ -62,7 +77,7 @@ ad_preview_url_response_t *ad_preview_url_response_parseFromJSON(cJSON *ad_previ
     }
 
 
-    ad_preview_url_response_local_var = ad_preview_url_response_create (
+    ad_preview_url_response_local_var = ad_preview_url_response_create_internal (
         url && !cJSON_IsNull(url) ? strdup(url->valuestring) : NULL
         );
 

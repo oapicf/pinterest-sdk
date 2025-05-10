@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdsAnalyticsCreateAsyncRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdsAnalyticsCreateAsyncRequest   {
   private String startDate;
   private String endDate;
@@ -59,7 +59,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   private DataOutputFormat reportFormat = "JSON";
   public enum PrimarySortEnum {
 
-    ID(String.valueOf("BY_ID")), DATE(String.valueOf("BY_DATE"));
+    BY_ID(String.valueOf("BY_ID")), BY_DATE(String.valueOf("BY_DATE"));
 
 
     private String value;
@@ -108,6 +108,24 @@ public class AdsAnalyticsCreateAsyncRequest   {
   private Integer startHour;
   private Integer endHour;
 
+  public AdsAnalyticsCreateAsyncRequest() {
+  }
+
+  @JsonCreator
+  public AdsAnalyticsCreateAsyncRequest(
+    @JsonProperty(required = true, value = "start_date") String startDate,
+    @JsonProperty(required = true, value = "end_date") String endDate,
+    @JsonProperty(required = true, value = "granularity") Granularity granularity,
+    @JsonProperty(required = true, value = "columns") List<ReportingColumnAsync> columns,
+    @JsonProperty(required = true, value = "level") MetricsReportingLevel level
+  ) {
+    this.startDate = startDate;
+    this.endDate = endDate;
+    this.granularity = granularity;
+    this.columns = columns;
+    this.level = level;
+  }
+
   /**
    * Metric report start date (UTC). Format: YYYY-MM-DD
    **/
@@ -118,12 +136,12 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   
   @ApiModelProperty(example = "2020-12-20", required = true, value = "Metric report start date (UTC). Format: YYYY-MM-DD")
-  @JsonProperty("start_date")
+  @JsonProperty(required = true, value = "start_date")
   @NotNull  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")public String getStartDate() {
     return startDate;
   }
 
-  @JsonProperty("start_date")
+  @JsonProperty(required = true, value = "start_date")
   public void setStartDate(String startDate) {
     this.startDate = startDate;
   }
@@ -138,12 +156,12 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   
   @ApiModelProperty(example = "2020-12-20", required = true, value = "Metric report end date (UTC). Format: YYYY-MM-DD")
-  @JsonProperty("end_date")
+  @JsonProperty(required = true, value = "end_date")
   @NotNull  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")public String getEndDate() {
     return endDate;
   }
 
-  @JsonProperty("end_date")
+  @JsonProperty(required = true, value = "end_date")
   public void setEndDate(String endDate) {
     this.endDate = endDate;
   }
@@ -158,12 +176,12 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   
   @ApiModelProperty(required = true, value = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly")
-  @JsonProperty("granularity")
+  @JsonProperty(required = true, value = "granularity")
   @NotNull public Granularity getGranularity() {
     return granularity;
   }
 
-  @JsonProperty("granularity")
+  @JsonProperty(required = true, value = "granularity")
   public void setGranularity(Granularity granularity) {
     this.granularity = granularity;
   }
@@ -726,12 +744,12 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   
   @ApiModelProperty(required = true, value = "Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports.")
-  @JsonProperty("columns")
+  @JsonProperty(required = true, value = "columns")
   @NotNull public List<ReportingColumnAsync> getColumns() {
     return columns;
   }
 
-  @JsonProperty("columns")
+  @JsonProperty(required = true, value = "columns")
   public void setColumns(List<ReportingColumnAsync> columns) {
     this.columns = columns;
   }
@@ -762,12 +780,12 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   
   @ApiModelProperty(required = true, value = "Level of the report")
-  @JsonProperty("level")
+  @JsonProperty(required = true, value = "level")
   @NotNull public MetricsReportingLevel getLevel() {
     return level;
   }
 
-  @JsonProperty("level")
+  @JsonProperty(required = true, value = "level")
   public void setLevel(MetricsReportingLevel level) {
     this.level = level;
   }

@@ -5,7 +5,7 @@
 
 
 
-asset_id_permissions_t *asset_id_permissions_create(
+static asset_id_permissions_t *asset_id_permissions_create_internal(
     char *asset_id,
     char *asset_type,
     list_t *permissions,
@@ -20,12 +20,30 @@ asset_id_permissions_t *asset_id_permissions_create(
     asset_id_permissions_local_var->permissions = permissions;
     asset_id_permissions_local_var->asset_group_info = asset_group_info;
 
+    asset_id_permissions_local_var->_library_owned = 1;
     return asset_id_permissions_local_var;
 }
 
+__attribute__((deprecated)) asset_id_permissions_t *asset_id_permissions_create(
+    char *asset_id,
+    char *asset_type,
+    list_t *permissions,
+    asset_group_binding_t *asset_group_info
+    ) {
+    return asset_id_permissions_create_internal (
+        asset_id,
+        asset_type,
+        permissions,
+        asset_group_info
+        );
+}
 
 void asset_id_permissions_free(asset_id_permissions_t *asset_id_permissions) {
     if(NULL == asset_id_permissions){
+        return ;
+    }
+    if(asset_id_permissions->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "asset_id_permissions_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -79,7 +97,7 @@ cJSON *asset_id_permissions_convertToJSON(asset_id_permissions_t *asset_id_permi
 
     listEntry_t *permissionsListEntry;
     list_ForEach(permissionsListEntry, asset_id_permissions->permissions) {
-    if(cJSON_AddStringToObject(permissions, "", (char*)permissionsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(permissions, "", permissionsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -119,6 +137,9 @@ asset_id_permissions_t *asset_id_permissions_parseFromJSON(cJSON *asset_id_permi
 
     // asset_id_permissions->asset_id
     cJSON *asset_id = cJSON_GetObjectItemCaseSensitive(asset_id_permissionsJSON, "asset_id");
+    if (cJSON_IsNull(asset_id)) {
+        asset_id = NULL;
+    }
     if (asset_id) { 
     if(!cJSON_IsString(asset_id) && !cJSON_IsNull(asset_id))
     {
@@ -128,6 +149,9 @@ asset_id_permissions_t *asset_id_permissions_parseFromJSON(cJSON *asset_id_permi
 
     // asset_id_permissions->asset_type
     cJSON *asset_type = cJSON_GetObjectItemCaseSensitive(asset_id_permissionsJSON, "asset_type");
+    if (cJSON_IsNull(asset_type)) {
+        asset_type = NULL;
+    }
     if (asset_type) { 
     if(!cJSON_IsString(asset_type) && !cJSON_IsNull(asset_type))
     {
@@ -137,6 +161,9 @@ asset_id_permissions_t *asset_id_permissions_parseFromJSON(cJSON *asset_id_permi
 
     // asset_id_permissions->permissions
     cJSON *permissions = cJSON_GetObjectItemCaseSensitive(asset_id_permissionsJSON, "permissions");
+    if (cJSON_IsNull(permissions)) {
+        permissions = NULL;
+    }
     if (permissions) { 
     cJSON *permissions_local = NULL;
     if(!cJSON_IsArray(permissions)) {
@@ -156,12 +183,15 @@ asset_id_permissions_t *asset_id_permissions_parseFromJSON(cJSON *asset_id_permi
 
     // asset_id_permissions->asset_group_info
     cJSON *asset_group_info = cJSON_GetObjectItemCaseSensitive(asset_id_permissionsJSON, "asset_group_info");
+    if (cJSON_IsNull(asset_group_info)) {
+        asset_group_info = NULL;
+    }
     if (asset_group_info) { 
     asset_group_info_local_nonprim = asset_group_binding_parseFromJSON(asset_group_info); //nonprimitive
     }
 
 
-    asset_id_permissions_local_var = asset_id_permissions_create (
+    asset_id_permissions_local_var = asset_id_permissions_create_internal (
         asset_id && !cJSON_IsNull(asset_id) ? strdup(asset_id->valuestring) : NULL,
         asset_type && !cJSON_IsNull(asset_type) ? strdup(asset_type->valuestring) : NULL,
         permissions ? permissionsList : NULL,

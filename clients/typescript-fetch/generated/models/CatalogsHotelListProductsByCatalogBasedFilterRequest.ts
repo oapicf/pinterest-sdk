@@ -83,11 +83,11 @@ export function CatalogsHotelListProductsByCatalogBasedFilterRequestFromJSONType
     };
 }
 
-  export function CatalogsHotelListProductsByCatalogBasedFilterRequestToJSON(json: any): CatalogsHotelListProductsByCatalogBasedFilterRequest {
-      return CatalogsHotelListProductsByCatalogBasedFilterRequestToJSONTyped(json, false);
-  }
+export function CatalogsHotelListProductsByCatalogBasedFilterRequestToJSON(json: any): CatalogsHotelListProductsByCatalogBasedFilterRequest {
+    return CatalogsHotelListProductsByCatalogBasedFilterRequestToJSONTyped(json, false);
+}
 
-  export function CatalogsHotelListProductsByCatalogBasedFilterRequestToJSONTyped(value?: CatalogsHotelListProductsByCatalogBasedFilterRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsHotelListProductsByCatalogBasedFilterRequestToJSONTyped(value?: CatalogsHotelListProductsByCatalogBasedFilterRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

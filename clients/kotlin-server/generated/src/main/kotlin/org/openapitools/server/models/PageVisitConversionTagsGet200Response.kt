@@ -13,13 +13,15 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.ConversionEventResponse
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items 
  * @param bookmark 
  */
+@Serializable
 data class PageVisitConversionTagsGet200Response(
     val items: kotlin.collections.List<ConversionEventResponse>,
     val bookmark: kotlin.String? = null
-) 
+)
 

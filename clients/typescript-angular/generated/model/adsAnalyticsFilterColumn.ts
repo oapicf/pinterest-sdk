@@ -15,7 +15,9 @@
 export type AdsAnalyticsFilterColumn = 'SPEND_IN_DOLLAR' | 'TOTAL_IMPRESSION';
 
 export const AdsAnalyticsFilterColumn = {
+
     SpendInDollar: 'SPEND_IN_DOLLAR' as AdsAnalyticsFilterColumn,
+
     TotalImpression: 'TOTAL_IMPRESSION' as AdsAnalyticsFilterColumn
 };
 

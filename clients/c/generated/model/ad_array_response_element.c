@@ -5,7 +5,7 @@
 
 
 
-ad_array_response_element_t *ad_array_response_element_create(
+static ad_array_response_element_t *ad_array_response_element_create_internal(
     ad_response_t *data,
     exception_t *exceptions
     ) {
@@ -16,12 +16,26 @@ ad_array_response_element_t *ad_array_response_element_create(
     ad_array_response_element_local_var->data = data;
     ad_array_response_element_local_var->exceptions = exceptions;
 
+    ad_array_response_element_local_var->_library_owned = 1;
     return ad_array_response_element_local_var;
 }
 
+__attribute__((deprecated)) ad_array_response_element_t *ad_array_response_element_create(
+    ad_response_t *data,
+    exception_t *exceptions
+    ) {
+    return ad_array_response_element_create_internal (
+        data,
+        exceptions
+        );
+}
 
 void ad_array_response_element_free(ad_array_response_element_t *ad_array_response_element) {
     if(NULL == ad_array_response_element){
+        return ;
+    }
+    if(ad_array_response_element->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ad_array_response_element_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -84,18 +98,24 @@ ad_array_response_element_t *ad_array_response_element_parseFromJSON(cJSON *ad_a
 
     // ad_array_response_element->data
     cJSON *data = cJSON_GetObjectItemCaseSensitive(ad_array_response_elementJSON, "data");
+    if (cJSON_IsNull(data)) {
+        data = NULL;
+    }
     if (data) { 
     data_local_nonprim = ad_response_parseFromJSON(data); //nonprimitive
     }
 
     // ad_array_response_element->exceptions
     cJSON *exceptions = cJSON_GetObjectItemCaseSensitive(ad_array_response_elementJSON, "exceptions");
+    if (cJSON_IsNull(exceptions)) {
+        exceptions = NULL;
+    }
     if (exceptions) { 
     exceptions_local_nonprim = exception_parseFromJSON(exceptions); //nonprimitive
     }
 
 
-    ad_array_response_element_local_var = ad_array_response_element_create (
+    ad_array_response_element_local_var = ad_array_response_element_create_internal (
         data ? data_local_nonprim : NULL,
         exceptions ? exceptions_local_nonprim : NULL
         );

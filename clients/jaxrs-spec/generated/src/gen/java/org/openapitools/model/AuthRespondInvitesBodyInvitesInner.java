@@ -17,10 +17,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AuthRespondInvitesBody_invites_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AuthRespondInvitesBodyInvitesInner   {
   private AuthRespondInvitesBodyInvitesInnerAction action;
   private String inviteId;
+
+  public AuthRespondInvitesBodyInvitesInner() {
+  }
+
+  @JsonCreator
+  public AuthRespondInvitesBodyInvitesInner(
+    @JsonProperty(required = true, value = "action") AuthRespondInvitesBodyInvitesInnerAction action,
+    @JsonProperty(required = true, value = "invite_id") String inviteId
+  ) {
+    this.action = action;
+    this.inviteId = inviteId;
+  }
 
   /**
    **/
@@ -31,12 +43,12 @@ public class AuthRespondInvitesBodyInvitesInner   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("action")
+  @JsonProperty(required = true, value = "action")
   @NotNull @Valid public AuthRespondInvitesBodyInvitesInnerAction getAction() {
     return action;
   }
 
-  @JsonProperty("action")
+  @JsonProperty(required = true, value = "action")
   public void setAction(AuthRespondInvitesBodyInvitesInnerAction action) {
     this.action = action;
   }
@@ -51,12 +63,12 @@ public class AuthRespondInvitesBodyInvitesInner   {
 
   
   @ApiModelProperty(required = true, value = "Unique identifier of an invite.")
-  @JsonProperty("invite_id")
+  @JsonProperty(required = true, value = "invite_id")
   @NotNull  @Pattern(regexp="^\\d+$") @Size(min=1,max=25)public String getInviteId() {
     return inviteId;
   }
 
-  @JsonProperty("invite_id")
+  @JsonProperty(required = true, value = "invite_id")
   public void setInviteId(String inviteId) {
     this.inviteId = inviteId;
   }

@@ -15,7 +15,7 @@ import org.openapitools.model.BusinessMemberAssetsSummaryProfilesInner;
  * Ad accounts and profiles the business member/partner has access to.
  */
 @ApiModel(description = "Ad accounts and profiles the business member/partner has access to.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2025-05-10T05:39:24.501669360Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BusinessMemberAssetsSummary   {
   @JsonProperty("ad_accounts")
   private List<@Valid BusinessMemberAssetsSummaryAdAccountsInner> adAccounts = null;

@@ -26,8 +26,8 @@ import model_product_group_summary_status
 import model_reporting_column_async
 
 type PrimarySort* {.pure.} = enum
-  ID
-  DATE
+  BYID
+  BYDATE
 
 type AdsAnalyticsCreateAsyncRequest* = object
   ## 
@@ -60,12 +60,12 @@ type AdsAnalyticsCreateAsyncRequest* = object
 
 func `%`*(v: PrimarySort): JsonNode =
   let str = case v:
-    of PrimarySort.ID: "BY_ID"
-    of PrimarySort.DATE: "BY_DATE"
+    of PrimarySort.BYID: "BY_ID"
+    of PrimarySort.BYDATE: "BY_DATE"
 
   JsonNode(kind: JString, str: str)
 
 func `$`*(v: PrimarySort): string =
   result = case v:
-    of PrimarySort.ID: "BY_ID"
-    of PrimarySort.DATE: "BY_DATE"
+    of PrimarySort.BYID: "BY_ID"
+    of PrimarySort.BYDATE: "BY_DATE"

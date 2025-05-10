@@ -18,11 +18,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Demographic detail for a single audience demographic")
 @JsonTypeName("AudienceDemographicValue")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AudienceDemographicValue   {
   private String key;
   private String name;
   private BigDecimal ratio;
+
+  public AudienceDemographicValue() {
+  }
 
   /**
    * Unique key for demographic item

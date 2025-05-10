@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.LeadFormArrayResponseItemsInner
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items 
  */
+@Serializable
 data class LeadFormArrayResponse(
     val items: kotlin.collections.List<LeadFormArrayResponseItemsInner>? = null
-) 
+)
 

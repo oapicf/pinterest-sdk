@@ -51,16 +51,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * MembersToDeleteBody
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class MembersToDeleteBody {
   public static final String SERIALIZED_NAME_MEMBERS = "members";
   @SerializedName(SERIALIZED_NAME_MEMBERS)
+  @javax.annotation.Nonnull
   private List<MembersToDeleteBodyMembersInner> members = new ArrayList<>();
 
   public MembersToDeleteBody() {
   }
 
-  public MembersToDeleteBody members(List<MembersToDeleteBodyMembersInner> members) {
+  public MembersToDeleteBody members(@javax.annotation.Nonnull List<MembersToDeleteBodyMembersInner> members) {
     this.members = members;
     return this;
   }
@@ -82,7 +83,7 @@ public class MembersToDeleteBody {
     return members;
   }
 
-  public void setMembers(List<MembersToDeleteBodyMembersInner> members) {
+  public void setMembers(@javax.annotation.Nonnull List<MembersToDeleteBodyMembersInner> members) {
     this.members = members;
   }
 

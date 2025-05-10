@@ -52,84 +52,102 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ProductGroupPromotionCreateRequestElement
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ProductGroupPromotionCreateRequestElement {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_AD_GROUP_ID = "ad_group_id";
   @SerializedName(SERIALIZED_NAME_AD_GROUP_ID)
+  @javax.annotation.Nullable
   private String adGroupId;
 
   public static final String SERIALIZED_NAME_BID_IN_MICRO_CURRENCY = "bid_in_micro_currency";
   @SerializedName(SERIALIZED_NAME_BID_IN_MICRO_CURRENCY)
+  @javax.annotation.Nullable
   private Integer bidInMicroCurrency;
 
   public static final String SERIALIZED_NAME_INCLUDED = "included";
   @SerializedName(SERIALIZED_NAME_INCLUDED)
+  @javax.annotation.Nullable
   private Boolean included;
 
   public static final String SERIALIZED_NAME_DEFINITION = "definition";
   @SerializedName(SERIALIZED_NAME_DEFINITION)
+  @javax.annotation.Nullable
   private String definition;
 
   public static final String SERIALIZED_NAME_RELATIVE_DEFINITION = "relative_definition";
   @SerializedName(SERIALIZED_NAME_RELATIVE_DEFINITION)
+  @javax.annotation.Nullable
   private String relativeDefinition;
 
   public static final String SERIALIZED_NAME_PARENT_ID = "parent_id";
   @SerializedName(SERIALIZED_NAME_PARENT_ID)
+  @javax.annotation.Nullable
   private String parentId;
 
   public static final String SERIALIZED_NAME_SLIDESHOW_COLLECTIONS_TITLE = "slideshow_collections_title";
   @SerializedName(SERIALIZED_NAME_SLIDESHOW_COLLECTIONS_TITLE)
+  @javax.annotation.Nullable
   private String slideshowCollectionsTitle;
 
   public static final String SERIALIZED_NAME_SLIDESHOW_COLLECTIONS_DESCRIPTION = "slideshow_collections_description";
   @SerializedName(SERIALIZED_NAME_SLIDESHOW_COLLECTIONS_DESCRIPTION)
+  @javax.annotation.Nullable
   private String slideshowCollectionsDescription;
 
   public static final String SERIALIZED_NAME_IS_MDL = "is_mdl";
   @SerializedName(SERIALIZED_NAME_IS_MDL)
+  @javax.annotation.Nullable
   private Boolean isMdl;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private EntityStatus status;
 
   public static final String SERIALIZED_NAME_TRACKING_URL = "tracking_url";
   @SerializedName(SERIALIZED_NAME_TRACKING_URL)
+  @javax.annotation.Nullable
   private String trackingUrl;
 
   public static final String SERIALIZED_NAME_CATALOG_PRODUCT_GROUP_ID = "catalog_product_group_id";
   @SerializedName(SERIALIZED_NAME_CATALOG_PRODUCT_GROUP_ID)
+  @javax.annotation.Nullable
   private String catalogProductGroupId;
 
   public static final String SERIALIZED_NAME_CATALOG_PRODUCT_GROUP_NAME = "catalog_product_group_name";
   @SerializedName(SERIALIZED_NAME_CATALOG_PRODUCT_GROUP_NAME)
+  @javax.annotation.Nullable
   private String catalogProductGroupName;
 
   public static final String SERIALIZED_NAME_COLLECTIONS_HERO_PIN_ID = "collections_hero_pin_id";
   @SerializedName(SERIALIZED_NAME_COLLECTIONS_HERO_PIN_ID)
+  @javax.annotation.Nullable
   private String collectionsHeroPinId;
 
   public static final String SERIALIZED_NAME_COLLECTIONS_HERO_DESTINATION_URL = "collections_hero_destination_url";
   @SerializedName(SERIALIZED_NAME_COLLECTIONS_HERO_DESTINATION_URL)
+  @javax.annotation.Nullable
   private String collectionsHeroDestinationUrl;
 
   public static final String SERIALIZED_NAME_GRID_CLICK_TYPE = "grid_click_type";
   @SerializedName(SERIALIZED_NAME_GRID_CLICK_TYPE)
+  @javax.annotation.Nullable
   private GridClickType gridClickType;
 
   public static final String SERIALIZED_NAME_CREATIVE_TYPE = "creative_type";
   @SerializedName(SERIALIZED_NAME_CREATIVE_TYPE)
+  @javax.annotation.Nullable
   private CreativeType creativeType;
 
   public ProductGroupPromotionCreateRequestElement() {
   }
 
-  public ProductGroupPromotionCreateRequestElement id(String id) {
+  public ProductGroupPromotionCreateRequestElement id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -143,12 +161,12 @@ public class ProductGroupPromotionCreateRequestElement {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public ProductGroupPromotionCreateRequestElement adGroupId(String adGroupId) {
+  public ProductGroupPromotionCreateRequestElement adGroupId(@javax.annotation.Nullable String adGroupId) {
     this.adGroupId = adGroupId;
     return this;
   }
@@ -162,12 +180,12 @@ public class ProductGroupPromotionCreateRequestElement {
     return adGroupId;
   }
 
-  public void setAdGroupId(String adGroupId) {
+  public void setAdGroupId(@javax.annotation.Nullable String adGroupId) {
     this.adGroupId = adGroupId;
   }
 
 
-  public ProductGroupPromotionCreateRequestElement bidInMicroCurrency(Integer bidInMicroCurrency) {
+  public ProductGroupPromotionCreateRequestElement bidInMicroCurrency(@javax.annotation.Nullable Integer bidInMicroCurrency) {
     this.bidInMicroCurrency = bidInMicroCurrency;
     return this;
   }
@@ -181,12 +199,12 @@ public class ProductGroupPromotionCreateRequestElement {
     return bidInMicroCurrency;
   }
 
-  public void setBidInMicroCurrency(Integer bidInMicroCurrency) {
+  public void setBidInMicroCurrency(@javax.annotation.Nullable Integer bidInMicroCurrency) {
     this.bidInMicroCurrency = bidInMicroCurrency;
   }
 
 
-  public ProductGroupPromotionCreateRequestElement included(Boolean included) {
+  public ProductGroupPromotionCreateRequestElement included(@javax.annotation.Nullable Boolean included) {
     this.included = included;
     return this;
   }
@@ -200,12 +218,12 @@ public class ProductGroupPromotionCreateRequestElement {
     return included;
   }
 
-  public void setIncluded(Boolean included) {
+  public void setIncluded(@javax.annotation.Nullable Boolean included) {
     this.included = included;
   }
 
 
-  public ProductGroupPromotionCreateRequestElement definition(String definition) {
+  public ProductGroupPromotionCreateRequestElement definition(@javax.annotation.Nullable String definition) {
     this.definition = definition;
     return this;
   }
@@ -219,12 +237,12 @@ public class ProductGroupPromotionCreateRequestElement {
     return definition;
   }
 
-  public void setDefinition(String definition) {
+  public void setDefinition(@javax.annotation.Nullable String definition) {
     this.definition = definition;
   }
 
 
-  public ProductGroupPromotionCreateRequestElement relativeDefinition(String relativeDefinition) {
+  public ProductGroupPromotionCreateRequestElement relativeDefinition(@javax.annotation.Nullable String relativeDefinition) {
     this.relativeDefinition = relativeDefinition;
     return this;
   }
@@ -238,12 +256,12 @@ public class ProductGroupPromotionCreateRequestElement {
     return relativeDefinition;
   }
 
-  public void setRelativeDefinition(String relativeDefinition) {
+  public void setRelativeDefinition(@javax.annotation.Nullable String relativeDefinition) {
     this.relativeDefinition = relativeDefinition;
   }
 
 
-  public ProductGroupPromotionCreateRequestElement parentId(String parentId) {
+  public ProductGroupPromotionCreateRequestElement parentId(@javax.annotation.Nullable String parentId) {
     this.parentId = parentId;
     return this;
   }
@@ -257,12 +275,12 @@ public class ProductGroupPromotionCreateRequestElement {
     return parentId;
   }
 
-  public void setParentId(String parentId) {
+  public void setParentId(@javax.annotation.Nullable String parentId) {
     this.parentId = parentId;
   }
 
 
-  public ProductGroupPromotionCreateRequestElement slideshowCollectionsTitle(String slideshowCollectionsTitle) {
+  public ProductGroupPromotionCreateRequestElement slideshowCollectionsTitle(@javax.annotation.Nullable String slideshowCollectionsTitle) {
     this.slideshowCollectionsTitle = slideshowCollectionsTitle;
     return this;
   }
@@ -276,12 +294,12 @@ public class ProductGroupPromotionCreateRequestElement {
     return slideshowCollectionsTitle;
   }
 
-  public void setSlideshowCollectionsTitle(String slideshowCollectionsTitle) {
+  public void setSlideshowCollectionsTitle(@javax.annotation.Nullable String slideshowCollectionsTitle) {
     this.slideshowCollectionsTitle = slideshowCollectionsTitle;
   }
 
 
-  public ProductGroupPromotionCreateRequestElement slideshowCollectionsDescription(String slideshowCollectionsDescription) {
+  public ProductGroupPromotionCreateRequestElement slideshowCollectionsDescription(@javax.annotation.Nullable String slideshowCollectionsDescription) {
     this.slideshowCollectionsDescription = slideshowCollectionsDescription;
     return this;
   }
@@ -295,12 +313,12 @@ public class ProductGroupPromotionCreateRequestElement {
     return slideshowCollectionsDescription;
   }
 
-  public void setSlideshowCollectionsDescription(String slideshowCollectionsDescription) {
+  public void setSlideshowCollectionsDescription(@javax.annotation.Nullable String slideshowCollectionsDescription) {
     this.slideshowCollectionsDescription = slideshowCollectionsDescription;
   }
 
 
-  public ProductGroupPromotionCreateRequestElement isMdl(Boolean isMdl) {
+  public ProductGroupPromotionCreateRequestElement isMdl(@javax.annotation.Nullable Boolean isMdl) {
     this.isMdl = isMdl;
     return this;
   }
@@ -314,12 +332,12 @@ public class ProductGroupPromotionCreateRequestElement {
     return isMdl;
   }
 
-  public void setIsMdl(Boolean isMdl) {
+  public void setIsMdl(@javax.annotation.Nullable Boolean isMdl) {
     this.isMdl = isMdl;
   }
 
 
-  public ProductGroupPromotionCreateRequestElement status(EntityStatus status) {
+  public ProductGroupPromotionCreateRequestElement status(@javax.annotation.Nullable EntityStatus status) {
     this.status = status;
     return this;
   }
@@ -333,12 +351,12 @@ public class ProductGroupPromotionCreateRequestElement {
     return status;
   }
 
-  public void setStatus(EntityStatus status) {
+  public void setStatus(@javax.annotation.Nullable EntityStatus status) {
     this.status = status;
   }
 
 
-  public ProductGroupPromotionCreateRequestElement trackingUrl(String trackingUrl) {
+  public ProductGroupPromotionCreateRequestElement trackingUrl(@javax.annotation.Nullable String trackingUrl) {
     this.trackingUrl = trackingUrl;
     return this;
   }
@@ -352,12 +370,12 @@ public class ProductGroupPromotionCreateRequestElement {
     return trackingUrl;
   }
 
-  public void setTrackingUrl(String trackingUrl) {
+  public void setTrackingUrl(@javax.annotation.Nullable String trackingUrl) {
     this.trackingUrl = trackingUrl;
   }
 
 
-  public ProductGroupPromotionCreateRequestElement catalogProductGroupId(String catalogProductGroupId) {
+  public ProductGroupPromotionCreateRequestElement catalogProductGroupId(@javax.annotation.Nullable String catalogProductGroupId) {
     this.catalogProductGroupId = catalogProductGroupId;
     return this;
   }
@@ -371,12 +389,12 @@ public class ProductGroupPromotionCreateRequestElement {
     return catalogProductGroupId;
   }
 
-  public void setCatalogProductGroupId(String catalogProductGroupId) {
+  public void setCatalogProductGroupId(@javax.annotation.Nullable String catalogProductGroupId) {
     this.catalogProductGroupId = catalogProductGroupId;
   }
 
 
-  public ProductGroupPromotionCreateRequestElement catalogProductGroupName(String catalogProductGroupName) {
+  public ProductGroupPromotionCreateRequestElement catalogProductGroupName(@javax.annotation.Nullable String catalogProductGroupName) {
     this.catalogProductGroupName = catalogProductGroupName;
     return this;
   }
@@ -390,12 +408,12 @@ public class ProductGroupPromotionCreateRequestElement {
     return catalogProductGroupName;
   }
 
-  public void setCatalogProductGroupName(String catalogProductGroupName) {
+  public void setCatalogProductGroupName(@javax.annotation.Nullable String catalogProductGroupName) {
     this.catalogProductGroupName = catalogProductGroupName;
   }
 
 
-  public ProductGroupPromotionCreateRequestElement collectionsHeroPinId(String collectionsHeroPinId) {
+  public ProductGroupPromotionCreateRequestElement collectionsHeroPinId(@javax.annotation.Nullable String collectionsHeroPinId) {
     this.collectionsHeroPinId = collectionsHeroPinId;
     return this;
   }
@@ -409,12 +427,12 @@ public class ProductGroupPromotionCreateRequestElement {
     return collectionsHeroPinId;
   }
 
-  public void setCollectionsHeroPinId(String collectionsHeroPinId) {
+  public void setCollectionsHeroPinId(@javax.annotation.Nullable String collectionsHeroPinId) {
     this.collectionsHeroPinId = collectionsHeroPinId;
   }
 
 
-  public ProductGroupPromotionCreateRequestElement collectionsHeroDestinationUrl(String collectionsHeroDestinationUrl) {
+  public ProductGroupPromotionCreateRequestElement collectionsHeroDestinationUrl(@javax.annotation.Nullable String collectionsHeroDestinationUrl) {
     this.collectionsHeroDestinationUrl = collectionsHeroDestinationUrl;
     return this;
   }
@@ -428,12 +446,12 @@ public class ProductGroupPromotionCreateRequestElement {
     return collectionsHeroDestinationUrl;
   }
 
-  public void setCollectionsHeroDestinationUrl(String collectionsHeroDestinationUrl) {
+  public void setCollectionsHeroDestinationUrl(@javax.annotation.Nullable String collectionsHeroDestinationUrl) {
     this.collectionsHeroDestinationUrl = collectionsHeroDestinationUrl;
   }
 
 
-  public ProductGroupPromotionCreateRequestElement gridClickType(GridClickType gridClickType) {
+  public ProductGroupPromotionCreateRequestElement gridClickType(@javax.annotation.Nullable GridClickType gridClickType) {
     this.gridClickType = gridClickType;
     return this;
   }
@@ -447,12 +465,12 @@ public class ProductGroupPromotionCreateRequestElement {
     return gridClickType;
   }
 
-  public void setGridClickType(GridClickType gridClickType) {
+  public void setGridClickType(@javax.annotation.Nullable GridClickType gridClickType) {
     this.gridClickType = gridClickType;
   }
 
 
-  public ProductGroupPromotionCreateRequestElement creativeType(CreativeType creativeType) {
+  public ProductGroupPromotionCreateRequestElement creativeType(@javax.annotation.Nullable CreativeType creativeType) {
     this.creativeType = creativeType;
     return this;
   }
@@ -466,7 +484,7 @@ public class ProductGroupPromotionCreateRequestElement {
     return creativeType;
   }
 
-  public void setCreativeType(CreativeType creativeType) {
+  public void setCreativeType(@javax.annotation.Nullable CreativeType creativeType) {
     this.creativeType = creativeType;
   }
 

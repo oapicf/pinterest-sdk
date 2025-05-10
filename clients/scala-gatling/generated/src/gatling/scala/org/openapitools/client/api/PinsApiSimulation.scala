@@ -89,11 +89,11 @@ class PinsApiSimulation extends Simulation {
         .feed(multi_pins/analyticsQUERYFeeder)
         .exec(http("multiPinsAnalytics")
         .httpRequest("GET","/pins/analytics")
-        .queryParam("ad_account_id","${ad_account_id}")
-        .queryParam("start_date","${start_date}")
-        .queryParam("pin_ids","${pin_ids}")
         .queryParam("end_date","${end_date}")
+        .queryParam("ad_account_id","${ad_account_id}")
+        .queryParam("pin_ids","${pin_ids}")
         .queryParam("app_types","${app_types}")
+        .queryParam("start_date","${start_date}")
         .queryParam("metric_types","${metric_types}")
 )
 
@@ -110,12 +110,12 @@ class PinsApiSimulation extends Simulation {
         .feed(pins/analyticsPATHFeeder)
         .exec(http("pinsAnalytics")
         .httpRequest("GET","/pins/${pin_id}/analytics")
-        .queryParam("ad_account_id","${ad_account_id}")
-        .queryParam("start_date","${start_date}")
         .queryParam("end_date","${end_date}")
         .queryParam("split_field","${split_field}")
-        .queryParam("metric_types","${metric_types}")
+        .queryParam("ad_account_id","${ad_account_id}")
         .queryParam("app_types","${app_types}")
+        .queryParam("start_date","${start_date}")
+        .queryParam("metric_types","${metric_types}")
 )
 
     // Run scnpinsAnalytics with warm up and reach a constant rate for entire duration
@@ -162,8 +162,8 @@ class PinsApiSimulation extends Simulation {
         .feed(pins/getPATHFeeder)
         .exec(http("pinsGet")
         .httpRequest("GET","/pins/${pin_id}")
-        .queryParam("ad_account_id","${ad_account_id}")
         .queryParam("pin_metrics","${pin_metrics}")
+        .queryParam("ad_account_id","${ad_account_id}")
 )
 
     // Run scnpinsGet with warm up and reach a constant rate for entire duration
@@ -178,14 +178,14 @@ class PinsApiSimulation extends Simulation {
         .feed(pins/listQUERYFeeder)
         .exec(http("pinsList")
         .httpRequest("GET","/pins")
+        .queryParam("page_size","${page_size}")
+        .queryParam("pin_metrics","${pin_metrics}")
         .queryParam("ad_account_id","${ad_account_id}")
         .queryParam("include_protected_pins","${include_protected_pins}")
+        .queryParam("pin_type","${pin_type}")
         .queryParam("pin_filter","${pin_filter}")
         .queryParam("creative_types","${creative_types}")
-        .queryParam("pin_metrics","${pin_metrics}")
-        .queryParam("page_size","${page_size}")
         .queryParam("bookmark","${bookmark}")
-        .queryParam("pin_type","${pin_type}")
 )
 
     // Run scnpinsList with warm up and reach a constant rate for entire duration

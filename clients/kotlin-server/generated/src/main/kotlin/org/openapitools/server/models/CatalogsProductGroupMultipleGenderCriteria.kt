@@ -13,13 +13,15 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.Gender
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param propertyValues 
  * @param negated 
  */
+@Serializable
 data class CatalogsProductGroupMultipleGenderCriteria(
     val propertyValues: kotlin.collections.List<Gender>,
     val negated: kotlin.Boolean? = false
-) 
+)
 

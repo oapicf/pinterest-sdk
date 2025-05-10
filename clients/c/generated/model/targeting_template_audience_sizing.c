@@ -5,7 +5,7 @@
 
 
 
-targeting_template_audience_sizing_t *targeting_template_audience_sizing_create(
+static targeting_template_audience_sizing_t *targeting_template_audience_sizing_create_internal(
     targeting_template_audience_sizing_reach_estimate_t *reach_estimate
     ) {
     targeting_template_audience_sizing_t *targeting_template_audience_sizing_local_var = malloc(sizeof(targeting_template_audience_sizing_t));
@@ -14,12 +14,24 @@ targeting_template_audience_sizing_t *targeting_template_audience_sizing_create(
     }
     targeting_template_audience_sizing_local_var->reach_estimate = reach_estimate;
 
+    targeting_template_audience_sizing_local_var->_library_owned = 1;
     return targeting_template_audience_sizing_local_var;
 }
 
+__attribute__((deprecated)) targeting_template_audience_sizing_t *targeting_template_audience_sizing_create(
+    targeting_template_audience_sizing_reach_estimate_t *reach_estimate
+    ) {
+    return targeting_template_audience_sizing_create_internal (
+        reach_estimate
+        );
+}
 
 void targeting_template_audience_sizing_free(targeting_template_audience_sizing_t *targeting_template_audience_sizing) {
     if(NULL == targeting_template_audience_sizing){
+        return ;
+    }
+    if(targeting_template_audience_sizing->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "targeting_template_audience_sizing_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -62,12 +74,15 @@ targeting_template_audience_sizing_t *targeting_template_audience_sizing_parseFr
 
     // targeting_template_audience_sizing->reach_estimate
     cJSON *reach_estimate = cJSON_GetObjectItemCaseSensitive(targeting_template_audience_sizingJSON, "reach_estimate");
+    if (cJSON_IsNull(reach_estimate)) {
+        reach_estimate = NULL;
+    }
     if (reach_estimate) { 
     reach_estimate_local_nonprim = targeting_template_audience_sizing_reach_estimate_parseFromJSON(reach_estimate); //nonprimitive
     }
 
 
-    targeting_template_audience_sizing_local_var = targeting_template_audience_sizing_create (
+    targeting_template_audience_sizing_local_var = targeting_template_audience_sizing_create_internal (
         reach_estimate ? reach_estimate_local_nonprim : NULL
         );
 

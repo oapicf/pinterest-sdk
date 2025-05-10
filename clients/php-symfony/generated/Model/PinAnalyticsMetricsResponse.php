@@ -83,7 +83,7 @@ class PinAnalyticsMetricsResponse
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->lifetimeMetrics = array_key_exists('lifetimeMetrics', $data) ? $data['lifetimeMetrics'] : $this->lifetimeMetrics;

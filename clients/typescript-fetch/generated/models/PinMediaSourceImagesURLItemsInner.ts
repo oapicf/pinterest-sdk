@@ -70,11 +70,11 @@ export function PinMediaSourceImagesURLItemsInnerFromJSONTyped(json: any, ignore
     };
 }
 
-  export function PinMediaSourceImagesURLItemsInnerToJSON(json: any): PinMediaSourceImagesURLItemsInner {
-      return PinMediaSourceImagesURLItemsInnerToJSONTyped(json, false);
-  }
+export function PinMediaSourceImagesURLItemsInnerToJSON(json: any): PinMediaSourceImagesURLItemsInner {
+    return PinMediaSourceImagesURLItemsInnerToJSONTyped(json, false);
+}
 
-  export function PinMediaSourceImagesURLItemsInnerToJSONTyped(value?: PinMediaSourceImagesURLItemsInner | null, ignoreDiscriminator: boolean = false): any {
+export function PinMediaSourceImagesURLItemsInnerToJSONTyped(value?: PinMediaSourceImagesURLItemsInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

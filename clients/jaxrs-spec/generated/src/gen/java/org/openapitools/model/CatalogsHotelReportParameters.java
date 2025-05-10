@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Parameters for hotel report")
 @JsonTypeName("CatalogsHotelReportParameters")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsHotelReportParameters   {
   public enum CatalogTypeEnum {
 
@@ -70,6 +70,18 @@ public class CatalogsHotelReportParameters   {
   private CatalogTypeEnum catalogType;
   private CatalogsHotelReportParametersReport report;
 
+  public CatalogsHotelReportParameters() {
+  }
+
+  @JsonCreator
+  public CatalogsHotelReportParameters(
+    @JsonProperty(required = true, value = "catalog_type") CatalogTypeEnum catalogType,
+    @JsonProperty(required = true, value = "report") CatalogsHotelReportParametersReport report
+  ) {
+    this.catalogType = catalogType;
+    this.report = report;
+  }
+
   /**
    **/
   public CatalogsHotelReportParameters catalogType(CatalogTypeEnum catalogType) {
@@ -79,12 +91,12 @@ public class CatalogsHotelReportParameters   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   @NotNull public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
@@ -98,12 +110,12 @@ public class CatalogsHotelReportParameters   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("report")
+  @JsonProperty(required = true, value = "report")
   @NotNull @Valid public CatalogsHotelReportParametersReport getReport() {
     return report;
   }
 
-  @JsonProperty("report")
+  @JsonProperty(required = true, value = "report")
   public void setReport(CatalogsHotelReportParametersReport report) {
     this.report = report;
   }

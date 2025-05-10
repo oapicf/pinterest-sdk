@@ -53,20 +53,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * UpdateAssetGroupResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class UpdateAssetGroupResponse {
   public static final String SERIALIZED_NAME_UPDATED_ASSET_GROUPS = "updated_asset_groups";
   @SerializedName(SERIALIZED_NAME_UPDATED_ASSET_GROUPS)
+  @javax.annotation.Nullable
   private List<AssetGroupBinding> updatedAssetGroups = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_EXCEPTIONS = "exceptions";
   @SerializedName(SERIALIZED_NAME_EXCEPTIONS)
+  @javax.annotation.Nullable
   private List<UpdateAssetGroupResponseExceptionsInner> exceptions;
 
   public UpdateAssetGroupResponse() {
   }
 
-  public UpdateAssetGroupResponse updatedAssetGroups(List<AssetGroupBinding> updatedAssetGroups) {
+  public UpdateAssetGroupResponse updatedAssetGroups(@javax.annotation.Nullable List<AssetGroupBinding> updatedAssetGroups) {
     this.updatedAssetGroups = updatedAssetGroups;
     return this;
   }
@@ -88,12 +90,12 @@ public class UpdateAssetGroupResponse {
     return updatedAssetGroups;
   }
 
-  public void setUpdatedAssetGroups(List<AssetGroupBinding> updatedAssetGroups) {
+  public void setUpdatedAssetGroups(@javax.annotation.Nullable List<AssetGroupBinding> updatedAssetGroups) {
     this.updatedAssetGroups = updatedAssetGroups;
   }
 
 
-  public UpdateAssetGroupResponse exceptions(List<UpdateAssetGroupResponseExceptionsInner> exceptions) {
+  public UpdateAssetGroupResponse exceptions(@javax.annotation.Nullable List<UpdateAssetGroupResponseExceptionsInner> exceptions) {
     this.exceptions = exceptions;
     return this;
   }
@@ -115,7 +117,7 @@ public class UpdateAssetGroupResponse {
     return exceptions;
   }
 
-  public void setExceptions(List<UpdateAssetGroupResponseExceptionsInner> exceptions) {
+  public void setExceptions(@javax.annotation.Nullable List<UpdateAssetGroupResponseExceptionsInner> exceptions) {
     this.exceptions = exceptions;
   }
 

@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsProductGroupMultipleStringCriteria
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param CUSTOM_LABEL_3 
  */
+@Serializable
 data class CustomLabel3Filter(
     val CUSTOM_LABEL_3: CatalogsProductGroupMultipleStringCriteria
-) 
+)
 

@@ -1862,13 +1862,13 @@ export enum TemplateResponseColumnsEnum {
     TotalOfflineUnknownConversionProductCountUnique = 'TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_COUNT_UNIQUE'
 }
 export enum TemplateResponseConversionReportTimeTypeEnum {
-    AdAction = 'TIME_OF_AD_ACTION',
-    Conversion = 'TIME_OF_CONVERSION'
+    TimeOfAdAction = 'TIME_OF_AD_ACTION',
+    TimeOfConversion = 'TIME_OF_CONVERSION'
 }
 export enum TemplateResponseCreationSourceEnum {
-    Api = 'ADS_API',
-    ManagerReportingPage = 'ADS_MANAGER_REPORTING_PAGE',
-    ManagerReportBuilder = 'ADS_MANAGER_REPORT_BUILDER'
+    AdsApi = 'ADS_API',
+    AdsManagerReportingPage = 'ADS_MANAGER_REPORTING_PAGE',
+    AdsManagerReportBuilder = 'ADS_MANAGER_REPORT_BUILDER'
 }
 export enum TemplateResponseTypeEnum {
     Unspecified = 'UNSPECIFIED',

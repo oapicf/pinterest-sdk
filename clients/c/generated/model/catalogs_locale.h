@@ -24,9 +24,9 @@ char* catalogs_locale_catalogs_locale_ToString(pinterest_rest_api_catalogs_local
 
 pinterest_rest_api_catalogs_locale__e catalogs_locale_catalogs_locale_FromString(char* catalogs_locale);
 
-//cJSON *catalogs_locale_catalogs_locale_convertToJSON(pinterest_rest_api_catalogs_locale__e catalogs_locale);
+cJSON *catalogs_locale_convertToJSON(pinterest_rest_api_catalogs_locale__e catalogs_locale);
 
-//pinterest_rest_api_catalogs_locale__e catalogs_locale_catalogs_locale_parseFromJSON(cJSON *catalogs_localeJSON);
+pinterest_rest_api_catalogs_locale__e catalogs_locale_parseFromJSON(cJSON *catalogs_localeJSON);
 
 #endif /* _catalogs_locale_H_ */
 

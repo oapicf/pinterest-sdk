@@ -17,7 +17,7 @@ import org.openapitools.model.Country;
  **/
 
 @ApiModel(description = "Request object to list products for a given retail catalog_id and product group filter.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-11-05T02:02:36.960464654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2025-05-10T05:38:59.250229241Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsRetailListProductsByCatalogBasedFilterRequest   {
   /**
    * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.

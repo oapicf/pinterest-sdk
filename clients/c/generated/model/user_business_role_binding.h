@@ -30,9 +30,10 @@ typedef struct user_business_role_binding_t {
     int is_shared_partner; //boolean
     struct business_access_user_summary_t *user; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } user_business_role_binding_t;
 
-user_business_role_binding_t *user_business_role_binding_create(
+__attribute__((deprecated)) user_business_role_binding_t *user_business_role_binding_create(
     business_member_assets_summary_t *assets_summary,
     list_t *business_roles,
     business_access_user_summary_t *created_by_business,

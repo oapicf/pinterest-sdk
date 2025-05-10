@@ -22,7 +22,7 @@ pinterest_rest_api_partner_type__e partner_type_partner_type_FromString(char* pa
     return 0;
 }
 
-cJSON *partner_type_partner_type_convertToJSON(pinterest_rest_api_partner_type__e partner_type) {
+cJSON *partner_type_convertToJSON(pinterest_rest_api_partner_type__e partner_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "partner_type", partner_type_partner_type_ToString(partner_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_partner_type__e partner_type_partner_type_parseFromJSON(cJSON *partner_typeJSON) {
-    pinterest_rest_api_partner_type__e *partner_type = NULL;
-    pinterest_rest_api_partner_type__e partner_typeVariable;
-    cJSON *partner_typeVar = cJSON_GetObjectItemCaseSensitive(partner_typeJSON, "partner_type");
-    if(!cJSON_IsString(partner_typeVar) || (partner_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_partner_type__e partner_type_parseFromJSON(cJSON *partner_typeJSON) {
+    if(!cJSON_IsString(partner_typeJSON) || (partner_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    partner_typeVariable = partner_type_partner_type_FromString(partner_typeVar->valuestring);
-    return partner_typeVariable;
-end:
-    return 0;
+    return partner_type_partner_type_FromString(partner_typeJSON->valuestring);
 }

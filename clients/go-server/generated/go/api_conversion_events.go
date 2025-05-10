@@ -73,7 +73,7 @@ func (c *ConversionEventsAPIController) EventsCreate(w http.ResponseWriter, r *h
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	conversionEventsParam := ConversionEvents{}
+	var conversionEventsParam ConversionEvents
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&conversionEventsParam); err != nil {

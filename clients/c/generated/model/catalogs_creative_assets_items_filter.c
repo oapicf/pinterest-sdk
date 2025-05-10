@@ -22,7 +22,7 @@ pinterest_rest_api_catalogs_creative_assets_items_filter_CATALOGTYPE_e catalogs_
     return 0;
 }
 
-catalogs_creative_assets_items_filter_t *catalogs_creative_assets_items_filter_create(
+static catalogs_creative_assets_items_filter_t *catalogs_creative_assets_items_filter_create_internal(
     pinterest_rest_api_catalogs_creative_assets_items_filter_CATALOGTYPE_e catalog_type,
     list_t *creative_assets_ids,
     char *catalog_id
@@ -35,12 +35,28 @@ catalogs_creative_assets_items_filter_t *catalogs_creative_assets_items_filter_c
     catalogs_creative_assets_items_filter_local_var->creative_assets_ids = creative_assets_ids;
     catalogs_creative_assets_items_filter_local_var->catalog_id = catalog_id;
 
+    catalogs_creative_assets_items_filter_local_var->_library_owned = 1;
     return catalogs_creative_assets_items_filter_local_var;
 }
 
+__attribute__((deprecated)) catalogs_creative_assets_items_filter_t *catalogs_creative_assets_items_filter_create(
+    pinterest_rest_api_catalogs_creative_assets_items_filter_CATALOGTYPE_e catalog_type,
+    list_t *creative_assets_ids,
+    char *catalog_id
+    ) {
+    return catalogs_creative_assets_items_filter_create_internal (
+        catalog_type,
+        creative_assets_ids,
+        catalog_id
+        );
+}
 
 void catalogs_creative_assets_items_filter_free(catalogs_creative_assets_items_filter_t *catalogs_creative_assets_items_filter) {
     if(NULL == catalogs_creative_assets_items_filter){
+        return ;
+    }
+    if(catalogs_creative_assets_items_filter->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_creative_assets_items_filter_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -65,7 +81,7 @@ cJSON *catalogs_creative_assets_items_filter_convertToJSON(catalogs_creative_ass
     if (pinterest_rest_api_catalogs_creative_assets_items_filter_CATALOGTYPE_NULL == catalogs_creative_assets_items_filter->catalog_type) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "catalog_type", catalog_typecatalogs_creative_assets_items_filter_ToString(catalogs_creative_assets_items_filter->catalog_type)) == NULL)
+    if(cJSON_AddStringToObject(item, "catalog_type", catalogs_creative_assets_items_filter_catalog_type_ToString(catalogs_creative_assets_items_filter->catalog_type)) == NULL)
     {
     goto fail; //Enum
     }
@@ -82,7 +98,7 @@ cJSON *catalogs_creative_assets_items_filter_convertToJSON(catalogs_creative_ass
 
     listEntry_t *creative_assets_idsListEntry;
     list_ForEach(creative_assets_idsListEntry, catalogs_creative_assets_items_filter->creative_assets_ids) {
-    if(cJSON_AddStringToObject(creative_assets_ids, "", (char*)creative_assets_idsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(creative_assets_ids, "", creative_assets_idsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -113,6 +129,9 @@ catalogs_creative_assets_items_filter_t *catalogs_creative_assets_items_filter_p
 
     // catalogs_creative_assets_items_filter->catalog_type
     cJSON *catalog_type = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_items_filterJSON, "catalog_type");
+    if (cJSON_IsNull(catalog_type)) {
+        catalog_type = NULL;
+    }
     if (!catalog_type) {
         goto end;
     }
@@ -127,6 +146,9 @@ catalogs_creative_assets_items_filter_t *catalogs_creative_assets_items_filter_p
 
     // catalogs_creative_assets_items_filter->creative_assets_ids
     cJSON *creative_assets_ids = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_items_filterJSON, "creative_assets_ids");
+    if (cJSON_IsNull(creative_assets_ids)) {
+        creative_assets_ids = NULL;
+    }
     if (!creative_assets_ids) {
         goto end;
     }
@@ -149,6 +171,9 @@ catalogs_creative_assets_items_filter_t *catalogs_creative_assets_items_filter_p
 
     // catalogs_creative_assets_items_filter->catalog_id
     cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_items_filterJSON, "catalog_id");
+    if (cJSON_IsNull(catalog_id)) {
+        catalog_id = NULL;
+    }
     if (catalog_id) { 
     if(!cJSON_IsString(catalog_id) && !cJSON_IsNull(catalog_id))
     {
@@ -157,7 +182,7 @@ catalogs_creative_assets_items_filter_t *catalogs_creative_assets_items_filter_p
     }
 
 
-    catalogs_creative_assets_items_filter_local_var = catalogs_creative_assets_items_filter_create (
+    catalogs_creative_assets_items_filter_local_var = catalogs_creative_assets_items_filter_create_internal (
         catalog_typeVariable,
         creative_assets_idsList,
         catalog_id && !cJSON_IsNull(catalog_id) ? strdup(catalog_id->valuestring) : NULL

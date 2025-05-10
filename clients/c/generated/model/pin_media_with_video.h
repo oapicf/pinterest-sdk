@@ -29,9 +29,10 @@ typedef struct pin_media_with_video_t {
     int height; //numeric
     int width; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } pin_media_with_video_t;
 
-pin_media_with_video_t *pin_media_with_video_create(
+__attribute__((deprecated)) pin_media_with_video_t *pin_media_with_video_create(
     char *media_type,
     pin_media_with_image_all_of_images_t *images,
     char *cover_image_url,

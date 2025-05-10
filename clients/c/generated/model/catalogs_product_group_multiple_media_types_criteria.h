@@ -31,9 +31,10 @@ typedef struct catalogs_product_group_multiple_media_types_criteria_t {
     list_t *values; //nonprimitive container
     int negated; //boolean
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_product_group_multiple_media_types_criteria_t;
 
-catalogs_product_group_multiple_media_types_criteria_t *catalogs_product_group_multiple_media_types_criteria_create(
+__attribute__((deprecated)) catalogs_product_group_multiple_media_types_criteria_t *catalogs_product_group_multiple_media_types_criteria_create(
     list_t *values,
     int negated
 );

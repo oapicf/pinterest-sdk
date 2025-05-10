@@ -41,10 +41,35 @@ MembersToDeleteBodyMembersInner <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return MembersToDeleteBodyMembersInner in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return MembersToDeleteBodyMembersInner as a base R list.
+    #' @examples
+    #' # convert array of MembersToDeleteBodyMembersInner (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert MembersToDeleteBodyMembersInner to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       MembersToDeleteBodyMembersInnerObject <- list()
       if (!is.null(self$`member_id`)) {
         MembersToDeleteBodyMembersInnerObject[["member_id"]] <-
@@ -52,9 +77,9 @@ MembersToDeleteBodyMembersInner <- R6::R6Class(
       }
       if (!is.null(self$`business_role`)) {
         MembersToDeleteBodyMembersInnerObject[["business_role"]] <-
-          self$`business_role`$toJSON()
+          self$`business_role`$toSimpleType()
       }
-      MembersToDeleteBodyMembersInnerObject
+      return(MembersToDeleteBodyMembersInnerObject)
     },
 
     #' @description
@@ -77,29 +102,13 @@ MembersToDeleteBodyMembersInner <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return MembersToDeleteBodyMembersInner in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`member_id`)) {
-          sprintf(
-          '"member_id":
-            "%s"
-                    ',
-          self$`member_id`
-          )
-        },
-        if (!is.null(self$`business_role`)) {
-          sprintf(
-          '"business_role":
-          %s
-          ',
-          jsonlite::toJSON(self$`business_role`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

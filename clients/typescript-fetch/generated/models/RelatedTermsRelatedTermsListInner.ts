@@ -55,11 +55,11 @@ export function RelatedTermsRelatedTermsListInnerFromJSONTyped(json: any, ignore
     };
 }
 
-  export function RelatedTermsRelatedTermsListInnerToJSON(json: any): RelatedTermsRelatedTermsListInner {
-      return RelatedTermsRelatedTermsListInnerToJSONTyped(json, false);
-  }
+export function RelatedTermsRelatedTermsListInnerToJSON(json: any): RelatedTermsRelatedTermsListInner {
+    return RelatedTermsRelatedTermsListInnerToJSONTyped(json, false);
+}
 
-  export function RelatedTermsRelatedTermsListInnerToJSONTyped(value?: RelatedTermsRelatedTermsListInner | null, ignoreDiscriminator: boolean = false): any {
+export function RelatedTermsRelatedTermsListInnerToJSONTyped(value?: RelatedTermsRelatedTermsListInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

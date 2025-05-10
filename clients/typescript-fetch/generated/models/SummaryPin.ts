@@ -84,11 +84,11 @@ export function SummaryPinFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     };
 }
 
-  export function SummaryPinToJSON(json: any): SummaryPin {
-      return SummaryPinToJSONTyped(json, false);
-  }
+export function SummaryPinToJSON(json: any): SummaryPin {
+    return SummaryPinToJSONTyped(json, false);
+}
 
-  export function SummaryPinToJSONTyped(value?: Omit<SummaryPin, 'media'> | null, ignoreDiscriminator: boolean = false): any {
+export function SummaryPinToJSONTyped(value?: Omit<SummaryPin, 'media'> | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

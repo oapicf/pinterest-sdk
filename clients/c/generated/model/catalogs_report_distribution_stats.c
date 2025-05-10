@@ -22,7 +22,7 @@ pinterest_rest_api_catalogs_report_distribution_stats_REPORTTYPE_e catalogs_repo
     return 0;
 }
 
-catalogs_report_distribution_stats_t *catalogs_report_distribution_stats_create(
+static catalogs_report_distribution_stats_t *catalogs_report_distribution_stats_create_internal(
     pinterest_rest_api_catalogs_report_distribution_stats_REPORTTYPE_e report_type,
     char *catalog_id,
     int code,
@@ -45,12 +45,38 @@ catalogs_report_distribution_stats_t *catalogs_report_distribution_stats_create(
     catalogs_report_distribution_stats_local_var->ineligible_for_ads = ineligible_for_ads;
     catalogs_report_distribution_stats_local_var->ineligible_for_organic = ineligible_for_organic;
 
+    catalogs_report_distribution_stats_local_var->_library_owned = 1;
     return catalogs_report_distribution_stats_local_var;
 }
 
+__attribute__((deprecated)) catalogs_report_distribution_stats_t *catalogs_report_distribution_stats_create(
+    pinterest_rest_api_catalogs_report_distribution_stats_REPORTTYPE_e report_type,
+    char *catalog_id,
+    int code,
+    char *code_label,
+    char *message,
+    int occurrences,
+    int ineligible_for_ads,
+    int ineligible_for_organic
+    ) {
+    return catalogs_report_distribution_stats_create_internal (
+        report_type,
+        catalog_id,
+        code,
+        code_label,
+        message,
+        occurrences,
+        ineligible_for_ads,
+        ineligible_for_organic
+        );
+}
 
 void catalogs_report_distribution_stats_free(catalogs_report_distribution_stats_t *catalogs_report_distribution_stats) {
     if(NULL == catalogs_report_distribution_stats){
+        return ;
+    }
+    if(catalogs_report_distribution_stats->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_report_distribution_stats_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -74,7 +100,7 @@ cJSON *catalogs_report_distribution_stats_convertToJSON(catalogs_report_distribu
 
     // catalogs_report_distribution_stats->report_type
     if(catalogs_report_distribution_stats->report_type != pinterest_rest_api_catalogs_report_distribution_stats_REPORTTYPE_NULL) {
-    if(cJSON_AddStringToObject(item, "report_type", report_typecatalogs_report_distribution_stats_ToString(catalogs_report_distribution_stats->report_type)) == NULL)
+    if(cJSON_AddStringToObject(item, "report_type", catalogs_report_distribution_stats_report_type_ToString(catalogs_report_distribution_stats->report_type)) == NULL)
     {
     goto fail; //Enum
     }
@@ -150,6 +176,9 @@ catalogs_report_distribution_stats_t *catalogs_report_distribution_stats_parseFr
 
     // catalogs_report_distribution_stats->report_type
     cJSON *report_type = cJSON_GetObjectItemCaseSensitive(catalogs_report_distribution_statsJSON, "report_type");
+    if (cJSON_IsNull(report_type)) {
+        report_type = NULL;
+    }
     pinterest_rest_api_catalogs_report_distribution_stats_REPORTTYPE_e report_typeVariable;
     if (report_type) { 
     if(!cJSON_IsString(report_type))
@@ -161,6 +190,9 @@ catalogs_report_distribution_stats_t *catalogs_report_distribution_stats_parseFr
 
     // catalogs_report_distribution_stats->catalog_id
     cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(catalogs_report_distribution_statsJSON, "catalog_id");
+    if (cJSON_IsNull(catalog_id)) {
+        catalog_id = NULL;
+    }
     if (catalog_id) { 
     if(!cJSON_IsString(catalog_id) && !cJSON_IsNull(catalog_id))
     {
@@ -170,6 +202,9 @@ catalogs_report_distribution_stats_t *catalogs_report_distribution_stats_parseFr
 
     // catalogs_report_distribution_stats->code
     cJSON *code = cJSON_GetObjectItemCaseSensitive(catalogs_report_distribution_statsJSON, "code");
+    if (cJSON_IsNull(code)) {
+        code = NULL;
+    }
     if (code) { 
     if(!cJSON_IsNumber(code))
     {
@@ -179,6 +214,9 @@ catalogs_report_distribution_stats_t *catalogs_report_distribution_stats_parseFr
 
     // catalogs_report_distribution_stats->code_label
     cJSON *code_label = cJSON_GetObjectItemCaseSensitive(catalogs_report_distribution_statsJSON, "code_label");
+    if (cJSON_IsNull(code_label)) {
+        code_label = NULL;
+    }
     if (code_label) { 
     if(!cJSON_IsString(code_label) && !cJSON_IsNull(code_label))
     {
@@ -188,6 +226,9 @@ catalogs_report_distribution_stats_t *catalogs_report_distribution_stats_parseFr
 
     // catalogs_report_distribution_stats->message
     cJSON *message = cJSON_GetObjectItemCaseSensitive(catalogs_report_distribution_statsJSON, "message");
+    if (cJSON_IsNull(message)) {
+        message = NULL;
+    }
     if (message) { 
     if(!cJSON_IsString(message) && !cJSON_IsNull(message))
     {
@@ -197,6 +238,9 @@ catalogs_report_distribution_stats_t *catalogs_report_distribution_stats_parseFr
 
     // catalogs_report_distribution_stats->occurrences
     cJSON *occurrences = cJSON_GetObjectItemCaseSensitive(catalogs_report_distribution_statsJSON, "occurrences");
+    if (cJSON_IsNull(occurrences)) {
+        occurrences = NULL;
+    }
     if (occurrences) { 
     if(!cJSON_IsNumber(occurrences))
     {
@@ -206,6 +250,9 @@ catalogs_report_distribution_stats_t *catalogs_report_distribution_stats_parseFr
 
     // catalogs_report_distribution_stats->ineligible_for_ads
     cJSON *ineligible_for_ads = cJSON_GetObjectItemCaseSensitive(catalogs_report_distribution_statsJSON, "ineligible_for_ads");
+    if (cJSON_IsNull(ineligible_for_ads)) {
+        ineligible_for_ads = NULL;
+    }
     if (ineligible_for_ads) { 
     if(!cJSON_IsBool(ineligible_for_ads))
     {
@@ -215,6 +262,9 @@ catalogs_report_distribution_stats_t *catalogs_report_distribution_stats_parseFr
 
     // catalogs_report_distribution_stats->ineligible_for_organic
     cJSON *ineligible_for_organic = cJSON_GetObjectItemCaseSensitive(catalogs_report_distribution_statsJSON, "ineligible_for_organic");
+    if (cJSON_IsNull(ineligible_for_organic)) {
+        ineligible_for_organic = NULL;
+    }
     if (ineligible_for_organic) { 
     if(!cJSON_IsBool(ineligible_for_organic))
     {
@@ -223,7 +273,7 @@ catalogs_report_distribution_stats_t *catalogs_report_distribution_stats_parseFr
     }
 
 
-    catalogs_report_distribution_stats_local_var = catalogs_report_distribution_stats_create (
+    catalogs_report_distribution_stats_local_var = catalogs_report_distribution_stats_create_internal (
         report_type ? report_typeVariable : pinterest_rest_api_catalogs_report_distribution_stats_REPORTTYPE_NULL,
         catalog_id && !cJSON_IsNull(catalog_id) ? strdup(catalog_id->valuestring) : NULL,
         code ? code->valuedouble : 0,

@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsCreativeAssetsProductGroupFilters
 
+import kotlinx.serialization.Serializable
 /**
  * Request object for updating a creative assets product group.
  * @param catalogType 
@@ -20,12 +21,13 @@ import org.openapitools.server.models.CatalogsCreativeAssetsProductGroupFilters
  * @param description 
  * @param filters 
  */
+@Serializable
 data class CatalogsCreativeAssetsProductGroupUpdateRequest(
     val catalogType: CatalogsCreativeAssetsProductGroupUpdateRequest.CatalogType? = null,
     val name: kotlin.String? = null,
     val description: kotlin.String? = null,
     val filters: CatalogsCreativeAssetsProductGroupFilters? = null
-) 
+)
 {
     /**
     * 

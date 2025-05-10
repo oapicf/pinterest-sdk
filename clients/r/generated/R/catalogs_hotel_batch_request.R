@@ -68,10 +68,35 @@ CatalogsHotelBatchRequest <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return CatalogsHotelBatchRequest in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return CatalogsHotelBatchRequest as a base R list.
+    #' @examples
+    #' # convert array of CatalogsHotelBatchRequest (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert CatalogsHotelBatchRequest to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       CatalogsHotelBatchRequestObject <- list()
       if (!is.null(self$`catalog_type`)) {
         CatalogsHotelBatchRequestObject[["catalog_type"]] <-
@@ -79,21 +104,21 @@ CatalogsHotelBatchRequest <- R6::R6Class(
       }
       if (!is.null(self$`country`)) {
         CatalogsHotelBatchRequestObject[["country"]] <-
-          self$`country`$toJSON()
+          self$`country`$toSimpleType()
       }
       if (!is.null(self$`language`)) {
         CatalogsHotelBatchRequestObject[["language"]] <-
-          self$`language`$toJSON()
+          self$`language`$toSimpleType()
       }
       if (!is.null(self$`items`)) {
         CatalogsHotelBatchRequestObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toJSON())
+          lapply(self$`items`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`catalog_id`)) {
         CatalogsHotelBatchRequestObject[["catalog_id"]] <-
           self$`catalog_id`
       }
-      CatalogsHotelBatchRequestObject
+      return(CatalogsHotelBatchRequestObject)
     },
 
     #' @description
@@ -130,53 +155,13 @@ CatalogsHotelBatchRequest <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return CatalogsHotelBatchRequest in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`catalog_type`)) {
-          sprintf(
-          '"catalog_type":
-            "%s"
-                    ',
-          self$`catalog_type`
-          )
-        },
-        if (!is.null(self$`country`)) {
-          sprintf(
-          '"country":
-          %s
-          ',
-          jsonlite::toJSON(self$`country`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`language`)) {
-          sprintf(
-          '"language":
-          %s
-          ',
-          jsonlite::toJSON(self$`language`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`items`)) {
-          sprintf(
-          '"items":
-          [%s]
-',
-          paste(sapply(self$`items`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`catalog_id`)) {
-          sprintf(
-          '"catalog_id":
-            "%s"
-                    ',
-          self$`catalog_id`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AudienceCreateCustomRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AudienceCreateCustomRequest   {
   private String adAccountId;
   private String name;
@@ -26,6 +26,22 @@ public class AudienceCreateCustomRequest   {
   private AudienceSharingType sharingType;
   private AudienceDataParty dataParty;
   private String category;
+
+  public AudienceCreateCustomRequest() {
+  }
+
+  @JsonCreator
+  public AudienceCreateCustomRequest(
+    @JsonProperty(required = true, value = "name") String name,
+    @JsonProperty(required = true, value = "rule") AudienceRule rule,
+    @JsonProperty(required = true, value = "sharing_type") AudienceSharingType sharingType,
+    @JsonProperty(required = true, value = "data_party") AudienceDataParty dataParty
+  ) {
+    this.name = name;
+    this.rule = rule;
+    this.sharingType = sharingType;
+    this.dataParty = dataParty;
+  }
 
   /**
    * Ad account ID.
@@ -57,12 +73,12 @@ public class AudienceCreateCustomRequest   {
 
   
   @ApiModelProperty(example = "string", required = true, value = "Audience name.")
-  @JsonProperty("name")
+  @JsonProperty(required = true, value = "name")
   @NotNull public String getName() {
     return name;
   }
 
-  @JsonProperty("name")
+  @JsonProperty(required = true, value = "name")
   public void setName(String name) {
     this.name = name;
   }
@@ -76,12 +92,12 @@ public class AudienceCreateCustomRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("rule")
+  @JsonProperty(required = true, value = "rule")
   @NotNull @Valid public AudienceRule getRule() {
     return rule;
   }
 
-  @JsonProperty("rule")
+  @JsonProperty(required = true, value = "rule")
   public void setRule(AudienceRule rule) {
     this.rule = rule;
   }
@@ -95,12 +111,12 @@ public class AudienceCreateCustomRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("sharing_type")
+  @JsonProperty(required = true, value = "sharing_type")
   @NotNull public AudienceSharingType getSharingType() {
     return sharingType;
   }
 
-  @JsonProperty("sharing_type")
+  @JsonProperty(required = true, value = "sharing_type")
   public void setSharingType(AudienceSharingType sharingType) {
     this.sharingType = sharingType;
   }
@@ -114,12 +130,12 @@ public class AudienceCreateCustomRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("data_party")
+  @JsonProperty(required = true, value = "data_party")
   @NotNull public AudienceDataParty getDataParty() {
     return dataParty;
   }
 
-  @JsonProperty("data_party")
+  @JsonProperty(required = true, value = "data_party")
   public void setDataParty(AudienceDataParty dataParty) {
     this.dataParty = dataParty;
   }

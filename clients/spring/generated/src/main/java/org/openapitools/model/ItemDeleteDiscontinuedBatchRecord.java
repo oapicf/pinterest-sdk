@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import org.springframework.lang.Nullable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -24,10 +25,10 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "ItemDeleteDiscontinuedBatchRecord", description = "Object describing an item batch record to discontinue items")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ItemDeleteDiscontinuedBatchRecord implements ItemBatchRecord {
 
-  private String itemId;
+  private @Nullable String itemId;
 
   public ItemDeleteDiscontinuedBatchRecord itemId(String itemId) {
     this.itemId = itemId;

@@ -15,7 +15,9 @@
 export type PacingDeliveryType = 'STANDARD' | 'ACCELERATED';
 
 export const PacingDeliveryType = {
+
     Standard: 'STANDARD' as PacingDeliveryType,
+
     Accelerated: 'ACCELERATED' as PacingDeliveryType
 };
 

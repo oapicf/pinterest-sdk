@@ -26,6 +26,7 @@ import org.openapitools.server.models.PinPromotionSummaryStatus
 import org.openapitools.server.models.ProductGroupSummaryStatus
 import org.openapitools.server.models.ReportingColumnAsync
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD
@@ -55,6 +56,7 @@ import org.openapitools.server.models.ReportingColumnAsync
  * @param startHour Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
  * @param endHour Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
  */
+@Serializable
 data class AdsAnalyticsCreateAsyncRequest(
     /* Metric report start date (UTC). Format: YYYY-MM-DD */
     val startDate: kotlin.String,
@@ -108,15 +110,15 @@ data class AdsAnalyticsCreateAsyncRequest(
     val startHour: kotlin.Int? = null,
     /* Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports. */
     val endHour: kotlin.Int? = null
-) 
+)
 {
     /**
     * Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
-    * Values: ID,DATE
+    * Values: BY_ID,BY_DATE
     */
     enum class PrimarySort(val value: kotlin.String){
-        ID("BY_ID"),
-        DATE("BY_DATE");
+        BY_ID("BY_ID"),
+        BY_DATE("BY_DATE");
     }
 }
 

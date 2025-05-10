@@ -15,7 +15,9 @@
 export type CreativeAssetsVisibilityType = 'VISIBLE' | 'HIDDEN';
 
 export const CreativeAssetsVisibilityType = {
+
     Visible: 'VISIBLE' as CreativeAssetsVisibilityType,
+
     Hidden: 'HIDDEN' as CreativeAssetsVisibilityType
 };
 

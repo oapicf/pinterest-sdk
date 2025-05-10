@@ -50,28 +50,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * An object containing the permissions a business partner has on the asset.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class UpdatePartnerAssetsResult {
   public static final String SERIALIZED_NAME_ASSET_ID = "asset_id";
   @SerializedName(SERIALIZED_NAME_ASSET_ID)
+  @javax.annotation.Nullable
   private String assetId;
 
   public static final String SERIALIZED_NAME_ASSET_TYPE = "asset_type";
   @SerializedName(SERIALIZED_NAME_ASSET_TYPE)
+  @javax.annotation.Nullable
   private String assetType;
 
   public static final String SERIALIZED_NAME_PARTNER_ID = "partner_id";
   @SerializedName(SERIALIZED_NAME_PARTNER_ID)
+  @javax.annotation.Nullable
   private String partnerId;
 
   public static final String SERIALIZED_NAME_PERMISSIONS = "permissions";
   @SerializedName(SERIALIZED_NAME_PERMISSIONS)
+  @javax.annotation.Nullable
   private List<String> permissions = new ArrayList<>();
 
   public UpdatePartnerAssetsResult() {
   }
 
-  public UpdatePartnerAssetsResult assetId(String assetId) {
+  public UpdatePartnerAssetsResult assetId(@javax.annotation.Nullable String assetId) {
     this.assetId = assetId;
     return this;
   }
@@ -85,12 +89,12 @@ public class UpdatePartnerAssetsResult {
     return assetId;
   }
 
-  public void setAssetId(String assetId) {
+  public void setAssetId(@javax.annotation.Nullable String assetId) {
     this.assetId = assetId;
   }
 
 
-  public UpdatePartnerAssetsResult assetType(String assetType) {
+  public UpdatePartnerAssetsResult assetType(@javax.annotation.Nullable String assetType) {
     this.assetType = assetType;
     return this;
   }
@@ -104,12 +108,12 @@ public class UpdatePartnerAssetsResult {
     return assetType;
   }
 
-  public void setAssetType(String assetType) {
+  public void setAssetType(@javax.annotation.Nullable String assetType) {
     this.assetType = assetType;
   }
 
 
-  public UpdatePartnerAssetsResult partnerId(String partnerId) {
+  public UpdatePartnerAssetsResult partnerId(@javax.annotation.Nullable String partnerId) {
     this.partnerId = partnerId;
     return this;
   }
@@ -123,12 +127,12 @@ public class UpdatePartnerAssetsResult {
     return partnerId;
   }
 
-  public void setPartnerId(String partnerId) {
+  public void setPartnerId(@javax.annotation.Nullable String partnerId) {
     this.partnerId = partnerId;
   }
 
 
-  public UpdatePartnerAssetsResult permissions(List<String> permissions) {
+  public UpdatePartnerAssetsResult permissions(@javax.annotation.Nullable List<String> permissions) {
     this.permissions = permissions;
     return this;
   }
@@ -150,7 +154,7 @@ public class UpdatePartnerAssetsResult {
     return permissions;
   }
 
-  public void setPermissions(List<String> permissions) {
+  public void setPermissions(@javax.annotation.Nullable List<String> permissions) {
     this.permissions = permissions;
   }
 

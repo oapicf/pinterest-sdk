@@ -83,11 +83,11 @@ export function CatalogsCreateHotelItemFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-  export function CatalogsCreateHotelItemToJSON(json: any): CatalogsCreateHotelItem {
-      return CatalogsCreateHotelItemToJSONTyped(json, false);
-  }
+export function CatalogsCreateHotelItemToJSON(json: any): CatalogsCreateHotelItem {
+    return CatalogsCreateHotelItemToJSONTyped(json, false);
+}
 
-  export function CatalogsCreateHotelItemToJSONTyped(value?: CatalogsCreateHotelItem | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsCreateHotelItemToJSONTyped(value?: CatalogsCreateHotelItem | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

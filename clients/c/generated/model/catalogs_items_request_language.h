@@ -22,9 +22,10 @@ typedef struct catalogs_items_request_language_t catalogs_items_request_language
 
 typedef struct catalogs_items_request_language_t {
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_items_request_language_t;
 
-catalogs_items_request_language_t *catalogs_items_request_language_create(
+__attribute__((deprecated)) catalogs_items_request_language_t *catalogs_items_request_language_create(
 );
 
 void catalogs_items_request_language_free(catalogs_items_request_language_t *catalogs_items_request_language);

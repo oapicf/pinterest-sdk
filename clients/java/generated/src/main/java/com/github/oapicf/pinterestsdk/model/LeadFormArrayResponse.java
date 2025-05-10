@@ -51,16 +51,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * LeadFormArrayResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class LeadFormArrayResponse {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
+  @javax.annotation.Nullable
   private List<LeadFormArrayResponseItemsInner> items = new ArrayList<>();
 
   public LeadFormArrayResponse() {
   }
 
-  public LeadFormArrayResponse items(List<LeadFormArrayResponseItemsInner> items) {
+  public LeadFormArrayResponse items(@javax.annotation.Nullable List<LeadFormArrayResponseItemsInner> items) {
     this.items = items;
     return this;
   }
@@ -82,7 +83,7 @@ public class LeadFormArrayResponse {
     return items;
   }
 
-  public void setItems(List<LeadFormArrayResponseItemsInner> items) {
+  public void setItems(@javax.annotation.Nullable List<LeadFormArrayResponseItemsInner> items) {
     this.items = items;
   }
 

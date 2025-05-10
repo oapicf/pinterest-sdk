@@ -32,9 +32,10 @@ typedef struct pin_media_source_images_url_t {
     list_t *items; //nonprimitive container
     int index; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } pin_media_source_images_url_t;
 
-pin_media_source_images_url_t *pin_media_source_images_url_create(
+__attribute__((deprecated)) pin_media_source_images_url_t *pin_media_source_images_url_create(
     pinterest_rest_api_pin_media_source_images_url_SOURCETYPE_e source_type,
     list_t *items,
     int index

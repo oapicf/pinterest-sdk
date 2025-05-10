@@ -24,9 +24,9 @@ char* audience_insight_type_audience_insight_type_ToString(pinterest_rest_api_au
 
 pinterest_rest_api_audience_insight_type__e audience_insight_type_audience_insight_type_FromString(char* audience_insight_type);
 
-//cJSON *audience_insight_type_audience_insight_type_convertToJSON(pinterest_rest_api_audience_insight_type__e audience_insight_type);
+cJSON *audience_insight_type_convertToJSON(pinterest_rest_api_audience_insight_type__e audience_insight_type);
 
-//pinterest_rest_api_audience_insight_type__e audience_insight_type_audience_insight_type_parseFromJSON(cJSON *audience_insight_typeJSON);
+pinterest_rest_api_audience_insight_type__e audience_insight_type_parseFromJSON(cJSON *audience_insight_typeJSON);
 
 #endif /* _audience_insight_type_H_ */
 

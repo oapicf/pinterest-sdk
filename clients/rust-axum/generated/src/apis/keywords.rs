@@ -1,6 +1,6 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Multipart};
+use axum_extra::extract::{CookieJar, Host};
 use bytes::Bytes;
 use http::Method;
 use serde::{Deserialize, Serialize};
@@ -80,64 +80,64 @@ pub enum TrendingKeywordsSlashListResponse {
 /// Keywords
 #[async_trait]
 #[allow(clippy::ptr_arg)]
-pub trait Keywords {
+pub trait Keywords<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHandler<E> {
     /// Get country's keyword metrics.
     ///
     /// CountryKeywordsMetricsSlashGet - GET /v5/ad_accounts/{ad_account_id}/keywords/metrics
     async fn country_keywords_metrics_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::CountryKeywordsMetricsSlashGetPathParams,
-      query_params: models::CountryKeywordsMetricsSlashGetQueryParams,
-    ) -> Result<CountryKeywordsMetricsSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::CountryKeywordsMetricsSlashGetPathParams,
+      query_params: &models::CountryKeywordsMetricsSlashGetQueryParams,
+    ) -> Result<CountryKeywordsMetricsSlashGetResponse, E>;
 
     /// Create keywords.
     ///
     /// KeywordsSlashCreate - POST /v5/ad_accounts/{ad_account_id}/keywords
     async fn keywords_slash_create(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::KeywordsSlashCreatePathParams,
-            body: models::KeywordsRequest,
-    ) -> Result<KeywordsSlashCreateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::KeywordsSlashCreatePathParams,
+            body: &models::KeywordsRequest,
+    ) -> Result<KeywordsSlashCreateResponse, E>;
 
     /// Get keywords.
     ///
     /// KeywordsSlashGet - GET /v5/ad_accounts/{ad_account_id}/keywords
     async fn keywords_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::KeywordsSlashGetPathParams,
-      query_params: models::KeywordsSlashGetQueryParams,
-    ) -> Result<KeywordsSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::KeywordsSlashGetPathParams,
+      query_params: &models::KeywordsSlashGetQueryParams,
+    ) -> Result<KeywordsSlashGetResponse, E>;
 
     /// Update keywords.
     ///
     /// KeywordsSlashUpdate - PATCH /v5/ad_accounts/{ad_account_id}/keywords
     async fn keywords_slash_update(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::KeywordsSlashUpdatePathParams,
-            body: models::KeywordUpdateBody,
-    ) -> Result<KeywordsSlashUpdateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::KeywordsSlashUpdatePathParams,
+            body: &models::KeywordUpdateBody,
+    ) -> Result<KeywordsSlashUpdateResponse, E>;
 
     /// List trending keywords.
     ///
     /// TrendingKeywordsSlashList - GET /v5/trends/keywords/{region}/top/{trend_type}
     async fn trending_keywords_slash_list(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::TrendingKeywordsSlashListPathParams,
-      query_params: models::TrendingKeywordsSlashListQueryParams,
-    ) -> Result<TrendingKeywordsSlashListResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::TrendingKeywordsSlashListPathParams,
+      query_params: &models::TrendingKeywordsSlashListQueryParams,
+    ) -> Result<TrendingKeywordsSlashListResponse, E>;
 }

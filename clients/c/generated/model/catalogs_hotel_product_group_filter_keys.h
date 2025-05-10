@@ -41,9 +41,10 @@ typedef struct catalogs_hotel_product_group_filter_keys_t {
     catalogs_product_group_multiple_string_criteria_t *custom_label_4; //object
     catalogs_product_group_multiple_countries_criteria_t *country; //object
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_hotel_product_group_filter_keys_t;
 
-catalogs_hotel_product_group_filter_keys_t *catalogs_hotel_product_group_filter_keys_create(
+__attribute__((deprecated)) catalogs_hotel_product_group_filter_keys_t *catalogs_hotel_product_group_filter_keys_create(
     catalogs_product_group_pricing_currency_criteria_t *price,
     catalogs_product_group_multiple_string_criteria_t *hotel_id,
     catalogs_product_group_multiple_string_criteria_t *brand,

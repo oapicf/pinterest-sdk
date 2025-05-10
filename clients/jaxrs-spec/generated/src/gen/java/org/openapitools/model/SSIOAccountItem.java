@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("SSIOAccountItem")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SSIOAccountItem   {
   private String id;
   private String ioTermsId;
@@ -30,6 +30,9 @@ public class SSIOAccountItem   {
   private String rowTerms;
   private String ioType;
   private @Valid List<@Valid SSIOAccountAddress> addresses = new ArrayList<>();
+
+  public SSIOAccountItem() {
+  }
 
   /**
    * Salesforce id for billto_info

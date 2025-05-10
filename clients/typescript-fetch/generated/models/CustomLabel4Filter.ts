@@ -57,11 +57,11 @@ export function CustomLabel4FilterFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-  export function CustomLabel4FilterToJSON(json: any): CustomLabel4Filter {
-      return CustomLabel4FilterToJSONTyped(json, false);
-  }
+export function CustomLabel4FilterToJSON(json: any): CustomLabel4Filter {
+    return CustomLabel4FilterToJSONTyped(json, false);
+}
 
-  export function CustomLabel4FilterToJSONTyped(value?: CustomLabel4Filter | null, ignoreDiscriminator: boolean = false): any {
+export function CustomLabel4FilterToJSONTyped(value?: CustomLabel4Filter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

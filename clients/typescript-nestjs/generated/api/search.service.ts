@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { PinsList200Response } from '../model/pinsList200Response';
 import { SearchPartnerPins200Response } from '../model/searchPartnerPins200Response';
@@ -28,10 +28,12 @@ export class SearchService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -53,9 +55,10 @@ export class SearchService {
      * @param limit Max search result size
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [searchPartnerPinsOpts.config] Override http request option.
      */
-    public searchPartnerPins(term: string, countryCode: string, bookmark?: string, locale?: string, limit?: number, ): Observable<AxiosResponse<SearchPartnerPins200Response>>;
-    public searchPartnerPins(term: string, countryCode: string, bookmark?: string, locale?: string, limit?: number, ): Observable<any> {
+    public searchPartnerPins(term: string, countryCode: string, bookmark?: string, locale?: string, limit?: number, searchPartnerPinsOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<SearchPartnerPins200Response>>;
+    public searchPartnerPins(term: string, countryCode: string, bookmark?: string, locale?: string, limit?: number, searchPartnerPinsOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (term === null || term === undefined) {
             throw new Error('Required parameter term was null or undefined when calling searchPartnerPins.');
         }
@@ -114,7 +117,8 @@ export class SearchService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...searchPartnerPinsOpts?.config,
+                        headers: {...headers, ...searchPartnerPinsOpts?.config?.headers},
                     }
                 );
             })
@@ -129,9 +133,10 @@ export class SearchService {
      * @param query Search query. Can contain pin description keywords or comma-separated pin IDs.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [searchUserBoardsGetOpts.config] Override http request option.
      */
-    public searchUserBoardsGet(adAccountId?: string, bookmark?: string, pageSize?: number, query?: string, ): Observable<AxiosResponse<SearchUserBoardsGet200Response>>;
-    public searchUserBoardsGet(adAccountId?: string, bookmark?: string, pageSize?: number, query?: string, ): Observable<any> {
+    public searchUserBoardsGet(adAccountId?: string, bookmark?: string, pageSize?: number, query?: string, searchUserBoardsGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<SearchUserBoardsGet200Response>>;
+    public searchUserBoardsGet(adAccountId?: string, bookmark?: string, pageSize?: number, query?: string, searchUserBoardsGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let queryParameters = new URLSearchParams();
         if (adAccountId !== undefined && adAccountId !== null) {
             queryParameters.append('ad_account_id', <any>adAccountId);
@@ -186,7 +191,8 @@ export class SearchService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...searchUserBoardsGetOpts?.config,
+                        headers: {...headers, ...searchUserBoardsGetOpts?.config?.headers},
                     }
                 );
             })
@@ -200,9 +206,10 @@ export class SearchService {
      * @param bookmark Cursor used to fetch the next page of items
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [searchUserPinsListOpts.config] Override http request option.
      */
-    public searchUserPinsList(query: string, adAccountId?: string, bookmark?: string, ): Observable<AxiosResponse<PinsList200Response>>;
-    public searchUserPinsList(query: string, adAccountId?: string, bookmark?: string, ): Observable<any> {
+    public searchUserPinsList(query: string, adAccountId?: string, bookmark?: string, searchUserPinsListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<PinsList200Response>>;
+    public searchUserPinsList(query: string, adAccountId?: string, bookmark?: string, searchUserPinsListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (query === null || query === undefined) {
             throw new Error('Required parameter query was null or undefined when calling searchUserPinsList.');
         }
@@ -251,7 +258,8 @@ export class SearchService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...searchUserPinsListOpts?.config,
+                        headers: {...headers, ...searchUserPinsListOpts?.config?.headers},
                     }
                 );
             })

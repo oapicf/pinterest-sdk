@@ -44,8 +44,8 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum LeadFormStatus: string
 {
-        case DRAFT = "DRAFT";
-        case ACTIVE = "ACTIVE";
+        case DRAFT = 'DRAFT';
+        case ACTIVE = 'ACTIVE';
 }
 
 

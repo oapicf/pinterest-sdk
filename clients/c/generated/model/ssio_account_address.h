@@ -24,9 +24,10 @@ typedef struct ssio_account_address_t {
     char *address_id; // string
     char *order_legal_entity; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } ssio_account_address_t;
 
-ssio_account_address_t *ssio_account_address_create(
+__attribute__((deprecated)) ssio_account_address_t *ssio_account_address_create(
     char *display,
     char *purpose,
     char *address_id,

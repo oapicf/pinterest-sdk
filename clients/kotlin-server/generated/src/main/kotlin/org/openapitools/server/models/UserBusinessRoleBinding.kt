@@ -14,6 +14,7 @@ package org.openapitools.server.models
 import org.openapitools.server.models.BusinessAccessUserSummary
 import org.openapitools.server.models.BusinessMemberAssetsSummary
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param assetsSummary 
@@ -25,6 +26,7 @@ import org.openapitools.server.models.BusinessMemberAssetsSummary
  * @param isSharedPartner This field is only relevant when business_role=\"PARTNER\". <br>If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. <br>If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.
  * @param user Metadata for the business member/business partner/employer.
  */
+@Serializable
 data class UserBusinessRoleBinding(
     val assetsSummary: BusinessMemberAssetsSummary? = null,
     /* The access level a user has on the business. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER. */
@@ -41,5 +43,5 @@ data class UserBusinessRoleBinding(
     val isSharedPartner: kotlin.Boolean? = null,
     /* Metadata for the business member/business partner/employer. */
     val user: BusinessAccessUserSummary? = null
-) 
+)
 

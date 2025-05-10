@@ -159,11 +159,11 @@ export function CampaignCreateRequestFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function CampaignCreateRequestToJSON(json: any): CampaignCreateRequest {
-      return CampaignCreateRequestToJSONTyped(json, false);
-  }
+export function CampaignCreateRequestToJSON(json: any): CampaignCreateRequest {
+    return CampaignCreateRequestToJSONTyped(json, false);
+}
 
-  export function CampaignCreateRequestToJSONTyped(value?: CampaignCreateRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CampaignCreateRequestToJSONTyped(value?: CampaignCreateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

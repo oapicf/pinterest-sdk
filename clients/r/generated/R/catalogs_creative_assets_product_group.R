@@ -95,10 +95,35 @@ CatalogsCreativeAssetsProductGroup <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return CatalogsCreativeAssetsProductGroup in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return CatalogsCreativeAssetsProductGroup as a base R list.
+    #' @examples
+    #' # convert array of CatalogsCreativeAssetsProductGroup (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert CatalogsCreativeAssetsProductGroup to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       CatalogsCreativeAssetsProductGroupObject <- list()
       if (!is.null(self$`catalog_type`)) {
         CatalogsCreativeAssetsProductGroupObject[["catalog_type"]] <-
@@ -118,7 +143,7 @@ CatalogsCreativeAssetsProductGroup <- R6::R6Class(
       }
       if (!is.null(self$`filters`)) {
         CatalogsCreativeAssetsProductGroupObject[["filters"]] <-
-          self$`filters`$toJSON()
+          self$`filters`$toSimpleType()
       }
       if (!is.null(self$`created_at`)) {
         CatalogsCreativeAssetsProductGroupObject[["created_at"]] <-
@@ -132,7 +157,7 @@ CatalogsCreativeAssetsProductGroup <- R6::R6Class(
         CatalogsCreativeAssetsProductGroupObject[["catalog_id"]] <-
           self$`catalog_id`
       }
-      CatalogsCreativeAssetsProductGroupObject
+      return(CatalogsCreativeAssetsProductGroupObject)
     },
 
     #' @description
@@ -176,77 +201,13 @@ CatalogsCreativeAssetsProductGroup <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return CatalogsCreativeAssetsProductGroup in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`catalog_type`)) {
-          sprintf(
-          '"catalog_type":
-            "%s"
-                    ',
-          self$`catalog_type`
-          )
-        },
-        if (!is.null(self$`id`)) {
-          sprintf(
-          '"id":
-            "%s"
-                    ',
-          self$`id`
-          )
-        },
-        if (!is.null(self$`name`)) {
-          sprintf(
-          '"name":
-            "%s"
-                    ',
-          self$`name`
-          )
-        },
-        if (!is.null(self$`description`)) {
-          sprintf(
-          '"description":
-            "%s"
-                    ',
-          self$`description`
-          )
-        },
-        if (!is.null(self$`filters`)) {
-          sprintf(
-          '"filters":
-          %s
-          ',
-          jsonlite::toJSON(self$`filters`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`created_at`)) {
-          sprintf(
-          '"created_at":
-            %d
-                    ',
-          self$`created_at`
-          )
-        },
-        if (!is.null(self$`updated_at`)) {
-          sprintf(
-          '"updated_at":
-            %d
-                    ',
-          self$`updated_at`
-          )
-        },
-        if (!is.null(self$`catalog_id`)) {
-          sprintf(
-          '"catalog_id":
-            "%s"
-                    ',
-          self$`catalog_id`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

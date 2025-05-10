@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 // Functions for enum  for AudienceInsightsAPI_audienceInsightsGet
 
@@ -68,15 +63,20 @@ AudienceInsightsAPI_audienceInsightsGet(apiClient_t *apiClient, char *ad_account
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/audience_insights")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/audience_insights");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/audience_insights");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -95,7 +95,7 @@ AudienceInsightsAPI_audienceInsightsGet(apiClient_t *apiClient, char *ad_account
     {
         keyQuery_audience_insight_type = strdup("audience_insight_type");
         valueQuery_audience_insight_type = (audience_insight_type);
-        keyPairQuery_audience_insight_type = keyValuePair_create(keyQuery_audience_insight_type, (void *)strdup(audienceInsightsGet__ToString(
+        keyPairQuery_audience_insight_type = keyValuePair_create(keyQuery_audience_insight_type, strdup(audienceInsightsGet__ToString(
         &valueQuery_audience_insight_type)));
         list_addElement(localVarQueryParameters,keyPairQuery_audience_insight_type);
     }
@@ -108,6 +108,7 @@ AudienceInsightsAPI_audienceInsightsGet(apiClient_t *apiClient, char *ad_account
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -119,11 +120,14 @@ AudienceInsightsAPI_audienceInsightsGet(apiClient_t *apiClient, char *ad_account
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *AudienceInsightsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    audience_insights_response_t *elementToReturn = audience_insights_response_parseFromJSON(AudienceInsightsAPIlocalVarJSON);
-    cJSON_Delete(AudienceInsightsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    audience_insights_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AudienceInsightsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = audience_insights_response_parseFromJSON(AudienceInsightsAPIlocalVarJSON);
+        cJSON_Delete(AudienceInsightsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -167,15 +171,20 @@ AudienceInsightsAPI_audienceInsightsScopeAndTypeGet(apiClient_t *apiClient, char
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/insights/audiences")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/insights/audiences");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/insights/audiences");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -194,6 +203,7 @@ AudienceInsightsAPI_audienceInsightsScopeAndTypeGet(apiClient_t *apiClient, char
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -205,11 +215,14 @@ AudienceInsightsAPI_audienceInsightsScopeAndTypeGet(apiClient_t *apiClient, char
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *AudienceInsightsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    audience_definition_response_t *elementToReturn = audience_definition_response_parseFromJSON(AudienceInsightsAPIlocalVarJSON);
-    cJSON_Delete(AudienceInsightsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    audience_definition_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AudienceInsightsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = audience_definition_response_parseFromJSON(AudienceInsightsAPIlocalVarJSON);
+        cJSON_Delete(AudienceInsightsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type

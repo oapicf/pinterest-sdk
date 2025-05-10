@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Request object to update catalogs hotel items")
 @JsonTypeName("CatalogsHotelBatchRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsHotelBatchRequest   {
   public enum CatalogTypeEnum {
 
@@ -78,6 +78,22 @@ public class CatalogsHotelBatchRequest   {
   private @Valid List<@Valid CatalogsHotelBatchItem> items = new ArrayList<>();
   private String catalogId;
 
+  public CatalogsHotelBatchRequest() {
+  }
+
+  @JsonCreator
+  public CatalogsHotelBatchRequest(
+    @JsonProperty(required = true, value = "catalog_type") CatalogTypeEnum catalogType,
+    @JsonProperty(required = true, value = "country") Country country,
+    @JsonProperty(required = true, value = "language") CatalogsItemsRequestLanguage language,
+    @JsonProperty(required = true, value = "items") List<@Valid CatalogsHotelBatchItem> items
+  ) {
+    this.catalogType = catalogType;
+    this.country = country;
+    this.language = language;
+    this.items = items;
+  }
+
   /**
    **/
   public CatalogsHotelBatchRequest catalogType(CatalogTypeEnum catalogType) {
@@ -87,12 +103,12 @@ public class CatalogsHotelBatchRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   @NotNull public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
@@ -106,12 +122,12 @@ public class CatalogsHotelBatchRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("country")
+  @JsonProperty(required = true, value = "country")
   @NotNull public Country getCountry() {
     return country;
   }
 
-  @JsonProperty("country")
+  @JsonProperty(required = true, value = "country")
   public void setCountry(Country country) {
     this.country = country;
   }
@@ -125,12 +141,12 @@ public class CatalogsHotelBatchRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("language")
+  @JsonProperty(required = true, value = "language")
   @NotNull @Valid public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
 
-  @JsonProperty("language")
+  @JsonProperty(required = true, value = "language")
   public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
@@ -145,12 +161,12 @@ public class CatalogsHotelBatchRequest   {
 
   
   @ApiModelProperty(required = true, value = "Array with catalogs item operations")
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   @NotNull @Valid  @Size(min=1,max=1000)public List<@Valid CatalogsHotelBatchItem> getItems() {
     return items;
   }
 
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   public void setItems(List<@Valid CatalogsHotelBatchItem> items) {
     this.items = items;
   }

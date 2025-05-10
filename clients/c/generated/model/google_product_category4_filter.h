@@ -22,9 +22,10 @@ typedef struct google_product_category4_filter_t google_product_category4_filter
 typedef struct google_product_category4_filter_t {
     catalogs_product_group_multiple_string_list_criteria_t *google_product_category_4; //object
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } google_product_category4_filter_t;
 
-google_product_category4_filter_t *google_product_category4_filter_create(
+__attribute__((deprecated)) google_product_category4_filter_t *google_product_category4_filter_create(
     catalogs_product_group_multiple_string_list_criteria_t *google_product_category_4
 );
 

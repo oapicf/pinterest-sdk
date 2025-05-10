@@ -13,17 +13,19 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.DataStatus
 
+import kotlinx.serialization.Serializable
 /**
  * Array with metrics, status, and pin id for the requested metric
  * @param metrics The metric name and daily value for each requested metric
  * @param dataStatus 
  * @param pinId The pin id
  */
+@Serializable
 data class TopVideoPinsAnalyticsResponsePinsInner(
     /* The metric name and daily value for each requested metric */
     val metrics: kotlin.collections.Map<kotlin.String, java.math.BigDecimal>? = null,
     val dataStatus: kotlin.collections.Map<kotlin.String, DataStatus>? = null,
     /* The pin id */
     val pinId: kotlin.String? = null
-) 
+)
 

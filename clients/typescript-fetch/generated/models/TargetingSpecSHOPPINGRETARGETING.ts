@@ -62,11 +62,11 @@ export function TargetingSpecSHOPPINGRETARGETINGFromJSONTyped(json: any, ignoreD
     };
 }
 
-  export function TargetingSpecSHOPPINGRETARGETINGToJSON(json: any): TargetingSpecSHOPPINGRETARGETING {
-      return TargetingSpecSHOPPINGRETARGETINGToJSONTyped(json, false);
-  }
+export function TargetingSpecSHOPPINGRETARGETINGToJSON(json: any): TargetingSpecSHOPPINGRETARGETING {
+    return TargetingSpecSHOPPINGRETARGETINGToJSONTyped(json, false);
+}
 
-  export function TargetingSpecSHOPPINGRETARGETINGToJSONTyped(value?: TargetingSpecSHOPPINGRETARGETING | null, ignoreDiscriminator: boolean = false): any {
+export function TargetingSpecSHOPPINGRETARGETINGToJSONTyped(value?: TargetingSpecSHOPPINGRETARGETING | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

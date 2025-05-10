@@ -24,9 +24,9 @@ char* audience_account_type_audience_account_type_ToString(pinterest_rest_api_au
 
 pinterest_rest_api_audience_account_type__e audience_account_type_audience_account_type_FromString(char* audience_account_type);
 
-//cJSON *audience_account_type_audience_account_type_convertToJSON(pinterest_rest_api_audience_account_type__e audience_account_type);
+cJSON *audience_account_type_convertToJSON(pinterest_rest_api_audience_account_type__e audience_account_type);
 
-//pinterest_rest_api_audience_account_type__e audience_account_type_audience_account_type_parseFromJSON(cJSON *audience_account_typeJSON);
+pinterest_rest_api_audience_account_type__e audience_account_type_parseFromJSON(cJSON *audience_account_typeJSON);
 
 #endif /* _audience_account_type_H_ */
 

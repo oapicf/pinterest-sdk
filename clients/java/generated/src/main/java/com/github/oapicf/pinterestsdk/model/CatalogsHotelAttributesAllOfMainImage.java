@@ -51,20 +51,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * The main hotel image
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsHotelAttributesAllOfMainImage {
   public static final String SERIALIZED_NAME_LINK = "link";
   @SerializedName(SERIALIZED_NAME_LINK)
+  @javax.annotation.Nullable
   private String link;
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
+  @javax.annotation.Nullable
   private List<String> tag;
 
   public CatalogsHotelAttributesAllOfMainImage() {
   }
 
-  public CatalogsHotelAttributesAllOfMainImage link(String link) {
+  public CatalogsHotelAttributesAllOfMainImage link(@javax.annotation.Nullable String link) {
     this.link = link;
     return this;
   }
@@ -78,12 +80,12 @@ public class CatalogsHotelAttributesAllOfMainImage {
     return link;
   }
 
-  public void setLink(String link) {
+  public void setLink(@javax.annotation.Nullable String link) {
     this.link = link;
   }
 
 
-  public CatalogsHotelAttributesAllOfMainImage tag(List<String> tag) {
+  public CatalogsHotelAttributesAllOfMainImage tag(@javax.annotation.Nullable List<String> tag) {
     this.tag = tag;
     return this;
   }
@@ -105,7 +107,7 @@ public class CatalogsHotelAttributesAllOfMainImage {
     return tag;
   }
 
-  public void setTag(List<String> tag) {
+  public void setTag(@javax.annotation.Nullable List<String> tag) {
     this.tag = tag;
   }
 

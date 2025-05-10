@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Request object for creating a product group.")
 @JsonTypeName("CatalogsRetailProductGroupCreateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsRetailProductGroupCreateRequest   {
   public enum CatalogTypeEnum {
 
@@ -78,6 +78,26 @@ public class CatalogsRetailProductGroupCreateRequest   {
   private Country country;
   private CatalogsLocale locale;
 
+  public CatalogsRetailProductGroupCreateRequest() {
+  }
+
+  @JsonCreator
+  public CatalogsRetailProductGroupCreateRequest(
+    @JsonProperty(required = true, value = "catalog_type") CatalogTypeEnum catalogType,
+    @JsonProperty(required = true, value = "name") String name,
+    @JsonProperty(required = true, value = "filters") CatalogsProductGroupFiltersRequest filters,
+    @JsonProperty(required = true, value = "catalog_id") String catalogId,
+    @JsonProperty(required = true, value = "country") Country country,
+    @JsonProperty(required = true, value = "locale") CatalogsLocale locale
+  ) {
+    this.catalogType = catalogType;
+    this.name = name;
+    this.filters = filters;
+    this.catalogId = catalogId;
+    this.country = country;
+    this.locale = locale;
+  }
+
   /**
    * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
    **/
@@ -88,12 +108,12 @@ public class CatalogsRetailProductGroupCreateRequest   {
 
   
   @ApiModelProperty(required = true, value = "Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.")
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   @NotNull public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
@@ -107,12 +127,12 @@ public class CatalogsRetailProductGroupCreateRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("name")
+  @JsonProperty(required = true, value = "name")
   @NotNull public String getName() {
     return name;
   }
 
-  @JsonProperty("name")
+  @JsonProperty(required = true, value = "name")
   public void setName(String name) {
     this.name = name;
   }
@@ -145,12 +165,12 @@ public class CatalogsRetailProductGroupCreateRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("filters")
+  @JsonProperty(required = true, value = "filters")
   @NotNull @Valid public CatalogsProductGroupFiltersRequest getFilters() {
     return filters;
   }
 
-  @JsonProperty("filters")
+  @JsonProperty(required = true, value = "filters")
   public void setFilters(CatalogsProductGroupFiltersRequest filters) {
     this.filters = filters;
   }
@@ -165,12 +185,12 @@ public class CatalogsRetailProductGroupCreateRequest   {
 
   
   @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the retail product group.")
-  @JsonProperty("catalog_id")
+  @JsonProperty(required = true, value = "catalog_id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getCatalogId() {
     return catalogId;
   }
 
-  @JsonProperty("catalog_id")
+  @JsonProperty(required = true, value = "catalog_id")
   public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
   }
@@ -184,12 +204,12 @@ public class CatalogsRetailProductGroupCreateRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("country")
+  @JsonProperty(required = true, value = "country")
   @NotNull public Country getCountry() {
     return country;
   }
 
-  @JsonProperty("country")
+  @JsonProperty(required = true, value = "country")
   public void setCountry(Country country) {
     this.country = country;
   }
@@ -203,12 +223,12 @@ public class CatalogsRetailProductGroupCreateRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("locale")
+  @JsonProperty(required = true, value = "locale")
   @NotNull public CatalogsLocale getLocale() {
     return locale;
   }
 
-  @JsonProperty("locale")
+  @JsonProperty(required = true, value = "locale")
   public void setLocale(CatalogsLocale locale) {
     this.locale = locale;
   }

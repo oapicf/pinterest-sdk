@@ -24,9 +24,9 @@ char* entity_status_entity_status_ToString(pinterest_rest_api_entity_status__e e
 
 pinterest_rest_api_entity_status__e entity_status_entity_status_FromString(char* entity_status);
 
-//cJSON *entity_status_entity_status_convertToJSON(pinterest_rest_api_entity_status__e entity_status);
+cJSON *entity_status_convertToJSON(pinterest_rest_api_entity_status__e entity_status);
 
-//pinterest_rest_api_entity_status__e entity_status_entity_status_parseFromJSON(cJSON *entity_statusJSON);
+pinterest_rest_api_entity_status__e entity_status_parseFromJSON(cJSON *entity_statusJSON);
 
 #endif /* _entity_status_H_ */
 

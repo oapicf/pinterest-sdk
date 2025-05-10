@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct SSIOInsertionOrderCommon: Codable, JSONEncodable, Hashable {
 
-    static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
-    static let endDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
+    public static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
+    public static let endDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
     /** Starting date of time period. Format: YYYY-MM-DD */
     public var startDate: String?
     /** End date of time period. Format: YYYY-MM-DD */

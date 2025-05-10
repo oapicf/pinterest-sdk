@@ -48,11 +48,11 @@ export function MetricsResponseFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-  export function MetricsResponseToJSON(json: any): MetricsResponse {
-      return MetricsResponseToJSONTyped(json, false);
-  }
+export function MetricsResponseToJSON(json: any): MetricsResponse {
+    return MetricsResponseToJSONTyped(json, false);
+}
 
-  export function MetricsResponseToJSONTyped(value?: MetricsResponse | null, ignoreDiscriminator: boolean = false): any {
+export function MetricsResponseToJSONTyped(value?: MetricsResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

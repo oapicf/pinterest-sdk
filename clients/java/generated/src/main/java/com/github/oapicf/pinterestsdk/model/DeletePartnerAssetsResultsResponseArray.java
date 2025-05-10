@@ -51,16 +51,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * DeletePartnerAssetsResultsResponseArray
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class DeletePartnerAssetsResultsResponseArray {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
+  @javax.annotation.Nullable
   private List<DeletePartnerAssetsResult> items = new ArrayList<>();
 
   public DeletePartnerAssetsResultsResponseArray() {
   }
 
-  public DeletePartnerAssetsResultsResponseArray items(List<DeletePartnerAssetsResult> items) {
+  public DeletePartnerAssetsResultsResponseArray items(@javax.annotation.Nullable List<DeletePartnerAssetsResult> items) {
     this.items = items;
     return this;
   }
@@ -82,7 +83,7 @@ public class DeletePartnerAssetsResultsResponseArray {
     return items;
   }
 
-  public void setItems(List<DeletePartnerAssetsResult> items) {
+  public void setItems(@javax.annotation.Nullable List<DeletePartnerAssetsResult> items) {
     this.items = items;
   }
 

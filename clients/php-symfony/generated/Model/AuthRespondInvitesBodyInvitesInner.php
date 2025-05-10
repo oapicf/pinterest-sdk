@@ -71,7 +71,7 @@ class AuthRespondInvitesBodyInvitesInner
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->action = array_key_exists('action', $data) ? $data['action'] : $this->action;

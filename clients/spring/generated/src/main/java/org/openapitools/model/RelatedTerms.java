@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.RelatedTermsRelatedTermsListInner;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -22,12 +23,12 @@ import javax.annotation.Generated;
  * RelatedTerms
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class RelatedTerms {
 
-  private String id;
+  private @Nullable String id;
 
-  private Integer relatedTermCount;
+  private @Nullable Integer relatedTermCount;
 
   @Valid
   private List<@Valid RelatedTermsRelatedTermsListInner> relatedTermsList = new ArrayList<>();

@@ -61,17 +61,21 @@ export function ItemResponseAnyOf1FromJSONTyped(json: any, ignoreDiscriminator: 
     }
 }
 
-export function ItemResponseAnyOf1ToJSON(value?: ItemResponseAnyOf1 | null): any {
+export function ItemResponseAnyOf1ToJSON(json: any): any {
+    return ItemResponseAnyOf1ToJSONTyped(json, false);
+}
+
+export function ItemResponseAnyOf1ToJSONTyped(value?: ItemResponseAnyOf1 | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
     switch (value['catalogType']) {
         case 'CREATIVE_ASSETS':
-            return CatalogsCreativeAssetsItemErrorResponseToJSON(value);
+            return Object.assign({}, CatalogsCreativeAssetsItemErrorResponseToJSON(value), { catalogType: 'CREATIVE_ASSETS' } as const);
         case 'HOTEL':
-            return CatalogsHotelItemErrorResponseToJSON(value);
+            return Object.assign({}, CatalogsHotelItemErrorResponseToJSON(value), { catalogType: 'HOTEL' } as const);
         case 'RETAIL':
-            return CatalogsRetailItemErrorResponseToJSON(value);
+            return Object.assign({}, CatalogsRetailItemErrorResponseToJSON(value), { catalogType: 'RETAIL' } as const);
         default:
             throw new Error(`No variant of ItemResponseAnyOf1 exists with 'catalogType=${value['catalogType']}'`);
     }

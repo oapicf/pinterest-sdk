@@ -244,11 +244,11 @@ export function AdGroupUpdateRequestFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function AdGroupUpdateRequestToJSON(json: any): AdGroupUpdateRequest {
-      return AdGroupUpdateRequestToJSONTyped(json, false);
-  }
+export function AdGroupUpdateRequestToJSON(json: any): AdGroupUpdateRequest {
+    return AdGroupUpdateRequestToJSONTyped(json, false);
+}
 
-  export function AdGroupUpdateRequestToJSONTyped(value?: AdGroupUpdateRequest | null, ignoreDiscriminator: boolean = false): any {
+export function AdGroupUpdateRequestToJSONTyped(value?: AdGroupUpdateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

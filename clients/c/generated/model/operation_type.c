@@ -22,7 +22,7 @@ pinterest_rest_api_operation_type__e operation_type_operation_type_FromString(ch
     return 0;
 }
 
-cJSON *operation_type_operation_type_convertToJSON(pinterest_rest_api_operation_type__e operation_type) {
+cJSON *operation_type_convertToJSON(pinterest_rest_api_operation_type__e operation_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "operation_type", operation_type_operation_type_ToString(operation_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_operation_type__e operation_type_operation_type_parseFromJSON(cJSON *operation_typeJSON) {
-    pinterest_rest_api_operation_type__e *operation_type = NULL;
-    pinterest_rest_api_operation_type__e operation_typeVariable;
-    cJSON *operation_typeVar = cJSON_GetObjectItemCaseSensitive(operation_typeJSON, "operation_type");
-    if(!cJSON_IsString(operation_typeVar) || (operation_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_operation_type__e operation_type_parseFromJSON(cJSON *operation_typeJSON) {
+    if(!cJSON_IsString(operation_typeJSON) || (operation_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    operation_typeVariable = operation_type_operation_type_FromString(operation_typeVar->valuestring);
-    return operation_typeVariable;
-end:
-    return 0;
+    return operation_type_operation_type_FromString(operation_typeJSON->valuestring);
 }

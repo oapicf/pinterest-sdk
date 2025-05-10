@@ -93,7 +93,7 @@ func NewAdsAnalyticsCreateAsyncRequest(startDate string, endDate string, granula
 	this.EngagementWindowDays = &engagementWindowDays
 	var viewWindowDays ConversionAttributionWindowDays = _1
 	this.ViewWindowDays = &viewWindowDays
-	var conversionReportTime ConversionReportTimeType = AD_ACTION
+	var conversionReportTime ConversionReportTimeType = TIME_OF_AD_ACTION
 	this.ConversionReportTime = &conversionReportTime
 	this.Columns = columns
 	this.Level = level
@@ -113,7 +113,7 @@ func NewAdsAnalyticsCreateAsyncRequestWithDefaults() *AdsAnalyticsCreateAsyncReq
 	this.EngagementWindowDays = &engagementWindowDays
 	var viewWindowDays ConversionAttributionWindowDays = _1
 	this.ViewWindowDays = &viewWindowDays
-	var conversionReportTime ConversionReportTimeType = AD_ACTION
+	var conversionReportTime ConversionReportTimeType = TIME_OF_AD_ACTION
 	this.ConversionReportTime = &conversionReportTime
 	var reportFormat DataOutputFormat = JSON
 	this.ReportFormat = &reportFormat

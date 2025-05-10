@@ -44,10 +44,10 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum UserFollowingFeedType: string
 {
-        case ALL = "ALL";
-        case RANKED = "RANKED";
-        case CREATOR_ONLY = "CREATOR_ONLY";
-        case RANKED_CREATOR_ONLY = "RANKED_CREATOR_ONLY";
+        case ALL = 'ALL';
+        case RANKED = 'RANKED';
+        case CREATOR_ONLY = 'CREATOR_ONLY';
+        case RANKED_CREATOR_ONLY = 'RANKED_CREATOR_ONLY';
 }
 
 

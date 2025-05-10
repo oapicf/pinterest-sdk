@@ -51,7 +51,7 @@ class ConversionApiResponseEventsInner
      * @Type("string")
     */
     #[Assert\NotNull]
-    #[Assert\Choice(["failed", "processed"])]
+    #[Assert\Choice(['failed', 'processed'])]
     #[Assert\Type("string")]
     protected ?string $status = null;
 
@@ -79,7 +79,7 @@ class ConversionApiResponseEventsInner
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->status = array_key_exists('status', $data) ? $data['status'] : $this->status;

@@ -4,29 +4,12 @@
 #include "creative_assets_processing_record.h"
 
 
-char* creative_assets_processing_record_status_ToString(pinterest_rest_api_creative_assets_processing_record__e status) {
-    char* statusArray[] =  { "NULL", "SUCCESS", "FAILURE", "PROCESSING" };
-    return statusArray[status];
-}
 
-pinterest_rest_api_creative_assets_processing_record__e creative_assets_processing_record_status_FromString(char* status){
-    int stringToReturn = 0;
-    char *statusArray[] =  { "NULL", "SUCCESS", "FAILURE", "PROCESSING" };
-    size_t sizeofArray = sizeof(statusArray) / sizeof(statusArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(status, statusArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-
-creative_assets_processing_record_t *creative_assets_processing_record_create(
+static creative_assets_processing_record_t *creative_assets_processing_record_create_internal(
     char *creative_assets_id,
     list_t *errors,
     list_t *warnings,
-    item_processing_status_t *status
+    pinterest_rest_api_item_processing_status__e status
     ) {
     creative_assets_processing_record_t *creative_assets_processing_record_local_var = malloc(sizeof(creative_assets_processing_record_t));
     if (!creative_assets_processing_record_local_var) {
@@ -37,12 +20,30 @@ creative_assets_processing_record_t *creative_assets_processing_record_create(
     creative_assets_processing_record_local_var->warnings = warnings;
     creative_assets_processing_record_local_var->status = status;
 
+    creative_assets_processing_record_local_var->_library_owned = 1;
     return creative_assets_processing_record_local_var;
 }
 
+__attribute__((deprecated)) creative_assets_processing_record_t *creative_assets_processing_record_create(
+    char *creative_assets_id,
+    list_t *errors,
+    list_t *warnings,
+    pinterest_rest_api_item_processing_status__e status
+    ) {
+    return creative_assets_processing_record_create_internal (
+        creative_assets_id,
+        errors,
+        warnings,
+        status
+        );
+}
 
 void creative_assets_processing_record_free(creative_assets_processing_record_t *creative_assets_processing_record) {
     if(NULL == creative_assets_processing_record){
+        return ;
+    }
+    if(creative_assets_processing_record->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "creative_assets_processing_record_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -63,10 +64,6 @@ void creative_assets_processing_record_free(creative_assets_processing_record_t 
         }
         list_freeList(creative_assets_processing_record->warnings);
         creative_assets_processing_record->warnings = NULL;
-    }
-    if (creative_assets_processing_record->status) {
-        item_processing_status_free(creative_assets_processing_record->status);
-        creative_assets_processing_record->status = NULL;
     }
     free(creative_assets_processing_record);
 }
@@ -123,7 +120,7 @@ cJSON *creative_assets_processing_record_convertToJSON(creative_assets_processin
 
 
     // creative_assets_processing_record->status
-    if(creative_assets_processing_record->status != pinterest_rest_api_creative_assets_processing_record__NULL) {
+    if(creative_assets_processing_record->status != pinterest_rest_api_item_processing_status__NULL) {
     cJSON *status_local_JSON = item_processing_status_convertToJSON(creative_assets_processing_record->status);
     if(status_local_JSON == NULL) {
         goto fail; // custom
@@ -153,10 +150,13 @@ creative_assets_processing_record_t *creative_assets_processing_record_parseFrom
     list_t *warningsList = NULL;
 
     // define the local variable for creative_assets_processing_record->status
-    item_processing_status_t *status_local_nonprim = NULL;
+    pinterest_rest_api_item_processing_status__e status_local_nonprim = 0;
 
     // creative_assets_processing_record->creative_assets_id
     cJSON *creative_assets_id = cJSON_GetObjectItemCaseSensitive(creative_assets_processing_recordJSON, "creative_assets_id");
+    if (cJSON_IsNull(creative_assets_id)) {
+        creative_assets_id = NULL;
+    }
     if (creative_assets_id) { 
     if(!cJSON_IsString(creative_assets_id) && !cJSON_IsNull(creative_assets_id))
     {
@@ -166,6 +166,9 @@ creative_assets_processing_record_t *creative_assets_processing_record_parseFrom
 
     // creative_assets_processing_record->errors
     cJSON *errors = cJSON_GetObjectItemCaseSensitive(creative_assets_processing_recordJSON, "errors");
+    if (cJSON_IsNull(errors)) {
+        errors = NULL;
+    }
     if (errors) { 
     cJSON *errors_local_nonprimitive = NULL;
     if(!cJSON_IsArray(errors)){
@@ -187,6 +190,9 @@ creative_assets_processing_record_t *creative_assets_processing_record_parseFrom
 
     // creative_assets_processing_record->warnings
     cJSON *warnings = cJSON_GetObjectItemCaseSensitive(creative_assets_processing_recordJSON, "warnings");
+    if (cJSON_IsNull(warnings)) {
+        warnings = NULL;
+    }
     if (warnings) { 
     cJSON *warnings_local_nonprimitive = NULL;
     if(!cJSON_IsArray(warnings)){
@@ -208,16 +214,19 @@ creative_assets_processing_record_t *creative_assets_processing_record_parseFrom
 
     // creative_assets_processing_record->status
     cJSON *status = cJSON_GetObjectItemCaseSensitive(creative_assets_processing_recordJSON, "status");
+    if (cJSON_IsNull(status)) {
+        status = NULL;
+    }
     if (status) { 
     status_local_nonprim = item_processing_status_parseFromJSON(status); //custom
     }
 
 
-    creative_assets_processing_record_local_var = creative_assets_processing_record_create (
+    creative_assets_processing_record_local_var = creative_assets_processing_record_create_internal (
         creative_assets_id && !cJSON_IsNull(creative_assets_id) ? strdup(creative_assets_id->valuestring) : NULL,
         errors ? errorsList : NULL,
         warnings ? warningsList : NULL,
-        status ? status_local_nonprim : NULL
+        status ? status_local_nonprim : 0
         );
 
     return creative_assets_processing_record_local_var;
@@ -241,8 +250,7 @@ end:
         warningsList = NULL;
     }
     if (status_local_nonprim) {
-        item_processing_status_free(status_local_nonprim);
-        status_local_nonprim = NULL;
+        status_local_nonprim = 0;
     }
     return NULL;
 

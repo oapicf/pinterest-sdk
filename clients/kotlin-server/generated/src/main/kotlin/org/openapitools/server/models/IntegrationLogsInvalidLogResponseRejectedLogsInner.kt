@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param `field` The field name containing an invalid value.
@@ -19,6 +20,7 @@ package org.openapitools.server.models
  * @param reason The reason the value is invalid.
  * @param logIndex Index of the log in the batch.
  */
+@Serializable
 data class IntegrationLogsInvalidLogResponseRejectedLogsInner(
     /* The field name containing an invalid value. */
     val `field`: kotlin.String,
@@ -28,5 +30,5 @@ data class IntegrationLogsInvalidLogResponseRejectedLogsInner(
     val reason: kotlin.String,
     /* Index of the log in the batch. */
     val logIndex: kotlin.Int? = null
-) 
+)
 

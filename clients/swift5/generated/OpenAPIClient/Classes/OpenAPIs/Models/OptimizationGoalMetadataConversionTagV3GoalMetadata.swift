@@ -28,8 +28,8 @@ public struct OptimizationGoalMetadataConversionTagV3GoalMetadata: Codable, JSON
         case notActive = "NOT_ACTIVE"
         case active = "ACTIVE"
     }
-    static let conversionTagIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^[0-9]+$/")
-    static let cpaGoalValueInMicroCurrencyRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^[0-9]+$/")
+    public static let conversionTagIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^[0-9]+$/")
+    public static let cpaGoalValueInMicroCurrencyRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^[0-9]+$/")
     public var attributionWindows: OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows?
     public var conversionEvent: ConversionEvent?
     public var conversionTagId: String?

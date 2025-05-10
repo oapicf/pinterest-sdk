@@ -10,6 +10,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsProductGroupFilters;
 import org.openapitools.model.CatalogsProductGroupStatus;
 import org.openapitools.model.CatalogsProductGroupType;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -28,7 +29,7 @@ import javax.annotation.Generated;
  * CatalogsRetailProductGroup
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup {
 
   /**
@@ -68,22 +69,22 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
 
   private String id;
 
-  private String name;
+  private @Nullable String name;
 
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
   private CatalogsProductGroupFilters filters;
 
   @Deprecated
-  private Boolean isFeatured;
+  private @Nullable Boolean isFeatured;
 
-  private CatalogsProductGroupType type;
+  private @Nullable CatalogsProductGroupType type;
 
-  private CatalogsProductGroupStatus status;
+  private @Nullable CatalogsProductGroupStatus status;
 
-  private Integer createdAt;
+  private @Nullable Integer createdAt;
 
-  private Integer updatedAt;
+  private @Nullable Integer updatedAt;
 
   private String catalogId;
 

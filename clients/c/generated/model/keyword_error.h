@@ -23,9 +23,10 @@ typedef struct keyword_error_t {
     struct keyword_t *data; //model
     list_t *error_messages; //primitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } keyword_error_t;
 
-keyword_error_t *keyword_error_create(
+__attribute__((deprecated)) keyword_error_t *keyword_error_create(
     keyword_t *data,
     list_t *error_messages
 );

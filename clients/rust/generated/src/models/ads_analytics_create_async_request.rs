@@ -129,14 +129,14 @@ impl AdsAnalyticsCreateAsyncRequest {
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum PrimarySort {
     #[serde(rename = "BY_ID")]
-    Id,
+    ById,
     #[serde(rename = "BY_DATE")]
-    Date,
+    ByDate,
 }
 
 impl Default for PrimarySort {
     fn default() -> PrimarySort {
-        Self::Id
+        Self::ById
     }
 }
 

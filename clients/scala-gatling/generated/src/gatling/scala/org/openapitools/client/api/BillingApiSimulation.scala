@@ -122,8 +122,8 @@ class BillingApiSimulation extends Simulation {
         .feed(billing_profiles/getPATHFeeder)
         .exec(http("billingProfilesGet")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/billing_profiles")
-        .queryParam("is_active","${is_active}")
         .queryParam("page_size","${page_size}")
+        .queryParam("is_active","${is_active}")
         .queryParam("bookmark","${bookmark}")
 )
 

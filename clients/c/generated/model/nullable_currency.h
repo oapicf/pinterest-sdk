@@ -24,9 +24,9 @@ char* nullable_currency_nullable_currency_ToString(pinterest_rest_api_nullable_c
 
 pinterest_rest_api_nullable_currency__e nullable_currency_nullable_currency_FromString(char* nullable_currency);
 
-//cJSON *nullable_currency_nullable_currency_convertToJSON(pinterest_rest_api_nullable_currency__e nullable_currency);
+cJSON *nullable_currency_convertToJSON(pinterest_rest_api_nullable_currency__e nullable_currency);
 
-//pinterest_rest_api_nullable_currency__e nullable_currency_nullable_currency_parseFromJSON(cJSON *nullable_currencyJSON);
+pinterest_rest_api_nullable_currency__e nullable_currency_parseFromJSON(cJSON *nullable_currencyJSON);
 
 #endif /* _nullable_currency_H_ */
 

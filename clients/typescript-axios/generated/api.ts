@@ -2548,8 +2548,8 @@ export interface AdsAnalyticsCreateAsyncRequest {
 }
 
 export const AdsAnalyticsCreateAsyncRequestPrimarySortEnum = {
-    Id: 'BY_ID',
-    Date: 'BY_DATE'
+    ById: 'BY_ID',
+    ByDate: 'BY_DATE'
 } as const;
 
 export type AdsAnalyticsCreateAsyncRequestPrimarySortEnum = typeof AdsAnalyticsCreateAsyncRequestPrimarySortEnum[keyof typeof AdsAnalyticsCreateAsyncRequestPrimarySortEnum];
@@ -13400,8 +13400,8 @@ export type ConversionReportAttributionType = typeof ConversionReportAttribution
  */
 
 export const ConversionReportTimeType = {
-    AdAction: 'TIME_OF_AD_ACTION',
-    Conversion: 'TIME_OF_CONVERSION'
+    TimeOfAdAction: 'TIME_OF_AD_ACTION',
+    TimeOfConversion: 'TIME_OF_CONVERSION'
 } as const;
 
 export type ConversionReportTimeType = typeof ConversionReportTimeType[keyof typeof ConversionReportTimeType];
@@ -20704,8 +20704,8 @@ export const PinMediaSourceImageBase64SourceTypeEnum = {
 
 export type PinMediaSourceImageBase64SourceTypeEnum = typeof PinMediaSourceImageBase64SourceTypeEnum[keyof typeof PinMediaSourceImageBase64SourceTypeEnum];
 export const PinMediaSourceImageBase64ContentTypeEnum = {
-    Jpeg: 'image/jpeg',
-    Png: 'image/png'
+    ImageJpeg: 'image/jpeg',
+    ImagePng: 'image/png'
 } as const;
 
 export type PinMediaSourceImageBase64ContentTypeEnum = typeof PinMediaSourceImageBase64ContentTypeEnum[keyof typeof PinMediaSourceImageBase64ContentTypeEnum];
@@ -20813,8 +20813,8 @@ export interface PinMediaSourceImagesBase64ItemsInner {
 }
 
 export const PinMediaSourceImagesBase64ItemsInnerContentTypeEnum = {
-    Jpeg: 'image/jpeg',
-    Png: 'image/png'
+    ImageJpeg: 'image/jpeg',
+    ImagePng: 'image/png'
 } as const;
 
 export type PinMediaSourceImagesBase64ItemsInnerContentTypeEnum = typeof PinMediaSourceImagesBase64ItemsInnerContentTypeEnum[keyof typeof PinMediaSourceImagesBase64ItemsInnerContentTypeEnum];
@@ -20958,8 +20958,8 @@ export const PinMediaSourceVideoIDSourceTypeEnum = {
 
 export type PinMediaSourceVideoIDSourceTypeEnum = typeof PinMediaSourceVideoIDSourceTypeEnum[keyof typeof PinMediaSourceVideoIDSourceTypeEnum];
 export const PinMediaSourceVideoIDCoverImageContentTypeEnum = {
-    Jpeg: 'image/jpeg',
-    Png: 'image/png'
+    ImageJpeg: 'image/jpeg',
+    ImagePng: 'image/png'
 } as const;
 
 export type PinMediaSourceVideoIDCoverImageContentTypeEnum = typeof PinMediaSourceVideoIDCoverImageContentTypeEnum[keyof typeof PinMediaSourceVideoIDCoverImageContentTypeEnum];
@@ -26067,15 +26067,15 @@ export const TemplateResponseColumnsEnum = {
 
 export type TemplateResponseColumnsEnum = typeof TemplateResponseColumnsEnum[keyof typeof TemplateResponseColumnsEnum];
 export const TemplateResponseConversionReportTimeTypeEnum = {
-    AdAction: 'TIME_OF_AD_ACTION',
-    Conversion: 'TIME_OF_CONVERSION'
+    TimeOfAdAction: 'TIME_OF_AD_ACTION',
+    TimeOfConversion: 'TIME_OF_CONVERSION'
 } as const;
 
 export type TemplateResponseConversionReportTimeTypeEnum = typeof TemplateResponseConversionReportTimeTypeEnum[keyof typeof TemplateResponseConversionReportTimeTypeEnum];
 export const TemplateResponseCreationSourceEnum = {
-    Api: 'ADS_API',
-    ManagerReportingPage: 'ADS_MANAGER_REPORTING_PAGE',
-    ManagerReportBuilder: 'ADS_MANAGER_REPORT_BUILDER'
+    AdsApi: 'ADS_API',
+    AdsManagerReportingPage: 'ADS_MANAGER_REPORTING_PAGE',
+    AdsManagerReportBuilder: 'ADS_MANAGER_REPORT_BUILDER'
 } as const;
 
 export type TemplateResponseCreationSourceEnum = typeof TemplateResponseCreationSourceEnum[keyof typeof TemplateResponseCreationSourceEnum];
@@ -29009,8 +29009,8 @@ export type AdAccountAnalyticsViewWindowDaysEnum = typeof AdAccountAnalyticsView
  * @export
  */
 export const AdAccountAnalyticsConversionReportTimeEnum = {
-    AdAction: 'TIME_OF_AD_ACTION',
-    Conversion: 'TIME_OF_CONVERSION'
+    TimeOfAdAction: 'TIME_OF_AD_ACTION',
+    TimeOfConversion: 'TIME_OF_CONVERSION'
 } as const;
 export type AdAccountAnalyticsConversionReportTimeEnum = typeof AdAccountAnalyticsConversionReportTimeEnum[keyof typeof AdAccountAnalyticsConversionReportTimeEnum];
 /**
@@ -29210,8 +29210,8 @@ export type AdAccountTargetingAnalyticsGetViewWindowDaysEnum = typeof AdAccountT
  * @export
  */
 export const AdAccountTargetingAnalyticsGetConversionReportTimeEnum = {
-    AdAction: 'TIME_OF_AD_ACTION',
-    Conversion: 'TIME_OF_CONVERSION'
+    TimeOfAdAction: 'TIME_OF_AD_ACTION',
+    TimeOfConversion: 'TIME_OF_CONVERSION'
 } as const;
 export type AdAccountTargetingAnalyticsGetConversionReportTimeEnum = typeof AdAccountTargetingAnalyticsGetConversionReportTimeEnum[keyof typeof AdAccountTargetingAnalyticsGetConversionReportTimeEnum];
 /**
@@ -30329,8 +30329,8 @@ export type AdGroupsAnalyticsViewWindowDaysEnum = typeof AdGroupsAnalyticsViewWi
  * @export
  */
 export const AdGroupsAnalyticsConversionReportTimeEnum = {
-    AdAction: 'TIME_OF_AD_ACTION',
-    Conversion: 'TIME_OF_CONVERSION'
+    TimeOfAdAction: 'TIME_OF_AD_ACTION',
+    TimeOfConversion: 'TIME_OF_CONVERSION'
 } as const;
 export type AdGroupsAnalyticsConversionReportTimeEnum = typeof AdGroupsAnalyticsConversionReportTimeEnum[keyof typeof AdGroupsAnalyticsConversionReportTimeEnum];
 /**
@@ -30549,8 +30549,8 @@ export type AdGroupsTargetingAnalyticsGetViewWindowDaysEnum = typeof AdGroupsTar
  * @export
  */
 export const AdGroupsTargetingAnalyticsGetConversionReportTimeEnum = {
-    AdAction: 'TIME_OF_AD_ACTION',
-    Conversion: 'TIME_OF_CONVERSION'
+    TimeOfAdAction: 'TIME_OF_AD_ACTION',
+    TimeOfConversion: 'TIME_OF_CONVERSION'
 } as const;
 export type AdGroupsTargetingAnalyticsGetConversionReportTimeEnum = typeof AdGroupsTargetingAnalyticsGetConversionReportTimeEnum[keyof typeof AdGroupsTargetingAnalyticsGetConversionReportTimeEnum];
 
@@ -31594,8 +31594,8 @@ export type AdTargetingAnalyticsGetViewWindowDaysEnum = typeof AdTargetingAnalyt
  * @export
  */
 export const AdTargetingAnalyticsGetConversionReportTimeEnum = {
-    AdAction: 'TIME_OF_AD_ACTION',
-    Conversion: 'TIME_OF_CONVERSION'
+    TimeOfAdAction: 'TIME_OF_AD_ACTION',
+    TimeOfConversion: 'TIME_OF_CONVERSION'
 } as const;
 export type AdTargetingAnalyticsGetConversionReportTimeEnum = typeof AdTargetingAnalyticsGetConversionReportTimeEnum[keyof typeof AdTargetingAnalyticsGetConversionReportTimeEnum];
 /**
@@ -31795,8 +31795,8 @@ export type AdsAnalyticsViewWindowDaysEnum = typeof AdsAnalyticsViewWindowDaysEn
  * @export
  */
 export const AdsAnalyticsConversionReportTimeEnum = {
-    AdAction: 'TIME_OF_AD_ACTION',
-    Conversion: 'TIME_OF_CONVERSION'
+    TimeOfAdAction: 'TIME_OF_AD_ACTION',
+    TimeOfConversion: 'TIME_OF_CONVERSION'
 } as const;
 export type AdsAnalyticsConversionReportTimeEnum = typeof AdsAnalyticsConversionReportTimeEnum[keyof typeof AdsAnalyticsConversionReportTimeEnum];
 /**
@@ -38920,8 +38920,8 @@ export type CampaignTargetingAnalyticsGetViewWindowDaysEnum = typeof CampaignTar
  * @export
  */
 export const CampaignTargetingAnalyticsGetConversionReportTimeEnum = {
-    AdAction: 'TIME_OF_AD_ACTION',
-    Conversion: 'TIME_OF_CONVERSION'
+    TimeOfAdAction: 'TIME_OF_AD_ACTION',
+    TimeOfConversion: 'TIME_OF_CONVERSION'
 } as const;
 export type CampaignTargetingAnalyticsGetConversionReportTimeEnum = typeof CampaignTargetingAnalyticsGetConversionReportTimeEnum[keyof typeof CampaignTargetingAnalyticsGetConversionReportTimeEnum];
 /**
@@ -39121,8 +39121,8 @@ export type CampaignsAnalyticsViewWindowDaysEnum = typeof CampaignsAnalyticsView
  * @export
  */
 export const CampaignsAnalyticsConversionReportTimeEnum = {
-    AdAction: 'TIME_OF_AD_ACTION',
-    Conversion: 'TIME_OF_CONVERSION'
+    TimeOfAdAction: 'TIME_OF_AD_ACTION',
+    TimeOfConversion: 'TIME_OF_CONVERSION'
 } as const;
 export type CampaignsAnalyticsConversionReportTimeEnum = typeof CampaignsAnalyticsConversionReportTimeEnum[keyof typeof CampaignsAnalyticsConversionReportTimeEnum];
 /**
@@ -47171,8 +47171,8 @@ export type ProductGroupsAnalyticsViewWindowDaysEnum = typeof ProductGroupsAnaly
  * @export
  */
 export const ProductGroupsAnalyticsConversionReportTimeEnum = {
-    AdAction: 'TIME_OF_AD_ACTION',
-    Conversion: 'TIME_OF_CONVERSION'
+    TimeOfAdAction: 'TIME_OF_AD_ACTION',
+    TimeOfConversion: 'TIME_OF_CONVERSION'
 } as const;
 export type ProductGroupsAnalyticsConversionReportTimeEnum = typeof ProductGroupsAnalyticsConversionReportTimeEnum[keyof typeof ProductGroupsAnalyticsConversionReportTimeEnum];
 

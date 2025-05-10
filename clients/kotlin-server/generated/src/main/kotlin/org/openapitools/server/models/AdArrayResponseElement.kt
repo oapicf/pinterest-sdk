@@ -14,13 +14,15 @@ package org.openapitools.server.models
 import org.openapitools.server.models.AdResponse
 import org.openapitools.server.models.Exception
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param `data` 
  * @param exceptions 
  */
+@Serializable
 data class AdArrayResponseElement(
     val `data`: AdResponse? = null,
     val exceptions: Exception? = null
-) 
+)
 

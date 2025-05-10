@@ -53,24 +53,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Object describing an item batch record to update items
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ItemUpdateBatchRecord {
   public static final String SERIALIZED_NAME_ITEM_ID = "item_id";
   @SerializedName(SERIALIZED_NAME_ITEM_ID)
+  @javax.annotation.Nullable
   private String itemId;
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  @javax.annotation.Nullable
   private UpdatableItemAttributes attributes;
 
   public static final String SERIALIZED_NAME_UPDATE_MASK = "update_mask";
   @SerializedName(SERIALIZED_NAME_UPDATE_MASK)
+  @javax.annotation.Nullable
   private List<UpdateMaskFieldType> updateMask;
 
   public ItemUpdateBatchRecord() {
   }
 
-  public ItemUpdateBatchRecord itemId(String itemId) {
+  public ItemUpdateBatchRecord itemId(@javax.annotation.Nullable String itemId) {
     this.itemId = itemId;
     return this;
   }
@@ -84,12 +87,12 @@ public class ItemUpdateBatchRecord {
     return itemId;
   }
 
-  public void setItemId(String itemId) {
+  public void setItemId(@javax.annotation.Nullable String itemId) {
     this.itemId = itemId;
   }
 
 
-  public ItemUpdateBatchRecord attributes(UpdatableItemAttributes attributes) {
+  public ItemUpdateBatchRecord attributes(@javax.annotation.Nullable UpdatableItemAttributes attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -103,12 +106,12 @@ public class ItemUpdateBatchRecord {
     return attributes;
   }
 
-  public void setAttributes(UpdatableItemAttributes attributes) {
+  public void setAttributes(@javax.annotation.Nullable UpdatableItemAttributes attributes) {
     this.attributes = attributes;
   }
 
 
-  public ItemUpdateBatchRecord updateMask(List<UpdateMaskFieldType> updateMask) {
+  public ItemUpdateBatchRecord updateMask(@javax.annotation.Nullable List<UpdateMaskFieldType> updateMask) {
     this.updateMask = updateMask;
     return this;
   }
@@ -130,7 +133,7 @@ public class ItemUpdateBatchRecord {
     return updateMask;
   }
 
-  public void setUpdateMask(List<UpdateMaskFieldType> updateMask) {
+  public void setUpdateMask(@javax.annotation.Nullable List<UpdateMaskFieldType> updateMask) {
     this.updateMask = updateMask;
   }
 

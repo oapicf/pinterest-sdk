@@ -23,9 +23,10 @@ typedef struct catalogs_product_group_pricing_criteria_t {
     double values; //numeric
     int negated; //boolean
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_product_group_pricing_criteria_t;
 
-catalogs_product_group_pricing_criteria_t *catalogs_product_group_pricing_criteria_create(
+__attribute__((deprecated)) catalogs_product_group_pricing_criteria_t *catalogs_product_group_pricing_criteria_create(
     int inclusion,
     double values,
     int negated

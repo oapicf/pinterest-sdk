@@ -22,7 +22,7 @@ pinterest_rest_api_update_asset_group_body_asset_groups_to_update_inner__e updat
     return 0;
 }
 
-update_asset_group_body_asset_groups_to_update_inner_t *update_asset_group_body_asset_groups_to_update_inner_create(
+static update_asset_group_body_asset_groups_to_update_inner_t *update_asset_group_body_asset_groups_to_update_inner_create_internal(
     char *asset_group_id,
     char *name,
     char *description,
@@ -41,12 +41,34 @@ update_asset_group_body_asset_groups_to_update_inner_t *update_asset_group_body_
     update_asset_group_body_asset_groups_to_update_inner_local_var->assets_to_add = assets_to_add;
     update_asset_group_body_asset_groups_to_update_inner_local_var->assets_to_remove = assets_to_remove;
 
+    update_asset_group_body_asset_groups_to_update_inner_local_var->_library_owned = 1;
     return update_asset_group_body_asset_groups_to_update_inner_local_var;
 }
 
+__attribute__((deprecated)) update_asset_group_body_asset_groups_to_update_inner_t *update_asset_group_body_asset_groups_to_update_inner_create(
+    char *asset_group_id,
+    char *name,
+    char *description,
+    list_t *asset_group_types,
+    list_t *assets_to_add,
+    list_t *assets_to_remove
+    ) {
+    return update_asset_group_body_asset_groups_to_update_inner_create_internal (
+        asset_group_id,
+        name,
+        description,
+        asset_group_types,
+        assets_to_add,
+        assets_to_remove
+        );
+}
 
 void update_asset_group_body_asset_groups_to_update_inner_free(update_asset_group_body_asset_groups_to_update_inner_t *update_asset_group_body_asset_groups_to_update_inner) {
     if(NULL == update_asset_group_body_asset_groups_to_update_inner){
+        return ;
+    }
+    if(update_asset_group_body_asset_groups_to_update_inner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "update_asset_group_body_asset_groups_to_update_inner_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -115,7 +137,7 @@ cJSON *update_asset_group_body_asset_groups_to_update_inner_convertToJSON(update
 
 
     // update_asset_group_body_asset_groups_to_update_inner->asset_group_types
-    if(update_asset_group_body_asset_groups_to_update_inner->asset_group_types != pinterest_rest_api_update_asset_group_body_asset_groups_to_update_inner_ASSETGROUPTYPES_NULL) {
+    if(update_asset_group_body_asset_groups_to_update_inner->asset_group_types != pinterest_rest_api_list_ASSETGROUPTYPES_NULL) {
     cJSON *asset_group_types = cJSON_AddArrayToObject(item, "asset_group_types");
     if(asset_group_types == NULL) {
     goto fail; //nonprimitive container
@@ -143,7 +165,7 @@ cJSON *update_asset_group_body_asset_groups_to_update_inner_convertToJSON(update
 
     listEntry_t *assets_to_addListEntry;
     list_ForEach(assets_to_addListEntry, update_asset_group_body_asset_groups_to_update_inner->assets_to_add) {
-    if(cJSON_AddStringToObject(assets_to_add, "", (char*)assets_to_addListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(assets_to_add, "", assets_to_addListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -160,7 +182,7 @@ cJSON *update_asset_group_body_asset_groups_to_update_inner_convertToJSON(update
 
     listEntry_t *assets_to_removeListEntry;
     list_ForEach(assets_to_removeListEntry, update_asset_group_body_asset_groups_to_update_inner->assets_to_remove) {
-    if(cJSON_AddStringToObject(assets_to_remove, "", (char*)assets_to_removeListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(assets_to_remove, "", assets_to_removeListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -190,6 +212,9 @@ update_asset_group_body_asset_groups_to_update_inner_t *update_asset_group_body_
 
     // update_asset_group_body_asset_groups_to_update_inner->asset_group_id
     cJSON *asset_group_id = cJSON_GetObjectItemCaseSensitive(update_asset_group_body_asset_groups_to_update_innerJSON, "asset_group_id");
+    if (cJSON_IsNull(asset_group_id)) {
+        asset_group_id = NULL;
+    }
     if (!asset_group_id) {
         goto end;
     }
@@ -202,6 +227,9 @@ update_asset_group_body_asset_groups_to_update_inner_t *update_asset_group_body_
 
     // update_asset_group_body_asset_groups_to_update_inner->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(update_asset_group_body_asset_groups_to_update_innerJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
     if (name) { 
     if(!cJSON_IsString(name) && !cJSON_IsNull(name))
     {
@@ -211,6 +239,9 @@ update_asset_group_body_asset_groups_to_update_inner_t *update_asset_group_body_
 
     // update_asset_group_body_asset_groups_to_update_inner->description
     cJSON *description = cJSON_GetObjectItemCaseSensitive(update_asset_group_body_asset_groups_to_update_innerJSON, "description");
+    if (cJSON_IsNull(description)) {
+        description = NULL;
+    }
     if (description) { 
     if(!cJSON_IsString(description) && !cJSON_IsNull(description))
     {
@@ -220,6 +251,9 @@ update_asset_group_body_asset_groups_to_update_inner_t *update_asset_group_body_
 
     // update_asset_group_body_asset_groups_to_update_inner->asset_group_types
     cJSON *asset_group_types = cJSON_GetObjectItemCaseSensitive(update_asset_group_body_asset_groups_to_update_innerJSON, "asset_group_types");
+    if (cJSON_IsNull(asset_group_types)) {
+        asset_group_types = NULL;
+    }
     if (asset_group_types) { 
     cJSON *asset_group_types_local_nonprimitive = NULL;
     if(!cJSON_IsArray(asset_group_types)){
@@ -241,6 +275,9 @@ update_asset_group_body_asset_groups_to_update_inner_t *update_asset_group_body_
 
     // update_asset_group_body_asset_groups_to_update_inner->assets_to_add
     cJSON *assets_to_add = cJSON_GetObjectItemCaseSensitive(update_asset_group_body_asset_groups_to_update_innerJSON, "assets_to_add");
+    if (cJSON_IsNull(assets_to_add)) {
+        assets_to_add = NULL;
+    }
     if (assets_to_add) { 
     cJSON *assets_to_add_local = NULL;
     if(!cJSON_IsArray(assets_to_add)) {
@@ -260,6 +297,9 @@ update_asset_group_body_asset_groups_to_update_inner_t *update_asset_group_body_
 
     // update_asset_group_body_asset_groups_to_update_inner->assets_to_remove
     cJSON *assets_to_remove = cJSON_GetObjectItemCaseSensitive(update_asset_group_body_asset_groups_to_update_innerJSON, "assets_to_remove");
+    if (cJSON_IsNull(assets_to_remove)) {
+        assets_to_remove = NULL;
+    }
     if (assets_to_remove) { 
     cJSON *assets_to_remove_local = NULL;
     if(!cJSON_IsArray(assets_to_remove)) {
@@ -278,7 +318,7 @@ update_asset_group_body_asset_groups_to_update_inner_t *update_asset_group_body_
     }
 
 
-    update_asset_group_body_asset_groups_to_update_inner_local_var = update_asset_group_body_asset_groups_to_update_inner_create (
+    update_asset_group_body_asset_groups_to_update_inner_local_var = update_asset_group_body_asset_groups_to_update_inner_create_internal (
         strdup(asset_group_id->valuestring),
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,

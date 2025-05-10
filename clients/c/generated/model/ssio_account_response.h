@@ -28,9 +28,10 @@ typedef struct ssio_account_response_t {
     list_t *pmp_names; //nonprimitive container
     char *error; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } ssio_account_response_t;
 
-ssio_account_response_t *ssio_account_response_create(
+__attribute__((deprecated)) ssio_account_response_t *ssio_account_response_create(
     int eligible,
     int can_edit,
     list_t *billto_infos,

@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param name Metric's name.
@@ -19,6 +20,7 @@ package org.openapitools.server.models
  * @param definition How the metric is defined.
  * @param displayName Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.
  */
+@Serializable
 data class DeliveryMetricsResponseItemsInner(
     /* Metric's name. */
     val name: kotlin.String? = null,
@@ -28,7 +30,7 @@ data class DeliveryMetricsResponseItemsInner(
     val definition: kotlin.String? = null,
     /* Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager. */
     val displayName: kotlin.String? = null
-) 
+)
 {
     /**
     * Category name

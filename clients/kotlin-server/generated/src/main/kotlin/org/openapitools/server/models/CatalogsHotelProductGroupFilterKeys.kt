@@ -24,6 +24,7 @@ import org.openapitools.server.models.CustomLabel4Filter
 import org.openapitools.server.models.HotelIdFilter
 import org.openapitools.server.models.PriceFilter
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param PRICE 
@@ -36,6 +37,7 @@ import org.openapitools.server.models.PriceFilter
  * @param CUSTOM_LABEL_4 
  * @param COUNTRY 
  */
+@Serializable
 data class CatalogsHotelProductGroupFilterKeys(
     val PRICE: CatalogsProductGroupPricingCurrencyCriteria,
     val HOTEL_ID: CatalogsProductGroupMultipleStringCriteria,
@@ -46,5 +48,5 @@ data class CatalogsHotelProductGroupFilterKeys(
     val CUSTOM_LABEL_3: CatalogsProductGroupMultipleStringCriteria,
     val CUSTOM_LABEL_4: CatalogsProductGroupMultipleStringCriteria,
     val COUNTRY: CatalogsProductGroupMultipleCountriesCriteria
-) 
+)
 

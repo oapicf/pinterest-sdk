@@ -44,10 +44,10 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum ProductGroupSummaryStatus: string
 {
-        case RUNNING = "RUNNING";
-        case PAUSED = "PAUSED";
-        case EXCLUDED = "EXCLUDED";
-        case ARCHIVED = "ARCHIVED";
+        case RUNNING = 'RUNNING';
+        case PAUSED = 'PAUSED';
+        case EXCLUDED = 'EXCLUDED';
+        case ARCHIVED = 'ARCHIVED';
 }
 
 

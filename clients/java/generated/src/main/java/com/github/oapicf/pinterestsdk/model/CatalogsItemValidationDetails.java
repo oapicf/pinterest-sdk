@@ -49,20 +49,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsItemValidationDetails
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsItemValidationDetails {
   public static final String SERIALIZED_NAME_ATTRIBUTE_NAME = "attribute_name";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTE_NAME)
+  @javax.annotation.Nullable
   private NullableCatalogsItemFieldType attributeName;
 
   public static final String SERIALIZED_NAME_PROVIDED_VALUE = "provided_value";
   @SerializedName(SERIALIZED_NAME_PROVIDED_VALUE)
+  @javax.annotation.Nullable
   private String providedValue;
 
   public CatalogsItemValidationDetails() {
   }
 
-  public CatalogsItemValidationDetails attributeName(NullableCatalogsItemFieldType attributeName) {
+  public CatalogsItemValidationDetails attributeName(@javax.annotation.Nullable NullableCatalogsItemFieldType attributeName) {
     this.attributeName = attributeName;
     return this;
   }
@@ -76,12 +78,12 @@ public class CatalogsItemValidationDetails {
     return attributeName;
   }
 
-  public void setAttributeName(NullableCatalogsItemFieldType attributeName) {
+  public void setAttributeName(@javax.annotation.Nullable NullableCatalogsItemFieldType attributeName) {
     this.attributeName = attributeName;
   }
 
 
-  public CatalogsItemValidationDetails providedValue(String providedValue) {
+  public CatalogsItemValidationDetails providedValue(@javax.annotation.Nullable String providedValue) {
     this.providedValue = providedValue;
     return this;
   }
@@ -95,7 +97,7 @@ public class CatalogsItemValidationDetails {
     return providedValue;
   }
 
-  public void setProvidedValue(String providedValue) {
+  public void setProvidedValue(@javax.annotation.Nullable String providedValue) {
     this.providedValue = providedValue;
   }
 

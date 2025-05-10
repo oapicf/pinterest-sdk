@@ -48,7 +48,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsReportDistributionIssueFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsReportDistributionIssueFilter {
   /**
    * Gets or Sets reportType
@@ -102,16 +102,18 @@ public class CatalogsReportDistributionIssueFilter {
 
   public static final String SERIALIZED_NAME_REPORT_TYPE = "report_type";
   @SerializedName(SERIALIZED_NAME_REPORT_TYPE)
+  @javax.annotation.Nonnull
   private ReportTypeEnum reportType;
 
   public static final String SERIALIZED_NAME_CATALOG_ID = "catalog_id";
   @SerializedName(SERIALIZED_NAME_CATALOG_ID)
+  @javax.annotation.Nullable
   private String catalogId;
 
   public CatalogsReportDistributionIssueFilter() {
   }
 
-  public CatalogsReportDistributionIssueFilter reportType(ReportTypeEnum reportType) {
+  public CatalogsReportDistributionIssueFilter reportType(@javax.annotation.Nonnull ReportTypeEnum reportType) {
     this.reportType = reportType;
     return this;
   }
@@ -125,12 +127,12 @@ public class CatalogsReportDistributionIssueFilter {
     return reportType;
   }
 
-  public void setReportType(ReportTypeEnum reportType) {
+  public void setReportType(@javax.annotation.Nonnull ReportTypeEnum reportType) {
     this.reportType = reportType;
   }
 
 
-  public CatalogsReportDistributionIssueFilter catalogId(String catalogId) {
+  public CatalogsReportDistributionIssueFilter catalogId(@javax.annotation.Nullable String catalogId) {
     this.catalogId = catalogId;
     return this;
   }
@@ -144,7 +146,7 @@ public class CatalogsReportDistributionIssueFilter {
     return catalogId;
   }
 
-  public void setCatalogId(String catalogId) {
+  public void setCatalogId(@javax.annotation.Nullable String catalogId) {
     this.catalogId = catalogId;
   }
 

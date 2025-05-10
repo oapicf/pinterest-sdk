@@ -23,9 +23,9 @@ Name | Type | Description | Notes
 ## Enum: ContentTypeEnum
 
 
-* `jpeg` (value: `"image/jpeg"`)
+* `image/jpeg` (value: `"image/jpeg"`)
 
-* `png` (value: `"image/png"`)
+* `image/png` (value: `"image/png"`)
 
 
 

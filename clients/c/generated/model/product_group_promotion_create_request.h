@@ -23,9 +23,10 @@ typedef struct product_group_promotion_create_request_t {
     char *ad_group_id; // string
     list_t *product_group_promotion; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } product_group_promotion_create_request_t;
 
-product_group_promotion_create_request_t *product_group_promotion_create_request_create(
+__attribute__((deprecated)) product_group_promotion_create_request_t *product_group_promotion_create_request_create(
     char *ad_group_id,
     list_t *product_group_promotion
 );

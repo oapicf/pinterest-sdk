@@ -4,26 +4,9 @@
 #include "pin_analytics_metrics_response_daily_metrics_inner.h"
 
 
-char* pin_analytics_metrics_response_daily_metrics_inner_data_status_ToString(pinterest_rest_api_pin_analytics_metrics_response_daily_metrics_inner__e data_status) {
-    char* data_statusArray[] =  { "NULL", "PROCESSING", "READY", "ESTIMATE", "BEFORE_BUSINESS_CREATED", "BEFORE_DATA_RETENTION_PERIOD", "BEFORE_PIN_DATA_RETENTION_PERIOD", "BEFORE_METRIC_START_DATE", "BEFORE_CORE_METRIC_START_DATE", "BEFORE_PIN_FORMAT_METRIC_START_DATE", "BEFORE_AUDIENCE_METRIC_START_DATE", "BEFORE_AUDIENCE_MONTHLY_METRIC_START_DATE", "BEFORE_VIDEO_METRIC_START_DATE", "BEFORE_CONVERSION_METRIC_START_DATE", "PURCHASERS_METRIC_SMALLER_THAN_THRESHOLD", "IN_BAD_TAG_DATE", "BEFORE_PUBLISHED_METRIC_START_DATE", "BEFORE_ASSIST_METRIC_START_DATE", "BEFORE_PIN_CREATED", "BEFORE_ACCOUNT_CLAIMED", "BEFORE_DEMOGRAPHIC_FILTERS_START_DATE", "AUDIENCE_SEGMENT_SMALLER_THAN_THRESHOLD", "AUDIENCE_TOTAL_SMALLER_THAN_THRESHOLD", "BEFORE_PRODUCT_GROUP_FILTER_START_DATE" };
-    return data_statusArray[data_status];
-}
 
-pinterest_rest_api_pin_analytics_metrics_response_daily_metrics_inner__e pin_analytics_metrics_response_daily_metrics_inner_data_status_FromString(char* data_status){
-    int stringToReturn = 0;
-    char *data_statusArray[] =  { "NULL", "PROCESSING", "READY", "ESTIMATE", "BEFORE_BUSINESS_CREATED", "BEFORE_DATA_RETENTION_PERIOD", "BEFORE_PIN_DATA_RETENTION_PERIOD", "BEFORE_METRIC_START_DATE", "BEFORE_CORE_METRIC_START_DATE", "BEFORE_PIN_FORMAT_METRIC_START_DATE", "BEFORE_AUDIENCE_METRIC_START_DATE", "BEFORE_AUDIENCE_MONTHLY_METRIC_START_DATE", "BEFORE_VIDEO_METRIC_START_DATE", "BEFORE_CONVERSION_METRIC_START_DATE", "PURCHASERS_METRIC_SMALLER_THAN_THRESHOLD", "IN_BAD_TAG_DATE", "BEFORE_PUBLISHED_METRIC_START_DATE", "BEFORE_ASSIST_METRIC_START_DATE", "BEFORE_PIN_CREATED", "BEFORE_ACCOUNT_CLAIMED", "BEFORE_DEMOGRAPHIC_FILTERS_START_DATE", "AUDIENCE_SEGMENT_SMALLER_THAN_THRESHOLD", "AUDIENCE_TOTAL_SMALLER_THAN_THRESHOLD", "BEFORE_PRODUCT_GROUP_FILTER_START_DATE" };
-    size_t sizeofArray = sizeof(data_statusArray) / sizeof(data_statusArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(data_status, data_statusArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-
-pin_analytics_metrics_response_daily_metrics_inner_t *pin_analytics_metrics_response_daily_metrics_inner_create(
-    data_status_t *data_status,
+static pin_analytics_metrics_response_daily_metrics_inner_t *pin_analytics_metrics_response_daily_metrics_inner_create_internal(
+    pinterest_rest_api_data_status__e data_status,
     char *date,
     list_t* metrics
     ) {
@@ -35,26 +18,38 @@ pin_analytics_metrics_response_daily_metrics_inner_t *pin_analytics_metrics_resp
     pin_analytics_metrics_response_daily_metrics_inner_local_var->date = date;
     pin_analytics_metrics_response_daily_metrics_inner_local_var->metrics = metrics;
 
+    pin_analytics_metrics_response_daily_metrics_inner_local_var->_library_owned = 1;
     return pin_analytics_metrics_response_daily_metrics_inner_local_var;
 }
 
+__attribute__((deprecated)) pin_analytics_metrics_response_daily_metrics_inner_t *pin_analytics_metrics_response_daily_metrics_inner_create(
+    pinterest_rest_api_data_status__e data_status,
+    char *date,
+    list_t* metrics
+    ) {
+    return pin_analytics_metrics_response_daily_metrics_inner_create_internal (
+        data_status,
+        date,
+        metrics
+        );
+}
 
 void pin_analytics_metrics_response_daily_metrics_inner_free(pin_analytics_metrics_response_daily_metrics_inner_t *pin_analytics_metrics_response_daily_metrics_inner) {
     if(NULL == pin_analytics_metrics_response_daily_metrics_inner){
         return ;
     }
-    listEntry_t *listEntry;
-    if (pin_analytics_metrics_response_daily_metrics_inner->data_status) {
-        data_status_free(pin_analytics_metrics_response_daily_metrics_inner->data_status);
-        pin_analytics_metrics_response_daily_metrics_inner->data_status = NULL;
+    if(pin_analytics_metrics_response_daily_metrics_inner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "pin_analytics_metrics_response_daily_metrics_inner_free");
+        return ;
     }
+    listEntry_t *listEntry;
     if (pin_analytics_metrics_response_daily_metrics_inner->date) {
         free(pin_analytics_metrics_response_daily_metrics_inner->date);
         pin_analytics_metrics_response_daily_metrics_inner->date = NULL;
     }
     if (pin_analytics_metrics_response_daily_metrics_inner->metrics) {
         list_ForEach(listEntry, pin_analytics_metrics_response_daily_metrics_inner->metrics) {
-            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            keyValuePair_t *localKeyValue = listEntry->data;
             free (localKeyValue->key);
             free (localKeyValue->value);
             keyValuePair_free(localKeyValue);
@@ -69,7 +64,7 @@ cJSON *pin_analytics_metrics_response_daily_metrics_inner_convertToJSON(pin_anal
     cJSON *item = cJSON_CreateObject();
 
     // pin_analytics_metrics_response_daily_metrics_inner->data_status
-    if(pin_analytics_metrics_response_daily_metrics_inner->data_status != pinterest_rest_api_pin_analytics_metrics_response_daily_metrics_inner__NULL) {
+    if(pin_analytics_metrics_response_daily_metrics_inner->data_status != pinterest_rest_api_data_status__NULL) {
     cJSON *data_status_local_JSON = data_status_convertToJSON(pin_analytics_metrics_response_daily_metrics_inner->data_status);
     if(data_status_local_JSON == NULL) {
         goto fail; // custom
@@ -99,7 +94,7 @@ cJSON *pin_analytics_metrics_response_daily_metrics_inner_convertToJSON(pin_anal
     listEntry_t *metricsListEntry;
     if (pin_analytics_metrics_response_daily_metrics_inner->metrics) {
     list_ForEach(metricsListEntry, pin_analytics_metrics_response_daily_metrics_inner->metrics) {
-        keyValuePair_t *localKeyValue = (keyValuePair_t*)metricsListEntry->data;
+        keyValuePair_t *localKeyValue = metricsListEntry->data;
         if(cJSON_AddNumberToObject(localMapObject, localKeyValue->key, *(double *)localKeyValue->value) == NULL)
         {
             goto fail;
@@ -121,19 +116,25 @@ pin_analytics_metrics_response_daily_metrics_inner_t *pin_analytics_metrics_resp
     pin_analytics_metrics_response_daily_metrics_inner_t *pin_analytics_metrics_response_daily_metrics_inner_local_var = NULL;
 
     // define the local variable for pin_analytics_metrics_response_daily_metrics_inner->data_status
-    data_status_t *data_status_local_nonprim = NULL;
+    pinterest_rest_api_data_status__e data_status_local_nonprim = 0;
 
     // define the local map for pin_analytics_metrics_response_daily_metrics_inner->metrics
     list_t *metricsList = NULL;
 
     // pin_analytics_metrics_response_daily_metrics_inner->data_status
     cJSON *data_status = cJSON_GetObjectItemCaseSensitive(pin_analytics_metrics_response_daily_metrics_innerJSON, "data_status");
+    if (cJSON_IsNull(data_status)) {
+        data_status = NULL;
+    }
     if (data_status) { 
     data_status_local_nonprim = data_status_parseFromJSON(data_status); //custom
     }
 
     // pin_analytics_metrics_response_daily_metrics_inner->date
     cJSON *date = cJSON_GetObjectItemCaseSensitive(pin_analytics_metrics_response_daily_metrics_innerJSON, "date");
+    if (cJSON_IsNull(date)) {
+        date = NULL;
+    }
     if (date) { 
     if(!cJSON_IsString(date) && !cJSON_IsNull(date))
     {
@@ -143,6 +144,9 @@ pin_analytics_metrics_response_daily_metrics_inner_t *pin_analytics_metrics_resp
 
     // pin_analytics_metrics_response_daily_metrics_inner->metrics
     cJSON *metrics = cJSON_GetObjectItemCaseSensitive(pin_analytics_metrics_response_daily_metrics_innerJSON, "metrics");
+    if (cJSON_IsNull(metrics)) {
+        metrics = NULL;
+    }
     if (metrics) { 
     cJSON *metrics_local_map = NULL;
     if(!cJSON_IsObject(metrics) && !cJSON_IsNull(metrics))
@@ -167,8 +171,8 @@ pin_analytics_metrics_response_daily_metrics_inner_t *pin_analytics_metrics_resp
     }
 
 
-    pin_analytics_metrics_response_daily_metrics_inner_local_var = pin_analytics_metrics_response_daily_metrics_inner_create (
-        data_status ? data_status_local_nonprim : NULL,
+    pin_analytics_metrics_response_daily_metrics_inner_local_var = pin_analytics_metrics_response_daily_metrics_inner_create_internal (
+        data_status ? data_status_local_nonprim : 0,
         date && !cJSON_IsNull(date) ? strdup(date->valuestring) : NULL,
         metrics ? metricsList : NULL
         );
@@ -176,13 +180,12 @@ pin_analytics_metrics_response_daily_metrics_inner_t *pin_analytics_metrics_resp
     return pin_analytics_metrics_response_daily_metrics_inner_local_var;
 end:
     if (data_status_local_nonprim) {
-        data_status_free(data_status_local_nonprim);
-        data_status_local_nonprim = NULL;
+        data_status_local_nonprim = 0;
     }
     if (metricsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, metricsList) {
-            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            keyValuePair_t *localKeyValue = listEntry->data;
             free(localKeyValue->key);
             localKeyValue->key = NULL;
             keyValuePair_free(localKeyValue);

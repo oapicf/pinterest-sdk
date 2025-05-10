@@ -5,7 +5,7 @@
 
 
 
-pin_analytics_metrics_response_t *pin_analytics_metrics_response_create(
+static pin_analytics_metrics_response_t *pin_analytics_metrics_response_create_internal(
     list_t* lifetime_metrics,
     list_t *daily_metrics,
     list_t* summary_metrics
@@ -18,18 +18,34 @@ pin_analytics_metrics_response_t *pin_analytics_metrics_response_create(
     pin_analytics_metrics_response_local_var->daily_metrics = daily_metrics;
     pin_analytics_metrics_response_local_var->summary_metrics = summary_metrics;
 
+    pin_analytics_metrics_response_local_var->_library_owned = 1;
     return pin_analytics_metrics_response_local_var;
 }
 
+__attribute__((deprecated)) pin_analytics_metrics_response_t *pin_analytics_metrics_response_create(
+    list_t* lifetime_metrics,
+    list_t *daily_metrics,
+    list_t* summary_metrics
+    ) {
+    return pin_analytics_metrics_response_create_internal (
+        lifetime_metrics,
+        daily_metrics,
+        summary_metrics
+        );
+}
 
 void pin_analytics_metrics_response_free(pin_analytics_metrics_response_t *pin_analytics_metrics_response) {
     if(NULL == pin_analytics_metrics_response){
         return ;
     }
+    if(pin_analytics_metrics_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "pin_analytics_metrics_response_free");
+        return ;
+    }
     listEntry_t *listEntry;
     if (pin_analytics_metrics_response->lifetime_metrics) {
         list_ForEach(listEntry, pin_analytics_metrics_response->lifetime_metrics) {
-            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            keyValuePair_t *localKeyValue = listEntry->data;
             free (localKeyValue->key);
             free (localKeyValue->value);
             keyValuePair_free(localKeyValue);
@@ -46,7 +62,7 @@ void pin_analytics_metrics_response_free(pin_analytics_metrics_response_t *pin_a
     }
     if (pin_analytics_metrics_response->summary_metrics) {
         list_ForEach(listEntry, pin_analytics_metrics_response->summary_metrics) {
-            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            keyValuePair_t *localKeyValue = listEntry->data;
             free (localKeyValue->key);
             free (localKeyValue->value);
             keyValuePair_free(localKeyValue);
@@ -70,7 +86,7 @@ cJSON *pin_analytics_metrics_response_convertToJSON(pin_analytics_metrics_respon
     listEntry_t *lifetime_metricsListEntry;
     if (pin_analytics_metrics_response->lifetime_metrics) {
     list_ForEach(lifetime_metricsListEntry, pin_analytics_metrics_response->lifetime_metrics) {
-        keyValuePair_t *localKeyValue = (keyValuePair_t*)lifetime_metricsListEntry->data;
+        keyValuePair_t *localKeyValue = lifetime_metricsListEntry->data;
         if(cJSON_AddNumberToObject(localMapObject, localKeyValue->key, *(double *)localKeyValue->value) == NULL)
         {
             goto fail;
@@ -110,7 +126,7 @@ cJSON *pin_analytics_metrics_response_convertToJSON(pin_analytics_metrics_respon
     listEntry_t *summary_metricsListEntry;
     if (pin_analytics_metrics_response->summary_metrics) {
     list_ForEach(summary_metricsListEntry, pin_analytics_metrics_response->summary_metrics) {
-        keyValuePair_t *localKeyValue = (keyValuePair_t*)summary_metricsListEntry->data;
+        keyValuePair_t *localKeyValue = summary_metricsListEntry->data;
         if(cJSON_AddNumberToObject(localMapObject, localKeyValue->key, *(double *)localKeyValue->value) == NULL)
         {
             goto fail;
@@ -142,6 +158,9 @@ pin_analytics_metrics_response_t *pin_analytics_metrics_response_parseFromJSON(c
 
     // pin_analytics_metrics_response->lifetime_metrics
     cJSON *lifetime_metrics = cJSON_GetObjectItemCaseSensitive(pin_analytics_metrics_responseJSON, "lifetime_metrics");
+    if (cJSON_IsNull(lifetime_metrics)) {
+        lifetime_metrics = NULL;
+    }
     if (lifetime_metrics) { 
     cJSON *lifetime_metrics_local_map = NULL;
     if(!cJSON_IsObject(lifetime_metrics) && !cJSON_IsNull(lifetime_metrics))
@@ -167,6 +186,9 @@ pin_analytics_metrics_response_t *pin_analytics_metrics_response_parseFromJSON(c
 
     // pin_analytics_metrics_response->daily_metrics
     cJSON *daily_metrics = cJSON_GetObjectItemCaseSensitive(pin_analytics_metrics_responseJSON, "daily_metrics");
+    if (cJSON_IsNull(daily_metrics)) {
+        daily_metrics = NULL;
+    }
     if (daily_metrics) { 
     cJSON *daily_metrics_local_nonprimitive = NULL;
     if(!cJSON_IsArray(daily_metrics)){
@@ -188,6 +210,9 @@ pin_analytics_metrics_response_t *pin_analytics_metrics_response_parseFromJSON(c
 
     // pin_analytics_metrics_response->summary_metrics
     cJSON *summary_metrics = cJSON_GetObjectItemCaseSensitive(pin_analytics_metrics_responseJSON, "summary_metrics");
+    if (cJSON_IsNull(summary_metrics)) {
+        summary_metrics = NULL;
+    }
     if (summary_metrics) { 
     cJSON *summary_metrics_local_map = NULL;
     if(!cJSON_IsObject(summary_metrics) && !cJSON_IsNull(summary_metrics))
@@ -212,7 +237,7 @@ pin_analytics_metrics_response_t *pin_analytics_metrics_response_parseFromJSON(c
     }
 
 
-    pin_analytics_metrics_response_local_var = pin_analytics_metrics_response_create (
+    pin_analytics_metrics_response_local_var = pin_analytics_metrics_response_create_internal (
         lifetime_metrics ? lifetime_metricsList : NULL,
         daily_metrics ? daily_metricsList : NULL,
         summary_metrics ? summary_metricsList : NULL
@@ -223,7 +248,7 @@ end:
     if (lifetime_metricsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, lifetime_metricsList) {
-            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            keyValuePair_t *localKeyValue = listEntry->data;
             free(localKeyValue->key);
             localKeyValue->key = NULL;
             keyValuePair_free(localKeyValue);
@@ -244,7 +269,7 @@ end:
     if (summary_metricsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, summary_metricsList) {
-            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            keyValuePair_t *localKeyValue = listEntry->data;
             free(localKeyValue->key);
             localKeyValue->key = NULL;
             keyValuePair_free(localKeyValue);

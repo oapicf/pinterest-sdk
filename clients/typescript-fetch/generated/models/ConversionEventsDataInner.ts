@@ -216,11 +216,11 @@ export function ConversionEventsDataInnerFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function ConversionEventsDataInnerToJSON(json: any): ConversionEventsDataInner {
-      return ConversionEventsDataInnerToJSONTyped(json, false);
-  }
+export function ConversionEventsDataInnerToJSON(json: any): ConversionEventsDataInner {
+    return ConversionEventsDataInnerToJSONTyped(json, false);
+}
 
-  export function ConversionEventsDataInnerToJSONTyped(value?: ConversionEventsDataInner | null, ignoreDiscriminator: boolean = false): any {
+export function ConversionEventsDataInnerToJSONTyped(value?: ConversionEventsDataInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

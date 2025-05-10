@@ -22,7 +22,7 @@ pinterest_rest_api_business_access_role__e business_access_role_business_access_
     return 0;
 }
 
-cJSON *business_access_role_business_access_role_convertToJSON(pinterest_rest_api_business_access_role__e business_access_role) {
+cJSON *business_access_role_convertToJSON(pinterest_rest_api_business_access_role__e business_access_role) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "business_access_role", business_access_role_business_access_role_ToString(business_access_role)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_business_access_role__e business_access_role_business_access_role_parseFromJSON(cJSON *business_access_roleJSON) {
-    pinterest_rest_api_business_access_role__e *business_access_role = NULL;
-    pinterest_rest_api_business_access_role__e business_access_roleVariable;
-    cJSON *business_access_roleVar = cJSON_GetObjectItemCaseSensitive(business_access_roleJSON, "business_access_role");
-    if(!cJSON_IsString(business_access_roleVar) || (business_access_roleVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_business_access_role__e business_access_role_parseFromJSON(cJSON *business_access_roleJSON) {
+    if(!cJSON_IsString(business_access_roleJSON) || (business_access_roleJSON->valuestring == NULL)) {
+        return 0;
     }
-    business_access_roleVariable = business_access_role_business_access_role_FromString(business_access_roleVar->valuestring);
-    return business_access_roleVariable;
-end:
-    return 0;
+    return business_access_role_business_access_role_FromString(business_access_roleJSON->valuestring);
 }

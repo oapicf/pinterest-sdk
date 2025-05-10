@@ -5,7 +5,7 @@
 
 
 
-condition_filter_t *condition_filter_create(
+static condition_filter_t *condition_filter_create_internal(
     catalogs_product_group_multiple_string_criteria_t *condition
     ) {
     condition_filter_t *condition_filter_local_var = malloc(sizeof(condition_filter_t));
@@ -14,12 +14,24 @@ condition_filter_t *condition_filter_create(
     }
     condition_filter_local_var->condition = condition;
 
+    condition_filter_local_var->_library_owned = 1;
     return condition_filter_local_var;
 }
 
+__attribute__((deprecated)) condition_filter_t *condition_filter_create(
+    catalogs_product_group_multiple_string_criteria_t *condition
+    ) {
+    return condition_filter_create_internal (
+        condition
+        );
+}
 
 void condition_filter_free(condition_filter_t *condition_filter) {
     if(NULL == condition_filter){
+        return ;
+    }
+    if(condition_filter->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "condition_filter_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -60,6 +72,9 @@ condition_filter_t *condition_filter_parseFromJSON(cJSON *condition_filterJSON){
 
     // condition_filter->condition
     cJSON *condition = cJSON_GetObjectItemCaseSensitive(condition_filterJSON, "CONDITION");
+    if (cJSON_IsNull(condition)) {
+        condition = NULL;
+    }
     if (!condition) {
         goto end;
     }
@@ -69,7 +84,7 @@ condition_filter_t *condition_filter_parseFromJSON(cJSON *condition_filterJSON){
     condition_local_object = object_parseFromJSON(condition); //object
 
 
-    condition_filter_local_var = condition_filter_create (
+    condition_filter_local_var = condition_filter_create_internal (
         condition_local_object
         );
 

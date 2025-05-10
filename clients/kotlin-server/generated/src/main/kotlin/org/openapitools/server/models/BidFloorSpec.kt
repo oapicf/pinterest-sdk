@@ -18,6 +18,7 @@ import org.openapitools.server.models.Currency
 import org.openapitools.server.models.ObjectiveType
 import org.openapitools.server.models.OptimizationGoalMetadata
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param currency 
@@ -27,6 +28,7 @@ import org.openapitools.server.models.OptimizationGoalMetadata
  * @param optimizationGoalMetadata 
  * @param creativeType 
  */
+@Serializable
 data class BidFloorSpec(
     val currency: Currency,
     val billableEvent: ActionType,
@@ -34,5 +36,5 @@ data class BidFloorSpec(
     val objectiveType: ObjectiveType? = null,
     val optimizationGoalMetadata: OptimizationGoalMetadata? = null,
     val creativeType: CreativeType? = null
-) 
+)
 

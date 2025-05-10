@@ -44,7 +44,7 @@ use OpenAPI\Server\Model\DeleteMemberAccessResultsResponseArray;
 use OpenAPI\Server\Model\DeletePartnerAssetAccessBody;
 use OpenAPI\Server\Model\DeletePartnerAssetsResultsResponseArray;
 use OpenAPI\Server\Model\Error;
-use OpenAPI\Server\Model\PartnerType;
+use OpenAPI\Server\Model\OpenAPIServerModelPartnerTypeAnyType;
 use OpenAPI\Server\Model\PermissionsWithOwner;
 use OpenAPI\Server\Model\UpdateAssetGroupBody;
 use OpenAPI\Server\Model\UpdateAssetGroupResponse;

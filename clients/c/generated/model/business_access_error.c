@@ -5,7 +5,7 @@
 
 
 
-business_access_error_t *business_access_error_create(
+static business_access_error_t *business_access_error_create_internal(
     int code,
     char *message
     ) {
@@ -16,12 +16,26 @@ business_access_error_t *business_access_error_create(
     business_access_error_local_var->code = code;
     business_access_error_local_var->message = message;
 
+    business_access_error_local_var->_library_owned = 1;
     return business_access_error_local_var;
 }
 
+__attribute__((deprecated)) business_access_error_t *business_access_error_create(
+    int code,
+    char *message
+    ) {
+    return business_access_error_create_internal (
+        code,
+        message
+        );
+}
 
 void business_access_error_free(business_access_error_t *business_access_error) {
     if(NULL == business_access_error){
+        return ;
+    }
+    if(business_access_error->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "business_access_error_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -66,6 +80,9 @@ business_access_error_t *business_access_error_parseFromJSON(cJSON *business_acc
 
     // business_access_error->code
     cJSON *code = cJSON_GetObjectItemCaseSensitive(business_access_errorJSON, "code");
+    if (cJSON_IsNull(code)) {
+        code = NULL;
+    }
     if (!code) {
         goto end;
     }
@@ -78,6 +95,9 @@ business_access_error_t *business_access_error_parseFromJSON(cJSON *business_acc
 
     // business_access_error->message
     cJSON *message = cJSON_GetObjectItemCaseSensitive(business_access_errorJSON, "message");
+    if (cJSON_IsNull(message)) {
+        message = NULL;
+    }
     if (!message) {
         goto end;
     }
@@ -89,7 +109,7 @@ business_access_error_t *business_access_error_parseFromJSON(cJSON *business_acc
     }
 
 
-    business_access_error_local_var = business_access_error_create (
+    business_access_error_local_var = business_access_error_create_internal (
         code->valuedouble,
         strdup(message->valuestring)
         );

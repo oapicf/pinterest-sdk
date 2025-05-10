@@ -45,7 +45,7 @@ import javax.validation.Valid;
   ConversionEventsDataInnerCustomData.JSON_PROPERTY_OPT_OUT_TYPE,
   ConversionEventsDataInnerCustomData.JSON_PROPERTY_NP
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-11-05T02:20:07.425136412Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConversionEventsDataInnerCustomData   {
   public static final String JSON_PROPERTY_CURRENCY = "currency";
   @JsonProperty(JSON_PROPERTY_CURRENCY)

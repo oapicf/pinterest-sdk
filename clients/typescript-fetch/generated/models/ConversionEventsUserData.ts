@@ -179,11 +179,11 @@ export function ConversionEventsUserDataFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function ConversionEventsUserDataToJSON(json: any): ConversionEventsUserData {
-      return ConversionEventsUserDataToJSONTyped(json, false);
-  }
+export function ConversionEventsUserDataToJSON(json: any): ConversionEventsUserData {
+    return ConversionEventsUserDataToJSONTyped(json, false);
+}
 
-  export function ConversionEventsUserDataToJSONTyped(value?: ConversionEventsUserData | null, ignoreDiscriminator: boolean = false): any {
+export function ConversionEventsUserDataToJSONTyped(value?: ConversionEventsUserData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

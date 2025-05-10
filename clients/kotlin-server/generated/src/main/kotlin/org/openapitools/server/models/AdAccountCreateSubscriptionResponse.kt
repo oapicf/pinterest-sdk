@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param id Subscription ID.
@@ -19,6 +20,7 @@ package org.openapitools.server.models
  * @param cryptographicAlgorithm Lead data encryption algorithm.
  * @param createdTime Subscription creation time. Unix timestamp in milliseconds.
  */
+@Serializable
 data class AdAccountCreateSubscriptionResponse(
     /* Subscription ID. */
     val id: kotlin.String? = null,
@@ -28,5 +30,5 @@ data class AdAccountCreateSubscriptionResponse(
     val cryptographicAlgorithm: kotlin.String? = null,
     /* Subscription creation time. Unix timestamp in milliseconds. */
     val createdTime: kotlin.Int? = null
-) 
+)
 

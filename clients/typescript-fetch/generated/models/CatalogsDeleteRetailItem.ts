@@ -67,11 +67,11 @@ export function CatalogsDeleteRetailItemFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function CatalogsDeleteRetailItemToJSON(json: any): CatalogsDeleteRetailItem {
-      return CatalogsDeleteRetailItemToJSONTyped(json, false);
-  }
+export function CatalogsDeleteRetailItemToJSON(json: any): CatalogsDeleteRetailItem {
+    return CatalogsDeleteRetailItemToJSONTyped(json, false);
+}
 
-  export function CatalogsDeleteRetailItemToJSONTyped(value?: CatalogsDeleteRetailItem | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsDeleteRetailItemToJSONTyped(value?: CatalogsDeleteRetailItem | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -61,7 +61,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   CatalogsFeedValidationErrors.JSON_PROPERTY_P_R_I_C_E_C_A_N_N_O_T_B_E_D_E_T_E_R_M_I_N_E_D
 })
 @JsonTypeName("CatalogsFeedValidationErrors")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2024-11-05T02:03:37.829873561Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2025-05-10T05:39:14.747146068Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 @Introspected
 public class CatalogsFeedValidationErrors {
     public static final String JSON_PROPERTY_F_E_T_C_H_E_R_R_O_R = "FETCH_ERROR";

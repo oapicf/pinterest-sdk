@@ -27,8 +27,8 @@ Base64-encoded image media source
 
 | Name | Value |
 |---- | -----|
-| JPEG | &quot;image/jpeg&quot; |
-| PNG | &quot;image/png&quot; |
+| IMAGE_JPEG | &quot;image/jpeg&quot; |
+| IMAGE_PNG | &quot;image/png&quot; |
 
 
 

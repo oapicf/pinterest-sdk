@@ -16,6 +16,6 @@ package openapitools;
 
 
 enum ConversionReportTimeType {
-  ConversionReportTimeType_AD_ACTION = 0;
-  ConversionReportTimeType_CONVERSION = 1;
+  ConversionReportTimeType_TIME_OF_AD_ACTION = 0;
+  ConversionReportTimeType_TIME_OF_CONVERSION = 1;
 }

@@ -177,11 +177,11 @@ export function ProductGroupPromotionFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function ProductGroupPromotionToJSON(json: any): ProductGroupPromotion {
-      return ProductGroupPromotionToJSONTyped(json, false);
-  }
+export function ProductGroupPromotionToJSON(json: any): ProductGroupPromotion {
+    return ProductGroupPromotionToJSONTyped(json, false);
+}
 
-  export function ProductGroupPromotionToJSONTyped(value?: ProductGroupPromotion | null, ignoreDiscriminator: boolean = false): any {
+export function ProductGroupPromotionToJSONTyped(value?: ProductGroupPromotion | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

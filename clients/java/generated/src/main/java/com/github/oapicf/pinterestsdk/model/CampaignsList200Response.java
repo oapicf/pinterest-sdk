@@ -52,20 +52,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CampaignsList200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CampaignsList200Response {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
+  @javax.annotation.Nonnull
   private List<CampaignResponse> items = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_BOOKMARK = "bookmark";
   @SerializedName(SERIALIZED_NAME_BOOKMARK)
+  @javax.annotation.Nullable
   private String bookmark;
 
   public CampaignsList200Response() {
   }
 
-  public CampaignsList200Response items(List<CampaignResponse> items) {
+  public CampaignsList200Response items(@javax.annotation.Nonnull List<CampaignResponse> items) {
     this.items = items;
     return this;
   }
@@ -87,12 +89,12 @@ public class CampaignsList200Response {
     return items;
   }
 
-  public void setItems(List<CampaignResponse> items) {
+  public void setItems(@javax.annotation.Nonnull List<CampaignResponse> items) {
     this.items = items;
   }
 
 
-  public CampaignsList200Response bookmark(String bookmark) {
+  public CampaignsList200Response bookmark(@javax.annotation.Nullable String bookmark) {
     this.bookmark = bookmark;
     return this;
   }
@@ -106,7 +108,7 @@ public class CampaignsList200Response {
     return bookmark;
   }
 
-  public void setBookmark(String bookmark) {
+  public void setBookmark(@javax.annotation.Nullable String bookmark) {
     this.bookmark = bookmark;
   }
 

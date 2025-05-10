@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CreateMMMReportRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CreateMMMReportRequest   {
   private String reportName;
   private String startDate;
@@ -126,6 +126,28 @@ public class CreateMMMReportRequest   {
   private @Valid List<MMMReportingColumn> columns = new ArrayList<>();
   private @Valid List<TargetingAdvertiserCountry> countries = new ArrayList<>();
 
+  public CreateMMMReportRequest() {
+  }
+
+  @JsonCreator
+  public CreateMMMReportRequest(
+    @JsonProperty(required = true, value = "report_name") String reportName,
+    @JsonProperty(required = true, value = "start_date") String startDate,
+    @JsonProperty(required = true, value = "end_date") String endDate,
+    @JsonProperty(required = true, value = "granularity") GranularityEnum granularity,
+    @JsonProperty(required = true, value = "level") LevelEnum level,
+    @JsonProperty(required = true, value = "targeting_types") List<MMMReportingTargetingType> targetingTypes,
+    @JsonProperty(required = true, value = "columns") List<MMMReportingColumn> columns
+  ) {
+    this.reportName = reportName;
+    this.startDate = startDate;
+    this.endDate = endDate;
+    this.granularity = granularity;
+    this.level = level;
+    this.targetingTypes = targetingTypes;
+    this.columns = columns;
+  }
+
   /**
    * Name of the Marketing Mix Modeling (MMM) report
    **/
@@ -136,12 +158,12 @@ public class CreateMMMReportRequest   {
 
   
   @ApiModelProperty(required = true, value = "Name of the Marketing Mix Modeling (MMM) report")
-  @JsonProperty("report_name")
+  @JsonProperty(required = true, value = "report_name")
   @NotNull public String getReportName() {
     return reportName;
   }
 
-  @JsonProperty("report_name")
+  @JsonProperty(required = true, value = "report_name")
   public void setReportName(String reportName) {
     this.reportName = reportName;
   }
@@ -156,12 +178,12 @@ public class CreateMMMReportRequest   {
 
   
   @ApiModelProperty(example = "2020-12-20", required = true, value = "Metric report start date (UTC). Format: YYYY-MM-DD")
-  @JsonProperty("start_date")
+  @JsonProperty(required = true, value = "start_date")
   @NotNull  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")public String getStartDate() {
     return startDate;
   }
 
-  @JsonProperty("start_date")
+  @JsonProperty(required = true, value = "start_date")
   public void setStartDate(String startDate) {
     this.startDate = startDate;
   }
@@ -176,12 +198,12 @@ public class CreateMMMReportRequest   {
 
   
   @ApiModelProperty(example = "2020-12-20", required = true, value = "Metric report end date (UTC). Format: YYYY-MM-DD")
-  @JsonProperty("end_date")
+  @JsonProperty(required = true, value = "end_date")
   @NotNull  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")public String getEndDate() {
     return endDate;
   }
 
-  @JsonProperty("end_date")
+  @JsonProperty(required = true, value = "end_date")
   public void setEndDate(String endDate) {
     this.endDate = endDate;
   }
@@ -196,12 +218,12 @@ public class CreateMMMReportRequest   {
 
   
   @ApiModelProperty(required = true, value = "DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly.")
-  @JsonProperty("granularity")
+  @JsonProperty(required = true, value = "granularity")
   @NotNull public GranularityEnum getGranularity() {
     return granularity;
   }
 
-  @JsonProperty("granularity")
+  @JsonProperty(required = true, value = "granularity")
   public void setGranularity(GranularityEnum granularity) {
     this.granularity = granularity;
   }
@@ -216,12 +238,12 @@ public class CreateMMMReportRequest   {
 
   
   @ApiModelProperty(required = true, value = "Level of the report")
-  @JsonProperty("level")
+  @JsonProperty(required = true, value = "level")
   @NotNull public LevelEnum getLevel() {
     return level;
   }
 
-  @JsonProperty("level")
+  @JsonProperty(required = true, value = "level")
   public void setLevel(LevelEnum level) {
     this.level = level;
   }
@@ -236,12 +258,12 @@ public class CreateMMMReportRequest   {
 
   
   @ApiModelProperty(example = "[\"GENDER\"]", required = true, value = "List of targeting types")
-  @JsonProperty("targeting_types")
+  @JsonProperty(required = true, value = "targeting_types")
   @NotNull  @Size(min=1,max=5)public List<MMMReportingTargetingType> getTargetingTypes() {
     return targetingTypes;
   }
 
-  @JsonProperty("targeting_types")
+  @JsonProperty(required = true, value = "targeting_types")
   public void setTargetingTypes(List<MMMReportingTargetingType> targetingTypes) {
     this.targetingTypes = targetingTypes;
   }
@@ -272,12 +294,12 @@ public class CreateMMMReportRequest   {
 
   
   @ApiModelProperty(required = true, value = "Metric and entity columns")
-  @JsonProperty("columns")
+  @JsonProperty(required = true, value = "columns")
   @NotNull public List<MMMReportingColumn> getColumns() {
     return columns;
   }
 
-  @JsonProperty("columns")
+  @JsonProperty(required = true, value = "columns")
   public void setColumns(List<MMMReportingColumn> columns) {
     this.columns = columns;
   }

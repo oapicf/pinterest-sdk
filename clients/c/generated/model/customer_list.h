@@ -40,9 +40,10 @@ typedef struct customer_list_t {
     double updated_time; //numeric
     object_t *exceptions; //object
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } customer_list_t;
 
-customer_list_t *customer_list_create(
+__attribute__((deprecated)) customer_list_t *customer_list_create(
     char *ad_account_id,
     double created_time,
     char *id,

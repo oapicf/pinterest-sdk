@@ -15,7 +15,9 @@
 export type LeadFormStatus = 'DRAFT' | 'ACTIVE';
 
 export const LeadFormStatus = {
+
     Draft: 'DRAFT' as LeadFormStatus,
+
     Active: 'ACTIVE' as LeadFormStatus
 };
 

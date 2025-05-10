@@ -24,9 +24,9 @@ char* audience_sharing_type_audience_sharing_type_ToString(pinterest_rest_api_au
 
 pinterest_rest_api_audience_sharing_type__e audience_sharing_type_audience_sharing_type_FromString(char* audience_sharing_type);
 
-//cJSON *audience_sharing_type_audience_sharing_type_convertToJSON(pinterest_rest_api_audience_sharing_type__e audience_sharing_type);
+cJSON *audience_sharing_type_convertToJSON(pinterest_rest_api_audience_sharing_type__e audience_sharing_type);
 
-//pinterest_rest_api_audience_sharing_type__e audience_sharing_type_audience_sharing_type_parseFromJSON(cJSON *audience_sharing_typeJSON);
+pinterest_rest_api_audience_sharing_type__e audience_sharing_type_parseFromJSON(cJSON *audience_sharing_typeJSON);
 
 #endif /* _audience_sharing_type_H_ */
 

@@ -14,12 +14,14 @@ package org.openapitools.server.models
 import org.openapitools.server.models.PinMedia
 import org.openapitools.server.models.VideoMetadata
 
+import kotlinx.serialization.Serializable
 /**
  * Pin with multiple videos.
  * @param items 
  */
+@Serializable
 data class PinMediaWithVideos(
     val items: kotlin.collections.List<VideoMetadata>? = null,
     val mediaType: kotlin.String? = null
-) 
+)
 

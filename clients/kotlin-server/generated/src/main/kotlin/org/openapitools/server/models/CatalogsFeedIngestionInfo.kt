@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param IN_STOCK The number of ingested products that are in stock.
  * @param OUT_OF_STOCK The number of ingested products that are in out of stock.
  * @param PREORDER The number of ingested products that are in preorder.
  */
+@Serializable
 data class CatalogsFeedIngestionInfo(
     /* The number of ingested products that are in stock. */
     val IN_STOCK: kotlin.Int? = null,
@@ -25,5 +27,5 @@ data class CatalogsFeedIngestionInfo(
     val OUT_OF_STOCK: kotlin.Int? = null,
     /* The number of ingested products that are in preorder. */
     val PREORDER: kotlin.Int? = null
-) 
+)
 

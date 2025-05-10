@@ -52,7 +52,7 @@ import com.google.gson.JsonParseException;
 
 import com.github.oapicf.pinterestsdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsItemsRequestLanguage extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CatalogsItemsRequestLanguage.class.getName());
 
@@ -197,6 +197,7 @@ public class CatalogsItemsRequestLanguage extends AbstractOpenApiSchema {
     public CatalogsLocale getCatalogsLocale() throws ClassCastException {
         return (CatalogsLocale)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `Language`. If the actual instance is not `Language`,
      * the ClassCastException will be thrown.

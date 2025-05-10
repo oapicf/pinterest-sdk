@@ -252,7 +252,7 @@ void OAIBusinessAccessRelationshipsApi::deleteBusinessMembership(const QString &
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessRelationshipsApi::deleteBusinessMembershipCallback);
     connect(this, &OAIBusinessAccessRelationshipsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -275,7 +275,7 @@ void OAIBusinessAccessRelationshipsApi::deleteBusinessMembership(const QString &
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessRelationshipsApi::deleteBusinessMembershipCallback);
     connect(this, &OAIBusinessAccessRelationshipsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -384,7 +384,7 @@ void OAIBusinessAccessRelationshipsApi::deleteBusinessPartners(const QString &bu
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessRelationshipsApi::deleteBusinessPartnersCallback);
     connect(this, &OAIBusinessAccessRelationshipsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -406,7 +406,7 @@ void OAIBusinessAccessRelationshipsApi::deleteBusinessPartners(const QString &bu
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessRelationshipsApi::deleteBusinessPartnersCallback);
     connect(this, &OAIBusinessAccessRelationshipsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -496,7 +496,7 @@ void OAIBusinessAccessRelationshipsApi::get_businessEmployers(const ::OpenAPI::O
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     if (bookmark.hasValue())
     {
@@ -511,7 +511,7 @@ void OAIBusinessAccessRelationshipsApi::get_businessEmployers(const ::OpenAPI::O
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -526,7 +526,7 @@ void OAIBusinessAccessRelationshipsApi::get_businessEmployers(const ::OpenAPI::O
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessRelationshipsApi::get_businessEmployersCallback);
     connect(this, &OAIBusinessAccessRelationshipsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -548,7 +548,7 @@ void OAIBusinessAccessRelationshipsApi::get_businessEmployers(const ::OpenAPI::O
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessRelationshipsApi::get_businessEmployersCallback);
     connect(this, &OAIBusinessAccessRelationshipsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -652,7 +652,7 @@ void OAIBusinessAccessRelationshipsApi::get_businessMembers(const QString &busin
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("assets_summary")).append(querySuffix).append(QUrl::toPercentEncoding(assets_summary.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("assets_summary")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(assets_summary.stringValue())));
     }
     if (business_roles.hasValue())
     {
@@ -752,7 +752,7 @@ void OAIBusinessAccessRelationshipsApi::get_businessMembers(const QString &busin
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("member_ids")).append(querySuffix).append(QUrl::toPercentEncoding(member_ids.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("member_ids")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(member_ids.stringValue())));
     }
     if (start_index.hasValue())
     {
@@ -767,7 +767,7 @@ void OAIBusinessAccessRelationshipsApi::get_businessMembers(const QString &busin
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("start_index")).append(querySuffix).append(QUrl::toPercentEncoding(start_index.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("start_index")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(start_index.stringValue())));
     }
     if (bookmark.hasValue())
     {
@@ -782,7 +782,7 @@ void OAIBusinessAccessRelationshipsApi::get_businessMembers(const QString &busin
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     if (page_size.hasValue())
     {
@@ -797,7 +797,7 @@ void OAIBusinessAccessRelationshipsApi::get_businessMembers(const QString &busin
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -812,7 +812,7 @@ void OAIBusinessAccessRelationshipsApi::get_businessMembers(const QString &busin
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessRelationshipsApi::get_businessMembersCallback);
     connect(this, &OAIBusinessAccessRelationshipsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -834,7 +834,7 @@ void OAIBusinessAccessRelationshipsApi::get_businessMembers(const QString &busin
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessRelationshipsApi::get_businessMembersCallback);
     connect(this, &OAIBusinessAccessRelationshipsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -938,7 +938,7 @@ void OAIBusinessAccessRelationshipsApi::get_businessPartners(const QString &busi
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("assets_summary")).append(querySuffix).append(QUrl::toPercentEncoding(assets_summary.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("assets_summary")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(assets_summary.stringValue())));
     }
     if (partner_type.hasValue())
     {
@@ -1012,7 +1012,7 @@ void OAIBusinessAccessRelationshipsApi::get_businessPartners(const QString &busi
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("partner_ids")).append(querySuffix).append(QUrl::toPercentEncoding(partner_ids.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("partner_ids")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(partner_ids.stringValue())));
     }
     if (start_index.hasValue())
     {
@@ -1027,7 +1027,7 @@ void OAIBusinessAccessRelationshipsApi::get_businessPartners(const QString &busi
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("start_index")).append(querySuffix).append(QUrl::toPercentEncoding(start_index.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("start_index")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(start_index.stringValue())));
     }
     if (page_size.hasValue())
     {
@@ -1042,7 +1042,7 @@ void OAIBusinessAccessRelationshipsApi::get_businessPartners(const QString &busi
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     if (bookmark.hasValue())
     {
@@ -1057,7 +1057,7 @@ void OAIBusinessAccessRelationshipsApi::get_businessPartners(const QString &busi
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -1072,7 +1072,7 @@ void OAIBusinessAccessRelationshipsApi::get_businessPartners(const QString &busi
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessRelationshipsApi::get_businessPartnersCallback);
     connect(this, &OAIBusinessAccessRelationshipsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1094,7 +1094,7 @@ void OAIBusinessAccessRelationshipsApi::get_businessPartners(const QString &busi
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessRelationshipsApi::get_businessPartnersCallback);
     connect(this, &OAIBusinessAccessRelationshipsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1201,7 +1201,7 @@ void OAIBusinessAccessRelationshipsApi::update_businessMemberships(const QString
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessRelationshipsApi::update_businessMembershipsCallback);
     connect(this, &OAIBusinessAccessRelationshipsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1223,7 +1223,7 @@ void OAIBusinessAccessRelationshipsApi::update_businessMemberships(const QString
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessRelationshipsApi::update_businessMembershipsCallback);
     connect(this, &OAIBusinessAccessRelationshipsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }

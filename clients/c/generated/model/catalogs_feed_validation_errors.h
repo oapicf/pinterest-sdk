@@ -53,9 +53,10 @@ typedef struct catalogs_feed_validation_errors_t {
     int list_price_invalid; //numeric
     int price_cannot_be_determined; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_feed_validation_errors_t;
 
-catalogs_feed_validation_errors_t *catalogs_feed_validation_errors_create(
+__attribute__((deprecated)) catalogs_feed_validation_errors_t *catalogs_feed_validation_errors_create(
     int fetch_error,
     int fetch_inactive_feed_error,
     int encoding_error,

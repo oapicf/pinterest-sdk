@@ -55,32 +55,37 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Request for creation of entities in bulk.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BulkUpsertRequestCreate {
   public static final String SERIALIZED_NAME_CAMPAIGNS = "campaigns";
   @SerializedName(SERIALIZED_NAME_CAMPAIGNS)
+  @javax.annotation.Nullable
   private List<CampaignCreateRequest> campaigns = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_AD_GROUPS = "ad_groups";
   @SerializedName(SERIALIZED_NAME_AD_GROUPS)
+  @javax.annotation.Nullable
   private List<AdGroupCreateRequest> adGroups = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_ADS = "ads";
   @SerializedName(SERIALIZED_NAME_ADS)
+  @javax.annotation.Nullable
   private List<AdCreateRequest> ads = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_PRODUCT_GROUPS = "product_groups";
   @SerializedName(SERIALIZED_NAME_PRODUCT_GROUPS)
+  @javax.annotation.Nullable
   private List<ProductGroupPromotionCreateRequest> productGroups = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_KEYWORDS = "keywords";
   @SerializedName(SERIALIZED_NAME_KEYWORDS)
+  @javax.annotation.Nullable
   private List<KeywordsRequest> keywords = new ArrayList<>();
 
   public BulkUpsertRequestCreate() {
   }
 
-  public BulkUpsertRequestCreate campaigns(List<CampaignCreateRequest> campaigns) {
+  public BulkUpsertRequestCreate campaigns(@javax.annotation.Nullable List<CampaignCreateRequest> campaigns) {
     this.campaigns = campaigns;
     return this;
   }
@@ -102,12 +107,12 @@ public class BulkUpsertRequestCreate {
     return campaigns;
   }
 
-  public void setCampaigns(List<CampaignCreateRequest> campaigns) {
+  public void setCampaigns(@javax.annotation.Nullable List<CampaignCreateRequest> campaigns) {
     this.campaigns = campaigns;
   }
 
 
-  public BulkUpsertRequestCreate adGroups(List<AdGroupCreateRequest> adGroups) {
+  public BulkUpsertRequestCreate adGroups(@javax.annotation.Nullable List<AdGroupCreateRequest> adGroups) {
     this.adGroups = adGroups;
     return this;
   }
@@ -129,12 +134,12 @@ public class BulkUpsertRequestCreate {
     return adGroups;
   }
 
-  public void setAdGroups(List<AdGroupCreateRequest> adGroups) {
+  public void setAdGroups(@javax.annotation.Nullable List<AdGroupCreateRequest> adGroups) {
     this.adGroups = adGroups;
   }
 
 
-  public BulkUpsertRequestCreate ads(List<AdCreateRequest> ads) {
+  public BulkUpsertRequestCreate ads(@javax.annotation.Nullable List<AdCreateRequest> ads) {
     this.ads = ads;
     return this;
   }
@@ -156,12 +161,12 @@ public class BulkUpsertRequestCreate {
     return ads;
   }
 
-  public void setAds(List<AdCreateRequest> ads) {
+  public void setAds(@javax.annotation.Nullable List<AdCreateRequest> ads) {
     this.ads = ads;
   }
 
 
-  public BulkUpsertRequestCreate productGroups(List<ProductGroupPromotionCreateRequest> productGroups) {
+  public BulkUpsertRequestCreate productGroups(@javax.annotation.Nullable List<ProductGroupPromotionCreateRequest> productGroups) {
     this.productGroups = productGroups;
     return this;
   }
@@ -183,12 +188,12 @@ public class BulkUpsertRequestCreate {
     return productGroups;
   }
 
-  public void setProductGroups(List<ProductGroupPromotionCreateRequest> productGroups) {
+  public void setProductGroups(@javax.annotation.Nullable List<ProductGroupPromotionCreateRequest> productGroups) {
     this.productGroups = productGroups;
   }
 
 
-  public BulkUpsertRequestCreate keywords(List<KeywordsRequest> keywords) {
+  public BulkUpsertRequestCreate keywords(@javax.annotation.Nullable List<KeywordsRequest> keywords) {
     this.keywords = keywords;
     return this;
   }
@@ -210,7 +215,7 @@ public class BulkUpsertRequestCreate {
     return keywords;
   }
 
-  public void setKeywords(List<KeywordsRequest> keywords) {
+  public void setKeywords(@javax.annotation.Nullable List<KeywordsRequest> keywords) {
     this.keywords = keywords;
   }
 

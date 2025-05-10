@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * The result, and link out, based on the user’s choice.
  * @param organicPinId 
@@ -20,11 +21,12 @@ package org.openapitools.server.models
  * @param destinationUrl 
  * @param resultId 
  */
+@Serializable
 data class QuizPinResult(
     val organicPinId: kotlin.String? = null,
     val androidDeepLink: kotlin.String? = null,
     val iosDeepLink: kotlin.String? = null,
     val destinationUrl: kotlin.String? = null,
     val resultId: java.math.BigDecimal? = null
-) 
+)
 

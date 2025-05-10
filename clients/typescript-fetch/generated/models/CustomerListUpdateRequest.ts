@@ -81,11 +81,11 @@ export function CustomerListUpdateRequestFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function CustomerListUpdateRequestToJSON(json: any): CustomerListUpdateRequest {
-      return CustomerListUpdateRequestToJSONTyped(json, false);
-  }
+export function CustomerListUpdateRequestToJSON(json: any): CustomerListUpdateRequest {
+    return CustomerListUpdateRequestToJSONTyped(json, false);
+}
 
-  export function CustomerListUpdateRequestToJSONTyped(value?: CustomerListUpdateRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CustomerListUpdateRequestToJSONTyped(value?: CustomerListUpdateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

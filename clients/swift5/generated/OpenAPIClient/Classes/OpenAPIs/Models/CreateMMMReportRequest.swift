@@ -20,9 +20,9 @@ public struct CreateMMMReportRequest: Codable, JSONEncodable, Hashable {
         case campaignTargeting = "CAMPAIGN_TARGETING"
         case adGroupTargeting = "AD_GROUP_TARGETING"
     }
-    static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
-    static let endDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
-    static let targetingTypesRule = ArrayRule(minItems: 1, maxItems: 5, uniqueItems: false)
+    public static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
+    public static let endDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
+    public static let targetingTypesRule = ArrayRule(minItems: 1, maxItems: 5, uniqueItems: false)
     /** Name of the Marketing Mix Modeling (MMM) report */
     public var reportName: String
     /** Metric report start date (UTC). Format: YYYY-MM-DD */

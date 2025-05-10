@@ -15,6 +15,7 @@ import org.openapitools.server.models.CatalogsHotelAddress
 import org.openapitools.server.models.CatalogsHotelAttributesAllOfMainImage
 import org.openapitools.server.models.CatalogsHotelGuestRatings
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param name The hotel's name.
@@ -37,6 +38,7 @@ import org.openapitools.server.models.CatalogsHotelGuestRatings
  * @param mainImage 
  * @param additionalImageLink <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
  */
+@Serializable
 data class CatalogsHotelAttributes(
     /* The hotel's name. */
     val name: kotlin.String? = null,
@@ -73,5 +75,5 @@ data class CatalogsHotelAttributes(
     val mainImage: CatalogsHotelAttributesAllOfMainImage? = null,
     /* <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p> */
     val additionalImageLink: kotlin.collections.List<kotlin.String>? = null
-) 
+)
 

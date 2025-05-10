@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.MembersToDeleteBodyMembersInner
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param members 
  */
+@Serializable
 data class MembersToDeleteBody(
     val members: kotlin.collections.List<MembersToDeleteBodyMembersInner>
-) 
+)
 

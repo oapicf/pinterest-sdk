@@ -31,13 +31,29 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsItemsPostFilters")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsItemsPostFilters   {
   private CatalogsType catalogType;
   private @Valid List<String> itemIds = new ArrayList<>();
   private String catalogId;
   private @Valid List<String> hotelIds = new ArrayList<>();
   private @Valid List<String> creativeAssetsIds = new ArrayList<>();
+
+  public CatalogsItemsPostFilters() {
+  }
+
+  @JsonCreator
+  public CatalogsItemsPostFilters(
+    @JsonProperty(required = true, value = "catalog_type") CatalogsType catalogType,
+    @JsonProperty(required = true, value = "item_ids") List<String> itemIds,
+    @JsonProperty(required = true, value = "hotel_ids") List<String> hotelIds,
+    @JsonProperty(required = true, value = "creative_assets_ids") List<String> creativeAssetsIds
+  ) {
+    this.catalogType = catalogType;
+    this.itemIds = itemIds;
+    this.hotelIds = hotelIds;
+    this.creativeAssetsIds = creativeAssetsIds;
+  }
 
   /**
    **/
@@ -48,12 +64,12 @@ public class CatalogsItemsPostFilters   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   @NotNull public CatalogsType getCatalogType() {
     return catalogType;
   }
 
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   public void setCatalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
   }
@@ -67,12 +83,12 @@ public class CatalogsItemsPostFilters   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("item_ids")
+  @JsonProperty(required = true, value = "item_ids")
   @NotNull  @Size(min=1,max=1000)public List<String> getItemIds() {
     return itemIds;
   }
 
-  @JsonProperty("item_ids")
+  @JsonProperty(required = true, value = "item_ids")
   public void setItemIds(List<String> itemIds) {
     this.itemIds = itemIds;
   }
@@ -122,12 +138,12 @@ public class CatalogsItemsPostFilters   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("hotel_ids")
+  @JsonProperty(required = true, value = "hotel_ids")
   @NotNull  @Size(min=1,max=1000)public List<String> getHotelIds() {
     return hotelIds;
   }
 
-  @JsonProperty("hotel_ids")
+  @JsonProperty(required = true, value = "hotel_ids")
   public void setHotelIds(List<String> hotelIds) {
     this.hotelIds = hotelIds;
   }
@@ -157,12 +173,12 @@ public class CatalogsItemsPostFilters   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("creative_assets_ids")
+  @JsonProperty(required = true, value = "creative_assets_ids")
   @NotNull  @Size(min=1,max=1000)public List<String> getCreativeAssetsIds() {
     return creativeAssetsIds;
   }
 
-  @JsonProperty("creative_assets_ids")
+  @JsonProperty(required = true, value = "creative_assets_ids")
   public void setCreativeAssetsIds(List<String> creativeAssetsIds) {
     this.creativeAssetsIds = creativeAssetsIds;
   }

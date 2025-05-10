@@ -22,7 +22,7 @@ pinterest_rest_api_item_update_batch_record__e item_update_batch_record_update_m
     return 0;
 }
 
-item_update_batch_record_t *item_update_batch_record_create(
+static item_update_batch_record_t *item_update_batch_record_create_internal(
     char *item_id,
     updatable_item_attributes_t *attributes,
     list_t *update_mask
@@ -35,12 +35,28 @@ item_update_batch_record_t *item_update_batch_record_create(
     item_update_batch_record_local_var->attributes = attributes;
     item_update_batch_record_local_var->update_mask = update_mask;
 
+    item_update_batch_record_local_var->_library_owned = 1;
     return item_update_batch_record_local_var;
 }
 
+__attribute__((deprecated)) item_update_batch_record_t *item_update_batch_record_create(
+    char *item_id,
+    updatable_item_attributes_t *attributes,
+    list_t *update_mask
+    ) {
+    return item_update_batch_record_create_internal (
+        item_id,
+        attributes,
+        update_mask
+        );
+}
 
 void item_update_batch_record_free(item_update_batch_record_t *item_update_batch_record) {
     if(NULL == item_update_batch_record){
+        return ;
+    }
+    if(item_update_batch_record->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "item_update_batch_record_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -87,7 +103,7 @@ cJSON *item_update_batch_record_convertToJSON(item_update_batch_record_t *item_u
 
 
     // item_update_batch_record->update_mask
-    if(item_update_batch_record->update_mask != pinterest_rest_api_item_update_batch_record_UPDATEMASK_NULL) {
+    if(item_update_batch_record->update_mask != pinterest_rest_api_list_UPDATEMASK_NULL) {
     cJSON *update_mask = cJSON_AddArrayToObject(item, "update_mask");
     if(update_mask == NULL) {
     goto fail; //nonprimitive container
@@ -125,6 +141,9 @@ item_update_batch_record_t *item_update_batch_record_parseFromJSON(cJSON *item_u
 
     // item_update_batch_record->item_id
     cJSON *item_id = cJSON_GetObjectItemCaseSensitive(item_update_batch_recordJSON, "item_id");
+    if (cJSON_IsNull(item_id)) {
+        item_id = NULL;
+    }
     if (item_id) { 
     if(!cJSON_IsString(item_id) && !cJSON_IsNull(item_id))
     {
@@ -134,12 +153,18 @@ item_update_batch_record_t *item_update_batch_record_parseFromJSON(cJSON *item_u
 
     // item_update_batch_record->attributes
     cJSON *attributes = cJSON_GetObjectItemCaseSensitive(item_update_batch_recordJSON, "attributes");
+    if (cJSON_IsNull(attributes)) {
+        attributes = NULL;
+    }
     if (attributes) { 
     attributes_local_nonprim = updatable_item_attributes_parseFromJSON(attributes); //nonprimitive
     }
 
     // item_update_batch_record->update_mask
     cJSON *update_mask = cJSON_GetObjectItemCaseSensitive(item_update_batch_recordJSON, "update_mask");
+    if (cJSON_IsNull(update_mask)) {
+        update_mask = NULL;
+    }
     if (update_mask) { 
     cJSON *update_mask_local_nonprimitive = NULL;
     if(!cJSON_IsArray(update_mask)){
@@ -160,7 +185,7 @@ item_update_batch_record_t *item_update_batch_record_parseFromJSON(cJSON *item_u
     }
 
 
-    item_update_batch_record_local_var = item_update_batch_record_create (
+    item_update_batch_record_local_var = item_update_batch_record_create_internal (
         item_id && !cJSON_IsNull(item_id) ? strdup(item_id->valuestring) : NULL,
         attributes ? attributes_local_nonprim : NULL,
         update_mask ? update_maskList : NULL

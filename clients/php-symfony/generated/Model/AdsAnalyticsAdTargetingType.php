@@ -44,20 +44,20 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum AdsAnalyticsAdTargetingType: string
 {
-        case KEYWORD = "KEYWORD";
-        case APPTYPE = "APPTYPE";
-        case GENDER = "GENDER";
-        case LOCATION = "LOCATION";
-        case PLACEMENT = "PLACEMENT";
-        case COUNTRY = "COUNTRY";
-        case TARGETED_INTEREST = "TARGETED_INTEREST";
-        case PINNER_INTEREST = "PINNER_INTEREST";
-        case AUDIENCE_INCLUDE = "AUDIENCE_INCLUDE";
-        case GEO = "GEO";
-        case AGE_BUCKET = "AGE_BUCKET";
-        case REGION = "REGION";
-        case QUIZ_RESULT = "QUIZ_RESULT";
-        case AGE_BUCKET_AND_GENDER = "AGE_BUCKET_AND_GENDER";
+        case KEYWORD = 'KEYWORD';
+        case APPTYPE = 'APPTYPE';
+        case GENDER = 'GENDER';
+        case LOCATION = 'LOCATION';
+        case PLACEMENT = 'PLACEMENT';
+        case COUNTRY = 'COUNTRY';
+        case TARGETED_INTEREST = 'TARGETED_INTEREST';
+        case PINNER_INTEREST = 'PINNER_INTEREST';
+        case AUDIENCE_INCLUDE = 'AUDIENCE_INCLUDE';
+        case GEO = 'GEO';
+        case AGE_BUCKET = 'AGE_BUCKET';
+        case REGION = 'REGION';
+        case QUIZ_RESULT = 'QUIZ_RESULT';
+        case AGE_BUCKET_AND_GENDER = 'AGE_BUCKET_AND_GENDER';
 }
 
 

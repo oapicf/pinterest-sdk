@@ -13,8 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // CatalogsItemsFilters - struct for CatalogsItemsFilters
@@ -147,6 +147,24 @@ func (obj *CatalogsItemsFilters) GetActualInstance() (interface{}) {
 
 	if obj.CatalogsRetailItemsFilter != nil {
 		return obj.CatalogsRetailItemsFilter
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj CatalogsItemsFilters) GetActualInstanceValue() (interface{}) {
+	if obj.CatalogsCreativeAssetsItemsFilter != nil {
+		return *obj.CatalogsCreativeAssetsItemsFilter
+	}
+
+	if obj.CatalogsHotelItemsFilter != nil {
+		return *obj.CatalogsHotelItemsFilter
+	}
+
+	if obj.CatalogsRetailItemsFilter != nil {
+		return *obj.CatalogsRetailItemsFilter
 	}
 
 	// all schemas are nil

@@ -17,12 +17,12 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
 * Conversion report time type
-* Values: AD_ACTION,CONVERSION
+* Values: TIME_OF_AD_ACTION,TIME_OF_CONVERSION
 */
 enum class ConversionReportTimeType(@get:JsonValue val value: kotlin.String) {
 
-    AD_ACTION("TIME_OF_AD_ACTION"),
-    CONVERSION("TIME_OF_CONVERSION");
+    TIME_OF_AD_ACTION("TIME_OF_AD_ACTION"),
+    TIME_OF_CONVERSION("TIME_OF_CONVERSION");
 
     companion object {
         @JvmStatic

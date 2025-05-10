@@ -50,28 +50,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * BaseInviteDataResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BaseInviteDataResponse {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_INVITE_DATA = "invite_data";
   @SerializedName(SERIALIZED_NAME_INVITE_DATA)
+  @javax.annotation.Nullable
   private BaseInviteDataResponseInviteData inviteData;
 
   public static final String SERIALIZED_NAME_IS_RECEIVED_INVITE = "is_received_invite";
   @SerializedName(SERIALIZED_NAME_IS_RECEIVED_INVITE)
+  @javax.annotation.Nullable
   private Boolean isReceivedInvite;
 
   public static final String SERIALIZED_NAME_USER = "user";
   @SerializedName(SERIALIZED_NAME_USER)
+  @javax.annotation.Nullable
   private BusinessAccessUserSummary user;
 
   public BaseInviteDataResponse() {
   }
 
-  public BaseInviteDataResponse id(String id) {
+  public BaseInviteDataResponse id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -85,12 +89,12 @@ public class BaseInviteDataResponse {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public BaseInviteDataResponse inviteData(BaseInviteDataResponseInviteData inviteData) {
+  public BaseInviteDataResponse inviteData(@javax.annotation.Nullable BaseInviteDataResponseInviteData inviteData) {
     this.inviteData = inviteData;
     return this;
   }
@@ -104,12 +108,12 @@ public class BaseInviteDataResponse {
     return inviteData;
   }
 
-  public void setInviteData(BaseInviteDataResponseInviteData inviteData) {
+  public void setInviteData(@javax.annotation.Nullable BaseInviteDataResponseInviteData inviteData) {
     this.inviteData = inviteData;
   }
 
 
-  public BaseInviteDataResponse isReceivedInvite(Boolean isReceivedInvite) {
+  public BaseInviteDataResponse isReceivedInvite(@javax.annotation.Nullable Boolean isReceivedInvite) {
     this.isReceivedInvite = isReceivedInvite;
     return this;
   }
@@ -123,12 +127,12 @@ public class BaseInviteDataResponse {
     return isReceivedInvite;
   }
 
-  public void setIsReceivedInvite(Boolean isReceivedInvite) {
+  public void setIsReceivedInvite(@javax.annotation.Nullable Boolean isReceivedInvite) {
     this.isReceivedInvite = isReceivedInvite;
   }
 
 
-  public BaseInviteDataResponse user(BusinessAccessUserSummary user) {
+  public BaseInviteDataResponse user(@javax.annotation.Nullable BusinessAccessUserSummary user) {
     this.user = user;
     return this;
   }
@@ -142,7 +146,7 @@ public class BaseInviteDataResponse {
     return user;
   }
 
-  public void setUser(BusinessAccessUserSummary user) {
+  public void setUser(@javax.annotation.Nullable BusinessAccessUserSummary user) {
     this.user = user;
   }
 

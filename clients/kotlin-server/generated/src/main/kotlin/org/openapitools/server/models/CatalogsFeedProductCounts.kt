@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * The counts can be null early in the process.
  * @param original The number of products in the feed file.
  * @param ingested The number of products successfully ingested from the feed file.
  */
+@Serializable
 data class CatalogsFeedProductCounts(
     /* The number of products in the feed file. */
     val original: kotlin.Int? = null,
     /* The number of products successfully ingested from the feed file. */
     val ingested: kotlin.Int? = null
-) 
+)
 

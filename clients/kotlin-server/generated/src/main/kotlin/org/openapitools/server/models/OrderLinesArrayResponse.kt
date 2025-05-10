@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.OrderLines
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items 
  */
+@Serializable
 data class OrderLinesArrayResponse(
     val items: kotlin.collections.List<OrderLines>? = null
-) 
+)
 

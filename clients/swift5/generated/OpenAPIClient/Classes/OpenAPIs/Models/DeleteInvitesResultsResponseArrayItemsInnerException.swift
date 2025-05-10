@@ -13,7 +13,7 @@ import AnyCodable
 /** An exception object if there is an error performing the cancellation. It will only be provided if there is an error. */
 public struct DeleteInvitesResultsResponseArrayItemsInnerException: Codable, JSONEncodable, Hashable {
 
-    static let inviteIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let inviteIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Unique identifier of an invite. */
     public var inviteId: String?
     /** Error message associated with the error in performing the action on the invite/request. */

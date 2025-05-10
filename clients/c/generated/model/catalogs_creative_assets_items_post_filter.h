@@ -31,9 +31,10 @@ typedef struct catalogs_creative_assets_items_post_filter_t {
     list_t *creative_assets_ids; //primitive container
     char *catalog_id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_creative_assets_items_post_filter_t;
 
-catalogs_creative_assets_items_post_filter_t *catalogs_creative_assets_items_post_filter_create(
+__attribute__((deprecated)) catalogs_creative_assets_items_post_filter_t *catalogs_creative_assets_items_post_filter_create(
     pinterest_rest_api_catalogs_creative_assets_items_post_filter_CATALOGTYPE_e catalog_type,
     list_t *creative_assets_ids,
     char *catalog_id

@@ -51,11 +51,11 @@ export function CatalogsItemsRequestLanguageFromJSONTyped(json: any, ignoreDiscr
     return json;
 }
 
-  export function CatalogsItemsRequestLanguageToJSON(json: any): CatalogsItemsRequestLanguage {
-      return CatalogsItemsRequestLanguageToJSONTyped(json, false);
-  }
+export function CatalogsItemsRequestLanguageToJSON(json: any): CatalogsItemsRequestLanguage {
+    return CatalogsItemsRequestLanguageToJSONTyped(json, false);
+}
 
-  export function CatalogsItemsRequestLanguageToJSONTyped(value?: CatalogsItemsRequestLanguage | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsItemsRequestLanguageToJSONTyped(value?: CatalogsItemsRequestLanguage | null, ignoreDiscriminator: boolean = false): any {
     return value;
 }
 

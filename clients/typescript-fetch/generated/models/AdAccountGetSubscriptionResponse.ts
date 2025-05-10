@@ -104,11 +104,11 @@ export function AdAccountGetSubscriptionResponseFromJSONTyped(json: any, ignoreD
     };
 }
 
-  export function AdAccountGetSubscriptionResponseToJSON(json: any): AdAccountGetSubscriptionResponse {
-      return AdAccountGetSubscriptionResponseToJSONTyped(json, false);
-  }
+export function AdAccountGetSubscriptionResponseToJSON(json: any): AdAccountGetSubscriptionResponse {
+    return AdAccountGetSubscriptionResponseToJSONTyped(json, false);
+}
 
-  export function AdAccountGetSubscriptionResponseToJSONTyped(value?: AdAccountGetSubscriptionResponse | null, ignoreDiscriminator: boolean = false): any {
+export function AdAccountGetSubscriptionResponseToJSONTyped(value?: AdAccountGetSubscriptionResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

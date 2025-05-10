@@ -19,40 +19,25 @@ typedef struct catalogs_retail_items_batch_t catalogs_retail_items_batch_t;
 #include "catalogs_type.h"
 #include "item_processing_record.h"
 
-// Enum  for catalogs_retail_items_batch
-
-typedef enum  { pinterest_rest_api_catalogs_retail_items_batch__NULL = 0, pinterest_rest_api_catalogs_retail_items_batch__PROCESSING, pinterest_rest_api_catalogs_retail_items_batch__COMPLETED, pinterest_rest_api_catalogs_retail_items_batch__FAILED } pinterest_rest_api_catalogs_retail_items_batch__e;
-
-char* catalogs_retail_items_batch_status_ToString(pinterest_rest_api_catalogs_retail_items_batch__e status);
-
-pinterest_rest_api_catalogs_retail_items_batch__e catalogs_retail_items_batch_status_FromString(char* status);
-
-// Enum  for catalogs_retail_items_batch
-
-typedef enum  { pinterest_rest_api_catalogs_retail_items_batch__NULL = 0, pinterest_rest_api_catalogs_retail_items_batch__RETAIL, pinterest_rest_api_catalogs_retail_items_batch__HOTEL, pinterest_rest_api_catalogs_retail_items_batch__CREATIVE_ASSETS } pinterest_rest_api_catalogs_retail_items_batch__e;
-
-char* catalogs_retail_items_batch_catalog_type_ToString(pinterest_rest_api_catalogs_retail_items_batch__e catalog_type);
-
-pinterest_rest_api_catalogs_retail_items_batch__e catalogs_retail_items_batch_catalog_type_FromString(char* catalog_type);
-
 
 
 typedef struct catalogs_retail_items_batch_t {
     char *batch_id; // string
     char *created_time; //date time
     char *completed_time; //date time
-    batch_operation_status_t *status; // custom
-    catalogs_type_t *catalog_type; // custom
+    pinterest_rest_api_batch_operation_status__e status; //referenced enum
+    pinterest_rest_api_catalogs_type__e catalog_type; //referenced enum
     list_t *items; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_retail_items_batch_t;
 
-catalogs_retail_items_batch_t *catalogs_retail_items_batch_create(
+__attribute__((deprecated)) catalogs_retail_items_batch_t *catalogs_retail_items_batch_create(
     char *batch_id,
     char *created_time,
     char *completed_time,
-    batch_operation_status_t *status,
-    catalogs_type_t *catalog_type,
+    pinterest_rest_api_batch_operation_status__e status,
+    pinterest_rest_api_catalogs_type__e catalog_type,
     list_t *items
 );
 

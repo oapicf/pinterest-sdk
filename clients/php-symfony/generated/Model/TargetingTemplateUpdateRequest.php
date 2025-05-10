@@ -49,7 +49,7 @@ class TargetingTemplateUpdateRequest
      * @Type("string")
     */
     #[Assert\NotNull]
-    #[Assert\Choice(["REMOVE"])]
+    #[Assert\Choice(['REMOVE'])]
     #[Assert\Type("string")]
     protected ?string $operationType = null;
 
@@ -69,7 +69,7 @@ class TargetingTemplateUpdateRequest
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->operationType = array_key_exists('operationType', $data) ? $data['operationType'] : $this->operationType;

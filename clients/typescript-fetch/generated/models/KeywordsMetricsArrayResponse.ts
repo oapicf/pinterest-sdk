@@ -56,11 +56,11 @@ export function KeywordsMetricsArrayResponseFromJSONTyped(json: any, ignoreDiscr
     };
 }
 
-  export function KeywordsMetricsArrayResponseToJSON(json: any): KeywordsMetricsArrayResponse {
-      return KeywordsMetricsArrayResponseToJSONTyped(json, false);
-  }
+export function KeywordsMetricsArrayResponseToJSON(json: any): KeywordsMetricsArrayResponse {
+    return KeywordsMetricsArrayResponseToJSONTyped(json, false);
+}
 
-  export function KeywordsMetricsArrayResponseToJSONTyped(value?: KeywordsMetricsArrayResponse | null, ignoreDiscriminator: boolean = false): any {
+export function KeywordsMetricsArrayResponseToJSONTyped(value?: KeywordsMetricsArrayResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

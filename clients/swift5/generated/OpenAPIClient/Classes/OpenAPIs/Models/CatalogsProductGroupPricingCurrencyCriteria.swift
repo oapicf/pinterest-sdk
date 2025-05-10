@@ -18,7 +18,7 @@ public struct CatalogsProductGroupPricingCurrencyCriteria: Codable, JSONEncodabl
         case lessThan = "LESS_THAN"
         case lessThanOrEquals = "LESS_THAN_OR_EQUALS"
     }
-    static let valueRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
+    public static let valueRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
     public var _operator: Operator
     public var value: Double
     public var currency: NonNullableCatalogsCurrency

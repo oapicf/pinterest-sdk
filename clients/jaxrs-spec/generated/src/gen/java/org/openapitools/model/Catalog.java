@@ -19,13 +19,31 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Catalog entity")
 @JsonTypeName("Catalog")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class Catalog   {
   private Date createdAt;
   private String id;
   private Date updatedAt;
   private String name;
   private CatalogsType catalogType;
+
+  public Catalog() {
+  }
+
+  @JsonCreator
+  public Catalog(
+    @JsonProperty(required = true, value = "created_at") Date createdAt,
+    @JsonProperty(required = true, value = "id") String id,
+    @JsonProperty(required = true, value = "updated_at") Date updatedAt,
+    @JsonProperty(required = true, value = "name") String name,
+    @JsonProperty(required = true, value = "catalog_type") CatalogsType catalogType
+  ) {
+    this.createdAt = createdAt;
+    this.id = id;
+    this.updatedAt = updatedAt;
+    this.name = name;
+    this.catalogType = catalogType;
+  }
 
   /**
    **/
@@ -36,12 +54,12 @@ public class Catalog   {
 
   
   @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "")
-  @JsonProperty("created_at")
+  @JsonProperty(required = true, value = "created_at")
   @NotNull public Date getCreatedAt() {
     return createdAt;
   }
 
-  @JsonProperty("created_at")
+  @JsonProperty(required = true, value = "created_at")
   public void setCreatedAt(Date createdAt) {
     this.createdAt = createdAt;
   }
@@ -56,12 +74,12 @@ public class Catalog   {
 
   
   @ApiModelProperty(example = "864344156814050986", required = true, value = "ID of the catalog entity.")
-  @JsonProperty("id")
+  @JsonProperty(required = true, value = "id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getId() {
     return id;
   }
 
-  @JsonProperty("id")
+  @JsonProperty(required = true, value = "id")
   public void setId(String id) {
     this.id = id;
   }
@@ -75,12 +93,12 @@ public class Catalog   {
 
   
   @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
-  @JsonProperty("updated_at")
+  @JsonProperty(required = true, value = "updated_at")
   @NotNull public Date getUpdatedAt() {
     return updatedAt;
   }
 
-  @JsonProperty("updated_at")
+  @JsonProperty(required = true, value = "updated_at")
   public void setUpdatedAt(Date updatedAt) {
     this.updatedAt = updatedAt;
   }
@@ -95,12 +113,12 @@ public class Catalog   {
 
   
   @ApiModelProperty(required = true, value = "A human-friendly name associated to a catalog entity.")
-  @JsonProperty("name")
+  @JsonProperty(required = true, value = "name")
   @NotNull public String getName() {
     return name;
   }
 
-  @JsonProperty("name")
+  @JsonProperty(required = true, value = "name")
   public void setName(String name) {
     this.name = name;
   }
@@ -114,12 +132,12 @@ public class Catalog   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   @NotNull public CatalogsType getCatalogType() {
     return catalogType;
   }
 
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   public void setCatalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
   }

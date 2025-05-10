@@ -18,11 +18,25 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsFeedIngestionDetails")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsFeedIngestionDetails   {
   private CatalogsFeedIngestionErrors errors;
   private CatalogsFeedIngestionInfo info;
   private CatalogsFeedIngestionWarnings warnings;
+
+  public CatalogsFeedIngestionDetails() {
+  }
+
+  @JsonCreator
+  public CatalogsFeedIngestionDetails(
+    @JsonProperty(required = true, value = "errors") CatalogsFeedIngestionErrors errors,
+    @JsonProperty(required = true, value = "info") CatalogsFeedIngestionInfo info,
+    @JsonProperty(required = true, value = "warnings") CatalogsFeedIngestionWarnings warnings
+  ) {
+    this.errors = errors;
+    this.info = info;
+    this.warnings = warnings;
+  }
 
   /**
    **/
@@ -33,12 +47,12 @@ public class CatalogsFeedIngestionDetails   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("errors")
+  @JsonProperty(required = true, value = "errors")
   @NotNull @Valid public CatalogsFeedIngestionErrors getErrors() {
     return errors;
   }
 
-  @JsonProperty("errors")
+  @JsonProperty(required = true, value = "errors")
   public void setErrors(CatalogsFeedIngestionErrors errors) {
     this.errors = errors;
   }
@@ -52,12 +66,12 @@ public class CatalogsFeedIngestionDetails   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("info")
+  @JsonProperty(required = true, value = "info")
   @NotNull @Valid public CatalogsFeedIngestionInfo getInfo() {
     return info;
   }
 
-  @JsonProperty("info")
+  @JsonProperty(required = true, value = "info")
   public void setInfo(CatalogsFeedIngestionInfo info) {
     this.info = info;
   }
@@ -71,12 +85,12 @@ public class CatalogsFeedIngestionDetails   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("warnings")
+  @JsonProperty(required = true, value = "warnings")
   @NotNull @Valid public CatalogsFeedIngestionWarnings getWarnings() {
     return warnings;
   }
 
-  @JsonProperty("warnings")
+  @JsonProperty(required = true, value = "warnings")
   public void setWarnings(CatalogsFeedIngestionWarnings warnings) {
     this.warnings = warnings;
   }

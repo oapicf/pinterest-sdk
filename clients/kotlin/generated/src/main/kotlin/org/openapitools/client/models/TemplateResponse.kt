@@ -1751,23 +1751,23 @@ data class TemplateResponse (
     /**
      * Conversion report time type
      *
-     * Values: AD_ACTION,CONVERSION
+     * Values: TIME_OF_AD_ACTION,TIME_OF_CONVERSION
      */
     @JsonClass(generateAdapter = false)
     enum class ConversionReportTimeType(val value: kotlin.String) {
-        @Json(name = "TIME_OF_AD_ACTION") AD_ACTION("TIME_OF_AD_ACTION"),
-        @Json(name = "TIME_OF_CONVERSION") CONVERSION("TIME_OF_CONVERSION");
+        @Json(name = "TIME_OF_AD_ACTION") TIME_OF_AD_ACTION("TIME_OF_AD_ACTION"),
+        @Json(name = "TIME_OF_CONVERSION") TIME_OF_CONVERSION("TIME_OF_CONVERSION");
     }
     /**
      * The surface used to create this template
      *
-     * Values: API,MANAGER_REPORTING_PAGE,MANAGER_REPORT_BUILDER
+     * Values: ADS_API,ADS_MANAGER_REPORTING_PAGE,ADS_MANAGER_REPORT_BUILDER
      */
     @JsonClass(generateAdapter = false)
     enum class CreationSource(val value: kotlin.String) {
-        @Json(name = "ADS_API") API("ADS_API"),
-        @Json(name = "ADS_MANAGER_REPORTING_PAGE") MANAGER_REPORTING_PAGE("ADS_MANAGER_REPORTING_PAGE"),
-        @Json(name = "ADS_MANAGER_REPORT_BUILDER") MANAGER_REPORT_BUILDER("ADS_MANAGER_REPORT_BUILDER");
+        @Json(name = "ADS_API") ADS_API("ADS_API"),
+        @Json(name = "ADS_MANAGER_REPORTING_PAGE") ADS_MANAGER_REPORTING_PAGE("ADS_MANAGER_REPORTING_PAGE"),
+        @Json(name = "ADS_MANAGER_REPORT_BUILDER") ADS_MANAGER_REPORT_BUILDER("ADS_MANAGER_REPORT_BUILDER");
     }
     /**
      * Reporting template type

@@ -2,8 +2,8 @@
 
 Pinterest REST API
 - API version: 5.14.0
-  - Build date: 2024-11-05T02:01:32.024245558Z[Etc/UTC]
-  - Generator version: 7.9.0
+  - Build date: 2025-05-10T05:38:42.745346573Z[Etc/UTC]
+  - Generator version: 7.12.0
 
 Pinterest's REST API
 

@@ -112,11 +112,11 @@ export function BulkUpsertRequestUpdateFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-  export function BulkUpsertRequestUpdateToJSON(json: any): BulkUpsertRequestUpdate {
-      return BulkUpsertRequestUpdateToJSONTyped(json, false);
-  }
+export function BulkUpsertRequestUpdateToJSON(json: any): BulkUpsertRequestUpdate {
+    return BulkUpsertRequestUpdateToJSONTyped(json, false);
+}
 
-  export function BulkUpsertRequestUpdateToJSONTyped(value?: BulkUpsertRequestUpdate | null, ignoreDiscriminator: boolean = false): any {
+export function BulkUpsertRequestUpdateToJSONTyped(value?: BulkUpsertRequestUpdate | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

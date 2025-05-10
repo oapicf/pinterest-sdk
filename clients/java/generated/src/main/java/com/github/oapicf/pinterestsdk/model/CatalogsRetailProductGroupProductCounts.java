@@ -49,7 +49,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Product counts for a Retail CatalogsProductGroup
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsRetailProductGroupProductCounts {
   /**
    * Gets or Sets catalogType
@@ -103,32 +103,38 @@ public class CatalogsRetailProductGroupProductCounts {
 
   public static final String SERIALIZED_NAME_CATALOG_TYPE = "catalog_type";
   @SerializedName(SERIALIZED_NAME_CATALOG_TYPE)
+  @javax.annotation.Nonnull
   private CatalogTypeEnum catalogType;
 
   public static final String SERIALIZED_NAME_IN_STOCK = "in_stock";
   @SerializedName(SERIALIZED_NAME_IN_STOCK)
+  @javax.annotation.Nonnull
   private BigDecimal inStock;
 
   public static final String SERIALIZED_NAME_OUT_OF_STOCK = "out_of_stock";
   @SerializedName(SERIALIZED_NAME_OUT_OF_STOCK)
+  @javax.annotation.Nonnull
   private BigDecimal outOfStock;
 
   public static final String SERIALIZED_NAME_PREORDER = "preorder";
   @SerializedName(SERIALIZED_NAME_PREORDER)
+  @javax.annotation.Nonnull
   private BigDecimal preorder;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
+  @javax.annotation.Nonnull
   private BigDecimal total;
 
   public static final String SERIALIZED_NAME_VIDEOS = "videos";
   @SerializedName(SERIALIZED_NAME_VIDEOS)
+  @javax.annotation.Nullable
   private BigDecimal videos;
 
   public CatalogsRetailProductGroupProductCounts() {
   }
 
-  public CatalogsRetailProductGroupProductCounts catalogType(CatalogTypeEnum catalogType) {
+  public CatalogsRetailProductGroupProductCounts catalogType(@javax.annotation.Nonnull CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -142,12 +148,12 @@ public class CatalogsRetailProductGroupProductCounts {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogTypeEnum catalogType) {
+  public void setCatalogType(@javax.annotation.Nonnull CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
 
-  public CatalogsRetailProductGroupProductCounts inStock(BigDecimal inStock) {
+  public CatalogsRetailProductGroupProductCounts inStock(@javax.annotation.Nonnull BigDecimal inStock) {
     this.inStock = inStock;
     return this;
   }
@@ -162,12 +168,12 @@ public class CatalogsRetailProductGroupProductCounts {
     return inStock;
   }
 
-  public void setInStock(BigDecimal inStock) {
+  public void setInStock(@javax.annotation.Nonnull BigDecimal inStock) {
     this.inStock = inStock;
   }
 
 
-  public CatalogsRetailProductGroupProductCounts outOfStock(BigDecimal outOfStock) {
+  public CatalogsRetailProductGroupProductCounts outOfStock(@javax.annotation.Nonnull BigDecimal outOfStock) {
     this.outOfStock = outOfStock;
     return this;
   }
@@ -182,12 +188,12 @@ public class CatalogsRetailProductGroupProductCounts {
     return outOfStock;
   }
 
-  public void setOutOfStock(BigDecimal outOfStock) {
+  public void setOutOfStock(@javax.annotation.Nonnull BigDecimal outOfStock) {
     this.outOfStock = outOfStock;
   }
 
 
-  public CatalogsRetailProductGroupProductCounts preorder(BigDecimal preorder) {
+  public CatalogsRetailProductGroupProductCounts preorder(@javax.annotation.Nonnull BigDecimal preorder) {
     this.preorder = preorder;
     return this;
   }
@@ -202,12 +208,12 @@ public class CatalogsRetailProductGroupProductCounts {
     return preorder;
   }
 
-  public void setPreorder(BigDecimal preorder) {
+  public void setPreorder(@javax.annotation.Nonnull BigDecimal preorder) {
     this.preorder = preorder;
   }
 
 
-  public CatalogsRetailProductGroupProductCounts total(BigDecimal total) {
+  public CatalogsRetailProductGroupProductCounts total(@javax.annotation.Nonnull BigDecimal total) {
     this.total = total;
     return this;
   }
@@ -222,12 +228,12 @@ public class CatalogsRetailProductGroupProductCounts {
     return total;
   }
 
-  public void setTotal(BigDecimal total) {
+  public void setTotal(@javax.annotation.Nonnull BigDecimal total) {
     this.total = total;
   }
 
 
-  public CatalogsRetailProductGroupProductCounts videos(BigDecimal videos) {
+  public CatalogsRetailProductGroupProductCounts videos(@javax.annotation.Nullable BigDecimal videos) {
     this.videos = videos;
     return this;
   }
@@ -242,7 +248,7 @@ public class CatalogsRetailProductGroupProductCounts {
     return videos;
   }
 
-  public void setVideos(BigDecimal videos) {
+  public void setVideos(@javax.annotation.Nullable BigDecimal videos) {
     this.videos = videos;
   }
 

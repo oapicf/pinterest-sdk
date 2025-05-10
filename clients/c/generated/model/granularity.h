@@ -24,9 +24,9 @@ char* granularity_granularity_ToString(pinterest_rest_api_granularity__e granula
 
 pinterest_rest_api_granularity__e granularity_granularity_FromString(char* granularity);
 
-//cJSON *granularity_granularity_convertToJSON(pinterest_rest_api_granularity__e granularity);
+cJSON *granularity_convertToJSON(pinterest_rest_api_granularity__e granularity);
 
-//pinterest_rest_api_granularity__e granularity_granularity_parseFromJSON(cJSON *granularityJSON);
+pinterest_rest_api_granularity__e granularity_parseFromJSON(cJSON *granularityJSON);
 
 #endif /* _granularity_H_ */
 

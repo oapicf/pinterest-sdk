@@ -42,9 +42,10 @@ typedef struct catalogs_update_retail_item_t {
     struct updatable_item_attributes_t *attributes; //model
     list_t *update_mask; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_update_retail_item_t;
 
-catalogs_update_retail_item_t *catalogs_update_retail_item_create(
+__attribute__((deprecated)) catalogs_update_retail_item_t *catalogs_update_retail_item_create(
     char *item_id,
     pinterest_rest_api_catalogs_update_retail_item_OPERATION_e operation,
     updatable_item_attributes_t *attributes,

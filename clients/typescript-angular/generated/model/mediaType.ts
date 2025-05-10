@@ -12,7 +12,9 @@
 export type MediaType = 'IMAGE' | 'VIDEO';
 
 export const MediaType = {
+
     Image: 'IMAGE' as MediaType,
+
     Video: 'VIDEO' as MediaType
 };
 

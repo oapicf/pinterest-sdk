@@ -55,11 +55,11 @@ export function ExceptionFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     };
 }
 
-  export function ExceptionToJSON(json: any): Exception {
-      return ExceptionToJSONTyped(json, false);
-  }
+export function ExceptionToJSON(json: any): Exception {
+    return ExceptionToJSONTyped(json, false);
+}
 
-  export function ExceptionToJSONTyped(value?: Exception | null, ignoreDiscriminator: boolean = false): any {
+export function ExceptionToJSONTyped(value?: Exception | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

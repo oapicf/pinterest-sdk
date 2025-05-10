@@ -22,17 +22,17 @@ import com.squareup.moshi.JsonClass
 /**
  * Conversion report time type
  *
- * Values: AD_ACTION,CONVERSION
+ * Values: TIME_OF_AD_ACTION,TIME_OF_CONVERSION
  */
 
 @JsonClass(generateAdapter = false)
 enum class ConversionReportTimeType(val value: kotlin.String) {
 
     @Json(name = "TIME_OF_AD_ACTION")
-    AD_ACTION("TIME_OF_AD_ACTION"),
+    TIME_OF_AD_ACTION("TIME_OF_AD_ACTION"),
 
     @Json(name = "TIME_OF_CONVERSION")
-    CONVERSION("TIME_OF_CONVERSION");
+    TIME_OF_CONVERSION("TIME_OF_CONVERSION");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use

@@ -14,6 +14,7 @@ package org.openapitools.server.models
 import org.openapitools.server.models.AudienceCreateRequest1AudienceType
 import org.openapitools.server.models.AudienceRule
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param name Audience name.
@@ -22,6 +23,7 @@ import org.openapitools.server.models.AudienceRule
  * @param adAccountId Ad account ID.
  * @param description Audience description.
  */
+@Serializable
 data class AudienceCreateRequest(
     /* Audience name. */
     val name: kotlin.String,
@@ -31,5 +33,5 @@ data class AudienceCreateRequest(
     val adAccountId: kotlin.String? = null,
     /* Audience description. */
     val description: kotlin.String? = null
-) 
+)
 

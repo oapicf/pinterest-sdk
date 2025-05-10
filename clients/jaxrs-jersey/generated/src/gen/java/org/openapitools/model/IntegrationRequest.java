@@ -41,7 +41,7 @@ import javax.validation.Valid;
   IntegrationRequest.JSON_PROPERTY_ADDITIONAL_ID1,
   IntegrationRequest.JSON_PROPERTY_PARTNER_METADATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-11-05T02:20:07.425136412Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class IntegrationRequest   {
   public static final String JSON_PROPERTY_EXTERNAL_BUSINESS_ID = "external_business_id";
   @JsonProperty(JSON_PROPERTY_EXTERNAL_BUSINESS_ID)

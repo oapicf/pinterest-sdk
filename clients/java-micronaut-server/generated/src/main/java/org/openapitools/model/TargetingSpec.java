@@ -45,7 +45,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   TargetingSpec.JSON_PROPERTY_T_A_R_G_E_T_I_N_G_S_T_R_A_T_E_G_Y
 })
 @JsonTypeName("TargetingSpec")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2024-11-05T02:03:37.829873561Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2025-05-10T05:39:14.747146068Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 @Introspected
 public class TargetingSpec {
     /**

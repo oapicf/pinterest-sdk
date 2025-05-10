@@ -82,11 +82,11 @@ export function AdvancedAuctionItemsGetRecordFromJSONTyped(json: any, ignoreDisc
     };
 }
 
-  export function AdvancedAuctionItemsGetRecordToJSON(json: any): AdvancedAuctionItemsGetRecord {
-      return AdvancedAuctionItemsGetRecordToJSONTyped(json, false);
-  }
+export function AdvancedAuctionItemsGetRecordToJSON(json: any): AdvancedAuctionItemsGetRecord {
+    return AdvancedAuctionItemsGetRecordToJSONTyped(json, false);
+}
 
-  export function AdvancedAuctionItemsGetRecordToJSONTyped(value?: AdvancedAuctionItemsGetRecord | null, ignoreDiscriminator: boolean = false): any {
+export function AdvancedAuctionItemsGetRecordToJSONTyped(value?: AdvancedAuctionItemsGetRecord | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

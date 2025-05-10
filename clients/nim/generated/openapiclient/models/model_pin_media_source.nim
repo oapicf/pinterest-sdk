@@ -22,12 +22,12 @@ type SourceType* {.pure.} = enum
   PinUrl
 
 type ContentType* {.pure.} = enum
-  Jpeg
-  Png
+  ImageJpeg
+  ImagePng
 
 type CoverImageContentType* {.pure.} = enum
-  Jpeg
-  Png
+  ImageJpeg
+  ImagePng
 
 type PinMediaSource* = object
   ## Pin media source.
@@ -56,24 +56,24 @@ func `$`*(v: SourceType): string =
 
 func `%`*(v: ContentType): JsonNode =
   let str = case v:
-    of ContentType.Jpeg: "image/jpeg"
-    of ContentType.Png: "image/png"
+    of ContentType.ImageJpeg: "image/jpeg"
+    of ContentType.ImagePng: "image/png"
 
   JsonNode(kind: JString, str: str)
 
 func `$`*(v: ContentType): string =
   result = case v:
-    of ContentType.Jpeg: "image/jpeg"
-    of ContentType.Png: "image/png"
+    of ContentType.ImageJpeg: "image/jpeg"
+    of ContentType.ImagePng: "image/png"
 
 func `%`*(v: CoverImageContentType): JsonNode =
   let str = case v:
-    of CoverImageContentType.Jpeg: "image/jpeg"
-    of CoverImageContentType.Png: "image/png"
+    of CoverImageContentType.ImageJpeg: "image/jpeg"
+    of CoverImageContentType.ImagePng: "image/png"
 
   JsonNode(kind: JString, str: str)
 
 func `$`*(v: CoverImageContentType): string =
   result = case v:
-    of CoverImageContentType.Jpeg: "image/jpeg"
-    of CoverImageContentType.Png: "image/png"
+    of CoverImageContentType.ImageJpeg: "image/jpeg"
+    of CoverImageContentType.ImagePng: "image/png"

@@ -12,10 +12,10 @@ import AnyCodable
 
 public struct AdAccountGetSubscriptionResponse: Codable, JSONEncodable, Hashable {
 
-    static let leadFormIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let userAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let leadFormIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let userAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Lead form ID. */
     public var leadFormId: String?
     /** Standard HTTPS webhook URL. */
@@ -75,3 +75,6 @@ public struct AdAccountGetSubscriptionResponse: Codable, JSONEncodable, Hashable
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension AdAccountGetSubscriptionResponse: Identifiable {}

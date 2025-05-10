@@ -22,7 +22,7 @@ pinterest_rest_api_ads_analytics_ad_targeting_type__e ads_analytics_ad_targeting
     return 0;
 }
 
-cJSON *ads_analytics_ad_targeting_type_ads_analytics_ad_targeting_type_convertToJSON(pinterest_rest_api_ads_analytics_ad_targeting_type__e ads_analytics_ad_targeting_type) {
+cJSON *ads_analytics_ad_targeting_type_convertToJSON(pinterest_rest_api_ads_analytics_ad_targeting_type__e ads_analytics_ad_targeting_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "ads_analytics_ad_targeting_type", ads_analytics_ad_targeting_type_ads_analytics_ad_targeting_type_ToString(ads_analytics_ad_targeting_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_ads_analytics_ad_targeting_type__e ads_analytics_ad_targeting_type_ads_analytics_ad_targeting_type_parseFromJSON(cJSON *ads_analytics_ad_targeting_typeJSON) {
-    pinterest_rest_api_ads_analytics_ad_targeting_type__e *ads_analytics_ad_targeting_type = NULL;
-    pinterest_rest_api_ads_analytics_ad_targeting_type__e ads_analytics_ad_targeting_typeVariable;
-    cJSON *ads_analytics_ad_targeting_typeVar = cJSON_GetObjectItemCaseSensitive(ads_analytics_ad_targeting_typeJSON, "ads_analytics_ad_targeting_type");
-    if(!cJSON_IsString(ads_analytics_ad_targeting_typeVar) || (ads_analytics_ad_targeting_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_ads_analytics_ad_targeting_type__e ads_analytics_ad_targeting_type_parseFromJSON(cJSON *ads_analytics_ad_targeting_typeJSON) {
+    if(!cJSON_IsString(ads_analytics_ad_targeting_typeJSON) || (ads_analytics_ad_targeting_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    ads_analytics_ad_targeting_typeVariable = ads_analytics_ad_targeting_type_ads_analytics_ad_targeting_type_FromString(ads_analytics_ad_targeting_typeVar->valuestring);
-    return ads_analytics_ad_targeting_typeVariable;
-end:
-    return 0;
+    return ads_analytics_ad_targeting_type_ads_analytics_ad_targeting_type_FromString(ads_analytics_ad_targeting_typeJSON->valuestring);
 }

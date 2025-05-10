@@ -22,9 +22,10 @@ typedef struct catalogs_items_t catalogs_items_t;
 typedef struct catalogs_items_t {
     list_t *items; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_items_t;
 
-catalogs_items_t *catalogs_items_create(
+__attribute__((deprecated)) catalogs_items_t *catalogs_items_create(
     list_t *items
 );
 

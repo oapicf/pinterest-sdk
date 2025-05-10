@@ -315,11 +315,11 @@ export function AdGroupResponseFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-  export function AdGroupResponseToJSON(json: any): AdGroupResponse {
-      return AdGroupResponseToJSONTyped(json, false);
-  }
+export function AdGroupResponseToJSON(json: any): AdGroupResponse {
+    return AdGroupResponseToJSONTyped(json, false);
+}
 
-  export function AdGroupResponseToJSONTyped(value?: AdGroupResponse | null, ignoreDiscriminator: boolean = false): any {
+export function AdGroupResponseToJSONTyped(value?: AdGroupResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

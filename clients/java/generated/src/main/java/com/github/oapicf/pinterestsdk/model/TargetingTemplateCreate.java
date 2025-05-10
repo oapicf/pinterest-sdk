@@ -55,36 +55,42 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * TargetingTemplateCreate
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TargetingTemplateCreate {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nonnull
   private String name;
 
   public static final String SERIALIZED_NAME_AUTO_TARGETING_ENABLED = "auto_targeting_enabled";
   @SerializedName(SERIALIZED_NAME_AUTO_TARGETING_ENABLED)
+  @javax.annotation.Nullable
   private Boolean autoTargetingEnabled = true;
 
   public static final String SERIALIZED_NAME_TARGETING_ATTRIBUTES = "targeting_attributes";
   @SerializedName(SERIALIZED_NAME_TARGETING_ATTRIBUTES)
+  @javax.annotation.Nonnull
   private TargetingSpec targetingAttributes;
 
   public static final String SERIALIZED_NAME_PLACEMENT_GROUP = "placement_group";
   @SerializedName(SERIALIZED_NAME_PLACEMENT_GROUP)
+  @javax.annotation.Nullable
   private PlacementGroupType placementGroup = PlacementGroupType.ALL;
 
   public static final String SERIALIZED_NAME_KEYWORDS = "keywords";
   @SerializedName(SERIALIZED_NAME_KEYWORDS)
+  @javax.annotation.Nullable
   private List<TargetingTemplateKeyword> keywords = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_TRACKING_URLS = "tracking_urls";
   @SerializedName(SERIALIZED_NAME_TRACKING_URLS)
+  @javax.annotation.Nullable
   private TrackingUrls trackingUrls;
 
   public TargetingTemplateCreate() {
   }
 
-  public TargetingTemplateCreate name(String name) {
+  public TargetingTemplateCreate name(@javax.annotation.Nonnull String name) {
     this.name = name;
     return this;
   }
@@ -98,12 +104,12 @@ public class TargetingTemplateCreate {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
 
-  public TargetingTemplateCreate autoTargetingEnabled(Boolean autoTargetingEnabled) {
+  public TargetingTemplateCreate autoTargetingEnabled(@javax.annotation.Nullable Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
     return this;
   }
@@ -117,12 +123,12 @@ public class TargetingTemplateCreate {
     return autoTargetingEnabled;
   }
 
-  public void setAutoTargetingEnabled(Boolean autoTargetingEnabled) {
+  public void setAutoTargetingEnabled(@javax.annotation.Nullable Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
   }
 
 
-  public TargetingTemplateCreate targetingAttributes(TargetingSpec targetingAttributes) {
+  public TargetingTemplateCreate targetingAttributes(@javax.annotation.Nonnull TargetingSpec targetingAttributes) {
     this.targetingAttributes = targetingAttributes;
     return this;
   }
@@ -136,12 +142,12 @@ public class TargetingTemplateCreate {
     return targetingAttributes;
   }
 
-  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
+  public void setTargetingAttributes(@javax.annotation.Nonnull TargetingSpec targetingAttributes) {
     this.targetingAttributes = targetingAttributes;
   }
 
 
-  public TargetingTemplateCreate placementGroup(PlacementGroupType placementGroup) {
+  public TargetingTemplateCreate placementGroup(@javax.annotation.Nullable PlacementGroupType placementGroup) {
     this.placementGroup = placementGroup;
     return this;
   }
@@ -155,12 +161,12 @@ public class TargetingTemplateCreate {
     return placementGroup;
   }
 
-  public void setPlacementGroup(PlacementGroupType placementGroup) {
+  public void setPlacementGroup(@javax.annotation.Nullable PlacementGroupType placementGroup) {
     this.placementGroup = placementGroup;
   }
 
 
-  public TargetingTemplateCreate keywords(List<TargetingTemplateKeyword> keywords) {
+  public TargetingTemplateCreate keywords(@javax.annotation.Nullable List<TargetingTemplateKeyword> keywords) {
     this.keywords = keywords;
     return this;
   }
@@ -182,12 +188,12 @@ public class TargetingTemplateCreate {
     return keywords;
   }
 
-  public void setKeywords(List<TargetingTemplateKeyword> keywords) {
+  public void setKeywords(@javax.annotation.Nullable List<TargetingTemplateKeyword> keywords) {
     this.keywords = keywords;
   }
 
 
-  public TargetingTemplateCreate trackingUrls(TrackingUrls trackingUrls) {
+  public TargetingTemplateCreate trackingUrls(@javax.annotation.Nullable TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
@@ -201,7 +207,7 @@ public class TargetingTemplateCreate {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(TrackingUrls trackingUrls) {
+  public void setTrackingUrls(@javax.annotation.Nullable TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 

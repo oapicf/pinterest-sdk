@@ -15,7 +15,7 @@ import org.openapitools.model.UserBusinessRoleBinding;
 /**
  * GetBusinessPartners200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2025-05-10T05:39:24.501669360Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class GetBusinessPartners200Response   {
   @JsonProperty("items")
   private List<@Valid UserBusinessRoleBinding> items = new ArrayList<>();

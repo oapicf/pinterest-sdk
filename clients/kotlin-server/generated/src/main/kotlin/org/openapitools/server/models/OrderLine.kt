@@ -14,6 +14,7 @@ package org.openapitools.server.models
 import org.openapitools.server.models.OrderLinePaidType
 import org.openapitools.server.models.OrderLineStatus
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param campaignIds Associated List of campaign IDs.
@@ -29,6 +30,7 @@ import org.openapitools.server.models.OrderLineStatus
  * @param name Order line name.
  * @param paidType Order line paid type.
  */
+@Serializable
 data class OrderLine(
     /* Associated List of campaign IDs. */
     val campaignIds: kotlin.collections.List<kotlin.String>,
@@ -54,5 +56,5 @@ data class OrderLine(
     val name: kotlin.String? = null,
     /* Order line paid type. */
     val paidType: OrderLinePaidType? = null
-) 
+)
 

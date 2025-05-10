@@ -246,7 +246,7 @@ void OAIKeywordsApi::countryKeywordsMetrics_get(const QString &ad_account_id, co
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("country_code")).append(querySuffix).append(QUrl::toPercentEncoding(country_code));
+        fullPath.append(QUrl::toPercentEncoding("country_code")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(country_code)));
     }
     
     {
@@ -346,7 +346,7 @@ void OAIKeywordsApi::countryKeywordsMetrics_get(const QString &ad_account_id, co
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIKeywordsApi::countryKeywordsMetrics_getCallback);
     connect(this, &OAIKeywordsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -368,7 +368,7 @@ void OAIKeywordsApi::countryKeywordsMetrics_get(const QString &ad_account_id, co
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIKeywordsApi::countryKeywordsMetrics_getCallback);
     connect(this, &OAIKeywordsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -476,7 +476,7 @@ void OAIKeywordsApi::keywords_create(const QString &ad_account_id, const OAIKeyw
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIKeywordsApi::keywords_createCallback);
     connect(this, &OAIKeywordsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -498,7 +498,7 @@ void OAIKeywordsApi::keywords_create(const QString &ad_account_id, const OAIKeyw
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIKeywordsApi::keywords_createCallback);
     connect(this, &OAIKeywordsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -602,7 +602,7 @@ void OAIKeywordsApi::keywords_get(const QString &ad_account_id, const ::OpenAPI:
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("campaign_id")).append(querySuffix).append(QUrl::toPercentEncoding(campaign_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("campaign_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(campaign_id.stringValue())));
     }
     if (ad_group_id.hasValue())
     {
@@ -617,7 +617,7 @@ void OAIKeywordsApi::keywords_get(const QString &ad_account_id, const ::OpenAPI:
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_group_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_group_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_group_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_group_id.stringValue())));
     }
     if (match_types.hasValue())
     {
@@ -717,7 +717,7 @@ void OAIKeywordsApi::keywords_get(const QString &ad_account_id, const ::OpenAPI:
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     if (bookmark.hasValue())
     {
@@ -732,7 +732,7 @@ void OAIKeywordsApi::keywords_get(const QString &ad_account_id, const ::OpenAPI:
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -747,7 +747,7 @@ void OAIKeywordsApi::keywords_get(const QString &ad_account_id, const ::OpenAPI:
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIKeywordsApi::keywords_getCallback);
     connect(this, &OAIKeywordsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -769,7 +769,7 @@ void OAIKeywordsApi::keywords_get(const QString &ad_account_id, const ::OpenAPI:
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIKeywordsApi::keywords_getCallback);
     connect(this, &OAIKeywordsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -877,7 +877,7 @@ void OAIKeywordsApi::keywords_update(const QString &ad_account_id, const OAIKeyw
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIKeywordsApi::keywords_updateCallback);
     connect(this, &OAIKeywordsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -899,7 +899,7 @@ void OAIKeywordsApi::keywords_update(const QString &ad_account_id, const OAIKeyw
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIKeywordsApi::keywords_updateCallback);
     connect(this, &OAIKeywordsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1437,7 +1437,7 @@ void OAIKeywordsApi::trendingKeywords_list(const OAITrendsSupportedRegion &regio
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("normalize_against_group")).append(querySuffix).append(QUrl::toPercentEncoding(normalize_against_group.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("normalize_against_group")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(normalize_against_group.stringValue())));
     }
     if (limit.hasValue())
     {
@@ -1452,7 +1452,7 @@ void OAIKeywordsApi::trendingKeywords_list(const OAITrendsSupportedRegion &regio
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("limit")).append(querySuffix).append(QUrl::toPercentEncoding(limit.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("limit")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(limit.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -1467,7 +1467,7 @@ void OAIKeywordsApi::trendingKeywords_list(const OAITrendsSupportedRegion &regio
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIKeywordsApi::trendingKeywords_listCallback);
     connect(this, &OAIKeywordsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1489,7 +1489,7 @@ void OAIKeywordsApi::trendingKeywords_list(const OAITrendsSupportedRegion &regio
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIKeywordsApi::trendingKeywords_listCallback);
     connect(this, &OAIKeywordsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }

@@ -12,19 +12,21 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param reportStatus 
  * @param url URL to download the report
  * @param propertySize Size of the report in bytes
  */
+@Serializable
 data class CatalogsReport(
     val reportStatus: CatalogsReport.ReportStatus? = null,
     /* URL to download the report */
     val url: kotlin.String? = null,
     /* Size of the report in bytes */
     val propertySize: java.math.BigDecimal? = null
-) 
+)
 {
     /**
     * 

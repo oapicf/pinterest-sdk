@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param name Conversion tag name.
@@ -23,6 +24,7 @@ package org.openapitools.server.models
  * @param aemDbEnabled Whether Automatic Enhanced Match birthdate is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
  * @param aemLocEnabled Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
  */
+@Serializable
 data class ConversionTagCreate(
     /* Conversion tag name. */
     val name: kotlin.String,
@@ -40,5 +42,5 @@ data class ConversionTagCreate(
     val aemDbEnabled: kotlin.Boolean? = false,
     /* Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */
     val aemLocEnabled: kotlin.Boolean? = false
-) 
+)
 

@@ -38,9 +38,10 @@ typedef struct campaign_update_request_t {
     int is_campaign_budget_optimization; //boolean
     objective_type_t *objective_type; // custom
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } campaign_update_request_t;
 
-campaign_update_request_t *campaign_update_request_create(
+__attribute__((deprecated)) campaign_update_request_t *campaign_update_request_create(
     char *id,
     char *ad_account_id,
     char *name,

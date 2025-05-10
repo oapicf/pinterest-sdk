@@ -224,7 +224,7 @@ func (dst *CatalogsCreativeAssetsProductGroupFilterKeys) UnmarshalJSON(data []by
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src *CatalogsCreativeAssetsProductGroupFilterKeys) MarshalJSON() ([]byte, error) {
+func (src CatalogsCreativeAssetsProductGroupFilterKeys) MarshalJSON() ([]byte, error) {
 	if src.CreativeAssetsIdFilter != nil {
 		return json.Marshal(&src.CreativeAssetsIdFilter)
 	}

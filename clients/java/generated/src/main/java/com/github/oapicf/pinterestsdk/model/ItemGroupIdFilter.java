@@ -49,16 +49,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ItemGroupIdFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ItemGroupIdFilter {
   public static final String SERIALIZED_NAME_I_T_E_M_G_R_O_U_P_I_D = "ITEM_GROUP_ID";
   @SerializedName(SERIALIZED_NAME_I_T_E_M_G_R_O_U_P_I_D)
+  @javax.annotation.Nonnull
   private CatalogsProductGroupMultipleStringCriteria ITEM_GROUP_ID;
 
   public ItemGroupIdFilter() {
   }
 
-  public ItemGroupIdFilter ITEM_GROUP_ID(CatalogsProductGroupMultipleStringCriteria ITEM_GROUP_ID) {
+  public ItemGroupIdFilter ITEM_GROUP_ID(@javax.annotation.Nonnull CatalogsProductGroupMultipleStringCriteria ITEM_GROUP_ID) {
     this.ITEM_GROUP_ID = ITEM_GROUP_ID;
     return this;
   }
@@ -72,7 +73,7 @@ public class ItemGroupIdFilter {
     return ITEM_GROUP_ID;
   }
 
-  public void setITEMGROUPID(CatalogsProductGroupMultipleStringCriteria ITEM_GROUP_ID) {
+  public void setITEMGROUPID(@javax.annotation.Nonnull CatalogsProductGroupMultipleStringCriteria ITEM_GROUP_ID) {
     this.ITEM_GROUP_ID = ITEM_GROUP_ID;
   }
 

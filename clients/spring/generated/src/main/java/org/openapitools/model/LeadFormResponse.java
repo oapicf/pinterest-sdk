@@ -12,6 +12,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.LeadFormCommonPolicyLinksInner;
 import org.openapitools.model.LeadFormQuestion;
 import org.openapitools.model.LeadFormStatus;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -27,18 +28,18 @@ import javax.annotation.Generated;
  * LeadFormResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class LeadFormResponse {
 
   private JsonNullable<String> name = JsonNullable.<String>undefined();
 
   private JsonNullable<String> privacyPolicyLink = JsonNullable.<String>undefined();
 
-  private Boolean hasAcceptedTerms;
+  private @Nullable Boolean hasAcceptedTerms;
 
   private JsonNullable<String> completionMessage = JsonNullable.<String>undefined();
 
-  private LeadFormStatus status;
+  private @Nullable LeadFormStatus status;
 
   private JsonNullable<String> disclosureLanguage = JsonNullable.<String>undefined();
 
@@ -48,13 +49,13 @@ public class LeadFormResponse {
   @Valid
   private List<@Valid LeadFormCommonPolicyLinksInner> policyLinks = new ArrayList<>();
 
-  private String id;
+  private @Nullable String id;
 
-  private String adAccountId;
+  private @Nullable String adAccountId;
 
-  private Integer createdTime;
+  private @Nullable Integer createdTime;
 
-  private Integer updatedTime;
+  private @Nullable Integer updatedTime;
 
   public LeadFormResponse name(String name) {
     this.name = JsonNullable.of(name);

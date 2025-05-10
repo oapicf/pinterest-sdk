@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct BusinessMembersAssetAccessDeleteRequest: Codable, JSONEncodable, Hashable {
 
-    static let accessesRule = ArrayRule(minItems: 1, maxItems: 100, uniqueItems: false)
+    public static let accessesRule = ArrayRule(minItems: 1, maxItems: 100, uniqueItems: false)
     /** List of members asset access to be deleted */
     public var accesses: [BusinessMembersAssetAccessDeleteRequestAccessesInner]
 

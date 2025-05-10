@@ -22,9 +22,10 @@ typedef struct trending_keywords_response_t trending_keywords_response_t;
 typedef struct trending_keywords_response_t {
     list_t *trends; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } trending_keywords_response_t;
 
-trending_keywords_response_t *trending_keywords_response_create(
+__attribute__((deprecated)) trending_keywords_response_t *trending_keywords_response_create(
     list_t *trends
 );
 

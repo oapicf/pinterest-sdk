@@ -26,9 +26,10 @@ typedef struct conversion_events_data_inner_custom_data_contents_inner_t {
     char *item_category; // string
     char *item_brand; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } conversion_events_data_inner_custom_data_contents_inner_t;
 
-conversion_events_data_inner_custom_data_contents_inner_t *conversion_events_data_inner_custom_data_contents_inner_create(
+__attribute__((deprecated)) conversion_events_data_inner_custom_data_contents_inner_t *conversion_events_data_inner_custom_data_contents_inner_create(
     char *id,
     char *item_price,
     long quantity,

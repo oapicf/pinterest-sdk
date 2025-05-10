@@ -26,7 +26,7 @@ import play.api.libs.json._
   * @param `type` Reporting template type
   * @param ingestionSources The filter on the conversion ingestion source method for conversion metrics
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2025-05-10T05:44:38.070631387Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 case class TemplateResponse(
   id: Option[String],
   adAccountId: Option[String],
@@ -1653,8 +1653,8 @@ object TemplateResponse {
 
   // noinspection TypeAnnotation
   object ConversionReportTimeType extends Enumeration {
-    val ADACTION = Value("TIME_OF_AD_ACTION")
-    val CONVERSION = Value("TIME_OF_CONVERSION")
+    val TIMEOFADACTION = Value("TIME_OF_AD_ACTION")
+    val TIMEOFCONVERSION = Value("TIME_OF_CONVERSION")
 
     type ConversionReportTimeType = Value
     implicit lazy val ConversionReportTimeTypeJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])
@@ -1662,9 +1662,9 @@ object TemplateResponse {
 
   // noinspection TypeAnnotation
   object CreationSource extends Enumeration {
-    val API = Value("ADS_API")
-    val MANAGERREPORTINGPAGE = Value("ADS_MANAGER_REPORTING_PAGE")
-    val MANAGERREPORTBUILDER = Value("ADS_MANAGER_REPORT_BUILDER")
+    val ADSAPI = Value("ADS_API")
+    val ADSMANAGERREPORTINGPAGE = Value("ADS_MANAGER_REPORTING_PAGE")
+    val ADSMANAGERREPORTBUILDER = Value("ADS_MANAGER_REPORT_BUILDER")
 
     type CreationSource = Value
     implicit lazy val CreationSourceJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])

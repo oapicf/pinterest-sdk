@@ -84,7 +84,8 @@ public class AdvancedAuctionApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Response containing the bid option values for the requested retail catalog items. Items that don&#39;t exist or do not have bid options set won&#39;t be present in the response. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid request parameters. </td><td>  -  </td></tr>
@@ -162,7 +163,8 @@ public class AdvancedAuctionApi {
      * @return AdvancedAuctionItems
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Response containing the bid option values for the requested retail catalog items. Items that don&#39;t exist or do not have bid options set won&#39;t be present in the response. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid request parameters. </td><td>  -  </td></tr>
@@ -185,7 +187,8 @@ public class AdvancedAuctionApi {
      * @return ApiResponse&lt;AdvancedAuctionItems&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Response containing the bid option values for the requested retail catalog items. Items that don&#39;t exist or do not have bid options set won&#39;t be present in the response. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid request parameters. </td><td>  -  </td></tr>
@@ -210,7 +213,8 @@ public class AdvancedAuctionApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Response containing the bid option values for the requested retail catalog items. Items that don&#39;t exist or do not have bid options set won&#39;t be present in the response. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid request parameters. </td><td>  -  </td></tr>
@@ -235,7 +239,8 @@ public class AdvancedAuctionApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Response containing the results of the item bid options operations </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid request parameters. </td><td>  -  </td></tr>
@@ -313,7 +318,8 @@ public class AdvancedAuctionApi {
      * @return AdvancedAuctionProcessedItems
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Response containing the results of the item bid options operations </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid request parameters. </td><td>  -  </td></tr>
@@ -336,7 +342,8 @@ public class AdvancedAuctionApi {
      * @return ApiResponse&lt;AdvancedAuctionProcessedItems&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Response containing the results of the item bid options operations </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid request parameters. </td><td>  -  </td></tr>
@@ -361,7 +368,8 @@ public class AdvancedAuctionApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Response containing the results of the item bid options operations </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid request parameters. </td><td>  -  </td></tr>

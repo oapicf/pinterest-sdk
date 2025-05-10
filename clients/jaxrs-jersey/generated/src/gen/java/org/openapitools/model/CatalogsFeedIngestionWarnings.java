@@ -33,7 +33,7 @@ import javax.validation.Valid;
   CatalogsFeedIngestionWarnings.JSON_PROPERTY_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_I_N_V_A_L_I_D_F_I_L_E,
   CatalogsFeedIngestionWarnings.JSON_PROPERTY_H_O_T_E_L_P_R_I_C_E_H_E_A_D_E_R_I_S_P_R_E_S_E_N_T
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-11-05T02:20:07.425136412Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsFeedIngestionWarnings   {
   public static final String JSON_PROPERTY_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_L_E_V_E_L_I_N_T_E_R_N_A_L_E_R_R_O_R = "ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR";
   @JsonProperty(JSON_PROPERTY_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_L_E_V_E_L_I_N_T_E_R_N_A_L_E_R_R_O_R)

@@ -24,9 +24,9 @@ char* role_role_ToString(pinterest_rest_api_role__e role);
 
 pinterest_rest_api_role__e role_role_FromString(char* role);
 
-//cJSON *role_role_convertToJSON(pinterest_rest_api_role__e role);
+cJSON *role_convertToJSON(pinterest_rest_api_role__e role);
 
-//pinterest_rest_api_role__e role_role_parseFromJSON(cJSON *roleJSON);
+pinterest_rest_api_role__e role_parseFromJSON(cJSON *roleJSON);
 
 #endif /* _role_H_ */
 

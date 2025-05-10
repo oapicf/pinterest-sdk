@@ -5,7 +5,7 @@
 
 
 
-keywords_request_t *keywords_request_create(
+static keywords_request_t *keywords_request_create_internal(
     list_t *keywords,
     char *parent_id
     ) {
@@ -16,12 +16,26 @@ keywords_request_t *keywords_request_create(
     keywords_request_local_var->keywords = keywords;
     keywords_request_local_var->parent_id = parent_id;
 
+    keywords_request_local_var->_library_owned = 1;
     return keywords_request_local_var;
 }
 
+__attribute__((deprecated)) keywords_request_t *keywords_request_create(
+    list_t *keywords,
+    char *parent_id
+    ) {
+    return keywords_request_create_internal (
+        keywords,
+        parent_id
+        );
+}
 
 void keywords_request_free(keywords_request_t *keywords_request) {
     if(NULL == keywords_request){
+        return ;
+    }
+    if(keywords_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "keywords_request_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -88,6 +102,9 @@ keywords_request_t *keywords_request_parseFromJSON(cJSON *keywords_requestJSON){
 
     // keywords_request->keywords
     cJSON *keywords = cJSON_GetObjectItemCaseSensitive(keywords_requestJSON, "keywords");
+    if (cJSON_IsNull(keywords)) {
+        keywords = NULL;
+    }
     if (!keywords) {
         goto end;
     }
@@ -112,6 +129,9 @@ keywords_request_t *keywords_request_parseFromJSON(cJSON *keywords_requestJSON){
 
     // keywords_request->parent_id
     cJSON *parent_id = cJSON_GetObjectItemCaseSensitive(keywords_requestJSON, "parent_id");
+    if (cJSON_IsNull(parent_id)) {
+        parent_id = NULL;
+    }
     if (!parent_id) {
         goto end;
     }
@@ -123,7 +143,7 @@ keywords_request_t *keywords_request_parseFromJSON(cJSON *keywords_requestJSON){
     }
 
 
-    keywords_request_local_var = keywords_request_create (
+    keywords_request_local_var = keywords_request_create_internal (
         keywordsList,
         strdup(parent_id->valuestring)
         );

@@ -22,7 +22,7 @@ pinterest_rest_api_business_shared_audience_response__e business_shared_audience
     return 0;
 }
 
-business_shared_audience_response_t *business_shared_audience_response_create(
+static business_shared_audience_response_t *business_shared_audience_response_create_internal(
     char *audience_id,
     list_t *permissions,
     list_t *recipient_business_ids
@@ -35,12 +35,28 @@ business_shared_audience_response_t *business_shared_audience_response_create(
     business_shared_audience_response_local_var->permissions = permissions;
     business_shared_audience_response_local_var->recipient_business_ids = recipient_business_ids;
 
+    business_shared_audience_response_local_var->_library_owned = 1;
     return business_shared_audience_response_local_var;
 }
 
+__attribute__((deprecated)) business_shared_audience_response_t *business_shared_audience_response_create(
+    char *audience_id,
+    list_t *permissions,
+    list_t *recipient_business_ids
+    ) {
+    return business_shared_audience_response_create_internal (
+        audience_id,
+        permissions,
+        recipient_business_ids
+        );
+}
 
 void business_shared_audience_response_free(business_shared_audience_response_t *business_shared_audience_response) {
     if(NULL == business_shared_audience_response){
+        return ;
+    }
+    if(business_shared_audience_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "business_shared_audience_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -77,7 +93,7 @@ cJSON *business_shared_audience_response_convertToJSON(business_shared_audience_
 
 
     // business_shared_audience_response->permissions
-    if(business_shared_audience_response->permissions != pinterest_rest_api_business_shared_audience_response_PERMISSIONS_NULL) {
+    if(business_shared_audience_response->permissions != pinterest_rest_api_list_PERMISSIONS_NULL) {
     cJSON *permissions = cJSON_AddArrayToObject(item, "permissions");
     if(permissions == NULL) {
     goto fail; //nonprimitive container
@@ -105,7 +121,7 @@ cJSON *business_shared_audience_response_convertToJSON(business_shared_audience_
 
     listEntry_t *recipient_business_idsListEntry;
     list_ForEach(recipient_business_idsListEntry, business_shared_audience_response->recipient_business_ids) {
-    if(cJSON_AddStringToObject(recipient_business_ids, "", (char*)recipient_business_idsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(recipient_business_ids, "", recipient_business_idsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -132,6 +148,9 @@ business_shared_audience_response_t *business_shared_audience_response_parseFrom
 
     // business_shared_audience_response->audience_id
     cJSON *audience_id = cJSON_GetObjectItemCaseSensitive(business_shared_audience_responseJSON, "audience_id");
+    if (cJSON_IsNull(audience_id)) {
+        audience_id = NULL;
+    }
     if (audience_id) { 
     if(!cJSON_IsString(audience_id) && !cJSON_IsNull(audience_id))
     {
@@ -141,6 +160,9 @@ business_shared_audience_response_t *business_shared_audience_response_parseFrom
 
     // business_shared_audience_response->permissions
     cJSON *permissions = cJSON_GetObjectItemCaseSensitive(business_shared_audience_responseJSON, "permissions");
+    if (cJSON_IsNull(permissions)) {
+        permissions = NULL;
+    }
     if (permissions) { 
     cJSON *permissions_local_nonprimitive = NULL;
     if(!cJSON_IsArray(permissions)){
@@ -162,6 +184,9 @@ business_shared_audience_response_t *business_shared_audience_response_parseFrom
 
     // business_shared_audience_response->recipient_business_ids
     cJSON *recipient_business_ids = cJSON_GetObjectItemCaseSensitive(business_shared_audience_responseJSON, "recipient_business_ids");
+    if (cJSON_IsNull(recipient_business_ids)) {
+        recipient_business_ids = NULL;
+    }
     if (recipient_business_ids) { 
     cJSON *recipient_business_ids_local = NULL;
     if(!cJSON_IsArray(recipient_business_ids)) {
@@ -180,7 +205,7 @@ business_shared_audience_response_t *business_shared_audience_response_parseFrom
     }
 
 
-    business_shared_audience_response_local_var = business_shared_audience_response_create (
+    business_shared_audience_response_local_var = business_shared_audience_response_create_internal (
         audience_id && !cJSON_IsNull(audience_id) ? strdup(audience_id->valuestring) : NULL,
         permissions ? permissionsList : NULL,
         recipient_business_ids ? recipient_business_idsList : NULL

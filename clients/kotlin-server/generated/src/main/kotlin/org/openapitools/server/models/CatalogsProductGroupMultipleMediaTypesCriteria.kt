@@ -13,13 +13,15 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.MediaType
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param propertyValues 
  * @param negated 
  */
+@Serializable
 data class CatalogsProductGroupMultipleMediaTypesCriteria(
     val propertyValues: kotlin.collections.List<MediaType>,
     val negated: kotlin.Boolean? = false
-) 
+)
 

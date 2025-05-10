@@ -867,8 +867,8 @@ export enum AdTargetingAnalyticsGetViewWindowDaysEnum {
     * @enum {string}
     */
 export enum AdTargetingAnalyticsGetConversionReportTimeEnum {
-    AdAction = 'TIME_OF_AD_ACTION',
-    Conversion = 'TIME_OF_CONVERSION'
+    TimeOfAdAction = 'TIME_OF_AD_ACTION',
+    TimeOfConversion = 'TIME_OF_CONVERSION'
 }
 /**
     * @export
@@ -1068,8 +1068,8 @@ export enum AdsAnalyticsViewWindowDaysEnum {
     * @enum {string}
     */
 export enum AdsAnalyticsConversionReportTimeEnum {
-    AdAction = 'TIME_OF_AD_ACTION',
-    Conversion = 'TIME_OF_CONVERSION'
+    TimeOfAdAction = 'TIME_OF_AD_ACTION',
+    TimeOfConversion = 'TIME_OF_CONVERSION'
 }
 /**
     * @export

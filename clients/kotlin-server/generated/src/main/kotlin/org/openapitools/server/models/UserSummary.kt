@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param username Username
  * @param type Always \"user\"
  */
+@Serializable
 data class UserSummary(
     /* Username */
     val username: kotlin.String? = null,
     /* Always \"user\" */
     val type: kotlin.String? = null
-) 
+)
 

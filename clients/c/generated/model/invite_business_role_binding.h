@@ -28,9 +28,10 @@ typedef struct invite_business_role_binding_t {
     struct base_invite_data_response_invite_data_t *invite_data; //model
     int is_received_invite; //boolean
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } invite_business_role_binding_t;
 
-invite_business_role_binding_t *invite_business_role_binding_create(
+__attribute__((deprecated)) invite_business_role_binding_t *invite_business_role_binding_create(
     char *created_by_business_id,
     char *created_by_user_id,
     business_access_user_summary_t *user,

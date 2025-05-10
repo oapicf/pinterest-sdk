@@ -22,9 +22,10 @@ typedef struct ads_credit_redeem_request_t {
     char *offer_code_hash; // string
     int validate_only; //boolean
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } ads_credit_redeem_request_t;
 
-ads_credit_redeem_request_t *ads_credit_redeem_request_create(
+__attribute__((deprecated)) ads_credit_redeem_request_t *ads_credit_redeem_request_create(
     char *offer_code_hash,
     int validate_only
 );

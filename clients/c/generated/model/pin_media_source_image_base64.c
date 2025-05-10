@@ -39,7 +39,7 @@ pinterest_rest_api_pin_media_source_image_base64_CONTENTTYPE_e pin_media_source_
     return 0;
 }
 
-pin_media_source_image_base64_t *pin_media_source_image_base64_create(
+static pin_media_source_image_base64_t *pin_media_source_image_base64_create_internal(
     pinterest_rest_api_pin_media_source_image_base64_SOURCETYPE_e source_type,
     pinterest_rest_api_pin_media_source_image_base64_CONTENTTYPE_e content_type,
     char *data,
@@ -54,12 +54,30 @@ pin_media_source_image_base64_t *pin_media_source_image_base64_create(
     pin_media_source_image_base64_local_var->data = data;
     pin_media_source_image_base64_local_var->is_standard = is_standard;
 
+    pin_media_source_image_base64_local_var->_library_owned = 1;
     return pin_media_source_image_base64_local_var;
 }
 
+__attribute__((deprecated)) pin_media_source_image_base64_t *pin_media_source_image_base64_create(
+    pinterest_rest_api_pin_media_source_image_base64_SOURCETYPE_e source_type,
+    pinterest_rest_api_pin_media_source_image_base64_CONTENTTYPE_e content_type,
+    char *data,
+    int is_standard
+    ) {
+    return pin_media_source_image_base64_create_internal (
+        source_type,
+        content_type,
+        data,
+        is_standard
+        );
+}
 
 void pin_media_source_image_base64_free(pin_media_source_image_base64_t *pin_media_source_image_base64) {
     if(NULL == pin_media_source_image_base64){
+        return ;
+    }
+    if(pin_media_source_image_base64->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "pin_media_source_image_base64_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -77,7 +95,7 @@ cJSON *pin_media_source_image_base64_convertToJSON(pin_media_source_image_base64
     if (pinterest_rest_api_pin_media_source_image_base64_SOURCETYPE_NULL == pin_media_source_image_base64->source_type) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "source_type", source_typepin_media_source_image_base64_ToString(pin_media_source_image_base64->source_type)) == NULL)
+    if(cJSON_AddStringToObject(item, "source_type", pin_media_source_image_base64_source_type_ToString(pin_media_source_image_base64->source_type)) == NULL)
     {
     goto fail; //Enum
     }
@@ -87,7 +105,7 @@ cJSON *pin_media_source_image_base64_convertToJSON(pin_media_source_image_base64
     if (pinterest_rest_api_pin_media_source_image_base64_CONTENTTYPE_NULL == pin_media_source_image_base64->content_type) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "content_type", content_typepin_media_source_image_base64_ToString(pin_media_source_image_base64->content_type)) == NULL)
+    if(cJSON_AddStringToObject(item, "content_type", pin_media_source_image_base64_content_type_ToString(pin_media_source_image_base64->content_type)) == NULL)
     {
     goto fail; //Enum
     }
@@ -123,6 +141,9 @@ pin_media_source_image_base64_t *pin_media_source_image_base64_parseFromJSON(cJS
 
     // pin_media_source_image_base64->source_type
     cJSON *source_type = cJSON_GetObjectItemCaseSensitive(pin_media_source_image_base64JSON, "source_type");
+    if (cJSON_IsNull(source_type)) {
+        source_type = NULL;
+    }
     if (!source_type) {
         goto end;
     }
@@ -137,6 +158,9 @@ pin_media_source_image_base64_t *pin_media_source_image_base64_parseFromJSON(cJS
 
     // pin_media_source_image_base64->content_type
     cJSON *content_type = cJSON_GetObjectItemCaseSensitive(pin_media_source_image_base64JSON, "content_type");
+    if (cJSON_IsNull(content_type)) {
+        content_type = NULL;
+    }
     if (!content_type) {
         goto end;
     }
@@ -151,6 +175,9 @@ pin_media_source_image_base64_t *pin_media_source_image_base64_parseFromJSON(cJS
 
     // pin_media_source_image_base64->data
     cJSON *data = cJSON_GetObjectItemCaseSensitive(pin_media_source_image_base64JSON, "data");
+    if (cJSON_IsNull(data)) {
+        data = NULL;
+    }
     if (!data) {
         goto end;
     }
@@ -163,6 +190,9 @@ pin_media_source_image_base64_t *pin_media_source_image_base64_parseFromJSON(cJS
 
     // pin_media_source_image_base64->is_standard
     cJSON *is_standard = cJSON_GetObjectItemCaseSensitive(pin_media_source_image_base64JSON, "is_standard");
+    if (cJSON_IsNull(is_standard)) {
+        is_standard = NULL;
+    }
     if (is_standard) { 
     if(!cJSON_IsBool(is_standard))
     {
@@ -171,7 +201,7 @@ pin_media_source_image_base64_t *pin_media_source_image_base64_parseFromJSON(cJS
     }
 
 
-    pin_media_source_image_base64_local_var = pin_media_source_image_base64_create (
+    pin_media_source_image_base64_local_var = pin_media_source_image_base64_create_internal (
         source_typeVariable,
         content_typeVariable,
         strdup(data->valuestring),

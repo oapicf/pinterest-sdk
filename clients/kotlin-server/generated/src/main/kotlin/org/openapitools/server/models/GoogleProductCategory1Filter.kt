@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsProductGroupMultipleStringListCriteria
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param GOOGLE_PRODUCT_CATEGORY_1 
  */
+@Serializable
 data class GoogleProductCategory1Filter(
     val GOOGLE_PRODUCT_CATEGORY_1: CatalogsProductGroupMultipleStringListCriteria
-) 
+)
 

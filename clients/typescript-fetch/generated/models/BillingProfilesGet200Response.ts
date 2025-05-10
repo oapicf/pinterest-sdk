@@ -64,11 +64,11 @@ export function BillingProfilesGet200ResponseFromJSONTyped(json: any, ignoreDisc
     };
 }
 
-  export function BillingProfilesGet200ResponseToJSON(json: any): BillingProfilesGet200Response {
-      return BillingProfilesGet200ResponseToJSONTyped(json, false);
-  }
+export function BillingProfilesGet200ResponseToJSON(json: any): BillingProfilesGet200Response {
+    return BillingProfilesGet200ResponseToJSONTyped(json, false);
+}
 
-  export function BillingProfilesGet200ResponseToJSONTyped(value?: BillingProfilesGet200Response | null, ignoreDiscriminator: boolean = false): any {
+export function BillingProfilesGet200ResponseToJSONTyped(value?: BillingProfilesGet200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

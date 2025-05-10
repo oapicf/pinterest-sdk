@@ -70,11 +70,11 @@ export function PinAnalyticsMetricsResponseFromJSONTyped(json: any, ignoreDiscri
     };
 }
 
-  export function PinAnalyticsMetricsResponseToJSON(json: any): PinAnalyticsMetricsResponse {
-      return PinAnalyticsMetricsResponseToJSONTyped(json, false);
-  }
+export function PinAnalyticsMetricsResponseToJSON(json: any): PinAnalyticsMetricsResponse {
+    return PinAnalyticsMetricsResponseToJSONTyped(json, false);
+}
 
-  export function PinAnalyticsMetricsResponseToJSONTyped(value?: PinAnalyticsMetricsResponse | null, ignoreDiscriminator: boolean = false): any {
+export function PinAnalyticsMetricsResponseToJSONTyped(value?: PinAnalyticsMetricsResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

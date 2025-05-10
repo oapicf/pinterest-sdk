@@ -13,13 +13,15 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsFeed
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items 
  * @param bookmark 
  */
+@Serializable
 data class FeedsList200Response(
     val items: kotlin.collections.List<CatalogsFeed>,
     val bookmark: kotlin.String? = null
-) 
+)
 

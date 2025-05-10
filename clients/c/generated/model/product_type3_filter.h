@@ -22,9 +22,10 @@ typedef struct product_type3_filter_t product_type3_filter_t;
 typedef struct product_type3_filter_t {
     catalogs_product_group_multiple_string_list_criteria_t *product_type_3; //object
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } product_type3_filter_t;
 
-product_type3_filter_t *product_type3_filter_create(
+__attribute__((deprecated)) product_type3_filter_t *product_type3_filter_create(
     catalogs_product_group_multiple_string_list_criteria_t *product_type_3
 );
 

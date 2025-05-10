@@ -70,11 +70,11 @@ export function AudienceCommonFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-  export function AudienceCommonToJSON(json: any): AudienceCommon {
-      return AudienceCommonToJSONTyped(json, false);
-  }
+export function AudienceCommonToJSON(json: any): AudienceCommon {
+    return AudienceCommonToJSONTyped(json, false);
+}
 
-  export function AudienceCommonToJSONTyped(value?: AudienceCommon | null, ignoreDiscriminator: boolean = false): any {
+export function AudienceCommonToJSONTyped(value?: AudienceCommon | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

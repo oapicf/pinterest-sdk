@@ -22,7 +22,7 @@ pinterest_rest_api_targeting_template_update_request_OPERATIONTYPE_e targeting_t
     return 0;
 }
 
-targeting_template_update_request_t *targeting_template_update_request_create(
+static targeting_template_update_request_t *targeting_template_update_request_create_internal(
     pinterest_rest_api_targeting_template_update_request_OPERATIONTYPE_e operation_type,
     char *id
     ) {
@@ -33,12 +33,26 @@ targeting_template_update_request_t *targeting_template_update_request_create(
     targeting_template_update_request_local_var->operation_type = operation_type;
     targeting_template_update_request_local_var->id = id;
 
+    targeting_template_update_request_local_var->_library_owned = 1;
     return targeting_template_update_request_local_var;
 }
 
+__attribute__((deprecated)) targeting_template_update_request_t *targeting_template_update_request_create(
+    pinterest_rest_api_targeting_template_update_request_OPERATIONTYPE_e operation_type,
+    char *id
+    ) {
+    return targeting_template_update_request_create_internal (
+        operation_type,
+        id
+        );
+}
 
 void targeting_template_update_request_free(targeting_template_update_request_t *targeting_template_update_request) {
     if(NULL == targeting_template_update_request){
+        return ;
+    }
+    if(targeting_template_update_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "targeting_template_update_request_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -56,7 +70,7 @@ cJSON *targeting_template_update_request_convertToJSON(targeting_template_update
     if (pinterest_rest_api_targeting_template_update_request_OPERATIONTYPE_NULL == targeting_template_update_request->operation_type) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "operation_type", operation_typetargeting_template_update_request_ToString(targeting_template_update_request->operation_type)) == NULL)
+    if(cJSON_AddStringToObject(item, "operation_type", targeting_template_update_request_operation_type_ToString(targeting_template_update_request->operation_type)) == NULL)
     {
     goto fail; //Enum
     }
@@ -84,6 +98,9 @@ targeting_template_update_request_t *targeting_template_update_request_parseFrom
 
     // targeting_template_update_request->operation_type
     cJSON *operation_type = cJSON_GetObjectItemCaseSensitive(targeting_template_update_requestJSON, "operation_type");
+    if (cJSON_IsNull(operation_type)) {
+        operation_type = NULL;
+    }
     if (!operation_type) {
         goto end;
     }
@@ -98,6 +115,9 @@ targeting_template_update_request_t *targeting_template_update_request_parseFrom
 
     // targeting_template_update_request->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(targeting_template_update_requestJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (!id) {
         goto end;
     }
@@ -109,7 +129,7 @@ targeting_template_update_request_t *targeting_template_update_request_parseFrom
     }
 
 
-    targeting_template_update_request_local_var = targeting_template_update_request_create (
+    targeting_template_update_request_local_var = targeting_template_update_request_create_internal (
         operation_typeVariable,
         strdup(id->valuestring)
         );

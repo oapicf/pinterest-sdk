@@ -414,7 +414,7 @@ class AudiencesController extends Controller
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "ASCENDING", "DESCENDING" ]);
+        $asserts[] = new Assert\Choice([ 'ASCENDING', 'DESCENDING' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($order, $asserts);
         if ($response instanceof Response) {
@@ -429,7 +429,7 @@ class AudiencesController extends Controller
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "OWNED", "RECEIVED" ]);
+        $asserts[] = new Assert\Choice([ 'OWNED', 'RECEIVED' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($ownershipType, $asserts);
         if ($response instanceof Response) {

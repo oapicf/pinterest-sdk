@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { RelatedTerms } from '../model/relatedTerms';
 import { Configuration } from '../configuration';
@@ -26,10 +26,12 @@ export class TermsService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -47,9 +49,10 @@ export class TermsService {
      * @param terms List of input terms.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [termsRelatedListOpts.config] Override http request option.
      */
-    public termsRelatedList(terms: Array<string>, ): Observable<AxiosResponse<RelatedTerms>>;
-    public termsRelatedList(terms: Array<string>, ): Observable<any> {
+    public termsRelatedList(terms: Array<string>, termsRelatedListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<RelatedTerms>>;
+    public termsRelatedList(terms: Array<string>, termsRelatedListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (terms === null || terms === undefined) {
             throw new Error('Required parameter terms was null or undefined when calling termsRelatedList.');
         }
@@ -94,7 +97,8 @@ export class TermsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...termsRelatedListOpts?.config,
+                        headers: {...headers, ...termsRelatedListOpts?.config?.headers},
                     }
                 );
             })
@@ -107,9 +111,10 @@ export class TermsService {
      * @param limit Max suggested terms to return.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [termsSuggestedListOpts.config] Override http request option.
      */
-    public termsSuggestedList(term: string, limit?: number, ): Observable<AxiosResponse<Array<string>>>;
-    public termsSuggestedList(term: string, limit?: number, ): Observable<any> {
+    public termsSuggestedList(term: string, limit?: number, termsSuggestedListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<Array<string>>>;
+    public termsSuggestedList(term: string, limit?: number, termsSuggestedListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (term === null || term === undefined) {
             throw new Error('Required parameter term was null or undefined when calling termsSuggestedList.');
         }
@@ -155,7 +160,8 @@ export class TermsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...termsSuggestedListOpts?.config,
+                        headers: {...headers, ...termsSuggestedListOpts?.config?.headers},
                     }
                 );
             })

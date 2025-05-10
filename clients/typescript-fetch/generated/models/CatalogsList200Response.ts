@@ -64,11 +64,11 @@ export function CatalogsList200ResponseFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-  export function CatalogsList200ResponseToJSON(json: any): CatalogsList200Response {
-      return CatalogsList200ResponseToJSONTyped(json, false);
-  }
+export function CatalogsList200ResponseToJSON(json: any): CatalogsList200Response {
+    return CatalogsList200ResponseToJSONTyped(json, false);
+}
 
-  export function CatalogsList200ResponseToJSONTyped(value?: CatalogsList200Response | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsList200ResponseToJSONTyped(value?: CatalogsList200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

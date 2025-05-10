@@ -13,14 +13,16 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.InviteResponse
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items List of invite and request data.
  * @param bookmark 
  */
+@Serializable
 data class GetInvites200Response(
     /* List of invite and request data. */
     val items: kotlin.collections.List<InviteResponse>,
     val bookmark: kotlin.String? = null
-) 
+)
 

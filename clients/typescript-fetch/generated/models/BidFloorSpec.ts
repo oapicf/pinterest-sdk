@@ -130,11 +130,11 @@ export function BidFloorSpecFromJSONTyped(json: any, ignoreDiscriminator: boolea
     };
 }
 
-  export function BidFloorSpecToJSON(json: any): BidFloorSpec {
-      return BidFloorSpecToJSONTyped(json, false);
-  }
+export function BidFloorSpecToJSON(json: any): BidFloorSpec {
+    return BidFloorSpecToJSONTyped(json, false);
+}
 
-  export function BidFloorSpecToJSONTyped(value?: BidFloorSpec | null, ignoreDiscriminator: boolean = false): any {
+export function BidFloorSpecToJSONTyped(value?: BidFloorSpec | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

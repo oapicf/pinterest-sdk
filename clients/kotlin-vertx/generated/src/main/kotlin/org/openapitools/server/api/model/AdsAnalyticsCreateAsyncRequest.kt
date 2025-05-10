@@ -118,13 +118,13 @@ data class AdsAnalyticsCreateAsyncRequest (
 
     /**
     * Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
-    * Values: ID,DATE
+    * Values: BY_ID,BY_DATE
     */
     enum class PrimarySort(val value: kotlin.String){
     
-        ID("BY_ID"),
+        BY_ID("BY_ID"),
     
-        DATE("BY_DATE");
+        BY_DATE("BY_DATE");
     
     }
 

@@ -14,13 +14,15 @@ package org.openapitools.server.models
 import org.openapitools.server.models.CreateInvitesResultsResponseArrayItemsInnerInvite
 import org.openapitools.server.models.InviteExceptionResponse
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param exception 
  * @param invite 
  */
+@Serializable
 data class CreateInvitesResultsResponseArrayItemsInner(
     val exception: InviteExceptionResponse? = null,
     val invite: CreateInvitesResultsResponseArrayItemsInnerInvite? = null
-) 
+)
 

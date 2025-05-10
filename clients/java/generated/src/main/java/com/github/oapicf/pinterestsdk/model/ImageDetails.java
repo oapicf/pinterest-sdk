@@ -48,24 +48,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ImageDetails
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ImageDetails {
   public static final String SERIALIZED_NAME_WIDTH = "width";
   @SerializedName(SERIALIZED_NAME_WIDTH)
+  @javax.annotation.Nonnull
   private Integer width;
 
   public static final String SERIALIZED_NAME_HEIGHT = "height";
   @SerializedName(SERIALIZED_NAME_HEIGHT)
+  @javax.annotation.Nullable
   private Integer height;
 
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)
+  @javax.annotation.Nonnull
   private String url;
 
   public ImageDetails() {
   }
 
-  public ImageDetails width(Integer width) {
+  public ImageDetails width(@javax.annotation.Nonnull Integer width) {
     this.width = width;
     return this;
   }
@@ -80,12 +83,12 @@ public class ImageDetails {
     return width;
   }
 
-  public void setWidth(Integer width) {
+  public void setWidth(@javax.annotation.Nonnull Integer width) {
     this.width = width;
   }
 
 
-  public ImageDetails height(Integer height) {
+  public ImageDetails height(@javax.annotation.Nullable Integer height) {
     this.height = height;
     return this;
   }
@@ -100,12 +103,12 @@ public class ImageDetails {
     return height;
   }
 
-  public void setHeight(Integer height) {
+  public void setHeight(@javax.annotation.Nullable Integer height) {
     this.height = height;
   }
 
 
-  public ImageDetails url(String url) {
+  public ImageDetails url(@javax.annotation.Nonnull String url) {
     this.url = url;
     return this;
   }
@@ -119,7 +122,7 @@ public class ImageDetails {
     return url;
   }
 
-  public void setUrl(String url) {
+  public void setUrl(@javax.annotation.Nonnull String url) {
     this.url = url;
   }
 

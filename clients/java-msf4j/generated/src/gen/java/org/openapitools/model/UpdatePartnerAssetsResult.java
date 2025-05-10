@@ -13,7 +13,7 @@ import java.util.List;
  * An object containing the permissions a business partner has on the asset.
  */
 @ApiModel(description = "An object containing the permissions a business partner has on the asset.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2025-05-10T05:39:24.501669360Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class UpdatePartnerAssetsResult   {
   @JsonProperty("asset_id")
   private String assetId;

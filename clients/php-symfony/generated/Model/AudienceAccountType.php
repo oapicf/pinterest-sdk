@@ -42,8 +42,8 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum AudienceAccountType: string
 {
-        case AD_ACCOUNT = "AD_ACCOUNT";
-        case BUSINESS_ACCOUNT = "BUSINESS_ACCOUNT";
+        case AD_ACCOUNT = 'AD_ACCOUNT';
+        case BUSINESS_ACCOUNT = 'BUSINESS_ACCOUNT';
 }
 
 

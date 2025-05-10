@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.ConversionEventsDataInnerCustomDataContentsInner;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -27,7 +28,7 @@ import javax.annotation.Generated;
 
 @Schema(name = "ConversionEvents_data_inner_custom_data", description = "Object containing other custom data.")
 @JsonTypeName("ConversionEvents_data_inner_custom_data")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConversionEventsDataInnerCustomData {
 
   private JsonNullable<String> currency = JsonNullable.<String>undefined();
@@ -46,7 +47,7 @@ public class ConversionEventsDataInnerCustomData {
   @Valid
   private List<@Valid ConversionEventsDataInnerCustomDataContentsInner> contents = new ArrayList<>();
 
-  private Long numItems;
+  private @Nullable Long numItems;
 
   private JsonNullable<String> orderId = JsonNullable.<String>undefined();
 

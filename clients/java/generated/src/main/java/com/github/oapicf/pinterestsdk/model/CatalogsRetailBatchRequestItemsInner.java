@@ -66,7 +66,7 @@ import com.google.gson.JsonParseException;
 
 import com.github.oapicf.pinterestsdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsRetailBatchRequestItemsInner extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CatalogsRetailBatchRequestItemsInner.class.getName());
 
@@ -263,6 +263,7 @@ public class CatalogsRetailBatchRequestItemsInner extends AbstractOpenApiSchema 
     public CatalogsCreateRetailItem getCatalogsCreateRetailItem() throws ClassCastException {
         return (CatalogsCreateRetailItem)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CatalogsUpdateRetailItem`. If the actual instance is not `CatalogsUpdateRetailItem`,
      * the ClassCastException will be thrown.
@@ -273,6 +274,7 @@ public class CatalogsRetailBatchRequestItemsInner extends AbstractOpenApiSchema 
     public CatalogsUpdateRetailItem getCatalogsUpdateRetailItem() throws ClassCastException {
         return (CatalogsUpdateRetailItem)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CatalogsUpsertRetailItem`. If the actual instance is not `CatalogsUpsertRetailItem`,
      * the ClassCastException will be thrown.
@@ -283,6 +285,7 @@ public class CatalogsRetailBatchRequestItemsInner extends AbstractOpenApiSchema 
     public CatalogsUpsertRetailItem getCatalogsUpsertRetailItem() throws ClassCastException {
         return (CatalogsUpsertRetailItem)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CatalogsDeleteRetailItem`. If the actual instance is not `CatalogsDeleteRetailItem`,
      * the ClassCastException will be thrown.

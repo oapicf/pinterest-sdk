@@ -13,14 +13,16 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CreateAssetAccessRequestErrorMessageInner
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param exceptions A list of errors associated with the asset access requests. Will be returned if there is an error.
  * @param invites 
  */
+@Serializable
 data class CreateAssetAccessRequestResponse(
     /* A list of errors associated with the asset access requests. Will be returned if there is an error. */
     val exceptions: kotlin.collections.List<CreateAssetAccessRequestErrorMessageInner>? = null,
     val invites: kotlin.collections.Map<kotlin.String, kotlin.String>? = null
-) 
+)
 

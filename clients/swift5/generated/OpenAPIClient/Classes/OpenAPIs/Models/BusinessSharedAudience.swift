@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct BusinessSharedAudience: Codable, JSONEncodable, Hashable {
 
-    static let audienceIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let audienceIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Unique identifier of an audience */
     public var audienceId: String
     public var operationType: OperationType

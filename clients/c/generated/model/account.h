@@ -40,9 +40,10 @@ typedef struct account_t {
     int following_count; //numeric
     int monthly_views; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } account_t;
 
-account_t *account_create(
+__attribute__((deprecated)) account_t *account_create(
     pinterest_rest_api_account_ACCOUNTTYPE_e account_type,
     char *id,
     char *profile_image,

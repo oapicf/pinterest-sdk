@@ -22,7 +22,7 @@ pinterest_rest_api_catalogs_create_request_CATALOGTYPE_e catalogs_create_request
     return 0;
 }
 
-catalogs_create_request_t *catalogs_create_request_create(
+static catalogs_create_request_t *catalogs_create_request_create_internal(
     pinterest_rest_api_catalogs_create_request_CATALOGTYPE_e catalog_type,
     char *name
     ) {
@@ -33,12 +33,26 @@ catalogs_create_request_t *catalogs_create_request_create(
     catalogs_create_request_local_var->catalog_type = catalog_type;
     catalogs_create_request_local_var->name = name;
 
+    catalogs_create_request_local_var->_library_owned = 1;
     return catalogs_create_request_local_var;
 }
 
+__attribute__((deprecated)) catalogs_create_request_t *catalogs_create_request_create(
+    pinterest_rest_api_catalogs_create_request_CATALOGTYPE_e catalog_type,
+    char *name
+    ) {
+    return catalogs_create_request_create_internal (
+        catalog_type,
+        name
+        );
+}
 
 void catalogs_create_request_free(catalogs_create_request_t *catalogs_create_request) {
     if(NULL == catalogs_create_request){
+        return ;
+    }
+    if(catalogs_create_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_create_request_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -56,7 +70,7 @@ cJSON *catalogs_create_request_convertToJSON(catalogs_create_request_t *catalogs
     if (pinterest_rest_api_catalogs_create_request_CATALOGTYPE_NULL == catalogs_create_request->catalog_type) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "catalog_type", catalog_typecatalogs_create_request_ToString(catalogs_create_request->catalog_type)) == NULL)
+    if(cJSON_AddStringToObject(item, "catalog_type", catalogs_create_request_catalog_type_ToString(catalogs_create_request->catalog_type)) == NULL)
     {
     goto fail; //Enum
     }
@@ -84,6 +98,9 @@ catalogs_create_request_t *catalogs_create_request_parseFromJSON(cJSON *catalogs
 
     // catalogs_create_request->catalog_type
     cJSON *catalog_type = cJSON_GetObjectItemCaseSensitive(catalogs_create_requestJSON, "catalog_type");
+    if (cJSON_IsNull(catalog_type)) {
+        catalog_type = NULL;
+    }
     if (!catalog_type) {
         goto end;
     }
@@ -98,6 +115,9 @@ catalogs_create_request_t *catalogs_create_request_parseFromJSON(cJSON *catalogs
 
     // catalogs_create_request->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(catalogs_create_requestJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
     if (!name) {
         goto end;
     }
@@ -109,7 +129,7 @@ catalogs_create_request_t *catalogs_create_request_parseFromJSON(cJSON *catalogs
     }
 
 
-    catalogs_create_request_local_var = catalogs_create_request_create (
+    catalogs_create_request_local_var = catalogs_create_request_create_internal (
         catalog_typeVariable,
         strdup(name->valuestring)
         );

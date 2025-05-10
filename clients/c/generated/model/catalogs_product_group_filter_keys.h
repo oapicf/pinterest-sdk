@@ -82,9 +82,10 @@ typedef struct catalogs_product_group_filter_keys_t {
     catalogs_product_group_multiple_string_list_criteria_t *google_product_category_0; //object
     catalogs_product_group_multiple_string_criteria_t *product_group; //object
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_product_group_filter_keys_t;
 
-catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_create(
+__attribute__((deprecated)) catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys_create(
     catalogs_product_group_pricing_criteria_t *min_price,
     catalogs_product_group_pricing_criteria_t *max_price,
     catalogs_product_group_currency_criteria_t *currency,

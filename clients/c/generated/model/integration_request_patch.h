@@ -32,9 +32,10 @@ typedef struct integration_request_patch_t {
     char *additional_id_1; // string
     char *partner_metadata; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } integration_request_patch_t;
 
-integration_request_patch_t *integration_request_patch_create(
+__attribute__((deprecated)) integration_request_patch_t *integration_request_patch_create(
     char *connected_merchant_id,
     char *connected_advertiser_id,
     char *connected_lba_id,

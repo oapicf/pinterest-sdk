@@ -1,5 +1,6 @@
 import { ResponseContext, RequestContext, HttpFile, HttpInfo } from '../http/http';
-import { Configuration} from '../configuration'
+import { Configuration, ConfigurationOptions } from '../configuration'
+import type { Middleware } from '../middleware';
 
 import { Account } from '../models/Account';
 import { ActionType } from '../models/ActionType';
@@ -1073,7 +1074,7 @@ export class ObjectAdAccountsApi {
      * Get ad account analytics
      * @param param the request object
      */
-    public adAccountAnalyticsWithHttpInfo(param: AdAccountsApiAdAccountAnalyticsRequest, options?: Configuration): Promise<HttpInfo<Array<AdAccountAnalyticsResponseInner>>> {
+    public adAccountAnalyticsWithHttpInfo(param: AdAccountsApiAdAccountAnalyticsRequest, options?: ConfigurationOptions): Promise<HttpInfo<Array<AdAccountAnalyticsResponseInner>>> {
         return this.api.adAccountAnalyticsWithHttpInfo(param.adAccountId, param.startDate, param.endDate, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime,  options).toPromise();
     }
 
@@ -1082,7 +1083,7 @@ export class ObjectAdAccountsApi {
      * Get ad account analytics
      * @param param the request object
      */
-    public adAccountAnalytics(param: AdAccountsApiAdAccountAnalyticsRequest, options?: Configuration): Promise<Array<AdAccountAnalyticsResponseInner>> {
+    public adAccountAnalytics(param: AdAccountsApiAdAccountAnalyticsRequest, options?: ConfigurationOptions): Promise<Array<AdAccountAnalyticsResponseInner>> {
         return this.api.adAccountAnalytics(param.adAccountId, param.startDate, param.endDate, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime,  options).toPromise();
     }
 
@@ -1091,7 +1092,7 @@ export class ObjectAdAccountsApi {
      * Get targeting analytics for an ad account
      * @param param the request object
      */
-    public adAccountTargetingAnalyticsGetWithHttpInfo(param: AdAccountsApiAdAccountTargetingAnalyticsGetRequest, options?: Configuration): Promise<HttpInfo<MetricsResponse>> {
+    public adAccountTargetingAnalyticsGetWithHttpInfo(param: AdAccountsApiAdAccountTargetingAnalyticsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<MetricsResponse>> {
         return this.api.adAccountTargetingAnalyticsGetWithHttpInfo(param.adAccountId, param.startDate, param.endDate, param.targetingTypes, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.attributionTypes,  options).toPromise();
     }
 
@@ -1100,7 +1101,7 @@ export class ObjectAdAccountsApi {
      * Get targeting analytics for an ad account
      * @param param the request object
      */
-    public adAccountTargetingAnalyticsGet(param: AdAccountsApiAdAccountTargetingAnalyticsGetRequest, options?: Configuration): Promise<MetricsResponse> {
+    public adAccountTargetingAnalyticsGet(param: AdAccountsApiAdAccountTargetingAnalyticsGetRequest, options?: ConfigurationOptions): Promise<MetricsResponse> {
         return this.api.adAccountTargetingAnalyticsGet(param.adAccountId, param.startDate, param.endDate, param.targetingTypes, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.attributionTypes,  options).toPromise();
     }
 
@@ -1109,7 +1110,7 @@ export class ObjectAdAccountsApi {
      * Create ad account
      * @param param the request object
      */
-    public adAccountsCreateWithHttpInfo(param: AdAccountsApiAdAccountsCreateRequest, options?: Configuration): Promise<HttpInfo<AdAccount>> {
+    public adAccountsCreateWithHttpInfo(param: AdAccountsApiAdAccountsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdAccount>> {
         return this.api.adAccountsCreateWithHttpInfo(param.adAccountCreateRequest,  options).toPromise();
     }
 
@@ -1118,7 +1119,7 @@ export class ObjectAdAccountsApi {
      * Create ad account
      * @param param the request object
      */
-    public adAccountsCreate(param: AdAccountsApiAdAccountsCreateRequest, options?: Configuration): Promise<AdAccount> {
+    public adAccountsCreate(param: AdAccountsApiAdAccountsCreateRequest, options?: ConfigurationOptions): Promise<AdAccount> {
         return this.api.adAccountsCreate(param.adAccountCreateRequest,  options).toPromise();
     }
 
@@ -1127,7 +1128,7 @@ export class ObjectAdAccountsApi {
      * Get ad account
      * @param param the request object
      */
-    public adAccountsGetWithHttpInfo(param: AdAccountsApiAdAccountsGetRequest, options?: Configuration): Promise<HttpInfo<AdAccount>> {
+    public adAccountsGetWithHttpInfo(param: AdAccountsApiAdAccountsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdAccount>> {
         return this.api.adAccountsGetWithHttpInfo(param.adAccountId,  options).toPromise();
     }
 
@@ -1136,7 +1137,7 @@ export class ObjectAdAccountsApi {
      * Get ad account
      * @param param the request object
      */
-    public adAccountsGet(param: AdAccountsApiAdAccountsGetRequest, options?: Configuration): Promise<AdAccount> {
+    public adAccountsGet(param: AdAccountsApiAdAccountsGetRequest, options?: ConfigurationOptions): Promise<AdAccount> {
         return this.api.adAccountsGet(param.adAccountId,  options).toPromise();
     }
 
@@ -1145,7 +1146,7 @@ export class ObjectAdAccountsApi {
      * List ad accounts
      * @param param the request object
      */
-    public adAccountsListWithHttpInfo(param: AdAccountsApiAdAccountsListRequest = {}, options?: Configuration): Promise<HttpInfo<AdAccountsList200Response>> {
+    public adAccountsListWithHttpInfo(param: AdAccountsApiAdAccountsListRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<AdAccountsList200Response>> {
         return this.api.adAccountsListWithHttpInfo(param.bookmark, param.pageSize, param.includeSharedAccounts,  options).toPromise();
     }
 
@@ -1154,7 +1155,7 @@ export class ObjectAdAccountsApi {
      * List ad accounts
      * @param param the request object
      */
-    public adAccountsList(param: AdAccountsApiAdAccountsListRequest = {}, options?: Configuration): Promise<AdAccountsList200Response> {
+    public adAccountsList(param: AdAccountsApiAdAccountsListRequest = {}, options?: ConfigurationOptions): Promise<AdAccountsList200Response> {
         return this.api.adAccountsList(param.bookmark, param.pageSize, param.includeSharedAccounts,  options).toPromise();
     }
 
@@ -1163,7 +1164,7 @@ export class ObjectAdAccountsApi {
      * Create a request for a Marketing Mix Modeling (MMM) report
      * @param param the request object
      */
-    public analyticsCreateMmmReportWithHttpInfo(param: AdAccountsApiAnalyticsCreateMmmReportRequest, options?: Configuration): Promise<HttpInfo<CreateMMMReportResponse>> {
+    public analyticsCreateMmmReportWithHttpInfo(param: AdAccountsApiAnalyticsCreateMmmReportRequest, options?: ConfigurationOptions): Promise<HttpInfo<CreateMMMReportResponse>> {
         return this.api.analyticsCreateMmmReportWithHttpInfo(param.adAccountId, param.createMMMReportRequest,  options).toPromise();
     }
 
@@ -1172,7 +1173,7 @@ export class ObjectAdAccountsApi {
      * Create a request for a Marketing Mix Modeling (MMM) report
      * @param param the request object
      */
-    public analyticsCreateMmmReport(param: AdAccountsApiAnalyticsCreateMmmReportRequest, options?: Configuration): Promise<CreateMMMReportResponse> {
+    public analyticsCreateMmmReport(param: AdAccountsApiAnalyticsCreateMmmReportRequest, options?: ConfigurationOptions): Promise<CreateMMMReportResponse> {
         return this.api.analyticsCreateMmmReport(param.adAccountId, param.createMMMReportRequest,  options).toPromise();
     }
 
@@ -1181,7 +1182,7 @@ export class ObjectAdAccountsApi {
      * Create async request for an account analytics report
      * @param param the request object
      */
-    public analyticsCreateReportWithHttpInfo(param: AdAccountsApiAnalyticsCreateReportRequest, options?: Configuration): Promise<HttpInfo<AdsAnalyticsCreateAsyncResponse>> {
+    public analyticsCreateReportWithHttpInfo(param: AdAccountsApiAnalyticsCreateReportRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdsAnalyticsCreateAsyncResponse>> {
         return this.api.analyticsCreateReportWithHttpInfo(param.adAccountId, param.adsAnalyticsCreateAsyncRequest,  options).toPromise();
     }
 
@@ -1190,7 +1191,7 @@ export class ObjectAdAccountsApi {
      * Create async request for an account analytics report
      * @param param the request object
      */
-    public analyticsCreateReport(param: AdAccountsApiAnalyticsCreateReportRequest, options?: Configuration): Promise<AdsAnalyticsCreateAsyncResponse> {
+    public analyticsCreateReport(param: AdAccountsApiAnalyticsCreateReportRequest, options?: ConfigurationOptions): Promise<AdsAnalyticsCreateAsyncResponse> {
         return this.api.analyticsCreateReport(param.adAccountId, param.adsAnalyticsCreateAsyncRequest,  options).toPromise();
     }
 
@@ -1199,7 +1200,7 @@ export class ObjectAdAccountsApi {
      * Create async request for an analytics report using a template
      * @param param the request object
      */
-    public analyticsCreateTemplateReportWithHttpInfo(param: AdAccountsApiAnalyticsCreateTemplateReportRequest, options?: Configuration): Promise<HttpInfo<AdsAnalyticsCreateAsyncResponse>> {
+    public analyticsCreateTemplateReportWithHttpInfo(param: AdAccountsApiAnalyticsCreateTemplateReportRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdsAnalyticsCreateAsyncResponse>> {
         return this.api.analyticsCreateTemplateReportWithHttpInfo(param.adAccountId, param.templateId, param.startDate, param.endDate, param.granularity,  options).toPromise();
     }
 
@@ -1208,7 +1209,7 @@ export class ObjectAdAccountsApi {
      * Create async request for an analytics report using a template
      * @param param the request object
      */
-    public analyticsCreateTemplateReport(param: AdAccountsApiAnalyticsCreateTemplateReportRequest, options?: Configuration): Promise<AdsAnalyticsCreateAsyncResponse> {
+    public analyticsCreateTemplateReport(param: AdAccountsApiAnalyticsCreateTemplateReportRequest, options?: ConfigurationOptions): Promise<AdsAnalyticsCreateAsyncResponse> {
         return this.api.analyticsCreateTemplateReport(param.adAccountId, param.templateId, param.startDate, param.endDate, param.granularity,  options).toPromise();
     }
 
@@ -1217,7 +1218,7 @@ export class ObjectAdAccountsApi {
      * Get advertiser Marketing Mix Modeling (MMM) report.
      * @param param the request object
      */
-    public analyticsGetMmmReportWithHttpInfo(param: AdAccountsApiAnalyticsGetMmmReportRequest, options?: Configuration): Promise<HttpInfo<GetMMMReportResponse>> {
+    public analyticsGetMmmReportWithHttpInfo(param: AdAccountsApiAnalyticsGetMmmReportRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetMMMReportResponse>> {
         return this.api.analyticsGetMmmReportWithHttpInfo(param.adAccountId, param.token,  options).toPromise();
     }
 
@@ -1226,7 +1227,7 @@ export class ObjectAdAccountsApi {
      * Get advertiser Marketing Mix Modeling (MMM) report.
      * @param param the request object
      */
-    public analyticsGetMmmReport(param: AdAccountsApiAnalyticsGetMmmReportRequest, options?: Configuration): Promise<GetMMMReportResponse> {
+    public analyticsGetMmmReport(param: AdAccountsApiAnalyticsGetMmmReportRequest, options?: ConfigurationOptions): Promise<GetMMMReportResponse> {
         return this.api.analyticsGetMmmReport(param.adAccountId, param.token,  options).toPromise();
     }
 
@@ -1235,7 +1236,7 @@ export class ObjectAdAccountsApi {
      * Get the account analytics report created by the async call
      * @param param the request object
      */
-    public analyticsGetReportWithHttpInfo(param: AdAccountsApiAnalyticsGetReportRequest, options?: Configuration): Promise<HttpInfo<AdsAnalyticsGetAsyncResponse>> {
+    public analyticsGetReportWithHttpInfo(param: AdAccountsApiAnalyticsGetReportRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdsAnalyticsGetAsyncResponse>> {
         return this.api.analyticsGetReportWithHttpInfo(param.adAccountId, param.token,  options).toPromise();
     }
 
@@ -1244,7 +1245,7 @@ export class ObjectAdAccountsApi {
      * Get the account analytics report created by the async call
      * @param param the request object
      */
-    public analyticsGetReport(param: AdAccountsApiAnalyticsGetReportRequest, options?: Configuration): Promise<AdsAnalyticsGetAsyncResponse> {
+    public analyticsGetReport(param: AdAccountsApiAnalyticsGetReportRequest, options?: ConfigurationOptions): Promise<AdsAnalyticsGetAsyncResponse> {
         return this.api.analyticsGetReport(param.adAccountId, param.token,  options).toPromise();
     }
 
@@ -1253,7 +1254,7 @@ export class ObjectAdAccountsApi {
      * Delete ads data for ad account in API Sandbox
      * @param param the request object
      */
-    public sandboxDeleteWithHttpInfo(param: AdAccountsApiSandboxDeleteRequest, options?: Configuration): Promise<HttpInfo<string>> {
+    public sandboxDeleteWithHttpInfo(param: AdAccountsApiSandboxDeleteRequest, options?: ConfigurationOptions): Promise<HttpInfo<string>> {
         return this.api.sandboxDeleteWithHttpInfo(param.adAccountId,  options).toPromise();
     }
 
@@ -1262,7 +1263,7 @@ export class ObjectAdAccountsApi {
      * Delete ads data for ad account in API Sandbox
      * @param param the request object
      */
-    public sandboxDelete(param: AdAccountsApiSandboxDeleteRequest, options?: Configuration): Promise<string> {
+    public sandboxDelete(param: AdAccountsApiSandboxDeleteRequest, options?: ConfigurationOptions): Promise<string> {
         return this.api.sandboxDelete(param.adAccountId,  options).toPromise();
     }
 
@@ -1271,7 +1272,7 @@ export class ObjectAdAccountsApi {
      * List templates
      * @param param the request object
      */
-    public templatesListWithHttpInfo(param: AdAccountsApiTemplatesListRequest, options?: Configuration): Promise<HttpInfo<TemplatesList200Response>> {
+    public templatesListWithHttpInfo(param: AdAccountsApiTemplatesListRequest, options?: ConfigurationOptions): Promise<HttpInfo<TemplatesList200Response>> {
         return this.api.templatesListWithHttpInfo(param.adAccountId, param.pageSize, param.order, param.bookmark,  options).toPromise();
     }
 
@@ -1280,7 +1281,7 @@ export class ObjectAdAccountsApi {
      * List templates
      * @param param the request object
      */
-    public templatesList(param: AdAccountsApiTemplatesListRequest, options?: Configuration): Promise<TemplatesList200Response> {
+    public templatesList(param: AdAccountsApiTemplatesListRequest, options?: ConfigurationOptions): Promise<TemplatesList200Response> {
         return this.api.templatesList(param.adAccountId, param.pageSize, param.order, param.bookmark,  options).toPromise();
     }
 
@@ -1603,7 +1604,7 @@ export class ObjectAdGroupsApi {
      * Get ad group analytics
      * @param param the request object
      */
-    public adGroupsAnalyticsWithHttpInfo(param: AdGroupsApiAdGroupsAnalyticsRequest, options?: Configuration): Promise<HttpInfo<Array<AdGroupsAnalyticsResponseInner>>> {
+    public adGroupsAnalyticsWithHttpInfo(param: AdGroupsApiAdGroupsAnalyticsRequest, options?: ConfigurationOptions): Promise<HttpInfo<Array<AdGroupsAnalyticsResponseInner>>> {
         return this.api.adGroupsAnalyticsWithHttpInfo(param.adAccountId, param.startDate, param.endDate, param.adGroupIds, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime,  options).toPromise();
     }
 
@@ -1612,7 +1613,7 @@ export class ObjectAdGroupsApi {
      * Get ad group analytics
      * @param param the request object
      */
-    public adGroupsAnalytics(param: AdGroupsApiAdGroupsAnalyticsRequest, options?: Configuration): Promise<Array<AdGroupsAnalyticsResponseInner>> {
+    public adGroupsAnalytics(param: AdGroupsApiAdGroupsAnalyticsRequest, options?: ConfigurationOptions): Promise<Array<AdGroupsAnalyticsResponseInner>> {
         return this.api.adGroupsAnalytics(param.adAccountId, param.startDate, param.endDate, param.adGroupIds, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime,  options).toPromise();
     }
 
@@ -1621,7 +1622,7 @@ export class ObjectAdGroupsApi {
      * Get audience sizing
      * @param param the request object
      */
-    public adGroupsAudienceSizingWithHttpInfo(param: AdGroupsApiAdGroupsAudienceSizingRequest, options?: Configuration): Promise<HttpInfo<AdGroupAudienceSizingResponse>> {
+    public adGroupsAudienceSizingWithHttpInfo(param: AdGroupsApiAdGroupsAudienceSizingRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdGroupAudienceSizingResponse>> {
         return this.api.adGroupsAudienceSizingWithHttpInfo(param.adAccountId, param.adGroupAudienceSizingRequest,  options).toPromise();
     }
 
@@ -1630,7 +1631,7 @@ export class ObjectAdGroupsApi {
      * Get audience sizing
      * @param param the request object
      */
-    public adGroupsAudienceSizing(param: AdGroupsApiAdGroupsAudienceSizingRequest, options?: Configuration): Promise<AdGroupAudienceSizingResponse> {
+    public adGroupsAudienceSizing(param: AdGroupsApiAdGroupsAudienceSizingRequest, options?: ConfigurationOptions): Promise<AdGroupAudienceSizingResponse> {
         return this.api.adGroupsAudienceSizing(param.adAccountId, param.adGroupAudienceSizingRequest,  options).toPromise();
     }
 
@@ -1639,7 +1640,7 @@ export class ObjectAdGroupsApi {
      * Get bid floors
      * @param param the request object
      */
-    public adGroupsBidFloorGetWithHttpInfo(param: AdGroupsApiAdGroupsBidFloorGetRequest, options?: Configuration): Promise<HttpInfo<BidFloor>> {
+    public adGroupsBidFloorGetWithHttpInfo(param: AdGroupsApiAdGroupsBidFloorGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<BidFloor>> {
         return this.api.adGroupsBidFloorGetWithHttpInfo(param.adAccountId, param.bidFloorRequest,  options).toPromise();
     }
 
@@ -1648,7 +1649,7 @@ export class ObjectAdGroupsApi {
      * Get bid floors
      * @param param the request object
      */
-    public adGroupsBidFloorGet(param: AdGroupsApiAdGroupsBidFloorGetRequest, options?: Configuration): Promise<BidFloor> {
+    public adGroupsBidFloorGet(param: AdGroupsApiAdGroupsBidFloorGetRequest, options?: ConfigurationOptions): Promise<BidFloor> {
         return this.api.adGroupsBidFloorGet(param.adAccountId, param.bidFloorRequest,  options).toPromise();
     }
 
@@ -1657,7 +1658,7 @@ export class ObjectAdGroupsApi {
      * Create ad groups
      * @param param the request object
      */
-    public adGroupsCreateWithHttpInfo(param: AdGroupsApiAdGroupsCreateRequest, options?: Configuration): Promise<HttpInfo<AdGroupArrayResponse>> {
+    public adGroupsCreateWithHttpInfo(param: AdGroupsApiAdGroupsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdGroupArrayResponse>> {
         return this.api.adGroupsCreateWithHttpInfo(param.adAccountId, param.adGroupCreateRequest,  options).toPromise();
     }
 
@@ -1666,7 +1667,7 @@ export class ObjectAdGroupsApi {
      * Create ad groups
      * @param param the request object
      */
-    public adGroupsCreate(param: AdGroupsApiAdGroupsCreateRequest, options?: Configuration): Promise<AdGroupArrayResponse> {
+    public adGroupsCreate(param: AdGroupsApiAdGroupsCreateRequest, options?: ConfigurationOptions): Promise<AdGroupArrayResponse> {
         return this.api.adGroupsCreate(param.adAccountId, param.adGroupCreateRequest,  options).toPromise();
     }
 
@@ -1675,7 +1676,7 @@ export class ObjectAdGroupsApi {
      * Get ad group
      * @param param the request object
      */
-    public adGroupsGetWithHttpInfo(param: AdGroupsApiAdGroupsGetRequest, options?: Configuration): Promise<HttpInfo<AdGroupResponse>> {
+    public adGroupsGetWithHttpInfo(param: AdGroupsApiAdGroupsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdGroupResponse>> {
         return this.api.adGroupsGetWithHttpInfo(param.adAccountId, param.adGroupId,  options).toPromise();
     }
 
@@ -1684,7 +1685,7 @@ export class ObjectAdGroupsApi {
      * Get ad group
      * @param param the request object
      */
-    public adGroupsGet(param: AdGroupsApiAdGroupsGetRequest, options?: Configuration): Promise<AdGroupResponse> {
+    public adGroupsGet(param: AdGroupsApiAdGroupsGetRequest, options?: ConfigurationOptions): Promise<AdGroupResponse> {
         return this.api.adGroupsGet(param.adAccountId, param.adGroupId,  options).toPromise();
     }
 
@@ -1693,7 +1694,7 @@ export class ObjectAdGroupsApi {
      * List ad groups
      * @param param the request object
      */
-    public adGroupsListWithHttpInfo(param: AdGroupsApiAdGroupsListRequest, options?: Configuration): Promise<HttpInfo<AdGroupsList200Response>> {
+    public adGroupsListWithHttpInfo(param: AdGroupsApiAdGroupsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdGroupsList200Response>> {
         return this.api.adGroupsListWithHttpInfo(param.adAccountId, param.campaignIds, param.adGroupIds, param.entityStatuses, param.pageSize, param.order, param.bookmark, param.translateInterestsToNames,  options).toPromise();
     }
 
@@ -1702,7 +1703,7 @@ export class ObjectAdGroupsApi {
      * List ad groups
      * @param param the request object
      */
-    public adGroupsList(param: AdGroupsApiAdGroupsListRequest, options?: Configuration): Promise<AdGroupsList200Response> {
+    public adGroupsList(param: AdGroupsApiAdGroupsListRequest, options?: ConfigurationOptions): Promise<AdGroupsList200Response> {
         return this.api.adGroupsList(param.adAccountId, param.campaignIds, param.adGroupIds, param.entityStatuses, param.pageSize, param.order, param.bookmark, param.translateInterestsToNames,  options).toPromise();
     }
 
@@ -1711,7 +1712,7 @@ export class ObjectAdGroupsApi {
      * Get targeting analytics for ad groups
      * @param param the request object
      */
-    public adGroupsTargetingAnalyticsGetWithHttpInfo(param: AdGroupsApiAdGroupsTargetingAnalyticsGetRequest, options?: Configuration): Promise<HttpInfo<MetricsResponse>> {
+    public adGroupsTargetingAnalyticsGetWithHttpInfo(param: AdGroupsApiAdGroupsTargetingAnalyticsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<MetricsResponse>> {
         return this.api.adGroupsTargetingAnalyticsGetWithHttpInfo(param.adAccountId, param.adGroupIds, param.startDate, param.endDate, param.targetingTypes, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.attributionTypes,  options).toPromise();
     }
 
@@ -1720,7 +1721,7 @@ export class ObjectAdGroupsApi {
      * Get targeting analytics for ad groups
      * @param param the request object
      */
-    public adGroupsTargetingAnalyticsGet(param: AdGroupsApiAdGroupsTargetingAnalyticsGetRequest, options?: Configuration): Promise<MetricsResponse> {
+    public adGroupsTargetingAnalyticsGet(param: AdGroupsApiAdGroupsTargetingAnalyticsGetRequest, options?: ConfigurationOptions): Promise<MetricsResponse> {
         return this.api.adGroupsTargetingAnalyticsGet(param.adAccountId, param.adGroupIds, param.startDate, param.endDate, param.targetingTypes, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.attributionTypes,  options).toPromise();
     }
 
@@ -1729,7 +1730,7 @@ export class ObjectAdGroupsApi {
      * Update ad groups
      * @param param the request object
      */
-    public adGroupsUpdateWithHttpInfo(param: AdGroupsApiAdGroupsUpdateRequest, options?: Configuration): Promise<HttpInfo<AdGroupArrayResponse>> {
+    public adGroupsUpdateWithHttpInfo(param: AdGroupsApiAdGroupsUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdGroupArrayResponse>> {
         return this.api.adGroupsUpdateWithHttpInfo(param.adAccountId, param.adGroupUpdateRequest,  options).toPromise();
     }
 
@@ -1738,7 +1739,7 @@ export class ObjectAdGroupsApi {
      * Update ad groups
      * @param param the request object
      */
-    public adGroupsUpdate(param: AdGroupsApiAdGroupsUpdateRequest, options?: Configuration): Promise<AdGroupArrayResponse> {
+    public adGroupsUpdate(param: AdGroupsApiAdGroupsUpdateRequest, options?: ConfigurationOptions): Promise<AdGroupArrayResponse> {
         return this.api.adGroupsUpdate(param.adAccountId, param.adGroupUpdateRequest,  options).toPromise();
     }
 
@@ -2059,7 +2060,7 @@ export class ObjectAdsApi {
      * Create ad preview with pin or image
      * @param param the request object
      */
-    public adPreviewsCreateWithHttpInfo(param: AdsApiAdPreviewsCreateRequest, options?: Configuration): Promise<HttpInfo<AdPreviewURLResponse>> {
+    public adPreviewsCreateWithHttpInfo(param: AdsApiAdPreviewsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdPreviewURLResponse>> {
         return this.api.adPreviewsCreateWithHttpInfo(param.adAccountId, param.adPreviewRequest,  options).toPromise();
     }
 
@@ -2068,7 +2069,7 @@ export class ObjectAdsApi {
      * Create ad preview with pin or image
      * @param param the request object
      */
-    public adPreviewsCreate(param: AdsApiAdPreviewsCreateRequest, options?: Configuration): Promise<AdPreviewURLResponse> {
+    public adPreviewsCreate(param: AdsApiAdPreviewsCreateRequest, options?: ConfigurationOptions): Promise<AdPreviewURLResponse> {
         return this.api.adPreviewsCreate(param.adAccountId, param.adPreviewRequest,  options).toPromise();
     }
 
@@ -2077,7 +2078,7 @@ export class ObjectAdsApi {
      * Get targeting analytics for ads
      * @param param the request object
      */
-    public adTargetingAnalyticsGetWithHttpInfo(param: AdsApiAdTargetingAnalyticsGetRequest, options?: Configuration): Promise<HttpInfo<MetricsResponse>> {
+    public adTargetingAnalyticsGetWithHttpInfo(param: AdsApiAdTargetingAnalyticsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<MetricsResponse>> {
         return this.api.adTargetingAnalyticsGetWithHttpInfo(param.adAccountId, param.adIds, param.startDate, param.endDate, param.targetingTypes, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.attributionTypes,  options).toPromise();
     }
 
@@ -2086,7 +2087,7 @@ export class ObjectAdsApi {
      * Get targeting analytics for ads
      * @param param the request object
      */
-    public adTargetingAnalyticsGet(param: AdsApiAdTargetingAnalyticsGetRequest, options?: Configuration): Promise<MetricsResponse> {
+    public adTargetingAnalyticsGet(param: AdsApiAdTargetingAnalyticsGetRequest, options?: ConfigurationOptions): Promise<MetricsResponse> {
         return this.api.adTargetingAnalyticsGet(param.adAccountId, param.adIds, param.startDate, param.endDate, param.targetingTypes, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.attributionTypes,  options).toPromise();
     }
 
@@ -2095,7 +2096,7 @@ export class ObjectAdsApi {
      * Get ad analytics
      * @param param the request object
      */
-    public adsAnalyticsWithHttpInfo(param: AdsApiAdsAnalyticsRequest, options?: Configuration): Promise<HttpInfo<Array<AdsAnalyticsResponseInner>>> {
+    public adsAnalyticsWithHttpInfo(param: AdsApiAdsAnalyticsRequest, options?: ConfigurationOptions): Promise<HttpInfo<Array<AdsAnalyticsResponseInner>>> {
         return this.api.adsAnalyticsWithHttpInfo(param.adAccountId, param.startDate, param.endDate, param.columns, param.granularity, param.adIds, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.pinIds, param.campaignIds,  options).toPromise();
     }
 
@@ -2104,7 +2105,7 @@ export class ObjectAdsApi {
      * Get ad analytics
      * @param param the request object
      */
-    public adsAnalytics(param: AdsApiAdsAnalyticsRequest, options?: Configuration): Promise<Array<AdsAnalyticsResponseInner>> {
+    public adsAnalytics(param: AdsApiAdsAnalyticsRequest, options?: ConfigurationOptions): Promise<Array<AdsAnalyticsResponseInner>> {
         return this.api.adsAnalytics(param.adAccountId, param.startDate, param.endDate, param.columns, param.granularity, param.adIds, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.pinIds, param.campaignIds,  options).toPromise();
     }
 
@@ -2113,7 +2114,7 @@ export class ObjectAdsApi {
      * Create ads
      * @param param the request object
      */
-    public adsCreateWithHttpInfo(param: AdsApiAdsCreateRequest, options?: Configuration): Promise<HttpInfo<AdArrayResponse>> {
+    public adsCreateWithHttpInfo(param: AdsApiAdsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdArrayResponse>> {
         return this.api.adsCreateWithHttpInfo(param.adAccountId, param.adCreateRequest,  options).toPromise();
     }
 
@@ -2122,7 +2123,7 @@ export class ObjectAdsApi {
      * Create ads
      * @param param the request object
      */
-    public adsCreate(param: AdsApiAdsCreateRequest, options?: Configuration): Promise<AdArrayResponse> {
+    public adsCreate(param: AdsApiAdsCreateRequest, options?: ConfigurationOptions): Promise<AdArrayResponse> {
         return this.api.adsCreate(param.adAccountId, param.adCreateRequest,  options).toPromise();
     }
 
@@ -2131,7 +2132,7 @@ export class ObjectAdsApi {
      * Get ad
      * @param param the request object
      */
-    public adsGetWithHttpInfo(param: AdsApiAdsGetRequest, options?: Configuration): Promise<HttpInfo<AdResponse>> {
+    public adsGetWithHttpInfo(param: AdsApiAdsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdResponse>> {
         return this.api.adsGetWithHttpInfo(param.adAccountId, param.adId,  options).toPromise();
     }
 
@@ -2140,7 +2141,7 @@ export class ObjectAdsApi {
      * Get ad
      * @param param the request object
      */
-    public adsGet(param: AdsApiAdsGetRequest, options?: Configuration): Promise<AdResponse> {
+    public adsGet(param: AdsApiAdsGetRequest, options?: ConfigurationOptions): Promise<AdResponse> {
         return this.api.adsGet(param.adAccountId, param.adId,  options).toPromise();
     }
 
@@ -2149,7 +2150,7 @@ export class ObjectAdsApi {
      * List ads
      * @param param the request object
      */
-    public adsListWithHttpInfo(param: AdsApiAdsListRequest, options?: Configuration): Promise<HttpInfo<AdsList200Response>> {
+    public adsListWithHttpInfo(param: AdsApiAdsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdsList200Response>> {
         return this.api.adsListWithHttpInfo(param.adAccountId, param.campaignIds, param.adGroupIds, param.adIds, param.entityStatuses, param.pageSize, param.order, param.bookmark,  options).toPromise();
     }
 
@@ -2158,7 +2159,7 @@ export class ObjectAdsApi {
      * List ads
      * @param param the request object
      */
-    public adsList(param: AdsApiAdsListRequest, options?: Configuration): Promise<AdsList200Response> {
+    public adsList(param: AdsApiAdsListRequest, options?: ConfigurationOptions): Promise<AdsList200Response> {
         return this.api.adsList(param.adAccountId, param.campaignIds, param.adGroupIds, param.adIds, param.entityStatuses, param.pageSize, param.order, param.bookmark,  options).toPromise();
     }
 
@@ -2167,7 +2168,7 @@ export class ObjectAdsApi {
      * Update ads
      * @param param the request object
      */
-    public adsUpdateWithHttpInfo(param: AdsApiAdsUpdateRequest, options?: Configuration): Promise<HttpInfo<AdArrayResponse>> {
+    public adsUpdateWithHttpInfo(param: AdsApiAdsUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdArrayResponse>> {
         return this.api.adsUpdateWithHttpInfo(param.adAccountId, param.adUpdateRequest,  options).toPromise();
     }
 
@@ -2176,7 +2177,7 @@ export class ObjectAdsApi {
      * Update ads
      * @param param the request object
      */
-    public adsUpdate(param: AdsApiAdsUpdateRequest, options?: Configuration): Promise<AdArrayResponse> {
+    public adsUpdate(param: AdsApiAdsUpdateRequest, options?: ConfigurationOptions): Promise<AdArrayResponse> {
         return this.api.adsUpdate(param.adAccountId, param.adUpdateRequest,  options).toPromise();
     }
 
@@ -2229,7 +2230,7 @@ export class ObjectAdvancedAuctionApi {
      * Get item bid options (POST)
      * @param param the request object
      */
-    public advancedAuctionItemsGetPostWithHttpInfo(param: AdvancedAuctionApiAdvancedAuctionItemsGetPostRequest, options?: Configuration): Promise<HttpInfo<AdvancedAuctionItems>> {
+    public advancedAuctionItemsGetPostWithHttpInfo(param: AdvancedAuctionApiAdvancedAuctionItemsGetPostRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdvancedAuctionItems>> {
         return this.api.advancedAuctionItemsGetPostWithHttpInfo(param.advancedAuctionItemsGetRequest, param.adAccountId,  options).toPromise();
     }
 
@@ -2238,7 +2239,7 @@ export class ObjectAdvancedAuctionApi {
      * Get item bid options (POST)
      * @param param the request object
      */
-    public advancedAuctionItemsGetPost(param: AdvancedAuctionApiAdvancedAuctionItemsGetPostRequest, options?: Configuration): Promise<AdvancedAuctionItems> {
+    public advancedAuctionItemsGetPost(param: AdvancedAuctionApiAdvancedAuctionItemsGetPostRequest, options?: ConfigurationOptions): Promise<AdvancedAuctionItems> {
         return this.api.advancedAuctionItemsGetPost(param.advancedAuctionItemsGetRequest, param.adAccountId,  options).toPromise();
     }
 
@@ -2247,7 +2248,7 @@ export class ObjectAdvancedAuctionApi {
      * Operate on item level bid options
      * @param param the request object
      */
-    public advancedAuctionItemsSubmitPostWithHttpInfo(param: AdvancedAuctionApiAdvancedAuctionItemsSubmitPostRequest, options?: Configuration): Promise<HttpInfo<AdvancedAuctionProcessedItems>> {
+    public advancedAuctionItemsSubmitPostWithHttpInfo(param: AdvancedAuctionApiAdvancedAuctionItemsSubmitPostRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdvancedAuctionProcessedItems>> {
         return this.api.advancedAuctionItemsSubmitPostWithHttpInfo(param.advancedAuctionItemsSubmitRequest, param.adAccountId,  options).toPromise();
     }
 
@@ -2256,7 +2257,7 @@ export class ObjectAdvancedAuctionApi {
      * Operate on item level bid options
      * @param param the request object
      */
-    public advancedAuctionItemsSubmitPost(param: AdvancedAuctionApiAdvancedAuctionItemsSubmitPostRequest, options?: Configuration): Promise<AdvancedAuctionProcessedItems> {
+    public advancedAuctionItemsSubmitPost(param: AdvancedAuctionApiAdvancedAuctionItemsSubmitPostRequest, options?: ConfigurationOptions): Promise<AdvancedAuctionProcessedItems> {
         return this.api.advancedAuctionItemsSubmitPost(param.advancedAuctionItemsSubmitRequest, param.adAccountId,  options).toPromise();
     }
 
@@ -2304,7 +2305,7 @@ export class ObjectAudienceInsightsApi {
      * Get audience insights
      * @param param the request object
      */
-    public audienceInsightsGetWithHttpInfo(param: AudienceInsightsApiAudienceInsightsGetRequest, options?: Configuration): Promise<HttpInfo<AudienceInsightsResponse>> {
+    public audienceInsightsGetWithHttpInfo(param: AudienceInsightsApiAudienceInsightsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<AudienceInsightsResponse>> {
         return this.api.audienceInsightsGetWithHttpInfo(param.adAccountId, param.audienceInsightType,  options).toPromise();
     }
 
@@ -2313,7 +2314,7 @@ export class ObjectAudienceInsightsApi {
      * Get audience insights
      * @param param the request object
      */
-    public audienceInsightsGet(param: AudienceInsightsApiAudienceInsightsGetRequest, options?: Configuration): Promise<AudienceInsightsResponse> {
+    public audienceInsightsGet(param: AudienceInsightsApiAudienceInsightsGetRequest, options?: ConfigurationOptions): Promise<AudienceInsightsResponse> {
         return this.api.audienceInsightsGet(param.adAccountId, param.audienceInsightType,  options).toPromise();
     }
 
@@ -2322,7 +2323,7 @@ export class ObjectAudienceInsightsApi {
      * Get audience insights scope and type
      * @param param the request object
      */
-    public audienceInsightsScopeAndTypeGetWithHttpInfo(param: AudienceInsightsApiAudienceInsightsScopeAndTypeGetRequest, options?: Configuration): Promise<HttpInfo<AudienceDefinitionResponse>> {
+    public audienceInsightsScopeAndTypeGetWithHttpInfo(param: AudienceInsightsApiAudienceInsightsScopeAndTypeGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<AudienceDefinitionResponse>> {
         return this.api.audienceInsightsScopeAndTypeGetWithHttpInfo(param.adAccountId,  options).toPromise();
     }
 
@@ -2331,7 +2332,7 @@ export class ObjectAudienceInsightsApi {
      * Get audience insights scope and type
      * @param param the request object
      */
-    public audienceInsightsScopeAndTypeGet(param: AudienceInsightsApiAudienceInsightsScopeAndTypeGetRequest, options?: Configuration): Promise<AudienceDefinitionResponse> {
+    public audienceInsightsScopeAndTypeGet(param: AudienceInsightsApiAudienceInsightsScopeAndTypeGetRequest, options?: ConfigurationOptions): Promise<AudienceDefinitionResponse> {
         return this.api.audienceInsightsScopeAndTypeGet(param.adAccountId,  options).toPromise();
     }
 
@@ -2529,7 +2530,7 @@ export class ObjectAudienceSharingApi {
      * List accounts with access to an audience owned by an ad account
      * @param param the request object
      */
-    public adAccountsAudiencesSharedAccountsListWithHttpInfo(param: AudienceSharingApiAdAccountsAudiencesSharedAccountsListRequest, options?: Configuration): Promise<HttpInfo<AdAccountsAudiencesSharedAccountsList200Response>> {
+    public adAccountsAudiencesSharedAccountsListWithHttpInfo(param: AudienceSharingApiAdAccountsAudiencesSharedAccountsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdAccountsAudiencesSharedAccountsList200Response>> {
         return this.api.adAccountsAudiencesSharedAccountsListWithHttpInfo(param.adAccountId, param.audienceId, param.accountType, param.pageSize, param.bookmark,  options).toPromise();
     }
 
@@ -2538,7 +2539,7 @@ export class ObjectAudienceSharingApi {
      * List accounts with access to an audience owned by an ad account
      * @param param the request object
      */
-    public adAccountsAudiencesSharedAccountsList(param: AudienceSharingApiAdAccountsAudiencesSharedAccountsListRequest, options?: Configuration): Promise<AdAccountsAudiencesSharedAccountsList200Response> {
+    public adAccountsAudiencesSharedAccountsList(param: AudienceSharingApiAdAccountsAudiencesSharedAccountsListRequest, options?: ConfigurationOptions): Promise<AdAccountsAudiencesSharedAccountsList200Response> {
         return this.api.adAccountsAudiencesSharedAccountsList(param.adAccountId, param.audienceId, param.accountType, param.pageSize, param.bookmark,  options).toPromise();
     }
 
@@ -2547,7 +2548,7 @@ export class ObjectAudienceSharingApi {
      * List accounts with access to an audience owned by a business
      * @param param the request object
      */
-    public businessAccountAudiencesSharedAccountsListWithHttpInfo(param: AudienceSharingApiBusinessAccountAudiencesSharedAccountsListRequest, options?: Configuration): Promise<HttpInfo<AdAccountsAudiencesSharedAccountsList200Response>> {
+    public businessAccountAudiencesSharedAccountsListWithHttpInfo(param: AudienceSharingApiBusinessAccountAudiencesSharedAccountsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdAccountsAudiencesSharedAccountsList200Response>> {
         return this.api.businessAccountAudiencesSharedAccountsListWithHttpInfo(param.businessId, param.audienceId, param.accountType, param.pageSize, param.bookmark,  options).toPromise();
     }
 
@@ -2556,7 +2557,7 @@ export class ObjectAudienceSharingApi {
      * List accounts with access to an audience owned by a business
      * @param param the request object
      */
-    public businessAccountAudiencesSharedAccountsList(param: AudienceSharingApiBusinessAccountAudiencesSharedAccountsListRequest, options?: Configuration): Promise<AdAccountsAudiencesSharedAccountsList200Response> {
+    public businessAccountAudiencesSharedAccountsList(param: AudienceSharingApiBusinessAccountAudiencesSharedAccountsListRequest, options?: ConfigurationOptions): Promise<AdAccountsAudiencesSharedAccountsList200Response> {
         return this.api.businessAccountAudiencesSharedAccountsList(param.businessId, param.audienceId, param.accountType, param.pageSize, param.bookmark,  options).toPromise();
     }
 
@@ -2565,7 +2566,7 @@ export class ObjectAudienceSharingApi {
      * List received audiences for a business
      * @param param the request object
      */
-    public sharedAudiencesForBusinessListWithHttpInfo(param: AudienceSharingApiSharedAudiencesForBusinessListRequest, options?: Configuration): Promise<HttpInfo<AudiencesList200Response>> {
+    public sharedAudiencesForBusinessListWithHttpInfo(param: AudienceSharingApiSharedAudiencesForBusinessListRequest, options?: ConfigurationOptions): Promise<HttpInfo<AudiencesList200Response>> {
         return this.api.sharedAudiencesForBusinessListWithHttpInfo(param.businessId, param.bookmark, param.order, param.pageSize,  options).toPromise();
     }
 
@@ -2574,7 +2575,7 @@ export class ObjectAudienceSharingApi {
      * List received audiences for a business
      * @param param the request object
      */
-    public sharedAudiencesForBusinessList(param: AudienceSharingApiSharedAudiencesForBusinessListRequest, options?: Configuration): Promise<AudiencesList200Response> {
+    public sharedAudiencesForBusinessList(param: AudienceSharingApiSharedAudiencesForBusinessListRequest, options?: ConfigurationOptions): Promise<AudiencesList200Response> {
         return this.api.sharedAudiencesForBusinessList(param.businessId, param.bookmark, param.order, param.pageSize,  options).toPromise();
     }
 
@@ -2583,7 +2584,7 @@ export class ObjectAudienceSharingApi {
      * Update audience sharing between ad accounts
      * @param param the request object
      */
-    public updateAdAccountToAdAccountSharedAudienceWithHttpInfo(param: AudienceSharingApiUpdateAdAccountToAdAccountSharedAudienceRequest, options?: Configuration): Promise<HttpInfo<SharedAudienceResponse>> {
+    public updateAdAccountToAdAccountSharedAudienceWithHttpInfo(param: AudienceSharingApiUpdateAdAccountToAdAccountSharedAudienceRequest, options?: ConfigurationOptions): Promise<HttpInfo<SharedAudienceResponse>> {
         return this.api.updateAdAccountToAdAccountSharedAudienceWithHttpInfo(param.adAccountId, param.sharedAudience,  options).toPromise();
     }
 
@@ -2592,7 +2593,7 @@ export class ObjectAudienceSharingApi {
      * Update audience sharing between ad accounts
      * @param param the request object
      */
-    public updateAdAccountToAdAccountSharedAudience(param: AudienceSharingApiUpdateAdAccountToAdAccountSharedAudienceRequest, options?: Configuration): Promise<SharedAudienceResponse> {
+    public updateAdAccountToAdAccountSharedAudience(param: AudienceSharingApiUpdateAdAccountToAdAccountSharedAudienceRequest, options?: ConfigurationOptions): Promise<SharedAudienceResponse> {
         return this.api.updateAdAccountToAdAccountSharedAudience(param.adAccountId, param.sharedAudience,  options).toPromise();
     }
 
@@ -2601,7 +2602,7 @@ export class ObjectAudienceSharingApi {
      * Update audience sharing from an ad account to businesses
      * @param param the request object
      */
-    public updateAdAccountToBusinessSharedAudienceWithHttpInfo(param: AudienceSharingApiUpdateAdAccountToBusinessSharedAudienceRequest, options?: Configuration): Promise<HttpInfo<BusinessSharedAudienceResponse>> {
+    public updateAdAccountToBusinessSharedAudienceWithHttpInfo(param: AudienceSharingApiUpdateAdAccountToBusinessSharedAudienceRequest, options?: ConfigurationOptions): Promise<HttpInfo<BusinessSharedAudienceResponse>> {
         return this.api.updateAdAccountToBusinessSharedAudienceWithHttpInfo(param.adAccountId, param.businessSharedAudience,  options).toPromise();
     }
 
@@ -2610,7 +2611,7 @@ export class ObjectAudienceSharingApi {
      * Update audience sharing from an ad account to businesses
      * @param param the request object
      */
-    public updateAdAccountToBusinessSharedAudience(param: AudienceSharingApiUpdateAdAccountToBusinessSharedAudienceRequest, options?: Configuration): Promise<BusinessSharedAudienceResponse> {
+    public updateAdAccountToBusinessSharedAudience(param: AudienceSharingApiUpdateAdAccountToBusinessSharedAudienceRequest, options?: ConfigurationOptions): Promise<BusinessSharedAudienceResponse> {
         return this.api.updateAdAccountToBusinessSharedAudience(param.adAccountId, param.businessSharedAudience,  options).toPromise();
     }
 
@@ -2619,7 +2620,7 @@ export class ObjectAudienceSharingApi {
      * Update audience sharing from a business to ad accounts
      * @param param the request object
      */
-    public updateBusinessToAdAccountSharedAudienceWithHttpInfo(param: AudienceSharingApiUpdateBusinessToAdAccountSharedAudienceRequest, options?: Configuration): Promise<HttpInfo<SharedAudienceResponse>> {
+    public updateBusinessToAdAccountSharedAudienceWithHttpInfo(param: AudienceSharingApiUpdateBusinessToAdAccountSharedAudienceRequest, options?: ConfigurationOptions): Promise<HttpInfo<SharedAudienceResponse>> {
         return this.api.updateBusinessToAdAccountSharedAudienceWithHttpInfo(param.businessId, param.sharedAudience,  options).toPromise();
     }
 
@@ -2628,7 +2629,7 @@ export class ObjectAudienceSharingApi {
      * Update audience sharing from a business to ad accounts
      * @param param the request object
      */
-    public updateBusinessToAdAccountSharedAudience(param: AudienceSharingApiUpdateBusinessToAdAccountSharedAudienceRequest, options?: Configuration): Promise<SharedAudienceResponse> {
+    public updateBusinessToAdAccountSharedAudience(param: AudienceSharingApiUpdateBusinessToAdAccountSharedAudienceRequest, options?: ConfigurationOptions): Promise<SharedAudienceResponse> {
         return this.api.updateBusinessToAdAccountSharedAudience(param.businessId, param.sharedAudience,  options).toPromise();
     }
 
@@ -2637,7 +2638,7 @@ export class ObjectAudienceSharingApi {
      * Update audience sharing between businesses
      * @param param the request object
      */
-    public updateBusinessToBusinessSharedAudienceWithHttpInfo(param: AudienceSharingApiUpdateBusinessToBusinessSharedAudienceRequest, options?: Configuration): Promise<HttpInfo<BusinessSharedAudienceResponse>> {
+    public updateBusinessToBusinessSharedAudienceWithHttpInfo(param: AudienceSharingApiUpdateBusinessToBusinessSharedAudienceRequest, options?: ConfigurationOptions): Promise<HttpInfo<BusinessSharedAudienceResponse>> {
         return this.api.updateBusinessToBusinessSharedAudienceWithHttpInfo(param.businessId, param.businessSharedAudience,  options).toPromise();
     }
 
@@ -2646,7 +2647,7 @@ export class ObjectAudienceSharingApi {
      * Update audience sharing between businesses
      * @param param the request object
      */
-    public updateBusinessToBusinessSharedAudience(param: AudienceSharingApiUpdateBusinessToBusinessSharedAudienceRequest, options?: Configuration): Promise<BusinessSharedAudienceResponse> {
+    public updateBusinessToBusinessSharedAudience(param: AudienceSharingApiUpdateBusinessToBusinessSharedAudienceRequest, options?: ConfigurationOptions): Promise<BusinessSharedAudienceResponse> {
         return this.api.updateBusinessToBusinessSharedAudience(param.businessId, param.businessSharedAudience,  options).toPromise();
     }
 
@@ -2779,7 +2780,7 @@ export class ObjectAudiencesApi {
      * Create audience
      * @param param the request object
      */
-    public audiencesCreateWithHttpInfo(param: AudiencesApiAudiencesCreateRequest, options?: Configuration): Promise<HttpInfo<Audience>> {
+    public audiencesCreateWithHttpInfo(param: AudiencesApiAudiencesCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<Audience>> {
         return this.api.audiencesCreateWithHttpInfo(param.adAccountId, param.audienceCreateRequest,  options).toPromise();
     }
 
@@ -2788,7 +2789,7 @@ export class ObjectAudiencesApi {
      * Create audience
      * @param param the request object
      */
-    public audiencesCreate(param: AudiencesApiAudiencesCreateRequest, options?: Configuration): Promise<Audience> {
+    public audiencesCreate(param: AudiencesApiAudiencesCreateRequest, options?: ConfigurationOptions): Promise<Audience> {
         return this.api.audiencesCreate(param.adAccountId, param.audienceCreateRequest,  options).toPromise();
     }
 
@@ -2797,7 +2798,7 @@ export class ObjectAudiencesApi {
      * Create custom audience
      * @param param the request object
      */
-    public audiencesCreateCustomWithHttpInfo(param: AudiencesApiAudiencesCreateCustomRequest, options?: Configuration): Promise<HttpInfo<Audience>> {
+    public audiencesCreateCustomWithHttpInfo(param: AudiencesApiAudiencesCreateCustomRequest, options?: ConfigurationOptions): Promise<HttpInfo<Audience>> {
         return this.api.audiencesCreateCustomWithHttpInfo(param.adAccountId, param.audienceCreateCustomRequest,  options).toPromise();
     }
 
@@ -2806,7 +2807,7 @@ export class ObjectAudiencesApi {
      * Create custom audience
      * @param param the request object
      */
-    public audiencesCreateCustom(param: AudiencesApiAudiencesCreateCustomRequest, options?: Configuration): Promise<Audience> {
+    public audiencesCreateCustom(param: AudiencesApiAudiencesCreateCustomRequest, options?: ConfigurationOptions): Promise<Audience> {
         return this.api.audiencesCreateCustom(param.adAccountId, param.audienceCreateCustomRequest,  options).toPromise();
     }
 
@@ -2815,7 +2816,7 @@ export class ObjectAudiencesApi {
      * Get audience
      * @param param the request object
      */
-    public audiencesGetWithHttpInfo(param: AudiencesApiAudiencesGetRequest, options?: Configuration): Promise<HttpInfo<Audience>> {
+    public audiencesGetWithHttpInfo(param: AudiencesApiAudiencesGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<Audience>> {
         return this.api.audiencesGetWithHttpInfo(param.adAccountId, param.audienceId,  options).toPromise();
     }
 
@@ -2824,7 +2825,7 @@ export class ObjectAudiencesApi {
      * Get audience
      * @param param the request object
      */
-    public audiencesGet(param: AudiencesApiAudiencesGetRequest, options?: Configuration): Promise<Audience> {
+    public audiencesGet(param: AudiencesApiAudiencesGetRequest, options?: ConfigurationOptions): Promise<Audience> {
         return this.api.audiencesGet(param.adAccountId, param.audienceId,  options).toPromise();
     }
 
@@ -2833,7 +2834,7 @@ export class ObjectAudiencesApi {
      * List audiences
      * @param param the request object
      */
-    public audiencesListWithHttpInfo(param: AudiencesApiAudiencesListRequest, options?: Configuration): Promise<HttpInfo<AudiencesList200Response>> {
+    public audiencesListWithHttpInfo(param: AudiencesApiAudiencesListRequest, options?: ConfigurationOptions): Promise<HttpInfo<AudiencesList200Response>> {
         return this.api.audiencesListWithHttpInfo(param.adAccountId, param.bookmark, param.order, param.pageSize, param.ownershipType,  options).toPromise();
     }
 
@@ -2842,7 +2843,7 @@ export class ObjectAudiencesApi {
      * List audiences
      * @param param the request object
      */
-    public audiencesList(param: AudiencesApiAudiencesListRequest, options?: Configuration): Promise<AudiencesList200Response> {
+    public audiencesList(param: AudiencesApiAudiencesListRequest, options?: ConfigurationOptions): Promise<AudiencesList200Response> {
         return this.api.audiencesList(param.adAccountId, param.bookmark, param.order, param.pageSize, param.ownershipType,  options).toPromise();
     }
 
@@ -2851,7 +2852,7 @@ export class ObjectAudiencesApi {
      * Update audience
      * @param param the request object
      */
-    public audiencesUpdateWithHttpInfo(param: AudiencesApiAudiencesUpdateRequest, options?: Configuration): Promise<HttpInfo<Audience>> {
+    public audiencesUpdateWithHttpInfo(param: AudiencesApiAudiencesUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<Audience>> {
         return this.api.audiencesUpdateWithHttpInfo(param.adAccountId, param.audienceId, param.audienceUpdateRequest,  options).toPromise();
     }
 
@@ -2860,7 +2861,7 @@ export class ObjectAudiencesApi {
      * Update audience
      * @param param the request object
      */
-    public audiencesUpdate(param: AudiencesApiAudiencesUpdateRequest, options?: Configuration): Promise<Audience> {
+    public audiencesUpdate(param: AudiencesApiAudiencesUpdateRequest, options?: ConfigurationOptions): Promise<Audience> {
         return this.api.audiencesUpdate(param.adAccountId, param.audienceId, param.audienceUpdateRequest,  options).toPromise();
     }
 
@@ -3074,7 +3075,7 @@ export class ObjectBillingApi {
      * Redeem ad credits
      * @param param the request object
      */
-    public adsCreditRedeemWithHttpInfo(param: BillingApiAdsCreditRedeemRequest, options?: Configuration): Promise<HttpInfo<AdsCreditRedeemResponse>> {
+    public adsCreditRedeemWithHttpInfo(param: BillingApiAdsCreditRedeemRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdsCreditRedeemResponse>> {
         return this.api.adsCreditRedeemWithHttpInfo(param.adAccountId, param.adsCreditRedeemRequest,  options).toPromise();
     }
 
@@ -3083,7 +3084,7 @@ export class ObjectBillingApi {
      * Redeem ad credits
      * @param param the request object
      */
-    public adsCreditRedeem(param: BillingApiAdsCreditRedeemRequest, options?: Configuration): Promise<AdsCreditRedeemResponse> {
+    public adsCreditRedeem(param: BillingApiAdsCreditRedeemRequest, options?: ConfigurationOptions): Promise<AdsCreditRedeemResponse> {
         return this.api.adsCreditRedeem(param.adAccountId, param.adsCreditRedeemRequest,  options).toPromise();
     }
 
@@ -3092,7 +3093,7 @@ export class ObjectBillingApi {
      * Get ads credit discounts
      * @param param the request object
      */
-    public adsCreditsDiscountsGetWithHttpInfo(param: BillingApiAdsCreditsDiscountsGetRequest, options?: Configuration): Promise<HttpInfo<AdsCreditsDiscountsGet200Response>> {
+    public adsCreditsDiscountsGetWithHttpInfo(param: BillingApiAdsCreditsDiscountsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdsCreditsDiscountsGet200Response>> {
         return this.api.adsCreditsDiscountsGetWithHttpInfo(param.adAccountId, param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -3101,7 +3102,7 @@ export class ObjectBillingApi {
      * Get ads credit discounts
      * @param param the request object
      */
-    public adsCreditsDiscountsGet(param: BillingApiAdsCreditsDiscountsGetRequest, options?: Configuration): Promise<AdsCreditsDiscountsGet200Response> {
+    public adsCreditsDiscountsGet(param: BillingApiAdsCreditsDiscountsGetRequest, options?: ConfigurationOptions): Promise<AdsCreditsDiscountsGet200Response> {
         return this.api.adsCreditsDiscountsGet(param.adAccountId, param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -3110,7 +3111,7 @@ export class ObjectBillingApi {
      * Get billing profiles
      * @param param the request object
      */
-    public billingProfilesGetWithHttpInfo(param: BillingApiBillingProfilesGetRequest, options?: Configuration): Promise<HttpInfo<BillingProfilesGet200Response>> {
+    public billingProfilesGetWithHttpInfo(param: BillingApiBillingProfilesGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<BillingProfilesGet200Response>> {
         return this.api.billingProfilesGetWithHttpInfo(param.adAccountId, param.isActive, param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -3119,7 +3120,7 @@ export class ObjectBillingApi {
      * Get billing profiles
      * @param param the request object
      */
-    public billingProfilesGet(param: BillingApiBillingProfilesGetRequest, options?: Configuration): Promise<BillingProfilesGet200Response> {
+    public billingProfilesGet(param: BillingApiBillingProfilesGetRequest, options?: ConfigurationOptions): Promise<BillingProfilesGet200Response> {
         return this.api.billingProfilesGet(param.adAccountId, param.isActive, param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -3128,7 +3129,7 @@ export class ObjectBillingApi {
      * Get Salesforce account details including bill-to information.
      * @param param the request object
      */
-    public ssioAccountsGetWithHttpInfo(param: BillingApiSsioAccountsGetRequest, options?: Configuration): Promise<HttpInfo<SSIOAccountResponse>> {
+    public ssioAccountsGetWithHttpInfo(param: BillingApiSsioAccountsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<SSIOAccountResponse>> {
         return this.api.ssioAccountsGetWithHttpInfo(param.adAccountId,  options).toPromise();
     }
 
@@ -3137,7 +3138,7 @@ export class ObjectBillingApi {
      * Get Salesforce account details including bill-to information.
      * @param param the request object
      */
-    public ssioAccountsGet(param: BillingApiSsioAccountsGetRequest, options?: Configuration): Promise<SSIOAccountResponse> {
+    public ssioAccountsGet(param: BillingApiSsioAccountsGetRequest, options?: ConfigurationOptions): Promise<SSIOAccountResponse> {
         return this.api.ssioAccountsGet(param.adAccountId,  options).toPromise();
     }
 
@@ -3146,7 +3147,7 @@ export class ObjectBillingApi {
      * Create insertion order through SSIO.
      * @param param the request object
      */
-    public ssioInsertionOrderCreateWithHttpInfo(param: BillingApiSsioInsertionOrderCreateRequest, options?: Configuration): Promise<HttpInfo<SSIOCreateInsertionOrderResponse>> {
+    public ssioInsertionOrderCreateWithHttpInfo(param: BillingApiSsioInsertionOrderCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<SSIOCreateInsertionOrderResponse>> {
         return this.api.ssioInsertionOrderCreateWithHttpInfo(param.adAccountId, param.sSIOCreateInsertionOrderRequest,  options).toPromise();
     }
 
@@ -3155,7 +3156,7 @@ export class ObjectBillingApi {
      * Create insertion order through SSIO.
      * @param param the request object
      */
-    public ssioInsertionOrderCreate(param: BillingApiSsioInsertionOrderCreateRequest, options?: Configuration): Promise<SSIOCreateInsertionOrderResponse> {
+    public ssioInsertionOrderCreate(param: BillingApiSsioInsertionOrderCreateRequest, options?: ConfigurationOptions): Promise<SSIOCreateInsertionOrderResponse> {
         return this.api.ssioInsertionOrderCreate(param.adAccountId, param.sSIOCreateInsertionOrderRequest,  options).toPromise();
     }
 
@@ -3164,7 +3165,7 @@ export class ObjectBillingApi {
      * Edit insertion order through SSIO.
      * @param param the request object
      */
-    public ssioInsertionOrderEditWithHttpInfo(param: BillingApiSsioInsertionOrderEditRequest, options?: Configuration): Promise<HttpInfo<SSIOEditInsertionOrderResponse>> {
+    public ssioInsertionOrderEditWithHttpInfo(param: BillingApiSsioInsertionOrderEditRequest, options?: ConfigurationOptions): Promise<HttpInfo<SSIOEditInsertionOrderResponse>> {
         return this.api.ssioInsertionOrderEditWithHttpInfo(param.adAccountId, param.sSIOEditInsertionOrderRequest,  options).toPromise();
     }
 
@@ -3173,7 +3174,7 @@ export class ObjectBillingApi {
      * Edit insertion order through SSIO.
      * @param param the request object
      */
-    public ssioInsertionOrderEdit(param: BillingApiSsioInsertionOrderEditRequest, options?: Configuration): Promise<SSIOEditInsertionOrderResponse> {
+    public ssioInsertionOrderEdit(param: BillingApiSsioInsertionOrderEditRequest, options?: ConfigurationOptions): Promise<SSIOEditInsertionOrderResponse> {
         return this.api.ssioInsertionOrderEdit(param.adAccountId, param.sSIOEditInsertionOrderRequest,  options).toPromise();
     }
 
@@ -3182,7 +3183,7 @@ export class ObjectBillingApi {
      * Get insertion order status by ad account id.
      * @param param the request object
      */
-    public ssioInsertionOrdersStatusGetByAdAccountWithHttpInfo(param: BillingApiSsioInsertionOrdersStatusGetByAdAccountRequest, options?: Configuration): Promise<HttpInfo<SsioInsertionOrdersStatusGetByAdAccount200Response>> {
+    public ssioInsertionOrdersStatusGetByAdAccountWithHttpInfo(param: BillingApiSsioInsertionOrdersStatusGetByAdAccountRequest, options?: ConfigurationOptions): Promise<HttpInfo<SsioInsertionOrdersStatusGetByAdAccount200Response>> {
         return this.api.ssioInsertionOrdersStatusGetByAdAccountWithHttpInfo(param.adAccountId, param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -3191,7 +3192,7 @@ export class ObjectBillingApi {
      * Get insertion order status by ad account id.
      * @param param the request object
      */
-    public ssioInsertionOrdersStatusGetByAdAccount(param: BillingApiSsioInsertionOrdersStatusGetByAdAccountRequest, options?: Configuration): Promise<SsioInsertionOrdersStatusGetByAdAccount200Response> {
+    public ssioInsertionOrdersStatusGetByAdAccount(param: BillingApiSsioInsertionOrdersStatusGetByAdAccountRequest, options?: ConfigurationOptions): Promise<SsioInsertionOrdersStatusGetByAdAccount200Response> {
         return this.api.ssioInsertionOrdersStatusGetByAdAccount(param.adAccountId, param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -3200,7 +3201,7 @@ export class ObjectBillingApi {
      * Get insertion order status by pin order id.
      * @param param the request object
      */
-    public ssioInsertionOrdersStatusGetByPinOrderIdWithHttpInfo(param: BillingApiSsioInsertionOrdersStatusGetByPinOrderIdRequest, options?: Configuration): Promise<HttpInfo<SSIOInsertionOrderStatusResponse>> {
+    public ssioInsertionOrdersStatusGetByPinOrderIdWithHttpInfo(param: BillingApiSsioInsertionOrdersStatusGetByPinOrderIdRequest, options?: ConfigurationOptions): Promise<HttpInfo<SSIOInsertionOrderStatusResponse>> {
         return this.api.ssioInsertionOrdersStatusGetByPinOrderIdWithHttpInfo(param.adAccountId, param.pinOrderId,  options).toPromise();
     }
 
@@ -3209,7 +3210,7 @@ export class ObjectBillingApi {
      * Get insertion order status by pin order id.
      * @param param the request object
      */
-    public ssioInsertionOrdersStatusGetByPinOrderId(param: BillingApiSsioInsertionOrdersStatusGetByPinOrderIdRequest, options?: Configuration): Promise<SSIOInsertionOrderStatusResponse> {
+    public ssioInsertionOrdersStatusGetByPinOrderId(param: BillingApiSsioInsertionOrdersStatusGetByPinOrderIdRequest, options?: ConfigurationOptions): Promise<SSIOInsertionOrderStatusResponse> {
         return this.api.ssioInsertionOrdersStatusGetByPinOrderId(param.adAccountId, param.pinOrderId,  options).toPromise();
     }
 
@@ -3218,7 +3219,7 @@ export class ObjectBillingApi {
      * Get Salesforce order lines by ad account id.
      * @param param the request object
      */
-    public ssioOrderLinesGetByAdAccountWithHttpInfo(param: BillingApiSsioOrderLinesGetByAdAccountRequest, options?: Configuration): Promise<HttpInfo<SsioOrderLinesGetByAdAccount200Response>> {
+    public ssioOrderLinesGetByAdAccountWithHttpInfo(param: BillingApiSsioOrderLinesGetByAdAccountRequest, options?: ConfigurationOptions): Promise<HttpInfo<SsioOrderLinesGetByAdAccount200Response>> {
         return this.api.ssioOrderLinesGetByAdAccountWithHttpInfo(param.adAccountId, param.bookmark, param.pageSize, param.pinOrderId,  options).toPromise();
     }
 
@@ -3227,7 +3228,7 @@ export class ObjectBillingApi {
      * Get Salesforce order lines by ad account id.
      * @param param the request object
      */
-    public ssioOrderLinesGetByAdAccount(param: BillingApiSsioOrderLinesGetByAdAccountRequest, options?: Configuration): Promise<SsioOrderLinesGetByAdAccount200Response> {
+    public ssioOrderLinesGetByAdAccount(param: BillingApiSsioOrderLinesGetByAdAccountRequest, options?: ConfigurationOptions): Promise<SsioOrderLinesGetByAdAccount200Response> {
         return this.api.ssioOrderLinesGetByAdAccount(param.adAccountId, param.bookmark, param.pageSize, param.pinOrderId,  options).toPromise();
     }
 
@@ -3551,7 +3552,7 @@ export class ObjectBoardsApi {
      * Create board section
      * @param param the request object
      */
-    public boardSectionsCreateWithHttpInfo(param: BoardsApiBoardSectionsCreateRequest, options?: Configuration): Promise<HttpInfo<BoardSection>> {
+    public boardSectionsCreateWithHttpInfo(param: BoardsApiBoardSectionsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<BoardSection>> {
         return this.api.boardSectionsCreateWithHttpInfo(param.boardId, param.boardSection, param.adAccountId,  options).toPromise();
     }
 
@@ -3560,7 +3561,7 @@ export class ObjectBoardsApi {
      * Create board section
      * @param param the request object
      */
-    public boardSectionsCreate(param: BoardsApiBoardSectionsCreateRequest, options?: Configuration): Promise<BoardSection> {
+    public boardSectionsCreate(param: BoardsApiBoardSectionsCreateRequest, options?: ConfigurationOptions): Promise<BoardSection> {
         return this.api.boardSectionsCreate(param.boardId, param.boardSection, param.adAccountId,  options).toPromise();
     }
 
@@ -3569,7 +3570,7 @@ export class ObjectBoardsApi {
      * Delete board section
      * @param param the request object
      */
-    public boardSectionsDeleteWithHttpInfo(param: BoardsApiBoardSectionsDeleteRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public boardSectionsDeleteWithHttpInfo(param: BoardsApiBoardSectionsDeleteRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
         return this.api.boardSectionsDeleteWithHttpInfo(param.boardId, param.sectionId, param.adAccountId,  options).toPromise();
     }
 
@@ -3578,7 +3579,7 @@ export class ObjectBoardsApi {
      * Delete board section
      * @param param the request object
      */
-    public boardSectionsDelete(param: BoardsApiBoardSectionsDeleteRequest, options?: Configuration): Promise<void> {
+    public boardSectionsDelete(param: BoardsApiBoardSectionsDeleteRequest, options?: ConfigurationOptions): Promise<void> {
         return this.api.boardSectionsDelete(param.boardId, param.sectionId, param.adAccountId,  options).toPromise();
     }
 
@@ -3587,7 +3588,7 @@ export class ObjectBoardsApi {
      * List board sections
      * @param param the request object
      */
-    public boardSectionsListWithHttpInfo(param: BoardsApiBoardSectionsListRequest, options?: Configuration): Promise<HttpInfo<BoardSectionsList200Response>> {
+    public boardSectionsListWithHttpInfo(param: BoardsApiBoardSectionsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<BoardSectionsList200Response>> {
         return this.api.boardSectionsListWithHttpInfo(param.boardId, param.adAccountId, param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -3596,7 +3597,7 @@ export class ObjectBoardsApi {
      * List board sections
      * @param param the request object
      */
-    public boardSectionsList(param: BoardsApiBoardSectionsListRequest, options?: Configuration): Promise<BoardSectionsList200Response> {
+    public boardSectionsList(param: BoardsApiBoardSectionsListRequest, options?: ConfigurationOptions): Promise<BoardSectionsList200Response> {
         return this.api.boardSectionsList(param.boardId, param.adAccountId, param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -3605,7 +3606,7 @@ export class ObjectBoardsApi {
      * List Pins on board section
      * @param param the request object
      */
-    public boardSectionsListPinsWithHttpInfo(param: BoardsApiBoardSectionsListPinsRequest, options?: Configuration): Promise<HttpInfo<BoardsListPins200Response>> {
+    public boardSectionsListPinsWithHttpInfo(param: BoardsApiBoardSectionsListPinsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BoardsListPins200Response>> {
         return this.api.boardSectionsListPinsWithHttpInfo(param.boardId, param.sectionId, param.adAccountId, param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -3614,7 +3615,7 @@ export class ObjectBoardsApi {
      * List Pins on board section
      * @param param the request object
      */
-    public boardSectionsListPins(param: BoardsApiBoardSectionsListPinsRequest, options?: Configuration): Promise<BoardsListPins200Response> {
+    public boardSectionsListPins(param: BoardsApiBoardSectionsListPinsRequest, options?: ConfigurationOptions): Promise<BoardsListPins200Response> {
         return this.api.boardSectionsListPins(param.boardId, param.sectionId, param.adAccountId, param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -3623,7 +3624,7 @@ export class ObjectBoardsApi {
      * Update board section
      * @param param the request object
      */
-    public boardSectionsUpdateWithHttpInfo(param: BoardsApiBoardSectionsUpdateRequest, options?: Configuration): Promise<HttpInfo<BoardSection>> {
+    public boardSectionsUpdateWithHttpInfo(param: BoardsApiBoardSectionsUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<BoardSection>> {
         return this.api.boardSectionsUpdateWithHttpInfo(param.boardId, param.sectionId, param.boardSection, param.adAccountId,  options).toPromise();
     }
 
@@ -3632,7 +3633,7 @@ export class ObjectBoardsApi {
      * Update board section
      * @param param the request object
      */
-    public boardSectionsUpdate(param: BoardsApiBoardSectionsUpdateRequest, options?: Configuration): Promise<BoardSection> {
+    public boardSectionsUpdate(param: BoardsApiBoardSectionsUpdateRequest, options?: ConfigurationOptions): Promise<BoardSection> {
         return this.api.boardSectionsUpdate(param.boardId, param.sectionId, param.boardSection, param.adAccountId,  options).toPromise();
     }
 
@@ -3641,7 +3642,7 @@ export class ObjectBoardsApi {
      * Create board
      * @param param the request object
      */
-    public boardsCreateWithHttpInfo(param: BoardsApiBoardsCreateRequest, options?: Configuration): Promise<HttpInfo<Board>> {
+    public boardsCreateWithHttpInfo(param: BoardsApiBoardsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<Board>> {
         return this.api.boardsCreateWithHttpInfo(param.board, param.adAccountId,  options).toPromise();
     }
 
@@ -3650,7 +3651,7 @@ export class ObjectBoardsApi {
      * Create board
      * @param param the request object
      */
-    public boardsCreate(param: BoardsApiBoardsCreateRequest, options?: Configuration): Promise<Board> {
+    public boardsCreate(param: BoardsApiBoardsCreateRequest, options?: ConfigurationOptions): Promise<Board> {
         return this.api.boardsCreate(param.board, param.adAccountId,  options).toPromise();
     }
 
@@ -3659,7 +3660,7 @@ export class ObjectBoardsApi {
      * Delete board
      * @param param the request object
      */
-    public boardsDeleteWithHttpInfo(param: BoardsApiBoardsDeleteRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public boardsDeleteWithHttpInfo(param: BoardsApiBoardsDeleteRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
         return this.api.boardsDeleteWithHttpInfo(param.boardId, param.adAccountId,  options).toPromise();
     }
 
@@ -3668,7 +3669,7 @@ export class ObjectBoardsApi {
      * Delete board
      * @param param the request object
      */
-    public boardsDelete(param: BoardsApiBoardsDeleteRequest, options?: Configuration): Promise<void> {
+    public boardsDelete(param: BoardsApiBoardsDeleteRequest, options?: ConfigurationOptions): Promise<void> {
         return this.api.boardsDelete(param.boardId, param.adAccountId,  options).toPromise();
     }
 
@@ -3677,7 +3678,7 @@ export class ObjectBoardsApi {
      * Get board
      * @param param the request object
      */
-    public boardsGetWithHttpInfo(param: BoardsApiBoardsGetRequest, options?: Configuration): Promise<HttpInfo<Board>> {
+    public boardsGetWithHttpInfo(param: BoardsApiBoardsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<Board>> {
         return this.api.boardsGetWithHttpInfo(param.boardId, param.adAccountId,  options).toPromise();
     }
 
@@ -3686,7 +3687,7 @@ export class ObjectBoardsApi {
      * Get board
      * @param param the request object
      */
-    public boardsGet(param: BoardsApiBoardsGetRequest, options?: Configuration): Promise<Board> {
+    public boardsGet(param: BoardsApiBoardsGetRequest, options?: ConfigurationOptions): Promise<Board> {
         return this.api.boardsGet(param.boardId, param.adAccountId,  options).toPromise();
     }
 
@@ -3695,7 +3696,7 @@ export class ObjectBoardsApi {
      * List boards
      * @param param the request object
      */
-    public boardsListWithHttpInfo(param: BoardsApiBoardsListRequest = {}, options?: Configuration): Promise<HttpInfo<BoardsList200Response>> {
+    public boardsListWithHttpInfo(param: BoardsApiBoardsListRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BoardsList200Response>> {
         return this.api.boardsListWithHttpInfo(param.adAccountId, param.bookmark, param.pageSize, param.privacy,  options).toPromise();
     }
 
@@ -3704,7 +3705,7 @@ export class ObjectBoardsApi {
      * List boards
      * @param param the request object
      */
-    public boardsList(param: BoardsApiBoardsListRequest = {}, options?: Configuration): Promise<BoardsList200Response> {
+    public boardsList(param: BoardsApiBoardsListRequest = {}, options?: ConfigurationOptions): Promise<BoardsList200Response> {
         return this.api.boardsList(param.adAccountId, param.bookmark, param.pageSize, param.privacy,  options).toPromise();
     }
 
@@ -3713,7 +3714,7 @@ export class ObjectBoardsApi {
      * List Pins on board
      * @param param the request object
      */
-    public boardsListPinsWithHttpInfo(param: BoardsApiBoardsListPinsRequest, options?: Configuration): Promise<HttpInfo<BoardsListPins200Response>> {
+    public boardsListPinsWithHttpInfo(param: BoardsApiBoardsListPinsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BoardsListPins200Response>> {
         return this.api.boardsListPinsWithHttpInfo(param.boardId, param.bookmark, param.pageSize, param.creativeTypes, param.adAccountId, param.pinMetrics,  options).toPromise();
     }
 
@@ -3722,7 +3723,7 @@ export class ObjectBoardsApi {
      * List Pins on board
      * @param param the request object
      */
-    public boardsListPins(param: BoardsApiBoardsListPinsRequest, options?: Configuration): Promise<BoardsListPins200Response> {
+    public boardsListPins(param: BoardsApiBoardsListPinsRequest, options?: ConfigurationOptions): Promise<BoardsListPins200Response> {
         return this.api.boardsListPins(param.boardId, param.bookmark, param.pageSize, param.creativeTypes, param.adAccountId, param.pinMetrics,  options).toPromise();
     }
 
@@ -3731,7 +3732,7 @@ export class ObjectBoardsApi {
      * Update board
      * @param param the request object
      */
-    public boardsUpdateWithHttpInfo(param: BoardsApiBoardsUpdateRequest, options?: Configuration): Promise<HttpInfo<Board>> {
+    public boardsUpdateWithHttpInfo(param: BoardsApiBoardsUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<Board>> {
         return this.api.boardsUpdateWithHttpInfo(param.boardId, param.boardUpdate, param.adAccountId,  options).toPromise();
     }
 
@@ -3740,7 +3741,7 @@ export class ObjectBoardsApi {
      * Update board
      * @param param the request object
      */
-    public boardsUpdate(param: BoardsApiBoardsUpdateRequest, options?: Configuration): Promise<Board> {
+    public boardsUpdate(param: BoardsApiBoardsUpdateRequest, options?: ConfigurationOptions): Promise<Board> {
         return this.api.boardsUpdate(param.boardId, param.boardUpdate, param.adAccountId,  options).toPromise();
     }
 
@@ -3817,7 +3818,7 @@ export class ObjectBulkApi {
      * Get advertiser entities in bulk
      * @param param the request object
      */
-    public bulkDownloadCreateWithHttpInfo(param: BulkApiBulkDownloadCreateRequest, options?: Configuration): Promise<HttpInfo<BulkDownloadResponse>> {
+    public bulkDownloadCreateWithHttpInfo(param: BulkApiBulkDownloadCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<BulkDownloadResponse>> {
         return this.api.bulkDownloadCreateWithHttpInfo(param.adAccountId, param.bulkDownloadRequest,  options).toPromise();
     }
 
@@ -3826,7 +3827,7 @@ export class ObjectBulkApi {
      * Get advertiser entities in bulk
      * @param param the request object
      */
-    public bulkDownloadCreate(param: BulkApiBulkDownloadCreateRequest, options?: Configuration): Promise<BulkDownloadResponse> {
+    public bulkDownloadCreate(param: BulkApiBulkDownloadCreateRequest, options?: ConfigurationOptions): Promise<BulkDownloadResponse> {
         return this.api.bulkDownloadCreate(param.adAccountId, param.bulkDownloadRequest,  options).toPromise();
     }
 
@@ -3835,7 +3836,7 @@ export class ObjectBulkApi {
      * Download advertiser entities in bulk
      * @param param the request object
      */
-    public bulkRequestGetWithHttpInfo(param: BulkApiBulkRequestGetRequest, options?: Configuration): Promise<HttpInfo<BulkUpsertStatusResponse>> {
+    public bulkRequestGetWithHttpInfo(param: BulkApiBulkRequestGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<BulkUpsertStatusResponse>> {
         return this.api.bulkRequestGetWithHttpInfo(param.adAccountId, param.bulkRequestId, param.includeDetails,  options).toPromise();
     }
 
@@ -3844,7 +3845,7 @@ export class ObjectBulkApi {
      * Download advertiser entities in bulk
      * @param param the request object
      */
-    public bulkRequestGet(param: BulkApiBulkRequestGetRequest, options?: Configuration): Promise<BulkUpsertStatusResponse> {
+    public bulkRequestGet(param: BulkApiBulkRequestGetRequest, options?: ConfigurationOptions): Promise<BulkUpsertStatusResponse> {
         return this.api.bulkRequestGet(param.adAccountId, param.bulkRequestId, param.includeDetails,  options).toPromise();
     }
 
@@ -3853,7 +3854,7 @@ export class ObjectBulkApi {
      * Create/update ad entities in bulk
      * @param param the request object
      */
-    public bulkUpsertCreateWithHttpInfo(param: BulkApiBulkUpsertCreateRequest, options?: Configuration): Promise<HttpInfo<BulkUpsertResponse>> {
+    public bulkUpsertCreateWithHttpInfo(param: BulkApiBulkUpsertCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<BulkUpsertResponse>> {
         return this.api.bulkUpsertCreateWithHttpInfo(param.adAccountId, param.bulkUpsertRequest,  options).toPromise();
     }
 
@@ -3862,7 +3863,7 @@ export class ObjectBulkApi {
      * Create/update ad entities in bulk
      * @param param the request object
      */
-    public bulkUpsertCreate(param: BulkApiBulkUpsertCreateRequest, options?: Configuration): Promise<BulkUpsertResponse> {
+    public bulkUpsertCreate(param: BulkApiBulkUpsertCreateRequest, options?: ConfigurationOptions): Promise<BulkUpsertResponse> {
         return this.api.bulkUpsertCreate(param.adAccountId, param.bulkUpsertRequest,  options).toPromise();
     }
 
@@ -4242,7 +4243,7 @@ export class ObjectBusinessAccessAssetsApi {
      * Create a new asset group.
      * @param param the request object
      */
-    public assetGroupCreateWithHttpInfo(param: BusinessAccessAssetsApiAssetGroupCreateRequest, options?: Configuration): Promise<HttpInfo<CreateAssetGroupResponse>> {
+    public assetGroupCreateWithHttpInfo(param: BusinessAccessAssetsApiAssetGroupCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<CreateAssetGroupResponse>> {
         return this.api.assetGroupCreateWithHttpInfo(param.businessId, param.createAssetGroupBody,  options).toPromise();
     }
 
@@ -4251,7 +4252,7 @@ export class ObjectBusinessAccessAssetsApi {
      * Create a new asset group.
      * @param param the request object
      */
-    public assetGroupCreate(param: BusinessAccessAssetsApiAssetGroupCreateRequest, options?: Configuration): Promise<CreateAssetGroupResponse> {
+    public assetGroupCreate(param: BusinessAccessAssetsApiAssetGroupCreateRequest, options?: ConfigurationOptions): Promise<CreateAssetGroupResponse> {
         return this.api.assetGroupCreate(param.businessId, param.createAssetGroupBody,  options).toPromise();
     }
 
@@ -4260,7 +4261,7 @@ export class ObjectBusinessAccessAssetsApi {
      * Delete asset groups.
      * @param param the request object
      */
-    public assetGroupDeleteWithHttpInfo(param: BusinessAccessAssetsApiAssetGroupDeleteRequest, options?: Configuration): Promise<HttpInfo<DeleteAssetGroupResponse>> {
+    public assetGroupDeleteWithHttpInfo(param: BusinessAccessAssetsApiAssetGroupDeleteRequest, options?: ConfigurationOptions): Promise<HttpInfo<DeleteAssetGroupResponse>> {
         return this.api.assetGroupDeleteWithHttpInfo(param.businessId, param.deleteAssetGroupBody,  options).toPromise();
     }
 
@@ -4269,7 +4270,7 @@ export class ObjectBusinessAccessAssetsApi {
      * Delete asset groups.
      * @param param the request object
      */
-    public assetGroupDelete(param: BusinessAccessAssetsApiAssetGroupDeleteRequest, options?: Configuration): Promise<DeleteAssetGroupResponse> {
+    public assetGroupDelete(param: BusinessAccessAssetsApiAssetGroupDeleteRequest, options?: ConfigurationOptions): Promise<DeleteAssetGroupResponse> {
         return this.api.assetGroupDelete(param.businessId, param.deleteAssetGroupBody,  options).toPromise();
     }
 
@@ -4278,7 +4279,7 @@ export class ObjectBusinessAccessAssetsApi {
      * Update asset groups.
      * @param param the request object
      */
-    public assetGroupUpdateWithHttpInfo(param: BusinessAccessAssetsApiAssetGroupUpdateRequest, options?: Configuration): Promise<HttpInfo<UpdateAssetGroupResponse>> {
+    public assetGroupUpdateWithHttpInfo(param: BusinessAccessAssetsApiAssetGroupUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<UpdateAssetGroupResponse>> {
         return this.api.assetGroupUpdateWithHttpInfo(param.businessId, param.updateAssetGroupBody,  options).toPromise();
     }
 
@@ -4287,7 +4288,7 @@ export class ObjectBusinessAccessAssetsApi {
      * Update asset groups.
      * @param param the request object
      */
-    public assetGroupUpdate(param: BusinessAccessAssetsApiAssetGroupUpdateRequest, options?: Configuration): Promise<UpdateAssetGroupResponse> {
+    public assetGroupUpdate(param: BusinessAccessAssetsApiAssetGroupUpdateRequest, options?: ConfigurationOptions): Promise<UpdateAssetGroupResponse> {
         return this.api.assetGroupUpdate(param.businessId, param.updateAssetGroupBody,  options).toPromise();
     }
 
@@ -4296,7 +4297,7 @@ export class ObjectBusinessAccessAssetsApi {
      * Get members with access to asset
      * @param param the request object
      */
-    public businessAssetMembersGetWithHttpInfo(param: BusinessAccessAssetsApiBusinessAssetMembersGetRequest, options?: Configuration): Promise<HttpInfo<BusinessAssetMembersGet200Response>> {
+    public businessAssetMembersGetWithHttpInfo(param: BusinessAccessAssetsApiBusinessAssetMembersGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<BusinessAssetMembersGet200Response>> {
         return this.api.businessAssetMembersGetWithHttpInfo(param.businessId, param.assetId, param.bookmark, param.pageSize, param.startIndex,  options).toPromise();
     }
 
@@ -4305,7 +4306,7 @@ export class ObjectBusinessAccessAssetsApi {
      * Get members with access to asset
      * @param param the request object
      */
-    public businessAssetMembersGet(param: BusinessAccessAssetsApiBusinessAssetMembersGetRequest, options?: Configuration): Promise<BusinessAssetMembersGet200Response> {
+    public businessAssetMembersGet(param: BusinessAccessAssetsApiBusinessAssetMembersGetRequest, options?: ConfigurationOptions): Promise<BusinessAssetMembersGet200Response> {
         return this.api.businessAssetMembersGet(param.businessId, param.assetId, param.bookmark, param.pageSize, param.startIndex,  options).toPromise();
     }
 
@@ -4314,7 +4315,7 @@ export class ObjectBusinessAccessAssetsApi {
      * Get partners with access to asset
      * @param param the request object
      */
-    public businessAssetPartnersGetWithHttpInfo(param: BusinessAccessAssetsApiBusinessAssetPartnersGetRequest, options?: Configuration): Promise<HttpInfo<BusinessAssetPartnersGet200Response>> {
+    public businessAssetPartnersGetWithHttpInfo(param: BusinessAccessAssetsApiBusinessAssetPartnersGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<BusinessAssetPartnersGet200Response>> {
         return this.api.businessAssetPartnersGetWithHttpInfo(param.businessId, param.assetId, param.startIndex, param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -4323,7 +4324,7 @@ export class ObjectBusinessAccessAssetsApi {
      * Get partners with access to asset
      * @param param the request object
      */
-    public businessAssetPartnersGet(param: BusinessAccessAssetsApiBusinessAssetPartnersGetRequest, options?: Configuration): Promise<BusinessAssetPartnersGet200Response> {
+    public businessAssetPartnersGet(param: BusinessAccessAssetsApiBusinessAssetPartnersGetRequest, options?: ConfigurationOptions): Promise<BusinessAssetPartnersGet200Response> {
         return this.api.businessAssetPartnersGet(param.businessId, param.assetId, param.startIndex, param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -4332,7 +4333,7 @@ export class ObjectBusinessAccessAssetsApi {
      * List business assets
      * @param param the request object
      */
-    public businessAssetsGetWithHttpInfo(param: BusinessAccessAssetsApiBusinessAssetsGetRequest, options?: Configuration): Promise<HttpInfo<BusinessAssetsGet200Response>> {
+    public businessAssetsGetWithHttpInfo(param: BusinessAccessAssetsApiBusinessAssetsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<BusinessAssetsGet200Response>> {
         return this.api.businessAssetsGetWithHttpInfo(param.businessId, param.permissions, param.childAssetId, param.assetGroupId, param.assetType, param.startIndex, param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -4341,7 +4342,7 @@ export class ObjectBusinessAccessAssetsApi {
      * List business assets
      * @param param the request object
      */
-    public businessAssetsGet(param: BusinessAccessAssetsApiBusinessAssetsGetRequest, options?: Configuration): Promise<BusinessAssetsGet200Response> {
+    public businessAssetsGet(param: BusinessAccessAssetsApiBusinessAssetsGetRequest, options?: ConfigurationOptions): Promise<BusinessAssetsGet200Response> {
         return this.api.businessAssetsGet(param.businessId, param.permissions, param.childAssetId, param.assetGroupId, param.assetType, param.startIndex, param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -4350,7 +4351,7 @@ export class ObjectBusinessAccessAssetsApi {
      * Get assets assigned to a member
      * @param param the request object
      */
-    public businessMemberAssetsGetWithHttpInfo(param: BusinessAccessAssetsApiBusinessMemberAssetsGetRequest, options?: Configuration): Promise<HttpInfo<BusinessMemberAssetsGet200Response>> {
+    public businessMemberAssetsGetWithHttpInfo(param: BusinessAccessAssetsApiBusinessMemberAssetsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<BusinessMemberAssetsGet200Response>> {
         return this.api.businessMemberAssetsGetWithHttpInfo(param.businessId, param.memberId, param.assetType, param.startIndex, param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -4359,7 +4360,7 @@ export class ObjectBusinessAccessAssetsApi {
      * Get assets assigned to a member
      * @param param the request object
      */
-    public businessMemberAssetsGet(param: BusinessAccessAssetsApiBusinessMemberAssetsGetRequest, options?: Configuration): Promise<BusinessMemberAssetsGet200Response> {
+    public businessMemberAssetsGet(param: BusinessAccessAssetsApiBusinessMemberAssetsGetRequest, options?: ConfigurationOptions): Promise<BusinessMemberAssetsGet200Response> {
         return this.api.businessMemberAssetsGet(param.businessId, param.memberId, param.assetType, param.startIndex, param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -4368,7 +4369,7 @@ export class ObjectBusinessAccessAssetsApi {
      * Delete member access to asset
      * @param param the request object
      */
-    public businessMembersAssetAccessDeleteWithHttpInfo(param: BusinessAccessAssetsApiBusinessMembersAssetAccessDeleteRequest, options?: Configuration): Promise<HttpInfo<DeleteMemberAccessResultsResponseArray>> {
+    public businessMembersAssetAccessDeleteWithHttpInfo(param: BusinessAccessAssetsApiBusinessMembersAssetAccessDeleteRequest, options?: ConfigurationOptions): Promise<HttpInfo<DeleteMemberAccessResultsResponseArray>> {
         return this.api.businessMembersAssetAccessDeleteWithHttpInfo(param.businessId, param.businessMembersAssetAccessDeleteRequest,  options).toPromise();
     }
 
@@ -4377,7 +4378,7 @@ export class ObjectBusinessAccessAssetsApi {
      * Delete member access to asset
      * @param param the request object
      */
-    public businessMembersAssetAccessDelete(param: BusinessAccessAssetsApiBusinessMembersAssetAccessDeleteRequest, options?: Configuration): Promise<DeleteMemberAccessResultsResponseArray> {
+    public businessMembersAssetAccessDelete(param: BusinessAccessAssetsApiBusinessMembersAssetAccessDeleteRequest, options?: ConfigurationOptions): Promise<DeleteMemberAccessResultsResponseArray> {
         return this.api.businessMembersAssetAccessDelete(param.businessId, param.businessMembersAssetAccessDeleteRequest,  options).toPromise();
     }
 
@@ -4386,7 +4387,7 @@ export class ObjectBusinessAccessAssetsApi {
      * Assign/Update member asset permissions
      * @param param the request object
      */
-    public businessMembersAssetAccessUpdateWithHttpInfo(param: BusinessAccessAssetsApiBusinessMembersAssetAccessUpdateRequest, options?: Configuration): Promise<HttpInfo<UpdateMemberAssetsResultsResponseArray>> {
+    public businessMembersAssetAccessUpdateWithHttpInfo(param: BusinessAccessAssetsApiBusinessMembersAssetAccessUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<UpdateMemberAssetsResultsResponseArray>> {
         return this.api.businessMembersAssetAccessUpdateWithHttpInfo(param.businessId, param.updateMemberAssetAccessBody,  options).toPromise();
     }
 
@@ -4395,7 +4396,7 @@ export class ObjectBusinessAccessAssetsApi {
      * Assign/Update member asset permissions
      * @param param the request object
      */
-    public businessMembersAssetAccessUpdate(param: BusinessAccessAssetsApiBusinessMembersAssetAccessUpdateRequest, options?: Configuration): Promise<UpdateMemberAssetsResultsResponseArray> {
+    public businessMembersAssetAccessUpdate(param: BusinessAccessAssetsApiBusinessMembersAssetAccessUpdateRequest, options?: ConfigurationOptions): Promise<UpdateMemberAssetsResultsResponseArray> {
         return this.api.businessMembersAssetAccessUpdate(param.businessId, param.updateMemberAssetAccessBody,  options).toPromise();
     }
 
@@ -4404,7 +4405,7 @@ export class ObjectBusinessAccessAssetsApi {
      * Get assets assigned to a partner or assets assigned by a partner
      * @param param the request object
      */
-    public businessPartnerAssetAccessGetWithHttpInfo(param: BusinessAccessAssetsApiBusinessPartnerAssetAccessGetRequest, options?: Configuration): Promise<HttpInfo<BusinessPartnerAssetAccessGet200Response>> {
+    public businessPartnerAssetAccessGetWithHttpInfo(param: BusinessAccessAssetsApiBusinessPartnerAssetAccessGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<BusinessPartnerAssetAccessGet200Response>> {
         return this.api.businessPartnerAssetAccessGetWithHttpInfo(param.businessId, param.partnerId, param.partnerType, param.assetType, param.startIndex, param.pageSize, param.bookmark,  options).toPromise();
     }
 
@@ -4413,7 +4414,7 @@ export class ObjectBusinessAccessAssetsApi {
      * Get assets assigned to a partner or assets assigned by a partner
      * @param param the request object
      */
-    public businessPartnerAssetAccessGet(param: BusinessAccessAssetsApiBusinessPartnerAssetAccessGetRequest, options?: Configuration): Promise<BusinessPartnerAssetAccessGet200Response> {
+    public businessPartnerAssetAccessGet(param: BusinessAccessAssetsApiBusinessPartnerAssetAccessGetRequest, options?: ConfigurationOptions): Promise<BusinessPartnerAssetAccessGet200Response> {
         return this.api.businessPartnerAssetAccessGet(param.businessId, param.partnerId, param.partnerType, param.assetType, param.startIndex, param.pageSize, param.bookmark,  options).toPromise();
     }
 
@@ -4422,7 +4423,7 @@ export class ObjectBusinessAccessAssetsApi {
      * Delete partner access to asset
      * @param param the request object
      */
-    public deletePartnerAssetAccessHandlerImplWithHttpInfo(param: BusinessAccessAssetsApiDeletePartnerAssetAccessHandlerImplRequest, options?: Configuration): Promise<HttpInfo<DeletePartnerAssetsResultsResponseArray>> {
+    public deletePartnerAssetAccessHandlerImplWithHttpInfo(param: BusinessAccessAssetsApiDeletePartnerAssetAccessHandlerImplRequest, options?: ConfigurationOptions): Promise<HttpInfo<DeletePartnerAssetsResultsResponseArray>> {
         return this.api.deletePartnerAssetAccessHandlerImplWithHttpInfo(param.businessId, param.deletePartnerAssetAccessBody,  options).toPromise();
     }
 
@@ -4431,7 +4432,7 @@ export class ObjectBusinessAccessAssetsApi {
      * Delete partner access to asset
      * @param param the request object
      */
-    public deletePartnerAssetAccessHandlerImpl(param: BusinessAccessAssetsApiDeletePartnerAssetAccessHandlerImplRequest, options?: Configuration): Promise<DeletePartnerAssetsResultsResponseArray> {
+    public deletePartnerAssetAccessHandlerImpl(param: BusinessAccessAssetsApiDeletePartnerAssetAccessHandlerImplRequest, options?: ConfigurationOptions): Promise<DeletePartnerAssetsResultsResponseArray> {
         return this.api.deletePartnerAssetAccessHandlerImpl(param.businessId, param.deletePartnerAssetAccessBody,  options).toPromise();
     }
 
@@ -4440,7 +4441,7 @@ export class ObjectBusinessAccessAssetsApi {
      * Assign/Update partner asset permissions
      * @param param the request object
      */
-    public updatePartnerAssetAccessHandlerImplWithHttpInfo(param: BusinessAccessAssetsApiUpdatePartnerAssetAccessHandlerImplRequest, options?: Configuration): Promise<HttpInfo<UpdatePartnerAssetsResultsResponseArray>> {
+    public updatePartnerAssetAccessHandlerImplWithHttpInfo(param: BusinessAccessAssetsApiUpdatePartnerAssetAccessHandlerImplRequest, options?: ConfigurationOptions): Promise<HttpInfo<UpdatePartnerAssetsResultsResponseArray>> {
         return this.api.updatePartnerAssetAccessHandlerImplWithHttpInfo(param.businessId, param.updatePartnerAssetAccessBody,  options).toPromise();
     }
 
@@ -4449,7 +4450,7 @@ export class ObjectBusinessAccessAssetsApi {
      * Assign/Update partner asset permissions
      * @param param the request object
      */
-    public updatePartnerAssetAccessHandlerImpl(param: BusinessAccessAssetsApiUpdatePartnerAssetAccessHandlerImplRequest, options?: Configuration): Promise<UpdatePartnerAssetsResultsResponseArray> {
+    public updatePartnerAssetAccessHandlerImpl(param: BusinessAccessAssetsApiUpdatePartnerAssetAccessHandlerImplRequest, options?: ConfigurationOptions): Promise<UpdatePartnerAssetsResultsResponseArray> {
         return this.api.updatePartnerAssetAccessHandlerImpl(param.businessId, param.updatePartnerAssetAccessBody,  options).toPromise();
     }
 
@@ -4590,7 +4591,7 @@ export class ObjectBusinessAccessInviteApi {
      * Create a request to access an existing partner\'s assets.
      * @param param the request object
      */
-    public assetAccessRequestsCreateWithHttpInfo(param: BusinessAccessInviteApiAssetAccessRequestsCreateRequest, options?: Configuration): Promise<HttpInfo<CreateAssetAccessRequestResponse>> {
+    public assetAccessRequestsCreateWithHttpInfo(param: BusinessAccessInviteApiAssetAccessRequestsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<CreateAssetAccessRequestResponse>> {
         return this.api.assetAccessRequestsCreateWithHttpInfo(param.businessId, param.createAssetAccessRequestBody,  options).toPromise();
     }
 
@@ -4599,7 +4600,7 @@ export class ObjectBusinessAccessInviteApi {
      * Create a request to access an existing partner\'s assets.
      * @param param the request object
      */
-    public assetAccessRequestsCreate(param: BusinessAccessInviteApiAssetAccessRequestsCreateRequest, options?: Configuration): Promise<CreateAssetAccessRequestResponse> {
+    public assetAccessRequestsCreate(param: BusinessAccessInviteApiAssetAccessRequestsCreateRequest, options?: ConfigurationOptions): Promise<CreateAssetAccessRequestResponse> {
         return this.api.assetAccessRequestsCreate(param.businessId, param.createAssetAccessRequestBody,  options).toPromise();
     }
 
@@ -4608,7 +4609,7 @@ export class ObjectBusinessAccessInviteApi {
      * Cancel invites/requests
      * @param param the request object
      */
-    public cancelInvitesOrRequestsWithHttpInfo(param: BusinessAccessInviteApiCancelInvitesOrRequestsRequest, options?: Configuration): Promise<HttpInfo<DeleteInvitesResultsResponseArray>> {
+    public cancelInvitesOrRequestsWithHttpInfo(param: BusinessAccessInviteApiCancelInvitesOrRequestsRequest, options?: ConfigurationOptions): Promise<HttpInfo<DeleteInvitesResultsResponseArray>> {
         return this.api.cancelInvitesOrRequestsWithHttpInfo(param.businessId, param.cancelInvitesBody,  options).toPromise();
     }
 
@@ -4617,7 +4618,7 @@ export class ObjectBusinessAccessInviteApi {
      * Cancel invites/requests
      * @param param the request object
      */
-    public cancelInvitesOrRequests(param: BusinessAccessInviteApiCancelInvitesOrRequestsRequest, options?: Configuration): Promise<DeleteInvitesResultsResponseArray> {
+    public cancelInvitesOrRequests(param: BusinessAccessInviteApiCancelInvitesOrRequestsRequest, options?: ConfigurationOptions): Promise<DeleteInvitesResultsResponseArray> {
         return this.api.cancelInvitesOrRequests(param.businessId, param.cancelInvitesBody,  options).toPromise();
     }
 
@@ -4626,7 +4627,7 @@ export class ObjectBusinessAccessInviteApi {
      * Update invite/request with an asset permission
      * @param param the request object
      */
-    public createAssetInvitesWithHttpInfo(param: BusinessAccessInviteApiCreateAssetInvitesRequest, options?: Configuration): Promise<HttpInfo<UpdateInvitesResultsResponseArray>> {
+    public createAssetInvitesWithHttpInfo(param: BusinessAccessInviteApiCreateAssetInvitesRequest, options?: ConfigurationOptions): Promise<HttpInfo<UpdateInvitesResultsResponseArray>> {
         return this.api.createAssetInvitesWithHttpInfo(param.businessId, param.createAssetInvitesRequest,  options).toPromise();
     }
 
@@ -4635,7 +4636,7 @@ export class ObjectBusinessAccessInviteApi {
      * Update invite/request with an asset permission
      * @param param the request object
      */
-    public createAssetInvites(param: BusinessAccessInviteApiCreateAssetInvitesRequest, options?: Configuration): Promise<UpdateInvitesResultsResponseArray> {
+    public createAssetInvites(param: BusinessAccessInviteApiCreateAssetInvitesRequest, options?: ConfigurationOptions): Promise<UpdateInvitesResultsResponseArray> {
         return this.api.createAssetInvites(param.businessId, param.createAssetInvitesRequest,  options).toPromise();
     }
 
@@ -4644,7 +4645,7 @@ export class ObjectBusinessAccessInviteApi {
      * Create invites or requests
      * @param param the request object
      */
-    public createMembershipOrPartnershipInvitesWithHttpInfo(param: BusinessAccessInviteApiCreateMembershipOrPartnershipInvitesRequest, options?: Configuration): Promise<HttpInfo<CreateInvitesResultsResponseArray>> {
+    public createMembershipOrPartnershipInvitesWithHttpInfo(param: BusinessAccessInviteApiCreateMembershipOrPartnershipInvitesRequest, options?: ConfigurationOptions): Promise<HttpInfo<CreateInvitesResultsResponseArray>> {
         return this.api.createMembershipOrPartnershipInvitesWithHttpInfo(param.businessId, param.createMembershipOrPartnershipInvitesBody,  options).toPromise();
     }
 
@@ -4653,7 +4654,7 @@ export class ObjectBusinessAccessInviteApi {
      * Create invites or requests
      * @param param the request object
      */
-    public createMembershipOrPartnershipInvites(param: BusinessAccessInviteApiCreateMembershipOrPartnershipInvitesRequest, options?: Configuration): Promise<CreateInvitesResultsResponseArray> {
+    public createMembershipOrPartnershipInvites(param: BusinessAccessInviteApiCreateMembershipOrPartnershipInvitesRequest, options?: ConfigurationOptions): Promise<CreateInvitesResultsResponseArray> {
         return this.api.createMembershipOrPartnershipInvites(param.businessId, param.createMembershipOrPartnershipInvitesBody,  options).toPromise();
     }
 
@@ -4662,7 +4663,7 @@ export class ObjectBusinessAccessInviteApi {
      * Get invites/requests
      * @param param the request object
      */
-    public getInvitesWithHttpInfo(param: BusinessAccessInviteApiGetInvitesRequest, options?: Configuration): Promise<HttpInfo<GetInvites200Response>> {
+    public getInvitesWithHttpInfo(param: BusinessAccessInviteApiGetInvitesRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetInvites200Response>> {
         return this.api.getInvitesWithHttpInfo(param.businessId, param.isMember, param.inviteStatus, param.inviteType, param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -4671,7 +4672,7 @@ export class ObjectBusinessAccessInviteApi {
      * Get invites/requests
      * @param param the request object
      */
-    public getInvites(param: BusinessAccessInviteApiGetInvitesRequest, options?: Configuration): Promise<GetInvites200Response> {
+    public getInvites(param: BusinessAccessInviteApiGetInvitesRequest, options?: ConfigurationOptions): Promise<GetInvites200Response> {
         return this.api.getInvites(param.businessId, param.isMember, param.inviteStatus, param.inviteType, param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -4680,7 +4681,7 @@ export class ObjectBusinessAccessInviteApi {
      * Accept or decline an invite/request
      * @param param the request object
      */
-    public respondBusinessAccessInvitesWithHttpInfo(param: BusinessAccessInviteApiRespondBusinessAccessInvitesRequest, options?: Configuration): Promise<HttpInfo<RespondToInvitesResponseArray>> {
+    public respondBusinessAccessInvitesWithHttpInfo(param: BusinessAccessInviteApiRespondBusinessAccessInvitesRequest, options?: ConfigurationOptions): Promise<HttpInfo<RespondToInvitesResponseArray>> {
         return this.api.respondBusinessAccessInvitesWithHttpInfo(param.authRespondInvitesBody,  options).toPromise();
     }
 
@@ -4689,7 +4690,7 @@ export class ObjectBusinessAccessInviteApi {
      * Accept or decline an invite/request
      * @param param the request object
      */
-    public respondBusinessAccessInvites(param: BusinessAccessInviteApiRespondBusinessAccessInvitesRequest, options?: Configuration): Promise<RespondToInvitesResponseArray> {
+    public respondBusinessAccessInvites(param: BusinessAccessInviteApiRespondBusinessAccessInvitesRequest, options?: ConfigurationOptions): Promise<RespondToInvitesResponseArray> {
         return this.api.respondBusinessAccessInvites(param.authRespondInvitesBody,  options).toPromise();
     }
 
@@ -4887,7 +4888,7 @@ export class ObjectBusinessAccessRelationshipsApi {
      * Terminate business memberships
      * @param param the request object
      */
-    public deleteBusinessMembershipWithHttpInfo(param: BusinessAccessRelationshipsApiDeleteBusinessMembershipRequest, options?: Configuration): Promise<HttpInfo<DeletedMembersResponse>> {
+    public deleteBusinessMembershipWithHttpInfo(param: BusinessAccessRelationshipsApiDeleteBusinessMembershipRequest, options?: ConfigurationOptions): Promise<HttpInfo<DeletedMembersResponse>> {
         return this.api.deleteBusinessMembershipWithHttpInfo(param.businessId, param.membersToDeleteBody,  options).toPromise();
     }
 
@@ -4896,7 +4897,7 @@ export class ObjectBusinessAccessRelationshipsApi {
      * Terminate business memberships
      * @param param the request object
      */
-    public deleteBusinessMembership(param: BusinessAccessRelationshipsApiDeleteBusinessMembershipRequest, options?: Configuration): Promise<DeletedMembersResponse> {
+    public deleteBusinessMembership(param: BusinessAccessRelationshipsApiDeleteBusinessMembershipRequest, options?: ConfigurationOptions): Promise<DeletedMembersResponse> {
         return this.api.deleteBusinessMembership(param.businessId, param.membersToDeleteBody,  options).toPromise();
     }
 
@@ -4905,7 +4906,7 @@ export class ObjectBusinessAccessRelationshipsApi {
      * Terminate business partnerships
      * @param param the request object
      */
-    public deleteBusinessPartnersWithHttpInfo(param: BusinessAccessRelationshipsApiDeleteBusinessPartnersRequest, options?: Configuration): Promise<HttpInfo<DeletePartnersResponse>> {
+    public deleteBusinessPartnersWithHttpInfo(param: BusinessAccessRelationshipsApiDeleteBusinessPartnersRequest, options?: ConfigurationOptions): Promise<HttpInfo<DeletePartnersResponse>> {
         return this.api.deleteBusinessPartnersWithHttpInfo(param.businessId, param.deletePartnersRequest,  options).toPromise();
     }
 
@@ -4914,7 +4915,7 @@ export class ObjectBusinessAccessRelationshipsApi {
      * Terminate business partnerships
      * @param param the request object
      */
-    public deleteBusinessPartners(param: BusinessAccessRelationshipsApiDeleteBusinessPartnersRequest, options?: Configuration): Promise<DeletePartnersResponse> {
+    public deleteBusinessPartners(param: BusinessAccessRelationshipsApiDeleteBusinessPartnersRequest, options?: ConfigurationOptions): Promise<DeletePartnersResponse> {
         return this.api.deleteBusinessPartners(param.businessId, param.deletePartnersRequest,  options).toPromise();
     }
 
@@ -4923,7 +4924,7 @@ export class ObjectBusinessAccessRelationshipsApi {
      * List business employers for user
      * @param param the request object
      */
-    public getBusinessEmployersWithHttpInfo(param: BusinessAccessRelationshipsApiGetBusinessEmployersRequest = {}, options?: Configuration): Promise<HttpInfo<GetBusinessEmployers200Response>> {
+    public getBusinessEmployersWithHttpInfo(param: BusinessAccessRelationshipsApiGetBusinessEmployersRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<GetBusinessEmployers200Response>> {
         return this.api.getBusinessEmployersWithHttpInfo(param.pageSize, param.bookmark,  options).toPromise();
     }
 
@@ -4932,7 +4933,7 @@ export class ObjectBusinessAccessRelationshipsApi {
      * List business employers for user
      * @param param the request object
      */
-    public getBusinessEmployers(param: BusinessAccessRelationshipsApiGetBusinessEmployersRequest = {}, options?: Configuration): Promise<GetBusinessEmployers200Response> {
+    public getBusinessEmployers(param: BusinessAccessRelationshipsApiGetBusinessEmployersRequest = {}, options?: ConfigurationOptions): Promise<GetBusinessEmployers200Response> {
         return this.api.getBusinessEmployers(param.pageSize, param.bookmark,  options).toPromise();
     }
 
@@ -4941,7 +4942,7 @@ export class ObjectBusinessAccessRelationshipsApi {
      * Get business members
      * @param param the request object
      */
-    public getBusinessMembersWithHttpInfo(param: BusinessAccessRelationshipsApiGetBusinessMembersRequest, options?: Configuration): Promise<HttpInfo<GetBusinessMembers200Response>> {
+    public getBusinessMembersWithHttpInfo(param: BusinessAccessRelationshipsApiGetBusinessMembersRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetBusinessMembers200Response>> {
         return this.api.getBusinessMembersWithHttpInfo(param.businessId, param.assetsSummary, param.businessRoles, param.memberIds, param.startIndex, param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -4950,7 +4951,7 @@ export class ObjectBusinessAccessRelationshipsApi {
      * Get business members
      * @param param the request object
      */
-    public getBusinessMembers(param: BusinessAccessRelationshipsApiGetBusinessMembersRequest, options?: Configuration): Promise<GetBusinessMembers200Response> {
+    public getBusinessMembers(param: BusinessAccessRelationshipsApiGetBusinessMembersRequest, options?: ConfigurationOptions): Promise<GetBusinessMembers200Response> {
         return this.api.getBusinessMembers(param.businessId, param.assetsSummary, param.businessRoles, param.memberIds, param.startIndex, param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -4959,7 +4960,7 @@ export class ObjectBusinessAccessRelationshipsApi {
      * Get business partners
      * @param param the request object
      */
-    public getBusinessPartnersWithHttpInfo(param: BusinessAccessRelationshipsApiGetBusinessPartnersRequest, options?: Configuration): Promise<HttpInfo<GetBusinessPartners200Response>> {
+    public getBusinessPartnersWithHttpInfo(param: BusinessAccessRelationshipsApiGetBusinessPartnersRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetBusinessPartners200Response>> {
         return this.api.getBusinessPartnersWithHttpInfo(param.businessId, param.assetsSummary, param.partnerType, param.partnerIds, param.startIndex, param.pageSize, param.bookmark,  options).toPromise();
     }
 
@@ -4968,7 +4969,7 @@ export class ObjectBusinessAccessRelationshipsApi {
      * Get business partners
      * @param param the request object
      */
-    public getBusinessPartners(param: BusinessAccessRelationshipsApiGetBusinessPartnersRequest, options?: Configuration): Promise<GetBusinessPartners200Response> {
+    public getBusinessPartners(param: BusinessAccessRelationshipsApiGetBusinessPartnersRequest, options?: ConfigurationOptions): Promise<GetBusinessPartners200Response> {
         return this.api.getBusinessPartners(param.businessId, param.assetsSummary, param.partnerType, param.partnerIds, param.startIndex, param.pageSize, param.bookmark,  options).toPromise();
     }
 
@@ -4977,7 +4978,7 @@ export class ObjectBusinessAccessRelationshipsApi {
      * Update member\'s business role
      * @param param the request object
      */
-    public updateBusinessMembershipsWithHttpInfo(param: BusinessAccessRelationshipsApiUpdateBusinessMembershipsRequest, options?: Configuration): Promise<HttpInfo<UpdateMemberResultsResponseArray>> {
+    public updateBusinessMembershipsWithHttpInfo(param: BusinessAccessRelationshipsApiUpdateBusinessMembershipsRequest, options?: ConfigurationOptions): Promise<HttpInfo<UpdateMemberResultsResponseArray>> {
         return this.api.updateBusinessMembershipsWithHttpInfo(param.businessId, param.updateMemberBusinessRoleBody,  options).toPromise();
     }
 
@@ -4986,7 +4987,7 @@ export class ObjectBusinessAccessRelationshipsApi {
      * Update member\'s business role
      * @param param the request object
      */
-    public updateBusinessMemberships(param: BusinessAccessRelationshipsApiUpdateBusinessMembershipsRequest, options?: Configuration): Promise<UpdateMemberResultsResponseArray> {
+    public updateBusinessMemberships(param: BusinessAccessRelationshipsApiUpdateBusinessMembershipsRequest, options?: ConfigurationOptions): Promise<UpdateMemberResultsResponseArray> {
         return this.api.updateBusinessMemberships(param.businessId, param.updateMemberBusinessRoleBody,  options).toPromise();
     }
 
@@ -5263,7 +5264,7 @@ export class ObjectCampaignsApi {
      * Get targeting analytics for campaigns
      * @param param the request object
      */
-    public campaignTargetingAnalyticsGetWithHttpInfo(param: CampaignsApiCampaignTargetingAnalyticsGetRequest, options?: Configuration): Promise<HttpInfo<MetricsResponse>> {
+    public campaignTargetingAnalyticsGetWithHttpInfo(param: CampaignsApiCampaignTargetingAnalyticsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<MetricsResponse>> {
         return this.api.campaignTargetingAnalyticsGetWithHttpInfo(param.adAccountId, param.campaignIds, param.startDate, param.endDate, param.targetingTypes, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.attributionTypes,  options).toPromise();
     }
 
@@ -5272,7 +5273,7 @@ export class ObjectCampaignsApi {
      * Get targeting analytics for campaigns
      * @param param the request object
      */
-    public campaignTargetingAnalyticsGet(param: CampaignsApiCampaignTargetingAnalyticsGetRequest, options?: Configuration): Promise<MetricsResponse> {
+    public campaignTargetingAnalyticsGet(param: CampaignsApiCampaignTargetingAnalyticsGetRequest, options?: ConfigurationOptions): Promise<MetricsResponse> {
         return this.api.campaignTargetingAnalyticsGet(param.adAccountId, param.campaignIds, param.startDate, param.endDate, param.targetingTypes, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime, param.attributionTypes,  options).toPromise();
     }
 
@@ -5281,7 +5282,7 @@ export class ObjectCampaignsApi {
      * Get campaign analytics
      * @param param the request object
      */
-    public campaignsAnalyticsWithHttpInfo(param: CampaignsApiCampaignsAnalyticsRequest, options?: Configuration): Promise<HttpInfo<Array<CampaignsAnalyticsResponseInner>>> {
+    public campaignsAnalyticsWithHttpInfo(param: CampaignsApiCampaignsAnalyticsRequest, options?: ConfigurationOptions): Promise<HttpInfo<Array<CampaignsAnalyticsResponseInner>>> {
         return this.api.campaignsAnalyticsWithHttpInfo(param.adAccountId, param.startDate, param.endDate, param.campaignIds, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime,  options).toPromise();
     }
 
@@ -5290,7 +5291,7 @@ export class ObjectCampaignsApi {
      * Get campaign analytics
      * @param param the request object
      */
-    public campaignsAnalytics(param: CampaignsApiCampaignsAnalyticsRequest, options?: Configuration): Promise<Array<CampaignsAnalyticsResponseInner>> {
+    public campaignsAnalytics(param: CampaignsApiCampaignsAnalyticsRequest, options?: ConfigurationOptions): Promise<Array<CampaignsAnalyticsResponseInner>> {
         return this.api.campaignsAnalytics(param.adAccountId, param.startDate, param.endDate, param.campaignIds, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime,  options).toPromise();
     }
 
@@ -5299,7 +5300,7 @@ export class ObjectCampaignsApi {
      * Create campaigns
      * @param param the request object
      */
-    public campaignsCreateWithHttpInfo(param: CampaignsApiCampaignsCreateRequest, options?: Configuration): Promise<HttpInfo<CampaignCreateResponse>> {
+    public campaignsCreateWithHttpInfo(param: CampaignsApiCampaignsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<CampaignCreateResponse>> {
         return this.api.campaignsCreateWithHttpInfo(param.adAccountId, param.campaignCreateRequest,  options).toPromise();
     }
 
@@ -5308,7 +5309,7 @@ export class ObjectCampaignsApi {
      * Create campaigns
      * @param param the request object
      */
-    public campaignsCreate(param: CampaignsApiCampaignsCreateRequest, options?: Configuration): Promise<CampaignCreateResponse> {
+    public campaignsCreate(param: CampaignsApiCampaignsCreateRequest, options?: ConfigurationOptions): Promise<CampaignCreateResponse> {
         return this.api.campaignsCreate(param.adAccountId, param.campaignCreateRequest,  options).toPromise();
     }
 
@@ -5317,7 +5318,7 @@ export class ObjectCampaignsApi {
      * Get campaign
      * @param param the request object
      */
-    public campaignsGetWithHttpInfo(param: CampaignsApiCampaignsGetRequest, options?: Configuration): Promise<HttpInfo<CampaignResponse>> {
+    public campaignsGetWithHttpInfo(param: CampaignsApiCampaignsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<CampaignResponse>> {
         return this.api.campaignsGetWithHttpInfo(param.adAccountId, param.campaignId,  options).toPromise();
     }
 
@@ -5326,7 +5327,7 @@ export class ObjectCampaignsApi {
      * Get campaign
      * @param param the request object
      */
-    public campaignsGet(param: CampaignsApiCampaignsGetRequest, options?: Configuration): Promise<CampaignResponse> {
+    public campaignsGet(param: CampaignsApiCampaignsGetRequest, options?: ConfigurationOptions): Promise<CampaignResponse> {
         return this.api.campaignsGet(param.adAccountId, param.campaignId,  options).toPromise();
     }
 
@@ -5335,7 +5336,7 @@ export class ObjectCampaignsApi {
      * List campaigns
      * @param param the request object
      */
-    public campaignsListWithHttpInfo(param: CampaignsApiCampaignsListRequest, options?: Configuration): Promise<HttpInfo<CampaignsList200Response>> {
+    public campaignsListWithHttpInfo(param: CampaignsApiCampaignsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<CampaignsList200Response>> {
         return this.api.campaignsListWithHttpInfo(param.adAccountId, param.campaignIds, param.entityStatuses, param.pageSize, param.order, param.bookmark,  options).toPromise();
     }
 
@@ -5344,7 +5345,7 @@ export class ObjectCampaignsApi {
      * List campaigns
      * @param param the request object
      */
-    public campaignsList(param: CampaignsApiCampaignsListRequest, options?: Configuration): Promise<CampaignsList200Response> {
+    public campaignsList(param: CampaignsApiCampaignsListRequest, options?: ConfigurationOptions): Promise<CampaignsList200Response> {
         return this.api.campaignsList(param.adAccountId, param.campaignIds, param.entityStatuses, param.pageSize, param.order, param.bookmark,  options).toPromise();
     }
 
@@ -5353,7 +5354,7 @@ export class ObjectCampaignsApi {
      * Update campaigns
      * @param param the request object
      */
-    public campaignsUpdateWithHttpInfo(param: CampaignsApiCampaignsUpdateRequest, options?: Configuration): Promise<HttpInfo<CampaignUpdateResponse>> {
+    public campaignsUpdateWithHttpInfo(param: CampaignsApiCampaignsUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<CampaignUpdateResponse>> {
         return this.api.campaignsUpdateWithHttpInfo(param.adAccountId, param.campaignUpdateRequest,  options).toPromise();
     }
 
@@ -5362,7 +5363,7 @@ export class ObjectCampaignsApi {
      * Update campaigns
      * @param param the request object
      */
-    public campaignsUpdate(param: CampaignsApiCampaignsUpdateRequest, options?: Configuration): Promise<CampaignUpdateResponse> {
+    public campaignsUpdate(param: CampaignsApiCampaignsUpdateRequest, options?: ConfigurationOptions): Promise<CampaignUpdateResponse> {
         return this.api.campaignsUpdate(param.adAccountId, param.campaignUpdateRequest,  options).toPromise();
     }
 
@@ -6030,7 +6031,7 @@ export class ObjectCatalogsApi {
      * Create catalog
      * @param param the request object
      */
-    public catalogsCreateWithHttpInfo(param: CatalogsApiCatalogsCreateRequest, options?: Configuration): Promise<HttpInfo<Catalog>> {
+    public catalogsCreateWithHttpInfo(param: CatalogsApiCatalogsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<Catalog>> {
         return this.api.catalogsCreateWithHttpInfo(param.catalogsCreateRequest, param.adAccountId,  options).toPromise();
     }
 
@@ -6039,7 +6040,7 @@ export class ObjectCatalogsApi {
      * Create catalog
      * @param param the request object
      */
-    public catalogsCreate(param: CatalogsApiCatalogsCreateRequest, options?: Configuration): Promise<Catalog> {
+    public catalogsCreate(param: CatalogsApiCatalogsCreateRequest, options?: ConfigurationOptions): Promise<Catalog> {
         return this.api.catalogsCreate(param.catalogsCreateRequest, param.adAccountId,  options).toPromise();
     }
 
@@ -6048,7 +6049,7 @@ export class ObjectCatalogsApi {
      * List catalogs
      * @param param the request object
      */
-    public catalogsListWithHttpInfo(param: CatalogsApiCatalogsListRequest = {}, options?: Configuration): Promise<HttpInfo<CatalogsList200Response>> {
+    public catalogsListWithHttpInfo(param: CatalogsApiCatalogsListRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsList200Response>> {
         return this.api.catalogsListWithHttpInfo(param.bookmark, param.pageSize, param.adAccountId,  options).toPromise();
     }
 
@@ -6057,7 +6058,7 @@ export class ObjectCatalogsApi {
      * List catalogs
      * @param param the request object
      */
-    public catalogsList(param: CatalogsApiCatalogsListRequest = {}, options?: Configuration): Promise<CatalogsList200Response> {
+    public catalogsList(param: CatalogsApiCatalogsListRequest = {}, options?: ConfigurationOptions): Promise<CatalogsList200Response> {
         return this.api.catalogsList(param.bookmark, param.pageSize, param.adAccountId,  options).toPromise();
     }
 
@@ -6066,7 +6067,7 @@ export class ObjectCatalogsApi {
      * List products by product group
      * @param param the request object
      */
-    public catalogsProductGroupPinsListWithHttpInfo(param: CatalogsApiCatalogsProductGroupPinsListRequest, options?: Configuration): Promise<HttpInfo<CatalogsProductGroupPinsList200Response>> {
+    public catalogsProductGroupPinsListWithHttpInfo(param: CatalogsApiCatalogsProductGroupPinsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsProductGroupPinsList200Response>> {
         return this.api.catalogsProductGroupPinsListWithHttpInfo(param.productGroupId, param.bookmark, param.pageSize, param.adAccountId, param.pinMetrics,  options).toPromise();
     }
 
@@ -6075,7 +6076,7 @@ export class ObjectCatalogsApi {
      * List products by product group
      * @param param the request object
      */
-    public catalogsProductGroupPinsList(param: CatalogsApiCatalogsProductGroupPinsListRequest, options?: Configuration): Promise<CatalogsProductGroupPinsList200Response> {
+    public catalogsProductGroupPinsList(param: CatalogsApiCatalogsProductGroupPinsListRequest, options?: ConfigurationOptions): Promise<CatalogsProductGroupPinsList200Response> {
         return this.api.catalogsProductGroupPinsList(param.productGroupId, param.bookmark, param.pageSize, param.adAccountId, param.pinMetrics,  options).toPromise();
     }
 
@@ -6084,7 +6085,7 @@ export class ObjectCatalogsApi {
      * Create product group
      * @param param the request object
      */
-    public catalogsProductGroupsCreateWithHttpInfo(param: CatalogsApiCatalogsProductGroupsCreateRequest, options?: Configuration): Promise<HttpInfo<CatalogsVerticalProductGroup>> {
+    public catalogsProductGroupsCreateWithHttpInfo(param: CatalogsApiCatalogsProductGroupsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsVerticalProductGroup>> {
         return this.api.catalogsProductGroupsCreateWithHttpInfo(param.multipleProductGroupsInner, param.adAccountId,  options).toPromise();
     }
 
@@ -6093,7 +6094,7 @@ export class ObjectCatalogsApi {
      * Create product group
      * @param param the request object
      */
-    public catalogsProductGroupsCreate(param: CatalogsApiCatalogsProductGroupsCreateRequest, options?: Configuration): Promise<CatalogsVerticalProductGroup> {
+    public catalogsProductGroupsCreate(param: CatalogsApiCatalogsProductGroupsCreateRequest, options?: ConfigurationOptions): Promise<CatalogsVerticalProductGroup> {
         return this.api.catalogsProductGroupsCreate(param.multipleProductGroupsInner, param.adAccountId,  options).toPromise();
     }
 
@@ -6102,7 +6103,7 @@ export class ObjectCatalogsApi {
      * Create product groups
      * @param param the request object
      */
-    public catalogsProductGroupsCreateManyWithHttpInfo(param: CatalogsApiCatalogsProductGroupsCreateManyRequest, options?: Configuration): Promise<HttpInfo<Array<string>>> {
+    public catalogsProductGroupsCreateManyWithHttpInfo(param: CatalogsApiCatalogsProductGroupsCreateManyRequest, options?: ConfigurationOptions): Promise<HttpInfo<Array<string>>> {
         return this.api.catalogsProductGroupsCreateManyWithHttpInfo(param.multipleProductGroupsInner, param.adAccountId,  options).toPromise();
     }
 
@@ -6111,7 +6112,7 @@ export class ObjectCatalogsApi {
      * Create product groups
      * @param param the request object
      */
-    public catalogsProductGroupsCreateMany(param: CatalogsApiCatalogsProductGroupsCreateManyRequest, options?: Configuration): Promise<Array<string>> {
+    public catalogsProductGroupsCreateMany(param: CatalogsApiCatalogsProductGroupsCreateManyRequest, options?: ConfigurationOptions): Promise<Array<string>> {
         return this.api.catalogsProductGroupsCreateMany(param.multipleProductGroupsInner, param.adAccountId,  options).toPromise();
     }
 
@@ -6120,7 +6121,7 @@ export class ObjectCatalogsApi {
      * Delete product group
      * @param param the request object
      */
-    public catalogsProductGroupsDeleteWithHttpInfo(param: CatalogsApiCatalogsProductGroupsDeleteRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public catalogsProductGroupsDeleteWithHttpInfo(param: CatalogsApiCatalogsProductGroupsDeleteRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
         return this.api.catalogsProductGroupsDeleteWithHttpInfo(param.productGroupId, param.adAccountId,  options).toPromise();
     }
 
@@ -6129,7 +6130,7 @@ export class ObjectCatalogsApi {
      * Delete product group
      * @param param the request object
      */
-    public catalogsProductGroupsDelete(param: CatalogsApiCatalogsProductGroupsDeleteRequest, options?: Configuration): Promise<void> {
+    public catalogsProductGroupsDelete(param: CatalogsApiCatalogsProductGroupsDeleteRequest, options?: ConfigurationOptions): Promise<void> {
         return this.api.catalogsProductGroupsDelete(param.productGroupId, param.adAccountId,  options).toPromise();
     }
 
@@ -6138,7 +6139,7 @@ export class ObjectCatalogsApi {
      * Delete product groups
      * @param param the request object
      */
-    public catalogsProductGroupsDeleteManyWithHttpInfo(param: CatalogsApiCatalogsProductGroupsDeleteManyRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public catalogsProductGroupsDeleteManyWithHttpInfo(param: CatalogsApiCatalogsProductGroupsDeleteManyRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
         return this.api.catalogsProductGroupsDeleteManyWithHttpInfo(param.id, param.adAccountId,  options).toPromise();
     }
 
@@ -6147,7 +6148,7 @@ export class ObjectCatalogsApi {
      * Delete product groups
      * @param param the request object
      */
-    public catalogsProductGroupsDeleteMany(param: CatalogsApiCatalogsProductGroupsDeleteManyRequest, options?: Configuration): Promise<void> {
+    public catalogsProductGroupsDeleteMany(param: CatalogsApiCatalogsProductGroupsDeleteManyRequest, options?: ConfigurationOptions): Promise<void> {
         return this.api.catalogsProductGroupsDeleteMany(param.id, param.adAccountId,  options).toPromise();
     }
 
@@ -6156,7 +6157,7 @@ export class ObjectCatalogsApi {
      * Get product group
      * @param param the request object
      */
-    public catalogsProductGroupsGetWithHttpInfo(param: CatalogsApiCatalogsProductGroupsGetRequest, options?: Configuration): Promise<HttpInfo<CatalogsVerticalProductGroup>> {
+    public catalogsProductGroupsGetWithHttpInfo(param: CatalogsApiCatalogsProductGroupsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsVerticalProductGroup>> {
         return this.api.catalogsProductGroupsGetWithHttpInfo(param.productGroupId, param.adAccountId,  options).toPromise();
     }
 
@@ -6165,7 +6166,7 @@ export class ObjectCatalogsApi {
      * Get product group
      * @param param the request object
      */
-    public catalogsProductGroupsGet(param: CatalogsApiCatalogsProductGroupsGetRequest, options?: Configuration): Promise<CatalogsVerticalProductGroup> {
+    public catalogsProductGroupsGet(param: CatalogsApiCatalogsProductGroupsGetRequest, options?: ConfigurationOptions): Promise<CatalogsVerticalProductGroup> {
         return this.api.catalogsProductGroupsGet(param.productGroupId, param.adAccountId,  options).toPromise();
     }
 
@@ -6174,7 +6175,7 @@ export class ObjectCatalogsApi {
      * List product groups
      * @param param the request object
      */
-    public catalogsProductGroupsListWithHttpInfo(param: CatalogsApiCatalogsProductGroupsListRequest = {}, options?: Configuration): Promise<HttpInfo<CatalogsProductGroupsList200Response>> {
+    public catalogsProductGroupsListWithHttpInfo(param: CatalogsApiCatalogsProductGroupsListRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsProductGroupsList200Response>> {
         return this.api.catalogsProductGroupsListWithHttpInfo(param.id, param.feedId, param.catalogId, param.bookmark, param.pageSize, param.adAccountId,  options).toPromise();
     }
 
@@ -6183,7 +6184,7 @@ export class ObjectCatalogsApi {
      * List product groups
      * @param param the request object
      */
-    public catalogsProductGroupsList(param: CatalogsApiCatalogsProductGroupsListRequest = {}, options?: Configuration): Promise<CatalogsProductGroupsList200Response> {
+    public catalogsProductGroupsList(param: CatalogsApiCatalogsProductGroupsListRequest = {}, options?: ConfigurationOptions): Promise<CatalogsProductGroupsList200Response> {
         return this.api.catalogsProductGroupsList(param.id, param.feedId, param.catalogId, param.bookmark, param.pageSize, param.adAccountId,  options).toPromise();
     }
 
@@ -6192,7 +6193,7 @@ export class ObjectCatalogsApi {
      * Get product counts
      * @param param the request object
      */
-    public catalogsProductGroupsProductCountsGetWithHttpInfo(param: CatalogsApiCatalogsProductGroupsProductCountsGetRequest, options?: Configuration): Promise<HttpInfo<CatalogsProductGroupProductCountsVertical>> {
+    public catalogsProductGroupsProductCountsGetWithHttpInfo(param: CatalogsApiCatalogsProductGroupsProductCountsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsProductGroupProductCountsVertical>> {
         return this.api.catalogsProductGroupsProductCountsGetWithHttpInfo(param.productGroupId, param.adAccountId,  options).toPromise();
     }
 
@@ -6201,7 +6202,7 @@ export class ObjectCatalogsApi {
      * Get product counts
      * @param param the request object
      */
-    public catalogsProductGroupsProductCountsGet(param: CatalogsApiCatalogsProductGroupsProductCountsGetRequest, options?: Configuration): Promise<CatalogsProductGroupProductCountsVertical> {
+    public catalogsProductGroupsProductCountsGet(param: CatalogsApiCatalogsProductGroupsProductCountsGetRequest, options?: ConfigurationOptions): Promise<CatalogsProductGroupProductCountsVertical> {
         return this.api.catalogsProductGroupsProductCountsGet(param.productGroupId, param.adAccountId,  options).toPromise();
     }
 
@@ -6210,7 +6211,7 @@ export class ObjectCatalogsApi {
      * Update single product group
      * @param param the request object
      */
-    public catalogsProductGroupsUpdateWithHttpInfo(param: CatalogsApiCatalogsProductGroupsUpdateRequest, options?: Configuration): Promise<HttpInfo<CatalogsVerticalProductGroup>> {
+    public catalogsProductGroupsUpdateWithHttpInfo(param: CatalogsApiCatalogsProductGroupsUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsVerticalProductGroup>> {
         return this.api.catalogsProductGroupsUpdateWithHttpInfo(param.productGroupId, param.catalogsProductGroupsUpdateRequest, param.adAccountId,  options).toPromise();
     }
 
@@ -6219,7 +6220,7 @@ export class ObjectCatalogsApi {
      * Update single product group
      * @param param the request object
      */
-    public catalogsProductGroupsUpdate(param: CatalogsApiCatalogsProductGroupsUpdateRequest, options?: Configuration): Promise<CatalogsVerticalProductGroup> {
+    public catalogsProductGroupsUpdate(param: CatalogsApiCatalogsProductGroupsUpdateRequest, options?: ConfigurationOptions): Promise<CatalogsVerticalProductGroup> {
         return this.api.catalogsProductGroupsUpdate(param.productGroupId, param.catalogsProductGroupsUpdateRequest, param.adAccountId,  options).toPromise();
     }
 
@@ -6228,7 +6229,7 @@ export class ObjectCatalogsApi {
      * List feed processing results
      * @param param the request object
      */
-    public feedProcessingResultsListWithHttpInfo(param: CatalogsApiFeedProcessingResultsListRequest, options?: Configuration): Promise<HttpInfo<FeedProcessingResultsList200Response>> {
+    public feedProcessingResultsListWithHttpInfo(param: CatalogsApiFeedProcessingResultsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<FeedProcessingResultsList200Response>> {
         return this.api.feedProcessingResultsListWithHttpInfo(param.feedId, param.bookmark, param.pageSize, param.adAccountId,  options).toPromise();
     }
 
@@ -6237,7 +6238,7 @@ export class ObjectCatalogsApi {
      * List feed processing results
      * @param param the request object
      */
-    public feedProcessingResultsList(param: CatalogsApiFeedProcessingResultsListRequest, options?: Configuration): Promise<FeedProcessingResultsList200Response> {
+    public feedProcessingResultsList(param: CatalogsApiFeedProcessingResultsListRequest, options?: ConfigurationOptions): Promise<FeedProcessingResultsList200Response> {
         return this.api.feedProcessingResultsList(param.feedId, param.bookmark, param.pageSize, param.adAccountId,  options).toPromise();
     }
 
@@ -6246,7 +6247,7 @@ export class ObjectCatalogsApi {
      * Create feed
      * @param param the request object
      */
-    public feedsCreateWithHttpInfo(param: CatalogsApiFeedsCreateRequest, options?: Configuration): Promise<HttpInfo<CatalogsFeed>> {
+    public feedsCreateWithHttpInfo(param: CatalogsApiFeedsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsFeed>> {
         return this.api.feedsCreateWithHttpInfo(param.feedsCreateRequest, param.adAccountId,  options).toPromise();
     }
 
@@ -6255,7 +6256,7 @@ export class ObjectCatalogsApi {
      * Create feed
      * @param param the request object
      */
-    public feedsCreate(param: CatalogsApiFeedsCreateRequest, options?: Configuration): Promise<CatalogsFeed> {
+    public feedsCreate(param: CatalogsApiFeedsCreateRequest, options?: ConfigurationOptions): Promise<CatalogsFeed> {
         return this.api.feedsCreate(param.feedsCreateRequest, param.adAccountId,  options).toPromise();
     }
 
@@ -6264,7 +6265,7 @@ export class ObjectCatalogsApi {
      * Delete feed
      * @param param the request object
      */
-    public feedsDeleteWithHttpInfo(param: CatalogsApiFeedsDeleteRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public feedsDeleteWithHttpInfo(param: CatalogsApiFeedsDeleteRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
         return this.api.feedsDeleteWithHttpInfo(param.feedId, param.adAccountId,  options).toPromise();
     }
 
@@ -6273,7 +6274,7 @@ export class ObjectCatalogsApi {
      * Delete feed
      * @param param the request object
      */
-    public feedsDelete(param: CatalogsApiFeedsDeleteRequest, options?: Configuration): Promise<void> {
+    public feedsDelete(param: CatalogsApiFeedsDeleteRequest, options?: ConfigurationOptions): Promise<void> {
         return this.api.feedsDelete(param.feedId, param.adAccountId,  options).toPromise();
     }
 
@@ -6282,7 +6283,7 @@ export class ObjectCatalogsApi {
      * Get feed
      * @param param the request object
      */
-    public feedsGetWithHttpInfo(param: CatalogsApiFeedsGetRequest, options?: Configuration): Promise<HttpInfo<CatalogsFeed>> {
+    public feedsGetWithHttpInfo(param: CatalogsApiFeedsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsFeed>> {
         return this.api.feedsGetWithHttpInfo(param.feedId, param.adAccountId,  options).toPromise();
     }
 
@@ -6291,7 +6292,7 @@ export class ObjectCatalogsApi {
      * Get feed
      * @param param the request object
      */
-    public feedsGet(param: CatalogsApiFeedsGetRequest, options?: Configuration): Promise<CatalogsFeed> {
+    public feedsGet(param: CatalogsApiFeedsGetRequest, options?: ConfigurationOptions): Promise<CatalogsFeed> {
         return this.api.feedsGet(param.feedId, param.adAccountId,  options).toPromise();
     }
 
@@ -6300,7 +6301,7 @@ export class ObjectCatalogsApi {
      * Ingest feed items
      * @param param the request object
      */
-    public feedsIngestWithHttpInfo(param: CatalogsApiFeedsIngestRequest, options?: Configuration): Promise<HttpInfo<CatalogsFeedIngestion>> {
+    public feedsIngestWithHttpInfo(param: CatalogsApiFeedsIngestRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsFeedIngestion>> {
         return this.api.feedsIngestWithHttpInfo(param.feedId, param.adAccountId,  options).toPromise();
     }
 
@@ -6309,7 +6310,7 @@ export class ObjectCatalogsApi {
      * Ingest feed items
      * @param param the request object
      */
-    public feedsIngest(param: CatalogsApiFeedsIngestRequest, options?: Configuration): Promise<CatalogsFeedIngestion> {
+    public feedsIngest(param: CatalogsApiFeedsIngestRequest, options?: ConfigurationOptions): Promise<CatalogsFeedIngestion> {
         return this.api.feedsIngest(param.feedId, param.adAccountId,  options).toPromise();
     }
 
@@ -6318,7 +6319,7 @@ export class ObjectCatalogsApi {
      * List feeds
      * @param param the request object
      */
-    public feedsListWithHttpInfo(param: CatalogsApiFeedsListRequest = {}, options?: Configuration): Promise<HttpInfo<FeedsList200Response>> {
+    public feedsListWithHttpInfo(param: CatalogsApiFeedsListRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<FeedsList200Response>> {
         return this.api.feedsListWithHttpInfo(param.bookmark, param.pageSize, param.catalogId, param.adAccountId,  options).toPromise();
     }
 
@@ -6327,7 +6328,7 @@ export class ObjectCatalogsApi {
      * List feeds
      * @param param the request object
      */
-    public feedsList(param: CatalogsApiFeedsListRequest = {}, options?: Configuration): Promise<FeedsList200Response> {
+    public feedsList(param: CatalogsApiFeedsListRequest = {}, options?: ConfigurationOptions): Promise<FeedsList200Response> {
         return this.api.feedsList(param.bookmark, param.pageSize, param.catalogId, param.adAccountId,  options).toPromise();
     }
 
@@ -6336,7 +6337,7 @@ export class ObjectCatalogsApi {
      * Update feed
      * @param param the request object
      */
-    public feedsUpdateWithHttpInfo(param: CatalogsApiFeedsUpdateRequest, options?: Configuration): Promise<HttpInfo<CatalogsFeed>> {
+    public feedsUpdateWithHttpInfo(param: CatalogsApiFeedsUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsFeed>> {
         return this.api.feedsUpdateWithHttpInfo(param.feedId, param.feedsUpdateRequest, param.adAccountId,  options).toPromise();
     }
 
@@ -6345,7 +6346,7 @@ export class ObjectCatalogsApi {
      * Update feed
      * @param param the request object
      */
-    public feedsUpdate(param: CatalogsApiFeedsUpdateRequest, options?: Configuration): Promise<CatalogsFeed> {
+    public feedsUpdate(param: CatalogsApiFeedsUpdateRequest, options?: ConfigurationOptions): Promise<CatalogsFeed> {
         return this.api.feedsUpdate(param.feedId, param.feedsUpdateRequest, param.adAccountId,  options).toPromise();
     }
 
@@ -6354,7 +6355,7 @@ export class ObjectCatalogsApi {
      * Get item batch status
      * @param param the request object
      */
-    public itemsBatchGetWithHttpInfo(param: CatalogsApiItemsBatchGetRequest, options?: Configuration): Promise<HttpInfo<CatalogsItemsBatch>> {
+    public itemsBatchGetWithHttpInfo(param: CatalogsApiItemsBatchGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsItemsBatch>> {
         return this.api.itemsBatchGetWithHttpInfo(param.batchId, param.adAccountId,  options).toPromise();
     }
 
@@ -6363,7 +6364,7 @@ export class ObjectCatalogsApi {
      * Get item batch status
      * @param param the request object
      */
-    public itemsBatchGet(param: CatalogsApiItemsBatchGetRequest, options?: Configuration): Promise<CatalogsItemsBatch> {
+    public itemsBatchGet(param: CatalogsApiItemsBatchGetRequest, options?: ConfigurationOptions): Promise<CatalogsItemsBatch> {
         return this.api.itemsBatchGet(param.batchId, param.adAccountId,  options).toPromise();
     }
 
@@ -6372,7 +6373,7 @@ export class ObjectCatalogsApi {
      * Operate on item batch
      * @param param the request object
      */
-    public itemsBatchPostWithHttpInfo(param: CatalogsApiItemsBatchPostRequest, options?: Configuration): Promise<HttpInfo<CatalogsItemsBatch>> {
+    public itemsBatchPostWithHttpInfo(param: CatalogsApiItemsBatchPostRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsItemsBatch>> {
         return this.api.itemsBatchPostWithHttpInfo(param.itemsBatchPostRequest, param.adAccountId,  options).toPromise();
     }
 
@@ -6381,7 +6382,7 @@ export class ObjectCatalogsApi {
      * Operate on item batch
      * @param param the request object
      */
-    public itemsBatchPost(param: CatalogsApiItemsBatchPostRequest, options?: Configuration): Promise<CatalogsItemsBatch> {
+    public itemsBatchPost(param: CatalogsApiItemsBatchPostRequest, options?: ConfigurationOptions): Promise<CatalogsItemsBatch> {
         return this.api.itemsBatchPost(param.itemsBatchPostRequest, param.adAccountId,  options).toPromise();
     }
 
@@ -6390,7 +6391,7 @@ export class ObjectCatalogsApi {
      * Get catalogs items
      * @param param the request object
      */
-    public itemsGetWithHttpInfo(param: CatalogsApiItemsGetRequest, options?: Configuration): Promise<HttpInfo<CatalogsItems>> {
+    public itemsGetWithHttpInfo(param: CatalogsApiItemsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsItems>> {
         return this.api.itemsGetWithHttpInfo(param.country, param.language, param.adAccountId, param.itemIds, param.filters,  options).toPromise();
     }
 
@@ -6399,7 +6400,7 @@ export class ObjectCatalogsApi {
      * Get catalogs items
      * @param param the request object
      */
-    public itemsGet(param: CatalogsApiItemsGetRequest, options?: Configuration): Promise<CatalogsItems> {
+    public itemsGet(param: CatalogsApiItemsGetRequest, options?: ConfigurationOptions): Promise<CatalogsItems> {
         return this.api.itemsGet(param.country, param.language, param.adAccountId, param.itemIds, param.filters,  options).toPromise();
     }
 
@@ -6408,7 +6409,7 @@ export class ObjectCatalogsApi {
      * List item issues
      * @param param the request object
      */
-    public itemsIssuesListWithHttpInfo(param: CatalogsApiItemsIssuesListRequest, options?: Configuration): Promise<HttpInfo<ItemsIssuesList200Response>> {
+    public itemsIssuesListWithHttpInfo(param: CatalogsApiItemsIssuesListRequest, options?: ConfigurationOptions): Promise<HttpInfo<ItemsIssuesList200Response>> {
         return this.api.itemsIssuesListWithHttpInfo(param.processingResultId, param.bookmark, param.pageSize, param.itemNumbers, param.itemValidationIssue, param.adAccountId,  options).toPromise();
     }
 
@@ -6417,7 +6418,7 @@ export class ObjectCatalogsApi {
      * List item issues
      * @param param the request object
      */
-    public itemsIssuesList(param: CatalogsApiItemsIssuesListRequest, options?: Configuration): Promise<ItemsIssuesList200Response> {
+    public itemsIssuesList(param: CatalogsApiItemsIssuesListRequest, options?: ConfigurationOptions): Promise<ItemsIssuesList200Response> {
         return this.api.itemsIssuesList(param.processingResultId, param.bookmark, param.pageSize, param.itemNumbers, param.itemValidationIssue, param.adAccountId,  options).toPromise();
     }
 
@@ -6426,7 +6427,7 @@ export class ObjectCatalogsApi {
      * Get catalogs items (POST)
      * @param param the request object
      */
-    public itemsPostWithHttpInfo(param: CatalogsApiItemsPostRequest, options?: Configuration): Promise<HttpInfo<CatalogsItems>> {
+    public itemsPostWithHttpInfo(param: CatalogsApiItemsPostRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsItems>> {
         return this.api.itemsPostWithHttpInfo(param.catalogsItemsRequest, param.adAccountId,  options).toPromise();
     }
 
@@ -6435,7 +6436,7 @@ export class ObjectCatalogsApi {
      * Get catalogs items (POST)
      * @param param the request object
      */
-    public itemsPost(param: CatalogsApiItemsPostRequest, options?: Configuration): Promise<CatalogsItems> {
+    public itemsPost(param: CatalogsApiItemsPostRequest, options?: ConfigurationOptions): Promise<CatalogsItems> {
         return this.api.itemsPost(param.catalogsItemsRequest, param.adAccountId,  options).toPromise();
     }
 
@@ -6444,7 +6445,7 @@ export class ObjectCatalogsApi {
      * List products by filter
      * @param param the request object
      */
-    public productsByProductGroupFilterListWithHttpInfo(param: CatalogsApiProductsByProductGroupFilterListRequest, options?: Configuration): Promise<HttpInfo<CatalogsProductGroupPinsList200Response>> {
+    public productsByProductGroupFilterListWithHttpInfo(param: CatalogsApiProductsByProductGroupFilterListRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsProductGroupPinsList200Response>> {
         return this.api.productsByProductGroupFilterListWithHttpInfo(param.catalogsListProductsByFilterRequest, param.bookmark, param.pageSize, param.adAccountId, param.pinMetrics,  options).toPromise();
     }
 
@@ -6453,7 +6454,7 @@ export class ObjectCatalogsApi {
      * List products by filter
      * @param param the request object
      */
-    public productsByProductGroupFilterList(param: CatalogsApiProductsByProductGroupFilterListRequest, options?: Configuration): Promise<CatalogsProductGroupPinsList200Response> {
+    public productsByProductGroupFilterList(param: CatalogsApiProductsByProductGroupFilterListRequest, options?: ConfigurationOptions): Promise<CatalogsProductGroupPinsList200Response> {
         return this.api.productsByProductGroupFilterList(param.catalogsListProductsByFilterRequest, param.bookmark, param.pageSize, param.adAccountId, param.pinMetrics,  options).toPromise();
     }
 
@@ -6462,7 +6463,7 @@ export class ObjectCatalogsApi {
      * Build catalogs report
      * @param param the request object
      */
-    public reportsCreateWithHttpInfo(param: CatalogsApiReportsCreateRequest, options?: Configuration): Promise<HttpInfo<CatalogsCreateReportResponse>> {
+    public reportsCreateWithHttpInfo(param: CatalogsApiReportsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsCreateReportResponse>> {
         return this.api.reportsCreateWithHttpInfo(param.catalogsReportParameters, param.adAccountId,  options).toPromise();
     }
 
@@ -6471,7 +6472,7 @@ export class ObjectCatalogsApi {
      * Build catalogs report
      * @param param the request object
      */
-    public reportsCreate(param: CatalogsApiReportsCreateRequest, options?: Configuration): Promise<CatalogsCreateReportResponse> {
+    public reportsCreate(param: CatalogsApiReportsCreateRequest, options?: ConfigurationOptions): Promise<CatalogsCreateReportResponse> {
         return this.api.reportsCreate(param.catalogsReportParameters, param.adAccountId,  options).toPromise();
     }
 
@@ -6480,7 +6481,7 @@ export class ObjectCatalogsApi {
      * Get catalogs report
      * @param param the request object
      */
-    public reportsGetWithHttpInfo(param: CatalogsApiReportsGetRequest, options?: Configuration): Promise<HttpInfo<CatalogsReport>> {
+    public reportsGetWithHttpInfo(param: CatalogsApiReportsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<CatalogsReport>> {
         return this.api.reportsGetWithHttpInfo(param.token, param.adAccountId,  options).toPromise();
     }
 
@@ -6489,7 +6490,7 @@ export class ObjectCatalogsApi {
      * Get catalogs report
      * @param param the request object
      */
-    public reportsGet(param: CatalogsApiReportsGetRequest, options?: Configuration): Promise<CatalogsReport> {
+    public reportsGet(param: CatalogsApiReportsGetRequest, options?: ConfigurationOptions): Promise<CatalogsReport> {
         return this.api.reportsGet(param.token, param.adAccountId,  options).toPromise();
     }
 
@@ -6498,7 +6499,7 @@ export class ObjectCatalogsApi {
      * List report stats
      * @param param the request object
      */
-    public reportsStatsWithHttpInfo(param: CatalogsApiReportsStatsRequest, options?: Configuration): Promise<HttpInfo<ReportsStats200Response>> {
+    public reportsStatsWithHttpInfo(param: CatalogsApiReportsStatsRequest, options?: ConfigurationOptions): Promise<HttpInfo<ReportsStats200Response>> {
         return this.api.reportsStatsWithHttpInfo(param.parameters, param.adAccountId, param.pageSize, param.bookmark,  options).toPromise();
     }
 
@@ -6507,7 +6508,7 @@ export class ObjectCatalogsApi {
      * List report stats
      * @param param the request object
      */
-    public reportsStats(param: CatalogsApiReportsStatsRequest, options?: Configuration): Promise<ReportsStats200Response> {
+    public reportsStats(param: CatalogsApiReportsStatsRequest, options?: ConfigurationOptions): Promise<ReportsStats200Response> {
         return this.api.reportsStats(param.parameters, param.adAccountId, param.pageSize, param.bookmark,  options).toPromise();
     }
 
@@ -6551,7 +6552,7 @@ export class ObjectConversionEventsApi {
      * Send conversions
      * @param param the request object
      */
-    public eventsCreateWithHttpInfo(param: ConversionEventsApiEventsCreateRequest, options?: Configuration): Promise<HttpInfo<ConversionApiResponse>> {
+    public eventsCreateWithHttpInfo(param: ConversionEventsApiEventsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<ConversionApiResponse>> {
         return this.api.eventsCreateWithHttpInfo(param.adAccountId, param.conversionEvents, param.test,  options).toPromise();
     }
 
@@ -6560,7 +6561,7 @@ export class ObjectConversionEventsApi {
      * Send conversions
      * @param param the request object
      */
-    public eventsCreate(param: ConversionEventsApiEventsCreateRequest, options?: Configuration): Promise<ConversionApiResponse> {
+    public eventsCreate(param: ConversionEventsApiEventsCreateRequest, options?: ConfigurationOptions): Promise<ConversionApiResponse> {
         return this.api.eventsCreate(param.adAccountId, param.conversionEvents, param.test,  options).toPromise();
     }
 
@@ -6674,7 +6675,7 @@ export class ObjectConversionTagsApi {
      * Create conversion tag
      * @param param the request object
      */
-    public conversionTagsCreateWithHttpInfo(param: ConversionTagsApiConversionTagsCreateRequest, options?: Configuration): Promise<HttpInfo<ConversionTagResponse>> {
+    public conversionTagsCreateWithHttpInfo(param: ConversionTagsApiConversionTagsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<ConversionTagResponse>> {
         return this.api.conversionTagsCreateWithHttpInfo(param.adAccountId, param.conversionTagCreate,  options).toPromise();
     }
 
@@ -6683,7 +6684,7 @@ export class ObjectConversionTagsApi {
      * Create conversion tag
      * @param param the request object
      */
-    public conversionTagsCreate(param: ConversionTagsApiConversionTagsCreateRequest, options?: Configuration): Promise<ConversionTagResponse> {
+    public conversionTagsCreate(param: ConversionTagsApiConversionTagsCreateRequest, options?: ConfigurationOptions): Promise<ConversionTagResponse> {
         return this.api.conversionTagsCreate(param.adAccountId, param.conversionTagCreate,  options).toPromise();
     }
 
@@ -6692,7 +6693,7 @@ export class ObjectConversionTagsApi {
      * Get conversion tag
      * @param param the request object
      */
-    public conversionTagsGetWithHttpInfo(param: ConversionTagsApiConversionTagsGetRequest, options?: Configuration): Promise<HttpInfo<ConversionTagResponse>> {
+    public conversionTagsGetWithHttpInfo(param: ConversionTagsApiConversionTagsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<ConversionTagResponse>> {
         return this.api.conversionTagsGetWithHttpInfo(param.adAccountId, param.conversionTagId,  options).toPromise();
     }
 
@@ -6701,7 +6702,7 @@ export class ObjectConversionTagsApi {
      * Get conversion tag
      * @param param the request object
      */
-    public conversionTagsGet(param: ConversionTagsApiConversionTagsGetRequest, options?: Configuration): Promise<ConversionTagResponse> {
+    public conversionTagsGet(param: ConversionTagsApiConversionTagsGetRequest, options?: ConfigurationOptions): Promise<ConversionTagResponse> {
         return this.api.conversionTagsGet(param.adAccountId, param.conversionTagId,  options).toPromise();
     }
 
@@ -6710,7 +6711,7 @@ export class ObjectConversionTagsApi {
      * Get conversion tags
      * @param param the request object
      */
-    public conversionTagsListWithHttpInfo(param: ConversionTagsApiConversionTagsListRequest, options?: Configuration): Promise<HttpInfo<ConversionTagListResponse>> {
+    public conversionTagsListWithHttpInfo(param: ConversionTagsApiConversionTagsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<ConversionTagListResponse>> {
         return this.api.conversionTagsListWithHttpInfo(param.adAccountId, param.filterDeleted,  options).toPromise();
     }
 
@@ -6719,7 +6720,7 @@ export class ObjectConversionTagsApi {
      * Get conversion tags
      * @param param the request object
      */
-    public conversionTagsList(param: ConversionTagsApiConversionTagsListRequest, options?: Configuration): Promise<ConversionTagListResponse> {
+    public conversionTagsList(param: ConversionTagsApiConversionTagsListRequest, options?: ConfigurationOptions): Promise<ConversionTagListResponse> {
         return this.api.conversionTagsList(param.adAccountId, param.filterDeleted,  options).toPromise();
     }
 
@@ -6728,7 +6729,7 @@ export class ObjectConversionTagsApi {
      * Get Ocpm eligible conversion tags
      * @param param the request object
      */
-    public ocpmEligibleConversionTagsGetWithHttpInfo(param: ConversionTagsApiOcpmEligibleConversionTagsGetRequest, options?: Configuration): Promise<HttpInfo<{ [key: string]: Array<ConversionEventResponse>; }>> {
+    public ocpmEligibleConversionTagsGetWithHttpInfo(param: ConversionTagsApiOcpmEligibleConversionTagsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<{ [key: string]: Array<ConversionEventResponse>; }>> {
         return this.api.ocpmEligibleConversionTagsGetWithHttpInfo(param.adAccountId,  options).toPromise();
     }
 
@@ -6737,7 +6738,7 @@ export class ObjectConversionTagsApi {
      * Get Ocpm eligible conversion tags
      * @param param the request object
      */
-    public ocpmEligibleConversionTagsGet(param: ConversionTagsApiOcpmEligibleConversionTagsGetRequest, options?: Configuration): Promise<{ [key: string]: Array<ConversionEventResponse>; }> {
+    public ocpmEligibleConversionTagsGet(param: ConversionTagsApiOcpmEligibleConversionTagsGetRequest, options?: ConfigurationOptions): Promise<{ [key: string]: Array<ConversionEventResponse>; }> {
         return this.api.ocpmEligibleConversionTagsGet(param.adAccountId,  options).toPromise();
     }
 
@@ -6746,7 +6747,7 @@ export class ObjectConversionTagsApi {
      * Get page visit conversion tags
      * @param param the request object
      */
-    public pageVisitConversionTagsGetWithHttpInfo(param: ConversionTagsApiPageVisitConversionTagsGetRequest, options?: Configuration): Promise<HttpInfo<PageVisitConversionTagsGet200Response>> {
+    public pageVisitConversionTagsGetWithHttpInfo(param: ConversionTagsApiPageVisitConversionTagsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<PageVisitConversionTagsGet200Response>> {
         return this.api.pageVisitConversionTagsGetWithHttpInfo(param.adAccountId, param.pageSize, param.order, param.bookmark,  options).toPromise();
     }
 
@@ -6755,7 +6756,7 @@ export class ObjectConversionTagsApi {
      * Get page visit conversion tags
      * @param param the request object
      */
-    public pageVisitConversionTagsGet(param: ConversionTagsApiPageVisitConversionTagsGetRequest, options?: Configuration): Promise<PageVisitConversionTagsGet200Response> {
+    public pageVisitConversionTagsGet(param: ConversionTagsApiPageVisitConversionTagsGetRequest, options?: ConfigurationOptions): Promise<PageVisitConversionTagsGet200Response> {
         return this.api.pageVisitConversionTagsGet(param.adAccountId, param.pageSize, param.order, param.bookmark,  options).toPromise();
     }
 
@@ -6865,7 +6866,7 @@ export class ObjectCustomerListsApi {
      * Create customer lists
      * @param param the request object
      */
-    public customerListsCreateWithHttpInfo(param: CustomerListsApiCustomerListsCreateRequest, options?: Configuration): Promise<HttpInfo<CustomerList>> {
+    public customerListsCreateWithHttpInfo(param: CustomerListsApiCustomerListsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomerList>> {
         return this.api.customerListsCreateWithHttpInfo(param.adAccountId, param.customerListRequest,  options).toPromise();
     }
 
@@ -6874,7 +6875,7 @@ export class ObjectCustomerListsApi {
      * Create customer lists
      * @param param the request object
      */
-    public customerListsCreate(param: CustomerListsApiCustomerListsCreateRequest, options?: Configuration): Promise<CustomerList> {
+    public customerListsCreate(param: CustomerListsApiCustomerListsCreateRequest, options?: ConfigurationOptions): Promise<CustomerList> {
         return this.api.customerListsCreate(param.adAccountId, param.customerListRequest,  options).toPromise();
     }
 
@@ -6883,7 +6884,7 @@ export class ObjectCustomerListsApi {
      * Get customer list
      * @param param the request object
      */
-    public customerListsGetWithHttpInfo(param: CustomerListsApiCustomerListsGetRequest, options?: Configuration): Promise<HttpInfo<CustomerList>> {
+    public customerListsGetWithHttpInfo(param: CustomerListsApiCustomerListsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomerList>> {
         return this.api.customerListsGetWithHttpInfo(param.adAccountId, param.customerListId,  options).toPromise();
     }
 
@@ -6892,7 +6893,7 @@ export class ObjectCustomerListsApi {
      * Get customer list
      * @param param the request object
      */
-    public customerListsGet(param: CustomerListsApiCustomerListsGetRequest, options?: Configuration): Promise<CustomerList> {
+    public customerListsGet(param: CustomerListsApiCustomerListsGetRequest, options?: ConfigurationOptions): Promise<CustomerList> {
         return this.api.customerListsGet(param.adAccountId, param.customerListId,  options).toPromise();
     }
 
@@ -6901,7 +6902,7 @@ export class ObjectCustomerListsApi {
      * Get customer lists
      * @param param the request object
      */
-    public customerListsListWithHttpInfo(param: CustomerListsApiCustomerListsListRequest, options?: Configuration): Promise<HttpInfo<CustomerListsList200Response>> {
+    public customerListsListWithHttpInfo(param: CustomerListsApiCustomerListsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomerListsList200Response>> {
         return this.api.customerListsListWithHttpInfo(param.adAccountId, param.pageSize, param.order, param.bookmark,  options).toPromise();
     }
 
@@ -6910,7 +6911,7 @@ export class ObjectCustomerListsApi {
      * Get customer lists
      * @param param the request object
      */
-    public customerListsList(param: CustomerListsApiCustomerListsListRequest, options?: Configuration): Promise<CustomerListsList200Response> {
+    public customerListsList(param: CustomerListsApiCustomerListsListRequest, options?: ConfigurationOptions): Promise<CustomerListsList200Response> {
         return this.api.customerListsList(param.adAccountId, param.pageSize, param.order, param.bookmark,  options).toPromise();
     }
 
@@ -6919,7 +6920,7 @@ export class ObjectCustomerListsApi {
      * Update customer list
      * @param param the request object
      */
-    public customerListsUpdateWithHttpInfo(param: CustomerListsApiCustomerListsUpdateRequest, options?: Configuration): Promise<HttpInfo<CustomerList>> {
+    public customerListsUpdateWithHttpInfo(param: CustomerListsApiCustomerListsUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomerList>> {
         return this.api.customerListsUpdateWithHttpInfo(param.adAccountId, param.customerListId, param.customerListUpdateRequest,  options).toPromise();
     }
 
@@ -6928,7 +6929,7 @@ export class ObjectCustomerListsApi {
      * Update customer list
      * @param param the request object
      */
-    public customerListsUpdate(param: CustomerListsApiCustomerListsUpdateRequest, options?: Configuration): Promise<CustomerList> {
+    public customerListsUpdate(param: CustomerListsApiCustomerListsUpdateRequest, options?: ConfigurationOptions): Promise<CustomerList> {
         return this.api.customerListsUpdate(param.adAccountId, param.customerListId, param.customerListUpdateRequest,  options).toPromise();
     }
 
@@ -7032,7 +7033,7 @@ export class ObjectIntegrationsApi {
      * Delete commerce integration
      * @param param the request object
      */
-    public integrationsCommerceDelWithHttpInfo(param: IntegrationsApiIntegrationsCommerceDelRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public integrationsCommerceDelWithHttpInfo(param: IntegrationsApiIntegrationsCommerceDelRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
         return this.api.integrationsCommerceDelWithHttpInfo(param.externalBusinessId,  options).toPromise();
     }
 
@@ -7041,7 +7042,7 @@ export class ObjectIntegrationsApi {
      * Delete commerce integration
      * @param param the request object
      */
-    public integrationsCommerceDel(param: IntegrationsApiIntegrationsCommerceDelRequest, options?: Configuration): Promise<void> {
+    public integrationsCommerceDel(param: IntegrationsApiIntegrationsCommerceDelRequest, options?: ConfigurationOptions): Promise<void> {
         return this.api.integrationsCommerceDel(param.externalBusinessId,  options).toPromise();
     }
 
@@ -7050,7 +7051,7 @@ export class ObjectIntegrationsApi {
      * Get commerce integration
      * @param param the request object
      */
-    public integrationsCommerceGetWithHttpInfo(param: IntegrationsApiIntegrationsCommerceGetRequest, options?: Configuration): Promise<HttpInfo<IntegrationMetadata>> {
+    public integrationsCommerceGetWithHttpInfo(param: IntegrationsApiIntegrationsCommerceGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<IntegrationMetadata>> {
         return this.api.integrationsCommerceGetWithHttpInfo(param.externalBusinessId,  options).toPromise();
     }
 
@@ -7059,7 +7060,7 @@ export class ObjectIntegrationsApi {
      * Get commerce integration
      * @param param the request object
      */
-    public integrationsCommerceGet(param: IntegrationsApiIntegrationsCommerceGetRequest, options?: Configuration): Promise<IntegrationMetadata> {
+    public integrationsCommerceGet(param: IntegrationsApiIntegrationsCommerceGetRequest, options?: ConfigurationOptions): Promise<IntegrationMetadata> {
         return this.api.integrationsCommerceGet(param.externalBusinessId,  options).toPromise();
     }
 
@@ -7068,7 +7069,7 @@ export class ObjectIntegrationsApi {
      * Update commerce integration
      * @param param the request object
      */
-    public integrationsCommercePatchWithHttpInfo(param: IntegrationsApiIntegrationsCommercePatchRequest, options?: Configuration): Promise<HttpInfo<IntegrationMetadata>> {
+    public integrationsCommercePatchWithHttpInfo(param: IntegrationsApiIntegrationsCommercePatchRequest, options?: ConfigurationOptions): Promise<HttpInfo<IntegrationMetadata>> {
         return this.api.integrationsCommercePatchWithHttpInfo(param.externalBusinessId, param.integrationRequestPatch,  options).toPromise();
     }
 
@@ -7077,7 +7078,7 @@ export class ObjectIntegrationsApi {
      * Update commerce integration
      * @param param the request object
      */
-    public integrationsCommercePatch(param: IntegrationsApiIntegrationsCommercePatchRequest, options?: Configuration): Promise<IntegrationMetadata> {
+    public integrationsCommercePatch(param: IntegrationsApiIntegrationsCommercePatchRequest, options?: ConfigurationOptions): Promise<IntegrationMetadata> {
         return this.api.integrationsCommercePatch(param.externalBusinessId, param.integrationRequestPatch,  options).toPromise();
     }
 
@@ -7086,7 +7087,7 @@ export class ObjectIntegrationsApi {
      * Create commerce integration
      * @param param the request object
      */
-    public integrationsCommercePostWithHttpInfo(param: IntegrationsApiIntegrationsCommercePostRequest = {}, options?: Configuration): Promise<HttpInfo<IntegrationMetadata>> {
+    public integrationsCommercePostWithHttpInfo(param: IntegrationsApiIntegrationsCommercePostRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<IntegrationMetadata>> {
         return this.api.integrationsCommercePostWithHttpInfo(param.integrationRequest,  options).toPromise();
     }
 
@@ -7095,7 +7096,7 @@ export class ObjectIntegrationsApi {
      * Create commerce integration
      * @param param the request object
      */
-    public integrationsCommercePost(param: IntegrationsApiIntegrationsCommercePostRequest = {}, options?: Configuration): Promise<IntegrationMetadata> {
+    public integrationsCommercePost(param: IntegrationsApiIntegrationsCommercePostRequest = {}, options?: ConfigurationOptions): Promise<IntegrationMetadata> {
         return this.api.integrationsCommercePost(param.integrationRequest,  options).toPromise();
     }
 
@@ -7104,7 +7105,7 @@ export class ObjectIntegrationsApi {
      * Get integration metadata
      * @param param the request object
      */
-    public integrationsGetByIdWithHttpInfo(param: IntegrationsApiIntegrationsGetByIdRequest, options?: Configuration): Promise<HttpInfo<IntegrationRecord>> {
+    public integrationsGetByIdWithHttpInfo(param: IntegrationsApiIntegrationsGetByIdRequest, options?: ConfigurationOptions): Promise<HttpInfo<IntegrationRecord>> {
         return this.api.integrationsGetByIdWithHttpInfo(param.id,  options).toPromise();
     }
 
@@ -7113,7 +7114,7 @@ export class ObjectIntegrationsApi {
      * Get integration metadata
      * @param param the request object
      */
-    public integrationsGetById(param: IntegrationsApiIntegrationsGetByIdRequest, options?: Configuration): Promise<IntegrationRecord> {
+    public integrationsGetById(param: IntegrationsApiIntegrationsGetByIdRequest, options?: ConfigurationOptions): Promise<IntegrationRecord> {
         return this.api.integrationsGetById(param.id,  options).toPromise();
     }
 
@@ -7122,7 +7123,7 @@ export class ObjectIntegrationsApi {
      * Get integration metadata list
      * @param param the request object
      */
-    public integrationsGetListWithHttpInfo(param: IntegrationsApiIntegrationsGetListRequest = {}, options?: Configuration): Promise<HttpInfo<IntegrationsGetList200Response>> {
+    public integrationsGetListWithHttpInfo(param: IntegrationsApiIntegrationsGetListRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<IntegrationsGetList200Response>> {
         return this.api.integrationsGetListWithHttpInfo(param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -7131,7 +7132,7 @@ export class ObjectIntegrationsApi {
      * Get integration metadata list
      * @param param the request object
      */
-    public integrationsGetList(param: IntegrationsApiIntegrationsGetListRequest = {}, options?: Configuration): Promise<IntegrationsGetList200Response> {
+    public integrationsGetList(param: IntegrationsApiIntegrationsGetListRequest = {}, options?: ConfigurationOptions): Promise<IntegrationsGetList200Response> {
         return this.api.integrationsGetList(param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -7140,7 +7141,7 @@ export class ObjectIntegrationsApi {
      * Receives batched logs from integration applications.
      * @param param the request object
      */
-    public integrationsLogsPostWithHttpInfo(param: IntegrationsApiIntegrationsLogsPostRequest, options?: Configuration): Promise<HttpInfo<IntegrationLogsSuccessResponse>> {
+    public integrationsLogsPostWithHttpInfo(param: IntegrationsApiIntegrationsLogsPostRequest, options?: ConfigurationOptions): Promise<HttpInfo<IntegrationLogsSuccessResponse>> {
         return this.api.integrationsLogsPostWithHttpInfo(param.integrationLogsRequest,  options).toPromise();
     }
 
@@ -7149,7 +7150,7 @@ export class ObjectIntegrationsApi {
      * Receives batched logs from integration applications.
      * @param param the request object
      */
-    public integrationsLogsPost(param: IntegrationsApiIntegrationsLogsPostRequest, options?: Configuration): Promise<IntegrationLogsSuccessResponse> {
+    public integrationsLogsPost(param: IntegrationsApiIntegrationsLogsPostRequest, options?: ConfigurationOptions): Promise<IntegrationLogsSuccessResponse> {
         return this.api.integrationsLogsPost(param.integrationLogsRequest,  options).toPromise();
     }
 
@@ -7334,7 +7335,7 @@ export class ObjectKeywordsApi {
      * Get country\'s keyword metrics
      * @param param the request object
      */
-    public countryKeywordsMetricsGetWithHttpInfo(param: KeywordsApiCountryKeywordsMetricsGetRequest, options?: Configuration): Promise<HttpInfo<KeywordsMetricsArrayResponse>> {
+    public countryKeywordsMetricsGetWithHttpInfo(param: KeywordsApiCountryKeywordsMetricsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<KeywordsMetricsArrayResponse>> {
         return this.api.countryKeywordsMetricsGetWithHttpInfo(param.adAccountId, param.countryCode, param.keywords,  options).toPromise();
     }
 
@@ -7343,7 +7344,7 @@ export class ObjectKeywordsApi {
      * Get country\'s keyword metrics
      * @param param the request object
      */
-    public countryKeywordsMetricsGet(param: KeywordsApiCountryKeywordsMetricsGetRequest, options?: Configuration): Promise<KeywordsMetricsArrayResponse> {
+    public countryKeywordsMetricsGet(param: KeywordsApiCountryKeywordsMetricsGetRequest, options?: ConfigurationOptions): Promise<KeywordsMetricsArrayResponse> {
         return this.api.countryKeywordsMetricsGet(param.adAccountId, param.countryCode, param.keywords,  options).toPromise();
     }
 
@@ -7352,7 +7353,7 @@ export class ObjectKeywordsApi {
      * Create keywords
      * @param param the request object
      */
-    public keywordsCreateWithHttpInfo(param: KeywordsApiKeywordsCreateRequest, options?: Configuration): Promise<HttpInfo<KeywordsResponse>> {
+    public keywordsCreateWithHttpInfo(param: KeywordsApiKeywordsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<KeywordsResponse>> {
         return this.api.keywordsCreateWithHttpInfo(param.adAccountId, param.keywordsRequest,  options).toPromise();
     }
 
@@ -7361,7 +7362,7 @@ export class ObjectKeywordsApi {
      * Create keywords
      * @param param the request object
      */
-    public keywordsCreate(param: KeywordsApiKeywordsCreateRequest, options?: Configuration): Promise<KeywordsResponse> {
+    public keywordsCreate(param: KeywordsApiKeywordsCreateRequest, options?: ConfigurationOptions): Promise<KeywordsResponse> {
         return this.api.keywordsCreate(param.adAccountId, param.keywordsRequest,  options).toPromise();
     }
 
@@ -7370,7 +7371,7 @@ export class ObjectKeywordsApi {
      * Get keywords
      * @param param the request object
      */
-    public keywordsGetWithHttpInfo(param: KeywordsApiKeywordsGetRequest, options?: Configuration): Promise<HttpInfo<KeywordsGet200Response>> {
+    public keywordsGetWithHttpInfo(param: KeywordsApiKeywordsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<KeywordsGet200Response>> {
         return this.api.keywordsGetWithHttpInfo(param.adAccountId, param.campaignId, param.adGroupId, param.matchTypes, param.pageSize, param.bookmark,  options).toPromise();
     }
 
@@ -7379,7 +7380,7 @@ export class ObjectKeywordsApi {
      * Get keywords
      * @param param the request object
      */
-    public keywordsGet(param: KeywordsApiKeywordsGetRequest, options?: Configuration): Promise<KeywordsGet200Response> {
+    public keywordsGet(param: KeywordsApiKeywordsGetRequest, options?: ConfigurationOptions): Promise<KeywordsGet200Response> {
         return this.api.keywordsGet(param.adAccountId, param.campaignId, param.adGroupId, param.matchTypes, param.pageSize, param.bookmark,  options).toPromise();
     }
 
@@ -7388,7 +7389,7 @@ export class ObjectKeywordsApi {
      * Update keywords
      * @param param the request object
      */
-    public keywordsUpdateWithHttpInfo(param: KeywordsApiKeywordsUpdateRequest, options?: Configuration): Promise<HttpInfo<KeywordsResponse>> {
+    public keywordsUpdateWithHttpInfo(param: KeywordsApiKeywordsUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<KeywordsResponse>> {
         return this.api.keywordsUpdateWithHttpInfo(param.adAccountId, param.keywordUpdateBody,  options).toPromise();
     }
 
@@ -7397,7 +7398,7 @@ export class ObjectKeywordsApi {
      * Update keywords
      * @param param the request object
      */
-    public keywordsUpdate(param: KeywordsApiKeywordsUpdateRequest, options?: Configuration): Promise<KeywordsResponse> {
+    public keywordsUpdate(param: KeywordsApiKeywordsUpdateRequest, options?: ConfigurationOptions): Promise<KeywordsResponse> {
         return this.api.keywordsUpdate(param.adAccountId, param.keywordUpdateBody,  options).toPromise();
     }
 
@@ -7406,7 +7407,7 @@ export class ObjectKeywordsApi {
      * List trending keywords
      * @param param the request object
      */
-    public trendingKeywordsListWithHttpInfo(param: KeywordsApiTrendingKeywordsListRequest, options?: Configuration): Promise<HttpInfo<TrendingKeywordsResponse>> {
+    public trendingKeywordsListWithHttpInfo(param: KeywordsApiTrendingKeywordsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<TrendingKeywordsResponse>> {
         return this.api.trendingKeywordsListWithHttpInfo(param.region, param.trendType, param.interests, param.genders, param.ages, param.includeKeywords, param.normalizeAgainstGroup, param.limit,  options).toPromise();
     }
 
@@ -7415,7 +7416,7 @@ export class ObjectKeywordsApi {
      * List trending keywords
      * @param param the request object
      */
-    public trendingKeywordsList(param: KeywordsApiTrendingKeywordsListRequest, options?: Configuration): Promise<TrendingKeywordsResponse> {
+    public trendingKeywordsList(param: KeywordsApiTrendingKeywordsListRequest, options?: ConfigurationOptions): Promise<TrendingKeywordsResponse> {
         return this.api.trendingKeywordsList(param.region, param.trendType, param.interests, param.genders, param.ages, param.includeKeywords, param.normalizeAgainstGroup, param.limit,  options).toPromise();
     }
 
@@ -7512,7 +7513,7 @@ export class ObjectLeadAdsApi {
      * Delete lead ads subscription
      * @param param the request object
      */
-    public adAccountsSubscriptionsDelByIdWithHttpInfo(param: LeadAdsApiAdAccountsSubscriptionsDelByIdRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public adAccountsSubscriptionsDelByIdWithHttpInfo(param: LeadAdsApiAdAccountsSubscriptionsDelByIdRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
         return this.api.adAccountsSubscriptionsDelByIdWithHttpInfo(param.adAccountId, param.subscriptionId,  options).toPromise();
     }
 
@@ -7521,7 +7522,7 @@ export class ObjectLeadAdsApi {
      * Delete lead ads subscription
      * @param param the request object
      */
-    public adAccountsSubscriptionsDelById(param: LeadAdsApiAdAccountsSubscriptionsDelByIdRequest, options?: Configuration): Promise<void> {
+    public adAccountsSubscriptionsDelById(param: LeadAdsApiAdAccountsSubscriptionsDelByIdRequest, options?: ConfigurationOptions): Promise<void> {
         return this.api.adAccountsSubscriptionsDelById(param.adAccountId, param.subscriptionId,  options).toPromise();
     }
 
@@ -7530,7 +7531,7 @@ export class ObjectLeadAdsApi {
      * Get lead ads subscription
      * @param param the request object
      */
-    public adAccountsSubscriptionsGetByIdWithHttpInfo(param: LeadAdsApiAdAccountsSubscriptionsGetByIdRequest, options?: Configuration): Promise<HttpInfo<AdAccountGetSubscriptionResponse>> {
+    public adAccountsSubscriptionsGetByIdWithHttpInfo(param: LeadAdsApiAdAccountsSubscriptionsGetByIdRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdAccountGetSubscriptionResponse>> {
         return this.api.adAccountsSubscriptionsGetByIdWithHttpInfo(param.adAccountId, param.subscriptionId,  options).toPromise();
     }
 
@@ -7539,7 +7540,7 @@ export class ObjectLeadAdsApi {
      * Get lead ads subscription
      * @param param the request object
      */
-    public adAccountsSubscriptionsGetById(param: LeadAdsApiAdAccountsSubscriptionsGetByIdRequest, options?: Configuration): Promise<AdAccountGetSubscriptionResponse> {
+    public adAccountsSubscriptionsGetById(param: LeadAdsApiAdAccountsSubscriptionsGetByIdRequest, options?: ConfigurationOptions): Promise<AdAccountGetSubscriptionResponse> {
         return this.api.adAccountsSubscriptionsGetById(param.adAccountId, param.subscriptionId,  options).toPromise();
     }
 
@@ -7548,7 +7549,7 @@ export class ObjectLeadAdsApi {
      * Get lead ads subscriptions
      * @param param the request object
      */
-    public adAccountsSubscriptionsGetListWithHttpInfo(param: LeadAdsApiAdAccountsSubscriptionsGetListRequest, options?: Configuration): Promise<HttpInfo<AdAccountsSubscriptionsGetList200Response>> {
+    public adAccountsSubscriptionsGetListWithHttpInfo(param: LeadAdsApiAdAccountsSubscriptionsGetListRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdAccountsSubscriptionsGetList200Response>> {
         return this.api.adAccountsSubscriptionsGetListWithHttpInfo(param.adAccountId, param.pageSize, param.bookmark,  options).toPromise();
     }
 
@@ -7557,7 +7558,7 @@ export class ObjectLeadAdsApi {
      * Get lead ads subscriptions
      * @param param the request object
      */
-    public adAccountsSubscriptionsGetList(param: LeadAdsApiAdAccountsSubscriptionsGetListRequest, options?: Configuration): Promise<AdAccountsSubscriptionsGetList200Response> {
+    public adAccountsSubscriptionsGetList(param: LeadAdsApiAdAccountsSubscriptionsGetListRequest, options?: ConfigurationOptions): Promise<AdAccountsSubscriptionsGetList200Response> {
         return this.api.adAccountsSubscriptionsGetList(param.adAccountId, param.pageSize, param.bookmark,  options).toPromise();
     }
 
@@ -7566,7 +7567,7 @@ export class ObjectLeadAdsApi {
      * Create lead ads subscription
      * @param param the request object
      */
-    public adAccountsSubscriptionsPostWithHttpInfo(param: LeadAdsApiAdAccountsSubscriptionsPostRequest, options?: Configuration): Promise<HttpInfo<AdAccountCreateSubscriptionResponse>> {
+    public adAccountsSubscriptionsPostWithHttpInfo(param: LeadAdsApiAdAccountsSubscriptionsPostRequest, options?: ConfigurationOptions): Promise<HttpInfo<AdAccountCreateSubscriptionResponse>> {
         return this.api.adAccountsSubscriptionsPostWithHttpInfo(param.adAccountId, param.adAccountCreateSubscriptionRequest,  options).toPromise();
     }
 
@@ -7575,7 +7576,7 @@ export class ObjectLeadAdsApi {
      * Create lead ads subscription
      * @param param the request object
      */
-    public adAccountsSubscriptionsPost(param: LeadAdsApiAdAccountsSubscriptionsPostRequest, options?: Configuration): Promise<AdAccountCreateSubscriptionResponse> {
+    public adAccountsSubscriptionsPost(param: LeadAdsApiAdAccountsSubscriptionsPostRequest, options?: ConfigurationOptions): Promise<AdAccountCreateSubscriptionResponse> {
         return this.api.adAccountsSubscriptionsPost(param.adAccountId, param.adAccountCreateSubscriptionRequest,  options).toPromise();
     }
 
@@ -7701,7 +7702,7 @@ export class ObjectLeadFormsApi {
      * Get lead form by id
      * @param param the request object
      */
-    public leadFormGetWithHttpInfo(param: LeadFormsApiLeadFormGetRequest, options?: Configuration): Promise<HttpInfo<LeadFormResponse>> {
+    public leadFormGetWithHttpInfo(param: LeadFormsApiLeadFormGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadFormResponse>> {
         return this.api.leadFormGetWithHttpInfo(param.adAccountId, param.leadFormId,  options).toPromise();
     }
 
@@ -7710,7 +7711,7 @@ export class ObjectLeadFormsApi {
      * Get lead form by id
      * @param param the request object
      */
-    public leadFormGet(param: LeadFormsApiLeadFormGetRequest, options?: Configuration): Promise<LeadFormResponse> {
+    public leadFormGet(param: LeadFormsApiLeadFormGetRequest, options?: ConfigurationOptions): Promise<LeadFormResponse> {
         return this.api.leadFormGet(param.adAccountId, param.leadFormId,  options).toPromise();
     }
 
@@ -7719,7 +7720,7 @@ export class ObjectLeadFormsApi {
      * Create lead form test data
      * @param param the request object
      */
-    public leadFormTestCreateWithHttpInfo(param: LeadFormsApiLeadFormTestCreateRequest, options?: Configuration): Promise<HttpInfo<LeadFormTestResponse>> {
+    public leadFormTestCreateWithHttpInfo(param: LeadFormsApiLeadFormTestCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadFormTestResponse>> {
         return this.api.leadFormTestCreateWithHttpInfo(param.adAccountId, param.leadFormId, param.leadFormTestRequest,  options).toPromise();
     }
 
@@ -7728,7 +7729,7 @@ export class ObjectLeadFormsApi {
      * Create lead form test data
      * @param param the request object
      */
-    public leadFormTestCreate(param: LeadFormsApiLeadFormTestCreateRequest, options?: Configuration): Promise<LeadFormTestResponse> {
+    public leadFormTestCreate(param: LeadFormsApiLeadFormTestCreateRequest, options?: ConfigurationOptions): Promise<LeadFormTestResponse> {
         return this.api.leadFormTestCreate(param.adAccountId, param.leadFormId, param.leadFormTestRequest,  options).toPromise();
     }
 
@@ -7737,7 +7738,7 @@ export class ObjectLeadFormsApi {
      * Create lead forms
      * @param param the request object
      */
-    public leadFormsCreateWithHttpInfo(param: LeadFormsApiLeadFormsCreateRequest, options?: Configuration): Promise<HttpInfo<LeadFormArrayResponse>> {
+    public leadFormsCreateWithHttpInfo(param: LeadFormsApiLeadFormsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadFormArrayResponse>> {
         return this.api.leadFormsCreateWithHttpInfo(param.adAccountId, param.leadFormCreateRequest,  options).toPromise();
     }
 
@@ -7746,7 +7747,7 @@ export class ObjectLeadFormsApi {
      * Create lead forms
      * @param param the request object
      */
-    public leadFormsCreate(param: LeadFormsApiLeadFormsCreateRequest, options?: Configuration): Promise<LeadFormArrayResponse> {
+    public leadFormsCreate(param: LeadFormsApiLeadFormsCreateRequest, options?: ConfigurationOptions): Promise<LeadFormArrayResponse> {
         return this.api.leadFormsCreate(param.adAccountId, param.leadFormCreateRequest,  options).toPromise();
     }
 
@@ -7755,7 +7756,7 @@ export class ObjectLeadFormsApi {
      * List lead forms
      * @param param the request object
      */
-    public leadFormsListWithHttpInfo(param: LeadFormsApiLeadFormsListRequest, options?: Configuration): Promise<HttpInfo<LeadFormsList200Response>> {
+    public leadFormsListWithHttpInfo(param: LeadFormsApiLeadFormsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadFormsList200Response>> {
         return this.api.leadFormsListWithHttpInfo(param.adAccountId, param.pageSize, param.order, param.bookmark,  options).toPromise();
     }
 
@@ -7764,7 +7765,7 @@ export class ObjectLeadFormsApi {
      * List lead forms
      * @param param the request object
      */
-    public leadFormsList(param: LeadFormsApiLeadFormsListRequest, options?: Configuration): Promise<LeadFormsList200Response> {
+    public leadFormsList(param: LeadFormsApiLeadFormsListRequest, options?: ConfigurationOptions): Promise<LeadFormsList200Response> {
         return this.api.leadFormsList(param.adAccountId, param.pageSize, param.order, param.bookmark,  options).toPromise();
     }
 
@@ -7773,7 +7774,7 @@ export class ObjectLeadFormsApi {
      * Update lead forms
      * @param param the request object
      */
-    public leadFormsUpdateWithHttpInfo(param: LeadFormsApiLeadFormsUpdateRequest, options?: Configuration): Promise<HttpInfo<LeadFormArrayResponse>> {
+    public leadFormsUpdateWithHttpInfo(param: LeadFormsApiLeadFormsUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadFormArrayResponse>> {
         return this.api.leadFormsUpdateWithHttpInfo(param.adAccountId, param.leadFormUpdateRequest,  options).toPromise();
     }
 
@@ -7782,7 +7783,7 @@ export class ObjectLeadFormsApi {
      * Update lead forms
      * @param param the request object
      */
-    public leadFormsUpdate(param: LeadFormsApiLeadFormsUpdateRequest, options?: Configuration): Promise<LeadFormArrayResponse> {
+    public leadFormsUpdate(param: LeadFormsApiLeadFormsUpdateRequest, options?: ConfigurationOptions): Promise<LeadFormArrayResponse> {
         return this.api.leadFormsUpdate(param.adAccountId, param.leadFormUpdateRequest,  options).toPromise();
     }
 
@@ -7836,7 +7837,7 @@ export class ObjectLeadsExportApi {
      * Create a request to export leads collected from a lead ad
      * @param param the request object
      */
-    public leadsExportCreateWithHttpInfo(param: LeadsExportApiLeadsExportCreateRequest, options?: Configuration): Promise<HttpInfo<LeadsExportCreateResponse>> {
+    public leadsExportCreateWithHttpInfo(param: LeadsExportApiLeadsExportCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadsExportCreateResponse>> {
         return this.api.leadsExportCreateWithHttpInfo(param.adAccountId, param.leadsExportCreateRequest,  options).toPromise();
     }
 
@@ -7845,7 +7846,7 @@ export class ObjectLeadsExportApi {
      * Create a request to export leads collected from a lead ad
      * @param param the request object
      */
-    public leadsExportCreate(param: LeadsExportApiLeadsExportCreateRequest, options?: Configuration): Promise<LeadsExportCreateResponse> {
+    public leadsExportCreate(param: LeadsExportApiLeadsExportCreateRequest, options?: ConfigurationOptions): Promise<LeadsExportCreateResponse> {
         return this.api.leadsExportCreate(param.adAccountId, param.leadsExportCreateRequest,  options).toPromise();
     }
 
@@ -7854,7 +7855,7 @@ export class ObjectLeadsExportApi {
      * Get the lead export from the lead export create call
      * @param param the request object
      */
-    public leadsExportGetWithHttpInfo(param: LeadsExportApiLeadsExportGetRequest, options?: Configuration): Promise<HttpInfo<LeadsExportResponseData>> {
+    public leadsExportGetWithHttpInfo(param: LeadsExportApiLeadsExportGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadsExportResponseData>> {
         return this.api.leadsExportGetWithHttpInfo(param.adAccountId, param.leadsExportId,  options).toPromise();
     }
 
@@ -7863,7 +7864,7 @@ export class ObjectLeadsExportApi {
      * Get the lead export from the lead export create call
      * @param param the request object
      */
-    public leadsExportGet(param: LeadsExportApiLeadsExportGetRequest, options?: Configuration): Promise<LeadsExportResponseData> {
+    public leadsExportGet(param: LeadsExportApiLeadsExportGetRequest, options?: ConfigurationOptions): Promise<LeadsExportResponseData> {
         return this.api.leadsExportGet(param.adAccountId, param.leadsExportId,  options).toPromise();
     }
 
@@ -7922,7 +7923,7 @@ export class ObjectMediaApi {
      * Register media upload
      * @param param the request object
      */
-    public mediaCreateWithHttpInfo(param: MediaApiMediaCreateRequest, options?: Configuration): Promise<HttpInfo<MediaUpload>> {
+    public mediaCreateWithHttpInfo(param: MediaApiMediaCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<MediaUpload>> {
         return this.api.mediaCreateWithHttpInfo(param.mediaUploadRequest,  options).toPromise();
     }
 
@@ -7931,7 +7932,7 @@ export class ObjectMediaApi {
      * Register media upload
      * @param param the request object
      */
-    public mediaCreate(param: MediaApiMediaCreateRequest, options?: Configuration): Promise<MediaUpload> {
+    public mediaCreate(param: MediaApiMediaCreateRequest, options?: ConfigurationOptions): Promise<MediaUpload> {
         return this.api.mediaCreate(param.mediaUploadRequest,  options).toPromise();
     }
 
@@ -7940,7 +7941,7 @@ export class ObjectMediaApi {
      * Get media upload details
      * @param param the request object
      */
-    public mediaGetWithHttpInfo(param: MediaApiMediaGetRequest, options?: Configuration): Promise<HttpInfo<MediaUploadDetails>> {
+    public mediaGetWithHttpInfo(param: MediaApiMediaGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<MediaUploadDetails>> {
         return this.api.mediaGetWithHttpInfo(param.mediaId,  options).toPromise();
     }
 
@@ -7949,7 +7950,7 @@ export class ObjectMediaApi {
      * Get media upload details
      * @param param the request object
      */
-    public mediaGet(param: MediaApiMediaGetRequest, options?: Configuration): Promise<MediaUploadDetails> {
+    public mediaGet(param: MediaApiMediaGetRequest, options?: ConfigurationOptions): Promise<MediaUploadDetails> {
         return this.api.mediaGet(param.mediaId,  options).toPromise();
     }
 
@@ -7958,7 +7959,7 @@ export class ObjectMediaApi {
      * List media uploads
      * @param param the request object
      */
-    public mediaListWithHttpInfo(param: MediaApiMediaListRequest = {}, options?: Configuration): Promise<HttpInfo<MediaList200Response>> {
+    public mediaListWithHttpInfo(param: MediaApiMediaListRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<MediaList200Response>> {
         return this.api.mediaListWithHttpInfo(param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -7967,7 +7968,7 @@ export class ObjectMediaApi {
      * List media uploads
      * @param param the request object
      */
-    public mediaList(param: MediaApiMediaListRequest = {}, options?: Configuration): Promise<MediaList200Response> {
+    public mediaList(param: MediaApiMediaListRequest = {}, options?: ConfigurationOptions): Promise<MediaList200Response> {
         return this.api.mediaList(param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -7998,7 +7999,7 @@ export class ObjectOauthApi {
      * Generate OAuth access token
      * @param param the request object
      */
-    public oauthTokenWithHttpInfo(param: OauthApiOauthTokenRequest, options?: Configuration): Promise<HttpInfo<OauthAccessTokenResponse>> {
+    public oauthTokenWithHttpInfo(param: OauthApiOauthTokenRequest, options?: ConfigurationOptions): Promise<HttpInfo<OauthAccessTokenResponse>> {
         return this.api.oauthTokenWithHttpInfo(param.grantType,  options).toPromise();
     }
 
@@ -8007,7 +8008,7 @@ export class ObjectOauthApi {
      * Generate OAuth access token
      * @param param the request object
      */
-    public oauthToken(param: OauthApiOauthTokenRequest, options?: Configuration): Promise<OauthAccessTokenResponse> {
+    public oauthToken(param: OauthApiOauthTokenRequest, options?: ConfigurationOptions): Promise<OauthAccessTokenResponse> {
         return this.api.oauthToken(param.grantType,  options).toPromise();
     }
 
@@ -8078,7 +8079,7 @@ export class ObjectOrderLinesApi {
      * Get order line
      * @param param the request object
      */
-    public orderLinesGetWithHttpInfo(param: OrderLinesApiOrderLinesGetRequest, options?: Configuration): Promise<HttpInfo<OrderLine>> {
+    public orderLinesGetWithHttpInfo(param: OrderLinesApiOrderLinesGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<OrderLine>> {
         return this.api.orderLinesGetWithHttpInfo(param.adAccountId, param.orderLineId,  options).toPromise();
     }
 
@@ -8087,7 +8088,7 @@ export class ObjectOrderLinesApi {
      * Get order line
      * @param param the request object
      */
-    public orderLinesGet(param: OrderLinesApiOrderLinesGetRequest, options?: Configuration): Promise<OrderLine> {
+    public orderLinesGet(param: OrderLinesApiOrderLinesGetRequest, options?: ConfigurationOptions): Promise<OrderLine> {
         return this.api.orderLinesGet(param.adAccountId, param.orderLineId,  options).toPromise();
     }
 
@@ -8096,7 +8097,7 @@ export class ObjectOrderLinesApi {
      * Get order lines
      * @param param the request object
      */
-    public orderLinesListWithHttpInfo(param: OrderLinesApiOrderLinesListRequest, options?: Configuration): Promise<HttpInfo<OrderLinesList200Response>> {
+    public orderLinesListWithHttpInfo(param: OrderLinesApiOrderLinesListRequest, options?: ConfigurationOptions): Promise<HttpInfo<OrderLinesList200Response>> {
         return this.api.orderLinesListWithHttpInfo(param.adAccountId, param.pageSize, param.order, param.bookmark,  options).toPromise();
     }
 
@@ -8105,7 +8106,7 @@ export class ObjectOrderLinesApi {
      * Get order lines
      * @param param the request object
      */
-    public orderLinesList(param: OrderLinesApiOrderLinesListRequest, options?: Configuration): Promise<OrderLinesList200Response> {
+    public orderLinesList(param: OrderLinesApiOrderLinesListRequest, options?: ConfigurationOptions): Promise<OrderLinesList200Response> {
         return this.api.orderLinesList(param.adAccountId, param.pageSize, param.order, param.bookmark,  options).toPromise();
     }
 
@@ -8387,7 +8388,7 @@ export class ObjectPinsApi {
      * Get multiple Pin analytics
      * @param param the request object
      */
-    public multiPinsAnalyticsWithHttpInfo(param: PinsApiMultiPinsAnalyticsRequest, options?: Configuration): Promise<HttpInfo<{ [key: string]: { [key: string]: PinAnalyticsMetricsResponse; }; }>> {
+    public multiPinsAnalyticsWithHttpInfo(param: PinsApiMultiPinsAnalyticsRequest, options?: ConfigurationOptions): Promise<HttpInfo<{ [key: string]: { [key: string]: PinAnalyticsMetricsResponse; }; }>> {
         return this.api.multiPinsAnalyticsWithHttpInfo(param.pinIds, param.startDate, param.endDate, param.metricTypes, param.appTypes, param.adAccountId,  options).toPromise();
     }
 
@@ -8396,7 +8397,7 @@ export class ObjectPinsApi {
      * Get multiple Pin analytics
      * @param param the request object
      */
-    public multiPinsAnalytics(param: PinsApiMultiPinsAnalyticsRequest, options?: Configuration): Promise<{ [key: string]: { [key: string]: PinAnalyticsMetricsResponse; }; }> {
+    public multiPinsAnalytics(param: PinsApiMultiPinsAnalyticsRequest, options?: ConfigurationOptions): Promise<{ [key: string]: { [key: string]: PinAnalyticsMetricsResponse; }; }> {
         return this.api.multiPinsAnalytics(param.pinIds, param.startDate, param.endDate, param.metricTypes, param.appTypes, param.adAccountId,  options).toPromise();
     }
 
@@ -8405,7 +8406,7 @@ export class ObjectPinsApi {
      * Get Pin analytics
      * @param param the request object
      */
-    public pinsAnalyticsWithHttpInfo(param: PinsApiPinsAnalyticsRequest, options?: Configuration): Promise<HttpInfo<{ [key: string]: PinAnalyticsMetricsResponse; }>> {
+    public pinsAnalyticsWithHttpInfo(param: PinsApiPinsAnalyticsRequest, options?: ConfigurationOptions): Promise<HttpInfo<{ [key: string]: PinAnalyticsMetricsResponse; }>> {
         return this.api.pinsAnalyticsWithHttpInfo(param.pinId, param.startDate, param.endDate, param.metricTypes, param.appTypes, param.splitField, param.adAccountId,  options).toPromise();
     }
 
@@ -8414,7 +8415,7 @@ export class ObjectPinsApi {
      * Get Pin analytics
      * @param param the request object
      */
-    public pinsAnalytics(param: PinsApiPinsAnalyticsRequest, options?: Configuration): Promise<{ [key: string]: PinAnalyticsMetricsResponse; }> {
+    public pinsAnalytics(param: PinsApiPinsAnalyticsRequest, options?: ConfigurationOptions): Promise<{ [key: string]: PinAnalyticsMetricsResponse; }> {
         return this.api.pinsAnalytics(param.pinId, param.startDate, param.endDate, param.metricTypes, param.appTypes, param.splitField, param.adAccountId,  options).toPromise();
     }
 
@@ -8423,7 +8424,7 @@ export class ObjectPinsApi {
      * Create Pin
      * @param param the request object
      */
-    public pinsCreateWithHttpInfo(param: PinsApiPinsCreateRequest, options?: Configuration): Promise<HttpInfo<Pin>> {
+    public pinsCreateWithHttpInfo(param: PinsApiPinsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<Pin>> {
         return this.api.pinsCreateWithHttpInfo(param.pinCreate, param.adAccountId,  options).toPromise();
     }
 
@@ -8432,7 +8433,7 @@ export class ObjectPinsApi {
      * Create Pin
      * @param param the request object
      */
-    public pinsCreate(param: PinsApiPinsCreateRequest, options?: Configuration): Promise<Pin> {
+    public pinsCreate(param: PinsApiPinsCreateRequest, options?: ConfigurationOptions): Promise<Pin> {
         return this.api.pinsCreate(param.pinCreate, param.adAccountId,  options).toPromise();
     }
 
@@ -8441,7 +8442,7 @@ export class ObjectPinsApi {
      * Delete Pin
      * @param param the request object
      */
-    public pinsDeleteWithHttpInfo(param: PinsApiPinsDeleteRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public pinsDeleteWithHttpInfo(param: PinsApiPinsDeleteRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
         return this.api.pinsDeleteWithHttpInfo(param.pinId, param.adAccountId,  options).toPromise();
     }
 
@@ -8450,7 +8451,7 @@ export class ObjectPinsApi {
      * Delete Pin
      * @param param the request object
      */
-    public pinsDelete(param: PinsApiPinsDeleteRequest, options?: Configuration): Promise<void> {
+    public pinsDelete(param: PinsApiPinsDeleteRequest, options?: ConfigurationOptions): Promise<void> {
         return this.api.pinsDelete(param.pinId, param.adAccountId,  options).toPromise();
     }
 
@@ -8459,7 +8460,7 @@ export class ObjectPinsApi {
      * Get Pin
      * @param param the request object
      */
-    public pinsGetWithHttpInfo(param: PinsApiPinsGetRequest, options?: Configuration): Promise<HttpInfo<Pin>> {
+    public pinsGetWithHttpInfo(param: PinsApiPinsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<Pin>> {
         return this.api.pinsGetWithHttpInfo(param.pinId, param.pinMetrics, param.adAccountId,  options).toPromise();
     }
 
@@ -8468,7 +8469,7 @@ export class ObjectPinsApi {
      * Get Pin
      * @param param the request object
      */
-    public pinsGet(param: PinsApiPinsGetRequest, options?: Configuration): Promise<Pin> {
+    public pinsGet(param: PinsApiPinsGetRequest, options?: ConfigurationOptions): Promise<Pin> {
         return this.api.pinsGet(param.pinId, param.pinMetrics, param.adAccountId,  options).toPromise();
     }
 
@@ -8477,7 +8478,7 @@ export class ObjectPinsApi {
      * List Pins
      * @param param the request object
      */
-    public pinsListWithHttpInfo(param: PinsApiPinsListRequest = {}, options?: Configuration): Promise<HttpInfo<PinsList200Response>> {
+    public pinsListWithHttpInfo(param: PinsApiPinsListRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<PinsList200Response>> {
         return this.api.pinsListWithHttpInfo(param.bookmark, param.pageSize, param.pinFilter, param.includeProtectedPins, param.pinType, param.creativeTypes, param.adAccountId, param.pinMetrics,  options).toPromise();
     }
 
@@ -8486,7 +8487,7 @@ export class ObjectPinsApi {
      * List Pins
      * @param param the request object
      */
-    public pinsList(param: PinsApiPinsListRequest = {}, options?: Configuration): Promise<PinsList200Response> {
+    public pinsList(param: PinsApiPinsListRequest = {}, options?: ConfigurationOptions): Promise<PinsList200Response> {
         return this.api.pinsList(param.bookmark, param.pageSize, param.pinFilter, param.includeProtectedPins, param.pinType, param.creativeTypes, param.adAccountId, param.pinMetrics,  options).toPromise();
     }
 
@@ -8495,7 +8496,7 @@ export class ObjectPinsApi {
      * Save Pin
      * @param param the request object
      */
-    public pinsSaveWithHttpInfo(param: PinsApiPinsSaveRequest, options?: Configuration): Promise<HttpInfo<Pin>> {
+    public pinsSaveWithHttpInfo(param: PinsApiPinsSaveRequest, options?: ConfigurationOptions): Promise<HttpInfo<Pin>> {
         return this.api.pinsSaveWithHttpInfo(param.pinId, param.pinsSaveRequest, param.adAccountId,  options).toPromise();
     }
 
@@ -8504,7 +8505,7 @@ export class ObjectPinsApi {
      * Save Pin
      * @param param the request object
      */
-    public pinsSave(param: PinsApiPinsSaveRequest, options?: Configuration): Promise<Pin> {
+    public pinsSave(param: PinsApiPinsSaveRequest, options?: ConfigurationOptions): Promise<Pin> {
         return this.api.pinsSave(param.pinId, param.pinsSaveRequest, param.adAccountId,  options).toPromise();
     }
 
@@ -8513,7 +8514,7 @@ export class ObjectPinsApi {
      * Update Pin
      * @param param the request object
      */
-    public pinsUpdateWithHttpInfo(param: PinsApiPinsUpdateRequest, options?: Configuration): Promise<HttpInfo<Pin>> {
+    public pinsUpdateWithHttpInfo(param: PinsApiPinsUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<Pin>> {
         return this.api.pinsUpdateWithHttpInfo(param.pinId, param.pinUpdate, param.adAccountId,  options).toPromise();
     }
 
@@ -8522,7 +8523,7 @@ export class ObjectPinsApi {
      * Update Pin
      * @param param the request object
      */
-    public pinsUpdate(param: PinsApiPinsUpdateRequest, options?: Configuration): Promise<Pin> {
+    public pinsUpdate(param: PinsApiPinsUpdateRequest, options?: ConfigurationOptions): Promise<Pin> {
         return this.api.pinsUpdate(param.pinId, param.pinUpdate, param.adAccountId,  options).toPromise();
     }
 
@@ -8719,7 +8720,7 @@ export class ObjectProductGroupPromotionsApi {
      * Create product group promotions
      * @param param the request object
      */
-    public productGroupPromotionsCreateWithHttpInfo(param: ProductGroupPromotionsApiProductGroupPromotionsCreateRequest, options?: Configuration): Promise<HttpInfo<ProductGroupPromotionResponse>> {
+    public productGroupPromotionsCreateWithHttpInfo(param: ProductGroupPromotionsApiProductGroupPromotionsCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductGroupPromotionResponse>> {
         return this.api.productGroupPromotionsCreateWithHttpInfo(param.adAccountId, param.productGroupPromotionCreateRequest,  options).toPromise();
     }
 
@@ -8728,7 +8729,7 @@ export class ObjectProductGroupPromotionsApi {
      * Create product group promotions
      * @param param the request object
      */
-    public productGroupPromotionsCreate(param: ProductGroupPromotionsApiProductGroupPromotionsCreateRequest, options?: Configuration): Promise<ProductGroupPromotionResponse> {
+    public productGroupPromotionsCreate(param: ProductGroupPromotionsApiProductGroupPromotionsCreateRequest, options?: ConfigurationOptions): Promise<ProductGroupPromotionResponse> {
         return this.api.productGroupPromotionsCreate(param.adAccountId, param.productGroupPromotionCreateRequest,  options).toPromise();
     }
 
@@ -8737,7 +8738,7 @@ export class ObjectProductGroupPromotionsApi {
      * Get a product group promotion by id
      * @param param the request object
      */
-    public productGroupPromotionsGetWithHttpInfo(param: ProductGroupPromotionsApiProductGroupPromotionsGetRequest, options?: Configuration): Promise<HttpInfo<ProductGroupPromotionResponse>> {
+    public productGroupPromotionsGetWithHttpInfo(param: ProductGroupPromotionsApiProductGroupPromotionsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductGroupPromotionResponse>> {
         return this.api.productGroupPromotionsGetWithHttpInfo(param.adAccountId, param.productGroupPromotionId,  options).toPromise();
     }
 
@@ -8746,7 +8747,7 @@ export class ObjectProductGroupPromotionsApi {
      * Get a product group promotion by id
      * @param param the request object
      */
-    public productGroupPromotionsGet(param: ProductGroupPromotionsApiProductGroupPromotionsGetRequest, options?: Configuration): Promise<ProductGroupPromotionResponse> {
+    public productGroupPromotionsGet(param: ProductGroupPromotionsApiProductGroupPromotionsGetRequest, options?: ConfigurationOptions): Promise<ProductGroupPromotionResponse> {
         return this.api.productGroupPromotionsGet(param.adAccountId, param.productGroupPromotionId,  options).toPromise();
     }
 
@@ -8755,7 +8756,7 @@ export class ObjectProductGroupPromotionsApi {
      * Get product group promotions
      * @param param the request object
      */
-    public productGroupPromotionsListWithHttpInfo(param: ProductGroupPromotionsApiProductGroupPromotionsListRequest, options?: Configuration): Promise<HttpInfo<ProductGroupPromotionsList200Response>> {
+    public productGroupPromotionsListWithHttpInfo(param: ProductGroupPromotionsApiProductGroupPromotionsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductGroupPromotionsList200Response>> {
         return this.api.productGroupPromotionsListWithHttpInfo(param.adAccountId, param.productGroupPromotionIds, param.entityStatuses, param.adGroupId, param.pageSize, param.order, param.bookmark,  options).toPromise();
     }
 
@@ -8764,7 +8765,7 @@ export class ObjectProductGroupPromotionsApi {
      * Get product group promotions
      * @param param the request object
      */
-    public productGroupPromotionsList(param: ProductGroupPromotionsApiProductGroupPromotionsListRequest, options?: Configuration): Promise<ProductGroupPromotionsList200Response> {
+    public productGroupPromotionsList(param: ProductGroupPromotionsApiProductGroupPromotionsListRequest, options?: ConfigurationOptions): Promise<ProductGroupPromotionsList200Response> {
         return this.api.productGroupPromotionsList(param.adAccountId, param.productGroupPromotionIds, param.entityStatuses, param.adGroupId, param.pageSize, param.order, param.bookmark,  options).toPromise();
     }
 
@@ -8773,7 +8774,7 @@ export class ObjectProductGroupPromotionsApi {
      * Update product group promotions
      * @param param the request object
      */
-    public productGroupPromotionsUpdateWithHttpInfo(param: ProductGroupPromotionsApiProductGroupPromotionsUpdateRequest, options?: Configuration): Promise<HttpInfo<ProductGroupPromotionResponse>> {
+    public productGroupPromotionsUpdateWithHttpInfo(param: ProductGroupPromotionsApiProductGroupPromotionsUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductGroupPromotionResponse>> {
         return this.api.productGroupPromotionsUpdateWithHttpInfo(param.adAccountId, param.productGroupPromotionUpdateRequest,  options).toPromise();
     }
 
@@ -8782,7 +8783,7 @@ export class ObjectProductGroupPromotionsApi {
      * Update product group promotions
      * @param param the request object
      */
-    public productGroupPromotionsUpdate(param: ProductGroupPromotionsApiProductGroupPromotionsUpdateRequest, options?: Configuration): Promise<ProductGroupPromotionResponse> {
+    public productGroupPromotionsUpdate(param: ProductGroupPromotionsApiProductGroupPromotionsUpdateRequest, options?: ConfigurationOptions): Promise<ProductGroupPromotionResponse> {
         return this.api.productGroupPromotionsUpdate(param.adAccountId, param.productGroupPromotionUpdateRequest,  options).toPromise();
     }
 
@@ -8791,7 +8792,7 @@ export class ObjectProductGroupPromotionsApi {
      * Get product group analytics
      * @param param the request object
      */
-    public productGroupsAnalyticsWithHttpInfo(param: ProductGroupPromotionsApiProductGroupsAnalyticsRequest, options?: Configuration): Promise<HttpInfo<Array<ProductGroupAnalyticsResponseInner>>> {
+    public productGroupsAnalyticsWithHttpInfo(param: ProductGroupPromotionsApiProductGroupsAnalyticsRequest, options?: ConfigurationOptions): Promise<HttpInfo<Array<ProductGroupAnalyticsResponseInner>>> {
         return this.api.productGroupsAnalyticsWithHttpInfo(param.adAccountId, param.startDate, param.endDate, param.productGroupIds, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime,  options).toPromise();
     }
 
@@ -8800,7 +8801,7 @@ export class ObjectProductGroupPromotionsApi {
      * Get product group analytics
      * @param param the request object
      */
-    public productGroupsAnalytics(param: ProductGroupPromotionsApiProductGroupsAnalyticsRequest, options?: Configuration): Promise<Array<ProductGroupAnalyticsResponseInner>> {
+    public productGroupsAnalytics(param: ProductGroupPromotionsApiProductGroupsAnalyticsRequest, options?: ConfigurationOptions): Promise<Array<ProductGroupAnalyticsResponseInner>> {
         return this.api.productGroupsAnalytics(param.adAccountId, param.startDate, param.endDate, param.productGroupIds, param.columns, param.granularity, param.clickWindowDays, param.engagementWindowDays, param.viewWindowDays, param.conversionReportTime,  options).toPromise();
     }
 
@@ -8895,7 +8896,7 @@ export class ObjectResourcesApi {
      * Get ad accounts countries
      * @param param the request object
      */
-    public adAccountCountriesGetWithHttpInfo(param: ResourcesApiAdAccountCountriesGetRequest = {}, options?: Configuration): Promise<HttpInfo<AdAccountsCountryResponse>> {
+    public adAccountCountriesGetWithHttpInfo(param: ResourcesApiAdAccountCountriesGetRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<AdAccountsCountryResponse>> {
         return this.api.adAccountCountriesGetWithHttpInfo( options).toPromise();
     }
 
@@ -8904,7 +8905,7 @@ export class ObjectResourcesApi {
      * Get ad accounts countries
      * @param param the request object
      */
-    public adAccountCountriesGet(param: ResourcesApiAdAccountCountriesGetRequest = {}, options?: Configuration): Promise<AdAccountsCountryResponse> {
+    public adAccountCountriesGet(param: ResourcesApiAdAccountCountriesGetRequest = {}, options?: ConfigurationOptions): Promise<AdAccountsCountryResponse> {
         return this.api.adAccountCountriesGet( options).toPromise();
     }
 
@@ -8913,7 +8914,7 @@ export class ObjectResourcesApi {
      * Get available metrics\' definitions
      * @param param the request object
      */
-    public deliveryMetricsGetWithHttpInfo(param: ResourcesApiDeliveryMetricsGetRequest = {}, options?: Configuration): Promise<HttpInfo<DeliveryMetricsResponse>> {
+    public deliveryMetricsGetWithHttpInfo(param: ResourcesApiDeliveryMetricsGetRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<DeliveryMetricsResponse>> {
         return this.api.deliveryMetricsGetWithHttpInfo(param.reportType,  options).toPromise();
     }
 
@@ -8922,7 +8923,7 @@ export class ObjectResourcesApi {
      * Get available metrics\' definitions
      * @param param the request object
      */
-    public deliveryMetricsGet(param: ResourcesApiDeliveryMetricsGetRequest = {}, options?: Configuration): Promise<DeliveryMetricsResponse> {
+    public deliveryMetricsGet(param: ResourcesApiDeliveryMetricsGetRequest = {}, options?: ConfigurationOptions): Promise<DeliveryMetricsResponse> {
         return this.api.deliveryMetricsGet(param.reportType,  options).toPromise();
     }
 
@@ -8931,7 +8932,7 @@ export class ObjectResourcesApi {
      * Get interest details
      * @param param the request object
      */
-    public interestTargetingOptionsGetWithHttpInfo(param: ResourcesApiInterestTargetingOptionsGetRequest, options?: Configuration): Promise<HttpInfo<SingleInterestTargetingOptionResponse>> {
+    public interestTargetingOptionsGetWithHttpInfo(param: ResourcesApiInterestTargetingOptionsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<SingleInterestTargetingOptionResponse>> {
         return this.api.interestTargetingOptionsGetWithHttpInfo(param.interestId,  options).toPromise();
     }
 
@@ -8940,7 +8941,7 @@ export class ObjectResourcesApi {
      * Get interest details
      * @param param the request object
      */
-    public interestTargetingOptionsGet(param: ResourcesApiInterestTargetingOptionsGetRequest, options?: Configuration): Promise<SingleInterestTargetingOptionResponse> {
+    public interestTargetingOptionsGet(param: ResourcesApiInterestTargetingOptionsGetRequest, options?: ConfigurationOptions): Promise<SingleInterestTargetingOptionResponse> {
         return this.api.interestTargetingOptionsGet(param.interestId,  options).toPromise();
     }
 
@@ -8949,7 +8950,7 @@ export class ObjectResourcesApi {
      * Get lead form questions
      * @param param the request object
      */
-    public leadFormQuestionsGetWithHttpInfo(param: ResourcesApiLeadFormQuestionsGetRequest = {}, options?: Configuration): Promise<HttpInfo<void>> {
+    public leadFormQuestionsGetWithHttpInfo(param: ResourcesApiLeadFormQuestionsGetRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
         return this.api.leadFormQuestionsGetWithHttpInfo( options).toPromise();
     }
 
@@ -8958,7 +8959,7 @@ export class ObjectResourcesApi {
      * Get lead form questions
      * @param param the request object
      */
-    public leadFormQuestionsGet(param: ResourcesApiLeadFormQuestionsGetRequest = {}, options?: Configuration): Promise<void> {
+    public leadFormQuestionsGet(param: ResourcesApiLeadFormQuestionsGetRequest = {}, options?: ConfigurationOptions): Promise<void> {
         return this.api.leadFormQuestionsGet( options).toPromise();
     }
 
@@ -8967,7 +8968,7 @@ export class ObjectResourcesApi {
      * Get metrics ready state
      * @param param the request object
      */
-    public metricsReadyStateGetWithHttpInfo(param: ResourcesApiMetricsReadyStateGetRequest, options?: Configuration): Promise<HttpInfo<BookClosedResponse>> {
+    public metricsReadyStateGetWithHttpInfo(param: ResourcesApiMetricsReadyStateGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<BookClosedResponse>> {
         return this.api.metricsReadyStateGetWithHttpInfo(param.date,  options).toPromise();
     }
 
@@ -8976,7 +8977,7 @@ export class ObjectResourcesApi {
      * Get metrics ready state
      * @param param the request object
      */
-    public metricsReadyStateGet(param: ResourcesApiMetricsReadyStateGetRequest, options?: Configuration): Promise<BookClosedResponse> {
+    public metricsReadyStateGet(param: ResourcesApiMetricsReadyStateGetRequest, options?: ConfigurationOptions): Promise<BookClosedResponse> {
         return this.api.metricsReadyStateGet(param.date,  options).toPromise();
     }
 
@@ -8985,7 +8986,7 @@ export class ObjectResourcesApi {
      * Get targeting options
      * @param param the request object
      */
-    public targetingOptionsGetWithHttpInfo(param: ResourcesApiTargetingOptionsGetRequest, options?: Configuration): Promise<HttpInfo<Array<any>>> {
+    public targetingOptionsGetWithHttpInfo(param: ResourcesApiTargetingOptionsGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<Array<any>>> {
         return this.api.targetingOptionsGetWithHttpInfo(param.targetingType, param.clientId, param.oauthSignature, param.timestamp, param.adAccountId,  options).toPromise();
     }
 
@@ -8994,7 +8995,7 @@ export class ObjectResourcesApi {
      * Get targeting options
      * @param param the request object
      */
-    public targetingOptionsGet(param: ResourcesApiTargetingOptionsGetRequest, options?: Configuration): Promise<Array<any>> {
+    public targetingOptionsGet(param: ResourcesApiTargetingOptionsGetRequest, options?: ConfigurationOptions): Promise<Array<any>> {
         return this.api.targetingOptionsGet(param.targetingType, param.clientId, param.oauthSignature, param.timestamp, param.adAccountId,  options).toPromise();
     }
 
@@ -9112,7 +9113,7 @@ export class ObjectSearchApi {
      * Search pins by a given search term
      * @param param the request object
      */
-    public searchPartnerPinsWithHttpInfo(param: SearchApiSearchPartnerPinsRequest, options?: Configuration): Promise<HttpInfo<SearchPartnerPins200Response>> {
+    public searchPartnerPinsWithHttpInfo(param: SearchApiSearchPartnerPinsRequest, options?: ConfigurationOptions): Promise<HttpInfo<SearchPartnerPins200Response>> {
         return this.api.searchPartnerPinsWithHttpInfo(param.term, param.countryCode, param.bookmark, param.locale, param.limit,  options).toPromise();
     }
 
@@ -9121,7 +9122,7 @@ export class ObjectSearchApi {
      * Search pins by a given search term
      * @param param the request object
      */
-    public searchPartnerPins(param: SearchApiSearchPartnerPinsRequest, options?: Configuration): Promise<SearchPartnerPins200Response> {
+    public searchPartnerPins(param: SearchApiSearchPartnerPinsRequest, options?: ConfigurationOptions): Promise<SearchPartnerPins200Response> {
         return this.api.searchPartnerPins(param.term, param.countryCode, param.bookmark, param.locale, param.limit,  options).toPromise();
     }
 
@@ -9130,7 +9131,7 @@ export class ObjectSearchApi {
      * Search user\'s boards
      * @param param the request object
      */
-    public searchUserBoardsGetWithHttpInfo(param: SearchApiSearchUserBoardsGetRequest = {}, options?: Configuration): Promise<HttpInfo<SearchUserBoardsGet200Response>> {
+    public searchUserBoardsGetWithHttpInfo(param: SearchApiSearchUserBoardsGetRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<SearchUserBoardsGet200Response>> {
         return this.api.searchUserBoardsGetWithHttpInfo(param.adAccountId, param.bookmark, param.pageSize, param.query,  options).toPromise();
     }
 
@@ -9139,7 +9140,7 @@ export class ObjectSearchApi {
      * Search user\'s boards
      * @param param the request object
      */
-    public searchUserBoardsGet(param: SearchApiSearchUserBoardsGetRequest = {}, options?: Configuration): Promise<SearchUserBoardsGet200Response> {
+    public searchUserBoardsGet(param: SearchApiSearchUserBoardsGetRequest = {}, options?: ConfigurationOptions): Promise<SearchUserBoardsGet200Response> {
         return this.api.searchUserBoardsGet(param.adAccountId, param.bookmark, param.pageSize, param.query,  options).toPromise();
     }
 
@@ -9148,7 +9149,7 @@ export class ObjectSearchApi {
      * Search user\'s Pins
      * @param param the request object
      */
-    public searchUserPinsListWithHttpInfo(param: SearchApiSearchUserPinsListRequest, options?: Configuration): Promise<HttpInfo<PinsList200Response>> {
+    public searchUserPinsListWithHttpInfo(param: SearchApiSearchUserPinsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<PinsList200Response>> {
         return this.api.searchUserPinsListWithHttpInfo(param.query, param.adAccountId, param.bookmark,  options).toPromise();
     }
 
@@ -9157,7 +9158,7 @@ export class ObjectSearchApi {
      * Search user\'s Pins
      * @param param the request object
      */
-    public searchUserPinsList(param: SearchApiSearchUserPinsListRequest, options?: Configuration): Promise<PinsList200Response> {
+    public searchUserPinsList(param: SearchApiSearchUserPinsListRequest, options?: ConfigurationOptions): Promise<PinsList200Response> {
         return this.api.searchUserPinsList(param.query, param.adAccountId, param.bookmark,  options).toPromise();
     }
 
@@ -9257,7 +9258,7 @@ export class ObjectTargetingTemplateApi {
      * Create targeting templates
      * @param param the request object
      */
-    public targetingTemplateCreateWithHttpInfo(param: TargetingTemplateApiTargetingTemplateCreateRequest, options?: Configuration): Promise<HttpInfo<TargetingTemplateGetResponseData>> {
+    public targetingTemplateCreateWithHttpInfo(param: TargetingTemplateApiTargetingTemplateCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<TargetingTemplateGetResponseData>> {
         return this.api.targetingTemplateCreateWithHttpInfo(param.adAccountId, param.targetingTemplateCreate,  options).toPromise();
     }
 
@@ -9266,7 +9267,7 @@ export class ObjectTargetingTemplateApi {
      * Create targeting templates
      * @param param the request object
      */
-    public targetingTemplateCreate(param: TargetingTemplateApiTargetingTemplateCreateRequest, options?: Configuration): Promise<TargetingTemplateGetResponseData> {
+    public targetingTemplateCreate(param: TargetingTemplateApiTargetingTemplateCreateRequest, options?: ConfigurationOptions): Promise<TargetingTemplateGetResponseData> {
         return this.api.targetingTemplateCreate(param.adAccountId, param.targetingTemplateCreate,  options).toPromise();
     }
 
@@ -9275,7 +9276,7 @@ export class ObjectTargetingTemplateApi {
      * List targeting templates
      * @param param the request object
      */
-    public targetingTemplateListWithHttpInfo(param: TargetingTemplateApiTargetingTemplateListRequest, options?: Configuration): Promise<HttpInfo<TargetingTemplateList200Response>> {
+    public targetingTemplateListWithHttpInfo(param: TargetingTemplateApiTargetingTemplateListRequest, options?: ConfigurationOptions): Promise<HttpInfo<TargetingTemplateList200Response>> {
         return this.api.targetingTemplateListWithHttpInfo(param.adAccountId, param.order, param.includeSizing, param.searchQuery, param.pageSize, param.bookmark,  options).toPromise();
     }
 
@@ -9284,7 +9285,7 @@ export class ObjectTargetingTemplateApi {
      * List targeting templates
      * @param param the request object
      */
-    public targetingTemplateList(param: TargetingTemplateApiTargetingTemplateListRequest, options?: Configuration): Promise<TargetingTemplateList200Response> {
+    public targetingTemplateList(param: TargetingTemplateApiTargetingTemplateListRequest, options?: ConfigurationOptions): Promise<TargetingTemplateList200Response> {
         return this.api.targetingTemplateList(param.adAccountId, param.order, param.includeSizing, param.searchQuery, param.pageSize, param.bookmark,  options).toPromise();
     }
 
@@ -9293,7 +9294,7 @@ export class ObjectTargetingTemplateApi {
      * Update targeting templates
      * @param param the request object
      */
-    public targetingTemplateUpdateWithHttpInfo(param: TargetingTemplateApiTargetingTemplateUpdateRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public targetingTemplateUpdateWithHttpInfo(param: TargetingTemplateApiTargetingTemplateUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
         return this.api.targetingTemplateUpdateWithHttpInfo(param.adAccountId, param.targetingTemplateUpdateRequest,  options).toPromise();
     }
 
@@ -9302,7 +9303,7 @@ export class ObjectTargetingTemplateApi {
      * Update targeting templates
      * @param param the request object
      */
-    public targetingTemplateUpdate(param: TargetingTemplateApiTargetingTemplateUpdateRequest, options?: Configuration): Promise<void> {
+    public targetingTemplateUpdate(param: TargetingTemplateApiTargetingTemplateUpdateRequest, options?: ConfigurationOptions): Promise<void> {
         return this.api.targetingTemplateUpdate(param.adAccountId, param.targetingTemplateUpdateRequest,  options).toPromise();
     }
 
@@ -9352,7 +9353,7 @@ export class ObjectTermsApi {
      * List related terms
      * @param param the request object
      */
-    public termsRelatedListWithHttpInfo(param: TermsApiTermsRelatedListRequest, options?: Configuration): Promise<HttpInfo<RelatedTerms>> {
+    public termsRelatedListWithHttpInfo(param: TermsApiTermsRelatedListRequest, options?: ConfigurationOptions): Promise<HttpInfo<RelatedTerms>> {
         return this.api.termsRelatedListWithHttpInfo(param.terms,  options).toPromise();
     }
 
@@ -9361,7 +9362,7 @@ export class ObjectTermsApi {
      * List related terms
      * @param param the request object
      */
-    public termsRelatedList(param: TermsApiTermsRelatedListRequest, options?: Configuration): Promise<RelatedTerms> {
+    public termsRelatedList(param: TermsApiTermsRelatedListRequest, options?: ConfigurationOptions): Promise<RelatedTerms> {
         return this.api.termsRelatedList(param.terms,  options).toPromise();
     }
 
@@ -9370,7 +9371,7 @@ export class ObjectTermsApi {
      * List suggested terms
      * @param param the request object
      */
-    public termsSuggestedListWithHttpInfo(param: TermsApiTermsSuggestedListRequest, options?: Configuration): Promise<HttpInfo<Array<string>>> {
+    public termsSuggestedListWithHttpInfo(param: TermsApiTermsSuggestedListRequest, options?: ConfigurationOptions): Promise<HttpInfo<Array<string>>> {
         return this.api.termsSuggestedListWithHttpInfo(param.term, param.limit,  options).toPromise();
     }
 
@@ -9379,7 +9380,7 @@ export class ObjectTermsApi {
      * List suggested terms
      * @param param the request object
      */
-    public termsSuggestedList(param: TermsApiTermsSuggestedListRequest, options?: Configuration): Promise<Array<string>> {
+    public termsSuggestedList(param: TermsApiTermsSuggestedListRequest, options?: ConfigurationOptions): Promise<Array<string>> {
         return this.api.termsSuggestedList(param.term, param.limit,  options).toPromise();
     }
 
@@ -9424,7 +9425,7 @@ export class ObjectTermsOfServiceApi {
      * Get terms of service
      * @param param the request object
      */
-    public termsOfServiceGetWithHttpInfo(param: TermsOfServiceApiTermsOfServiceGetRequest, options?: Configuration): Promise<HttpInfo<TermsOfService>> {
+    public termsOfServiceGetWithHttpInfo(param: TermsOfServiceApiTermsOfServiceGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<TermsOfService>> {
         return this.api.termsOfServiceGetWithHttpInfo(param.adAccountId, param.includeHtml, param.tosType,  options).toPromise();
     }
 
@@ -9433,7 +9434,7 @@ export class ObjectTermsOfServiceApi {
      * Get terms of service
      * @param param the request object
      */
-    public termsOfServiceGet(param: TermsOfServiceApiTermsOfServiceGetRequest, options?: Configuration): Promise<TermsOfService> {
+    public termsOfServiceGet(param: TermsOfServiceApiTermsOfServiceGetRequest, options?: ConfigurationOptions): Promise<TermsOfService> {
         return this.api.termsOfServiceGet(param.adAccountId, param.includeHtml, param.tosType,  options).toPromise();
     }
 
@@ -9907,7 +9908,7 @@ export class ObjectUserAccountApi {
      * List following boards
      * @param param the request object
      */
-    public boardsUserFollowsListWithHttpInfo(param: UserAccountApiBoardsUserFollowsListRequest = {}, options?: Configuration): Promise<HttpInfo<BoardsUserFollowsList200Response>> {
+    public boardsUserFollowsListWithHttpInfo(param: UserAccountApiBoardsUserFollowsListRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BoardsUserFollowsList200Response>> {
         return this.api.boardsUserFollowsListWithHttpInfo(param.bookmark, param.pageSize, param.explicitFollowing, param.adAccountId,  options).toPromise();
     }
 
@@ -9916,7 +9917,7 @@ export class ObjectUserAccountApi {
      * List following boards
      * @param param the request object
      */
-    public boardsUserFollowsList(param: UserAccountApiBoardsUserFollowsListRequest = {}, options?: Configuration): Promise<BoardsUserFollowsList200Response> {
+    public boardsUserFollowsList(param: UserAccountApiBoardsUserFollowsListRequest = {}, options?: ConfigurationOptions): Promise<BoardsUserFollowsList200Response> {
         return this.api.boardsUserFollowsList(param.bookmark, param.pageSize, param.explicitFollowing, param.adAccountId,  options).toPromise();
     }
 
@@ -9925,7 +9926,7 @@ export class ObjectUserAccountApi {
      * Follow user
      * @param param the request object
      */
-    public followUserUpdateWithHttpInfo(param: UserAccountApiFollowUserUpdateRequest, options?: Configuration): Promise<HttpInfo<UserSummary>> {
+    public followUserUpdateWithHttpInfo(param: UserAccountApiFollowUserUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<UserSummary>> {
         return this.api.followUserUpdateWithHttpInfo(param.username, param.followUserRequest,  options).toPromise();
     }
 
@@ -9934,7 +9935,7 @@ export class ObjectUserAccountApi {
      * Follow user
      * @param param the request object
      */
-    public followUserUpdate(param: UserAccountApiFollowUserUpdateRequest, options?: Configuration): Promise<UserSummary> {
+    public followUserUpdate(param: UserAccountApiFollowUserUpdateRequest, options?: ConfigurationOptions): Promise<UserSummary> {
         return this.api.followUserUpdate(param.username, param.followUserRequest,  options).toPromise();
     }
 
@@ -9943,7 +9944,7 @@ export class ObjectUserAccountApi {
      * List followers
      * @param param the request object
      */
-    public followersListWithHttpInfo(param: UserAccountApiFollowersListRequest = {}, options?: Configuration): Promise<HttpInfo<FollowersList200Response>> {
+    public followersListWithHttpInfo(param: UserAccountApiFollowersListRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<FollowersList200Response>> {
         return this.api.followersListWithHttpInfo(param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -9952,7 +9953,7 @@ export class ObjectUserAccountApi {
      * List followers
      * @param param the request object
      */
-    public followersList(param: UserAccountApiFollowersListRequest = {}, options?: Configuration): Promise<FollowersList200Response> {
+    public followersList(param: UserAccountApiFollowersListRequest = {}, options?: ConfigurationOptions): Promise<FollowersList200Response> {
         return this.api.followersList(param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -9961,7 +9962,7 @@ export class ObjectUserAccountApi {
      * List linked businesses
      * @param param the request object
      */
-    public linkedBusinessAccountsGetWithHttpInfo(param: UserAccountApiLinkedBusinessAccountsGetRequest = {}, options?: Configuration): Promise<HttpInfo<Array<LinkedBusiness>>> {
+    public linkedBusinessAccountsGetWithHttpInfo(param: UserAccountApiLinkedBusinessAccountsGetRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<Array<LinkedBusiness>>> {
         return this.api.linkedBusinessAccountsGetWithHttpInfo( options).toPromise();
     }
 
@@ -9970,7 +9971,7 @@ export class ObjectUserAccountApi {
      * List linked businesses
      * @param param the request object
      */
-    public linkedBusinessAccountsGet(param: UserAccountApiLinkedBusinessAccountsGetRequest = {}, options?: Configuration): Promise<Array<LinkedBusiness>> {
+    public linkedBusinessAccountsGet(param: UserAccountApiLinkedBusinessAccountsGetRequest = {}, options?: ConfigurationOptions): Promise<Array<LinkedBusiness>> {
         return this.api.linkedBusinessAccountsGet( options).toPromise();
     }
 
@@ -9979,7 +9980,7 @@ export class ObjectUserAccountApi {
      * Unverify website
      * @param param the request object
      */
-    public unverifyWebsiteDeleteWithHttpInfo(param: UserAccountApiUnverifyWebsiteDeleteRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public unverifyWebsiteDeleteWithHttpInfo(param: UserAccountApiUnverifyWebsiteDeleteRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
         return this.api.unverifyWebsiteDeleteWithHttpInfo(param.website,  options).toPromise();
     }
 
@@ -9988,7 +9989,7 @@ export class ObjectUserAccountApi {
      * Unverify website
      * @param param the request object
      */
-    public unverifyWebsiteDelete(param: UserAccountApiUnverifyWebsiteDeleteRequest, options?: Configuration): Promise<void> {
+    public unverifyWebsiteDelete(param: UserAccountApiUnverifyWebsiteDeleteRequest, options?: ConfigurationOptions): Promise<void> {
         return this.api.unverifyWebsiteDelete(param.website,  options).toPromise();
     }
 
@@ -9997,7 +9998,7 @@ export class ObjectUserAccountApi {
      * Get user account analytics
      * @param param the request object
      */
-    public userAccountAnalyticsWithHttpInfo(param: UserAccountApiUserAccountAnalyticsRequest, options?: Configuration): Promise<HttpInfo<{ [key: string]: AnalyticsMetricsResponse; }>> {
+    public userAccountAnalyticsWithHttpInfo(param: UserAccountApiUserAccountAnalyticsRequest, options?: ConfigurationOptions): Promise<HttpInfo<{ [key: string]: AnalyticsMetricsResponse; }>> {
         return this.api.userAccountAnalyticsWithHttpInfo(param.startDate, param.endDate, param.fromClaimedContent, param.pinFormat, param.appTypes, param.contentType, param.source, param.metricTypes, param.splitField, param.adAccountId,  options).toPromise();
     }
 
@@ -10006,7 +10007,7 @@ export class ObjectUserAccountApi {
      * Get user account analytics
      * @param param the request object
      */
-    public userAccountAnalytics(param: UserAccountApiUserAccountAnalyticsRequest, options?: Configuration): Promise<{ [key: string]: AnalyticsMetricsResponse; }> {
+    public userAccountAnalytics(param: UserAccountApiUserAccountAnalyticsRequest, options?: ConfigurationOptions): Promise<{ [key: string]: AnalyticsMetricsResponse; }> {
         return this.api.userAccountAnalytics(param.startDate, param.endDate, param.fromClaimedContent, param.pinFormat, param.appTypes, param.contentType, param.source, param.metricTypes, param.splitField, param.adAccountId,  options).toPromise();
     }
 
@@ -10015,7 +10016,7 @@ export class ObjectUserAccountApi {
      * Get user account top pins analytics
      * @param param the request object
      */
-    public userAccountAnalyticsTopPinsWithHttpInfo(param: UserAccountApiUserAccountAnalyticsTopPinsRequest, options?: Configuration): Promise<HttpInfo<TopPinsAnalyticsResponse>> {
+    public userAccountAnalyticsTopPinsWithHttpInfo(param: UserAccountApiUserAccountAnalyticsTopPinsRequest, options?: ConfigurationOptions): Promise<HttpInfo<TopPinsAnalyticsResponse>> {
         return this.api.userAccountAnalyticsTopPinsWithHttpInfo(param.startDate, param.endDate, param.sortBy, param.fromClaimedContent, param.pinFormat, param.appTypes, param.contentType, param.source, param.metricTypes, param.numOfPins, param.createdInLastNDays, param.adAccountId,  options).toPromise();
     }
 
@@ -10024,7 +10025,7 @@ export class ObjectUserAccountApi {
      * Get user account top pins analytics
      * @param param the request object
      */
-    public userAccountAnalyticsTopPins(param: UserAccountApiUserAccountAnalyticsTopPinsRequest, options?: Configuration): Promise<TopPinsAnalyticsResponse> {
+    public userAccountAnalyticsTopPins(param: UserAccountApiUserAccountAnalyticsTopPinsRequest, options?: ConfigurationOptions): Promise<TopPinsAnalyticsResponse> {
         return this.api.userAccountAnalyticsTopPins(param.startDate, param.endDate, param.sortBy, param.fromClaimedContent, param.pinFormat, param.appTypes, param.contentType, param.source, param.metricTypes, param.numOfPins, param.createdInLastNDays, param.adAccountId,  options).toPromise();
     }
 
@@ -10033,7 +10034,7 @@ export class ObjectUserAccountApi {
      * Get user account top video pins analytics
      * @param param the request object
      */
-    public userAccountAnalyticsTopVideoPinsWithHttpInfo(param: UserAccountApiUserAccountAnalyticsTopVideoPinsRequest, options?: Configuration): Promise<HttpInfo<TopVideoPinsAnalyticsResponse>> {
+    public userAccountAnalyticsTopVideoPinsWithHttpInfo(param: UserAccountApiUserAccountAnalyticsTopVideoPinsRequest, options?: ConfigurationOptions): Promise<HttpInfo<TopVideoPinsAnalyticsResponse>> {
         return this.api.userAccountAnalyticsTopVideoPinsWithHttpInfo(param.startDate, param.endDate, param.sortBy, param.fromClaimedContent, param.pinFormat, param.appTypes, param.contentType, param.source, param.metricTypes, param.numOfPins, param.createdInLastNDays, param.adAccountId,  options).toPromise();
     }
 
@@ -10042,7 +10043,7 @@ export class ObjectUserAccountApi {
      * Get user account top video pins analytics
      * @param param the request object
      */
-    public userAccountAnalyticsTopVideoPins(param: UserAccountApiUserAccountAnalyticsTopVideoPinsRequest, options?: Configuration): Promise<TopVideoPinsAnalyticsResponse> {
+    public userAccountAnalyticsTopVideoPins(param: UserAccountApiUserAccountAnalyticsTopVideoPinsRequest, options?: ConfigurationOptions): Promise<TopVideoPinsAnalyticsResponse> {
         return this.api.userAccountAnalyticsTopVideoPins(param.startDate, param.endDate, param.sortBy, param.fromClaimedContent, param.pinFormat, param.appTypes, param.contentType, param.source, param.metricTypes, param.numOfPins, param.createdInLastNDays, param.adAccountId,  options).toPromise();
     }
 
@@ -10051,7 +10052,7 @@ export class ObjectUserAccountApi {
      * List following interests
      * @param param the request object
      */
-    public userAccountFollowedInterestsWithHttpInfo(param: UserAccountApiUserAccountFollowedInterestsRequest, options?: Configuration): Promise<HttpInfo<UserAccountFollowedInterests200Response>> {
+    public userAccountFollowedInterestsWithHttpInfo(param: UserAccountApiUserAccountFollowedInterestsRequest, options?: ConfigurationOptions): Promise<HttpInfo<UserAccountFollowedInterests200Response>> {
         return this.api.userAccountFollowedInterestsWithHttpInfo(param.username, param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -10060,7 +10061,7 @@ export class ObjectUserAccountApi {
      * List following interests
      * @param param the request object
      */
-    public userAccountFollowedInterests(param: UserAccountApiUserAccountFollowedInterestsRequest, options?: Configuration): Promise<UserAccountFollowedInterests200Response> {
+    public userAccountFollowedInterests(param: UserAccountApiUserAccountFollowedInterestsRequest, options?: ConfigurationOptions): Promise<UserAccountFollowedInterests200Response> {
         return this.api.userAccountFollowedInterests(param.username, param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -10069,7 +10070,7 @@ export class ObjectUserAccountApi {
      * Get user account
      * @param param the request object
      */
-    public userAccountGetWithHttpInfo(param: UserAccountApiUserAccountGetRequest = {}, options?: Configuration): Promise<HttpInfo<Account>> {
+    public userAccountGetWithHttpInfo(param: UserAccountApiUserAccountGetRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<Account>> {
         return this.api.userAccountGetWithHttpInfo(param.adAccountId,  options).toPromise();
     }
 
@@ -10078,7 +10079,7 @@ export class ObjectUserAccountApi {
      * Get user account
      * @param param the request object
      */
-    public userAccountGet(param: UserAccountApiUserAccountGetRequest = {}, options?: Configuration): Promise<Account> {
+    public userAccountGet(param: UserAccountApiUserAccountGetRequest = {}, options?: ConfigurationOptions): Promise<Account> {
         return this.api.userAccountGet(param.adAccountId,  options).toPromise();
     }
 
@@ -10087,7 +10088,7 @@ export class ObjectUserAccountApi {
      * List following
      * @param param the request object
      */
-    public userFollowingGetWithHttpInfo(param: UserAccountApiUserFollowingGetRequest = {}, options?: Configuration): Promise<HttpInfo<UserFollowingGet200Response>> {
+    public userFollowingGetWithHttpInfo(param: UserAccountApiUserFollowingGetRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<UserFollowingGet200Response>> {
         return this.api.userFollowingGetWithHttpInfo(param.bookmark, param.pageSize, param.feedType, param.explicitFollowing, param.adAccountId,  options).toPromise();
     }
 
@@ -10096,7 +10097,7 @@ export class ObjectUserAccountApi {
      * List following
      * @param param the request object
      */
-    public userFollowingGet(param: UserAccountApiUserFollowingGetRequest = {}, options?: Configuration): Promise<UserFollowingGet200Response> {
+    public userFollowingGet(param: UserAccountApiUserFollowingGetRequest = {}, options?: ConfigurationOptions): Promise<UserFollowingGet200Response> {
         return this.api.userFollowingGet(param.bookmark, param.pageSize, param.feedType, param.explicitFollowing, param.adAccountId,  options).toPromise();
     }
 
@@ -10105,7 +10106,7 @@ export class ObjectUserAccountApi {
      * Get user websites
      * @param param the request object
      */
-    public userWebsitesGetWithHttpInfo(param: UserAccountApiUserWebsitesGetRequest = {}, options?: Configuration): Promise<HttpInfo<UserWebsitesGet200Response>> {
+    public userWebsitesGetWithHttpInfo(param: UserAccountApiUserWebsitesGetRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<UserWebsitesGet200Response>> {
         return this.api.userWebsitesGetWithHttpInfo(param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -10114,7 +10115,7 @@ export class ObjectUserAccountApi {
      * Get user websites
      * @param param the request object
      */
-    public userWebsitesGet(param: UserAccountApiUserWebsitesGetRequest = {}, options?: Configuration): Promise<UserWebsitesGet200Response> {
+    public userWebsitesGet(param: UserAccountApiUserWebsitesGetRequest = {}, options?: ConfigurationOptions): Promise<UserWebsitesGet200Response> {
         return this.api.userWebsitesGet(param.bookmark, param.pageSize,  options).toPromise();
     }
 
@@ -10123,7 +10124,7 @@ export class ObjectUserAccountApi {
      * Verify website
      * @param param the request object
      */
-    public verifyWebsiteUpdateWithHttpInfo(param: UserAccountApiVerifyWebsiteUpdateRequest, options?: Configuration): Promise<HttpInfo<UserWebsiteSummary>> {
+    public verifyWebsiteUpdateWithHttpInfo(param: UserAccountApiVerifyWebsiteUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<UserWebsiteSummary>> {
         return this.api.verifyWebsiteUpdateWithHttpInfo(param.userWebsiteVerifyRequest, param.adAccountId,  options).toPromise();
     }
 
@@ -10132,7 +10133,7 @@ export class ObjectUserAccountApi {
      * Verify website
      * @param param the request object
      */
-    public verifyWebsiteUpdate(param: UserAccountApiVerifyWebsiteUpdateRequest, options?: Configuration): Promise<UserWebsiteSummary> {
+    public verifyWebsiteUpdate(param: UserAccountApiVerifyWebsiteUpdateRequest, options?: ConfigurationOptions): Promise<UserWebsiteSummary> {
         return this.api.verifyWebsiteUpdate(param.userWebsiteVerifyRequest, param.adAccountId,  options).toPromise();
     }
 
@@ -10141,7 +10142,7 @@ export class ObjectUserAccountApi {
      * Get user verification code for website claiming
      * @param param the request object
      */
-    public websiteVerificationGetWithHttpInfo(param: UserAccountApiWebsiteVerificationGetRequest = {}, options?: Configuration): Promise<HttpInfo<UserWebsiteVerificationCode>> {
+    public websiteVerificationGetWithHttpInfo(param: UserAccountApiWebsiteVerificationGetRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<UserWebsiteVerificationCode>> {
         return this.api.websiteVerificationGetWithHttpInfo(param.adAccountId,  options).toPromise();
     }
 
@@ -10150,7 +10151,7 @@ export class ObjectUserAccountApi {
      * Get user verification code for website claiming
      * @param param the request object
      */
-    public websiteVerificationGet(param: UserAccountApiWebsiteVerificationGetRequest = {}, options?: Configuration): Promise<UserWebsiteVerificationCode> {
+    public websiteVerificationGet(param: UserAccountApiWebsiteVerificationGetRequest = {}, options?: ConfigurationOptions): Promise<UserWebsiteVerificationCode> {
         return this.api.websiteVerificationGet(param.adAccountId,  options).toPromise();
     }
 

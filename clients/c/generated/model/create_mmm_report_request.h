@@ -71,9 +71,10 @@ typedef struct create_mmm_report_request_t {
     list_t *columns; //nonprimitive container
     list_t *countries; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } create_mmm_report_request_t;
 
-create_mmm_report_request_t *create_mmm_report_request_create(
+__attribute__((deprecated)) create_mmm_report_request_t *create_mmm_report_request_create(
     char *report_name,
     char *start_date,
     char *end_date,

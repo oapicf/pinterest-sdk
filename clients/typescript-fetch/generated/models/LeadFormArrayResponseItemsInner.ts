@@ -70,11 +70,11 @@ export function LeadFormArrayResponseItemsInnerFromJSONTyped(json: any, ignoreDi
     };
 }
 
-  export function LeadFormArrayResponseItemsInnerToJSON(json: any): LeadFormArrayResponseItemsInner {
-      return LeadFormArrayResponseItemsInnerToJSONTyped(json, false);
-  }
+export function LeadFormArrayResponseItemsInnerToJSON(json: any): LeadFormArrayResponseItemsInner {
+    return LeadFormArrayResponseItemsInnerToJSONTyped(json, false);
+}
 
-  export function LeadFormArrayResponseItemsInnerToJSONTyped(value?: LeadFormArrayResponseItemsInner | null, ignoreDiscriminator: boolean = false): any {
+export function LeadFormArrayResponseItemsInnerToJSONTyped(value?: LeadFormArrayResponseItemsInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

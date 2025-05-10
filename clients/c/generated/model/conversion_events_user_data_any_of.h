@@ -24,9 +24,10 @@ typedef struct conversion_events_user_data_any_of_t {
     char *client_ip_address; // string
     char *client_user_agent; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } conversion_events_user_data_any_of_t;
 
-conversion_events_user_data_any_of_t *conversion_events_user_data_any_of_create(
+__attribute__((deprecated)) conversion_events_user_data_any_of_t *conversion_events_user_data_any_of_create(
     list_t *em,
     list_t *hashed_maids,
     char *client_ip_address,

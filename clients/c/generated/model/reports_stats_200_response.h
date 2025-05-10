@@ -23,9 +23,10 @@ typedef struct reports_stats_200_response_t {
     list_t *items; //nonprimitive container
     char *bookmark; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } reports_stats_200_response_t;
 
-reports_stats_200_response_t *reports_stats_200_response_create(
+__attribute__((deprecated)) reports_stats_200_response_t *reports_stats_200_response_create(
     list_t *items,
     char *bookmark
 );

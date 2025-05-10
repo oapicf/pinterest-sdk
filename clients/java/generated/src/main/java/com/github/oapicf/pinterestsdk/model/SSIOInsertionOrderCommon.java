@@ -49,60 +49,72 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * SSIOInsertionOrderCommon
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SSIOInsertionOrderCommon {
   public static final String SERIALIZED_NAME_START_DATE = "start_date";
   @SerializedName(SERIALIZED_NAME_START_DATE)
+  @javax.annotation.Nullable
   private String startDate;
 
   public static final String SERIALIZED_NAME_END_DATE = "end_date";
   @SerializedName(SERIALIZED_NAME_END_DATE)
+  @javax.annotation.Nullable
   private String endDate;
 
   public static final String SERIALIZED_NAME_PO_NUMBER = "po_number";
   @SerializedName(SERIALIZED_NAME_PO_NUMBER)
+  @javax.annotation.Nullable
   private String poNumber;
 
   public static final String SERIALIZED_NAME_BUDGET_AMOUNT = "budget_amount";
   @SerializedName(SERIALIZED_NAME_BUDGET_AMOUNT)
+  @javax.annotation.Nullable
   private BigDecimal budgetAmount;
 
   public static final String SERIALIZED_NAME_BILLING_CONTACT_FIRSTNAME = "billing_contact_firstname";
   @SerializedName(SERIALIZED_NAME_BILLING_CONTACT_FIRSTNAME)
+  @javax.annotation.Nullable
   private String billingContactFirstname;
 
   public static final String SERIALIZED_NAME_BILLING_CONTACT_LASTNAME = "billing_contact_lastname";
   @SerializedName(SERIALIZED_NAME_BILLING_CONTACT_LASTNAME)
+  @javax.annotation.Nullable
   private String billingContactLastname;
 
   public static final String SERIALIZED_NAME_BILLING_CONTACT_EMAIL = "billing_contact_email";
   @SerializedName(SERIALIZED_NAME_BILLING_CONTACT_EMAIL)
+  @javax.annotation.Nullable
   private String billingContactEmail;
 
   public static final String SERIALIZED_NAME_MEDIA_CONTACT_FIRSTNAME = "media_contact_firstname";
   @SerializedName(SERIALIZED_NAME_MEDIA_CONTACT_FIRSTNAME)
+  @javax.annotation.Nullable
   private String mediaContactFirstname;
 
   public static final String SERIALIZED_NAME_MEDIA_CONTACT_LASTNAME = "media_contact_lastname";
   @SerializedName(SERIALIZED_NAME_MEDIA_CONTACT_LASTNAME)
+  @javax.annotation.Nullable
   private String mediaContactLastname;
 
   public static final String SERIALIZED_NAME_MEDIA_CONTACT_EMAIL = "media_contact_email";
   @SerializedName(SERIALIZED_NAME_MEDIA_CONTACT_EMAIL)
+  @javax.annotation.Nullable
   private String mediaContactEmail;
 
   public static final String SERIALIZED_NAME_AGENCY_LINK = "agency_link";
   @SerializedName(SERIALIZED_NAME_AGENCY_LINK)
+  @javax.annotation.Nullable
   private String agencyLink;
 
   public static final String SERIALIZED_NAME_USER_EMAIL = "user_email";
   @SerializedName(SERIALIZED_NAME_USER_EMAIL)
+  @javax.annotation.Nullable
   private String userEmail;
 
   public SSIOInsertionOrderCommon() {
   }
 
-  public SSIOInsertionOrderCommon startDate(String startDate) {
+  public SSIOInsertionOrderCommon startDate(@javax.annotation.Nullable String startDate) {
     this.startDate = startDate;
     return this;
   }
@@ -116,12 +128,12 @@ public class SSIOInsertionOrderCommon {
     return startDate;
   }
 
-  public void setStartDate(String startDate) {
+  public void setStartDate(@javax.annotation.Nullable String startDate) {
     this.startDate = startDate;
   }
 
 
-  public SSIOInsertionOrderCommon endDate(String endDate) {
+  public SSIOInsertionOrderCommon endDate(@javax.annotation.Nullable String endDate) {
     this.endDate = endDate;
     return this;
   }
@@ -135,12 +147,12 @@ public class SSIOInsertionOrderCommon {
     return endDate;
   }
 
-  public void setEndDate(String endDate) {
+  public void setEndDate(@javax.annotation.Nullable String endDate) {
     this.endDate = endDate;
   }
 
 
-  public SSIOInsertionOrderCommon poNumber(String poNumber) {
+  public SSIOInsertionOrderCommon poNumber(@javax.annotation.Nullable String poNumber) {
     this.poNumber = poNumber;
     return this;
   }
@@ -154,12 +166,12 @@ public class SSIOInsertionOrderCommon {
     return poNumber;
   }
 
-  public void setPoNumber(String poNumber) {
+  public void setPoNumber(@javax.annotation.Nullable String poNumber) {
     this.poNumber = poNumber;
   }
 
 
-  public SSIOInsertionOrderCommon budgetAmount(BigDecimal budgetAmount) {
+  public SSIOInsertionOrderCommon budgetAmount(@javax.annotation.Nullable BigDecimal budgetAmount) {
     this.budgetAmount = budgetAmount;
     return this;
   }
@@ -173,12 +185,12 @@ public class SSIOInsertionOrderCommon {
     return budgetAmount;
   }
 
-  public void setBudgetAmount(BigDecimal budgetAmount) {
+  public void setBudgetAmount(@javax.annotation.Nullable BigDecimal budgetAmount) {
     this.budgetAmount = budgetAmount;
   }
 
 
-  public SSIOInsertionOrderCommon billingContactFirstname(String billingContactFirstname) {
+  public SSIOInsertionOrderCommon billingContactFirstname(@javax.annotation.Nullable String billingContactFirstname) {
     this.billingContactFirstname = billingContactFirstname;
     return this;
   }
@@ -192,12 +204,12 @@ public class SSIOInsertionOrderCommon {
     return billingContactFirstname;
   }
 
-  public void setBillingContactFirstname(String billingContactFirstname) {
+  public void setBillingContactFirstname(@javax.annotation.Nullable String billingContactFirstname) {
     this.billingContactFirstname = billingContactFirstname;
   }
 
 
-  public SSIOInsertionOrderCommon billingContactLastname(String billingContactLastname) {
+  public SSIOInsertionOrderCommon billingContactLastname(@javax.annotation.Nullable String billingContactLastname) {
     this.billingContactLastname = billingContactLastname;
     return this;
   }
@@ -211,12 +223,12 @@ public class SSIOInsertionOrderCommon {
     return billingContactLastname;
   }
 
-  public void setBillingContactLastname(String billingContactLastname) {
+  public void setBillingContactLastname(@javax.annotation.Nullable String billingContactLastname) {
     this.billingContactLastname = billingContactLastname;
   }
 
 
-  public SSIOInsertionOrderCommon billingContactEmail(String billingContactEmail) {
+  public SSIOInsertionOrderCommon billingContactEmail(@javax.annotation.Nullable String billingContactEmail) {
     this.billingContactEmail = billingContactEmail;
     return this;
   }
@@ -230,12 +242,12 @@ public class SSIOInsertionOrderCommon {
     return billingContactEmail;
   }
 
-  public void setBillingContactEmail(String billingContactEmail) {
+  public void setBillingContactEmail(@javax.annotation.Nullable String billingContactEmail) {
     this.billingContactEmail = billingContactEmail;
   }
 
 
-  public SSIOInsertionOrderCommon mediaContactFirstname(String mediaContactFirstname) {
+  public SSIOInsertionOrderCommon mediaContactFirstname(@javax.annotation.Nullable String mediaContactFirstname) {
     this.mediaContactFirstname = mediaContactFirstname;
     return this;
   }
@@ -249,12 +261,12 @@ public class SSIOInsertionOrderCommon {
     return mediaContactFirstname;
   }
 
-  public void setMediaContactFirstname(String mediaContactFirstname) {
+  public void setMediaContactFirstname(@javax.annotation.Nullable String mediaContactFirstname) {
     this.mediaContactFirstname = mediaContactFirstname;
   }
 
 
-  public SSIOInsertionOrderCommon mediaContactLastname(String mediaContactLastname) {
+  public SSIOInsertionOrderCommon mediaContactLastname(@javax.annotation.Nullable String mediaContactLastname) {
     this.mediaContactLastname = mediaContactLastname;
     return this;
   }
@@ -268,12 +280,12 @@ public class SSIOInsertionOrderCommon {
     return mediaContactLastname;
   }
 
-  public void setMediaContactLastname(String mediaContactLastname) {
+  public void setMediaContactLastname(@javax.annotation.Nullable String mediaContactLastname) {
     this.mediaContactLastname = mediaContactLastname;
   }
 
 
-  public SSIOInsertionOrderCommon mediaContactEmail(String mediaContactEmail) {
+  public SSIOInsertionOrderCommon mediaContactEmail(@javax.annotation.Nullable String mediaContactEmail) {
     this.mediaContactEmail = mediaContactEmail;
     return this;
   }
@@ -287,12 +299,12 @@ public class SSIOInsertionOrderCommon {
     return mediaContactEmail;
   }
 
-  public void setMediaContactEmail(String mediaContactEmail) {
+  public void setMediaContactEmail(@javax.annotation.Nullable String mediaContactEmail) {
     this.mediaContactEmail = mediaContactEmail;
   }
 
 
-  public SSIOInsertionOrderCommon agencyLink(String agencyLink) {
+  public SSIOInsertionOrderCommon agencyLink(@javax.annotation.Nullable String agencyLink) {
     this.agencyLink = agencyLink;
     return this;
   }
@@ -306,12 +318,12 @@ public class SSIOInsertionOrderCommon {
     return agencyLink;
   }
 
-  public void setAgencyLink(String agencyLink) {
+  public void setAgencyLink(@javax.annotation.Nullable String agencyLink) {
     this.agencyLink = agencyLink;
   }
 
 
-  public SSIOInsertionOrderCommon userEmail(String userEmail) {
+  public SSIOInsertionOrderCommon userEmail(@javax.annotation.Nullable String userEmail) {
     this.userEmail = userEmail;
     return this;
   }
@@ -325,7 +337,7 @@ public class SSIOInsertionOrderCommon {
     return userEmail;
   }
 
-  public void setUserEmail(String userEmail) {
+  public void setUserEmail(@javax.annotation.Nullable String userEmail) {
     this.userEmail = userEmail;
   }
 

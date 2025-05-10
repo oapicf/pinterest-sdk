@@ -153,11 +153,11 @@ export function SSIOEditInsertionOrderRequestFromJSONTyped(json: any, ignoreDisc
     };
 }
 
-  export function SSIOEditInsertionOrderRequestToJSON(json: any): SSIOEditInsertionOrderRequest {
-      return SSIOEditInsertionOrderRequestToJSONTyped(json, false);
-  }
+export function SSIOEditInsertionOrderRequestToJSON(json: any): SSIOEditInsertionOrderRequest {
+    return SSIOEditInsertionOrderRequestToJSONTyped(json, false);
+}
 
-  export function SSIOEditInsertionOrderRequestToJSONTyped(value?: SSIOEditInsertionOrderRequest | null, ignoreDiscriminator: boolean = false): any {
+export function SSIOEditInsertionOrderRequestToJSONTyped(value?: SSIOEditInsertionOrderRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

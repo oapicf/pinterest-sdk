@@ -43,7 +43,7 @@ import javax.annotation.Generated;
   TargetingSpec.JSON_PROPERTY_T_A_R_G_E_T_I_N_G_S_T_R_A_T_E_G_Y
 })
 @JsonTypeName("TargetingSpec")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2024-11-05T02:02:57.601423453Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2025-05-10T05:39:05.070592818Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 @Introspected
 public class TargetingSpec {
     /**

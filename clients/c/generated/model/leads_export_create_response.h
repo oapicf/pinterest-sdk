@@ -21,9 +21,10 @@ typedef struct leads_export_create_response_t leads_export_create_response_t;
 typedef struct leads_export_create_response_t {
     char *leads_export_id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } leads_export_create_response_t;
 
-leads_export_create_response_t *leads_export_create_response_create(
+__attribute__((deprecated)) leads_export_create_response_t *leads_export_create_response_create(
     char *leads_export_id
 );
 

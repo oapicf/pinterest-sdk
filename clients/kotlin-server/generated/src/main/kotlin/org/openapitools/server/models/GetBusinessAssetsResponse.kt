@@ -13,17 +13,19 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.AssetGroupBinding
 
+import kotlinx.serialization.Serializable
 /**
  * An object containing the permissions a business has on the asset.
  * @param assetId Unique identifier of a business asset.
  * @param assetType Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
  * @param assetGroupInfo 
  */
+@Serializable
 data class GetBusinessAssetsResponse(
     /* Unique identifier of a business asset. */
     val assetId: kotlin.String? = null,
     /* Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. */
     val assetType: kotlin.String? = null,
     val assetGroupInfo: AssetGroupBinding? = null
-) 
+)
 

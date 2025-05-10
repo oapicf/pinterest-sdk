@@ -84,11 +84,11 @@ export function TemplateResponseDateRangeFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function TemplateResponseDateRangeToJSON(json: any): TemplateResponseDateRange {
-      return TemplateResponseDateRangeToJSONTyped(json, false);
-  }
+export function TemplateResponseDateRangeToJSON(json: any): TemplateResponseDateRange {
+    return TemplateResponseDateRangeToJSONTyped(json, false);
+}
 
-  export function TemplateResponseDateRangeToJSONTyped(value?: TemplateResponseDateRange | null, ignoreDiscriminator: boolean = false): any {
+export function TemplateResponseDateRangeToJSONTyped(value?: TemplateResponseDateRange | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

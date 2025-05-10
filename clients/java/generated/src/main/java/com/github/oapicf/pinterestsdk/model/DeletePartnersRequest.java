@@ -51,20 +51,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * DeletePartnersRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class DeletePartnersRequest {
   public static final String SERIALIZED_NAME_PARTNER_IDS = "partner_ids";
   @SerializedName(SERIALIZED_NAME_PARTNER_IDS)
+  @javax.annotation.Nonnull
   private List<String> partnerIds = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_PARTNER_TYPE = "partner_type";
   @SerializedName(SERIALIZED_NAME_PARTNER_TYPE)
+  @javax.annotation.Nullable
   private String partnerType;
 
   public DeletePartnersRequest() {
   }
 
-  public DeletePartnersRequest partnerIds(List<String> partnerIds) {
+  public DeletePartnersRequest partnerIds(@javax.annotation.Nonnull List<String> partnerIds) {
     this.partnerIds = partnerIds;
     return this;
   }
@@ -86,12 +88,12 @@ public class DeletePartnersRequest {
     return partnerIds;
   }
 
-  public void setPartnerIds(List<String> partnerIds) {
+  public void setPartnerIds(@javax.annotation.Nonnull List<String> partnerIds) {
     this.partnerIds = partnerIds;
   }
 
 
-  public DeletePartnersRequest partnerType(String partnerType) {
+  public DeletePartnersRequest partnerType(@javax.annotation.Nullable String partnerType) {
     this.partnerType = partnerType;
     return this;
   }
@@ -105,7 +107,7 @@ public class DeletePartnersRequest {
     return partnerType;
   }
 
-  public void setPartnerType(String partnerType) {
+  public void setPartnerType(@javax.annotation.Nullable String partnerType) {
     this.partnerType = partnerType;
   }
 

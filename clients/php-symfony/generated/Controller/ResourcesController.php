@@ -156,7 +156,7 @@ class ResourcesController extends Controller
 
         // Validate the input values
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "SYNC", "ASYNC" ]);
+        $asserts[] = new Assert\Choice([ 'SYNC', 'ASYNC' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($reportType, $asserts);
         if ($response instanceof Response) {
@@ -463,7 +463,7 @@ class ResourcesController extends Controller
         // Validate the input values
         $asserts = [];
         $asserts[] = new Assert\NotNull();
-        $asserts[] = new Assert\Choice([ "APPTYPE", "GENDER", "LOCALE", "AGE_BUCKET", "LOCATION", "GEO", "INTEREST", "KEYWORD", "AUDIENCE_INCLUDE", "AUDIENCE_EXCLUDE" ]);
+        $asserts[] = new Assert\Choice([ 'APPTYPE', 'GENDER', 'LOCALE', 'AGE_BUCKET', 'LOCATION', 'GEO', 'INTEREST', 'KEYWORD', 'AUDIENCE_INCLUDE', 'AUDIENCE_EXCLUDE' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($targetingType, $asserts);
         if ($response instanceof Response) {

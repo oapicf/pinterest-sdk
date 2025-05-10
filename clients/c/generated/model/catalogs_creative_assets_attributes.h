@@ -34,9 +34,10 @@ typedef struct catalogs_creative_assets_attributes_t {
     char *image_link; // string
     char *video_link; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_creative_assets_attributes_t;
 
-catalogs_creative_assets_attributes_t *catalogs_creative_assets_attributes_create(
+__attribute__((deprecated)) catalogs_creative_assets_attributes_t *catalogs_creative_assets_attributes_create(
     char *title,
     char *description,
     char *link,

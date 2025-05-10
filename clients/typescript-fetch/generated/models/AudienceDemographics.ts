@@ -84,11 +84,11 @@ export function AudienceDemographicsFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function AudienceDemographicsToJSON(json: any): AudienceDemographics {
-      return AudienceDemographicsToJSONTyped(json, false);
-  }
+export function AudienceDemographicsToJSON(json: any): AudienceDemographics {
+    return AudienceDemographicsToJSONTyped(json, false);
+}
 
-  export function AudienceDemographicsToJSONTyped(value?: AudienceDemographics | null, ignoreDiscriminator: boolean = false): any {
+export function AudienceDemographicsToJSONTyped(value?: AudienceDemographics | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

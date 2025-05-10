@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Multiple Base64-encoded images media source")
 @JsonTypeName("PinMediaSourceImagesBase64")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMediaSourceImagesBase64   {
   public enum SourceTypeEnum {
 
@@ -74,6 +74,16 @@ public class PinMediaSourceImagesBase64   {
   private @Valid List<@Valid PinMediaSourceImagesBase64ItemsInner> items = new ArrayList<>();
   private Integer index;
 
+  public PinMediaSourceImagesBase64() {
+  }
+
+  @JsonCreator
+  public PinMediaSourceImagesBase64(
+    @JsonProperty(required = true, value = "items") List<@Valid PinMediaSourceImagesBase64ItemsInner> items
+  ) {
+    this.items = items;
+  }
+
   /**
    **/
   public PinMediaSourceImagesBase64 sourceType(SourceTypeEnum sourceType) {
@@ -103,12 +113,12 @@ public class PinMediaSourceImagesBase64   {
 
   
   @ApiModelProperty(required = true, value = "Array with image objects.")
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   @NotNull @Valid  @Size(min=2,max=5)public List<@Valid PinMediaSourceImagesBase64ItemsInner> getItems() {
     return items;
   }
 
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   public void setItems(List<@Valid PinMediaSourceImagesBase64ItemsInner> items) {
     this.items = items;
   }

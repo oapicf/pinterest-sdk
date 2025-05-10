@@ -23,9 +23,10 @@ typedef struct business_asset_partners_get_200_response_t {
     list_t *items; //nonprimitive container
     char *bookmark; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } business_asset_partners_get_200_response_t;
 
-business_asset_partners_get_200_response_t *business_asset_partners_get_200_response_create(
+__attribute__((deprecated)) business_asset_partners_get_200_response_t *business_asset_partners_get_200_response_create(
     list_t *items,
     char *bookmark
 );

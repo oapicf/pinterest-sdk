@@ -394,11 +394,11 @@ export function CatalogsFeedValidationWarningsFromJSONTyped(json: any, ignoreDis
     };
 }
 
-  export function CatalogsFeedValidationWarningsToJSON(json: any): CatalogsFeedValidationWarnings {
-      return CatalogsFeedValidationWarningsToJSONTyped(json, false);
-  }
+export function CatalogsFeedValidationWarningsToJSON(json: any): CatalogsFeedValidationWarnings {
+    return CatalogsFeedValidationWarningsToJSONTyped(json, false);
+}
 
-  export function CatalogsFeedValidationWarningsToJSONTyped(value?: CatalogsFeedValidationWarnings | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsFeedValidationWarningsToJSONTyped(value?: CatalogsFeedValidationWarnings | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

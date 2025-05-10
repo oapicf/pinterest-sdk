@@ -157,7 +157,7 @@ func (c *CampaignsAPIController) CampaignsCreate(w http.ResponseWriter, r *http.
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	campaignCreateRequestParam := []CampaignCreateRequest{}
+	var campaignCreateRequestParam []CampaignCreateRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&campaignCreateRequestParam); err != nil {
@@ -188,7 +188,7 @@ func (c *CampaignsAPIController) CampaignsUpdate(w http.ResponseWriter, r *http.
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	campaignUpdateRequestParam := []CampaignUpdateRequest{}
+	var campaignUpdateRequestParam []CampaignUpdateRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&campaignUpdateRequestParam); err != nil {

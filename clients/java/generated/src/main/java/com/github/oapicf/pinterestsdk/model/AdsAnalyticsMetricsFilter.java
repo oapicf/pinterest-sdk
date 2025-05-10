@@ -53,24 +53,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdsAnalyticsMetricsFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdsAnalyticsMetricsFilter {
   public static final String SERIALIZED_NAME_FIELD = "field";
   @SerializedName(SERIALIZED_NAME_FIELD)
+  @javax.annotation.Nonnull
   private AdsAnalyticsFilterColumn field;
 
   public static final String SERIALIZED_NAME_OPERATOR = "operator";
   @SerializedName(SERIALIZED_NAME_OPERATOR)
+  @javax.annotation.Nonnull
   private AdsAnalyticsFilterOperator operator;
 
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
+  @javax.annotation.Nonnull
   private List<BigDecimal> values = new ArrayList<>();
 
   public AdsAnalyticsMetricsFilter() {
   }
 
-  public AdsAnalyticsMetricsFilter field(AdsAnalyticsFilterColumn field) {
+  public AdsAnalyticsMetricsFilter field(@javax.annotation.Nonnull AdsAnalyticsFilterColumn field) {
     this.field = field;
     return this;
   }
@@ -84,12 +87,12 @@ public class AdsAnalyticsMetricsFilter {
     return field;
   }
 
-  public void setField(AdsAnalyticsFilterColumn field) {
+  public void setField(@javax.annotation.Nonnull AdsAnalyticsFilterColumn field) {
     this.field = field;
   }
 
 
-  public AdsAnalyticsMetricsFilter operator(AdsAnalyticsFilterOperator operator) {
+  public AdsAnalyticsMetricsFilter operator(@javax.annotation.Nonnull AdsAnalyticsFilterOperator operator) {
     this.operator = operator;
     return this;
   }
@@ -103,12 +106,12 @@ public class AdsAnalyticsMetricsFilter {
     return operator;
   }
 
-  public void setOperator(AdsAnalyticsFilterOperator operator) {
+  public void setOperator(@javax.annotation.Nonnull AdsAnalyticsFilterOperator operator) {
     this.operator = operator;
   }
 
 
-  public AdsAnalyticsMetricsFilter values(List<BigDecimal> values) {
+  public AdsAnalyticsMetricsFilter values(@javax.annotation.Nonnull List<BigDecimal> values) {
     this.values = values;
     return this;
   }
@@ -130,7 +133,7 @@ public class AdsAnalyticsMetricsFilter {
     return values;
   }
 
-  public void setValues(List<BigDecimal> values) {
+  public void setValues(@javax.annotation.Nonnull List<BigDecimal> values) {
     this.values = values;
   }
 

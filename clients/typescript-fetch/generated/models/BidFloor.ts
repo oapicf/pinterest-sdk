@@ -55,11 +55,11 @@ export function BidFloorFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
     };
 }
 
-  export function BidFloorToJSON(json: any): BidFloor {
-      return BidFloorToJSONTyped(json, false);
-  }
+export function BidFloorToJSON(json: any): BidFloor {
+    return BidFloorToJSONTyped(json, false);
+}
 
-  export function BidFloorToJSONTyped(value?: BidFloor | null, ignoreDiscriminator: boolean = false): any {
+export function BidFloorToJSONTyped(value?: BidFloor | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

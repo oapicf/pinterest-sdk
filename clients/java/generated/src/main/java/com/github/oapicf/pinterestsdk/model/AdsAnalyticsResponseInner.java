@@ -49,20 +49,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdsAnalyticsResponseInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdsAnalyticsResponseInner {
   public static final String SERIALIZED_NAME_A_D_I_D = "AD_ID";
   @SerializedName(SERIALIZED_NAME_A_D_I_D)
+  @javax.annotation.Nonnull
   private String AD_ID;
 
   public static final String SERIALIZED_NAME_D_A_T_E = "DATE";
   @SerializedName(SERIALIZED_NAME_D_A_T_E)
+  @javax.annotation.Nullable
   private LocalDate DATE;
 
   public AdsAnalyticsResponseInner() {
   }
 
-  public AdsAnalyticsResponseInner AD_ID(String AD_ID) {
+  public AdsAnalyticsResponseInner AD_ID(@javax.annotation.Nonnull String AD_ID) {
     this.AD_ID = AD_ID;
     return this;
   }
@@ -76,12 +78,12 @@ public class AdsAnalyticsResponseInner {
     return AD_ID;
   }
 
-  public void setADID(String AD_ID) {
+  public void setADID(@javax.annotation.Nonnull String AD_ID) {
     this.AD_ID = AD_ID;
   }
 
 
-  public AdsAnalyticsResponseInner DATE(LocalDate DATE) {
+  public AdsAnalyticsResponseInner DATE(@javax.annotation.Nullable LocalDate DATE) {
     this.DATE = DATE;
     return this;
   }
@@ -95,7 +97,7 @@ public class AdsAnalyticsResponseInner {
     return DATE;
   }
 
-  public void setDATE(LocalDate DATE) {
+  public void setDATE(@javax.annotation.Nullable LocalDate DATE) {
     this.DATE = DATE;
   }
 

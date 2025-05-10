@@ -72,11 +72,11 @@ export function PinAnalyticsMetricsResponseDailyMetricsInnerFromJSONTyped(json: 
     };
 }
 
-  export function PinAnalyticsMetricsResponseDailyMetricsInnerToJSON(json: any): PinAnalyticsMetricsResponseDailyMetricsInner {
-      return PinAnalyticsMetricsResponseDailyMetricsInnerToJSONTyped(json, false);
-  }
+export function PinAnalyticsMetricsResponseDailyMetricsInnerToJSON(json: any): PinAnalyticsMetricsResponseDailyMetricsInner {
+    return PinAnalyticsMetricsResponseDailyMetricsInnerToJSONTyped(json, false);
+}
 
-  export function PinAnalyticsMetricsResponseDailyMetricsInnerToJSONTyped(value?: PinAnalyticsMetricsResponseDailyMetricsInner | null, ignoreDiscriminator: boolean = false): any {
+export function PinAnalyticsMetricsResponseDailyMetricsInnerToJSONTyped(value?: PinAnalyticsMetricsResponseDailyMetricsInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

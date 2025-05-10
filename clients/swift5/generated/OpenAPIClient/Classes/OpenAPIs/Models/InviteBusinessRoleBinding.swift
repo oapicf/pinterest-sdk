@@ -13,7 +13,7 @@ import AnyCodable
 /** An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated. */
 public struct InviteBusinessRoleBinding: Codable, JSONEncodable, Hashable {
 
-    static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Unique identifier for the business that created the invite/request. */
     public var createdByBusinessId: String?
     /** Unique identifier for the user that created the invite/request. */
@@ -57,3 +57,6 @@ public struct InviteBusinessRoleBinding: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension InviteBusinessRoleBinding: Identifiable {}

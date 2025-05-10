@@ -53,18 +53,21 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CreateMMMReportRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CreateMMMReportRequest {
   public static final String SERIALIZED_NAME_REPORT_NAME = "report_name";
   @SerializedName(SERIALIZED_NAME_REPORT_NAME)
+  @javax.annotation.Nonnull
   private String reportName;
 
   public static final String SERIALIZED_NAME_START_DATE = "start_date";
   @SerializedName(SERIALIZED_NAME_START_DATE)
+  @javax.annotation.Nonnull
   private String startDate;
 
   public static final String SERIALIZED_NAME_END_DATE = "end_date";
   @SerializedName(SERIALIZED_NAME_END_DATE)
+  @javax.annotation.Nonnull
   private String endDate;
 
   /**
@@ -121,6 +124,7 @@ public class CreateMMMReportRequest {
 
   public static final String SERIALIZED_NAME_GRANULARITY = "granularity";
   @SerializedName(SERIALIZED_NAME_GRANULARITY)
+  @javax.annotation.Nonnull
   private GranularityEnum granularity;
 
   /**
@@ -177,24 +181,28 @@ public class CreateMMMReportRequest {
 
   public static final String SERIALIZED_NAME_LEVEL = "level";
   @SerializedName(SERIALIZED_NAME_LEVEL)
+  @javax.annotation.Nonnull
   private LevelEnum level;
 
   public static final String SERIALIZED_NAME_TARGETING_TYPES = "targeting_types";
   @SerializedName(SERIALIZED_NAME_TARGETING_TYPES)
+  @javax.annotation.Nonnull
   private List<MMMReportingTargetingType> targetingTypes = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_COLUMNS = "columns";
   @SerializedName(SERIALIZED_NAME_COLUMNS)
+  @javax.annotation.Nonnull
   private List<MMMReportingColumn> columns = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_COUNTRIES = "countries";
   @SerializedName(SERIALIZED_NAME_COUNTRIES)
+  @javax.annotation.Nullable
   private List<TargetingAdvertiserCountry> countries = new ArrayList<>();
 
   public CreateMMMReportRequest() {
   }
 
-  public CreateMMMReportRequest reportName(String reportName) {
+  public CreateMMMReportRequest reportName(@javax.annotation.Nonnull String reportName) {
     this.reportName = reportName;
     return this;
   }
@@ -208,12 +216,12 @@ public class CreateMMMReportRequest {
     return reportName;
   }
 
-  public void setReportName(String reportName) {
+  public void setReportName(@javax.annotation.Nonnull String reportName) {
     this.reportName = reportName;
   }
 
 
-  public CreateMMMReportRequest startDate(String startDate) {
+  public CreateMMMReportRequest startDate(@javax.annotation.Nonnull String startDate) {
     this.startDate = startDate;
     return this;
   }
@@ -227,12 +235,12 @@ public class CreateMMMReportRequest {
     return startDate;
   }
 
-  public void setStartDate(String startDate) {
+  public void setStartDate(@javax.annotation.Nonnull String startDate) {
     this.startDate = startDate;
   }
 
 
-  public CreateMMMReportRequest endDate(String endDate) {
+  public CreateMMMReportRequest endDate(@javax.annotation.Nonnull String endDate) {
     this.endDate = endDate;
     return this;
   }
@@ -246,12 +254,12 @@ public class CreateMMMReportRequest {
     return endDate;
   }
 
-  public void setEndDate(String endDate) {
+  public void setEndDate(@javax.annotation.Nonnull String endDate) {
     this.endDate = endDate;
   }
 
 
-  public CreateMMMReportRequest granularity(GranularityEnum granularity) {
+  public CreateMMMReportRequest granularity(@javax.annotation.Nonnull GranularityEnum granularity) {
     this.granularity = granularity;
     return this;
   }
@@ -265,12 +273,12 @@ public class CreateMMMReportRequest {
     return granularity;
   }
 
-  public void setGranularity(GranularityEnum granularity) {
+  public void setGranularity(@javax.annotation.Nonnull GranularityEnum granularity) {
     this.granularity = granularity;
   }
 
 
-  public CreateMMMReportRequest level(LevelEnum level) {
+  public CreateMMMReportRequest level(@javax.annotation.Nonnull LevelEnum level) {
     this.level = level;
     return this;
   }
@@ -284,12 +292,12 @@ public class CreateMMMReportRequest {
     return level;
   }
 
-  public void setLevel(LevelEnum level) {
+  public void setLevel(@javax.annotation.Nonnull LevelEnum level) {
     this.level = level;
   }
 
 
-  public CreateMMMReportRequest targetingTypes(List<MMMReportingTargetingType> targetingTypes) {
+  public CreateMMMReportRequest targetingTypes(@javax.annotation.Nonnull List<MMMReportingTargetingType> targetingTypes) {
     this.targetingTypes = targetingTypes;
     return this;
   }
@@ -311,12 +319,12 @@ public class CreateMMMReportRequest {
     return targetingTypes;
   }
 
-  public void setTargetingTypes(List<MMMReportingTargetingType> targetingTypes) {
+  public void setTargetingTypes(@javax.annotation.Nonnull List<MMMReportingTargetingType> targetingTypes) {
     this.targetingTypes = targetingTypes;
   }
 
 
-  public CreateMMMReportRequest columns(List<MMMReportingColumn> columns) {
+  public CreateMMMReportRequest columns(@javax.annotation.Nonnull List<MMMReportingColumn> columns) {
     this.columns = columns;
     return this;
   }
@@ -338,12 +346,12 @@ public class CreateMMMReportRequest {
     return columns;
   }
 
-  public void setColumns(List<MMMReportingColumn> columns) {
+  public void setColumns(@javax.annotation.Nonnull List<MMMReportingColumn> columns) {
     this.columns = columns;
   }
 
 
-  public CreateMMMReportRequest countries(List<TargetingAdvertiserCountry> countries) {
+  public CreateMMMReportRequest countries(@javax.annotation.Nullable List<TargetingAdvertiserCountry> countries) {
     this.countries = countries;
     return this;
   }
@@ -365,7 +373,7 @@ public class CreateMMMReportRequest {
     return countries;
   }
 
-  public void setCountries(List<TargetingAdvertiserCountry> countries) {
+  public void setCountries(@javax.annotation.Nullable List<TargetingAdvertiserCountry> countries) {
     this.countries = countries;
   }
 

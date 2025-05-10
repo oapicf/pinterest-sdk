@@ -24,9 +24,10 @@ typedef struct lead_form_array_response_items_inner_t {
     struct lead_form_response_t *data; //model
     list_t *exceptions; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } lead_form_array_response_items_inner_t;
 
-lead_form_array_response_items_inner_t *lead_form_array_response_items_inner_create(
+__attribute__((deprecated)) lead_form_array_response_items_inner_t *lead_form_array_response_items_inner_create(
     lead_form_response_t *data,
     list_t *exceptions
 );

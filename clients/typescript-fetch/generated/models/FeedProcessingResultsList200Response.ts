@@ -64,11 +64,11 @@ export function FeedProcessingResultsList200ResponseFromJSONTyped(json: any, ign
     };
 }
 
-  export function FeedProcessingResultsList200ResponseToJSON(json: any): FeedProcessingResultsList200Response {
-      return FeedProcessingResultsList200ResponseToJSONTyped(json, false);
-  }
+export function FeedProcessingResultsList200ResponseToJSON(json: any): FeedProcessingResultsList200Response {
+    return FeedProcessingResultsList200ResponseToJSONTyped(json, false);
+}
 
-  export function FeedProcessingResultsList200ResponseToJSONTyped(value?: FeedProcessingResultsList200Response | null, ignoreDiscriminator: boolean = false): any {
+export function FeedProcessingResultsList200ResponseToJSONTyped(value?: FeedProcessingResultsList200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

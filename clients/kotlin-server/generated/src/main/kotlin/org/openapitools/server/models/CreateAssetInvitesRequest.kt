@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CreateAssetInvitesRequestItem
 
+import kotlinx.serialization.Serializable
 /**
  * Request body for updating asset roles for existing invites.
  * @param invites 
  */
+@Serializable
 data class CreateAssetInvitesRequest(
     val invites: kotlin.collections.List<CreateAssetInvitesRequestItem>
-) 
+)
 

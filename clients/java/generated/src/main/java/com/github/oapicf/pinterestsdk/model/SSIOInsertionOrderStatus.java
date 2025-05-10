@@ -49,24 +49,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * SSIOInsertionOrderStatus
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SSIOInsertionOrderStatus {
   public static final String SERIALIZED_NAME_PIN_ORDER_ID = "pin_order_id";
   @SerializedName(SERIALIZED_NAME_PIN_ORDER_ID)
+  @javax.annotation.Nullable
   private String pinOrderId;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private String status;
 
   public static final String SERIALIZED_NAME_CREATION_TIME = "creation_time";
   @SerializedName(SERIALIZED_NAME_CREATION_TIME)
+  @javax.annotation.Nullable
   private String creationTime;
 
   public SSIOInsertionOrderStatus() {
   }
 
-  public SSIOInsertionOrderStatus pinOrderId(String pinOrderId) {
+  public SSIOInsertionOrderStatus pinOrderId(@javax.annotation.Nullable String pinOrderId) {
     this.pinOrderId = pinOrderId;
     return this;
   }
@@ -80,12 +83,12 @@ public class SSIOInsertionOrderStatus {
     return pinOrderId;
   }
 
-  public void setPinOrderId(String pinOrderId) {
+  public void setPinOrderId(@javax.annotation.Nullable String pinOrderId) {
     this.pinOrderId = pinOrderId;
   }
 
 
-  public SSIOInsertionOrderStatus status(String status) {
+  public SSIOInsertionOrderStatus status(@javax.annotation.Nullable String status) {
     this.status = status;
     return this;
   }
@@ -99,12 +102,12 @@ public class SSIOInsertionOrderStatus {
     return status;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(@javax.annotation.Nullable String status) {
     this.status = status;
   }
 
 
-  public SSIOInsertionOrderStatus creationTime(String creationTime) {
+  public SSIOInsertionOrderStatus creationTime(@javax.annotation.Nullable String creationTime) {
     this.creationTime = creationTime;
     return this;
   }
@@ -118,7 +121,7 @@ public class SSIOInsertionOrderStatus {
     return creationTime;
   }
 
-  public void setCreationTime(String creationTime) {
+  public void setCreationTime(@javax.annotation.Nullable String creationTime) {
     this.creationTime = creationTime;
   }
 

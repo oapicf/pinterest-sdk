@@ -23,9 +23,10 @@ typedef struct auth_respond_invites_body_invites_inner_t {
     struct auth_respond_invites_body_invites_inner_action_t *action; //model
     char *invite_id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } auth_respond_invites_body_invites_inner_t;
 
-auth_respond_invites_body_invites_inner_t *auth_respond_invites_body_invites_inner_create(
+__attribute__((deprecated)) auth_respond_invites_body_invites_inner_t *auth_respond_invites_body_invites_inner_create(
     auth_respond_invites_body_invites_inner_action_t *action,
     char *invite_id
 );

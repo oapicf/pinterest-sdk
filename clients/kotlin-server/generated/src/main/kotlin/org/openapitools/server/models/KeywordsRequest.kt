@@ -13,15 +13,17 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.KeywordsCommon
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param keywords Keyword JSON array. Each array element has 3 fields
  * @param parentId Keyword parent entity ID (advertiser, campaign, ad group).
  */
+@Serializable
 data class KeywordsRequest(
     /* Keyword JSON array. Each array element has 3 fields */
     val keywords: kotlin.collections.List<KeywordsCommon>,
     /* Keyword parent entity ID (advertiser, campaign, ad group). */
     val parentId: kotlin.String
-) 
+)
 

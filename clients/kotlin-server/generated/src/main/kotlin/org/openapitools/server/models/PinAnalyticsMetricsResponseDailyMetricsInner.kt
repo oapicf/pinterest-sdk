@@ -13,17 +13,19 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.DataStatus
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param dataStatus 
  * @param date Metrics date (UTC): YYYY-MM-DD.
  * @param metrics The metric name and daily value for each requested metric
  */
+@Serializable
 data class PinAnalyticsMetricsResponseDailyMetricsInner(
     val dataStatus: DataStatus? = null,
     /* Metrics date (UTC): YYYY-MM-DD. */
     val date: kotlin.String? = null,
     /* The metric name and daily value for each requested metric */
     val metrics: kotlin.collections.Map<kotlin.String, java.math.BigDecimal>? = null
-) 
+)
 

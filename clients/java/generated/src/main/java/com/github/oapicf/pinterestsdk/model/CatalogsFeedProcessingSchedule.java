@@ -48,10 +48,11 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Daily processing schedule. This field is **OPTIONAL**. Use this to configure the preferred time for processing a feed (otherwise random).
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsFeedProcessingSchedule {
   public static final String SERIALIZED_NAME_TIME = "time";
   @SerializedName(SERIALIZED_NAME_TIME)
+  @javax.annotation.Nonnull
   private String time;
 
   /**
@@ -878,12 +879,13 @@ public class CatalogsFeedProcessingSchedule {
 
   public static final String SERIALIZED_NAME_TIMEZONE = "timezone";
   @SerializedName(SERIALIZED_NAME_TIMEZONE)
+  @javax.annotation.Nullable
   private TimezoneEnum timezone;
 
   public CatalogsFeedProcessingSchedule() {
   }
 
-  public CatalogsFeedProcessingSchedule time(String time) {
+  public CatalogsFeedProcessingSchedule time(@javax.annotation.Nonnull String time) {
     this.time = time;
     return this;
   }
@@ -897,12 +899,12 @@ public class CatalogsFeedProcessingSchedule {
     return time;
   }
 
-  public void setTime(String time) {
+  public void setTime(@javax.annotation.Nonnull String time) {
     this.time = time;
   }
 
 
-  public CatalogsFeedProcessingSchedule timezone(TimezoneEnum timezone) {
+  public CatalogsFeedProcessingSchedule timezone(@javax.annotation.Nullable TimezoneEnum timezone) {
     this.timezone = timezone;
     return this;
   }
@@ -916,7 +918,7 @@ public class CatalogsFeedProcessingSchedule {
     return timezone;
   }
 
-  public void setTimezone(TimezoneEnum timezone) {
+  public void setTimezone(@javax.annotation.Nullable TimezoneEnum timezone) {
     this.timezone = timezone;
   }
 

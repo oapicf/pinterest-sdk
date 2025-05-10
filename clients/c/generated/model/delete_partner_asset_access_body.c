@@ -5,7 +5,7 @@
 
 
 
-delete_partner_asset_access_body_t *delete_partner_asset_access_body_create(
+static delete_partner_asset_access_body_t *delete_partner_asset_access_body_create_internal(
     list_t *accesses
     ) {
     delete_partner_asset_access_body_t *delete_partner_asset_access_body_local_var = malloc(sizeof(delete_partner_asset_access_body_t));
@@ -14,12 +14,24 @@ delete_partner_asset_access_body_t *delete_partner_asset_access_body_create(
     }
     delete_partner_asset_access_body_local_var->accesses = accesses;
 
+    delete_partner_asset_access_body_local_var->_library_owned = 1;
     return delete_partner_asset_access_body_local_var;
 }
 
+__attribute__((deprecated)) delete_partner_asset_access_body_t *delete_partner_asset_access_body_create(
+    list_t *accesses
+    ) {
+    return delete_partner_asset_access_body_create_internal (
+        accesses
+        );
+}
 
 void delete_partner_asset_access_body_free(delete_partner_asset_access_body_t *delete_partner_asset_access_body) {
     if(NULL == delete_partner_asset_access_body){
+        return ;
+    }
+    if(delete_partner_asset_access_body->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "delete_partner_asset_access_body_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -73,6 +85,9 @@ delete_partner_asset_access_body_t *delete_partner_asset_access_body_parseFromJS
 
     // delete_partner_asset_access_body->accesses
     cJSON *accesses = cJSON_GetObjectItemCaseSensitive(delete_partner_asset_access_bodyJSON, "accesses");
+    if (cJSON_IsNull(accesses)) {
+        accesses = NULL;
+    }
     if (!accesses) {
         goto end;
     }
@@ -96,7 +111,7 @@ delete_partner_asset_access_body_t *delete_partner_asset_access_body_parseFromJS
     }
 
 
-    delete_partner_asset_access_body_local_var = delete_partner_asset_access_body_create (
+    delete_partner_asset_access_body_local_var = delete_partner_asset_access_body_create_internal (
         accessesList
         );
 

@@ -49,16 +49,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CurrencyFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CurrencyFilter {
   public static final String SERIALIZED_NAME_C_U_R_R_E_N_C_Y = "CURRENCY";
   @SerializedName(SERIALIZED_NAME_C_U_R_R_E_N_C_Y)
+  @javax.annotation.Nonnull
   private CatalogsProductGroupCurrencyCriteria CURRENCY;
 
   public CurrencyFilter() {
   }
 
-  public CurrencyFilter CURRENCY(CatalogsProductGroupCurrencyCriteria CURRENCY) {
+  public CurrencyFilter CURRENCY(@javax.annotation.Nonnull CatalogsProductGroupCurrencyCriteria CURRENCY) {
     this.CURRENCY = CURRENCY;
     return this;
   }
@@ -72,7 +73,7 @@ public class CurrencyFilter {
     return CURRENCY;
   }
 
-  public void setCURRENCY(CatalogsProductGroupCurrencyCriteria CURRENCY) {
+  public void setCURRENCY(@javax.annotation.Nonnull CatalogsProductGroupCurrencyCriteria CURRENCY) {
     this.CURRENCY = CURRENCY;
   }
 

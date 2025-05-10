@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdAccountGetSubscriptionResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdAccountGetSubscriptionResponse   {
   private String leadFormId;
   private String webhookUrl;
@@ -27,6 +27,9 @@ public class AdAccountGetSubscriptionResponse   {
   private String cryptographicKey;
   private String cryptographicAlgorithm;
   private Integer createdTime;
+
+  public AdAccountGetSubscriptionResponse() {
+  }
 
   /**
    * Lead form ID.

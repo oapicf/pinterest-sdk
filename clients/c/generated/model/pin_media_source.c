@@ -56,7 +56,7 @@ pinterest_rest_api_pin_media_source_COVERIMAGECONTENTTYPE_e pin_media_source_cov
     return 0;
 }
 
-pin_media_source_t *pin_media_source_create(
+static pin_media_source_t *pin_media_source_create_internal(
     pinterest_rest_api_pin_media_source_SOURCETYPE_e source_type,
     pinterest_rest_api_pin_media_source_CONTENTTYPE_e content_type,
     char *data,
@@ -87,12 +87,46 @@ pin_media_source_t *pin_media_source_create(
     pin_media_source_local_var->index = index;
     pin_media_source_local_var->is_affiliate_link = is_affiliate_link;
 
+    pin_media_source_local_var->_library_owned = 1;
     return pin_media_source_local_var;
 }
 
+__attribute__((deprecated)) pin_media_source_t *pin_media_source_create(
+    pinterest_rest_api_pin_media_source_SOURCETYPE_e source_type,
+    pinterest_rest_api_pin_media_source_CONTENTTYPE_e content_type,
+    char *data,
+    int is_standard,
+    char *url,
+    char *cover_image_url,
+    pinterest_rest_api_pin_media_source_COVERIMAGECONTENTTYPE_e cover_image_content_type,
+    char *cover_image_data,
+    char *media_id,
+    list_t *items,
+    int index,
+    int is_affiliate_link
+    ) {
+    return pin_media_source_create_internal (
+        source_type,
+        content_type,
+        data,
+        is_standard,
+        url,
+        cover_image_url,
+        cover_image_content_type,
+        cover_image_data,
+        media_id,
+        items,
+        index,
+        is_affiliate_link
+        );
+}
 
 void pin_media_source_free(pin_media_source_t *pin_media_source) {
     if(NULL == pin_media_source){
+        return ;
+    }
+    if(pin_media_source->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "pin_media_source_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -133,7 +167,7 @@ cJSON *pin_media_source_convertToJSON(pin_media_source_t *pin_media_source) {
     if (pinterest_rest_api_pin_media_source_SOURCETYPE_NULL == pin_media_source->source_type) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "source_type", source_typepin_media_source_ToString(pin_media_source->source_type)) == NULL)
+    if(cJSON_AddStringToObject(item, "source_type", pin_media_source_source_type_ToString(pin_media_source->source_type)) == NULL)
     {
     goto fail; //Enum
     }
@@ -143,7 +177,7 @@ cJSON *pin_media_source_convertToJSON(pin_media_source_t *pin_media_source) {
     if (pinterest_rest_api_pin_media_source_CONTENTTYPE_NULL == pin_media_source->content_type) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "content_type", content_typepin_media_source_ToString(pin_media_source->content_type)) == NULL)
+    if(cJSON_AddStringToObject(item, "content_type", pin_media_source_content_type_ToString(pin_media_source->content_type)) == NULL)
     {
     goto fail; //Enum
     }
@@ -185,7 +219,7 @@ cJSON *pin_media_source_convertToJSON(pin_media_source_t *pin_media_source) {
 
     // pin_media_source->cover_image_content_type
     if(pin_media_source->cover_image_content_type != pinterest_rest_api_pin_media_source_COVERIMAGECONTENTTYPE_NULL) {
-    if(cJSON_AddStringToObject(item, "cover_image_content_type", cover_image_content_typepin_media_source_ToString(pin_media_source->cover_image_content_type)) == NULL)
+    if(cJSON_AddStringToObject(item, "cover_image_content_type", pin_media_source_cover_image_content_type_ToString(pin_media_source->cover_image_content_type)) == NULL)
     {
     goto fail; //Enum
     }
@@ -262,6 +296,9 @@ pin_media_source_t *pin_media_source_parseFromJSON(cJSON *pin_media_sourceJSON){
 
     // pin_media_source->source_type
     cJSON *source_type = cJSON_GetObjectItemCaseSensitive(pin_media_sourceJSON, "source_type");
+    if (cJSON_IsNull(source_type)) {
+        source_type = NULL;
+    }
     if (!source_type) {
         goto end;
     }
@@ -276,6 +313,9 @@ pin_media_source_t *pin_media_source_parseFromJSON(cJSON *pin_media_sourceJSON){
 
     // pin_media_source->content_type
     cJSON *content_type = cJSON_GetObjectItemCaseSensitive(pin_media_sourceJSON, "content_type");
+    if (cJSON_IsNull(content_type)) {
+        content_type = NULL;
+    }
     if (!content_type) {
         goto end;
     }
@@ -290,6 +330,9 @@ pin_media_source_t *pin_media_source_parseFromJSON(cJSON *pin_media_sourceJSON){
 
     // pin_media_source->data
     cJSON *data = cJSON_GetObjectItemCaseSensitive(pin_media_sourceJSON, "data");
+    if (cJSON_IsNull(data)) {
+        data = NULL;
+    }
     if (!data) {
         goto end;
     }
@@ -302,6 +345,9 @@ pin_media_source_t *pin_media_source_parseFromJSON(cJSON *pin_media_sourceJSON){
 
     // pin_media_source->is_standard
     cJSON *is_standard = cJSON_GetObjectItemCaseSensitive(pin_media_sourceJSON, "is_standard");
+    if (cJSON_IsNull(is_standard)) {
+        is_standard = NULL;
+    }
     if (is_standard) { 
     if(!cJSON_IsBool(is_standard))
     {
@@ -311,6 +357,9 @@ pin_media_source_t *pin_media_source_parseFromJSON(cJSON *pin_media_sourceJSON){
 
     // pin_media_source->url
     cJSON *url = cJSON_GetObjectItemCaseSensitive(pin_media_sourceJSON, "url");
+    if (cJSON_IsNull(url)) {
+        url = NULL;
+    }
     if (!url) {
         goto end;
     }
@@ -323,6 +372,9 @@ pin_media_source_t *pin_media_source_parseFromJSON(cJSON *pin_media_sourceJSON){
 
     // pin_media_source->cover_image_url
     cJSON *cover_image_url = cJSON_GetObjectItemCaseSensitive(pin_media_sourceJSON, "cover_image_url");
+    if (cJSON_IsNull(cover_image_url)) {
+        cover_image_url = NULL;
+    }
     if (cover_image_url) { 
     if(!cJSON_IsString(cover_image_url) && !cJSON_IsNull(cover_image_url))
     {
@@ -332,6 +384,9 @@ pin_media_source_t *pin_media_source_parseFromJSON(cJSON *pin_media_sourceJSON){
 
     // pin_media_source->cover_image_content_type
     cJSON *cover_image_content_type = cJSON_GetObjectItemCaseSensitive(pin_media_sourceJSON, "cover_image_content_type");
+    if (cJSON_IsNull(cover_image_content_type)) {
+        cover_image_content_type = NULL;
+    }
     pinterest_rest_api_pin_media_source_COVERIMAGECONTENTTYPE_e cover_image_content_typeVariable;
     if (cover_image_content_type) { 
     if(!cJSON_IsString(cover_image_content_type))
@@ -343,6 +398,9 @@ pin_media_source_t *pin_media_source_parseFromJSON(cJSON *pin_media_sourceJSON){
 
     // pin_media_source->cover_image_data
     cJSON *cover_image_data = cJSON_GetObjectItemCaseSensitive(pin_media_sourceJSON, "cover_image_data");
+    if (cJSON_IsNull(cover_image_data)) {
+        cover_image_data = NULL;
+    }
     if (cover_image_data) { 
     if(!cJSON_IsString(cover_image_data) && !cJSON_IsNull(cover_image_data))
     {
@@ -352,6 +410,9 @@ pin_media_source_t *pin_media_source_parseFromJSON(cJSON *pin_media_sourceJSON){
 
     // pin_media_source->media_id
     cJSON *media_id = cJSON_GetObjectItemCaseSensitive(pin_media_sourceJSON, "media_id");
+    if (cJSON_IsNull(media_id)) {
+        media_id = NULL;
+    }
     if (!media_id) {
         goto end;
     }
@@ -364,6 +425,9 @@ pin_media_source_t *pin_media_source_parseFromJSON(cJSON *pin_media_sourceJSON){
 
     // pin_media_source->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(pin_media_sourceJSON, "items");
+    if (cJSON_IsNull(items)) {
+        items = NULL;
+    }
     if (!items) {
         goto end;
     }
@@ -388,6 +452,9 @@ pin_media_source_t *pin_media_source_parseFromJSON(cJSON *pin_media_sourceJSON){
 
     // pin_media_source->index
     cJSON *index = cJSON_GetObjectItemCaseSensitive(pin_media_sourceJSON, "index");
+    if (cJSON_IsNull(index)) {
+        index = NULL;
+    }
     if (index) { 
     if(!cJSON_IsNumber(index))
     {
@@ -397,6 +464,9 @@ pin_media_source_t *pin_media_source_parseFromJSON(cJSON *pin_media_sourceJSON){
 
     // pin_media_source->is_affiliate_link
     cJSON *is_affiliate_link = cJSON_GetObjectItemCaseSensitive(pin_media_sourceJSON, "is_affiliate_link");
+    if (cJSON_IsNull(is_affiliate_link)) {
+        is_affiliate_link = NULL;
+    }
     if (is_affiliate_link) { 
     if(!cJSON_IsBool(is_affiliate_link))
     {
@@ -405,7 +475,7 @@ pin_media_source_t *pin_media_source_parseFromJSON(cJSON *pin_media_sourceJSON){
     }
 
 
-    pin_media_source_local_var = pin_media_source_create (
+    pin_media_source_local_var = pin_media_source_create_internal (
         source_typeVariable,
         content_typeVariable,
         strdup(data->valuestring),

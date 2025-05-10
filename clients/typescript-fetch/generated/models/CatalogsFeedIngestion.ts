@@ -83,11 +83,11 @@ export function CatalogsFeedIngestionFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function CatalogsFeedIngestionToJSON(json: any): CatalogsFeedIngestion {
-      return CatalogsFeedIngestionToJSONTyped(json, false);
-  }
+export function CatalogsFeedIngestionToJSON(json: any): CatalogsFeedIngestion {
+    return CatalogsFeedIngestionToJSONTyped(json, false);
+}
 
-  export function CatalogsFeedIngestionToJSONTyped(value?: CatalogsFeedIngestion | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsFeedIngestionToJSONTyped(value?: CatalogsFeedIngestion | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

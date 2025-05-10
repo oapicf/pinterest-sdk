@@ -4,23 +4,6 @@
 #include "targeting_template_get_response_data.h"
 
 
-char* targeting_template_get_response_data_placement_group_ToString(pinterest_rest_api_targeting_template_get_response_data__e placement_group) {
-    char* placement_groupArray[] =  { "NULL", "ALL", "SEARCH", "BROWSE", "OTHER" };
-    return placement_groupArray[placement_group];
-}
-
-pinterest_rest_api_targeting_template_get_response_data__e targeting_template_get_response_data_placement_group_FromString(char* placement_group){
-    int stringToReturn = 0;
-    char *placement_groupArray[] =  { "NULL", "ALL", "SEARCH", "BROWSE", "OTHER" };
-    size_t sizeofArray = sizeof(placement_groupArray) / sizeof(placement_groupArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(placement_group, placement_groupArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
 char* targeting_template_get_response_data_status_ToString(pinterest_rest_api_targeting_template_get_response_data_STATUS_e status) {
     char* statusArray[] =  { "NULL", "ACTIVE", "DELETED" };
     return statusArray[status];
@@ -39,11 +22,11 @@ pinterest_rest_api_targeting_template_get_response_data_STATUS_e targeting_templ
     return 0;
 }
 
-targeting_template_get_response_data_t *targeting_template_get_response_data_create(
+static targeting_template_get_response_data_t *targeting_template_get_response_data_create_internal(
     char *name,
     int auto_targeting_enabled,
     targeting_spec_t *targeting_attributes,
-    placement_group_type_t *placement_group,
+    pinterest_rest_api_placement_group_type__e placement_group,
     list_t *keywords,
     tracking_urls_t *tracking_urls,
     char *id,
@@ -72,12 +55,48 @@ targeting_template_get_response_data_t *targeting_template_get_response_data_cre
     targeting_template_get_response_data_local_var->sizing = sizing;
     targeting_template_get_response_data_local_var->valid = valid;
 
+    targeting_template_get_response_data_local_var->_library_owned = 1;
     return targeting_template_get_response_data_local_var;
 }
 
+__attribute__((deprecated)) targeting_template_get_response_data_t *targeting_template_get_response_data_create(
+    char *name,
+    int auto_targeting_enabled,
+    targeting_spec_t *targeting_attributes,
+    pinterest_rest_api_placement_group_type__e placement_group,
+    list_t *keywords,
+    tracking_urls_t *tracking_urls,
+    char *id,
+    int created_time,
+    int updated_time,
+    char *ad_account_id,
+    pinterest_rest_api_targeting_template_get_response_data_STATUS_e status,
+    targeting_template_audience_sizing_t *sizing,
+    int valid
+    ) {
+    return targeting_template_get_response_data_create_internal (
+        name,
+        auto_targeting_enabled,
+        targeting_attributes,
+        placement_group,
+        keywords,
+        tracking_urls,
+        id,
+        created_time,
+        updated_time,
+        ad_account_id,
+        status,
+        sizing,
+        valid
+        );
+}
 
 void targeting_template_get_response_data_free(targeting_template_get_response_data_t *targeting_template_get_response_data) {
     if(NULL == targeting_template_get_response_data){
+        return ;
+    }
+    if(targeting_template_get_response_data->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "targeting_template_get_response_data_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -88,10 +107,6 @@ void targeting_template_get_response_data_free(targeting_template_get_response_d
     if (targeting_template_get_response_data->targeting_attributes) {
         targeting_spec_free(targeting_template_get_response_data->targeting_attributes);
         targeting_template_get_response_data->targeting_attributes = NULL;
-    }
-    if (targeting_template_get_response_data->placement_group) {
-        placement_group_type_free(targeting_template_get_response_data->placement_group);
-        targeting_template_get_response_data->placement_group = NULL;
     }
     if (targeting_template_get_response_data->keywords) {
         list_ForEach(listEntry, targeting_template_get_response_data->keywords) {
@@ -152,7 +167,7 @@ cJSON *targeting_template_get_response_data_convertToJSON(targeting_template_get
 
 
     // targeting_template_get_response_data->placement_group
-    if(targeting_template_get_response_data->placement_group != pinterest_rest_api_targeting_template_get_response_data__NULL) {
+    if(targeting_template_get_response_data->placement_group != pinterest_rest_api_placement_group_type__NULL) {
     cJSON *placement_group_local_JSON = placement_group_type_convertToJSON(targeting_template_get_response_data->placement_group);
     if(placement_group_local_JSON == NULL) {
         goto fail; // custom
@@ -231,7 +246,7 @@ cJSON *targeting_template_get_response_data_convertToJSON(targeting_template_get
 
     // targeting_template_get_response_data->status
     if(targeting_template_get_response_data->status != pinterest_rest_api_targeting_template_get_response_data_STATUS_NULL) {
-    if(cJSON_AddStringToObject(item, "status", statustargeting_template_get_response_data_ToString(targeting_template_get_response_data->status)) == NULL)
+    if(cJSON_AddStringToObject(item, "status", targeting_template_get_response_data_status_ToString(targeting_template_get_response_data->status)) == NULL)
     {
     goto fail; //Enum
     }
@@ -274,7 +289,7 @@ targeting_template_get_response_data_t *targeting_template_get_response_data_par
     targeting_spec_t *targeting_attributes_local_nonprim = NULL;
 
     // define the local variable for targeting_template_get_response_data->placement_group
-    placement_group_type_t *placement_group_local_nonprim = NULL;
+    pinterest_rest_api_placement_group_type__e placement_group_local_nonprim = 0;
 
     // define the local list for targeting_template_get_response_data->keywords
     list_t *keywordsList = NULL;
@@ -287,6 +302,9 @@ targeting_template_get_response_data_t *targeting_template_get_response_data_par
 
     // targeting_template_get_response_data->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(targeting_template_get_response_dataJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
     if (name) { 
     if(!cJSON_IsString(name) && !cJSON_IsNull(name))
     {
@@ -296,6 +314,9 @@ targeting_template_get_response_data_t *targeting_template_get_response_data_par
 
     // targeting_template_get_response_data->auto_targeting_enabled
     cJSON *auto_targeting_enabled = cJSON_GetObjectItemCaseSensitive(targeting_template_get_response_dataJSON, "auto_targeting_enabled");
+    if (cJSON_IsNull(auto_targeting_enabled)) {
+        auto_targeting_enabled = NULL;
+    }
     if (auto_targeting_enabled) { 
     if(!cJSON_IsBool(auto_targeting_enabled))
     {
@@ -305,18 +326,27 @@ targeting_template_get_response_data_t *targeting_template_get_response_data_par
 
     // targeting_template_get_response_data->targeting_attributes
     cJSON *targeting_attributes = cJSON_GetObjectItemCaseSensitive(targeting_template_get_response_dataJSON, "targeting_attributes");
+    if (cJSON_IsNull(targeting_attributes)) {
+        targeting_attributes = NULL;
+    }
     if (targeting_attributes) { 
     targeting_attributes_local_nonprim = targeting_spec_parseFromJSON(targeting_attributes); //nonprimitive
     }
 
     // targeting_template_get_response_data->placement_group
     cJSON *placement_group = cJSON_GetObjectItemCaseSensitive(targeting_template_get_response_dataJSON, "placement_group");
+    if (cJSON_IsNull(placement_group)) {
+        placement_group = NULL;
+    }
     if (placement_group) { 
     placement_group_local_nonprim = placement_group_type_parseFromJSON(placement_group); //custom
     }
 
     // targeting_template_get_response_data->keywords
     cJSON *keywords = cJSON_GetObjectItemCaseSensitive(targeting_template_get_response_dataJSON, "keywords");
+    if (cJSON_IsNull(keywords)) {
+        keywords = NULL;
+    }
     if (keywords) { 
     cJSON *keywords_local_nonprimitive = NULL;
     if(!cJSON_IsArray(keywords)){
@@ -338,12 +368,18 @@ targeting_template_get_response_data_t *targeting_template_get_response_data_par
 
     // targeting_template_get_response_data->tracking_urls
     cJSON *tracking_urls = cJSON_GetObjectItemCaseSensitive(targeting_template_get_response_dataJSON, "tracking_urls");
+    if (cJSON_IsNull(tracking_urls)) {
+        tracking_urls = NULL;
+    }
     if (tracking_urls) { 
     tracking_urls_local_nonprim = tracking_urls_parseFromJSON(tracking_urls); //nonprimitive
     }
 
     // targeting_template_get_response_data->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(targeting_template_get_response_dataJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -353,6 +389,9 @@ targeting_template_get_response_data_t *targeting_template_get_response_data_par
 
     // targeting_template_get_response_data->created_time
     cJSON *created_time = cJSON_GetObjectItemCaseSensitive(targeting_template_get_response_dataJSON, "created_time");
+    if (cJSON_IsNull(created_time)) {
+        created_time = NULL;
+    }
     if (created_time) { 
     if(!cJSON_IsNumber(created_time))
     {
@@ -362,6 +401,9 @@ targeting_template_get_response_data_t *targeting_template_get_response_data_par
 
     // targeting_template_get_response_data->updated_time
     cJSON *updated_time = cJSON_GetObjectItemCaseSensitive(targeting_template_get_response_dataJSON, "updated_time");
+    if (cJSON_IsNull(updated_time)) {
+        updated_time = NULL;
+    }
     if (updated_time) { 
     if(!cJSON_IsNumber(updated_time))
     {
@@ -371,6 +413,9 @@ targeting_template_get_response_data_t *targeting_template_get_response_data_par
 
     // targeting_template_get_response_data->ad_account_id
     cJSON *ad_account_id = cJSON_GetObjectItemCaseSensitive(targeting_template_get_response_dataJSON, "ad_account_id");
+    if (cJSON_IsNull(ad_account_id)) {
+        ad_account_id = NULL;
+    }
     if (ad_account_id) { 
     if(!cJSON_IsString(ad_account_id) && !cJSON_IsNull(ad_account_id))
     {
@@ -380,6 +425,9 @@ targeting_template_get_response_data_t *targeting_template_get_response_data_par
 
     // targeting_template_get_response_data->status
     cJSON *status = cJSON_GetObjectItemCaseSensitive(targeting_template_get_response_dataJSON, "status");
+    if (cJSON_IsNull(status)) {
+        status = NULL;
+    }
     pinterest_rest_api_targeting_template_get_response_data_STATUS_e statusVariable;
     if (status) { 
     if(!cJSON_IsString(status))
@@ -391,12 +439,18 @@ targeting_template_get_response_data_t *targeting_template_get_response_data_par
 
     // targeting_template_get_response_data->sizing
     cJSON *sizing = cJSON_GetObjectItemCaseSensitive(targeting_template_get_response_dataJSON, "sizing");
+    if (cJSON_IsNull(sizing)) {
+        sizing = NULL;
+    }
     if (sizing) { 
     sizing_local_nonprim = targeting_template_audience_sizing_parseFromJSON(sizing); //nonprimitive
     }
 
     // targeting_template_get_response_data->valid
     cJSON *valid = cJSON_GetObjectItemCaseSensitive(targeting_template_get_response_dataJSON, "valid");
+    if (cJSON_IsNull(valid)) {
+        valid = NULL;
+    }
     if (valid) { 
     if(!cJSON_IsBool(valid))
     {
@@ -405,11 +459,11 @@ targeting_template_get_response_data_t *targeting_template_get_response_data_par
     }
 
 
-    targeting_template_get_response_data_local_var = targeting_template_get_response_data_create (
+    targeting_template_get_response_data_local_var = targeting_template_get_response_data_create_internal (
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         auto_targeting_enabled ? auto_targeting_enabled->valueint : 0,
         targeting_attributes ? targeting_attributes_local_nonprim : NULL,
-        placement_group ? placement_group_local_nonprim : NULL,
+        placement_group ? placement_group_local_nonprim : 0,
         keywords ? keywordsList : NULL,
         tracking_urls ? tracking_urls_local_nonprim : NULL,
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -428,8 +482,7 @@ end:
         targeting_attributes_local_nonprim = NULL;
     }
     if (placement_group_local_nonprim) {
-        placement_group_type_free(placement_group_local_nonprim);
-        placement_group_local_nonprim = NULL;
+        placement_group_local_nonprim = 0;
     }
     if (keywordsList) {
         listEntry_t *listEntry = NULL;

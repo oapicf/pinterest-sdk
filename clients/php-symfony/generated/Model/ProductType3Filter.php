@@ -57,7 +57,7 @@ class ProductType3Filter
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->pRODUCTTYPE3 = array_key_exists('pRODUCTTYPE3', $data) ? $data['pRODUCTTYPE3'] : $this->pRODUCTTYPE3;

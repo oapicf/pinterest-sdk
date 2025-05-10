@@ -11,7 +11,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Video ID-based media source")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-11-05T02:20:54.377772266Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@ApiModel(description="Video ID-based media source")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2025-05-10T05:40:48.086340579Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMediaSourceVideoID   {
   
 
@@ -40,9 +40,9 @@ public class PinMediaSourceVideoID   {
    * Content type for cover image Base64.
    */
   public enum CoverImageContentTypeEnum {
-    JPEG("image/jpeg"),
+    IMAGE_JPEG("image/jpeg"),
 
-        PNG("image/png");
+        IMAGE_PNG("image/png");
     private String value;
 
     CoverImageContentTypeEnum(String value) {

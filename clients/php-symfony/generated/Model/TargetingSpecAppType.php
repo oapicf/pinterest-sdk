@@ -42,12 +42,12 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum TargetingSpecAppType: string
 {
-        case ANDROID_MOBILE = "android_mobile";
-        case ANDROID_TABLET = "android_tablet";
-        case IPAD = "ipad";
-        case IPHONE = "iphone";
-        case WEB = "web";
-        case WEB_MOBILE = "web_mobile";
+        case ANDROID_MOBILE = 'android_mobile';
+        case ANDROID_TABLET = 'android_tablet';
+        case IPAD = 'ipad';
+        case IPHONE = 'iphone';
+        case WEB = 'web';
+        case WEB_MOBILE = 'web_mobile';
 }
 
 

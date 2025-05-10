@@ -4,26 +4,9 @@
 #include "update_member_business_role_body.h"
 
 
-char* update_member_business_role_body_business_role_ToString(pinterest_rest_api_update_member_business_role_body__e business_role) {
-    char* business_roleArray[] =  { "NULL", "EMPLOYEE", "BIZ_ADMIN" };
-    return business_roleArray[business_role];
-}
 
-pinterest_rest_api_update_member_business_role_body__e update_member_business_role_body_business_role_FromString(char* business_role){
-    int stringToReturn = 0;
-    char *business_roleArray[] =  { "NULL", "EMPLOYEE", "BIZ_ADMIN" };
-    size_t sizeofArray = sizeof(business_roleArray) / sizeof(business_roleArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(business_role, business_roleArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-
-update_member_business_role_body_t *update_member_business_role_body_create(
-    business_role_for_members_t *business_role,
+static update_member_business_role_body_t *update_member_business_role_body_create_internal(
+    pinterest_rest_api_business_role_for_members__e business_role,
     char *member_id
     ) {
     update_member_business_role_body_t *update_member_business_role_body_local_var = malloc(sizeof(update_member_business_role_body_t));
@@ -33,19 +16,29 @@ update_member_business_role_body_t *update_member_business_role_body_create(
     update_member_business_role_body_local_var->business_role = business_role;
     update_member_business_role_body_local_var->member_id = member_id;
 
+    update_member_business_role_body_local_var->_library_owned = 1;
     return update_member_business_role_body_local_var;
 }
 
+__attribute__((deprecated)) update_member_business_role_body_t *update_member_business_role_body_create(
+    pinterest_rest_api_business_role_for_members__e business_role,
+    char *member_id
+    ) {
+    return update_member_business_role_body_create_internal (
+        business_role,
+        member_id
+        );
+}
 
 void update_member_business_role_body_free(update_member_business_role_body_t *update_member_business_role_body) {
     if(NULL == update_member_business_role_body){
         return ;
     }
-    listEntry_t *listEntry;
-    if (update_member_business_role_body->business_role) {
-        business_role_for_members_free(update_member_business_role_body->business_role);
-        update_member_business_role_body->business_role = NULL;
+    if(update_member_business_role_body->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "update_member_business_role_body_free");
+        return ;
     }
+    listEntry_t *listEntry;
     if (update_member_business_role_body->member_id) {
         free(update_member_business_role_body->member_id);
         update_member_business_role_body->member_id = NULL;
@@ -57,7 +50,7 @@ cJSON *update_member_business_role_body_convertToJSON(update_member_business_rol
     cJSON *item = cJSON_CreateObject();
 
     // update_member_business_role_body->business_role
-    if (pinterest_rest_api_update_member_business_role_body__NULL == update_member_business_role_body->business_role) {
+    if (pinterest_rest_api_business_role_for_members__NULL == update_member_business_role_body->business_role) {
         goto fail;
     }
     cJSON *business_role_local_JSON = business_role_for_members_convertToJSON(update_member_business_role_body->business_role);
@@ -91,10 +84,13 @@ update_member_business_role_body_t *update_member_business_role_body_parseFromJS
     update_member_business_role_body_t *update_member_business_role_body_local_var = NULL;
 
     // define the local variable for update_member_business_role_body->business_role
-    business_role_for_members_t *business_role_local_nonprim = NULL;
+    pinterest_rest_api_business_role_for_members__e business_role_local_nonprim = 0;
 
     // update_member_business_role_body->business_role
     cJSON *business_role = cJSON_GetObjectItemCaseSensitive(update_member_business_role_bodyJSON, "business_role");
+    if (cJSON_IsNull(business_role)) {
+        business_role = NULL;
+    }
     if (!business_role) {
         goto end;
     }
@@ -104,6 +100,9 @@ update_member_business_role_body_t *update_member_business_role_body_parseFromJS
 
     // update_member_business_role_body->member_id
     cJSON *member_id = cJSON_GetObjectItemCaseSensitive(update_member_business_role_bodyJSON, "member_id");
+    if (cJSON_IsNull(member_id)) {
+        member_id = NULL;
+    }
     if (!member_id) {
         goto end;
     }
@@ -115,7 +114,7 @@ update_member_business_role_body_t *update_member_business_role_body_parseFromJS
     }
 
 
-    update_member_business_role_body_local_var = update_member_business_role_body_create (
+    update_member_business_role_body_local_var = update_member_business_role_body_create_internal (
         business_role_local_nonprim,
         strdup(member_id->valuestring)
         );
@@ -123,8 +122,7 @@ update_member_business_role_body_t *update_member_business_role_body_parseFromJS
     return update_member_business_role_body_local_var;
 end:
     if (business_role_local_nonprim) {
-        business_role_for_members_free(business_role_local_nonprim);
-        business_role_local_nonprim = NULL;
+        business_role_local_nonprim = 0;
     }
     return NULL;
 

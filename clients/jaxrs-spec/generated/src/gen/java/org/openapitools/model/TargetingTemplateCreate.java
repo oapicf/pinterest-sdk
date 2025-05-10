@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("TargetingTemplateCreate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TargetingTemplateCreate   {
   private String name;
   private Boolean autoTargetingEnabled = true;
@@ -31,6 +31,18 @@ public class TargetingTemplateCreate   {
   private PlacementGroupType placementGroup = PlacementGroupType.ALL;
   private @Valid List<@Valid TargetingTemplateKeyword> keywords = new ArrayList<>();
   private TrackingUrls trackingUrls;
+
+  public TargetingTemplateCreate() {
+  }
+
+  @JsonCreator
+  public TargetingTemplateCreate(
+    @JsonProperty(required = true, value = "name") String name,
+    @JsonProperty(required = true, value = "targeting_attributes") TargetingSpec targetingAttributes
+  ) {
+    this.name = name;
+    this.targetingAttributes = targetingAttributes;
+  }
 
   /**
    * Name of targeting template.
@@ -42,12 +54,12 @@ public class TargetingTemplateCreate   {
 
   
   @ApiModelProperty(example = "Gaming", required = true, value = "Name of targeting template.")
-  @JsonProperty("name")
+  @JsonProperty(required = true, value = "name")
   @NotNull public String getName() {
     return name;
   }
 
-  @JsonProperty("name")
+  @JsonProperty(required = true, value = "name")
   public void setName(String name) {
     this.name = name;
   }
@@ -81,12 +93,12 @@ public class TargetingTemplateCreate   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("targeting_attributes")
+  @JsonProperty(required = true, value = "targeting_attributes")
   @NotNull @Valid public TargetingSpec getTargetingAttributes() {
     return targetingAttributes;
   }
 
-  @JsonProperty("targeting_attributes")
+  @JsonProperty(required = true, value = "targeting_attributes")
   public void setTargetingAttributes(TargetingSpec targetingAttributes) {
     this.targetingAttributes = targetingAttributes;
   }

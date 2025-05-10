@@ -122,11 +122,11 @@ export function AdGroupAudienceSizingRequestFromJSONTyped(json: any, ignoreDiscr
     };
 }
 
-  export function AdGroupAudienceSizingRequestToJSON(json: any): AdGroupAudienceSizingRequest {
-      return AdGroupAudienceSizingRequestToJSONTyped(json, false);
-  }
+export function AdGroupAudienceSizingRequestToJSON(json: any): AdGroupAudienceSizingRequest {
+    return AdGroupAudienceSizingRequestToJSONTyped(json, false);
+}
 
-  export function AdGroupAudienceSizingRequestToJSONTyped(value?: AdGroupAudienceSizingRequest | null, ignoreDiscriminator: boolean = false): any {
+export function AdGroupAudienceSizingRequestToJSONTyped(value?: AdGroupAudienceSizingRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

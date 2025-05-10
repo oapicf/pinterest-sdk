@@ -12,16 +12,18 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * A creative assets item to be deleted
  * @param creativeAssetsId The catalog creative assets id in the merchant namespace
  * @param operation 
  */
+@Serializable
 data class CatalogsDeleteCreativeAssetsItem(
     /* The catalog creative assets id in the merchant namespace */
     val creativeAssetsId: kotlin.String,
     val operation: CatalogsDeleteCreativeAssetsItem.Operation
-) 
+)
 {
     /**
     * 

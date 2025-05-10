@@ -50,28 +50,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Media upload that has been registered but not uploaded/processed yet.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class MediaUpload {
   public static final String SERIALIZED_NAME_MEDIA_ID = "media_id";
   @SerializedName(SERIALIZED_NAME_MEDIA_ID)
+  @javax.annotation.Nullable
   private String mediaId;
 
   public static final String SERIALIZED_NAME_MEDIA_TYPE = "media_type";
   @SerializedName(SERIALIZED_NAME_MEDIA_TYPE)
+  @javax.annotation.Nullable
   private MediaUploadType mediaType;
 
   public static final String SERIALIZED_NAME_UPLOAD_URL = "upload_url";
   @SerializedName(SERIALIZED_NAME_UPLOAD_URL)
+  @javax.annotation.Nullable
   private String uploadUrl;
 
   public static final String SERIALIZED_NAME_UPLOAD_PARAMETERS = "upload_parameters";
   @SerializedName(SERIALIZED_NAME_UPLOAD_PARAMETERS)
+  @javax.annotation.Nullable
   private MediaUploadAllOfUploadParameters uploadParameters;
 
   public MediaUpload() {
   }
 
-  public MediaUpload mediaId(String mediaId) {
+  public MediaUpload mediaId(@javax.annotation.Nullable String mediaId) {
     this.mediaId = mediaId;
     return this;
   }
@@ -85,12 +89,12 @@ public class MediaUpload {
     return mediaId;
   }
 
-  public void setMediaId(String mediaId) {
+  public void setMediaId(@javax.annotation.Nullable String mediaId) {
     this.mediaId = mediaId;
   }
 
 
-  public MediaUpload mediaType(MediaUploadType mediaType) {
+  public MediaUpload mediaType(@javax.annotation.Nullable MediaUploadType mediaType) {
     this.mediaType = mediaType;
     return this;
   }
@@ -104,12 +108,12 @@ public class MediaUpload {
     return mediaType;
   }
 
-  public void setMediaType(MediaUploadType mediaType) {
+  public void setMediaType(@javax.annotation.Nullable MediaUploadType mediaType) {
     this.mediaType = mediaType;
   }
 
 
-  public MediaUpload uploadUrl(String uploadUrl) {
+  public MediaUpload uploadUrl(@javax.annotation.Nullable String uploadUrl) {
     this.uploadUrl = uploadUrl;
     return this;
   }
@@ -123,12 +127,12 @@ public class MediaUpload {
     return uploadUrl;
   }
 
-  public void setUploadUrl(String uploadUrl) {
+  public void setUploadUrl(@javax.annotation.Nullable String uploadUrl) {
     this.uploadUrl = uploadUrl;
   }
 
 
-  public MediaUpload uploadParameters(MediaUploadAllOfUploadParameters uploadParameters) {
+  public MediaUpload uploadParameters(@javax.annotation.Nullable MediaUploadAllOfUploadParameters uploadParameters) {
     this.uploadParameters = uploadParameters;
     return this;
   }
@@ -142,7 +146,7 @@ public class MediaUpload {
     return uploadParameters;
   }
 
-  public void setUploadParameters(MediaUploadAllOfUploadParameters uploadParameters) {
+  public void setUploadParameters(@javax.annotation.Nullable MediaUploadAllOfUploadParameters uploadParameters) {
     this.uploadParameters = uploadParameters;
   }
 

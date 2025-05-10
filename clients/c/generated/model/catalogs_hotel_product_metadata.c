@@ -5,7 +5,7 @@
 
 
 
-catalogs_hotel_product_metadata_t *catalogs_hotel_product_metadata_create(
+static catalogs_hotel_product_metadata_t *catalogs_hotel_product_metadata_create_internal(
     char *hotel_id
     ) {
     catalogs_hotel_product_metadata_t *catalogs_hotel_product_metadata_local_var = malloc(sizeof(catalogs_hotel_product_metadata_t));
@@ -14,12 +14,24 @@ catalogs_hotel_product_metadata_t *catalogs_hotel_product_metadata_create(
     }
     catalogs_hotel_product_metadata_local_var->hotel_id = hotel_id;
 
+    catalogs_hotel_product_metadata_local_var->_library_owned = 1;
     return catalogs_hotel_product_metadata_local_var;
 }
 
+__attribute__((deprecated)) catalogs_hotel_product_metadata_t *catalogs_hotel_product_metadata_create(
+    char *hotel_id
+    ) {
+    return catalogs_hotel_product_metadata_create_internal (
+        hotel_id
+        );
+}
 
 void catalogs_hotel_product_metadata_free(catalogs_hotel_product_metadata_t *catalogs_hotel_product_metadata) {
     if(NULL == catalogs_hotel_product_metadata){
+        return ;
+    }
+    if(catalogs_hotel_product_metadata->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_hotel_product_metadata_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -55,6 +67,9 @@ catalogs_hotel_product_metadata_t *catalogs_hotel_product_metadata_parseFromJSON
 
     // catalogs_hotel_product_metadata->hotel_id
     cJSON *hotel_id = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_product_metadataJSON, "hotel_id");
+    if (cJSON_IsNull(hotel_id)) {
+        hotel_id = NULL;
+    }
     if (!hotel_id) {
         goto end;
     }
@@ -66,7 +81,7 @@ catalogs_hotel_product_metadata_t *catalogs_hotel_product_metadata_parseFromJSON
     }
 
 
-    catalogs_hotel_product_metadata_local_var = catalogs_hotel_product_metadata_create (
+    catalogs_hotel_product_metadata_local_var = catalogs_hotel_product_metadata_create_internal (
         strdup(hotel_id->valuestring)
         );
 

@@ -48,32 +48,37 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * UserWebsiteVerificationCode
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class UserWebsiteVerificationCode {
   public static final String SERIALIZED_NAME_VERIFICATION_CODE = "verification_code";
   @SerializedName(SERIALIZED_NAME_VERIFICATION_CODE)
+  @javax.annotation.Nullable
   private String verificationCode;
 
   public static final String SERIALIZED_NAME_DNS_TXT_RECORD = "dns_txt_record";
   @SerializedName(SERIALIZED_NAME_DNS_TXT_RECORD)
+  @javax.annotation.Nullable
   private String dnsTxtRecord;
 
   public static final String SERIALIZED_NAME_METATAG = "metatag";
   @SerializedName(SERIALIZED_NAME_METATAG)
+  @javax.annotation.Nullable
   private String metatag;
 
   public static final String SERIALIZED_NAME_FILENAME = "filename";
   @SerializedName(SERIALIZED_NAME_FILENAME)
+  @javax.annotation.Nullable
   private String filename;
 
   public static final String SERIALIZED_NAME_FILE_CONTENT = "file_content";
   @SerializedName(SERIALIZED_NAME_FILE_CONTENT)
+  @javax.annotation.Nullable
   private String fileContent;
 
   public UserWebsiteVerificationCode() {
   }
 
-  public UserWebsiteVerificationCode verificationCode(String verificationCode) {
+  public UserWebsiteVerificationCode verificationCode(@javax.annotation.Nullable String verificationCode) {
     this.verificationCode = verificationCode;
     return this;
   }
@@ -87,12 +92,12 @@ public class UserWebsiteVerificationCode {
     return verificationCode;
   }
 
-  public void setVerificationCode(String verificationCode) {
+  public void setVerificationCode(@javax.annotation.Nullable String verificationCode) {
     this.verificationCode = verificationCode;
   }
 
 
-  public UserWebsiteVerificationCode dnsTxtRecord(String dnsTxtRecord) {
+  public UserWebsiteVerificationCode dnsTxtRecord(@javax.annotation.Nullable String dnsTxtRecord) {
     this.dnsTxtRecord = dnsTxtRecord;
     return this;
   }
@@ -106,12 +111,12 @@ public class UserWebsiteVerificationCode {
     return dnsTxtRecord;
   }
 
-  public void setDnsTxtRecord(String dnsTxtRecord) {
+  public void setDnsTxtRecord(@javax.annotation.Nullable String dnsTxtRecord) {
     this.dnsTxtRecord = dnsTxtRecord;
   }
 
 
-  public UserWebsiteVerificationCode metatag(String metatag) {
+  public UserWebsiteVerificationCode metatag(@javax.annotation.Nullable String metatag) {
     this.metatag = metatag;
     return this;
   }
@@ -125,12 +130,12 @@ public class UserWebsiteVerificationCode {
     return metatag;
   }
 
-  public void setMetatag(String metatag) {
+  public void setMetatag(@javax.annotation.Nullable String metatag) {
     this.metatag = metatag;
   }
 
 
-  public UserWebsiteVerificationCode filename(String filename) {
+  public UserWebsiteVerificationCode filename(@javax.annotation.Nullable String filename) {
     this.filename = filename;
     return this;
   }
@@ -144,12 +149,12 @@ public class UserWebsiteVerificationCode {
     return filename;
   }
 
-  public void setFilename(String filename) {
+  public void setFilename(@javax.annotation.Nullable String filename) {
     this.filename = filename;
   }
 
 
-  public UserWebsiteVerificationCode fileContent(String fileContent) {
+  public UserWebsiteVerificationCode fileContent(@javax.annotation.Nullable String fileContent) {
     this.fileContent = fileContent;
     return this;
   }
@@ -163,7 +168,7 @@ public class UserWebsiteVerificationCode {
     return fileContent;
   }
 
-  public void setFileContent(String fileContent) {
+  public void setFileContent(@javax.annotation.Nullable String fileContent) {
     this.fileContent = fileContent;
   }
 

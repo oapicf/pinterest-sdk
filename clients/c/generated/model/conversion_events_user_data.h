@@ -39,9 +39,10 @@ typedef struct conversion_events_user_data_t {
     char *client_ip_address; // string
     char *client_user_agent; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } conversion_events_user_data_t;
 
-conversion_events_user_data_t *conversion_events_user_data_create(
+__attribute__((deprecated)) conversion_events_user_data_t *conversion_events_user_data_create(
     list_t *ph,
     list_t *ge,
     list_t *db,

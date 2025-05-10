@@ -52,7 +52,7 @@ export enum PinMediaSourceImageBase64SourceTypeEnum {
  * @enum {string}
  */
 export enum PinMediaSourceImageBase64ContentTypeEnum {
-    Jpeg = 'image/jpeg',
-    Png = 'image/png'
+    ImageJpeg = 'image/jpeg',
+    ImagePng = 'image/png'
 }
 

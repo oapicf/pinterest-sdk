@@ -5,7 +5,7 @@
 
 
 
-asset_group_binding_t *asset_group_binding_create(
+static asset_group_binding_t *asset_group_binding_create_internal(
     char *id,
     char *asset_group_name,
     char *asset_group_description,
@@ -32,12 +32,42 @@ asset_group_binding_t *asset_group_binding_create(
     asset_group_binding_local_var->owner = owner;
     asset_group_binding_local_var->created_by = created_by;
 
+    asset_group_binding_local_var->_library_owned = 1;
     return asset_group_binding_local_var;
 }
 
+__attribute__((deprecated)) asset_group_binding_t *asset_group_binding_create(
+    char *id,
+    char *asset_group_name,
+    char *asset_group_description,
+    list_t *asset_group_types,
+    list_t *ad_accounts_ids,
+    list_t *profiles_ids,
+    int created_time,
+    int updated_time,
+    business_access_user_summary_t *owner,
+    business_access_user_summary_t *created_by
+    ) {
+    return asset_group_binding_create_internal (
+        id,
+        asset_group_name,
+        asset_group_description,
+        asset_group_types,
+        ad_accounts_ids,
+        profiles_ids,
+        created_time,
+        updated_time,
+        owner,
+        created_by
+        );
+}
 
 void asset_group_binding_free(asset_group_binding_t *asset_group_binding) {
     if(NULL == asset_group_binding){
+        return ;
+    }
+    if(asset_group_binding->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "asset_group_binding_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -121,7 +151,7 @@ cJSON *asset_group_binding_convertToJSON(asset_group_binding_t *asset_group_bind
 
     listEntry_t *asset_group_typesListEntry;
     list_ForEach(asset_group_typesListEntry, asset_group_binding->asset_group_types) {
-    if(cJSON_AddStringToObject(asset_group_types, "", (char*)asset_group_typesListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(asset_group_types, "", asset_group_typesListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -138,7 +168,7 @@ cJSON *asset_group_binding_convertToJSON(asset_group_binding_t *asset_group_bind
 
     listEntry_t *ad_accounts_idsListEntry;
     list_ForEach(ad_accounts_idsListEntry, asset_group_binding->ad_accounts_ids) {
-    if(cJSON_AddStringToObject(ad_accounts_ids, "", (char*)ad_accounts_idsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(ad_accounts_ids, "", ad_accounts_idsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -155,7 +185,7 @@ cJSON *asset_group_binding_convertToJSON(asset_group_binding_t *asset_group_bind
 
     listEntry_t *profiles_idsListEntry;
     list_ForEach(profiles_idsListEntry, asset_group_binding->profiles_ids) {
-    if(cJSON_AddStringToObject(profiles_ids, "", (char*)profiles_idsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(profiles_ids, "", profiles_idsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -233,6 +263,9 @@ asset_group_binding_t *asset_group_binding_parseFromJSON(cJSON *asset_group_bind
 
     // asset_group_binding->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(asset_group_bindingJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -242,6 +275,9 @@ asset_group_binding_t *asset_group_binding_parseFromJSON(cJSON *asset_group_bind
 
     // asset_group_binding->asset_group_name
     cJSON *asset_group_name = cJSON_GetObjectItemCaseSensitive(asset_group_bindingJSON, "asset_group_name");
+    if (cJSON_IsNull(asset_group_name)) {
+        asset_group_name = NULL;
+    }
     if (asset_group_name) { 
     if(!cJSON_IsString(asset_group_name) && !cJSON_IsNull(asset_group_name))
     {
@@ -251,6 +287,9 @@ asset_group_binding_t *asset_group_binding_parseFromJSON(cJSON *asset_group_bind
 
     // asset_group_binding->asset_group_description
     cJSON *asset_group_description = cJSON_GetObjectItemCaseSensitive(asset_group_bindingJSON, "asset_group_description");
+    if (cJSON_IsNull(asset_group_description)) {
+        asset_group_description = NULL;
+    }
     if (asset_group_description) { 
     if(!cJSON_IsString(asset_group_description) && !cJSON_IsNull(asset_group_description))
     {
@@ -260,6 +299,9 @@ asset_group_binding_t *asset_group_binding_parseFromJSON(cJSON *asset_group_bind
 
     // asset_group_binding->asset_group_types
     cJSON *asset_group_types = cJSON_GetObjectItemCaseSensitive(asset_group_bindingJSON, "asset_group_types");
+    if (cJSON_IsNull(asset_group_types)) {
+        asset_group_types = NULL;
+    }
     if (asset_group_types) { 
     cJSON *asset_group_types_local = NULL;
     if(!cJSON_IsArray(asset_group_types)) {
@@ -279,6 +321,9 @@ asset_group_binding_t *asset_group_binding_parseFromJSON(cJSON *asset_group_bind
 
     // asset_group_binding->ad_accounts_ids
     cJSON *ad_accounts_ids = cJSON_GetObjectItemCaseSensitive(asset_group_bindingJSON, "ad_accounts_ids");
+    if (cJSON_IsNull(ad_accounts_ids)) {
+        ad_accounts_ids = NULL;
+    }
     if (ad_accounts_ids) { 
     cJSON *ad_accounts_ids_local = NULL;
     if(!cJSON_IsArray(ad_accounts_ids)) {
@@ -298,6 +343,9 @@ asset_group_binding_t *asset_group_binding_parseFromJSON(cJSON *asset_group_bind
 
     // asset_group_binding->profiles_ids
     cJSON *profiles_ids = cJSON_GetObjectItemCaseSensitive(asset_group_bindingJSON, "profiles_ids");
+    if (cJSON_IsNull(profiles_ids)) {
+        profiles_ids = NULL;
+    }
     if (profiles_ids) { 
     cJSON *profiles_ids_local = NULL;
     if(!cJSON_IsArray(profiles_ids)) {
@@ -317,6 +365,9 @@ asset_group_binding_t *asset_group_binding_parseFromJSON(cJSON *asset_group_bind
 
     // asset_group_binding->created_time
     cJSON *created_time = cJSON_GetObjectItemCaseSensitive(asset_group_bindingJSON, "created_time");
+    if (cJSON_IsNull(created_time)) {
+        created_time = NULL;
+    }
     if (created_time) { 
     if(!cJSON_IsNumber(created_time))
     {
@@ -326,6 +377,9 @@ asset_group_binding_t *asset_group_binding_parseFromJSON(cJSON *asset_group_bind
 
     // asset_group_binding->updated_time
     cJSON *updated_time = cJSON_GetObjectItemCaseSensitive(asset_group_bindingJSON, "updated_time");
+    if (cJSON_IsNull(updated_time)) {
+        updated_time = NULL;
+    }
     if (updated_time) { 
     if(!cJSON_IsNumber(updated_time))
     {
@@ -335,18 +389,24 @@ asset_group_binding_t *asset_group_binding_parseFromJSON(cJSON *asset_group_bind
 
     // asset_group_binding->owner
     cJSON *owner = cJSON_GetObjectItemCaseSensitive(asset_group_bindingJSON, "owner");
+    if (cJSON_IsNull(owner)) {
+        owner = NULL;
+    }
     if (owner) { 
     owner_local_nonprim = business_access_user_summary_parseFromJSON(owner); //nonprimitive
     }
 
     // asset_group_binding->created_by
     cJSON *created_by = cJSON_GetObjectItemCaseSensitive(asset_group_bindingJSON, "created_by");
+    if (cJSON_IsNull(created_by)) {
+        created_by = NULL;
+    }
     if (created_by) { 
     created_by_local_nonprim = business_access_user_summary_parseFromJSON(created_by); //nonprimitive
     }
 
 
-    asset_group_binding_local_var = asset_group_binding_create (
+    asset_group_binding_local_var = asset_group_binding_create_internal (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         asset_group_name && !cJSON_IsNull(asset_group_name) ? strdup(asset_group_name->valuestring) : NULL,
         asset_group_description && !cJSON_IsNull(asset_group_description) ? strdup(asset_group_description->valuestring) : NULL,

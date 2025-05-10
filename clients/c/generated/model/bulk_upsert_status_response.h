@@ -17,24 +17,17 @@ typedef struct bulk_upsert_status_response_t bulk_upsert_status_response_t;
 
 #include "bulk_upsert_status.h"
 
-// Enum  for bulk_upsert_status_response
-
-typedef enum  { pinterest_rest_api_bulk_upsert_status_response__NULL = 0, pinterest_rest_api_bulk_upsert_status_response__RUNNING, pinterest_rest_api_bulk_upsert_status_response__SUCCEEDED, pinterest_rest_api_bulk_upsert_status_response__FAILED } pinterest_rest_api_bulk_upsert_status_response__e;
-
-char* bulk_upsert_status_response_status_ToString(pinterest_rest_api_bulk_upsert_status_response__e status);
-
-pinterest_rest_api_bulk_upsert_status_response__e bulk_upsert_status_response_status_FromString(char* status);
-
 
 
 typedef struct bulk_upsert_status_response_t {
-    bulk_upsert_status_t *status; // custom
+    pinterest_rest_api_bulk_upsert_status__e status; //referenced enum
     char *result_url; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } bulk_upsert_status_response_t;
 
-bulk_upsert_status_response_t *bulk_upsert_status_response_create(
-    bulk_upsert_status_t *status,
+__attribute__((deprecated)) bulk_upsert_status_response_t *bulk_upsert_status_response_create(
+    pinterest_rest_api_bulk_upsert_status__e status,
     char *result_url
 );
 

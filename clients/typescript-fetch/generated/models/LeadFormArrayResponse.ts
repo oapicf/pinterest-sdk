@@ -56,11 +56,11 @@ export function LeadFormArrayResponseFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function LeadFormArrayResponseToJSON(json: any): LeadFormArrayResponse {
-      return LeadFormArrayResponseToJSONTyped(json, false);
-  }
+export function LeadFormArrayResponseToJSON(json: any): LeadFormArrayResponse {
+    return LeadFormArrayResponseToJSONTyped(json, false);
+}
 
-  export function LeadFormArrayResponseToJSONTyped(value?: LeadFormArrayResponse | null, ignoreDiscriminator: boolean = false): any {
+export function LeadFormArrayResponseToJSONTyped(value?: LeadFormArrayResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

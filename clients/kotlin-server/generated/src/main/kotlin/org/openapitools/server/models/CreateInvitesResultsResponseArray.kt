@@ -13,12 +13,14 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CreateInvitesResultsResponseArrayItemsInner
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items List of invite/request creation status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.
  */
+@Serializable
 data class CreateInvitesResultsResponseArray(
     /* List of invite/request creation status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned. */
     val items: kotlin.collections.List<CreateInvitesResultsResponseArrayItemsInner>? = null
-) 
+)
 

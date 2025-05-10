@@ -33,7 +33,7 @@ import javax.validation.Valid;
   ConversionEventResponse.JSON_PROPERTY_AD_ACCOUNT_ID,
   ConversionEventResponse.JSON_PROPERTY_CREATED_TIME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-11-05T02:20:07.425136412Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConversionEventResponse   {
   public static final String JSON_PROPERTY_CONVERSION_EVENT = "conversion_event";
   @JsonProperty(JSON_PROPERTY_CONVERSION_EVENT)

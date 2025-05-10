@@ -13,8 +13,8 @@ import AnyCodable
 /** The terminated asset access. */
 public struct DeleteMemberAccessResult: Codable, JSONEncodable, Hashable {
 
-    static let assetIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let memberIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let assetIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let memberIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Unique identifier of the business asset. */
     public var assetId: String?
     /** Unique identifier of the business member. */

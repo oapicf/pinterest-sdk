@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param website Website with path or domain only
  * @param status Status of the verification process
  * @param verifiedAt UTC timestamp when the verification happened - sometimes missing
  */
+@Serializable
 data class UserWebsiteSummary(
     /* Website with path or domain only */
     val website: kotlin.String? = null,
@@ -25,5 +27,5 @@ data class UserWebsiteSummary(
     val status: kotlin.String? = null,
     /* UTC timestamp when the verification happened - sometimes missing */
     val verifiedAt: kotlin.String? = null
-) 
+)
 

@@ -71,11 +71,11 @@ export function ConversionEventsUserDataAnyOf2FromJSONTyped(json: any, ignoreDis
     };
 }
 
-  export function ConversionEventsUserDataAnyOf2ToJSON(json: any): ConversionEventsUserDataAnyOf2 {
-      return ConversionEventsUserDataAnyOf2ToJSONTyped(json, false);
-  }
+export function ConversionEventsUserDataAnyOf2ToJSON(json: any): ConversionEventsUserDataAnyOf2 {
+    return ConversionEventsUserDataAnyOf2ToJSONTyped(json, false);
+}
 
-  export function ConversionEventsUserDataAnyOf2ToJSONTyped(value?: ConversionEventsUserDataAnyOf2 | null, ignoreDiscriminator: boolean = false): any {
+export function ConversionEventsUserDataAnyOf2ToJSONTyped(value?: ConversionEventsUserDataAnyOf2 | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

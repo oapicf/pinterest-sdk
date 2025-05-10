@@ -133,11 +133,11 @@ export function ConversionEventsDataInnerCustomDataFromJSONTyped(json: any, igno
     };
 }
 
-  export function ConversionEventsDataInnerCustomDataToJSON(json: any): ConversionEventsDataInnerCustomData {
-      return ConversionEventsDataInnerCustomDataToJSONTyped(json, false);
-  }
+export function ConversionEventsDataInnerCustomDataToJSON(json: any): ConversionEventsDataInnerCustomData {
+    return ConversionEventsDataInnerCustomDataToJSONTyped(json, false);
+}
 
-  export function ConversionEventsDataInnerCustomDataToJSONTyped(value?: ConversionEventsDataInnerCustomData | null, ignoreDiscriminator: boolean = false): any {
+export function ConversionEventsDataInnerCustomDataToJSONTyped(value?: ConversionEventsDataInnerCustomData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

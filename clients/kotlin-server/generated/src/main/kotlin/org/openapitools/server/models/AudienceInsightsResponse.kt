@@ -15,6 +15,7 @@ import org.openapitools.server.models.AudienceCategory
 import org.openapitools.server.models.AudienceDemographics
 import org.openapitools.server.models.AudienceInsightType
 
+import kotlinx.serialization.Serializable
 /**
  * Audience interests and demographics.
  * @param categories Category interest distribution
@@ -24,6 +25,7 @@ import org.openapitools.server.models.AudienceInsightType
  * @param propertySize Population count.
  * @param sizeIsUpperBound Indicates whether the audience size has been rounded up to the next highest upper boundary.
  */
+@Serializable
 data class AudienceInsightsResponse(
     /* Category interest distribution */
     val categories: kotlin.collections.List<AudienceCategory>? = null,
@@ -35,5 +37,5 @@ data class AudienceInsightsResponse(
     val propertySize: kotlin.Int? = null,
     /* Indicates whether the audience size has been rounded up to the next highest upper boundary. */
     val sizeIsUpperBound: kotlin.Boolean? = null
-) 
+)
 

@@ -54,82 +54,101 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Pin
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class Pin {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  @javax.annotation.Nullable
   private OffsetDateTime createdAt;
 
   public static final String SERIALIZED_NAME_LINK = "link";
   @SerializedName(SERIALIZED_NAME_LINK)
+  @javax.annotation.Nullable
   private String link;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
+  @javax.annotation.Nullable
   private String title;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nullable
   private String description;
 
   public static final String SERIALIZED_NAME_DOMINANT_COLOR = "dominant_color";
   @SerializedName(SERIALIZED_NAME_DOMINANT_COLOR)
+  @javax.annotation.Nullable
   private String dominantColor;
 
   public static final String SERIALIZED_NAME_ALT_TEXT = "alt_text";
   @SerializedName(SERIALIZED_NAME_ALT_TEXT)
+  @javax.annotation.Nullable
   private String altText;
 
   public static final String SERIALIZED_NAME_CREATIVE_TYPE = "creative_type";
   @SerializedName(SERIALIZED_NAME_CREATIVE_TYPE)
+  @javax.annotation.Nullable
   private CreativeType creativeType;
 
   public static final String SERIALIZED_NAME_BOARD_ID = "board_id";
   @SerializedName(SERIALIZED_NAME_BOARD_ID)
+  @javax.annotation.Nullable
   private String boardId;
 
   public static final String SERIALIZED_NAME_BOARD_SECTION_ID = "board_section_id";
   @SerializedName(SERIALIZED_NAME_BOARD_SECTION_ID)
+  @javax.annotation.Nullable
   private String boardSectionId;
 
   public static final String SERIALIZED_NAME_BOARD_OWNER = "board_owner";
   @SerializedName(SERIALIZED_NAME_BOARD_OWNER)
+  @javax.annotation.Nullable
   private BoardOwner boardOwner;
 
   public static final String SERIALIZED_NAME_IS_OWNER = "is_owner";
   @SerializedName(SERIALIZED_NAME_IS_OWNER)
+  @javax.annotation.Nullable
   private Boolean isOwner;
 
   public static final String SERIALIZED_NAME_MEDIA = "media";
   @SerializedName(SERIALIZED_NAME_MEDIA)
+  @javax.annotation.Nullable
   private PinMedia media;
 
   public static final String SERIALIZED_NAME_MEDIA_SOURCE = "media_source";
   @SerializedName(SERIALIZED_NAME_MEDIA_SOURCE)
+  @javax.annotation.Nullable
   private PinMediaSource mediaSource;
 
   public static final String SERIALIZED_NAME_PARENT_PIN_ID = "parent_pin_id";
   @SerializedName(SERIALIZED_NAME_PARENT_PIN_ID)
+  @javax.annotation.Nullable
   private String parentPinId;
 
   public static final String SERIALIZED_NAME_IS_STANDARD = "is_standard";
   @SerializedName(SERIALIZED_NAME_IS_STANDARD)
+  @javax.annotation.Nullable
   private Boolean isStandard;
 
   public static final String SERIALIZED_NAME_HAS_BEEN_PROMOTED = "has_been_promoted";
   @SerializedName(SERIALIZED_NAME_HAS_BEEN_PROMOTED)
+  @javax.annotation.Nullable
   private Boolean hasBeenPromoted;
 
   public static final String SERIALIZED_NAME_NOTE = "note";
   @SerializedName(SERIALIZED_NAME_NOTE)
+  @javax.annotation.Nullable
   private String note;
 
   public static final String SERIALIZED_NAME_PIN_METRICS = "pin_metrics";
   @SerializedName(SERIALIZED_NAME_PIN_METRICS)
+  @javax.annotation.Nullable
   private Object pinMetrics;
 
   public Pin() {
@@ -176,7 +195,7 @@ public class Pin {
 
 
 
-  public Pin link(String link) {
+  public Pin link(@javax.annotation.Nullable String link) {
     this.link = link;
     return this;
   }
@@ -190,12 +209,12 @@ public class Pin {
     return link;
   }
 
-  public void setLink(String link) {
+  public void setLink(@javax.annotation.Nullable String link) {
     this.link = link;
   }
 
 
-  public Pin title(String title) {
+  public Pin title(@javax.annotation.Nullable String title) {
     this.title = title;
     return this;
   }
@@ -209,12 +228,12 @@ public class Pin {
     return title;
   }
 
-  public void setTitle(String title) {
+  public void setTitle(@javax.annotation.Nullable String title) {
     this.title = title;
   }
 
 
-  public Pin description(String description) {
+  public Pin description(@javax.annotation.Nullable String description) {
     this.description = description;
     return this;
   }
@@ -228,12 +247,12 @@ public class Pin {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
 
-  public Pin dominantColor(String dominantColor) {
+  public Pin dominantColor(@javax.annotation.Nullable String dominantColor) {
     this.dominantColor = dominantColor;
     return this;
   }
@@ -247,12 +266,12 @@ public class Pin {
     return dominantColor;
   }
 
-  public void setDominantColor(String dominantColor) {
+  public void setDominantColor(@javax.annotation.Nullable String dominantColor) {
     this.dominantColor = dominantColor;
   }
 
 
-  public Pin altText(String altText) {
+  public Pin altText(@javax.annotation.Nullable String altText) {
     this.altText = altText;
     return this;
   }
@@ -266,7 +285,7 @@ public class Pin {
     return altText;
   }
 
-  public void setAltText(String altText) {
+  public void setAltText(@javax.annotation.Nullable String altText) {
     this.altText = altText;
   }
 
@@ -282,7 +301,7 @@ public class Pin {
 
 
 
-  public Pin boardId(String boardId) {
+  public Pin boardId(@javax.annotation.Nullable String boardId) {
     this.boardId = boardId;
     return this;
   }
@@ -296,12 +315,12 @@ public class Pin {
     return boardId;
   }
 
-  public void setBoardId(String boardId) {
+  public void setBoardId(@javax.annotation.Nullable String boardId) {
     this.boardId = boardId;
   }
 
 
-  public Pin boardSectionId(String boardSectionId) {
+  public Pin boardSectionId(@javax.annotation.Nullable String boardSectionId) {
     this.boardSectionId = boardSectionId;
     return this;
   }
@@ -315,7 +334,7 @@ public class Pin {
     return boardSectionId;
   }
 
-  public void setBoardSectionId(String boardSectionId) {
+  public void setBoardSectionId(@javax.annotation.Nullable String boardSectionId) {
     this.boardSectionId = boardSectionId;
   }
 
@@ -353,7 +372,7 @@ public class Pin {
 
 
 
-  public Pin mediaSource(PinMediaSource mediaSource) {
+  public Pin mediaSource(@javax.annotation.Nullable PinMediaSource mediaSource) {
     this.mediaSource = mediaSource;
     return this;
   }
@@ -367,12 +386,12 @@ public class Pin {
     return mediaSource;
   }
 
-  public void setMediaSource(PinMediaSource mediaSource) {
+  public void setMediaSource(@javax.annotation.Nullable PinMediaSource mediaSource) {
     this.mediaSource = mediaSource;
   }
 
 
-  public Pin parentPinId(String parentPinId) {
+  public Pin parentPinId(@javax.annotation.Nullable String parentPinId) {
     this.parentPinId = parentPinId;
     return this;
   }
@@ -386,12 +405,12 @@ public class Pin {
     return parentPinId;
   }
 
-  public void setParentPinId(String parentPinId) {
+  public void setParentPinId(@javax.annotation.Nullable String parentPinId) {
     this.parentPinId = parentPinId;
   }
 
 
-  public Pin isStandard(Boolean isStandard) {
+  public Pin isStandard(@javax.annotation.Nullable Boolean isStandard) {
     this.isStandard = isStandard;
     return this;
   }
@@ -405,7 +424,7 @@ public class Pin {
     return isStandard;
   }
 
-  public void setIsStandard(Boolean isStandard) {
+  public void setIsStandard(@javax.annotation.Nullable Boolean isStandard) {
     this.isStandard = isStandard;
   }
 
@@ -421,7 +440,7 @@ public class Pin {
 
 
 
-  public Pin note(String note) {
+  public Pin note(@javax.annotation.Nullable String note) {
     this.note = note;
     return this;
   }
@@ -435,12 +454,12 @@ public class Pin {
     return note;
   }
 
-  public void setNote(String note) {
+  public void setNote(@javax.annotation.Nullable String note) {
     this.note = note;
   }
 
 
-  public Pin pinMetrics(Object pinMetrics) {
+  public Pin pinMetrics(@javax.annotation.Nullable Object pinMetrics) {
     this.pinMetrics = pinMetrics;
     return this;
   }
@@ -454,7 +473,7 @@ public class Pin {
     return pinMetrics;
   }
 
-  public void setPinMetrics(Object pinMetrics) {
+  public void setPinMetrics(@javax.annotation.Nullable Object pinMetrics) {
     this.pinMetrics = pinMetrics;
   }
 

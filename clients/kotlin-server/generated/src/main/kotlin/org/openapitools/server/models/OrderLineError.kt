@@ -13,13 +13,15 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.OrderLine
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param `data` 
  * @param errorMessages 
  */
+@Serializable
 data class OrderLineError(
     val `data`: OrderLine? = null,
     val errorMessages: kotlin.collections.List<kotlin.String>? = null
-) 
+)
 

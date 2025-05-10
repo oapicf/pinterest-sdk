@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param key Interest unique key (same as ID).
@@ -20,6 +21,7 @@ package org.openapitools.server.models
  * @param index Subinterest affinity index.
  * @param id Subinterest ID.
  */
+@Serializable
 data class AudienceSubcategory(
     /* Interest unique key (same as ID). */
     val key: kotlin.String? = null,
@@ -31,5 +33,5 @@ data class AudienceSubcategory(
     val index: java.math.BigDecimal? = null,
     /* Subinterest ID. */
     val id: kotlin.String? = null
-) 
+)
 

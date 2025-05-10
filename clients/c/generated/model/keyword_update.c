@@ -5,7 +5,7 @@
 
 
 
-keyword_update_t *keyword_update_create(
+static keyword_update_t *keyword_update_create_internal(
     char *id,
     int archived,
     int bid
@@ -18,12 +18,28 @@ keyword_update_t *keyword_update_create(
     keyword_update_local_var->archived = archived;
     keyword_update_local_var->bid = bid;
 
+    keyword_update_local_var->_library_owned = 1;
     return keyword_update_local_var;
 }
 
+__attribute__((deprecated)) keyword_update_t *keyword_update_create(
+    char *id,
+    int archived,
+    int bid
+    ) {
+    return keyword_update_create_internal (
+        id,
+        archived,
+        bid
+        );
+}
 
 void keyword_update_free(keyword_update_t *keyword_update) {
     if(NULL == keyword_update){
+        return ;
+    }
+    if(keyword_update->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "keyword_update_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -75,6 +91,9 @@ keyword_update_t *keyword_update_parseFromJSON(cJSON *keyword_updateJSON){
 
     // keyword_update->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(keyword_updateJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (!id) {
         goto end;
     }
@@ -87,6 +106,9 @@ keyword_update_t *keyword_update_parseFromJSON(cJSON *keyword_updateJSON){
 
     // keyword_update->archived
     cJSON *archived = cJSON_GetObjectItemCaseSensitive(keyword_updateJSON, "archived");
+    if (cJSON_IsNull(archived)) {
+        archived = NULL;
+    }
     if (archived) { 
     if(!cJSON_IsBool(archived))
     {
@@ -96,6 +118,9 @@ keyword_update_t *keyword_update_parseFromJSON(cJSON *keyword_updateJSON){
 
     // keyword_update->bid
     cJSON *bid = cJSON_GetObjectItemCaseSensitive(keyword_updateJSON, "bid");
+    if (cJSON_IsNull(bid)) {
+        bid = NULL;
+    }
     if (bid) { 
     if(!cJSON_IsNumber(bid))
     {
@@ -104,7 +129,7 @@ keyword_update_t *keyword_update_parseFromJSON(cJSON *keyword_updateJSON){
     }
 
 
-    keyword_update_local_var = keyword_update_create (
+    keyword_update_local_var = keyword_update_create_internal (
         strdup(id->valuestring),
         archived ? archived->valueint : 0,
         bid ? bid->valuedouble : 0

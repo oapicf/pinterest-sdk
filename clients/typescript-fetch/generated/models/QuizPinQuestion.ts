@@ -70,11 +70,11 @@ export function QuizPinQuestionFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-  export function QuizPinQuestionToJSON(json: any): QuizPinQuestion {
-      return QuizPinQuestionToJSONTyped(json, false);
-  }
+export function QuizPinQuestionToJSON(json: any): QuizPinQuestion {
+    return QuizPinQuestionToJSONTyped(json, false);
+}
 
-  export function QuizPinQuestionToJSONTyped(value?: QuizPinQuestion | null, ignoreDiscriminator: boolean = false): any {
+export function QuizPinQuestionToJSONTyped(value?: QuizPinQuestion | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

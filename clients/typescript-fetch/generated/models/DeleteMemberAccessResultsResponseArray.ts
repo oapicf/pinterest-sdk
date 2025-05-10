@@ -56,11 +56,11 @@ export function DeleteMemberAccessResultsResponseArrayFromJSONTyped(json: any, i
     };
 }
 
-  export function DeleteMemberAccessResultsResponseArrayToJSON(json: any): DeleteMemberAccessResultsResponseArray {
-      return DeleteMemberAccessResultsResponseArrayToJSONTyped(json, false);
-  }
+export function DeleteMemberAccessResultsResponseArrayToJSON(json: any): DeleteMemberAccessResultsResponseArray {
+    return DeleteMemberAccessResultsResponseArrayToJSONTyped(json, false);
+}
 
-  export function DeleteMemberAccessResultsResponseArrayToJSONTyped(value?: DeleteMemberAccessResultsResponseArray | null, ignoreDiscriminator: boolean = false): any {
+export function DeleteMemberAccessResultsResponseArrayToJSONTyped(value?: DeleteMemberAccessResultsResponseArray | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

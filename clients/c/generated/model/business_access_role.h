@@ -24,9 +24,9 @@ char* business_access_role_business_access_role_ToString(pinterest_rest_api_busi
 
 pinterest_rest_api_business_access_role__e business_access_role_business_access_role_FromString(char* business_access_role);
 
-//cJSON *business_access_role_business_access_role_convertToJSON(pinterest_rest_api_business_access_role__e business_access_role);
+cJSON *business_access_role_convertToJSON(pinterest_rest_api_business_access_role__e business_access_role);
 
-//pinterest_rest_api_business_access_role__e business_access_role_business_access_role_parseFromJSON(cJSON *business_access_roleJSON);
+pinterest_rest_api_business_access_role__e business_access_role_parseFromJSON(cJSON *business_access_roleJSON);
 
 #endif /* _business_access_role_H_ */
 

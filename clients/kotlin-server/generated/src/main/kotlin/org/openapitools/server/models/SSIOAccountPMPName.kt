@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param name Display name
  * @param id Salesforce id for PMP
  */
+@Serializable
 data class SSIOAccountPMPName(
     /* Display name */
     val name: kotlin.String? = null,
     /* Salesforce id for PMP */
     val id: kotlin.String? = null
-) 
+)
 

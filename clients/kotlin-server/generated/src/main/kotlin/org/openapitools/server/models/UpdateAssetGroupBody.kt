@@ -13,12 +13,14 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.UpdateAssetGroupBodyAssetGroupsToUpdateInner
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param assetGroupsToUpdate A list of asset groups and the data that will be used to update them.
  */
+@Serializable
 data class UpdateAssetGroupBody(
     /* A list of asset groups and the data that will be used to update them. */
     val assetGroupsToUpdate: kotlin.collections.List<UpdateAssetGroupBodyAssetGroupsToUpdateInner>? = null
-) 
+)
 

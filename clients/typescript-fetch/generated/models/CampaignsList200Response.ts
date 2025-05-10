@@ -64,11 +64,11 @@ export function CampaignsList200ResponseFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function CampaignsList200ResponseToJSON(json: any): CampaignsList200Response {
-      return CampaignsList200ResponseToJSONTyped(json, false);
-  }
+export function CampaignsList200ResponseToJSON(json: any): CampaignsList200Response {
+    return CampaignsList200ResponseToJSONTyped(json, false);
+}
 
-  export function CampaignsList200ResponseToJSONTyped(value?: CampaignsList200Response | null, ignoreDiscriminator: boolean = false): any {
+export function CampaignsList200ResponseToJSONTyped(value?: CampaignsList200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

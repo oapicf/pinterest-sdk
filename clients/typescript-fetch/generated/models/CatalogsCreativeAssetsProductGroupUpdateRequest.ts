@@ -87,11 +87,11 @@ export function CatalogsCreativeAssetsProductGroupUpdateRequestFromJSONTyped(jso
     };
 }
 
-  export function CatalogsCreativeAssetsProductGroupUpdateRequestToJSON(json: any): CatalogsCreativeAssetsProductGroupUpdateRequest {
-      return CatalogsCreativeAssetsProductGroupUpdateRequestToJSONTyped(json, false);
-  }
+export function CatalogsCreativeAssetsProductGroupUpdateRequestToJSON(json: any): CatalogsCreativeAssetsProductGroupUpdateRequest {
+    return CatalogsCreativeAssetsProductGroupUpdateRequestToJSONTyped(json, false);
+}
 
-  export function CatalogsCreativeAssetsProductGroupUpdateRequestToJSONTyped(value?: CatalogsCreativeAssetsProductGroupUpdateRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsCreativeAssetsProductGroupUpdateRequestToJSONTyped(value?: CatalogsCreativeAssetsProductGroupUpdateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

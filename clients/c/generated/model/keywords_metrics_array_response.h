@@ -22,9 +22,10 @@ typedef struct keywords_metrics_array_response_t keywords_metrics_array_response
 typedef struct keywords_metrics_array_response_t {
     list_t *data; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } keywords_metrics_array_response_t;
 
-keywords_metrics_array_response_t *keywords_metrics_array_response_create(
+__attribute__((deprecated)) keywords_metrics_array_response_t *keywords_metrics_array_response_create(
     list_t *data
 );
 

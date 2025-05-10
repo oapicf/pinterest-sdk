@@ -97,11 +97,11 @@ export function LineItemFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
     };
 }
 
-  export function LineItemToJSON(json: any): LineItem {
-      return LineItemToJSONTyped(json, false);
-  }
+export function LineItemToJSON(json: any): LineItem {
+    return LineItemToJSONTyped(json, false);
+}
 
-  export function LineItemToJSONTyped(value?: LineItem | null, ignoreDiscriminator: boolean = false): any {
+export function LineItemToJSONTyped(value?: LineItem | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

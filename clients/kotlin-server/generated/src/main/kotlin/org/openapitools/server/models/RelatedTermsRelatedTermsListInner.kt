@@ -12,13 +12,15 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param term 
  * @param relatedTerms 
  */
+@Serializable
 data class RelatedTermsRelatedTermsListInner(
     val term: kotlin.String? = null,
     val relatedTerms: kotlin.collections.List<kotlin.String>? = null
-) 
+)
 

@@ -56,11 +56,11 @@ export function ConversionTagListResponseFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function ConversionTagListResponseToJSON(json: any): ConversionTagListResponse {
-      return ConversionTagListResponseToJSONTyped(json, false);
-  }
+export function ConversionTagListResponseToJSON(json: any): ConversionTagListResponse {
+    return ConversionTagListResponseToJSONTyped(json, false);
+}
 
-  export function ConversionTagListResponseToJSONTyped(value?: ConversionTagListResponse | null, ignoreDiscriminator: boolean = false): any {
+export function ConversionTagListResponseToJSONTyped(value?: ConversionTagListResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

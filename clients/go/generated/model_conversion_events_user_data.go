@@ -70,7 +70,7 @@ func (dst *ConversionEventsUserData) UnmarshalJSON(data []byte) error {
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src *ConversionEventsUserData) MarshalJSON() ([]byte, error) {
+func (src ConversionEventsUserData) MarshalJSON() ([]byte, error) {
 	if src.ConversionEventsUserDataAnyOf != nil {
 		return json.Marshal(&src.ConversionEventsUserDataAnyOf)
 	}

@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { LeadFormArrayResponse } from '../model/leadFormArrayResponse';
 import { LeadFormCreateRequest } from '../model/leadFormCreateRequest';
@@ -32,10 +32,12 @@ export class LeadFormsService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -54,9 +56,10 @@ export class LeadFormsService {
      * @param leadFormId Unique identifier of a lead form.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [leadFormGetOpts.config] Override http request option.
      */
-    public leadFormGet(adAccountId: string, leadFormId: string, ): Observable<AxiosResponse<LeadFormResponse>>;
-    public leadFormGet(adAccountId: string, leadFormId: string, ): Observable<any> {
+    public leadFormGet(adAccountId: string, leadFormId: string, leadFormGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<LeadFormResponse>>;
+    public leadFormGet(adAccountId: string, leadFormId: string, leadFormGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling leadFormGet.');
         }
@@ -97,7 +100,8 @@ export class LeadFormsService {
                 return this.httpClient.get<LeadFormResponse>(`${this.basePath}/ad_accounts/${encodeURIComponent(String(ad_account_id))}/lead_forms/${encodeURIComponent(String(lead_form_id))}`,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...leadFormGetOpts?.config,
+                        headers: {...headers, ...leadFormGetOpts?.config?.headers},
                     }
                 );
             })
@@ -111,9 +115,10 @@ export class LeadFormsService {
      * @param leadFormTestRequest Subscription to create.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [leadFormTestCreateOpts.config] Override http request option.
      */
-    public leadFormTestCreate(adAccountId: string, leadFormId: string, leadFormTestRequest: LeadFormTestRequest, ): Observable<AxiosResponse<LeadFormTestResponse>>;
-    public leadFormTestCreate(adAccountId: string, leadFormId: string, leadFormTestRequest: LeadFormTestRequest, ): Observable<any> {
+    public leadFormTestCreate(adAccountId: string, leadFormId: string, leadFormTestRequest: LeadFormTestRequest, leadFormTestCreateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<LeadFormTestResponse>>;
+    public leadFormTestCreate(adAccountId: string, leadFormId: string, leadFormTestRequest: LeadFormTestRequest, leadFormTestCreateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling leadFormTestCreate.');
         }
@@ -164,7 +169,8 @@ export class LeadFormsService {
                     leadFormTestRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...leadFormTestCreateOpts?.config,
+                        headers: {...headers, ...leadFormTestCreateOpts?.config?.headers},
                     }
                 );
             })
@@ -177,9 +183,10 @@ export class LeadFormsService {
      * @param leadFormCreateRequest List of lead forms to create, size limit [1, 30].
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [leadFormsCreateOpts.config] Override http request option.
      */
-    public leadFormsCreate(adAccountId: string, leadFormCreateRequest: Array<LeadFormCreateRequest>, ): Observable<AxiosResponse<LeadFormArrayResponse>>;
-    public leadFormsCreate(adAccountId: string, leadFormCreateRequest: Array<LeadFormCreateRequest>, ): Observable<any> {
+    public leadFormsCreate(adAccountId: string, leadFormCreateRequest: Array<LeadFormCreateRequest>, leadFormsCreateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<LeadFormArrayResponse>>;
+    public leadFormsCreate(adAccountId: string, leadFormCreateRequest: Array<LeadFormCreateRequest>, leadFormsCreateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling leadFormsCreate.');
         }
@@ -226,7 +233,8 @@ export class LeadFormsService {
                     leadFormCreateRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...leadFormsCreateOpts?.config,
+                        headers: {...headers, ...leadFormsCreateOpts?.config?.headers},
                     }
                 );
             })
@@ -241,9 +249,10 @@ export class LeadFormsService {
      * @param bookmark Cursor used to fetch the next page of items
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [leadFormsListOpts.config] Override http request option.
      */
-    public leadFormsList(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, ): Observable<AxiosResponse<LeadFormsList200Response>>;
-    public leadFormsList(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, ): Observable<any> {
+    public leadFormsList(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, leadFormsListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<LeadFormsList200Response>>;
+    public leadFormsList(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, leadFormsListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling leadFormsList.');
         }
@@ -292,7 +301,8 @@ export class LeadFormsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...leadFormsListOpts?.config,
+                        headers: {...headers, ...leadFormsListOpts?.config?.headers},
                     }
                 );
             })
@@ -305,9 +315,10 @@ export class LeadFormsService {
      * @param leadFormUpdateRequest List of lead forms to update, size limit [1, 30].
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [leadFormsUpdateOpts.config] Override http request option.
      */
-    public leadFormsUpdate(adAccountId: string, leadFormUpdateRequest: Array<LeadFormUpdateRequest>, ): Observable<AxiosResponse<LeadFormArrayResponse>>;
-    public leadFormsUpdate(adAccountId: string, leadFormUpdateRequest: Array<LeadFormUpdateRequest>, ): Observable<any> {
+    public leadFormsUpdate(adAccountId: string, leadFormUpdateRequest: Array<LeadFormUpdateRequest>, leadFormsUpdateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<LeadFormArrayResponse>>;
+    public leadFormsUpdate(adAccountId: string, leadFormUpdateRequest: Array<LeadFormUpdateRequest>, leadFormsUpdateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling leadFormsUpdate.');
         }
@@ -354,7 +365,8 @@ export class LeadFormsService {
                     leadFormUpdateRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...leadFormsUpdateOpts?.config,
+                        headers: {...headers, ...leadFormsUpdateOpts?.config?.headers},
                     }
                 );
             })

@@ -9,7 +9,7 @@ import play.api.libs.json._
   * @param coverImageData Cover image Base64.
   * @param isStandard Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2025-05-10T05:44:38.070631387Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 case class PinMediaSourceVideoID(
   sourceType: PinMediaSourceVideoID.SourceType.Value,
   coverImageUrl: Option[String],
@@ -32,8 +32,8 @@ object PinMediaSourceVideoID {
 
   // noinspection TypeAnnotation
   object CoverImageContentType extends Enumeration {
-    val Jpeg = Value("image/jpeg")
-    val Png = Value("image/png")
+    val ImageJpeg = Value("image/jpeg")
+    val ImagePng = Value("image/png")
 
     type CoverImageContentType = Value
     implicit lazy val CoverImageContentTypeJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])

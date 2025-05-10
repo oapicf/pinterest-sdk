@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param startDate Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
  * @param endDate Export leads collected on and before end date (UTC). Format: YYYY-MM-DD
  * @param adId ID for the ad collecting leads
  */
+@Serializable
 data class LeadsExportCreateRequest(
     /* Export leads collected on and after start date (UTC). Format: YYYY-MM-DD */
     val startDate: kotlin.String,
@@ -25,5 +27,5 @@ data class LeadsExportCreateRequest(
     val endDate: kotlin.String,
     /* ID for the ad collecting leads */
     val adId: kotlin.String
-) 
+)
 

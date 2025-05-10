@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 // Functions for enum ENTITYSTATUSES for ProductGroupPromotionsAPI_productGroupPromotionsList
 
@@ -387,15 +382,20 @@ ProductGroupPromotionsAPI_productGroupPromotionsCreate(apiClient_t *apiClient, c
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/product_group_promotions")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/product_group_promotions");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/product_group_promotions");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -410,9 +410,10 @@ ProductGroupPromotionsAPI_productGroupPromotionsCreate(apiClient_t *apiClient, c
     cJSON *localVarSingleItemJSON_product_group_promotion_create_request = NULL;
     if (product_group_promotion_create_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_product_group_promotion_create_request = product_group_promotion_create_request_convertToJSON(product_group_promotion_create_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_product_group_promotion_create_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -424,6 +425,7 @@ ProductGroupPromotionsAPI_productGroupPromotionsCreate(apiClient_t *apiClient, c
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -435,11 +437,14 @@ ProductGroupPromotionsAPI_productGroupPromotionsCreate(apiClient_t *apiClient, c
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *ProductGroupPromotionsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    product_group_promotion_response_t *elementToReturn = product_group_promotion_response_parseFromJSON(ProductGroupPromotionsAPIlocalVarJSON);
-    cJSON_Delete(ProductGroupPromotionsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    product_group_promotion_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *ProductGroupPromotionsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = product_group_promotion_response_parseFromJSON(ProductGroupPromotionsAPIlocalVarJSON);
+        cJSON_Delete(ProductGroupPromotionsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -480,15 +485,22 @@ ProductGroupPromotionsAPI_productGroupPromotionsGet(apiClient_t *apiClient, char
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/product_group_promotions/{product_group_promotion_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/product_group_promotions/{product_group_promotion_id}");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/product_group_promotions/{product_group_promotion_id}");
+
+    if(!ad_account_id)
+        goto end;
+    if(!product_group_promotion_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(product_group_promotion_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(product_group_promotion_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -498,7 +510,7 @@ ProductGroupPromotionsAPI_productGroupPromotionsGet(apiClient_t *apiClient, char
     localVarPath = strReplace(localVarPath, localVarToReplace_ad_account_id, ad_account_id);
 
     // Path Params
-    long sizeOfPathParams_product_group_promotion_id = strlen(ad_account_id)+3 + strlen(product_group_promotion_id)+3 + strlen("{ product_group_promotion_id }");
+    long sizeOfPathParams_product_group_promotion_id = strlen(ad_account_id)+3 + strlen(product_group_promotion_id)+3 + sizeof("{ product_group_promotion_id }") - 1;
     if(product_group_promotion_id == NULL) {
         goto end;
     }
@@ -517,6 +529,7 @@ ProductGroupPromotionsAPI_productGroupPromotionsGet(apiClient_t *apiClient, char
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -528,11 +541,14 @@ ProductGroupPromotionsAPI_productGroupPromotionsGet(apiClient_t *apiClient, char
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *ProductGroupPromotionsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    product_group_promotion_response_t *elementToReturn = product_group_promotion_response_parseFromJSON(ProductGroupPromotionsAPIlocalVarJSON);
-    cJSON_Delete(ProductGroupPromotionsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    product_group_promotion_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *ProductGroupPromotionsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = product_group_promotion_response_parseFromJSON(ProductGroupPromotionsAPIlocalVarJSON);
+        cJSON_Delete(ProductGroupPromotionsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -569,15 +585,20 @@ ProductGroupPromotionsAPI_productGroupPromotionsList(apiClient_t *apiClient, cha
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/product_group_promotions")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/product_group_promotions");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/product_group_promotions");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -633,7 +654,7 @@ ProductGroupPromotionsAPI_productGroupPromotionsList(apiClient_t *apiClient, cha
     {
         keyQuery_order = strdup("order");
         valueQuery_order = (order);
-        keyPairQuery_order = keyValuePair_create(keyQuery_order, (void *)strdup(productGroupPromotionsList_ORDER_ToString(
+        keyPairQuery_order = keyValuePair_create(keyQuery_order, strdup(productGroupPromotionsList_ORDER_ToString(
         valueQuery_order)));
         list_addElement(localVarQueryParameters,keyPairQuery_order);
     }
@@ -658,6 +679,7 @@ ProductGroupPromotionsAPI_productGroupPromotionsList(apiClient_t *apiClient, cha
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -669,11 +691,14 @@ ProductGroupPromotionsAPI_productGroupPromotionsList(apiClient_t *apiClient, cha
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *ProductGroupPromotionsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    product_group_promotions_list_200_response_t *elementToReturn = product_group_promotions_list_200_response_parseFromJSON(ProductGroupPromotionsAPIlocalVarJSON);
-    cJSON_Delete(ProductGroupPromotionsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    product_group_promotions_list_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *ProductGroupPromotionsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = product_group_promotions_list_200_response_parseFromJSON(ProductGroupPromotionsAPIlocalVarJSON);
+        cJSON_Delete(ProductGroupPromotionsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -753,15 +778,20 @@ ProductGroupPromotionsAPI_productGroupPromotionsUpdate(apiClient_t *apiClient, c
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/product_group_promotions")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/product_group_promotions");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/product_group_promotions");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -776,9 +806,10 @@ ProductGroupPromotionsAPI_productGroupPromotionsUpdate(apiClient_t *apiClient, c
     cJSON *localVarSingleItemJSON_product_group_promotion_update_request = NULL;
     if (product_group_promotion_update_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_product_group_promotion_update_request = product_group_promotion_update_request_convertToJSON(product_group_promotion_update_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_product_group_promotion_update_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -790,6 +821,7 @@ ProductGroupPromotionsAPI_productGroupPromotionsUpdate(apiClient_t *apiClient, c
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "PATCH");
 
     // uncomment below to debug the error response
@@ -801,11 +833,14 @@ ProductGroupPromotionsAPI_productGroupPromotionsUpdate(apiClient_t *apiClient, c
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *ProductGroupPromotionsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    product_group_promotion_response_t *elementToReturn = product_group_promotion_response_parseFromJSON(ProductGroupPromotionsAPIlocalVarJSON);
-    cJSON_Delete(ProductGroupPromotionsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    product_group_promotion_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *ProductGroupPromotionsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = product_group_promotion_response_parseFromJSON(ProductGroupPromotionsAPIlocalVarJSON);
+        cJSON_Delete(ProductGroupPromotionsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -846,15 +881,20 @@ ProductGroupPromotionsAPI_productGroupsAnalytics(apiClient_t *apiClient, char *a
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/product_groups/analytics")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/product_groups/analytics");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/product_groups/analytics");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -909,7 +949,7 @@ ProductGroupPromotionsAPI_productGroupsAnalytics(apiClient_t *apiClient, char *a
     {
         keyQuery_granularity = strdup("granularity");
         valueQuery_granularity = (granularity);
-        keyPairQuery_granularity = keyValuePair_create(keyQuery_granularity, (void *)strdup(productGroupsAnalytics__ToString(
+        keyPairQuery_granularity = keyValuePair_create(keyQuery_granularity, strdup(productGroupsAnalytics__ToString(
         &valueQuery_granularity)));
         list_addElement(localVarQueryParameters,keyPairQuery_granularity);
     }
@@ -923,7 +963,7 @@ ProductGroupPromotionsAPI_productGroupsAnalytics(apiClient_t *apiClient, char *a
         keyQuery_click_window_days = strdup("click_window_days");
         valueQuery_click_window_days = calloc(1,MAX_NUMBER_LENGTH);
         snprintf(valueQuery_click_window_days, MAX_NUMBER_LENGTH, "%d", *click_window_days);
-        keyPairQuery_click_window_days = keyValuePair_create(keyQuery_click_window_days, (void *)strdup(productGroupsAnalytics_CLICKWINDOWDAYS_ToString(
+        keyPairQuery_click_window_days = keyValuePair_create(keyQuery_click_window_days, strdup(productGroupsAnalytics_CLICKWINDOWDAYS_ToString(
         valueQuery_click_window_days)));
         list_addElement(localVarQueryParameters,keyPairQuery_click_window_days);
     }
@@ -937,7 +977,7 @@ ProductGroupPromotionsAPI_productGroupsAnalytics(apiClient_t *apiClient, char *a
         keyQuery_engagement_window_days = strdup("engagement_window_days");
         valueQuery_engagement_window_days = calloc(1,MAX_NUMBER_LENGTH);
         snprintf(valueQuery_engagement_window_days, MAX_NUMBER_LENGTH, "%d", *engagement_window_days);
-        keyPairQuery_engagement_window_days = keyValuePair_create(keyQuery_engagement_window_days, (void *)strdup(productGroupsAnalytics_ENGAGEMENTWINDOWDAYS_ToString(
+        keyPairQuery_engagement_window_days = keyValuePair_create(keyQuery_engagement_window_days, strdup(productGroupsAnalytics_ENGAGEMENTWINDOWDAYS_ToString(
         valueQuery_engagement_window_days)));
         list_addElement(localVarQueryParameters,keyPairQuery_engagement_window_days);
     }
@@ -951,7 +991,7 @@ ProductGroupPromotionsAPI_productGroupsAnalytics(apiClient_t *apiClient, char *a
         keyQuery_view_window_days = strdup("view_window_days");
         valueQuery_view_window_days = calloc(1,MAX_NUMBER_LENGTH);
         snprintf(valueQuery_view_window_days, MAX_NUMBER_LENGTH, "%d", *view_window_days);
-        keyPairQuery_view_window_days = keyValuePair_create(keyQuery_view_window_days, (void *)strdup(productGroupsAnalytics_VIEWWINDOWDAYS_ToString(
+        keyPairQuery_view_window_days = keyValuePair_create(keyQuery_view_window_days, strdup(productGroupsAnalytics_VIEWWINDOWDAYS_ToString(
         valueQuery_view_window_days)));
         list_addElement(localVarQueryParameters,keyPairQuery_view_window_days);
     }
@@ -964,7 +1004,7 @@ ProductGroupPromotionsAPI_productGroupsAnalytics(apiClient_t *apiClient, char *a
     {
         keyQuery_conversion_report_time = strdup("conversion_report_time");
         valueQuery_conversion_report_time = (conversion_report_time);
-        keyPairQuery_conversion_report_time = keyValuePair_create(keyQuery_conversion_report_time, (void *)strdup(productGroupsAnalytics_CONVERSIONREPORTTIME_ToString(
+        keyPairQuery_conversion_report_time = keyValuePair_create(keyQuery_conversion_report_time, strdup(productGroupsAnalytics_CONVERSIONREPORTTIME_ToString(
         valueQuery_conversion_report_time)));
         list_addElement(localVarQueryParameters,keyPairQuery_conversion_report_time);
     }
@@ -977,6 +1017,7 @@ ProductGroupPromotionsAPI_productGroupsAnalytics(apiClient_t *apiClient, char *a
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -991,24 +1032,27 @@ ProductGroupPromotionsAPI_productGroupsAnalytics(apiClient_t *apiClient, char *a
     //if (apiClient->response_code == 0) {
     //    printf("%s\n","Unexpected error");
     //}
-    cJSON *ProductGroupPromotionsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    if(!cJSON_IsArray(ProductGroupPromotionsAPIlocalVarJSON)) {
-        return 0;//nonprimitive container
-    }
-    list_t *elementToReturn = list_createList();
-    cJSON *VarJSON;
-    cJSON_ArrayForEach(VarJSON, ProductGroupPromotionsAPIlocalVarJSON)
-    {
-        if(!cJSON_IsObject(VarJSON))
-        {
-           // return 0;
+    list_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *ProductGroupPromotionsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        if(!cJSON_IsArray(ProductGroupPromotionsAPIlocalVarJSON)) {
+            return 0;//nonprimitive container
         }
-        char *localVarJSONToChar = cJSON_Print(VarJSON);
-        list_addElement(elementToReturn , localVarJSONToChar);
-    }
+        elementToReturn = list_createList();
+        cJSON *VarJSON;
+        cJSON_ArrayForEach(VarJSON, ProductGroupPromotionsAPIlocalVarJSON)
+        {
+            if(!cJSON_IsObject(VarJSON))
+            {
+               // return 0;
+            }
+            char *localVarJSONToChar = cJSON_Print(VarJSON);
+            list_addElement(elementToReturn , localVarJSONToChar);
+        }
 
-    cJSON_Delete( ProductGroupPromotionsAPIlocalVarJSON);
-    cJSON_Delete( VarJSON);
+        cJSON_Delete( ProductGroupPromotionsAPIlocalVarJSON);
+        cJSON_Delete( VarJSON);
+    }
     //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);

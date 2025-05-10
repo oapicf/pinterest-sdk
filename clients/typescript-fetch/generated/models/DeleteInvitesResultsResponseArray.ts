@@ -56,11 +56,11 @@ export function DeleteInvitesResultsResponseArrayFromJSONTyped(json: any, ignore
     };
 }
 
-  export function DeleteInvitesResultsResponseArrayToJSON(json: any): DeleteInvitesResultsResponseArray {
-      return DeleteInvitesResultsResponseArrayToJSONTyped(json, false);
-  }
+export function DeleteInvitesResultsResponseArrayToJSON(json: any): DeleteInvitesResultsResponseArray {
+    return DeleteInvitesResultsResponseArrayToJSONTyped(json, false);
+}
 
-  export function DeleteInvitesResultsResponseArrayToJSONTyped(value?: DeleteInvitesResultsResponseArray | null, ignoreDiscriminator: boolean = false): any {
+export function DeleteInvitesResultsResponseArrayToJSONTyped(value?: DeleteInvitesResultsResponseArray | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

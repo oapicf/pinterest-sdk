@@ -16,7 +16,7 @@ public struct CatalogsRetailBatchRequest: Codable, JSONEncodable, Hashable {
     public enum CatalogType: String, Codable, CaseIterable {
         case retail = "RETAIL"
     }
-    static let itemsRule = ArrayRule(minItems: 1, maxItems: 1000, uniqueItems: false)
+    public static let itemsRule = ArrayRule(minItems: 1, maxItems: 1000, uniqueItems: false)
     public var catalogType: CatalogType
     public var country: Country
     public var language: CatalogsItemsRequestLanguage

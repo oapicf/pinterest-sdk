@@ -57,11 +57,11 @@ export function BrandFilterFromJSONTyped(json: any, ignoreDiscriminator: boolean
     };
 }
 
-  export function BrandFilterToJSON(json: any): BrandFilter {
-      return BrandFilterToJSONTyped(json, false);
-  }
+export function BrandFilterToJSON(json: any): BrandFilter {
+    return BrandFilterToJSONTyped(json, false);
+}
 
-  export function BrandFilterToJSONTyped(value?: BrandFilter | null, ignoreDiscriminator: boolean = false): any {
+export function BrandFilterToJSONTyped(value?: BrandFilter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -25,9 +25,10 @@ typedef struct image_metadata_images_t {
     image_details_t *_600x; //object
     image_details_t *_1200x; //object
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } image_metadata_images_t;
 
-image_metadata_images_t *image_metadata_images_create(
+__attribute__((deprecated)) image_metadata_images_t *image_metadata_images_create(
     image_details_t *_150x150,
     image_details_t *_400x300,
     image_details_t *_600x,

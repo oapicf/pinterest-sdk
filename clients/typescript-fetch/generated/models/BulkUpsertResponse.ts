@@ -48,11 +48,11 @@ export function BulkUpsertResponseFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-  export function BulkUpsertResponseToJSON(json: any): BulkUpsertResponse {
-      return BulkUpsertResponseToJSONTyped(json, false);
-  }
+export function BulkUpsertResponseToJSON(json: any): BulkUpsertResponse {
+    return BulkUpsertResponseToJSONTyped(json, false);
+}
 
-  export function BulkUpsertResponseToJSONTyped(value?: BulkUpsertResponse | null, ignoreDiscriminator: boolean = false): any {
+export function BulkUpsertResponseToJSONTyped(value?: BulkUpsertResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

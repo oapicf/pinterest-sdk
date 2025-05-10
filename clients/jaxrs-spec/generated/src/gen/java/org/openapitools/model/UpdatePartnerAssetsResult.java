@@ -20,12 +20,15 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "An object containing the permissions a business partner has on the asset.")
 @JsonTypeName("UpdatePartnerAssetsResult")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class UpdatePartnerAssetsResult   {
   private String assetId;
   private String assetType;
   private String partnerId;
   private @Valid List<String> permissions = new ArrayList<>();
+
+  public UpdatePartnerAssetsResult() {
+  }
 
   /**
    * Unique identifier of a business asset.

@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Product counts for a Hotel CatalogsProductGroup
  * @param catalogType 
  * @param total 
  */
+@Serializable
 data class CatalogsHotelProductGroupProductCounts(
     val catalogType: CatalogsHotelProductGroupProductCounts.CatalogType,
     val total: java.math.BigDecimal
-) 
+)
 {
     /**
     * 

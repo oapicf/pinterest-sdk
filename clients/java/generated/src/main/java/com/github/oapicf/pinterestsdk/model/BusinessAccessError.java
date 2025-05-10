@@ -48,20 +48,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * BusinessAccessError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BusinessAccessError {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
+  @javax.annotation.Nonnull
   private Integer code;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
+  @javax.annotation.Nonnull
   private String message;
 
   public BusinessAccessError() {
   }
 
-  public BusinessAccessError code(Integer code) {
+  public BusinessAccessError code(@javax.annotation.Nonnull Integer code) {
     this.code = code;
     return this;
   }
@@ -75,12 +77,12 @@ public class BusinessAccessError {
     return code;
   }
 
-  public void setCode(Integer code) {
+  public void setCode(@javax.annotation.Nonnull Integer code) {
     this.code = code;
   }
 
 
-  public BusinessAccessError message(String message) {
+  public BusinessAccessError message(@javax.annotation.Nonnull String message) {
     this.message = message;
     return this;
   }
@@ -94,7 +96,7 @@ public class BusinessAccessError {
     return message;
   }
 
-  public void setMessage(String message) {
+  public void setMessage(@javax.annotation.Nonnull String message) {
     this.message = message;
   }
 

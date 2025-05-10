@@ -17,26 +17,19 @@ typedef struct keywords_common_t keywords_common_t;
 
 #include "match_type_response.h"
 
-// Enum  for keywords_common
-
-typedef enum  { pinterest_rest_api_keywords_common__NULL = 0, pinterest_rest_api_keywords_common__BROAD, pinterest_rest_api_keywords_common__PHRASE, pinterest_rest_api_keywords_common__EXACT, pinterest_rest_api_keywords_common__EXACT_NEGATIVE, pinterest_rest_api_keywords_common__PHRASE_NEGATIVE } pinterest_rest_api_keywords_common__e;
-
-char* keywords_common_match_type_ToString(pinterest_rest_api_keywords_common__e match_type);
-
-pinterest_rest_api_keywords_common__e keywords_common_match_type_FromString(char* match_type);
-
 
 
 typedef struct keywords_common_t {
     int bid; //numeric
-    match_type_response_t *match_type; // custom
+    pinterest_rest_api_match_type_response__e match_type; //referenced enum
     char *value; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } keywords_common_t;
 
-keywords_common_t *keywords_common_create(
+__attribute__((deprecated)) keywords_common_t *keywords_common_create(
     int bid,
-    match_type_response_t *match_type,
+    pinterest_rest_api_match_type_response__e match_type,
     char *value
 );
 

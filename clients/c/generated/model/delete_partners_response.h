@@ -21,9 +21,10 @@ typedef struct delete_partners_response_t delete_partners_response_t;
 typedef struct delete_partners_response_t {
     list_t *deleted_partners; //primitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } delete_partners_response_t;
 
-delete_partners_response_t *delete_partners_response_create(
+__attribute__((deprecated)) delete_partners_response_t *delete_partners_response_create(
     list_t *deleted_partners
 );
 

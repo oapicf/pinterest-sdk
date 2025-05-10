@@ -48,20 +48,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Creation fields
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BookClosedResponse {
   public static final String SERIALIZED_NAME_CONVERSION_METRICS_READY = "conversion_metrics_ready";
   @SerializedName(SERIALIZED_NAME_CONVERSION_METRICS_READY)
+  @javax.annotation.Nullable
   private Boolean conversionMetricsReady;
 
   public static final String SERIALIZED_NAME_NON_CONVERSION_METRICS_READY = "non_conversion_metrics_ready";
   @SerializedName(SERIALIZED_NAME_NON_CONVERSION_METRICS_READY)
+  @javax.annotation.Nullable
   private Boolean nonConversionMetricsReady;
 
   public BookClosedResponse() {
   }
 
-  public BookClosedResponse conversionMetricsReady(Boolean conversionMetricsReady) {
+  public BookClosedResponse conversionMetricsReady(@javax.annotation.Nullable Boolean conversionMetricsReady) {
     this.conversionMetricsReady = conversionMetricsReady;
     return this;
   }
@@ -75,12 +77,12 @@ public class BookClosedResponse {
     return conversionMetricsReady;
   }
 
-  public void setConversionMetricsReady(Boolean conversionMetricsReady) {
+  public void setConversionMetricsReady(@javax.annotation.Nullable Boolean conversionMetricsReady) {
     this.conversionMetricsReady = conversionMetricsReady;
   }
 
 
-  public BookClosedResponse nonConversionMetricsReady(Boolean nonConversionMetricsReady) {
+  public BookClosedResponse nonConversionMetricsReady(@javax.annotation.Nullable Boolean nonConversionMetricsReady) {
     this.nonConversionMetricsReady = nonConversionMetricsReady;
     return this;
   }
@@ -94,7 +96,7 @@ public class BookClosedResponse {
     return nonConversionMetricsReady;
   }
 
-  public void setNonConversionMetricsReady(Boolean nonConversionMetricsReady) {
+  public void setNonConversionMetricsReady(@javax.annotation.Nullable Boolean nonConversionMetricsReady) {
     this.nonConversionMetricsReady = nonConversionMetricsReady;
   }
 

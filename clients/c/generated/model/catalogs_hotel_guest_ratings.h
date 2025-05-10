@@ -24,9 +24,10 @@ typedef struct catalogs_hotel_guest_ratings_t {
     double max_score; //numeric
     char *rating_system; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_hotel_guest_ratings_t;
 
-catalogs_hotel_guest_ratings_t *catalogs_hotel_guest_ratings_create(
+__attribute__((deprecated)) catalogs_hotel_guest_ratings_t *catalogs_hotel_guest_ratings_create(
     double score,
     int number_of_reviewers,
     double max_score,

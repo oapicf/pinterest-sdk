@@ -38,6 +38,7 @@ import org.openapitools.model.ProductType1Filter;
 import org.openapitools.model.ProductType2Filter;
 import org.openapitools.model.ProductType3Filter;
 import org.openapitools.model.ProductType4Filter;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -52,7 +53,7 @@ import javax.annotation.Generated;
  * CatalogsProductGroupFilterKeys
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsProductGroupFilterKeys {
 
   private CatalogsProductGroupPricingCriteria MIN_PRICE;

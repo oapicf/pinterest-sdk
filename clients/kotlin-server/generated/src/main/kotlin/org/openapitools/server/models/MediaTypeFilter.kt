@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsProductGroupMultipleMediaTypesCriteria
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param MEDIA_TYPE 
  */
+@Serializable
 data class MediaTypeFilter(
     val MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria
-) 
+)
 

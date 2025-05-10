@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Daily processing schedule. This field is **OPTIONAL**. Use this to configure the preferred time for processing a feed (otherwise random).")
 @JsonTypeName("CatalogsFeedProcessingSchedule")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsFeedProcessingSchedule   {
   private String time;
   public enum TimezoneEnum {
@@ -69,6 +69,18 @@ public class CatalogsFeedProcessingSchedule   {
 
   private TimezoneEnum timezone;
 
+  public CatalogsFeedProcessingSchedule() {
+  }
+
+  @JsonCreator
+  public CatalogsFeedProcessingSchedule(
+    @JsonProperty(required = true, value = "time") String time,
+    @JsonProperty(required = true, value = "timezone") TimezoneEnum timezone
+  ) {
+    this.time = time;
+    this.timezone = timezone;
+  }
+
   /**
    * A time in format HH:MM with leading 0 (zero)
    **/
@@ -79,12 +91,12 @@ public class CatalogsFeedProcessingSchedule   {
 
   
   @ApiModelProperty(example = "02:59", required = true, value = "A time in format HH:MM with leading 0 (zero)")
-  @JsonProperty("time")
+  @JsonProperty(required = true, value = "time")
   @NotNull  @Pattern(regexp="^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$")public String getTime() {
     return time;
   }
 
-  @JsonProperty("time")
+  @JsonProperty(required = true, value = "time")
   public void setTime(String time) {
     this.time = time;
   }
@@ -99,12 +111,12 @@ public class CatalogsFeedProcessingSchedule   {
 
   
   @ApiModelProperty(required = true, value = "The timezone considered for the processing schedule time.")
-  @JsonProperty("timezone")
+  @JsonProperty(required = true, value = "timezone")
   @NotNull public TimezoneEnum getTimezone() {
     return timezone;
   }
 
-  @JsonProperty("timezone")
+  @JsonProperty(required = true, value = "timezone")
   public void setTimezone(TimezoneEnum timezone) {
     this.timezone = timezone;
   }

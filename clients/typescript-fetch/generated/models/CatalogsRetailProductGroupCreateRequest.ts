@@ -128,11 +128,11 @@ export function CatalogsRetailProductGroupCreateRequestFromJSONTyped(json: any, 
     };
 }
 
-  export function CatalogsRetailProductGroupCreateRequestToJSON(json: any): CatalogsRetailProductGroupCreateRequest {
-      return CatalogsRetailProductGroupCreateRequestToJSONTyped(json, false);
-  }
+export function CatalogsRetailProductGroupCreateRequestToJSON(json: any): CatalogsRetailProductGroupCreateRequest {
+    return CatalogsRetailProductGroupCreateRequestToJSONTyped(json, false);
+}
 
-  export function CatalogsRetailProductGroupCreateRequestToJSONTyped(value?: CatalogsRetailProductGroupCreateRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsRetailProductGroupCreateRequestToJSONTyped(value?: CatalogsRetailProductGroupCreateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

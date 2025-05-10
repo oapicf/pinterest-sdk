@@ -5,7 +5,7 @@
 
 
 
-update_partner_results_response_array_items_inner_t *update_partner_results_response_array_items_inner_create(
+static update_partner_results_response_array_items_inner_t *update_partner_results_response_array_items_inner_create_internal(
     business_access_error_t *exception,
     char *member_or_partner_id
     ) {
@@ -16,12 +16,26 @@ update_partner_results_response_array_items_inner_t *update_partner_results_resp
     update_partner_results_response_array_items_inner_local_var->exception = exception;
     update_partner_results_response_array_items_inner_local_var->member_or_partner_id = member_or_partner_id;
 
+    update_partner_results_response_array_items_inner_local_var->_library_owned = 1;
     return update_partner_results_response_array_items_inner_local_var;
 }
 
+__attribute__((deprecated)) update_partner_results_response_array_items_inner_t *update_partner_results_response_array_items_inner_create(
+    business_access_error_t *exception,
+    char *member_or_partner_id
+    ) {
+    return update_partner_results_response_array_items_inner_create_internal (
+        exception,
+        member_or_partner_id
+        );
+}
 
 void update_partner_results_response_array_items_inner_free(update_partner_results_response_array_items_inner_t *update_partner_results_response_array_items_inner) {
     if(NULL == update_partner_results_response_array_items_inner){
+        return ;
+    }
+    if(update_partner_results_response_array_items_inner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "update_partner_results_response_array_items_inner_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -76,12 +90,18 @@ update_partner_results_response_array_items_inner_t *update_partner_results_resp
 
     // update_partner_results_response_array_items_inner->exception
     cJSON *exception = cJSON_GetObjectItemCaseSensitive(update_partner_results_response_array_items_innerJSON, "exception");
+    if (cJSON_IsNull(exception)) {
+        exception = NULL;
+    }
     if (exception) { 
     exception_local_nonprim = business_access_error_parseFromJSON(exception); //nonprimitive
     }
 
     // update_partner_results_response_array_items_inner->member_or_partner_id
     cJSON *member_or_partner_id = cJSON_GetObjectItemCaseSensitive(update_partner_results_response_array_items_innerJSON, "member_or_partner_id");
+    if (cJSON_IsNull(member_or_partner_id)) {
+        member_or_partner_id = NULL;
+    }
     if (member_or_partner_id) { 
     if(!cJSON_IsString(member_or_partner_id) && !cJSON_IsNull(member_or_partner_id))
     {
@@ -90,7 +110,7 @@ update_partner_results_response_array_items_inner_t *update_partner_results_resp
     }
 
 
-    update_partner_results_response_array_items_inner_local_var = update_partner_results_response_array_items_inner_create (
+    update_partner_results_response_array_items_inner_local_var = update_partner_results_response_array_items_inner_create_internal (
         exception ? exception_local_nonprim : NULL,
         member_or_partner_id && !cJSON_IsNull(member_or_partner_id) ? strdup(member_or_partner_id->valuestring) : NULL
         );

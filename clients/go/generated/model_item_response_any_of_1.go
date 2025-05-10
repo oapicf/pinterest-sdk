@@ -13,8 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // ItemResponseAnyOf1 - struct for ItemResponseAnyOf1
@@ -147,6 +147,24 @@ func (obj *ItemResponseAnyOf1) GetActualInstance() (interface{}) {
 
 	if obj.CatalogsRetailItemErrorResponse != nil {
 		return obj.CatalogsRetailItemErrorResponse
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj ItemResponseAnyOf1) GetActualInstanceValue() (interface{}) {
+	if obj.CatalogsCreativeAssetsItemErrorResponse != nil {
+		return *obj.CatalogsCreativeAssetsItemErrorResponse
+	}
+
+	if obj.CatalogsHotelItemErrorResponse != nil {
+		return *obj.CatalogsHotelItemErrorResponse
+	}
+
+	if obj.CatalogsRetailItemErrorResponse != nil {
+		return *obj.CatalogsRetailItemErrorResponse
 	}
 
 	// all schemas are nil

@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param display Address display
@@ -19,6 +20,7 @@ package org.openapitools.server.models
  * @param addressId Salesforce id for address
  * @param orderLegalEntity Legal entity for this insertion order
  */
+@Serializable
 data class SSIOAccountAddress(
     /* Address display */
     val display: kotlin.String? = null,
@@ -28,5 +30,5 @@ data class SSIOAccountAddress(
     val addressId: kotlin.String? = null,
     /* Legal entity for this insertion order */
     val orderLegalEntity: kotlin.String? = null
-) 
+)
 

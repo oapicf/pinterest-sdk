@@ -132,11 +132,11 @@ export function IntegrationRequestFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-  export function IntegrationRequestToJSON(json: any): IntegrationRequest {
-      return IntegrationRequestToJSONTyped(json, false);
-  }
+export function IntegrationRequestToJSON(json: any): IntegrationRequest {
+    return IntegrationRequestToJSONTyped(json, false);
+}
 
-  export function IntegrationRequestToJSONTyped(value?: IntegrationRequest | null, ignoreDiscriminator: boolean = false): any {
+export function IntegrationRequestToJSONTyped(value?: IntegrationRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

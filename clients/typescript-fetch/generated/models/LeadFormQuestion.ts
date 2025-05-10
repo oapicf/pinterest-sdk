@@ -86,11 +86,11 @@ export function LeadFormQuestionFromJSONTyped(json: any, ignoreDiscriminator: bo
     };
 }
 
-  export function LeadFormQuestionToJSON(json: any): LeadFormQuestion {
-      return LeadFormQuestionToJSONTyped(json, false);
-  }
+export function LeadFormQuestionToJSON(json: any): LeadFormQuestion {
+    return LeadFormQuestionToJSONTyped(json, false);
+}
 
-  export function LeadFormQuestionToJSONTyped(value?: LeadFormQuestion | null, ignoreDiscriminator: boolean = false): any {
+export function LeadFormQuestionToJSONTyped(value?: LeadFormQuestion | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

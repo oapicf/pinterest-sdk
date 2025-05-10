@@ -51,24 +51,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdsAnalyticsGetAsyncResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdsAnalyticsGetAsyncResponse {
   public static final String SERIALIZED_NAME_REPORT_STATUS = "report_status";
   @SerializedName(SERIALIZED_NAME_REPORT_STATUS)
+  @javax.annotation.Nullable
   private BulkReportingJobStatus reportStatus;
 
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)
+  @javax.annotation.Nullable
   private String url;
 
   public static final String SERIALIZED_NAME_SIZE = "size";
   @SerializedName(SERIALIZED_NAME_SIZE)
+  @javax.annotation.Nullable
   private BigDecimal size;
 
   public AdsAnalyticsGetAsyncResponse() {
   }
 
-  public AdsAnalyticsGetAsyncResponse reportStatus(BulkReportingJobStatus reportStatus) {
+  public AdsAnalyticsGetAsyncResponse reportStatus(@javax.annotation.Nullable BulkReportingJobStatus reportStatus) {
     this.reportStatus = reportStatus;
     return this;
   }
@@ -82,12 +85,12 @@ public class AdsAnalyticsGetAsyncResponse {
     return reportStatus;
   }
 
-  public void setReportStatus(BulkReportingJobStatus reportStatus) {
+  public void setReportStatus(@javax.annotation.Nullable BulkReportingJobStatus reportStatus) {
     this.reportStatus = reportStatus;
   }
 
 
-  public AdsAnalyticsGetAsyncResponse url(String url) {
+  public AdsAnalyticsGetAsyncResponse url(@javax.annotation.Nullable String url) {
     this.url = url;
     return this;
   }
@@ -101,12 +104,12 @@ public class AdsAnalyticsGetAsyncResponse {
     return url;
   }
 
-  public void setUrl(String url) {
+  public void setUrl(@javax.annotation.Nullable String url) {
     this.url = url;
   }
 
 
-  public AdsAnalyticsGetAsyncResponse size(BigDecimal size) {
+  public AdsAnalyticsGetAsyncResponse size(@javax.annotation.Nullable BigDecimal size) {
     this.size = size;
     return this;
   }
@@ -120,7 +123,7 @@ public class AdsAnalyticsGetAsyncResponse {
     return size;
   }
 
-  public void setSize(BigDecimal size) {
+  public void setSize(@javax.annotation.Nullable BigDecimal size) {
     this.size = size;
   }
 

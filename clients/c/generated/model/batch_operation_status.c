@@ -22,7 +22,7 @@ pinterest_rest_api_batch_operation_status__e batch_operation_status_batch_operat
     return 0;
 }
 
-cJSON *batch_operation_status_batch_operation_status_convertToJSON(pinterest_rest_api_batch_operation_status__e batch_operation_status) {
+cJSON *batch_operation_status_convertToJSON(pinterest_rest_api_batch_operation_status__e batch_operation_status) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "batch_operation_status", batch_operation_status_batch_operation_status_ToString(batch_operation_status)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_batch_operation_status__e batch_operation_status_batch_operation_status_parseFromJSON(cJSON *batch_operation_statusJSON) {
-    pinterest_rest_api_batch_operation_status__e *batch_operation_status = NULL;
-    pinterest_rest_api_batch_operation_status__e batch_operation_statusVariable;
-    cJSON *batch_operation_statusVar = cJSON_GetObjectItemCaseSensitive(batch_operation_statusJSON, "batch_operation_status");
-    if(!cJSON_IsString(batch_operation_statusVar) || (batch_operation_statusVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_batch_operation_status__e batch_operation_status_parseFromJSON(cJSON *batch_operation_statusJSON) {
+    if(!cJSON_IsString(batch_operation_statusJSON) || (batch_operation_statusJSON->valuestring == NULL)) {
+        return 0;
     }
-    batch_operation_statusVariable = batch_operation_status_batch_operation_status_FromString(batch_operation_statusVar->valuestring);
-    return batch_operation_statusVariable;
-end:
-    return 0;
+    return batch_operation_status_batch_operation_status_FromString(batch_operation_statusJSON->valuestring);
 }

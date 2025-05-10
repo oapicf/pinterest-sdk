@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 // Functions for enum TARGETINGTYPES for CampaignsAPI_campaignTargetingAnalyticsGet
 
@@ -740,15 +735,20 @@ CampaignsAPI_campaignTargetingAnalyticsGet(apiClient_t *apiClient, char *ad_acco
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/campaigns/targeting_analytics")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/campaigns/targeting_analytics");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/campaigns/targeting_analytics");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -809,7 +809,7 @@ CampaignsAPI_campaignTargetingAnalyticsGet(apiClient_t *apiClient, char *ad_acco
     {
         keyQuery_granularity = strdup("granularity");
         valueQuery_granularity = (granularity);
-        keyPairQuery_granularity = keyValuePair_create(keyQuery_granularity, (void *)strdup(campaignTargetingAnalyticsGet__ToString(
+        keyPairQuery_granularity = keyValuePair_create(keyQuery_granularity, strdup(campaignTargetingAnalyticsGet__ToString(
         &valueQuery_granularity)));
         list_addElement(localVarQueryParameters,keyPairQuery_granularity);
     }
@@ -823,7 +823,7 @@ CampaignsAPI_campaignTargetingAnalyticsGet(apiClient_t *apiClient, char *ad_acco
         keyQuery_click_window_days = strdup("click_window_days");
         valueQuery_click_window_days = calloc(1,MAX_NUMBER_LENGTH);
         snprintf(valueQuery_click_window_days, MAX_NUMBER_LENGTH, "%d", *click_window_days);
-        keyPairQuery_click_window_days = keyValuePair_create(keyQuery_click_window_days, (void *)strdup(campaignTargetingAnalyticsGet_CLICKWINDOWDAYS_ToString(
+        keyPairQuery_click_window_days = keyValuePair_create(keyQuery_click_window_days, strdup(campaignTargetingAnalyticsGet_CLICKWINDOWDAYS_ToString(
         valueQuery_click_window_days)));
         list_addElement(localVarQueryParameters,keyPairQuery_click_window_days);
     }
@@ -837,7 +837,7 @@ CampaignsAPI_campaignTargetingAnalyticsGet(apiClient_t *apiClient, char *ad_acco
         keyQuery_engagement_window_days = strdup("engagement_window_days");
         valueQuery_engagement_window_days = calloc(1,MAX_NUMBER_LENGTH);
         snprintf(valueQuery_engagement_window_days, MAX_NUMBER_LENGTH, "%d", *engagement_window_days);
-        keyPairQuery_engagement_window_days = keyValuePair_create(keyQuery_engagement_window_days, (void *)strdup(campaignTargetingAnalyticsGet_ENGAGEMENTWINDOWDAYS_ToString(
+        keyPairQuery_engagement_window_days = keyValuePair_create(keyQuery_engagement_window_days, strdup(campaignTargetingAnalyticsGet_ENGAGEMENTWINDOWDAYS_ToString(
         valueQuery_engagement_window_days)));
         list_addElement(localVarQueryParameters,keyPairQuery_engagement_window_days);
     }
@@ -851,7 +851,7 @@ CampaignsAPI_campaignTargetingAnalyticsGet(apiClient_t *apiClient, char *ad_acco
         keyQuery_view_window_days = strdup("view_window_days");
         valueQuery_view_window_days = calloc(1,MAX_NUMBER_LENGTH);
         snprintf(valueQuery_view_window_days, MAX_NUMBER_LENGTH, "%d", *view_window_days);
-        keyPairQuery_view_window_days = keyValuePair_create(keyQuery_view_window_days, (void *)strdup(campaignTargetingAnalyticsGet_VIEWWINDOWDAYS_ToString(
+        keyPairQuery_view_window_days = keyValuePair_create(keyQuery_view_window_days, strdup(campaignTargetingAnalyticsGet_VIEWWINDOWDAYS_ToString(
         valueQuery_view_window_days)));
         list_addElement(localVarQueryParameters,keyPairQuery_view_window_days);
     }
@@ -864,7 +864,7 @@ CampaignsAPI_campaignTargetingAnalyticsGet(apiClient_t *apiClient, char *ad_acco
     {
         keyQuery_conversion_report_time = strdup("conversion_report_time");
         valueQuery_conversion_report_time = (conversion_report_time);
-        keyPairQuery_conversion_report_time = keyValuePair_create(keyQuery_conversion_report_time, (void *)strdup(campaignTargetingAnalyticsGet_CONVERSIONREPORTTIME_ToString(
+        keyPairQuery_conversion_report_time = keyValuePair_create(keyQuery_conversion_report_time, strdup(campaignTargetingAnalyticsGet_CONVERSIONREPORTTIME_ToString(
         valueQuery_conversion_report_time)));
         list_addElement(localVarQueryParameters,keyPairQuery_conversion_report_time);
     }
@@ -877,7 +877,7 @@ CampaignsAPI_campaignTargetingAnalyticsGet(apiClient_t *apiClient, char *ad_acco
     {
         keyQuery_attribution_types = strdup("attribution_types");
         valueQuery_attribution_types = (attribution_types);
-        keyPairQuery_attribution_types = keyValuePair_create(keyQuery_attribution_types, (void *)strdup(campaignTargetingAnalyticsGet__ToString(
+        keyPairQuery_attribution_types = keyValuePair_create(keyQuery_attribution_types, strdup(campaignTargetingAnalyticsGet__ToString(
         &valueQuery_attribution_types)));
         list_addElement(localVarQueryParameters,keyPairQuery_attribution_types);
     }
@@ -890,6 +890,7 @@ CampaignsAPI_campaignTargetingAnalyticsGet(apiClient_t *apiClient, char *ad_acco
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -901,11 +902,14 @@ CampaignsAPI_campaignTargetingAnalyticsGet(apiClient_t *apiClient, char *ad_acco
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *CampaignsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    metrics_response_t *elementToReturn = metrics_response_parseFromJSON(CampaignsAPIlocalVarJSON);
-    cJSON_Delete(CampaignsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    metrics_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CampaignsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = metrics_response_parseFromJSON(CampaignsAPIlocalVarJSON);
+        cJSON_Delete(CampaignsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1017,15 +1021,20 @@ CampaignsAPI_campaignsAnalytics(apiClient_t *apiClient, char *ad_account_id, cha
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/campaigns/analytics")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/campaigns/analytics");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/campaigns/analytics");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -1080,7 +1089,7 @@ CampaignsAPI_campaignsAnalytics(apiClient_t *apiClient, char *ad_account_id, cha
     {
         keyQuery_granularity = strdup("granularity");
         valueQuery_granularity = (granularity);
-        keyPairQuery_granularity = keyValuePair_create(keyQuery_granularity, (void *)strdup(campaignsAnalytics__ToString(
+        keyPairQuery_granularity = keyValuePair_create(keyQuery_granularity, strdup(campaignsAnalytics__ToString(
         &valueQuery_granularity)));
         list_addElement(localVarQueryParameters,keyPairQuery_granularity);
     }
@@ -1094,7 +1103,7 @@ CampaignsAPI_campaignsAnalytics(apiClient_t *apiClient, char *ad_account_id, cha
         keyQuery_click_window_days = strdup("click_window_days");
         valueQuery_click_window_days = calloc(1,MAX_NUMBER_LENGTH);
         snprintf(valueQuery_click_window_days, MAX_NUMBER_LENGTH, "%d", *click_window_days);
-        keyPairQuery_click_window_days = keyValuePair_create(keyQuery_click_window_days, (void *)strdup(campaignsAnalytics_CLICKWINDOWDAYS_ToString(
+        keyPairQuery_click_window_days = keyValuePair_create(keyQuery_click_window_days, strdup(campaignsAnalytics_CLICKWINDOWDAYS_ToString(
         valueQuery_click_window_days)));
         list_addElement(localVarQueryParameters,keyPairQuery_click_window_days);
     }
@@ -1108,7 +1117,7 @@ CampaignsAPI_campaignsAnalytics(apiClient_t *apiClient, char *ad_account_id, cha
         keyQuery_engagement_window_days = strdup("engagement_window_days");
         valueQuery_engagement_window_days = calloc(1,MAX_NUMBER_LENGTH);
         snprintf(valueQuery_engagement_window_days, MAX_NUMBER_LENGTH, "%d", *engagement_window_days);
-        keyPairQuery_engagement_window_days = keyValuePair_create(keyQuery_engagement_window_days, (void *)strdup(campaignsAnalytics_ENGAGEMENTWINDOWDAYS_ToString(
+        keyPairQuery_engagement_window_days = keyValuePair_create(keyQuery_engagement_window_days, strdup(campaignsAnalytics_ENGAGEMENTWINDOWDAYS_ToString(
         valueQuery_engagement_window_days)));
         list_addElement(localVarQueryParameters,keyPairQuery_engagement_window_days);
     }
@@ -1122,7 +1131,7 @@ CampaignsAPI_campaignsAnalytics(apiClient_t *apiClient, char *ad_account_id, cha
         keyQuery_view_window_days = strdup("view_window_days");
         valueQuery_view_window_days = calloc(1,MAX_NUMBER_LENGTH);
         snprintf(valueQuery_view_window_days, MAX_NUMBER_LENGTH, "%d", *view_window_days);
-        keyPairQuery_view_window_days = keyValuePair_create(keyQuery_view_window_days, (void *)strdup(campaignsAnalytics_VIEWWINDOWDAYS_ToString(
+        keyPairQuery_view_window_days = keyValuePair_create(keyQuery_view_window_days, strdup(campaignsAnalytics_VIEWWINDOWDAYS_ToString(
         valueQuery_view_window_days)));
         list_addElement(localVarQueryParameters,keyPairQuery_view_window_days);
     }
@@ -1135,7 +1144,7 @@ CampaignsAPI_campaignsAnalytics(apiClient_t *apiClient, char *ad_account_id, cha
     {
         keyQuery_conversion_report_time = strdup("conversion_report_time");
         valueQuery_conversion_report_time = (conversion_report_time);
-        keyPairQuery_conversion_report_time = keyValuePair_create(keyQuery_conversion_report_time, (void *)strdup(campaignsAnalytics_CONVERSIONREPORTTIME_ToString(
+        keyPairQuery_conversion_report_time = keyValuePair_create(keyQuery_conversion_report_time, strdup(campaignsAnalytics_CONVERSIONREPORTTIME_ToString(
         valueQuery_conversion_report_time)));
         list_addElement(localVarQueryParameters,keyPairQuery_conversion_report_time);
     }
@@ -1148,6 +1157,7 @@ CampaignsAPI_campaignsAnalytics(apiClient_t *apiClient, char *ad_account_id, cha
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -1162,24 +1172,27 @@ CampaignsAPI_campaignsAnalytics(apiClient_t *apiClient, char *ad_account_id, cha
     //if (apiClient->response_code == 0) {
     //    printf("%s\n","Unexpected error");
     //}
-    cJSON *CampaignsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    if(!cJSON_IsArray(CampaignsAPIlocalVarJSON)) {
-        return 0;//nonprimitive container
-    }
-    list_t *elementToReturn = list_createList();
-    cJSON *VarJSON;
-    cJSON_ArrayForEach(VarJSON, CampaignsAPIlocalVarJSON)
-    {
-        if(!cJSON_IsObject(VarJSON))
-        {
-           // return 0;
+    list_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CampaignsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        if(!cJSON_IsArray(CampaignsAPIlocalVarJSON)) {
+            return 0;//nonprimitive container
         }
-        char *localVarJSONToChar = cJSON_Print(VarJSON);
-        list_addElement(elementToReturn , localVarJSONToChar);
-    }
+        elementToReturn = list_createList();
+        cJSON *VarJSON;
+        cJSON_ArrayForEach(VarJSON, CampaignsAPIlocalVarJSON)
+        {
+            if(!cJSON_IsObject(VarJSON))
+            {
+               // return 0;
+            }
+            char *localVarJSONToChar = cJSON_Print(VarJSON);
+            list_addElement(elementToReturn , localVarJSONToChar);
+        }
 
-    cJSON_Delete( CampaignsAPIlocalVarJSON);
-    cJSON_Delete( VarJSON);
+        cJSON_Delete( CampaignsAPIlocalVarJSON);
+        cJSON_Delete( VarJSON);
+    }
     //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
@@ -1281,15 +1294,20 @@ CampaignsAPI_campaignsCreate(apiClient_t *apiClient, char *ad_account_id, list_t
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/campaigns")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/campaigns");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/campaigns");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -1327,6 +1345,7 @@ CampaignsAPI_campaignsCreate(apiClient_t *apiClient, char *ad_account_id, list_t
         }
         cJSON_AddItemToArray(localVarSingleItemJSON_campaign_create_request, localVar_campaign_create_request);
         localVarBodyParameters = cJSON_Print(localVarItemJSON_campaign_create_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -1338,6 +1357,7 @@ CampaignsAPI_campaignsCreate(apiClient_t *apiClient, char *ad_account_id, list_t
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -1349,11 +1369,14 @@ CampaignsAPI_campaignsCreate(apiClient_t *apiClient, char *ad_account_id, list_t
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *CampaignsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    campaign_create_response_t *elementToReturn = campaign_create_response_parseFromJSON(CampaignsAPIlocalVarJSON);
-    cJSON_Delete(CampaignsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    campaign_create_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CampaignsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = campaign_create_response_parseFromJSON(CampaignsAPIlocalVarJSON);
+        cJSON_Delete(CampaignsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1402,15 +1425,22 @@ CampaignsAPI_campaignsGet(apiClient_t *apiClient, char *ad_account_id, char *cam
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/campaigns/{campaign_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/campaigns/{campaign_id}");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/campaigns/{campaign_id}");
+
+    if(!ad_account_id)
+        goto end;
+    if(!campaign_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(campaign_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(campaign_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -1420,7 +1450,7 @@ CampaignsAPI_campaignsGet(apiClient_t *apiClient, char *ad_account_id, char *cam
     localVarPath = strReplace(localVarPath, localVarToReplace_ad_account_id, ad_account_id);
 
     // Path Params
-    long sizeOfPathParams_campaign_id = strlen(ad_account_id)+3 + strlen(campaign_id)+3 + strlen("{ campaign_id }");
+    long sizeOfPathParams_campaign_id = strlen(ad_account_id)+3 + strlen(campaign_id)+3 + sizeof("{ campaign_id }") - 1;
     if(campaign_id == NULL) {
         goto end;
     }
@@ -1439,6 +1469,7 @@ CampaignsAPI_campaignsGet(apiClient_t *apiClient, char *ad_account_id, char *cam
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -1450,11 +1481,14 @@ CampaignsAPI_campaignsGet(apiClient_t *apiClient, char *ad_account_id, char *cam
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *CampaignsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    campaign_response_t *elementToReturn = campaign_response_parseFromJSON(CampaignsAPIlocalVarJSON);
-    cJSON_Delete(CampaignsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    campaign_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CampaignsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = campaign_response_parseFromJSON(CampaignsAPIlocalVarJSON);
+        cJSON_Delete(CampaignsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1491,15 +1525,20 @@ CampaignsAPI_campaignsList(apiClient_t *apiClient, char *ad_account_id, list_t *
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/campaigns")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/campaigns");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/campaigns");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -1543,7 +1582,7 @@ CampaignsAPI_campaignsList(apiClient_t *apiClient, char *ad_account_id, list_t *
     {
         keyQuery_order = strdup("order");
         valueQuery_order = (order);
-        keyPairQuery_order = keyValuePair_create(keyQuery_order, (void *)strdup(campaignsList_ORDER_ToString(
+        keyPairQuery_order = keyValuePair_create(keyQuery_order, strdup(campaignsList_ORDER_ToString(
         valueQuery_order)));
         list_addElement(localVarQueryParameters,keyPairQuery_order);
     }
@@ -1568,6 +1607,7 @@ CampaignsAPI_campaignsList(apiClient_t *apiClient, char *ad_account_id, list_t *
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -1583,11 +1623,14 @@ CampaignsAPI_campaignsList(apiClient_t *apiClient, char *ad_account_id, list_t *
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *CampaignsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    campaigns_list_200_response_t *elementToReturn = campaigns_list_200_response_parseFromJSON(CampaignsAPIlocalVarJSON);
-    cJSON_Delete(CampaignsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    campaigns_list_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CampaignsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = campaigns_list_200_response_parseFromJSON(CampaignsAPIlocalVarJSON);
+        cJSON_Delete(CampaignsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1655,15 +1698,20 @@ CampaignsAPI_campaignsUpdate(apiClient_t *apiClient, char *ad_account_id, list_t
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/campaigns")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/campaigns");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/campaigns");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -1701,6 +1749,7 @@ CampaignsAPI_campaignsUpdate(apiClient_t *apiClient, char *ad_account_id, list_t
         }
         cJSON_AddItemToArray(localVarSingleItemJSON_campaign_update_request, localVar_campaign_update_request);
         localVarBodyParameters = cJSON_Print(localVarItemJSON_campaign_update_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -1712,6 +1761,7 @@ CampaignsAPI_campaignsUpdate(apiClient_t *apiClient, char *ad_account_id, list_t
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "PATCH");
 
     // uncomment below to debug the error response
@@ -1723,11 +1773,14 @@ CampaignsAPI_campaignsUpdate(apiClient_t *apiClient, char *ad_account_id, list_t
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *CampaignsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    campaign_update_response_t *elementToReturn = campaign_update_response_parseFromJSON(CampaignsAPIlocalVarJSON);
-    cJSON_Delete(CampaignsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    campaign_update_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CampaignsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = campaign_update_response_parseFromJSON(CampaignsAPIlocalVarJSON);
+        cJSON_Delete(CampaignsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type

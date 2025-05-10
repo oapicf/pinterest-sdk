@@ -72,11 +72,11 @@ export function AdsAnalyticsCreateAsyncResponseFromJSONTyped(json: any, ignoreDi
     };
 }
 
-  export function AdsAnalyticsCreateAsyncResponseToJSON(json: any): AdsAnalyticsCreateAsyncResponse {
-      return AdsAnalyticsCreateAsyncResponseToJSONTyped(json, false);
-  }
+export function AdsAnalyticsCreateAsyncResponseToJSON(json: any): AdsAnalyticsCreateAsyncResponse {
+    return AdsAnalyticsCreateAsyncResponseToJSONTyped(json, false);
+}
 
-  export function AdsAnalyticsCreateAsyncResponseToJSONTyped(value?: AdsAnalyticsCreateAsyncResponse | null, ignoreDiscriminator: boolean = false): any {
+export function AdsAnalyticsCreateAsyncResponseToJSONTyped(value?: AdsAnalyticsCreateAsyncResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

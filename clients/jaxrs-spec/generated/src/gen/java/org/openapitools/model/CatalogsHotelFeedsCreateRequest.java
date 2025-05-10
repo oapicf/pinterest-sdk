@@ -25,7 +25,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.")
 @JsonTypeName("CatalogsHotelFeedsCreateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsHotelFeedsCreateRequest   {
   private NullableCurrency defaultCurrency;
   private String name;
@@ -37,6 +37,24 @@ public class CatalogsHotelFeedsCreateRequest   {
   private CatalogsType catalogType;
   private String catalogId;
   private CatalogsStatus status;
+
+  public CatalogsHotelFeedsCreateRequest() {
+  }
+
+  @JsonCreator
+  public CatalogsHotelFeedsCreateRequest(
+    @JsonProperty(required = true, value = "name") String name,
+    @JsonProperty(required = true, value = "format") CatalogsFormat format,
+    @JsonProperty(required = true, value = "default_locale") CatalogsFeedsCreateRequestDefaultLocale defaultLocale,
+    @JsonProperty(required = true, value = "location") String location,
+    @JsonProperty(required = true, value = "catalog_type") CatalogsType catalogType
+  ) {
+    this.name = name;
+    this.format = format;
+    this.defaultLocale = defaultLocale;
+    this.location = location;
+    this.catalogType = catalogType;
+  }
 
   /**
    **/
@@ -67,12 +85,12 @@ public class CatalogsHotelFeedsCreateRequest   {
 
   
   @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed.")
-  @JsonProperty("name")
+  @JsonProperty(required = true, value = "name")
   @NotNull public String getName() {
     return name;
   }
 
-  @JsonProperty("name")
+  @JsonProperty(required = true, value = "name")
   public void setName(String name) {
     this.name = name;
   }
@@ -86,12 +104,12 @@ public class CatalogsHotelFeedsCreateRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("format")
+  @JsonProperty(required = true, value = "format")
   @NotNull public CatalogsFormat getFormat() {
     return format;
   }
 
-  @JsonProperty("format")
+  @JsonProperty(required = true, value = "format")
   public void setFormat(CatalogsFormat format) {
     this.format = format;
   }
@@ -105,12 +123,12 @@ public class CatalogsHotelFeedsCreateRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("default_locale")
+  @JsonProperty(required = true, value = "default_locale")
   @NotNull @Valid public CatalogsFeedsCreateRequestDefaultLocale getDefaultLocale() {
     return defaultLocale;
   }
 
-  @JsonProperty("default_locale")
+  @JsonProperty(required = true, value = "default_locale")
   public void setDefaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
     this.defaultLocale = defaultLocale;
   }
@@ -144,12 +162,12 @@ public class CatalogsHotelFeedsCreateRequest   {
 
   
   @ApiModelProperty(required = true, value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
-  @JsonProperty("location")
+  @JsonProperty(required = true, value = "location")
   @NotNull  @Pattern(regexp="^(http|https|ftp|sftp)://")public String getLocation() {
     return location;
   }
 
-  @JsonProperty("location")
+  @JsonProperty(required = true, value = "location")
   public void setLocation(String location) {
     this.location = location;
   }
@@ -182,12 +200,12 @@ public class CatalogsHotelFeedsCreateRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   @NotNull public CatalogsType getCatalogType() {
     return catalogType;
   }
 
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   public void setCatalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
   }

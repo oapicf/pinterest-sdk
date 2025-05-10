@@ -4,26 +4,9 @@
 #include "catalogs_creative_assets_item_response.h"
 
 
-char* catalogs_creative_assets_item_response_catalog_type_ToString(pinterest_rest_api_catalogs_creative_assets_item_response__e catalog_type) {
-    char* catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL", "CREATIVE_ASSETS" };
-    return catalog_typeArray[catalog_type];
-}
 
-pinterest_rest_api_catalogs_creative_assets_item_response__e catalogs_creative_assets_item_response_catalog_type_FromString(char* catalog_type){
-    int stringToReturn = 0;
-    char *catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL", "CREATIVE_ASSETS" };
-    size_t sizeofArray = sizeof(catalog_typeArray) / sizeof(catalog_typeArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(catalog_type, catalog_typeArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-
-catalogs_creative_assets_item_response_t *catalogs_creative_assets_item_response_create(
-    catalogs_type_t *catalog_type,
+static catalogs_creative_assets_item_response_t *catalogs_creative_assets_item_response_create_internal(
+    pinterest_rest_api_catalogs_type__e catalog_type,
     char *creative_assets_id,
     list_t *pins,
     catalogs_creative_assets_attributes_t *attributes
@@ -37,19 +20,33 @@ catalogs_creative_assets_item_response_t *catalogs_creative_assets_item_response
     catalogs_creative_assets_item_response_local_var->pins = pins;
     catalogs_creative_assets_item_response_local_var->attributes = attributes;
 
+    catalogs_creative_assets_item_response_local_var->_library_owned = 1;
     return catalogs_creative_assets_item_response_local_var;
 }
 
+__attribute__((deprecated)) catalogs_creative_assets_item_response_t *catalogs_creative_assets_item_response_create(
+    pinterest_rest_api_catalogs_type__e catalog_type,
+    char *creative_assets_id,
+    list_t *pins,
+    catalogs_creative_assets_attributes_t *attributes
+    ) {
+    return catalogs_creative_assets_item_response_create_internal (
+        catalog_type,
+        creative_assets_id,
+        pins,
+        attributes
+        );
+}
 
 void catalogs_creative_assets_item_response_free(catalogs_creative_assets_item_response_t *catalogs_creative_assets_item_response) {
     if(NULL == catalogs_creative_assets_item_response){
         return ;
     }
-    listEntry_t *listEntry;
-    if (catalogs_creative_assets_item_response->catalog_type) {
-        catalogs_type_free(catalogs_creative_assets_item_response->catalog_type);
-        catalogs_creative_assets_item_response->catalog_type = NULL;
+    if(catalogs_creative_assets_item_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_creative_assets_item_response_free");
+        return ;
     }
+    listEntry_t *listEntry;
     if (catalogs_creative_assets_item_response->creative_assets_id) {
         free(catalogs_creative_assets_item_response->creative_assets_id);
         catalogs_creative_assets_item_response->creative_assets_id = NULL;
@@ -72,7 +69,7 @@ cJSON *catalogs_creative_assets_item_response_convertToJSON(catalogs_creative_as
     cJSON *item = cJSON_CreateObject();
 
     // catalogs_creative_assets_item_response->catalog_type
-    if (pinterest_rest_api_catalogs_creative_assets_item_response__NULL == catalogs_creative_assets_item_response->catalog_type) {
+    if (pinterest_rest_api_catalogs_type__NULL == catalogs_creative_assets_item_response->catalog_type) {
         goto fail;
     }
     cJSON *catalog_type_local_JSON = catalogs_type_convertToJSON(catalogs_creative_assets_item_response->catalog_type);
@@ -138,7 +135,7 @@ catalogs_creative_assets_item_response_t *catalogs_creative_assets_item_response
     catalogs_creative_assets_item_response_t *catalogs_creative_assets_item_response_local_var = NULL;
 
     // define the local variable for catalogs_creative_assets_item_response->catalog_type
-    catalogs_type_t *catalog_type_local_nonprim = NULL;
+    pinterest_rest_api_catalogs_type__e catalog_type_local_nonprim = 0;
 
     // define the local list for catalogs_creative_assets_item_response->pins
     list_t *pinsList = NULL;
@@ -148,6 +145,9 @@ catalogs_creative_assets_item_response_t *catalogs_creative_assets_item_response
 
     // catalogs_creative_assets_item_response->catalog_type
     cJSON *catalog_type = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_item_responseJSON, "catalog_type");
+    if (cJSON_IsNull(catalog_type)) {
+        catalog_type = NULL;
+    }
     if (!catalog_type) {
         goto end;
     }
@@ -157,6 +157,9 @@ catalogs_creative_assets_item_response_t *catalogs_creative_assets_item_response
 
     // catalogs_creative_assets_item_response->creative_assets_id
     cJSON *creative_assets_id = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_item_responseJSON, "creative_assets_id");
+    if (cJSON_IsNull(creative_assets_id)) {
+        creative_assets_id = NULL;
+    }
     if (creative_assets_id) { 
     if(!cJSON_IsString(creative_assets_id) && !cJSON_IsNull(creative_assets_id))
     {
@@ -166,6 +169,9 @@ catalogs_creative_assets_item_response_t *catalogs_creative_assets_item_response
 
     // catalogs_creative_assets_item_response->pins
     cJSON *pins = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_item_responseJSON, "pins");
+    if (cJSON_IsNull(pins)) {
+        pins = NULL;
+    }
     if (pins) { 
     cJSON *pins_local_nonprimitive = NULL;
     if(!cJSON_IsArray(pins)){
@@ -187,12 +193,15 @@ catalogs_creative_assets_item_response_t *catalogs_creative_assets_item_response
 
     // catalogs_creative_assets_item_response->attributes
     cJSON *attributes = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_item_responseJSON, "attributes");
+    if (cJSON_IsNull(attributes)) {
+        attributes = NULL;
+    }
     if (attributes) { 
     attributes_local_nonprim = catalogs_creative_assets_attributes_parseFromJSON(attributes); //nonprimitive
     }
 
 
-    catalogs_creative_assets_item_response_local_var = catalogs_creative_assets_item_response_create (
+    catalogs_creative_assets_item_response_local_var = catalogs_creative_assets_item_response_create_internal (
         catalog_type_local_nonprim,
         creative_assets_id && !cJSON_IsNull(creative_assets_id) ? strdup(creative_assets_id->valuestring) : NULL,
         pins ? pinsList : NULL,
@@ -202,8 +211,7 @@ catalogs_creative_assets_item_response_t *catalogs_creative_assets_item_response
     return catalogs_creative_assets_item_response_local_var;
 end:
     if (catalog_type_local_nonprim) {
-        catalogs_type_free(catalog_type_local_nonprim);
-        catalog_type_local_nonprim = NULL;
+        catalog_type_local_nonprim = 0;
     }
     if (pinsList) {
         listEntry_t *listEntry = NULL;

@@ -57,10 +57,35 @@ CreativeAssetsProcessingRecord <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return CreativeAssetsProcessingRecord in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return CreativeAssetsProcessingRecord as a base R list.
+    #' @examples
+    #' # convert array of CreativeAssetsProcessingRecord (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert CreativeAssetsProcessingRecord to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       CreativeAssetsProcessingRecordObject <- list()
       if (!is.null(self$`creative_assets_id`)) {
         CreativeAssetsProcessingRecordObject[["creative_assets_id"]] <-
@@ -68,17 +93,17 @@ CreativeAssetsProcessingRecord <- R6::R6Class(
       }
       if (!is.null(self$`errors`)) {
         CreativeAssetsProcessingRecordObject[["errors"]] <-
-          lapply(self$`errors`, function(x) x$toJSON())
+          lapply(self$`errors`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`warnings`)) {
         CreativeAssetsProcessingRecordObject[["warnings"]] <-
-          lapply(self$`warnings`, function(x) x$toJSON())
+          lapply(self$`warnings`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`status`)) {
         CreativeAssetsProcessingRecordObject[["status"]] <-
-          self$`status`$toJSON()
+          self$`status`$toSimpleType()
       }
-      CreativeAssetsProcessingRecordObject
+      return(CreativeAssetsProcessingRecordObject)
     },
 
     #' @description
@@ -107,45 +132,13 @@ CreativeAssetsProcessingRecord <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return CreativeAssetsProcessingRecord in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`creative_assets_id`)) {
-          sprintf(
-          '"creative_assets_id":
-            "%s"
-                    ',
-          self$`creative_assets_id`
-          )
-        },
-        if (!is.null(self$`errors`)) {
-          sprintf(
-          '"errors":
-          [%s]
-',
-          paste(sapply(self$`errors`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`warnings`)) {
-          sprintf(
-          '"warnings":
-          [%s]
-',
-          paste(sapply(self$`warnings`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`status`)) {
-          sprintf(
-          '"status":
-          %s
-          ',
-          jsonlite::toJSON(self$`status`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

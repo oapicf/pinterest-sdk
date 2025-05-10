@@ -67,10 +67,35 @@ BaseInviteDataResponseInviteData <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return BaseInviteDataResponseInviteData in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return BaseInviteDataResponseInviteData as a base R list.
+    #' @examples
+    #' # convert array of BaseInviteDataResponseInviteData (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert BaseInviteDataResponseInviteData to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       BaseInviteDataResponseInviteDataObject <- list()
       if (!is.null(self$`invite_expiration`)) {
         BaseInviteDataResponseInviteDataObject[["invite_expiration"]] <-
@@ -92,7 +117,7 @@ BaseInviteDataResponseInviteData <- R6::R6Class(
         BaseInviteDataResponseInviteDataObject[["sent_at"]] <-
           self$`sent_at`
       }
-      BaseInviteDataResponseInviteDataObject
+      return(BaseInviteDataResponseInviteDataObject)
     },
 
     #' @description
@@ -122,53 +147,13 @@ BaseInviteDataResponseInviteData <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return BaseInviteDataResponseInviteData in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`invite_expiration`)) {
-          sprintf(
-          '"invite_expiration":
-            %d
-                    ',
-          self$`invite_expiration`
-          )
-        },
-        if (!is.null(self$`invite_status`)) {
-          sprintf(
-          '"invite_status":
-            "%s"
-                    ',
-          self$`invite_status`
-          )
-        },
-        if (!is.null(self$`invite_type`)) {
-          sprintf(
-          '"invite_type":
-            "%s"
-                    ',
-          self$`invite_type`
-          )
-        },
-        if (!is.null(self$`last_updated_time`)) {
-          sprintf(
-          '"last_updated_time":
-            %d
-                    ',
-          self$`last_updated_time`
-          )
-        },
-        if (!is.null(self$`sent_at`)) {
-          sprintf(
-          '"sent_at":
-            %d
-                    ',
-          self$`sent_at`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Product counts for a Retail CatalogsProductGroup
  * @param catalogType 
@@ -21,6 +22,7 @@ package org.openapitools.server.models
  * @param total 
  * @param videos 
  */
+@Serializable
 data class CatalogsRetailProductGroupProductCounts(
     val catalogType: CatalogsRetailProductGroupProductCounts.CatalogType,
     val inStock: java.math.BigDecimal,
@@ -28,7 +30,7 @@ data class CatalogsRetailProductGroupProductCounts(
     val preorder: java.math.BigDecimal,
     val total: java.math.BigDecimal,
     val videos: java.math.BigDecimal? = null
-) 
+)
 {
     /**
     * 

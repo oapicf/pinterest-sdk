@@ -61,11 +61,11 @@ export function CatalogsHotelAttributesAllOfMainImageFromJSONTyped(json: any, ig
     };
 }
 
-  export function CatalogsHotelAttributesAllOfMainImageToJSON(json: any): CatalogsHotelAttributesAllOfMainImage {
-      return CatalogsHotelAttributesAllOfMainImageToJSONTyped(json, false);
-  }
+export function CatalogsHotelAttributesAllOfMainImageToJSON(json: any): CatalogsHotelAttributesAllOfMainImage {
+    return CatalogsHotelAttributesAllOfMainImageToJSONTyped(json, false);
+}
 
-  export function CatalogsHotelAttributesAllOfMainImageToJSONTyped(value?: CatalogsHotelAttributesAllOfMainImage | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsHotelAttributesAllOfMainImageToJSONTyped(value?: CatalogsHotelAttributesAllOfMainImage | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

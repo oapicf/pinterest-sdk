@@ -246,7 +246,7 @@ void OAIBulkApi::bulkDownload_create(const QString &ad_account_id, const OAIBulk
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBulkApi::bulkDownload_createCallback);
     connect(this, &OAIBulkApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -268,7 +268,7 @@ void OAIBulkApi::bulkDownload_create(const QString &ad_account_id, const OAIBulk
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBulkApi::bulkDownload_createCallback);
     connect(this, &OAIBulkApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -386,7 +386,7 @@ void OAIBulkApi::bulkRequest_get(const QString &ad_account_id, const QString &bu
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("include_details")).append(querySuffix).append(QUrl::toPercentEncoding(include_details.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("include_details")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(include_details.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -401,7 +401,7 @@ void OAIBulkApi::bulkRequest_get(const QString &ad_account_id, const QString &bu
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBulkApi::bulkRequest_getCallback);
     connect(this, &OAIBulkApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -423,7 +423,7 @@ void OAIBulkApi::bulkRequest_get(const QString &ad_account_id, const QString &bu
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBulkApi::bulkRequest_getCallback);
     connect(this, &OAIBulkApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -531,7 +531,7 @@ void OAIBulkApi::bulkUpsert_create(const QString &ad_account_id, const OAIBulkUp
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBulkApi::bulkUpsert_createCallback);
     connect(this, &OAIBulkApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -553,7 +553,7 @@ void OAIBulkApi::bulkUpsert_create(const QString &ad_account_id, const OAIBulkUp
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBulkApi::bulkUpsert_createCallback);
     connect(this, &OAIBulkApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }

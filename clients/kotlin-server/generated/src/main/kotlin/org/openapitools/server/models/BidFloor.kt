@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param bidFloors A list of bid floors in micro currency. For example, [100000, 200000]
  * @param type Always the string 'bidfloor'
  */
+@Serializable
 data class BidFloor(
     /* A list of bid floors in micro currency. For example, [100000, 200000] */
     val bidFloors: kotlin.collections.List<kotlin.Int>? = null,
     /* Always the string 'bidfloor' */
     val type: kotlin.String? = "bidfloor"
-) 
+)
 

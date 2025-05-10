@@ -44,9 +44,9 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum InviteType: string
 {
-        case MEMBER_INVITE = "MEMBER_INVITE";
-        case PARTNER_INVITE = "PARTNER_INVITE";
-        case PARTNER_REQUEST = "PARTNER_REQUEST";
+        case MEMBER_INVITE = 'MEMBER_INVITE';
+        case PARTNER_INVITE = 'PARTNER_INVITE';
+        case PARTNER_REQUEST = 'PARTNER_REQUEST';
 }
 
 

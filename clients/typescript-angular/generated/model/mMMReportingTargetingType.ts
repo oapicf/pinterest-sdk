@@ -15,10 +15,15 @@
 export type MMMReportingTargetingType = 'APPTYPE' | 'COUNTRY' | 'CREATIVE_TYPE' | 'GENDER' | 'LOCATION';
 
 export const MMMReportingTargetingType = {
+
     Apptype: 'APPTYPE' as MMMReportingTargetingType,
+
     Country: 'COUNTRY' as MMMReportingTargetingType,
+
     CreativeType: 'CREATIVE_TYPE' as MMMReportingTargetingType,
+
     Gender: 'GENDER' as MMMReportingTargetingType,
+
     Location: 'LOCATION' as MMMReportingTargetingType
 };
 

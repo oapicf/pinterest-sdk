@@ -50,20 +50,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsFeedValidationDetails
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsFeedValidationDetails {
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
+  @javax.annotation.Nonnull
   private CatalogsFeedValidationErrors errors;
 
   public static final String SERIALIZED_NAME_WARNINGS = "warnings";
   @SerializedName(SERIALIZED_NAME_WARNINGS)
+  @javax.annotation.Nonnull
   private CatalogsFeedValidationWarnings warnings;
 
   public CatalogsFeedValidationDetails() {
   }
 
-  public CatalogsFeedValidationDetails errors(CatalogsFeedValidationErrors errors) {
+  public CatalogsFeedValidationDetails errors(@javax.annotation.Nonnull CatalogsFeedValidationErrors errors) {
     this.errors = errors;
     return this;
   }
@@ -77,12 +79,12 @@ public class CatalogsFeedValidationDetails {
     return errors;
   }
 
-  public void setErrors(CatalogsFeedValidationErrors errors) {
+  public void setErrors(@javax.annotation.Nonnull CatalogsFeedValidationErrors errors) {
     this.errors = errors;
   }
 
 
-  public CatalogsFeedValidationDetails warnings(CatalogsFeedValidationWarnings warnings) {
+  public CatalogsFeedValidationDetails warnings(@javax.annotation.Nonnull CatalogsFeedValidationWarnings warnings) {
     this.warnings = warnings;
     return this;
   }
@@ -96,7 +98,7 @@ public class CatalogsFeedValidationDetails {
     return warnings;
   }
 
-  public void setWarnings(CatalogsFeedValidationWarnings warnings) {
+  public void setWarnings(@javax.annotation.Nonnull CatalogsFeedValidationWarnings warnings) {
     this.warnings = warnings;
   }
 

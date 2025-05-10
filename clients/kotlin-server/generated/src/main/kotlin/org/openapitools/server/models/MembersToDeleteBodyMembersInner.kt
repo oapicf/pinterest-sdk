@@ -13,14 +13,16 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.BusinessRoleForMembers
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param memberId Unique identifier of the member
  * @param businessRole 
  */
+@Serializable
 data class MembersToDeleteBodyMembersInner(
     /* Unique identifier of the member */
     val memberId: kotlin.String,
     val businessRole: BusinessRoleForMembers
-) 
+)
 

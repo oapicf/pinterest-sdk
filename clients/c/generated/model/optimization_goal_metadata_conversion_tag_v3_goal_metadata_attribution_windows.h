@@ -23,9 +23,10 @@ typedef struct optimization_goal_metadata_conversion_tag_v3_goal_metadata_attrib
     int engagement_window_days; //numeric
     int view_window_days; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_t;
 
-optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_t *optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_create(
+__attribute__((deprecated)) optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_t *optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_create(
     int click_window_days,
     int engagement_window_days,
     int view_window_days

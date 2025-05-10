@@ -17,9 +17,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Hotel product metadata entity")
 @JsonTypeName("CatalogsHotelProductMetadata")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsHotelProductMetadata   {
   private String hotelId;
+
+  public CatalogsHotelProductMetadata() {
+  }
+
+  @JsonCreator
+  public CatalogsHotelProductMetadata(
+    @JsonProperty(required = true, value = "hotel_id") String hotelId
+  ) {
+    this.hotelId = hotelId;
+  }
 
   /**
    * The user-created unique ID that represents the hotel item.
@@ -31,12 +41,12 @@ public class CatalogsHotelProductMetadata   {
 
   
   @ApiModelProperty(example = "123abc", required = true, value = "The user-created unique ID that represents the hotel item.")
-  @JsonProperty("hotel_id")
+  @JsonProperty(required = true, value = "hotel_id")
   @NotNull public String getHotelId() {
     return hotelId;
   }
 
-  @JsonProperty("hotel_id")
+  @JsonProperty(required = true, value = "hotel_id")
   public void setHotelId(String hotelId) {
     this.hotelId = hotelId;
   }

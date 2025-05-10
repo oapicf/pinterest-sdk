@@ -13,7 +13,7 @@ import play.api.libs.json._
   * @param productVariant Product variant. For example, \"Red\".
   * @param productVariantId Product variant ID. For example, \"1414-34832\".
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2025-05-10T05:44:38.070631387Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 case class LineItem(
   productBrand: Option[String],
   productCategory: Option[String],

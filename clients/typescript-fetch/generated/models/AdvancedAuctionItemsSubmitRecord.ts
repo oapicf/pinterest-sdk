@@ -52,15 +52,19 @@ export function AdvancedAuctionItemsSubmitRecordFromJSONTyped(json: any, ignoreD
     }
 }
 
-export function AdvancedAuctionItemsSubmitRecordToJSON(value?: AdvancedAuctionItemsSubmitRecord | null): any {
+export function AdvancedAuctionItemsSubmitRecordToJSON(json: any): any {
+    return AdvancedAuctionItemsSubmitRecordToJSONTyped(json, false);
+}
+
+export function AdvancedAuctionItemsSubmitRecordToJSONTyped(value?: AdvancedAuctionItemsSubmitRecord | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
     switch (value['operation']) {
         case 'DELETE':
-            return AdvancedAuctionItemsSubmitDeleteRecordToJSON(value);
+            return Object.assign({}, AdvancedAuctionItemsSubmitDeleteRecordToJSON(value), { operation: 'DELETE' } as const);
         case 'UPSERT':
-            return AdvancedAuctionItemsSubmitUpsertRecordToJSON(value);
+            return Object.assign({}, AdvancedAuctionItemsSubmitUpsertRecordToJSON(value), { operation: 'UPSERT' } as const);
         default:
             throw new Error(`No variant of AdvancedAuctionItemsSubmitRecord exists with 'operation=${value['operation']}'`);
     }

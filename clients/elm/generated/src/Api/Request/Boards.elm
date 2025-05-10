@@ -74,7 +74,6 @@ stringFromPrivacy model =
 
 
 
-
 type CreativeTypes
     = CreativeTypesREGULAR
     | CreativeTypesVIDEO
@@ -128,77 +127,95 @@ stringFromCreativeTypes model =
 
 
 
-{-| Create a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+{-| Create board section
+
+Create a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+
 -}
 boardSectionsCreate : String -> Maybe String -> Api.Data.BoardSection -> Api.Request Api.Data.BoardSection
 boardSectionsCreate boardId_path adAccountId_query boardSection_body =
     Api.request
         "POST"
         "/boards/{board_id}/sections"
-        [ ( "boardId", identity boardId_path ) ]
+        [ ( "board_id", identity boardId_path ) ]
         [ ( "ad_account_id", Maybe.map identity adAccountId_query ) ]
         []
         (Maybe.map Http.jsonBody (Just (Api.Data.encodeBoardSection boardSection_body)))
         Api.Data.boardSectionDecoder
 
 
-{-| Delete a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+{-| Delete board section
+
+Delete a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+
 -}
 boardSectionsDelete : String -> String -> Maybe String -> Api.Request ()
 boardSectionsDelete boardId_path sectionId_path adAccountId_query =
     Api.request
         "DELETE"
         "/boards/{board_id}/sections/{section_id}"
-        [ ( "boardId", identity boardId_path ), ( "sectionId", identity sectionId_path ) ]
+        [ ( "board_id", identity boardId_path ), ( "section_id", identity sectionId_path ) ]
         [ ( "ad_account_id", Maybe.map identity adAccountId_query ) ]
         []
         Nothing
         (Json.Decode.succeed ())
 
 
-{-| Get a list of all board sections from a board owned by the \"operation user_account\" - or a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+{-| List board sections
+
+Get a list of all board sections from a board owned by the \"operation user_account\" - or a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+
 -}
 boardSectionsList : String -> Maybe String -> Maybe String -> Maybe Int -> Api.Request Api.Data.BoardSectionsList200Response
 boardSectionsList boardId_path adAccountId_query bookmark_query pageSize_query =
     Api.request
         "GET"
         "/boards/{board_id}/sections"
-        [ ( "boardId", identity boardId_path ) ]
+        [ ( "board_id", identity boardId_path ) ]
         [ ( "ad_account_id", Maybe.map identity adAccountId_query ), ( "bookmark", Maybe.map identity bookmark_query ), ( "page_size", Maybe.map String.fromInt pageSize_query ) ]
         []
         Nothing
         Api.Data.boardSectionsList200ResponseDecoder
 
 
-{-| Get a list of the Pins on a board section of a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+{-| List Pins on board section
+
+Get a list of the Pins on a board section of a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+
 -}
 boardSectionsListPins : String -> String -> Maybe String -> Maybe String -> Maybe Int -> Api.Request Api.Data.BoardsListPins200Response
 boardSectionsListPins boardId_path sectionId_path adAccountId_query bookmark_query pageSize_query =
     Api.request
         "GET"
         "/boards/{board_id}/sections/{section_id}/pins"
-        [ ( "boardId", identity boardId_path ), ( "sectionId", identity sectionId_path ) ]
+        [ ( "board_id", identity boardId_path ), ( "section_id", identity sectionId_path ) ]
         [ ( "ad_account_id", Maybe.map identity adAccountId_query ), ( "bookmark", Maybe.map identity bookmark_query ), ( "page_size", Maybe.map String.fromInt pageSize_query ) ]
         []
         Nothing
         Api.Data.boardsListPins200ResponseDecoder
 
 
-{-| Update a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+{-| Update board section
+
+Update a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+
 -}
 boardSectionsUpdate : String -> String -> Maybe String -> Api.Data.BoardSection -> Api.Request Api.Data.BoardSection
 boardSectionsUpdate boardId_path sectionId_path adAccountId_query boardSection_body =
     Api.request
         "PATCH"
         "/boards/{board_id}/sections/{section_id}"
-        [ ( "boardId", identity boardId_path ), ( "sectionId", identity sectionId_path ) ]
+        [ ( "board_id", identity boardId_path ), ( "section_id", identity sectionId_path ) ]
         [ ( "ad_account_id", Maybe.map identity adAccountId_query ) ]
         []
         (Maybe.map Http.jsonBody (Just (Api.Data.encodeBoardSection boardSection_body)))
         Api.Data.boardSectionDecoder
 
 
-{-| Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+{-| Create board
+
+Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+
 -}
 boardsCreate : Maybe String -> Api.Data.Board -> Api.Request Api.Data.Board
 boardsCreate adAccountId_query board_body =
@@ -212,35 +229,44 @@ boardsCreate adAccountId_query board_body =
         Api.Data.boardDecoder
 
 
-{-| Delete a board owned by the \"operation user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+{-| Delete board
+
+Delete a board owned by the \"operation user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+
 -}
 boardsDelete : String -> Maybe String -> Api.Request ()
 boardsDelete boardId_path adAccountId_query =
     Api.request
         "DELETE"
         "/boards/{board_id}"
-        [ ( "boardId", identity boardId_path ) ]
+        [ ( "board_id", identity boardId_path ) ]
         [ ( "ad_account_id", Maybe.map identity adAccountId_query ) ]
         []
         Nothing
         (Json.Decode.succeed ())
 
 
-{-| Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+{-| Get board
+
+Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+
 -}
 boardsGet : String -> Maybe String -> Api.Request Api.Data.Board
 boardsGet boardId_path adAccountId_query =
     Api.request
         "GET"
         "/boards/{board_id}"
-        [ ( "boardId", identity boardId_path ) ]
+        [ ( "board_id", identity boardId_path ) ]
         [ ( "ad_account_id", Maybe.map identity adAccountId_query ) ]
         []
         Nothing
         Api.Data.boardDecoder
 
 
-{-| Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+{-| List boards
+
+Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+
 -}
 boardsList : Maybe String -> Maybe String -> Maybe Int -> Maybe Privacy -> Api.Request Api.Data.BoardsList200Response
 boardsList adAccountId_query bookmark_query pageSize_query privacy_query =
@@ -254,28 +280,34 @@ boardsList adAccountId_query bookmark_query pageSize_query privacy_query =
         Api.Data.boardsList200ResponseDecoder
 
 
-{-| Get a list of the Pins on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+{-| List Pins on board
+
+Get a list of the Pins on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+
 -}
 boardsListPins : String -> Maybe String -> Maybe Int -> Maybe (List CreativeTypes) -> Maybe String -> Maybe Bool -> Api.Request Api.Data.BoardsListPins200Response
 boardsListPins boardId_path bookmark_query pageSize_query creativeTypes_query adAccountId_query pinMetrics_query =
     Api.request
         "GET"
         "/boards/{board_id}/pins"
-        [ ( "boardId", identity boardId_path ) ]
+        [ ( "board_id", identity boardId_path ) ]
         [ ( "bookmark", Maybe.map identity bookmark_query ), ( "page_size", Maybe.map String.fromInt pageSize_query ), ( "creative_types", Maybe.map (String.join "," << List.map stringFromCreativeTypes) creativeTypes_query ), ( "ad_account_id", Maybe.map identity adAccountId_query ), ( "pin_metrics", Maybe.map (\val -> if val then "true" else "false") pinMetrics_query ) ]
         []
         Nothing
         Api.Data.boardsListPins200ResponseDecoder
 
 
-{-| Update a board owned by the \"operating user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+{-| Update board
+
+Update a board owned by the \"operating user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+
 -}
 boardsUpdate : String -> Maybe String -> Api.Data.BoardUpdate -> Api.Request Api.Data.Board
 boardsUpdate boardId_path adAccountId_query boardUpdate_body =
     Api.request
         "PATCH"
         "/boards/{board_id}"
-        [ ( "boardId", identity boardId_path ) ]
+        [ ( "board_id", identity boardId_path ) ]
         [ ( "ad_account_id", Maybe.map identity adAccountId_query ) ]
         []
         (Maybe.map Http.jsonBody (Just (Api.Data.encodeBoardUpdate boardUpdate_body)))

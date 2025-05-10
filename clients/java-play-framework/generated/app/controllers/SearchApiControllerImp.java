@@ -14,7 +14,7 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2025-05-10T05:39:37.342741110Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SearchApiControllerImp extends SearchApiControllerImpInterface {
     @Override
     public SearchPartnerPins200Response searchPartnerPins(Http.Request request, @NotNull String term, @NotNull String countryCode, String bookmark, String locale,  @Min(1) @Max(50)Integer limit) throws Exception {

@@ -21,10 +21,10 @@ public struct AdGroupResponse: Codable, JSONEncodable, Hashable {
         case notActive = "NOT_ACTIVE"
         case active = "ACTIVE"
     }
-    static let campaignIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^[C]?\\d+$/")
-    static let targetingTemplateIdsRule = ArrayRule(minItems: nil, maxItems: 1, uniqueItems: false)
-    static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let campaignIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^[C]?\\d+$/")
+    public static let targetingTemplateIdsRule = ArrayRule(minItems: nil, maxItems: 1, uniqueItems: false)
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Ad group name. */
     public var name: String?
     /** Ad group/entity status. */
@@ -170,3 +170,6 @@ public struct AdGroupResponse: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension AdGroupResponse: Identifiable {}

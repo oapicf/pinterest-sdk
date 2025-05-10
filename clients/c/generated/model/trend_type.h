@@ -24,9 +24,9 @@ char* trend_type_trend_type_ToString(pinterest_rest_api_trend_type__e trend_type
 
 pinterest_rest_api_trend_type__e trend_type_trend_type_FromString(char* trend_type);
 
-//cJSON *trend_type_trend_type_convertToJSON(pinterest_rest_api_trend_type__e trend_type);
+cJSON *trend_type_convertToJSON(pinterest_rest_api_trend_type__e trend_type);
 
-//pinterest_rest_api_trend_type__e trend_type_trend_type_parseFromJSON(cJSON *trend_typeJSON);
+pinterest_rest_api_trend_type__e trend_type_parseFromJSON(cJSON *trend_typeJSON);
 
 #endif /* _trend_type_H_ */
 

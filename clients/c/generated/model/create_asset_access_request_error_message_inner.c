@@ -5,7 +5,7 @@
 
 
 
-create_asset_access_request_error_message_inner_t *create_asset_access_request_error_message_inner_create(
+static create_asset_access_request_error_message_inner_t *create_asset_access_request_error_message_inner_create_internal(
     int code,
     list_t *messages
     ) {
@@ -16,12 +16,26 @@ create_asset_access_request_error_message_inner_t *create_asset_access_request_e
     create_asset_access_request_error_message_inner_local_var->code = code;
     create_asset_access_request_error_message_inner_local_var->messages = messages;
 
+    create_asset_access_request_error_message_inner_local_var->_library_owned = 1;
     return create_asset_access_request_error_message_inner_local_var;
 }
 
+__attribute__((deprecated)) create_asset_access_request_error_message_inner_t *create_asset_access_request_error_message_inner_create(
+    int code,
+    list_t *messages
+    ) {
+    return create_asset_access_request_error_message_inner_create_internal (
+        code,
+        messages
+        );
+}
 
 void create_asset_access_request_error_message_inner_free(create_asset_access_request_error_message_inner_t *create_asset_access_request_error_message_inner) {
     if(NULL == create_asset_access_request_error_message_inner){
+        return ;
+    }
+    if(create_asset_access_request_error_message_inner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "create_asset_access_request_error_message_inner_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -55,7 +69,7 @@ cJSON *create_asset_access_request_error_message_inner_convertToJSON(create_asse
 
     listEntry_t *messagesListEntry;
     list_ForEach(messagesListEntry, create_asset_access_request_error_message_inner->messages) {
-    if(cJSON_AddStringToObject(messages, "", (char*)messagesListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(messages, "", messagesListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -79,6 +93,9 @@ create_asset_access_request_error_message_inner_t *create_asset_access_request_e
 
     // create_asset_access_request_error_message_inner->code
     cJSON *code = cJSON_GetObjectItemCaseSensitive(create_asset_access_request_error_message_innerJSON, "code");
+    if (cJSON_IsNull(code)) {
+        code = NULL;
+    }
     if (code) { 
     if(!cJSON_IsNumber(code))
     {
@@ -88,6 +105,9 @@ create_asset_access_request_error_message_inner_t *create_asset_access_request_e
 
     // create_asset_access_request_error_message_inner->messages
     cJSON *messages = cJSON_GetObjectItemCaseSensitive(create_asset_access_request_error_message_innerJSON, "messages");
+    if (cJSON_IsNull(messages)) {
+        messages = NULL;
+    }
     if (messages) { 
     cJSON *messages_local = NULL;
     if(!cJSON_IsArray(messages)) {
@@ -106,7 +126,7 @@ create_asset_access_request_error_message_inner_t *create_asset_access_request_e
     }
 
 
-    create_asset_access_request_error_message_inner_local_var = create_asset_access_request_error_message_inner_create (
+    create_asset_access_request_error_message_inner_local_var = create_asset_access_request_error_message_inner_create_internal (
         code ? code->valuedouble : 0,
         messages ? messagesList : NULL
         );

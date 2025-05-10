@@ -57,7 +57,7 @@ class KeywordsMetricsArrayResponse
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->data = array_key_exists('data', $data) ? $data['data'] : $this->data;

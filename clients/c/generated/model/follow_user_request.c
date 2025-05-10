@@ -5,7 +5,7 @@
 
 
 
-follow_user_request_t *follow_user_request_create(
+static follow_user_request_t *follow_user_request_create_internal(
     int auto_follow
     ) {
     follow_user_request_t *follow_user_request_local_var = malloc(sizeof(follow_user_request_t));
@@ -14,12 +14,24 @@ follow_user_request_t *follow_user_request_create(
     }
     follow_user_request_local_var->auto_follow = auto_follow;
 
+    follow_user_request_local_var->_library_owned = 1;
     return follow_user_request_local_var;
 }
 
+__attribute__((deprecated)) follow_user_request_t *follow_user_request_create(
+    int auto_follow
+    ) {
+    return follow_user_request_create_internal (
+        auto_follow
+        );
+}
 
 void follow_user_request_free(follow_user_request_t *follow_user_request) {
     if(NULL == follow_user_request){
+        return ;
+    }
+    if(follow_user_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "follow_user_request_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -50,6 +62,9 @@ follow_user_request_t *follow_user_request_parseFromJSON(cJSON *follow_user_requ
 
     // follow_user_request->auto_follow
     cJSON *auto_follow = cJSON_GetObjectItemCaseSensitive(follow_user_requestJSON, "auto_follow");
+    if (cJSON_IsNull(auto_follow)) {
+        auto_follow = NULL;
+    }
     if (auto_follow) { 
     if(!cJSON_IsBool(auto_follow))
     {
@@ -58,7 +73,7 @@ follow_user_request_t *follow_user_request_parseFromJSON(cJSON *follow_user_requ
     }
 
 
-    follow_user_request_local_var = follow_user_request_create (
+    follow_user_request_local_var = follow_user_request_create_internal (
         auto_follow ? auto_follow->valueint : 0
         );
 

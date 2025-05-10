@@ -250,7 +250,7 @@ void OAIAudiencesApi::audiences_create(const QString &ad_account_id, const OAIAu
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAudiencesApi::audiences_createCallback);
     connect(this, &OAIAudiencesApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -272,7 +272,7 @@ void OAIAudiencesApi::audiences_create(const QString &ad_account_id, const OAIAu
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAudiencesApi::audiences_createCallback);
     connect(this, &OAIAudiencesApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -380,7 +380,7 @@ void OAIAudiencesApi::audiences_createCustom(const QString &ad_account_id, const
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAudiencesApi::audiences_createCustomCallback);
     connect(this, &OAIAudiencesApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -402,7 +402,7 @@ void OAIAudiencesApi::audiences_createCustom(const QString &ad_account_id, const
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAudiencesApi::audiences_createCustomCallback);
     connect(this, &OAIAudiencesApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -519,7 +519,7 @@ void OAIAudiencesApi::audiences_get(const QString &ad_account_id, const QString 
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAudiencesApi::audiences_getCallback);
     connect(this, &OAIAudiencesApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -541,7 +541,7 @@ void OAIAudiencesApi::audiences_get(const QString &ad_account_id, const QString 
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAudiencesApi::audiences_getCallback);
     connect(this, &OAIAudiencesApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -645,7 +645,7 @@ void OAIAudiencesApi::audiences_list(const QString &ad_account_id, const ::OpenA
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     if (order.hasValue())
     {
@@ -660,7 +660,7 @@ void OAIAudiencesApi::audiences_list(const QString &ad_account_id, const ::OpenA
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("order")).append(querySuffix).append(QUrl::toPercentEncoding(order.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("order")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(order.stringValue())));
     }
     if (page_size.hasValue())
     {
@@ -675,7 +675,7 @@ void OAIAudiencesApi::audiences_list(const QString &ad_account_id, const ::OpenA
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     if (ownership_type.hasValue())
     {
@@ -690,7 +690,7 @@ void OAIAudiencesApi::audiences_list(const QString &ad_account_id, const ::OpenA
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ownership_type")).append(querySuffix).append(QUrl::toPercentEncoding(ownership_type.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ownership_type")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ownership_type.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -705,7 +705,7 @@ void OAIAudiencesApi::audiences_list(const QString &ad_account_id, const ::OpenA
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAudiencesApi::audiences_listCallback);
     connect(this, &OAIAudiencesApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -727,7 +727,7 @@ void OAIAudiencesApi::audiences_list(const QString &ad_account_id, const ::OpenA
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAudiencesApi::audiences_listCallback);
     connect(this, &OAIAudiencesApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -849,7 +849,7 @@ void OAIAudiencesApi::audiences_update(const QString &ad_account_id, const QStri
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAudiencesApi::audiences_updateCallback);
     connect(this, &OAIAudiencesApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -871,7 +871,7 @@ void OAIAudiencesApi::audiences_update(const QString &ad_account_id, const QStri
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAudiencesApi::audiences_updateCallback);
     connect(this, &OAIAudiencesApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }

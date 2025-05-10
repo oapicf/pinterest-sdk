@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param id Unique identifier of a business ad account.
  * @param permissions Permission levels member or partner has on an asset.
  */
+@Serializable
 data class InviteAssetsSummaryAdAccountsInner(
     /* Unique identifier of a business ad account. */
     val id: kotlin.String? = null,
     /* Permission levels member or partner has on an asset. */
     val permissions: kotlin.collections.List<kotlin.String>? = null
-) 
+)
 

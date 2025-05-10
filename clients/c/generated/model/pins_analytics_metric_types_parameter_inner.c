@@ -5,19 +5,29 @@
 
 
 
-pins_analytics_metric_types_parameter_inner_t *pins_analytics_metric_types_parameter_inner_create(
+static pins_analytics_metric_types_parameter_inner_t *pins_analytics_metric_types_parameter_inner_create_internal(
     ) {
     pins_analytics_metric_types_parameter_inner_t *pins_analytics_metric_types_parameter_inner_local_var = malloc(sizeof(pins_analytics_metric_types_parameter_inner_t));
     if (!pins_analytics_metric_types_parameter_inner_local_var) {
         return NULL;
     }
 
+    pins_analytics_metric_types_parameter_inner_local_var->_library_owned = 1;
     return pins_analytics_metric_types_parameter_inner_local_var;
 }
 
+__attribute__((deprecated)) pins_analytics_metric_types_parameter_inner_t *pins_analytics_metric_types_parameter_inner_create(
+    ) {
+    return pins_analytics_metric_types_parameter_inner_create_internal (
+        );
+}
 
 void pins_analytics_metric_types_parameter_inner_free(pins_analytics_metric_types_parameter_inner_t *pins_analytics_metric_types_parameter_inner) {
     if(NULL == pins_analytics_metric_types_parameter_inner){
+        return ;
+    }
+    if(pins_analytics_metric_types_parameter_inner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "pins_analytics_metric_types_parameter_inner_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -39,7 +49,7 @@ pins_analytics_metric_types_parameter_inner_t *pins_analytics_metric_types_param
     pins_analytics_metric_types_parameter_inner_t *pins_analytics_metric_types_parameter_inner_local_var = NULL;
 
 
-    pins_analytics_metric_types_parameter_inner_local_var = pins_analytics_metric_types_parameter_inner_create (
+    pins_analytics_metric_types_parameter_inner_local_var = pins_analytics_metric_types_parameter_inner_create_internal (
         );
 
     return pins_analytics_metric_types_parameter_inner_local_var;

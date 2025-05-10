@@ -19,9 +19,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("KeywordUpdateBody")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class KeywordUpdateBody   {
   private @Valid List<@Valid KeywordUpdate> keywords = new ArrayList<>();
+
+  public KeywordUpdateBody() {
+  }
+
+  @JsonCreator
+  public KeywordUpdateBody(
+    @JsonProperty(required = true, value = "keywords") List<@Valid KeywordUpdate> keywords
+  ) {
+    this.keywords = keywords;
+  }
 
   /**
    * Keywords to update. Object array. Each object has 2 possible fields:&lt;br&gt;1. \&quot;id\&quot;: (required) keyword ID&lt;br&gt;2. \&quot;archived\&quot;: boolean. Should keyword be archived?&lt;br&gt;For example: [{\&quot;id\&quot;:\&quot;2886610576653\&quot;, \&quot;archived\&quot;: false}, {\&quot;id\&quot;:\&quot;2886610576654\&quot;,  \&quot;archived\&quot;: true}, ...]
@@ -33,12 +43,12 @@ public class KeywordUpdateBody   {
 
   
   @ApiModelProperty(required = true, value = "Keywords to update. Object array. Each object has 2 possible fields:<br>1. \"id\": (required) keyword ID<br>2. \"archived\": boolean. Should keyword be archived?<br>For example: [{\"id\":\"2886610576653\", \"archived\": false}, {\"id\":\"2886610576654\",  \"archived\": true}, ...]")
-  @JsonProperty("keywords")
+  @JsonProperty(required = true, value = "keywords")
   @NotNull @Valid public List<@Valid KeywordUpdate> getKeywords() {
     return keywords;
   }
 
-  @JsonProperty("keywords")
+  @JsonProperty(required = true, value = "keywords")
   public void setKeywords(List<@Valid KeywordUpdate> keywords) {
     this.keywords = keywords;
   }

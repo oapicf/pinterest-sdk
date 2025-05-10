@@ -15,9 +15,13 @@
 export type EnhancedMatchStatusType = 'UNKNOWN' | 'NOT_VALIDATED' | 'VALIDATING_IN_PROGRESS' | 'VALIDATION_COMPLETE';
 
 export const EnhancedMatchStatusType = {
+
     Unknown: 'UNKNOWN' as EnhancedMatchStatusType,
+
     NotValidated: 'NOT_VALIDATED' as EnhancedMatchStatusType,
+
     ValidatingInProgress: 'VALIDATING_IN_PROGRESS' as EnhancedMatchStatusType,
+
     ValidationComplete: 'VALIDATION_COMPLETE' as EnhancedMatchStatusType
 };
 

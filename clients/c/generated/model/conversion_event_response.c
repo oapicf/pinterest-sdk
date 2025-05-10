@@ -4,26 +4,9 @@
 #include "conversion_event_response.h"
 
 
-char* conversion_event_response_conversion_event_ToString(pinterest_rest_api_conversion_event_response__e conversion_event) {
-    char* conversion_eventArray[] =  { "NULL", "PAGE_LOAD", "UNKNOWN", "INITIALIZED", "PAGE_VISIT", "SIGNUP", "CHECKOUT", "CUSTOM", "VIEW_CATEGORY", "SEARCH", "ADD_TO_CART", "WATCH_VIDEO", "LEAD", "APP_INSTALL", "WEB_SESSION", "EXTERNAL_MEASUREMENT" };
-    return conversion_eventArray[conversion_event];
-}
 
-pinterest_rest_api_conversion_event_response__e conversion_event_response_conversion_event_FromString(char* conversion_event){
-    int stringToReturn = 0;
-    char *conversion_eventArray[] =  { "NULL", "PAGE_LOAD", "UNKNOWN", "INITIALIZED", "PAGE_VISIT", "SIGNUP", "CHECKOUT", "CUSTOM", "VIEW_CATEGORY", "SEARCH", "ADD_TO_CART", "WATCH_VIDEO", "LEAD", "APP_INSTALL", "WEB_SESSION", "EXTERNAL_MEASUREMENT" };
-    size_t sizeofArray = sizeof(conversion_eventArray) / sizeof(conversion_eventArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(conversion_event, conversion_eventArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-
-conversion_event_response_t *conversion_event_response_create(
-    conversion_tag_type_t *conversion_event,
+static conversion_event_response_t *conversion_event_response_create_internal(
+    pinterest_rest_api_conversion_tag_type__e conversion_event,
     char *conversion_tag_id,
     char *ad_account_id,
     int created_time
@@ -37,19 +20,33 @@ conversion_event_response_t *conversion_event_response_create(
     conversion_event_response_local_var->ad_account_id = ad_account_id;
     conversion_event_response_local_var->created_time = created_time;
 
+    conversion_event_response_local_var->_library_owned = 1;
     return conversion_event_response_local_var;
 }
 
+__attribute__((deprecated)) conversion_event_response_t *conversion_event_response_create(
+    pinterest_rest_api_conversion_tag_type__e conversion_event,
+    char *conversion_tag_id,
+    char *ad_account_id,
+    int created_time
+    ) {
+    return conversion_event_response_create_internal (
+        conversion_event,
+        conversion_tag_id,
+        ad_account_id,
+        created_time
+        );
+}
 
 void conversion_event_response_free(conversion_event_response_t *conversion_event_response) {
     if(NULL == conversion_event_response){
         return ;
     }
-    listEntry_t *listEntry;
-    if (conversion_event_response->conversion_event) {
-        conversion_tag_type_free(conversion_event_response->conversion_event);
-        conversion_event_response->conversion_event = NULL;
+    if(conversion_event_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "conversion_event_response_free");
+        return ;
     }
+    listEntry_t *listEntry;
     if (conversion_event_response->conversion_tag_id) {
         free(conversion_event_response->conversion_tag_id);
         conversion_event_response->conversion_tag_id = NULL;
@@ -65,7 +62,7 @@ cJSON *conversion_event_response_convertToJSON(conversion_event_response_t *conv
     cJSON *item = cJSON_CreateObject();
 
     // conversion_event_response->conversion_event
-    if(conversion_event_response->conversion_event != pinterest_rest_api_conversion_event_response__NULL) {
+    if(conversion_event_response->conversion_event != pinterest_rest_api_conversion_tag_type__NULL) {
     cJSON *conversion_event_local_JSON = conversion_tag_type_convertToJSON(conversion_event_response->conversion_event);
     if(conversion_event_local_JSON == NULL) {
         goto fail; // custom
@@ -113,16 +110,22 @@ conversion_event_response_t *conversion_event_response_parseFromJSON(cJSON *conv
     conversion_event_response_t *conversion_event_response_local_var = NULL;
 
     // define the local variable for conversion_event_response->conversion_event
-    conversion_tag_type_t *conversion_event_local_nonprim = NULL;
+    pinterest_rest_api_conversion_tag_type__e conversion_event_local_nonprim = 0;
 
     // conversion_event_response->conversion_event
     cJSON *conversion_event = cJSON_GetObjectItemCaseSensitive(conversion_event_responseJSON, "conversion_event");
+    if (cJSON_IsNull(conversion_event)) {
+        conversion_event = NULL;
+    }
     if (conversion_event) { 
     conversion_event_local_nonprim = conversion_tag_type_parseFromJSON(conversion_event); //custom
     }
 
     // conversion_event_response->conversion_tag_id
     cJSON *conversion_tag_id = cJSON_GetObjectItemCaseSensitive(conversion_event_responseJSON, "conversion_tag_id");
+    if (cJSON_IsNull(conversion_tag_id)) {
+        conversion_tag_id = NULL;
+    }
     if (conversion_tag_id) { 
     if(!cJSON_IsString(conversion_tag_id) && !cJSON_IsNull(conversion_tag_id))
     {
@@ -132,6 +135,9 @@ conversion_event_response_t *conversion_event_response_parseFromJSON(cJSON *conv
 
     // conversion_event_response->ad_account_id
     cJSON *ad_account_id = cJSON_GetObjectItemCaseSensitive(conversion_event_responseJSON, "ad_account_id");
+    if (cJSON_IsNull(ad_account_id)) {
+        ad_account_id = NULL;
+    }
     if (ad_account_id) { 
     if(!cJSON_IsString(ad_account_id) && !cJSON_IsNull(ad_account_id))
     {
@@ -141,6 +147,9 @@ conversion_event_response_t *conversion_event_response_parseFromJSON(cJSON *conv
 
     // conversion_event_response->created_time
     cJSON *created_time = cJSON_GetObjectItemCaseSensitive(conversion_event_responseJSON, "created_time");
+    if (cJSON_IsNull(created_time)) {
+        created_time = NULL;
+    }
     if (created_time) { 
     if(!cJSON_IsNumber(created_time))
     {
@@ -149,8 +158,8 @@ conversion_event_response_t *conversion_event_response_parseFromJSON(cJSON *conv
     }
 
 
-    conversion_event_response_local_var = conversion_event_response_create (
-        conversion_event ? conversion_event_local_nonprim : NULL,
+    conversion_event_response_local_var = conversion_event_response_create_internal (
+        conversion_event ? conversion_event_local_nonprim : 0,
         conversion_tag_id && !cJSON_IsNull(conversion_tag_id) ? strdup(conversion_tag_id->valuestring) : NULL,
         ad_account_id && !cJSON_IsNull(ad_account_id) ? strdup(ad_account_id->valuestring) : NULL,
         created_time ? created_time->valuedouble : 0
@@ -159,8 +168,7 @@ conversion_event_response_t *conversion_event_response_parseFromJSON(cJSON *conv
     return conversion_event_response_local_var;
 end:
     if (conversion_event_local_nonprim) {
-        conversion_tag_type_free(conversion_event_local_nonprim);
-        conversion_event_local_nonprim = NULL;
+        conversion_event_local_nonprim = 0;
     }
     return NULL;
 

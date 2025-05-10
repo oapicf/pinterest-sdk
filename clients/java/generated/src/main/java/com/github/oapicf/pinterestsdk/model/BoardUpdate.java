@@ -49,14 +49,16 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Board fields for updates
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BoardUpdate {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nullable
   private String description;
 
   /**
@@ -113,12 +115,13 @@ public class BoardUpdate {
 
   public static final String SERIALIZED_NAME_PRIVACY = "privacy";
   @SerializedName(SERIALIZED_NAME_PRIVACY)
+  @javax.annotation.Nullable
   private PrivacyEnum privacy;
 
   public BoardUpdate() {
   }
 
-  public BoardUpdate name(String name) {
+  public BoardUpdate name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -132,12 +135,12 @@ public class BoardUpdate {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public BoardUpdate description(String description) {
+  public BoardUpdate description(@javax.annotation.Nullable String description) {
     this.description = description;
     return this;
   }
@@ -151,12 +154,12 @@ public class BoardUpdate {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
 
-  public BoardUpdate privacy(PrivacyEnum privacy) {
+  public BoardUpdate privacy(@javax.annotation.Nullable PrivacyEnum privacy) {
     this.privacy = privacy;
     return this;
   }
@@ -170,7 +173,7 @@ public class BoardUpdate {
     return privacy;
   }
 
-  public void setPrivacy(PrivacyEnum privacy) {
+  public void setPrivacy(@javax.annotation.Nullable PrivacyEnum privacy) {
     this.privacy = privacy;
   }
 

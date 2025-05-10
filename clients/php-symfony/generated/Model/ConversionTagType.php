@@ -44,21 +44,21 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum ConversionTagType: string
 {
-        case PAGE_LOAD = "PAGE_LOAD";
-        case UNKNOWN = "UNKNOWN";
-        case INITIALIZED = "INITIALIZED";
-        case PAGE_VISIT = "PAGE_VISIT";
-        case SIGNUP = "SIGNUP";
-        case CHECKOUT = "CHECKOUT";
-        case CUSTOM = "CUSTOM";
-        case VIEW_CATEGORY = "VIEW_CATEGORY";
-        case SEARCH = "SEARCH";
-        case ADD_TO_CART = "ADD_TO_CART";
-        case WATCH_VIDEO = "WATCH_VIDEO";
-        case LEAD = "LEAD";
-        case APP_INSTALL = "APP_INSTALL";
-        case WEB_SESSION = "WEB_SESSION";
-        case EXTERNAL_MEASUREMENT = "EXTERNAL_MEASUREMENT";
+        case PAGE_LOAD = 'PAGE_LOAD';
+        case UNKNOWN = 'UNKNOWN';
+        case INITIALIZED = 'INITIALIZED';
+        case PAGE_VISIT = 'PAGE_VISIT';
+        case SIGNUP = 'SIGNUP';
+        case CHECKOUT = 'CHECKOUT';
+        case CUSTOM = 'CUSTOM';
+        case VIEW_CATEGORY = 'VIEW_CATEGORY';
+        case SEARCH = 'SEARCH';
+        case ADD_TO_CART = 'ADD_TO_CART';
+        case WATCH_VIDEO = 'WATCH_VIDEO';
+        case LEAD = 'LEAD';
+        case APP_INSTALL = 'APP_INSTALL';
+        case WEB_SESSION = 'WEB_SESSION';
+        case EXTERNAL_MEASUREMENT = 'EXTERNAL_MEASUREMENT';
 }
 
 

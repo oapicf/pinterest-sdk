@@ -56,7 +56,7 @@ class OptimizationGoalMetadataConversionTagV3GoalMetadata
      * @SerializedName("conversion_event")
      * @Type("string")
     */
-    #[Assert\Choice(["PAGE_VISIT", "SIGNUP", "CHECKOUT", "CUSTOM", "VIEW_CATEGORY", "SEARCH", "ADD_TO_CART", "WATCH_VIDEO", "LEAD", "APP_INSTALL"])]
+    #[Assert\Choice(['PAGE_VISIT', 'SIGNUP', 'CHECKOUT', 'CUSTOM', 'VIEW_CATEGORY', 'SEARCH', 'ADD_TO_CART', 'WATCH_VIDEO', 'LEAD', 'APP_INSTALL'])]
     #[Assert\Type("string")]
     protected ?string $conversionEvent = null;
 
@@ -95,7 +95,7 @@ class OptimizationGoalMetadataConversionTagV3GoalMetadata
      * @SerializedName("learning_mode_type")
      * @Type("string")
     */
-    #[Assert\Choice(["NOT_ACTIVE", "ACTIVE"])]
+    #[Assert\Choice(['NOT_ACTIVE', 'ACTIVE'])]
     #[Assert\Type("string")]
     protected ?string $learningModeType = null;
 
@@ -103,7 +103,7 @@ class OptimizationGoalMetadataConversionTagV3GoalMetadata
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->attributionWindows = array_key_exists('attributionWindows', $data) ? $data['attributionWindows'] : $this->attributionWindows;

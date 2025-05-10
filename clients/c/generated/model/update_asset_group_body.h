@@ -22,9 +22,10 @@ typedef struct update_asset_group_body_t update_asset_group_body_t;
 typedef struct update_asset_group_body_t {
     list_t *asset_groups_to_update; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } update_asset_group_body_t;
 
-update_asset_group_body_t *update_asset_group_body_create(
+__attribute__((deprecated)) update_asset_group_body_t *update_asset_group_body_create(
     list_t *asset_groups_to_update
 );
 

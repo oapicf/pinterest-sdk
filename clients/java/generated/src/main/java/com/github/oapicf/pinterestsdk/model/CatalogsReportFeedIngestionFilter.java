@@ -48,7 +48,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsReportFeedIngestionFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsReportFeedIngestionFilter {
   /**
    * Gets or Sets reportType
@@ -102,20 +102,23 @@ public class CatalogsReportFeedIngestionFilter {
 
   public static final String SERIALIZED_NAME_REPORT_TYPE = "report_type";
   @SerializedName(SERIALIZED_NAME_REPORT_TYPE)
+  @javax.annotation.Nonnull
   private ReportTypeEnum reportType;
 
   public static final String SERIALIZED_NAME_FEED_ID = "feed_id";
   @SerializedName(SERIALIZED_NAME_FEED_ID)
+  @javax.annotation.Nonnull
   private String feedId;
 
   public static final String SERIALIZED_NAME_PROCESSING_RESULT_ID = "processing_result_id";
   @SerializedName(SERIALIZED_NAME_PROCESSING_RESULT_ID)
+  @javax.annotation.Nullable
   private String processingResultId;
 
   public CatalogsReportFeedIngestionFilter() {
   }
 
-  public CatalogsReportFeedIngestionFilter reportType(ReportTypeEnum reportType) {
+  public CatalogsReportFeedIngestionFilter reportType(@javax.annotation.Nonnull ReportTypeEnum reportType) {
     this.reportType = reportType;
     return this;
   }
@@ -129,12 +132,12 @@ public class CatalogsReportFeedIngestionFilter {
     return reportType;
   }
 
-  public void setReportType(ReportTypeEnum reportType) {
+  public void setReportType(@javax.annotation.Nonnull ReportTypeEnum reportType) {
     this.reportType = reportType;
   }
 
 
-  public CatalogsReportFeedIngestionFilter feedId(String feedId) {
+  public CatalogsReportFeedIngestionFilter feedId(@javax.annotation.Nonnull String feedId) {
     this.feedId = feedId;
     return this;
   }
@@ -148,12 +151,12 @@ public class CatalogsReportFeedIngestionFilter {
     return feedId;
   }
 
-  public void setFeedId(String feedId) {
+  public void setFeedId(@javax.annotation.Nonnull String feedId) {
     this.feedId = feedId;
   }
 
 
-  public CatalogsReportFeedIngestionFilter processingResultId(String processingResultId) {
+  public CatalogsReportFeedIngestionFilter processingResultId(@javax.annotation.Nullable String processingResultId) {
     this.processingResultId = processingResultId;
     return this;
   }
@@ -167,7 +170,7 @@ public class CatalogsReportFeedIngestionFilter {
     return processingResultId;
   }
 
-  public void setProcessingResultId(String processingResultId) {
+  public void setProcessingResultId(@javax.annotation.Nullable String processingResultId) {
     this.processingResultId = processingResultId;
   }
 

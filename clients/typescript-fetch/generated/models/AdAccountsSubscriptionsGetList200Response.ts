@@ -64,11 +64,11 @@ export function AdAccountsSubscriptionsGetList200ResponseFromJSONTyped(json: any
     };
 }
 
-  export function AdAccountsSubscriptionsGetList200ResponseToJSON(json: any): AdAccountsSubscriptionsGetList200Response {
-      return AdAccountsSubscriptionsGetList200ResponseToJSONTyped(json, false);
-  }
+export function AdAccountsSubscriptionsGetList200ResponseToJSON(json: any): AdAccountsSubscriptionsGetList200Response {
+    return AdAccountsSubscriptionsGetList200ResponseToJSONTyped(json, false);
+}
 
-  export function AdAccountsSubscriptionsGetList200ResponseToJSONTyped(value?: AdAccountsSubscriptionsGetList200Response | null, ignoreDiscriminator: boolean = false): any {
+export function AdAccountsSubscriptionsGetList200ResponseToJSONTyped(value?: AdAccountsSubscriptionsGetList200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

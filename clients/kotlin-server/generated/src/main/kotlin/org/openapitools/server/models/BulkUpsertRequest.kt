@@ -14,13 +14,15 @@ package org.openapitools.server.models
 import org.openapitools.server.models.BulkUpsertRequestCreate
 import org.openapitools.server.models.BulkUpsertRequestUpdate
 
+import kotlinx.serialization.Serializable
 /**
  * Two set of objects to be managed asyncronusly by bulk. One for creations, one for modifications.
  * @param create 
  * @param update 
  */
+@Serializable
 data class BulkUpsertRequest(
     val create: BulkUpsertRequestCreate? = null,
     val update: BulkUpsertRequestUpdate? = null
-) 
+)
 

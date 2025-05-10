@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.ImageMetadataImages
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param itemType 
@@ -21,11 +22,12 @@ import org.openapitools.server.models.ImageMetadataImages
  * @param link 
  * @param images 
  */
+@Serializable
 data class ImageMetadata(
     val itemType: kotlin.String? = null,
     val title: kotlin.String? = null,
     val description: kotlin.String? = null,
     val link: kotlin.String? = null,
     val images: ImageMetadataImages? = null
-) 
+)
 

@@ -5,7 +5,7 @@
 
 
 
-ad_group_audience_sizing_response_t *ad_group_audience_sizing_response_create(
+static ad_group_audience_sizing_response_t *ad_group_audience_sizing_response_create_internal(
     double audience_size_lower_bound,
     double audience_size_upper_bound
     ) {
@@ -16,12 +16,26 @@ ad_group_audience_sizing_response_t *ad_group_audience_sizing_response_create(
     ad_group_audience_sizing_response_local_var->audience_size_lower_bound = audience_size_lower_bound;
     ad_group_audience_sizing_response_local_var->audience_size_upper_bound = audience_size_upper_bound;
 
+    ad_group_audience_sizing_response_local_var->_library_owned = 1;
     return ad_group_audience_sizing_response_local_var;
 }
 
+__attribute__((deprecated)) ad_group_audience_sizing_response_t *ad_group_audience_sizing_response_create(
+    double audience_size_lower_bound,
+    double audience_size_upper_bound
+    ) {
+    return ad_group_audience_sizing_response_create_internal (
+        audience_size_lower_bound,
+        audience_size_upper_bound
+        );
+}
 
 void ad_group_audience_sizing_response_free(ad_group_audience_sizing_response_t *ad_group_audience_sizing_response) {
     if(NULL == ad_group_audience_sizing_response){
+        return ;
+    }
+    if(ad_group_audience_sizing_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ad_group_audience_sizing_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -60,6 +74,9 @@ ad_group_audience_sizing_response_t *ad_group_audience_sizing_response_parseFrom
 
     // ad_group_audience_sizing_response->audience_size_lower_bound
     cJSON *audience_size_lower_bound = cJSON_GetObjectItemCaseSensitive(ad_group_audience_sizing_responseJSON, "audience_size_lower_bound");
+    if (cJSON_IsNull(audience_size_lower_bound)) {
+        audience_size_lower_bound = NULL;
+    }
     if (audience_size_lower_bound) { 
     if(!cJSON_IsNumber(audience_size_lower_bound))
     {
@@ -69,6 +86,9 @@ ad_group_audience_sizing_response_t *ad_group_audience_sizing_response_parseFrom
 
     // ad_group_audience_sizing_response->audience_size_upper_bound
     cJSON *audience_size_upper_bound = cJSON_GetObjectItemCaseSensitive(ad_group_audience_sizing_responseJSON, "audience_size_upper_bound");
+    if (cJSON_IsNull(audience_size_upper_bound)) {
+        audience_size_upper_bound = NULL;
+    }
     if (audience_size_upper_bound) { 
     if(!cJSON_IsNumber(audience_size_upper_bound))
     {
@@ -77,7 +97,7 @@ ad_group_audience_sizing_response_t *ad_group_audience_sizing_response_parseFrom
     }
 
 
-    ad_group_audience_sizing_response_local_var = ad_group_audience_sizing_response_create (
+    ad_group_audience_sizing_response_local_var = ad_group_audience_sizing_response_create_internal (
         audience_size_lower_bound ? audience_size_lower_bound->valuedouble : 0,
         audience_size_upper_bound ? audience_size_upper_bound->valuedouble : 0
         );

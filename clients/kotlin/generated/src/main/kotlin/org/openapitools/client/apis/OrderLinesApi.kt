@@ -48,6 +48,7 @@ class OrderLinesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/order_lines/{order_line_id}
      * Get order line
      * Get a specific existing order line associated with an ad account.
      * @param adAccountId Unique identifier of an ad account.
@@ -80,6 +81,7 @@ class OrderLinesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/order_lines/{order_line_id}
      * Get order line
      * Get a specific existing order line associated with an ad account.
      * @param adAccountId Unique identifier of an ad account.
@@ -139,6 +141,7 @@ class OrderLinesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
      }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/order_lines
      * Get order lines
      * List existing order lines associated with an ad account.
      * @param adAccountId Unique identifier of an ad account.
@@ -173,6 +176,7 @@ class OrderLinesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/order_lines
      * Get order lines
      * List existing order lines associated with an ad account.
      * @param adAccountId Unique identifier of an ad account.

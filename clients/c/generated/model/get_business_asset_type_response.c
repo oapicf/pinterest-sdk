@@ -22,7 +22,7 @@ pinterest_rest_api_get_business_asset_type_response__e get_business_asset_type_r
     return 0;
 }
 
-cJSON *get_business_asset_type_response_get_business_asset_type_response_convertToJSON(pinterest_rest_api_get_business_asset_type_response__e get_business_asset_type_response) {
+cJSON *get_business_asset_type_response_convertToJSON(pinterest_rest_api_get_business_asset_type_response__e get_business_asset_type_response) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "get_business_asset_type_response", get_business_asset_type_response_get_business_asset_type_response_ToString(get_business_asset_type_response)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_get_business_asset_type_response__e get_business_asset_type_response_get_business_asset_type_response_parseFromJSON(cJSON *get_business_asset_type_responseJSON) {
-    pinterest_rest_api_get_business_asset_type_response__e *get_business_asset_type_response = NULL;
-    pinterest_rest_api_get_business_asset_type_response__e get_business_asset_type_responseVariable;
-    cJSON *get_business_asset_type_responseVar = cJSON_GetObjectItemCaseSensitive(get_business_asset_type_responseJSON, "get_business_asset_type_response");
-    if(!cJSON_IsString(get_business_asset_type_responseVar) || (get_business_asset_type_responseVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_get_business_asset_type_response__e get_business_asset_type_response_parseFromJSON(cJSON *get_business_asset_type_responseJSON) {
+    if(!cJSON_IsString(get_business_asset_type_responseJSON) || (get_business_asset_type_responseJSON->valuestring == NULL)) {
+        return 0;
     }
-    get_business_asset_type_responseVariable = get_business_asset_type_response_get_business_asset_type_response_FromString(get_business_asset_type_responseVar->valuestring);
-    return get_business_asset_type_responseVariable;
-end:
-    return 0;
+    return get_business_asset_type_response_get_business_asset_type_response_FromString(get_business_asset_type_responseJSON->valuestring);
 }

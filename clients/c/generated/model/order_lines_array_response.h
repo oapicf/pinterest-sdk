@@ -22,9 +22,10 @@ typedef struct order_lines_array_response_t order_lines_array_response_t;
 typedef struct order_lines_array_response_t {
     list_t *items; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } order_lines_array_response_t;
 
-order_lines_array_response_t *order_lines_array_response_create(
+__attribute__((deprecated)) order_lines_array_response_t *order_lines_array_response_create(
     list_t *items
 );
 

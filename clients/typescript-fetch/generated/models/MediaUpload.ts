@@ -86,11 +86,11 @@ export function MediaUploadFromJSONTyped(json: any, ignoreDiscriminator: boolean
     };
 }
 
-  export function MediaUploadToJSON(json: any): MediaUpload {
-      return MediaUploadToJSONTyped(json, false);
-  }
+export function MediaUploadToJSON(json: any): MediaUpload {
+    return MediaUploadToJSONTyped(json, false);
+}
 
-  export function MediaUploadToJSONTyped(value?: MediaUpload | null, ignoreDiscriminator: boolean = false): any {
+export function MediaUploadToJSONTyped(value?: MediaUpload | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

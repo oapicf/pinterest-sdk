@@ -131,7 +131,7 @@ func (c *LeadAdsAPIController) AdAccountsSubscriptionsPost(w http.ResponseWriter
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	adAccountCreateSubscriptionRequestParam := AdAccountCreateSubscriptionRequest{}
+	var adAccountCreateSubscriptionRequestParam AdAccountCreateSubscriptionRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&adAccountCreateSubscriptionRequestParam); err != nil {

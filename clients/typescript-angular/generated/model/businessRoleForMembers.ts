@@ -15,7 +15,9 @@
 export type BusinessRoleForMembers = 'EMPLOYEE' | 'BIZ_ADMIN';
 
 export const BusinessRoleForMembers = {
+
     Employee: 'EMPLOYEE' as BusinessRoleForMembers,
+
     BizAdmin: 'BIZ_ADMIN' as BusinessRoleForMembers
 };
 

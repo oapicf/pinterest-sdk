@@ -5,7 +5,7 @@
 
 
 
-members_to_delete_body_t *members_to_delete_body_create(
+static members_to_delete_body_t *members_to_delete_body_create_internal(
     list_t *members
     ) {
     members_to_delete_body_t *members_to_delete_body_local_var = malloc(sizeof(members_to_delete_body_t));
@@ -14,12 +14,24 @@ members_to_delete_body_t *members_to_delete_body_create(
     }
     members_to_delete_body_local_var->members = members;
 
+    members_to_delete_body_local_var->_library_owned = 1;
     return members_to_delete_body_local_var;
 }
 
+__attribute__((deprecated)) members_to_delete_body_t *members_to_delete_body_create(
+    list_t *members
+    ) {
+    return members_to_delete_body_create_internal (
+        members
+        );
+}
 
 void members_to_delete_body_free(members_to_delete_body_t *members_to_delete_body) {
     if(NULL == members_to_delete_body){
+        return ;
+    }
+    if(members_to_delete_body->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "members_to_delete_body_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -73,6 +85,9 @@ members_to_delete_body_t *members_to_delete_body_parseFromJSON(cJSON *members_to
 
     // members_to_delete_body->members
     cJSON *members = cJSON_GetObjectItemCaseSensitive(members_to_delete_bodyJSON, "members");
+    if (cJSON_IsNull(members)) {
+        members = NULL;
+    }
     if (!members) {
         goto end;
     }
@@ -96,7 +111,7 @@ members_to_delete_body_t *members_to_delete_body_parseFromJSON(cJSON *members_to
     }
 
 
-    members_to_delete_body_local_var = members_to_delete_body_create (
+    members_to_delete_body_local_var = members_to_delete_body_create_internal (
         membersList
         );
 

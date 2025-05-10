@@ -4,29 +4,12 @@
 #include "hotel_processing_record.h"
 
 
-char* hotel_processing_record_status_ToString(pinterest_rest_api_hotel_processing_record__e status) {
-    char* statusArray[] =  { "NULL", "SUCCESS", "FAILURE", "PROCESSING" };
-    return statusArray[status];
-}
 
-pinterest_rest_api_hotel_processing_record__e hotel_processing_record_status_FromString(char* status){
-    int stringToReturn = 0;
-    char *statusArray[] =  { "NULL", "SUCCESS", "FAILURE", "PROCESSING" };
-    size_t sizeofArray = sizeof(statusArray) / sizeof(statusArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(status, statusArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-
-hotel_processing_record_t *hotel_processing_record_create(
+static hotel_processing_record_t *hotel_processing_record_create_internal(
     char *hotel_id,
     list_t *errors,
     list_t *warnings,
-    item_processing_status_t *status
+    pinterest_rest_api_item_processing_status__e status
     ) {
     hotel_processing_record_t *hotel_processing_record_local_var = malloc(sizeof(hotel_processing_record_t));
     if (!hotel_processing_record_local_var) {
@@ -37,12 +20,30 @@ hotel_processing_record_t *hotel_processing_record_create(
     hotel_processing_record_local_var->warnings = warnings;
     hotel_processing_record_local_var->status = status;
 
+    hotel_processing_record_local_var->_library_owned = 1;
     return hotel_processing_record_local_var;
 }
 
+__attribute__((deprecated)) hotel_processing_record_t *hotel_processing_record_create(
+    char *hotel_id,
+    list_t *errors,
+    list_t *warnings,
+    pinterest_rest_api_item_processing_status__e status
+    ) {
+    return hotel_processing_record_create_internal (
+        hotel_id,
+        errors,
+        warnings,
+        status
+        );
+}
 
 void hotel_processing_record_free(hotel_processing_record_t *hotel_processing_record) {
     if(NULL == hotel_processing_record){
+        return ;
+    }
+    if(hotel_processing_record->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "hotel_processing_record_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -63,10 +64,6 @@ void hotel_processing_record_free(hotel_processing_record_t *hotel_processing_re
         }
         list_freeList(hotel_processing_record->warnings);
         hotel_processing_record->warnings = NULL;
-    }
-    if (hotel_processing_record->status) {
-        item_processing_status_free(hotel_processing_record->status);
-        hotel_processing_record->status = NULL;
     }
     free(hotel_processing_record);
 }
@@ -123,7 +120,7 @@ cJSON *hotel_processing_record_convertToJSON(hotel_processing_record_t *hotel_pr
 
 
     // hotel_processing_record->status
-    if(hotel_processing_record->status != pinterest_rest_api_hotel_processing_record__NULL) {
+    if(hotel_processing_record->status != pinterest_rest_api_item_processing_status__NULL) {
     cJSON *status_local_JSON = item_processing_status_convertToJSON(hotel_processing_record->status);
     if(status_local_JSON == NULL) {
         goto fail; // custom
@@ -153,10 +150,13 @@ hotel_processing_record_t *hotel_processing_record_parseFromJSON(cJSON *hotel_pr
     list_t *warningsList = NULL;
 
     // define the local variable for hotel_processing_record->status
-    item_processing_status_t *status_local_nonprim = NULL;
+    pinterest_rest_api_item_processing_status__e status_local_nonprim = 0;
 
     // hotel_processing_record->hotel_id
     cJSON *hotel_id = cJSON_GetObjectItemCaseSensitive(hotel_processing_recordJSON, "hotel_id");
+    if (cJSON_IsNull(hotel_id)) {
+        hotel_id = NULL;
+    }
     if (hotel_id) { 
     if(!cJSON_IsString(hotel_id) && !cJSON_IsNull(hotel_id))
     {
@@ -166,6 +166,9 @@ hotel_processing_record_t *hotel_processing_record_parseFromJSON(cJSON *hotel_pr
 
     // hotel_processing_record->errors
     cJSON *errors = cJSON_GetObjectItemCaseSensitive(hotel_processing_recordJSON, "errors");
+    if (cJSON_IsNull(errors)) {
+        errors = NULL;
+    }
     if (errors) { 
     cJSON *errors_local_nonprimitive = NULL;
     if(!cJSON_IsArray(errors)){
@@ -187,6 +190,9 @@ hotel_processing_record_t *hotel_processing_record_parseFromJSON(cJSON *hotel_pr
 
     // hotel_processing_record->warnings
     cJSON *warnings = cJSON_GetObjectItemCaseSensitive(hotel_processing_recordJSON, "warnings");
+    if (cJSON_IsNull(warnings)) {
+        warnings = NULL;
+    }
     if (warnings) { 
     cJSON *warnings_local_nonprimitive = NULL;
     if(!cJSON_IsArray(warnings)){
@@ -208,16 +214,19 @@ hotel_processing_record_t *hotel_processing_record_parseFromJSON(cJSON *hotel_pr
 
     // hotel_processing_record->status
     cJSON *status = cJSON_GetObjectItemCaseSensitive(hotel_processing_recordJSON, "status");
+    if (cJSON_IsNull(status)) {
+        status = NULL;
+    }
     if (status) { 
     status_local_nonprim = item_processing_status_parseFromJSON(status); //custom
     }
 
 
-    hotel_processing_record_local_var = hotel_processing_record_create (
+    hotel_processing_record_local_var = hotel_processing_record_create_internal (
         hotel_id && !cJSON_IsNull(hotel_id) ? strdup(hotel_id->valuestring) : NULL,
         errors ? errorsList : NULL,
         warnings ? warningsList : NULL,
-        status ? status_local_nonprim : NULL
+        status ? status_local_nonprim : 0
         );
 
     return hotel_processing_record_local_var;
@@ -241,8 +250,7 @@ end:
         warningsList = NULL;
     }
     if (status_local_nonprim) {
-        item_processing_status_free(status_local_nonprim);
-        status_local_nonprim = NULL;
+        status_local_nonprim = 0;
     }
     return NULL;
 

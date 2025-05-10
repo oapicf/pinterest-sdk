@@ -15,8 +15,8 @@ type SourceType* {.pure.} = enum
   VideoId
 
 type CoverImageContentType* {.pure.} = enum
-  Jpeg
-  Png
+  ImageJpeg
+  ImagePng
 
 type PinMediaSourceVideoID* = object
   ## Video ID-based media source
@@ -39,12 +39,12 @@ func `$`*(v: SourceType): string =
 
 func `%`*(v: CoverImageContentType): JsonNode =
   let str = case v:
-    of CoverImageContentType.Jpeg: "image/jpeg"
-    of CoverImageContentType.Png: "image/png"
+    of CoverImageContentType.ImageJpeg: "image/jpeg"
+    of CoverImageContentType.ImagePng: "image/png"
 
   JsonNode(kind: JString, str: str)
 
 func `$`*(v: CoverImageContentType): string =
   result = case v:
-    of CoverImageContentType.Jpeg: "image/jpeg"
-    of CoverImageContentType.Png: "image/png"
+    of CoverImageContentType.ImageJpeg: "image/jpeg"
+    of CoverImageContentType.ImagePng: "image/png"

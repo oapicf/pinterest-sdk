@@ -457,8 +457,8 @@ open class ProductGroupPromotionsAPI {
      * enum for parameter conversionReportTime
      */
     public enum ConversionReportTime_productGroupsAnalytics: String, CaseIterable {
-        case adAction = "TIME_OF_AD_ACTION"
-        case conversion = "TIME_OF_CONVERSION"
+        case timeOfAdAction = "TIME_OF_AD_ACTION"
+        case timeOfConversion = "TIME_OF_CONVERSION"
     }
 
     /**

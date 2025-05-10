@@ -42,8 +42,8 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum PartnerType: string
 {
-        case INTERNAL = "INTERNAL";
-        case EXTERNAL = "EXTERNAL";
+        case INTERNAL = 'INTERNAL';
+        case EXTERNAL = 'EXTERNAL';
 }
 
 

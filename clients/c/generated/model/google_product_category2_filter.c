@@ -5,7 +5,7 @@
 
 
 
-google_product_category2_filter_t *google_product_category2_filter_create(
+static google_product_category2_filter_t *google_product_category2_filter_create_internal(
     catalogs_product_group_multiple_string_list_criteria_t *google_product_category_2
     ) {
     google_product_category2_filter_t *google_product_category2_filter_local_var = malloc(sizeof(google_product_category2_filter_t));
@@ -14,12 +14,24 @@ google_product_category2_filter_t *google_product_category2_filter_create(
     }
     google_product_category2_filter_local_var->google_product_category_2 = google_product_category_2;
 
+    google_product_category2_filter_local_var->_library_owned = 1;
     return google_product_category2_filter_local_var;
 }
 
+__attribute__((deprecated)) google_product_category2_filter_t *google_product_category2_filter_create(
+    catalogs_product_group_multiple_string_list_criteria_t *google_product_category_2
+    ) {
+    return google_product_category2_filter_create_internal (
+        google_product_category_2
+        );
+}
 
 void google_product_category2_filter_free(google_product_category2_filter_t *google_product_category2_filter) {
     if(NULL == google_product_category2_filter){
+        return ;
+    }
+    if(google_product_category2_filter->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "google_product_category2_filter_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -60,6 +72,9 @@ google_product_category2_filter_t *google_product_category2_filter_parseFromJSON
 
     // google_product_category2_filter->google_product_category_2
     cJSON *google_product_category_2 = cJSON_GetObjectItemCaseSensitive(google_product_category2_filterJSON, "GOOGLE_PRODUCT_CATEGORY_2");
+    if (cJSON_IsNull(google_product_category_2)) {
+        google_product_category_2 = NULL;
+    }
     if (!google_product_category_2) {
         goto end;
     }
@@ -69,7 +84,7 @@ google_product_category2_filter_t *google_product_category2_filter_parseFromJSON
     google_product_category_2_local_object = object_parseFromJSON(google_product_category_2); //object
 
 
-    google_product_category2_filter_local_var = google_product_category2_filter_create (
+    google_product_category2_filter_local_var = google_product_category2_filter_create_internal (
         google_product_category_2_local_object
         );
 

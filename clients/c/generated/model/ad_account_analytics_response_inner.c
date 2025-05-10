@@ -5,7 +5,7 @@
 
 
 
-ad_account_analytics_response_inner_t *ad_account_analytics_response_inner_create(
+static ad_account_analytics_response_inner_t *ad_account_analytics_response_inner_create_internal(
     char *ad_account_id,
     char *date
     ) {
@@ -16,12 +16,26 @@ ad_account_analytics_response_inner_t *ad_account_analytics_response_inner_creat
     ad_account_analytics_response_inner_local_var->ad_account_id = ad_account_id;
     ad_account_analytics_response_inner_local_var->date = date;
 
+    ad_account_analytics_response_inner_local_var->_library_owned = 1;
     return ad_account_analytics_response_inner_local_var;
 }
 
+__attribute__((deprecated)) ad_account_analytics_response_inner_t *ad_account_analytics_response_inner_create(
+    char *ad_account_id,
+    char *date
+    ) {
+    return ad_account_analytics_response_inner_create_internal (
+        ad_account_id,
+        date
+        );
+}
 
 void ad_account_analytics_response_inner_free(ad_account_analytics_response_inner_t *ad_account_analytics_response_inner) {
     if(NULL == ad_account_analytics_response_inner){
+        return ;
+    }
+    if(ad_account_analytics_response_inner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ad_account_analytics_response_inner_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -69,6 +83,9 @@ ad_account_analytics_response_inner_t *ad_account_analytics_response_inner_parse
 
     // ad_account_analytics_response_inner->ad_account_id
     cJSON *ad_account_id = cJSON_GetObjectItemCaseSensitive(ad_account_analytics_response_innerJSON, "AD_ACCOUNT_ID");
+    if (cJSON_IsNull(ad_account_id)) {
+        ad_account_id = NULL;
+    }
     if (!ad_account_id) {
         goto end;
     }
@@ -81,6 +98,9 @@ ad_account_analytics_response_inner_t *ad_account_analytics_response_inner_parse
 
     // ad_account_analytics_response_inner->date
     cJSON *date = cJSON_GetObjectItemCaseSensitive(ad_account_analytics_response_innerJSON, "DATE");
+    if (cJSON_IsNull(date)) {
+        date = NULL;
+    }
     if (date) { 
     if(!cJSON_IsString(date))
     {
@@ -89,7 +109,7 @@ ad_account_analytics_response_inner_t *ad_account_analytics_response_inner_parse
     }
 
 
-    ad_account_analytics_response_inner_local_var = ad_account_analytics_response_inner_create (
+    ad_account_analytics_response_inner_local_var = ad_account_analytics_response_inner_create_internal (
         strdup(ad_account_id->valuestring),
         date ? strdup(date->valuestring) : NULL
         );

@@ -12,8 +12,11 @@
 export type BulkUpsertStatus = 'RUNNING' | 'SUCCEEDED' | 'FAILED';
 
 export const BulkUpsertStatus = {
+
     Running: 'RUNNING' as BulkUpsertStatus,
+
     Succeeded: 'SUCCEEDED' as BulkUpsertStatus,
+
     Failed: 'FAILED' as BulkUpsertStatus
 };
 

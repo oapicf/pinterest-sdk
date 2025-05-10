@@ -67,11 +67,11 @@ export function CatalogsDeleteHotelItemFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-  export function CatalogsDeleteHotelItemToJSON(json: any): CatalogsDeleteHotelItem {
-      return CatalogsDeleteHotelItemToJSONTyped(json, false);
-  }
+export function CatalogsDeleteHotelItemToJSON(json: any): CatalogsDeleteHotelItem {
+    return CatalogsDeleteHotelItemToJSONTyped(json, false);
+}
 
-  export function CatalogsDeleteHotelItemToJSONTyped(value?: CatalogsDeleteHotelItem | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsDeleteHotelItemToJSONTyped(value?: CatalogsDeleteHotelItem | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

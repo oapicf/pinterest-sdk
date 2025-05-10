@@ -5,7 +5,7 @@
 
 
 
-pin_media_with_image_t *pin_media_with_image_create(
+static pin_media_with_image_t *pin_media_with_image_create_internal(
     char *media_type,
     pin_media_with_image_all_of_images_t *images
     ) {
@@ -16,12 +16,26 @@ pin_media_with_image_t *pin_media_with_image_create(
     pin_media_with_image_local_var->media_type = media_type;
     pin_media_with_image_local_var->images = images;
 
+    pin_media_with_image_local_var->_library_owned = 1;
     return pin_media_with_image_local_var;
 }
 
+__attribute__((deprecated)) pin_media_with_image_t *pin_media_with_image_create(
+    char *media_type,
+    pin_media_with_image_all_of_images_t *images
+    ) {
+    return pin_media_with_image_create_internal (
+        media_type,
+        images
+        );
+}
 
 void pin_media_with_image_free(pin_media_with_image_t *pin_media_with_image) {
     if(NULL == pin_media_with_image){
+        return ;
+    }
+    if(pin_media_with_image->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "pin_media_with_image_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -76,6 +90,9 @@ pin_media_with_image_t *pin_media_with_image_parseFromJSON(cJSON *pin_media_with
 
     // pin_media_with_image->media_type
     cJSON *media_type = cJSON_GetObjectItemCaseSensitive(pin_media_with_imageJSON, "media_type");
+    if (cJSON_IsNull(media_type)) {
+        media_type = NULL;
+    }
     if (media_type) { 
     if(!cJSON_IsString(media_type) && !cJSON_IsNull(media_type))
     {
@@ -85,12 +102,15 @@ pin_media_with_image_t *pin_media_with_image_parseFromJSON(cJSON *pin_media_with
 
     // pin_media_with_image->images
     cJSON *images = cJSON_GetObjectItemCaseSensitive(pin_media_with_imageJSON, "images");
+    if (cJSON_IsNull(images)) {
+        images = NULL;
+    }
     if (images) { 
     images_local_nonprim = pin_media_with_image_all_of_images_parseFromJSON(images); //nonprimitive
     }
 
 
-    pin_media_with_image_local_var = pin_media_with_image_create (
+    pin_media_with_image_local_var = pin_media_with_image_create_internal (
         media_type && !cJSON_IsNull(media_type) ? strdup(media_type->valuestring) : NULL,
         images ? images_local_nonprim : NULL
         );

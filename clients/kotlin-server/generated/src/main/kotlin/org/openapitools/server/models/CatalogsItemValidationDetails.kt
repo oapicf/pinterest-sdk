@@ -13,14 +13,16 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.NullableCatalogsItemFieldType
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param attributeName 
  * @param providedValue Provided value that caused the validation issue.
  */
+@Serializable
 data class CatalogsItemValidationDetails(
-    val attributeName: NullableCatalogsItemFieldType,
+    val attributeName: NullableCatalogsItemFieldType?,
     /* Provided value that caused the validation issue. */
-    val providedValue: kotlin.String
-) 
+    val providedValue: kotlin.String?
+)
 

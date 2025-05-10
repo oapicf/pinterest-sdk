@@ -32,9 +32,10 @@ typedef struct shared_audience_response_t {
     list_t *permissions; //nonprimitive container
     list_t *recipient_account_ids; //primitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } shared_audience_response_t;
 
-shared_audience_response_t *shared_audience_response_create(
+__attribute__((deprecated)) shared_audience_response_t *shared_audience_response_create(
     char *audience_id,
     list_t *permissions,
     list_t *recipient_account_ids

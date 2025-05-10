@@ -52,36 +52,42 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AudienceCategory
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AudienceCategory {
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)
+  @javax.annotation.Nullable
   private String key;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_RATIO = "ratio";
   @SerializedName(SERIALIZED_NAME_RATIO)
+  @javax.annotation.Nullable
   private BigDecimal ratio;
 
   public static final String SERIALIZED_NAME_INDEX = "index";
   @SerializedName(SERIALIZED_NAME_INDEX)
+  @javax.annotation.Nullable
   private BigDecimal index;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_SUBCATEGORIES = "subcategories";
   @SerializedName(SERIALIZED_NAME_SUBCATEGORIES)
+  @javax.annotation.Nullable
   private List<AudienceSubcategory> subcategories = new ArrayList<>();
 
   public AudienceCategory() {
   }
 
-  public AudienceCategory key(String key) {
+  public AudienceCategory key(@javax.annotation.Nullable String key) {
     this.key = key;
     return this;
   }
@@ -95,12 +101,12 @@ public class AudienceCategory {
     return key;
   }
 
-  public void setKey(String key) {
+  public void setKey(@javax.annotation.Nullable String key) {
     this.key = key;
   }
 
 
-  public AudienceCategory name(String name) {
+  public AudienceCategory name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -114,12 +120,12 @@ public class AudienceCategory {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public AudienceCategory ratio(BigDecimal ratio) {
+  public AudienceCategory ratio(@javax.annotation.Nullable BigDecimal ratio) {
     this.ratio = ratio;
     return this;
   }
@@ -133,12 +139,12 @@ public class AudienceCategory {
     return ratio;
   }
 
-  public void setRatio(BigDecimal ratio) {
+  public void setRatio(@javax.annotation.Nullable BigDecimal ratio) {
     this.ratio = ratio;
   }
 
 
-  public AudienceCategory index(BigDecimal index) {
+  public AudienceCategory index(@javax.annotation.Nullable BigDecimal index) {
     this.index = index;
     return this;
   }
@@ -152,12 +158,12 @@ public class AudienceCategory {
     return index;
   }
 
-  public void setIndex(BigDecimal index) {
+  public void setIndex(@javax.annotation.Nullable BigDecimal index) {
     this.index = index;
   }
 
 
-  public AudienceCategory id(String id) {
+  public AudienceCategory id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -171,12 +177,12 @@ public class AudienceCategory {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public AudienceCategory subcategories(List<AudienceSubcategory> subcategories) {
+  public AudienceCategory subcategories(@javax.annotation.Nullable List<AudienceSubcategory> subcategories) {
     this.subcategories = subcategories;
     return this;
   }
@@ -198,7 +204,7 @@ public class AudienceCategory {
     return subcategories;
   }
 
-  public void setSubcategories(List<AudienceSubcategory> subcategories) {
+  public void setSubcategories(@javax.annotation.Nullable List<AudienceSubcategory> subcategories) {
     this.subcategories = subcategories;
   }
 

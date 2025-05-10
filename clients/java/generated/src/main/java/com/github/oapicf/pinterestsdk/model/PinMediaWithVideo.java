@@ -52,37 +52,43 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Pin with video.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMediaWithVideo extends PinMedia {
   public static final String SERIALIZED_NAME_IMAGES = "images";
   @SerializedName(SERIALIZED_NAME_IMAGES)
+  @javax.annotation.Nullable
   private PinMediaWithImageAllOfImages images;
 
   public static final String SERIALIZED_NAME_COVER_IMAGE_URL = "cover_image_url";
   @SerializedName(SERIALIZED_NAME_COVER_IMAGE_URL)
+  @javax.annotation.Nullable
   private String coverImageUrl;
 
   public static final String SERIALIZED_NAME_VIDEO_URL = "video_url";
   @SerializedName(SERIALIZED_NAME_VIDEO_URL)
+  @javax.annotation.Nullable
   private String videoUrl;
 
   public static final String SERIALIZED_NAME_DURATION = "duration";
   @SerializedName(SERIALIZED_NAME_DURATION)
+  @javax.annotation.Nullable
   private BigDecimal duration;
 
   public static final String SERIALIZED_NAME_HEIGHT = "height";
   @SerializedName(SERIALIZED_NAME_HEIGHT)
+  @javax.annotation.Nullable
   private Integer height;
 
   public static final String SERIALIZED_NAME_WIDTH = "width";
   @SerializedName(SERIALIZED_NAME_WIDTH)
+  @javax.annotation.Nullable
   private Integer width;
 
   public PinMediaWithVideo() {
     this.mediaType = this.getClass().getSimpleName();
   }
 
-  public PinMediaWithVideo images(PinMediaWithImageAllOfImages images) {
+  public PinMediaWithVideo images(@javax.annotation.Nullable PinMediaWithImageAllOfImages images) {
     this.images = images;
     return this;
   }
@@ -96,12 +102,12 @@ public class PinMediaWithVideo extends PinMedia {
     return images;
   }
 
-  public void setImages(PinMediaWithImageAllOfImages images) {
+  public void setImages(@javax.annotation.Nullable PinMediaWithImageAllOfImages images) {
     this.images = images;
   }
 
 
-  public PinMediaWithVideo coverImageUrl(String coverImageUrl) {
+  public PinMediaWithVideo coverImageUrl(@javax.annotation.Nullable String coverImageUrl) {
     this.coverImageUrl = coverImageUrl;
     return this;
   }
@@ -115,12 +121,12 @@ public class PinMediaWithVideo extends PinMedia {
     return coverImageUrl;
   }
 
-  public void setCoverImageUrl(String coverImageUrl) {
+  public void setCoverImageUrl(@javax.annotation.Nullable String coverImageUrl) {
     this.coverImageUrl = coverImageUrl;
   }
 
 
-  public PinMediaWithVideo videoUrl(String videoUrl) {
+  public PinMediaWithVideo videoUrl(@javax.annotation.Nullable String videoUrl) {
     this.videoUrl = videoUrl;
     return this;
   }
@@ -134,12 +140,12 @@ public class PinMediaWithVideo extends PinMedia {
     return videoUrl;
   }
 
-  public void setVideoUrl(String videoUrl) {
+  public void setVideoUrl(@javax.annotation.Nullable String videoUrl) {
     this.videoUrl = videoUrl;
   }
 
 
-  public PinMediaWithVideo duration(BigDecimal duration) {
+  public PinMediaWithVideo duration(@javax.annotation.Nullable BigDecimal duration) {
     this.duration = duration;
     return this;
   }
@@ -153,12 +159,12 @@ public class PinMediaWithVideo extends PinMedia {
     return duration;
   }
 
-  public void setDuration(BigDecimal duration) {
+  public void setDuration(@javax.annotation.Nullable BigDecimal duration) {
     this.duration = duration;
   }
 
 
-  public PinMediaWithVideo height(Integer height) {
+  public PinMediaWithVideo height(@javax.annotation.Nullable Integer height) {
     this.height = height;
     return this;
   }
@@ -172,12 +178,12 @@ public class PinMediaWithVideo extends PinMedia {
     return height;
   }
 
-  public void setHeight(Integer height) {
+  public void setHeight(@javax.annotation.Nullable Integer height) {
     this.height = height;
   }
 
 
-  public PinMediaWithVideo width(Integer width) {
+  public PinMediaWithVideo width(@javax.annotation.Nullable Integer width) {
     this.width = width;
     return this;
   }
@@ -191,7 +197,7 @@ public class PinMediaWithVideo extends PinMedia {
     return width;
   }
 
-  public void setWidth(Integer width) {
+  public void setWidth(@javax.annotation.Nullable Integer width) {
     this.width = width;
   }
 

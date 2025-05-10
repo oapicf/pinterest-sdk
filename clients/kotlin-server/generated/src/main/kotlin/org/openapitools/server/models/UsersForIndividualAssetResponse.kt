@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * An object containing the permissions a business member has on the asset.
  * @param assetId Unique identifier of a business asset.
  * @param memberId Unique identifier of the business member with asset access.
  * @param permissions Permission levels member or partner has on an asset.
  */
+@Serializable
 data class UsersForIndividualAssetResponse(
     /* Unique identifier of a business asset. */
     val assetId: kotlin.String? = null,
@@ -25,5 +27,5 @@ data class UsersForIndividualAssetResponse(
     val memberId: kotlin.String? = null,
     /* Permission levels member or partner has on an asset. */
     val permissions: kotlin.collections.List<kotlin.String>? = null
-) 
+)
 

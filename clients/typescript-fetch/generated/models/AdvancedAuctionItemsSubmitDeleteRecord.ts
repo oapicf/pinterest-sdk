@@ -82,11 +82,11 @@ export function AdvancedAuctionItemsSubmitDeleteRecordFromJSONTyped(json: any, i
     };
 }
 
-  export function AdvancedAuctionItemsSubmitDeleteRecordToJSON(json: any): AdvancedAuctionItemsSubmitDeleteRecord {
-      return AdvancedAuctionItemsSubmitDeleteRecordToJSONTyped(json, false);
-  }
+export function AdvancedAuctionItemsSubmitDeleteRecordToJSON(json: any): AdvancedAuctionItemsSubmitDeleteRecord {
+    return AdvancedAuctionItemsSubmitDeleteRecordToJSONTyped(json, false);
+}
 
-  export function AdvancedAuctionItemsSubmitDeleteRecordToJSONTyped(value?: AdvancedAuctionItemsSubmitDeleteRecord | null, ignoreDiscriminator: boolean = false): any {
+export function AdvancedAuctionItemsSubmitDeleteRecordToJSONTyped(value?: AdvancedAuctionItemsSubmitDeleteRecord | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

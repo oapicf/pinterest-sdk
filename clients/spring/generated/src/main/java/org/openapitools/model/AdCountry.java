@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Country ID from ISO 3166-1 alpha-2.
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public enum AdCountry {
   
   AD("AD"),

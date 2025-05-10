@@ -14,13 +14,15 @@ package org.openapitools.server.models
 import org.openapitools.server.models.BidFloorSpec
 import org.openapitools.server.models.TargetingSpec
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param bidFloorSpecs 
  * @param targetingSpec 
  */
+@Serializable
 data class BidFloorRequest(
     val bidFloorSpecs: kotlin.collections.List<BidFloorSpec>,
     val targetingSpec: TargetingSpec? = null
-) 
+)
 

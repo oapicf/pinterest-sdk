@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { BusinessAssetMembersGet200Response } from '../model/businessAssetMembersGet200Response';
 import { BusinessAssetPartnersGet200Response } from '../model/businessAssetPartnersGet200Response';
@@ -46,10 +46,12 @@ export class BusinessAccessAssetsService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -68,9 +70,10 @@ export class BusinessAccessAssetsService {
      * @param createAssetGroupBody 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [assetGroupCreateOpts.config] Override http request option.
      */
-    public assetGroupCreate(businessId: string, createAssetGroupBody: CreateAssetGroupBody, ): Observable<AxiosResponse<CreateAssetGroupResponse>>;
-    public assetGroupCreate(businessId: string, createAssetGroupBody: CreateAssetGroupBody, ): Observable<any> {
+    public assetGroupCreate(businessId: string, createAssetGroupBody: CreateAssetGroupBody, assetGroupCreateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CreateAssetGroupResponse>>;
+    public assetGroupCreate(businessId: string, createAssetGroupBody: CreateAssetGroupBody, assetGroupCreateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling assetGroupCreate.');
         }
@@ -117,7 +120,8 @@ export class BusinessAccessAssetsService {
                     createAssetGroupBody,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...assetGroupCreateOpts?.config,
+                        headers: {...headers, ...assetGroupCreateOpts?.config?.headers},
                     }
                 );
             })
@@ -130,9 +134,10 @@ export class BusinessAccessAssetsService {
      * @param deleteAssetGroupBody 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [assetGroupDeleteOpts.config] Override http request option.
      */
-    public assetGroupDelete(businessId: string, deleteAssetGroupBody: DeleteAssetGroupBody, ): Observable<AxiosResponse<DeleteAssetGroupResponse>>;
-    public assetGroupDelete(businessId: string, deleteAssetGroupBody: DeleteAssetGroupBody, ): Observable<any> {
+    public assetGroupDelete(businessId: string, deleteAssetGroupBody: DeleteAssetGroupBody, assetGroupDeleteOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<DeleteAssetGroupResponse>>;
+    public assetGroupDelete(businessId: string, deleteAssetGroupBody: DeleteAssetGroupBody, assetGroupDeleteOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling assetGroupDelete.');
         }
@@ -178,7 +183,8 @@ export class BusinessAccessAssetsService {
                 return this.httpClient.delete<DeleteAssetGroupResponse>(`${this.basePath}/businesses/${encodeURIComponent(String(business_id))}/asset_groups`,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...assetGroupDeleteOpts?.config,
+                        headers: {...headers, ...assetGroupDeleteOpts?.config?.headers},
                     }
                 );
             })
@@ -191,9 +197,10 @@ export class BusinessAccessAssetsService {
      * @param updateAssetGroupBody 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [assetGroupUpdateOpts.config] Override http request option.
      */
-    public assetGroupUpdate(businessId: string, updateAssetGroupBody: UpdateAssetGroupBody, ): Observable<AxiosResponse<UpdateAssetGroupResponse>>;
-    public assetGroupUpdate(businessId: string, updateAssetGroupBody: UpdateAssetGroupBody, ): Observable<any> {
+    public assetGroupUpdate(businessId: string, updateAssetGroupBody: UpdateAssetGroupBody, assetGroupUpdateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<UpdateAssetGroupResponse>>;
+    public assetGroupUpdate(businessId: string, updateAssetGroupBody: UpdateAssetGroupBody, assetGroupUpdateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling assetGroupUpdate.');
         }
@@ -240,7 +247,8 @@ export class BusinessAccessAssetsService {
                     updateAssetGroupBody,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...assetGroupUpdateOpts?.config,
+                        headers: {...headers, ...assetGroupUpdateOpts?.config?.headers},
                     }
                 );
             })
@@ -256,9 +264,10 @@ export class BusinessAccessAssetsService {
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [businessAssetMembersGetOpts.config] Override http request option.
      */
-    public businessAssetMembersGet(businessId: string, assetId: string, bookmark?: string, pageSize?: number, startIndex?: number, ): Observable<AxiosResponse<BusinessAssetMembersGet200Response>>;
-    public businessAssetMembersGet(businessId: string, assetId: string, bookmark?: string, pageSize?: number, startIndex?: number, ): Observable<any> {
+    public businessAssetMembersGet(businessId: string, assetId: string, bookmark?: string, pageSize?: number, startIndex?: number, businessAssetMembersGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<BusinessAssetMembersGet200Response>>;
+    public businessAssetMembersGet(businessId: string, assetId: string, bookmark?: string, pageSize?: number, startIndex?: number, businessAssetMembersGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling businessAssetMembersGet.');
         }
@@ -311,7 +320,8 @@ export class BusinessAccessAssetsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...businessAssetMembersGetOpts?.config,
+                        headers: {...headers, ...businessAssetMembersGetOpts?.config?.headers},
                     }
                 );
             })
@@ -327,9 +337,10 @@ export class BusinessAccessAssetsService {
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [businessAssetPartnersGetOpts.config] Override http request option.
      */
-    public businessAssetPartnersGet(businessId: string, assetId: string, startIndex?: number, bookmark?: string, pageSize?: number, ): Observable<AxiosResponse<BusinessAssetPartnersGet200Response>>;
-    public businessAssetPartnersGet(businessId: string, assetId: string, startIndex?: number, bookmark?: string, pageSize?: number, ): Observable<any> {
+    public businessAssetPartnersGet(businessId: string, assetId: string, startIndex?: number, bookmark?: string, pageSize?: number, businessAssetPartnersGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<BusinessAssetPartnersGet200Response>>;
+    public businessAssetPartnersGet(businessId: string, assetId: string, startIndex?: number, bookmark?: string, pageSize?: number, businessAssetPartnersGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling businessAssetPartnersGet.');
         }
@@ -382,7 +393,8 @@ export class BusinessAccessAssetsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...businessAssetPartnersGetOpts?.config,
+                        headers: {...headers, ...businessAssetPartnersGetOpts?.config?.headers},
                     }
                 );
             })
@@ -401,9 +413,10 @@ export class BusinessAccessAssetsService {
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [businessAssetsGetOpts.config] Override http request option.
      */
-    public businessAssetsGet(businessId: string, permissions?: Array<PermissionsWithOwner>, childAssetId?: string, assetGroupId?: string, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP', startIndex?: number, bookmark?: string, pageSize?: number, ): Observable<AxiosResponse<BusinessAssetsGet200Response>>;
-    public businessAssetsGet(businessId: string, permissions?: Array<PermissionsWithOwner>, childAssetId?: string, assetGroupId?: string, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP', startIndex?: number, bookmark?: string, pageSize?: number, ): Observable<any> {
+    public businessAssetsGet(businessId: string, permissions?: Array<PermissionsWithOwner>, childAssetId?: string, assetGroupId?: string, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP', startIndex?: number, bookmark?: string, pageSize?: number, businessAssetsGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<BusinessAssetsGet200Response>>;
+    public businessAssetsGet(businessId: string, permissions?: Array<PermissionsWithOwner>, childAssetId?: string, assetGroupId?: string, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP', startIndex?: number, bookmark?: string, pageSize?: number, businessAssetsGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling businessAssetsGet.');
         }
@@ -466,7 +479,8 @@ export class BusinessAccessAssetsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...businessAssetsGetOpts?.config,
+                        headers: {...headers, ...businessAssetsGetOpts?.config?.headers},
                     }
                 );
             })
@@ -483,9 +497,10 @@ export class BusinessAccessAssetsService {
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [businessMemberAssetsGetOpts.config] Override http request option.
      */
-    public businessMemberAssetsGet(businessId: string, memberId: string, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP', startIndex?: number, bookmark?: string, pageSize?: number, ): Observable<AxiosResponse<BusinessMemberAssetsGet200Response>>;
-    public businessMemberAssetsGet(businessId: string, memberId: string, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP', startIndex?: number, bookmark?: string, pageSize?: number, ): Observable<any> {
+    public businessMemberAssetsGet(businessId: string, memberId: string, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP', startIndex?: number, bookmark?: string, pageSize?: number, businessMemberAssetsGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<BusinessMemberAssetsGet200Response>>;
+    public businessMemberAssetsGet(businessId: string, memberId: string, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP', startIndex?: number, bookmark?: string, pageSize?: number, businessMemberAssetsGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling businessMemberAssetsGet.');
         }
@@ -541,7 +556,8 @@ export class BusinessAccessAssetsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...businessMemberAssetsGetOpts?.config,
+                        headers: {...headers, ...businessMemberAssetsGetOpts?.config?.headers},
                     }
                 );
             })
@@ -554,9 +570,10 @@ export class BusinessAccessAssetsService {
      * @param businessMembersAssetAccessDeleteRequest List member assset permissions to delete.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [businessMembersAssetAccessDeleteOpts.config] Override http request option.
      */
-    public businessMembersAssetAccessDelete(businessId: string, businessMembersAssetAccessDeleteRequest: BusinessMembersAssetAccessDeleteRequest, ): Observable<AxiosResponse<DeleteMemberAccessResultsResponseArray>>;
-    public businessMembersAssetAccessDelete(businessId: string, businessMembersAssetAccessDeleteRequest: BusinessMembersAssetAccessDeleteRequest, ): Observable<any> {
+    public businessMembersAssetAccessDelete(businessId: string, businessMembersAssetAccessDeleteRequest: BusinessMembersAssetAccessDeleteRequest, businessMembersAssetAccessDeleteOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<DeleteMemberAccessResultsResponseArray>>;
+    public businessMembersAssetAccessDelete(businessId: string, businessMembersAssetAccessDeleteRequest: BusinessMembersAssetAccessDeleteRequest, businessMembersAssetAccessDeleteOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling businessMembersAssetAccessDelete.');
         }
@@ -602,7 +619,8 @@ export class BusinessAccessAssetsService {
                 return this.httpClient.delete<DeleteMemberAccessResultsResponseArray>(`${this.basePath}/businesses/${encodeURIComponent(String(business_id))}/members/assets/access`,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...businessMembersAssetAccessDeleteOpts?.config,
+                        headers: {...headers, ...businessMembersAssetAccessDeleteOpts?.config?.headers},
                     }
                 );
             })
@@ -615,9 +633,10 @@ export class BusinessAccessAssetsService {
      * @param updateMemberAssetAccessBody List of member asset permissions to create or update.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [businessMembersAssetAccessUpdateOpts.config] Override http request option.
      */
-    public businessMembersAssetAccessUpdate(businessId: string, updateMemberAssetAccessBody: UpdateMemberAssetAccessBody, ): Observable<AxiosResponse<UpdateMemberAssetsResultsResponseArray>>;
-    public businessMembersAssetAccessUpdate(businessId: string, updateMemberAssetAccessBody: UpdateMemberAssetAccessBody, ): Observable<any> {
+    public businessMembersAssetAccessUpdate(businessId: string, updateMemberAssetAccessBody: UpdateMemberAssetAccessBody, businessMembersAssetAccessUpdateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<UpdateMemberAssetsResultsResponseArray>>;
+    public businessMembersAssetAccessUpdate(businessId: string, updateMemberAssetAccessBody: UpdateMemberAssetAccessBody, businessMembersAssetAccessUpdateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling businessMembersAssetAccessUpdate.');
         }
@@ -664,7 +683,8 @@ export class BusinessAccessAssetsService {
                     updateMemberAssetAccessBody,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...businessMembersAssetAccessUpdateOpts?.config,
+                        headers: {...headers, ...businessMembersAssetAccessUpdateOpts?.config?.headers},
                     }
                 );
             })
@@ -682,9 +702,10 @@ export class BusinessAccessAssetsService {
      * @param bookmark Cursor used to fetch the next page of items
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [businessPartnerAssetAccessGetOpts.config] Override http request option.
      */
-    public businessPartnerAssetAccessGet(businessId: string, partnerId: string, partnerType?: PartnerType, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP', startIndex?: number, pageSize?: number, bookmark?: string, ): Observable<AxiosResponse<BusinessPartnerAssetAccessGet200Response>>;
-    public businessPartnerAssetAccessGet(businessId: string, partnerId: string, partnerType?: PartnerType, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP', startIndex?: number, pageSize?: number, bookmark?: string, ): Observable<any> {
+    public businessPartnerAssetAccessGet(businessId: string, partnerId: string, partnerType?: PartnerType, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP', startIndex?: number, pageSize?: number, bookmark?: string, businessPartnerAssetAccessGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<BusinessPartnerAssetAccessGet200Response>>;
+    public businessPartnerAssetAccessGet(businessId: string, partnerId: string, partnerType?: PartnerType, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP', startIndex?: number, pageSize?: number, bookmark?: string, businessPartnerAssetAccessGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling businessPartnerAssetAccessGet.');
         }
@@ -743,7 +764,8 @@ export class BusinessAccessAssetsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...businessPartnerAssetAccessGetOpts?.config,
+                        headers: {...headers, ...businessPartnerAssetAccessGetOpts?.config?.headers},
                     }
                 );
             })
@@ -756,9 +778,10 @@ export class BusinessAccessAssetsService {
      * @param deletePartnerAssetAccessBody 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [deletePartnerAssetAccessHandlerImplOpts.config] Override http request option.
      */
-    public deletePartnerAssetAccessHandlerImpl(businessId: string, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody, ): Observable<AxiosResponse<DeletePartnerAssetsResultsResponseArray>>;
-    public deletePartnerAssetAccessHandlerImpl(businessId: string, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody, ): Observable<any> {
+    public deletePartnerAssetAccessHandlerImpl(businessId: string, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody, deletePartnerAssetAccessHandlerImplOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<DeletePartnerAssetsResultsResponseArray>>;
+    public deletePartnerAssetAccessHandlerImpl(businessId: string, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody, deletePartnerAssetAccessHandlerImplOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling deletePartnerAssetAccessHandlerImpl.');
         }
@@ -804,7 +827,8 @@ export class BusinessAccessAssetsService {
                 return this.httpClient.delete<DeletePartnerAssetsResultsResponseArray>(`${this.basePath}/businesses/${encodeURIComponent(String(business_id))}/partners/assets`,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...deletePartnerAssetAccessHandlerImplOpts?.config,
+                        headers: {...headers, ...deletePartnerAssetAccessHandlerImplOpts?.config?.headers},
                     }
                 );
             })
@@ -817,9 +841,10 @@ export class BusinessAccessAssetsService {
      * @param updatePartnerAssetAccessBody A list of assets and permissions to assign to your partners.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [updatePartnerAssetAccessHandlerImplOpts.config] Override http request option.
      */
-    public updatePartnerAssetAccessHandlerImpl(businessId: string, updatePartnerAssetAccessBody: UpdatePartnerAssetAccessBody, ): Observable<AxiosResponse<UpdatePartnerAssetsResultsResponseArray>>;
-    public updatePartnerAssetAccessHandlerImpl(businessId: string, updatePartnerAssetAccessBody: UpdatePartnerAssetAccessBody, ): Observable<any> {
+    public updatePartnerAssetAccessHandlerImpl(businessId: string, updatePartnerAssetAccessBody: UpdatePartnerAssetAccessBody, updatePartnerAssetAccessHandlerImplOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<UpdatePartnerAssetsResultsResponseArray>>;
+    public updatePartnerAssetAccessHandlerImpl(businessId: string, updatePartnerAssetAccessBody: UpdatePartnerAssetAccessBody, updatePartnerAssetAccessHandlerImplOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling updatePartnerAssetAccessHandlerImpl.');
         }
@@ -866,7 +891,8 @@ export class BusinessAccessAssetsService {
                     updatePartnerAssetAccessBody,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...updatePartnerAssetAccessHandlerImplOpts?.config,
+                        headers: {...headers, ...updatePartnerAssetAccessHandlerImplOpts?.config?.headers},
                     }
                 );
             })

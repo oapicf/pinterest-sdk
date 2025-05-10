@@ -16,9 +16,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CustomLabel1Filter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CustomLabel1Filter   {
   private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_1;
+
+  public CustomLabel1Filter() {
+  }
+
+  @JsonCreator
+  public CustomLabel1Filter(
+    @JsonProperty(required = true, value = "CUSTOM_LABEL_1") CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_1
+  ) {
+    this.CUSTOM_LABEL_1 = CUSTOM_LABEL_1;
+  }
 
   /**
    **/
@@ -29,12 +39,12 @@ public class CustomLabel1Filter   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("CUSTOM_LABEL_1")
+  @JsonProperty(required = true, value = "CUSTOM_LABEL_1")
   @NotNull @Valid public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL1() {
     return CUSTOM_LABEL_1;
   }
 
-  @JsonProperty("CUSTOM_LABEL_1")
+  @JsonProperty(required = true, value = "CUSTOM_LABEL_1")
   public void setCUSTOMLABEL1(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_1) {
     this.CUSTOM_LABEL_1 = CUSTOM_LABEL_1;
   }

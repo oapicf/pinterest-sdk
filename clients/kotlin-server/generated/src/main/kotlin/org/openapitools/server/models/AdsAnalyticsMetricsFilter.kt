@@ -14,16 +14,18 @@ package org.openapitools.server.models
 import org.openapitools.server.models.AdsAnalyticsFilterColumn
 import org.openapitools.server.models.AdsAnalyticsFilterOperator
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param `field` 
  * @param `operator` 
  * @param propertyValues List of values for filtering
  */
+@Serializable
 data class AdsAnalyticsMetricsFilter(
     val `field`: AdsAnalyticsFilterColumn,
     val `operator`: AdsAnalyticsFilterOperator,
     /* List of values for filtering */
     val propertyValues: kotlin.collections.List<java.math.BigDecimal>
-) 
+)
 

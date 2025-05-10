@@ -50,16 +50,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * An object with a list of partners that were deleted.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class DeletePartnersResponse {
   public static final String SERIALIZED_NAME_DELETED_PARTNERS = "deleted_partners";
   @SerializedName(SERIALIZED_NAME_DELETED_PARTNERS)
+  @javax.annotation.Nullable
   private List<String> deletedPartners = new ArrayList<>();
 
   public DeletePartnersResponse() {
   }
 
-  public DeletePartnersResponse deletedPartners(List<String> deletedPartners) {
+  public DeletePartnersResponse deletedPartners(@javax.annotation.Nullable List<String> deletedPartners) {
     this.deletedPartners = deletedPartners;
     return this;
   }
@@ -81,7 +82,7 @@ public class DeletePartnersResponse {
     return deletedPartners;
   }
 
-  public void setDeletedPartners(List<String> deletedPartners) {
+  public void setDeletedPartners(@javax.annotation.Nullable List<String> deletedPartners) {
     this.deletedPartners = deletedPartners;
   }
 

@@ -57,11 +57,11 @@ export function CurrencyFilterFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-  export function CurrencyFilterToJSON(json: any): CurrencyFilter {
-      return CurrencyFilterToJSONTyped(json, false);
-  }
+export function CurrencyFilterToJSON(json: any): CurrencyFilter {
+    return CurrencyFilterToJSONTyped(json, false);
+}
 
-  export function CurrencyFilterToJSONTyped(value?: CurrencyFilter | null, ignoreDiscriminator: boolean = false): any {
+export function CurrencyFilterToJSONTyped(value?: CurrencyFilter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

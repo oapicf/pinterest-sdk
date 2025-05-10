@@ -57,11 +57,11 @@ export function CountryFilterFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-  export function CountryFilterToJSON(json: any): CountryFilter {
-      return CountryFilterToJSONTyped(json, false);
-  }
+export function CountryFilterToJSON(json: any): CountryFilter {
+    return CountryFilterToJSONTyped(json, false);
+}
 
-  export function CountryFilterToJSONTyped(value?: CountryFilter | null, ignoreDiscriminator: boolean = false): any {
+export function CountryFilterToJSONTyped(value?: CountryFilter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

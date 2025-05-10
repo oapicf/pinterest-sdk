@@ -49,16 +49,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CustomLabel2Filter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CustomLabel2Filter {
   public static final String SERIALIZED_NAME_C_U_S_T_O_M_L_A_B_E_L2 = "CUSTOM_LABEL_2";
   @SerializedName(SERIALIZED_NAME_C_U_S_T_O_M_L_A_B_E_L2)
+  @javax.annotation.Nonnull
   private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_2;
 
   public CustomLabel2Filter() {
   }
 
-  public CustomLabel2Filter CUSTOM_LABEL_2(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_2) {
+  public CustomLabel2Filter CUSTOM_LABEL_2(@javax.annotation.Nonnull CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_2) {
     this.CUSTOM_LABEL_2 = CUSTOM_LABEL_2;
     return this;
   }
@@ -72,7 +73,7 @@ public class CustomLabel2Filter {
     return CUSTOM_LABEL_2;
   }
 
-  public void setCUSTOMLABEL2(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_2) {
+  public void setCUSTOMLABEL2(@javax.annotation.Nonnull CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_2) {
     this.CUSTOM_LABEL_2 = CUSTOM_LABEL_2;
   }
 

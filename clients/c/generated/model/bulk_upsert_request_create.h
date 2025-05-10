@@ -30,9 +30,10 @@ typedef struct bulk_upsert_request_create_t {
     list_t *product_groups; //nonprimitive container
     list_t *keywords; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } bulk_upsert_request_create_t;
 
-bulk_upsert_request_create_t *bulk_upsert_request_create_create(
+__attribute__((deprecated)) bulk_upsert_request_create_t *bulk_upsert_request_create_create(
     list_t *campaigns,
     list_t *ad_groups,
     list_t *ads,

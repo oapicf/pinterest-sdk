@@ -51,7 +51,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Multiple images urls-based media source
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMediaSourceImagesURL {
   /**
    * Gets or Sets sourceType
@@ -105,20 +105,23 @@ public class PinMediaSourceImagesURL {
 
   public static final String SERIALIZED_NAME_SOURCE_TYPE = "source_type";
   @SerializedName(SERIALIZED_NAME_SOURCE_TYPE)
+  @javax.annotation.Nullable
   private SourceTypeEnum sourceType;
 
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
+  @javax.annotation.Nonnull
   private List<PinMediaSourceImagesURLItemsInner> items = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_INDEX = "index";
   @SerializedName(SERIALIZED_NAME_INDEX)
+  @javax.annotation.Nullable
   private Integer index;
 
   public PinMediaSourceImagesURL() {
   }
 
-  public PinMediaSourceImagesURL sourceType(SourceTypeEnum sourceType) {
+  public PinMediaSourceImagesURL sourceType(@javax.annotation.Nullable SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
     return this;
   }
@@ -132,12 +135,12 @@ public class PinMediaSourceImagesURL {
     return sourceType;
   }
 
-  public void setSourceType(SourceTypeEnum sourceType) {
+  public void setSourceType(@javax.annotation.Nullable SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
   }
 
 
-  public PinMediaSourceImagesURL items(List<PinMediaSourceImagesURLItemsInner> items) {
+  public PinMediaSourceImagesURL items(@javax.annotation.Nonnull List<PinMediaSourceImagesURLItemsInner> items) {
     this.items = items;
     return this;
   }
@@ -159,12 +162,12 @@ public class PinMediaSourceImagesURL {
     return items;
   }
 
-  public void setItems(List<PinMediaSourceImagesURLItemsInner> items) {
+  public void setItems(@javax.annotation.Nonnull List<PinMediaSourceImagesURLItemsInner> items) {
     this.items = items;
   }
 
 
-  public PinMediaSourceImagesURL index(Integer index) {
+  public PinMediaSourceImagesURL index(@javax.annotation.Nullable Integer index) {
     this.index = index;
     return this;
   }
@@ -179,7 +182,7 @@ public class PinMediaSourceImagesURL {
     return index;
   }
 
-  public void setIndex(Integer index) {
+  public void setIndex(@javax.annotation.Nullable Integer index) {
     this.index = index;
   }
 

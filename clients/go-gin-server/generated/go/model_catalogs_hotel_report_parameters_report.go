@@ -10,10 +10,6 @@
 
 package openapi
 
-import (
-	"gopkg.in/validator.v2"
-)
-
 type CatalogsHotelReportParametersReport struct {
 
 	ReportType string `json:"report_type,omitempty"`

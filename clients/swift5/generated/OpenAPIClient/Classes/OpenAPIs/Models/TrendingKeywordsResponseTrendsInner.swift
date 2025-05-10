@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct TrendingKeywordsResponseTrendsInner: Codable, JSONEncodable, Hashable {
 
-    static let keywordRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    public static let keywordRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     /** The keyword that is trending. */
     public var keyword: String?
     /** The week-over-week percent change in search volume for this keyword.<br /> For example, a value of \"50\" would represent a 50% increase in searches in the last seven days compared to the week prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% week-over-week growth. */

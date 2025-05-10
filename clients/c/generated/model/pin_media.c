@@ -5,7 +5,7 @@
 
 
 
-pin_media_t *pin_media_create(
+static pin_media_t *pin_media_create_internal(
     char *media_type
     ) {
     pin_media_t *pin_media_local_var = malloc(sizeof(pin_media_t));
@@ -14,12 +14,24 @@ pin_media_t *pin_media_create(
     }
     pin_media_local_var->media_type = media_type;
 
+    pin_media_local_var->_library_owned = 1;
     return pin_media_local_var;
 }
 
+__attribute__((deprecated)) pin_media_t *pin_media_create(
+    char *media_type
+    ) {
+    return pin_media_create_internal (
+        media_type
+        );
+}
 
 void pin_media_free(pin_media_t *pin_media) {
     if(NULL == pin_media){
+        return ;
+    }
+    if(pin_media->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "pin_media_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -54,6 +66,9 @@ pin_media_t *pin_media_parseFromJSON(cJSON *pin_mediaJSON){
 
     // pin_media->media_type
     cJSON *media_type = cJSON_GetObjectItemCaseSensitive(pin_mediaJSON, "media_type");
+    if (cJSON_IsNull(media_type)) {
+        media_type = NULL;
+    }
     if (media_type) { 
     if(!cJSON_IsString(media_type) && !cJSON_IsNull(media_type))
     {
@@ -62,7 +77,7 @@ pin_media_t *pin_media_parseFromJSON(cJSON *pin_mediaJSON){
     }
 
 
-    pin_media_local_var = pin_media_create (
+    pin_media_local_var = pin_media_create_internal (
         media_type && !cJSON_IsNull(media_type) ? strdup(media_type->valuestring) : NULL
         );
 

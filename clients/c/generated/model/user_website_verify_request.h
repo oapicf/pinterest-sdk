@@ -30,9 +30,10 @@ typedef struct user_website_verify_request_t {
     char *website; // string
     pinterest_rest_api_user_website_verify_request_VERIFICATIONMETHOD_e verification_method; //enum
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } user_website_verify_request_t;
 
-user_website_verify_request_t *user_website_verify_request_create(
+__attribute__((deprecated)) user_website_verify_request_t *user_website_verify_request_create(
     char *website,
     pinterest_rest_api_user_website_verify_request_VERIFICATIONMETHOD_e verification_method
 );

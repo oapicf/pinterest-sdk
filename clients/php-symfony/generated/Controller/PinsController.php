@@ -148,7 +148,7 @@ class PinsController extends Controller
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "ALL", "MOBILE", "TABLET", "WEB" ]);
+        $asserts[] = new Assert\Choice([ 'ALL', 'MOBILE', 'TABLET', 'WEB' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($appTypes, $asserts);
         if ($response instanceof Response) {
@@ -289,14 +289,14 @@ class PinsController extends Controller
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "ALL", "MOBILE", "TABLET", "WEB" ]);
+        $asserts[] = new Assert\Choice([ 'ALL', 'MOBILE', 'TABLET', 'WEB' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($appTypes, $asserts);
         if ($response instanceof Response) {
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "NO_SPLIT", "APP_TYPE" ]);
+        $asserts[] = new Assert\Choice([ 'NO_SPLIT', 'APP_TYPE' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($splitField, $asserts);
         if ($response instanceof Response) {
@@ -716,7 +716,7 @@ class PinsController extends Controller
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "exclude_native", "exclude_repins", "has_been_promoted" ]);
+        $asserts[] = new Assert\Choice([ 'exclude_native', 'exclude_repins', 'has_been_promoted' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($pinFilter, $asserts);
         if ($response instanceof Response) {
@@ -729,7 +729,7 @@ class PinsController extends Controller
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "PRIVATE" ]);
+        $asserts[] = new Assert\Choice([ 'PRIVATE' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($pinType, $asserts);
         if ($response instanceof Response) {
@@ -737,7 +737,7 @@ class PinsController extends Controller
         }
         $asserts = [];
         $asserts[] = new Assert\All([
-            new Assert\Choice([ "REGULAR", "VIDEO", "SHOPPING", "CAROUSEL", "MAX_VIDEO", "SHOP_THE_PIN", "COLLECTION", "IDEA" ])
+            new Assert\Choice([ 'REGULAR', 'VIDEO', 'SHOPPING', 'CAROUSEL', 'MAX_VIDEO', 'SHOP_THE_PIN', 'COLLECTION', 'IDEA' ])
         ]);
         $asserts[] = new Assert\All([
             new Assert\Type("string"),

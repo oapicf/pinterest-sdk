@@ -22,7 +22,7 @@ pinterest_rest_api_ad_group_summary_status__e ad_group_summary_status_ad_group_s
     return 0;
 }
 
-cJSON *ad_group_summary_status_ad_group_summary_status_convertToJSON(pinterest_rest_api_ad_group_summary_status__e ad_group_summary_status) {
+cJSON *ad_group_summary_status_convertToJSON(pinterest_rest_api_ad_group_summary_status__e ad_group_summary_status) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "ad_group_summary_status", ad_group_summary_status_ad_group_summary_status_ToString(ad_group_summary_status)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_ad_group_summary_status__e ad_group_summary_status_ad_group_summary_status_parseFromJSON(cJSON *ad_group_summary_statusJSON) {
-    pinterest_rest_api_ad_group_summary_status__e *ad_group_summary_status = NULL;
-    pinterest_rest_api_ad_group_summary_status__e ad_group_summary_statusVariable;
-    cJSON *ad_group_summary_statusVar = cJSON_GetObjectItemCaseSensitive(ad_group_summary_statusJSON, "ad_group_summary_status");
-    if(!cJSON_IsString(ad_group_summary_statusVar) || (ad_group_summary_statusVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_ad_group_summary_status__e ad_group_summary_status_parseFromJSON(cJSON *ad_group_summary_statusJSON) {
+    if(!cJSON_IsString(ad_group_summary_statusJSON) || (ad_group_summary_statusJSON->valuestring == NULL)) {
+        return 0;
     }
-    ad_group_summary_statusVariable = ad_group_summary_status_ad_group_summary_status_FromString(ad_group_summary_statusVar->valuestring);
-    return ad_group_summary_statusVariable;
-end:
-    return 0;
+    return ad_group_summary_status_ad_group_summary_status_FromString(ad_group_summary_statusJSON->valuestring);
 }

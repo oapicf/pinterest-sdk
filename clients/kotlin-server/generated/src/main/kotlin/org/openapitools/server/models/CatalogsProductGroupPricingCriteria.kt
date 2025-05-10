@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param propertyValues 
  * @param inclusion 
  * @param negated 
  */
+@Serializable
 data class CatalogsProductGroupPricingCriteria(
     val propertyValues: java.math.BigDecimal,
     val inclusion: kotlin.Boolean? = true,
     val negated: kotlin.Boolean? = false
-) 
+)
 

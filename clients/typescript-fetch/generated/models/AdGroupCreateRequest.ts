@@ -239,11 +239,11 @@ export function AdGroupCreateRequestFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function AdGroupCreateRequestToJSON(json: any): AdGroupCreateRequest {
-      return AdGroupCreateRequestToJSONTyped(json, false);
-  }
+export function AdGroupCreateRequestToJSON(json: any): AdGroupCreateRequest {
+    return AdGroupCreateRequestToJSONTyped(json, false);
+}
 
-  export function AdGroupCreateRequestToJSONTyped(value?: AdGroupCreateRequest | null, ignoreDiscriminator: boolean = false): any {
+export function AdGroupCreateRequestToJSONTyped(value?: AdGroupCreateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

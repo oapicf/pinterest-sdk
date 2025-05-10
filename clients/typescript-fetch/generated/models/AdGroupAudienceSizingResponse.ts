@@ -55,11 +55,11 @@ export function AdGroupAudienceSizingResponseFromJSONTyped(json: any, ignoreDisc
     };
 }
 
-  export function AdGroupAudienceSizingResponseToJSON(json: any): AdGroupAudienceSizingResponse {
-      return AdGroupAudienceSizingResponseToJSONTyped(json, false);
-  }
+export function AdGroupAudienceSizingResponseToJSON(json: any): AdGroupAudienceSizingResponse {
+    return AdGroupAudienceSizingResponseToJSONTyped(json, false);
+}
 
-  export function AdGroupAudienceSizingResponseToJSONTyped(value?: AdGroupAudienceSizingResponse | null, ignoreDiscriminator: boolean = false): any {
+export function AdGroupAudienceSizingResponseToJSONTyped(value?: AdGroupAudienceSizingResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

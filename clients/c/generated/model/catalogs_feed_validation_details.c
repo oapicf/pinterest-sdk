@@ -5,7 +5,7 @@
 
 
 
-catalogs_feed_validation_details_t *catalogs_feed_validation_details_create(
+static catalogs_feed_validation_details_t *catalogs_feed_validation_details_create_internal(
     catalogs_feed_validation_errors_t *errors,
     catalogs_feed_validation_warnings_t *warnings
     ) {
@@ -16,12 +16,26 @@ catalogs_feed_validation_details_t *catalogs_feed_validation_details_create(
     catalogs_feed_validation_details_local_var->errors = errors;
     catalogs_feed_validation_details_local_var->warnings = warnings;
 
+    catalogs_feed_validation_details_local_var->_library_owned = 1;
     return catalogs_feed_validation_details_local_var;
 }
 
+__attribute__((deprecated)) catalogs_feed_validation_details_t *catalogs_feed_validation_details_create(
+    catalogs_feed_validation_errors_t *errors,
+    catalogs_feed_validation_warnings_t *warnings
+    ) {
+    return catalogs_feed_validation_details_create_internal (
+        errors,
+        warnings
+        );
+}
 
 void catalogs_feed_validation_details_free(catalogs_feed_validation_details_t *catalogs_feed_validation_details) {
     if(NULL == catalogs_feed_validation_details){
+        return ;
+    }
+    if(catalogs_feed_validation_details->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_feed_validation_details_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -86,6 +100,9 @@ catalogs_feed_validation_details_t *catalogs_feed_validation_details_parseFromJS
 
     // catalogs_feed_validation_details->errors
     cJSON *errors = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_detailsJSON, "errors");
+    if (cJSON_IsNull(errors)) {
+        errors = NULL;
+    }
     if (!errors) {
         goto end;
     }
@@ -95,6 +112,9 @@ catalogs_feed_validation_details_t *catalogs_feed_validation_details_parseFromJS
 
     // catalogs_feed_validation_details->warnings
     cJSON *warnings = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_detailsJSON, "warnings");
+    if (cJSON_IsNull(warnings)) {
+        warnings = NULL;
+    }
     if (!warnings) {
         goto end;
     }
@@ -103,7 +123,7 @@ catalogs_feed_validation_details_t *catalogs_feed_validation_details_parseFromJS
     warnings_local_nonprim = catalogs_feed_validation_warnings_parseFromJSON(warnings); //nonprimitive
 
 
-    catalogs_feed_validation_details_local_var = catalogs_feed_validation_details_create (
+    catalogs_feed_validation_details_local_var = catalogs_feed_validation_details_create_internal (
         errors_local_nonprim,
         warnings_local_nonprim
         );

@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param boardId Unique identifier of the board to which the pin will be saved.
  * @param boardSectionId Unique identifier of the board section to which the pin will be saved.
  */
+@Serializable
 data class PinsSaveRequest(
     /* Unique identifier of the board to which the pin will be saved. */
     val boardId: kotlin.String? = null,
     /* Unique identifier of the board section to which the pin will be saved. */
     val boardSectionId: kotlin.String? = null
-) 
+)
 

@@ -51,36 +51,42 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AudienceCreateCustomRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AudienceCreateCustomRequest {
   public static final String SERIALIZED_NAME_AD_ACCOUNT_ID = "ad_account_id";
   @SerializedName(SERIALIZED_NAME_AD_ACCOUNT_ID)
+  @javax.annotation.Nullable
   private String adAccountId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nonnull
   private String name;
 
   public static final String SERIALIZED_NAME_RULE = "rule";
   @SerializedName(SERIALIZED_NAME_RULE)
+  @javax.annotation.Nonnull
   private AudienceRule rule;
 
   public static final String SERIALIZED_NAME_SHARING_TYPE = "sharing_type";
   @SerializedName(SERIALIZED_NAME_SHARING_TYPE)
+  @javax.annotation.Nonnull
   private AudienceSharingType sharingType;
 
   public static final String SERIALIZED_NAME_DATA_PARTY = "data_party";
   @SerializedName(SERIALIZED_NAME_DATA_PARTY)
+  @javax.annotation.Nonnull
   private AudienceDataParty dataParty;
 
   public static final String SERIALIZED_NAME_CATEGORY = "category";
   @SerializedName(SERIALIZED_NAME_CATEGORY)
+  @javax.annotation.Nullable
   private String category;
 
   public AudienceCreateCustomRequest() {
   }
 
-  public AudienceCreateCustomRequest adAccountId(String adAccountId) {
+  public AudienceCreateCustomRequest adAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -94,12 +100,12 @@ public class AudienceCreateCustomRequest {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
 
-  public AudienceCreateCustomRequest name(String name) {
+  public AudienceCreateCustomRequest name(@javax.annotation.Nonnull String name) {
     this.name = name;
     return this;
   }
@@ -113,12 +119,12 @@ public class AudienceCreateCustomRequest {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
 
-  public AudienceCreateCustomRequest rule(AudienceRule rule) {
+  public AudienceCreateCustomRequest rule(@javax.annotation.Nonnull AudienceRule rule) {
     this.rule = rule;
     return this;
   }
@@ -132,12 +138,12 @@ public class AudienceCreateCustomRequest {
     return rule;
   }
 
-  public void setRule(AudienceRule rule) {
+  public void setRule(@javax.annotation.Nonnull AudienceRule rule) {
     this.rule = rule;
   }
 
 
-  public AudienceCreateCustomRequest sharingType(AudienceSharingType sharingType) {
+  public AudienceCreateCustomRequest sharingType(@javax.annotation.Nonnull AudienceSharingType sharingType) {
     this.sharingType = sharingType;
     return this;
   }
@@ -151,12 +157,12 @@ public class AudienceCreateCustomRequest {
     return sharingType;
   }
 
-  public void setSharingType(AudienceSharingType sharingType) {
+  public void setSharingType(@javax.annotation.Nonnull AudienceSharingType sharingType) {
     this.sharingType = sharingType;
   }
 
 
-  public AudienceCreateCustomRequest dataParty(AudienceDataParty dataParty) {
+  public AudienceCreateCustomRequest dataParty(@javax.annotation.Nonnull AudienceDataParty dataParty) {
     this.dataParty = dataParty;
     return this;
   }
@@ -170,12 +176,12 @@ public class AudienceCreateCustomRequest {
     return dataParty;
   }
 
-  public void setDataParty(AudienceDataParty dataParty) {
+  public void setDataParty(@javax.annotation.Nonnull AudienceDataParty dataParty) {
     this.dataParty = dataParty;
   }
 
 
-  public AudienceCreateCustomRequest category(String category) {
+  public AudienceCreateCustomRequest category(@javax.annotation.Nullable String category) {
     this.category = category;
     return this;
   }
@@ -189,7 +195,7 @@ public class AudienceCreateCustomRequest {
     return category;
   }
 
-  public void setCategory(String category) {
+  public void setCategory(@javax.annotation.Nullable String category) {
     this.category = category;
   }
 

@@ -13,14 +13,16 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.BusinessRoleForMembers
 
+import kotlinx.serialization.Serializable
 /**
  * Single instance of a business member to have its role updated
  * @param businessRole 
  * @param memberId Unique identifier of the member
  */
+@Serializable
 data class UpdateMemberBusinessRoleBody(
     val businessRole: BusinessRoleForMembers,
     /* Unique identifier of the member */
     val memberId: kotlin.String
-) 
+)
 

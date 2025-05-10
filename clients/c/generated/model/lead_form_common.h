@@ -19,14 +19,6 @@ typedef struct lead_form_common_t lead_form_common_t;
 #include "lead_form_question.h"
 #include "lead_form_status.h"
 
-// Enum  for lead_form_common
-
-typedef enum  { pinterest_rest_api_lead_form_common__NULL = 0, pinterest_rest_api_lead_form_common__DRAFT, pinterest_rest_api_lead_form_common__ACTIVE } pinterest_rest_api_lead_form_common__e;
-
-char* lead_form_common_status_ToString(pinterest_rest_api_lead_form_common__e status);
-
-pinterest_rest_api_lead_form_common__e lead_form_common_status_FromString(char* status);
-
 
 
 typedef struct lead_form_common_t {
@@ -34,19 +26,20 @@ typedef struct lead_form_common_t {
     char *privacy_policy_link; // string
     int has_accepted_terms; //boolean
     char *completion_message; // string
-    lead_form_status_t *status; // custom
+    pinterest_rest_api_lead_form_status__e status; //referenced enum
     char *disclosure_language; // string
     list_t *questions; //nonprimitive container
     list_t *policy_links; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } lead_form_common_t;
 
-lead_form_common_t *lead_form_common_create(
+__attribute__((deprecated)) lead_form_common_t *lead_form_common_create(
     char *name,
     char *privacy_policy_link,
     int has_accepted_terms,
     char *completion_message,
-    lead_form_status_t *status,
+    pinterest_rest_api_lead_form_status__e status,
     char *disclosure_language,
     list_t *questions,
     list_t *policy_links

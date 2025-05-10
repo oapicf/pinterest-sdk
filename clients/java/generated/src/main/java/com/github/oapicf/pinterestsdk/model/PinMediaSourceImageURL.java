@@ -48,7 +48,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Image URL-based media source
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMediaSourceImageURL {
   /**
    * Gets or Sets sourceType
@@ -102,20 +102,23 @@ public class PinMediaSourceImageURL {
 
   public static final String SERIALIZED_NAME_SOURCE_TYPE = "source_type";
   @SerializedName(SERIALIZED_NAME_SOURCE_TYPE)
+  @javax.annotation.Nonnull
   private SourceTypeEnum sourceType;
 
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)
+  @javax.annotation.Nonnull
   private String url;
 
   public static final String SERIALIZED_NAME_IS_STANDARD = "is_standard";
   @SerializedName(SERIALIZED_NAME_IS_STANDARD)
+  @javax.annotation.Nullable
   private Boolean isStandard = true;
 
   public PinMediaSourceImageURL() {
   }
 
-  public PinMediaSourceImageURL sourceType(SourceTypeEnum sourceType) {
+  public PinMediaSourceImageURL sourceType(@javax.annotation.Nonnull SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
     return this;
   }
@@ -129,12 +132,12 @@ public class PinMediaSourceImageURL {
     return sourceType;
   }
 
-  public void setSourceType(SourceTypeEnum sourceType) {
+  public void setSourceType(@javax.annotation.Nonnull SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
   }
 
 
-  public PinMediaSourceImageURL url(String url) {
+  public PinMediaSourceImageURL url(@javax.annotation.Nonnull String url) {
     this.url = url;
     return this;
   }
@@ -148,12 +151,12 @@ public class PinMediaSourceImageURL {
     return url;
   }
 
-  public void setUrl(String url) {
+  public void setUrl(@javax.annotation.Nonnull String url) {
     this.url = url;
   }
 
 
-  public PinMediaSourceImageURL isStandard(Boolean isStandard) {
+  public PinMediaSourceImageURL isStandard(@javax.annotation.Nullable Boolean isStandard) {
     this.isStandard = isStandard;
     return this;
   }
@@ -167,7 +170,7 @@ public class PinMediaSourceImageURL {
     return isStandard;
   }
 
-  public void setIsStandard(Boolean isStandard) {
+  public void setIsStandard(@javax.annotation.Nullable Boolean isStandard) {
     this.isStandard = isStandard;
   }
 

@@ -50,24 +50,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * TargetingSpecSHOPPINGRETARGETING
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TargetingSpecSHOPPINGRETARGETING {
   public static final String SERIALIZED_NAME_LOOKBACK_WINDOW = "lookback_window";
   @SerializedName(SERIALIZED_NAME_LOOKBACK_WINDOW)
+  @javax.annotation.Nullable
   private Integer lookbackWindow;
 
   public static final String SERIALIZED_NAME_TAG_TYPES = "tag_types";
   @SerializedName(SERIALIZED_NAME_TAG_TYPES)
+  @javax.annotation.Nullable
   private List<Integer> tagTypes = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_EXCLUSION_WINDOW = "exclusion_window";
   @SerializedName(SERIALIZED_NAME_EXCLUSION_WINDOW)
+  @javax.annotation.Nullable
   private Integer exclusionWindow;
 
   public TargetingSpecSHOPPINGRETARGETING() {
   }
 
-  public TargetingSpecSHOPPINGRETARGETING lookbackWindow(Integer lookbackWindow) {
+  public TargetingSpecSHOPPINGRETARGETING lookbackWindow(@javax.annotation.Nullable Integer lookbackWindow) {
     this.lookbackWindow = lookbackWindow;
     return this;
   }
@@ -81,12 +84,12 @@ public class TargetingSpecSHOPPINGRETARGETING {
     return lookbackWindow;
   }
 
-  public void setLookbackWindow(Integer lookbackWindow) {
+  public void setLookbackWindow(@javax.annotation.Nullable Integer lookbackWindow) {
     this.lookbackWindow = lookbackWindow;
   }
 
 
-  public TargetingSpecSHOPPINGRETARGETING tagTypes(List<Integer> tagTypes) {
+  public TargetingSpecSHOPPINGRETARGETING tagTypes(@javax.annotation.Nullable List<Integer> tagTypes) {
     this.tagTypes = tagTypes;
     return this;
   }
@@ -108,12 +111,12 @@ public class TargetingSpecSHOPPINGRETARGETING {
     return tagTypes;
   }
 
-  public void setTagTypes(List<Integer> tagTypes) {
+  public void setTagTypes(@javax.annotation.Nullable List<Integer> tagTypes) {
     this.tagTypes = tagTypes;
   }
 
 
-  public TargetingSpecSHOPPINGRETARGETING exclusionWindow(Integer exclusionWindow) {
+  public TargetingSpecSHOPPINGRETARGETING exclusionWindow(@javax.annotation.Nullable Integer exclusionWindow) {
     this.exclusionWindow = exclusionWindow;
     return this;
   }
@@ -127,7 +130,7 @@ public class TargetingSpecSHOPPINGRETARGETING {
     return exclusionWindow;
   }
 
-  public void setExclusionWindow(Integer exclusionWindow) {
+  public void setExclusionWindow(@javax.annotation.Nullable Integer exclusionWindow) {
     this.exclusionWindow = exclusionWindow;
   }
 

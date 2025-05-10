@@ -34,7 +34,11 @@ export function PinsAnalyticsMetricTypesParameterInnerFromJSONTyped(json: any, i
     return {} as any;
 }
 
-export function PinsAnalyticsMetricTypesParameterInnerToJSON(value?: PinsAnalyticsMetricTypesParameterInner | null): any {
+export function PinsAnalyticsMetricTypesParameterInnerToJSON(json: any): any {
+    return PinsAnalyticsMetricTypesParameterInnerToJSONTyped(json, false);
+}
+
+export function PinsAnalyticsMetricTypesParameterInnerToJSONTyped(value?: PinsAnalyticsMetricTypesParameterInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

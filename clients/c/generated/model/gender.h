@@ -24,9 +24,9 @@ char* gender_gender_ToString(pinterest_rest_api_gender__e gender);
 
 pinterest_rest_api_gender__e gender_gender_FromString(char* gender);
 
-//cJSON *gender_gender_convertToJSON(pinterest_rest_api_gender__e gender);
+cJSON *gender_convertToJSON(pinterest_rest_api_gender__e gender);
 
-//pinterest_rest_api_gender__e gender_gender_parseFromJSON(cJSON *genderJSON);
+pinterest_rest_api_gender__e gender_parseFromJSON(cJSON *genderJSON);
 
 #endif /* _gender_H_ */
 

@@ -249,7 +249,7 @@ void OAIIntegrationsApi::integrationsCommerce_del(const QString &external_busine
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIIntegrationsApi::integrationsCommerce_delCallback);
     connect(this, &OAIIntegrationsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -271,7 +271,7 @@ void OAIIntegrationsApi::integrationsCommerce_del(const QString &external_busine
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIIntegrationsApi::integrationsCommerce_delCallback);
     connect(this, &OAIIntegrationsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -373,7 +373,7 @@ void OAIIntegrationsApi::integrationsCommerce_get(const QString &external_busine
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIIntegrationsApi::integrationsCommerce_getCallback);
     connect(this, &OAIIntegrationsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -395,7 +395,7 @@ void OAIIntegrationsApi::integrationsCommerce_get(const QString &external_busine
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIIntegrationsApi::integrationsCommerce_getCallback);
     connect(this, &OAIIntegrationsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -503,7 +503,7 @@ void OAIIntegrationsApi::integrationsCommerce_patch(const QString &external_busi
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIIntegrationsApi::integrationsCommerce_patchCallback);
     connect(this, &OAIIntegrationsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -525,7 +525,7 @@ void OAIIntegrationsApi::integrationsCommerce_patch(const QString &external_busi
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIIntegrationsApi::integrationsCommerce_patchCallback);
     connect(this, &OAIIntegrationsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -619,7 +619,7 @@ void OAIIntegrationsApi::integrationsCommerce_post(const ::OpenAPI::OptionalPara
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIIntegrationsApi::integrationsCommerce_postCallback);
     connect(this, &OAIIntegrationsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -641,7 +641,7 @@ void OAIIntegrationsApi::integrationsCommerce_post(const ::OpenAPI::OptionalPara
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIIntegrationsApi::integrationsCommerce_postCallback);
     connect(this, &OAIIntegrationsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -735,7 +735,7 @@ void OAIIntegrationsApi::integrationsLogs_post(const OAIIntegrationLogsRequest &
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIIntegrationsApi::integrationsLogs_postCallback);
     connect(this, &OAIIntegrationsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -757,7 +757,7 @@ void OAIIntegrationsApi::integrationsLogs_post(const OAIIntegrationLogsRequest &
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIIntegrationsApi::integrationsLogs_postCallback);
     connect(this, &OAIIntegrationsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -860,7 +860,7 @@ void OAIIntegrationsApi::integrations_getById(const QString &id) {
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIIntegrationsApi::integrations_getByIdCallback);
     connect(this, &OAIIntegrationsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -882,7 +882,7 @@ void OAIIntegrationsApi::integrations_getById(const QString &id) {
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIIntegrationsApi::integrations_getByIdCallback);
     connect(this, &OAIIntegrationsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -972,7 +972,7 @@ void OAIIntegrationsApi::integrations_getList(const ::OpenAPI::OptionalParam<QSt
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     if (page_size.hasValue())
     {
@@ -987,7 +987,7 @@ void OAIIntegrationsApi::integrations_getList(const ::OpenAPI::OptionalParam<QSt
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -1002,7 +1002,7 @@ void OAIIntegrationsApi::integrations_getList(const ::OpenAPI::OptionalParam<QSt
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIIntegrationsApi::integrations_getListCallback);
     connect(this, &OAIIntegrationsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1024,7 +1024,7 @@ void OAIIntegrationsApi::integrations_getList(const ::OpenAPI::OptionalParam<QSt
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIIntegrationsApi::integrations_getListCallback);
     connect(this, &OAIIntegrationsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }

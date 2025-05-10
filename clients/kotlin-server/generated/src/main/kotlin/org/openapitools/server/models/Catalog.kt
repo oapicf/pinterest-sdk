@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsType
 
+import kotlinx.serialization.Serializable
 /**
  * Catalog entity
  * @param createdAt 
@@ -21,13 +22,14 @@ import org.openapitools.server.models.CatalogsType
  * @param name A human-friendly name associated to a catalog entity.
  * @param catalogType 
  */
+@Serializable
 data class Catalog(
-    val createdAt: java.time.OffsetDateTime,
+    val createdAt: kotlin.String,
     /* ID of the catalog entity. */
     val id: kotlin.String,
-    val updatedAt: java.time.OffsetDateTime,
+    val updatedAt: kotlin.String,
     /* A human-friendly name associated to a catalog entity. */
-    val name: kotlin.String,
+    val name: kotlin.String?,
     val catalogType: CatalogsType
-) 
+)
 

@@ -24,7 +24,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Pin media source.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "source_type", visible = true)
+@ApiModel(description="Pin media source.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2025-05-10T05:40:40.818990358Z[Etc/UTC]", comments = "Generator version: 7.12.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "source_type", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = PinMediaSourceImageBase64.class, name = "image_base64"),
   @JsonSubTypes.Type(value = PinMediaSourceImageURL.class, name = "image_url"),
@@ -61,9 +61,9 @@ public class PinMediaSource   {
    * Gets or Sets contentType
    */
   public enum ContentTypeEnum {
-    JPEG("image/jpeg"),
+    IMAGE_JPEG("image/jpeg"),
 
-        PNG("image/png");
+        IMAGE_PNG("image/png");
     private String value;
 
     ContentTypeEnum(String value) {
@@ -87,9 +87,9 @@ public class PinMediaSource   {
    * Content type for cover image Base64.
    */
   public enum CoverImageContentTypeEnum {
-    JPEG("image/jpeg"),
+    IMAGE_JPEG("image/jpeg"),
 
-        PNG("image/png");
+        IMAGE_PNG("image/png");
     private String value;
 
     CoverImageContentTypeEnum(String value) {

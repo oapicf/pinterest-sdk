@@ -5,7 +5,7 @@
 
 
 
-create_invites_results_response_array_items_inner_invite_t *create_invites_results_response_array_items_inner_invite_create(
+static create_invites_results_response_array_items_inner_invite_t *create_invites_results_response_array_items_inner_invite_create_internal(
     char *id,
     business_access_user_summary_t *user
     ) {
@@ -16,12 +16,26 @@ create_invites_results_response_array_items_inner_invite_t *create_invites_resul
     create_invites_results_response_array_items_inner_invite_local_var->id = id;
     create_invites_results_response_array_items_inner_invite_local_var->user = user;
 
+    create_invites_results_response_array_items_inner_invite_local_var->_library_owned = 1;
     return create_invites_results_response_array_items_inner_invite_local_var;
 }
 
+__attribute__((deprecated)) create_invites_results_response_array_items_inner_invite_t *create_invites_results_response_array_items_inner_invite_create(
+    char *id,
+    business_access_user_summary_t *user
+    ) {
+    return create_invites_results_response_array_items_inner_invite_create_internal (
+        id,
+        user
+        );
+}
 
 void create_invites_results_response_array_items_inner_invite_free(create_invites_results_response_array_items_inner_invite_t *create_invites_results_response_array_items_inner_invite) {
     if(NULL == create_invites_results_response_array_items_inner_invite){
+        return ;
+    }
+    if(create_invites_results_response_array_items_inner_invite->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "create_invites_results_response_array_items_inner_invite_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -76,6 +90,9 @@ create_invites_results_response_array_items_inner_invite_t *create_invites_resul
 
     // create_invites_results_response_array_items_inner_invite->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(create_invites_results_response_array_items_inner_inviteJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -85,12 +102,15 @@ create_invites_results_response_array_items_inner_invite_t *create_invites_resul
 
     // create_invites_results_response_array_items_inner_invite->user
     cJSON *user = cJSON_GetObjectItemCaseSensitive(create_invites_results_response_array_items_inner_inviteJSON, "user");
+    if (cJSON_IsNull(user)) {
+        user = NULL;
+    }
     if (user) { 
     user_local_nonprim = business_access_user_summary_parseFromJSON(user); //nonprimitive
     }
 
 
-    create_invites_results_response_array_items_inner_invite_local_var = create_invites_results_response_array_items_inner_invite_create (
+    create_invites_results_response_array_items_inner_invite_local_var = create_invites_results_response_array_items_inner_invite_create_internal (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         user ? user_local_nonprim : NULL
         );

@@ -63,11 +63,11 @@ export function KeywordErrorFromJSONTyped(json: any, ignoreDiscriminator: boolea
     };
 }
 
-  export function KeywordErrorToJSON(json: any): KeywordError {
-      return KeywordErrorToJSONTyped(json, false);
-  }
+export function KeywordErrorToJSON(json: any): KeywordError {
+    return KeywordErrorToJSONTyped(json, false);
+}
 
-  export function KeywordErrorToJSONTyped(value?: KeywordError | null, ignoreDiscriminator: boolean = false): any {
+export function KeywordErrorToJSONTyped(value?: KeywordError | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -22,9 +22,10 @@ typedef struct delete_invites_results_response_array_items_inner_exception_t {
     char *invite_id; // string
     char *message; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } delete_invites_results_response_array_items_inner_exception_t;
 
-delete_invites_results_response_array_items_inner_exception_t *delete_invites_results_response_array_items_inner_exception_create(
+__attribute__((deprecated)) delete_invites_results_response_array_items_inner_exception_t *delete_invites_results_response_array_items_inner_exception_create(
     char *invite_id,
     char *message
 );

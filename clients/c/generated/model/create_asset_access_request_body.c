@@ -5,7 +5,7 @@
 
 
 
-create_asset_access_request_body_t *create_asset_access_request_body_create(
+static create_asset_access_request_body_t *create_asset_access_request_body_create_internal(
     list_t *asset_requests
     ) {
     create_asset_access_request_body_t *create_asset_access_request_body_local_var = malloc(sizeof(create_asset_access_request_body_t));
@@ -14,12 +14,24 @@ create_asset_access_request_body_t *create_asset_access_request_body_create(
     }
     create_asset_access_request_body_local_var->asset_requests = asset_requests;
 
+    create_asset_access_request_body_local_var->_library_owned = 1;
     return create_asset_access_request_body_local_var;
 }
 
+__attribute__((deprecated)) create_asset_access_request_body_t *create_asset_access_request_body_create(
+    list_t *asset_requests
+    ) {
+    return create_asset_access_request_body_create_internal (
+        asset_requests
+        );
+}
 
 void create_asset_access_request_body_free(create_asset_access_request_body_t *create_asset_access_request_body) {
     if(NULL == create_asset_access_request_body){
+        return ;
+    }
+    if(create_asset_access_request_body->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "create_asset_access_request_body_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -73,6 +85,9 @@ create_asset_access_request_body_t *create_asset_access_request_body_parseFromJS
 
     // create_asset_access_request_body->asset_requests
     cJSON *asset_requests = cJSON_GetObjectItemCaseSensitive(create_asset_access_request_bodyJSON, "asset_requests");
+    if (cJSON_IsNull(asset_requests)) {
+        asset_requests = NULL;
+    }
     if (!asset_requests) {
         goto end;
     }
@@ -96,7 +111,7 @@ create_asset_access_request_body_t *create_asset_access_request_body_parseFromJS
     }
 
 
-    create_asset_access_request_body_local_var = create_asset_access_request_body_create (
+    create_asset_access_request_body_local_var = create_asset_access_request_body_create_internal (
         asset_requestsList
         );
 

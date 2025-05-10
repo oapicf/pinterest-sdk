@@ -48,10 +48,11 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * DeliveryMetricsResponseItemsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class DeliveryMetricsResponseItemsInner {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   /**
@@ -108,20 +109,23 @@ public class DeliveryMetricsResponseItemsInner {
 
   public static final String SERIALIZED_NAME_CATEGORY = "category";
   @SerializedName(SERIALIZED_NAME_CATEGORY)
+  @javax.annotation.Nullable
   private CategoryEnum category;
 
   public static final String SERIALIZED_NAME_DEFINITION = "definition";
   @SerializedName(SERIALIZED_NAME_DEFINITION)
+  @javax.annotation.Nullable
   private String definition;
 
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "display_name";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  @javax.annotation.Nullable
   private String displayName;
 
   public DeliveryMetricsResponseItemsInner() {
   }
 
-  public DeliveryMetricsResponseItemsInner name(String name) {
+  public DeliveryMetricsResponseItemsInner name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -135,12 +139,12 @@ public class DeliveryMetricsResponseItemsInner {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public DeliveryMetricsResponseItemsInner category(CategoryEnum category) {
+  public DeliveryMetricsResponseItemsInner category(@javax.annotation.Nullable CategoryEnum category) {
     this.category = category;
     return this;
   }
@@ -154,12 +158,12 @@ public class DeliveryMetricsResponseItemsInner {
     return category;
   }
 
-  public void setCategory(CategoryEnum category) {
+  public void setCategory(@javax.annotation.Nullable CategoryEnum category) {
     this.category = category;
   }
 
 
-  public DeliveryMetricsResponseItemsInner definition(String definition) {
+  public DeliveryMetricsResponseItemsInner definition(@javax.annotation.Nullable String definition) {
     this.definition = definition;
     return this;
   }
@@ -173,12 +177,12 @@ public class DeliveryMetricsResponseItemsInner {
     return definition;
   }
 
-  public void setDefinition(String definition) {
+  public void setDefinition(@javax.annotation.Nullable String definition) {
     this.definition = definition;
   }
 
 
-  public DeliveryMetricsResponseItemsInner displayName(String displayName) {
+  public DeliveryMetricsResponseItemsInner displayName(@javax.annotation.Nullable String displayName) {
     this.displayName = displayName;
     return this;
   }
@@ -192,7 +196,7 @@ public class DeliveryMetricsResponseItemsInner {
     return displayName;
   }
 
-  public void setDisplayName(String displayName) {
+  public void setDisplayName(@javax.annotation.Nullable String displayName) {
     this.displayName = displayName;
   }
 

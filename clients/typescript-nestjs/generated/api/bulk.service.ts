@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { BulkDownloadRequest } from '../model/bulkDownloadRequest';
 import { BulkDownloadResponse } from '../model/bulkDownloadResponse';
@@ -30,10 +30,12 @@ export class BulkService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -52,9 +54,10 @@ export class BulkService {
      * @param bulkDownloadRequest Parameters to get ad entities in bulk
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [bulkDownloadCreateOpts.config] Override http request option.
      */
-    public bulkDownloadCreate(adAccountId: string, bulkDownloadRequest: BulkDownloadRequest, ): Observable<AxiosResponse<BulkDownloadResponse>>;
-    public bulkDownloadCreate(adAccountId: string, bulkDownloadRequest: BulkDownloadRequest, ): Observable<any> {
+    public bulkDownloadCreate(adAccountId: string, bulkDownloadRequest: BulkDownloadRequest, bulkDownloadCreateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<BulkDownloadResponse>>;
+    public bulkDownloadCreate(adAccountId: string, bulkDownloadRequest: BulkDownloadRequest, bulkDownloadCreateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling bulkDownloadCreate.');
         }
@@ -101,7 +104,8 @@ export class BulkService {
                     bulkDownloadRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...bulkDownloadCreateOpts?.config,
+                        headers: {...headers, ...bulkDownloadCreateOpts?.config?.headers},
                     }
                 );
             })
@@ -115,9 +119,10 @@ export class BulkService {
      * @param includeDetails if set to True then attach the errors/details to all the requests
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [bulkRequestGetOpts.config] Override http request option.
      */
-    public bulkRequestGet(adAccountId: string, bulkRequestId: string, includeDetails?: boolean, ): Observable<AxiosResponse<BulkUpsertStatusResponse>>;
-    public bulkRequestGet(adAccountId: string, bulkRequestId: string, includeDetails?: boolean, ): Observable<any> {
+    public bulkRequestGet(adAccountId: string, bulkRequestId: string, includeDetails?: boolean, bulkRequestGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<BulkUpsertStatusResponse>>;
+    public bulkRequestGet(adAccountId: string, bulkRequestId: string, includeDetails?: boolean, bulkRequestGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling bulkRequestGet.');
         }
@@ -164,7 +169,8 @@ export class BulkService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...bulkRequestGetOpts?.config,
+                        headers: {...headers, ...bulkRequestGetOpts?.config?.headers},
                     }
                 );
             })
@@ -177,9 +183,10 @@ export class BulkService {
      * @param bulkUpsertRequest Parameters to get create/update ad entities in bulk
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [bulkUpsertCreateOpts.config] Override http request option.
      */
-    public bulkUpsertCreate(adAccountId: string, bulkUpsertRequest: BulkUpsertRequest, ): Observable<AxiosResponse<BulkUpsertResponse>>;
-    public bulkUpsertCreate(adAccountId: string, bulkUpsertRequest: BulkUpsertRequest, ): Observable<any> {
+    public bulkUpsertCreate(adAccountId: string, bulkUpsertRequest: BulkUpsertRequest, bulkUpsertCreateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<BulkUpsertResponse>>;
+    public bulkUpsertCreate(adAccountId: string, bulkUpsertRequest: BulkUpsertRequest, bulkUpsertCreateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling bulkUpsertCreate.');
         }
@@ -226,7 +233,8 @@ export class BulkService {
                     bulkUpsertRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...bulkUpsertCreateOpts?.config,
+                        headers: {...headers, ...bulkUpsertCreateOpts?.config?.headers},
                     }
                 );
             })

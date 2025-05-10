@@ -48,11 +48,11 @@ export function BoardOwnerFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     };
 }
 
-  export function BoardOwnerToJSON(json: any): BoardOwner {
-      return BoardOwnerToJSONTyped(json, false);
-  }
+export function BoardOwnerToJSON(json: any): BoardOwner {
+    return BoardOwnerToJSONTyped(json, false);
+}
 
-  export function BoardOwnerToJSONTyped(value?: Omit<BoardOwner, 'username'> | null, ignoreDiscriminator: boolean = false): any {
+export function BoardOwnerToJSONTyped(value?: Omit<BoardOwner, 'username'> | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

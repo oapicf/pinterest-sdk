@@ -20,9 +20,10 @@ typedef struct audience_create_request_1_audience_type_t audience_create_request
 
 typedef struct audience_create_request_1_audience_type_t {
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } audience_create_request_1_audience_type_t;
 
-audience_create_request_1_audience_type_t *audience_create_request_1_audience_type_create(
+__attribute__((deprecated)) audience_create_request_1_audience_type_t *audience_create_request_1_audience_type_create(
 );
 
 void audience_create_request_1_audience_type_free(audience_create_request_1_audience_type_t *audience_create_request_1_audience_type);

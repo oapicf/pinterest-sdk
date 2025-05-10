@@ -25,9 +25,10 @@ typedef struct quiz_pin_result_t {
     char *destination_url; // string
     double result_id; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } quiz_pin_result_t;
 
-quiz_pin_result_t *quiz_pin_result_create(
+__attribute__((deprecated)) quiz_pin_result_t *quiz_pin_result_create(
     char *organic_pin_id,
     char *android_deep_link,
     char *ios_deep_link,

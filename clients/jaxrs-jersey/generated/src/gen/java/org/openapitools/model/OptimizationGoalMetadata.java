@@ -33,7 +33,7 @@ import javax.validation.Valid;
   OptimizationGoalMetadata.JSON_PROPERTY_FREQUENCY_GOAL_METADATA,
   OptimizationGoalMetadata.JSON_PROPERTY_SCROLLUP_GOAL_METADATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-11-05T02:20:07.425136412Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class OptimizationGoalMetadata   {
   public static final String JSON_PROPERTY_CONVERSION_TAG_V3_GOAL_METADATA = "conversion_tag_v3_goal_metadata";
   @JsonProperty(JSON_PROPERTY_CONVERSION_TAG_V3_GOAL_METADATA)

@@ -21,9 +21,10 @@ typedef struct ssio_create_insertion_order_response_t ssio_create_insertion_orde
 typedef struct ssio_create_insertion_order_response_t {
     char *pin_order_id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } ssio_create_insertion_order_response_t;
 
-ssio_create_insertion_order_response_t *ssio_create_insertion_order_response_create(
+__attribute__((deprecated)) ssio_create_insertion_order_response_t *ssio_create_insertion_order_response_create(
     char *pin_order_id
 );
 

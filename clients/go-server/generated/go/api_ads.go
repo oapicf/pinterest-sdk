@@ -99,7 +99,7 @@ func (c *AdsAPIController) AdPreviewsCreate(w http.ResponseWriter, r *http.Reque
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	adPreviewRequestParam := AdPreviewRequest{}
+	var adPreviewRequestParam AdPreviewRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&adPreviewRequestParam); err != nil {
@@ -203,7 +203,7 @@ func (c *AdsAPIController) AdsCreate(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	adCreateRequestParam := []AdCreateRequest{}
+	var adCreateRequestParam []AdCreateRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&adCreateRequestParam); err != nil {
@@ -234,7 +234,7 @@ func (c *AdsAPIController) AdsUpdate(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	adUpdateRequestParam := []AdUpdateRequest{}
+	var adUpdateRequestParam []AdUpdateRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&adUpdateRequestParam); err != nil {

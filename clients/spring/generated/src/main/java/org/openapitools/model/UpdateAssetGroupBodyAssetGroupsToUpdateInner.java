@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.AssetGroupType;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -24,14 +25,14 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("UpdateAssetGroupBody_asset_groups_to_update_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class UpdateAssetGroupBodyAssetGroupsToUpdateInner {
 
   private String assetGroupId;
 
-  private String name;
+  private @Nullable String name;
 
-  private String description;
+  private @Nullable String description;
 
   @Valid
   private List<AssetGroupType> assetGroupTypes = new ArrayList<>();

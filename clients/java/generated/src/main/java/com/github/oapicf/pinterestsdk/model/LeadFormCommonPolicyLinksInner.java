@@ -48,20 +48,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * LeadFormCommonPolicyLinksInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class LeadFormCommonPolicyLinksInner {
   public static final String SERIALIZED_NAME_LABEL = "label";
   @SerializedName(SERIALIZED_NAME_LABEL)
+  @javax.annotation.Nullable
   private String label;
 
   public static final String SERIALIZED_NAME_LINK = "link";
   @SerializedName(SERIALIZED_NAME_LINK)
+  @javax.annotation.Nullable
   private String link;
 
   public LeadFormCommonPolicyLinksInner() {
   }
 
-  public LeadFormCommonPolicyLinksInner label(String label) {
+  public LeadFormCommonPolicyLinksInner label(@javax.annotation.Nullable String label) {
     this.label = label;
     return this;
   }
@@ -75,12 +77,12 @@ public class LeadFormCommonPolicyLinksInner {
     return label;
   }
 
-  public void setLabel(String label) {
+  public void setLabel(@javax.annotation.Nullable String label) {
     this.label = label;
   }
 
 
-  public LeadFormCommonPolicyLinksInner link(String link) {
+  public LeadFormCommonPolicyLinksInner link(@javax.annotation.Nullable String link) {
     this.link = link;
     return this;
   }
@@ -94,7 +96,7 @@ public class LeadFormCommonPolicyLinksInner {
     return link;
   }
 
-  public void setLink(String link) {
+  public void setLink(@javax.annotation.Nullable String link) {
     this.link = link;
   }
 

@@ -25,9 +25,10 @@ typedef struct create_mmm_report_response_data_t {
     char *message; // string
     char *status; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } create_mmm_report_response_data_t;
 
-create_mmm_report_response_data_t *create_mmm_report_response_data_create(
+__attribute__((deprecated)) create_mmm_report_response_data_t *create_mmm_report_response_data_create(
     bulk_reporting_job_status_t *report_status,
     char *token,
     char *message,

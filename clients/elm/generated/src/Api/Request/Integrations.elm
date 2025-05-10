@@ -31,49 +31,62 @@ import Http
 import Json.Decode
 import Json.Encode
 
-{-| Delete commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
+
+{-| Delete commerce integration
+
+Delete commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
+
 -}
 integrationsCommerceDel : String -> Api.Request ()
 integrationsCommerceDel externalBusinessId_path =
     Api.request
         "DELETE"
         "/integrations/commerce/{external_business_id}"
-        [ ( "externalBusinessId", identity externalBusinessId_path ) ]
+        [ ( "external_business_id", identity externalBusinessId_path ) ]
         []
         []
         Nothing
         (Json.Decode.succeed ())
 
 
-{-| Get commerce integration metadata associated with the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
+{-| Get commerce integration
+
+Get commerce integration metadata associated with the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
+
 -}
 integrationsCommerceGet : String -> Api.Request Api.Data.IntegrationMetadata
 integrationsCommerceGet externalBusinessId_path =
     Api.request
         "GET"
         "/integrations/commerce/{external_business_id}"
-        [ ( "externalBusinessId", identity externalBusinessId_path ) ]
+        [ ( "external_business_id", identity externalBusinessId_path ) ]
         []
         []
         Nothing
         Api.Data.integrationMetadataDecoder
 
 
-{-| Update commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
+{-| Update commerce integration
+
+Update commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
+
 -}
 integrationsCommercePatch : String -> Maybe Api.Data.IntegrationRequestPatch -> Api.Request Api.Data.IntegrationMetadata
 integrationsCommercePatch externalBusinessId_path integrationRequestPatch_body =
     Api.request
         "PATCH"
         "/integrations/commerce/{external_business_id}"
-        [ ( "externalBusinessId", identity externalBusinessId_path ) ]
+        [ ( "external_business_id", identity externalBusinessId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Maybe.map Api.Data.encodeIntegrationRequestPatch integrationRequestPatch_body))
         Api.Data.integrationMetadataDecoder
 
 
-{-| Create commerce integration metadata to link an external business ID with a Pinterest merchant & ad account. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
+{-| Create commerce integration
+
+Create commerce integration metadata to link an external business ID with a Pinterest merchant & ad account. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
+
 -}
 integrationsCommercePost : Maybe Api.Data.IntegrationRequest -> Api.Request Api.Data.IntegrationMetadata
 integrationsCommercePost integrationRequest_body =
@@ -87,7 +100,10 @@ integrationsCommercePost integrationRequest_body =
         Api.Data.integrationMetadataDecoder
 
 
-{-| Get integration metadata by ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
+{-| Get integration metadata
+
+Get integration metadata by ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
+
 -}
 integrationsGetById : String -> Api.Request Api.Data.IntegrationRecord
 integrationsGetById id_path =
@@ -101,7 +117,10 @@ integrationsGetById id_path =
         Api.Data.integrationRecordDecoder
 
 
-{-| Get integration metadata list. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
+{-| Get integration metadata list
+
+Get integration metadata list. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
+
 -}
 integrationsGetList : Maybe String -> Maybe Int -> Api.Request Api.Data.IntegrationsGetList200Response
 integrationsGetList bookmark_query pageSize_query =
@@ -115,7 +134,10 @@ integrationsGetList bookmark_query pageSize_query =
         Api.Data.integrationsGetList200ResponseDecoder
 
 
-{-| This endpoint receives batched logs from integration applications on partner platforms. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
+{-| Receives batched logs from integration applications.
+
+This endpoint receives batched logs from integration applications on partner platforms. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
+
 -}
 integrationsLogsPost : Api.Data.IntegrationLogsRequest -> Api.Request Api.Data.IntegrationLogsSuccessResponse
 integrationsLogsPost integrationLogsRequest_body =

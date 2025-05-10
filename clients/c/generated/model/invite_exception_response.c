@@ -5,7 +5,7 @@
 
 
 
-invite_exception_response_t *invite_exception_response_create(
+static invite_exception_response_t *invite_exception_response_create_internal(
     char *invite_or_request_id,
     int code,
     char *message,
@@ -20,12 +20,30 @@ invite_exception_response_t *invite_exception_response_create(
     invite_exception_response_local_var->message = message;
     invite_exception_response_local_var->users_or_partner_ids = users_or_partner_ids;
 
+    invite_exception_response_local_var->_library_owned = 1;
     return invite_exception_response_local_var;
 }
 
+__attribute__((deprecated)) invite_exception_response_t *invite_exception_response_create(
+    char *invite_or_request_id,
+    int code,
+    char *message,
+    list_t *users_or_partner_ids
+    ) {
+    return invite_exception_response_create_internal (
+        invite_or_request_id,
+        code,
+        message,
+        users_or_partner_ids
+        );
+}
 
 void invite_exception_response_free(invite_exception_response_t *invite_exception_response) {
     if(NULL == invite_exception_response){
+        return ;
+    }
+    if(invite_exception_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "invite_exception_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -83,7 +101,7 @@ cJSON *invite_exception_response_convertToJSON(invite_exception_response_t *invi
 
     listEntry_t *users_or_partner_idsListEntry;
     list_ForEach(users_or_partner_idsListEntry, invite_exception_response->users_or_partner_ids) {
-    if(cJSON_AddStringToObject(users_or_partner_ids, "", (char*)users_or_partner_idsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(users_or_partner_ids, "", users_or_partner_idsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -107,6 +125,9 @@ invite_exception_response_t *invite_exception_response_parseFromJSON(cJSON *invi
 
     // invite_exception_response->invite_or_request_id
     cJSON *invite_or_request_id = cJSON_GetObjectItemCaseSensitive(invite_exception_responseJSON, "invite_or_request_id");
+    if (cJSON_IsNull(invite_or_request_id)) {
+        invite_or_request_id = NULL;
+    }
     if (invite_or_request_id) { 
     if(!cJSON_IsString(invite_or_request_id) && !cJSON_IsNull(invite_or_request_id))
     {
@@ -116,6 +137,9 @@ invite_exception_response_t *invite_exception_response_parseFromJSON(cJSON *invi
 
     // invite_exception_response->code
     cJSON *code = cJSON_GetObjectItemCaseSensitive(invite_exception_responseJSON, "code");
+    if (cJSON_IsNull(code)) {
+        code = NULL;
+    }
     if (code) { 
     if(!cJSON_IsNumber(code))
     {
@@ -125,6 +149,9 @@ invite_exception_response_t *invite_exception_response_parseFromJSON(cJSON *invi
 
     // invite_exception_response->message
     cJSON *message = cJSON_GetObjectItemCaseSensitive(invite_exception_responseJSON, "message");
+    if (cJSON_IsNull(message)) {
+        message = NULL;
+    }
     if (message) { 
     if(!cJSON_IsString(message) && !cJSON_IsNull(message))
     {
@@ -134,6 +161,9 @@ invite_exception_response_t *invite_exception_response_parseFromJSON(cJSON *invi
 
     // invite_exception_response->users_or_partner_ids
     cJSON *users_or_partner_ids = cJSON_GetObjectItemCaseSensitive(invite_exception_responseJSON, "users_or_partner_ids");
+    if (cJSON_IsNull(users_or_partner_ids)) {
+        users_or_partner_ids = NULL;
+    }
     if (users_or_partner_ids) { 
     cJSON *users_or_partner_ids_local = NULL;
     if(!cJSON_IsArray(users_or_partner_ids)) {
@@ -152,7 +182,7 @@ invite_exception_response_t *invite_exception_response_parseFromJSON(cJSON *invi
     }
 
 
-    invite_exception_response_local_var = invite_exception_response_create (
+    invite_exception_response_local_var = invite_exception_response_create_internal (
         invite_or_request_id && !cJSON_IsNull(invite_or_request_id) ? strdup(invite_or_request_id->valuestring) : NULL,
         code ? code->valuedouble : 0,
         message && !cJSON_IsNull(message) ? strdup(message->valuestring) : NULL,

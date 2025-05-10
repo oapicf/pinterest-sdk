@@ -32,9 +32,10 @@ typedef struct invite_response_t {
     int is_received_invite; //boolean
     struct business_access_user_summary_t *user; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } invite_response_t;
 
-invite_response_t *invite_response_create(
+__attribute__((deprecated)) invite_response_t *invite_response_create(
     invite_assets_summary_t *assets_summary,
     list_t *business_roles,
     business_access_user_summary_t *created_by_business,

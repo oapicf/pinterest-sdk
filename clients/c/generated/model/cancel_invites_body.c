@@ -5,7 +5,7 @@
 
 
 
-cancel_invites_body_t *cancel_invites_body_create(
+static cancel_invites_body_t *cancel_invites_body_create_internal(
     list_t *invite_ids
     ) {
     cancel_invites_body_t *cancel_invites_body_local_var = malloc(sizeof(cancel_invites_body_t));
@@ -14,12 +14,24 @@ cancel_invites_body_t *cancel_invites_body_create(
     }
     cancel_invites_body_local_var->invite_ids = invite_ids;
 
+    cancel_invites_body_local_var->_library_owned = 1;
     return cancel_invites_body_local_var;
 }
 
+__attribute__((deprecated)) cancel_invites_body_t *cancel_invites_body_create(
+    list_t *invite_ids
+    ) {
+    return cancel_invites_body_create_internal (
+        invite_ids
+        );
+}
 
 void cancel_invites_body_free(cancel_invites_body_t *cancel_invites_body) {
     if(NULL == cancel_invites_body){
+        return ;
+    }
+    if(cancel_invites_body->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "cancel_invites_body_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -47,7 +59,7 @@ cJSON *cancel_invites_body_convertToJSON(cancel_invites_body_t *cancel_invites_b
 
     listEntry_t *invite_idsListEntry;
     list_ForEach(invite_idsListEntry, cancel_invites_body->invite_ids) {
-    if(cJSON_AddStringToObject(invite_ids, "", (char*)invite_idsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(invite_ids, "", invite_idsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -70,6 +82,9 @@ cancel_invites_body_t *cancel_invites_body_parseFromJSON(cJSON *cancel_invites_b
 
     // cancel_invites_body->invite_ids
     cJSON *invite_ids = cJSON_GetObjectItemCaseSensitive(cancel_invites_bodyJSON, "invite_ids");
+    if (cJSON_IsNull(invite_ids)) {
+        invite_ids = NULL;
+    }
     if (!invite_ids) {
         goto end;
     }
@@ -91,7 +106,7 @@ cancel_invites_body_t *cancel_invites_body_parseFromJSON(cJSON *cancel_invites_b
     }
 
 
-    cancel_invites_body_local_var = cancel_invites_body_create (
+    cancel_invites_body_local_var = cancel_invites_body_create_internal (
         invite_idsList
         );
 

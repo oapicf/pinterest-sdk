@@ -8,7 +8,7 @@ module PinMediaSourceImagesBase64ItemsInner =
   //#region PinMediaSourceImagesBase64ItemsInner
 
   //#region enums
-  type ContentTypeEnum = JpegEnum of string  |  PngEnum of string  
+  type ContentTypeEnum = ImageJpegEnum of string  |  ImagePngEnum of string  
   //#endregion
 
   type PinMediaSourceImagesBase64_items_inner = {

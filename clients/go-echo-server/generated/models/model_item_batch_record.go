@@ -1,9 +1,5 @@
 package models
 
-import (
-	"gopkg.in/validator.v2"
-)
-
 // ItemBatchRecord - Object describing an item batch record
 type ItemBatchRecord struct {
 

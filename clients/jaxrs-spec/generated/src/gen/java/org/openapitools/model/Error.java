@@ -15,10 +15,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("Error")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class Error   {
   private Integer code;
   private String message;
+
+  public Error() {
+  }
+
+  @JsonCreator
+  public Error(
+    @JsonProperty(required = true, value = "code") Integer code,
+    @JsonProperty(required = true, value = "message") String message
+  ) {
+    this.code = code;
+    this.message = message;
+  }
 
   /**
    **/
@@ -29,12 +41,12 @@ public class Error   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("code")
+  @JsonProperty(required = true, value = "code")
   @NotNull public Integer getCode() {
     return code;
   }
 
-  @JsonProperty("code")
+  @JsonProperty(required = true, value = "code")
   public void setCode(Integer code) {
     this.code = code;
   }
@@ -48,12 +60,12 @@ public class Error   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("message")
+  @JsonProperty(required = true, value = "message")
   @NotNull public String getMessage() {
     return message;
   }
 
-  @JsonProperty("message")
+  @JsonProperty(required = true, value = "message")
   public void setMessage(String message) {
     this.message = message;
   }

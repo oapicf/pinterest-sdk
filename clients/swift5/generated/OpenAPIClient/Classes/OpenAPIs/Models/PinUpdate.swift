@@ -13,12 +13,12 @@ import AnyCodable
 /** Pin fields for updates */
 public struct PinUpdate: Codable, JSONEncodable, Hashable {
 
-    static let altTextRule = StringRule(minLength: nil, maxLength: 500, pattern: nil)
-    static let boardIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let boardSectionIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let descriptionRule = StringRule(minLength: nil, maxLength: 800, pattern: nil)
-    static let linkRule = StringRule(minLength: nil, maxLength: 2048, pattern: nil)
-    static let titleRule = StringRule(minLength: nil, maxLength: 100, pattern: nil)
+    public static let altTextRule = StringRule(minLength: nil, maxLength: 500, pattern: nil)
+    public static let boardIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let boardSectionIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let descriptionRule = StringRule(minLength: nil, maxLength: 800, pattern: nil)
+    public static let linkRule = StringRule(minLength: nil, maxLength: 2048, pattern: nil)
+    public static let titleRule = StringRule(minLength: nil, maxLength: 100, pattern: nil)
     /** Pin's alternative text. */
     public var altText: String?
     /** The id of the board to move the Pin onto. */

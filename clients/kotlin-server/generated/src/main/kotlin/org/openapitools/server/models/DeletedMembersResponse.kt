@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * An object with a list of members that were deleted.
  * @param deletedMembers List of members whose business membership have been terminated.
  */
+@Serializable
 data class DeletedMembersResponse(
     /* List of members whose business membership have been terminated. */
     val deletedMembers: kotlin.collections.List<kotlin.String>? = null
-) 
+)
 

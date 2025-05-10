@@ -5,7 +5,7 @@
 
 
 
-optimization_goal_metadata_scrollup_goal_metadata_t *optimization_goal_metadata_scrollup_goal_metadata_create(
+static optimization_goal_metadata_scrollup_goal_metadata_t *optimization_goal_metadata_scrollup_goal_metadata_create_internal(
     char *scrollup_goal_value_in_micro_currency
     ) {
     optimization_goal_metadata_scrollup_goal_metadata_t *optimization_goal_metadata_scrollup_goal_metadata_local_var = malloc(sizeof(optimization_goal_metadata_scrollup_goal_metadata_t));
@@ -14,12 +14,24 @@ optimization_goal_metadata_scrollup_goal_metadata_t *optimization_goal_metadata_
     }
     optimization_goal_metadata_scrollup_goal_metadata_local_var->scrollup_goal_value_in_micro_currency = scrollup_goal_value_in_micro_currency;
 
+    optimization_goal_metadata_scrollup_goal_metadata_local_var->_library_owned = 1;
     return optimization_goal_metadata_scrollup_goal_metadata_local_var;
 }
 
+__attribute__((deprecated)) optimization_goal_metadata_scrollup_goal_metadata_t *optimization_goal_metadata_scrollup_goal_metadata_create(
+    char *scrollup_goal_value_in_micro_currency
+    ) {
+    return optimization_goal_metadata_scrollup_goal_metadata_create_internal (
+        scrollup_goal_value_in_micro_currency
+        );
+}
 
 void optimization_goal_metadata_scrollup_goal_metadata_free(optimization_goal_metadata_scrollup_goal_metadata_t *optimization_goal_metadata_scrollup_goal_metadata) {
     if(NULL == optimization_goal_metadata_scrollup_goal_metadata){
+        return ;
+    }
+    if(optimization_goal_metadata_scrollup_goal_metadata->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "optimization_goal_metadata_scrollup_goal_metadata_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -54,6 +66,9 @@ optimization_goal_metadata_scrollup_goal_metadata_t *optimization_goal_metadata_
 
     // optimization_goal_metadata_scrollup_goal_metadata->scrollup_goal_value_in_micro_currency
     cJSON *scrollup_goal_value_in_micro_currency = cJSON_GetObjectItemCaseSensitive(optimization_goal_metadata_scrollup_goal_metadataJSON, "scrollup_goal_value_in_micro_currency");
+    if (cJSON_IsNull(scrollup_goal_value_in_micro_currency)) {
+        scrollup_goal_value_in_micro_currency = NULL;
+    }
     if (scrollup_goal_value_in_micro_currency) { 
     if(!cJSON_IsString(scrollup_goal_value_in_micro_currency) && !cJSON_IsNull(scrollup_goal_value_in_micro_currency))
     {
@@ -62,7 +77,7 @@ optimization_goal_metadata_scrollup_goal_metadata_t *optimization_goal_metadata_
     }
 
 
-    optimization_goal_metadata_scrollup_goal_metadata_local_var = optimization_goal_metadata_scrollup_goal_metadata_create (
+    optimization_goal_metadata_scrollup_goal_metadata_local_var = optimization_goal_metadata_scrollup_goal_metadata_create_internal (
         scrollup_goal_value_in_micro_currency && !cJSON_IsNull(scrollup_goal_value_in_micro_currency) ? strdup(scrollup_goal_value_in_micro_currency->valuestring) : NULL
         );
 

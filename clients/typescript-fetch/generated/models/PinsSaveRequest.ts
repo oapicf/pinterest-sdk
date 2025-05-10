@@ -55,11 +55,11 @@ export function PinsSaveRequestFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-  export function PinsSaveRequestToJSON(json: any): PinsSaveRequest {
-      return PinsSaveRequestToJSONTyped(json, false);
-  }
+export function PinsSaveRequestToJSON(json: any): PinsSaveRequest {
+    return PinsSaveRequestToJSONTyped(json, false);
+}
 
-  export function PinsSaveRequestToJSONTyped(value?: PinsSaveRequest | null, ignoreDiscriminator: boolean = false): any {
+export function PinsSaveRequestToJSONTyped(value?: PinsSaveRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

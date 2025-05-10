@@ -53,7 +53,7 @@ class CreateMembershipOrPartnershipInvitesBody
      * @Type("string")
     */
     #[Assert\NotNull]
-    #[Assert\Choice(["EMPLOYEE", "BIZ_ADMIN", "PARTNER"])]
+    #[Assert\Choice(['EMPLOYEE', 'BIZ_ADMIN', 'PARTNER'])]
     #[Assert\Type("string")]
     protected ?string $businessRole = null;
 
@@ -99,7 +99,7 @@ class CreateMembershipOrPartnershipInvitesBody
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->businessRole = array_key_exists('businessRole', $data) ? $data['businessRole'] : $this->businessRole;

@@ -244,7 +244,7 @@ void OAILeadsExportApi::leadsExport_create(const QString &ad_account_id, const O
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAILeadsExportApi::leadsExport_createCallback);
     connect(this, &OAILeadsExportApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -266,7 +266,7 @@ void OAILeadsExportApi::leadsExport_create(const QString &ad_account_id, const O
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAILeadsExportApi::leadsExport_createCallback);
     connect(this, &OAILeadsExportApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -383,7 +383,7 @@ void OAILeadsExportApi::leadsExport_get(const QString &ad_account_id, const QStr
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAILeadsExportApi::leadsExport_getCallback);
     connect(this, &OAILeadsExportApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -405,7 +405,7 @@ void OAILeadsExportApi::leadsExport_get(const QString &ad_account_id, const QStr
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAILeadsExportApi::leadsExport_getCallback);
     connect(this, &OAILeadsExportApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }

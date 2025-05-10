@@ -54,28 +54,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Request object to delete catalogs items
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsItemsDeleteBatchRequest {
   public static final String SERIALIZED_NAME_COUNTRY = "country";
   @SerializedName(SERIALIZED_NAME_COUNTRY)
+  @javax.annotation.Nonnull
   private Country country;
 
   public static final String SERIALIZED_NAME_LANGUAGE = "language";
   @SerializedName(SERIALIZED_NAME_LANGUAGE)
+  @javax.annotation.Nonnull
   private CatalogsItemsRequestLanguage language;
 
   public static final String SERIALIZED_NAME_OPERATION = "operation";
   @SerializedName(SERIALIZED_NAME_OPERATION)
+  @javax.annotation.Nonnull
   private BatchOperation operation;
 
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
+  @javax.annotation.Nonnull
   private List<ItemDeleteBatchRecord> items = new ArrayList<>();
 
   public CatalogsItemsDeleteBatchRequest() {
   }
 
-  public CatalogsItemsDeleteBatchRequest country(Country country) {
+  public CatalogsItemsDeleteBatchRequest country(@javax.annotation.Nonnull Country country) {
     this.country = country;
     return this;
   }
@@ -89,12 +93,12 @@ public class CatalogsItemsDeleteBatchRequest {
     return country;
   }
 
-  public void setCountry(Country country) {
+  public void setCountry(@javax.annotation.Nonnull Country country) {
     this.country = country;
   }
 
 
-  public CatalogsItemsDeleteBatchRequest language(CatalogsItemsRequestLanguage language) {
+  public CatalogsItemsDeleteBatchRequest language(@javax.annotation.Nonnull CatalogsItemsRequestLanguage language) {
     this.language = language;
     return this;
   }
@@ -108,12 +112,12 @@ public class CatalogsItemsDeleteBatchRequest {
     return language;
   }
 
-  public void setLanguage(CatalogsItemsRequestLanguage language) {
+  public void setLanguage(@javax.annotation.Nonnull CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 
 
-  public CatalogsItemsDeleteBatchRequest operation(BatchOperation operation) {
+  public CatalogsItemsDeleteBatchRequest operation(@javax.annotation.Nonnull BatchOperation operation) {
     this.operation = operation;
     return this;
   }
@@ -127,12 +131,12 @@ public class CatalogsItemsDeleteBatchRequest {
     return operation;
   }
 
-  public void setOperation(BatchOperation operation) {
+  public void setOperation(@javax.annotation.Nonnull BatchOperation operation) {
     this.operation = operation;
   }
 
 
-  public CatalogsItemsDeleteBatchRequest items(List<ItemDeleteBatchRecord> items) {
+  public CatalogsItemsDeleteBatchRequest items(@javax.annotation.Nonnull List<ItemDeleteBatchRecord> items) {
     this.items = items;
     return this;
   }
@@ -154,7 +158,7 @@ public class CatalogsItemsDeleteBatchRequest {
     return items;
   }
 
-  public void setItems(List<ItemDeleteBatchRecord> items) {
+  public void setItems(@javax.annotation.Nonnull List<ItemDeleteBatchRecord> items) {
     this.items = items;
   }
 

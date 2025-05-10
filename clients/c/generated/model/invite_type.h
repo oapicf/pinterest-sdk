@@ -24,9 +24,9 @@ char* invite_type_invite_type_ToString(pinterest_rest_api_invite_type__e invite_
 
 pinterest_rest_api_invite_type__e invite_type_invite_type_FromString(char* invite_type);
 
-//cJSON *invite_type_invite_type_convertToJSON(pinterest_rest_api_invite_type__e invite_type);
+cJSON *invite_type_convertToJSON(pinterest_rest_api_invite_type__e invite_type);
 
-//pinterest_rest_api_invite_type__e invite_type_invite_type_parseFromJSON(cJSON *invite_typeJSON);
+pinterest_rest_api_invite_type__e invite_type_parseFromJSON(cJSON *invite_typeJSON);
 
 #endif /* _invite_type_H_ */
 

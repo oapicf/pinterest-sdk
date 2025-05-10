@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 // Functions for enum MATCHTYPES for KeywordsAPI_keywordsGet
 
@@ -283,15 +278,20 @@ KeywordsAPI_countryKeywordsMetricsGet(apiClient_t *apiClient, char *ad_account_i
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/keywords/metrics")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/keywords/metrics");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/keywords/metrics");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -328,6 +328,7 @@ KeywordsAPI_countryKeywordsMetricsGet(apiClient_t *apiClient, char *ad_account_i
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -339,11 +340,14 @@ KeywordsAPI_countryKeywordsMetricsGet(apiClient_t *apiClient, char *ad_account_i
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *KeywordsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    keywords_metrics_array_response_t *elementToReturn = keywords_metrics_array_response_parseFromJSON(KeywordsAPIlocalVarJSON);
-    cJSON_Delete(KeywordsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    keywords_metrics_array_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *KeywordsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = keywords_metrics_array_response_parseFromJSON(KeywordsAPIlocalVarJSON);
+        cJSON_Delete(KeywordsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -391,15 +395,20 @@ KeywordsAPI_keywordsCreate(apiClient_t *apiClient, char *ad_account_id, keywords
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/keywords")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/keywords");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/keywords");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -414,9 +423,10 @@ KeywordsAPI_keywordsCreate(apiClient_t *apiClient, char *ad_account_id, keywords
     cJSON *localVarSingleItemJSON_keywords_request = NULL;
     if (keywords_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_keywords_request = keywords_request_convertToJSON(keywords_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_keywords_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -428,6 +438,7 @@ KeywordsAPI_keywordsCreate(apiClient_t *apiClient, char *ad_account_id, keywords
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -439,11 +450,14 @@ KeywordsAPI_keywordsCreate(apiClient_t *apiClient, char *ad_account_id, keywords
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *KeywordsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    keywords_response_t *elementToReturn = keywords_response_parseFromJSON(KeywordsAPIlocalVarJSON);
-    cJSON_Delete(KeywordsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    keywords_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *KeywordsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = keywords_response_parseFromJSON(KeywordsAPIlocalVarJSON);
+        cJSON_Delete(KeywordsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -484,15 +498,20 @@ KeywordsAPI_keywordsGet(apiClient_t *apiClient, char *ad_account_id, char *campa
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/keywords")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/keywords");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/keywords");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -566,6 +585,7 @@ KeywordsAPI_keywordsGet(apiClient_t *apiClient, char *ad_account_id, char *campa
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -577,11 +597,14 @@ KeywordsAPI_keywordsGet(apiClient_t *apiClient, char *ad_account_id, char *campa
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *KeywordsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    keywords_get_200_response_t *elementToReturn = keywords_get_200_response_parseFromJSON(KeywordsAPIlocalVarJSON);
-    cJSON_Delete(KeywordsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    keywords_get_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *KeywordsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = keywords_get_200_response_parseFromJSON(KeywordsAPIlocalVarJSON);
+        cJSON_Delete(KeywordsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -665,15 +688,20 @@ KeywordsAPI_keywordsUpdate(apiClient_t *apiClient, char *ad_account_id, keyword_
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/keywords")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/keywords");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/keywords");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -688,9 +716,10 @@ KeywordsAPI_keywordsUpdate(apiClient_t *apiClient, char *ad_account_id, keyword_
     cJSON *localVarSingleItemJSON_keyword_update_body = NULL;
     if (keyword_update_body != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_keyword_update_body = keyword_update_body_convertToJSON(keyword_update_body);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_keyword_update_body);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -702,6 +731,7 @@ KeywordsAPI_keywordsUpdate(apiClient_t *apiClient, char *ad_account_id, keyword_
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "PATCH");
 
     // uncomment below to debug the error response
@@ -713,11 +743,14 @@ KeywordsAPI_keywordsUpdate(apiClient_t *apiClient, char *ad_account_id, keyword_
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *KeywordsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    keywords_response_t *elementToReturn = keywords_response_parseFromJSON(KeywordsAPIlocalVarJSON);
-    cJSON_Delete(KeywordsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    keywords_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *KeywordsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = keywords_response_parseFromJSON(KeywordsAPIlocalVarJSON);
+        cJSON_Delete(KeywordsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -758,18 +791,21 @@ KeywordsAPI_trendingKeywordsList(apiClient_t *apiClient, trends_supported_region
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/trends/keywords/{region}/top/{trend_type}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/trends/keywords/{region}/top/{trend_type}");
+    char *localVarPath = strdup("/trends/keywords/{region}/top/{trend_type}");
 
 
-    // Path Params
-    long sizeOfPathParams_region =  +  + strlen("{ region }");
 
     // Path Params
-    long sizeOfPathParams_trend_type =  +  + strlen("{ trend_type }");
+    long sizeOfPathParams_region =  +  + sizeof("{ region }") - 1;
+
+    // Path Params
+    long sizeOfPathParams_trend_type =  +  + sizeof("{ trend_type }") - 1;
 
 
 
@@ -831,6 +867,7 @@ KeywordsAPI_trendingKeywordsList(apiClient_t *apiClient, trends_supported_region
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -846,11 +883,14 @@ KeywordsAPI_trendingKeywordsList(apiClient_t *apiClient, trends_supported_region
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *KeywordsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    trending_keywords_response_t *elementToReturn = trending_keywords_response_parseFromJSON(KeywordsAPIlocalVarJSON);
-    cJSON_Delete(KeywordsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    trending_keywords_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *KeywordsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = trending_keywords_response_parseFromJSON(KeywordsAPIlocalVarJSON);
+        cJSON_Delete(KeywordsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type

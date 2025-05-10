@@ -62,6 +62,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
+     * GET /user_account/following/boards
      * List following boards
      * Get a list of the boards a user follows. The request returns a board summary object array.
      * @param bookmark Cursor used to fetch the next page of items (optional)
@@ -96,6 +97,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
+     * GET /user_account/following/boards
      * List following boards
      * Get a list of the boards a user follows. The request returns a board summary object array.
      * @param bookmark Cursor used to fetch the next page of items (optional)
@@ -156,6 +158,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
+     * POST /user_account/following/{username}
      * Follow user
      * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
      * @param username A valid username
@@ -188,6 +191,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
+     * POST /user_account/following/{username}
      * Follow user
      * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
      * @param username A valid username
@@ -231,6 +235,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
+     * GET /user_account/followers
      * List followers
      * Get a list of your followers.
      * @param bookmark Cursor used to fetch the next page of items (optional)
@@ -263,6 +268,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
+     * GET /user_account/followers
      * List followers
      * Get a list of your followers.
      * @param bookmark Cursor used to fetch the next page of items (optional)
@@ -313,6 +319,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
+     * GET /user_account/businesses
      * List linked businesses
      * Get a list of your linked business accounts.
      * @return kotlin.collections.List<LinkedBusiness>
@@ -343,6 +350,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
+     * GET /user_account/businesses
      * List linked businesses
      * Get a list of your linked business accounts.
      * @return ApiResponse<kotlin.collections.List<LinkedBusiness>?>
@@ -381,6 +389,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
+     * DELETE /user_account/websites
      * Unverify website
      * Unverifu a website verified by the signed-in user.
      * @param website Website with path or domain only
@@ -411,6 +420,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
+     * DELETE /user_account/websites
      * Unverify website
      * Unverifu a website verified by the signed-in user.
      * @param website Website with path or domain only
@@ -593,6 +603,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      }
 
     /**
+     * GET /user_account/analytics
      * Get user account analytics
      * Get analytics for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
@@ -633,6 +644,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
+     * GET /user_account/analytics
      * Get user account analytics
      * Get analytics for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
@@ -875,6 +887,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      }
 
     /**
+     * GET /user_account/analytics/top_pins
      * Get user account top pins analytics
      * Gets analytics data about a user&#39;s top pins (limited to the top 50). - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
@@ -917,6 +930,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
+     * GET /user_account/analytics/top_pins
      * Get user account top pins analytics
      * Gets analytics data about a user&#39;s top pins (limited to the top 50). - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
@@ -1171,6 +1185,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      }
 
     /**
+     * GET /user_account/analytics/top_video_pins
      * Get user account top video pins analytics
      * Gets analytics data about a user&#39;s top video pins (limited to the top 50). - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
@@ -1213,6 +1228,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
+     * GET /user_account/analytics/top_video_pins
      * Get user account top video pins analytics
      * Gets analytics data about a user&#39;s top video pins (limited to the top 50). - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
@@ -1307,6 +1323,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
+     * GET /users/{username}/interests/follow
      * List following interests
      * Get a list of a user&#39;s following interests in one place.
      * @param username A valid username
@@ -1340,6 +1357,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
+     * GET /users/{username}/interests/follow
      * List following interests
      * Get a list of a user&#39;s following interests in one place.
      * @param username A valid username
@@ -1392,6 +1410,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
+     * GET /user_account
      * Get user account
      * Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
      * @param adAccountId Unique identifier of an ad account. (optional)
@@ -1423,6 +1442,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
+     * GET /user_account
      * Get user account
      * Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
      * @param adAccountId Unique identifier of an ad account. (optional)
@@ -1468,6 +1488,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
+     * GET /user_account/following
      * List following
      * Get a list of who a certain user follows.
      * @param bookmark Cursor used to fetch the next page of items (optional)
@@ -1503,6 +1524,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
+     * GET /user_account/following
      * List following
      * Get a list of who a certain user follows.
      * @param bookmark Cursor used to fetch the next page of items (optional)
@@ -1568,6 +1590,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
+     * GET /user_account/websites
      * Get user websites
      * Get user websites, claimed or not
      * @param bookmark Cursor used to fetch the next page of items (optional)
@@ -1600,6 +1623,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
+     * GET /user_account/websites
      * Get user websites
      * Get user websites, claimed or not
      * @param bookmark Cursor used to fetch the next page of items (optional)
@@ -1650,6 +1674,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
+     * POST /user_account/websites
      * Verify website
      * Verify a website as a signed-in user.
      * @param userWebsiteVerifyRequest Verify a website.
@@ -1682,6 +1707,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
+     * POST /user_account/websites
      * Verify website
      * Verify a website as a signed-in user.
      * @param userWebsiteVerifyRequest Verify a website.
@@ -1730,6 +1756,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
+     * GET /user_account/websites/verification
      * Get user verification code for website claiming
      * Get verification code for user to install on the website to claim it.
      * @param adAccountId Unique identifier of an ad account. (optional)
@@ -1761,6 +1788,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
+     * GET /user_account/websites/verification
      * Get user verification code for website claiming
      * Get verification code for user to install on the website to claim it.
      * @param adAccountId Unique identifier of an ad account. (optional)

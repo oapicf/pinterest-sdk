@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsProductGroupPricingCurrencyCriteria
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param PRICE 
  */
+@Serializable
 data class PriceFilter(
     val PRICE: CatalogsProductGroupPricingCurrencyCriteria
-) 
+)
 

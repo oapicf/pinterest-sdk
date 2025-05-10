@@ -51,6 +51,7 @@ class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
+     * POST /ad_accounts/{ad_account_id}/audiences
      * Create audience
      * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. &lt;p/&gt; For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt;.
      * @param adAccountId Unique identifier of an ad account.
@@ -83,6 +84,7 @@ class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
+     * POST /ad_accounts/{ad_account_id}/audiences
      * Create audience
      * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. &lt;p/&gt; For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt;.
      * @param adAccountId Unique identifier of an ad account.
@@ -126,6 +128,7 @@ class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
+     * POST /ad_accounts/{ad_account_id}/audiences/custom
      * Create custom audience
      * Create a custom audience and find the audiences you want your ads to reach.
      * @param adAccountId Unique identifier of an ad account.
@@ -158,6 +161,7 @@ class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
+     * POST /ad_accounts/{ad_account_id}/audiences/custom
      * Create custom audience
      * Create a custom audience and find the audiences you want your ads to reach.
      * @param adAccountId Unique identifier of an ad account.
@@ -201,6 +205,7 @@ class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/audiences/{audience_id}
      * Get audience
      * Get a specific audience given the audience ID.
      * @param adAccountId Unique identifier of an ad account.
@@ -233,6 +238,7 @@ class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/audiences/{audience_id}
      * Get audience
      * Get a specific audience given the audience ID.
      * @param adAccountId Unique identifier of an ad account.
@@ -309,6 +315,7 @@ class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/audiences
      * List audiences
      * Get list of audiences for the ad account.
      * @param adAccountId Unique identifier of an ad account.
@@ -344,6 +351,7 @@ class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/audiences
      * List audiences
      * Get list of audiences for the ad account.
      * @param adAccountId Unique identifier of an ad account.
@@ -406,6 +414,7 @@ class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
+     * PATCH /ad_accounts/{ad_account_id}/audiences/{audience_id}
      * Update audience
      * Update (edit or remove) an existing targeting audience.
      * @param adAccountId Unique identifier of an ad account.
@@ -439,6 +448,7 @@ class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
+     * PATCH /ad_accounts/{ad_account_id}/audiences/{audience_id}
      * Update audience
      * Update (edit or remove) an existing targeting audience.
      * @param adAccountId Unique identifier of an ad account.

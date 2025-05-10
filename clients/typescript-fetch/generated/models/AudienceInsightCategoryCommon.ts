@@ -76,11 +76,11 @@ export function AudienceInsightCategoryCommonFromJSONTyped(json: any, ignoreDisc
     };
 }
 
-  export function AudienceInsightCategoryCommonToJSON(json: any): AudienceInsightCategoryCommon {
-      return AudienceInsightCategoryCommonToJSONTyped(json, false);
-  }
+export function AudienceInsightCategoryCommonToJSON(json: any): AudienceInsightCategoryCommon {
+    return AudienceInsightCategoryCommonToJSONTyped(json, false);
+}
 
-  export function AudienceInsightCategoryCommonToJSONTyped(value?: AudienceInsightCategoryCommon | null, ignoreDiscriminator: boolean = false): any {
+export function AudienceInsightCategoryCommonToJSONTyped(value?: AudienceInsightCategoryCommon | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

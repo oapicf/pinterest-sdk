@@ -132,7 +132,7 @@ SPEND_IN_MICRO_DOLLAR(String.valueOf("SPEND_IN_MICRO_DOLLAR")), SPEND_IN_MICRO_U
 
 public enum ConversionReportTimeTypeEnum {
 
-AD_ACTION(String.valueOf("TIME_OF_AD_ACTION")), CONVERSION(String.valueOf("TIME_OF_CONVERSION"));
+TIME_OF_AD_ACTION(String.valueOf("TIME_OF_AD_ACTION")), TIME_OF_CONVERSION(String.valueOf("TIME_OF_CONVERSION"));
 
 
     private String value;
@@ -186,7 +186,7 @@ AD_ACTION(String.valueOf("TIME_OF_AD_ACTION")), CONVERSION(String.valueOf("TIME_
 
 public enum CreationSourceEnum {
 
-API(String.valueOf("ADS_API")), MANAGER_REPORTING_PAGE(String.valueOf("ADS_MANAGER_REPORTING_PAGE")), MANAGER_REPORT_BUILDER(String.valueOf("ADS_MANAGER_REPORT_BUILDER"));
+ADS_API(String.valueOf("ADS_API")), ADS_MANAGER_REPORTING_PAGE(String.valueOf("ADS_MANAGER_REPORTING_PAGE")), ADS_MANAGER_REPORT_BUILDER(String.valueOf("ADS_MANAGER_REPORT_BUILDER"));
 
 
     private String value;

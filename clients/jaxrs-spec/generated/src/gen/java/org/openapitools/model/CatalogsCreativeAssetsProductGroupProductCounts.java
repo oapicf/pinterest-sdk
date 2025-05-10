@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Product counts for a Creative Assets CatalogsProductGroup")
 @JsonTypeName("CatalogsCreativeAssetsProductGroupProductCounts")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsCreativeAssetsProductGroupProductCounts   {
   public enum CatalogTypeEnum {
 
@@ -71,6 +71,20 @@ public class CatalogsCreativeAssetsProductGroupProductCounts   {
   private BigDecimal total;
   private BigDecimal videos;
 
+  public CatalogsCreativeAssetsProductGroupProductCounts() {
+  }
+
+  @JsonCreator
+  public CatalogsCreativeAssetsProductGroupProductCounts(
+    @JsonProperty(required = true, value = "catalog_type") CatalogTypeEnum catalogType,
+    @JsonProperty(required = true, value = "total") BigDecimal total,
+    @JsonProperty(required = true, value = "videos") BigDecimal videos
+  ) {
+    this.catalogType = catalogType;
+    this.total = total;
+    this.videos = videos;
+  }
+
   /**
    **/
   public CatalogsCreativeAssetsProductGroupProductCounts catalogType(CatalogTypeEnum catalogType) {
@@ -80,12 +94,12 @@ public class CatalogsCreativeAssetsProductGroupProductCounts   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   @NotNull public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
@@ -100,12 +114,12 @@ public class CatalogsCreativeAssetsProductGroupProductCounts   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("total")
+  @JsonProperty(required = true, value = "total")
   @NotNull @Valid  @DecimalMin("0")public BigDecimal getTotal() {
     return total;
   }
 
-  @JsonProperty("total")
+  @JsonProperty(required = true, value = "total")
   public void setTotal(BigDecimal total) {
     this.total = total;
   }
@@ -120,12 +134,12 @@ public class CatalogsCreativeAssetsProductGroupProductCounts   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("videos")
+  @JsonProperty(required = true, value = "videos")
   @NotNull @Valid  @DecimalMin("0")public BigDecimal getVideos() {
     return videos;
   }
 
-  @JsonProperty("videos")
+  @JsonProperty(required = true, value = "videos")
   public void setVideos(BigDecimal videos) {
     this.videos = videos;
   }

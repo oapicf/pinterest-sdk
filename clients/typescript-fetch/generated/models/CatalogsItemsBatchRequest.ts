@@ -79,21 +79,25 @@ export function CatalogsItemsBatchRequestFromJSONTyped(json: any, ignoreDiscrimi
     }
 }
 
-export function CatalogsItemsBatchRequestToJSON(value?: CatalogsItemsBatchRequest | null): any {
+export function CatalogsItemsBatchRequestToJSON(json: any): any {
+    return CatalogsItemsBatchRequestToJSONTyped(json, false);
+}
+
+export function CatalogsItemsBatchRequestToJSONTyped(value?: CatalogsItemsBatchRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
     switch (value['operation']) {
         case 'CREATE':
-            return CatalogsItemsCreateBatchRequestToJSON(value);
+            return Object.assign({}, CatalogsItemsCreateBatchRequestToJSON(value), { operation: 'CREATE' } as const);
         case 'DELETE':
-            return CatalogsItemsDeleteBatchRequestToJSON(value);
+            return Object.assign({}, CatalogsItemsDeleteBatchRequestToJSON(value), { operation: 'DELETE' } as const);
         case 'DELETE_DISCONTINUED':
-            return CatalogsItemsDeleteDiscontinuedBatchRequestToJSON(value);
+            return Object.assign({}, CatalogsItemsDeleteDiscontinuedBatchRequestToJSON(value), { operation: 'DELETE_DISCONTINUED' } as const);
         case 'UPDATE':
-            return CatalogsItemsUpdateBatchRequestToJSON(value);
+            return Object.assign({}, CatalogsItemsUpdateBatchRequestToJSON(value), { operation: 'UPDATE' } as const);
         case 'UPSERT':
-            return CatalogsItemsUpsertBatchRequestToJSON(value);
+            return Object.assign({}, CatalogsItemsUpsertBatchRequestToJSON(value), { operation: 'UPSERT' } as const);
         default:
             throw new Error(`No variant of CatalogsItemsBatchRequest exists with 'operation=${value['operation']}'`);
     }

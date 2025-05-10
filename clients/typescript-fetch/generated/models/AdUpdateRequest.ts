@@ -252,11 +252,11 @@ export function AdUpdateRequestFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-  export function AdUpdateRequestToJSON(json: any): AdUpdateRequest {
-      return AdUpdateRequestToJSONTyped(json, false);
-  }
+export function AdUpdateRequestToJSON(json: any): AdUpdateRequest {
+    return AdUpdateRequestToJSONTyped(json, false);
+}
 
-  export function AdUpdateRequestToJSONTyped(value?: AdUpdateRequest | null, ignoreDiscriminator: boolean = false): any {
+export function AdUpdateRequestToJSONTyped(value?: AdUpdateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "A creative assets item to be updated.")
 @JsonTypeName("CatalogsUpdateCreativeAssetsItem")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsUpdateCreativeAssetsItem   {
   private String creativeAssetsId;
   public enum OperationEnum {
@@ -71,6 +71,20 @@ public class CatalogsUpdateCreativeAssetsItem   {
   private OperationEnum operation;
   private CatalogsUpdatableCreativeAssetsAttributes attributes;
 
+  public CatalogsUpdateCreativeAssetsItem() {
+  }
+
+  @JsonCreator
+  public CatalogsUpdateCreativeAssetsItem(
+    @JsonProperty(required = true, value = "creative_assets_id") String creativeAssetsId,
+    @JsonProperty(required = true, value = "operation") OperationEnum operation,
+    @JsonProperty(required = true, value = "attributes") CatalogsUpdatableCreativeAssetsAttributes attributes
+  ) {
+    this.creativeAssetsId = creativeAssetsId;
+    this.operation = operation;
+    this.attributes = attributes;
+  }
+
   /**
    * The catalog creative assets item id in the merchant namespace
    **/
@@ -81,12 +95,12 @@ public class CatalogsUpdateCreativeAssetsItem   {
 
   
   @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog creative assets item id in the merchant namespace")
-  @JsonProperty("creative_assets_id")
+  @JsonProperty(required = true, value = "creative_assets_id")
   @NotNull public String getCreativeAssetsId() {
     return creativeAssetsId;
   }
 
-  @JsonProperty("creative_assets_id")
+  @JsonProperty(required = true, value = "creative_assets_id")
   public void setCreativeAssetsId(String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
   }
@@ -100,12 +114,12 @@ public class CatalogsUpdateCreativeAssetsItem   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("operation")
+  @JsonProperty(required = true, value = "operation")
   @NotNull public OperationEnum getOperation() {
     return operation;
   }
 
-  @JsonProperty("operation")
+  @JsonProperty(required = true, value = "operation")
   public void setOperation(OperationEnum operation) {
     this.operation = operation;
   }
@@ -119,12 +133,12 @@ public class CatalogsUpdateCreativeAssetsItem   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("attributes")
+  @JsonProperty(required = true, value = "attributes")
   @NotNull @Valid public CatalogsUpdatableCreativeAssetsAttributes getAttributes() {
     return attributes;
   }
 
-  @JsonProperty("attributes")
+  @JsonProperty(required = true, value = "attributes")
   public void setAttributes(CatalogsUpdatableCreativeAssetsAttributes attributes) {
     this.attributes = attributes;
   }

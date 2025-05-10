@@ -23,9 +23,10 @@ typedef struct user_single_asset_binding_t {
     list_t *permissions; //primitive container
     struct business_access_user_summary_t *user; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } user_single_asset_binding_t;
 
-user_single_asset_binding_t *user_single_asset_binding_create(
+__attribute__((deprecated)) user_single_asset_binding_t *user_single_asset_binding_create(
     list_t *permissions,
     business_access_user_summary_t *user
 );

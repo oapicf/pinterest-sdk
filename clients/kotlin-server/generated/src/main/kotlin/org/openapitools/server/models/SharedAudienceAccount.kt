@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param accountId Account ID (ad account or business ID).
@@ -19,6 +20,7 @@ package org.openapitools.server.models
  * @param accountType account type
  * @param sharedOnTimestamp Epoch timestamp in seconds for the shared audience event
  */
+@Serializable
 data class SharedAudienceAccount(
     /* Account ID (ad account or business ID). */
     val accountId: kotlin.String,
@@ -28,7 +30,7 @@ data class SharedAudienceAccount(
     val accountType: SharedAudienceAccount.AccountType,
     /* Epoch timestamp in seconds for the shared audience event */
     val sharedOnTimestamp: kotlin.Int
-) 
+)
 {
     /**
     * account type

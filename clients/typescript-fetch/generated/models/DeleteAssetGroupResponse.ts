@@ -63,11 +63,11 @@ export function DeleteAssetGroupResponseFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function DeleteAssetGroupResponseToJSON(json: any): DeleteAssetGroupResponse {
-      return DeleteAssetGroupResponseToJSONTyped(json, false);
-  }
+export function DeleteAssetGroupResponseToJSON(json: any): DeleteAssetGroupResponse {
+    return DeleteAssetGroupResponseToJSONTyped(json, false);
+}
 
-  export function DeleteAssetGroupResponseToJSONTyped(value?: DeleteAssetGroupResponse | null, ignoreDiscriminator: boolean = false): any {
+export function DeleteAssetGroupResponseToJSONTyped(value?: DeleteAssetGroupResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

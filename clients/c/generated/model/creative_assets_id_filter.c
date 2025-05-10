@@ -5,7 +5,7 @@
 
 
 
-creative_assets_id_filter_t *creative_assets_id_filter_create(
+static creative_assets_id_filter_t *creative_assets_id_filter_create_internal(
     catalogs_product_group_multiple_string_criteria_t *creative_assets_id
     ) {
     creative_assets_id_filter_t *creative_assets_id_filter_local_var = malloc(sizeof(creative_assets_id_filter_t));
@@ -14,12 +14,24 @@ creative_assets_id_filter_t *creative_assets_id_filter_create(
     }
     creative_assets_id_filter_local_var->creative_assets_id = creative_assets_id;
 
+    creative_assets_id_filter_local_var->_library_owned = 1;
     return creative_assets_id_filter_local_var;
 }
 
+__attribute__((deprecated)) creative_assets_id_filter_t *creative_assets_id_filter_create(
+    catalogs_product_group_multiple_string_criteria_t *creative_assets_id
+    ) {
+    return creative_assets_id_filter_create_internal (
+        creative_assets_id
+        );
+}
 
 void creative_assets_id_filter_free(creative_assets_id_filter_t *creative_assets_id_filter) {
     if(NULL == creative_assets_id_filter){
+        return ;
+    }
+    if(creative_assets_id_filter->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "creative_assets_id_filter_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -60,6 +72,9 @@ creative_assets_id_filter_t *creative_assets_id_filter_parseFromJSON(cJSON *crea
 
     // creative_assets_id_filter->creative_assets_id
     cJSON *creative_assets_id = cJSON_GetObjectItemCaseSensitive(creative_assets_id_filterJSON, "CREATIVE_ASSETS_ID");
+    if (cJSON_IsNull(creative_assets_id)) {
+        creative_assets_id = NULL;
+    }
     if (!creative_assets_id) {
         goto end;
     }
@@ -69,7 +84,7 @@ creative_assets_id_filter_t *creative_assets_id_filter_parseFromJSON(cJSON *crea
     creative_assets_id_local_object = object_parseFromJSON(creative_assets_id); //object
 
 
-    creative_assets_id_filter_local_var = creative_assets_id_filter_create (
+    creative_assets_id_filter_local_var = creative_assets_id_filter_create_internal (
         creative_assets_id_local_object
         );
 

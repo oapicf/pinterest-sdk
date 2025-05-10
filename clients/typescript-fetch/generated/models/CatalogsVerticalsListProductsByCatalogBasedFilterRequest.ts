@@ -61,17 +61,21 @@ export function CatalogsVerticalsListProductsByCatalogBasedFilterRequestFromJSON
     }
 }
 
-export function CatalogsVerticalsListProductsByCatalogBasedFilterRequestToJSON(value?: CatalogsVerticalsListProductsByCatalogBasedFilterRequest | null): any {
+export function CatalogsVerticalsListProductsByCatalogBasedFilterRequestToJSON(json: any): any {
+    return CatalogsVerticalsListProductsByCatalogBasedFilterRequestToJSONTyped(json, false);
+}
+
+export function CatalogsVerticalsListProductsByCatalogBasedFilterRequestToJSONTyped(value?: CatalogsVerticalsListProductsByCatalogBasedFilterRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
     switch (value['catalogType']) {
         case 'CREATIVE_ASSETS':
-            return CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequestToJSON(value);
+            return Object.assign({}, CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequestToJSON(value), { catalogType: 'CREATIVE_ASSETS' } as const);
         case 'HOTEL':
-            return CatalogsHotelListProductsByCatalogBasedFilterRequestToJSON(value);
+            return Object.assign({}, CatalogsHotelListProductsByCatalogBasedFilterRequestToJSON(value), { catalogType: 'HOTEL' } as const);
         case 'RETAIL':
-            return CatalogsRetailListProductsByCatalogBasedFilterRequestToJSON(value);
+            return Object.assign({}, CatalogsRetailListProductsByCatalogBasedFilterRequestToJSON(value), { catalogType: 'RETAIL' } as const);
         default:
             throw new Error(`No variant of CatalogsVerticalsListProductsByCatalogBasedFilterRequest exists with 'catalogType=${value['catalogType']}'`);
     }

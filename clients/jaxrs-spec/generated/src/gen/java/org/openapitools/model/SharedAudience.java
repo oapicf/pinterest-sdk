@@ -19,11 +19,25 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("SharedAudience")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SharedAudience   {
   private String audienceId;
   private OperationType operationType;
   private @Valid List<@Pattern(regexp = "^\\d+$")String> recipientAccountIds = new ArrayList<>();
+
+  public SharedAudience() {
+  }
+
+  @JsonCreator
+  public SharedAudience(
+    @JsonProperty(required = true, value = "audience_id") String audienceId,
+    @JsonProperty(required = true, value = "operation_type") OperationType operationType,
+    @JsonProperty(required = true, value = "recipient_account_ids") List< @Pattern(regexp="^\\d+$")String> recipientAccountIds
+  ) {
+    this.audienceId = audienceId;
+    this.operationType = operationType;
+    this.recipientAccountIds = recipientAccountIds;
+  }
 
   /**
    * Unique identifier of an audience
@@ -35,12 +49,12 @@ public class SharedAudience   {
 
   
   @ApiModelProperty(example = "2542621871096", required = true, value = "Unique identifier of an audience")
-  @JsonProperty("audience_id")
+  @JsonProperty(required = true, value = "audience_id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getAudienceId() {
     return audienceId;
   }
 
-  @JsonProperty("audience_id")
+  @JsonProperty(required = true, value = "audience_id")
   public void setAudienceId(String audienceId) {
     this.audienceId = audienceId;
   }
@@ -54,12 +68,12 @@ public class SharedAudience   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("operation_type")
+  @JsonProperty(required = true, value = "operation_type")
   @NotNull public OperationType getOperationType() {
     return operationType;
   }
 
-  @JsonProperty("operation_type")
+  @JsonProperty(required = true, value = "operation_type")
   public void setOperationType(OperationType operationType) {
     this.operationType = operationType;
   }
@@ -74,12 +88,12 @@ public class SharedAudience   {
 
   
   @ApiModelProperty(required = true, value = "List of ad account IDs to share with or revoke from.")
-  @JsonProperty("recipient_account_ids")
+  @JsonProperty(required = true, value = "recipient_account_ids")
   @NotNull public List< @Pattern(regexp="^\\d+$")String> getRecipientAccountIds() {
     return recipientAccountIds;
   }
 
-  @JsonProperty("recipient_account_ids")
+  @JsonProperty(required = true, value = "recipient_account_ids")
   public void setRecipientAccountIds(List<@Pattern(regexp = "^\\d+$")String> recipientAccountIds) {
     this.recipientAccountIds = recipientAccountIds;
   }

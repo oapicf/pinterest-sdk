@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param username Public username for the user account
  * @param id The owning account's user ID.
  */
+@Serializable
 data class AdAccountOwner(
     /* Public username for the user account */
     val username: kotlin.String? = null,
     /* The owning account's user ID. */
     val id: kotlin.String? = null
-) 
+)
 

@@ -13,12 +13,12 @@ import AnyCodable
 /** Pin */
 public struct Pin: Codable, JSONEncodable, Hashable {
 
-    static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let linkRule = StringRule(minLength: nil, maxLength: 2048, pattern: nil)
-    static let altTextRule = StringRule(minLength: nil, maxLength: 500, pattern: nil)
-    static let boardIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let boardSectionIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let parentPinIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let linkRule = StringRule(minLength: nil, maxLength: 2048, pattern: nil)
+    public static let altTextRule = StringRule(minLength: nil, maxLength: 500, pattern: nil)
+    public static let boardIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let boardSectionIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let parentPinIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public var id: String?
     public var createdAt: Date?
     public var link: String?
@@ -118,3 +118,6 @@ public struct Pin: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension Pin: Identifiable {}

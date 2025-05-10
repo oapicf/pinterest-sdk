@@ -91,11 +91,11 @@ export function AudienceCategoryFromJSONTyped(json: any, ignoreDiscriminator: bo
     };
 }
 
-  export function AudienceCategoryToJSON(json: any): AudienceCategory {
-      return AudienceCategoryToJSONTyped(json, false);
-  }
+export function AudienceCategoryToJSON(json: any): AudienceCategory {
+    return AudienceCategoryToJSONTyped(json, false);
+}
 
-  export function AudienceCategoryToJSONTyped(value?: AudienceCategory | null, ignoreDiscriminator: boolean = false): any {
+export function AudienceCategoryToJSONTyped(value?: AudienceCategory | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

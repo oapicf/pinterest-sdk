@@ -61,14 +61,14 @@ impl Default for SourceType {
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum CoverImageContentType {
     #[serde(rename = "image/jpeg")]
-    Jpeg,
+    ImageSlashJpeg,
     #[serde(rename = "image/png")]
-    Png,
+    ImageSlashPng,
 }
 
 impl Default for CoverImageContentType {
     fn default() -> CoverImageContentType {
-        Self::Jpeg
+        Self::ImageSlashJpeg
     }
 }
 

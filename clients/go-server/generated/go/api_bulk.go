@@ -78,7 +78,7 @@ func (c *BulkAPIController) BulkDownloadCreate(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	bulkDownloadRequestParam := BulkDownloadRequest{}
+	var bulkDownloadRequestParam BulkDownloadRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&bulkDownloadRequestParam); err != nil {
@@ -111,7 +111,7 @@ func (c *BulkAPIController) BulkUpsertCreate(w http.ResponseWriter, r *http.Requ
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	bulkUpsertRequestParam := BulkUpsertRequest{}
+	var bulkUpsertRequestParam BulkUpsertRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&bulkUpsertRequestParam); err != nil {

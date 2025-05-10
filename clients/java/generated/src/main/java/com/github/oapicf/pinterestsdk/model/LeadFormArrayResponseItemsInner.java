@@ -52,20 +52,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * LeadFormArrayResponseItemsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class LeadFormArrayResponseItemsInner {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
+  @javax.annotation.Nullable
   private LeadFormResponse data;
 
   public static final String SERIALIZED_NAME_EXCEPTIONS = "exceptions";
   @SerializedName(SERIALIZED_NAME_EXCEPTIONS)
+  @javax.annotation.Nullable
   private List<Exception> exceptions = new ArrayList<>();
 
   public LeadFormArrayResponseItemsInner() {
   }
 
-  public LeadFormArrayResponseItemsInner data(LeadFormResponse data) {
+  public LeadFormArrayResponseItemsInner data(@javax.annotation.Nullable LeadFormResponse data) {
     this.data = data;
     return this;
   }
@@ -79,12 +81,12 @@ public class LeadFormArrayResponseItemsInner {
     return data;
   }
 
-  public void setData(LeadFormResponse data) {
+  public void setData(@javax.annotation.Nullable LeadFormResponse data) {
     this.data = data;
   }
 
 
-  public LeadFormArrayResponseItemsInner exceptions(List<Exception> exceptions) {
+  public LeadFormArrayResponseItemsInner exceptions(@javax.annotation.Nullable List<Exception> exceptions) {
     this.exceptions = exceptions;
     return this;
   }
@@ -106,7 +108,7 @@ public class LeadFormArrayResponseItemsInner {
     return exceptions;
   }
 
-  public void setExceptions(List<Exception> exceptions) {
+  public void setExceptions(@javax.annotation.Nullable List<Exception> exceptions) {
     this.exceptions = exceptions;
   }
 

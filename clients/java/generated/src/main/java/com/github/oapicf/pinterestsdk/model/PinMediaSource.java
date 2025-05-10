@@ -66,7 +66,7 @@ import com.google.gson.JsonParseException;
 
 import com.github.oapicf.pinterestsdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMediaSource extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(PinMediaSource.class.getName());
 
@@ -316,6 +316,7 @@ public class PinMediaSource extends AbstractOpenApiSchema {
     public PinMediaSourceImageBase64 getPinMediaSourceImageBase64() throws ClassCastException {
         return (PinMediaSourceImageBase64)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `PinMediaSourceImageURL`. If the actual instance is not `PinMediaSourceImageURL`,
      * the ClassCastException will be thrown.
@@ -326,6 +327,7 @@ public class PinMediaSource extends AbstractOpenApiSchema {
     public PinMediaSourceImageURL getPinMediaSourceImageURL() throws ClassCastException {
         return (PinMediaSourceImageURL)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `PinMediaSourceVideoID`. If the actual instance is not `PinMediaSourceVideoID`,
      * the ClassCastException will be thrown.
@@ -336,6 +338,7 @@ public class PinMediaSource extends AbstractOpenApiSchema {
     public PinMediaSourceVideoID getPinMediaSourceVideoID() throws ClassCastException {
         return (PinMediaSourceVideoID)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `PinMediaSourceImagesBase64`. If the actual instance is not `PinMediaSourceImagesBase64`,
      * the ClassCastException will be thrown.
@@ -346,6 +349,7 @@ public class PinMediaSource extends AbstractOpenApiSchema {
     public PinMediaSourceImagesBase64 getPinMediaSourceImagesBase64() throws ClassCastException {
         return (PinMediaSourceImagesBase64)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `PinMediaSourceImagesURL`. If the actual instance is not `PinMediaSourceImagesURL`,
      * the ClassCastException will be thrown.
@@ -356,6 +360,7 @@ public class PinMediaSource extends AbstractOpenApiSchema {
     public PinMediaSourceImagesURL getPinMediaSourceImagesURL() throws ClassCastException {
         return (PinMediaSourceImagesURL)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `PinMediaSourcePinURL`. If the actual instance is not `PinMediaSourcePinURL`,
      * the ClassCastException will be thrown.

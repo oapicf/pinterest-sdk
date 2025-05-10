@@ -57,74 +57,91 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdResponse {
   public static final String SERIALIZED_NAME_AD_GROUP_ID = "ad_group_id";
   @SerializedName(SERIALIZED_NAME_AD_GROUP_ID)
+  @javax.annotation.Nullable
   private String adGroupId;
 
   public static final String SERIALIZED_NAME_ANDROID_DEEP_LINK = "android_deep_link";
   @SerializedName(SERIALIZED_NAME_ANDROID_DEEP_LINK)
+  @javax.annotation.Nullable
   private String androidDeepLink;
 
   public static final String SERIALIZED_NAME_CAROUSEL_ANDROID_DEEP_LINKS = "carousel_android_deep_links";
   @SerializedName(SERIALIZED_NAME_CAROUSEL_ANDROID_DEEP_LINKS)
+  @javax.annotation.Nullable
   private List<String> carouselAndroidDeepLinks;
 
   public static final String SERIALIZED_NAME_CAROUSEL_DESTINATION_URLS = "carousel_destination_urls";
   @SerializedName(SERIALIZED_NAME_CAROUSEL_DESTINATION_URLS)
+  @javax.annotation.Nullable
   private List<String> carouselDestinationUrls;
 
   public static final String SERIALIZED_NAME_CAROUSEL_IOS_DEEP_LINKS = "carousel_ios_deep_links";
   @SerializedName(SERIALIZED_NAME_CAROUSEL_IOS_DEEP_LINKS)
+  @javax.annotation.Nullable
   private List<String> carouselIosDeepLinks;
 
   public static final String SERIALIZED_NAME_CLICK_TRACKING_URL = "click_tracking_url";
   @SerializedName(SERIALIZED_NAME_CLICK_TRACKING_URL)
+  @javax.annotation.Nullable
   private String clickTrackingUrl;
 
   public static final String SERIALIZED_NAME_CREATIVE_TYPE = "creative_type";
   @SerializedName(SERIALIZED_NAME_CREATIVE_TYPE)
+  @javax.annotation.Nullable
   private CreativeType creativeType;
 
   public static final String SERIALIZED_NAME_DESTINATION_URL = "destination_url";
   @SerializedName(SERIALIZED_NAME_DESTINATION_URL)
+  @javax.annotation.Nullable
   private String destinationUrl;
 
   public static final String SERIALIZED_NAME_IOS_DEEP_LINK = "ios_deep_link";
   @SerializedName(SERIALIZED_NAME_IOS_DEEP_LINK)
+  @javax.annotation.Nullable
   private String iosDeepLink;
 
   public static final String SERIALIZED_NAME_IS_PIN_DELETED = "is_pin_deleted";
   @SerializedName(SERIALIZED_NAME_IS_PIN_DELETED)
+  @javax.annotation.Nullable
   private Boolean isPinDeleted;
 
   public static final String SERIALIZED_NAME_IS_REMOVABLE = "is_removable";
   @SerializedName(SERIALIZED_NAME_IS_REMOVABLE)
+  @javax.annotation.Nullable
   private Boolean isRemovable;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private EntityStatus status;
 
   public static final String SERIALIZED_NAME_TRACKING_URLS = "tracking_urls";
   @SerializedName(SERIALIZED_NAME_TRACKING_URLS)
+  @javax.annotation.Nullable
   private TrackingUrls trackingUrls;
 
   public static final String SERIALIZED_NAME_VIEW_TRACKING_URL = "view_tracking_url";
   @SerializedName(SERIALIZED_NAME_VIEW_TRACKING_URL)
+  @javax.annotation.Nullable
   private String viewTrackingUrl;
 
   public static final String SERIALIZED_NAME_LEAD_FORM_ID = "lead_form_id";
   @SerializedName(SERIALIZED_NAME_LEAD_FORM_ID)
+  @javax.annotation.Nullable
   private String leadFormId;
 
   public static final String SERIALIZED_NAME_GRID_CLICK_TYPE = "grid_click_type";
   @SerializedName(SERIALIZED_NAME_GRID_CLICK_TYPE)
+  @javax.annotation.Nullable
   private GridClickType gridClickType;
 
   /**
@@ -213,34 +230,42 @@ public class AdResponse {
 
   public static final String SERIALIZED_NAME_CUSTOMIZABLE_CTA_TYPE = "customizable_cta_type";
   @SerializedName(SERIALIZED_NAME_CUSTOMIZABLE_CTA_TYPE)
+  @javax.annotation.Nullable
   private CustomizableCtaTypeEnum customizableCtaType;
 
   public static final String SERIALIZED_NAME_QUIZ_PIN_DATA = "quiz_pin_data";
   @SerializedName(SERIALIZED_NAME_QUIZ_PIN_DATA)
+  @javax.annotation.Nullable
   private QuizPinData quizPinData;
 
   public static final String SERIALIZED_NAME_PIN_ID = "pin_id";
   @SerializedName(SERIALIZED_NAME_PIN_ID)
+  @javax.annotation.Nullable
   private String pinId;
 
   public static final String SERIALIZED_NAME_AD_ACCOUNT_ID = "ad_account_id";
   @SerializedName(SERIALIZED_NAME_AD_ACCOUNT_ID)
+  @javax.annotation.Nullable
   private String adAccountId;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaign_id";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
+  @javax.annotation.Nullable
   private String campaignId;
 
   public static final String SERIALIZED_NAME_COLLECTION_ITEMS_DESTINATION_URL_TEMPLATE = "collection_items_destination_url_template";
   @SerializedName(SERIALIZED_NAME_COLLECTION_ITEMS_DESTINATION_URL_TEMPLATE)
+  @javax.annotation.Nullable
   private String collectionItemsDestinationUrlTemplate;
 
   public static final String SERIALIZED_NAME_CREATED_TIME = "created_time";
   @SerializedName(SERIALIZED_NAME_CREATED_TIME)
+  @javax.annotation.Nullable
   private Integer createdTime;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   /**
@@ -389,10 +414,12 @@ public class AdResponse {
 
   public static final String SERIALIZED_NAME_REJECTED_REASONS = "rejected_reasons";
   @SerializedName(SERIALIZED_NAME_REJECTED_REASONS)
+  @javax.annotation.Nullable
   private List<RejectedReasonsEnum> rejectedReasons = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_REJECTION_LABELS = "rejection_labels";
   @SerializedName(SERIALIZED_NAME_REJECTION_LABELS)
+  @javax.annotation.Nullable
   private List<String> rejectionLabels = new ArrayList<>();
 
   /**
@@ -453,24 +480,28 @@ public class AdResponse {
 
   public static final String SERIALIZED_NAME_REVIEW_STATUS = "review_status";
   @SerializedName(SERIALIZED_NAME_REVIEW_STATUS)
+  @javax.annotation.Nullable
   private ReviewStatusEnum reviewStatus;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nullable
   private String type;
 
   public static final String SERIALIZED_NAME_UPDATED_TIME = "updated_time";
   @SerializedName(SERIALIZED_NAME_UPDATED_TIME)
+  @javax.annotation.Nullable
   private Integer updatedTime;
 
   public static final String SERIALIZED_NAME_SUMMARY_STATUS = "summary_status";
   @SerializedName(SERIALIZED_NAME_SUMMARY_STATUS)
+  @javax.annotation.Nullable
   private PinPromotionSummaryStatus summaryStatus;
 
   public AdResponse() {
   }
 
-  public AdResponse adGroupId(String adGroupId) {
+  public AdResponse adGroupId(@javax.annotation.Nullable String adGroupId) {
     this.adGroupId = adGroupId;
     return this;
   }
@@ -484,12 +515,12 @@ public class AdResponse {
     return adGroupId;
   }
 
-  public void setAdGroupId(String adGroupId) {
+  public void setAdGroupId(@javax.annotation.Nullable String adGroupId) {
     this.adGroupId = adGroupId;
   }
 
 
-  public AdResponse androidDeepLink(String androidDeepLink) {
+  public AdResponse androidDeepLink(@javax.annotation.Nullable String androidDeepLink) {
     this.androidDeepLink = androidDeepLink;
     return this;
   }
@@ -503,12 +534,12 @@ public class AdResponse {
     return androidDeepLink;
   }
 
-  public void setAndroidDeepLink(String androidDeepLink) {
+  public void setAndroidDeepLink(@javax.annotation.Nullable String androidDeepLink) {
     this.androidDeepLink = androidDeepLink;
   }
 
 
-  public AdResponse carouselAndroidDeepLinks(List<String> carouselAndroidDeepLinks) {
+  public AdResponse carouselAndroidDeepLinks(@javax.annotation.Nullable List<String> carouselAndroidDeepLinks) {
     this.carouselAndroidDeepLinks = carouselAndroidDeepLinks;
     return this;
   }
@@ -530,12 +561,12 @@ public class AdResponse {
     return carouselAndroidDeepLinks;
   }
 
-  public void setCarouselAndroidDeepLinks(List<String> carouselAndroidDeepLinks) {
+  public void setCarouselAndroidDeepLinks(@javax.annotation.Nullable List<String> carouselAndroidDeepLinks) {
     this.carouselAndroidDeepLinks = carouselAndroidDeepLinks;
   }
 
 
-  public AdResponse carouselDestinationUrls(List<String> carouselDestinationUrls) {
+  public AdResponse carouselDestinationUrls(@javax.annotation.Nullable List<String> carouselDestinationUrls) {
     this.carouselDestinationUrls = carouselDestinationUrls;
     return this;
   }
@@ -557,12 +588,12 @@ public class AdResponse {
     return carouselDestinationUrls;
   }
 
-  public void setCarouselDestinationUrls(List<String> carouselDestinationUrls) {
+  public void setCarouselDestinationUrls(@javax.annotation.Nullable List<String> carouselDestinationUrls) {
     this.carouselDestinationUrls = carouselDestinationUrls;
   }
 
 
-  public AdResponse carouselIosDeepLinks(List<String> carouselIosDeepLinks) {
+  public AdResponse carouselIosDeepLinks(@javax.annotation.Nullable List<String> carouselIosDeepLinks) {
     this.carouselIosDeepLinks = carouselIosDeepLinks;
     return this;
   }
@@ -584,12 +615,12 @@ public class AdResponse {
     return carouselIosDeepLinks;
   }
 
-  public void setCarouselIosDeepLinks(List<String> carouselIosDeepLinks) {
+  public void setCarouselIosDeepLinks(@javax.annotation.Nullable List<String> carouselIosDeepLinks) {
     this.carouselIosDeepLinks = carouselIosDeepLinks;
   }
 
 
-  public AdResponse clickTrackingUrl(String clickTrackingUrl) {
+  public AdResponse clickTrackingUrl(@javax.annotation.Nullable String clickTrackingUrl) {
     this.clickTrackingUrl = clickTrackingUrl;
     return this;
   }
@@ -603,12 +634,12 @@ public class AdResponse {
     return clickTrackingUrl;
   }
 
-  public void setClickTrackingUrl(String clickTrackingUrl) {
+  public void setClickTrackingUrl(@javax.annotation.Nullable String clickTrackingUrl) {
     this.clickTrackingUrl = clickTrackingUrl;
   }
 
 
-  public AdResponse creativeType(CreativeType creativeType) {
+  public AdResponse creativeType(@javax.annotation.Nullable CreativeType creativeType) {
     this.creativeType = creativeType;
     return this;
   }
@@ -622,12 +653,12 @@ public class AdResponse {
     return creativeType;
   }
 
-  public void setCreativeType(CreativeType creativeType) {
+  public void setCreativeType(@javax.annotation.Nullable CreativeType creativeType) {
     this.creativeType = creativeType;
   }
 
 
-  public AdResponse destinationUrl(String destinationUrl) {
+  public AdResponse destinationUrl(@javax.annotation.Nullable String destinationUrl) {
     this.destinationUrl = destinationUrl;
     return this;
   }
@@ -641,12 +672,12 @@ public class AdResponse {
     return destinationUrl;
   }
 
-  public void setDestinationUrl(String destinationUrl) {
+  public void setDestinationUrl(@javax.annotation.Nullable String destinationUrl) {
     this.destinationUrl = destinationUrl;
   }
 
 
-  public AdResponse iosDeepLink(String iosDeepLink) {
+  public AdResponse iosDeepLink(@javax.annotation.Nullable String iosDeepLink) {
     this.iosDeepLink = iosDeepLink;
     return this;
   }
@@ -660,12 +691,12 @@ public class AdResponse {
     return iosDeepLink;
   }
 
-  public void setIosDeepLink(String iosDeepLink) {
+  public void setIosDeepLink(@javax.annotation.Nullable String iosDeepLink) {
     this.iosDeepLink = iosDeepLink;
   }
 
 
-  public AdResponse isPinDeleted(Boolean isPinDeleted) {
+  public AdResponse isPinDeleted(@javax.annotation.Nullable Boolean isPinDeleted) {
     this.isPinDeleted = isPinDeleted;
     return this;
   }
@@ -679,12 +710,12 @@ public class AdResponse {
     return isPinDeleted;
   }
 
-  public void setIsPinDeleted(Boolean isPinDeleted) {
+  public void setIsPinDeleted(@javax.annotation.Nullable Boolean isPinDeleted) {
     this.isPinDeleted = isPinDeleted;
   }
 
 
-  public AdResponse isRemovable(Boolean isRemovable) {
+  public AdResponse isRemovable(@javax.annotation.Nullable Boolean isRemovable) {
     this.isRemovable = isRemovable;
     return this;
   }
@@ -698,12 +729,12 @@ public class AdResponse {
     return isRemovable;
   }
 
-  public void setIsRemovable(Boolean isRemovable) {
+  public void setIsRemovable(@javax.annotation.Nullable Boolean isRemovable) {
     this.isRemovable = isRemovable;
   }
 
 
-  public AdResponse name(String name) {
+  public AdResponse name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -717,12 +748,12 @@ public class AdResponse {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public AdResponse status(EntityStatus status) {
+  public AdResponse status(@javax.annotation.Nullable EntityStatus status) {
     this.status = status;
     return this;
   }
@@ -736,12 +767,12 @@ public class AdResponse {
     return status;
   }
 
-  public void setStatus(EntityStatus status) {
+  public void setStatus(@javax.annotation.Nullable EntityStatus status) {
     this.status = status;
   }
 
 
-  public AdResponse trackingUrls(TrackingUrls trackingUrls) {
+  public AdResponse trackingUrls(@javax.annotation.Nullable TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
@@ -755,12 +786,12 @@ public class AdResponse {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(TrackingUrls trackingUrls) {
+  public void setTrackingUrls(@javax.annotation.Nullable TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
 
-  public AdResponse viewTrackingUrl(String viewTrackingUrl) {
+  public AdResponse viewTrackingUrl(@javax.annotation.Nullable String viewTrackingUrl) {
     this.viewTrackingUrl = viewTrackingUrl;
     return this;
   }
@@ -774,12 +805,12 @@ public class AdResponse {
     return viewTrackingUrl;
   }
 
-  public void setViewTrackingUrl(String viewTrackingUrl) {
+  public void setViewTrackingUrl(@javax.annotation.Nullable String viewTrackingUrl) {
     this.viewTrackingUrl = viewTrackingUrl;
   }
 
 
-  public AdResponse leadFormId(String leadFormId) {
+  public AdResponse leadFormId(@javax.annotation.Nullable String leadFormId) {
     this.leadFormId = leadFormId;
     return this;
   }
@@ -793,12 +824,12 @@ public class AdResponse {
     return leadFormId;
   }
 
-  public void setLeadFormId(String leadFormId) {
+  public void setLeadFormId(@javax.annotation.Nullable String leadFormId) {
     this.leadFormId = leadFormId;
   }
 
 
-  public AdResponse gridClickType(GridClickType gridClickType) {
+  public AdResponse gridClickType(@javax.annotation.Nullable GridClickType gridClickType) {
     this.gridClickType = gridClickType;
     return this;
   }
@@ -812,12 +843,12 @@ public class AdResponse {
     return gridClickType;
   }
 
-  public void setGridClickType(GridClickType gridClickType) {
+  public void setGridClickType(@javax.annotation.Nullable GridClickType gridClickType) {
     this.gridClickType = gridClickType;
   }
 
 
-  public AdResponse customizableCtaType(CustomizableCtaTypeEnum customizableCtaType) {
+  public AdResponse customizableCtaType(@javax.annotation.Nullable CustomizableCtaTypeEnum customizableCtaType) {
     this.customizableCtaType = customizableCtaType;
     return this;
   }
@@ -831,12 +862,12 @@ public class AdResponse {
     return customizableCtaType;
   }
 
-  public void setCustomizableCtaType(CustomizableCtaTypeEnum customizableCtaType) {
+  public void setCustomizableCtaType(@javax.annotation.Nullable CustomizableCtaTypeEnum customizableCtaType) {
     this.customizableCtaType = customizableCtaType;
   }
 
 
-  public AdResponse quizPinData(QuizPinData quizPinData) {
+  public AdResponse quizPinData(@javax.annotation.Nullable QuizPinData quizPinData) {
     this.quizPinData = quizPinData;
     return this;
   }
@@ -850,12 +881,12 @@ public class AdResponse {
     return quizPinData;
   }
 
-  public void setQuizPinData(QuizPinData quizPinData) {
+  public void setQuizPinData(@javax.annotation.Nullable QuizPinData quizPinData) {
     this.quizPinData = quizPinData;
   }
 
 
-  public AdResponse pinId(String pinId) {
+  public AdResponse pinId(@javax.annotation.Nullable String pinId) {
     this.pinId = pinId;
     return this;
   }
@@ -869,12 +900,12 @@ public class AdResponse {
     return pinId;
   }
 
-  public void setPinId(String pinId) {
+  public void setPinId(@javax.annotation.Nullable String pinId) {
     this.pinId = pinId;
   }
 
 
-  public AdResponse adAccountId(String adAccountId) {
+  public AdResponse adAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -888,12 +919,12 @@ public class AdResponse {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
 
-  public AdResponse campaignId(String campaignId) {
+  public AdResponse campaignId(@javax.annotation.Nullable String campaignId) {
     this.campaignId = campaignId;
     return this;
   }
@@ -907,12 +938,12 @@ public class AdResponse {
     return campaignId;
   }
 
-  public void setCampaignId(String campaignId) {
+  public void setCampaignId(@javax.annotation.Nullable String campaignId) {
     this.campaignId = campaignId;
   }
 
 
-  public AdResponse collectionItemsDestinationUrlTemplate(String collectionItemsDestinationUrlTemplate) {
+  public AdResponse collectionItemsDestinationUrlTemplate(@javax.annotation.Nullable String collectionItemsDestinationUrlTemplate) {
     this.collectionItemsDestinationUrlTemplate = collectionItemsDestinationUrlTemplate;
     return this;
   }
@@ -926,12 +957,12 @@ public class AdResponse {
     return collectionItemsDestinationUrlTemplate;
   }
 
-  public void setCollectionItemsDestinationUrlTemplate(String collectionItemsDestinationUrlTemplate) {
+  public void setCollectionItemsDestinationUrlTemplate(@javax.annotation.Nullable String collectionItemsDestinationUrlTemplate) {
     this.collectionItemsDestinationUrlTemplate = collectionItemsDestinationUrlTemplate;
   }
 
 
-  public AdResponse createdTime(Integer createdTime) {
+  public AdResponse createdTime(@javax.annotation.Nullable Integer createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -945,12 +976,12 @@ public class AdResponse {
     return createdTime;
   }
 
-  public void setCreatedTime(Integer createdTime) {
+  public void setCreatedTime(@javax.annotation.Nullable Integer createdTime) {
     this.createdTime = createdTime;
   }
 
 
-  public AdResponse id(String id) {
+  public AdResponse id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -964,12 +995,12 @@ public class AdResponse {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public AdResponse rejectedReasons(List<RejectedReasonsEnum> rejectedReasons) {
+  public AdResponse rejectedReasons(@javax.annotation.Nullable List<RejectedReasonsEnum> rejectedReasons) {
     this.rejectedReasons = rejectedReasons;
     return this;
   }
@@ -991,12 +1022,12 @@ public class AdResponse {
     return rejectedReasons;
   }
 
-  public void setRejectedReasons(List<RejectedReasonsEnum> rejectedReasons) {
+  public void setRejectedReasons(@javax.annotation.Nullable List<RejectedReasonsEnum> rejectedReasons) {
     this.rejectedReasons = rejectedReasons;
   }
 
 
-  public AdResponse rejectionLabels(List<String> rejectionLabels) {
+  public AdResponse rejectionLabels(@javax.annotation.Nullable List<String> rejectionLabels) {
     this.rejectionLabels = rejectionLabels;
     return this;
   }
@@ -1018,12 +1049,12 @@ public class AdResponse {
     return rejectionLabels;
   }
 
-  public void setRejectionLabels(List<String> rejectionLabels) {
+  public void setRejectionLabels(@javax.annotation.Nullable List<String> rejectionLabels) {
     this.rejectionLabels = rejectionLabels;
   }
 
 
-  public AdResponse reviewStatus(ReviewStatusEnum reviewStatus) {
+  public AdResponse reviewStatus(@javax.annotation.Nullable ReviewStatusEnum reviewStatus) {
     this.reviewStatus = reviewStatus;
     return this;
   }
@@ -1037,12 +1068,12 @@ public class AdResponse {
     return reviewStatus;
   }
 
-  public void setReviewStatus(ReviewStatusEnum reviewStatus) {
+  public void setReviewStatus(@javax.annotation.Nullable ReviewStatusEnum reviewStatus) {
     this.reviewStatus = reviewStatus;
   }
 
 
-  public AdResponse type(String type) {
+  public AdResponse type(@javax.annotation.Nullable String type) {
     this.type = type;
     return this;
   }
@@ -1056,12 +1087,12 @@ public class AdResponse {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@javax.annotation.Nullable String type) {
     this.type = type;
   }
 
 
-  public AdResponse updatedTime(Integer updatedTime) {
+  public AdResponse updatedTime(@javax.annotation.Nullable Integer updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -1075,12 +1106,12 @@ public class AdResponse {
     return updatedTime;
   }
 
-  public void setUpdatedTime(Integer updatedTime) {
+  public void setUpdatedTime(@javax.annotation.Nullable Integer updatedTime) {
     this.updatedTime = updatedTime;
   }
 
 
-  public AdResponse summaryStatus(PinPromotionSummaryStatus summaryStatus) {
+  public AdResponse summaryStatus(@javax.annotation.Nullable PinPromotionSummaryStatus summaryStatus) {
     this.summaryStatus = summaryStatus;
     return this;
   }
@@ -1094,7 +1125,7 @@ public class AdResponse {
     return summaryStatus;
   }
 
-  public void setSummaryStatus(PinPromotionSummaryStatus summaryStatus) {
+  public void setSummaryStatus(@javax.annotation.Nullable PinPromotionSummaryStatus summaryStatus) {
     this.summaryStatus = summaryStatus;
   }
 

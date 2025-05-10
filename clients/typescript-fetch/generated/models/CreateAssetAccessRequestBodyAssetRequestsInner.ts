@@ -66,11 +66,11 @@ export function CreateAssetAccessRequestBodyAssetRequestsInnerFromJSONTyped(json
     };
 }
 
-  export function CreateAssetAccessRequestBodyAssetRequestsInnerToJSON(json: any): CreateAssetAccessRequestBodyAssetRequestsInner {
-      return CreateAssetAccessRequestBodyAssetRequestsInnerToJSONTyped(json, false);
-  }
+export function CreateAssetAccessRequestBodyAssetRequestsInnerToJSON(json: any): CreateAssetAccessRequestBodyAssetRequestsInner {
+    return CreateAssetAccessRequestBodyAssetRequestsInnerToJSONTyped(json, false);
+}
 
-  export function CreateAssetAccessRequestBodyAssetRequestsInnerToJSONTyped(value?: CreateAssetAccessRequestBodyAssetRequestsInner | null, ignoreDiscriminator: boolean = false): any {
+export function CreateAssetAccessRequestBodyAssetRequestsInnerToJSONTyped(value?: CreateAssetAccessRequestBodyAssetRequestsInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -13,8 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // ItemBatchRecord - Object describing an item batch record
@@ -215,6 +215,32 @@ func (obj *ItemBatchRecord) GetActualInstance() (interface{}) {
 
 	if obj.ItemUpsertBatchRecord != nil {
 		return obj.ItemUpsertBatchRecord
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj ItemBatchRecord) GetActualInstanceValue() (interface{}) {
+	if obj.ItemCreateBatchRecord != nil {
+		return *obj.ItemCreateBatchRecord
+	}
+
+	if obj.ItemDeleteBatchRecord != nil {
+		return *obj.ItemDeleteBatchRecord
+	}
+
+	if obj.ItemDeleteDiscontinuedBatchRecord != nil {
+		return *obj.ItemDeleteDiscontinuedBatchRecord
+	}
+
+	if obj.ItemUpdateBatchRecord != nil {
+		return *obj.ItemUpdateBatchRecord
+	}
+
+	if obj.ItemUpsertBatchRecord != nil {
+		return *obj.ItemUpsertBatchRecord
 	}
 
 	// all schemas are nil

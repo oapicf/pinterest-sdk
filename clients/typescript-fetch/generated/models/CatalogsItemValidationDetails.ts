@@ -67,11 +67,11 @@ export function CatalogsItemValidationDetailsFromJSONTyped(json: any, ignoreDisc
     };
 }
 
-  export function CatalogsItemValidationDetailsToJSON(json: any): CatalogsItemValidationDetails {
-      return CatalogsItemValidationDetailsToJSONTyped(json, false);
-  }
+export function CatalogsItemValidationDetailsToJSON(json: any): CatalogsItemValidationDetails {
+    return CatalogsItemValidationDetailsToJSONTyped(json, false);
+}
 
-  export function CatalogsItemValidationDetailsToJSONTyped(value?: CatalogsItemValidationDetails | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsItemValidationDetailsToJSONTyped(value?: CatalogsItemValidationDetails | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

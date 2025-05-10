@@ -114,7 +114,7 @@ func (c *MediaAPIController) MediaList(w http.ResponseWriter, r *http.Request) {
 
 // MediaCreate - Register media upload
 func (c *MediaAPIController) MediaCreate(w http.ResponseWriter, r *http.Request) {
-	mediaUploadRequestParam := MediaUploadRequest{}
+	var mediaUploadRequestParam MediaUploadRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&mediaUploadRequestParam); err != nil {

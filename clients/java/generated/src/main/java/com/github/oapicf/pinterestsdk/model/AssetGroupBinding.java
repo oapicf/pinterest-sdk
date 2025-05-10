@@ -52,52 +52,62 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AssetGroupBinding
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AssetGroupBinding {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_ASSET_GROUP_NAME = "asset_group_name";
   @SerializedName(SERIALIZED_NAME_ASSET_GROUP_NAME)
+  @javax.annotation.Nullable
   private String assetGroupName;
 
   public static final String SERIALIZED_NAME_ASSET_GROUP_DESCRIPTION = "asset_group_description";
   @SerializedName(SERIALIZED_NAME_ASSET_GROUP_DESCRIPTION)
+  @javax.annotation.Nullable
   private String assetGroupDescription;
 
   public static final String SERIALIZED_NAME_ASSET_GROUP_TYPES = "asset_group_types";
   @SerializedName(SERIALIZED_NAME_ASSET_GROUP_TYPES)
+  @javax.annotation.Nullable
   private List<String> assetGroupTypes = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_AD_ACCOUNTS_IDS = "ad_accounts_ids";
   @SerializedName(SERIALIZED_NAME_AD_ACCOUNTS_IDS)
+  @javax.annotation.Nullable
   private List<String> adAccountsIds;
 
   public static final String SERIALIZED_NAME_PROFILES_IDS = "profiles_ids";
   @SerializedName(SERIALIZED_NAME_PROFILES_IDS)
+  @javax.annotation.Nullable
   private List<String> profilesIds;
 
   public static final String SERIALIZED_NAME_CREATED_TIME = "created_time";
   @SerializedName(SERIALIZED_NAME_CREATED_TIME)
+  @javax.annotation.Nullable
   private Integer createdTime;
 
   public static final String SERIALIZED_NAME_UPDATED_TIME = "updated_time";
   @SerializedName(SERIALIZED_NAME_UPDATED_TIME)
+  @javax.annotation.Nullable
   private Integer updatedTime;
 
   public static final String SERIALIZED_NAME_OWNER = "owner";
   @SerializedName(SERIALIZED_NAME_OWNER)
+  @javax.annotation.Nullable
   private BusinessAccessUserSummary owner;
 
   public static final String SERIALIZED_NAME_CREATED_BY = "created_by";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
+  @javax.annotation.Nullable
   private BusinessAccessUserSummary createdBy;
 
   public AssetGroupBinding() {
   }
 
-  public AssetGroupBinding id(String id) {
+  public AssetGroupBinding id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -111,12 +121,12 @@ public class AssetGroupBinding {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public AssetGroupBinding assetGroupName(String assetGroupName) {
+  public AssetGroupBinding assetGroupName(@javax.annotation.Nullable String assetGroupName) {
     this.assetGroupName = assetGroupName;
     return this;
   }
@@ -130,12 +140,12 @@ public class AssetGroupBinding {
     return assetGroupName;
   }
 
-  public void setAssetGroupName(String assetGroupName) {
+  public void setAssetGroupName(@javax.annotation.Nullable String assetGroupName) {
     this.assetGroupName = assetGroupName;
   }
 
 
-  public AssetGroupBinding assetGroupDescription(String assetGroupDescription) {
+  public AssetGroupBinding assetGroupDescription(@javax.annotation.Nullable String assetGroupDescription) {
     this.assetGroupDescription = assetGroupDescription;
     return this;
   }
@@ -149,12 +159,12 @@ public class AssetGroupBinding {
     return assetGroupDescription;
   }
 
-  public void setAssetGroupDescription(String assetGroupDescription) {
+  public void setAssetGroupDescription(@javax.annotation.Nullable String assetGroupDescription) {
     this.assetGroupDescription = assetGroupDescription;
   }
 
 
-  public AssetGroupBinding assetGroupTypes(List<String> assetGroupTypes) {
+  public AssetGroupBinding assetGroupTypes(@javax.annotation.Nullable List<String> assetGroupTypes) {
     this.assetGroupTypes = assetGroupTypes;
     return this;
   }
@@ -176,12 +186,12 @@ public class AssetGroupBinding {
     return assetGroupTypes;
   }
 
-  public void setAssetGroupTypes(List<String> assetGroupTypes) {
+  public void setAssetGroupTypes(@javax.annotation.Nullable List<String> assetGroupTypes) {
     this.assetGroupTypes = assetGroupTypes;
   }
 
 
-  public AssetGroupBinding adAccountsIds(List<String> adAccountsIds) {
+  public AssetGroupBinding adAccountsIds(@javax.annotation.Nullable List<String> adAccountsIds) {
     this.adAccountsIds = adAccountsIds;
     return this;
   }
@@ -203,12 +213,12 @@ public class AssetGroupBinding {
     return adAccountsIds;
   }
 
-  public void setAdAccountsIds(List<String> adAccountsIds) {
+  public void setAdAccountsIds(@javax.annotation.Nullable List<String> adAccountsIds) {
     this.adAccountsIds = adAccountsIds;
   }
 
 
-  public AssetGroupBinding profilesIds(List<String> profilesIds) {
+  public AssetGroupBinding profilesIds(@javax.annotation.Nullable List<String> profilesIds) {
     this.profilesIds = profilesIds;
     return this;
   }
@@ -230,12 +240,12 @@ public class AssetGroupBinding {
     return profilesIds;
   }
 
-  public void setProfilesIds(List<String> profilesIds) {
+  public void setProfilesIds(@javax.annotation.Nullable List<String> profilesIds) {
     this.profilesIds = profilesIds;
   }
 
 
-  public AssetGroupBinding createdTime(Integer createdTime) {
+  public AssetGroupBinding createdTime(@javax.annotation.Nullable Integer createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -249,12 +259,12 @@ public class AssetGroupBinding {
     return createdTime;
   }
 
-  public void setCreatedTime(Integer createdTime) {
+  public void setCreatedTime(@javax.annotation.Nullable Integer createdTime) {
     this.createdTime = createdTime;
   }
 
 
-  public AssetGroupBinding updatedTime(Integer updatedTime) {
+  public AssetGroupBinding updatedTime(@javax.annotation.Nullable Integer updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -268,12 +278,12 @@ public class AssetGroupBinding {
     return updatedTime;
   }
 
-  public void setUpdatedTime(Integer updatedTime) {
+  public void setUpdatedTime(@javax.annotation.Nullable Integer updatedTime) {
     this.updatedTime = updatedTime;
   }
 
 
-  public AssetGroupBinding owner(BusinessAccessUserSummary owner) {
+  public AssetGroupBinding owner(@javax.annotation.Nullable BusinessAccessUserSummary owner) {
     this.owner = owner;
     return this;
   }
@@ -287,12 +297,12 @@ public class AssetGroupBinding {
     return owner;
   }
 
-  public void setOwner(BusinessAccessUserSummary owner) {
+  public void setOwner(@javax.annotation.Nullable BusinessAccessUserSummary owner) {
     this.owner = owner;
   }
 
 
-  public AssetGroupBinding createdBy(BusinessAccessUserSummary createdBy) {
+  public AssetGroupBinding createdBy(@javax.annotation.Nullable BusinessAccessUserSummary createdBy) {
     this.createdBy = createdBy;
     return this;
   }
@@ -306,7 +316,7 @@ public class AssetGroupBinding {
     return createdBy;
   }
 
-  public void setCreatedBy(BusinessAccessUserSummary createdBy) {
+  public void setCreatedBy(@javax.annotation.Nullable BusinessAccessUserSummary createdBy) {
     this.createdBy = createdBy;
   }
 

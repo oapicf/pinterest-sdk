@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ConversionApiResponse_events_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConversionApiResponseEventsInner   {
   public enum StatusEnum {
 
@@ -70,6 +70,16 @@ public class ConversionApiResponseEventsInner   {
   private String errorMessage;
   private String warningMessage;
 
+  public ConversionApiResponseEventsInner() {
+  }
+
+  @JsonCreator
+  public ConversionApiResponseEventsInner(
+    @JsonProperty(required = true, value = "status") StatusEnum status
+  ) {
+    this.status = status;
+  }
+
   /**
    * Whether the event was processed successfully.
    **/
@@ -80,12 +90,12 @@ public class ConversionApiResponseEventsInner   {
 
   
   @ApiModelProperty(example = "processed", required = true, value = "Whether the event was processed successfully.")
-  @JsonProperty("status")
+  @JsonProperty(required = true, value = "status")
   @NotNull public StatusEnum getStatus() {
     return status;
   }
 
-  @JsonProperty("status")
+  @JsonProperty(required = true, value = "status")
   public void setStatus(StatusEnum status) {
     this.status = status;
   }

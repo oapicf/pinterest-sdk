@@ -57,11 +57,11 @@ export function CatalogsFeedCredentialsFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-  export function CatalogsFeedCredentialsToJSON(json: any): CatalogsFeedCredentials {
-      return CatalogsFeedCredentialsToJSONTyped(json, false);
-  }
+export function CatalogsFeedCredentialsToJSON(json: any): CatalogsFeedCredentials {
+    return CatalogsFeedCredentialsToJSONTyped(json, false);
+}
 
-  export function CatalogsFeedCredentialsToJSONTyped(value?: CatalogsFeedCredentials | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsFeedCredentialsToJSONTyped(value?: CatalogsFeedCredentials | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

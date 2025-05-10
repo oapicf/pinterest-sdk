@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { AdAccountCreateSubscriptionRequest } from '../model/adAccountCreateSubscriptionRequest';
 import { AdAccountCreateSubscriptionResponse } from '../model/adAccountCreateSubscriptionResponse';
@@ -29,10 +29,12 @@ export class LeadAdsService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -51,9 +53,10 @@ export class LeadAdsService {
      * @param subscriptionId Unique identifier of a subscription.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [adAccountsSubscriptionsDelByIdOpts.config] Override http request option.
      */
-    public adAccountsSubscriptionsDelById(adAccountId: string, subscriptionId: string, ): Observable<AxiosResponse<any>>;
-    public adAccountsSubscriptionsDelById(adAccountId: string, subscriptionId: string, ): Observable<any> {
+    public adAccountsSubscriptionsDelById(adAccountId: string, subscriptionId: string, adAccountsSubscriptionsDelByIdOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public adAccountsSubscriptionsDelById(adAccountId: string, subscriptionId: string, adAccountsSubscriptionsDelByIdOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling adAccountsSubscriptionsDelById.');
         }
@@ -94,7 +97,8 @@ export class LeadAdsService {
                 return this.httpClient.delete<any>(`${this.basePath}/ad_accounts/${encodeURIComponent(String(ad_account_id))}/leads/subscriptions/${encodeURIComponent(String(subscription_id))}`,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...adAccountsSubscriptionsDelByIdOpts?.config,
+                        headers: {...headers, ...adAccountsSubscriptionsDelByIdOpts?.config?.headers},
                     }
                 );
             })
@@ -107,9 +111,10 @@ export class LeadAdsService {
      * @param subscriptionId Unique identifier of a subscription.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [adAccountsSubscriptionsGetByIdOpts.config] Override http request option.
      */
-    public adAccountsSubscriptionsGetById(adAccountId: string, subscriptionId: string, ): Observable<AxiosResponse<AdAccountGetSubscriptionResponse>>;
-    public adAccountsSubscriptionsGetById(adAccountId: string, subscriptionId: string, ): Observable<any> {
+    public adAccountsSubscriptionsGetById(adAccountId: string, subscriptionId: string, adAccountsSubscriptionsGetByIdOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<AdAccountGetSubscriptionResponse>>;
+    public adAccountsSubscriptionsGetById(adAccountId: string, subscriptionId: string, adAccountsSubscriptionsGetByIdOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling adAccountsSubscriptionsGetById.');
         }
@@ -150,7 +155,8 @@ export class LeadAdsService {
                 return this.httpClient.get<AdAccountGetSubscriptionResponse>(`${this.basePath}/ad_accounts/${encodeURIComponent(String(ad_account_id))}/leads/subscriptions/${encodeURIComponent(String(subscription_id))}`,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...adAccountsSubscriptionsGetByIdOpts?.config,
+                        headers: {...headers, ...adAccountsSubscriptionsGetByIdOpts?.config?.headers},
                     }
                 );
             })
@@ -164,9 +170,10 @@ export class LeadAdsService {
      * @param bookmark Cursor used to fetch the next page of items
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [adAccountsSubscriptionsGetListOpts.config] Override http request option.
      */
-    public adAccountsSubscriptionsGetList(adAccountId: string, pageSize?: number, bookmark?: string, ): Observable<AxiosResponse<AdAccountsSubscriptionsGetList200Response>>;
-    public adAccountsSubscriptionsGetList(adAccountId: string, pageSize?: number, bookmark?: string, ): Observable<any> {
+    public adAccountsSubscriptionsGetList(adAccountId: string, pageSize?: number, bookmark?: string, adAccountsSubscriptionsGetListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<AdAccountsSubscriptionsGetList200Response>>;
+    public adAccountsSubscriptionsGetList(adAccountId: string, pageSize?: number, bookmark?: string, adAccountsSubscriptionsGetListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling adAccountsSubscriptionsGetList.');
         }
@@ -212,7 +219,8 @@ export class LeadAdsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...adAccountsSubscriptionsGetListOpts?.config,
+                        headers: {...headers, ...adAccountsSubscriptionsGetListOpts?.config?.headers},
                     }
                 );
             })
@@ -225,9 +233,10 @@ export class LeadAdsService {
      * @param adAccountCreateSubscriptionRequest Subscription to create.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [adAccountsSubscriptionsPostOpts.config] Override http request option.
      */
-    public adAccountsSubscriptionsPost(adAccountId: string, adAccountCreateSubscriptionRequest: AdAccountCreateSubscriptionRequest, ): Observable<AxiosResponse<AdAccountCreateSubscriptionResponse>>;
-    public adAccountsSubscriptionsPost(adAccountId: string, adAccountCreateSubscriptionRequest: AdAccountCreateSubscriptionRequest, ): Observable<any> {
+    public adAccountsSubscriptionsPost(adAccountId: string, adAccountCreateSubscriptionRequest: AdAccountCreateSubscriptionRequest, adAccountsSubscriptionsPostOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<AdAccountCreateSubscriptionResponse>>;
+    public adAccountsSubscriptionsPost(adAccountId: string, adAccountCreateSubscriptionRequest: AdAccountCreateSubscriptionRequest, adAccountsSubscriptionsPostOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling adAccountsSubscriptionsPost.');
         }
@@ -274,7 +283,8 @@ export class LeadAdsService {
                     adAccountCreateSubscriptionRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...adAccountsSubscriptionsPostOpts?.config,
+                        headers: {...headers, ...adAccountsSubscriptionsPostOpts?.config?.headers},
                     }
                 );
             })

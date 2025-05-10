@@ -57,11 +57,11 @@ export function AdPreviewCreateFromImageFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function AdPreviewCreateFromImageToJSON(json: any): AdPreviewCreateFromImage {
-      return AdPreviewCreateFromImageToJSONTyped(json, false);
-  }
+export function AdPreviewCreateFromImageToJSON(json: any): AdPreviewCreateFromImage {
+    return AdPreviewCreateFromImageToJSONTyped(json, false);
+}
 
-  export function AdPreviewCreateFromImageToJSONTyped(value?: AdPreviewCreateFromImage | null, ignoreDiscriminator: boolean = false): any {
+export function AdPreviewCreateFromImageToJSONTyped(value?: AdPreviewCreateFromImage | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -48,28 +48,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * SSIOAccountAddress
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SSIOAccountAddress {
   public static final String SERIALIZED_NAME_DISPLAY = "display";
   @SerializedName(SERIALIZED_NAME_DISPLAY)
+  @javax.annotation.Nullable
   private String display;
 
   public static final String SERIALIZED_NAME_PURPOSE = "purpose";
   @SerializedName(SERIALIZED_NAME_PURPOSE)
+  @javax.annotation.Nullable
   private String purpose;
 
   public static final String SERIALIZED_NAME_ADDRESS_ID = "address_id";
   @SerializedName(SERIALIZED_NAME_ADDRESS_ID)
+  @javax.annotation.Nullable
   private String addressId;
 
   public static final String SERIALIZED_NAME_ORDER_LEGAL_ENTITY = "order_legal_entity";
   @SerializedName(SERIALIZED_NAME_ORDER_LEGAL_ENTITY)
+  @javax.annotation.Nullable
   private String orderLegalEntity;
 
   public SSIOAccountAddress() {
   }
 
-  public SSIOAccountAddress display(String display) {
+  public SSIOAccountAddress display(@javax.annotation.Nullable String display) {
     this.display = display;
     return this;
   }
@@ -83,12 +87,12 @@ public class SSIOAccountAddress {
     return display;
   }
 
-  public void setDisplay(String display) {
+  public void setDisplay(@javax.annotation.Nullable String display) {
     this.display = display;
   }
 
 
-  public SSIOAccountAddress purpose(String purpose) {
+  public SSIOAccountAddress purpose(@javax.annotation.Nullable String purpose) {
     this.purpose = purpose;
     return this;
   }
@@ -102,12 +106,12 @@ public class SSIOAccountAddress {
     return purpose;
   }
 
-  public void setPurpose(String purpose) {
+  public void setPurpose(@javax.annotation.Nullable String purpose) {
     this.purpose = purpose;
   }
 
 
-  public SSIOAccountAddress addressId(String addressId) {
+  public SSIOAccountAddress addressId(@javax.annotation.Nullable String addressId) {
     this.addressId = addressId;
     return this;
   }
@@ -121,12 +125,12 @@ public class SSIOAccountAddress {
     return addressId;
   }
 
-  public void setAddressId(String addressId) {
+  public void setAddressId(@javax.annotation.Nullable String addressId) {
     this.addressId = addressId;
   }
 
 
-  public SSIOAccountAddress orderLegalEntity(String orderLegalEntity) {
+  public SSIOAccountAddress orderLegalEntity(@javax.annotation.Nullable String orderLegalEntity) {
     this.orderLegalEntity = orderLegalEntity;
     return this;
   }
@@ -140,7 +144,7 @@ public class SSIOAccountAddress {
     return orderLegalEntity;
   }
 
-  public void setOrderLegalEntity(String orderLegalEntity) {
+  public void setOrderLegalEntity(@javax.annotation.Nullable String orderLegalEntity) {
     this.orderLegalEntity = orderLegalEntity;
   }
 

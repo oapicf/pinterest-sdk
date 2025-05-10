@@ -21,10 +21,20 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("business_asset_members_get_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BusinessAssetMembersGet200Response   {
   private @Valid List<@Valid UserSingleAssetBinding> items = new ArrayList<>();
   private String bookmark;
+
+  public BusinessAssetMembersGet200Response() {
+  }
+
+  @JsonCreator
+  public BusinessAssetMembersGet200Response(
+    @JsonProperty(required = true, value = "items") List<@Valid UserSingleAssetBinding> items
+  ) {
+    this.items = items;
+  }
 
   /**
    * List of members with permissions to the asset.
@@ -36,12 +46,12 @@ public class BusinessAssetMembersGet200Response   {
 
   
   @ApiModelProperty(required = true, value = "List of members with permissions to the asset.")
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   @NotNull @Valid public List<@Valid UserSingleAssetBinding> getItems() {
     return items;
   }
 
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   public void setItems(List<@Valid UserSingleAssetBinding> items) {
     this.items = items;
   }

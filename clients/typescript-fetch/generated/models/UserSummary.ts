@@ -55,11 +55,11 @@ export function UserSummaryFromJSONTyped(json: any, ignoreDiscriminator: boolean
     };
 }
 
-  export function UserSummaryToJSON(json: any): UserSummary {
-      return UserSummaryToJSONTyped(json, false);
-  }
+export function UserSummaryToJSON(json: any): UserSummary {
+    return UserSummaryToJSONTyped(json, false);
+}
 
-  export function UserSummaryToJSONTyped(value?: UserSummary | null, ignoreDiscriminator: boolean = false): any {
+export function UserSummaryToJSONTyped(value?: UserSummary | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

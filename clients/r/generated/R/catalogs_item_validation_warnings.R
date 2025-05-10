@@ -330,188 +330,213 @@ CatalogsItemValidationWarnings <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return CatalogsItemValidationWarnings in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return CatalogsItemValidationWarnings as a base R list.
+    #' @examples
+    #' # convert array of CatalogsItemValidationWarnings (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert CatalogsItemValidationWarnings to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       CatalogsItemValidationWarningsObject <- list()
       if (!is.null(self$`AD_LINK_FORMAT_WARNING`)) {
         CatalogsItemValidationWarningsObject[["AD_LINK_FORMAT_WARNING"]] <-
-          self$`AD_LINK_FORMAT_WARNING`$toJSON()
+          self$`AD_LINK_FORMAT_WARNING`$toSimpleType()
       }
       if (!is.null(self$`AD_LINK_SAME_AS_LINK`)) {
         CatalogsItemValidationWarningsObject[["AD_LINK_SAME_AS_LINK"]] <-
-          self$`AD_LINK_SAME_AS_LINK`$toJSON()
+          self$`AD_LINK_SAME_AS_LINK`$toSimpleType()
       }
       if (!is.null(self$`ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG`)) {
         CatalogsItemValidationWarningsObject[["ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG"]] <-
-          self$`ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG`$toJSON()
+          self$`ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG`$toSimpleType()
       }
       if (!is.null(self$`ADDITIONAL_IMAGE_LINK_WARNING`)) {
         CatalogsItemValidationWarningsObject[["ADDITIONAL_IMAGE_LINK_WARNING"]] <-
-          self$`ADDITIONAL_IMAGE_LINK_WARNING`$toJSON()
+          self$`ADDITIONAL_IMAGE_LINK_WARNING`$toSimpleType()
       }
       if (!is.null(self$`ADWORDS_FORMAT_WARNING`)) {
         CatalogsItemValidationWarningsObject[["ADWORDS_FORMAT_WARNING"]] <-
-          self$`ADWORDS_FORMAT_WARNING`$toJSON()
+          self$`ADWORDS_FORMAT_WARNING`$toSimpleType()
       }
       if (!is.null(self$`ADWORDS_SAME_AS_LINK`)) {
         CatalogsItemValidationWarningsObject[["ADWORDS_SAME_AS_LINK"]] <-
-          self$`ADWORDS_SAME_AS_LINK`$toJSON()
+          self$`ADWORDS_SAME_AS_LINK`$toSimpleType()
       }
       if (!is.null(self$`AGE_GROUP_INVALID`)) {
         CatalogsItemValidationWarningsObject[["AGE_GROUP_INVALID"]] <-
-          self$`AGE_GROUP_INVALID`$toJSON()
+          self$`AGE_GROUP_INVALID`$toSimpleType()
       }
       if (!is.null(self$`SIZE_SYSTEM_INVALID`)) {
         CatalogsItemValidationWarningsObject[["SIZE_SYSTEM_INVALID"]] <-
-          self$`SIZE_SYSTEM_INVALID`$toJSON()
+          self$`SIZE_SYSTEM_INVALID`$toSimpleType()
       }
       if (!is.null(self$`ANDROID_DEEP_LINK_INVALID`)) {
         CatalogsItemValidationWarningsObject[["ANDROID_DEEP_LINK_INVALID"]] <-
-          self$`ANDROID_DEEP_LINK_INVALID`$toJSON()
+          self$`ANDROID_DEEP_LINK_INVALID`$toSimpleType()
       }
       if (!is.null(self$`AVAILABILITY_DATE_INVALID`)) {
         CatalogsItemValidationWarningsObject[["AVAILABILITY_DATE_INVALID"]] <-
-          self$`AVAILABILITY_DATE_INVALID`$toJSON()
+          self$`AVAILABILITY_DATE_INVALID`$toSimpleType()
       }
       if (!is.null(self$`COUNTRY_DOES_NOT_MAP_TO_CURRENCY`)) {
         CatalogsItemValidationWarningsObject[["COUNTRY_DOES_NOT_MAP_TO_CURRENCY"]] <-
-          self$`COUNTRY_DOES_NOT_MAP_TO_CURRENCY`$toJSON()
+          self$`COUNTRY_DOES_NOT_MAP_TO_CURRENCY`$toSimpleType()
       }
       if (!is.null(self$`CUSTOM_LABEL_LENGTH_TOO_LONG`)) {
         CatalogsItemValidationWarningsObject[["CUSTOM_LABEL_LENGTH_TOO_LONG"]] <-
-          self$`CUSTOM_LABEL_LENGTH_TOO_LONG`$toJSON()
+          self$`CUSTOM_LABEL_LENGTH_TOO_LONG`$toSimpleType()
       }
       if (!is.null(self$`DESCRIPTION_LENGTH_TOO_LONG`)) {
         CatalogsItemValidationWarningsObject[["DESCRIPTION_LENGTH_TOO_LONG"]] <-
-          self$`DESCRIPTION_LENGTH_TOO_LONG`$toJSON()
+          self$`DESCRIPTION_LENGTH_TOO_LONG`$toSimpleType()
       }
       if (!is.null(self$`EXPIRATION_DATE_INVALID`)) {
         CatalogsItemValidationWarningsObject[["EXPIRATION_DATE_INVALID"]] <-
-          self$`EXPIRATION_DATE_INVALID`$toJSON()
+          self$`EXPIRATION_DATE_INVALID`$toSimpleType()
       }
       if (!is.null(self$`GENDER_INVALID`)) {
         CatalogsItemValidationWarningsObject[["GENDER_INVALID"]] <-
-          self$`GENDER_INVALID`$toJSON()
+          self$`GENDER_INVALID`$toSimpleType()
       }
       if (!is.null(self$`GTIN_INVALID`)) {
         CatalogsItemValidationWarningsObject[["GTIN_INVALID"]] <-
-          self$`GTIN_INVALID`$toJSON()
+          self$`GTIN_INVALID`$toSimpleType()
       }
       if (!is.null(self$`IMAGE_LINK_WARNING`)) {
         CatalogsItemValidationWarningsObject[["IMAGE_LINK_WARNING"]] <-
-          self$`IMAGE_LINK_WARNING`$toJSON()
+          self$`IMAGE_LINK_WARNING`$toSimpleType()
       }
       if (!is.null(self$`IOS_DEEP_LINK_INVALID`)) {
         CatalogsItemValidationWarningsObject[["IOS_DEEP_LINK_INVALID"]] <-
-          self$`IOS_DEEP_LINK_INVALID`$toJSON()
+          self$`IOS_DEEP_LINK_INVALID`$toSimpleType()
       }
       if (!is.null(self$`IS_BUNDLE_INVALID`)) {
         CatalogsItemValidationWarningsObject[["IS_BUNDLE_INVALID"]] <-
-          self$`IS_BUNDLE_INVALID`$toJSON()
+          self$`IS_BUNDLE_INVALID`$toSimpleType()
       }
       if (!is.null(self$`ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE`)) {
         CatalogsItemValidationWarningsObject[["ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE"]] <-
-          self$`ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE`$toJSON()
+          self$`ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE`$toSimpleType()
       }
       if (!is.null(self$`LINK_FORMAT_WARNING`)) {
         CatalogsItemValidationWarningsObject[["LINK_FORMAT_WARNING"]] <-
-          self$`LINK_FORMAT_WARNING`$toJSON()
+          self$`LINK_FORMAT_WARNING`$toSimpleType()
       }
       if (!is.null(self$`MIN_AD_PRICE_INVALID`)) {
         CatalogsItemValidationWarningsObject[["MIN_AD_PRICE_INVALID"]] <-
-          self$`MIN_AD_PRICE_INVALID`$toJSON()
+          self$`MIN_AD_PRICE_INVALID`$toSimpleType()
       }
       if (!is.null(self$`MPN_INVALID`)) {
         CatalogsItemValidationWarningsObject[["MPN_INVALID"]] <-
-          self$`MPN_INVALID`$toJSON()
+          self$`MPN_INVALID`$toSimpleType()
       }
       if (!is.null(self$`MULTIPACK_INVALID`)) {
         CatalogsItemValidationWarningsObject[["MULTIPACK_INVALID"]] <-
-          self$`MULTIPACK_INVALID`$toJSON()
+          self$`MULTIPACK_INVALID`$toSimpleType()
       }
       if (!is.null(self$`OPTIONAL_CONDITION_INVALID`)) {
         CatalogsItemValidationWarningsObject[["OPTIONAL_CONDITION_INVALID"]] <-
-          self$`OPTIONAL_CONDITION_INVALID`$toJSON()
+          self$`OPTIONAL_CONDITION_INVALID`$toSimpleType()
       }
       if (!is.null(self$`OPTIONAL_CONDITION_MISSING`)) {
         CatalogsItemValidationWarningsObject[["OPTIONAL_CONDITION_MISSING"]] <-
-          self$`OPTIONAL_CONDITION_MISSING`$toJSON()
+          self$`OPTIONAL_CONDITION_MISSING`$toSimpleType()
       }
       if (!is.null(self$`OPTIONAL_PRODUCT_CATEGORY_INVALID`)) {
         CatalogsItemValidationWarningsObject[["OPTIONAL_PRODUCT_CATEGORY_INVALID"]] <-
-          self$`OPTIONAL_PRODUCT_CATEGORY_INVALID`$toJSON()
+          self$`OPTIONAL_PRODUCT_CATEGORY_INVALID`$toSimpleType()
       }
       if (!is.null(self$`OPTIONAL_PRODUCT_CATEGORY_MISSING`)) {
         CatalogsItemValidationWarningsObject[["OPTIONAL_PRODUCT_CATEGORY_MISSING"]] <-
-          self$`OPTIONAL_PRODUCT_CATEGORY_MISSING`$toJSON()
+          self$`OPTIONAL_PRODUCT_CATEGORY_MISSING`$toSimpleType()
       }
       if (!is.null(self$`PRODUCT_CATEGORY_DEPTH_WARNING`)) {
         CatalogsItemValidationWarningsObject[["PRODUCT_CATEGORY_DEPTH_WARNING"]] <-
-          self$`PRODUCT_CATEGORY_DEPTH_WARNING`$toJSON()
+          self$`PRODUCT_CATEGORY_DEPTH_WARNING`$toSimpleType()
       }
       if (!is.null(self$`PRODUCT_TYPE_LENGTH_TOO_LONG`)) {
         CatalogsItemValidationWarningsObject[["PRODUCT_TYPE_LENGTH_TOO_LONG"]] <-
-          self$`PRODUCT_TYPE_LENGTH_TOO_LONG`$toJSON()
+          self$`PRODUCT_TYPE_LENGTH_TOO_LONG`$toSimpleType()
       }
       if (!is.null(self$`SALES_PRICE_INVALID`)) {
         CatalogsItemValidationWarningsObject[["SALES_PRICE_INVALID"]] <-
-          self$`SALES_PRICE_INVALID`$toJSON()
+          self$`SALES_PRICE_INVALID`$toSimpleType()
       }
       if (!is.null(self$`SALES_PRICE_TOO_LOW`)) {
         CatalogsItemValidationWarningsObject[["SALES_PRICE_TOO_LOW"]] <-
-          self$`SALES_PRICE_TOO_LOW`$toJSON()
+          self$`SALES_PRICE_TOO_LOW`$toSimpleType()
       }
       if (!is.null(self$`SALES_PRICE_TOO_HIGH`)) {
         CatalogsItemValidationWarningsObject[["SALES_PRICE_TOO_HIGH"]] <-
-          self$`SALES_PRICE_TOO_HIGH`$toJSON()
+          self$`SALES_PRICE_TOO_HIGH`$toSimpleType()
       }
       if (!is.null(self$`SALE_DATE_INVALID`)) {
         CatalogsItemValidationWarningsObject[["SALE_DATE_INVALID"]] <-
-          self$`SALE_DATE_INVALID`$toJSON()
+          self$`SALE_DATE_INVALID`$toSimpleType()
       }
       if (!is.null(self$`SHIPPING_INVALID`)) {
         CatalogsItemValidationWarningsObject[["SHIPPING_INVALID"]] <-
-          self$`SHIPPING_INVALID`$toJSON()
+          self$`SHIPPING_INVALID`$toSimpleType()
       }
       if (!is.null(self$`SHIPPING_HEIGHT_INVALID`)) {
         CatalogsItemValidationWarningsObject[["SHIPPING_HEIGHT_INVALID"]] <-
-          self$`SHIPPING_HEIGHT_INVALID`$toJSON()
+          self$`SHIPPING_HEIGHT_INVALID`$toSimpleType()
       }
       if (!is.null(self$`SHIPPING_WEIGHT_INVALID`)) {
         CatalogsItemValidationWarningsObject[["SHIPPING_WEIGHT_INVALID"]] <-
-          self$`SHIPPING_WEIGHT_INVALID`$toJSON()
+          self$`SHIPPING_WEIGHT_INVALID`$toSimpleType()
       }
       if (!is.null(self$`SHIPPING_WIDTH_INVALID`)) {
         CatalogsItemValidationWarningsObject[["SHIPPING_WIDTH_INVALID"]] <-
-          self$`SHIPPING_WIDTH_INVALID`$toJSON()
+          self$`SHIPPING_WIDTH_INVALID`$toSimpleType()
       }
       if (!is.null(self$`SIZE_TYPE_INVALID`)) {
         CatalogsItemValidationWarningsObject[["SIZE_TYPE_INVALID"]] <-
-          self$`SIZE_TYPE_INVALID`$toJSON()
+          self$`SIZE_TYPE_INVALID`$toSimpleType()
       }
       if (!is.null(self$`TAX_INVALID`)) {
         CatalogsItemValidationWarningsObject[["TAX_INVALID"]] <-
-          self$`TAX_INVALID`$toJSON()
+          self$`TAX_INVALID`$toSimpleType()
       }
       if (!is.null(self$`TITLE_LENGTH_TOO_LONG`)) {
         CatalogsItemValidationWarningsObject[["TITLE_LENGTH_TOO_LONG"]] <-
-          self$`TITLE_LENGTH_TOO_LONG`$toJSON()
+          self$`TITLE_LENGTH_TOO_LONG`$toSimpleType()
       }
       if (!is.null(self$`TOO_MANY_ADDITIONAL_IMAGE_LINKS`)) {
         CatalogsItemValidationWarningsObject[["TOO_MANY_ADDITIONAL_IMAGE_LINKS"]] <-
-          self$`TOO_MANY_ADDITIONAL_IMAGE_LINKS`$toJSON()
+          self$`TOO_MANY_ADDITIONAL_IMAGE_LINKS`$toSimpleType()
       }
       if (!is.null(self$`UTM_SOURCE_AUTO_CORRECTED`)) {
         CatalogsItemValidationWarningsObject[["UTM_SOURCE_AUTO_CORRECTED"]] <-
-          self$`UTM_SOURCE_AUTO_CORRECTED`$toJSON()
+          self$`UTM_SOURCE_AUTO_CORRECTED`$toSimpleType()
       }
       if (!is.null(self$`WEIGHT_UNIT_INVALID`)) {
         CatalogsItemValidationWarningsObject[["WEIGHT_UNIT_INVALID"]] <-
-          self$`WEIGHT_UNIT_INVALID`$toJSON()
+          self$`WEIGHT_UNIT_INVALID`$toSimpleType()
       }
-      CatalogsItemValidationWarningsObject
+      return(CatalogsItemValidationWarningsObject)
     },
 
     #' @description
@@ -746,365 +771,13 @@ CatalogsItemValidationWarnings <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return CatalogsItemValidationWarnings in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`AD_LINK_FORMAT_WARNING`)) {
-          sprintf(
-          '"AD_LINK_FORMAT_WARNING":
-          %s
-          ',
-          jsonlite::toJSON(self$`AD_LINK_FORMAT_WARNING`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`AD_LINK_SAME_AS_LINK`)) {
-          sprintf(
-          '"AD_LINK_SAME_AS_LINK":
-          %s
-          ',
-          jsonlite::toJSON(self$`AD_LINK_SAME_AS_LINK`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG`)) {
-          sprintf(
-          '"ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG":
-          %s
-          ',
-          jsonlite::toJSON(self$`ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`ADDITIONAL_IMAGE_LINK_WARNING`)) {
-          sprintf(
-          '"ADDITIONAL_IMAGE_LINK_WARNING":
-          %s
-          ',
-          jsonlite::toJSON(self$`ADDITIONAL_IMAGE_LINK_WARNING`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`ADWORDS_FORMAT_WARNING`)) {
-          sprintf(
-          '"ADWORDS_FORMAT_WARNING":
-          %s
-          ',
-          jsonlite::toJSON(self$`ADWORDS_FORMAT_WARNING`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`ADWORDS_SAME_AS_LINK`)) {
-          sprintf(
-          '"ADWORDS_SAME_AS_LINK":
-          %s
-          ',
-          jsonlite::toJSON(self$`ADWORDS_SAME_AS_LINK`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`AGE_GROUP_INVALID`)) {
-          sprintf(
-          '"AGE_GROUP_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`AGE_GROUP_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`SIZE_SYSTEM_INVALID`)) {
-          sprintf(
-          '"SIZE_SYSTEM_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`SIZE_SYSTEM_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`ANDROID_DEEP_LINK_INVALID`)) {
-          sprintf(
-          '"ANDROID_DEEP_LINK_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`ANDROID_DEEP_LINK_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`AVAILABILITY_DATE_INVALID`)) {
-          sprintf(
-          '"AVAILABILITY_DATE_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`AVAILABILITY_DATE_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`COUNTRY_DOES_NOT_MAP_TO_CURRENCY`)) {
-          sprintf(
-          '"COUNTRY_DOES_NOT_MAP_TO_CURRENCY":
-          %s
-          ',
-          jsonlite::toJSON(self$`COUNTRY_DOES_NOT_MAP_TO_CURRENCY`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`CUSTOM_LABEL_LENGTH_TOO_LONG`)) {
-          sprintf(
-          '"CUSTOM_LABEL_LENGTH_TOO_LONG":
-          %s
-          ',
-          jsonlite::toJSON(self$`CUSTOM_LABEL_LENGTH_TOO_LONG`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`DESCRIPTION_LENGTH_TOO_LONG`)) {
-          sprintf(
-          '"DESCRIPTION_LENGTH_TOO_LONG":
-          %s
-          ',
-          jsonlite::toJSON(self$`DESCRIPTION_LENGTH_TOO_LONG`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`EXPIRATION_DATE_INVALID`)) {
-          sprintf(
-          '"EXPIRATION_DATE_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`EXPIRATION_DATE_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`GENDER_INVALID`)) {
-          sprintf(
-          '"GENDER_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`GENDER_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`GTIN_INVALID`)) {
-          sprintf(
-          '"GTIN_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`GTIN_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`IMAGE_LINK_WARNING`)) {
-          sprintf(
-          '"IMAGE_LINK_WARNING":
-          %s
-          ',
-          jsonlite::toJSON(self$`IMAGE_LINK_WARNING`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`IOS_DEEP_LINK_INVALID`)) {
-          sprintf(
-          '"IOS_DEEP_LINK_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`IOS_DEEP_LINK_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`IS_BUNDLE_INVALID`)) {
-          sprintf(
-          '"IS_BUNDLE_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`IS_BUNDLE_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE`)) {
-          sprintf(
-          '"ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE":
-          %s
-          ',
-          jsonlite::toJSON(self$`ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`LINK_FORMAT_WARNING`)) {
-          sprintf(
-          '"LINK_FORMAT_WARNING":
-          %s
-          ',
-          jsonlite::toJSON(self$`LINK_FORMAT_WARNING`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`MIN_AD_PRICE_INVALID`)) {
-          sprintf(
-          '"MIN_AD_PRICE_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`MIN_AD_PRICE_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`MPN_INVALID`)) {
-          sprintf(
-          '"MPN_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`MPN_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`MULTIPACK_INVALID`)) {
-          sprintf(
-          '"MULTIPACK_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`MULTIPACK_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`OPTIONAL_CONDITION_INVALID`)) {
-          sprintf(
-          '"OPTIONAL_CONDITION_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`OPTIONAL_CONDITION_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`OPTIONAL_CONDITION_MISSING`)) {
-          sprintf(
-          '"OPTIONAL_CONDITION_MISSING":
-          %s
-          ',
-          jsonlite::toJSON(self$`OPTIONAL_CONDITION_MISSING`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`OPTIONAL_PRODUCT_CATEGORY_INVALID`)) {
-          sprintf(
-          '"OPTIONAL_PRODUCT_CATEGORY_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`OPTIONAL_PRODUCT_CATEGORY_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`OPTIONAL_PRODUCT_CATEGORY_MISSING`)) {
-          sprintf(
-          '"OPTIONAL_PRODUCT_CATEGORY_MISSING":
-          %s
-          ',
-          jsonlite::toJSON(self$`OPTIONAL_PRODUCT_CATEGORY_MISSING`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`PRODUCT_CATEGORY_DEPTH_WARNING`)) {
-          sprintf(
-          '"PRODUCT_CATEGORY_DEPTH_WARNING":
-          %s
-          ',
-          jsonlite::toJSON(self$`PRODUCT_CATEGORY_DEPTH_WARNING`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`PRODUCT_TYPE_LENGTH_TOO_LONG`)) {
-          sprintf(
-          '"PRODUCT_TYPE_LENGTH_TOO_LONG":
-          %s
-          ',
-          jsonlite::toJSON(self$`PRODUCT_TYPE_LENGTH_TOO_LONG`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`SALES_PRICE_INVALID`)) {
-          sprintf(
-          '"SALES_PRICE_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`SALES_PRICE_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`SALES_PRICE_TOO_LOW`)) {
-          sprintf(
-          '"SALES_PRICE_TOO_LOW":
-          %s
-          ',
-          jsonlite::toJSON(self$`SALES_PRICE_TOO_LOW`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`SALES_PRICE_TOO_HIGH`)) {
-          sprintf(
-          '"SALES_PRICE_TOO_HIGH":
-          %s
-          ',
-          jsonlite::toJSON(self$`SALES_PRICE_TOO_HIGH`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`SALE_DATE_INVALID`)) {
-          sprintf(
-          '"SALE_DATE_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`SALE_DATE_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`SHIPPING_INVALID`)) {
-          sprintf(
-          '"SHIPPING_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`SHIPPING_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`SHIPPING_HEIGHT_INVALID`)) {
-          sprintf(
-          '"SHIPPING_HEIGHT_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`SHIPPING_HEIGHT_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`SHIPPING_WEIGHT_INVALID`)) {
-          sprintf(
-          '"SHIPPING_WEIGHT_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`SHIPPING_WEIGHT_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`SHIPPING_WIDTH_INVALID`)) {
-          sprintf(
-          '"SHIPPING_WIDTH_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`SHIPPING_WIDTH_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`SIZE_TYPE_INVALID`)) {
-          sprintf(
-          '"SIZE_TYPE_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`SIZE_TYPE_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`TAX_INVALID`)) {
-          sprintf(
-          '"TAX_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`TAX_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`TITLE_LENGTH_TOO_LONG`)) {
-          sprintf(
-          '"TITLE_LENGTH_TOO_LONG":
-          %s
-          ',
-          jsonlite::toJSON(self$`TITLE_LENGTH_TOO_LONG`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`TOO_MANY_ADDITIONAL_IMAGE_LINKS`)) {
-          sprintf(
-          '"TOO_MANY_ADDITIONAL_IMAGE_LINKS":
-          %s
-          ',
-          jsonlite::toJSON(self$`TOO_MANY_ADDITIONAL_IMAGE_LINKS`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`UTM_SOURCE_AUTO_CORRECTED`)) {
-          sprintf(
-          '"UTM_SOURCE_AUTO_CORRECTED":
-          %s
-          ',
-          jsonlite::toJSON(self$`UTM_SOURCE_AUTO_CORRECTED`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`WEIGHT_UNIT_INVALID`)) {
-          sprintf(
-          '"WEIGHT_UNIT_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`WEIGHT_UNIT_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

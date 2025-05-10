@@ -5,6 +5,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -19,36 +20,36 @@ import javax.annotation.Generated;
  * CatalogsFeedValidationWarnings
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsFeedValidationWarnings {
 
-  private Integer AD_LINK_FORMAT_WARNING;
+  private @Nullable Integer AD_LINK_FORMAT_WARNING;
 
-  private Integer AD_LINK_SAME_AS_LINK;
+  private @Nullable Integer AD_LINK_SAME_AS_LINK;
 
-  private Integer TITLE_LENGTH_TOO_LONG;
+  private @Nullable Integer TITLE_LENGTH_TOO_LONG;
 
-  private Integer DESCRIPTION_LENGTH_TOO_LONG;
+  private @Nullable Integer DESCRIPTION_LENGTH_TOO_LONG;
 
-  private Integer GENDER_INVALID;
+  private @Nullable Integer GENDER_INVALID;
 
-  private Integer AGE_GROUP_INVALID;
+  private @Nullable Integer AGE_GROUP_INVALID;
 
-  private Integer SIZE_TYPE_INVALID;
+  private @Nullable Integer SIZE_TYPE_INVALID;
 
-  private Integer SIZE_SYSTEM_INVALID;
+  private @Nullable Integer SIZE_SYSTEM_INVALID;
 
-  private Integer LINK_FORMAT_WARNING;
+  private @Nullable Integer LINK_FORMAT_WARNING;
 
-  private Integer SALES_PRICE_INVALID;
+  private @Nullable Integer SALES_PRICE_INVALID;
 
-  private Integer PRODUCT_CATEGORY_DEPTH_WARNING;
+  private @Nullable Integer PRODUCT_CATEGORY_DEPTH_WARNING;
 
-  private Integer ADWORDS_FORMAT_WARNING;
+  private @Nullable Integer ADWORDS_FORMAT_WARNING;
 
-  private Integer ADWORDS_SAME_AS_LINK;
+  private @Nullable Integer ADWORDS_SAME_AS_LINK;
 
-  private Integer DUPLICATE_HEADERS;
+  private @Nullable Integer DUPLICATE_HEADERS;
 
   /**
    * Ingestion completed early because there are no changes to your feed since the last successful update.
@@ -83,75 +84,75 @@ public class CatalogsFeedValidationWarnings {
     }
   }
 
-  private FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE;
+  private @Nullable FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE;
 
-  private Integer ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
+  private @Nullable Integer ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
 
-  private Integer ADDITIONAL_IMAGE_LINK_WARNING;
+  private @Nullable Integer ADDITIONAL_IMAGE_LINK_WARNING;
 
-  private Integer IMAGE_LINK_WARNING;
+  private @Nullable Integer IMAGE_LINK_WARNING;
 
-  private Integer SHIPPING_INVALID;
+  private @Nullable Integer SHIPPING_INVALID;
 
-  private Integer TAX_INVALID;
+  private @Nullable Integer TAX_INVALID;
 
-  private Integer SHIPPING_WEIGHT_INVALID;
+  private @Nullable Integer SHIPPING_WEIGHT_INVALID;
 
-  private Integer EXPIRATION_DATE_INVALID;
+  private @Nullable Integer EXPIRATION_DATE_INVALID;
 
-  private Integer AVAILABILITY_DATE_INVALID;
+  private @Nullable Integer AVAILABILITY_DATE_INVALID;
 
-  private Integer SALE_DATE_INVALID;
+  private @Nullable Integer SALE_DATE_INVALID;
 
-  private Integer WEIGHT_UNIT_INVALID;
+  private @Nullable Integer WEIGHT_UNIT_INVALID;
 
-  private Integer IS_BUNDLE_INVALID;
+  private @Nullable Integer IS_BUNDLE_INVALID;
 
-  private Integer UPDATED_TIME_INVALID;
+  private @Nullable Integer UPDATED_TIME_INVALID;
 
-  private Integer CUSTOM_LABEL_LENGTH_TOO_LONG;
+  private @Nullable Integer CUSTOM_LABEL_LENGTH_TOO_LONG;
 
-  private Integer PRODUCT_TYPE_LENGTH_TOO_LONG;
+  private @Nullable Integer PRODUCT_TYPE_LENGTH_TOO_LONG;
 
-  private Integer TOO_MANY_ADDITIONAL_IMAGE_LINKS;
+  private @Nullable Integer TOO_MANY_ADDITIONAL_IMAGE_LINKS;
 
-  private Integer MULTIPACK_INVALID;
+  private @Nullable Integer MULTIPACK_INVALID;
 
-  private Integer INDEXED_PRODUCT_COUNT_LARGE_DELTA;
+  private @Nullable Integer INDEXED_PRODUCT_COUNT_LARGE_DELTA;
 
-  private Integer ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
+  private @Nullable Integer ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
 
-  private Integer OPTIONAL_PRODUCT_CATEGORY_MISSING;
+  private @Nullable Integer OPTIONAL_PRODUCT_CATEGORY_MISSING;
 
-  private Integer OPTIONAL_PRODUCT_CATEGORY_INVALID;
+  private @Nullable Integer OPTIONAL_PRODUCT_CATEGORY_INVALID;
 
-  private Integer OPTIONAL_CONDITION_MISSING;
+  private @Nullable Integer OPTIONAL_CONDITION_MISSING;
 
-  private Integer OPTIONAL_CONDITION_INVALID;
+  private @Nullable Integer OPTIONAL_CONDITION_INVALID;
 
-  private Integer IOS_DEEP_LINK_INVALID;
+  private @Nullable Integer IOS_DEEP_LINK_INVALID;
 
-  private Integer ANDROID_DEEP_LINK_INVALID;
+  private @Nullable Integer ANDROID_DEEP_LINK_INVALID;
 
-  private Integer UTM_SOURCE_AUTO_CORRECTED;
+  private @Nullable Integer UTM_SOURCE_AUTO_CORRECTED;
 
-  private Integer COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
+  private @Nullable Integer COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
 
-  private Integer MIN_AD_PRICE_INVALID;
+  private @Nullable Integer MIN_AD_PRICE_INVALID;
 
-  private Integer GTIN_INVALID;
+  private @Nullable Integer GTIN_INVALID;
 
-  private Integer INCONSISTENT_CURRENCY_VALUES;
+  private @Nullable Integer INCONSISTENT_CURRENCY_VALUES;
 
-  private Integer SALES_PRICE_TOO_LOW;
+  private @Nullable Integer SALES_PRICE_TOO_LOW;
 
-  private Integer SHIPPING_WIDTH_INVALID;
+  private @Nullable Integer SHIPPING_WIDTH_INVALID;
 
-  private Integer SHIPPING_HEIGHT_INVALID;
+  private @Nullable Integer SHIPPING_HEIGHT_INVALID;
 
-  private Integer SALES_PRICE_TOO_HIGH;
+  private @Nullable Integer SALES_PRICE_TOO_HIGH;
 
-  private Integer MPN_INVALID;
+  private @Nullable Integer MPN_INVALID;
 
   public CatalogsFeedValidationWarnings AD_LINK_FORMAT_WARNING(Integer AD_LINK_FORMAT_WARNING) {
     this.AD_LINK_FORMAT_WARNING = AD_LINK_FORMAT_WARNING;

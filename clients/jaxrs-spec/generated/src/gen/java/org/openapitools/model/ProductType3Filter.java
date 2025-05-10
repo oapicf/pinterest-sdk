@@ -16,9 +16,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ProductType3Filter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ProductType3Filter   {
   private CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_3;
+
+  public ProductType3Filter() {
+  }
+
+  @JsonCreator
+  public ProductType3Filter(
+    @JsonProperty(required = true, value = "PRODUCT_TYPE_3") CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_3
+  ) {
+    this.PRODUCT_TYPE_3 = PRODUCT_TYPE_3;
+  }
 
   /**
    **/
@@ -29,12 +39,12 @@ public class ProductType3Filter   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("PRODUCT_TYPE_3")
+  @JsonProperty(required = true, value = "PRODUCT_TYPE_3")
   @NotNull @Valid public CatalogsProductGroupMultipleStringListCriteria getPRODUCTTYPE3() {
     return PRODUCT_TYPE_3;
   }
 
-  @JsonProperty("PRODUCT_TYPE_3")
+  @JsonProperty(required = true, value = "PRODUCT_TYPE_3")
   public void setPRODUCTTYPE3(CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_3) {
     this.PRODUCT_TYPE_3 = PRODUCT_TYPE_3;
   }

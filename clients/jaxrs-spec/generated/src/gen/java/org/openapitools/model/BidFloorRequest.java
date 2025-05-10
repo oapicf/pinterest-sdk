@@ -20,10 +20,20 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("BidFloorRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BidFloorRequest   {
   private @Valid List<@Valid BidFloorSpec> bidFloorSpecs = new ArrayList<>();
   private TargetingSpec targetingSpec;
+
+  public BidFloorRequest() {
+  }
+
+  @JsonCreator
+  public BidFloorRequest(
+    @JsonProperty(required = true, value = "bid_floor_specs") List<@Valid BidFloorSpec> bidFloorSpecs
+  ) {
+    this.bidFloorSpecs = bidFloorSpecs;
+  }
 
   /**
    **/
@@ -34,12 +44,12 @@ public class BidFloorRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("bid_floor_specs")
+  @JsonProperty(required = true, value = "bid_floor_specs")
   @NotNull @Valid public List<@Valid BidFloorSpec> getBidFloorSpecs() {
     return bidFloorSpecs;
   }
 
-  @JsonProperty("bid_floor_specs")
+  @JsonProperty(required = true, value = "bid_floor_specs")
   public void setBidFloorSpecs(List<@Valid BidFloorSpec> bidFloorSpecs) {
     this.bidFloorSpecs = bidFloorSpecs;
   }

@@ -24,9 +24,10 @@ typedef struct single_interest_targeting_option_response_t {
     list_t *child_interests; //primitive container
     int level; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } single_interest_targeting_option_response_t;
 
-single_interest_targeting_option_response_t *single_interest_targeting_option_response_create(
+__attribute__((deprecated)) single_interest_targeting_option_response_t *single_interest_targeting_option_response_create(
     char *id,
     char *name,
     list_t *child_interests,

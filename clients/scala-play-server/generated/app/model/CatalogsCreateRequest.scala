@@ -7,7 +7,7 @@ import play.api.libs.json._
   * @param catalogType Type of the catalog entity.
   * @param name A human-friendly name associated to a given catalog.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2025-05-10T05:44:38.070631387Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 case class CatalogsCreateRequest(
   catalogType: CatalogsCreateRequest.CatalogType.Value,
   name: String

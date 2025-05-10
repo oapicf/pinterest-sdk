@@ -56,8 +56,8 @@ export interface PinMediaSourceImagesBase64ItemsInner {
  * @export
  */
 export const PinMediaSourceImagesBase64ItemsInnerContentTypeEnum = {
-    Jpeg: 'image/jpeg',
-    Png: 'image/png'
+    ImageJpeg: 'image/jpeg',
+    ImagePng: 'image/png'
 } as const;
 export type PinMediaSourceImagesBase64ItemsInnerContentTypeEnum = typeof PinMediaSourceImagesBase64ItemsInnerContentTypeEnum[keyof typeof PinMediaSourceImagesBase64ItemsInnerContentTypeEnum];
 
@@ -89,11 +89,11 @@ export function PinMediaSourceImagesBase64ItemsInnerFromJSONTyped(json: any, ign
     };
 }
 
-  export function PinMediaSourceImagesBase64ItemsInnerToJSON(json: any): PinMediaSourceImagesBase64ItemsInner {
-      return PinMediaSourceImagesBase64ItemsInnerToJSONTyped(json, false);
-  }
+export function PinMediaSourceImagesBase64ItemsInnerToJSON(json: any): PinMediaSourceImagesBase64ItemsInner {
+    return PinMediaSourceImagesBase64ItemsInnerToJSONTyped(json, false);
+}
 
-  export function PinMediaSourceImagesBase64ItemsInnerToJSONTyped(value?: PinMediaSourceImagesBase64ItemsInner | null, ignoreDiscriminator: boolean = false): any {
+export function PinMediaSourceImagesBase64ItemsInnerToJSONTyped(value?: PinMediaSourceImagesBase64ItemsInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

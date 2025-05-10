@@ -14,6 +14,7 @@ package org.openapitools.server.models
 import org.openapitools.server.models.NonNullableCatalogsCurrency
 import org.openapitools.server.models.NonNullableProductAvailabilityType
 
+import kotlinx.serialization.Serializable
 /**
  * Retail product metadata entity
  * @param itemId The user-created unique ID that represents the product.
@@ -23,16 +24,17 @@ import org.openapitools.server.models.NonNullableProductAvailabilityType
  * @param salePrice The discounted price of the product.
  * @param currency 
  */
+@Serializable
 data class CatalogsRetailProductMetadata(
     /* The user-created unique ID that represents the product. */
     val itemId: kotlin.String,
     /* The parent ID of the product. */
-    val itemGroupId: kotlin.String,
+    val itemGroupId: kotlin.String?,
     val availability: NonNullableProductAvailabilityType,
     /* The price of the product. */
     val price: java.math.BigDecimal,
     /* The discounted price of the product. */
-    val salePrice: java.math.BigDecimal,
+    val salePrice: java.math.BigDecimal?,
     val currency: NonNullableCatalogsCurrency
-) 
+)
 

@@ -11,7 +11,6 @@
 */
 package org.openapitools.server.apis
 
-import com.google.gson.Gson
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.auth.*
@@ -44,13 +43,12 @@ import org.openapitools.server.models.MetricsResponse
 import org.openapitools.server.models.TemplatesList200Response
 
 fun Route.AdAccountsApi() {
-    val gson = Gson()
     val empty = mutableMapOf<String, Any?>()
 
     authenticate("pinterest_oauth2") {
     get<Paths.adAccountAnalytics> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -67,7 +65,7 @@ fun Route.AdAccountsApi() {
             } ]"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -78,7 +76,7 @@ fun Route.AdAccountsApi() {
     authenticate("pinterest_oauth2") {
     get<Paths.adAccountTargetingAnalyticsGet> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -223,7 +221,7 @@ fun Route.AdAccountsApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -234,7 +232,7 @@ fun Route.AdAccountsApi() {
     authenticate("pinterest_oauth2") {
     post<Paths.adAccountsCreate> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -253,7 +251,7 @@ fun Route.AdAccountsApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -264,7 +262,7 @@ fun Route.AdAccountsApi() {
     authenticate("pinterest_oauth2") {
     get<Paths.adAccountsGet> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -283,7 +281,7 @@ fun Route.AdAccountsApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -294,7 +292,7 @@ fun Route.AdAccountsApi() {
     authenticate("pinterest_oauth2") {
     get<Paths.adAccountsList> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -328,7 +326,7 @@ fun Route.AdAccountsApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -339,7 +337,7 @@ fun Route.AdAccountsApi() {
     authenticate("pinterest_oauth2") {
     post<Paths.analyticsCreateMmmReport> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -354,7 +352,7 @@ fun Route.AdAccountsApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -365,7 +363,7 @@ fun Route.AdAccountsApi() {
     authenticate("pinterest_oauth2") {
     post<Paths.analyticsCreateReport> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -376,7 +374,7 @@ fun Route.AdAccountsApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -387,7 +385,7 @@ fun Route.AdAccountsApi() {
     authenticate("pinterest_oauth2") {
     post<Paths.analyticsCreateTemplateReport> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -398,7 +396,7 @@ fun Route.AdAccountsApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -409,7 +407,7 @@ fun Route.AdAccountsApi() {
     authenticate("pinterest_oauth2") {
     get<Paths.analyticsGetMmmReport> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -425,7 +423,7 @@ fun Route.AdAccountsApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -436,7 +434,7 @@ fun Route.AdAccountsApi() {
     authenticate("pinterest_oauth2") {
     get<Paths.analyticsGetReport> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -447,7 +445,7 @@ fun Route.AdAccountsApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -458,14 +456,14 @@ fun Route.AdAccountsApi() {
     authenticate("pinterest_oauth2") {
     delete<Paths.sandboxDelete> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
             val exampleContentString = """"Delete Success""""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -476,7 +474,7 @@ fun Route.AdAccountsApi() {
     authenticate("pinterest_oauth2") {
     get<Paths.templatesList> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -568,7 +566,7 @@ fun Route.AdAccountsApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }

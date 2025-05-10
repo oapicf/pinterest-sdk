@@ -49,24 +49,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * The absolute date range of the template
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TemplateResponseDateRangeAbsoluteDateRange {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nullable
   private String type;
 
   public static final String SERIALIZED_NAME_START_DATE = "start_date";
   @SerializedName(SERIALIZED_NAME_START_DATE)
+  @javax.annotation.Nullable
   private BigDecimal startDate;
 
   public static final String SERIALIZED_NAME_END_DATE = "end_date";
   @SerializedName(SERIALIZED_NAME_END_DATE)
+  @javax.annotation.Nullable
   private BigDecimal endDate;
 
   public TemplateResponseDateRangeAbsoluteDateRange() {
   }
 
-  public TemplateResponseDateRangeAbsoluteDateRange type(String type) {
+  public TemplateResponseDateRangeAbsoluteDateRange type(@javax.annotation.Nullable String type) {
     this.type = type;
     return this;
   }
@@ -80,12 +83,12 @@ public class TemplateResponseDateRangeAbsoluteDateRange {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@javax.annotation.Nullable String type) {
     this.type = type;
   }
 
 
-  public TemplateResponseDateRangeAbsoluteDateRange startDate(BigDecimal startDate) {
+  public TemplateResponseDateRangeAbsoluteDateRange startDate(@javax.annotation.Nullable BigDecimal startDate) {
     this.startDate = startDate;
     return this;
   }
@@ -99,12 +102,12 @@ public class TemplateResponseDateRangeAbsoluteDateRange {
     return startDate;
   }
 
-  public void setStartDate(BigDecimal startDate) {
+  public void setStartDate(@javax.annotation.Nullable BigDecimal startDate) {
     this.startDate = startDate;
   }
 
 
-  public TemplateResponseDateRangeAbsoluteDateRange endDate(BigDecimal endDate) {
+  public TemplateResponseDateRangeAbsoluteDateRange endDate(@javax.annotation.Nullable BigDecimal endDate) {
     this.endDate = endDate;
     return this;
   }
@@ -118,7 +121,7 @@ public class TemplateResponseDateRangeAbsoluteDateRange {
     return endDate;
   }
 
-  public void setEndDate(BigDecimal endDate) {
+  public void setEndDate(@javax.annotation.Nullable BigDecimal endDate) {
     this.endDate = endDate;
   }
 

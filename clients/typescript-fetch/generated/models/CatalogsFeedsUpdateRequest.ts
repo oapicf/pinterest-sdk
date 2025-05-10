@@ -142,11 +142,11 @@ export function CatalogsFeedsUpdateRequestFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-  export function CatalogsFeedsUpdateRequestToJSON(json: any): CatalogsFeedsUpdateRequest {
-      return CatalogsFeedsUpdateRequestToJSONTyped(json, false);
-  }
+export function CatalogsFeedsUpdateRequestToJSON(json: any): CatalogsFeedsUpdateRequest {
+    return CatalogsFeedsUpdateRequestToJSONTyped(json, false);
+}
 
-  export function CatalogsFeedsUpdateRequestToJSONTyped(value?: CatalogsFeedsUpdateRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsFeedsUpdateRequestToJSONTyped(value?: CatalogsFeedsUpdateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

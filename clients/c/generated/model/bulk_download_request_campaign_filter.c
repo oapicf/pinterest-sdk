@@ -39,7 +39,7 @@ pinterest_rest_api_bulk_download_request_campaign_filter__e bulk_download_reques
     return 0;
 }
 
-bulk_download_request_campaign_filter_t *bulk_download_request_campaign_filter_create(
+static bulk_download_request_campaign_filter_t *bulk_download_request_campaign_filter_create_internal(
     char *start_time,
     char *end_time,
     char *name,
@@ -56,12 +56,32 @@ bulk_download_request_campaign_filter_t *bulk_download_request_campaign_filter_c
     bulk_download_request_campaign_filter_local_var->campaign_status = campaign_status;
     bulk_download_request_campaign_filter_local_var->objective_type = objective_type;
 
+    bulk_download_request_campaign_filter_local_var->_library_owned = 1;
     return bulk_download_request_campaign_filter_local_var;
 }
 
+__attribute__((deprecated)) bulk_download_request_campaign_filter_t *bulk_download_request_campaign_filter_create(
+    char *start_time,
+    char *end_time,
+    char *name,
+    list_t *campaign_status,
+    list_t *objective_type
+    ) {
+    return bulk_download_request_campaign_filter_create_internal (
+        start_time,
+        end_time,
+        name,
+        campaign_status,
+        objective_type
+        );
+}
 
 void bulk_download_request_campaign_filter_free(bulk_download_request_campaign_filter_t *bulk_download_request_campaign_filter) {
     if(NULL == bulk_download_request_campaign_filter){
+        return ;
+    }
+    if(bulk_download_request_campaign_filter->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "bulk_download_request_campaign_filter_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -122,7 +142,7 @@ cJSON *bulk_download_request_campaign_filter_convertToJSON(bulk_download_request
 
 
     // bulk_download_request_campaign_filter->campaign_status
-    if(bulk_download_request_campaign_filter->campaign_status != pinterest_rest_api_bulk_download_request_campaign_filter_CAMPAIGNSTATUS_NULL) {
+    if(bulk_download_request_campaign_filter->campaign_status != pinterest_rest_api_list_CAMPAIGNSTATUS_NULL) {
     cJSON *campaign_status = cJSON_AddArrayToObject(item, "campaign_status");
     if(campaign_status == NULL) {
     goto fail; //nonprimitive container
@@ -142,7 +162,7 @@ cJSON *bulk_download_request_campaign_filter_convertToJSON(bulk_download_request
 
 
     // bulk_download_request_campaign_filter->objective_type
-    if(bulk_download_request_campaign_filter->objective_type != pinterest_rest_api_bulk_download_request_campaign_filter_OBJECTIVETYPE_NULL) {
+    if(bulk_download_request_campaign_filter->objective_type != pinterest_rest_api_list_OBJECTIVETYPE_NULL) {
     cJSON *objective_type = cJSON_AddArrayToObject(item, "objective_type");
     if(objective_type == NULL) {
     goto fail; //nonprimitive container
@@ -180,6 +200,9 @@ bulk_download_request_campaign_filter_t *bulk_download_request_campaign_filter_p
 
     // bulk_download_request_campaign_filter->start_time
     cJSON *start_time = cJSON_GetObjectItemCaseSensitive(bulk_download_request_campaign_filterJSON, "start_time");
+    if (cJSON_IsNull(start_time)) {
+        start_time = NULL;
+    }
     if (start_time) { 
     if(!cJSON_IsString(start_time) && !cJSON_IsNull(start_time))
     {
@@ -189,6 +212,9 @@ bulk_download_request_campaign_filter_t *bulk_download_request_campaign_filter_p
 
     // bulk_download_request_campaign_filter->end_time
     cJSON *end_time = cJSON_GetObjectItemCaseSensitive(bulk_download_request_campaign_filterJSON, "end_time");
+    if (cJSON_IsNull(end_time)) {
+        end_time = NULL;
+    }
     if (end_time) { 
     if(!cJSON_IsString(end_time) && !cJSON_IsNull(end_time))
     {
@@ -198,6 +224,9 @@ bulk_download_request_campaign_filter_t *bulk_download_request_campaign_filter_p
 
     // bulk_download_request_campaign_filter->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(bulk_download_request_campaign_filterJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
     if (name) { 
     if(!cJSON_IsString(name) && !cJSON_IsNull(name))
     {
@@ -207,6 +236,9 @@ bulk_download_request_campaign_filter_t *bulk_download_request_campaign_filter_p
 
     // bulk_download_request_campaign_filter->campaign_status
     cJSON *campaign_status = cJSON_GetObjectItemCaseSensitive(bulk_download_request_campaign_filterJSON, "campaign_status");
+    if (cJSON_IsNull(campaign_status)) {
+        campaign_status = NULL;
+    }
     if (campaign_status) { 
     cJSON *campaign_status_local_nonprimitive = NULL;
     if(!cJSON_IsArray(campaign_status)){
@@ -228,6 +260,9 @@ bulk_download_request_campaign_filter_t *bulk_download_request_campaign_filter_p
 
     // bulk_download_request_campaign_filter->objective_type
     cJSON *objective_type = cJSON_GetObjectItemCaseSensitive(bulk_download_request_campaign_filterJSON, "objective_type");
+    if (cJSON_IsNull(objective_type)) {
+        objective_type = NULL;
+    }
     if (objective_type) { 
     cJSON *objective_type_local_nonprimitive = NULL;
     if(!cJSON_IsArray(objective_type)){
@@ -248,7 +283,7 @@ bulk_download_request_campaign_filter_t *bulk_download_request_campaign_filter_p
     }
 
 
-    bulk_download_request_campaign_filter_local_var = bulk_download_request_campaign_filter_create (
+    bulk_download_request_campaign_filter_local_var = bulk_download_request_campaign_filter_create_internal (
         start_time && !cJSON_IsNull(start_time) ? strdup(start_time->valuestring) : NULL,
         end_time && !cJSON_IsNull(end_time) ? strdup(end_time->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,

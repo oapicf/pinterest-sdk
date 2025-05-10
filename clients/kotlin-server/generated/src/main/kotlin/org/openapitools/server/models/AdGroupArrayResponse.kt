@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.AdGroupArrayResponseElement
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items 
  */
+@Serializable
 data class AdGroupArrayResponse(
     val items: kotlin.collections.List<AdGroupArrayResponseElement>? = null
-) 
+)
 

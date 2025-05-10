@@ -16,14 +16,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("PinMediaSourceImagesBase64_items_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMediaSourceImagesBase64ItemsInner   {
   private String title;
   private String description;
   private String link;
   public enum ContentTypeEnum {
 
-    JPEG(String.valueOf("image/jpeg")), PNG(String.valueOf("image/png"));
+    IMAGE_JPEG(String.valueOf("image/jpeg")), IMAGE_PNG(String.valueOf("image/png"));
 
 
     private String value;
@@ -70,6 +70,18 @@ public class PinMediaSourceImagesBase64ItemsInner   {
 
   private ContentTypeEnum contentType;
   private String data;
+
+  public PinMediaSourceImagesBase64ItemsInner() {
+  }
+
+  @JsonCreator
+  public PinMediaSourceImagesBase64ItemsInner(
+    @JsonProperty(required = true, value = "content_type") ContentTypeEnum contentType,
+    @JsonProperty(required = true, value = "data") String data
+  ) {
+    this.contentType = contentType;
+    this.data = data;
+  }
 
   /**
    **/
@@ -138,12 +150,12 @@ public class PinMediaSourceImagesBase64ItemsInner   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("content_type")
+  @JsonProperty(required = true, value = "content_type")
   @NotNull public ContentTypeEnum getContentType() {
     return contentType;
   }
 
-  @JsonProperty("content_type")
+  @JsonProperty(required = true, value = "content_type")
   public void setContentType(ContentTypeEnum contentType) {
     this.contentType = contentType;
   }
@@ -158,12 +170,12 @@ public class PinMediaSourceImagesBase64ItemsInner   {
 
   
   @ApiModelProperty(required = true, value = "Image to upload as base64 string.")
-  @JsonProperty("data")
+  @JsonProperty(required = true, value = "data")
   @NotNull  @Pattern(regexp="[a-zA-Z0-9+/=]+")public String getData() {
     return data;
   }
 
-  @JsonProperty("data")
+  @JsonProperty(required = true, value = "data")
   public void setData(String data) {
     this.data = data;
   }

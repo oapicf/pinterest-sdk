@@ -13,18 +13,20 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.PinMediaSourceImagesBase64ItemsInner
 
+import kotlinx.serialization.Serializable
 /**
  * Multiple Base64-encoded images media source
  * @param items Array with image objects.
  * @param sourceType 
  * @param index 
  */
+@Serializable
 data class PinMediaSourceImagesBase64(
     /* Array with image objects. */
     val items: kotlin.collections.List<PinMediaSourceImagesBase64ItemsInner>,
     val sourceType: PinMediaSourceImagesBase64.SourceType? = null,
     val index: kotlin.Int? = null
-) 
+)
 {
     /**
     * 

@@ -48,7 +48,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * A request to exchange an authorization code for an access token.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class OauthAccessTokenRequestCode {
   /**
    * Gets or Sets grantType
@@ -106,20 +106,23 @@ public class OauthAccessTokenRequestCode {
 
   public static final String SERIALIZED_NAME_GRANT_TYPE = "grant_type";
   @SerializedName(SERIALIZED_NAME_GRANT_TYPE)
+  @javax.annotation.Nonnull
   private GrantTypeEnum grantType;
 
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
+  @javax.annotation.Nonnull
   private String code;
 
   public static final String SERIALIZED_NAME_REDIRECT_URI = "redirect_uri";
   @SerializedName(SERIALIZED_NAME_REDIRECT_URI)
+  @javax.annotation.Nonnull
   private String redirectUri;
 
   public OauthAccessTokenRequestCode() {
   }
 
-  public OauthAccessTokenRequestCode grantType(GrantTypeEnum grantType) {
+  public OauthAccessTokenRequestCode grantType(@javax.annotation.Nonnull GrantTypeEnum grantType) {
     this.grantType = grantType;
     return this;
   }
@@ -133,12 +136,12 @@ public class OauthAccessTokenRequestCode {
     return grantType;
   }
 
-  public void setGrantType(GrantTypeEnum grantType) {
+  public void setGrantType(@javax.annotation.Nonnull GrantTypeEnum grantType) {
     this.grantType = grantType;
   }
 
 
-  public OauthAccessTokenRequestCode code(String code) {
+  public OauthAccessTokenRequestCode code(@javax.annotation.Nonnull String code) {
     this.code = code;
     return this;
   }
@@ -152,12 +155,12 @@ public class OauthAccessTokenRequestCode {
     return code;
   }
 
-  public void setCode(String code) {
+  public void setCode(@javax.annotation.Nonnull String code) {
     this.code = code;
   }
 
 
-  public OauthAccessTokenRequestCode redirectUri(String redirectUri) {
+  public OauthAccessTokenRequestCode redirectUri(@javax.annotation.Nonnull String redirectUri) {
     this.redirectUri = redirectUri;
     return this;
   }
@@ -171,7 +174,7 @@ public class OauthAccessTokenRequestCode {
     return redirectUri;
   }
 
-  public void setRedirectUri(String redirectUri) {
+  public void setRedirectUri(@javax.annotation.Nonnull String redirectUri) {
     this.redirectUri = redirectUri;
   }
 

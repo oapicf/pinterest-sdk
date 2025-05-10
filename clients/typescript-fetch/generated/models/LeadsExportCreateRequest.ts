@@ -65,11 +65,11 @@ export function LeadsExportCreateRequestFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function LeadsExportCreateRequestToJSON(json: any): LeadsExportCreateRequest {
-      return LeadsExportCreateRequestToJSONTyped(json, false);
-  }
+export function LeadsExportCreateRequestToJSON(json: any): LeadsExportCreateRequest {
+    return LeadsExportCreateRequestToJSONTyped(json, false);
+}
 
-  export function LeadsExportCreateRequestToJSONTyped(value?: LeadsExportCreateRequest | null, ignoreDiscriminator: boolean = false): any {
+export function LeadsExportCreateRequestToJSONTyped(value?: LeadsExportCreateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

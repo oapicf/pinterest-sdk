@@ -22,7 +22,7 @@ pinterest_rest_api_catalogs_type__e catalogs_type_catalogs_type_FromString(char*
     return 0;
 }
 
-cJSON *catalogs_type_catalogs_type_convertToJSON(pinterest_rest_api_catalogs_type__e catalogs_type) {
+cJSON *catalogs_type_convertToJSON(pinterest_rest_api_catalogs_type__e catalogs_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "catalogs_type", catalogs_type_catalogs_type_ToString(catalogs_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_catalogs_type__e catalogs_type_catalogs_type_parseFromJSON(cJSON *catalogs_typeJSON) {
-    pinterest_rest_api_catalogs_type__e *catalogs_type = NULL;
-    pinterest_rest_api_catalogs_type__e catalogs_typeVariable;
-    cJSON *catalogs_typeVar = cJSON_GetObjectItemCaseSensitive(catalogs_typeJSON, "catalogs_type");
-    if(!cJSON_IsString(catalogs_typeVar) || (catalogs_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_catalogs_type__e catalogs_type_parseFromJSON(cJSON *catalogs_typeJSON) {
+    if(!cJSON_IsString(catalogs_typeJSON) || (catalogs_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    catalogs_typeVariable = catalogs_type_catalogs_type_FromString(catalogs_typeVar->valuestring);
-    return catalogs_typeVariable;
-end:
-    return 0;
+    return catalogs_type_catalogs_type_FromString(catalogs_typeJSON->valuestring);
 }

@@ -13,17 +13,19 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.AudienceRule
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param adAccountId Ad account ID.
  * @param name Audience name.
  * @param rule 
  */
+@Serializable
 data class AudienceCommon(
     /* Ad account ID. */
     val adAccountId: kotlin.String? = null,
     /* Audience name. */
     val name: kotlin.String? = null,
     val rule: AudienceRule? = null
-) 
+)
 

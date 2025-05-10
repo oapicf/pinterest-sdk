@@ -3214,9 +3214,9 @@ Name | Type | Description | Notes
 ## Enum: ConversionReportTimeTypeEnum
 
 
-* `AD_ACTION` (value: `"TIME_OF_AD_ACTION"`)
+* `TIME_OF_AD_ACTION` (value: `"TIME_OF_AD_ACTION"`)
 
-* `CONVERSION` (value: `"TIME_OF_CONVERSION"`)
+* `TIME_OF_CONVERSION` (value: `"TIME_OF_CONVERSION"`)
 
 
 
@@ -3225,11 +3225,11 @@ Name | Type | Description | Notes
 ## Enum: CreationSourceEnum
 
 
-* `API` (value: `"ADS_API"`)
+* `ADS_API` (value: `"ADS_API"`)
 
-* `MANAGER_REPORTING_PAGE` (value: `"ADS_MANAGER_REPORTING_PAGE"`)
+* `ADS_MANAGER_REPORTING_PAGE` (value: `"ADS_MANAGER_REPORTING_PAGE"`)
 
-* `MANAGER_REPORT_BUILDER` (value: `"ADS_MANAGER_REPORT_BUILDER"`)
+* `ADS_MANAGER_REPORT_BUILDER` (value: `"ADS_MANAGER_REPORT_BUILDER"`)
 
 
 

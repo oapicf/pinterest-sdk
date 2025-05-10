@@ -23,10 +23,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Object holding a group of filters for request on catalog product group. This is a distinct schema It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.")
 @JsonTypeName("CatalogsProductGroupFiltersRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsProductGroupFiltersRequest   {
   private @Valid List<CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
   private @Valid List<CatalogsProductGroupFilterKeys> allOf = new ArrayList<>();
+
+  public CatalogsProductGroupFiltersRequest() {
+  }
+
+  @JsonCreator
+  public CatalogsProductGroupFiltersRequest(
+    @JsonProperty(required = true, value = "any_of") List<@Valid CatalogsProductGroupFilterKeys> anyOf,
+    @JsonProperty(required = true, value = "all_of") List<@Valid CatalogsProductGroupFilterKeys> allOf
+  ) {
+    this.anyOf = anyOf;
+    this.allOf = allOf;
+  }
 
   /**
    **/
@@ -37,12 +49,12 @@ public class CatalogsProductGroupFiltersRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("any_of")
+  @JsonProperty(required = true, value = "any_of")
   @NotNull @Valid  @Size(min=1)public List<@Valid CatalogsProductGroupFilterKeys> getAnyOf() {
     return anyOf;
   }
 
-  @JsonProperty("any_of")
+  @JsonProperty(required = true, value = "any_of")
   public void setAnyOf(List<CatalogsProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
   }
@@ -72,12 +84,12 @@ public class CatalogsProductGroupFiltersRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("all_of")
+  @JsonProperty(required = true, value = "all_of")
   @NotNull @Valid  @Size(min=1)public List<@Valid CatalogsProductGroupFilterKeys> getAllOf() {
     return allOf;
   }
 
-  @JsonProperty("all_of")
+  @JsonProperty(required = true, value = "all_of")
   public void setAllOf(List<CatalogsProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
   }

@@ -50,66 +50,81 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * SSIOCreateInsertionOrderRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SSIOCreateInsertionOrderRequest {
   public static final String SERIALIZED_NAME_START_DATE = "start_date";
   @SerializedName(SERIALIZED_NAME_START_DATE)
+  @javax.annotation.Nonnull
   private String startDate;
 
   public static final String SERIALIZED_NAME_END_DATE = "end_date";
   @SerializedName(SERIALIZED_NAME_END_DATE)
+  @javax.annotation.Nullable
   private String endDate;
 
   public static final String SERIALIZED_NAME_PO_NUMBER = "po_number";
   @SerializedName(SERIALIZED_NAME_PO_NUMBER)
+  @javax.annotation.Nonnull
   private String poNumber;
 
   public static final String SERIALIZED_NAME_BUDGET_AMOUNT = "budget_amount";
   @SerializedName(SERIALIZED_NAME_BUDGET_AMOUNT)
+  @javax.annotation.Nullable
   private BigDecimal budgetAmount;
 
   public static final String SERIALIZED_NAME_BILLING_CONTACT_FIRSTNAME = "billing_contact_firstname";
   @SerializedName(SERIALIZED_NAME_BILLING_CONTACT_FIRSTNAME)
+  @javax.annotation.Nonnull
   private String billingContactFirstname;
 
   public static final String SERIALIZED_NAME_BILLING_CONTACT_LASTNAME = "billing_contact_lastname";
   @SerializedName(SERIALIZED_NAME_BILLING_CONTACT_LASTNAME)
+  @javax.annotation.Nonnull
   private String billingContactLastname;
 
   public static final String SERIALIZED_NAME_BILLING_CONTACT_EMAIL = "billing_contact_email";
   @SerializedName(SERIALIZED_NAME_BILLING_CONTACT_EMAIL)
+  @javax.annotation.Nonnull
   private String billingContactEmail;
 
   public static final String SERIALIZED_NAME_MEDIA_CONTACT_FIRSTNAME = "media_contact_firstname";
   @SerializedName(SERIALIZED_NAME_MEDIA_CONTACT_FIRSTNAME)
+  @javax.annotation.Nonnull
   private String mediaContactFirstname;
 
   public static final String SERIALIZED_NAME_MEDIA_CONTACT_LASTNAME = "media_contact_lastname";
   @SerializedName(SERIALIZED_NAME_MEDIA_CONTACT_LASTNAME)
+  @javax.annotation.Nonnull
   private String mediaContactLastname;
 
   public static final String SERIALIZED_NAME_MEDIA_CONTACT_EMAIL = "media_contact_email";
   @SerializedName(SERIALIZED_NAME_MEDIA_CONTACT_EMAIL)
+  @javax.annotation.Nonnull
   private String mediaContactEmail;
 
   public static final String SERIALIZED_NAME_AGENCY_LINK = "agency_link";
   @SerializedName(SERIALIZED_NAME_AGENCY_LINK)
+  @javax.annotation.Nullable
   private String agencyLink;
 
   public static final String SERIALIZED_NAME_USER_EMAIL = "user_email";
   @SerializedName(SERIALIZED_NAME_USER_EMAIL)
+  @javax.annotation.Nullable
   private String userEmail;
 
   public static final String SERIALIZED_NAME_ACCEPTED_TERMS_TIME = "accepted_terms_time";
   @SerializedName(SERIALIZED_NAME_ACCEPTED_TERMS_TIME)
+  @javax.annotation.Nullable
   private Integer acceptedTermsTime;
 
   public static final String SERIALIZED_NAME_PMP_ID = "pmp_id";
   @SerializedName(SERIALIZED_NAME_PMP_ID)
+  @javax.annotation.Nonnull
   private String pmpId;
 
   public static final String SERIALIZED_NAME_ORDER_NAME = "order_name";
   @SerializedName(SERIALIZED_NAME_ORDER_NAME)
+  @javax.annotation.Nonnull
   private String orderName;
 
   /**
@@ -166,36 +181,43 @@ public class SSIOCreateInsertionOrderRequest {
 
   public static final String SERIALIZED_NAME_ORDER_LINE_TYPE = "order_line_type";
   @SerializedName(SERIALIZED_NAME_ORDER_LINE_TYPE)
+  @javax.annotation.Nonnull
   private OrderLineTypeEnum orderLineType;
 
   public static final String SERIALIZED_NAME_ACCEPTED_TERMS_ID = "accepted_terms_id";
   @SerializedName(SERIALIZED_NAME_ACCEPTED_TERMS_ID)
+  @javax.annotation.Nonnull
   private String acceptedTermsId;
 
   public static final String SERIALIZED_NAME_BILLTO_COMPANY_ID = "billto_company_id";
   @SerializedName(SERIALIZED_NAME_BILLTO_COMPANY_ID)
+  @javax.annotation.Nonnull
   private String billtoCompanyId;
 
   public static final String SERIALIZED_NAME_BILLTO_BUSINESS_ADDRESS_ID = "billto_business_address_id";
   @SerializedName(SERIALIZED_NAME_BILLTO_BUSINESS_ADDRESS_ID)
+  @javax.annotation.Nonnull
   private String billtoBusinessAddressId;
 
   public static final String SERIALIZED_NAME_BILLTO_BILLING_ADDRESS_ID = "billto_billing_address_id";
   @SerializedName(SERIALIZED_NAME_BILLTO_BILLING_ADDRESS_ID)
+  @javax.annotation.Nonnull
   private String billtoBillingAddressId;
 
   public static final String SERIALIZED_NAME_ESTIMATED_MONTHLY_SPEND = "estimated_monthly_spend";
   @SerializedName(SERIALIZED_NAME_ESTIMATED_MONTHLY_SPEND)
+  @javax.annotation.Nullable
   private BigDecimal estimatedMonthlySpend;
 
   public static final String SERIALIZED_NAME_CURRENCY_INFO = "currency_info";
   @SerializedName(SERIALIZED_NAME_CURRENCY_INFO)
+  @javax.annotation.Nonnull
   private Currency currencyInfo;
 
   public SSIOCreateInsertionOrderRequest() {
   }
 
-  public SSIOCreateInsertionOrderRequest startDate(String startDate) {
+  public SSIOCreateInsertionOrderRequest startDate(@javax.annotation.Nonnull String startDate) {
     this.startDate = startDate;
     return this;
   }
@@ -209,12 +231,12 @@ public class SSIOCreateInsertionOrderRequest {
     return startDate;
   }
 
-  public void setStartDate(String startDate) {
+  public void setStartDate(@javax.annotation.Nonnull String startDate) {
     this.startDate = startDate;
   }
 
 
-  public SSIOCreateInsertionOrderRequest endDate(String endDate) {
+  public SSIOCreateInsertionOrderRequest endDate(@javax.annotation.Nullable String endDate) {
     this.endDate = endDate;
     return this;
   }
@@ -228,12 +250,12 @@ public class SSIOCreateInsertionOrderRequest {
     return endDate;
   }
 
-  public void setEndDate(String endDate) {
+  public void setEndDate(@javax.annotation.Nullable String endDate) {
     this.endDate = endDate;
   }
 
 
-  public SSIOCreateInsertionOrderRequest poNumber(String poNumber) {
+  public SSIOCreateInsertionOrderRequest poNumber(@javax.annotation.Nonnull String poNumber) {
     this.poNumber = poNumber;
     return this;
   }
@@ -247,12 +269,12 @@ public class SSIOCreateInsertionOrderRequest {
     return poNumber;
   }
 
-  public void setPoNumber(String poNumber) {
+  public void setPoNumber(@javax.annotation.Nonnull String poNumber) {
     this.poNumber = poNumber;
   }
 
 
-  public SSIOCreateInsertionOrderRequest budgetAmount(BigDecimal budgetAmount) {
+  public SSIOCreateInsertionOrderRequest budgetAmount(@javax.annotation.Nullable BigDecimal budgetAmount) {
     this.budgetAmount = budgetAmount;
     return this;
   }
@@ -266,12 +288,12 @@ public class SSIOCreateInsertionOrderRequest {
     return budgetAmount;
   }
 
-  public void setBudgetAmount(BigDecimal budgetAmount) {
+  public void setBudgetAmount(@javax.annotation.Nullable BigDecimal budgetAmount) {
     this.budgetAmount = budgetAmount;
   }
 
 
-  public SSIOCreateInsertionOrderRequest billingContactFirstname(String billingContactFirstname) {
+  public SSIOCreateInsertionOrderRequest billingContactFirstname(@javax.annotation.Nonnull String billingContactFirstname) {
     this.billingContactFirstname = billingContactFirstname;
     return this;
   }
@@ -285,12 +307,12 @@ public class SSIOCreateInsertionOrderRequest {
     return billingContactFirstname;
   }
 
-  public void setBillingContactFirstname(String billingContactFirstname) {
+  public void setBillingContactFirstname(@javax.annotation.Nonnull String billingContactFirstname) {
     this.billingContactFirstname = billingContactFirstname;
   }
 
 
-  public SSIOCreateInsertionOrderRequest billingContactLastname(String billingContactLastname) {
+  public SSIOCreateInsertionOrderRequest billingContactLastname(@javax.annotation.Nonnull String billingContactLastname) {
     this.billingContactLastname = billingContactLastname;
     return this;
   }
@@ -304,12 +326,12 @@ public class SSIOCreateInsertionOrderRequest {
     return billingContactLastname;
   }
 
-  public void setBillingContactLastname(String billingContactLastname) {
+  public void setBillingContactLastname(@javax.annotation.Nonnull String billingContactLastname) {
     this.billingContactLastname = billingContactLastname;
   }
 
 
-  public SSIOCreateInsertionOrderRequest billingContactEmail(String billingContactEmail) {
+  public SSIOCreateInsertionOrderRequest billingContactEmail(@javax.annotation.Nonnull String billingContactEmail) {
     this.billingContactEmail = billingContactEmail;
     return this;
   }
@@ -323,12 +345,12 @@ public class SSIOCreateInsertionOrderRequest {
     return billingContactEmail;
   }
 
-  public void setBillingContactEmail(String billingContactEmail) {
+  public void setBillingContactEmail(@javax.annotation.Nonnull String billingContactEmail) {
     this.billingContactEmail = billingContactEmail;
   }
 
 
-  public SSIOCreateInsertionOrderRequest mediaContactFirstname(String mediaContactFirstname) {
+  public SSIOCreateInsertionOrderRequest mediaContactFirstname(@javax.annotation.Nonnull String mediaContactFirstname) {
     this.mediaContactFirstname = mediaContactFirstname;
     return this;
   }
@@ -342,12 +364,12 @@ public class SSIOCreateInsertionOrderRequest {
     return mediaContactFirstname;
   }
 
-  public void setMediaContactFirstname(String mediaContactFirstname) {
+  public void setMediaContactFirstname(@javax.annotation.Nonnull String mediaContactFirstname) {
     this.mediaContactFirstname = mediaContactFirstname;
   }
 
 
-  public SSIOCreateInsertionOrderRequest mediaContactLastname(String mediaContactLastname) {
+  public SSIOCreateInsertionOrderRequest mediaContactLastname(@javax.annotation.Nonnull String mediaContactLastname) {
     this.mediaContactLastname = mediaContactLastname;
     return this;
   }
@@ -361,12 +383,12 @@ public class SSIOCreateInsertionOrderRequest {
     return mediaContactLastname;
   }
 
-  public void setMediaContactLastname(String mediaContactLastname) {
+  public void setMediaContactLastname(@javax.annotation.Nonnull String mediaContactLastname) {
     this.mediaContactLastname = mediaContactLastname;
   }
 
 
-  public SSIOCreateInsertionOrderRequest mediaContactEmail(String mediaContactEmail) {
+  public SSIOCreateInsertionOrderRequest mediaContactEmail(@javax.annotation.Nonnull String mediaContactEmail) {
     this.mediaContactEmail = mediaContactEmail;
     return this;
   }
@@ -380,12 +402,12 @@ public class SSIOCreateInsertionOrderRequest {
     return mediaContactEmail;
   }
 
-  public void setMediaContactEmail(String mediaContactEmail) {
+  public void setMediaContactEmail(@javax.annotation.Nonnull String mediaContactEmail) {
     this.mediaContactEmail = mediaContactEmail;
   }
 
 
-  public SSIOCreateInsertionOrderRequest agencyLink(String agencyLink) {
+  public SSIOCreateInsertionOrderRequest agencyLink(@javax.annotation.Nullable String agencyLink) {
     this.agencyLink = agencyLink;
     return this;
   }
@@ -399,12 +421,12 @@ public class SSIOCreateInsertionOrderRequest {
     return agencyLink;
   }
 
-  public void setAgencyLink(String agencyLink) {
+  public void setAgencyLink(@javax.annotation.Nullable String agencyLink) {
     this.agencyLink = agencyLink;
   }
 
 
-  public SSIOCreateInsertionOrderRequest userEmail(String userEmail) {
+  public SSIOCreateInsertionOrderRequest userEmail(@javax.annotation.Nullable String userEmail) {
     this.userEmail = userEmail;
     return this;
   }
@@ -418,12 +440,12 @@ public class SSIOCreateInsertionOrderRequest {
     return userEmail;
   }
 
-  public void setUserEmail(String userEmail) {
+  public void setUserEmail(@javax.annotation.Nullable String userEmail) {
     this.userEmail = userEmail;
   }
 
 
-  public SSIOCreateInsertionOrderRequest acceptedTermsTime(Integer acceptedTermsTime) {
+  public SSIOCreateInsertionOrderRequest acceptedTermsTime(@javax.annotation.Nullable Integer acceptedTermsTime) {
     this.acceptedTermsTime = acceptedTermsTime;
     return this;
   }
@@ -437,12 +459,12 @@ public class SSIOCreateInsertionOrderRequest {
     return acceptedTermsTime;
   }
 
-  public void setAcceptedTermsTime(Integer acceptedTermsTime) {
+  public void setAcceptedTermsTime(@javax.annotation.Nullable Integer acceptedTermsTime) {
     this.acceptedTermsTime = acceptedTermsTime;
   }
 
 
-  public SSIOCreateInsertionOrderRequest pmpId(String pmpId) {
+  public SSIOCreateInsertionOrderRequest pmpId(@javax.annotation.Nonnull String pmpId) {
     this.pmpId = pmpId;
     return this;
   }
@@ -456,12 +478,12 @@ public class SSIOCreateInsertionOrderRequest {
     return pmpId;
   }
 
-  public void setPmpId(String pmpId) {
+  public void setPmpId(@javax.annotation.Nonnull String pmpId) {
     this.pmpId = pmpId;
   }
 
 
-  public SSIOCreateInsertionOrderRequest orderName(String orderName) {
+  public SSIOCreateInsertionOrderRequest orderName(@javax.annotation.Nonnull String orderName) {
     this.orderName = orderName;
     return this;
   }
@@ -475,12 +497,12 @@ public class SSIOCreateInsertionOrderRequest {
     return orderName;
   }
 
-  public void setOrderName(String orderName) {
+  public void setOrderName(@javax.annotation.Nonnull String orderName) {
     this.orderName = orderName;
   }
 
 
-  public SSIOCreateInsertionOrderRequest orderLineType(OrderLineTypeEnum orderLineType) {
+  public SSIOCreateInsertionOrderRequest orderLineType(@javax.annotation.Nonnull OrderLineTypeEnum orderLineType) {
     this.orderLineType = orderLineType;
     return this;
   }
@@ -494,12 +516,12 @@ public class SSIOCreateInsertionOrderRequest {
     return orderLineType;
   }
 
-  public void setOrderLineType(OrderLineTypeEnum orderLineType) {
+  public void setOrderLineType(@javax.annotation.Nonnull OrderLineTypeEnum orderLineType) {
     this.orderLineType = orderLineType;
   }
 
 
-  public SSIOCreateInsertionOrderRequest acceptedTermsId(String acceptedTermsId) {
+  public SSIOCreateInsertionOrderRequest acceptedTermsId(@javax.annotation.Nonnull String acceptedTermsId) {
     this.acceptedTermsId = acceptedTermsId;
     return this;
   }
@@ -513,12 +535,12 @@ public class SSIOCreateInsertionOrderRequest {
     return acceptedTermsId;
   }
 
-  public void setAcceptedTermsId(String acceptedTermsId) {
+  public void setAcceptedTermsId(@javax.annotation.Nonnull String acceptedTermsId) {
     this.acceptedTermsId = acceptedTermsId;
   }
 
 
-  public SSIOCreateInsertionOrderRequest billtoCompanyId(String billtoCompanyId) {
+  public SSIOCreateInsertionOrderRequest billtoCompanyId(@javax.annotation.Nonnull String billtoCompanyId) {
     this.billtoCompanyId = billtoCompanyId;
     return this;
   }
@@ -532,12 +554,12 @@ public class SSIOCreateInsertionOrderRequest {
     return billtoCompanyId;
   }
 
-  public void setBilltoCompanyId(String billtoCompanyId) {
+  public void setBilltoCompanyId(@javax.annotation.Nonnull String billtoCompanyId) {
     this.billtoCompanyId = billtoCompanyId;
   }
 
 
-  public SSIOCreateInsertionOrderRequest billtoBusinessAddressId(String billtoBusinessAddressId) {
+  public SSIOCreateInsertionOrderRequest billtoBusinessAddressId(@javax.annotation.Nonnull String billtoBusinessAddressId) {
     this.billtoBusinessAddressId = billtoBusinessAddressId;
     return this;
   }
@@ -551,12 +573,12 @@ public class SSIOCreateInsertionOrderRequest {
     return billtoBusinessAddressId;
   }
 
-  public void setBilltoBusinessAddressId(String billtoBusinessAddressId) {
+  public void setBilltoBusinessAddressId(@javax.annotation.Nonnull String billtoBusinessAddressId) {
     this.billtoBusinessAddressId = billtoBusinessAddressId;
   }
 
 
-  public SSIOCreateInsertionOrderRequest billtoBillingAddressId(String billtoBillingAddressId) {
+  public SSIOCreateInsertionOrderRequest billtoBillingAddressId(@javax.annotation.Nonnull String billtoBillingAddressId) {
     this.billtoBillingAddressId = billtoBillingAddressId;
     return this;
   }
@@ -570,12 +592,12 @@ public class SSIOCreateInsertionOrderRequest {
     return billtoBillingAddressId;
   }
 
-  public void setBilltoBillingAddressId(String billtoBillingAddressId) {
+  public void setBilltoBillingAddressId(@javax.annotation.Nonnull String billtoBillingAddressId) {
     this.billtoBillingAddressId = billtoBillingAddressId;
   }
 
 
-  public SSIOCreateInsertionOrderRequest estimatedMonthlySpend(BigDecimal estimatedMonthlySpend) {
+  public SSIOCreateInsertionOrderRequest estimatedMonthlySpend(@javax.annotation.Nullable BigDecimal estimatedMonthlySpend) {
     this.estimatedMonthlySpend = estimatedMonthlySpend;
     return this;
   }
@@ -589,12 +611,12 @@ public class SSIOCreateInsertionOrderRequest {
     return estimatedMonthlySpend;
   }
 
-  public void setEstimatedMonthlySpend(BigDecimal estimatedMonthlySpend) {
+  public void setEstimatedMonthlySpend(@javax.annotation.Nullable BigDecimal estimatedMonthlySpend) {
     this.estimatedMonthlySpend = estimatedMonthlySpend;
   }
 
 
-  public SSIOCreateInsertionOrderRequest currencyInfo(Currency currencyInfo) {
+  public SSIOCreateInsertionOrderRequest currencyInfo(@javax.annotation.Nonnull Currency currencyInfo) {
     this.currencyInfo = currencyInfo;
     return this;
   }
@@ -608,7 +630,7 @@ public class SSIOCreateInsertionOrderRequest {
     return currencyInfo;
   }
 
-  public void setCurrencyInfo(Currency currencyInfo) {
+  public void setCurrencyInfo(@javax.annotation.Nonnull Currency currencyInfo) {
     this.currencyInfo = currencyInfo;
   }
 

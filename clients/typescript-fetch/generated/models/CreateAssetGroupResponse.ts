@@ -56,11 +56,11 @@ export function CreateAssetGroupResponseFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function CreateAssetGroupResponseToJSON(json: any): CreateAssetGroupResponse {
-      return CreateAssetGroupResponseToJSONTyped(json, false);
-  }
+export function CreateAssetGroupResponseToJSON(json: any): CreateAssetGroupResponse {
+    return CreateAssetGroupResponseToJSONTyped(json, false);
+}
 
-  export function CreateAssetGroupResponseToJSONTyped(value?: CreateAssetGroupResponse | null, ignoreDiscriminator: boolean = false): any {
+export function CreateAssetGroupResponseToJSONTyped(value?: CreateAssetGroupResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

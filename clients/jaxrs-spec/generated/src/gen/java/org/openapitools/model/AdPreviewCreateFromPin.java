@@ -15,9 +15,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdPreviewCreateFromPin")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdPreviewCreateFromPin   {
   private String pinId;
+
+  public AdPreviewCreateFromPin() {
+  }
+
+  @JsonCreator
+  public AdPreviewCreateFromPin(
+    @JsonProperty(required = true, value = "pin_id") String pinId
+  ) {
+    this.pinId = pinId;
+  }
 
   /**
    * Pin ID.
@@ -29,12 +39,12 @@ public class AdPreviewCreateFromPin   {
 
   
   @ApiModelProperty(example = "7389479023", required = true, value = "Pin ID.")
-  @JsonProperty("pin_id")
+  @JsonProperty(required = true, value = "pin_id")
   @NotNull public String getPinId() {
     return pinId;
   }
 
-  @JsonProperty("pin_id")
+  @JsonProperty(required = true, value = "pin_id")
   public void setPinId(String pinId) {
     this.pinId = pinId;
   }

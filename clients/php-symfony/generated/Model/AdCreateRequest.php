@@ -223,7 +223,7 @@ class AdCreateRequest
      * @SerializedName("customizable_cta_type")
      * @Type("string")
     */
-    #[Assert\Choice(["GET_OFFER", "LEARN_MORE", "ORDER_NOW", "SHOP_NOW", "SIGN_UP", "SUBSCRIBE", "BUY_NOW", "CONTACT_US", "GET_QUOTE", "VISIT_SITE", "APPLY_NOW", "BOOK_NOW", "REQUEST_DEMO", "REGISTER_NOW", "FIND_A_DEALER", "ADD_TO_CART", "WATCH_NOW", "READ_MORE"])]
+    #[Assert\Choice(['GET_OFFER', 'LEARN_MORE', 'ORDER_NOW', 'SHOP_NOW', 'SIGN_UP', 'SUBSCRIBE', 'BUY_NOW', 'CONTACT_US', 'GET_QUOTE', 'VISIT_SITE', 'APPLY_NOW', 'BOOK_NOW', 'REQUEST_DEMO', 'REGISTER_NOW', 'FIND_A_DEALER', 'ADD_TO_CART', 'WATCH_NOW', 'READ_MORE'])]
     #[Assert\Type("string")]
     protected ?string $customizableCtaType = null;
 
@@ -253,7 +253,7 @@ class AdCreateRequest
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->adGroupId = array_key_exists('adGroupId', $data) ? $data['adGroupId'] : $this->adGroupId;

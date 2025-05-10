@@ -58,11 +58,11 @@ export function ProductGroupAnalyticsResponseInnerFromJSONTyped(json: any, ignor
     };
 }
 
-  export function ProductGroupAnalyticsResponseInnerToJSON(json: any): ProductGroupAnalyticsResponseInner {
-      return ProductGroupAnalyticsResponseInnerToJSONTyped(json, false);
-  }
+export function ProductGroupAnalyticsResponseInnerToJSON(json: any): ProductGroupAnalyticsResponseInner {
+    return ProductGroupAnalyticsResponseInnerToJSONTyped(json, false);
+}
 
-  export function ProductGroupAnalyticsResponseInnerToJSONTyped(value?: ProductGroupAnalyticsResponseInner | null, ignoreDiscriminator: boolean = false): any {
+export function ProductGroupAnalyticsResponseInnerToJSONTyped(value?: ProductGroupAnalyticsResponseInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

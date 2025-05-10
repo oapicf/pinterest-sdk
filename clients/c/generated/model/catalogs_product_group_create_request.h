@@ -26,9 +26,10 @@ typedef struct catalogs_product_group_create_request_t {
     struct catalogs_product_group_filters_request_t *filters; //model
     char *feed_id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_product_group_create_request_t;
 
-catalogs_product_group_create_request_t *catalogs_product_group_create_request_create(
+__attribute__((deprecated)) catalogs_product_group_create_request_t *catalogs_product_group_create_request_create(
     char *name,
     char *description,
     int is_featured,

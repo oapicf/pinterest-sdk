@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Request body used to cancel invites
  * @param inviteIds List of invite/request ids to be cancelled
  */
+@Serializable
 data class CancelInvitesBody(
     /* List of invite/request ids to be cancelled */
     val inviteIds: kotlin.collections.List<kotlin.String>
-) 
+)
 

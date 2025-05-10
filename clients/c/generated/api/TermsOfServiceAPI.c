@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 
 // Get terms of service
@@ -25,15 +20,20 @@ TermsOfServiceAPI_termsOfServiceGet(apiClient_t *apiClient, char *ad_account_id,
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/terms_of_service")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/terms_of_service");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/terms_of_service");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -77,6 +77,7 @@ TermsOfServiceAPI_termsOfServiceGet(apiClient_t *apiClient, char *ad_account_id,
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -88,11 +89,14 @@ TermsOfServiceAPI_termsOfServiceGet(apiClient_t *apiClient, char *ad_account_id,
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *TermsOfServiceAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    terms_of_service_t *elementToReturn = terms_of_service_parseFromJSON(TermsOfServiceAPIlocalVarJSON);
-    cJSON_Delete(TermsOfServiceAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    terms_of_service_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *TermsOfServiceAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = terms_of_service_parseFromJSON(TermsOfServiceAPIlocalVarJSON);
+        cJSON_Delete(TermsOfServiceAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type

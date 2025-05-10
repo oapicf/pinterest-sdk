@@ -54,60 +54,72 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * LeadFormResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class LeadFormResponse {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_PRIVACY_POLICY_LINK = "privacy_policy_link";
   @SerializedName(SERIALIZED_NAME_PRIVACY_POLICY_LINK)
+  @javax.annotation.Nullable
   private String privacyPolicyLink;
 
   public static final String SERIALIZED_NAME_HAS_ACCEPTED_TERMS = "has_accepted_terms";
   @SerializedName(SERIALIZED_NAME_HAS_ACCEPTED_TERMS)
+  @javax.annotation.Nullable
   private Boolean hasAcceptedTerms;
 
   public static final String SERIALIZED_NAME_COMPLETION_MESSAGE = "completion_message";
   @SerializedName(SERIALIZED_NAME_COMPLETION_MESSAGE)
+  @javax.annotation.Nullable
   private String completionMessage;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private LeadFormStatus status;
 
   public static final String SERIALIZED_NAME_DISCLOSURE_LANGUAGE = "disclosure_language";
   @SerializedName(SERIALIZED_NAME_DISCLOSURE_LANGUAGE)
+  @javax.annotation.Nullable
   private String disclosureLanguage;
 
   public static final String SERIALIZED_NAME_QUESTIONS = "questions";
   @SerializedName(SERIALIZED_NAME_QUESTIONS)
+  @javax.annotation.Nullable
   private List<LeadFormQuestion> questions = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_POLICY_LINKS = "policy_links";
   @SerializedName(SERIALIZED_NAME_POLICY_LINKS)
+  @javax.annotation.Nullable
   private List<LeadFormCommonPolicyLinksInner> policyLinks = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_AD_ACCOUNT_ID = "ad_account_id";
   @SerializedName(SERIALIZED_NAME_AD_ACCOUNT_ID)
+  @javax.annotation.Nullable
   private String adAccountId;
 
   public static final String SERIALIZED_NAME_CREATED_TIME = "created_time";
   @SerializedName(SERIALIZED_NAME_CREATED_TIME)
+  @javax.annotation.Nullable
   private Integer createdTime;
 
   public static final String SERIALIZED_NAME_UPDATED_TIME = "updated_time";
   @SerializedName(SERIALIZED_NAME_UPDATED_TIME)
+  @javax.annotation.Nullable
   private Integer updatedTime;
 
   public LeadFormResponse() {
   }
 
-  public LeadFormResponse name(String name) {
+  public LeadFormResponse name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -121,12 +133,12 @@ public class LeadFormResponse {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public LeadFormResponse privacyPolicyLink(String privacyPolicyLink) {
+  public LeadFormResponse privacyPolicyLink(@javax.annotation.Nullable String privacyPolicyLink) {
     this.privacyPolicyLink = privacyPolicyLink;
     return this;
   }
@@ -140,12 +152,12 @@ public class LeadFormResponse {
     return privacyPolicyLink;
   }
 
-  public void setPrivacyPolicyLink(String privacyPolicyLink) {
+  public void setPrivacyPolicyLink(@javax.annotation.Nullable String privacyPolicyLink) {
     this.privacyPolicyLink = privacyPolicyLink;
   }
 
 
-  public LeadFormResponse hasAcceptedTerms(Boolean hasAcceptedTerms) {
+  public LeadFormResponse hasAcceptedTerms(@javax.annotation.Nullable Boolean hasAcceptedTerms) {
     this.hasAcceptedTerms = hasAcceptedTerms;
     return this;
   }
@@ -159,12 +171,12 @@ public class LeadFormResponse {
     return hasAcceptedTerms;
   }
 
-  public void setHasAcceptedTerms(Boolean hasAcceptedTerms) {
+  public void setHasAcceptedTerms(@javax.annotation.Nullable Boolean hasAcceptedTerms) {
     this.hasAcceptedTerms = hasAcceptedTerms;
   }
 
 
-  public LeadFormResponse completionMessage(String completionMessage) {
+  public LeadFormResponse completionMessage(@javax.annotation.Nullable String completionMessage) {
     this.completionMessage = completionMessage;
     return this;
   }
@@ -178,12 +190,12 @@ public class LeadFormResponse {
     return completionMessage;
   }
 
-  public void setCompletionMessage(String completionMessage) {
+  public void setCompletionMessage(@javax.annotation.Nullable String completionMessage) {
     this.completionMessage = completionMessage;
   }
 
 
-  public LeadFormResponse status(LeadFormStatus status) {
+  public LeadFormResponse status(@javax.annotation.Nullable LeadFormStatus status) {
     this.status = status;
     return this;
   }
@@ -197,12 +209,12 @@ public class LeadFormResponse {
     return status;
   }
 
-  public void setStatus(LeadFormStatus status) {
+  public void setStatus(@javax.annotation.Nullable LeadFormStatus status) {
     this.status = status;
   }
 
 
-  public LeadFormResponse disclosureLanguage(String disclosureLanguage) {
+  public LeadFormResponse disclosureLanguage(@javax.annotation.Nullable String disclosureLanguage) {
     this.disclosureLanguage = disclosureLanguage;
     return this;
   }
@@ -216,12 +228,12 @@ public class LeadFormResponse {
     return disclosureLanguage;
   }
 
-  public void setDisclosureLanguage(String disclosureLanguage) {
+  public void setDisclosureLanguage(@javax.annotation.Nullable String disclosureLanguage) {
     this.disclosureLanguage = disclosureLanguage;
   }
 
 
-  public LeadFormResponse questions(List<LeadFormQuestion> questions) {
+  public LeadFormResponse questions(@javax.annotation.Nullable List<LeadFormQuestion> questions) {
     this.questions = questions;
     return this;
   }
@@ -243,12 +255,12 @@ public class LeadFormResponse {
     return questions;
   }
 
-  public void setQuestions(List<LeadFormQuestion> questions) {
+  public void setQuestions(@javax.annotation.Nullable List<LeadFormQuestion> questions) {
     this.questions = questions;
   }
 
 
-  public LeadFormResponse policyLinks(List<LeadFormCommonPolicyLinksInner> policyLinks) {
+  public LeadFormResponse policyLinks(@javax.annotation.Nullable List<LeadFormCommonPolicyLinksInner> policyLinks) {
     this.policyLinks = policyLinks;
     return this;
   }
@@ -270,12 +282,12 @@ public class LeadFormResponse {
     return policyLinks;
   }
 
-  public void setPolicyLinks(List<LeadFormCommonPolicyLinksInner> policyLinks) {
+  public void setPolicyLinks(@javax.annotation.Nullable List<LeadFormCommonPolicyLinksInner> policyLinks) {
     this.policyLinks = policyLinks;
   }
 
 
-  public LeadFormResponse id(String id) {
+  public LeadFormResponse id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -289,12 +301,12 @@ public class LeadFormResponse {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public LeadFormResponse adAccountId(String adAccountId) {
+  public LeadFormResponse adAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -308,12 +320,12 @@ public class LeadFormResponse {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
 
-  public LeadFormResponse createdTime(Integer createdTime) {
+  public LeadFormResponse createdTime(@javax.annotation.Nullable Integer createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -327,12 +339,12 @@ public class LeadFormResponse {
     return createdTime;
   }
 
-  public void setCreatedTime(Integer createdTime) {
+  public void setCreatedTime(@javax.annotation.Nullable Integer createdTime) {
     this.createdTime = createdTime;
   }
 
 
-  public LeadFormResponse updatedTime(Integer updatedTime) {
+  public LeadFormResponse updatedTime(@javax.annotation.Nullable Integer updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -346,7 +358,7 @@ public class LeadFormResponse {
     return updatedTime;
   }
 
-  public void setUpdatedTime(Integer updatedTime) {
+  public void setUpdatedTime(@javax.annotation.Nullable Integer updatedTime) {
     this.updatedTime = updatedTime;
   }
 

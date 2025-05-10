@@ -31,8 +31,8 @@ public:
 
 	enum class Values
 	{
-		AdAction,
-		Conversion,
+		TimeOfAdAction,
+		TimeOfConversion,
   	};
 
 	Values Value;

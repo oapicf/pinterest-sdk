@@ -164,7 +164,7 @@ func (c *AudienceSharingAPIController) UpdateAdAccountToAdAccountSharedAudience(
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	sharedAudienceParam := SharedAudience{}
+	var sharedAudienceParam SharedAudience
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&sharedAudienceParam); err != nil {
@@ -197,7 +197,7 @@ func (c *AudienceSharingAPIController) UpdateAdAccountToBusinessSharedAudience(w
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	businessSharedAudienceParam := BusinessSharedAudience{}
+	var businessSharedAudienceParam BusinessSharedAudience
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&businessSharedAudienceParam); err != nil {
@@ -351,7 +351,7 @@ func (c *AudienceSharingAPIController) UpdateBusinessToAdAccountSharedAudience(w
 		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
 		return
 	}
-	sharedAudienceParam := SharedAudience{}
+	var sharedAudienceParam SharedAudience
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&sharedAudienceParam); err != nil {
@@ -384,7 +384,7 @@ func (c *AudienceSharingAPIController) UpdateBusinessToBusinessSharedAudience(w 
 		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
 		return
 	}
-	businessSharedAudienceParam := BusinessSharedAudience{}
+	var businessSharedAudienceParam BusinessSharedAudience
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&businessSharedAudienceParam); err != nil {

@@ -30,9 +30,10 @@ typedef struct catalogs_feed_processing_schedule_t {
     char *time; // string
     pinterest_rest_api_catalogs_feed_processing_schedule_TIMEZONE_e timezone; //enum
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_feed_processing_schedule_t;
 
-catalogs_feed_processing_schedule_t *catalogs_feed_processing_schedule_create(
+__attribute__((deprecated)) catalogs_feed_processing_schedule_t *catalogs_feed_processing_schedule_create(
     char *time,
     pinterest_rest_api_catalogs_feed_processing_schedule_TIMEZONE_e timezone
 );

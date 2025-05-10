@@ -228,7 +228,7 @@ void OAISearchApi::searchPartnerPins(const QString &term, const QString &country
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("term")).append(querySuffix).append(QUrl::toPercentEncoding(term));
+        fullPath.append(QUrl::toPercentEncoding("term")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(term)));
     }
     
     {
@@ -243,7 +243,7 @@ void OAISearchApi::searchPartnerPins(const QString &term, const QString &country
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("country_code")).append(querySuffix).append(QUrl::toPercentEncoding(country_code));
+        fullPath.append(QUrl::toPercentEncoding("country_code")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(country_code)));
     }
     if (bookmark.hasValue())
     {
@@ -258,7 +258,7 @@ void OAISearchApi::searchPartnerPins(const QString &term, const QString &country
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     if (locale.hasValue())
     {
@@ -273,7 +273,7 @@ void OAISearchApi::searchPartnerPins(const QString &term, const QString &country
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("locale")).append(querySuffix).append(QUrl::toPercentEncoding(locale.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("locale")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(locale.stringValue())));
     }
     if (limit.hasValue())
     {
@@ -288,7 +288,7 @@ void OAISearchApi::searchPartnerPins(const QString &term, const QString &country
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("limit")).append(querySuffix).append(QUrl::toPercentEncoding(limit.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("limit")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(limit.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -303,7 +303,7 @@ void OAISearchApi::searchPartnerPins(const QString &term, const QString &country
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAISearchApi::searchPartnerPinsCallback);
     connect(this, &OAISearchApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -326,7 +326,7 @@ void OAISearchApi::searchPartnerPins(const QString &term, const QString &country
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAISearchApi::searchPartnerPinsCallback);
     connect(this, &OAISearchApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -417,7 +417,7 @@ void OAISearchApi::searchUserBoards_get(const ::OpenAPI::OptionalParam<QString> 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     if (bookmark.hasValue())
     {
@@ -432,7 +432,7 @@ void OAISearchApi::searchUserBoards_get(const ::OpenAPI::OptionalParam<QString> 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     if (page_size.hasValue())
     {
@@ -447,7 +447,7 @@ void OAISearchApi::searchUserBoards_get(const ::OpenAPI::OptionalParam<QString> 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     if (query.hasValue())
     {
@@ -462,7 +462,7 @@ void OAISearchApi::searchUserBoards_get(const ::OpenAPI::OptionalParam<QString> 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("query")).append(querySuffix).append(QUrl::toPercentEncoding(query.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("query")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(query.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -477,7 +477,7 @@ void OAISearchApi::searchUserBoards_get(const ::OpenAPI::OptionalParam<QString> 
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAISearchApi::searchUserBoards_getCallback);
     connect(this, &OAISearchApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -500,7 +500,7 @@ void OAISearchApi::searchUserBoards_get(const ::OpenAPI::OptionalParam<QString> 
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAISearchApi::searchUserBoards_getCallback);
     connect(this, &OAISearchApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -530,7 +530,7 @@ void OAISearchApi::searchUserBoards_get(const ::OpenAPI::OptionalParam<QString> 
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAISearchApi::searchUserBoards_getCallback);
     connect(this, &OAISearchApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -631,7 +631,7 @@ void OAISearchApi::searchUserPins_list(const QString &query, const ::OpenAPI::Op
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     
     {
@@ -646,7 +646,7 @@ void OAISearchApi::searchUserPins_list(const QString &query, const ::OpenAPI::Op
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("query")).append(querySuffix).append(QUrl::toPercentEncoding(query));
+        fullPath.append(QUrl::toPercentEncoding("query")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(query)));
     }
     if (bookmark.hasValue())
     {
@@ -661,7 +661,7 @@ void OAISearchApi::searchUserPins_list(const QString &query, const ::OpenAPI::Op
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -676,7 +676,7 @@ void OAISearchApi::searchUserPins_list(const QString &query, const ::OpenAPI::Op
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAISearchApi::searchUserPins_listCallback);
     connect(this, &OAISearchApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -701,7 +701,7 @@ void OAISearchApi::searchUserPins_list(const QString &query, const ::OpenAPI::Op
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAISearchApi::searchUserPins_listCallback);
     connect(this, &OAISearchApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }

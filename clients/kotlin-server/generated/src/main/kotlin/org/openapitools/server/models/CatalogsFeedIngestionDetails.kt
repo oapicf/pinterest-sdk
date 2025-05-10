@@ -15,15 +15,17 @@ import org.openapitools.server.models.CatalogsFeedIngestionErrors
 import org.openapitools.server.models.CatalogsFeedIngestionInfo
 import org.openapitools.server.models.CatalogsFeedIngestionWarnings
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param errors 
  * @param info 
  * @param warnings 
  */
+@Serializable
 data class CatalogsFeedIngestionDetails(
     val errors: CatalogsFeedIngestionErrors,
     val info: CatalogsFeedIngestionInfo,
     val warnings: CatalogsFeedIngestionWarnings
-) 
+)
 

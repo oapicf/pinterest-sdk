@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Creation fields")
 @JsonTypeName("LeadFormCommon")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class LeadFormCommon   {
   private String name;
   private String privacyPolicyLink;
@@ -34,6 +34,9 @@ public class LeadFormCommon   {
   private String disclosureLanguage;
   private @Valid List<@Valid LeadFormQuestion> questions = new ArrayList<>();
   private @Valid List<@Valid LeadFormCommonPolicyLinksInner> policyLinks = new ArrayList<>();
+
+  public LeadFormCommon() {
+  }
 
   /**
    * Internal name of the lead form.

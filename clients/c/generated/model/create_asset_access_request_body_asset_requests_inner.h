@@ -31,9 +31,10 @@ typedef struct create_asset_access_request_body_asset_requests_inner_t {
     char *partner_id; // string
     list_t* asset_id_to_permissions; //map
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } create_asset_access_request_body_asset_requests_inner_t;
 
-create_asset_access_request_body_asset_requests_inner_t *create_asset_access_request_body_asset_requests_inner_create(
+__attribute__((deprecated)) create_asset_access_request_body_asset_requests_inner_t *create_asset_access_request_body_asset_requests_inner_create(
     char *partner_id,
     list_t* asset_id_to_permissions
 );

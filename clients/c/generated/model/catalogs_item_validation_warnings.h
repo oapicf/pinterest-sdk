@@ -65,9 +65,10 @@ typedef struct catalogs_item_validation_warnings_t {
     struct catalogs_item_validation_details_t *utm_source_auto_corrected; //model
     struct catalogs_item_validation_details_t *weight_unit_invalid; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_item_validation_warnings_t;
 
-catalogs_item_validation_warnings_t *catalogs_item_validation_warnings_create(
+__attribute__((deprecated)) catalogs_item_validation_warnings_t *catalogs_item_validation_warnings_create(
     catalogs_item_validation_details_t *ad_link_format_warning,
     catalogs_item_validation_details_t *ad_link_same_as_link,
     catalogs_item_validation_details_t *additional_image_link_length_too_long,

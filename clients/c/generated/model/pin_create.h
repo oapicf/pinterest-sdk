@@ -37,9 +37,10 @@ typedef struct pin_create_t {
     char *parent_pin_id; // string
     char *note; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } pin_create_t;
 
-pin_create_t *pin_create_create(
+__attribute__((deprecated)) pin_create_t *pin_create_create(
     char *id,
     char *created_at,
     char *link,

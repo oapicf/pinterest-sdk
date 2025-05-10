@@ -49,7 +49,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Parameters for hotel report
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsHotelReportParameters {
   /**
    * Gets or Sets catalogType
@@ -103,16 +103,18 @@ public class CatalogsHotelReportParameters {
 
   public static final String SERIALIZED_NAME_CATALOG_TYPE = "catalog_type";
   @SerializedName(SERIALIZED_NAME_CATALOG_TYPE)
+  @javax.annotation.Nonnull
   private CatalogTypeEnum catalogType;
 
   public static final String SERIALIZED_NAME_REPORT = "report";
   @SerializedName(SERIALIZED_NAME_REPORT)
+  @javax.annotation.Nonnull
   private CatalogsHotelReportParametersReport report;
 
   public CatalogsHotelReportParameters() {
   }
 
-  public CatalogsHotelReportParameters catalogType(CatalogTypeEnum catalogType) {
+  public CatalogsHotelReportParameters catalogType(@javax.annotation.Nonnull CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -126,12 +128,12 @@ public class CatalogsHotelReportParameters {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogTypeEnum catalogType) {
+  public void setCatalogType(@javax.annotation.Nonnull CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
 
-  public CatalogsHotelReportParameters report(CatalogsHotelReportParametersReport report) {
+  public CatalogsHotelReportParameters report(@javax.annotation.Nonnull CatalogsHotelReportParametersReport report) {
     this.report = report;
     return this;
   }
@@ -145,7 +147,7 @@ public class CatalogsHotelReportParameters {
     return report;
   }
 
-  public void setReport(CatalogsHotelReportParametersReport report) {
+  public void setReport(@javax.annotation.Nonnull CatalogsHotelReportParametersReport report) {
     this.report = report;
   }
 

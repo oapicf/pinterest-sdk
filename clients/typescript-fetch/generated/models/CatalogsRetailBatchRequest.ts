@@ -105,11 +105,11 @@ export function CatalogsRetailBatchRequestFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-  export function CatalogsRetailBatchRequestToJSON(json: any): CatalogsRetailBatchRequest {
-      return CatalogsRetailBatchRequestToJSONTyped(json, false);
-  }
+export function CatalogsRetailBatchRequestToJSON(json: any): CatalogsRetailBatchRequest {
+    return CatalogsRetailBatchRequestToJSONTyped(json, false);
+}
 
-  export function CatalogsRetailBatchRequestToJSONTyped(value?: CatalogsRetailBatchRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsRetailBatchRequestToJSONTyped(value?: CatalogsRetailBatchRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

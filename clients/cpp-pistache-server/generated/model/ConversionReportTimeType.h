@@ -38,8 +38,8 @@ public:
     // Avoiding name clashes with user defined
     // enum values
     INVALID_VALUE_OPENAPI_GENERATED = 0,
-    AD_ACTION, 
-    CONVERSION
+    TIME_OF_AD_ACTION, 
+    TIME_OF_CONVERSION
     };
 
     /// <summary>

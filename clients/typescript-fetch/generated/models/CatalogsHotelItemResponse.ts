@@ -94,11 +94,11 @@ export function CatalogsHotelItemResponseFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function CatalogsHotelItemResponseToJSON(json: any): CatalogsHotelItemResponse {
-      return CatalogsHotelItemResponseToJSONTyped(json, false);
-  }
+export function CatalogsHotelItemResponseToJSON(json: any): CatalogsHotelItemResponse {
+    return CatalogsHotelItemResponseToJSONTyped(json, false);
+}
 
-  export function CatalogsHotelItemResponseToJSONTyped(value?: CatalogsHotelItemResponse | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsHotelItemResponseToJSONTyped(value?: CatalogsHotelItemResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

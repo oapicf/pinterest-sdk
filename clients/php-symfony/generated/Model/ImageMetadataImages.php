@@ -79,7 +79,7 @@ class ImageMetadataImages
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->_150x150 = array_key_exists('_150x150', $data) ? $data['_150x150'] : $this->_150x150;

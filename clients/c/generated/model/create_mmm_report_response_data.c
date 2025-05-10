@@ -5,7 +5,7 @@
 
 
 
-create_mmm_report_response_data_t *create_mmm_report_response_data_create(
+static create_mmm_report_response_data_t *create_mmm_report_response_data_create_internal(
     bulk_reporting_job_status_t *report_status,
     char *token,
     char *message,
@@ -20,12 +20,30 @@ create_mmm_report_response_data_t *create_mmm_report_response_data_create(
     create_mmm_report_response_data_local_var->message = message;
     create_mmm_report_response_data_local_var->status = status;
 
+    create_mmm_report_response_data_local_var->_library_owned = 1;
     return create_mmm_report_response_data_local_var;
 }
 
+__attribute__((deprecated)) create_mmm_report_response_data_t *create_mmm_report_response_data_create(
+    bulk_reporting_job_status_t *report_status,
+    char *token,
+    char *message,
+    char *status
+    ) {
+    return create_mmm_report_response_data_create_internal (
+        report_status,
+        token,
+        message,
+        status
+        );
+}
 
 void create_mmm_report_response_data_free(create_mmm_report_response_data_t *create_mmm_report_response_data) {
     if(NULL == create_mmm_report_response_data){
+        return ;
+    }
+    if(create_mmm_report_response_data->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "create_mmm_report_response_data_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -104,12 +122,18 @@ create_mmm_report_response_data_t *create_mmm_report_response_data_parseFromJSON
 
     // create_mmm_report_response_data->report_status
     cJSON *report_status = cJSON_GetObjectItemCaseSensitive(create_mmm_report_response_dataJSON, "report_status");
+    if (cJSON_IsNull(report_status)) {
+        report_status = NULL;
+    }
     if (report_status) { 
     report_status_local_nonprim = bulk_reporting_job_status_parseFromJSON(report_status); //custom
     }
 
     // create_mmm_report_response_data->token
     cJSON *token = cJSON_GetObjectItemCaseSensitive(create_mmm_report_response_dataJSON, "token");
+    if (cJSON_IsNull(token)) {
+        token = NULL;
+    }
     if (token) { 
     if(!cJSON_IsString(token) && !cJSON_IsNull(token))
     {
@@ -119,6 +143,9 @@ create_mmm_report_response_data_t *create_mmm_report_response_data_parseFromJSON
 
     // create_mmm_report_response_data->message
     cJSON *message = cJSON_GetObjectItemCaseSensitive(create_mmm_report_response_dataJSON, "message");
+    if (cJSON_IsNull(message)) {
+        message = NULL;
+    }
     if (message) { 
     if(!cJSON_IsString(message) && !cJSON_IsNull(message))
     {
@@ -128,6 +155,9 @@ create_mmm_report_response_data_t *create_mmm_report_response_data_parseFromJSON
 
     // create_mmm_report_response_data->status
     cJSON *status = cJSON_GetObjectItemCaseSensitive(create_mmm_report_response_dataJSON, "status");
+    if (cJSON_IsNull(status)) {
+        status = NULL;
+    }
     if (status) { 
     if(!cJSON_IsString(status) && !cJSON_IsNull(status))
     {
@@ -136,7 +166,7 @@ create_mmm_report_response_data_t *create_mmm_report_response_data_parseFromJSON
     }
 
 
-    create_mmm_report_response_data_local_var = create_mmm_report_response_data_create (
+    create_mmm_report_response_data_local_var = create_mmm_report_response_data_create_internal (
         report_status ? report_status_local_nonprim : NULL,
         token && !cJSON_IsNull(token) ? strdup(token->valuestring) : NULL,
         message && !cJSON_IsNull(message) ? strdup(message->valuestring) : NULL,

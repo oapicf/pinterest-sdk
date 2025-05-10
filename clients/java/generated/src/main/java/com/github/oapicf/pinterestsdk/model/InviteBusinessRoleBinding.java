@@ -50,36 +50,42 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class InviteBusinessRoleBinding {
   public static final String SERIALIZED_NAME_CREATED_BY_BUSINESS_ID = "created_by_business_id";
   @SerializedName(SERIALIZED_NAME_CREATED_BY_BUSINESS_ID)
+  @javax.annotation.Nullable
   private String createdByBusinessId;
 
   public static final String SERIALIZED_NAME_CREATED_BY_USER_ID = "created_by_user_id";
   @SerializedName(SERIALIZED_NAME_CREATED_BY_USER_ID)
+  @javax.annotation.Nullable
   private String createdByUserId;
 
   public static final String SERIALIZED_NAME_USER = "user";
   @SerializedName(SERIALIZED_NAME_USER)
+  @javax.annotation.Nullable
   private BusinessAccessUserSummary user;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_INVITE_DATA = "invite_data";
   @SerializedName(SERIALIZED_NAME_INVITE_DATA)
+  @javax.annotation.Nullable
   private BaseInviteDataResponseInviteData inviteData;
 
   public static final String SERIALIZED_NAME_IS_RECEIVED_INVITE = "is_received_invite";
   @SerializedName(SERIALIZED_NAME_IS_RECEIVED_INVITE)
+  @javax.annotation.Nullable
   private Boolean isReceivedInvite;
 
   public InviteBusinessRoleBinding() {
   }
 
-  public InviteBusinessRoleBinding createdByBusinessId(String createdByBusinessId) {
+  public InviteBusinessRoleBinding createdByBusinessId(@javax.annotation.Nullable String createdByBusinessId) {
     this.createdByBusinessId = createdByBusinessId;
     return this;
   }
@@ -93,12 +99,12 @@ public class InviteBusinessRoleBinding {
     return createdByBusinessId;
   }
 
-  public void setCreatedByBusinessId(String createdByBusinessId) {
+  public void setCreatedByBusinessId(@javax.annotation.Nullable String createdByBusinessId) {
     this.createdByBusinessId = createdByBusinessId;
   }
 
 
-  public InviteBusinessRoleBinding createdByUserId(String createdByUserId) {
+  public InviteBusinessRoleBinding createdByUserId(@javax.annotation.Nullable String createdByUserId) {
     this.createdByUserId = createdByUserId;
     return this;
   }
@@ -112,12 +118,12 @@ public class InviteBusinessRoleBinding {
     return createdByUserId;
   }
 
-  public void setCreatedByUserId(String createdByUserId) {
+  public void setCreatedByUserId(@javax.annotation.Nullable String createdByUserId) {
     this.createdByUserId = createdByUserId;
   }
 
 
-  public InviteBusinessRoleBinding user(BusinessAccessUserSummary user) {
+  public InviteBusinessRoleBinding user(@javax.annotation.Nullable BusinessAccessUserSummary user) {
     this.user = user;
     return this;
   }
@@ -131,12 +137,12 @@ public class InviteBusinessRoleBinding {
     return user;
   }
 
-  public void setUser(BusinessAccessUserSummary user) {
+  public void setUser(@javax.annotation.Nullable BusinessAccessUserSummary user) {
     this.user = user;
   }
 
 
-  public InviteBusinessRoleBinding id(String id) {
+  public InviteBusinessRoleBinding id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -150,12 +156,12 @@ public class InviteBusinessRoleBinding {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public InviteBusinessRoleBinding inviteData(BaseInviteDataResponseInviteData inviteData) {
+  public InviteBusinessRoleBinding inviteData(@javax.annotation.Nullable BaseInviteDataResponseInviteData inviteData) {
     this.inviteData = inviteData;
     return this;
   }
@@ -169,12 +175,12 @@ public class InviteBusinessRoleBinding {
     return inviteData;
   }
 
-  public void setInviteData(BaseInviteDataResponseInviteData inviteData) {
+  public void setInviteData(@javax.annotation.Nullable BaseInviteDataResponseInviteData inviteData) {
     this.inviteData = inviteData;
   }
 
 
-  public InviteBusinessRoleBinding isReceivedInvite(Boolean isReceivedInvite) {
+  public InviteBusinessRoleBinding isReceivedInvite(@javax.annotation.Nullable Boolean isReceivedInvite) {
     this.isReceivedInvite = isReceivedInvite;
     return this;
   }
@@ -188,7 +194,7 @@ public class InviteBusinessRoleBinding {
     return isReceivedInvite;
   }
 
-  public void setIsReceivedInvite(Boolean isReceivedInvite) {
+  public void setIsReceivedInvite(@javax.annotation.Nullable Boolean isReceivedInvite) {
     this.isReceivedInvite = isReceivedInvite;
   }
 

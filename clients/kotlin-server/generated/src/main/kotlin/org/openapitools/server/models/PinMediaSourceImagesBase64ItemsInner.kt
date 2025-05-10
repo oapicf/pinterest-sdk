@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param contentType 
@@ -20,6 +21,7 @@ package org.openapitools.server.models
  * @param description 
  * @param link Destination link for the image.
  */
+@Serializable
 data class PinMediaSourceImagesBase64ItemsInner(
     val contentType: PinMediaSourceImagesBase64ItemsInner.ContentType,
     /* Image to upload as base64 string. */
@@ -28,15 +30,15 @@ data class PinMediaSourceImagesBase64ItemsInner(
     val description: kotlin.String? = null,
     /* Destination link for the image. */
     val link: kotlin.String? = null
-) 
+)
 {
     /**
     * 
-    * Values: jpeg,png
+    * Values: imageSlashJpeg,imageSlashPng
     */
     enum class ContentType(val value: kotlin.String){
-        jpeg("image/jpeg"),
-        png("image/png");
+        imageSlashJpeg("image/jpeg"),
+        imageSlashPng("image/png");
     }
 }
 

@@ -12,9 +12,13 @@
 export type TrendType = 'growing' | 'monthly' | 'yearly' | 'seasonal';
 
 export const TrendType = {
+
     Growing: 'growing' as TrendType,
+
     Monthly: 'monthly' as TrendType,
+
     Yearly: 'yearly' as TrendType,
+
     Seasonal: 'seasonal' as TrendType
 };
 

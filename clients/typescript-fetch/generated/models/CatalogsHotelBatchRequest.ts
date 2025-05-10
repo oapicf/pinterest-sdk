@@ -112,11 +112,11 @@ export function CatalogsHotelBatchRequestFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function CatalogsHotelBatchRequestToJSON(json: any): CatalogsHotelBatchRequest {
-      return CatalogsHotelBatchRequestToJSONTyped(json, false);
-  }
+export function CatalogsHotelBatchRequestToJSON(json: any): CatalogsHotelBatchRequest {
+    return CatalogsHotelBatchRequestToJSONTyped(json, false);
+}
 
-  export function CatalogsHotelBatchRequestToJSONTyped(value?: CatalogsHotelBatchRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsHotelBatchRequestToJSONTyped(value?: CatalogsHotelBatchRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

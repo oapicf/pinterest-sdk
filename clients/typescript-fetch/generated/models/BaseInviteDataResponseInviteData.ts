@@ -76,11 +76,11 @@ export function BaseInviteDataResponseInviteDataFromJSONTyped(json: any, ignoreD
     };
 }
 
-  export function BaseInviteDataResponseInviteDataToJSON(json: any): BaseInviteDataResponseInviteData {
-      return BaseInviteDataResponseInviteDataToJSONTyped(json, false);
-  }
+export function BaseInviteDataResponseInviteDataToJSON(json: any): BaseInviteDataResponseInviteData {
+    return BaseInviteDataResponseInviteDataToJSONTyped(json, false);
+}
 
-  export function BaseInviteDataResponseInviteDataToJSONTyped(value?: BaseInviteDataResponseInviteData | null, ignoreDiscriminator: boolean = false): any {
+export function BaseInviteDataResponseInviteDataToJSONTyped(value?: BaseInviteDataResponseInviteData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

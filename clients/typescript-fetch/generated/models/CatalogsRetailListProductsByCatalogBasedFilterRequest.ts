@@ -113,11 +113,11 @@ export function CatalogsRetailListProductsByCatalogBasedFilterRequestFromJSONTyp
     };
 }
 
-  export function CatalogsRetailListProductsByCatalogBasedFilterRequestToJSON(json: any): CatalogsRetailListProductsByCatalogBasedFilterRequest {
-      return CatalogsRetailListProductsByCatalogBasedFilterRequestToJSONTyped(json, false);
-  }
+export function CatalogsRetailListProductsByCatalogBasedFilterRequestToJSON(json: any): CatalogsRetailListProductsByCatalogBasedFilterRequest {
+    return CatalogsRetailListProductsByCatalogBasedFilterRequestToJSONTyped(json, false);
+}
 
-  export function CatalogsRetailListProductsByCatalogBasedFilterRequestToJSONTyped(value?: CatalogsRetailListProductsByCatalogBasedFilterRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsRetailListProductsByCatalogBasedFilterRequestToJSONTyped(value?: CatalogsRetailListProductsByCatalogBasedFilterRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

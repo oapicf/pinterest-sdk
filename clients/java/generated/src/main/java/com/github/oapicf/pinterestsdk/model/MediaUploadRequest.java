@@ -49,16 +49,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Media upload request
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class MediaUploadRequest {
   public static final String SERIALIZED_NAME_MEDIA_TYPE = "media_type";
   @SerializedName(SERIALIZED_NAME_MEDIA_TYPE)
+  @javax.annotation.Nonnull
   private MediaUploadType mediaType;
 
   public MediaUploadRequest() {
   }
 
-  public MediaUploadRequest mediaType(MediaUploadType mediaType) {
+  public MediaUploadRequest mediaType(@javax.annotation.Nonnull MediaUploadType mediaType) {
     this.mediaType = mediaType;
     return this;
   }
@@ -72,7 +73,7 @@ public class MediaUploadRequest {
     return mediaType;
   }
 
-  public void setMediaType(MediaUploadType mediaType) {
+  public void setMediaType(@javax.annotation.Nonnull MediaUploadType mediaType) {
     this.mediaType = mediaType;
   }
 

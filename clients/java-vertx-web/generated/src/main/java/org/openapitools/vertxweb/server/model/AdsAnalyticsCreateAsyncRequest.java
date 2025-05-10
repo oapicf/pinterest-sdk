@@ -51,8 +51,8 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
 
   public enum PrimarySortEnum {
-    ID("BY_ID"),
-    DATE("BY_DATE");
+    BY_ID("BY_ID"),
+    BY_DATE("BY_DATE");
 
     private String value;
 

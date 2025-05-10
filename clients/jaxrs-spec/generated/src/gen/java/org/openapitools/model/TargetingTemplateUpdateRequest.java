@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("TargetingTemplateUpdateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TargetingTemplateUpdateRequest   {
   public enum OperationTypeEnum {
 
@@ -67,6 +67,18 @@ public class TargetingTemplateUpdateRequest   {
   private OperationTypeEnum operationType;
   private String id;
 
+  public TargetingTemplateUpdateRequest() {
+  }
+
+  @JsonCreator
+  public TargetingTemplateUpdateRequest(
+    @JsonProperty(required = true, value = "operation_type") OperationTypeEnum operationType,
+    @JsonProperty(required = true, value = "id") String id
+  ) {
+    this.operationType = operationType;
+    this.id = id;
+  }
+
   /**
    **/
   public TargetingTemplateUpdateRequest operationType(OperationTypeEnum operationType) {
@@ -76,12 +88,12 @@ public class TargetingTemplateUpdateRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("operation_type")
+  @JsonProperty(required = true, value = "operation_type")
   @NotNull public OperationTypeEnum getOperationType() {
     return operationType;
   }
 
-  @JsonProperty("operation_type")
+  @JsonProperty(required = true, value = "operation_type")
   public void setOperationType(OperationTypeEnum operationType) {
     this.operationType = operationType;
   }
@@ -96,12 +108,12 @@ public class TargetingTemplateUpdateRequest   {
 
   
   @ApiModelProperty(example = "643", required = true, value = "Targeting template ID")
-  @JsonProperty("id")
+  @JsonProperty(required = true, value = "id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getId() {
     return id;
   }
 
-  @JsonProperty("id")
+  @JsonProperty(required = true, value = "id")
   public void setId(String id) {
     this.id = id;
   }

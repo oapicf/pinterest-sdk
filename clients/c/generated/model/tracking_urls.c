@@ -5,7 +5,7 @@
 
 
 
-tracking_urls_t *tracking_urls_create(
+static tracking_urls_t *tracking_urls_create_internal(
     list_t *impression,
     list_t *click,
     list_t *engagement,
@@ -22,12 +22,32 @@ tracking_urls_t *tracking_urls_create(
     tracking_urls_local_var->buyable_button = buyable_button;
     tracking_urls_local_var->audience_verification = audience_verification;
 
+    tracking_urls_local_var->_library_owned = 1;
     return tracking_urls_local_var;
 }
 
+__attribute__((deprecated)) tracking_urls_t *tracking_urls_create(
+    list_t *impression,
+    list_t *click,
+    list_t *engagement,
+    list_t *buyable_button,
+    list_t *audience_verification
+    ) {
+    return tracking_urls_create_internal (
+        impression,
+        click,
+        engagement,
+        buyable_button,
+        audience_verification
+        );
+}
 
 void tracking_urls_free(tracking_urls_t *tracking_urls) {
     if(NULL == tracking_urls){
+        return ;
+    }
+    if(tracking_urls->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "tracking_urls_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -81,7 +101,7 @@ cJSON *tracking_urls_convertToJSON(tracking_urls_t *tracking_urls) {
 
     listEntry_t *impressionListEntry;
     list_ForEach(impressionListEntry, tracking_urls->impression) {
-    if(cJSON_AddStringToObject(impression, "", (char*)impressionListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(impression, "", impressionListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -98,7 +118,7 @@ cJSON *tracking_urls_convertToJSON(tracking_urls_t *tracking_urls) {
 
     listEntry_t *clickListEntry;
     list_ForEach(clickListEntry, tracking_urls->click) {
-    if(cJSON_AddStringToObject(click, "", (char*)clickListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(click, "", clickListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -115,7 +135,7 @@ cJSON *tracking_urls_convertToJSON(tracking_urls_t *tracking_urls) {
 
     listEntry_t *engagementListEntry;
     list_ForEach(engagementListEntry, tracking_urls->engagement) {
-    if(cJSON_AddStringToObject(engagement, "", (char*)engagementListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(engagement, "", engagementListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -132,7 +152,7 @@ cJSON *tracking_urls_convertToJSON(tracking_urls_t *tracking_urls) {
 
     listEntry_t *buyable_buttonListEntry;
     list_ForEach(buyable_buttonListEntry, tracking_urls->buyable_button) {
-    if(cJSON_AddStringToObject(buyable_button, "", (char*)buyable_buttonListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(buyable_button, "", buyable_buttonListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -149,7 +169,7 @@ cJSON *tracking_urls_convertToJSON(tracking_urls_t *tracking_urls) {
 
     listEntry_t *audience_verificationListEntry;
     list_ForEach(audience_verificationListEntry, tracking_urls->audience_verification) {
-    if(cJSON_AddStringToObject(audience_verification, "", (char*)audience_verificationListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(audience_verification, "", audience_verificationListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -185,6 +205,9 @@ tracking_urls_t *tracking_urls_parseFromJSON(cJSON *tracking_urlsJSON){
 
     // tracking_urls->impression
     cJSON *impression = cJSON_GetObjectItemCaseSensitive(tracking_urlsJSON, "impression");
+    if (cJSON_IsNull(impression)) {
+        impression = NULL;
+    }
     if (impression) { 
     cJSON *impression_local = NULL;
     if(!cJSON_IsArray(impression)) {
@@ -204,6 +227,9 @@ tracking_urls_t *tracking_urls_parseFromJSON(cJSON *tracking_urlsJSON){
 
     // tracking_urls->click
     cJSON *click = cJSON_GetObjectItemCaseSensitive(tracking_urlsJSON, "click");
+    if (cJSON_IsNull(click)) {
+        click = NULL;
+    }
     if (click) { 
     cJSON *click_local = NULL;
     if(!cJSON_IsArray(click)) {
@@ -223,6 +249,9 @@ tracking_urls_t *tracking_urls_parseFromJSON(cJSON *tracking_urlsJSON){
 
     // tracking_urls->engagement
     cJSON *engagement = cJSON_GetObjectItemCaseSensitive(tracking_urlsJSON, "engagement");
+    if (cJSON_IsNull(engagement)) {
+        engagement = NULL;
+    }
     if (engagement) { 
     cJSON *engagement_local = NULL;
     if(!cJSON_IsArray(engagement)) {
@@ -242,6 +271,9 @@ tracking_urls_t *tracking_urls_parseFromJSON(cJSON *tracking_urlsJSON){
 
     // tracking_urls->buyable_button
     cJSON *buyable_button = cJSON_GetObjectItemCaseSensitive(tracking_urlsJSON, "buyable_button");
+    if (cJSON_IsNull(buyable_button)) {
+        buyable_button = NULL;
+    }
     if (buyable_button) { 
     cJSON *buyable_button_local = NULL;
     if(!cJSON_IsArray(buyable_button)) {
@@ -261,6 +293,9 @@ tracking_urls_t *tracking_urls_parseFromJSON(cJSON *tracking_urlsJSON){
 
     // tracking_urls->audience_verification
     cJSON *audience_verification = cJSON_GetObjectItemCaseSensitive(tracking_urlsJSON, "audience_verification");
+    if (cJSON_IsNull(audience_verification)) {
+        audience_verification = NULL;
+    }
     if (audience_verification) { 
     cJSON *audience_verification_local = NULL;
     if(!cJSON_IsArray(audience_verification)) {
@@ -279,7 +314,7 @@ tracking_urls_t *tracking_urls_parseFromJSON(cJSON *tracking_urlsJSON){
     }
 
 
-    tracking_urls_local_var = tracking_urls_create (
+    tracking_urls_local_var = tracking_urls_create_internal (
         impression ? impressionList : NULL,
         click ? clickList : NULL,
         engagement ? engagementList : NULL,

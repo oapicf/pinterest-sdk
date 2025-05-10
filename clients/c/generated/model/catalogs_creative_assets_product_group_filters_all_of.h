@@ -22,9 +22,10 @@ typedef struct catalogs_creative_assets_product_group_filters_all_of_t catalogs_
 typedef struct catalogs_creative_assets_product_group_filters_all_of_t {
     list_t *all_of; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_creative_assets_product_group_filters_all_of_t;
 
-catalogs_creative_assets_product_group_filters_all_of_t *catalogs_creative_assets_product_group_filters_all_of_create(
+__attribute__((deprecated)) catalogs_creative_assets_product_group_filters_all_of_t *catalogs_creative_assets_product_group_filters_all_of_create(
     list_t *all_of
 );
 

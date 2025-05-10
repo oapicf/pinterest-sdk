@@ -13,11 +13,11 @@ import AnyCodable
 /** System error details included in the log sent by the client. */
 public struct IntegrationLogClientError: Codable, JSONEncodable, Hashable {
 
-    static let causeRule = StringRule(minLength: nil, maxLength: 512, pattern: nil)
-    static let fileNameRule = StringRule(minLength: nil, maxLength: 256, pattern: nil)
-    static let messageRule = StringRule(minLength: nil, maxLength: 512, pattern: nil)
-    static let messageDetailRule = StringRule(minLength: nil, maxLength: 1024, pattern: nil)
-    static let nameRule = StringRule(minLength: nil, maxLength: 256, pattern: nil)
+    public static let causeRule = StringRule(minLength: nil, maxLength: 512, pattern: nil)
+    public static let fileNameRule = StringRule(minLength: nil, maxLength: 256, pattern: nil)
+    public static let messageRule = StringRule(minLength: nil, maxLength: 512, pattern: nil)
+    public static let messageDetailRule = StringRule(minLength: nil, maxLength: 1024, pattern: nil)
+    public static let nameRule = StringRule(minLength: nil, maxLength: 256, pattern: nil)
     /** Original cause of the error. */
     public var cause: String?
     /** Column number in the line of the file that raised the error. */

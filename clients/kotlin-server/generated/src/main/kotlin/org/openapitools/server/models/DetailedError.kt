@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Used for including extra details to a base error
  * @param code 
  * @param message 
  * @param details 
  */
+@Serializable
 data class DetailedError(
     val code: kotlin.Int,
     val message: kotlin.String,
     val details: kotlin.Any
-) 
+)
 

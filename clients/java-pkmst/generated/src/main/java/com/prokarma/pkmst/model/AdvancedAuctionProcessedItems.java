@@ -19,7 +19,7 @@ import java.util.List;
  */
 @ApiModel(description = "Response object containing the results of an operation on an item bid option")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2025-05-10T05:39:31.012858315Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdvancedAuctionProcessedItems   {
   @JsonProperty("catalog_id")
   private String catalogId;

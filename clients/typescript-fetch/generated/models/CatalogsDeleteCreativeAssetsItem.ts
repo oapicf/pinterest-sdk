@@ -67,11 +67,11 @@ export function CatalogsDeleteCreativeAssetsItemFromJSONTyped(json: any, ignoreD
     };
 }
 
-  export function CatalogsDeleteCreativeAssetsItemToJSON(json: any): CatalogsDeleteCreativeAssetsItem {
-      return CatalogsDeleteCreativeAssetsItemToJSONTyped(json, false);
-  }
+export function CatalogsDeleteCreativeAssetsItemToJSON(json: any): CatalogsDeleteCreativeAssetsItem {
+    return CatalogsDeleteCreativeAssetsItemToJSONTyped(json, false);
+}
 
-  export function CatalogsDeleteCreativeAssetsItemToJSONTyped(value?: CatalogsDeleteCreativeAssetsItem | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsDeleteCreativeAssetsItemToJSONTyped(value?: CatalogsDeleteCreativeAssetsItem | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

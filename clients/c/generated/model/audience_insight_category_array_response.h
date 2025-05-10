@@ -22,9 +22,10 @@ typedef struct audience_insight_category_array_response_t audience_insight_categ
 typedef struct audience_insight_category_array_response_t {
     list_t *items; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } audience_insight_category_array_response_t;
 
-audience_insight_category_array_response_t *audience_insight_category_array_response_create(
+__attribute__((deprecated)) audience_insight_category_array_response_t *audience_insight_category_array_response_create(
     list_t *items
 );
 

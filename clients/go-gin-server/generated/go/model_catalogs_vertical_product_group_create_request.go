@@ -10,10 +10,6 @@
 
 package openapi
 
-import (
-	"gopkg.in/validator.v2"
-)
-
 // CatalogsVerticalProductGroupCreateRequest - Request object for creating a catalog based product group.
 type CatalogsVerticalProductGroupCreateRequest struct {
 

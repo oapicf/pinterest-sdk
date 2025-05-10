@@ -143,7 +143,7 @@ func (c *LeadFormsAPIController) LeadFormsCreate(w http.ResponseWriter, r *http.
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	leadFormCreateRequestParam := []LeadFormCreateRequest{}
+	var leadFormCreateRequestParam []LeadFormCreateRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&leadFormCreateRequestParam); err != nil {
@@ -174,7 +174,7 @@ func (c *LeadFormsAPIController) LeadFormsUpdate(w http.ResponseWriter, r *http.
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	leadFormUpdateRequestParam := []LeadFormUpdateRequest{}
+	var leadFormUpdateRequestParam []LeadFormUpdateRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&leadFormUpdateRequestParam); err != nil {
@@ -233,7 +233,7 @@ func (c *LeadFormsAPIController) LeadFormTestCreate(w http.ResponseWriter, r *ht
 		c.errorHandler(w, r, &RequiredError{"lead_form_id"}, nil)
 		return
 	}
-	leadFormTestRequestParam := LeadFormTestRequest{}
+	var leadFormTestRequestParam LeadFormTestRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&leadFormTestRequestParam); err != nil {

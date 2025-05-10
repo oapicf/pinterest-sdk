@@ -64,11 +64,11 @@ export function ProductGroupPromotionsList200ResponseFromJSONTyped(json: any, ig
     };
 }
 
-  export function ProductGroupPromotionsList200ResponseToJSON(json: any): ProductGroupPromotionsList200Response {
-      return ProductGroupPromotionsList200ResponseToJSONTyped(json, false);
-  }
+export function ProductGroupPromotionsList200ResponseToJSON(json: any): ProductGroupPromotionsList200Response {
+    return ProductGroupPromotionsList200ResponseToJSONTyped(json, false);
+}
 
-  export function ProductGroupPromotionsList200ResponseToJSONTyped(value?: ProductGroupPromotionsList200Response | null, ignoreDiscriminator: boolean = false): any {
+export function ProductGroupPromotionsList200ResponseToJSONTyped(value?: ProductGroupPromotionsList200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

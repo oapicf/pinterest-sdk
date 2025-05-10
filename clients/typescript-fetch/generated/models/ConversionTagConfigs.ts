@@ -90,11 +90,11 @@ export function ConversionTagConfigsFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function ConversionTagConfigsToJSON(json: any): ConversionTagConfigs {
-      return ConversionTagConfigsToJSONTyped(json, false);
-  }
+export function ConversionTagConfigsToJSON(json: any): ConversionTagConfigs {
+    return ConversionTagConfigsToJSONTyped(json, false);
+}
 
-  export function ConversionTagConfigsToJSONTyped(value?: ConversionTagConfigs | null, ignoreDiscriminator: boolean = false): any {
+export function ConversionTagConfigsToJSONTyped(value?: ConversionTagConfigs | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

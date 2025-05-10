@@ -21,11 +21,25 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Schema describing the object in the response, which contains information about the events that were received and processed.")
 @JsonTypeName("ConversionApiResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConversionApiResponse   {
   private Integer numEventsReceived;
   private Integer numEventsProcessed;
   private @Valid List<@Valid ConversionApiResponseEventsInner> events = new ArrayList<>();
+
+  public ConversionApiResponse() {
+  }
+
+  @JsonCreator
+  public ConversionApiResponse(
+    @JsonProperty(required = true, value = "num_events_received") Integer numEventsReceived,
+    @JsonProperty(required = true, value = "num_events_processed") Integer numEventsProcessed,
+    @JsonProperty(required = true, value = "events") List<@Valid ConversionApiResponseEventsInner> events
+  ) {
+    this.numEventsReceived = numEventsReceived;
+    this.numEventsProcessed = numEventsProcessed;
+    this.events = events;
+  }
 
   /**
    * Total number of events received in the request.
@@ -37,12 +51,12 @@ public class ConversionApiResponse   {
 
   
   @ApiModelProperty(required = true, value = "Total number of events received in the request.")
-  @JsonProperty("num_events_received")
+  @JsonProperty(required = true, value = "num_events_received")
   @NotNull public Integer getNumEventsReceived() {
     return numEventsReceived;
   }
 
-  @JsonProperty("num_events_received")
+  @JsonProperty(required = true, value = "num_events_received")
   public void setNumEventsReceived(Integer numEventsReceived) {
     this.numEventsReceived = numEventsReceived;
   }
@@ -57,12 +71,12 @@ public class ConversionApiResponse   {
 
   
   @ApiModelProperty(required = true, value = "Number of events that were successfully processed from the events.")
-  @JsonProperty("num_events_processed")
+  @JsonProperty(required = true, value = "num_events_processed")
   @NotNull public Integer getNumEventsProcessed() {
     return numEventsProcessed;
   }
 
-  @JsonProperty("num_events_processed")
+  @JsonProperty(required = true, value = "num_events_processed")
   public void setNumEventsProcessed(Integer numEventsProcessed) {
     this.numEventsProcessed = numEventsProcessed;
   }
@@ -77,12 +91,12 @@ public class ConversionApiResponse   {
 
   
   @ApiModelProperty(required = true, value = "Specific messages for each event received. The order will match the order in which the events were received in the request.")
-  @JsonProperty("events")
+  @JsonProperty(required = true, value = "events")
   @NotNull @Valid public List<@Valid ConversionApiResponseEventsInner> getEvents() {
     return events;
   }
 
-  @JsonProperty("events")
+  @JsonProperty(required = true, value = "events")
   public void setEvents(List<@Valid ConversionApiResponseEventsInner> events) {
     this.events = events;
   }

@@ -1,6 +1,6 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Multipart};
+use axum_extra::extract::{CookieJar, Host};
 use bytes::Bytes;
 use http::Method;
 use serde::{Deserialize, Serialize};
@@ -199,144 +199,144 @@ pub enum TemplatesSlashListResponse {
 /// AdAccounts
 #[async_trait]
 #[allow(clippy::ptr_arg)]
-pub trait AdAccounts {
+pub trait AdAccounts<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHandler<E> {
     /// Get ad account analytics.
     ///
     /// AdAccountSlashAnalytics - GET /v5/ad_accounts/{ad_account_id}/analytics
     async fn ad_account_slash_analytics(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::AdAccountSlashAnalyticsPathParams,
-      query_params: models::AdAccountSlashAnalyticsQueryParams,
-    ) -> Result<AdAccountSlashAnalyticsResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::AdAccountSlashAnalyticsPathParams,
+      query_params: &models::AdAccountSlashAnalyticsQueryParams,
+    ) -> Result<AdAccountSlashAnalyticsResponse, E>;
 
     /// Get targeting analytics for an ad account.
     ///
     /// AdAccountTargetingAnalyticsSlashGet - GET /v5/ad_accounts/{ad_account_id}/targeting_analytics
     async fn ad_account_targeting_analytics_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::AdAccountTargetingAnalyticsSlashGetPathParams,
-      query_params: models::AdAccountTargetingAnalyticsSlashGetQueryParams,
-    ) -> Result<AdAccountTargetingAnalyticsSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::AdAccountTargetingAnalyticsSlashGetPathParams,
+      query_params: &models::AdAccountTargetingAnalyticsSlashGetQueryParams,
+    ) -> Result<AdAccountTargetingAnalyticsSlashGetResponse, E>;
 
     /// Create ad account.
     ///
     /// AdAccountsSlashCreate - POST /v5/ad_accounts
     async fn ad_accounts_slash_create(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-            body: models::AdAccountCreateRequest,
-    ) -> Result<AdAccountsSlashCreateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+            body: &models::AdAccountCreateRequest,
+    ) -> Result<AdAccountsSlashCreateResponse, E>;
 
     /// Get ad account.
     ///
     /// AdAccountsSlashGet - GET /v5/ad_accounts/{ad_account_id}
     async fn ad_accounts_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::AdAccountsSlashGetPathParams,
-    ) -> Result<AdAccountsSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::AdAccountsSlashGetPathParams,
+    ) -> Result<AdAccountsSlashGetResponse, E>;
 
     /// List ad accounts.
     ///
     /// AdAccountsSlashList - GET /v5/ad_accounts
     async fn ad_accounts_slash_list(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::AdAccountsSlashListQueryParams,
-    ) -> Result<AdAccountsSlashListResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::AdAccountsSlashListQueryParams,
+    ) -> Result<AdAccountsSlashListResponse, E>;
 
     /// Create a request for a Marketing Mix Modeling (MMM) report.
     ///
     /// AnalyticsSlashCreateMmmReport - POST /v5/ad_accounts/{ad_account_id}/mmm_reports
     async fn analytics_slash_create_mmm_report(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::AnalyticsSlashCreateMmmReportPathParams,
-            body: models::CreateMmmReportRequest,
-    ) -> Result<AnalyticsSlashCreateMmmReportResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::AnalyticsSlashCreateMmmReportPathParams,
+            body: &models::CreateMmmReportRequest,
+    ) -> Result<AnalyticsSlashCreateMmmReportResponse, E>;
 
     /// Create async request for an account analytics report.
     ///
     /// AnalyticsSlashCreateReport - POST /v5/ad_accounts/{ad_account_id}/reports
     async fn analytics_slash_create_report(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::AnalyticsSlashCreateReportPathParams,
-            body: models::AdsAnalyticsCreateAsyncRequest,
-    ) -> Result<AnalyticsSlashCreateReportResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::AnalyticsSlashCreateReportPathParams,
+            body: &models::AdsAnalyticsCreateAsyncRequest,
+    ) -> Result<AnalyticsSlashCreateReportResponse, E>;
 
     /// Create async request for an analytics report using a template.
     ///
     /// AnalyticsSlashCreateTemplateReport - POST /v5/ad_accounts/{ad_account_id}/templates/{template_id}/reports
     async fn analytics_slash_create_template_report(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::AnalyticsSlashCreateTemplateReportPathParams,
-      query_params: models::AnalyticsSlashCreateTemplateReportQueryParams,
-    ) -> Result<AnalyticsSlashCreateTemplateReportResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::AnalyticsSlashCreateTemplateReportPathParams,
+      query_params: &models::AnalyticsSlashCreateTemplateReportQueryParams,
+    ) -> Result<AnalyticsSlashCreateTemplateReportResponse, E>;
 
     /// Get advertiser Marketing Mix Modeling (MMM) report..
     ///
     /// AnalyticsSlashGetMmmReport - GET /v5/ad_accounts/{ad_account_id}/mmm_reports
     async fn analytics_slash_get_mmm_report(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::AnalyticsSlashGetMmmReportPathParams,
-      query_params: models::AnalyticsSlashGetMmmReportQueryParams,
-    ) -> Result<AnalyticsSlashGetMmmReportResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::AnalyticsSlashGetMmmReportPathParams,
+      query_params: &models::AnalyticsSlashGetMmmReportQueryParams,
+    ) -> Result<AnalyticsSlashGetMmmReportResponse, E>;
 
     /// Get the account analytics report created by the async call.
     ///
     /// AnalyticsSlashGetReport - GET /v5/ad_accounts/{ad_account_id}/reports
     async fn analytics_slash_get_report(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::AnalyticsSlashGetReportPathParams,
-      query_params: models::AnalyticsSlashGetReportQueryParams,
-    ) -> Result<AnalyticsSlashGetReportResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::AnalyticsSlashGetReportPathParams,
+      query_params: &models::AnalyticsSlashGetReportQueryParams,
+    ) -> Result<AnalyticsSlashGetReportResponse, E>;
 
     /// Delete ads data for ad account in API Sandbox.
     ///
     /// SandboxSlashDelete - DELETE /v5/ad_accounts/{ad_account_id}/sandbox
     async fn sandbox_slash_delete(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::SandboxSlashDeletePathParams,
-    ) -> Result<SandboxSlashDeleteResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::SandboxSlashDeletePathParams,
+    ) -> Result<SandboxSlashDeleteResponse, E>;
 
     /// List templates.
     ///
     /// TemplatesSlashList - GET /v5/ad_accounts/{ad_account_id}/templates
     async fn templates_slash_list(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::TemplatesSlashListPathParams,
-      query_params: models::TemplatesSlashListQueryParams,
-    ) -> Result<TemplatesSlashListResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::TemplatesSlashListPathParams,
+      query_params: &models::TemplatesSlashListQueryParams,
+    ) -> Result<TemplatesSlashListResponse, E>;
 }

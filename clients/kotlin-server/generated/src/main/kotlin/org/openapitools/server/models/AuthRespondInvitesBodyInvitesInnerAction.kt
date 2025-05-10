@@ -13,15 +13,17 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.Permissions
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param acceptInvite Whether the invite/request is accepted.
  * @param assetIdToPermissions An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
  */
+@Serializable
 data class AuthRespondInvitesBodyInvitesInnerAction(
     /* Whether the invite/request is accepted. */
     val acceptInvite: kotlin.Boolean,
     /* An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.  */
     val assetIdToPermissions: kotlin.collections.Map<kotlin.String, kotlin.collections.List<Permissions>>? = null
-) 
+)
 

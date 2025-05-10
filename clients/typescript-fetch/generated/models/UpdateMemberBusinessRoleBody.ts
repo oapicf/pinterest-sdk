@@ -67,11 +67,11 @@ export function UpdateMemberBusinessRoleBodyFromJSONTyped(json: any, ignoreDiscr
     };
 }
 
-  export function UpdateMemberBusinessRoleBodyToJSON(json: any): UpdateMemberBusinessRoleBody {
-      return UpdateMemberBusinessRoleBodyToJSONTyped(json, false);
-  }
+export function UpdateMemberBusinessRoleBodyToJSON(json: any): UpdateMemberBusinessRoleBody {
+    return UpdateMemberBusinessRoleBodyToJSONTyped(json, false);
+}
 
-  export function UpdateMemberBusinessRoleBodyToJSONTyped(value?: UpdateMemberBusinessRoleBody | null, ignoreDiscriminator: boolean = false): any {
+export function UpdateMemberBusinessRoleBodyToJSONTyped(value?: UpdateMemberBusinessRoleBody | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

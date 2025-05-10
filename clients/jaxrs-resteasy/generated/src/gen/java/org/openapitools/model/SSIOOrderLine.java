@@ -15,7 +15,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2025-05-10T05:40:40.818990358Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SSIOOrderLine   {
   
   private String salesforceOrderLineId;
@@ -97,7 +97,7 @@ public class SSIOOrderLine   {
    * Start date of the order line.
    **/
   
-  @ApiModelProperty(example = "Thu Mar 01 00:00:00 UTC 2018", value = "Start date of the order line.")
+  @ApiModelProperty(example = "2018-03-01", value = "Start date of the order line.")
   @JsonProperty("start_date")
   public Date getStartDate() {
     return startDate;
@@ -110,7 +110,7 @@ public class SSIOOrderLine   {
    * End date of the order line.
    **/
   
-  @ApiModelProperty(example = "Mon Oct 05 00:00:00 UTC 2020", value = "End date of the order line.")
+  @ApiModelProperty(example = "2020-10-05", value = "End date of the order line.")
   @JsonProperty("end_date")
   public Date getEndDate() {
     return endDate;

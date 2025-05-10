@@ -55,98 +55,119 @@ stringFromOrder_ model =
 
 
 
-{-| List all ad accounts and/or businesses that have access to a specific audience. The audience must be owned by the requesting ad account.
+{-| List accounts with access to an audience owned by an ad account
+
+List all ad accounts and/or businesses that have access to a specific audience. The audience must be owned by the requesting ad account.
+
 -}
 adAccountsAudiencesSharedAccountsList : String -> String -> AudienceAccountType -> Maybe Int -> Maybe String -> Api.Request Api.Data.AdAccountsAudiencesSharedAccountsList200Response
 adAccountsAudiencesSharedAccountsList adAccountId_path audienceId_query accountType_query pageSize_query bookmark_query =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/audiences/shared/accounts"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         [ ( "audience_id", Just <| identity audienceId_query ), ( "account_type", Just <| Api.Data.stringFromAudienceAccountType accountType_query ), ( "page_size", Maybe.map String.fromInt pageSize_query ), ( "bookmark", Maybe.map identity bookmark_query ) ]
         []
         Nothing
         Api.Data.adAccountsAudiencesSharedAccountsList200ResponseDecoder
 
 
-{-| List all ad accounts and/or businesses that have access to a specific audience. The audience must either be owned by an ad account in the requesting business, or it must have been shared with the requesting business. If the requesting business is not the owner of the audience, only ad accounts owned by the requesting business will be returned.
+{-| List accounts with access to an audience owned by a business
+
+List all ad accounts and/or businesses that have access to a specific audience. The audience must either be owned by an ad account in the requesting business, or it must have been shared with the requesting business. If the requesting business is not the owner of the audience, only ad accounts owned by the requesting business will be returned.
+
 -}
 businessAccountAudiencesSharedAccountsList : String -> String -> AudienceAccountType -> Maybe Int -> Maybe String -> Api.Request Api.Data.AdAccountsAudiencesSharedAccountsList200Response
 businessAccountAudiencesSharedAccountsList businessId_path audienceId_query accountType_query pageSize_query bookmark_query =
     Api.request
         "GET"
         "/businesses/{business_id}/audiences/shared/accounts"
-        [ ( "businessId", identity businessId_path ) ]
+        [ ( "business_id", identity businessId_path ) ]
         [ ( "audience_id", Just <| identity audienceId_query ), ( "account_type", Just <| Api.Data.stringFromAudienceAccountType accountType_query ), ( "page_size", Maybe.map String.fromInt pageSize_query ), ( "bookmark", Maybe.map identity bookmark_query ) ]
         []
         Nothing
         Api.Data.adAccountsAudiencesSharedAccountsList200ResponseDecoder
 
 
-{-| Get a list of received audiences for the given business.
+{-| List received audiences for a business
+
+Get a list of received audiences for the given business.
+
 -}
 sharedAudiencesForBusinessList : String -> Maybe String -> Maybe Order_ -> Maybe Int -> Api.Request Api.Data.AudiencesList200Response
 sharedAudiencesForBusinessList businessId_path bookmark_query order_query pageSize_query =
     Api.request
         "GET"
         "/businesses/{business_id}/audiences"
-        [ ( "businessId", identity businessId_path ) ]
+        [ ( "business_id", identity businessId_path ) ]
         [ ( "bookmark", Maybe.map identity bookmark_query ), ( "order", Maybe.map stringFromOrder_ order_query ), ( "page_size", Maybe.map String.fromInt pageSize_query ) ]
         []
         Nothing
         Api.Data.audiencesList200ResponseDecoder
 
 
-{-| From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
+{-| Update audience sharing between ad accounts
+
+From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
+
 -}
 updateAdAccountToAdAccountSharedAudience : String -> Api.Data.SharedAudience -> Api.Request Api.Data.SharedAudienceResponse
 updateAdAccountToAdAccountSharedAudience adAccountId_path sharedAudience_body =
     Api.request
         "PATCH"
         "/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Just (Api.Data.encodeSharedAudience sharedAudience_body)))
         Api.Data.sharedAudienceResponseDecoder
 
 
-{-| From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
+{-| Update audience sharing from an ad account to businesses
+
+From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
+
 -}
 updateAdAccountToBusinessSharedAudience : String -> Api.Data.BusinessSharedAudience -> Api.Request Api.Data.BusinessSharedAudienceResponse
 updateAdAccountToBusinessSharedAudience adAccountId_path businessSharedAudience_body =
     Api.request
         "PATCH"
         "/ad_accounts/{ad_account_id}/audiences/businesses/shared"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Just (Api.Data.encodeBusinessSharedAudience businessSharedAudience_body)))
         Api.Data.businessSharedAudienceResponseDecoder
 
 
-{-| From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
+{-| Update audience sharing from a business to ad accounts
+
+From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
+
 -}
 updateBusinessToAdAccountSharedAudience : String -> Api.Data.SharedAudience -> Api.Request Api.Data.SharedAudienceResponse
 updateBusinessToAdAccountSharedAudience businessId_path sharedAudience_body =
     Api.request
         "PATCH"
         "/businesses/{business_id}/audiences/ad_accounts/shared"
-        [ ( "businessId", identity businessId_path ) ]
+        [ ( "business_id", identity businessId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Just (Api.Data.encodeSharedAudience sharedAudience_body)))
         Api.Data.sharedAudienceResponseDecoder
 
 
-{-| From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
+{-| Update audience sharing between businesses
+
+From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
+
 -}
 updateBusinessToBusinessSharedAudience : String -> Api.Data.BusinessSharedAudience -> Api.Request Api.Data.BusinessSharedAudienceResponse
 updateBusinessToBusinessSharedAudience businessId_path businessSharedAudience_body =
     Api.request
         "PATCH"
         "/businesses/{business_id}/audiences/businesses/shared"
-        [ ( "businessId", identity businessId_path ) ]
+        [ ( "business_id", identity businessId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Just (Api.Data.encodeBusinessSharedAudience businessSharedAudience_body)))

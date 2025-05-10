@@ -57,11 +57,11 @@ export function BusinessMembersAssetAccessDeleteRequestAccessesInnerFromJSONType
     };
 }
 
-  export function BusinessMembersAssetAccessDeleteRequestAccessesInnerToJSON(json: any): BusinessMembersAssetAccessDeleteRequestAccessesInner {
-      return BusinessMembersAssetAccessDeleteRequestAccessesInnerToJSONTyped(json, false);
-  }
+export function BusinessMembersAssetAccessDeleteRequestAccessesInnerToJSON(json: any): BusinessMembersAssetAccessDeleteRequestAccessesInner {
+    return BusinessMembersAssetAccessDeleteRequestAccessesInnerToJSONTyped(json, false);
+}
 
-  export function BusinessMembersAssetAccessDeleteRequestAccessesInnerToJSONTyped(value?: BusinessMembersAssetAccessDeleteRequestAccessesInner | null, ignoreDiscriminator: boolean = false): any {
+export function BusinessMembersAssetAccessDeleteRequestAccessesInnerToJSONTyped(value?: BusinessMembersAssetAccessDeleteRequestAccessesInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

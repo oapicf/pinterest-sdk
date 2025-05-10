@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param accountType Type of account
@@ -27,6 +28,7 @@ package org.openapitools.server.models
  * @param followingCount User account following count.
  * @param monthlyViews User account monthly views.
  */
+@Serializable
 data class Account(
     /* Type of account */
     val accountType: Account.AccountType? = null,
@@ -48,7 +50,7 @@ data class Account(
     val followingCount: kotlin.Int? = null,
     /* User account monthly views. */
     val monthlyViews: kotlin.Int? = null
-) 
+)
 {
     /**
     * Type of account

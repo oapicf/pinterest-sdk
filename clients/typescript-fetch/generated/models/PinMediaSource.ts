@@ -88,23 +88,27 @@ export function PinMediaSourceFromJSONTyped(json: any, ignoreDiscriminator: bool
     }
 }
 
-export function PinMediaSourceToJSON(value?: PinMediaSource | null): any {
+export function PinMediaSourceToJSON(json: any): any {
+    return PinMediaSourceToJSONTyped(json, false);
+}
+
+export function PinMediaSourceToJSONTyped(value?: PinMediaSource | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
     switch (value['sourceType']) {
         case 'image_base64':
-            return PinMediaSourceImageBase64ToJSON(value);
+            return Object.assign({}, PinMediaSourceImageBase64ToJSON(value), { sourceType: 'image_base64' } as const);
         case 'image_url':
-            return PinMediaSourceImageURLToJSON(value);
+            return Object.assign({}, PinMediaSourceImageURLToJSON(value), { sourceType: 'image_url' } as const);
         case 'multiple_image_base64':
-            return PinMediaSourceImagesBase64ToJSON(value);
+            return Object.assign({}, PinMediaSourceImagesBase64ToJSON(value), { sourceType: 'multiple_image_base64' } as const);
         case 'multiple_image_urls':
-            return PinMediaSourceImagesURLToJSON(value);
+            return Object.assign({}, PinMediaSourceImagesURLToJSON(value), { sourceType: 'multiple_image_urls' } as const);
         case 'pin_url':
-            return PinMediaSourcePinURLToJSON(value);
+            return Object.assign({}, PinMediaSourcePinURLToJSON(value), { sourceType: 'pin_url' } as const);
         case 'video_id':
-            return PinMediaSourceVideoIDToJSON(value);
+            return Object.assign({}, PinMediaSourceVideoIDToJSON(value), { sourceType: 'video_id' } as const);
         default:
             throw new Error(`No variant of PinMediaSource exists with 'sourceType=${value['sourceType']}'`);
     }

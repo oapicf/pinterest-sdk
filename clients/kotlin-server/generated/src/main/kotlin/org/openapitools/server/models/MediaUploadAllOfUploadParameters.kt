@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * The list of parameter key/value pairs you will need to send with your POST request to upload your media file.
  * @param xAmzDate 
@@ -23,6 +24,7 @@ package org.openapitools.server.models
  * @param xAmzCredential 
  * @param contentType 
  */
+@Serializable
 data class MediaUploadAllOfUploadParameters(
     val xAmzDate: kotlin.String? = null,
     val xAmzSignature: kotlin.String? = null,
@@ -32,5 +34,5 @@ data class MediaUploadAllOfUploadParameters(
     val policy: kotlin.String? = null,
     val xAmzCredential: kotlin.String? = null,
     val contentType: kotlin.String? = null
-) 
+)
 

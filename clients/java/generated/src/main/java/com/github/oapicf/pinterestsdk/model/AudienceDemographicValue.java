@@ -49,24 +49,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Demographic detail for a single audience demographic
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AudienceDemographicValue {
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)
+  @javax.annotation.Nullable
   private String key;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_RATIO = "ratio";
   @SerializedName(SERIALIZED_NAME_RATIO)
+  @javax.annotation.Nullable
   private BigDecimal ratio;
 
   public AudienceDemographicValue() {
   }
 
-  public AudienceDemographicValue key(String key) {
+  public AudienceDemographicValue key(@javax.annotation.Nullable String key) {
     this.key = key;
     return this;
   }
@@ -80,12 +83,12 @@ public class AudienceDemographicValue {
     return key;
   }
 
-  public void setKey(String key) {
+  public void setKey(@javax.annotation.Nullable String key) {
     this.key = key;
   }
 
 
-  public AudienceDemographicValue name(String name) {
+  public AudienceDemographicValue name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -99,12 +102,12 @@ public class AudienceDemographicValue {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public AudienceDemographicValue ratio(BigDecimal ratio) {
+  public AudienceDemographicValue ratio(@javax.annotation.Nullable BigDecimal ratio) {
     this.ratio = ratio;
     return this;
   }
@@ -118,7 +121,7 @@ public class AudienceDemographicValue {
     return ratio;
   }
 
-  public void setRatio(BigDecimal ratio) {
+  public void setRatio(@javax.annotation.Nullable BigDecimal ratio) {
     this.ratio = ratio;
   }
 

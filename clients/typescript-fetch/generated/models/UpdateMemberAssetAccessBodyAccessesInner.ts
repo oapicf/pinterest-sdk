@@ -73,11 +73,11 @@ export function UpdateMemberAssetAccessBodyAccessesInnerFromJSONTyped(json: any,
     };
 }
 
-  export function UpdateMemberAssetAccessBodyAccessesInnerToJSON(json: any): UpdateMemberAssetAccessBodyAccessesInner {
-      return UpdateMemberAssetAccessBodyAccessesInnerToJSONTyped(json, false);
-  }
+export function UpdateMemberAssetAccessBodyAccessesInnerToJSON(json: any): UpdateMemberAssetAccessBodyAccessesInner {
+    return UpdateMemberAssetAccessBodyAccessesInnerToJSONTyped(json, false);
+}
 
-  export function UpdateMemberAssetAccessBodyAccessesInnerToJSONTyped(value?: UpdateMemberAssetAccessBodyAccessesInner | null, ignoreDiscriminator: boolean = false): any {
+export function UpdateMemberAssetAccessBodyAccessesInnerToJSONTyped(value?: UpdateMemberAssetAccessBodyAccessesInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

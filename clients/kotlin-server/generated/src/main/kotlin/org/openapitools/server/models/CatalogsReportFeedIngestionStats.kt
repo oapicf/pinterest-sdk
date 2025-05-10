@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param reportType 
@@ -22,6 +23,7 @@ package org.openapitools.server.models
  * @param occurrences Number of occurrences of the issue
  * @param severity An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
  */
+@Serializable
 data class CatalogsReportFeedIngestionStats(
     val reportType: CatalogsReportFeedIngestionStats.ReportType? = null,
     /* ID of the catalog entity. */
@@ -36,7 +38,7 @@ data class CatalogsReportFeedIngestionStats(
     val occurrences: kotlin.Int? = null,
     /* An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue */
     val severity: CatalogsReportFeedIngestionStats.Severity? = null
-) 
+)
 {
     /**
     * 

@@ -17,6 +17,7 @@ import org.openapitools.server.models.GridClickType
 import org.openapitools.server.models.QuizPinData
 import org.openapitools.server.models.TrackingUrls
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param id The ID of this ad.
@@ -41,6 +42,7 @@ import org.openapitools.server.models.TrackingUrls
  * @param quizPinData Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
  * @param pinId Pin ID. This field may only be updated for draft ads.
  */
+@Serializable
 data class AdUpdateRequest(
     /* The ID of this ad. */
     val id: kotlin.String,
@@ -80,7 +82,7 @@ data class AdUpdateRequest(
     val quizPinData: QuizPinData? = null,
     /* Pin ID. This field may only be updated for draft ads. */
     val pinId: kotlin.String? = null
-) 
+)
 {
     /**
     * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)

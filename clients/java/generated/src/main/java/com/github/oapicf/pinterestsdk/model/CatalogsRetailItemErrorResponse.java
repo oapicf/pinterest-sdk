@@ -52,24 +52,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Object describing a retail item error
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsRetailItemErrorResponse {
   public static final String SERIALIZED_NAME_CATALOG_TYPE = "catalog_type";
   @SerializedName(SERIALIZED_NAME_CATALOG_TYPE)
+  @javax.annotation.Nonnull
   private CatalogsType catalogType;
 
   public static final String SERIALIZED_NAME_ITEM_ID = "item_id";
   @SerializedName(SERIALIZED_NAME_ITEM_ID)
+  @javax.annotation.Nullable
   private String itemId;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
+  @javax.annotation.Nullable
   private List<ItemValidationEvent> errors = new ArrayList<>();
 
   public CatalogsRetailItemErrorResponse() {
   }
 
-  public CatalogsRetailItemErrorResponse catalogType(CatalogsType catalogType) {
+  public CatalogsRetailItemErrorResponse catalogType(@javax.annotation.Nonnull CatalogsType catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -83,12 +86,12 @@ public class CatalogsRetailItemErrorResponse {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(@javax.annotation.Nonnull CatalogsType catalogType) {
     this.catalogType = catalogType;
   }
 
 
-  public CatalogsRetailItemErrorResponse itemId(String itemId) {
+  public CatalogsRetailItemErrorResponse itemId(@javax.annotation.Nullable String itemId) {
     this.itemId = itemId;
     return this;
   }
@@ -102,12 +105,12 @@ public class CatalogsRetailItemErrorResponse {
     return itemId;
   }
 
-  public void setItemId(String itemId) {
+  public void setItemId(@javax.annotation.Nullable String itemId) {
     this.itemId = itemId;
   }
 
 
-  public CatalogsRetailItemErrorResponse errors(List<ItemValidationEvent> errors) {
+  public CatalogsRetailItemErrorResponse errors(@javax.annotation.Nullable List<ItemValidationEvent> errors) {
     this.errors = errors;
     return this;
   }
@@ -129,7 +132,7 @@ public class CatalogsRetailItemErrorResponse {
     return errors;
   }
 
-  public void setErrors(List<ItemValidationEvent> errors) {
+  public void setErrors(@javax.annotation.Nullable List<ItemValidationEvent> errors) {
     this.errors = errors;
   }
 

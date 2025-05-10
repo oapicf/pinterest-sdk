@@ -47,9 +47,10 @@ typedef struct catalogs_report_stats_t {
     int ineligible_for_ads; //boolean
     int ineligible_for_organic; //boolean
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_report_stats_t;
 
-catalogs_report_stats_t *catalogs_report_stats_create(
+__attribute__((deprecated)) catalogs_report_stats_t *catalogs_report_stats_create(
     pinterest_rest_api_catalogs_report_stats_REPORTTYPE_e report_type,
     char *catalog_id,
     int code,

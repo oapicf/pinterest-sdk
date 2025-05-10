@@ -15,10 +15,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdsCreditRedeemRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdsCreditRedeemRequest   {
   private String offerCodeHash;
   private Boolean validateOnly;
+
+  public AdsCreditRedeemRequest() {
+  }
+
+  @JsonCreator
+  public AdsCreditRedeemRequest(
+    @JsonProperty(required = true, value = "offerCodeHash") String offerCodeHash,
+    @JsonProperty(required = true, value = "validateOnly") Boolean validateOnly
+  ) {
+    this.offerCodeHash = offerCodeHash;
+    this.validateOnly = validateOnly;
+  }
 
   /**
    * Takes in a SHA256 hash of the offerCode.
@@ -30,12 +42,12 @@ public class AdsCreditRedeemRequest   {
 
   
   @ApiModelProperty(example = "138e9e0ff7e38cf511b880975eb574c09aa9d5e1657590ab0431040da68caa67", required = true, value = "Takes in a SHA256 hash of the offerCode.")
-  @JsonProperty("offerCodeHash")
+  @JsonProperty(required = true, value = "offerCodeHash")
   @NotNull  @Pattern(regexp="^[a-z0-9]*$")public String getOfferCodeHash() {
     return offerCodeHash;
   }
 
-  @JsonProperty("offerCodeHash")
+  @JsonProperty(required = true, value = "offerCodeHash")
   public void setOfferCodeHash(String offerCodeHash) {
     this.offerCodeHash = offerCodeHash;
   }
@@ -50,12 +62,12 @@ public class AdsCreditRedeemRequest   {
 
   
   @ApiModelProperty(example = "true", required = true, value = "If true, only validate if we can redeem offer code. Otherwise it will actually apply the offer code to the account")
-  @JsonProperty("validateOnly")
+  @JsonProperty(required = true, value = "validateOnly")
   @NotNull public Boolean getValidateOnly() {
     return validateOnly;
   }
 
-  @JsonProperty("validateOnly")
+  @JsonProperty(required = true, value = "validateOnly")
   public void setValidateOnly(Boolean validateOnly) {
     this.validateOnly = validateOnly;
   }

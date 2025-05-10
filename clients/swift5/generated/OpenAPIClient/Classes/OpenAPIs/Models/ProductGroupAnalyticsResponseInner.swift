@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct ProductGroupAnalyticsResponseInner: Codable, JSONEncodable, Hashable {
 
-    static let PRODUCT_GROUP_IDRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let PRODUCT_GROUP_IDRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** The ID of the product group that this metrics belongs to. */
     public var PRODUCT_GROUP_ID: String
     /** Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`) */

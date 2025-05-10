@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.model.CatalogsReportDistributionStats;
 import org.openapitools.model.CatalogsReportFeedIngestionStats;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -33,7 +34,7 @@ import javax.annotation.Generated;
   @JsonSubTypes.Type(value = CatalogsReportFeedIngestionStats.class, name = "CatalogsReportFeedIngestionStats")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public interface CatalogsReportStats {
     public String getReportType();
 }

@@ -57,56 +57,67 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Request object for creating a feed.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsCreativeAssetsFeedsCreateRequest {
   public static final String SERIALIZED_NAME_DEFAULT_CURRENCY = "default_currency";
   @SerializedName(SERIALIZED_NAME_DEFAULT_CURRENCY)
+  @javax.annotation.Nullable
   private NullableCurrency defaultCurrency;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nonnull
   private String name;
 
   public static final String SERIALIZED_NAME_FORMAT = "format";
   @SerializedName(SERIALIZED_NAME_FORMAT)
+  @javax.annotation.Nonnull
   private CatalogsFormat format;
 
   public static final String SERIALIZED_NAME_DEFAULT_LOCALE = "default_locale";
   @SerializedName(SERIALIZED_NAME_DEFAULT_LOCALE)
+  @javax.annotation.Nonnull
   private CatalogsFeedsCreateRequestDefaultLocale defaultLocale;
 
   public static final String SERIALIZED_NAME_DEFAULT_COUNTRY = "default_country";
   @SerializedName(SERIALIZED_NAME_DEFAULT_COUNTRY)
+  @javax.annotation.Nonnull
   private Country defaultCountry;
 
   public static final String SERIALIZED_NAME_CREDENTIALS = "credentials";
   @SerializedName(SERIALIZED_NAME_CREDENTIALS)
+  @javax.annotation.Nullable
   private CatalogsFeedCredentials credentials;
 
   public static final String SERIALIZED_NAME_LOCATION = "location";
   @SerializedName(SERIALIZED_NAME_LOCATION)
+  @javax.annotation.Nonnull
   private String location;
 
   public static final String SERIALIZED_NAME_PREFERRED_PROCESSING_SCHEDULE = "preferred_processing_schedule";
   @SerializedName(SERIALIZED_NAME_PREFERRED_PROCESSING_SCHEDULE)
+  @javax.annotation.Nullable
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
 
   public static final String SERIALIZED_NAME_CATALOG_TYPE = "catalog_type";
   @SerializedName(SERIALIZED_NAME_CATALOG_TYPE)
+  @javax.annotation.Nonnull
   private CatalogsType catalogType;
 
   public static final String SERIALIZED_NAME_CATALOG_ID = "catalog_id";
   @SerializedName(SERIALIZED_NAME_CATALOG_ID)
+  @javax.annotation.Nullable
   private String catalogId;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private CatalogsStatus status;
 
   public CatalogsCreativeAssetsFeedsCreateRequest() {
   }
 
-  public CatalogsCreativeAssetsFeedsCreateRequest defaultCurrency(NullableCurrency defaultCurrency) {
+  public CatalogsCreativeAssetsFeedsCreateRequest defaultCurrency(@javax.annotation.Nullable NullableCurrency defaultCurrency) {
     this.defaultCurrency = defaultCurrency;
     return this;
   }
@@ -120,12 +131,12 @@ public class CatalogsCreativeAssetsFeedsCreateRequest {
     return defaultCurrency;
   }
 
-  public void setDefaultCurrency(NullableCurrency defaultCurrency) {
+  public void setDefaultCurrency(@javax.annotation.Nullable NullableCurrency defaultCurrency) {
     this.defaultCurrency = defaultCurrency;
   }
 
 
-  public CatalogsCreativeAssetsFeedsCreateRequest name(String name) {
+  public CatalogsCreativeAssetsFeedsCreateRequest name(@javax.annotation.Nonnull String name) {
     this.name = name;
     return this;
   }
@@ -139,12 +150,12 @@ public class CatalogsCreativeAssetsFeedsCreateRequest {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
 
-  public CatalogsCreativeAssetsFeedsCreateRequest format(CatalogsFormat format) {
+  public CatalogsCreativeAssetsFeedsCreateRequest format(@javax.annotation.Nonnull CatalogsFormat format) {
     this.format = format;
     return this;
   }
@@ -158,12 +169,12 @@ public class CatalogsCreativeAssetsFeedsCreateRequest {
     return format;
   }
 
-  public void setFormat(CatalogsFormat format) {
+  public void setFormat(@javax.annotation.Nonnull CatalogsFormat format) {
     this.format = format;
   }
 
 
-  public CatalogsCreativeAssetsFeedsCreateRequest defaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
+  public CatalogsCreativeAssetsFeedsCreateRequest defaultLocale(@javax.annotation.Nonnull CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
     this.defaultLocale = defaultLocale;
     return this;
   }
@@ -177,12 +188,12 @@ public class CatalogsCreativeAssetsFeedsCreateRequest {
     return defaultLocale;
   }
 
-  public void setDefaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
+  public void setDefaultLocale(@javax.annotation.Nonnull CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
     this.defaultLocale = defaultLocale;
   }
 
 
-  public CatalogsCreativeAssetsFeedsCreateRequest defaultCountry(Country defaultCountry) {
+  public CatalogsCreativeAssetsFeedsCreateRequest defaultCountry(@javax.annotation.Nonnull Country defaultCountry) {
     this.defaultCountry = defaultCountry;
     return this;
   }
@@ -196,12 +207,12 @@ public class CatalogsCreativeAssetsFeedsCreateRequest {
     return defaultCountry;
   }
 
-  public void setDefaultCountry(Country defaultCountry) {
+  public void setDefaultCountry(@javax.annotation.Nonnull Country defaultCountry) {
     this.defaultCountry = defaultCountry;
   }
 
 
-  public CatalogsCreativeAssetsFeedsCreateRequest credentials(CatalogsFeedCredentials credentials) {
+  public CatalogsCreativeAssetsFeedsCreateRequest credentials(@javax.annotation.Nullable CatalogsFeedCredentials credentials) {
     this.credentials = credentials;
     return this;
   }
@@ -215,12 +226,12 @@ public class CatalogsCreativeAssetsFeedsCreateRequest {
     return credentials;
   }
 
-  public void setCredentials(CatalogsFeedCredentials credentials) {
+  public void setCredentials(@javax.annotation.Nullable CatalogsFeedCredentials credentials) {
     this.credentials = credentials;
   }
 
 
-  public CatalogsCreativeAssetsFeedsCreateRequest location(String location) {
+  public CatalogsCreativeAssetsFeedsCreateRequest location(@javax.annotation.Nonnull String location) {
     this.location = location;
     return this;
   }
@@ -234,12 +245,12 @@ public class CatalogsCreativeAssetsFeedsCreateRequest {
     return location;
   }
 
-  public void setLocation(String location) {
+  public void setLocation(@javax.annotation.Nonnull String location) {
     this.location = location;
   }
 
 
-  public CatalogsCreativeAssetsFeedsCreateRequest preferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
+  public CatalogsCreativeAssetsFeedsCreateRequest preferredProcessingSchedule(@javax.annotation.Nullable CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
     this.preferredProcessingSchedule = preferredProcessingSchedule;
     return this;
   }
@@ -253,12 +264,12 @@ public class CatalogsCreativeAssetsFeedsCreateRequest {
     return preferredProcessingSchedule;
   }
 
-  public void setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
+  public void setPreferredProcessingSchedule(@javax.annotation.Nullable CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
     this.preferredProcessingSchedule = preferredProcessingSchedule;
   }
 
 
-  public CatalogsCreativeAssetsFeedsCreateRequest catalogType(CatalogsType catalogType) {
+  public CatalogsCreativeAssetsFeedsCreateRequest catalogType(@javax.annotation.Nonnull CatalogsType catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -272,12 +283,12 @@ public class CatalogsCreativeAssetsFeedsCreateRequest {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(@javax.annotation.Nonnull CatalogsType catalogType) {
     this.catalogType = catalogType;
   }
 
 
-  public CatalogsCreativeAssetsFeedsCreateRequest catalogId(String catalogId) {
+  public CatalogsCreativeAssetsFeedsCreateRequest catalogId(@javax.annotation.Nullable String catalogId) {
     this.catalogId = catalogId;
     return this;
   }
@@ -291,12 +302,12 @@ public class CatalogsCreativeAssetsFeedsCreateRequest {
     return catalogId;
   }
 
-  public void setCatalogId(String catalogId) {
+  public void setCatalogId(@javax.annotation.Nullable String catalogId) {
     this.catalogId = catalogId;
   }
 
 
-  public CatalogsCreativeAssetsFeedsCreateRequest status(CatalogsStatus status) {
+  public CatalogsCreativeAssetsFeedsCreateRequest status(@javax.annotation.Nullable CatalogsStatus status) {
     this.status = status;
     return this;
   }
@@ -310,7 +321,7 @@ public class CatalogsCreativeAssetsFeedsCreateRequest {
     return status;
   }
 
-  public void setStatus(CatalogsStatus status) {
+  public void setStatus(@javax.annotation.Nullable CatalogsStatus status) {
     this.status = status;
   }
 

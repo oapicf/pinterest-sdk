@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { string & BusinessRoleCheckMode } from './String  BusinessRoleCheckMode';
+import type { string & BusinessRoleCheckMode } from './string &amp; BusinessRoleCheckMode';
 import {
     string &amp; BusinessRoleCheckModeFromJSON,
     string &amp; BusinessRoleCheckModeFromJSONTyped,
     string &amp; BusinessRoleCheckModeToJSON,
     string &amp; BusinessRoleCheckModeToJSONTyped,
-} from './String  BusinessRoleCheckMode';
+} from './string &amp; BusinessRoleCheckMode';
 
 /**
  * 
@@ -64,11 +64,11 @@ export function DeletePartnersRequestFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function DeletePartnersRequestToJSON(json: any): DeletePartnersRequest {
-      return DeletePartnersRequestToJSONTyped(json, false);
-  }
+export function DeletePartnersRequestToJSON(json: any): DeletePartnersRequest {
+    return DeletePartnersRequestToJSONTyped(json, false);
+}
 
-  export function DeletePartnersRequestToJSONTyped(value?: DeletePartnersRequest | null, ignoreDiscriminator: boolean = false): any {
+export function DeletePartnersRequestToJSONTyped(value?: DeletePartnersRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

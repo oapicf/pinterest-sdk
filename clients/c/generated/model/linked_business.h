@@ -25,9 +25,10 @@ typedef struct linked_business_t {
     char *image_large_url; // string
     char *image_xlarge_url; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } linked_business_t;
 
-linked_business_t *linked_business_create(
+__attribute__((deprecated)) linked_business_t *linked_business_create(
     char *username,
     char *image_small_url,
     char *image_medium_url,

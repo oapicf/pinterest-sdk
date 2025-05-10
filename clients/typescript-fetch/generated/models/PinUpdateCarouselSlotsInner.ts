@@ -62,11 +62,11 @@ export function PinUpdateCarouselSlotsInnerFromJSONTyped(json: any, ignoreDiscri
     };
 }
 
-  export function PinUpdateCarouselSlotsInnerToJSON(json: any): PinUpdateCarouselSlotsInner {
-      return PinUpdateCarouselSlotsInnerToJSONTyped(json, false);
-  }
+export function PinUpdateCarouselSlotsInnerToJSON(json: any): PinUpdateCarouselSlotsInner {
+    return PinUpdateCarouselSlotsInnerToJSONTyped(json, false);
+}
 
-  export function PinUpdateCarouselSlotsInnerToJSONTyped(value?: PinUpdateCarouselSlotsInner | null, ignoreDiscriminator: boolean = false): any {
+export function PinUpdateCarouselSlotsInnerToJSONTyped(value?: PinUpdateCarouselSlotsInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

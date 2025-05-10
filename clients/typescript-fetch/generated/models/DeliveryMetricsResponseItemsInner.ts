@@ -80,11 +80,11 @@ export function DeliveryMetricsResponseItemsInnerFromJSONTyped(json: any, ignore
     };
 }
 
-  export function DeliveryMetricsResponseItemsInnerToJSON(json: any): DeliveryMetricsResponseItemsInner {
-      return DeliveryMetricsResponseItemsInnerToJSONTyped(json, false);
-  }
+export function DeliveryMetricsResponseItemsInnerToJSON(json: any): DeliveryMetricsResponseItemsInner {
+    return DeliveryMetricsResponseItemsInnerToJSONTyped(json, false);
+}
 
-  export function DeliveryMetricsResponseItemsInnerToJSONTyped(value?: DeliveryMetricsResponseItemsInner | null, ignoreDiscriminator: boolean = false): any {
+export function DeliveryMetricsResponseItemsInnerToJSONTyped(value?: DeliveryMetricsResponseItemsInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

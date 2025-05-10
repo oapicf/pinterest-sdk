@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct BusinessMemberAssetsSummaryProfilesInner: Codable, JSONEncodable, Hashable {
 
-    static let idRule = StringRule(minLength: 1, maxLength: 20, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: 1, maxLength: 20, pattern: "/^\\d+$/")
     /** Unique identifier of a business profile. */
     public var id: String?
     /** Permission levels member or partner has on an asset. */
@@ -37,3 +37,6 @@ public struct BusinessMemberAssetsSummaryProfilesInner: Codable, JSONEncodable, 
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension BusinessMemberAssetsSummaryProfilesInner: Identifiable {}

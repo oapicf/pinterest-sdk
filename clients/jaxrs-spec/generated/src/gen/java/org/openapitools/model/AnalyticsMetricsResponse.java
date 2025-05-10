@@ -22,10 +22,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AnalyticsMetricsResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AnalyticsMetricsResponse   {
   private @Valid Map<String, BigDecimal> summaryMetrics = new HashMap<>();
   private @Valid List<@Valid AnalyticsDailyMetrics> dailyMetrics = new ArrayList<>();
+
+  public AnalyticsMetricsResponse() {
+  }
 
   /**
    * The metric name and value over the requested period for each requested metric

@@ -21,6 +21,7 @@ import org.openapitools.server.models.Country
 import org.openapitools.server.models.NullableCurrency
 import org.openapitools.server.models.ProductAvailabilityType
 
+import kotlinx.serialization.Serializable
 /**
  * Request object for creating a retail feed.
  * @param name A human-friendly name associated to a given feed.
@@ -35,6 +36,7 @@ import org.openapitools.server.models.ProductAvailabilityType
  * @param defaultAvailability 
  * @param status 
  */
+@Serializable
 data class CatalogsRetailFeedsCreateRequest(
     /* A human-friendly name associated to a given feed. */
     val name: kotlin.String,
@@ -49,5 +51,5 @@ data class CatalogsRetailFeedsCreateRequest(
     val preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = null,
     val defaultAvailability: ProductAvailabilityType? = null,
     val status: CatalogsStatus? = null
-) 
+)
 

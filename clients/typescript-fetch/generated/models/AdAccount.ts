@@ -128,11 +128,11 @@ export function AdAccountFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     };
 }
 
-  export function AdAccountToJSON(json: any): AdAccount {
-      return AdAccountToJSONTyped(json, false);
-  }
+export function AdAccountToJSON(json: any): AdAccount {
+    return AdAccountToJSONTyped(json, false);
+}
 
-  export function AdAccountToJSONTyped(value?: AdAccount | null, ignoreDiscriminator: boolean = false): any {
+export function AdAccountToJSONTyped(value?: AdAccount | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

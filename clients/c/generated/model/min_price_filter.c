@@ -5,7 +5,7 @@
 
 
 
-min_price_filter_t *min_price_filter_create(
+static min_price_filter_t *min_price_filter_create_internal(
     catalogs_product_group_pricing_criteria_t *min_price
     ) {
     min_price_filter_t *min_price_filter_local_var = malloc(sizeof(min_price_filter_t));
@@ -14,12 +14,24 @@ min_price_filter_t *min_price_filter_create(
     }
     min_price_filter_local_var->min_price = min_price;
 
+    min_price_filter_local_var->_library_owned = 1;
     return min_price_filter_local_var;
 }
 
+__attribute__((deprecated)) min_price_filter_t *min_price_filter_create(
+    catalogs_product_group_pricing_criteria_t *min_price
+    ) {
+    return min_price_filter_create_internal (
+        min_price
+        );
+}
 
 void min_price_filter_free(min_price_filter_t *min_price_filter) {
     if(NULL == min_price_filter){
+        return ;
+    }
+    if(min_price_filter->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "min_price_filter_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -60,6 +72,9 @@ min_price_filter_t *min_price_filter_parseFromJSON(cJSON *min_price_filterJSON){
 
     // min_price_filter->min_price
     cJSON *min_price = cJSON_GetObjectItemCaseSensitive(min_price_filterJSON, "MIN_PRICE");
+    if (cJSON_IsNull(min_price)) {
+        min_price = NULL;
+    }
     if (!min_price) {
         goto end;
     }
@@ -69,7 +84,7 @@ min_price_filter_t *min_price_filter_parseFromJSON(cJSON *min_price_filterJSON){
     min_price_local_object = object_parseFromJSON(min_price); //object
 
 
-    min_price_filter_local_var = min_price_filter_create (
+    min_price_filter_local_var = min_price_filter_create_internal (
         min_price_local_object
         );
 

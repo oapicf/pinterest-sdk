@@ -37,9 +37,10 @@ typedef struct ad_group_audience_sizing_request_t {
     list_t *product_group_ids; //primitive container
     list_t *keywords; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } ad_group_audience_sizing_request_t;
 
-ad_group_audience_sizing_request_t *ad_group_audience_sizing_request_create(
+__attribute__((deprecated)) ad_group_audience_sizing_request_t *ad_group_audience_sizing_request_create(
     int auto_targeting_enabled,
     placement_group_type_t *placement_group,
     list_t *creative_types,

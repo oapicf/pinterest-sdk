@@ -22,9 +22,10 @@ typedef struct ad_array_response_t ad_array_response_t;
 typedef struct ad_array_response_t {
     list_t *items; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } ad_array_response_t;
 
-ad_array_response_t *ad_array_response_create(
+__attribute__((deprecated)) ad_array_response_t *ad_array_response_create(
     list_t *items
 );
 

@@ -22,7 +22,7 @@ pinterest_rest_api_top_pins_analytics_response_pins_inner__e top_pins_analytics_
     return 0;
 }
 
-top_pins_analytics_response_pins_inner_t *top_pins_analytics_response_pins_inner_create(
+static top_pins_analytics_response_pins_inner_t *top_pins_analytics_response_pins_inner_create_internal(
     list_t* metrics,
     list_t* data_status,
     char *pin_id
@@ -35,18 +35,34 @@ top_pins_analytics_response_pins_inner_t *top_pins_analytics_response_pins_inner
     top_pins_analytics_response_pins_inner_local_var->data_status = data_status;
     top_pins_analytics_response_pins_inner_local_var->pin_id = pin_id;
 
+    top_pins_analytics_response_pins_inner_local_var->_library_owned = 1;
     return top_pins_analytics_response_pins_inner_local_var;
 }
 
+__attribute__((deprecated)) top_pins_analytics_response_pins_inner_t *top_pins_analytics_response_pins_inner_create(
+    list_t* metrics,
+    list_t* data_status,
+    char *pin_id
+    ) {
+    return top_pins_analytics_response_pins_inner_create_internal (
+        metrics,
+        data_status,
+        pin_id
+        );
+}
 
 void top_pins_analytics_response_pins_inner_free(top_pins_analytics_response_pins_inner_t *top_pins_analytics_response_pins_inner) {
     if(NULL == top_pins_analytics_response_pins_inner){
         return ;
     }
+    if(top_pins_analytics_response_pins_inner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "top_pins_analytics_response_pins_inner_free");
+        return ;
+    }
     listEntry_t *listEntry;
     if (top_pins_analytics_response_pins_inner->metrics) {
         list_ForEach(listEntry, top_pins_analytics_response_pins_inner->metrics) {
-            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            keyValuePair_t *localKeyValue = listEntry->data;
             free (localKeyValue->key);
             free (localKeyValue->value);
             keyValuePair_free(localKeyValue);
@@ -56,7 +72,7 @@ void top_pins_analytics_response_pins_inner_free(top_pins_analytics_response_pin
     }
     if (top_pins_analytics_response_pins_inner->data_status) {
         list_ForEach(listEntry, top_pins_analytics_response_pins_inner->data_status) {
-            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            keyValuePair_t *localKeyValue = listEntry->data;
             free (localKeyValue->key);
             free (localKeyValue->value);
             keyValuePair_free(localKeyValue);
@@ -84,7 +100,7 @@ cJSON *top_pins_analytics_response_pins_inner_convertToJSON(top_pins_analytics_r
     listEntry_t *metricsListEntry;
     if (top_pins_analytics_response_pins_inner->metrics) {
     list_ForEach(metricsListEntry, top_pins_analytics_response_pins_inner->metrics) {
-        keyValuePair_t *localKeyValue = (keyValuePair_t*)metricsListEntry->data;
+        keyValuePair_t *localKeyValue = metricsListEntry->data;
         if(cJSON_AddNumberToObject(localMapObject, localKeyValue->key, *(double *)localKeyValue->value) == NULL)
         {
             goto fail;
@@ -95,7 +111,7 @@ cJSON *top_pins_analytics_response_pins_inner_convertToJSON(top_pins_analytics_r
 
 
     // top_pins_analytics_response_pins_inner->data_status
-    if(top_pins_analytics_response_pins_inner->data_status != pinterest_rest_api_top_pins_analytics_response_pins_inner_DATASTATUS_NULL) {
+    if(top_pins_analytics_response_pins_inner->data_status != pinterest_rest_api_list_t*_DATASTATUS_NULL) {
     cJSON *data_status = cJSON_AddObjectToObject(item, "data_status");
     if(data_status == NULL) {
         goto fail; //primitive map container
@@ -104,7 +120,7 @@ cJSON *top_pins_analytics_response_pins_inner_convertToJSON(top_pins_analytics_r
     listEntry_t *data_statusListEntry;
     if (top_pins_analytics_response_pins_inner->data_status) {
     list_ForEach(data_statusListEntry, top_pins_analytics_response_pins_inner->data_status) {
-        keyValuePair_t *localKeyValue = (keyValuePair_t*)data_statusListEntry->data;
+        keyValuePair_t *localKeyValue = data_statusListEntry->data;
     }
     }
     }
@@ -137,6 +153,9 @@ top_pins_analytics_response_pins_inner_t *top_pins_analytics_response_pins_inner
 
     // top_pins_analytics_response_pins_inner->metrics
     cJSON *metrics = cJSON_GetObjectItemCaseSensitive(top_pins_analytics_response_pins_innerJSON, "metrics");
+    if (cJSON_IsNull(metrics)) {
+        metrics = NULL;
+    }
     if (metrics) { 
     cJSON *metrics_local_map = NULL;
     if(!cJSON_IsObject(metrics) && !cJSON_IsNull(metrics))
@@ -162,6 +181,9 @@ top_pins_analytics_response_pins_inner_t *top_pins_analytics_response_pins_inner
 
     // top_pins_analytics_response_pins_inner->data_status
     cJSON *data_status = cJSON_GetObjectItemCaseSensitive(top_pins_analytics_response_pins_innerJSON, "data_status");
+    if (cJSON_IsNull(data_status)) {
+        data_status = NULL;
+    }
     if (data_status) { 
 
     // The data type of the elements in top_pins_analytics_response_pins_inner->data_status is currently not supported.
@@ -170,6 +192,9 @@ top_pins_analytics_response_pins_inner_t *top_pins_analytics_response_pins_inner
 
     // top_pins_analytics_response_pins_inner->pin_id
     cJSON *pin_id = cJSON_GetObjectItemCaseSensitive(top_pins_analytics_response_pins_innerJSON, "pin_id");
+    if (cJSON_IsNull(pin_id)) {
+        pin_id = NULL;
+    }
     if (pin_id) { 
     if(!cJSON_IsString(pin_id) && !cJSON_IsNull(pin_id))
     {
@@ -178,7 +203,7 @@ top_pins_analytics_response_pins_inner_t *top_pins_analytics_response_pins_inner
     }
 
 
-    top_pins_analytics_response_pins_inner_local_var = top_pins_analytics_response_pins_inner_create (
+    top_pins_analytics_response_pins_inner_local_var = top_pins_analytics_response_pins_inner_create_internal (
         metrics ? metricsList : NULL,
         data_status ? data_statusList : NULL,
         pin_id && !cJSON_IsNull(pin_id) ? strdup(pin_id->valuestring) : NULL
@@ -189,7 +214,7 @@ end:
     if (metricsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, metricsList) {
-            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            keyValuePair_t *localKeyValue = listEntry->data;
             free(localKeyValue->key);
             localKeyValue->key = NULL;
             keyValuePair_free(localKeyValue);

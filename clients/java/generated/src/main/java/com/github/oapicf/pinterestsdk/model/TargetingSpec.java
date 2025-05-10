@@ -52,7 +52,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Ad group targeting specification defining the ad group target audience. For example, &#x60;{\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;AGE_BUCKET\&quot;:[\&quot;25-34\&quot;]}&#x60;
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TargetingSpec {
   /**
    * Gets or Sets AGE_BUCKET
@@ -120,6 +120,7 @@ public class TargetingSpec {
 
   public static final String SERIALIZED_NAME_A_G_E_B_U_C_K_E_T = "AGE_BUCKET";
   @SerializedName(SERIALIZED_NAME_A_G_E_B_U_C_K_E_T)
+  @javax.annotation.Nullable
   private List<AGEBUCKETEnum> AGE_BUCKET;
 
   /**
@@ -184,14 +185,17 @@ public class TargetingSpec {
 
   public static final String SERIALIZED_NAME_A_P_P_T_Y_P_E = "APPTYPE";
   @SerializedName(SERIALIZED_NAME_A_P_P_T_Y_P_E)
+  @javax.annotation.Nullable
   private List<APPTYPEEnum> APPTYPE;
 
   public static final String SERIALIZED_NAME_A_U_D_I_E_N_C_E_E_X_C_L_U_D_E = "AUDIENCE_EXCLUDE";
   @SerializedName(SERIALIZED_NAME_A_U_D_I_E_N_C_E_E_X_C_L_U_D_E)
+  @javax.annotation.Nullable
   private List<String> AUDIENCE_EXCLUDE;
 
   public static final String SERIALIZED_NAME_A_U_D_I_E_N_C_E_I_N_C_L_U_D_E = "AUDIENCE_INCLUDE";
   @SerializedName(SERIALIZED_NAME_A_U_D_I_E_N_C_E_I_N_C_L_U_D_E)
+  @javax.annotation.Nullable
   private List<String> AUDIENCE_INCLUDE;
 
   /**
@@ -250,26 +254,32 @@ public class TargetingSpec {
 
   public static final String SERIALIZED_NAME_G_E_N_D_E_R = "GENDER";
   @SerializedName(SERIALIZED_NAME_G_E_N_D_E_R)
+  @javax.annotation.Nullable
   private List<GENDEREnum> GENDER;
 
   public static final String SERIALIZED_NAME_G_E_O = "GEO";
   @SerializedName(SERIALIZED_NAME_G_E_O)
+  @javax.annotation.Nullable
   private List<String> GEO;
 
   public static final String SERIALIZED_NAME_I_N_T_E_R_E_S_T = "INTEREST";
   @SerializedName(SERIALIZED_NAME_I_N_T_E_R_E_S_T)
+  @javax.annotation.Nullable
   private List<String> INTEREST = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_L_O_C_A_L_E = "LOCALE";
   @SerializedName(SERIALIZED_NAME_L_O_C_A_L_E)
+  @javax.annotation.Nullable
   private List<String> LOCALE;
 
   public static final String SERIALIZED_NAME_L_O_C_A_T_I_O_N = "LOCATION";
   @SerializedName(SERIALIZED_NAME_L_O_C_A_T_I_O_N)
+  @javax.annotation.Nullable
   private List<String> LOCATION;
 
   public static final String SERIALIZED_NAME_S_H_O_P_P_I_N_G_R_E_T_A_R_G_E_T_I_N_G = "SHOPPING_RETARGETING";
   @SerializedName(SERIALIZED_NAME_S_H_O_P_P_I_N_G_R_E_T_A_R_G_E_T_I_N_G)
+  @javax.annotation.Nullable
   private List<TargetingSpecSHOPPINGRETARGETING> SHOPPING_RETARGETING;
 
   /**
@@ -328,12 +338,13 @@ public class TargetingSpec {
 
   public static final String SERIALIZED_NAME_T_A_R_G_E_T_I_N_G_S_T_R_A_T_E_G_Y = "TARGETING_STRATEGY";
   @SerializedName(SERIALIZED_NAME_T_A_R_G_E_T_I_N_G_S_T_R_A_T_E_G_Y)
+  @javax.annotation.Nullable
   private List<TARGETINGSTRATEGYEnum> TARGETING_STRATEGY;
 
   public TargetingSpec() {
   }
 
-  public TargetingSpec AGE_BUCKET(List<AGEBUCKETEnum> AGE_BUCKET) {
+  public TargetingSpec AGE_BUCKET(@javax.annotation.Nullable List<AGEBUCKETEnum> AGE_BUCKET) {
     this.AGE_BUCKET = AGE_BUCKET;
     return this;
   }
@@ -355,12 +366,12 @@ public class TargetingSpec {
     return AGE_BUCKET;
   }
 
-  public void setAGEBUCKET(List<AGEBUCKETEnum> AGE_BUCKET) {
+  public void setAGEBUCKET(@javax.annotation.Nullable List<AGEBUCKETEnum> AGE_BUCKET) {
     this.AGE_BUCKET = AGE_BUCKET;
   }
 
 
-  public TargetingSpec APPTYPE(List<APPTYPEEnum> APPTYPE) {
+  public TargetingSpec APPTYPE(@javax.annotation.Nullable List<APPTYPEEnum> APPTYPE) {
     this.APPTYPE = APPTYPE;
     return this;
   }
@@ -382,12 +393,12 @@ public class TargetingSpec {
     return APPTYPE;
   }
 
-  public void setAPPTYPE(List<APPTYPEEnum> APPTYPE) {
+  public void setAPPTYPE(@javax.annotation.Nullable List<APPTYPEEnum> APPTYPE) {
     this.APPTYPE = APPTYPE;
   }
 
 
-  public TargetingSpec AUDIENCE_EXCLUDE(List<String> AUDIENCE_EXCLUDE) {
+  public TargetingSpec AUDIENCE_EXCLUDE(@javax.annotation.Nullable List<String> AUDIENCE_EXCLUDE) {
     this.AUDIENCE_EXCLUDE = AUDIENCE_EXCLUDE;
     return this;
   }
@@ -409,12 +420,12 @@ public class TargetingSpec {
     return AUDIENCE_EXCLUDE;
   }
 
-  public void setAUDIENCEEXCLUDE(List<String> AUDIENCE_EXCLUDE) {
+  public void setAUDIENCEEXCLUDE(@javax.annotation.Nullable List<String> AUDIENCE_EXCLUDE) {
     this.AUDIENCE_EXCLUDE = AUDIENCE_EXCLUDE;
   }
 
 
-  public TargetingSpec AUDIENCE_INCLUDE(List<String> AUDIENCE_INCLUDE) {
+  public TargetingSpec AUDIENCE_INCLUDE(@javax.annotation.Nullable List<String> AUDIENCE_INCLUDE) {
     this.AUDIENCE_INCLUDE = AUDIENCE_INCLUDE;
     return this;
   }
@@ -436,12 +447,12 @@ public class TargetingSpec {
     return AUDIENCE_INCLUDE;
   }
 
-  public void setAUDIENCEINCLUDE(List<String> AUDIENCE_INCLUDE) {
+  public void setAUDIENCEINCLUDE(@javax.annotation.Nullable List<String> AUDIENCE_INCLUDE) {
     this.AUDIENCE_INCLUDE = AUDIENCE_INCLUDE;
   }
 
 
-  public TargetingSpec GENDER(List<GENDEREnum> GENDER) {
+  public TargetingSpec GENDER(@javax.annotation.Nullable List<GENDEREnum> GENDER) {
     this.GENDER = GENDER;
     return this;
   }
@@ -463,12 +474,12 @@ public class TargetingSpec {
     return GENDER;
   }
 
-  public void setGENDER(List<GENDEREnum> GENDER) {
+  public void setGENDER(@javax.annotation.Nullable List<GENDEREnum> GENDER) {
     this.GENDER = GENDER;
   }
 
 
-  public TargetingSpec GEO(List<String> GEO) {
+  public TargetingSpec GEO(@javax.annotation.Nullable List<String> GEO) {
     this.GEO = GEO;
     return this;
   }
@@ -490,12 +501,12 @@ public class TargetingSpec {
     return GEO;
   }
 
-  public void setGEO(List<String> GEO) {
+  public void setGEO(@javax.annotation.Nullable List<String> GEO) {
     this.GEO = GEO;
   }
 
 
-  public TargetingSpec INTEREST(List<String> INTEREST) {
+  public TargetingSpec INTEREST(@javax.annotation.Nullable List<String> INTEREST) {
     this.INTEREST = INTEREST;
     return this;
   }
@@ -517,12 +528,12 @@ public class TargetingSpec {
     return INTEREST;
   }
 
-  public void setINTEREST(List<String> INTEREST) {
+  public void setINTEREST(@javax.annotation.Nullable List<String> INTEREST) {
     this.INTEREST = INTEREST;
   }
 
 
-  public TargetingSpec LOCALE(List<String> LOCALE) {
+  public TargetingSpec LOCALE(@javax.annotation.Nullable List<String> LOCALE) {
     this.LOCALE = LOCALE;
     return this;
   }
@@ -544,12 +555,12 @@ public class TargetingSpec {
     return LOCALE;
   }
 
-  public void setLOCALE(List<String> LOCALE) {
+  public void setLOCALE(@javax.annotation.Nullable List<String> LOCALE) {
     this.LOCALE = LOCALE;
   }
 
 
-  public TargetingSpec LOCATION(List<String> LOCATION) {
+  public TargetingSpec LOCATION(@javax.annotation.Nullable List<String> LOCATION) {
     this.LOCATION = LOCATION;
     return this;
   }
@@ -571,12 +582,12 @@ public class TargetingSpec {
     return LOCATION;
   }
 
-  public void setLOCATION(List<String> LOCATION) {
+  public void setLOCATION(@javax.annotation.Nullable List<String> LOCATION) {
     this.LOCATION = LOCATION;
   }
 
 
-  public TargetingSpec SHOPPING_RETARGETING(List<TargetingSpecSHOPPINGRETARGETING> SHOPPING_RETARGETING) {
+  public TargetingSpec SHOPPING_RETARGETING(@javax.annotation.Nullable List<TargetingSpecSHOPPINGRETARGETING> SHOPPING_RETARGETING) {
     this.SHOPPING_RETARGETING = SHOPPING_RETARGETING;
     return this;
   }
@@ -598,12 +609,12 @@ public class TargetingSpec {
     return SHOPPING_RETARGETING;
   }
 
-  public void setSHOPPINGRETARGETING(List<TargetingSpecSHOPPINGRETARGETING> SHOPPING_RETARGETING) {
+  public void setSHOPPINGRETARGETING(@javax.annotation.Nullable List<TargetingSpecSHOPPINGRETARGETING> SHOPPING_RETARGETING) {
     this.SHOPPING_RETARGETING = SHOPPING_RETARGETING;
   }
 
 
-  public TargetingSpec TARGETING_STRATEGY(List<TARGETINGSTRATEGYEnum> TARGETING_STRATEGY) {
+  public TargetingSpec TARGETING_STRATEGY(@javax.annotation.Nullable List<TARGETINGSTRATEGYEnum> TARGETING_STRATEGY) {
     this.TARGETING_STRATEGY = TARGETING_STRATEGY;
     return this;
   }
@@ -625,7 +636,7 @@ public class TargetingSpec {
     return TARGETING_STRATEGY;
   }
 
-  public void setTARGETINGSTRATEGY(List<TARGETINGSTRATEGYEnum> TARGETING_STRATEGY) {
+  public void setTARGETINGSTRATEGY(@javax.annotation.Nullable List<TARGETINGSTRATEGYEnum> TARGETING_STRATEGY) {
     this.TARGETING_STRATEGY = TARGETING_STRATEGY;
   }
 

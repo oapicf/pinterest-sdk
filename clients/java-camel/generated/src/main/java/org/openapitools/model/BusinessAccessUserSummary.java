@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "BusinessAccessUserSummary", description = "Metadata of the member/partner that has access to the asset.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BusinessAccessUserSummary {
 
   private JsonNullable<String> email = JsonNullable.<String>undefined();

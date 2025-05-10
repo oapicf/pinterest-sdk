@@ -107,11 +107,11 @@ export function CatalogsReportDistributionStatsFromJSONTyped(json: any, ignoreDi
     };
 }
 
-  export function CatalogsReportDistributionStatsToJSON(json: any): CatalogsReportDistributionStats {
-      return CatalogsReportDistributionStatsToJSONTyped(json, false);
-  }
+export function CatalogsReportDistributionStatsToJSON(json: any): CatalogsReportDistributionStats {
+    return CatalogsReportDistributionStatsToJSONTyped(json, false);
+}
 
-  export function CatalogsReportDistributionStatsToJSONTyped(value?: CatalogsReportDistributionStats | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsReportDistributionStatsToJSONTyped(value?: CatalogsReportDistributionStats | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

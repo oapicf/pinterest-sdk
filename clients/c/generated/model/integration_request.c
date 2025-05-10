@@ -5,7 +5,7 @@
 
 
 
-integration_request_t *integration_request_create(
+static integration_request_t *integration_request_create_internal(
     char *external_business_id,
     char *connected_merchant_id,
     char *connected_advertiser_id,
@@ -38,12 +38,48 @@ integration_request_t *integration_request_create(
     integration_request_local_var->additional_id_1 = additional_id_1;
     integration_request_local_var->partner_metadata = partner_metadata;
 
+    integration_request_local_var->_library_owned = 1;
     return integration_request_local_var;
 }
 
+__attribute__((deprecated)) integration_request_t *integration_request_create(
+    char *external_business_id,
+    char *connected_merchant_id,
+    char *connected_advertiser_id,
+    char *connected_lba_id,
+    char *connected_tag_id,
+    char *partner_access_token,
+    char *partner_refresh_token,
+    char *partner_primary_email,
+    int partner_access_token_expiry,
+    int partner_refresh_token_expiry,
+    char *scopes,
+    char *additional_id_1,
+    char *partner_metadata
+    ) {
+    return integration_request_create_internal (
+        external_business_id,
+        connected_merchant_id,
+        connected_advertiser_id,
+        connected_lba_id,
+        connected_tag_id,
+        partner_access_token,
+        partner_refresh_token,
+        partner_primary_email,
+        partner_access_token_expiry,
+        partner_refresh_token_expiry,
+        scopes,
+        additional_id_1,
+        partner_metadata
+        );
+}
 
 void integration_request_free(integration_request_t *integration_request) {
     if(NULL == integration_request){
+        return ;
+    }
+    if(integration_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "integration_request_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -214,6 +250,9 @@ integration_request_t *integration_request_parseFromJSON(cJSON *integration_requ
 
     // integration_request->external_business_id
     cJSON *external_business_id = cJSON_GetObjectItemCaseSensitive(integration_requestJSON, "external_business_id");
+    if (cJSON_IsNull(external_business_id)) {
+        external_business_id = NULL;
+    }
     if (external_business_id) { 
     if(!cJSON_IsString(external_business_id) && !cJSON_IsNull(external_business_id))
     {
@@ -223,6 +262,9 @@ integration_request_t *integration_request_parseFromJSON(cJSON *integration_requ
 
     // integration_request->connected_merchant_id
     cJSON *connected_merchant_id = cJSON_GetObjectItemCaseSensitive(integration_requestJSON, "connected_merchant_id");
+    if (cJSON_IsNull(connected_merchant_id)) {
+        connected_merchant_id = NULL;
+    }
     if (connected_merchant_id) { 
     if(!cJSON_IsString(connected_merchant_id) && !cJSON_IsNull(connected_merchant_id))
     {
@@ -232,6 +274,9 @@ integration_request_t *integration_request_parseFromJSON(cJSON *integration_requ
 
     // integration_request->connected_advertiser_id
     cJSON *connected_advertiser_id = cJSON_GetObjectItemCaseSensitive(integration_requestJSON, "connected_advertiser_id");
+    if (cJSON_IsNull(connected_advertiser_id)) {
+        connected_advertiser_id = NULL;
+    }
     if (connected_advertiser_id) { 
     if(!cJSON_IsString(connected_advertiser_id) && !cJSON_IsNull(connected_advertiser_id))
     {
@@ -241,6 +286,9 @@ integration_request_t *integration_request_parseFromJSON(cJSON *integration_requ
 
     // integration_request->connected_lba_id
     cJSON *connected_lba_id = cJSON_GetObjectItemCaseSensitive(integration_requestJSON, "connected_lba_id");
+    if (cJSON_IsNull(connected_lba_id)) {
+        connected_lba_id = NULL;
+    }
     if (connected_lba_id) { 
     if(!cJSON_IsString(connected_lba_id) && !cJSON_IsNull(connected_lba_id))
     {
@@ -250,6 +298,9 @@ integration_request_t *integration_request_parseFromJSON(cJSON *integration_requ
 
     // integration_request->connected_tag_id
     cJSON *connected_tag_id = cJSON_GetObjectItemCaseSensitive(integration_requestJSON, "connected_tag_id");
+    if (cJSON_IsNull(connected_tag_id)) {
+        connected_tag_id = NULL;
+    }
     if (connected_tag_id) { 
     if(!cJSON_IsString(connected_tag_id) && !cJSON_IsNull(connected_tag_id))
     {
@@ -259,6 +310,9 @@ integration_request_t *integration_request_parseFromJSON(cJSON *integration_requ
 
     // integration_request->partner_access_token
     cJSON *partner_access_token = cJSON_GetObjectItemCaseSensitive(integration_requestJSON, "partner_access_token");
+    if (cJSON_IsNull(partner_access_token)) {
+        partner_access_token = NULL;
+    }
     if (partner_access_token) { 
     if(!cJSON_IsString(partner_access_token) && !cJSON_IsNull(partner_access_token))
     {
@@ -268,6 +322,9 @@ integration_request_t *integration_request_parseFromJSON(cJSON *integration_requ
 
     // integration_request->partner_refresh_token
     cJSON *partner_refresh_token = cJSON_GetObjectItemCaseSensitive(integration_requestJSON, "partner_refresh_token");
+    if (cJSON_IsNull(partner_refresh_token)) {
+        partner_refresh_token = NULL;
+    }
     if (partner_refresh_token) { 
     if(!cJSON_IsString(partner_refresh_token) && !cJSON_IsNull(partner_refresh_token))
     {
@@ -277,6 +334,9 @@ integration_request_t *integration_request_parseFromJSON(cJSON *integration_requ
 
     // integration_request->partner_primary_email
     cJSON *partner_primary_email = cJSON_GetObjectItemCaseSensitive(integration_requestJSON, "partner_primary_email");
+    if (cJSON_IsNull(partner_primary_email)) {
+        partner_primary_email = NULL;
+    }
     if (partner_primary_email) { 
     if(!cJSON_IsString(partner_primary_email) && !cJSON_IsNull(partner_primary_email))
     {
@@ -286,6 +346,9 @@ integration_request_t *integration_request_parseFromJSON(cJSON *integration_requ
 
     // integration_request->partner_access_token_expiry
     cJSON *partner_access_token_expiry = cJSON_GetObjectItemCaseSensitive(integration_requestJSON, "partner_access_token_expiry");
+    if (cJSON_IsNull(partner_access_token_expiry)) {
+        partner_access_token_expiry = NULL;
+    }
     if (partner_access_token_expiry) { 
     if(!cJSON_IsNumber(partner_access_token_expiry))
     {
@@ -295,6 +358,9 @@ integration_request_t *integration_request_parseFromJSON(cJSON *integration_requ
 
     // integration_request->partner_refresh_token_expiry
     cJSON *partner_refresh_token_expiry = cJSON_GetObjectItemCaseSensitive(integration_requestJSON, "partner_refresh_token_expiry");
+    if (cJSON_IsNull(partner_refresh_token_expiry)) {
+        partner_refresh_token_expiry = NULL;
+    }
     if (partner_refresh_token_expiry) { 
     if(!cJSON_IsNumber(partner_refresh_token_expiry))
     {
@@ -304,6 +370,9 @@ integration_request_t *integration_request_parseFromJSON(cJSON *integration_requ
 
     // integration_request->scopes
     cJSON *scopes = cJSON_GetObjectItemCaseSensitive(integration_requestJSON, "scopes");
+    if (cJSON_IsNull(scopes)) {
+        scopes = NULL;
+    }
     if (scopes) { 
     if(!cJSON_IsString(scopes) && !cJSON_IsNull(scopes))
     {
@@ -313,6 +382,9 @@ integration_request_t *integration_request_parseFromJSON(cJSON *integration_requ
 
     // integration_request->additional_id_1
     cJSON *additional_id_1 = cJSON_GetObjectItemCaseSensitive(integration_requestJSON, "additional_id_1");
+    if (cJSON_IsNull(additional_id_1)) {
+        additional_id_1 = NULL;
+    }
     if (additional_id_1) { 
     if(!cJSON_IsString(additional_id_1) && !cJSON_IsNull(additional_id_1))
     {
@@ -322,6 +394,9 @@ integration_request_t *integration_request_parseFromJSON(cJSON *integration_requ
 
     // integration_request->partner_metadata
     cJSON *partner_metadata = cJSON_GetObjectItemCaseSensitive(integration_requestJSON, "partner_metadata");
+    if (cJSON_IsNull(partner_metadata)) {
+        partner_metadata = NULL;
+    }
     if (partner_metadata) { 
     if(!cJSON_IsString(partner_metadata) && !cJSON_IsNull(partner_metadata))
     {
@@ -330,7 +405,7 @@ integration_request_t *integration_request_parseFromJSON(cJSON *integration_requ
     }
 
 
-    integration_request_local_var = integration_request_create (
+    integration_request_local_var = integration_request_create_internal (
         external_business_id && !cJSON_IsNull(external_business_id) ? strdup(external_business_id->valuestring) : NULL,
         connected_merchant_id && !cJSON_IsNull(connected_merchant_id) ? strdup(connected_merchant_id->valuestring) : NULL,
         connected_advertiser_id && !cJSON_IsNull(connected_advertiser_id) ? strdup(connected_advertiser_id->valuestring) : NULL,

@@ -22,9 +22,10 @@ typedef struct delete_partners_request_t {
     list_t *partner_ids; //primitive container
     char *partner_type; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } delete_partners_request_t;
 
-delete_partners_request_t *delete_partners_request_create(
+__attribute__((deprecated)) delete_partners_request_t *delete_partners_request_create(
     list_t *partner_ids,
     char *partner_type
 );

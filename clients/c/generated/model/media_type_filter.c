@@ -5,7 +5,7 @@
 
 
 
-media_type_filter_t *media_type_filter_create(
+static media_type_filter_t *media_type_filter_create_internal(
     catalogs_product_group_multiple_media_types_criteria_t *media_type
     ) {
     media_type_filter_t *media_type_filter_local_var = malloc(sizeof(media_type_filter_t));
@@ -14,12 +14,24 @@ media_type_filter_t *media_type_filter_create(
     }
     media_type_filter_local_var->media_type = media_type;
 
+    media_type_filter_local_var->_library_owned = 1;
     return media_type_filter_local_var;
 }
 
+__attribute__((deprecated)) media_type_filter_t *media_type_filter_create(
+    catalogs_product_group_multiple_media_types_criteria_t *media_type
+    ) {
+    return media_type_filter_create_internal (
+        media_type
+        );
+}
 
 void media_type_filter_free(media_type_filter_t *media_type_filter) {
     if(NULL == media_type_filter){
+        return ;
+    }
+    if(media_type_filter->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "media_type_filter_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -60,6 +72,9 @@ media_type_filter_t *media_type_filter_parseFromJSON(cJSON *media_type_filterJSO
 
     // media_type_filter->media_type
     cJSON *media_type = cJSON_GetObjectItemCaseSensitive(media_type_filterJSON, "MEDIA_TYPE");
+    if (cJSON_IsNull(media_type)) {
+        media_type = NULL;
+    }
     if (!media_type) {
         goto end;
     }
@@ -69,7 +84,7 @@ media_type_filter_t *media_type_filter_parseFromJSON(cJSON *media_type_filterJSO
     media_type_local_object = object_parseFromJSON(media_type); //object
 
 
-    media_type_filter_local_var = media_type_filter_create (
+    media_type_filter_local_var = media_type_filter_create_internal (
         media_type_local_object
         );
 

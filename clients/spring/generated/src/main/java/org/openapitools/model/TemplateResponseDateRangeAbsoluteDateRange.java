@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.math.BigDecimal;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -22,14 +23,14 @@ import javax.annotation.Generated;
 
 @Schema(name = "TemplateResponse_date_range_absolute_date_range", description = "The absolute date range of the template")
 @JsonTypeName("TemplateResponse_date_range_absolute_date_range")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TemplateResponseDateRangeAbsoluteDateRange {
 
-  private String type;
+  private @Nullable String type;
 
-  private BigDecimal startDate;
+  private @Nullable BigDecimal startDate;
 
-  private BigDecimal endDate;
+  private @Nullable BigDecimal endDate;
 
   public TemplateResponseDateRangeAbsoluteDateRange type(String type) {
     this.type = type;

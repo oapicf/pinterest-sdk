@@ -120,14 +120,39 @@ PinterestTagEventData <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return PinterestTagEventData in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return PinterestTagEventData as a base R list.
+    #' @examples
+    #' # convert array of PinterestTagEventData (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert PinterestTagEventData to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       PinterestTagEventDataObject <- list()
       if (!is.null(self$`currency`)) {
         PinterestTagEventDataObject[["currency"]] <-
-          self$`currency`$toJSON()
+          self$`currency`$toSimpleType()
       }
       if (!is.null(self$`lead_type`)) {
         PinterestTagEventDataObject[["lead_type"]] <-
@@ -135,7 +160,7 @@ PinterestTagEventData <- R6::R6Class(
       }
       if (!is.null(self$`line_items`)) {
         PinterestTagEventDataObject[["line_items"]] <-
-          self$`line_items`$toJSON()
+          self$`line_items`$toSimpleType()
       }
       if (!is.null(self$`order_id`)) {
         PinterestTagEventDataObject[["order_id"]] <-
@@ -169,7 +194,7 @@ PinterestTagEventData <- R6::R6Class(
         PinterestTagEventDataObject[["video_title"]] <-
           self$`video_title`
       }
-      PinterestTagEventDataObject
+      return(PinterestTagEventDataObject)
     },
 
     #' @description
@@ -221,101 +246,13 @@ PinterestTagEventData <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return PinterestTagEventData in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`currency`)) {
-          sprintf(
-          '"currency":
-          %s
-          ',
-          jsonlite::toJSON(self$`currency`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`lead_type`)) {
-          sprintf(
-          '"lead_type":
-            "%s"
-                    ',
-          self$`lead_type`
-          )
-        },
-        if (!is.null(self$`line_items`)) {
-          sprintf(
-          '"line_items":
-          %s
-          ',
-          jsonlite::toJSON(self$`line_items`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`order_id`)) {
-          sprintf(
-          '"order_id":
-            "%s"
-                    ',
-          self$`order_id`
-          )
-        },
-        if (!is.null(self$`order_quantity`)) {
-          sprintf(
-          '"order_quantity":
-            %d
-                    ',
-          self$`order_quantity`
-          )
-        },
-        if (!is.null(self$`page_name`)) {
-          sprintf(
-          '"page_name":
-            "%s"
-                    ',
-          self$`page_name`
-          )
-        },
-        if (!is.null(self$`promo_code`)) {
-          sprintf(
-          '"promo_code":
-            "%s"
-                    ',
-          self$`promo_code`
-          )
-        },
-        if (!is.null(self$`property`)) {
-          sprintf(
-          '"property":
-            "%s"
-                    ',
-          self$`property`
-          )
-        },
-        if (!is.null(self$`search_query`)) {
-          sprintf(
-          '"search_query":
-            "%s"
-                    ',
-          self$`search_query`
-          )
-        },
-        if (!is.null(self$`value`)) {
-          sprintf(
-          '"value":
-            "%s"
-                    ',
-          self$`value`
-          )
-        },
-        if (!is.null(self$`video_title`)) {
-          sprintf(
-          '"video_title":
-            "%s"
-                    ',
-          self$`video_title`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

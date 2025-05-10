@@ -174,7 +174,7 @@ func (c *BoardsAPIController) BoardsCreate(w http.ResponseWriter, r *http.Reques
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	boardParam := Board{}
+	var boardParam Board
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&boardParam); err != nil {
@@ -279,7 +279,7 @@ func (c *BoardsAPIController) BoardsUpdate(w http.ResponseWriter, r *http.Reques
 		c.errorHandler(w, r, &RequiredError{"board_id"}, nil)
 		return
 	}
-	boardUpdateParam := BoardUpdate{}
+	var boardUpdateParam BoardUpdate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&boardUpdateParam); err != nil {
@@ -454,7 +454,7 @@ func (c *BoardsAPIController) BoardSectionsCreate(w http.ResponseWriter, r *http
 		c.errorHandler(w, r, &RequiredError{"board_id"}, nil)
 		return
 	}
-	boardSectionParam := BoardSection{}
+	var boardSectionParam BoardSection
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&boardSectionParam); err != nil {
@@ -539,7 +539,7 @@ func (c *BoardsAPIController) BoardSectionsUpdate(w http.ResponseWriter, r *http
 		c.errorHandler(w, r, &RequiredError{"section_id"}, nil)
 		return
 	}
-	boardSectionParam := BoardSection{}
+	var boardSectionParam BoardSection
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&boardSectionParam); err != nil {

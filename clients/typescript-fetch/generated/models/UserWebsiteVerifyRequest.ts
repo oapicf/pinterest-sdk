@@ -67,11 +67,11 @@ export function UserWebsiteVerifyRequestFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function UserWebsiteVerifyRequestToJSON(json: any): UserWebsiteVerifyRequest {
-      return UserWebsiteVerifyRequestToJSONTyped(json, false);
-  }
+export function UserWebsiteVerifyRequestToJSON(json: any): UserWebsiteVerifyRequest {
+    return UserWebsiteVerifyRequestToJSONTyped(json, false);
+}
 
-  export function UserWebsiteVerifyRequestToJSONTyped(value?: UserWebsiteVerifyRequest | null, ignoreDiscriminator: boolean = false): any {
+export function UserWebsiteVerifyRequestToJSONTyped(value?: UserWebsiteVerifyRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -57,7 +57,7 @@ class CustomLabel4Filter
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->cUSTOMLABEL4 = array_key_exists('cUSTOMLABEL4', $data) ? $data['cUSTOMLABEL4'] : $this->cUSTOMLABEL4;

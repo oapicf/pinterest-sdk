@@ -26,9 +26,10 @@ typedef struct optimization_goal_metadata_t {
     struct optimization_goal_metadata_frequency_goal_metadata_t *frequency_goal_metadata; //model
     struct optimization_goal_metadata_scrollup_goal_metadata_t *scrollup_goal_metadata; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } optimization_goal_metadata_t;
 
-optimization_goal_metadata_t *optimization_goal_metadata_create(
+__attribute__((deprecated)) optimization_goal_metadata_t *optimization_goal_metadata_create(
     optimization_goal_metadata_conversion_tag_v3_goal_metadata_t *conversion_tag_v3_goal_metadata,
     optimization_goal_metadata_frequency_goal_metadata_t *frequency_goal_metadata,
     optimization_goal_metadata_scrollup_goal_metadata_t *scrollup_goal_metadata

@@ -13,17 +13,19 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.Country
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param country 
  * @param name Ad Account name.
  * @param ownerUserId Advertiser's owning user ID.
  */
+@Serializable
 data class AdAccountCreateRequest(
     val country: Country? = null,
     /* Ad Account name. */
     val name: kotlin.String? = null,
     /* Advertiser's owning user ID. */
     val ownerUserId: kotlin.String? = null
-) 
+)
 

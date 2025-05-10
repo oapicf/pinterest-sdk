@@ -5,7 +5,7 @@
 
 
 
-user_account_followed_interests_200_response_t *user_account_followed_interests_200_response_create(
+static user_account_followed_interests_200_response_t *user_account_followed_interests_200_response_create_internal(
     list_t *items,
     char *bookmark
     ) {
@@ -16,12 +16,26 @@ user_account_followed_interests_200_response_t *user_account_followed_interests_
     user_account_followed_interests_200_response_local_var->items = items;
     user_account_followed_interests_200_response_local_var->bookmark = bookmark;
 
+    user_account_followed_interests_200_response_local_var->_library_owned = 1;
     return user_account_followed_interests_200_response_local_var;
 }
 
+__attribute__((deprecated)) user_account_followed_interests_200_response_t *user_account_followed_interests_200_response_create(
+    list_t *items,
+    char *bookmark
+    ) {
+    return user_account_followed_interests_200_response_create_internal (
+        items,
+        bookmark
+        );
+}
 
 void user_account_followed_interests_200_response_free(user_account_followed_interests_200_response_t *user_account_followed_interests_200_response) {
     if(NULL == user_account_followed_interests_200_response){
+        return ;
+    }
+    if(user_account_followed_interests_200_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "user_account_followed_interests_200_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -87,6 +101,9 @@ user_account_followed_interests_200_response_t *user_account_followed_interests_
 
     // user_account_followed_interests_200_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(user_account_followed_interests_200_responseJSON, "items");
+    if (cJSON_IsNull(items)) {
+        items = NULL;
+    }
     if (!items) {
         goto end;
     }
@@ -111,6 +128,9 @@ user_account_followed_interests_200_response_t *user_account_followed_interests_
 
     // user_account_followed_interests_200_response->bookmark
     cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(user_account_followed_interests_200_responseJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
     if (bookmark) { 
     if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
     {
@@ -119,7 +139,7 @@ user_account_followed_interests_200_response_t *user_account_followed_interests_
     }
 
 
-    user_account_followed_interests_200_response_local_var = user_account_followed_interests_200_response_create (
+    user_account_followed_interests_200_response_local_var = user_account_followed_interests_200_response_create_internal (
         itemsList,
         bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
         );

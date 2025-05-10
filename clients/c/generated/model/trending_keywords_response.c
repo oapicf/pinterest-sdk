@@ -5,7 +5,7 @@
 
 
 
-trending_keywords_response_t *trending_keywords_response_create(
+static trending_keywords_response_t *trending_keywords_response_create_internal(
     list_t *trends
     ) {
     trending_keywords_response_t *trending_keywords_response_local_var = malloc(sizeof(trending_keywords_response_t));
@@ -14,12 +14,24 @@ trending_keywords_response_t *trending_keywords_response_create(
     }
     trending_keywords_response_local_var->trends = trends;
 
+    trending_keywords_response_local_var->_library_owned = 1;
     return trending_keywords_response_local_var;
 }
 
+__attribute__((deprecated)) trending_keywords_response_t *trending_keywords_response_create(
+    list_t *trends
+    ) {
+    return trending_keywords_response_create_internal (
+        trends
+        );
+}
 
 void trending_keywords_response_free(trending_keywords_response_t *trending_keywords_response) {
     if(NULL == trending_keywords_response){
+        return ;
+    }
+    if(trending_keywords_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "trending_keywords_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -72,6 +84,9 @@ trending_keywords_response_t *trending_keywords_response_parseFromJSON(cJSON *tr
 
     // trending_keywords_response->trends
     cJSON *trends = cJSON_GetObjectItemCaseSensitive(trending_keywords_responseJSON, "trends");
+    if (cJSON_IsNull(trends)) {
+        trends = NULL;
+    }
     if (trends) { 
     cJSON *trends_local_nonprimitive = NULL;
     if(!cJSON_IsArray(trends)){
@@ -92,7 +107,7 @@ trending_keywords_response_t *trending_keywords_response_parseFromJSON(cJSON *tr
     }
 
 
-    trending_keywords_response_local_var = trending_keywords_response_create (
+    trending_keywords_response_local_var = trending_keywords_response_create_internal (
         trends ? trendsList : NULL
         );
 

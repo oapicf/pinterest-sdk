@@ -64,11 +64,11 @@ export function CatalogsProductGroupMultipleMediaTypesCriteriaFromJSONTyped(json
     };
 }
 
-  export function CatalogsProductGroupMultipleMediaTypesCriteriaToJSON(json: any): CatalogsProductGroupMultipleMediaTypesCriteria {
-      return CatalogsProductGroupMultipleMediaTypesCriteriaToJSONTyped(json, false);
-  }
+export function CatalogsProductGroupMultipleMediaTypesCriteriaToJSON(json: any): CatalogsProductGroupMultipleMediaTypesCriteria {
+    return CatalogsProductGroupMultipleMediaTypesCriteriaToJSONTyped(json, false);
+}
 
-  export function CatalogsProductGroupMultipleMediaTypesCriteriaToJSONTyped(value?: CatalogsProductGroupMultipleMediaTypesCriteria | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsProductGroupMultipleMediaTypesCriteriaToJSONTyped(value?: CatalogsProductGroupMultipleMediaTypesCriteria | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

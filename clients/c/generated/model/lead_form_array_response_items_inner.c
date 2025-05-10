@@ -5,7 +5,7 @@
 
 
 
-lead_form_array_response_items_inner_t *lead_form_array_response_items_inner_create(
+static lead_form_array_response_items_inner_t *lead_form_array_response_items_inner_create_internal(
     lead_form_response_t *data,
     list_t *exceptions
     ) {
@@ -16,12 +16,26 @@ lead_form_array_response_items_inner_t *lead_form_array_response_items_inner_cre
     lead_form_array_response_items_inner_local_var->data = data;
     lead_form_array_response_items_inner_local_var->exceptions = exceptions;
 
+    lead_form_array_response_items_inner_local_var->_library_owned = 1;
     return lead_form_array_response_items_inner_local_var;
 }
 
+__attribute__((deprecated)) lead_form_array_response_items_inner_t *lead_form_array_response_items_inner_create(
+    lead_form_response_t *data,
+    list_t *exceptions
+    ) {
+    return lead_form_array_response_items_inner_create_internal (
+        data,
+        exceptions
+        );
+}
 
 void lead_form_array_response_items_inner_free(lead_form_array_response_items_inner_t *lead_form_array_response_items_inner) {
     if(NULL == lead_form_array_response_items_inner){
+        return ;
+    }
+    if(lead_form_array_response_items_inner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "lead_form_array_response_items_inner_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -94,12 +108,18 @@ lead_form_array_response_items_inner_t *lead_form_array_response_items_inner_par
 
     // lead_form_array_response_items_inner->data
     cJSON *data = cJSON_GetObjectItemCaseSensitive(lead_form_array_response_items_innerJSON, "data");
+    if (cJSON_IsNull(data)) {
+        data = NULL;
+    }
     if (data) { 
     data_local_nonprim = lead_form_response_parseFromJSON(data); //nonprimitive
     }
 
     // lead_form_array_response_items_inner->exceptions
     cJSON *exceptions = cJSON_GetObjectItemCaseSensitive(lead_form_array_response_items_innerJSON, "exceptions");
+    if (cJSON_IsNull(exceptions)) {
+        exceptions = NULL;
+    }
     if (exceptions) { 
     cJSON *exceptions_local_nonprimitive = NULL;
     if(!cJSON_IsArray(exceptions)){
@@ -120,7 +140,7 @@ lead_form_array_response_items_inner_t *lead_form_array_response_items_inner_par
     }
 
 
-    lead_form_array_response_items_inner_local_var = lead_form_array_response_items_inner_create (
+    lead_form_array_response_items_inner_local_var = lead_form_array_response_items_inner_create_internal (
         data ? data_local_nonprim : NULL,
         exceptions ? exceptionsList : NULL
         );

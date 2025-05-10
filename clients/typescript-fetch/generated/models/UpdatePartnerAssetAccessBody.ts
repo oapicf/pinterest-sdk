@@ -57,11 +57,11 @@ export function UpdatePartnerAssetAccessBodyFromJSONTyped(json: any, ignoreDiscr
     };
 }
 
-  export function UpdatePartnerAssetAccessBodyToJSON(json: any): UpdatePartnerAssetAccessBody {
-      return UpdatePartnerAssetAccessBodyToJSONTyped(json, false);
-  }
+export function UpdatePartnerAssetAccessBodyToJSON(json: any): UpdatePartnerAssetAccessBody {
+    return UpdatePartnerAssetAccessBodyToJSONTyped(json, false);
+}
 
-  export function UpdatePartnerAssetAccessBodyToJSONTyped(value?: UpdatePartnerAssetAccessBody | null, ignoreDiscriminator: boolean = false): any {
+export function UpdatePartnerAssetAccessBodyToJSONTyped(value?: UpdatePartnerAssetAccessBody | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -10,10 +10,6 @@
 
 package openapi
 
-import (
-	"gopkg.in/validator.v2"
-)
-
 type FeedsUpdateRequest struct {
 
 	DefaultAvailability *ProductAvailabilityType `json:"default_availability,omitempty"`

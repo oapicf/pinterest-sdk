@@ -179,11 +179,11 @@ export function TargetingTemplateGetResponseDataFromJSONTyped(json: any, ignoreD
     };
 }
 
-  export function TargetingTemplateGetResponseDataToJSON(json: any): TargetingTemplateGetResponseData {
-      return TargetingTemplateGetResponseDataToJSONTyped(json, false);
-  }
+export function TargetingTemplateGetResponseDataToJSON(json: any): TargetingTemplateGetResponseData {
+    return TargetingTemplateGetResponseDataToJSONTyped(json, false);
+}
 
-  export function TargetingTemplateGetResponseDataToJSONTyped(value?: TargetingTemplateGetResponseData | null, ignoreDiscriminator: boolean = false): any {
+export function TargetingTemplateGetResponseDataToJSONTyped(value?: TargetingTemplateGetResponseData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

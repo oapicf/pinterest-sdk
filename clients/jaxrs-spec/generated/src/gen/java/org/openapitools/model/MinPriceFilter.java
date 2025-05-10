@@ -16,9 +16,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("MinPriceFilter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class MinPriceFilter   {
   private CatalogsProductGroupPricingCriteria MIN_PRICE;
+
+  public MinPriceFilter() {
+  }
+
+  @JsonCreator
+  public MinPriceFilter(
+    @JsonProperty(required = true, value = "MIN_PRICE") CatalogsProductGroupPricingCriteria MIN_PRICE
+  ) {
+    this.MIN_PRICE = MIN_PRICE;
+  }
 
   /**
    **/
@@ -29,12 +39,12 @@ public class MinPriceFilter   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("MIN_PRICE")
+  @JsonProperty(required = true, value = "MIN_PRICE")
   @NotNull @Valid public CatalogsProductGroupPricingCriteria getMINPRICE() {
     return MIN_PRICE;
   }
 
-  @JsonProperty("MIN_PRICE")
+  @JsonProperty(required = true, value = "MIN_PRICE")
   public void setMINPRICE(CatalogsProductGroupPricingCriteria MIN_PRICE) {
     this.MIN_PRICE = MIN_PRICE;
   }

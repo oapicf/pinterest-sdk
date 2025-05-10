@@ -48,144 +48,177 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsFeedValidationErrors
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsFeedValidationErrors {
   public static final String SERIALIZED_NAME_F_E_T_C_H_E_R_R_O_R = "FETCH_ERROR";
   @SerializedName(SERIALIZED_NAME_F_E_T_C_H_E_R_R_O_R)
+  @javax.annotation.Nullable
   private Integer FETCH_ERROR;
 
   public static final String SERIALIZED_NAME_F_E_T_C_H_I_N_A_C_T_I_V_E_F_E_E_D_E_R_R_O_R = "FETCH_INACTIVE_FEED_ERROR";
   @SerializedName(SERIALIZED_NAME_F_E_T_C_H_I_N_A_C_T_I_V_E_F_E_E_D_E_R_R_O_R)
+  @javax.annotation.Nullable
   private Integer FETCH_INACTIVE_FEED_ERROR;
 
   public static final String SERIALIZED_NAME_E_N_C_O_D_I_N_G_E_R_R_O_R = "ENCODING_ERROR";
   @SerializedName(SERIALIZED_NAME_E_N_C_O_D_I_N_G_E_R_R_O_R)
+  @javax.annotation.Nullable
   private Integer ENCODING_ERROR;
 
   public static final String SERIALIZED_NAME_D_E_L_I_M_I_T_E_R_E_R_R_O_R = "DELIMITER_ERROR";
   @SerializedName(SERIALIZED_NAME_D_E_L_I_M_I_T_E_R_E_R_R_O_R)
+  @javax.annotation.Nullable
   private Integer DELIMITER_ERROR;
 
   public static final String SERIALIZED_NAME_R_E_Q_U_I_R_E_D_C_O_L_U_M_N_S_M_I_S_S_I_N_G = "REQUIRED_COLUMNS_MISSING";
   @SerializedName(SERIALIZED_NAME_R_E_Q_U_I_R_E_D_C_O_L_U_M_N_S_M_I_S_S_I_N_G)
+  @javax.annotation.Nullable
   private Integer REQUIRED_COLUMNS_MISSING;
 
   public static final String SERIALIZED_NAME_D_U_P_L_I_C_A_T_E_P_R_O_D_U_C_T_S = "DUPLICATE_PRODUCTS";
   @SerializedName(SERIALIZED_NAME_D_U_P_L_I_C_A_T_E_P_R_O_D_U_C_T_S)
+  @javax.annotation.Nullable
   private Integer DUPLICATE_PRODUCTS;
 
   public static final String SERIALIZED_NAME_I_M_A_G_E_L_I_N_K_I_N_V_A_L_I_D = "IMAGE_LINK_INVALID";
   @SerializedName(SERIALIZED_NAME_I_M_A_G_E_L_I_N_K_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer IMAGE_LINK_INVALID;
 
   public static final String SERIALIZED_NAME_I_T_E_M_I_D_M_I_S_S_I_N_G = "ITEMID_MISSING";
   @SerializedName(SERIALIZED_NAME_I_T_E_M_I_D_M_I_S_S_I_N_G)
+  @javax.annotation.Nullable
   private Integer ITEMID_MISSING;
 
   public static final String SERIALIZED_NAME_T_I_T_L_E_M_I_S_S_I_N_G = "TITLE_MISSING";
   @SerializedName(SERIALIZED_NAME_T_I_T_L_E_M_I_S_S_I_N_G)
+  @javax.annotation.Nullable
   private Integer TITLE_MISSING;
 
   public static final String SERIALIZED_NAME_D_E_S_C_R_I_P_T_I_O_N_M_I_S_S_I_N_G = "DESCRIPTION_MISSING";
   @SerializedName(SERIALIZED_NAME_D_E_S_C_R_I_P_T_I_O_N_M_I_S_S_I_N_G)
+  @javax.annotation.Nullable
   private Integer DESCRIPTION_MISSING;
 
   public static final String SERIALIZED_NAME_P_R_O_D_U_C_T_L_I_N_K_M_I_S_S_I_N_G = "PRODUCT_LINK_MISSING";
   @SerializedName(SERIALIZED_NAME_P_R_O_D_U_C_T_L_I_N_K_M_I_S_S_I_N_G)
+  @javax.annotation.Nullable
   private Integer PRODUCT_LINK_MISSING;
 
   public static final String SERIALIZED_NAME_I_M_A_G_E_L_I_N_K_M_I_S_S_I_N_G = "IMAGE_LINK_MISSING";
   @SerializedName(SERIALIZED_NAME_I_M_A_G_E_L_I_N_K_M_I_S_S_I_N_G)
+  @javax.annotation.Nullable
   private Integer IMAGE_LINK_MISSING;
 
   public static final String SERIALIZED_NAME_A_V_A_I_L_A_B_I_L_I_T_Y_I_N_V_A_L_I_D = "AVAILABILITY_INVALID";
   @SerializedName(SERIALIZED_NAME_A_V_A_I_L_A_B_I_L_I_T_Y_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer AVAILABILITY_INVALID;
 
   public static final String SERIALIZED_NAME_P_R_O_D_U_C_T_P_R_I_C_E_I_N_V_A_L_I_D = "PRODUCT_PRICE_INVALID";
   @SerializedName(SERIALIZED_NAME_P_R_O_D_U_C_T_P_R_I_C_E_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer PRODUCT_PRICE_INVALID;
 
   public static final String SERIALIZED_NAME_L_I_N_K_F_O_R_M_A_T_I_N_V_A_L_I_D = "LINK_FORMAT_INVALID";
   @SerializedName(SERIALIZED_NAME_L_I_N_K_F_O_R_M_A_T_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer LINK_FORMAT_INVALID;
 
   public static final String SERIALIZED_NAME_P_A_R_S_E_L_I_N_E_E_R_R_O_R = "PARSE_LINE_ERROR";
   @SerializedName(SERIALIZED_NAME_P_A_R_S_E_L_I_N_E_E_R_R_O_R)
+  @javax.annotation.Nullable
   private Integer PARSE_LINE_ERROR;
 
   public static final String SERIALIZED_NAME_A_D_W_O_R_D_S_F_O_R_M_A_T_I_N_V_A_L_I_D = "ADWORDS_FORMAT_INVALID";
   @SerializedName(SERIALIZED_NAME_A_D_W_O_R_D_S_F_O_R_M_A_T_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer ADWORDS_FORMAT_INVALID;
 
   public static final String SERIALIZED_NAME_I_N_T_E_R_N_A_L_S_E_R_V_I_C_E_E_R_R_O_R = "INTERNAL_SERVICE_ERROR";
   @SerializedName(SERIALIZED_NAME_I_N_T_E_R_N_A_L_S_E_R_V_I_C_E_E_R_R_O_R)
+  @javax.annotation.Nullable
   private Integer INTERNAL_SERVICE_ERROR;
 
   public static final String SERIALIZED_NAME_N_O_V_E_R_I_F_I_E_D_D_O_M_A_I_N = "NO_VERIFIED_DOMAIN";
   @SerializedName(SERIALIZED_NAME_N_O_V_E_R_I_F_I_E_D_D_O_M_A_I_N)
+  @javax.annotation.Nullable
   private Integer NO_VERIFIED_DOMAIN;
 
   public static final String SERIALIZED_NAME_A_D_U_L_T_I_N_V_A_L_I_D = "ADULT_INVALID";
   @SerializedName(SERIALIZED_NAME_A_D_U_L_T_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer ADULT_INVALID;
 
   public static final String SERIALIZED_NAME_I_M_A_G_E_L_I_N_K_L_E_N_G_T_H_T_O_O_L_O_N_G = "IMAGE_LINK_LENGTH_TOO_LONG";
   @SerializedName(SERIALIZED_NAME_I_M_A_G_E_L_I_N_K_L_E_N_G_T_H_T_O_O_L_O_N_G)
+  @javax.annotation.Nullable
   private Integer IMAGE_LINK_LENGTH_TOO_LONG;
 
   public static final String SERIALIZED_NAME_I_N_V_A_L_I_D_D_O_M_A_I_N = "INVALID_DOMAIN";
   @SerializedName(SERIALIZED_NAME_I_N_V_A_L_I_D_D_O_M_A_I_N)
+  @javax.annotation.Nullable
   private Integer INVALID_DOMAIN;
 
   public static final String SERIALIZED_NAME_F_E_E_D_L_E_N_G_T_H_T_O_O_L_O_N_G = "FEED_LENGTH_TOO_LONG";
   @SerializedName(SERIALIZED_NAME_F_E_E_D_L_E_N_G_T_H_T_O_O_L_O_N_G)
+  @javax.annotation.Nullable
   private Integer FEED_LENGTH_TOO_LONG;
 
   public static final String SERIALIZED_NAME_L_I_N_K_L_E_N_G_T_H_T_O_O_L_O_N_G = "LINK_LENGTH_TOO_LONG";
   @SerializedName(SERIALIZED_NAME_L_I_N_K_L_E_N_G_T_H_T_O_O_L_O_N_G)
+  @javax.annotation.Nullable
   private Integer LINK_LENGTH_TOO_LONG;
 
   public static final String SERIALIZED_NAME_M_A_L_F_O_R_M_E_D_X_M_L = "MALFORMED_XML";
   @SerializedName(SERIALIZED_NAME_M_A_L_F_O_R_M_E_D_X_M_L)
+  @javax.annotation.Nullable
   private Integer MALFORMED_XML;
 
   public static final String SERIALIZED_NAME_P_R_I_C_E_M_I_S_S_I_N_G = "PRICE_MISSING";
   @SerializedName(SERIALIZED_NAME_P_R_I_C_E_M_I_S_S_I_N_G)
+  @javax.annotation.Nullable
   private Integer PRICE_MISSING;
 
   public static final String SERIALIZED_NAME_F_E_E_D_T_O_O_S_M_A_L_L = "FEED_TOO_SMALL";
   @SerializedName(SERIALIZED_NAME_F_E_E_D_T_O_O_S_M_A_L_L)
+  @javax.annotation.Nullable
   private Integer FEED_TOO_SMALL;
 
   public static final String SERIALIZED_NAME_M_A_X_I_T_E_M_S_P_E_R_I_T_E_M_G_R_O_U_P_E_X_C_E_E_D_E_D = "MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED";
   @SerializedName(SERIALIZED_NAME_M_A_X_I_T_E_M_S_P_E_R_I_T_E_M_G_R_O_U_P_E_X_C_E_E_D_E_D)
+  @javax.annotation.Nullable
   private Integer MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
 
   public static final String SERIALIZED_NAME_I_T_E_M_M_A_I_N_I_M_A_G_E_D_O_W_N_L_O_A_D_F_A_I_L_U_R_E = "ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE";
   @SerializedName(SERIALIZED_NAME_I_T_E_M_M_A_I_N_I_M_A_G_E_D_O_W_N_L_O_A_D_F_A_I_L_U_R_E)
+  @javax.annotation.Nullable
   private Integer ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
 
   public static final String SERIALIZED_NAME_P_I_N_J_O_I_N_C_O_N_T_E_N_T_U_N_S_A_F_E = "PINJOIN_CONTENT_UNSAFE";
   @SerializedName(SERIALIZED_NAME_P_I_N_J_O_I_N_C_O_N_T_E_N_T_U_N_S_A_F_E)
+  @javax.annotation.Nullable
   private Integer PINJOIN_CONTENT_UNSAFE;
 
   public static final String SERIALIZED_NAME_B_L_O_C_K_L_I_S_T_E_D_I_M_A_G_E_S_I_G_N_A_T_U_R_E = "BLOCKLISTED_IMAGE_SIGNATURE";
   @SerializedName(SERIALIZED_NAME_B_L_O_C_K_L_I_S_T_E_D_I_M_A_G_E_S_I_G_N_A_T_U_R_E)
+  @javax.annotation.Nullable
   private Integer BLOCKLISTED_IMAGE_SIGNATURE;
 
   public static final String SERIALIZED_NAME_L_I_S_T_P_R_I_C_E_I_N_V_A_L_I_D = "LIST_PRICE_INVALID";
   @SerializedName(SERIALIZED_NAME_L_I_S_T_P_R_I_C_E_I_N_V_A_L_I_D)
+  @javax.annotation.Nullable
   private Integer LIST_PRICE_INVALID;
 
   public static final String SERIALIZED_NAME_P_R_I_C_E_C_A_N_N_O_T_B_E_D_E_T_E_R_M_I_N_E_D = "PRICE_CANNOT_BE_DETERMINED";
   @SerializedName(SERIALIZED_NAME_P_R_I_C_E_C_A_N_N_O_T_B_E_D_E_T_E_R_M_I_N_E_D)
+  @javax.annotation.Nullable
   private Integer PRICE_CANNOT_BE_DETERMINED;
 
   public CatalogsFeedValidationErrors() {
   }
 
-  public CatalogsFeedValidationErrors FETCH_ERROR(Integer FETCH_ERROR) {
+  public CatalogsFeedValidationErrors FETCH_ERROR(@javax.annotation.Nullable Integer FETCH_ERROR) {
     this.FETCH_ERROR = FETCH_ERROR;
     return this;
   }
@@ -199,12 +232,12 @@ public class CatalogsFeedValidationErrors {
     return FETCH_ERROR;
   }
 
-  public void setFETCHERROR(Integer FETCH_ERROR) {
+  public void setFETCHERROR(@javax.annotation.Nullable Integer FETCH_ERROR) {
     this.FETCH_ERROR = FETCH_ERROR;
   }
 
 
-  public CatalogsFeedValidationErrors FETCH_INACTIVE_FEED_ERROR(Integer FETCH_INACTIVE_FEED_ERROR) {
+  public CatalogsFeedValidationErrors FETCH_INACTIVE_FEED_ERROR(@javax.annotation.Nullable Integer FETCH_INACTIVE_FEED_ERROR) {
     this.FETCH_INACTIVE_FEED_ERROR = FETCH_INACTIVE_FEED_ERROR;
     return this;
   }
@@ -218,12 +251,12 @@ public class CatalogsFeedValidationErrors {
     return FETCH_INACTIVE_FEED_ERROR;
   }
 
-  public void setFETCHINACTIVEFEEDERROR(Integer FETCH_INACTIVE_FEED_ERROR) {
+  public void setFETCHINACTIVEFEEDERROR(@javax.annotation.Nullable Integer FETCH_INACTIVE_FEED_ERROR) {
     this.FETCH_INACTIVE_FEED_ERROR = FETCH_INACTIVE_FEED_ERROR;
   }
 
 
-  public CatalogsFeedValidationErrors ENCODING_ERROR(Integer ENCODING_ERROR) {
+  public CatalogsFeedValidationErrors ENCODING_ERROR(@javax.annotation.Nullable Integer ENCODING_ERROR) {
     this.ENCODING_ERROR = ENCODING_ERROR;
     return this;
   }
@@ -237,12 +270,12 @@ public class CatalogsFeedValidationErrors {
     return ENCODING_ERROR;
   }
 
-  public void setENCODINGERROR(Integer ENCODING_ERROR) {
+  public void setENCODINGERROR(@javax.annotation.Nullable Integer ENCODING_ERROR) {
     this.ENCODING_ERROR = ENCODING_ERROR;
   }
 
 
-  public CatalogsFeedValidationErrors DELIMITER_ERROR(Integer DELIMITER_ERROR) {
+  public CatalogsFeedValidationErrors DELIMITER_ERROR(@javax.annotation.Nullable Integer DELIMITER_ERROR) {
     this.DELIMITER_ERROR = DELIMITER_ERROR;
     return this;
   }
@@ -256,12 +289,12 @@ public class CatalogsFeedValidationErrors {
     return DELIMITER_ERROR;
   }
 
-  public void setDELIMITERERROR(Integer DELIMITER_ERROR) {
+  public void setDELIMITERERROR(@javax.annotation.Nullable Integer DELIMITER_ERROR) {
     this.DELIMITER_ERROR = DELIMITER_ERROR;
   }
 
 
-  public CatalogsFeedValidationErrors REQUIRED_COLUMNS_MISSING(Integer REQUIRED_COLUMNS_MISSING) {
+  public CatalogsFeedValidationErrors REQUIRED_COLUMNS_MISSING(@javax.annotation.Nullable Integer REQUIRED_COLUMNS_MISSING) {
     this.REQUIRED_COLUMNS_MISSING = REQUIRED_COLUMNS_MISSING;
     return this;
   }
@@ -275,12 +308,12 @@ public class CatalogsFeedValidationErrors {
     return REQUIRED_COLUMNS_MISSING;
   }
 
-  public void setREQUIREDCOLUMNSMISSING(Integer REQUIRED_COLUMNS_MISSING) {
+  public void setREQUIREDCOLUMNSMISSING(@javax.annotation.Nullable Integer REQUIRED_COLUMNS_MISSING) {
     this.REQUIRED_COLUMNS_MISSING = REQUIRED_COLUMNS_MISSING;
   }
 
 
-  public CatalogsFeedValidationErrors DUPLICATE_PRODUCTS(Integer DUPLICATE_PRODUCTS) {
+  public CatalogsFeedValidationErrors DUPLICATE_PRODUCTS(@javax.annotation.Nullable Integer DUPLICATE_PRODUCTS) {
     this.DUPLICATE_PRODUCTS = DUPLICATE_PRODUCTS;
     return this;
   }
@@ -294,12 +327,12 @@ public class CatalogsFeedValidationErrors {
     return DUPLICATE_PRODUCTS;
   }
 
-  public void setDUPLICATEPRODUCTS(Integer DUPLICATE_PRODUCTS) {
+  public void setDUPLICATEPRODUCTS(@javax.annotation.Nullable Integer DUPLICATE_PRODUCTS) {
     this.DUPLICATE_PRODUCTS = DUPLICATE_PRODUCTS;
   }
 
 
-  public CatalogsFeedValidationErrors IMAGE_LINK_INVALID(Integer IMAGE_LINK_INVALID) {
+  public CatalogsFeedValidationErrors IMAGE_LINK_INVALID(@javax.annotation.Nullable Integer IMAGE_LINK_INVALID) {
     this.IMAGE_LINK_INVALID = IMAGE_LINK_INVALID;
     return this;
   }
@@ -313,12 +346,12 @@ public class CatalogsFeedValidationErrors {
     return IMAGE_LINK_INVALID;
   }
 
-  public void setIMAGELINKINVALID(Integer IMAGE_LINK_INVALID) {
+  public void setIMAGELINKINVALID(@javax.annotation.Nullable Integer IMAGE_LINK_INVALID) {
     this.IMAGE_LINK_INVALID = IMAGE_LINK_INVALID;
   }
 
 
-  public CatalogsFeedValidationErrors ITEMID_MISSING(Integer ITEMID_MISSING) {
+  public CatalogsFeedValidationErrors ITEMID_MISSING(@javax.annotation.Nullable Integer ITEMID_MISSING) {
     this.ITEMID_MISSING = ITEMID_MISSING;
     return this;
   }
@@ -332,12 +365,12 @@ public class CatalogsFeedValidationErrors {
     return ITEMID_MISSING;
   }
 
-  public void setITEMIDMISSING(Integer ITEMID_MISSING) {
+  public void setITEMIDMISSING(@javax.annotation.Nullable Integer ITEMID_MISSING) {
     this.ITEMID_MISSING = ITEMID_MISSING;
   }
 
 
-  public CatalogsFeedValidationErrors TITLE_MISSING(Integer TITLE_MISSING) {
+  public CatalogsFeedValidationErrors TITLE_MISSING(@javax.annotation.Nullable Integer TITLE_MISSING) {
     this.TITLE_MISSING = TITLE_MISSING;
     return this;
   }
@@ -351,12 +384,12 @@ public class CatalogsFeedValidationErrors {
     return TITLE_MISSING;
   }
 
-  public void setTITLEMISSING(Integer TITLE_MISSING) {
+  public void setTITLEMISSING(@javax.annotation.Nullable Integer TITLE_MISSING) {
     this.TITLE_MISSING = TITLE_MISSING;
   }
 
 
-  public CatalogsFeedValidationErrors DESCRIPTION_MISSING(Integer DESCRIPTION_MISSING) {
+  public CatalogsFeedValidationErrors DESCRIPTION_MISSING(@javax.annotation.Nullable Integer DESCRIPTION_MISSING) {
     this.DESCRIPTION_MISSING = DESCRIPTION_MISSING;
     return this;
   }
@@ -370,12 +403,12 @@ public class CatalogsFeedValidationErrors {
     return DESCRIPTION_MISSING;
   }
 
-  public void setDESCRIPTIONMISSING(Integer DESCRIPTION_MISSING) {
+  public void setDESCRIPTIONMISSING(@javax.annotation.Nullable Integer DESCRIPTION_MISSING) {
     this.DESCRIPTION_MISSING = DESCRIPTION_MISSING;
   }
 
 
-  public CatalogsFeedValidationErrors PRODUCT_LINK_MISSING(Integer PRODUCT_LINK_MISSING) {
+  public CatalogsFeedValidationErrors PRODUCT_LINK_MISSING(@javax.annotation.Nullable Integer PRODUCT_LINK_MISSING) {
     this.PRODUCT_LINK_MISSING = PRODUCT_LINK_MISSING;
     return this;
   }
@@ -389,12 +422,12 @@ public class CatalogsFeedValidationErrors {
     return PRODUCT_LINK_MISSING;
   }
 
-  public void setPRODUCTLINKMISSING(Integer PRODUCT_LINK_MISSING) {
+  public void setPRODUCTLINKMISSING(@javax.annotation.Nullable Integer PRODUCT_LINK_MISSING) {
     this.PRODUCT_LINK_MISSING = PRODUCT_LINK_MISSING;
   }
 
 
-  public CatalogsFeedValidationErrors IMAGE_LINK_MISSING(Integer IMAGE_LINK_MISSING) {
+  public CatalogsFeedValidationErrors IMAGE_LINK_MISSING(@javax.annotation.Nullable Integer IMAGE_LINK_MISSING) {
     this.IMAGE_LINK_MISSING = IMAGE_LINK_MISSING;
     return this;
   }
@@ -408,12 +441,12 @@ public class CatalogsFeedValidationErrors {
     return IMAGE_LINK_MISSING;
   }
 
-  public void setIMAGELINKMISSING(Integer IMAGE_LINK_MISSING) {
+  public void setIMAGELINKMISSING(@javax.annotation.Nullable Integer IMAGE_LINK_MISSING) {
     this.IMAGE_LINK_MISSING = IMAGE_LINK_MISSING;
   }
 
 
-  public CatalogsFeedValidationErrors AVAILABILITY_INVALID(Integer AVAILABILITY_INVALID) {
+  public CatalogsFeedValidationErrors AVAILABILITY_INVALID(@javax.annotation.Nullable Integer AVAILABILITY_INVALID) {
     this.AVAILABILITY_INVALID = AVAILABILITY_INVALID;
     return this;
   }
@@ -427,12 +460,12 @@ public class CatalogsFeedValidationErrors {
     return AVAILABILITY_INVALID;
   }
 
-  public void setAVAILABILITYINVALID(Integer AVAILABILITY_INVALID) {
+  public void setAVAILABILITYINVALID(@javax.annotation.Nullable Integer AVAILABILITY_INVALID) {
     this.AVAILABILITY_INVALID = AVAILABILITY_INVALID;
   }
 
 
-  public CatalogsFeedValidationErrors PRODUCT_PRICE_INVALID(Integer PRODUCT_PRICE_INVALID) {
+  public CatalogsFeedValidationErrors PRODUCT_PRICE_INVALID(@javax.annotation.Nullable Integer PRODUCT_PRICE_INVALID) {
     this.PRODUCT_PRICE_INVALID = PRODUCT_PRICE_INVALID;
     return this;
   }
@@ -446,12 +479,12 @@ public class CatalogsFeedValidationErrors {
     return PRODUCT_PRICE_INVALID;
   }
 
-  public void setPRODUCTPRICEINVALID(Integer PRODUCT_PRICE_INVALID) {
+  public void setPRODUCTPRICEINVALID(@javax.annotation.Nullable Integer PRODUCT_PRICE_INVALID) {
     this.PRODUCT_PRICE_INVALID = PRODUCT_PRICE_INVALID;
   }
 
 
-  public CatalogsFeedValidationErrors LINK_FORMAT_INVALID(Integer LINK_FORMAT_INVALID) {
+  public CatalogsFeedValidationErrors LINK_FORMAT_INVALID(@javax.annotation.Nullable Integer LINK_FORMAT_INVALID) {
     this.LINK_FORMAT_INVALID = LINK_FORMAT_INVALID;
     return this;
   }
@@ -465,12 +498,12 @@ public class CatalogsFeedValidationErrors {
     return LINK_FORMAT_INVALID;
   }
 
-  public void setLINKFORMATINVALID(Integer LINK_FORMAT_INVALID) {
+  public void setLINKFORMATINVALID(@javax.annotation.Nullable Integer LINK_FORMAT_INVALID) {
     this.LINK_FORMAT_INVALID = LINK_FORMAT_INVALID;
   }
 
 
-  public CatalogsFeedValidationErrors PARSE_LINE_ERROR(Integer PARSE_LINE_ERROR) {
+  public CatalogsFeedValidationErrors PARSE_LINE_ERROR(@javax.annotation.Nullable Integer PARSE_LINE_ERROR) {
     this.PARSE_LINE_ERROR = PARSE_LINE_ERROR;
     return this;
   }
@@ -484,12 +517,12 @@ public class CatalogsFeedValidationErrors {
     return PARSE_LINE_ERROR;
   }
 
-  public void setPARSELINEERROR(Integer PARSE_LINE_ERROR) {
+  public void setPARSELINEERROR(@javax.annotation.Nullable Integer PARSE_LINE_ERROR) {
     this.PARSE_LINE_ERROR = PARSE_LINE_ERROR;
   }
 
 
-  public CatalogsFeedValidationErrors ADWORDS_FORMAT_INVALID(Integer ADWORDS_FORMAT_INVALID) {
+  public CatalogsFeedValidationErrors ADWORDS_FORMAT_INVALID(@javax.annotation.Nullable Integer ADWORDS_FORMAT_INVALID) {
     this.ADWORDS_FORMAT_INVALID = ADWORDS_FORMAT_INVALID;
     return this;
   }
@@ -503,12 +536,12 @@ public class CatalogsFeedValidationErrors {
     return ADWORDS_FORMAT_INVALID;
   }
 
-  public void setADWORDSFORMATINVALID(Integer ADWORDS_FORMAT_INVALID) {
+  public void setADWORDSFORMATINVALID(@javax.annotation.Nullable Integer ADWORDS_FORMAT_INVALID) {
     this.ADWORDS_FORMAT_INVALID = ADWORDS_FORMAT_INVALID;
   }
 
 
-  public CatalogsFeedValidationErrors INTERNAL_SERVICE_ERROR(Integer INTERNAL_SERVICE_ERROR) {
+  public CatalogsFeedValidationErrors INTERNAL_SERVICE_ERROR(@javax.annotation.Nullable Integer INTERNAL_SERVICE_ERROR) {
     this.INTERNAL_SERVICE_ERROR = INTERNAL_SERVICE_ERROR;
     return this;
   }
@@ -522,12 +555,12 @@ public class CatalogsFeedValidationErrors {
     return INTERNAL_SERVICE_ERROR;
   }
 
-  public void setINTERNALSERVICEERROR(Integer INTERNAL_SERVICE_ERROR) {
+  public void setINTERNALSERVICEERROR(@javax.annotation.Nullable Integer INTERNAL_SERVICE_ERROR) {
     this.INTERNAL_SERVICE_ERROR = INTERNAL_SERVICE_ERROR;
   }
 
 
-  public CatalogsFeedValidationErrors NO_VERIFIED_DOMAIN(Integer NO_VERIFIED_DOMAIN) {
+  public CatalogsFeedValidationErrors NO_VERIFIED_DOMAIN(@javax.annotation.Nullable Integer NO_VERIFIED_DOMAIN) {
     this.NO_VERIFIED_DOMAIN = NO_VERIFIED_DOMAIN;
     return this;
   }
@@ -541,12 +574,12 @@ public class CatalogsFeedValidationErrors {
     return NO_VERIFIED_DOMAIN;
   }
 
-  public void setNOVERIFIEDDOMAIN(Integer NO_VERIFIED_DOMAIN) {
+  public void setNOVERIFIEDDOMAIN(@javax.annotation.Nullable Integer NO_VERIFIED_DOMAIN) {
     this.NO_VERIFIED_DOMAIN = NO_VERIFIED_DOMAIN;
   }
 
 
-  public CatalogsFeedValidationErrors ADULT_INVALID(Integer ADULT_INVALID) {
+  public CatalogsFeedValidationErrors ADULT_INVALID(@javax.annotation.Nullable Integer ADULT_INVALID) {
     this.ADULT_INVALID = ADULT_INVALID;
     return this;
   }
@@ -560,12 +593,12 @@ public class CatalogsFeedValidationErrors {
     return ADULT_INVALID;
   }
 
-  public void setADULTINVALID(Integer ADULT_INVALID) {
+  public void setADULTINVALID(@javax.annotation.Nullable Integer ADULT_INVALID) {
     this.ADULT_INVALID = ADULT_INVALID;
   }
 
 
-  public CatalogsFeedValidationErrors IMAGE_LINK_LENGTH_TOO_LONG(Integer IMAGE_LINK_LENGTH_TOO_LONG) {
+  public CatalogsFeedValidationErrors IMAGE_LINK_LENGTH_TOO_LONG(@javax.annotation.Nullable Integer IMAGE_LINK_LENGTH_TOO_LONG) {
     this.IMAGE_LINK_LENGTH_TOO_LONG = IMAGE_LINK_LENGTH_TOO_LONG;
     return this;
   }
@@ -579,12 +612,12 @@ public class CatalogsFeedValidationErrors {
     return IMAGE_LINK_LENGTH_TOO_LONG;
   }
 
-  public void setIMAGELINKLENGTHTOOLONG(Integer IMAGE_LINK_LENGTH_TOO_LONG) {
+  public void setIMAGELINKLENGTHTOOLONG(@javax.annotation.Nullable Integer IMAGE_LINK_LENGTH_TOO_LONG) {
     this.IMAGE_LINK_LENGTH_TOO_LONG = IMAGE_LINK_LENGTH_TOO_LONG;
   }
 
 
-  public CatalogsFeedValidationErrors INVALID_DOMAIN(Integer INVALID_DOMAIN) {
+  public CatalogsFeedValidationErrors INVALID_DOMAIN(@javax.annotation.Nullable Integer INVALID_DOMAIN) {
     this.INVALID_DOMAIN = INVALID_DOMAIN;
     return this;
   }
@@ -598,12 +631,12 @@ public class CatalogsFeedValidationErrors {
     return INVALID_DOMAIN;
   }
 
-  public void setINVALIDDOMAIN(Integer INVALID_DOMAIN) {
+  public void setINVALIDDOMAIN(@javax.annotation.Nullable Integer INVALID_DOMAIN) {
     this.INVALID_DOMAIN = INVALID_DOMAIN;
   }
 
 
-  public CatalogsFeedValidationErrors FEED_LENGTH_TOO_LONG(Integer FEED_LENGTH_TOO_LONG) {
+  public CatalogsFeedValidationErrors FEED_LENGTH_TOO_LONG(@javax.annotation.Nullable Integer FEED_LENGTH_TOO_LONG) {
     this.FEED_LENGTH_TOO_LONG = FEED_LENGTH_TOO_LONG;
     return this;
   }
@@ -617,12 +650,12 @@ public class CatalogsFeedValidationErrors {
     return FEED_LENGTH_TOO_LONG;
   }
 
-  public void setFEEDLENGTHTOOLONG(Integer FEED_LENGTH_TOO_LONG) {
+  public void setFEEDLENGTHTOOLONG(@javax.annotation.Nullable Integer FEED_LENGTH_TOO_LONG) {
     this.FEED_LENGTH_TOO_LONG = FEED_LENGTH_TOO_LONG;
   }
 
 
-  public CatalogsFeedValidationErrors LINK_LENGTH_TOO_LONG(Integer LINK_LENGTH_TOO_LONG) {
+  public CatalogsFeedValidationErrors LINK_LENGTH_TOO_LONG(@javax.annotation.Nullable Integer LINK_LENGTH_TOO_LONG) {
     this.LINK_LENGTH_TOO_LONG = LINK_LENGTH_TOO_LONG;
     return this;
   }
@@ -636,12 +669,12 @@ public class CatalogsFeedValidationErrors {
     return LINK_LENGTH_TOO_LONG;
   }
 
-  public void setLINKLENGTHTOOLONG(Integer LINK_LENGTH_TOO_LONG) {
+  public void setLINKLENGTHTOOLONG(@javax.annotation.Nullable Integer LINK_LENGTH_TOO_LONG) {
     this.LINK_LENGTH_TOO_LONG = LINK_LENGTH_TOO_LONG;
   }
 
 
-  public CatalogsFeedValidationErrors MALFORMED_XML(Integer MALFORMED_XML) {
+  public CatalogsFeedValidationErrors MALFORMED_XML(@javax.annotation.Nullable Integer MALFORMED_XML) {
     this.MALFORMED_XML = MALFORMED_XML;
     return this;
   }
@@ -655,12 +688,12 @@ public class CatalogsFeedValidationErrors {
     return MALFORMED_XML;
   }
 
-  public void setMALFORMEDXML(Integer MALFORMED_XML) {
+  public void setMALFORMEDXML(@javax.annotation.Nullable Integer MALFORMED_XML) {
     this.MALFORMED_XML = MALFORMED_XML;
   }
 
 
-  public CatalogsFeedValidationErrors PRICE_MISSING(Integer PRICE_MISSING) {
+  public CatalogsFeedValidationErrors PRICE_MISSING(@javax.annotation.Nullable Integer PRICE_MISSING) {
     this.PRICE_MISSING = PRICE_MISSING;
     return this;
   }
@@ -674,12 +707,12 @@ public class CatalogsFeedValidationErrors {
     return PRICE_MISSING;
   }
 
-  public void setPRICEMISSING(Integer PRICE_MISSING) {
+  public void setPRICEMISSING(@javax.annotation.Nullable Integer PRICE_MISSING) {
     this.PRICE_MISSING = PRICE_MISSING;
   }
 
 
-  public CatalogsFeedValidationErrors FEED_TOO_SMALL(Integer FEED_TOO_SMALL) {
+  public CatalogsFeedValidationErrors FEED_TOO_SMALL(@javax.annotation.Nullable Integer FEED_TOO_SMALL) {
     this.FEED_TOO_SMALL = FEED_TOO_SMALL;
     return this;
   }
@@ -693,12 +726,12 @@ public class CatalogsFeedValidationErrors {
     return FEED_TOO_SMALL;
   }
 
-  public void setFEEDTOOSMALL(Integer FEED_TOO_SMALL) {
+  public void setFEEDTOOSMALL(@javax.annotation.Nullable Integer FEED_TOO_SMALL) {
     this.FEED_TOO_SMALL = FEED_TOO_SMALL;
   }
 
 
-  public CatalogsFeedValidationErrors MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED(Integer MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED) {
+  public CatalogsFeedValidationErrors MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED(@javax.annotation.Nullable Integer MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED) {
     this.MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED = MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
     return this;
   }
@@ -712,12 +745,12 @@ public class CatalogsFeedValidationErrors {
     return MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
   }
 
-  public void setMAXITEMSPERITEMGROUPEXCEEDED(Integer MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED) {
+  public void setMAXITEMSPERITEMGROUPEXCEEDED(@javax.annotation.Nullable Integer MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED) {
     this.MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED = MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
   }
 
 
-  public CatalogsFeedValidationErrors ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE(Integer ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE) {
+  public CatalogsFeedValidationErrors ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE(@javax.annotation.Nullable Integer ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE) {
     this.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE = ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
     return this;
   }
@@ -731,12 +764,12 @@ public class CatalogsFeedValidationErrors {
     return ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
   }
 
-  public void setITEMMAINIMAGEDOWNLOADFAILURE(Integer ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE) {
+  public void setITEMMAINIMAGEDOWNLOADFAILURE(@javax.annotation.Nullable Integer ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE) {
     this.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE = ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
   }
 
 
-  public CatalogsFeedValidationErrors PINJOIN_CONTENT_UNSAFE(Integer PINJOIN_CONTENT_UNSAFE) {
+  public CatalogsFeedValidationErrors PINJOIN_CONTENT_UNSAFE(@javax.annotation.Nullable Integer PINJOIN_CONTENT_UNSAFE) {
     this.PINJOIN_CONTENT_UNSAFE = PINJOIN_CONTENT_UNSAFE;
     return this;
   }
@@ -750,12 +783,12 @@ public class CatalogsFeedValidationErrors {
     return PINJOIN_CONTENT_UNSAFE;
   }
 
-  public void setPINJOINCONTENTUNSAFE(Integer PINJOIN_CONTENT_UNSAFE) {
+  public void setPINJOINCONTENTUNSAFE(@javax.annotation.Nullable Integer PINJOIN_CONTENT_UNSAFE) {
     this.PINJOIN_CONTENT_UNSAFE = PINJOIN_CONTENT_UNSAFE;
   }
 
 
-  public CatalogsFeedValidationErrors BLOCKLISTED_IMAGE_SIGNATURE(Integer BLOCKLISTED_IMAGE_SIGNATURE) {
+  public CatalogsFeedValidationErrors BLOCKLISTED_IMAGE_SIGNATURE(@javax.annotation.Nullable Integer BLOCKLISTED_IMAGE_SIGNATURE) {
     this.BLOCKLISTED_IMAGE_SIGNATURE = BLOCKLISTED_IMAGE_SIGNATURE;
     return this;
   }
@@ -769,12 +802,12 @@ public class CatalogsFeedValidationErrors {
     return BLOCKLISTED_IMAGE_SIGNATURE;
   }
 
-  public void setBLOCKLISTEDIMAGESIGNATURE(Integer BLOCKLISTED_IMAGE_SIGNATURE) {
+  public void setBLOCKLISTEDIMAGESIGNATURE(@javax.annotation.Nullable Integer BLOCKLISTED_IMAGE_SIGNATURE) {
     this.BLOCKLISTED_IMAGE_SIGNATURE = BLOCKLISTED_IMAGE_SIGNATURE;
   }
 
 
-  public CatalogsFeedValidationErrors LIST_PRICE_INVALID(Integer LIST_PRICE_INVALID) {
+  public CatalogsFeedValidationErrors LIST_PRICE_INVALID(@javax.annotation.Nullable Integer LIST_PRICE_INVALID) {
     this.LIST_PRICE_INVALID = LIST_PRICE_INVALID;
     return this;
   }
@@ -788,12 +821,12 @@ public class CatalogsFeedValidationErrors {
     return LIST_PRICE_INVALID;
   }
 
-  public void setLISTPRICEINVALID(Integer LIST_PRICE_INVALID) {
+  public void setLISTPRICEINVALID(@javax.annotation.Nullable Integer LIST_PRICE_INVALID) {
     this.LIST_PRICE_INVALID = LIST_PRICE_INVALID;
   }
 
 
-  public CatalogsFeedValidationErrors PRICE_CANNOT_BE_DETERMINED(Integer PRICE_CANNOT_BE_DETERMINED) {
+  public CatalogsFeedValidationErrors PRICE_CANNOT_BE_DETERMINED(@javax.annotation.Nullable Integer PRICE_CANNOT_BE_DETERMINED) {
     this.PRICE_CANNOT_BE_DETERMINED = PRICE_CANNOT_BE_DETERMINED;
     return this;
   }
@@ -807,7 +840,7 @@ public class CatalogsFeedValidationErrors {
     return PRICE_CANNOT_BE_DETERMINED;
   }
 
-  public void setPRICECANNOTBEDETERMINED(Integer PRICE_CANNOT_BE_DETERMINED) {
+  public void setPRICECANNOTBEDETERMINED(@javax.annotation.Nullable Integer PRICE_CANNOT_BE_DETERMINED) {
     this.PRICE_CANNOT_BE_DETERMINED = PRICE_CANNOT_BE_DETERMINED;
   }
 

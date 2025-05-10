@@ -57,11 +57,11 @@ export function CreativeAssetsIdFilterFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-  export function CreativeAssetsIdFilterToJSON(json: any): CreativeAssetsIdFilter {
-      return CreativeAssetsIdFilterToJSONTyped(json, false);
-  }
+export function CreativeAssetsIdFilterToJSON(json: any): CreativeAssetsIdFilter {
+    return CreativeAssetsIdFilterToJSONTyped(json, false);
+}
 
-  export function CreativeAssetsIdFilterToJSONTyped(value?: CreativeAssetsIdFilter | null, ignoreDiscriminator: boolean = false): any {
+export function CreativeAssetsIdFilterToJSONTyped(value?: CreativeAssetsIdFilter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -394,11 +394,11 @@ export function AdResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     };
 }
 
-  export function AdResponseToJSON(json: any): AdResponse {
-      return AdResponseToJSONTyped(json, false);
-  }
+export function AdResponseToJSON(json: any): AdResponse {
+    return AdResponseToJSONTyped(json, false);
+}
 
-  export function AdResponseToJSONTyped(value?: AdResponse | null, ignoreDiscriminator: boolean = false): any {
+export function AdResponseToJSONTyped(value?: AdResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -16,12 +16,26 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("IntegrationLogsInvalidLogResponse_rejected_logs_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
   private Integer logIndex;
   private String field;
   private String value;
   private String reason;
+
+  public IntegrationLogsInvalidLogResponseRejectedLogsInner() {
+  }
+
+  @JsonCreator
+  public IntegrationLogsInvalidLogResponseRejectedLogsInner(
+    @JsonProperty(required = true, value = "field") String field,
+    @JsonProperty(required = true, value = "value") String value,
+    @JsonProperty(required = true, value = "reason") String reason
+  ) {
+    this.field = field;
+    this.value = value;
+    this.reason = reason;
+  }
 
   /**
    * Index of the log in the batch.
@@ -53,12 +67,12 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
 
   
   @ApiModelProperty(required = true, value = "The field name containing an invalid value.")
-  @JsonProperty("field")
+  @JsonProperty(required = true, value = "field")
   @NotNull public String getField() {
     return field;
   }
 
-  @JsonProperty("field")
+  @JsonProperty(required = true, value = "field")
   public void setField(String field) {
     this.field = field;
   }
@@ -73,12 +87,12 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
 
   
   @ApiModelProperty(required = true, value = "The value that is invalid.")
-  @JsonProperty("value")
+  @JsonProperty(required = true, value = "value")
   @NotNull public String getValue() {
     return value;
   }
 
-  @JsonProperty("value")
+  @JsonProperty(required = true, value = "value")
   public void setValue(String value) {
     this.value = value;
   }
@@ -93,12 +107,12 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
 
   
   @ApiModelProperty(required = true, value = "The reason the value is invalid.")
-  @JsonProperty("reason")
+  @JsonProperty(required = true, value = "reason")
   @NotNull public String getReason() {
     return reason;
   }
 
-  @JsonProperty("reason")
+  @JsonProperty(required = true, value = "reason")
   public void setReason(String reason) {
     this.reason = reason;
   }

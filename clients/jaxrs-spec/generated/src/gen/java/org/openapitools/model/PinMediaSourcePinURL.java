@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Pin URL-based media source for product pin creation. Currently the field is only available to a list of beta users.")
 @JsonTypeName("PinMediaSourcePinURL")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMediaSourcePinURL   {
   public enum SourceTypeEnum {
 
@@ -69,6 +69,16 @@ public class PinMediaSourcePinURL   {
   private SourceTypeEnum sourceType;
   private Boolean isAffiliateLink = false;
 
+  public PinMediaSourcePinURL() {
+  }
+
+  @JsonCreator
+  public PinMediaSourcePinURL(
+    @JsonProperty(required = true, value = "source_type") SourceTypeEnum sourceType
+  ) {
+    this.sourceType = sourceType;
+  }
+
   /**
    **/
   public PinMediaSourcePinURL sourceType(SourceTypeEnum sourceType) {
@@ -78,12 +88,12 @@ public class PinMediaSourcePinURL   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("source_type")
+  @JsonProperty(required = true, value = "source_type")
   @NotNull public SourceTypeEnum getSourceType() {
     return sourceType;
   }
 
-  @JsonProperty("source_type")
+  @JsonProperty(required = true, value = "source_type")
   public void setSourceType(SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
   }

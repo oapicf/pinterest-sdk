@@ -12,17 +12,19 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param reportStatus 
  * @param url 
  * @param propertySize 
  */
+@Serializable
 data class GetMMMReportResponseData(
     val reportStatus: GetMMMReportResponseData.ReportStatus? = null,
     val url: kotlin.String? = null,
     val propertySize: java.math.BigDecimal? = null
-) 
+)
 {
     /**
     * 

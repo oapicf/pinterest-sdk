@@ -5,7 +5,7 @@
 
 
 
-campaign_common_t *campaign_common_create(
+static campaign_common_t *campaign_common_create_internal(
     char *ad_account_id,
     char *name,
     entity_status_t *status,
@@ -32,12 +32,42 @@ campaign_common_t *campaign_common_create(
     campaign_common_local_var->end_time = end_time;
     campaign_common_local_var->is_flexible_daily_budgets = is_flexible_daily_budgets;
 
+    campaign_common_local_var->_library_owned = 1;
     return campaign_common_local_var;
 }
 
+__attribute__((deprecated)) campaign_common_t *campaign_common_create(
+    char *ad_account_id,
+    char *name,
+    entity_status_t *status,
+    int lifetime_spend_cap,
+    int daily_spend_cap,
+    char *order_line_id,
+    tracking_urls_t *tracking_urls,
+    int start_time,
+    int end_time,
+    int is_flexible_daily_budgets
+    ) {
+    return campaign_common_create_internal (
+        ad_account_id,
+        name,
+        status,
+        lifetime_spend_cap,
+        daily_spend_cap,
+        order_line_id,
+        tracking_urls,
+        start_time,
+        end_time,
+        is_flexible_daily_budgets
+        );
+}
 
 void campaign_common_free(campaign_common_t *campaign_common) {
     if(NULL == campaign_common){
+        return ;
+    }
+    if(campaign_common->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "campaign_common_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -176,6 +206,9 @@ campaign_common_t *campaign_common_parseFromJSON(cJSON *campaign_commonJSON){
 
     // campaign_common->ad_account_id
     cJSON *ad_account_id = cJSON_GetObjectItemCaseSensitive(campaign_commonJSON, "ad_account_id");
+    if (cJSON_IsNull(ad_account_id)) {
+        ad_account_id = NULL;
+    }
     if (ad_account_id) { 
     if(!cJSON_IsString(ad_account_id) && !cJSON_IsNull(ad_account_id))
     {
@@ -185,6 +218,9 @@ campaign_common_t *campaign_common_parseFromJSON(cJSON *campaign_commonJSON){
 
     // campaign_common->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(campaign_commonJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
     if (name) { 
     if(!cJSON_IsString(name) && !cJSON_IsNull(name))
     {
@@ -194,12 +230,18 @@ campaign_common_t *campaign_common_parseFromJSON(cJSON *campaign_commonJSON){
 
     // campaign_common->status
     cJSON *status = cJSON_GetObjectItemCaseSensitive(campaign_commonJSON, "status");
+    if (cJSON_IsNull(status)) {
+        status = NULL;
+    }
     if (status) { 
     status_local_nonprim = entity_status_parseFromJSON(status); //custom
     }
 
     // campaign_common->lifetime_spend_cap
     cJSON *lifetime_spend_cap = cJSON_GetObjectItemCaseSensitive(campaign_commonJSON, "lifetime_spend_cap");
+    if (cJSON_IsNull(lifetime_spend_cap)) {
+        lifetime_spend_cap = NULL;
+    }
     if (lifetime_spend_cap) { 
     if(!cJSON_IsNumber(lifetime_spend_cap))
     {
@@ -209,6 +251,9 @@ campaign_common_t *campaign_common_parseFromJSON(cJSON *campaign_commonJSON){
 
     // campaign_common->daily_spend_cap
     cJSON *daily_spend_cap = cJSON_GetObjectItemCaseSensitive(campaign_commonJSON, "daily_spend_cap");
+    if (cJSON_IsNull(daily_spend_cap)) {
+        daily_spend_cap = NULL;
+    }
     if (daily_spend_cap) { 
     if(!cJSON_IsNumber(daily_spend_cap))
     {
@@ -218,6 +263,9 @@ campaign_common_t *campaign_common_parseFromJSON(cJSON *campaign_commonJSON){
 
     // campaign_common->order_line_id
     cJSON *order_line_id = cJSON_GetObjectItemCaseSensitive(campaign_commonJSON, "order_line_id");
+    if (cJSON_IsNull(order_line_id)) {
+        order_line_id = NULL;
+    }
     if (order_line_id) { 
     if(!cJSON_IsString(order_line_id) && !cJSON_IsNull(order_line_id))
     {
@@ -227,12 +275,18 @@ campaign_common_t *campaign_common_parseFromJSON(cJSON *campaign_commonJSON){
 
     // campaign_common->tracking_urls
     cJSON *tracking_urls = cJSON_GetObjectItemCaseSensitive(campaign_commonJSON, "tracking_urls");
+    if (cJSON_IsNull(tracking_urls)) {
+        tracking_urls = NULL;
+    }
     if (tracking_urls) { 
     tracking_urls_local_nonprim = tracking_urls_parseFromJSON(tracking_urls); //nonprimitive
     }
 
     // campaign_common->start_time
     cJSON *start_time = cJSON_GetObjectItemCaseSensitive(campaign_commonJSON, "start_time");
+    if (cJSON_IsNull(start_time)) {
+        start_time = NULL;
+    }
     if (start_time) { 
     if(!cJSON_IsNumber(start_time))
     {
@@ -242,6 +296,9 @@ campaign_common_t *campaign_common_parseFromJSON(cJSON *campaign_commonJSON){
 
     // campaign_common->end_time
     cJSON *end_time = cJSON_GetObjectItemCaseSensitive(campaign_commonJSON, "end_time");
+    if (cJSON_IsNull(end_time)) {
+        end_time = NULL;
+    }
     if (end_time) { 
     if(!cJSON_IsNumber(end_time))
     {
@@ -251,6 +308,9 @@ campaign_common_t *campaign_common_parseFromJSON(cJSON *campaign_commonJSON){
 
     // campaign_common->is_flexible_daily_budgets
     cJSON *is_flexible_daily_budgets = cJSON_GetObjectItemCaseSensitive(campaign_commonJSON, "is_flexible_daily_budgets");
+    if (cJSON_IsNull(is_flexible_daily_budgets)) {
+        is_flexible_daily_budgets = NULL;
+    }
     if (is_flexible_daily_budgets) { 
     if(!cJSON_IsBool(is_flexible_daily_budgets))
     {
@@ -259,7 +319,7 @@ campaign_common_t *campaign_common_parseFromJSON(cJSON *campaign_commonJSON){
     }
 
 
-    campaign_common_local_var = campaign_common_create (
+    campaign_common_local_var = campaign_common_create_internal (
         ad_account_id && !cJSON_IsNull(ad_account_id) ? strdup(ad_account_id->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         status ? status_local_nonprim : NULL,

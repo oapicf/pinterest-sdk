@@ -25,7 +25,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Template fields")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2025-05-10T05:39:31.012858315Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TemplateResponse   {
   @JsonProperty("id")
   private String id;
@@ -3277,9 +3277,9 @@ public class TemplateResponse   {
    * Conversion report time type
    */
   public enum ConversionReportTimeTypeEnum {
-    AD_ACTION("TIME_OF_AD_ACTION"),
+    TIME_OF_AD_ACTION("TIME_OF_AD_ACTION"),
     
-    CONVERSION("TIME_OF_CONVERSION");
+    TIME_OF_CONVERSION("TIME_OF_CONVERSION");
 
     private String value;
 
@@ -3320,11 +3320,11 @@ public class TemplateResponse   {
    * The surface used to create this template
    */
   public enum CreationSourceEnum {
-    API("ADS_API"),
+    ADS_API("ADS_API"),
     
-    MANAGER_REPORTING_PAGE("ADS_MANAGER_REPORTING_PAGE"),
+    ADS_MANAGER_REPORTING_PAGE("ADS_MANAGER_REPORTING_PAGE"),
     
-    MANAGER_REPORT_BUILDER("ADS_MANAGER_REPORT_BUILDER");
+    ADS_MANAGER_REPORT_BUILDER("ADS_MANAGER_REPORT_BUILDER");
 
     private String value;
 

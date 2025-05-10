@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param status Whether the event was processed successfully.
  * @param errorMessage Error message containing more information about why the event failed to be processed.
  * @param warningMessage Warning messages about any fields in the event which are not standard. These are not critical to event processing.
  */
+@Serializable
 data class ConversionApiResponseEventsInner(
     /* Whether the event was processed successfully. */
     val status: ConversionApiResponseEventsInner.Status,
@@ -25,7 +27,7 @@ data class ConversionApiResponseEventsInner(
     val errorMessage: kotlin.String? = null,
     /* Warning messages about any fields in the event which are not standard. These are not critical to event processing. */
     val warningMessage: kotlin.String? = null
-) 
+)
 {
     /**
     * Whether the event was processed successfully.

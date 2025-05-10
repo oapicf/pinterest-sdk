@@ -44,9 +44,9 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum CatalogsFormat: string
 {
-        case TSV = "TSV";
-        case CSV = "CSV";
-        case XML = "XML";
+        case TSV = 'TSV';
+        case CSV = 'CSV';
+        case XML = 'XML';
 }
 
 

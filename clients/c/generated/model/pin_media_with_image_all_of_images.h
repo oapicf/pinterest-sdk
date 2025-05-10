@@ -25,9 +25,10 @@ typedef struct pin_media_with_image_all_of_images_t {
     object_t *_600x; //object
     object_t *_1200x; //object
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } pin_media_with_image_all_of_images_t;
 
-pin_media_with_image_all_of_images_t *pin_media_with_image_all_of_images_create(
+__attribute__((deprecated)) pin_media_with_image_all_of_images_t *pin_media_with_image_all_of_images_create(
     object_t *_150x150,
     object_t *_400x300,
     object_t *_600x,

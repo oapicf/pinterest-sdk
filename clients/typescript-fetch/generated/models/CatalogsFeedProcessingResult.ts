@@ -128,11 +128,11 @@ export function CatalogsFeedProcessingResultFromJSONTyped(json: any, ignoreDiscr
     };
 }
 
-  export function CatalogsFeedProcessingResultToJSON(json: any): CatalogsFeedProcessingResult {
-      return CatalogsFeedProcessingResultToJSONTyped(json, false);
-  }
+export function CatalogsFeedProcessingResultToJSON(json: any): CatalogsFeedProcessingResult {
+    return CatalogsFeedProcessingResultToJSONTyped(json, false);
+}
 
-  export function CatalogsFeedProcessingResultToJSONTyped(value?: CatalogsFeedProcessingResult | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsFeedProcessingResultToJSONTyped(value?: CatalogsFeedProcessingResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

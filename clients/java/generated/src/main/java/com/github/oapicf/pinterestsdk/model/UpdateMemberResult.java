@@ -48,20 +48,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * UpdateMemberResult
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class UpdateMemberResult {
   public static final String SERIALIZED_NAME_BUSINESS_ROLE = "business_role";
   @SerializedName(SERIALIZED_NAME_BUSINESS_ROLE)
+  @javax.annotation.Nullable
   private String businessRole;
 
   public static final String SERIALIZED_NAME_MEMBER_ID = "member_id";
   @SerializedName(SERIALIZED_NAME_MEMBER_ID)
+  @javax.annotation.Nullable
   private String memberId;
 
   public UpdateMemberResult() {
   }
 
-  public UpdateMemberResult businessRole(String businessRole) {
+  public UpdateMemberResult businessRole(@javax.annotation.Nullable String businessRole) {
     this.businessRole = businessRole;
     return this;
   }
@@ -75,12 +77,12 @@ public class UpdateMemberResult {
     return businessRole;
   }
 
-  public void setBusinessRole(String businessRole) {
+  public void setBusinessRole(@javax.annotation.Nullable String businessRole) {
     this.businessRole = businessRole;
   }
 
 
-  public UpdateMemberResult memberId(String memberId) {
+  public UpdateMemberResult memberId(@javax.annotation.Nullable String memberId) {
     this.memberId = memberId;
     return this;
   }
@@ -94,7 +96,7 @@ public class UpdateMemberResult {
     return memberId;
   }
 
-  public void setMemberId(String memberId) {
+  public void setMemberId(@javax.annotation.Nullable String memberId) {
     this.memberId = memberId;
   }
 

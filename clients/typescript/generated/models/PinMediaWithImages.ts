@@ -20,11 +20,11 @@ import { HttpFile } from '../http/http';
 export class PinMediaWithImages extends PinMedia {
     'items'?: Array<ImageMetadata>;
 
-    static readonly discriminator: string | undefined = undefined;
+    static override readonly discriminator: string | undefined = undefined;
 
-    static readonly mapping: {[index: string]: string} | undefined = undefined;
+    static override readonly mapping: {[index: string]: string} | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+    static override readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
             "name": "items",
             "baseName": "items",
@@ -32,7 +32,7 @@ export class PinMediaWithImages extends PinMedia {
             "format": ""
         }    ];
 
-    static getAttributeTypeMap() {
+    static override getAttributeTypeMap() {
         return super.getAttributeTypeMap().concat(PinMediaWithImages.attributeTypeMap);
     }
 

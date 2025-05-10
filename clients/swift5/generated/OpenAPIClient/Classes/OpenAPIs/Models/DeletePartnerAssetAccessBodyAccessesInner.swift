@@ -16,8 +16,8 @@ public struct DeletePartnerAssetAccessBodyAccessesInner: Codable, JSONEncodable,
         case _internal = "INTERNAL"
         case external = "EXTERNAL"
     }
-    static let partnerIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
-    static let assetIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
+    public static let partnerIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
+    public static let assetIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
     /** Unique identifier of a business partner to update asset access to. */
     public var partnerId: String
     /** Unique identifier of the business asset. */

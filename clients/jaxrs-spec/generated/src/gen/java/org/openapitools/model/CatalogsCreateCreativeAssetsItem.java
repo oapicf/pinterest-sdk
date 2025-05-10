@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "A creative assets item to be created.")
 @JsonTypeName("CatalogsCreateCreativeAssetsItem")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsCreateCreativeAssetsItem   {
   private String creativeAssetsId;
   public enum OperationEnum {
@@ -71,6 +71,20 @@ public class CatalogsCreateCreativeAssetsItem   {
   private OperationEnum operation;
   private CatalogsCreativeAssetsAttributes attributes;
 
+  public CatalogsCreateCreativeAssetsItem() {
+  }
+
+  @JsonCreator
+  public CatalogsCreateCreativeAssetsItem(
+    @JsonProperty(required = true, value = "creative_assets_id") String creativeAssetsId,
+    @JsonProperty(required = true, value = "operation") OperationEnum operation,
+    @JsonProperty(required = true, value = "attributes") CatalogsCreativeAssetsAttributes attributes
+  ) {
+    this.creativeAssetsId = creativeAssetsId;
+    this.operation = operation;
+    this.attributes = attributes;
+  }
+
   /**
    * The catalog creative assets id in the merchant namespace
    **/
@@ -81,12 +95,12 @@ public class CatalogsCreateCreativeAssetsItem   {
 
   
   @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog creative assets id in the merchant namespace")
-  @JsonProperty("creative_assets_id")
+  @JsonProperty(required = true, value = "creative_assets_id")
   @NotNull public String getCreativeAssetsId() {
     return creativeAssetsId;
   }
 
-  @JsonProperty("creative_assets_id")
+  @JsonProperty(required = true, value = "creative_assets_id")
   public void setCreativeAssetsId(String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
   }
@@ -100,12 +114,12 @@ public class CatalogsCreateCreativeAssetsItem   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("operation")
+  @JsonProperty(required = true, value = "operation")
   @NotNull public OperationEnum getOperation() {
     return operation;
   }
 
-  @JsonProperty("operation")
+  @JsonProperty(required = true, value = "operation")
   public void setOperation(OperationEnum operation) {
     this.operation = operation;
   }
@@ -119,12 +133,12 @@ public class CatalogsCreateCreativeAssetsItem   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("attributes")
+  @JsonProperty(required = true, value = "attributes")
   @NotNull @Valid public CatalogsCreativeAssetsAttributes getAttributes() {
     return attributes;
   }
 
-  @JsonProperty("attributes")
+  @JsonProperty(required = true, value = "attributes")
   public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
     this.attributes = attributes;
   }

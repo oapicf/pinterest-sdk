@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct BaseInviteDataResponse: Codable, JSONEncodable, Hashable {
 
-    static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Unique identifier of the invite/request. */
     public var id: String?
     public var inviteData: BaseInviteDataResponseInviteData?
@@ -46,3 +46,6 @@ public struct BaseInviteDataResponse: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension BaseInviteDataResponse: Identifiable {}

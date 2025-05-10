@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -18,16 +19,16 @@ import javax.annotation.Generated;
  * SSIOAccountAddress
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SSIOAccountAddress {
 
-  private String display;
+  private @Nullable String display;
 
-  private String purpose;
+  private @Nullable String purpose;
 
-  private String addressId;
+  private @Nullable String addressId;
 
-  private String orderLegalEntity;
+  private @Nullable String orderLegalEntity;
 
   public SSIOAccountAddress display(String display) {
     this.display = display;

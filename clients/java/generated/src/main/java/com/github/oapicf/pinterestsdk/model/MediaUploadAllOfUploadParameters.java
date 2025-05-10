@@ -48,44 +48,52 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * The list of parameter key/value pairs you will need to send with your POST request to upload your media file.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class MediaUploadAllOfUploadParameters {
   public static final String SERIALIZED_NAME_X_AMZ_DATE = "x-amz-date";
   @SerializedName(SERIALIZED_NAME_X_AMZ_DATE)
+  @javax.annotation.Nullable
   private String xAmzDate;
 
   public static final String SERIALIZED_NAME_X_AMZ_SIGNATURE = "x-amz-signature";
   @SerializedName(SERIALIZED_NAME_X_AMZ_SIGNATURE)
+  @javax.annotation.Nullable
   private String xAmzSignature;
 
   public static final String SERIALIZED_NAME_X_AMZ_SECURITY_TOKEN = "x-amz-security-token";
   @SerializedName(SERIALIZED_NAME_X_AMZ_SECURITY_TOKEN)
+  @javax.annotation.Nullable
   private String xAmzSecurityToken;
 
   public static final String SERIALIZED_NAME_X_AMZ_ALGORITHM = "x-amz-algorithm";
   @SerializedName(SERIALIZED_NAME_X_AMZ_ALGORITHM)
+  @javax.annotation.Nullable
   private String xAmzAlgorithm;
 
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)
+  @javax.annotation.Nullable
   private String key;
 
   public static final String SERIALIZED_NAME_POLICY = "policy";
   @SerializedName(SERIALIZED_NAME_POLICY)
+  @javax.annotation.Nullable
   private String policy;
 
   public static final String SERIALIZED_NAME_X_AMZ_CREDENTIAL = "x-amz-credential";
   @SerializedName(SERIALIZED_NAME_X_AMZ_CREDENTIAL)
+  @javax.annotation.Nullable
   private String xAmzCredential;
 
   public static final String SERIALIZED_NAME_CONTENT_TYPE = "Content-Type";
   @SerializedName(SERIALIZED_NAME_CONTENT_TYPE)
+  @javax.annotation.Nullable
   private String contentType;
 
   public MediaUploadAllOfUploadParameters() {
   }
 
-  public MediaUploadAllOfUploadParameters xAmzDate(String xAmzDate) {
+  public MediaUploadAllOfUploadParameters xAmzDate(@javax.annotation.Nullable String xAmzDate) {
     this.xAmzDate = xAmzDate;
     return this;
   }
@@ -99,12 +107,12 @@ public class MediaUploadAllOfUploadParameters {
     return xAmzDate;
   }
 
-  public void setxAmzDate(String xAmzDate) {
+  public void setxAmzDate(@javax.annotation.Nullable String xAmzDate) {
     this.xAmzDate = xAmzDate;
   }
 
 
-  public MediaUploadAllOfUploadParameters xAmzSignature(String xAmzSignature) {
+  public MediaUploadAllOfUploadParameters xAmzSignature(@javax.annotation.Nullable String xAmzSignature) {
     this.xAmzSignature = xAmzSignature;
     return this;
   }
@@ -118,12 +126,12 @@ public class MediaUploadAllOfUploadParameters {
     return xAmzSignature;
   }
 
-  public void setxAmzSignature(String xAmzSignature) {
+  public void setxAmzSignature(@javax.annotation.Nullable String xAmzSignature) {
     this.xAmzSignature = xAmzSignature;
   }
 
 
-  public MediaUploadAllOfUploadParameters xAmzSecurityToken(String xAmzSecurityToken) {
+  public MediaUploadAllOfUploadParameters xAmzSecurityToken(@javax.annotation.Nullable String xAmzSecurityToken) {
     this.xAmzSecurityToken = xAmzSecurityToken;
     return this;
   }
@@ -137,12 +145,12 @@ public class MediaUploadAllOfUploadParameters {
     return xAmzSecurityToken;
   }
 
-  public void setxAmzSecurityToken(String xAmzSecurityToken) {
+  public void setxAmzSecurityToken(@javax.annotation.Nullable String xAmzSecurityToken) {
     this.xAmzSecurityToken = xAmzSecurityToken;
   }
 
 
-  public MediaUploadAllOfUploadParameters xAmzAlgorithm(String xAmzAlgorithm) {
+  public MediaUploadAllOfUploadParameters xAmzAlgorithm(@javax.annotation.Nullable String xAmzAlgorithm) {
     this.xAmzAlgorithm = xAmzAlgorithm;
     return this;
   }
@@ -156,12 +164,12 @@ public class MediaUploadAllOfUploadParameters {
     return xAmzAlgorithm;
   }
 
-  public void setxAmzAlgorithm(String xAmzAlgorithm) {
+  public void setxAmzAlgorithm(@javax.annotation.Nullable String xAmzAlgorithm) {
     this.xAmzAlgorithm = xAmzAlgorithm;
   }
 
 
-  public MediaUploadAllOfUploadParameters key(String key) {
+  public MediaUploadAllOfUploadParameters key(@javax.annotation.Nullable String key) {
     this.key = key;
     return this;
   }
@@ -175,12 +183,12 @@ public class MediaUploadAllOfUploadParameters {
     return key;
   }
 
-  public void setKey(String key) {
+  public void setKey(@javax.annotation.Nullable String key) {
     this.key = key;
   }
 
 
-  public MediaUploadAllOfUploadParameters policy(String policy) {
+  public MediaUploadAllOfUploadParameters policy(@javax.annotation.Nullable String policy) {
     this.policy = policy;
     return this;
   }
@@ -194,12 +202,12 @@ public class MediaUploadAllOfUploadParameters {
     return policy;
   }
 
-  public void setPolicy(String policy) {
+  public void setPolicy(@javax.annotation.Nullable String policy) {
     this.policy = policy;
   }
 
 
-  public MediaUploadAllOfUploadParameters xAmzCredential(String xAmzCredential) {
+  public MediaUploadAllOfUploadParameters xAmzCredential(@javax.annotation.Nullable String xAmzCredential) {
     this.xAmzCredential = xAmzCredential;
     return this;
   }
@@ -213,12 +221,12 @@ public class MediaUploadAllOfUploadParameters {
     return xAmzCredential;
   }
 
-  public void setxAmzCredential(String xAmzCredential) {
+  public void setxAmzCredential(@javax.annotation.Nullable String xAmzCredential) {
     this.xAmzCredential = xAmzCredential;
   }
 
 
-  public MediaUploadAllOfUploadParameters contentType(String contentType) {
+  public MediaUploadAllOfUploadParameters contentType(@javax.annotation.Nullable String contentType) {
     this.contentType = contentType;
     return this;
   }
@@ -232,7 +240,7 @@ public class MediaUploadAllOfUploadParameters {
     return contentType;
   }
 
-  public void setContentType(String contentType) {
+  public void setContentType(@javax.annotation.Nullable String contentType) {
     this.contentType = contentType;
   }
 

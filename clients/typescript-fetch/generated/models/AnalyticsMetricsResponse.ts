@@ -63,11 +63,11 @@ export function AnalyticsMetricsResponseFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function AnalyticsMetricsResponseToJSON(json: any): AnalyticsMetricsResponse {
-      return AnalyticsMetricsResponseToJSONTyped(json, false);
-  }
+export function AnalyticsMetricsResponseToJSON(json: any): AnalyticsMetricsResponse {
+    return AnalyticsMetricsResponseToJSONTyped(json, false);
+}
 
-  export function AnalyticsMetricsResponseToJSONTyped(value?: AnalyticsMetricsResponse | null, ignoreDiscriminator: boolean = false): any {
+export function AnalyticsMetricsResponseToJSONTyped(value?: AnalyticsMetricsResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

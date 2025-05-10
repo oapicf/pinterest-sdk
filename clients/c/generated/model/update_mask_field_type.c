@@ -22,7 +22,7 @@ pinterest_rest_api_update_mask_field_type__e update_mask_field_type_update_mask_
     return 0;
 }
 
-cJSON *update_mask_field_type_update_mask_field_type_convertToJSON(pinterest_rest_api_update_mask_field_type__e update_mask_field_type) {
+cJSON *update_mask_field_type_convertToJSON(pinterest_rest_api_update_mask_field_type__e update_mask_field_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "update_mask_field_type", update_mask_field_type_update_mask_field_type_ToString(update_mask_field_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_update_mask_field_type__e update_mask_field_type_update_mask_field_type_parseFromJSON(cJSON *update_mask_field_typeJSON) {
-    pinterest_rest_api_update_mask_field_type__e *update_mask_field_type = NULL;
-    pinterest_rest_api_update_mask_field_type__e update_mask_field_typeVariable;
-    cJSON *update_mask_field_typeVar = cJSON_GetObjectItemCaseSensitive(update_mask_field_typeJSON, "update_mask_field_type");
-    if(!cJSON_IsString(update_mask_field_typeVar) || (update_mask_field_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_update_mask_field_type__e update_mask_field_type_parseFromJSON(cJSON *update_mask_field_typeJSON) {
+    if(!cJSON_IsString(update_mask_field_typeJSON) || (update_mask_field_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    update_mask_field_typeVariable = update_mask_field_type_update_mask_field_type_FromString(update_mask_field_typeVar->valuestring);
-    return update_mask_field_typeVariable;
-end:
-    return 0;
+    return update_mask_field_type_update_mask_field_type_FromString(update_mask_field_typeJSON->valuestring);
 }

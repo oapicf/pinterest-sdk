@@ -26,9 +26,10 @@ typedef struct image_metadata_t {
     char *link; // string
     struct image_metadata_images_t *images; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } image_metadata_t;
 
-image_metadata_t *image_metadata_create(
+__attribute__((deprecated)) image_metadata_t *image_metadata_create(
     char *item_type,
     char *title,
     char *description,

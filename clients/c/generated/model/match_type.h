@@ -24,9 +24,9 @@ char* match_type_match_type_ToString(pinterest_rest_api_match_type__e match_type
 
 pinterest_rest_api_match_type__e match_type_match_type_FromString(char* match_type);
 
-//cJSON *match_type_match_type_convertToJSON(pinterest_rest_api_match_type__e match_type);
+cJSON *match_type_convertToJSON(pinterest_rest_api_match_type__e match_type);
 
-//pinterest_rest_api_match_type__e match_type_match_type_parseFromJSON(cJSON *match_typeJSON);
+pinterest_rest_api_match_type__e match_type_parseFromJSON(cJSON *match_typeJSON);
 
 #endif /* _match_type_H_ */
 

@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CampaignCreateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CampaignCreateRequest   {
   private String adAccountId;
   private String name;
@@ -35,6 +35,20 @@ public class CampaignCreateRequest   {
   private Boolean isAutomatedCampaign = false;
   private ObjectiveType objectiveType;
 
+  public CampaignCreateRequest() {
+  }
+
+  @JsonCreator
+  public CampaignCreateRequest(
+    @JsonProperty(required = true, value = "ad_account_id") String adAccountId,
+    @JsonProperty(required = true, value = "name") String name,
+    @JsonProperty(required = true, value = "objective_type") ObjectiveType objectiveType
+  ) {
+    this.adAccountId = adAccountId;
+    this.name = name;
+    this.objectiveType = objectiveType;
+  }
+
   /**
    * Campaign&#39;s Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.
    **/
@@ -45,12 +59,12 @@ public class CampaignCreateRequest   {
 
   
   @ApiModelProperty(example = "549755885175", required = true, value = "Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.")
-  @JsonProperty("ad_account_id")
+  @JsonProperty(required = true, value = "ad_account_id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getAdAccountId() {
     return adAccountId;
   }
 
-  @JsonProperty("ad_account_id")
+  @JsonProperty(required = true, value = "ad_account_id")
   public void setAdAccountId(String adAccountId) {
     this.adAccountId = adAccountId;
   }
@@ -65,12 +79,12 @@ public class CampaignCreateRequest   {
 
   
   @ApiModelProperty(example = "ACME Tools", required = true, value = "Campaign name.")
-  @JsonProperty("name")
+  @JsonProperty(required = true, value = "name")
   @NotNull public String getName() {
     return name;
   }
 
-  @JsonProperty("name")
+  @JsonProperty(required = true, value = "name")
   public void setName(String name) {
     this.name = name;
   }
@@ -282,12 +296,12 @@ public class CampaignCreateRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("objective_type")
+  @JsonProperty(required = true, value = "objective_type")
   @NotNull public ObjectiveType getObjectiveType() {
     return objectiveType;
   }
 
-  @JsonProperty("objective_type")
+  @JsonProperty(required = true, value = "objective_type")
   public void setObjectiveType(ObjectiveType objectiveType) {
     this.objectiveType = objectiveType;
   }

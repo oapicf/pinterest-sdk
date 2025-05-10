@@ -13,7 +13,7 @@ import AnyCodable
 /** Integration record */
 public struct IntegrationRecord: Codable, JSONEncodable, Hashable {
 
-    static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public var id: String?
     public var externalBusinessId: String?
     public var connectedMerchantId: String?
@@ -96,3 +96,6 @@ public struct IntegrationRecord: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension IntegrationRecord: Identifiable {}

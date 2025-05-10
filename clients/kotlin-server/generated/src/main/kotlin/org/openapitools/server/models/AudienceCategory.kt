@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.AudienceSubcategory
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param key Interest unique key (same as ID).
@@ -22,6 +23,7 @@ import org.openapitools.server.models.AudienceSubcategory
  * @param id Interest ID.
  * @param subcategories Subcategory interest distribution
  */
+@Serializable
 data class AudienceCategory(
     /* Interest unique key (same as ID). */
     val key: kotlin.String? = null,
@@ -35,5 +37,5 @@ data class AudienceCategory(
     val id: kotlin.String? = null,
     /* Subcategory interest distribution */
     val subcategories: kotlin.collections.List<AudienceSubcategory>? = null
-) 
+)
 

@@ -22,7 +22,7 @@ pinterest_rest_api_optimization_goal_metadata_frequency_goal_metadata_TIMERANGE_
     return 0;
 }
 
-optimization_goal_metadata_frequency_goal_metadata_t *optimization_goal_metadata_frequency_goal_metadata_create(
+static optimization_goal_metadata_frequency_goal_metadata_t *optimization_goal_metadata_frequency_goal_metadata_create_internal(
     int frequency,
     pinterest_rest_api_optimization_goal_metadata_frequency_goal_metadata_TIMERANGE_e timerange
     ) {
@@ -33,12 +33,26 @@ optimization_goal_metadata_frequency_goal_metadata_t *optimization_goal_metadata
     optimization_goal_metadata_frequency_goal_metadata_local_var->frequency = frequency;
     optimization_goal_metadata_frequency_goal_metadata_local_var->timerange = timerange;
 
+    optimization_goal_metadata_frequency_goal_metadata_local_var->_library_owned = 1;
     return optimization_goal_metadata_frequency_goal_metadata_local_var;
 }
 
+__attribute__((deprecated)) optimization_goal_metadata_frequency_goal_metadata_t *optimization_goal_metadata_frequency_goal_metadata_create(
+    int frequency,
+    pinterest_rest_api_optimization_goal_metadata_frequency_goal_metadata_TIMERANGE_e timerange
+    ) {
+    return optimization_goal_metadata_frequency_goal_metadata_create_internal (
+        frequency,
+        timerange
+        );
+}
 
 void optimization_goal_metadata_frequency_goal_metadata_free(optimization_goal_metadata_frequency_goal_metadata_t *optimization_goal_metadata_frequency_goal_metadata) {
     if(NULL == optimization_goal_metadata_frequency_goal_metadata){
+        return ;
+    }
+    if(optimization_goal_metadata_frequency_goal_metadata->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "optimization_goal_metadata_frequency_goal_metadata_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -58,7 +72,7 @@ cJSON *optimization_goal_metadata_frequency_goal_metadata_convertToJSON(optimiza
 
     // optimization_goal_metadata_frequency_goal_metadata->timerange
     if(optimization_goal_metadata_frequency_goal_metadata->timerange != pinterest_rest_api_optimization_goal_metadata_frequency_goal_metadata_TIMERANGE_NULL) {
-    if(cJSON_AddStringToObject(item, "timerange", timerangeoptimization_goal_metadata_frequency_goal_metadata_ToString(optimization_goal_metadata_frequency_goal_metadata->timerange)) == NULL)
+    if(cJSON_AddStringToObject(item, "timerange", optimization_goal_metadata_frequency_goal_metadata_timerange_ToString(optimization_goal_metadata_frequency_goal_metadata->timerange)) == NULL)
     {
     goto fail; //Enum
     }
@@ -78,6 +92,9 @@ optimization_goal_metadata_frequency_goal_metadata_t *optimization_goal_metadata
 
     // optimization_goal_metadata_frequency_goal_metadata->frequency
     cJSON *frequency = cJSON_GetObjectItemCaseSensitive(optimization_goal_metadata_frequency_goal_metadataJSON, "frequency");
+    if (cJSON_IsNull(frequency)) {
+        frequency = NULL;
+    }
     if (frequency) { 
     if(!cJSON_IsNumber(frequency))
     {
@@ -87,6 +104,9 @@ optimization_goal_metadata_frequency_goal_metadata_t *optimization_goal_metadata
 
     // optimization_goal_metadata_frequency_goal_metadata->timerange
     cJSON *timerange = cJSON_GetObjectItemCaseSensitive(optimization_goal_metadata_frequency_goal_metadataJSON, "timerange");
+    if (cJSON_IsNull(timerange)) {
+        timerange = NULL;
+    }
     pinterest_rest_api_optimization_goal_metadata_frequency_goal_metadata_TIMERANGE_e timerangeVariable;
     if (timerange) { 
     if(!cJSON_IsString(timerange))
@@ -97,7 +117,7 @@ optimization_goal_metadata_frequency_goal_metadata_t *optimization_goal_metadata
     }
 
 
-    optimization_goal_metadata_frequency_goal_metadata_local_var = optimization_goal_metadata_frequency_goal_metadata_create (
+    optimization_goal_metadata_frequency_goal_metadata_local_var = optimization_goal_metadata_frequency_goal_metadata_create_internal (
         frequency ? frequency->valuedouble : 0,
         timerange ? timerangeVariable : pinterest_rest_api_optimization_goal_metadata_frequency_goal_metadata_TIMERANGE_NULL
         );

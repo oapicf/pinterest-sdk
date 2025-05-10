@@ -160,11 +160,11 @@ export function IntegrationRecordFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-  export function IntegrationRecordToJSON(json: any): IntegrationRecord {
-      return IntegrationRecordToJSONTyped(json, false);
-  }
+export function IntegrationRecordToJSON(json: any): IntegrationRecord {
+    return IntegrationRecordToJSONTyped(json, false);
+}
 
-  export function IntegrationRecordToJSONTyped(value?: Omit<IntegrationRecord, 'connected_user_id'|'connected_advertiser_id'> | null, ignoreDiscriminator: boolean = false): any {
+export function IntegrationRecordToJSONTyped(value?: Omit<IntegrationRecord, 'connected_user_id'|'connected_advertiser_id'> | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

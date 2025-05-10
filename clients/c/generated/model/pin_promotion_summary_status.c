@@ -22,7 +22,7 @@ pinterest_rest_api_pin_promotion_summary_status__e pin_promotion_summary_status_
     return 0;
 }
 
-cJSON *pin_promotion_summary_status_pin_promotion_summary_status_convertToJSON(pinterest_rest_api_pin_promotion_summary_status__e pin_promotion_summary_status) {
+cJSON *pin_promotion_summary_status_convertToJSON(pinterest_rest_api_pin_promotion_summary_status__e pin_promotion_summary_status) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "pin_promotion_summary_status", pin_promotion_summary_status_pin_promotion_summary_status_ToString(pin_promotion_summary_status)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_pin_promotion_summary_status__e pin_promotion_summary_status_pin_promotion_summary_status_parseFromJSON(cJSON *pin_promotion_summary_statusJSON) {
-    pinterest_rest_api_pin_promotion_summary_status__e *pin_promotion_summary_status = NULL;
-    pinterest_rest_api_pin_promotion_summary_status__e pin_promotion_summary_statusVariable;
-    cJSON *pin_promotion_summary_statusVar = cJSON_GetObjectItemCaseSensitive(pin_promotion_summary_statusJSON, "pin_promotion_summary_status");
-    if(!cJSON_IsString(pin_promotion_summary_statusVar) || (pin_promotion_summary_statusVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_pin_promotion_summary_status__e pin_promotion_summary_status_parseFromJSON(cJSON *pin_promotion_summary_statusJSON) {
+    if(!cJSON_IsString(pin_promotion_summary_statusJSON) || (pin_promotion_summary_statusJSON->valuestring == NULL)) {
+        return 0;
     }
-    pin_promotion_summary_statusVariable = pin_promotion_summary_status_pin_promotion_summary_status_FromString(pin_promotion_summary_statusVar->valuestring);
-    return pin_promotion_summary_statusVariable;
-end:
-    return 0;
+    return pin_promotion_summary_status_pin_promotion_summary_status_FromString(pin_promotion_summary_statusJSON->valuestring);
 }

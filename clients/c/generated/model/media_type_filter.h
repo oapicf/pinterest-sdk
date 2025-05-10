@@ -22,9 +22,10 @@ typedef struct media_type_filter_t media_type_filter_t;
 typedef struct media_type_filter_t {
     catalogs_product_group_multiple_media_types_criteria_t *media_type; //object
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } media_type_filter_t;
 
-media_type_filter_t *media_type_filter_create(
+__attribute__((deprecated)) media_type_filter_t *media_type_filter_create(
     catalogs_product_group_multiple_media_types_criteria_t *media_type
 );
 

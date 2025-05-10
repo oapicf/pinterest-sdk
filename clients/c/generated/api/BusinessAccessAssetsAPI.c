@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 // Functions for enum PERMISSIONS for BusinessAccessAssetsAPI_businessAssetsGet
 
@@ -224,15 +219,20 @@ BusinessAccessAssetsAPI_assetGroupCreate(apiClient_t *apiClient, char *business_
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/businesses/{business_id}/asset_groups")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/businesses/{business_id}/asset_groups");
+    char *localVarPath = strdup("/businesses/{business_id}/asset_groups");
+
+    if(!business_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen("{ business_id }");
+    long sizeOfPathParams_business_id = strlen(business_id)+3 + sizeof("{ business_id }") - 1;
     if(business_id == NULL) {
         goto end;
     }
@@ -247,9 +247,10 @@ BusinessAccessAssetsAPI_assetGroupCreate(apiClient_t *apiClient, char *business_
     cJSON *localVarSingleItemJSON_create_asset_group_body = NULL;
     if (create_asset_group_body != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_create_asset_group_body = create_asset_group_body_convertToJSON(create_asset_group_body);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_create_asset_group_body);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -261,6 +262,7 @@ BusinessAccessAssetsAPI_assetGroupCreate(apiClient_t *apiClient, char *business_
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -276,11 +278,14 @@ BusinessAccessAssetsAPI_assetGroupCreate(apiClient_t *apiClient, char *business_
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BusinessAccessAssetsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    create_asset_group_response_t *elementToReturn = create_asset_group_response_parseFromJSON(BusinessAccessAssetsAPIlocalVarJSON);
-    cJSON_Delete(BusinessAccessAssetsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    create_asset_group_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BusinessAccessAssetsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = create_asset_group_response_parseFromJSON(BusinessAccessAssetsAPIlocalVarJSON);
+        cJSON_Delete(BusinessAccessAssetsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -321,15 +326,20 @@ BusinessAccessAssetsAPI_assetGroupDelete(apiClient_t *apiClient, char *business_
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/businesses/{business_id}/asset_groups")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/businesses/{business_id}/asset_groups");
+    char *localVarPath = strdup("/businesses/{business_id}/asset_groups");
+
+    if(!business_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen("{ business_id }");
+    long sizeOfPathParams_business_id = strlen(business_id)+3 + sizeof("{ business_id }") - 1;
     if(business_id == NULL) {
         goto end;
     }
@@ -344,9 +354,10 @@ BusinessAccessAssetsAPI_assetGroupDelete(apiClient_t *apiClient, char *business_
     cJSON *localVarSingleItemJSON_delete_asset_group_body = NULL;
     if (delete_asset_group_body != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_delete_asset_group_body = delete_asset_group_body_convertToJSON(delete_asset_group_body);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_delete_asset_group_body);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -358,6 +369,7 @@ BusinessAccessAssetsAPI_assetGroupDelete(apiClient_t *apiClient, char *business_
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "DELETE");
 
     // uncomment below to debug the error response
@@ -373,11 +385,14 @@ BusinessAccessAssetsAPI_assetGroupDelete(apiClient_t *apiClient, char *business_
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BusinessAccessAssetsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    delete_asset_group_response_t *elementToReturn = delete_asset_group_response_parseFromJSON(BusinessAccessAssetsAPIlocalVarJSON);
-    cJSON_Delete(BusinessAccessAssetsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    delete_asset_group_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BusinessAccessAssetsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = delete_asset_group_response_parseFromJSON(BusinessAccessAssetsAPIlocalVarJSON);
+        cJSON_Delete(BusinessAccessAssetsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -418,15 +433,20 @@ BusinessAccessAssetsAPI_assetGroupUpdate(apiClient_t *apiClient, char *business_
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/businesses/{business_id}/asset_groups")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/businesses/{business_id}/asset_groups");
+    char *localVarPath = strdup("/businesses/{business_id}/asset_groups");
+
+    if(!business_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen("{ business_id }");
+    long sizeOfPathParams_business_id = strlen(business_id)+3 + sizeof("{ business_id }") - 1;
     if(business_id == NULL) {
         goto end;
     }
@@ -441,9 +461,10 @@ BusinessAccessAssetsAPI_assetGroupUpdate(apiClient_t *apiClient, char *business_
     cJSON *localVarSingleItemJSON_update_asset_group_body = NULL;
     if (update_asset_group_body != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_update_asset_group_body = update_asset_group_body_convertToJSON(update_asset_group_body);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_update_asset_group_body);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -455,6 +476,7 @@ BusinessAccessAssetsAPI_assetGroupUpdate(apiClient_t *apiClient, char *business_
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "PATCH");
 
     // uncomment below to debug the error response
@@ -470,11 +492,14 @@ BusinessAccessAssetsAPI_assetGroupUpdate(apiClient_t *apiClient, char *business_
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BusinessAccessAssetsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    update_asset_group_response_t *elementToReturn = update_asset_group_response_parseFromJSON(BusinessAccessAssetsAPIlocalVarJSON);
-    cJSON_Delete(BusinessAccessAssetsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    update_asset_group_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BusinessAccessAssetsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = update_asset_group_response_parseFromJSON(BusinessAccessAssetsAPIlocalVarJSON);
+        cJSON_Delete(BusinessAccessAssetsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -515,15 +540,22 @@ BusinessAccessAssetsAPI_businessAssetMembersGet(apiClient_t *apiClient, char *bu
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/businesses/{business_id}/assets/{asset_id}/members")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/businesses/{business_id}/assets/{asset_id}/members");
+    char *localVarPath = strdup("/businesses/{business_id}/assets/{asset_id}/members");
+
+    if(!business_id)
+        goto end;
+    if(!asset_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen(asset_id)+3 + strlen("{ business_id }");
+    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen(asset_id)+3 + sizeof("{ business_id }") - 1;
     if(business_id == NULL) {
         goto end;
     }
@@ -533,7 +565,7 @@ BusinessAccessAssetsAPI_businessAssetMembersGet(apiClient_t *apiClient, char *bu
     localVarPath = strReplace(localVarPath, localVarToReplace_business_id, business_id);
 
     // Path Params
-    long sizeOfPathParams_asset_id = strlen(business_id)+3 + strlen(asset_id)+3 + strlen("{ asset_id }");
+    long sizeOfPathParams_asset_id = strlen(business_id)+3 + strlen(asset_id)+3 + sizeof("{ asset_id }") - 1;
     if(asset_id == NULL) {
         goto end;
     }
@@ -590,6 +622,7 @@ BusinessAccessAssetsAPI_businessAssetMembersGet(apiClient_t *apiClient, char *bu
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -601,11 +634,14 @@ BusinessAccessAssetsAPI_businessAssetMembersGet(apiClient_t *apiClient, char *bu
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BusinessAccessAssetsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    business_asset_members_get_200_response_t *elementToReturn = business_asset_members_get_200_response_parseFromJSON(BusinessAccessAssetsAPIlocalVarJSON);
-    cJSON_Delete(BusinessAccessAssetsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    business_asset_members_get_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BusinessAccessAssetsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = business_asset_members_get_200_response_parseFromJSON(BusinessAccessAssetsAPIlocalVarJSON);
+        cJSON_Delete(BusinessAccessAssetsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -678,15 +714,22 @@ BusinessAccessAssetsAPI_businessAssetPartnersGet(apiClient_t *apiClient, char *b
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/businesses/{business_id}/assets/{asset_id}/partners")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/businesses/{business_id}/assets/{asset_id}/partners");
+    char *localVarPath = strdup("/businesses/{business_id}/assets/{asset_id}/partners");
+
+    if(!business_id)
+        goto end;
+    if(!asset_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen(asset_id)+3 + strlen("{ business_id }");
+    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen(asset_id)+3 + sizeof("{ business_id }") - 1;
     if(business_id == NULL) {
         goto end;
     }
@@ -696,7 +739,7 @@ BusinessAccessAssetsAPI_businessAssetPartnersGet(apiClient_t *apiClient, char *b
     localVarPath = strReplace(localVarPath, localVarToReplace_business_id, business_id);
 
     // Path Params
-    long sizeOfPathParams_asset_id = strlen(business_id)+3 + strlen(asset_id)+3 + strlen("{ asset_id }");
+    long sizeOfPathParams_asset_id = strlen(business_id)+3 + strlen(asset_id)+3 + sizeof("{ asset_id }") - 1;
     if(asset_id == NULL) {
         goto end;
     }
@@ -753,6 +796,7 @@ BusinessAccessAssetsAPI_businessAssetPartnersGet(apiClient_t *apiClient, char *b
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -764,11 +808,14 @@ BusinessAccessAssetsAPI_businessAssetPartnersGet(apiClient_t *apiClient, char *b
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BusinessAccessAssetsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    business_asset_partners_get_200_response_t *elementToReturn = business_asset_partners_get_200_response_parseFromJSON(BusinessAccessAssetsAPIlocalVarJSON);
-    cJSON_Delete(BusinessAccessAssetsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    business_asset_partners_get_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BusinessAccessAssetsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = business_asset_partners_get_200_response_parseFromJSON(BusinessAccessAssetsAPIlocalVarJSON);
+        cJSON_Delete(BusinessAccessAssetsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -841,15 +888,20 @@ BusinessAccessAssetsAPI_businessAssetsGet(apiClient_t *apiClient, char *business
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/businesses/{business_id}/assets")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/businesses/{business_id}/assets");
+    char *localVarPath = strdup("/businesses/{business_id}/assets");
+
+    if(!business_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen("{ business_id }");
+    long sizeOfPathParams_business_id = strlen(business_id)+3 + sizeof("{ business_id }") - 1;
     if(business_id == NULL) {
         goto end;
     }
@@ -898,7 +950,7 @@ BusinessAccessAssetsAPI_businessAssetsGet(apiClient_t *apiClient, char *business
     {
         keyQuery_asset_type = strdup("asset_type");
         valueQuery_asset_type = (asset_type);
-        keyPairQuery_asset_type = keyValuePair_create(keyQuery_asset_type, (void *)strdup(businessAssetsGet_ASSETTYPE_ToString(
+        keyPairQuery_asset_type = keyValuePair_create(keyQuery_asset_type, strdup(businessAssetsGet_ASSETTYPE_ToString(
         valueQuery_asset_type)));
         list_addElement(localVarQueryParameters,keyPairQuery_asset_type);
     }
@@ -949,6 +1001,7 @@ BusinessAccessAssetsAPI_businessAssetsGet(apiClient_t *apiClient, char *business
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -960,11 +1013,14 @@ BusinessAccessAssetsAPI_businessAssetsGet(apiClient_t *apiClient, char *business
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BusinessAccessAssetsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    business_assets_get_200_response_t *elementToReturn = business_assets_get_200_response_parseFromJSON(BusinessAccessAssetsAPIlocalVarJSON);
-    cJSON_Delete(BusinessAccessAssetsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    business_assets_get_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BusinessAccessAssetsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = business_assets_get_200_response_parseFromJSON(BusinessAccessAssetsAPIlocalVarJSON);
+        cJSON_Delete(BusinessAccessAssetsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1068,15 +1124,22 @@ BusinessAccessAssetsAPI_businessMemberAssetsGet(apiClient_t *apiClient, char *bu
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/businesses/{business_id}/members/{member_id}/assets")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/businesses/{business_id}/members/{member_id}/assets");
+    char *localVarPath = strdup("/businesses/{business_id}/members/{member_id}/assets");
+
+    if(!business_id)
+        goto end;
+    if(!member_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen(member_id)+3 + strlen("{ business_id }");
+    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen(member_id)+3 + sizeof("{ business_id }") - 1;
     if(business_id == NULL) {
         goto end;
     }
@@ -1086,7 +1149,7 @@ BusinessAccessAssetsAPI_businessMemberAssetsGet(apiClient_t *apiClient, char *bu
     localVarPath = strReplace(localVarPath, localVarToReplace_business_id, business_id);
 
     // Path Params
-    long sizeOfPathParams_member_id = strlen(business_id)+3 + strlen(member_id)+3 + strlen("{ member_id }");
+    long sizeOfPathParams_member_id = strlen(business_id)+3 + strlen(member_id)+3 + sizeof("{ member_id }") - 1;
     if(member_id == NULL) {
         goto end;
     }
@@ -1105,7 +1168,7 @@ BusinessAccessAssetsAPI_businessMemberAssetsGet(apiClient_t *apiClient, char *bu
     {
         keyQuery_asset_type = strdup("asset_type");
         valueQuery_asset_type = (asset_type);
-        keyPairQuery_asset_type = keyValuePair_create(keyQuery_asset_type, (void *)strdup(businessMemberAssetsGet_ASSETTYPE_ToString(
+        keyPairQuery_asset_type = keyValuePair_create(keyQuery_asset_type, strdup(businessMemberAssetsGet_ASSETTYPE_ToString(
         valueQuery_asset_type)));
         list_addElement(localVarQueryParameters,keyPairQuery_asset_type);
     }
@@ -1156,6 +1219,7 @@ BusinessAccessAssetsAPI_businessMemberAssetsGet(apiClient_t *apiClient, char *bu
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -1167,11 +1231,14 @@ BusinessAccessAssetsAPI_businessMemberAssetsGet(apiClient_t *apiClient, char *bu
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BusinessAccessAssetsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    business_member_assets_get_200_response_t *elementToReturn = business_member_assets_get_200_response_parseFromJSON(BusinessAccessAssetsAPIlocalVarJSON);
-    cJSON_Delete(BusinessAccessAssetsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    business_member_assets_get_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BusinessAccessAssetsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = business_member_assets_get_200_response_parseFromJSON(BusinessAccessAssetsAPIlocalVarJSON);
+        cJSON_Delete(BusinessAccessAssetsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1252,15 +1319,20 @@ BusinessAccessAssetsAPI_businessMembersAssetAccessDelete(apiClient_t *apiClient,
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/businesses/{business_id}/members/assets/access")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/businesses/{business_id}/members/assets/access");
+    char *localVarPath = strdup("/businesses/{business_id}/members/assets/access");
+
+    if(!business_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen("{ business_id }");
+    long sizeOfPathParams_business_id = strlen(business_id)+3 + sizeof("{ business_id }") - 1;
     if(business_id == NULL) {
         goto end;
     }
@@ -1275,9 +1347,10 @@ BusinessAccessAssetsAPI_businessMembersAssetAccessDelete(apiClient_t *apiClient,
     cJSON *localVarSingleItemJSON_business_members_asset_access_delete_request = NULL;
     if (business_members_asset_access_delete_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_business_members_asset_access_delete_request = business_members_asset_access_delete_request_convertToJSON(business_members_asset_access_delete_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_business_members_asset_access_delete_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -1289,6 +1362,7 @@ BusinessAccessAssetsAPI_businessMembersAssetAccessDelete(apiClient_t *apiClient,
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "DELETE");
 
     // uncomment below to debug the error response
@@ -1300,11 +1374,14 @@ BusinessAccessAssetsAPI_businessMembersAssetAccessDelete(apiClient_t *apiClient,
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BusinessAccessAssetsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    delete_member_access_results_response_array_t *elementToReturn = delete_member_access_results_response_array_parseFromJSON(BusinessAccessAssetsAPIlocalVarJSON);
-    cJSON_Delete(BusinessAccessAssetsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    delete_member_access_results_response_array_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BusinessAccessAssetsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = delete_member_access_results_response_array_parseFromJSON(BusinessAccessAssetsAPIlocalVarJSON);
+        cJSON_Delete(BusinessAccessAssetsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1345,15 +1422,20 @@ BusinessAccessAssetsAPI_businessMembersAssetAccessUpdate(apiClient_t *apiClient,
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/businesses/{business_id}/members/assets/access")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/businesses/{business_id}/members/assets/access");
+    char *localVarPath = strdup("/businesses/{business_id}/members/assets/access");
+
+    if(!business_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen("{ business_id }");
+    long sizeOfPathParams_business_id = strlen(business_id)+3 + sizeof("{ business_id }") - 1;
     if(business_id == NULL) {
         goto end;
     }
@@ -1368,9 +1450,10 @@ BusinessAccessAssetsAPI_businessMembersAssetAccessUpdate(apiClient_t *apiClient,
     cJSON *localVarSingleItemJSON_update_member_asset_access_body = NULL;
     if (update_member_asset_access_body != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_update_member_asset_access_body = update_member_asset_access_body_convertToJSON(update_member_asset_access_body);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_update_member_asset_access_body);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -1382,6 +1465,7 @@ BusinessAccessAssetsAPI_businessMembersAssetAccessUpdate(apiClient_t *apiClient,
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "PATCH");
 
     // uncomment below to debug the error response
@@ -1393,11 +1477,14 @@ BusinessAccessAssetsAPI_businessMembersAssetAccessUpdate(apiClient_t *apiClient,
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BusinessAccessAssetsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    update_member_assets_results_response_array_t *elementToReturn = update_member_assets_results_response_array_parseFromJSON(BusinessAccessAssetsAPIlocalVarJSON);
-    cJSON_Delete(BusinessAccessAssetsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    update_member_assets_results_response_array_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BusinessAccessAssetsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = update_member_assets_results_response_array_parseFromJSON(BusinessAccessAssetsAPIlocalVarJSON);
+        cJSON_Delete(BusinessAccessAssetsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1438,15 +1525,22 @@ BusinessAccessAssetsAPI_businessPartnerAssetAccessGet(apiClient_t *apiClient, ch
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/businesses/{business_id}/partners/{partner_id}/assets")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/businesses/{business_id}/partners/{partner_id}/assets");
+    char *localVarPath = strdup("/businesses/{business_id}/partners/{partner_id}/assets");
+
+    if(!business_id)
+        goto end;
+    if(!partner_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen(partner_id)+3 + strlen("{ business_id }");
+    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen(partner_id)+3 + sizeof("{ business_id }") - 1;
     if(business_id == NULL) {
         goto end;
     }
@@ -1456,7 +1550,7 @@ BusinessAccessAssetsAPI_businessPartnerAssetAccessGet(apiClient_t *apiClient, ch
     localVarPath = strReplace(localVarPath, localVarToReplace_business_id, business_id);
 
     // Path Params
-    long sizeOfPathParams_partner_id = strlen(business_id)+3 + strlen(partner_id)+3 + strlen("{ partner_id }");
+    long sizeOfPathParams_partner_id = strlen(business_id)+3 + strlen(partner_id)+3 + sizeof("{ partner_id }") - 1;
     if(partner_id == NULL) {
         goto end;
     }
@@ -1487,7 +1581,7 @@ BusinessAccessAssetsAPI_businessPartnerAssetAccessGet(apiClient_t *apiClient, ch
     {
         keyQuery_asset_type = strdup("asset_type");
         valueQuery_asset_type = (asset_type);
-        keyPairQuery_asset_type = keyValuePair_create(keyQuery_asset_type, (void *)strdup(businessPartnerAssetAccessGet_ASSETTYPE_ToString(
+        keyPairQuery_asset_type = keyValuePair_create(keyQuery_asset_type, strdup(businessPartnerAssetAccessGet_ASSETTYPE_ToString(
         valueQuery_asset_type)));
         list_addElement(localVarQueryParameters,keyPairQuery_asset_type);
     }
@@ -1538,6 +1632,7 @@ BusinessAccessAssetsAPI_businessPartnerAssetAccessGet(apiClient_t *apiClient, ch
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -1549,11 +1644,14 @@ BusinessAccessAssetsAPI_businessPartnerAssetAccessGet(apiClient_t *apiClient, ch
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BusinessAccessAssetsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    business_partner_asset_access_get_200_response_t *elementToReturn = business_partner_asset_access_get_200_response_parseFromJSON(BusinessAccessAssetsAPIlocalVarJSON);
-    cJSON_Delete(BusinessAccessAssetsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    business_partner_asset_access_get_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BusinessAccessAssetsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = business_partner_asset_access_get_200_response_parseFromJSON(BusinessAccessAssetsAPIlocalVarJSON);
+        cJSON_Delete(BusinessAccessAssetsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1642,15 +1740,20 @@ BusinessAccessAssetsAPI_deletePartnerAssetAccessHandlerImpl(apiClient_t *apiClie
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/businesses/{business_id}/partners/assets")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/businesses/{business_id}/partners/assets");
+    char *localVarPath = strdup("/businesses/{business_id}/partners/assets");
+
+    if(!business_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen("{ business_id }");
+    long sizeOfPathParams_business_id = strlen(business_id)+3 + sizeof("{ business_id }") - 1;
     if(business_id == NULL) {
         goto end;
     }
@@ -1665,9 +1768,10 @@ BusinessAccessAssetsAPI_deletePartnerAssetAccessHandlerImpl(apiClient_t *apiClie
     cJSON *localVarSingleItemJSON_delete_partner_asset_access_body = NULL;
     if (delete_partner_asset_access_body != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_delete_partner_asset_access_body = delete_partner_asset_access_body_convertToJSON(delete_partner_asset_access_body);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_delete_partner_asset_access_body);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -1679,6 +1783,7 @@ BusinessAccessAssetsAPI_deletePartnerAssetAccessHandlerImpl(apiClient_t *apiClie
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "DELETE");
 
     // uncomment below to debug the error response
@@ -1690,11 +1795,14 @@ BusinessAccessAssetsAPI_deletePartnerAssetAccessHandlerImpl(apiClient_t *apiClie
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BusinessAccessAssetsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    delete_partner_assets_results_response_array_t *elementToReturn = delete_partner_assets_results_response_array_parseFromJSON(BusinessAccessAssetsAPIlocalVarJSON);
-    cJSON_Delete(BusinessAccessAssetsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    delete_partner_assets_results_response_array_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BusinessAccessAssetsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = delete_partner_assets_results_response_array_parseFromJSON(BusinessAccessAssetsAPIlocalVarJSON);
+        cJSON_Delete(BusinessAccessAssetsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1735,15 +1843,20 @@ BusinessAccessAssetsAPI_updatePartnerAssetAccessHandlerImpl(apiClient_t *apiClie
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/businesses/{business_id}/partners/assets")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/businesses/{business_id}/partners/assets");
+    char *localVarPath = strdup("/businesses/{business_id}/partners/assets");
+
+    if(!business_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen("{ business_id }");
+    long sizeOfPathParams_business_id = strlen(business_id)+3 + sizeof("{ business_id }") - 1;
     if(business_id == NULL) {
         goto end;
     }
@@ -1758,9 +1871,10 @@ BusinessAccessAssetsAPI_updatePartnerAssetAccessHandlerImpl(apiClient_t *apiClie
     cJSON *localVarSingleItemJSON_update_partner_asset_access_body = NULL;
     if (update_partner_asset_access_body != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_update_partner_asset_access_body = update_partner_asset_access_body_convertToJSON(update_partner_asset_access_body);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_update_partner_asset_access_body);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -1772,6 +1886,7 @@ BusinessAccessAssetsAPI_updatePartnerAssetAccessHandlerImpl(apiClient_t *apiClie
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "PATCH");
 
     // uncomment below to debug the error response
@@ -1783,11 +1898,14 @@ BusinessAccessAssetsAPI_updatePartnerAssetAccessHandlerImpl(apiClient_t *apiClie
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BusinessAccessAssetsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    update_partner_assets_results_response_array_t *elementToReturn = update_partner_assets_results_response_array_parseFromJSON(BusinessAccessAssetsAPIlocalVarJSON);
-    cJSON_Delete(BusinessAccessAssetsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    update_partner_assets_results_response_array_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BusinessAccessAssetsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = update_partner_assets_results_response_array_parseFromJSON(BusinessAccessAssetsAPIlocalVarJSON);
+        cJSON_Delete(BusinessAccessAssetsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type

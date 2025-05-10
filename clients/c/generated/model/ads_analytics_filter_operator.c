@@ -22,7 +22,7 @@ pinterest_rest_api_ads_analytics_filter_operator__e ads_analytics_filter_operato
     return 0;
 }
 
-cJSON *ads_analytics_filter_operator_ads_analytics_filter_operator_convertToJSON(pinterest_rest_api_ads_analytics_filter_operator__e ads_analytics_filter_operator) {
+cJSON *ads_analytics_filter_operator_convertToJSON(pinterest_rest_api_ads_analytics_filter_operator__e ads_analytics_filter_operator) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "ads_analytics_filter_operator", ads_analytics_filter_operator_ads_analytics_filter_operator_ToString(ads_analytics_filter_operator)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_ads_analytics_filter_operator__e ads_analytics_filter_operator_ads_analytics_filter_operator_parseFromJSON(cJSON *ads_analytics_filter_operatorJSON) {
-    pinterest_rest_api_ads_analytics_filter_operator__e *ads_analytics_filter_operator = NULL;
-    pinterest_rest_api_ads_analytics_filter_operator__e ads_analytics_filter_operatorVariable;
-    cJSON *ads_analytics_filter_operatorVar = cJSON_GetObjectItemCaseSensitive(ads_analytics_filter_operatorJSON, "ads_analytics_filter_operator");
-    if(!cJSON_IsString(ads_analytics_filter_operatorVar) || (ads_analytics_filter_operatorVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_ads_analytics_filter_operator__e ads_analytics_filter_operator_parseFromJSON(cJSON *ads_analytics_filter_operatorJSON) {
+    if(!cJSON_IsString(ads_analytics_filter_operatorJSON) || (ads_analytics_filter_operatorJSON->valuestring == NULL)) {
+        return 0;
     }
-    ads_analytics_filter_operatorVariable = ads_analytics_filter_operator_ads_analytics_filter_operator_FromString(ads_analytics_filter_operatorVar->valuestring);
-    return ads_analytics_filter_operatorVariable;
-end:
-    return 0;
+    return ads_analytics_filter_operator_ads_analytics_filter_operator_FromString(ads_analytics_filter_operatorJSON->valuestring);
 }

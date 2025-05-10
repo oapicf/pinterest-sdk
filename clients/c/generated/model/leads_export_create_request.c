@@ -5,7 +5,7 @@
 
 
 
-leads_export_create_request_t *leads_export_create_request_create(
+static leads_export_create_request_t *leads_export_create_request_create_internal(
     char *start_date,
     char *end_date,
     char *ad_id
@@ -18,12 +18,28 @@ leads_export_create_request_t *leads_export_create_request_create(
     leads_export_create_request_local_var->end_date = end_date;
     leads_export_create_request_local_var->ad_id = ad_id;
 
+    leads_export_create_request_local_var->_library_owned = 1;
     return leads_export_create_request_local_var;
 }
 
+__attribute__((deprecated)) leads_export_create_request_t *leads_export_create_request_create(
+    char *start_date,
+    char *end_date,
+    char *ad_id
+    ) {
+    return leads_export_create_request_create_internal (
+        start_date,
+        end_date,
+        ad_id
+        );
+}
 
 void leads_export_create_request_free(leads_export_create_request_t *leads_export_create_request) {
     if(NULL == leads_export_create_request){
+        return ;
+    }
+    if(leads_export_create_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "leads_export_create_request_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -85,6 +101,9 @@ leads_export_create_request_t *leads_export_create_request_parseFromJSON(cJSON *
 
     // leads_export_create_request->start_date
     cJSON *start_date = cJSON_GetObjectItemCaseSensitive(leads_export_create_requestJSON, "start_date");
+    if (cJSON_IsNull(start_date)) {
+        start_date = NULL;
+    }
     if (!start_date) {
         goto end;
     }
@@ -97,6 +116,9 @@ leads_export_create_request_t *leads_export_create_request_parseFromJSON(cJSON *
 
     // leads_export_create_request->end_date
     cJSON *end_date = cJSON_GetObjectItemCaseSensitive(leads_export_create_requestJSON, "end_date");
+    if (cJSON_IsNull(end_date)) {
+        end_date = NULL;
+    }
     if (!end_date) {
         goto end;
     }
@@ -109,6 +131,9 @@ leads_export_create_request_t *leads_export_create_request_parseFromJSON(cJSON *
 
     // leads_export_create_request->ad_id
     cJSON *ad_id = cJSON_GetObjectItemCaseSensitive(leads_export_create_requestJSON, "ad_id");
+    if (cJSON_IsNull(ad_id)) {
+        ad_id = NULL;
+    }
     if (!ad_id) {
         goto end;
     }
@@ -120,7 +145,7 @@ leads_export_create_request_t *leads_export_create_request_parseFromJSON(cJSON *
     }
 
 
-    leads_export_create_request_local_var = leads_export_create_request_create (
+    leads_export_create_request_local_var = leads_export_create_request_create_internal (
         strdup(start_date->valuestring),
         strdup(end_date->valuestring),
         strdup(ad_id->valuestring)

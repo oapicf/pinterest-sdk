@@ -19,6 +19,7 @@ import org.openapitools.server.models.CatalogsStatus
 import org.openapitools.server.models.CatalogsType
 import org.openapitools.server.models.NullableCurrency
 
+import kotlinx.serialization.Serializable
 /**
  * Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.
  * @param name A human-friendly name associated to a given feed.
@@ -32,6 +33,7 @@ import org.openapitools.server.models.NullableCurrency
  * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
  * @param status 
  */
+@Serializable
 data class CatalogsHotelFeedsCreateRequest(
     /* A human-friendly name associated to a given feed. */
     val name: kotlin.String,
@@ -46,5 +48,5 @@ data class CatalogsHotelFeedsCreateRequest(
     /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. */
     val catalogId: kotlin.String? = null,
     val status: CatalogsStatus? = null
-) 
+)
 

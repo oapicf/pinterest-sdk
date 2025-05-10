@@ -5,7 +5,7 @@
 
 
 
-catalogs_creative_assets_product_group_filters_all_of_t *catalogs_creative_assets_product_group_filters_all_of_create(
+static catalogs_creative_assets_product_group_filters_all_of_t *catalogs_creative_assets_product_group_filters_all_of_create_internal(
     list_t *all_of
     ) {
     catalogs_creative_assets_product_group_filters_all_of_t *catalogs_creative_assets_product_group_filters_all_of_local_var = malloc(sizeof(catalogs_creative_assets_product_group_filters_all_of_t));
@@ -14,12 +14,24 @@ catalogs_creative_assets_product_group_filters_all_of_t *catalogs_creative_asset
     }
     catalogs_creative_assets_product_group_filters_all_of_local_var->all_of = all_of;
 
+    catalogs_creative_assets_product_group_filters_all_of_local_var->_library_owned = 1;
     return catalogs_creative_assets_product_group_filters_all_of_local_var;
 }
 
+__attribute__((deprecated)) catalogs_creative_assets_product_group_filters_all_of_t *catalogs_creative_assets_product_group_filters_all_of_create(
+    list_t *all_of
+    ) {
+    return catalogs_creative_assets_product_group_filters_all_of_create_internal (
+        all_of
+        );
+}
 
 void catalogs_creative_assets_product_group_filters_all_of_free(catalogs_creative_assets_product_group_filters_all_of_t *catalogs_creative_assets_product_group_filters_all_of) {
     if(NULL == catalogs_creative_assets_product_group_filters_all_of){
+        return ;
+    }
+    if(catalogs_creative_assets_product_group_filters_all_of->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_creative_assets_product_group_filters_all_of_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -73,6 +85,9 @@ catalogs_creative_assets_product_group_filters_all_of_t *catalogs_creative_asset
 
     // catalogs_creative_assets_product_group_filters_all_of->all_of
     cJSON *all_of = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_product_group_filters_all_ofJSON, "all_of");
+    if (cJSON_IsNull(all_of)) {
+        all_of = NULL;
+    }
     if (!all_of) {
         goto end;
     }
@@ -96,7 +111,7 @@ catalogs_creative_assets_product_group_filters_all_of_t *catalogs_creative_asset
     }
 
 
-    catalogs_creative_assets_product_group_filters_all_of_local_var = catalogs_creative_assets_product_group_filters_all_of_create (
+    catalogs_creative_assets_product_group_filters_all_of_local_var = catalogs_creative_assets_product_group_filters_all_of_create_internal (
         all_ofList
         );
 

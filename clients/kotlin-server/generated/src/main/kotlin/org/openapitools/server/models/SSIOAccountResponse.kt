@@ -14,6 +14,7 @@ package org.openapitools.server.models
 import org.openapitools.server.models.SSIOAccountItem
 import org.openapitools.server.models.SSIOAccountPMPName
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param eligible Advertiser eligible to create order lines
@@ -23,6 +24,7 @@ import org.openapitools.server.models.SSIOAccountPMPName
  * @param pmpNames 
  * @param error Error indicator from Salesforce which could be \"No Error\"
  */
+@Serializable
 data class SSIOAccountResponse(
     /* Advertiser eligible to create order lines */
     val eligible: kotlin.Boolean? = null,
@@ -34,5 +36,5 @@ data class SSIOAccountResponse(
     val pmpNames: kotlin.collections.List<SSIOAccountPMPName>? = null,
     /* Error indicator from Salesforce which could be \"No Error\" */
     val error: kotlin.String? = null
-) 
+)
 

@@ -19,12 +19,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ConversionEventsUserData_anyOf")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConversionEventsUserDataAnyOf   {
   private @Valid List<String> em = new ArrayList<>();
   private @Valid List<String> hashedMaids = new ArrayList<>();
   private String clientIpAddress;
   private String clientUserAgent;
+
+  public ConversionEventsUserDataAnyOf() {
+  }
+
+  @JsonCreator
+  public ConversionEventsUserDataAnyOf(
+    @JsonProperty(required = true, value = "em") List<String> em
+  ) {
+    this.em = em;
+  }
 
   /**
    * Sha256 hashes of lowercase version of user&#39;s email addresses. Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
@@ -36,12 +46,12 @@ public class ConversionEventsUserDataAnyOf   {
 
   
   @ApiModelProperty(example = "[\"411e44ce1261728ffd2c0686e44e3fffe413c0e2c5adc498bc7da883d476b9c8\",\"09831ea51bd1b7b32a836683a00a9ccaf3d05f59499f42d9883412ed79289969\"]", required = true, value = "Sha256 hashes of lowercase version of user's email addresses. Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.")
-  @JsonProperty("em")
+  @JsonProperty(required = true, value = "em")
   @NotNull public List<String> getEm() {
     return em;
   }
 
-  @JsonProperty("em")
+  @JsonProperty(required = true, value = "em")
   public void setEm(List<String> em) {
     this.em = em;
   }

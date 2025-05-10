@@ -44,8 +44,8 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum UserListOperationType: string
 {
-        case ADD = "ADD";
-        case REMOVE = "REMOVE";
+        case ADD = 'ADD';
+        case REMOVE = 'REMOVE';
 }
 
 

@@ -13,7 +13,7 @@ import AnyCodable
 /** An object containing the permissions a you/your business partner has on the asset. */
 public struct GetPartnerAssetsResponse: Codable, JSONEncodable, Hashable {
 
-    static let assetIdRule = StringRule(minLength: 1, maxLength: 20, pattern: "/^\\d+$/")
+    public static let assetIdRule = StringRule(minLength: 1, maxLength: 20, pattern: "/^\\d+$/")
     /** Unique identifier of a business asset. */
     public var assetId: String?
     /** Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. */

@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param label Policy label for an additional policy link.
  * @param link Policy link for an additional policy link.
  */
+@Serializable
 data class LeadFormCommonPolicyLinksInner(
     /* Policy label for an additional policy link. */
     val label: kotlin.String? = null,
     /* Policy link for an additional policy link. */
     val link: kotlin.String? = null
-) 
+)
 

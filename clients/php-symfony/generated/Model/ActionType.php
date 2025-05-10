@@ -44,9 +44,9 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum ActionType: string
 {
-        case CLICKTHROUGH = "CLICKTHROUGH";
-        case IMPRESSION = "IMPRESSION";
-        case VIDEO_V_50_MRC = "VIDEO_V_50_MRC";
+        case CLICKTHROUGH = 'CLICKTHROUGH';
+        case IMPRESSION = 'IMPRESSION';
+        case VIDEO_V_50_MRC = 'VIDEO_V_50_MRC';
 }
 
 

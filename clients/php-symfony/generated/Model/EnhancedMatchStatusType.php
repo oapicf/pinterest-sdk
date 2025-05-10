@@ -44,10 +44,10 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum EnhancedMatchStatusType: string
 {
-        case UNKNOWN = "UNKNOWN";
-        case NOT_VALIDATED = "NOT_VALIDATED";
-        case VALIDATING_IN_PROGRESS = "VALIDATING_IN_PROGRESS";
-        case VALIDATION_COMPLETE = "VALIDATION_COMPLETE";
+        case UNKNOWN = 'UNKNOWN';
+        case NOT_VALIDATED = 'NOT_VALIDATED';
+        case VALIDATING_IN_PROGRESS = 'VALIDATING_IN_PROGRESS';
+        case VALIDATION_COMPLETE = 'VALIDATION_COMPLETE';
 }
 
 

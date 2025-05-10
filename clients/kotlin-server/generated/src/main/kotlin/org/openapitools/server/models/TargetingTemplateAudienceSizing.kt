@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.TargetingTemplateAudienceSizingReachEstimate
 
+import kotlinx.serialization.Serializable
 /**
  * Gets an audience size estimate for a set of given targeting spec data. <p>Returns:</p> An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate. 
  * @param reachEstimate 
  */
+@Serializable
 data class TargetingTemplateAudienceSizing(
     val reachEstimate: TargetingTemplateAudienceSizingReachEstimate? = null
-) 
+)
 

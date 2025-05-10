@@ -50,40 +50,47 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ConversionTagConfigs
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConversionTagConfigs {
   public static final String SERIALIZED_NAME_AEM_ENABLED = "aem_enabled";
   @SerializedName(SERIALIZED_NAME_AEM_ENABLED)
+  @javax.annotation.Nullable
   private Boolean aemEnabled = false;
 
   public static final String SERIALIZED_NAME_MD_FREQUENCY = "md_frequency";
   @SerializedName(SERIALIZED_NAME_MD_FREQUENCY)
+  @javax.annotation.Nullable
   private BigDecimal mdFrequency = new BigDecimal("1");
 
   public static final String SERIALIZED_NAME_AEM_FNLN_ENABLED = "aem_fnln_enabled";
   @SerializedName(SERIALIZED_NAME_AEM_FNLN_ENABLED)
+  @javax.annotation.Nullable
   private Boolean aemFnlnEnabled = false;
 
   public static final String SERIALIZED_NAME_AEM_PH_ENABLED = "aem_ph_enabled";
   @SerializedName(SERIALIZED_NAME_AEM_PH_ENABLED)
+  @javax.annotation.Nullable
   private Boolean aemPhEnabled = false;
 
   public static final String SERIALIZED_NAME_AEM_GE_ENABLED = "aem_ge_enabled";
   @SerializedName(SERIALIZED_NAME_AEM_GE_ENABLED)
+  @javax.annotation.Nullable
   private Boolean aemGeEnabled = false;
 
   public static final String SERIALIZED_NAME_AEM_DB_ENABLED = "aem_db_enabled";
   @SerializedName(SERIALIZED_NAME_AEM_DB_ENABLED)
+  @javax.annotation.Nullable
   private Boolean aemDbEnabled = false;
 
   public static final String SERIALIZED_NAME_AEM_LOC_ENABLED = "aem_loc_enabled";
   @SerializedName(SERIALIZED_NAME_AEM_LOC_ENABLED)
+  @javax.annotation.Nullable
   private Boolean aemLocEnabled = false;
 
   public ConversionTagConfigs() {
   }
 
-  public ConversionTagConfigs aemEnabled(Boolean aemEnabled) {
+  public ConversionTagConfigs aemEnabled(@javax.annotation.Nullable Boolean aemEnabled) {
     this.aemEnabled = aemEnabled;
     return this;
   }
@@ -97,12 +104,12 @@ public class ConversionTagConfigs {
     return aemEnabled;
   }
 
-  public void setAemEnabled(Boolean aemEnabled) {
+  public void setAemEnabled(@javax.annotation.Nullable Boolean aemEnabled) {
     this.aemEnabled = aemEnabled;
   }
 
 
-  public ConversionTagConfigs mdFrequency(BigDecimal mdFrequency) {
+  public ConversionTagConfigs mdFrequency(@javax.annotation.Nullable BigDecimal mdFrequency) {
     this.mdFrequency = mdFrequency;
     return this;
   }
@@ -116,12 +123,12 @@ public class ConversionTagConfigs {
     return mdFrequency;
   }
 
-  public void setMdFrequency(BigDecimal mdFrequency) {
+  public void setMdFrequency(@javax.annotation.Nullable BigDecimal mdFrequency) {
     this.mdFrequency = mdFrequency;
   }
 
 
-  public ConversionTagConfigs aemFnlnEnabled(Boolean aemFnlnEnabled) {
+  public ConversionTagConfigs aemFnlnEnabled(@javax.annotation.Nullable Boolean aemFnlnEnabled) {
     this.aemFnlnEnabled = aemFnlnEnabled;
     return this;
   }
@@ -135,12 +142,12 @@ public class ConversionTagConfigs {
     return aemFnlnEnabled;
   }
 
-  public void setAemFnlnEnabled(Boolean aemFnlnEnabled) {
+  public void setAemFnlnEnabled(@javax.annotation.Nullable Boolean aemFnlnEnabled) {
     this.aemFnlnEnabled = aemFnlnEnabled;
   }
 
 
-  public ConversionTagConfigs aemPhEnabled(Boolean aemPhEnabled) {
+  public ConversionTagConfigs aemPhEnabled(@javax.annotation.Nullable Boolean aemPhEnabled) {
     this.aemPhEnabled = aemPhEnabled;
     return this;
   }
@@ -154,12 +161,12 @@ public class ConversionTagConfigs {
     return aemPhEnabled;
   }
 
-  public void setAemPhEnabled(Boolean aemPhEnabled) {
+  public void setAemPhEnabled(@javax.annotation.Nullable Boolean aemPhEnabled) {
     this.aemPhEnabled = aemPhEnabled;
   }
 
 
-  public ConversionTagConfigs aemGeEnabled(Boolean aemGeEnabled) {
+  public ConversionTagConfigs aemGeEnabled(@javax.annotation.Nullable Boolean aemGeEnabled) {
     this.aemGeEnabled = aemGeEnabled;
     return this;
   }
@@ -173,12 +180,12 @@ public class ConversionTagConfigs {
     return aemGeEnabled;
   }
 
-  public void setAemGeEnabled(Boolean aemGeEnabled) {
+  public void setAemGeEnabled(@javax.annotation.Nullable Boolean aemGeEnabled) {
     this.aemGeEnabled = aemGeEnabled;
   }
 
 
-  public ConversionTagConfigs aemDbEnabled(Boolean aemDbEnabled) {
+  public ConversionTagConfigs aemDbEnabled(@javax.annotation.Nullable Boolean aemDbEnabled) {
     this.aemDbEnabled = aemDbEnabled;
     return this;
   }
@@ -192,12 +199,12 @@ public class ConversionTagConfigs {
     return aemDbEnabled;
   }
 
-  public void setAemDbEnabled(Boolean aemDbEnabled) {
+  public void setAemDbEnabled(@javax.annotation.Nullable Boolean aemDbEnabled) {
     this.aemDbEnabled = aemDbEnabled;
   }
 
 
-  public ConversionTagConfigs aemLocEnabled(Boolean aemLocEnabled) {
+  public ConversionTagConfigs aemLocEnabled(@javax.annotation.Nullable Boolean aemLocEnabled) {
     this.aemLocEnabled = aemLocEnabled;
     return this;
   }
@@ -211,7 +218,7 @@ public class ConversionTagConfigs {
     return aemLocEnabled;
   }
 
-  public void setAemLocEnabled(Boolean aemLocEnabled) {
+  public void setAemLocEnabled(@javax.annotation.Nullable Boolean aemLocEnabled) {
     this.aemLocEnabled = aemLocEnabled;
   }
 

@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsItemValidationDetails
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param AD_LINK_FORMAT_WARNING 
@@ -60,6 +61,7 @@ import org.openapitools.server.models.CatalogsItemValidationDetails
  * @param UTM_SOURCE_AUTO_CORRECTED 
  * @param WEIGHT_UNIT_INVALID 
  */
+@Serializable
 data class CatalogsItemValidationWarnings(
     val AD_LINK_FORMAT_WARNING: CatalogsItemValidationDetails? = null,
     val AD_LINK_SAME_AS_LINK: CatalogsItemValidationDetails? = null,
@@ -105,5 +107,5 @@ data class CatalogsItemValidationWarnings(
     val TOO_MANY_ADDITIONAL_IMAGE_LINKS: CatalogsItemValidationDetails? = null,
     val UTM_SOURCE_AUTO_CORRECTED: CatalogsItemValidationDetails? = null,
     val WEIGHT_UNIT_INVALID: CatalogsItemValidationDetails? = null
-) 
+)
 

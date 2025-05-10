@@ -1604,13 +1604,13 @@ type Columns* {.pure.} = enum
   TOTALOFFLINEUNKNOWNCONVERSIONPRODUCTCOUNTUNIQUE
 
 type ConversionReportTimeType* {.pure.} = enum
-  ADACTION
-  CONVERSION
+  TIMEOFADACTION
+  TIMEOFCONVERSION
 
 type CreationSource* {.pure.} = enum
-  API
-  MANAGERREPORTINGPAGE
-  MANAGERREPORTBUILDER
+  ADSAPI
+  ADSMANAGERREPORTINGPAGE
+  ADSMANAGERREPORTBUILDER
 
 type `Type`* {.pure.} = enum
   UNSPECIFIED
@@ -4835,29 +4835,29 @@ func `$`*(v: Columns): string =
 
 func `%`*(v: ConversionReportTimeType): JsonNode =
   let str = case v:
-    of ConversionReportTimeType.ADACTION: "TIME_OF_AD_ACTION"
-    of ConversionReportTimeType.CONVERSION: "TIME_OF_CONVERSION"
+    of ConversionReportTimeType.TIMEOFADACTION: "TIME_OF_AD_ACTION"
+    of ConversionReportTimeType.TIMEOFCONVERSION: "TIME_OF_CONVERSION"
 
   JsonNode(kind: JString, str: str)
 
 func `$`*(v: ConversionReportTimeType): string =
   result = case v:
-    of ConversionReportTimeType.ADACTION: "TIME_OF_AD_ACTION"
-    of ConversionReportTimeType.CONVERSION: "TIME_OF_CONVERSION"
+    of ConversionReportTimeType.TIMEOFADACTION: "TIME_OF_AD_ACTION"
+    of ConversionReportTimeType.TIMEOFCONVERSION: "TIME_OF_CONVERSION"
 
 func `%`*(v: CreationSource): JsonNode =
   let str = case v:
-    of CreationSource.API: "ADS_API"
-    of CreationSource.MANAGERREPORTINGPAGE: "ADS_MANAGER_REPORTING_PAGE"
-    of CreationSource.MANAGERREPORTBUILDER: "ADS_MANAGER_REPORT_BUILDER"
+    of CreationSource.ADSAPI: "ADS_API"
+    of CreationSource.ADSMANAGERREPORTINGPAGE: "ADS_MANAGER_REPORTING_PAGE"
+    of CreationSource.ADSMANAGERREPORTBUILDER: "ADS_MANAGER_REPORT_BUILDER"
 
   JsonNode(kind: JString, str: str)
 
 func `$`*(v: CreationSource): string =
   result = case v:
-    of CreationSource.API: "ADS_API"
-    of CreationSource.MANAGERREPORTINGPAGE: "ADS_MANAGER_REPORTING_PAGE"
-    of CreationSource.MANAGERREPORTBUILDER: "ADS_MANAGER_REPORT_BUILDER"
+    of CreationSource.ADSAPI: "ADS_API"
+    of CreationSource.ADSMANAGERREPORTINGPAGE: "ADS_MANAGER_REPORTING_PAGE"
+    of CreationSource.ADSMANAGERREPORTBUILDER: "ADS_MANAGER_REPORT_BUILDER"
 
 func `%`*(v: `Type`): JsonNode =
   let str = case v:

@@ -24,12 +24,28 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Request object to discontinue catalogs items")
 @JsonTypeName("CatalogsItemsDeleteDiscontinuedBatchRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
   private Country country;
   private CatalogsItemsRequestLanguage language;
   private BatchOperation operation;
   private @Valid List<@Valid ItemDeleteDiscontinuedBatchRecord> items = new ArrayList<>();
+
+  public CatalogsItemsDeleteDiscontinuedBatchRequest() {
+  }
+
+  @JsonCreator
+  public CatalogsItemsDeleteDiscontinuedBatchRequest(
+    @JsonProperty(required = true, value = "country") Country country,
+    @JsonProperty(required = true, value = "language") CatalogsItemsRequestLanguage language,
+    @JsonProperty(required = true, value = "operation") BatchOperation operation,
+    @JsonProperty(required = true, value = "items") List<@Valid ItemDeleteDiscontinuedBatchRecord> items
+  ) {
+    this.country = country;
+    this.language = language;
+    this.operation = operation;
+    this.items = items;
+  }
 
   /**
    **/
@@ -40,12 +56,12 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("country")
+  @JsonProperty(required = true, value = "country")
   @NotNull public Country getCountry() {
     return country;
   }
 
-  @JsonProperty("country")
+  @JsonProperty(required = true, value = "country")
   public void setCountry(Country country) {
     this.country = country;
   }
@@ -59,12 +75,12 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("language")
+  @JsonProperty(required = true, value = "language")
   @NotNull @Valid public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
 
-  @JsonProperty("language")
+  @JsonProperty(required = true, value = "language")
   public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
@@ -78,12 +94,12 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("operation")
+  @JsonProperty(required = true, value = "operation")
   @NotNull public BatchOperation getOperation() {
     return operation;
   }
 
-  @JsonProperty("operation")
+  @JsonProperty(required = true, value = "operation")
   public void setOperation(BatchOperation operation) {
     this.operation = operation;
   }
@@ -98,12 +114,12 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
 
   
   @ApiModelProperty(required = true, value = "Array with catalogs items")
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   @NotNull @Valid public List<@Valid ItemDeleteDiscontinuedBatchRecord> getItems() {
     return items;
   }
 
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   public void setItems(List<@Valid ItemDeleteDiscontinuedBatchRecord> items) {
     this.items = items;
   }

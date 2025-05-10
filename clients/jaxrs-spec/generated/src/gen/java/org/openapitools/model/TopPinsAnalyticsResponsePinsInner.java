@@ -22,11 +22,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Array with metrics, status, and pin id for the requested metric")
 @JsonTypeName("TopPinsAnalyticsResponse_pins_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TopPinsAnalyticsResponsePinsInner   {
   private @Valid Map<String, BigDecimal> metrics = new HashMap<>();
   private @Valid Map<String, DataStatus> dataStatus = new HashMap<>();
   private String pinId;
+
+  public TopPinsAnalyticsResponsePinsInner() {
+  }
 
   /**
    * The metric name and daily value for each requested metric

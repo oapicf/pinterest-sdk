@@ -64,11 +64,11 @@ export function CatalogsProductGroupsList200ResponseFromJSONTyped(json: any, ign
     };
 }
 
-  export function CatalogsProductGroupsList200ResponseToJSON(json: any): CatalogsProductGroupsList200Response {
-      return CatalogsProductGroupsList200ResponseToJSONTyped(json, false);
-  }
+export function CatalogsProductGroupsList200ResponseToJSON(json: any): CatalogsProductGroupsList200Response {
+    return CatalogsProductGroupsList200ResponseToJSONTyped(json, false);
+}
 
-  export function CatalogsProductGroupsList200ResponseToJSONTyped(value?: CatalogsProductGroupsList200Response | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsProductGroupsList200ResponseToJSONTyped(value?: CatalogsProductGroupsList200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -42,9 +42,10 @@ typedef struct catalogs_hotel_attributes_t {
     struct catalogs_hotel_attributes_all_of_main_image_t *main_image; //model
     list_t *additional_image_link; //primitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_hotel_attributes_t;
 
-catalogs_hotel_attributes_t *catalogs_hotel_attributes_create(
+__attribute__((deprecated)) catalogs_hotel_attributes_t *catalogs_hotel_attributes_create(
     char *name,
     char *link,
     char *description,

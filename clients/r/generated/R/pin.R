@@ -185,10 +185,35 @@ Pin <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return Pin in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return Pin as a base R list.
+    #' @examples
+    #' # convert array of Pin (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert Pin to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       PinObject <- list()
       if (!is.null(self$`id`)) {
         PinObject[["id"]] <-
@@ -220,7 +245,7 @@ Pin <- R6::R6Class(
       }
       if (!is.null(self$`creative_type`)) {
         PinObject[["creative_type"]] <-
-          self$`creative_type`$toJSON()
+          self$`creative_type`$toSimpleType()
       }
       if (!is.null(self$`board_id`)) {
         PinObject[["board_id"]] <-
@@ -232,7 +257,7 @@ Pin <- R6::R6Class(
       }
       if (!is.null(self$`board_owner`)) {
         PinObject[["board_owner"]] <-
-          self$`board_owner`$toJSON()
+          self$`board_owner`$toSimpleType()
       }
       if (!is.null(self$`is_owner`)) {
         PinObject[["is_owner"]] <-
@@ -240,11 +265,11 @@ Pin <- R6::R6Class(
       }
       if (!is.null(self$`media`)) {
         PinObject[["media"]] <-
-          self$`media`$toJSON()
+          self$`media`$toSimpleType()
       }
       if (!is.null(self$`media_source`)) {
         PinObject[["media_source"]] <-
-          self$`media_source`$toJSON()
+          self$`media_source`$toSimpleType()
       }
       if (!is.null(self$`parent_pin_id`)) {
         PinObject[["parent_pin_id"]] <-
@@ -266,7 +291,7 @@ Pin <- R6::R6Class(
         PinObject[["pin_metrics"]] <-
           self$`pin_metrics`
       }
-      PinObject
+      return(PinObject)
     },
 
     #' @description
@@ -346,165 +371,13 @@ Pin <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return Pin in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`id`)) {
-          sprintf(
-          '"id":
-            "%s"
-                    ',
-          self$`id`
-          )
-        },
-        if (!is.null(self$`created_at`)) {
-          sprintf(
-          '"created_at":
-            "%s"
-                    ',
-          self$`created_at`
-          )
-        },
-        if (!is.null(self$`link`)) {
-          sprintf(
-          '"link":
-            "%s"
-                    ',
-          self$`link`
-          )
-        },
-        if (!is.null(self$`title`)) {
-          sprintf(
-          '"title":
-            "%s"
-                    ',
-          self$`title`
-          )
-        },
-        if (!is.null(self$`description`)) {
-          sprintf(
-          '"description":
-            "%s"
-                    ',
-          self$`description`
-          )
-        },
-        if (!is.null(self$`dominant_color`)) {
-          sprintf(
-          '"dominant_color":
-            "%s"
-                    ',
-          self$`dominant_color`
-          )
-        },
-        if (!is.null(self$`alt_text`)) {
-          sprintf(
-          '"alt_text":
-            "%s"
-                    ',
-          self$`alt_text`
-          )
-        },
-        if (!is.null(self$`creative_type`)) {
-          sprintf(
-          '"creative_type":
-          %s
-          ',
-          jsonlite::toJSON(self$`creative_type`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`board_id`)) {
-          sprintf(
-          '"board_id":
-            "%s"
-                    ',
-          self$`board_id`
-          )
-        },
-        if (!is.null(self$`board_section_id`)) {
-          sprintf(
-          '"board_section_id":
-            "%s"
-                    ',
-          self$`board_section_id`
-          )
-        },
-        if (!is.null(self$`board_owner`)) {
-          sprintf(
-          '"board_owner":
-          %s
-          ',
-          jsonlite::toJSON(self$`board_owner`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`is_owner`)) {
-          sprintf(
-          '"is_owner":
-            %s
-                    ',
-          tolower(self$`is_owner`)
-          )
-        },
-        if (!is.null(self$`media`)) {
-          sprintf(
-          '"media":
-          %s
-          ',
-          jsonlite::toJSON(self$`media`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`media_source`)) {
-          sprintf(
-          '"media_source":
-          %s
-          ',
-          jsonlite::toJSON(self$`media_source`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`parent_pin_id`)) {
-          sprintf(
-          '"parent_pin_id":
-            "%s"
-                    ',
-          self$`parent_pin_id`
-          )
-        },
-        if (!is.null(self$`is_standard`)) {
-          sprintf(
-          '"is_standard":
-            %s
-                    ',
-          tolower(self$`is_standard`)
-          )
-        },
-        if (!is.null(self$`has_been_promoted`)) {
-          sprintf(
-          '"has_been_promoted":
-            %s
-                    ',
-          tolower(self$`has_been_promoted`)
-          )
-        },
-        if (!is.null(self$`note`)) {
-          sprintf(
-          '"note":
-            "%s"
-                    ',
-          self$`note`
-          )
-        },
-        if (!is.null(self$`pin_metrics`)) {
-          sprintf(
-          '"pin_metrics":
-            "%s"
-                    ',
-          self$`pin_metrics`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

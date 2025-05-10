@@ -65,11 +65,11 @@ export function AuthRespondInvitesBodyInvitesInnerFromJSONTyped(json: any, ignor
     };
 }
 
-  export function AuthRespondInvitesBodyInvitesInnerToJSON(json: any): AuthRespondInvitesBodyInvitesInner {
-      return AuthRespondInvitesBodyInvitesInnerToJSONTyped(json, false);
-  }
+export function AuthRespondInvitesBodyInvitesInnerToJSON(json: any): AuthRespondInvitesBodyInvitesInner {
+    return AuthRespondInvitesBodyInvitesInnerToJSONTyped(json, false);
+}
 
-  export function AuthRespondInvitesBodyInvitesInnerToJSONTyped(value?: AuthRespondInvitesBodyInvitesInner | null, ignoreDiscriminator: boolean = false): any {
+export function AuthRespondInvitesBodyInvitesInnerToJSONTyped(value?: AuthRespondInvitesBodyInvitesInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

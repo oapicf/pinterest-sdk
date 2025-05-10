@@ -5,7 +5,7 @@
 
 
 
-interest_t *interest_create(
+static interest_t *interest_create_internal(
     char *canonical_url,
     char *id,
     char *key,
@@ -20,12 +20,30 @@ interest_t *interest_create(
     interest_local_var->key = key;
     interest_local_var->name = name;
 
+    interest_local_var->_library_owned = 1;
     return interest_local_var;
 }
 
+__attribute__((deprecated)) interest_t *interest_create(
+    char *canonical_url,
+    char *id,
+    char *key,
+    char *name
+    ) {
+    return interest_create_internal (
+        canonical_url,
+        id,
+        key,
+        name
+        );
+}
 
 void interest_free(interest_t *interest) {
     if(NULL == interest){
+        return ;
+    }
+    if(interest->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "interest_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -96,6 +114,9 @@ interest_t *interest_parseFromJSON(cJSON *interestJSON){
 
     // interest->canonical_url
     cJSON *canonical_url = cJSON_GetObjectItemCaseSensitive(interestJSON, "canonical_url");
+    if (cJSON_IsNull(canonical_url)) {
+        canonical_url = NULL;
+    }
     if (canonical_url) { 
     if(!cJSON_IsString(canonical_url) && !cJSON_IsNull(canonical_url))
     {
@@ -105,6 +126,9 @@ interest_t *interest_parseFromJSON(cJSON *interestJSON){
 
     // interest->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(interestJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -114,6 +138,9 @@ interest_t *interest_parseFromJSON(cJSON *interestJSON){
 
     // interest->key
     cJSON *key = cJSON_GetObjectItemCaseSensitive(interestJSON, "key");
+    if (cJSON_IsNull(key)) {
+        key = NULL;
+    }
     if (key) { 
     if(!cJSON_IsString(key) && !cJSON_IsNull(key))
     {
@@ -123,6 +150,9 @@ interest_t *interest_parseFromJSON(cJSON *interestJSON){
 
     // interest->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(interestJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
     if (name) { 
     if(!cJSON_IsString(name) && !cJSON_IsNull(name))
     {
@@ -131,7 +161,7 @@ interest_t *interest_parseFromJSON(cJSON *interestJSON){
     }
 
 
-    interest_local_var = interest_create (
+    interest_local_var = interest_create_internal (
         canonical_url && !cJSON_IsNull(canonical_url) ? strdup(canonical_url->valuestring) : NULL,
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         key && !cJSON_IsNull(key) ? strdup(key->valuestring) : NULL,

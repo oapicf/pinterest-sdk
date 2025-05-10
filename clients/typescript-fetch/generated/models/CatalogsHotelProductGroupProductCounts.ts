@@ -67,11 +67,11 @@ export function CatalogsHotelProductGroupProductCountsFromJSONTyped(json: any, i
     };
 }
 
-  export function CatalogsHotelProductGroupProductCountsToJSON(json: any): CatalogsHotelProductGroupProductCounts {
-      return CatalogsHotelProductGroupProductCountsToJSONTyped(json, false);
-  }
+export function CatalogsHotelProductGroupProductCountsToJSON(json: any): CatalogsHotelProductGroupProductCounts {
+    return CatalogsHotelProductGroupProductCountsToJSONTyped(json, false);
+}
 
-  export function CatalogsHotelProductGroupProductCountsToJSONTyped(value?: CatalogsHotelProductGroupProductCounts | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsHotelProductGroupProductCountsToJSONTyped(value?: CatalogsHotelProductGroupProductCounts | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -32,9 +32,10 @@ typedef struct catalogs_create_retail_item_t {
     pinterest_rest_api_catalogs_create_retail_item_OPERATION_e operation; //enum
     struct item_attributes_request_t *attributes; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_create_retail_item_t;
 
-catalogs_create_retail_item_t *catalogs_create_retail_item_create(
+__attribute__((deprecated)) catalogs_create_retail_item_t *catalogs_create_retail_item_create(
     char *item_id,
     pinterest_rest_api_catalogs_create_retail_item_OPERATION_e operation,
     item_attributes_request_t *attributes

@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { TargetingTemplateCreate } from '../model/targetingTemplateCreate';
 import { TargetingTemplateGetResponseData } from '../model/targetingTemplateGetResponseData';
@@ -29,10 +29,12 @@ export class TargetingTemplateService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -51,9 +53,10 @@ export class TargetingTemplateService {
      * @param targetingTemplateCreate targeting template creation entity
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [targetingTemplateCreateOpts.config] Override http request option.
      */
-    public targetingTemplateCreate(adAccountId: string, targetingTemplateCreate: TargetingTemplateCreate, ): Observable<AxiosResponse<TargetingTemplateGetResponseData>>;
-    public targetingTemplateCreate(adAccountId: string, targetingTemplateCreate: TargetingTemplateCreate, ): Observable<any> {
+    public targetingTemplateCreate(adAccountId: string, targetingTemplateCreate: TargetingTemplateCreate, targetingTemplateCreateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<TargetingTemplateGetResponseData>>;
+    public targetingTemplateCreate(adAccountId: string, targetingTemplateCreate: TargetingTemplateCreate, targetingTemplateCreateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling targetingTemplateCreate.');
         }
@@ -100,7 +103,8 @@ export class TargetingTemplateService {
                     targetingTemplateCreate,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...targetingTemplateCreateOpts?.config,
+                        headers: {...headers, ...targetingTemplateCreateOpts?.config?.headers},
                     }
                 );
             })
@@ -117,9 +121,10 @@ export class TargetingTemplateService {
      * @param bookmark Cursor used to fetch the next page of items
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [targetingTemplateListOpts.config] Override http request option.
      */
-    public targetingTemplateList(adAccountId: string, order?: 'ASCENDING' | 'DESCENDING', includeSizing?: boolean, searchQuery?: string, pageSize?: number, bookmark?: string, ): Observable<AxiosResponse<TargetingTemplateList200Response>>;
-    public targetingTemplateList(adAccountId: string, order?: 'ASCENDING' | 'DESCENDING', includeSizing?: boolean, searchQuery?: string, pageSize?: number, bookmark?: string, ): Observable<any> {
+    public targetingTemplateList(adAccountId: string, order?: 'ASCENDING' | 'DESCENDING', includeSizing?: boolean, searchQuery?: string, pageSize?: number, bookmark?: string, targetingTemplateListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<TargetingTemplateList200Response>>;
+    public targetingTemplateList(adAccountId: string, order?: 'ASCENDING' | 'DESCENDING', includeSizing?: boolean, searchQuery?: string, pageSize?: number, bookmark?: string, targetingTemplateListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling targetingTemplateList.');
         }
@@ -174,7 +179,8 @@ export class TargetingTemplateService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...targetingTemplateListOpts?.config,
+                        headers: {...headers, ...targetingTemplateListOpts?.config?.headers},
                     }
                 );
             })
@@ -187,9 +193,10 @@ export class TargetingTemplateService {
      * @param targetingTemplateUpdateRequest Operation type and targeting template ID
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [targetingTemplateUpdateOpts.config] Override http request option.
      */
-    public targetingTemplateUpdate(adAccountId: string, targetingTemplateUpdateRequest: TargetingTemplateUpdateRequest, ): Observable<AxiosResponse<any>>;
-    public targetingTemplateUpdate(adAccountId: string, targetingTemplateUpdateRequest: TargetingTemplateUpdateRequest, ): Observable<any> {
+    public targetingTemplateUpdate(adAccountId: string, targetingTemplateUpdateRequest: TargetingTemplateUpdateRequest, targetingTemplateUpdateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public targetingTemplateUpdate(adAccountId: string, targetingTemplateUpdateRequest: TargetingTemplateUpdateRequest, targetingTemplateUpdateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling targetingTemplateUpdate.');
         }
@@ -236,7 +243,8 @@ export class TargetingTemplateService {
                     targetingTemplateUpdateRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...targetingTemplateUpdateOpts?.config,
+                        headers: {...headers, ...targetingTemplateUpdateOpts?.config?.headers},
                     }
                 );
             })

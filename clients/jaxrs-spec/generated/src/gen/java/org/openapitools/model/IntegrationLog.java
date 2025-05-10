@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Schema for log sent from an integration application.")
 @JsonTypeName("IntegrationLog")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class IntegrationLog   {
   private Integer clientTimestamp;
   public enum EventTypeEnum {
@@ -130,6 +130,20 @@ public class IntegrationLog   {
   private IntegrationLogClientError error;
   private IntegrationLogClientRequest request;
 
+  public IntegrationLog() {
+  }
+
+  @JsonCreator
+  public IntegrationLog(
+    @JsonProperty(required = true, value = "client_timestamp") Integer clientTimestamp,
+    @JsonProperty(required = true, value = "event_type") EventTypeEnum eventType,
+    @JsonProperty(required = true, value = "log_level") LogLevelEnum logLevel
+  ) {
+    this.clientTimestamp = clientTimestamp;
+    this.eventType = eventType;
+    this.logLevel = logLevel;
+  }
+
   /**
    * Timestamp in milliseconds of when the log was executed at the client.
    **/
@@ -140,12 +154,12 @@ public class IntegrationLog   {
 
   
   @ApiModelProperty(required = true, value = "Timestamp in milliseconds of when the log was executed at the client.")
-  @JsonProperty("client_timestamp")
+  @JsonProperty(required = true, value = "client_timestamp")
   @NotNull public Integer getClientTimestamp() {
     return clientTimestamp;
   }
 
-  @JsonProperty("client_timestamp")
+  @JsonProperty(required = true, value = "client_timestamp")
   public void setClientTimestamp(Integer clientTimestamp) {
     this.clientTimestamp = clientTimestamp;
   }
@@ -160,12 +174,12 @@ public class IntegrationLog   {
 
   
   @ApiModelProperty(required = true, value = "Log event type")
-  @JsonProperty("event_type")
+  @JsonProperty(required = true, value = "event_type")
   @NotNull public EventTypeEnum getEventType() {
     return eventType;
   }
 
-  @JsonProperty("event_type")
+  @JsonProperty(required = true, value = "event_type")
   public void setEventType(EventTypeEnum eventType) {
     this.eventType = eventType;
   }
@@ -180,12 +194,12 @@ public class IntegrationLog   {
 
   
   @ApiModelProperty(required = true, value = "Log level type")
-  @JsonProperty("log_level")
+  @JsonProperty(required = true, value = "log_level")
   @NotNull public LogLevelEnum getLogLevel() {
     return logLevel;
   }
 
-  @JsonProperty("log_level")
+  @JsonProperty(required = true, value = "log_level")
   public void setLogLevel(LogLevelEnum logLevel) {
     this.logLevel = logLevel;
   }

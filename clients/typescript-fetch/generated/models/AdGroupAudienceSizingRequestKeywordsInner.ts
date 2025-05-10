@@ -67,11 +67,11 @@ export function AdGroupAudienceSizingRequestKeywordsInnerFromJSONTyped(json: any
     };
 }
 
-  export function AdGroupAudienceSizingRequestKeywordsInnerToJSON(json: any): AdGroupAudienceSizingRequestKeywordsInner {
-      return AdGroupAudienceSizingRequestKeywordsInnerToJSONTyped(json, false);
-  }
+export function AdGroupAudienceSizingRequestKeywordsInnerToJSON(json: any): AdGroupAudienceSizingRequestKeywordsInner {
+    return AdGroupAudienceSizingRequestKeywordsInnerToJSONTyped(json, false);
+}
 
-  export function AdGroupAudienceSizingRequestKeywordsInnerToJSONTyped(value?: AdGroupAudienceSizingRequestKeywordsInner | null, ignoreDiscriminator: boolean = false): any {
+export function AdGroupAudienceSizingRequestKeywordsInnerToJSONTyped(value?: AdGroupAudienceSizingRequestKeywordsInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

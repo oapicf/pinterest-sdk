@@ -21,9 +21,10 @@ typedef struct board_owner_t board_owner_t;
 typedef struct board_owner_t {
     char *username; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } board_owner_t;
 
-board_owner_t *board_owner_create(
+__attribute__((deprecated)) board_owner_t *board_owner_create(
     char *username
 );
 

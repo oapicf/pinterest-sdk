@@ -19,10 +19,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("KeywordsRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class KeywordsRequest   {
   private @Valid List<@Valid KeywordsCommon> keywords = new ArrayList<>();
   private String parentId;
+
+  public KeywordsRequest() {
+  }
+
+  @JsonCreator
+  public KeywordsRequest(
+    @JsonProperty(required = true, value = "keywords") List<@Valid KeywordsCommon> keywords,
+    @JsonProperty(required = true, value = "parent_id") String parentId
+  ) {
+    this.keywords = keywords;
+    this.parentId = parentId;
+  }
 
   /**
    * Keyword JSON array. Each array element has 3 fields
@@ -34,12 +46,12 @@ public class KeywordsRequest   {
 
   
   @ApiModelProperty(required = true, value = "Keyword JSON array. Each array element has 3 fields")
-  @JsonProperty("keywords")
+  @JsonProperty(required = true, value = "keywords")
   @NotNull @Valid public List<@Valid KeywordsCommon> getKeywords() {
     return keywords;
   }
 
-  @JsonProperty("keywords")
+  @JsonProperty(required = true, value = "keywords")
   public void setKeywords(List<@Valid KeywordsCommon> keywords) {
     this.keywords = keywords;
   }
@@ -70,12 +82,12 @@ public class KeywordsRequest   {
 
   
   @ApiModelProperty(example = "383791336903426391", required = true, value = "Keyword parent entity ID (advertiser, campaign, ad group).")
-  @JsonProperty("parent_id")
+  @JsonProperty(required = true, value = "parent_id")
   @NotNull  @Pattern(regexp="^((AG)|C)?\\d+$")public String getParentId() {
     return parentId;
   }
 
-  @JsonProperty("parent_id")
+  @JsonProperty(required = true, value = "parent_id")
   public void setParentId(String parentId) {
     this.parentId = parentId;
   }

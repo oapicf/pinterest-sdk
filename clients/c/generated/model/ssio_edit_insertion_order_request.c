@@ -5,7 +5,7 @@
 
 
 
-ssio_edit_insertion_order_request_t *ssio_edit_insertion_order_request_create(
+static ssio_edit_insertion_order_request_t *ssio_edit_insertion_order_request_create_internal(
     char *start_date,
     char *end_date,
     char *po_number,
@@ -44,12 +44,54 @@ ssio_edit_insertion_order_request_t *ssio_edit_insertion_order_request_create(
     ssio_edit_insertion_order_request_local_var->salesforce_order_line_id = salesforce_order_line_id;
     ssio_edit_insertion_order_request_local_var->ads_manager_order_line_id = ads_manager_order_line_id;
 
+    ssio_edit_insertion_order_request_local_var->_library_owned = 1;
     return ssio_edit_insertion_order_request_local_var;
 }
 
+__attribute__((deprecated)) ssio_edit_insertion_order_request_t *ssio_edit_insertion_order_request_create(
+    char *start_date,
+    char *end_date,
+    char *po_number,
+    double budget_amount,
+    char *billing_contact_firstname,
+    char *billing_contact_lastname,
+    char *billing_contact_email,
+    char *media_contact_firstname,
+    char *media_contact_lastname,
+    char *media_contact_email,
+    char *agency_link,
+    char *user_email,
+    char *oracle_line_id,
+    char *salesforce_order_id,
+    char *salesforce_order_line_id,
+    char *ads_manager_order_line_id
+    ) {
+    return ssio_edit_insertion_order_request_create_internal (
+        start_date,
+        end_date,
+        po_number,
+        budget_amount,
+        billing_contact_firstname,
+        billing_contact_lastname,
+        billing_contact_email,
+        media_contact_firstname,
+        media_contact_lastname,
+        media_contact_email,
+        agency_link,
+        user_email,
+        oracle_line_id,
+        salesforce_order_id,
+        salesforce_order_line_id,
+        ads_manager_order_line_id
+        );
+}
 
 void ssio_edit_insertion_order_request_free(ssio_edit_insertion_order_request_t *ssio_edit_insertion_order_request) {
     if(NULL == ssio_edit_insertion_order_request){
+        return ;
+    }
+    if(ssio_edit_insertion_order_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ssio_edit_insertion_order_request_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -260,6 +302,9 @@ ssio_edit_insertion_order_request_t *ssio_edit_insertion_order_request_parseFrom
 
     // ssio_edit_insertion_order_request->start_date
     cJSON *start_date = cJSON_GetObjectItemCaseSensitive(ssio_edit_insertion_order_requestJSON, "start_date");
+    if (cJSON_IsNull(start_date)) {
+        start_date = NULL;
+    }
     if (start_date) { 
     if(!cJSON_IsString(start_date) && !cJSON_IsNull(start_date))
     {
@@ -269,6 +314,9 @@ ssio_edit_insertion_order_request_t *ssio_edit_insertion_order_request_parseFrom
 
     // ssio_edit_insertion_order_request->end_date
     cJSON *end_date = cJSON_GetObjectItemCaseSensitive(ssio_edit_insertion_order_requestJSON, "end_date");
+    if (cJSON_IsNull(end_date)) {
+        end_date = NULL;
+    }
     if (end_date) { 
     if(!cJSON_IsString(end_date) && !cJSON_IsNull(end_date))
     {
@@ -278,6 +326,9 @@ ssio_edit_insertion_order_request_t *ssio_edit_insertion_order_request_parseFrom
 
     // ssio_edit_insertion_order_request->po_number
     cJSON *po_number = cJSON_GetObjectItemCaseSensitive(ssio_edit_insertion_order_requestJSON, "po_number");
+    if (cJSON_IsNull(po_number)) {
+        po_number = NULL;
+    }
     if (po_number) { 
     if(!cJSON_IsString(po_number) && !cJSON_IsNull(po_number))
     {
@@ -287,6 +338,9 @@ ssio_edit_insertion_order_request_t *ssio_edit_insertion_order_request_parseFrom
 
     // ssio_edit_insertion_order_request->budget_amount
     cJSON *budget_amount = cJSON_GetObjectItemCaseSensitive(ssio_edit_insertion_order_requestJSON, "budget_amount");
+    if (cJSON_IsNull(budget_amount)) {
+        budget_amount = NULL;
+    }
     if (budget_amount) { 
     if(!cJSON_IsNumber(budget_amount))
     {
@@ -296,6 +350,9 @@ ssio_edit_insertion_order_request_t *ssio_edit_insertion_order_request_parseFrom
 
     // ssio_edit_insertion_order_request->billing_contact_firstname
     cJSON *billing_contact_firstname = cJSON_GetObjectItemCaseSensitive(ssio_edit_insertion_order_requestJSON, "billing_contact_firstname");
+    if (cJSON_IsNull(billing_contact_firstname)) {
+        billing_contact_firstname = NULL;
+    }
     if (billing_contact_firstname) { 
     if(!cJSON_IsString(billing_contact_firstname) && !cJSON_IsNull(billing_contact_firstname))
     {
@@ -305,6 +362,9 @@ ssio_edit_insertion_order_request_t *ssio_edit_insertion_order_request_parseFrom
 
     // ssio_edit_insertion_order_request->billing_contact_lastname
     cJSON *billing_contact_lastname = cJSON_GetObjectItemCaseSensitive(ssio_edit_insertion_order_requestJSON, "billing_contact_lastname");
+    if (cJSON_IsNull(billing_contact_lastname)) {
+        billing_contact_lastname = NULL;
+    }
     if (billing_contact_lastname) { 
     if(!cJSON_IsString(billing_contact_lastname) && !cJSON_IsNull(billing_contact_lastname))
     {
@@ -314,6 +374,9 @@ ssio_edit_insertion_order_request_t *ssio_edit_insertion_order_request_parseFrom
 
     // ssio_edit_insertion_order_request->billing_contact_email
     cJSON *billing_contact_email = cJSON_GetObjectItemCaseSensitive(ssio_edit_insertion_order_requestJSON, "billing_contact_email");
+    if (cJSON_IsNull(billing_contact_email)) {
+        billing_contact_email = NULL;
+    }
     if (billing_contact_email) { 
     if(!cJSON_IsString(billing_contact_email) && !cJSON_IsNull(billing_contact_email))
     {
@@ -323,6 +386,9 @@ ssio_edit_insertion_order_request_t *ssio_edit_insertion_order_request_parseFrom
 
     // ssio_edit_insertion_order_request->media_contact_firstname
     cJSON *media_contact_firstname = cJSON_GetObjectItemCaseSensitive(ssio_edit_insertion_order_requestJSON, "media_contact_firstname");
+    if (cJSON_IsNull(media_contact_firstname)) {
+        media_contact_firstname = NULL;
+    }
     if (media_contact_firstname) { 
     if(!cJSON_IsString(media_contact_firstname) && !cJSON_IsNull(media_contact_firstname))
     {
@@ -332,6 +398,9 @@ ssio_edit_insertion_order_request_t *ssio_edit_insertion_order_request_parseFrom
 
     // ssio_edit_insertion_order_request->media_contact_lastname
     cJSON *media_contact_lastname = cJSON_GetObjectItemCaseSensitive(ssio_edit_insertion_order_requestJSON, "media_contact_lastname");
+    if (cJSON_IsNull(media_contact_lastname)) {
+        media_contact_lastname = NULL;
+    }
     if (media_contact_lastname) { 
     if(!cJSON_IsString(media_contact_lastname) && !cJSON_IsNull(media_contact_lastname))
     {
@@ -341,6 +410,9 @@ ssio_edit_insertion_order_request_t *ssio_edit_insertion_order_request_parseFrom
 
     // ssio_edit_insertion_order_request->media_contact_email
     cJSON *media_contact_email = cJSON_GetObjectItemCaseSensitive(ssio_edit_insertion_order_requestJSON, "media_contact_email");
+    if (cJSON_IsNull(media_contact_email)) {
+        media_contact_email = NULL;
+    }
     if (media_contact_email) { 
     if(!cJSON_IsString(media_contact_email) && !cJSON_IsNull(media_contact_email))
     {
@@ -350,6 +422,9 @@ ssio_edit_insertion_order_request_t *ssio_edit_insertion_order_request_parseFrom
 
     // ssio_edit_insertion_order_request->agency_link
     cJSON *agency_link = cJSON_GetObjectItemCaseSensitive(ssio_edit_insertion_order_requestJSON, "agency_link");
+    if (cJSON_IsNull(agency_link)) {
+        agency_link = NULL;
+    }
     if (agency_link) { 
     if(!cJSON_IsString(agency_link) && !cJSON_IsNull(agency_link))
     {
@@ -359,6 +434,9 @@ ssio_edit_insertion_order_request_t *ssio_edit_insertion_order_request_parseFrom
 
     // ssio_edit_insertion_order_request->user_email
     cJSON *user_email = cJSON_GetObjectItemCaseSensitive(ssio_edit_insertion_order_requestJSON, "user_email");
+    if (cJSON_IsNull(user_email)) {
+        user_email = NULL;
+    }
     if (user_email) { 
     if(!cJSON_IsString(user_email) && !cJSON_IsNull(user_email))
     {
@@ -368,6 +446,9 @@ ssio_edit_insertion_order_request_t *ssio_edit_insertion_order_request_parseFrom
 
     // ssio_edit_insertion_order_request->oracle_line_id
     cJSON *oracle_line_id = cJSON_GetObjectItemCaseSensitive(ssio_edit_insertion_order_requestJSON, "oracle_line_id");
+    if (cJSON_IsNull(oracle_line_id)) {
+        oracle_line_id = NULL;
+    }
     if (oracle_line_id) { 
     if(!cJSON_IsString(oracle_line_id) && !cJSON_IsNull(oracle_line_id))
     {
@@ -377,6 +458,9 @@ ssio_edit_insertion_order_request_t *ssio_edit_insertion_order_request_parseFrom
 
     // ssio_edit_insertion_order_request->salesforce_order_id
     cJSON *salesforce_order_id = cJSON_GetObjectItemCaseSensitive(ssio_edit_insertion_order_requestJSON, "salesforce_order_id");
+    if (cJSON_IsNull(salesforce_order_id)) {
+        salesforce_order_id = NULL;
+    }
     if (salesforce_order_id) { 
     if(!cJSON_IsString(salesforce_order_id) && !cJSON_IsNull(salesforce_order_id))
     {
@@ -386,6 +470,9 @@ ssio_edit_insertion_order_request_t *ssio_edit_insertion_order_request_parseFrom
 
     // ssio_edit_insertion_order_request->salesforce_order_line_id
     cJSON *salesforce_order_line_id = cJSON_GetObjectItemCaseSensitive(ssio_edit_insertion_order_requestJSON, "salesforce_order_line_id");
+    if (cJSON_IsNull(salesforce_order_line_id)) {
+        salesforce_order_line_id = NULL;
+    }
     if (salesforce_order_line_id) { 
     if(!cJSON_IsString(salesforce_order_line_id) && !cJSON_IsNull(salesforce_order_line_id))
     {
@@ -395,6 +482,9 @@ ssio_edit_insertion_order_request_t *ssio_edit_insertion_order_request_parseFrom
 
     // ssio_edit_insertion_order_request->ads_manager_order_line_id
     cJSON *ads_manager_order_line_id = cJSON_GetObjectItemCaseSensitive(ssio_edit_insertion_order_requestJSON, "ads_manager_order_line_id");
+    if (cJSON_IsNull(ads_manager_order_line_id)) {
+        ads_manager_order_line_id = NULL;
+    }
     if (ads_manager_order_line_id) { 
     if(!cJSON_IsString(ads_manager_order_line_id) && !cJSON_IsNull(ads_manager_order_line_id))
     {
@@ -403,7 +493,7 @@ ssio_edit_insertion_order_request_t *ssio_edit_insertion_order_request_parseFrom
     }
 
 
-    ssio_edit_insertion_order_request_local_var = ssio_edit_insertion_order_request_create (
+    ssio_edit_insertion_order_request_local_var = ssio_edit_insertion_order_request_create_internal (
         start_date && !cJSON_IsNull(start_date) ? strdup(start_date->valuestring) : NULL,
         end_date && !cJSON_IsNull(end_date) ? strdup(end_date->valuestring) : NULL,
         po_number && !cJSON_IsNull(po_number) ? strdup(po_number->valuestring) : NULL,

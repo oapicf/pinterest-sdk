@@ -19,7 +19,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * SSIOOrderLine
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2025-05-10T05:39:31.012858315Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SSIOOrderLine   {
   @JsonProperty("salesforce_order_line_id")
   private String salesforceOrderLineId;
@@ -168,7 +168,7 @@ public class SSIOOrderLine   {
    * Start date of the order line.
    * @return startDate
    */
-  @ApiModelProperty(example = "Thu Mar 01 00:00:00 UTC 2018", value = "Start date of the order line.")
+  @ApiModelProperty(example = "2018-03-01", value = "Start date of the order line.")
   public LocalDate getStartDate() {
     return startDate;
   }
@@ -186,7 +186,7 @@ public class SSIOOrderLine   {
    * End date of the order line.
    * @return endDate
    */
-  @ApiModelProperty(example = "Mon Oct 05 00:00:00 UTC 2020", value = "End date of the order line.")
+  @ApiModelProperty(example = "2020-10-05", value = "End date of the order line.")
   public LocalDate getEndDate() {
     return endDate;
   }

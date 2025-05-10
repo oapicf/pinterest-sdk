@@ -51,16 +51,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * UpdateAssetGroupBody
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class UpdateAssetGroupBody {
   public static final String SERIALIZED_NAME_ASSET_GROUPS_TO_UPDATE = "asset_groups_to_update";
   @SerializedName(SERIALIZED_NAME_ASSET_GROUPS_TO_UPDATE)
+  @javax.annotation.Nullable
   private List<UpdateAssetGroupBodyAssetGroupsToUpdateInner> assetGroupsToUpdate = new ArrayList<>();
 
   public UpdateAssetGroupBody() {
   }
 
-  public UpdateAssetGroupBody assetGroupsToUpdate(List<UpdateAssetGroupBodyAssetGroupsToUpdateInner> assetGroupsToUpdate) {
+  public UpdateAssetGroupBody assetGroupsToUpdate(@javax.annotation.Nullable List<UpdateAssetGroupBodyAssetGroupsToUpdateInner> assetGroupsToUpdate) {
     this.assetGroupsToUpdate = assetGroupsToUpdate;
     return this;
   }
@@ -82,7 +83,7 @@ public class UpdateAssetGroupBody {
     return assetGroupsToUpdate;
   }
 
-  public void setAssetGroupsToUpdate(List<UpdateAssetGroupBodyAssetGroupsToUpdateInner> assetGroupsToUpdate) {
+  public void setAssetGroupsToUpdate(@javax.annotation.Nullable List<UpdateAssetGroupBodyAssetGroupsToUpdateInner> assetGroupsToUpdate) {
     this.assetGroupsToUpdate = assetGroupsToUpdate;
   }
 

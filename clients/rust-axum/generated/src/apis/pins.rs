@@ -1,6 +1,6 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Multipart};
+use axum_extra::extract::{CookieJar, Host};
 use bytes::Bytes;
 use http::Method;
 use serde::{Deserialize, Serialize};
@@ -198,100 +198,100 @@ pub enum PinsSlashUpdateResponse {
 /// Pins
 #[async_trait]
 #[allow(clippy::ptr_arg)]
-pub trait Pins {
+pub trait Pins<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHandler<E> {
     /// Get multiple Pin analytics.
     ///
     /// MultiPinsSlashAnalytics - GET /v5/pins/analytics
     async fn multi_pins_slash_analytics(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::MultiPinsSlashAnalyticsQueryParams,
-    ) -> Result<MultiPinsSlashAnalyticsResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::MultiPinsSlashAnalyticsQueryParams,
+    ) -> Result<MultiPinsSlashAnalyticsResponse, E>;
 
     /// Get Pin analytics.
     ///
     /// PinsSlashAnalytics - GET /v5/pins/{pin_id}/analytics
     async fn pins_slash_analytics(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::PinsSlashAnalyticsPathParams,
-      query_params: models::PinsSlashAnalyticsQueryParams,
-    ) -> Result<PinsSlashAnalyticsResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::PinsSlashAnalyticsPathParams,
+      query_params: &models::PinsSlashAnalyticsQueryParams,
+    ) -> Result<PinsSlashAnalyticsResponse, E>;
 
     /// Create Pin.
     ///
     /// PinsSlashCreate - POST /v5/pins
     async fn pins_slash_create(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::PinsSlashCreateQueryParams,
-            body: models::PinCreate,
-    ) -> Result<PinsSlashCreateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::PinsSlashCreateQueryParams,
+            body: &models::PinCreate,
+    ) -> Result<PinsSlashCreateResponse, E>;
 
     /// Delete Pin.
     ///
     /// PinsSlashDelete - DELETE /v5/pins/{pin_id}
     async fn pins_slash_delete(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::PinsSlashDeletePathParams,
-      query_params: models::PinsSlashDeleteQueryParams,
-    ) -> Result<PinsSlashDeleteResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::PinsSlashDeletePathParams,
+      query_params: &models::PinsSlashDeleteQueryParams,
+    ) -> Result<PinsSlashDeleteResponse, E>;
 
     /// Get Pin.
     ///
     /// PinsSlashGet - GET /v5/pins/{pin_id}
     async fn pins_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::PinsSlashGetPathParams,
-      query_params: models::PinsSlashGetQueryParams,
-    ) -> Result<PinsSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::PinsSlashGetPathParams,
+      query_params: &models::PinsSlashGetQueryParams,
+    ) -> Result<PinsSlashGetResponse, E>;
 
     /// List Pins.
     ///
     /// PinsSlashList - GET /v5/pins
     async fn pins_slash_list(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::PinsSlashListQueryParams,
-    ) -> Result<PinsSlashListResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::PinsSlashListQueryParams,
+    ) -> Result<PinsSlashListResponse, E>;
 
     /// Save Pin.
     ///
     /// PinsSlashSave - POST /v5/pins/{pin_id}/save
     async fn pins_slash_save(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::PinsSlashSavePathParams,
-      query_params: models::PinsSlashSaveQueryParams,
-            body: models::PinsSaveRequest,
-    ) -> Result<PinsSlashSaveResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::PinsSlashSavePathParams,
+      query_params: &models::PinsSlashSaveQueryParams,
+            body: &models::PinsSaveRequest,
+    ) -> Result<PinsSlashSaveResponse, E>;
 
     /// Update Pin.
     ///
     /// PinsSlashUpdate - PATCH /v5/pins/{pin_id}
     async fn pins_slash_update(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::PinsSlashUpdatePathParams,
-      query_params: models::PinsSlashUpdateQueryParams,
-            body: models::PinUpdate,
-    ) -> Result<PinsSlashUpdateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::PinsSlashUpdatePathParams,
+      query_params: &models::PinsSlashUpdateQueryParams,
+            body: &models::PinUpdate,
+    ) -> Result<PinsSlashUpdateResponse, E>;
 }

@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param CAMPAIGN_ID The ID of the campaing that this metrics belongs to.
  * @param DATE Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
  */
+@Serializable
 data class CampaignsAnalyticsResponseInner(
     /* The ID of the campaing that this metrics belongs to. */
     val CAMPAIGN_ID: kotlin.String,
     /* Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`) */
     val DATE: java.time.LocalDate? = null
-) 
+)
 

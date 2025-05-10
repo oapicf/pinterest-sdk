@@ -57,7 +57,7 @@ class GoogleProductCategory2Filter
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->gOOGLEPRODUCTCATEGORY2 = array_key_exists('gOOGLEPRODUCTCATEGORY2', $data) ? $data['gOOGLEPRODUCTCATEGORY2'] : $this->gOOGLEPRODUCTCATEGORY2;

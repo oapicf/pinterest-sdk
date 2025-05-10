@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * An object containing the permissions a business partner has on the asset.
  * @param assetId Unique identifier of a business asset.
@@ -19,6 +20,7 @@ package org.openapitools.server.models
  * @param partnerId Unique identifier of a business partner.
  * @param permissions Permission levels member or partner has on an asset.
  */
+@Serializable
 data class UpdatePartnerAssetsResult(
     /* Unique identifier of a business asset. */
     val assetId: kotlin.String? = null,
@@ -28,5 +30,5 @@ data class UpdatePartnerAssetsResult(
     val partnerId: kotlin.String? = null,
     /* Permission levels member or partner has on an asset. */
     val permissions: kotlin.collections.List<kotlin.String>? = null
-) 
+)
 

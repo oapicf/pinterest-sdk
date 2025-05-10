@@ -13,7 +13,7 @@ import java.util.List;
  * Request body used to delete asset groups
  */
 @ApiModel(description = "Request body used to delete asset groups")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2025-05-10T05:39:24.501669360Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class DeleteAssetGroupBody   {
   @JsonProperty("asset_groups_to_delete")
   private List<@Pattern(regexp = "^\\d+$")String> assetGroupsToDelete = new ArrayList<>();

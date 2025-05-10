@@ -23,9 +23,10 @@ typedef struct template_response_date_range_relative_date_range_t {
     double start_days_in_past; //numeric
     double end_days_in_past; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } template_response_date_range_relative_date_range_t;
 
-template_response_date_range_relative_date_range_t *template_response_date_range_relative_date_range_create(
+__attribute__((deprecated)) template_response_date_range_relative_date_range_t *template_response_date_range_relative_date_range_create(
     char *type,
     double start_days_in_past,
     double end_days_in_past

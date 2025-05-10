@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsRetailItemsPostFilter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsRetailItemsPostFilter   {
   public enum CatalogTypeEnum {
 
@@ -71,6 +71,18 @@ public class CatalogsRetailItemsPostFilter   {
   private @Valid List<String> itemIds = new ArrayList<>();
   private String catalogId;
 
+  public CatalogsRetailItemsPostFilter() {
+  }
+
+  @JsonCreator
+  public CatalogsRetailItemsPostFilter(
+    @JsonProperty(required = true, value = "catalog_type") CatalogTypeEnum catalogType,
+    @JsonProperty(required = true, value = "item_ids") List<String> itemIds
+  ) {
+    this.catalogType = catalogType;
+    this.itemIds = itemIds;
+  }
+
   /**
    **/
   public CatalogsRetailItemsPostFilter catalogType(CatalogTypeEnum catalogType) {
@@ -80,12 +92,12 @@ public class CatalogsRetailItemsPostFilter   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   @NotNull public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
@@ -99,12 +111,12 @@ public class CatalogsRetailItemsPostFilter   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("item_ids")
+  @JsonProperty(required = true, value = "item_ids")
   @NotNull  @Size(min=1,max=1000)public List<String> getItemIds() {
     return itemIds;
   }
 
-  @JsonProperty("item_ids")
+  @JsonProperty(required = true, value = "item_ids")
   public void setItemIds(List<String> itemIds) {
     this.itemIds = itemIds;
   }

@@ -26,9 +26,10 @@ typedef struct catalogs_feed_ingestion_warnings_t {
     int additional_image_invalid_file; //numeric
     int hotel_price_header_is_present; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_feed_ingestion_warnings_t;
 
-catalogs_feed_ingestion_warnings_t *catalogs_feed_ingestion_warnings_create(
+__attribute__((deprecated)) catalogs_feed_ingestion_warnings_t *catalogs_feed_ingestion_warnings_create(
     int additional_image_level_internal_error,
     int additional_image_file_not_accessible,
     int additional_image_malformed_url,

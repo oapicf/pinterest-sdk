@@ -21,8 +21,8 @@ Name | Type | Description | Notes
 
 Name | Value
 ---- | -----
-JPEG | `"image/jpeg"`
-PNG | `"image/png"`
+IMAGE_JPEG | `"image/jpeg"`
+IMAGE_PNG | `"image/png"`
 
 
 

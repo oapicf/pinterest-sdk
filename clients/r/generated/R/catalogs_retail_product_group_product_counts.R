@@ -64,10 +64,35 @@ CatalogsRetailProductGroupProductCounts <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return CatalogsRetailProductGroupProductCounts in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return CatalogsRetailProductGroupProductCounts as a base R list.
+    #' @examples
+    #' # convert array of CatalogsRetailProductGroupProductCounts (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert CatalogsRetailProductGroupProductCounts to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       CatalogsRetailProductGroupProductCountsObject <- list()
       if (!is.null(self$`catalog_type`)) {
         CatalogsRetailProductGroupProductCountsObject[["catalog_type"]] <-
@@ -93,7 +118,7 @@ CatalogsRetailProductGroupProductCounts <- R6::R6Class(
         CatalogsRetailProductGroupProductCountsObject[["videos"]] <-
           self$`videos`
       }
-      CatalogsRetailProductGroupProductCountsObject
+      return(CatalogsRetailProductGroupProductCountsObject)
     },
 
     #' @description
@@ -129,61 +154,13 @@ CatalogsRetailProductGroupProductCounts <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return CatalogsRetailProductGroupProductCounts in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`catalog_type`)) {
-          sprintf(
-          '"catalog_type":
-            "%s"
-                    ',
-          self$`catalog_type`
-          )
-        },
-        if (!is.null(self$`in_stock`)) {
-          sprintf(
-          '"in_stock":
-            %d
-                    ',
-          self$`in_stock`
-          )
-        },
-        if (!is.null(self$`out_of_stock`)) {
-          sprintf(
-          '"out_of_stock":
-            %d
-                    ',
-          self$`out_of_stock`
-          )
-        },
-        if (!is.null(self$`preorder`)) {
-          sprintf(
-          '"preorder":
-            %d
-                    ',
-          self$`preorder`
-          )
-        },
-        if (!is.null(self$`total`)) {
-          sprintf(
-          '"total":
-            %d
-                    ',
-          self$`total`
-          )
-        },
-        if (!is.null(self$`videos`)) {
-          sprintf(
-          '"videos":
-            %d
-                    ',
-          self$`videos`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

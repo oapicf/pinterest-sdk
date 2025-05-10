@@ -5,7 +5,7 @@
 
 
 
-ads_analytics_get_async_response_t *ads_analytics_get_async_response_create(
+static ads_analytics_get_async_response_t *ads_analytics_get_async_response_create_internal(
     bulk_reporting_job_status_t *report_status,
     char *url,
     double size
@@ -18,12 +18,28 @@ ads_analytics_get_async_response_t *ads_analytics_get_async_response_create(
     ads_analytics_get_async_response_local_var->url = url;
     ads_analytics_get_async_response_local_var->size = size;
 
+    ads_analytics_get_async_response_local_var->_library_owned = 1;
     return ads_analytics_get_async_response_local_var;
 }
 
+__attribute__((deprecated)) ads_analytics_get_async_response_t *ads_analytics_get_async_response_create(
+    bulk_reporting_job_status_t *report_status,
+    char *url,
+    double size
+    ) {
+    return ads_analytics_get_async_response_create_internal (
+        report_status,
+        url,
+        size
+        );
+}
 
 void ads_analytics_get_async_response_free(ads_analytics_get_async_response_t *ads_analytics_get_async_response) {
     if(NULL == ads_analytics_get_async_response){
+        return ;
+    }
+    if(ads_analytics_get_async_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ads_analytics_get_async_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -86,12 +102,18 @@ ads_analytics_get_async_response_t *ads_analytics_get_async_response_parseFromJS
 
     // ads_analytics_get_async_response->report_status
     cJSON *report_status = cJSON_GetObjectItemCaseSensitive(ads_analytics_get_async_responseJSON, "report_status");
+    if (cJSON_IsNull(report_status)) {
+        report_status = NULL;
+    }
     if (report_status) { 
     report_status_local_nonprim = bulk_reporting_job_status_parseFromJSON(report_status); //custom
     }
 
     // ads_analytics_get_async_response->url
     cJSON *url = cJSON_GetObjectItemCaseSensitive(ads_analytics_get_async_responseJSON, "url");
+    if (cJSON_IsNull(url)) {
+        url = NULL;
+    }
     if (url) { 
     if(!cJSON_IsString(url) && !cJSON_IsNull(url))
     {
@@ -101,6 +123,9 @@ ads_analytics_get_async_response_t *ads_analytics_get_async_response_parseFromJS
 
     // ads_analytics_get_async_response->size
     cJSON *size = cJSON_GetObjectItemCaseSensitive(ads_analytics_get_async_responseJSON, "size");
+    if (cJSON_IsNull(size)) {
+        size = NULL;
+    }
     if (size) { 
     if(!cJSON_IsNumber(size))
     {
@@ -109,7 +134,7 @@ ads_analytics_get_async_response_t *ads_analytics_get_async_response_parseFromJS
     }
 
 
-    ads_analytics_get_async_response_local_var = ads_analytics_get_async_response_create (
+    ads_analytics_get_async_response_local_var = ads_analytics_get_async_response_create_internal (
         report_status ? report_status_local_nonprim : NULL,
         url && !cJSON_IsNull(url) ? strdup(url->valuestring) : NULL,
         size ? size->valuedouble : 0

@@ -44,8 +44,8 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum BusinessRoleForMembers: string
 {
-        case EMPLOYEE = "EMPLOYEE";
-        case BIZ_ADMIN = "BIZ_ADMIN";
+        case EMPLOYEE = 'EMPLOYEE';
+        case BIZ_ADMIN = 'BIZ_ADMIN';
 }
 
 

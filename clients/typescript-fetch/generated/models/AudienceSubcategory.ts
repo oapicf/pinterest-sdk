@@ -76,11 +76,11 @@ export function AudienceSubcategoryFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function AudienceSubcategoryToJSON(json: any): AudienceSubcategory {
-      return AudienceSubcategoryToJSONTyped(json, false);
-  }
+export function AudienceSubcategoryToJSON(json: any): AudienceSubcategory {
+    return AudienceSubcategoryToJSONTyped(json, false);
+}
 
-  export function AudienceSubcategoryToJSONTyped(value?: AudienceSubcategory | null, ignoreDiscriminator: boolean = false): any {
+export function AudienceSubcategoryToJSONTyped(value?: AudienceSubcategory | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

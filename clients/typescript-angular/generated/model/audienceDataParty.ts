@@ -15,7 +15,9 @@
 export type AudienceDataParty = '1p' | '3p';
 
 export const AudienceDataParty = {
+
     _1p: '1p' as AudienceDataParty,
+
     _3p: '3p' as AudienceDataParty
 };
 

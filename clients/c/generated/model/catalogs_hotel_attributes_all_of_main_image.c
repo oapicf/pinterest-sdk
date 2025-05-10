@@ -5,7 +5,7 @@
 
 
 
-catalogs_hotel_attributes_all_of_main_image_t *catalogs_hotel_attributes_all_of_main_image_create(
+static catalogs_hotel_attributes_all_of_main_image_t *catalogs_hotel_attributes_all_of_main_image_create_internal(
     char *link,
     list_t *tag
     ) {
@@ -16,12 +16,26 @@ catalogs_hotel_attributes_all_of_main_image_t *catalogs_hotel_attributes_all_of_
     catalogs_hotel_attributes_all_of_main_image_local_var->link = link;
     catalogs_hotel_attributes_all_of_main_image_local_var->tag = tag;
 
+    catalogs_hotel_attributes_all_of_main_image_local_var->_library_owned = 1;
     return catalogs_hotel_attributes_all_of_main_image_local_var;
 }
 
+__attribute__((deprecated)) catalogs_hotel_attributes_all_of_main_image_t *catalogs_hotel_attributes_all_of_main_image_create(
+    char *link,
+    list_t *tag
+    ) {
+    return catalogs_hotel_attributes_all_of_main_image_create_internal (
+        link,
+        tag
+        );
+}
 
 void catalogs_hotel_attributes_all_of_main_image_free(catalogs_hotel_attributes_all_of_main_image_t *catalogs_hotel_attributes_all_of_main_image) {
     if(NULL == catalogs_hotel_attributes_all_of_main_image){
+        return ;
+    }
+    if(catalogs_hotel_attributes_all_of_main_image->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_hotel_attributes_all_of_main_image_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -59,7 +73,7 @@ cJSON *catalogs_hotel_attributes_all_of_main_image_convertToJSON(catalogs_hotel_
 
     listEntry_t *tagListEntry;
     list_ForEach(tagListEntry, catalogs_hotel_attributes_all_of_main_image->tag) {
-    if(cJSON_AddStringToObject(tag, "", (char*)tagListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(tag, "", tagListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -83,6 +97,9 @@ catalogs_hotel_attributes_all_of_main_image_t *catalogs_hotel_attributes_all_of_
 
     // catalogs_hotel_attributes_all_of_main_image->link
     cJSON *link = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_attributes_all_of_main_imageJSON, "link");
+    if (cJSON_IsNull(link)) {
+        link = NULL;
+    }
     if (link) { 
     if(!cJSON_IsString(link) && !cJSON_IsNull(link))
     {
@@ -92,6 +109,9 @@ catalogs_hotel_attributes_all_of_main_image_t *catalogs_hotel_attributes_all_of_
 
     // catalogs_hotel_attributes_all_of_main_image->tag
     cJSON *tag = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_attributes_all_of_main_imageJSON, "tag");
+    if (cJSON_IsNull(tag)) {
+        tag = NULL;
+    }
     if (tag) { 
     cJSON *tag_local = NULL;
     if(!cJSON_IsArray(tag)) {
@@ -110,7 +130,7 @@ catalogs_hotel_attributes_all_of_main_image_t *catalogs_hotel_attributes_all_of_
     }
 
 
-    catalogs_hotel_attributes_all_of_main_image_local_var = catalogs_hotel_attributes_all_of_main_image_create (
+    catalogs_hotel_attributes_all_of_main_image_local_var = catalogs_hotel_attributes_all_of_main_image_create_internal (
         link && !cJSON_IsNull(link) ? strdup(link->valuestring) : NULL,
         tag ? tagList : NULL
         );

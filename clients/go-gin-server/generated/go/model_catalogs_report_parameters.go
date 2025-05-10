@@ -10,10 +10,6 @@
 
 package openapi
 
-import (
-	"gopkg.in/validator.v2"
-)
-
 // CatalogsReportParameters - Report parameters
 type CatalogsReportParameters struct {
 

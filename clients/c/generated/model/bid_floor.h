@@ -22,9 +22,10 @@ typedef struct bid_floor_t {
     list_t *bid_floors; //primitive container
     char *type; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } bid_floor_t;
 
-bid_floor_t *bid_floor_create(
+__attribute__((deprecated)) bid_floor_t *bid_floor_create(
     list_t *bid_floors,
     char *type
 );

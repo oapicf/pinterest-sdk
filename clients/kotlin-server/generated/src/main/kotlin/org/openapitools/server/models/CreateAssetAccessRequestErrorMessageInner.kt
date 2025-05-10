@@ -12,14 +12,16 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param code Error code associated with the error in requesting asset access.
  * @param messages 
  */
+@Serializable
 data class CreateAssetAccessRequestErrorMessageInner(
     /* Error code associated with the error in requesting asset access. */
     val code: kotlin.Int? = null,
     val messages: kotlin.collections.List<kotlin.String>? = null
-) 
+)
 

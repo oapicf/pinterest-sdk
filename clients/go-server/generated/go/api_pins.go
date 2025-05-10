@@ -202,7 +202,7 @@ func (c *PinsAPIController) PinsCreate(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	pinCreateParam := PinCreate{}
+	var pinCreateParam PinCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&pinCreateParam); err != nil {
@@ -224,7 +224,7 @@ func (c *PinsAPIController) PinsCreate(w http.ResponseWriter, r *http.Request) {
 		adAccountIdParam = param
 	} else {
 	}
-	result, err := c.service.PinsCreate(r.Context(), pinCreateParam, adAccountIdParam)
+	result, err := c.service.PinsCreate(r.Context(), &pinCreateParam, adAccountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -323,7 +323,7 @@ func (c *PinsAPIController) PinsUpdate(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &RequiredError{"pin_id"}, nil)
 		return
 	}
-	pinUpdateParam := PinUpdate{}
+	var pinUpdateParam PinUpdate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&pinUpdateParam); err != nil {
@@ -345,7 +345,7 @@ func (c *PinsAPIController) PinsUpdate(w http.ResponseWriter, r *http.Request) {
 		adAccountIdParam = param
 	} else {
 	}
-	result, err := c.service.PinsUpdate(r.Context(), pinIdParam, pinUpdateParam, adAccountIdParam)
+	result, err := c.service.PinsUpdate(r.Context(), pinIdParam, &pinUpdateParam, adAccountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -497,7 +497,7 @@ func (c *PinsAPIController) PinsSave(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &RequiredError{"pin_id"}, nil)
 		return
 	}
-	pinsSaveRequestParam := PinsSaveRequest{}
+	var pinsSaveRequestParam PinsSaveRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&pinsSaveRequestParam); err != nil {

@@ -28,8 +28,8 @@ VIDEO_ID | `"video_id"`
 
 Name | Value
 ---- | -----
-JPEG | `"image/jpeg"`
-PNG | `"image/png"`
+IMAGE_JPEG | `"image/jpeg"`
+IMAGE_PNG | `"image/png"`
 
 
 

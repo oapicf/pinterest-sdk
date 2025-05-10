@@ -94,11 +94,11 @@ export function CatalogsCreativeAssetsItemResponseFromJSONTyped(json: any, ignor
     };
 }
 
-  export function CatalogsCreativeAssetsItemResponseToJSON(json: any): CatalogsCreativeAssetsItemResponse {
-      return CatalogsCreativeAssetsItemResponseToJSONTyped(json, false);
-  }
+export function CatalogsCreativeAssetsItemResponseToJSON(json: any): CatalogsCreativeAssetsItemResponse {
+    return CatalogsCreativeAssetsItemResponseToJSONTyped(json, false);
+}
 
-  export function CatalogsCreativeAssetsItemResponseToJSONTyped(value?: CatalogsCreativeAssetsItemResponse | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsCreativeAssetsItemResponseToJSONTyped(value?: CatalogsCreativeAssetsItemResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

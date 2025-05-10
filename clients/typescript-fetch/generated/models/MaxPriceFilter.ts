@@ -57,11 +57,11 @@ export function MaxPriceFilterFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-  export function MaxPriceFilterToJSON(json: any): MaxPriceFilter {
-      return MaxPriceFilterToJSONTyped(json, false);
-  }
+export function MaxPriceFilterToJSON(json: any): MaxPriceFilter {
+    return MaxPriceFilterToJSONTyped(json, false);
+}
 
-  export function MaxPriceFilterToJSONTyped(value?: MaxPriceFilter | null, ignoreDiscriminator: boolean = false): any {
+export function MaxPriceFilterToJSONTyped(value?: MaxPriceFilter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

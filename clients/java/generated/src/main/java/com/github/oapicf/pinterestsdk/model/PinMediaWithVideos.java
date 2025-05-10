@@ -52,17 +52,18 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Pin with multiple videos.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMediaWithVideos extends PinMedia {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
+  @javax.annotation.Nullable
   private List<VideoMetadata> items = new ArrayList<>();
 
   public PinMediaWithVideos() {
     this.mediaType = this.getClass().getSimpleName();
   }
 
-  public PinMediaWithVideos items(List<VideoMetadata> items) {
+  public PinMediaWithVideos items(@javax.annotation.Nullable List<VideoMetadata> items) {
     this.items = items;
     return this;
   }
@@ -84,7 +85,7 @@ public class PinMediaWithVideos extends PinMedia {
     return items;
   }
 
-  public void setItems(List<VideoMetadata> items) {
+  public void setItems(@javax.annotation.Nullable List<VideoMetadata> items) {
     this.items = items;
   }
 

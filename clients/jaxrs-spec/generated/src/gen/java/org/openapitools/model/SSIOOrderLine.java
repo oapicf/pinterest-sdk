@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("SSIOOrderLine")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SSIOOrderLine   {
   private String salesforceOrderLineId;
   private String adsManagerOrderLineId;
@@ -43,6 +43,9 @@ public class SSIOOrderLine   {
   private String acceptedTermsTime;
   private BigDecimal budgetAmount;
   private BigDecimal estimatedMonthlySpend;
+
+  public SSIOOrderLine() {
+  }
 
   /**
    * OrderLineId in SFDC
@@ -133,7 +136,7 @@ public class SSIOOrderLine   {
   }
 
   
-  @ApiModelProperty(example = "Thu Mar 01 00:00:00 UTC 2018", value = "Start date of the order line.")
+  @ApiModelProperty(example = "2018-03-01", value = "Start date of the order line.")
   @JsonProperty("start_date")
   public LocalDate getStartDate() {
     return startDate;
@@ -153,7 +156,7 @@ public class SSIOOrderLine   {
   }
 
   
-  @ApiModelProperty(example = "Mon Oct 05 00:00:00 UTC 2020", value = "End date of the order line.")
+  @ApiModelProperty(example = "2020-10-05", value = "End date of the order line.")
   @JsonProperty("end_date")
   public LocalDate getEndDate() {
     return endDate;

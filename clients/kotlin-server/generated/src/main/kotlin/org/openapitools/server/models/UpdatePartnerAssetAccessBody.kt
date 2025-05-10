@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.UpdatePartnerAssetAccessBodyAccessesInner
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param accesses 
  */
+@Serializable
 data class UpdatePartnerAssetAccessBody(
     val accesses: kotlin.collections.List<UpdatePartnerAssetAccessBodyAccessesInner>
-) 
+)
 

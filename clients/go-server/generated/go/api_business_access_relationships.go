@@ -237,7 +237,7 @@ func (c *BusinessAccessRelationshipsAPIController) DeleteBusinessMembership(w ht
 		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
 		return
 	}
-	membersToDeleteBodyParam := MembersToDeleteBody{}
+	var membersToDeleteBodyParam MembersToDeleteBody
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&membersToDeleteBodyParam); err != nil {
@@ -270,7 +270,7 @@ func (c *BusinessAccessRelationshipsAPIController) UpdateBusinessMemberships(w h
 		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
 		return
 	}
-	updateMemberBusinessRoleBodyParam := []UpdateMemberBusinessRoleBody{}
+	var updateMemberBusinessRoleBodyParam []UpdateMemberBusinessRoleBody
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&updateMemberBusinessRoleBodyParam); err != nil {
@@ -396,7 +396,7 @@ func (c *BusinessAccessRelationshipsAPIController) DeleteBusinessPartners(w http
 		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
 		return
 	}
-	deletePartnersRequestParam := DeletePartnersRequest{}
+	var deletePartnersRequestParam DeletePartnersRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&deletePartnersRequestParam); err != nil {

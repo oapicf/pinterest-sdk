@@ -29,9 +29,10 @@ typedef struct integration_log_client_error_t {
     int number; //numeric
     char *stack_trace; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } integration_log_client_error_t;
 
-integration_log_client_error_t *integration_log_client_error_create(
+__attribute__((deprecated)) integration_log_client_error_t *integration_log_client_error_create(
     char *cause,
     int column_number,
     char *file_name,

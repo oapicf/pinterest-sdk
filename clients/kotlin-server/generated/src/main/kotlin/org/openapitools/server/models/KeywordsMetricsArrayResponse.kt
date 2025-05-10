@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.KeywordMetricsResponse
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param `data` 
  */
+@Serializable
 data class KeywordsMetricsArrayResponse(
     val `data`: kotlin.collections.List<KeywordMetricsResponse>? = null
-) 
+)
 

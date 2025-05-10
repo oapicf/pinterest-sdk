@@ -14,6 +14,7 @@ package org.openapitools.server.models
 import org.openapitools.server.models.LeadFormQuestionFieldType
 import org.openapitools.server.models.LeadFormQuestionType
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param questionType 
@@ -21,6 +22,7 @@ import org.openapitools.server.models.LeadFormQuestionType
  * @param customQuestionLabel Question label for a custom question.
  * @param customQuestionOptions Question options for a custom question.
  */
+@Serializable
 data class LeadFormQuestion(
     val questionType: LeadFormQuestionType? = null,
     val customQuestionFieldType: LeadFormQuestionFieldType? = null,
@@ -28,5 +30,5 @@ data class LeadFormQuestion(
     val customQuestionLabel: kotlin.String? = null,
     /* Question options for a custom question. */
     val customQuestionOptions: kotlin.collections.List<kotlin.String>? = null
-) 
+)
 

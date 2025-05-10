@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.Currency
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param salesforceOrderLineId OrderLineId in SFDC
@@ -38,6 +39,7 @@ import org.openapitools.server.models.Currency
  * @param budgetAmount If Budget order line, the budget amount.
  * @param estimatedMonthlySpend If Ongoing (perpetual) order line, the estimated monthly spend
  */
+@Serializable
 data class SSIOOrderLine(
     /* OrderLineId in SFDC */
     val salesforceOrderLineId: kotlin.String? = null,
@@ -82,5 +84,5 @@ data class SSIOOrderLine(
     val budgetAmount: java.math.BigDecimal? = null,
     /* If Ongoing (perpetual) order line, the estimated monthly spend */
     val estimatedMonthlySpend: java.math.BigDecimal? = null
-) 
+)
 

@@ -57,11 +57,11 @@ export function ProductGroupReferenceFilterFromJSONTyped(json: any, ignoreDiscri
     };
 }
 
-  export function ProductGroupReferenceFilterToJSON(json: any): ProductGroupReferenceFilter {
-      return ProductGroupReferenceFilterToJSONTyped(json, false);
-  }
+export function ProductGroupReferenceFilterToJSON(json: any): ProductGroupReferenceFilter {
+    return ProductGroupReferenceFilterToJSONTyped(json, false);
+}
 
-  export function ProductGroupReferenceFilterToJSONTyped(value?: ProductGroupReferenceFilter | null, ignoreDiscriminator: boolean = false): any {
+export function ProductGroupReferenceFilterToJSONTyped(value?: ProductGroupReferenceFilter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

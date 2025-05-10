@@ -62,7 +62,7 @@ import com.google.gson.JsonParseException;
 
 import com.github.oapicf.pinterestsdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsCreativeAssetsBatchItem extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CatalogsCreativeAssetsBatchItem.class.getName());
 
@@ -259,6 +259,7 @@ public class CatalogsCreativeAssetsBatchItem extends AbstractOpenApiSchema {
     public CatalogsCreateCreativeAssetsItem getCatalogsCreateCreativeAssetsItem() throws ClassCastException {
         return (CatalogsCreateCreativeAssetsItem)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CatalogsUpsertCreativeAssetsItem`. If the actual instance is not `CatalogsUpsertCreativeAssetsItem`,
      * the ClassCastException will be thrown.
@@ -269,6 +270,7 @@ public class CatalogsCreativeAssetsBatchItem extends AbstractOpenApiSchema {
     public CatalogsUpsertCreativeAssetsItem getCatalogsUpsertCreativeAssetsItem() throws ClassCastException {
         return (CatalogsUpsertCreativeAssetsItem)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CatalogsUpdateCreativeAssetsItem`. If the actual instance is not `CatalogsUpdateCreativeAssetsItem`,
      * the ClassCastException will be thrown.
@@ -279,6 +281,7 @@ public class CatalogsCreativeAssetsBatchItem extends AbstractOpenApiSchema {
     public CatalogsUpdateCreativeAssetsItem getCatalogsUpdateCreativeAssetsItem() throws ClassCastException {
         return (CatalogsUpdateCreativeAssetsItem)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CatalogsDeleteCreativeAssetsItem`. If the actual instance is not `CatalogsDeleteCreativeAssetsItem`,
      * the ClassCastException will be thrown.

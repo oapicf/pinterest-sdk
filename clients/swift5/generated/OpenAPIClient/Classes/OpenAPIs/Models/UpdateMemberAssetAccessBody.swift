@@ -13,7 +13,7 @@ import AnyCodable
 /** An object with a list of all the new accesses. */
 public struct UpdateMemberAssetAccessBody: Codable, JSONEncodable, Hashable {
 
-    static let accessesRule = ArrayRule(minItems: 1, maxItems: 50, uniqueItems: false)
+    public static let accessesRule = ArrayRule(minItems: 1, maxItems: 50, uniqueItems: false)
     public var accesses: [UpdateMemberAssetAccessBodyAccessesInner]
 
     public init(accesses: [UpdateMemberAssetAccessBodyAccessesInner]) {

@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Hotel batch item")
 @JsonTypeName("CatalogsHotelBatchItem")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsHotelBatchItem   {
   private String hotelId;
   public enum OperationEnum {
@@ -85,6 +85,20 @@ public class CatalogsHotelBatchItem   {
   private OperationEnum operation;
   private CatalogsUpdatableHotelAttributes attributes;
 
+  public CatalogsHotelBatchItem() {
+  }
+
+  @JsonCreator
+  public CatalogsHotelBatchItem(
+    @JsonProperty(required = true, value = "hotel_id") String hotelId,
+    @JsonProperty(required = true, value = "operation") OperationEnum operation,
+    @JsonProperty(required = true, value = "attributes") CatalogsUpdatableHotelAttributes attributes
+  ) {
+    this.hotelId = hotelId;
+    this.operation = operation;
+    this.attributes = attributes;
+  }
+
   /**
    * The catalog hotel id in the merchant namespace
    **/
@@ -95,12 +109,12 @@ public class CatalogsHotelBatchItem   {
 
   
   @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog hotel id in the merchant namespace")
-  @JsonProperty("hotel_id")
+  @JsonProperty(required = true, value = "hotel_id")
   @NotNull public String getHotelId() {
     return hotelId;
   }
 
-  @JsonProperty("hotel_id")
+  @JsonProperty(required = true, value = "hotel_id")
   public void setHotelId(String hotelId) {
     this.hotelId = hotelId;
   }
@@ -114,12 +128,12 @@ public class CatalogsHotelBatchItem   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("operation")
+  @JsonProperty(required = true, value = "operation")
   @NotNull public OperationEnum getOperation() {
     return operation;
   }
 
-  @JsonProperty("operation")
+  @JsonProperty(required = true, value = "operation")
   public void setOperation(OperationEnum operation) {
     this.operation = operation;
   }
@@ -133,12 +147,12 @@ public class CatalogsHotelBatchItem   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("attributes")
+  @JsonProperty(required = true, value = "attributes")
   @NotNull @Valid public CatalogsUpdatableHotelAttributes getAttributes() {
     return attributes;
   }
 
-  @JsonProperty("attributes")
+  @JsonProperty(required = true, value = "attributes")
   public void setAttributes(CatalogsUpdatableHotelAttributes attributes) {
     this.attributes = attributes;
   }

@@ -577,7 +577,7 @@ class KeywordsController extends Controller
         }
         $asserts = [];
         $asserts[] = new Assert\All([
-            new Assert\Choice([ "animals", "architecture", "art", "beauty", "childrens_fashion", "design", "diy_and_crafts", "education", "electronics", "entertainment", "event_planning", "finance", "food_and_drinks", "gardening", "health", "home_decor", "mens_fashion", "parenting", "quotes", "sport", "travel", "vehicles", "wedding", "womens_fashion" ])
+            new Assert\Choice([ 'animals', 'architecture', 'art', 'beauty', 'childrens_fashion', 'design', 'diy_and_crafts', 'education', 'electronics', 'entertainment', 'event_planning', 'finance', 'food_and_drinks', 'gardening', 'health', 'home_decor', 'mens_fashion', 'parenting', 'quotes', 'sport', 'travel', 'vehicles', 'wedding', 'womens_fashion' ])
         ]);
         $asserts[] = new Assert\All([
             new Assert\Type("string"),
@@ -589,7 +589,7 @@ class KeywordsController extends Controller
         }
         $asserts = [];
         $asserts[] = new Assert\All([
-            new Assert\Choice([ "female", "male", "unknown" ])
+            new Assert\Choice([ 'female', 'male', 'unknown' ])
         ]);
         $asserts[] = new Assert\All([
             new Assert\Type("string"),
@@ -601,7 +601,7 @@ class KeywordsController extends Controller
         }
         $asserts = [];
         $asserts[] = new Assert\All([
-            new Assert\Choice([ "18-24", "25-34", "35-44", "45-49", "50-54", "55-64", "65+" ])
+            new Assert\Choice([ '18-24', '25-34', '35-44', '45-49', '50-54', '55-64', '65+' ])
         ]);
         $asserts[] = new Assert\All([
             new Assert\Type("string"),

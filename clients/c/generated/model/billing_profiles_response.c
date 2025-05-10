@@ -56,7 +56,7 @@ pinterest_rest_api_billing_profiles_response_PAYMENTMETHODBRAND_e billing_profil
     return 0;
 }
 
-billing_profiles_response_t *billing_profiles_response_create(
+static billing_profiles_response_t *billing_profiles_response_create_internal(
     char *id,
     pinterest_rest_api_billing_profiles_response_CARDTYPE_e card_type,
     pinterest_rest_api_billing_profiles_response_STATUS_e status,
@@ -73,12 +73,32 @@ billing_profiles_response_t *billing_profiles_response_create(
     billing_profiles_response_local_var->advertiser_id = advertiser_id;
     billing_profiles_response_local_var->payment_method_brand = payment_method_brand;
 
+    billing_profiles_response_local_var->_library_owned = 1;
     return billing_profiles_response_local_var;
 }
 
+__attribute__((deprecated)) billing_profiles_response_t *billing_profiles_response_create(
+    char *id,
+    pinterest_rest_api_billing_profiles_response_CARDTYPE_e card_type,
+    pinterest_rest_api_billing_profiles_response_STATUS_e status,
+    char *advertiser_id,
+    pinterest_rest_api_billing_profiles_response_PAYMENTMETHODBRAND_e payment_method_brand
+    ) {
+    return billing_profiles_response_create_internal (
+        id,
+        card_type,
+        status,
+        advertiser_id,
+        payment_method_brand
+        );
+}
 
 void billing_profiles_response_free(billing_profiles_response_t *billing_profiles_response) {
     if(NULL == billing_profiles_response){
+        return ;
+    }
+    if(billing_profiles_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "billing_profiles_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -106,7 +126,7 @@ cJSON *billing_profiles_response_convertToJSON(billing_profiles_response_t *bill
 
     // billing_profiles_response->card_type
     if(billing_profiles_response->card_type != pinterest_rest_api_billing_profiles_response_CARDTYPE_NULL) {
-    if(cJSON_AddStringToObject(item, "card_type", card_typebilling_profiles_response_ToString(billing_profiles_response->card_type)) == NULL)
+    if(cJSON_AddStringToObject(item, "card_type", billing_profiles_response_card_type_ToString(billing_profiles_response->card_type)) == NULL)
     {
     goto fail; //Enum
     }
@@ -115,7 +135,7 @@ cJSON *billing_profiles_response_convertToJSON(billing_profiles_response_t *bill
 
     // billing_profiles_response->status
     if(billing_profiles_response->status != pinterest_rest_api_billing_profiles_response_STATUS_NULL) {
-    if(cJSON_AddStringToObject(item, "status", statusbilling_profiles_response_ToString(billing_profiles_response->status)) == NULL)
+    if(cJSON_AddStringToObject(item, "status", billing_profiles_response_status_ToString(billing_profiles_response->status)) == NULL)
     {
     goto fail; //Enum
     }
@@ -132,7 +152,7 @@ cJSON *billing_profiles_response_convertToJSON(billing_profiles_response_t *bill
 
     // billing_profiles_response->payment_method_brand
     if(billing_profiles_response->payment_method_brand != pinterest_rest_api_billing_profiles_response_PAYMENTMETHODBRAND_NULL) {
-    if(cJSON_AddStringToObject(item, "payment_method_brand", payment_method_brandbilling_profiles_response_ToString(billing_profiles_response->payment_method_brand)) == NULL)
+    if(cJSON_AddStringToObject(item, "payment_method_brand", billing_profiles_response_payment_method_brand_ToString(billing_profiles_response->payment_method_brand)) == NULL)
     {
     goto fail; //Enum
     }
@@ -152,6 +172,9 @@ billing_profiles_response_t *billing_profiles_response_parseFromJSON(cJSON *bill
 
     // billing_profiles_response->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(billing_profiles_responseJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -161,6 +184,9 @@ billing_profiles_response_t *billing_profiles_response_parseFromJSON(cJSON *bill
 
     // billing_profiles_response->card_type
     cJSON *card_type = cJSON_GetObjectItemCaseSensitive(billing_profiles_responseJSON, "card_type");
+    if (cJSON_IsNull(card_type)) {
+        card_type = NULL;
+    }
     pinterest_rest_api_billing_profiles_response_CARDTYPE_e card_typeVariable;
     if (card_type) { 
     if(!cJSON_IsString(card_type))
@@ -172,6 +198,9 @@ billing_profiles_response_t *billing_profiles_response_parseFromJSON(cJSON *bill
 
     // billing_profiles_response->status
     cJSON *status = cJSON_GetObjectItemCaseSensitive(billing_profiles_responseJSON, "status");
+    if (cJSON_IsNull(status)) {
+        status = NULL;
+    }
     pinterest_rest_api_billing_profiles_response_STATUS_e statusVariable;
     if (status) { 
     if(!cJSON_IsString(status))
@@ -183,6 +212,9 @@ billing_profiles_response_t *billing_profiles_response_parseFromJSON(cJSON *bill
 
     // billing_profiles_response->advertiser_id
     cJSON *advertiser_id = cJSON_GetObjectItemCaseSensitive(billing_profiles_responseJSON, "advertiser_id");
+    if (cJSON_IsNull(advertiser_id)) {
+        advertiser_id = NULL;
+    }
     if (advertiser_id) { 
     if(!cJSON_IsString(advertiser_id) && !cJSON_IsNull(advertiser_id))
     {
@@ -192,6 +224,9 @@ billing_profiles_response_t *billing_profiles_response_parseFromJSON(cJSON *bill
 
     // billing_profiles_response->payment_method_brand
     cJSON *payment_method_brand = cJSON_GetObjectItemCaseSensitive(billing_profiles_responseJSON, "payment_method_brand");
+    if (cJSON_IsNull(payment_method_brand)) {
+        payment_method_brand = NULL;
+    }
     pinterest_rest_api_billing_profiles_response_PAYMENTMETHODBRAND_e payment_method_brandVariable;
     if (payment_method_brand) { 
     if(!cJSON_IsString(payment_method_brand))
@@ -202,7 +237,7 @@ billing_profiles_response_t *billing_profiles_response_parseFromJSON(cJSON *bill
     }
 
 
-    billing_profiles_response_local_var = billing_profiles_response_create (
+    billing_profiles_response_local_var = billing_profiles_response_create_internal (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         card_type ? card_typeVariable : pinterest_rest_api_billing_profiles_response_CARDTYPE_NULL,
         status ? statusVariable : pinterest_rest_api_billing_profiles_response_STATUS_NULL,

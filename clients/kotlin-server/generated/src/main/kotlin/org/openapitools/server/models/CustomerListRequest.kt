@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.UserListType
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param name Customer list name.
@@ -20,6 +21,7 @@ import org.openapitools.server.models.UserListType
  * @param listType 
  * @param exceptions Customer list errors.
  */
+@Serializable
 data class CustomerListRequest(
     /* Customer list name. */
     val name: kotlin.String,
@@ -28,5 +30,5 @@ data class CustomerListRequest(
     val listType: UserListType? = "EMAIL",
     /* Customer list errors. */
     val exceptions: kotlin.Any? = null
-) 
+)
 

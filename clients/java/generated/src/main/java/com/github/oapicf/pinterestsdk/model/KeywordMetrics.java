@@ -49,20 +49,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Keyword metrics JSON
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class KeywordMetrics {
   public static final String SERIALIZED_NAME_AVG_CPC_IN_MICRO_CURRENCY = "avg_cpc_in_micro_currency";
   @SerializedName(SERIALIZED_NAME_AVG_CPC_IN_MICRO_CURRENCY)
+  @javax.annotation.Nullable
   private BigDecimal avgCpcInMicroCurrency;
 
   public static final String SERIALIZED_NAME_KEYWORD_QUERY_VOLUME = "keyword_query_volume";
   @SerializedName(SERIALIZED_NAME_KEYWORD_QUERY_VOLUME)
+  @javax.annotation.Nullable
   private String keywordQueryVolume;
 
   public KeywordMetrics() {
   }
 
-  public KeywordMetrics avgCpcInMicroCurrency(BigDecimal avgCpcInMicroCurrency) {
+  public KeywordMetrics avgCpcInMicroCurrency(@javax.annotation.Nullable BigDecimal avgCpcInMicroCurrency) {
     this.avgCpcInMicroCurrency = avgCpcInMicroCurrency;
     return this;
   }
@@ -76,12 +78,12 @@ public class KeywordMetrics {
     return avgCpcInMicroCurrency;
   }
 
-  public void setAvgCpcInMicroCurrency(BigDecimal avgCpcInMicroCurrency) {
+  public void setAvgCpcInMicroCurrency(@javax.annotation.Nullable BigDecimal avgCpcInMicroCurrency) {
     this.avgCpcInMicroCurrency = avgCpcInMicroCurrency;
   }
 
 
-  public KeywordMetrics keywordQueryVolume(String keywordQueryVolume) {
+  public KeywordMetrics keywordQueryVolume(@javax.annotation.Nullable String keywordQueryVolume) {
     this.keywordQueryVolume = keywordQueryVolume;
     return this;
   }
@@ -95,7 +97,7 @@ public class KeywordMetrics {
     return keywordQueryVolume;
   }
 
-  public void setKeywordQueryVolume(String keywordQueryVolume) {
+  public void setKeywordQueryVolume(@javax.annotation.Nullable String keywordQueryVolume) {
     this.keywordQueryVolume = keywordQueryVolume;
   }
 

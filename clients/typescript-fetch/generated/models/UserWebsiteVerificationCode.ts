@@ -76,11 +76,11 @@ export function UserWebsiteVerificationCodeFromJSONTyped(json: any, ignoreDiscri
     };
 }
 
-  export function UserWebsiteVerificationCodeToJSON(json: any): UserWebsiteVerificationCode {
-      return UserWebsiteVerificationCodeToJSONTyped(json, false);
-  }
+export function UserWebsiteVerificationCodeToJSON(json: any): UserWebsiteVerificationCode {
+    return UserWebsiteVerificationCodeToJSONTyped(json, false);
+}
 
-  export function UserWebsiteVerificationCodeToJSONTyped(value?: UserWebsiteVerificationCode | null, ignoreDiscriminator: boolean = false): any {
+export function UserWebsiteVerificationCodeToJSONTyped(value?: UserWebsiteVerificationCode | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

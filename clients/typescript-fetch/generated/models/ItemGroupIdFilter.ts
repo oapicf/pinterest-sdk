@@ -57,11 +57,11 @@ export function ItemGroupIdFilterFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-  export function ItemGroupIdFilterToJSON(json: any): ItemGroupIdFilter {
-      return ItemGroupIdFilterToJSONTyped(json, false);
-  }
+export function ItemGroupIdFilterToJSON(json: any): ItemGroupIdFilter {
+    return ItemGroupIdFilterToJSONTyped(json, false);
+}
 
-  export function ItemGroupIdFilterToJSONTyped(value?: ItemGroupIdFilter | null, ignoreDiscriminator: boolean = false): any {
+export function ItemGroupIdFilterToJSONTyped(value?: ItemGroupIdFilter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

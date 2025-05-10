@@ -81,10 +81,35 @@ PinMediaWithVideo <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return PinMediaWithVideo in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return PinMediaWithVideo as a base R list.
+    #' @examples
+    #' # convert array of PinMediaWithVideo (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert PinMediaWithVideo to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       PinMediaWithVideoObject <- list()
       if (!is.null(self$`media_type`)) {
         PinMediaWithVideoObject[["media_type"]] <-
@@ -92,7 +117,7 @@ PinMediaWithVideo <- R6::R6Class(
       }
       if (!is.null(self$`images`)) {
         PinMediaWithVideoObject[["images"]] <-
-          self$`images`$toJSON()
+          self$`images`$toSimpleType()
       }
       if (!is.null(self$`cover_image_url`)) {
         PinMediaWithVideoObject[["cover_image_url"]] <-
@@ -114,7 +139,7 @@ PinMediaWithVideo <- R6::R6Class(
         PinMediaWithVideoObject[["width"]] <-
           self$`width`
       }
-      PinMediaWithVideoObject
+      return(PinMediaWithVideoObject)
     },
 
     #' @description
@@ -152,69 +177,13 @@ PinMediaWithVideo <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return PinMediaWithVideo in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`media_type`)) {
-          sprintf(
-          '"media_type":
-            "%s"
-                    ',
-          self$`media_type`
-          )
-        },
-        if (!is.null(self$`images`)) {
-          sprintf(
-          '"images":
-          %s
-          ',
-          jsonlite::toJSON(self$`images`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`cover_image_url`)) {
-          sprintf(
-          '"cover_image_url":
-            "%s"
-                    ',
-          self$`cover_image_url`
-          )
-        },
-        if (!is.null(self$`video_url`)) {
-          sprintf(
-          '"video_url":
-            "%s"
-                    ',
-          self$`video_url`
-          )
-        },
-        if (!is.null(self$`duration`)) {
-          sprintf(
-          '"duration":
-            %d
-                    ',
-          self$`duration`
-          )
-        },
-        if (!is.null(self$`height`)) {
-          sprintf(
-          '"height":
-            %d
-                    ',
-          self$`height`
-          )
-        },
-        if (!is.null(self$`width`)) {
-          sprintf(
-          '"width":
-            %d
-                    ',
-          self$`width`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

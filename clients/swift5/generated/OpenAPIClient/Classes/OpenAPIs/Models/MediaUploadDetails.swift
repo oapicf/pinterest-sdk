@@ -13,7 +13,7 @@ import AnyCodable
 /** Media upload details */
 public struct MediaUploadDetails: Codable, JSONEncodable, Hashable {
 
-    static let mediaIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let mediaIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public var mediaId: String?
     public var mediaType: MediaUploadType?
     public var status: MediaUploadStatus?

@@ -56,11 +56,11 @@ export function BoardSectionFromJSONTyped(json: any, ignoreDiscriminator: boolea
     };
 }
 
-  export function BoardSectionToJSON(json: any): BoardSection {
-      return BoardSectionToJSONTyped(json, false);
-  }
+export function BoardSectionToJSON(json: any): BoardSection {
+    return BoardSectionToJSONTyped(json, false);
+}
 
-  export function BoardSectionToJSONTyped(value?: Omit<BoardSection, 'id'> | null, ignoreDiscriminator: boolean = false): any {
+export function BoardSectionToJSONTyped(value?: Omit<BoardSection, 'id'> | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -52,7 +52,11 @@ export function CatalogsProductGroupsUpdateRequestFromJSONTyped(json: any, ignor
     return {} as any;
 }
 
-export function CatalogsProductGroupsUpdateRequestToJSON(value?: CatalogsProductGroupsUpdateRequest | null): any {
+export function CatalogsProductGroupsUpdateRequestToJSON(json: any): any {
+    return CatalogsProductGroupsUpdateRequestToJSONTyped(json, false);
+}
+
+export function CatalogsProductGroupsUpdateRequestToJSONTyped(value?: CatalogsProductGroupsUpdateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -48,14 +48,16 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * DeletePartnerAssetAccessBodyAccessesInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class DeletePartnerAssetAccessBodyAccessesInner {
   public static final String SERIALIZED_NAME_PARTNER_ID = "partner_id";
   @SerializedName(SERIALIZED_NAME_PARTNER_ID)
+  @javax.annotation.Nonnull
   private String partnerId;
 
   public static final String SERIALIZED_NAME_ASSET_ID = "asset_id";
   @SerializedName(SERIALIZED_NAME_ASSET_ID)
+  @javax.annotation.Nonnull
   private String assetId;
 
   /**
@@ -112,12 +114,13 @@ public class DeletePartnerAssetAccessBodyAccessesInner {
 
   public static final String SERIALIZED_NAME_PARTNER_TYPE = "partner_type";
   @SerializedName(SERIALIZED_NAME_PARTNER_TYPE)
+  @javax.annotation.Nullable
   private PartnerTypeEnum partnerType = PartnerTypeEnum.INTERNAL;
 
   public DeletePartnerAssetAccessBodyAccessesInner() {
   }
 
-  public DeletePartnerAssetAccessBodyAccessesInner partnerId(String partnerId) {
+  public DeletePartnerAssetAccessBodyAccessesInner partnerId(@javax.annotation.Nonnull String partnerId) {
     this.partnerId = partnerId;
     return this;
   }
@@ -131,12 +134,12 @@ public class DeletePartnerAssetAccessBodyAccessesInner {
     return partnerId;
   }
 
-  public void setPartnerId(String partnerId) {
+  public void setPartnerId(@javax.annotation.Nonnull String partnerId) {
     this.partnerId = partnerId;
   }
 
 
-  public DeletePartnerAssetAccessBodyAccessesInner assetId(String assetId) {
+  public DeletePartnerAssetAccessBodyAccessesInner assetId(@javax.annotation.Nonnull String assetId) {
     this.assetId = assetId;
     return this;
   }
@@ -150,12 +153,12 @@ public class DeletePartnerAssetAccessBodyAccessesInner {
     return assetId;
   }
 
-  public void setAssetId(String assetId) {
+  public void setAssetId(@javax.annotation.Nonnull String assetId) {
     this.assetId = assetId;
   }
 
 
-  public DeletePartnerAssetAccessBodyAccessesInner partnerType(PartnerTypeEnum partnerType) {
+  public DeletePartnerAssetAccessBodyAccessesInner partnerType(@javax.annotation.Nullable PartnerTypeEnum partnerType) {
     this.partnerType = partnerType;
     return this;
   }
@@ -169,7 +172,7 @@ public class DeletePartnerAssetAccessBodyAccessesInner {
     return partnerType;
   }
 
-  public void setPartnerType(PartnerTypeEnum partnerType) {
+  public void setPartnerType(@javax.annotation.Nullable PartnerTypeEnum partnerType) {
     this.partnerType = partnerType;
   }
 

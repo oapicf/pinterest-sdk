@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { CustomerList } from '../model/customerList';
 import { CustomerListRequest } from '../model/customerListRequest';
@@ -29,10 +29,12 @@ export class CustomerListsService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -51,9 +53,10 @@ export class CustomerListsService {
      * @param customerListRequest Parameters to get Customer lists info
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [customerListsCreateOpts.config] Override http request option.
      */
-    public customerListsCreate(adAccountId: string, customerListRequest: CustomerListRequest, ): Observable<AxiosResponse<CustomerList>>;
-    public customerListsCreate(adAccountId: string, customerListRequest: CustomerListRequest, ): Observable<any> {
+    public customerListsCreate(adAccountId: string, customerListRequest: CustomerListRequest, customerListsCreateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CustomerList>>;
+    public customerListsCreate(adAccountId: string, customerListRequest: CustomerListRequest, customerListsCreateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling customerListsCreate.');
         }
@@ -100,7 +103,8 @@ export class CustomerListsService {
                     customerListRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...customerListsCreateOpts?.config,
+                        headers: {...headers, ...customerListsCreateOpts?.config?.headers},
                     }
                 );
             })
@@ -113,9 +117,10 @@ export class CustomerListsService {
      * @param customerListId Unique identifier of a customer list
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [customerListsGetOpts.config] Override http request option.
      */
-    public customerListsGet(adAccountId: string, customerListId: string, ): Observable<AxiosResponse<CustomerList>>;
-    public customerListsGet(adAccountId: string, customerListId: string, ): Observable<any> {
+    public customerListsGet(adAccountId: string, customerListId: string, customerListsGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CustomerList>>;
+    public customerListsGet(adAccountId: string, customerListId: string, customerListsGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling customerListsGet.');
         }
@@ -156,7 +161,8 @@ export class CustomerListsService {
                 return this.httpClient.get<CustomerList>(`${this.basePath}/ad_accounts/${encodeURIComponent(String(ad_account_id))}/customer_lists/${encodeURIComponent(String(customer_list_id))}`,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...customerListsGetOpts?.config,
+                        headers: {...headers, ...customerListsGetOpts?.config?.headers},
                     }
                 );
             })
@@ -171,9 +177,10 @@ export class CustomerListsService {
      * @param bookmark Cursor used to fetch the next page of items
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [customerListsListOpts.config] Override http request option.
      */
-    public customerListsList(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, ): Observable<AxiosResponse<CustomerListsList200Response>>;
-    public customerListsList(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, ): Observable<any> {
+    public customerListsList(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, customerListsListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CustomerListsList200Response>>;
+    public customerListsList(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, customerListsListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling customerListsList.');
         }
@@ -222,7 +229,8 @@ export class CustomerListsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...customerListsListOpts?.config,
+                        headers: {...headers, ...customerListsListOpts?.config?.headers},
                     }
                 );
             })
@@ -236,9 +244,10 @@ export class CustomerListsService {
      * @param customerListUpdateRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [customerListsUpdateOpts.config] Override http request option.
      */
-    public customerListsUpdate(adAccountId: string, customerListId: string, customerListUpdateRequest: CustomerListUpdateRequest, ): Observable<AxiosResponse<CustomerList>>;
-    public customerListsUpdate(adAccountId: string, customerListId: string, customerListUpdateRequest: CustomerListUpdateRequest, ): Observable<any> {
+    public customerListsUpdate(adAccountId: string, customerListId: string, customerListUpdateRequest: CustomerListUpdateRequest, customerListsUpdateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CustomerList>>;
+    public customerListsUpdate(adAccountId: string, customerListId: string, customerListUpdateRequest: CustomerListUpdateRequest, customerListsUpdateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling customerListsUpdate.');
         }
@@ -289,7 +298,8 @@ export class CustomerListsService {
                     customerListUpdateRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...customerListsUpdateOpts?.config,
+                        headers: {...headers, ...customerListsUpdateOpts?.config?.headers},
                     }
                 );
             })

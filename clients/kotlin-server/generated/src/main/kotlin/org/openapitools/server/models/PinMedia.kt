@@ -12,13 +12,15 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Pin media objects.
  * @param mediaType 
  */
+@Serializable
 data class PinMedia(
     val mediaType: kotlin.String? = null
-) 
+)
 {
 }
 

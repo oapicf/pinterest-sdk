@@ -119,11 +119,11 @@ export function AdsCreditDiscountsResponseFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-  export function AdsCreditDiscountsResponseToJSON(json: any): AdsCreditDiscountsResponse {
-      return AdsCreditDiscountsResponseToJSONTyped(json, false);
-  }
+export function AdsCreditDiscountsResponseToJSON(json: any): AdsCreditDiscountsResponse {
+    return AdsCreditDiscountsResponseToJSONTyped(json, false);
+}
 
-  export function AdsCreditDiscountsResponseToJSONTyped(value?: AdsCreditDiscountsResponse | null, ignoreDiscriminator: boolean = false): any {
+export function AdsCreditDiscountsResponseToJSONTyped(value?: AdsCreditDiscountsResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

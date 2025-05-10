@@ -14,15 +14,17 @@ package org.openapitools.server.models
 import org.openapitools.server.models.MediaUploadStatus
 import org.openapitools.server.models.MediaUploadType
 
+import kotlinx.serialization.Serializable
 /**
  * Media upload details
  * @param mediaId 
  * @param mediaType 
  * @param status 
  */
+@Serializable
 data class MediaUploadDetails(
     val mediaId: kotlin.String? = null,
     val mediaType: MediaUploadType? = null,
     val status: MediaUploadStatus? = null
-) 
+)
 

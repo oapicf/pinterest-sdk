@@ -48,11 +48,11 @@ export function FollowUserRequestFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-  export function FollowUserRequestToJSON(json: any): FollowUserRequest {
-      return FollowUserRequestToJSONTyped(json, false);
-  }
+export function FollowUserRequestToJSON(json: any): FollowUserRequest {
+    return FollowUserRequestToJSONTyped(json, false);
+}
 
-  export function FollowUserRequestToJSONTyped(value?: FollowUserRequest | null, ignoreDiscriminator: boolean = false): any {
+export function FollowUserRequestToJSONTyped(value?: FollowUserRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

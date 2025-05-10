@@ -50,33 +50,38 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Request object for creating a product group.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsProductGroupCreateRequest {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nonnull
   private String name;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nullable
   private String description;
 
   public static final String SERIALIZED_NAME_IS_FEATURED = "is_featured";
   @Deprecated
   @SerializedName(SERIALIZED_NAME_IS_FEATURED)
+  @javax.annotation.Nullable
   private Boolean isFeatured = false;
 
   public static final String SERIALIZED_NAME_FILTERS = "filters";
   @SerializedName(SERIALIZED_NAME_FILTERS)
+  @javax.annotation.Nonnull
   private CatalogsProductGroupFiltersRequest filters;
 
   public static final String SERIALIZED_NAME_FEED_ID = "feed_id";
   @SerializedName(SERIALIZED_NAME_FEED_ID)
+  @javax.annotation.Nonnull
   private String feedId;
 
   public CatalogsProductGroupCreateRequest() {
   }
 
-  public CatalogsProductGroupCreateRequest name(String name) {
+  public CatalogsProductGroupCreateRequest name(@javax.annotation.Nonnull String name) {
     this.name = name;
     return this;
   }
@@ -90,12 +95,12 @@ public class CatalogsProductGroupCreateRequest {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
 
-  public CatalogsProductGroupCreateRequest description(String description) {
+  public CatalogsProductGroupCreateRequest description(@javax.annotation.Nullable String description) {
     this.description = description;
     return this;
   }
@@ -109,13 +114,13 @@ public class CatalogsProductGroupCreateRequest {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
 
   @Deprecated
-  public CatalogsProductGroupCreateRequest isFeatured(Boolean isFeatured) {
+  public CatalogsProductGroupCreateRequest isFeatured(@javax.annotation.Nullable Boolean isFeatured) {
     this.isFeatured = isFeatured;
     return this;
   }
@@ -132,12 +137,12 @@ public class CatalogsProductGroupCreateRequest {
   }
 
   @Deprecated
-  public void setIsFeatured(Boolean isFeatured) {
+  public void setIsFeatured(@javax.annotation.Nullable Boolean isFeatured) {
     this.isFeatured = isFeatured;
   }
 
 
-  public CatalogsProductGroupCreateRequest filters(CatalogsProductGroupFiltersRequest filters) {
+  public CatalogsProductGroupCreateRequest filters(@javax.annotation.Nonnull CatalogsProductGroupFiltersRequest filters) {
     this.filters = filters;
     return this;
   }
@@ -151,12 +156,12 @@ public class CatalogsProductGroupCreateRequest {
     return filters;
   }
 
-  public void setFilters(CatalogsProductGroupFiltersRequest filters) {
+  public void setFilters(@javax.annotation.Nonnull CatalogsProductGroupFiltersRequest filters) {
     this.filters = filters;
   }
 
 
-  public CatalogsProductGroupCreateRequest feedId(String feedId) {
+  public CatalogsProductGroupCreateRequest feedId(@javax.annotation.Nonnull String feedId) {
     this.feedId = feedId;
     return this;
   }
@@ -170,7 +175,7 @@ public class CatalogsProductGroupCreateRequest {
     return feedId;
   }
 
-  public void setFeedId(String feedId) {
+  public void setFeedId(@javax.annotation.Nonnull String feedId) {
     this.feedId = feedId;
   }
 

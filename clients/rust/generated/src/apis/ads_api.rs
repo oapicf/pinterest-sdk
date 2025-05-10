@@ -10,9 +10,9 @@
 
 
 use reqwest;
-use serde::{Deserialize, Serialize};
+use serde::{Deserialize, Serialize, de::Error as _};
 use crate::{apis::ResponseContent, models};
-use super::{Error, configuration};
+use super::{Error, configuration, ContentType};
 
 
 /// struct for typed errors of method [`ad_previews_slash_create`]
@@ -77,321 +77,417 @@ pub enum AdsSlashUpdateError {
 
 /// Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/> If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href=\"https://help.pinterest.com/en/business/article/promoted-pins-overview\" target=\"_blank\">Ads Overview</a>.) <p/> You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
 pub async fn ad_previews_slash_create(configuration: &configuration::Configuration, ad_account_id: &str, ad_preview_request: models::AdPreviewRequest) -> Result<models::AdPreviewUrlResponse, Error<AdPreviewsSlashCreateError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_ad_account_id = ad_account_id;
+    let p_ad_preview_request = ad_preview_request;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ad_previews", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    let local_var_uri_str = format!("{}/ad_accounts/{ad_account_id}/ad_previews", local_var_configuration.base_path, ad_account_id=crate::apis::urlencode(ad_account_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&ad_preview_request);
+    req_builder = req_builder.json(&p_ad_preview_request);
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::AdPreviewUrlResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::AdPreviewUrlResponse`")))),
+        }
     } else {
-        let local_var_entity: Option<AdPreviewsSlashCreateError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<AdPreviewsSlashCreateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
 pub async fn ad_targeting_analytics_slash_get(configuration: &configuration::Configuration, ad_account_id: &str, ad_ids: Vec<String>, start_date: String, end_date: String, targeting_types: Vec<models::AdsAnalyticsAdTargetingType>, columns: Vec<String>, granularity: models::Granularity, click_window_days: Option<i32>, engagement_window_days: Option<i32>, view_window_days: Option<i32>, conversion_report_time: Option<&str>, attribution_types: Option<models::ConversionReportAttributionType>) -> Result<models::MetricsResponse, Error<AdTargetingAnalyticsSlashGetError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_ad_account_id = ad_account_id;
+    let p_ad_ids = ad_ids;
+    let p_start_date = start_date;
+    let p_end_date = end_date;
+    let p_targeting_types = targeting_types;
+    let p_columns = columns;
+    let p_granularity = granularity;
+    let p_click_window_days = click_window_days;
+    let p_engagement_window_days = engagement_window_days;
+    let p_view_window_days = view_window_days;
+    let p_conversion_report_time = conversion_report_time;
+    let p_attribution_types = attribution_types;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ads/targeting_analytics", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    let local_var_uri_str = format!("{}/ad_accounts/{ad_account_id}/ads/targeting_analytics", local_var_configuration.base_path, ad_account_id=crate::apis::urlencode(ad_account_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    local_var_req_builder = match "multi" {
-        "multi" => local_var_req_builder.query(&ad_ids.into_iter().map(|p| ("ad_ids".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
-        _ => local_var_req_builder.query(&[("ad_ids", &ad_ids.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+    req_builder = match "multi" {
+        "multi" => req_builder.query(&p_ad_ids.into_iter().map(|p| ("ad_ids".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+        _ => req_builder.query(&[("ad_ids", &p_ad_ids.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
     };
-    local_var_req_builder = local_var_req_builder.query(&[("start_date", &start_date.to_string())]);
-    local_var_req_builder = local_var_req_builder.query(&[("end_date", &end_date.to_string())]);
-    local_var_req_builder = match "csv" {
-        "multi" => local_var_req_builder.query(&targeting_types.into_iter().map(|p| ("targeting_types".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
-        _ => local_var_req_builder.query(&[("targeting_types", &targeting_types.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+    req_builder = req_builder.query(&[("start_date", &p_start_date.to_string())]);
+    req_builder = req_builder.query(&[("end_date", &p_end_date.to_string())]);
+    req_builder = match "csv" {
+        "multi" => req_builder.query(&p_targeting_types.into_iter().map(|p| ("targeting_types".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+        _ => req_builder.query(&[("targeting_types", &p_targeting_types.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
     };
-    local_var_req_builder = match "csv" {
-        "multi" => local_var_req_builder.query(&columns.into_iter().map(|p| ("columns".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
-        _ => local_var_req_builder.query(&[("columns", &columns.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+    req_builder = match "csv" {
+        "multi" => req_builder.query(&p_columns.into_iter().map(|p| ("columns".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+        _ => req_builder.query(&[("columns", &p_columns.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
     };
-    local_var_req_builder = local_var_req_builder.query(&[("granularity", &granularity.to_string())]);
-    if let Some(ref local_var_str) = click_window_days {
-        local_var_req_builder = local_var_req_builder.query(&[("click_window_days", &local_var_str.to_string())]);
+    req_builder = req_builder.query(&[("granularity", &p_granularity.to_string())]);
+    if let Some(ref param_value) = p_click_window_days {
+        req_builder = req_builder.query(&[("click_window_days", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = engagement_window_days {
-        local_var_req_builder = local_var_req_builder.query(&[("engagement_window_days", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_engagement_window_days {
+        req_builder = req_builder.query(&[("engagement_window_days", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = view_window_days {
-        local_var_req_builder = local_var_req_builder.query(&[("view_window_days", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_view_window_days {
+        req_builder = req_builder.query(&[("view_window_days", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = conversion_report_time {
-        local_var_req_builder = local_var_req_builder.query(&[("conversion_report_time", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_conversion_report_time {
+        req_builder = req_builder.query(&[("conversion_report_time", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = attribution_types {
-        local_var_req_builder = local_var_req_builder.query(&[("attribution_types", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_attribution_types {
+        req_builder = req_builder.query(&[("attribution_types", &param_value.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::MetricsResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::MetricsResponse`")))),
+        }
     } else {
-        let local_var_entity: Option<AdTargetingAnalyticsSlashGetError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<AdTargetingAnalyticsSlashGetError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
 pub async fn ads_slash_analytics(configuration: &configuration::Configuration, ad_account_id: &str, start_date: String, end_date: String, columns: Vec<String>, granularity: models::Granularity, ad_ids: Option<Vec<String>>, click_window_days: Option<i32>, engagement_window_days: Option<i32>, view_window_days: Option<i32>, conversion_report_time: Option<&str>, pin_ids: Option<Vec<String>>, campaign_ids: Option<Vec<String>>) -> Result<Vec<models::AdsAnalyticsResponseInner>, Error<AdsSlashAnalyticsError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_ad_account_id = ad_account_id;
+    let p_start_date = start_date;
+    let p_end_date = end_date;
+    let p_columns = columns;
+    let p_granularity = granularity;
+    let p_ad_ids = ad_ids;
+    let p_click_window_days = click_window_days;
+    let p_engagement_window_days = engagement_window_days;
+    let p_view_window_days = view_window_days;
+    let p_conversion_report_time = conversion_report_time;
+    let p_pin_ids = pin_ids;
+    let p_campaign_ids = campaign_ids;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ads/analytics", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    let local_var_uri_str = format!("{}/ad_accounts/{ad_account_id}/ads/analytics", local_var_configuration.base_path, ad_account_id=crate::apis::urlencode(ad_account_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    local_var_req_builder = local_var_req_builder.query(&[("start_date", &start_date.to_string())]);
-    local_var_req_builder = local_var_req_builder.query(&[("end_date", &end_date.to_string())]);
-    if let Some(ref local_var_str) = ad_ids {
-        local_var_req_builder = match "multi" {
-            "multi" => local_var_req_builder.query(&local_var_str.into_iter().map(|p| ("ad_ids".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
-            _ => local_var_req_builder.query(&[("ad_ids", &local_var_str.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+    req_builder = req_builder.query(&[("start_date", &p_start_date.to_string())]);
+    req_builder = req_builder.query(&[("end_date", &p_end_date.to_string())]);
+    if let Some(ref param_value) = p_ad_ids {
+        req_builder = match "multi" {
+            "multi" => req_builder.query(&param_value.into_iter().map(|p| ("ad_ids".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+            _ => req_builder.query(&[("ad_ids", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    local_var_req_builder = match "csv" {
-        "multi" => local_var_req_builder.query(&columns.into_iter().map(|p| ("columns".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
-        _ => local_var_req_builder.query(&[("columns", &columns.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+    req_builder = match "csv" {
+        "multi" => req_builder.query(&p_columns.into_iter().map(|p| ("columns".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+        _ => req_builder.query(&[("columns", &p_columns.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
     };
-    local_var_req_builder = local_var_req_builder.query(&[("granularity", &granularity.to_string())]);
-    if let Some(ref local_var_str) = click_window_days {
-        local_var_req_builder = local_var_req_builder.query(&[("click_window_days", &local_var_str.to_string())]);
+    req_builder = req_builder.query(&[("granularity", &p_granularity.to_string())]);
+    if let Some(ref param_value) = p_click_window_days {
+        req_builder = req_builder.query(&[("click_window_days", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = engagement_window_days {
-        local_var_req_builder = local_var_req_builder.query(&[("engagement_window_days", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_engagement_window_days {
+        req_builder = req_builder.query(&[("engagement_window_days", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = view_window_days {
-        local_var_req_builder = local_var_req_builder.query(&[("view_window_days", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_view_window_days {
+        req_builder = req_builder.query(&[("view_window_days", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = conversion_report_time {
-        local_var_req_builder = local_var_req_builder.query(&[("conversion_report_time", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_conversion_report_time {
+        req_builder = req_builder.query(&[("conversion_report_time", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = pin_ids {
-        local_var_req_builder = match "multi" {
-            "multi" => local_var_req_builder.query(&local_var_str.into_iter().map(|p| ("pin_ids".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
-            _ => local_var_req_builder.query(&[("pin_ids", &local_var_str.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+    if let Some(ref param_value) = p_pin_ids {
+        req_builder = match "multi" {
+            "multi" => req_builder.query(&param_value.into_iter().map(|p| ("pin_ids".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+            _ => req_builder.query(&[("pin_ids", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref local_var_str) = campaign_ids {
-        local_var_req_builder = match "multi" {
-            "multi" => local_var_req_builder.query(&local_var_str.into_iter().map(|p| ("campaign_ids".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
-            _ => local_var_req_builder.query(&[("campaign_ids", &local_var_str.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+    if let Some(ref param_value) = p_campaign_ids {
+        req_builder = match "multi" {
+            "multi" => req_builder.query(&param_value.into_iter().map(|p| ("campaign_ids".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+            _ => req_builder.query(&[("campaign_ids", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `Vec&lt;models::AdsAnalyticsResponseInner&gt;`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `Vec&lt;models::AdsAnalyticsResponseInner&gt;`")))),
+        }
     } else {
-        let local_var_entity: Option<AdsSlashAnalyticsError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<AdsSlashAnalyticsError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// Create multiple new ads. Request must contain ad_group_id, creative_type, and the source Pin pin_id.
 pub async fn ads_slash_create(configuration: &configuration::Configuration, ad_account_id: &str, ad_create_request: Vec<models::AdCreateRequest>) -> Result<models::AdArrayResponse, Error<AdsSlashCreateError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_ad_account_id = ad_account_id;
+    let p_ad_create_request = ad_create_request;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ads", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    let local_var_uri_str = format!("{}/ad_accounts/{ad_account_id}/ads", local_var_configuration.base_path, ad_account_id=crate::apis::urlencode(ad_account_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&ad_create_request);
+    req_builder = req_builder.json(&p_ad_create_request);
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::AdArrayResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::AdArrayResponse`")))),
+        }
     } else {
-        let local_var_entity: Option<AdsSlashCreateError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<AdsSlashCreateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will contain additional information from the Ad Review process. For more information about our policies and rejection reasons see the <a href=\"https://www.pinterest.com/_/_/policy/advertising-guidelines/\" target=\"_blank\">Pinterest advertising standards</a>.
 pub async fn ads_slash_get(configuration: &configuration::Configuration, ad_account_id: &str, ad_id: &str) -> Result<models::AdResponse, Error<AdsSlashGetError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_ad_account_id = ad_account_id;
+    let p_ad_id = ad_id;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ads/{ad_id}", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id), ad_id=crate::apis::urlencode(p_ad_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    let local_var_uri_str = format!("{}/ad_accounts/{ad_account_id}/ads/{ad_id}", local_var_configuration.base_path, ad_account_id=crate::apis::urlencode(ad_account_id), ad_id=crate::apis::urlencode(ad_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::AdResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::AdResponse`")))),
+        }
     } else {
-        let local_var_entity: Option<AdsSlashGetError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<AdsSlashGetError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// List ads that meet the filters provided:   - Listed campaign ids or ad group ids or ad ids   - Listed entity statuses <p/> If no filter is provided, all ads in the ad account are returned. <p/> <strong>Note:</strong><p/> Provide only campaign_id or ad_group_id or ad_id. Do not provide more than one type. <p/> Review status is provided for each ad; if review_status is REJECTED, the rejected_reasons field will contain additional information. For more, see <a href=\"https://policy.pinterest.com/en/advertising-guidelines\">Pinterest advertising standards</a>.
 pub async fn ads_slash_list(configuration: &configuration::Configuration, ad_account_id: &str, campaign_ids: Option<Vec<String>>, ad_group_ids: Option<Vec<String>>, ad_ids: Option<Vec<String>>, entity_statuses: Option<Vec<String>>, page_size: Option<i32>, order: Option<&str>, bookmark: Option<&str>) -> Result<models::AdsList200Response, Error<AdsSlashListError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_ad_account_id = ad_account_id;
+    let p_campaign_ids = campaign_ids;
+    let p_ad_group_ids = ad_group_ids;
+    let p_ad_ids = ad_ids;
+    let p_entity_statuses = entity_statuses;
+    let p_page_size = page_size;
+    let p_order = order;
+    let p_bookmark = bookmark;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ads", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    let local_var_uri_str = format!("{}/ad_accounts/{ad_account_id}/ads", local_var_configuration.base_path, ad_account_id=crate::apis::urlencode(ad_account_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_str) = campaign_ids {
-        local_var_req_builder = match "multi" {
-            "multi" => local_var_req_builder.query(&local_var_str.into_iter().map(|p| ("campaign_ids".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
-            _ => local_var_req_builder.query(&[("campaign_ids", &local_var_str.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+    if let Some(ref param_value) = p_campaign_ids {
+        req_builder = match "multi" {
+            "multi" => req_builder.query(&param_value.into_iter().map(|p| ("campaign_ids".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+            _ => req_builder.query(&[("campaign_ids", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref local_var_str) = ad_group_ids {
-        local_var_req_builder = match "multi" {
-            "multi" => local_var_req_builder.query(&local_var_str.into_iter().map(|p| ("ad_group_ids".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
-            _ => local_var_req_builder.query(&[("ad_group_ids", &local_var_str.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+    if let Some(ref param_value) = p_ad_group_ids {
+        req_builder = match "multi" {
+            "multi" => req_builder.query(&param_value.into_iter().map(|p| ("ad_group_ids".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+            _ => req_builder.query(&[("ad_group_ids", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref local_var_str) = ad_ids {
-        local_var_req_builder = match "multi" {
-            "multi" => local_var_req_builder.query(&local_var_str.into_iter().map(|p| ("ad_ids".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
-            _ => local_var_req_builder.query(&[("ad_ids", &local_var_str.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+    if let Some(ref param_value) = p_ad_ids {
+        req_builder = match "multi" {
+            "multi" => req_builder.query(&param_value.into_iter().map(|p| ("ad_ids".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+            _ => req_builder.query(&[("ad_ids", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref local_var_str) = entity_statuses {
-        local_var_req_builder = match "multi" {
-            "multi" => local_var_req_builder.query(&local_var_str.into_iter().map(|p| ("entity_statuses".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
-            _ => local_var_req_builder.query(&[("entity_statuses", &local_var_str.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+    if let Some(ref param_value) = p_entity_statuses {
+        req_builder = match "multi" {
+            "multi" => req_builder.query(&param_value.into_iter().map(|p| ("entity_statuses".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+            _ => req_builder.query(&[("entity_statuses", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref local_var_str) = page_size {
-        local_var_req_builder = local_var_req_builder.query(&[("page_size", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_page_size {
+        req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = order {
-        local_var_req_builder = local_var_req_builder.query(&[("order", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_order {
+        req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = bookmark {
-        local_var_req_builder = local_var_req_builder.query(&[("bookmark", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_bookmark {
+        req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::AdsList200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::AdsList200Response`")))),
+        }
     } else {
-        let local_var_entity: Option<AdsSlashListError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<AdsSlashListError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// Update multiple existing ads
 pub async fn ads_slash_update(configuration: &configuration::Configuration, ad_account_id: &str, ad_update_request: Vec<models::AdUpdateRequest>) -> Result<models::AdArrayResponse, Error<AdsSlashUpdateError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_ad_account_id = ad_account_id;
+    let p_ad_update_request = ad_update_request;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ads", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
-    let local_var_uri_str = format!("{}/ad_accounts/{ad_account_id}/ads", local_var_configuration.base_path, ad_account_id=crate::apis::urlencode(ad_account_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::PATCH, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    if let Some(ref token) = configuration.oauth_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&ad_update_request);
+    req_builder = req_builder.json(&p_ad_update_request);
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::AdArrayResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::AdArrayResponse`")))),
+        }
     } else {
-        let local_var_entity: Option<AdsSlashUpdateError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<AdsSlashUpdateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 

@@ -1700,14 +1700,14 @@ export namespace TemplateResponse {
     }
     export type ConversionReportTimeTypeEnum = 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION';
     export const ConversionReportTimeTypeEnum = {
-        AdAction: 'TIME_OF_AD_ACTION' as ConversionReportTimeTypeEnum,
-        Conversion: 'TIME_OF_CONVERSION' as ConversionReportTimeTypeEnum
+        TimeOfAdAction: 'TIME_OF_AD_ACTION' as ConversionReportTimeTypeEnum,
+        TimeOfConversion: 'TIME_OF_CONVERSION' as ConversionReportTimeTypeEnum
     }
     export type CreationSourceEnum = 'ADS_API' | 'ADS_MANAGER_REPORTING_PAGE' | 'ADS_MANAGER_REPORT_BUILDER';
     export const CreationSourceEnum = {
-        Api: 'ADS_API' as CreationSourceEnum,
-        ManagerReportingPage: 'ADS_MANAGER_REPORTING_PAGE' as CreationSourceEnum,
-        ManagerReportBuilder: 'ADS_MANAGER_REPORT_BUILDER' as CreationSourceEnum
+        AdsApi: 'ADS_API' as CreationSourceEnum,
+        AdsManagerReportingPage: 'ADS_MANAGER_REPORTING_PAGE' as CreationSourceEnum,
+        AdsManagerReportBuilder: 'ADS_MANAGER_REPORT_BUILDER' as CreationSourceEnum
     }
     export type TypeEnum = 'UNSPECIFIED' | 'BULK' | 'OVERVIEW' | 'TABLE';
     export const TypeEnum = {

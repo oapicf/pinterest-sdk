@@ -52,20 +52,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * KeywordsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class KeywordsResponse {
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
+  @javax.annotation.Nullable
   private List<KeywordError> errors = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_KEYWORDS = "keywords";
   @SerializedName(SERIALIZED_NAME_KEYWORDS)
+  @javax.annotation.Nullable
   private List<Keyword> keywords = new ArrayList<>();
 
   public KeywordsResponse() {
   }
 
-  public KeywordsResponse errors(List<KeywordError> errors) {
+  public KeywordsResponse errors(@javax.annotation.Nullable List<KeywordError> errors) {
     this.errors = errors;
     return this;
   }
@@ -87,12 +89,12 @@ public class KeywordsResponse {
     return errors;
   }
 
-  public void setErrors(List<KeywordError> errors) {
+  public void setErrors(@javax.annotation.Nullable List<KeywordError> errors) {
     this.errors = errors;
   }
 
 
-  public KeywordsResponse keywords(List<Keyword> keywords) {
+  public KeywordsResponse keywords(@javax.annotation.Nullable List<Keyword> keywords) {
     this.keywords = keywords;
     return this;
   }
@@ -114,7 +116,7 @@ public class KeywordsResponse {
     return keywords;
   }
 
-  public void setKeywords(List<Keyword> keywords) {
+  public void setKeywords(@javax.annotation.Nullable List<Keyword> keywords) {
     this.keywords = keywords;
   }
 

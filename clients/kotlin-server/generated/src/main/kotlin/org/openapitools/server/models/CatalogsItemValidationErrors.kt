@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsItemValidationDetails
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param ADULT_INVALID 
@@ -39,6 +40,7 @@ import org.openapitools.server.models.CatalogsItemValidationDetails
  * @param PRODUCT_PRICE_INVALID 
  * @param TITLE_MISSING 
  */
+@Serializable
 data class CatalogsItemValidationErrors(
     val ADULT_INVALID: CatalogsItemValidationDetails? = null,
     val ADWORDS_FORMAT_INVALID: CatalogsItemValidationDetails? = null,
@@ -63,5 +65,5 @@ data class CatalogsItemValidationErrors(
     val PRODUCT_LINK_MISSING: CatalogsItemValidationDetails? = null,
     val PRODUCT_PRICE_INVALID: CatalogsItemValidationDetails? = null,
     val TITLE_MISSING: CatalogsItemValidationDetails? = null
-) 
+)
 

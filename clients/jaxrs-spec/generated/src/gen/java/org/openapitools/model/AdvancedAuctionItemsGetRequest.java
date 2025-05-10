@@ -21,10 +21,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Request object used to get bid options values for a batch of retail catalog items")
 @JsonTypeName("AdvancedAuctionItemsGetRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdvancedAuctionItemsGetRequest   {
   private String catalogId;
   private @Valid List<AdvancedAuctionItemsGetRecord> items = new ArrayList<>();
+
+  public AdvancedAuctionItemsGetRequest() {
+  }
+
+  @JsonCreator
+  public AdvancedAuctionItemsGetRequest(
+    @JsonProperty(required = true, value = "catalog_id") String catalogId,
+    @JsonProperty(required = true, value = "items") List<@Valid AdvancedAuctionItemsGetRecord> items
+  ) {
+    this.catalogId = catalogId;
+    this.items = items;
+  }
 
   /**
    * Catalog id pertaining to the retail item
@@ -36,12 +48,12 @@ public class AdvancedAuctionItemsGetRequest   {
 
   
   @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the retail item")
-  @JsonProperty("catalog_id")
+  @JsonProperty(required = true, value = "catalog_id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getCatalogId() {
     return catalogId;
   }
 
-  @JsonProperty("catalog_id")
+  @JsonProperty(required = true, value = "catalog_id")
   public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
   }
@@ -56,12 +68,12 @@ public class AdvancedAuctionItemsGetRequest   {
 
   
   @ApiModelProperty(required = true, value = "A list of retail catalog items to fetch bid options for")
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   @NotNull @Valid  @Size(min=1,max=10000)public List<@Valid AdvancedAuctionItemsGetRecord> getItems() {
     return items;
   }
 
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   public void setItems(List<AdvancedAuctionItemsGetRecord> items) {
     this.items = items;
   }

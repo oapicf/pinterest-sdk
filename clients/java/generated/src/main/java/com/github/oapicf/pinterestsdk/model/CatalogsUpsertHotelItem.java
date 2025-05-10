@@ -49,10 +49,11 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * A hotel item to be upserted.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsUpsertHotelItem {
   public static final String SERIALIZED_NAME_HOTEL_ID = "hotel_id";
   @SerializedName(SERIALIZED_NAME_HOTEL_ID)
+  @javax.annotation.Nonnull
   private String hotelId;
 
   /**
@@ -107,16 +108,18 @@ public class CatalogsUpsertHotelItem {
 
   public static final String SERIALIZED_NAME_OPERATION = "operation";
   @SerializedName(SERIALIZED_NAME_OPERATION)
+  @javax.annotation.Nonnull
   private OperationEnum operation;
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  @javax.annotation.Nonnull
   private CatalogsHotelAttributes attributes;
 
   public CatalogsUpsertHotelItem() {
   }
 
-  public CatalogsUpsertHotelItem hotelId(String hotelId) {
+  public CatalogsUpsertHotelItem hotelId(@javax.annotation.Nonnull String hotelId) {
     this.hotelId = hotelId;
     return this;
   }
@@ -130,12 +133,12 @@ public class CatalogsUpsertHotelItem {
     return hotelId;
   }
 
-  public void setHotelId(String hotelId) {
+  public void setHotelId(@javax.annotation.Nonnull String hotelId) {
     this.hotelId = hotelId;
   }
 
 
-  public CatalogsUpsertHotelItem operation(OperationEnum operation) {
+  public CatalogsUpsertHotelItem operation(@javax.annotation.Nonnull OperationEnum operation) {
     this.operation = operation;
     return this;
   }
@@ -149,12 +152,12 @@ public class CatalogsUpsertHotelItem {
     return operation;
   }
 
-  public void setOperation(OperationEnum operation) {
+  public void setOperation(@javax.annotation.Nonnull OperationEnum operation) {
     this.operation = operation;
   }
 
 
-  public CatalogsUpsertHotelItem attributes(CatalogsHotelAttributes attributes) {
+  public CatalogsUpsertHotelItem attributes(@javax.annotation.Nonnull CatalogsHotelAttributes attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -168,7 +171,7 @@ public class CatalogsUpsertHotelItem {
     return attributes;
   }
 
-  public void setAttributes(CatalogsHotelAttributes attributes) {
+  public void setAttributes(@javax.annotation.Nonnull CatalogsHotelAttributes attributes) {
     this.attributes = attributes;
   }
 

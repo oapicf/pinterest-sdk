@@ -64,11 +64,11 @@ export function GetInvites200ResponseFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function GetInvites200ResponseToJSON(json: any): GetInvites200Response {
-      return GetInvites200ResponseToJSONTyped(json, false);
-  }
+export function GetInvites200ResponseToJSON(json: any): GetInvites200Response {
+    return GetInvites200ResponseToJSONTyped(json, false);
+}
 
-  export function GetInvites200ResponseToJSONTyped(value?: GetInvites200Response | null, ignoreDiscriminator: boolean = false): any {
+export function GetInvites200ResponseToJSONTyped(value?: GetInvites200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -24,9 +24,10 @@ typedef struct detailed_error_t {
     char *message; // string
     object_t *details; //object
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } detailed_error_t;
 
-detailed_error_t *detailed_error_create(
+__attribute__((deprecated)) detailed_error_t *detailed_error_create(
     int code,
     char *message,
     object_t *details

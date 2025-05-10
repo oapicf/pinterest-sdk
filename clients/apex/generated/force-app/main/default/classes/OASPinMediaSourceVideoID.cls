@@ -37,8 +37,8 @@ public class OASPinMediaSourceVideoID implements OAS.MappedProperties {
      * Content type for cover image Base64.
      */
     public enum CoverImageContentTypeEnum {
-        JPEG,
-        PNG
+        IMAGE_JPEG,
+        IMAGE_PNG
     }
 
     /**

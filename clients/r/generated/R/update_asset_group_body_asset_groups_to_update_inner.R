@@ -73,10 +73,35 @@ UpdateAssetGroupBodyAssetGroupsToUpdateInner <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return UpdateAssetGroupBodyAssetGroupsToUpdateInner in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return UpdateAssetGroupBodyAssetGroupsToUpdateInner as a base R list.
+    #' @examples
+    #' # convert array of UpdateAssetGroupBodyAssetGroupsToUpdateInner (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert UpdateAssetGroupBodyAssetGroupsToUpdateInner to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       UpdateAssetGroupBodyAssetGroupsToUpdateInnerObject <- list()
       if (!is.null(self$`asset_group_id`)) {
         UpdateAssetGroupBodyAssetGroupsToUpdateInnerObject[["asset_group_id"]] <-
@@ -92,7 +117,7 @@ UpdateAssetGroupBodyAssetGroupsToUpdateInner <- R6::R6Class(
       }
       if (!is.null(self$`asset_group_types`)) {
         UpdateAssetGroupBodyAssetGroupsToUpdateInnerObject[["asset_group_types"]] <-
-          lapply(self$`asset_group_types`, function(x) x$toJSON())
+          lapply(self$`asset_group_types`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`assets_to_add`)) {
         UpdateAssetGroupBodyAssetGroupsToUpdateInnerObject[["assets_to_add"]] <-
@@ -102,7 +127,7 @@ UpdateAssetGroupBodyAssetGroupsToUpdateInner <- R6::R6Class(
         UpdateAssetGroupBodyAssetGroupsToUpdateInnerObject[["assets_to_remove"]] <-
           self$`assets_to_remove`
       }
-      UpdateAssetGroupBodyAssetGroupsToUpdateInnerObject
+      return(UpdateAssetGroupBodyAssetGroupsToUpdateInnerObject)
     },
 
     #' @description
@@ -135,61 +160,13 @@ UpdateAssetGroupBodyAssetGroupsToUpdateInner <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return UpdateAssetGroupBodyAssetGroupsToUpdateInner in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`asset_group_id`)) {
-          sprintf(
-          '"asset_group_id":
-            "%s"
-                    ',
-          self$`asset_group_id`
-          )
-        },
-        if (!is.null(self$`name`)) {
-          sprintf(
-          '"name":
-            "%s"
-                    ',
-          self$`name`
-          )
-        },
-        if (!is.null(self$`description`)) {
-          sprintf(
-          '"description":
-            "%s"
-                    ',
-          self$`description`
-          )
-        },
-        if (!is.null(self$`asset_group_types`)) {
-          sprintf(
-          '"asset_group_types":
-          [%s]
-',
-          paste(sapply(self$`asset_group_types`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`assets_to_add`)) {
-          sprintf(
-          '"assets_to_add":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`assets_to_add`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`assets_to_remove`)) {
-          sprintf(
-          '"assets_to_remove":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`assets_to_remove`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

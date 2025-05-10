@@ -11,7 +11,6 @@
 */
 package org.openapitools.server.apis
 
-import com.google.gson.Gson
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.auth.*
@@ -34,13 +33,12 @@ import org.openapitools.server.models.Error
 import org.openapitools.server.models.PageVisitConversionTagsGet200Response
 
 fun Route.ConversionTagsApi() {
-    val gson = Gson()
     val empty = mutableMapOf<String, Any?>()
 
     authenticate("pinterest_oauth2") {
     post<Paths.conversionTagsCreate> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -65,7 +63,7 @@ fun Route.ConversionTagsApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -76,7 +74,7 @@ fun Route.ConversionTagsApi() {
     authenticate("pinterest_oauth2") {
     get<Paths.conversionTagsGet> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -101,7 +99,7 @@ fun Route.ConversionTagsApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -112,7 +110,7 @@ fun Route.ConversionTagsApi() {
     authenticate("pinterest_oauth2") {
     get<Paths.conversionTagsList> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -157,7 +155,7 @@ fun Route.ConversionTagsApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -168,7 +166,7 @@ fun Route.ConversionTagsApi() {
     authenticate("pinterest_oauth2") {
     get<Paths.ocpmEligibleConversionTagsGet> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -187,7 +185,7 @@ fun Route.ConversionTagsApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }
@@ -198,7 +196,7 @@ fun Route.ConversionTagsApi() {
     authenticate("pinterest_oauth2") {
     get<Paths.pageVisitConversionTagsGet> {
         
-        val principal = call.authentication.principal<OAuthAccessTokenResponse>()!!
+        val principal = call.authentication.principal<OAuthAccessTokenResponse>()
         
         
         val exampleContentType = "application/json"
@@ -218,7 +216,7 @@ fun Route.ConversionTagsApi() {
             }"""
             
             when (exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/json" -> call.respondText(exampleContentType, ContentType.Application.Json)
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }

@@ -13,12 +13,14 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.ItemResponse
 
+import kotlinx.serialization.Serializable
 /**
  * Response object of catalogs items
  * @param items Array with catalogs items
  */
+@Serializable
 data class CatalogsItems(
     /* Array with catalogs items */
     val items: kotlin.collections.List<ItemResponse>? = null
-) 
+)
 

@@ -1653,8 +1653,8 @@ public:
 	TOptional<double> EngagementWindowDays;
 	enum class ConversionReportTimeTypeEnum
 	{
-		AdAction,
-		Conversion,
+		TimeOfAdAction,
+		TimeOfConversion,
   	};
 
 	static FString EnumToString(const ConversionReportTimeTypeEnum& EnumValue);
@@ -1669,9 +1669,9 @@ public:
 	TOptional<bool> IsScheduled;
 	enum class CreationSourceEnum
 	{
-		Api,
-		ManagerReportingPage,
-		ManagerReportBuilder,
+		AdsApi,
+		AdsManagerReportingPage,
+		AdsManagerReportBuilder,
   	};
 
 	static FString EnumToString(const CreationSourceEnum& EnumValue);

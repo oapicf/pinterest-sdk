@@ -119,11 +119,11 @@ export function CatalogsHotelProductGroupFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function CatalogsHotelProductGroupToJSON(json: any): CatalogsHotelProductGroup {
-      return CatalogsHotelProductGroupToJSONTyped(json, false);
-  }
+export function CatalogsHotelProductGroupToJSON(json: any): CatalogsHotelProductGroup {
+    return CatalogsHotelProductGroupToJSONTyped(json, false);
+}
 
-  export function CatalogsHotelProductGroupToJSONTyped(value?: CatalogsHotelProductGroup | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsHotelProductGroupToJSONTyped(value?: CatalogsHotelProductGroup | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

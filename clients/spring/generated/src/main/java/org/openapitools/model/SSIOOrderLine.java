@@ -11,6 +11,7 @@ import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.Currency;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -26,7 +27,7 @@ import javax.annotation.Generated;
  * SSIOOrderLine
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SSIOOrderLine {
 
   private JsonNullable<String> salesforceOrderLineId = JsonNullable.<String>undefined();
@@ -57,7 +58,7 @@ public class SSIOOrderLine {
 
   private JsonNullable<String> mediaContactLastname = JsonNullable.<String>undefined();
 
-  private Currency currencyInfo;
+  private @Nullable Currency currencyInfo;
 
   private JsonNullable<String> agencyLink = JsonNullable.<String>undefined();
 
@@ -165,7 +166,7 @@ public class SSIOOrderLine {
    * @return startDate
    */
   @Valid 
-  @Schema(name = "start_date", example = "Thu Mar 01 00:00:00 UTC 2018", description = "Start date of the order line.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "start_date", example = "2018-03-01", description = "Start date of the order line.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("start_date")
   public JsonNullable<LocalDate> getStartDate() {
     return startDate;
@@ -185,7 +186,7 @@ public class SSIOOrderLine {
    * @return endDate
    */
   @Valid 
-  @Schema(name = "end_date", example = "Mon Oct 05 00:00:00 UTC 2020", description = "End date of the order line.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "end_date", example = "2020-10-05", description = "End date of the order line.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("end_date")
   public JsonNullable<LocalDate> getEndDate() {
     return endDate;

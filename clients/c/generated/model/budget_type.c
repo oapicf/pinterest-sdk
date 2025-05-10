@@ -22,7 +22,7 @@ pinterest_rest_api_budget_type__e budget_type_budget_type_FromString(char* budge
     return 0;
 }
 
-cJSON *budget_type_budget_type_convertToJSON(pinterest_rest_api_budget_type__e budget_type) {
+cJSON *budget_type_convertToJSON(pinterest_rest_api_budget_type__e budget_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "budget_type", budget_type_budget_type_ToString(budget_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_budget_type__e budget_type_budget_type_parseFromJSON(cJSON *budget_typeJSON) {
-    pinterest_rest_api_budget_type__e *budget_type = NULL;
-    pinterest_rest_api_budget_type__e budget_typeVariable;
-    cJSON *budget_typeVar = cJSON_GetObjectItemCaseSensitive(budget_typeJSON, "budget_type");
-    if(!cJSON_IsString(budget_typeVar) || (budget_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_budget_type__e budget_type_parseFromJSON(cJSON *budget_typeJSON) {
+    if(!cJSON_IsString(budget_typeJSON) || (budget_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    budget_typeVariable = budget_type_budget_type_FromString(budget_typeVar->valuestring);
-    return budget_typeVariable;
-end:
-    return 0;
+    return budget_type_budget_type_FromString(budget_typeJSON->valuestring);
 }

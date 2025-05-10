@@ -97,11 +97,11 @@ export function MediaUploadAllOfUploadParametersFromJSONTyped(json: any, ignoreD
     };
 }
 
-  export function MediaUploadAllOfUploadParametersToJSON(json: any): MediaUploadAllOfUploadParameters {
-      return MediaUploadAllOfUploadParametersToJSONTyped(json, false);
-  }
+export function MediaUploadAllOfUploadParametersToJSON(json: any): MediaUploadAllOfUploadParameters {
+    return MediaUploadAllOfUploadParametersToJSONTyped(json, false);
+}
 
-  export function MediaUploadAllOfUploadParametersToJSONTyped(value?: MediaUploadAllOfUploadParameters | null, ignoreDiscriminator: boolean = false): any {
+export function MediaUploadAllOfUploadParametersToJSONTyped(value?: MediaUploadAllOfUploadParameters | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

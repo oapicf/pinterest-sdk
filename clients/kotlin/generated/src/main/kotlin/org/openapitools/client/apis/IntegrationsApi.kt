@@ -54,6 +54,7 @@ class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * DELETE /integrations/commerce/{external_business_id}
      * Delete commerce integration
      * Delete commerce integration metadata for the given external business ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @param externalBusinessId External business ID for the integration.
@@ -84,6 +85,7 @@ class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * DELETE /integrations/commerce/{external_business_id}
      * Delete commerce integration
      * Delete commerce integration metadata for the given external business ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @param externalBusinessId External business ID for the integration.
@@ -123,6 +125,7 @@ class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * GET /integrations/commerce/{external_business_id}
      * Get commerce integration
      * Get commerce integration metadata associated with the given external business ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @param externalBusinessId External business ID for the integration.
@@ -154,6 +157,7 @@ class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * GET /integrations/commerce/{external_business_id}
      * Get commerce integration
      * Get commerce integration metadata associated with the given external business ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @param externalBusinessId External business ID for the integration.
@@ -194,6 +198,7 @@ class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * PATCH /integrations/commerce/{external_business_id}
      * Update commerce integration
      * Update commerce integration metadata for the given external business ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @param externalBusinessId External business ID for the integration.
@@ -226,6 +231,7 @@ class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * PATCH /integrations/commerce/{external_business_id}
      * Update commerce integration
      * Update commerce integration metadata for the given external business ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @param externalBusinessId External business ID for the integration.
@@ -269,6 +275,7 @@ class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * POST /integrations/commerce
      * Create commerce integration
      * Create commerce integration metadata to link an external business ID with a Pinterest merchant &amp; ad account. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @param integrationRequest Parameters to get create/update the Integration Metadata (optional)
@@ -300,6 +307,7 @@ class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * POST /integrations/commerce
      * Create commerce integration
      * Create commerce integration metadata to link an external business ID with a Pinterest merchant &amp; ad account. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @param integrationRequest Parameters to get create/update the Integration Metadata (optional)
@@ -341,6 +349,7 @@ class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * GET /integrations/{id}
      * Get integration metadata
      * Get integration metadata by ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @param id Integration ID.
@@ -372,6 +381,7 @@ class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * GET /integrations/{id}
      * Get integration metadata
      * Get integration metadata by ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @param id Integration ID.
@@ -412,6 +422,7 @@ class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * GET /integrations
      * Get integration metadata list
      * Get integration metadata list. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @param bookmark Cursor used to fetch the next page of items (optional)
@@ -444,6 +455,7 @@ class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * GET /integrations
      * Get integration metadata list
      * Get integration metadata list. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @param bookmark Cursor used to fetch the next page of items (optional)
@@ -494,6 +506,7 @@ class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * POST /integrations/logs
      * Receives batched logs from integration applications.
      * This endpoint receives batched logs from integration applications on partner platforms. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @param integrationLogsRequest Ingest log information from external integration application.
@@ -525,6 +538,7 @@ class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * POST /integrations/logs
      * Receives batched logs from integration applications.
      * This endpoint receives batched logs from integration applications on partner platforms. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @param integrationLogsRequest Ingest log information from external integration application.

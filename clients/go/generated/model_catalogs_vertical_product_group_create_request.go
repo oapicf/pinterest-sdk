@@ -13,8 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // CatalogsVerticalProductGroupCreateRequest - Request object for creating a catalog based product group.
@@ -147,6 +147,24 @@ func (obj *CatalogsVerticalProductGroupCreateRequest) GetActualInstance() (inter
 
 	if obj.CatalogsRetailProductGroupCreateRequest != nil {
 		return obj.CatalogsRetailProductGroupCreateRequest
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj CatalogsVerticalProductGroupCreateRequest) GetActualInstanceValue() (interface{}) {
+	if obj.CatalogsCreativeAssetsProductGroupCreateRequest != nil {
+		return *obj.CatalogsCreativeAssetsProductGroupCreateRequest
+	}
+
+	if obj.CatalogsHotelProductGroupCreateRequest != nil {
+		return *obj.CatalogsHotelProductGroupCreateRequest
+	}
+
+	if obj.CatalogsRetailProductGroupCreateRequest != nil {
+		return *obj.CatalogsRetailProductGroupCreateRequest
 	}
 
 	// all schemas are nil

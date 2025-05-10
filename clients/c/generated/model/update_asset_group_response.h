@@ -24,9 +24,10 @@ typedef struct update_asset_group_response_t {
     list_t *updated_asset_groups; //nonprimitive container
     list_t *exceptions; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } update_asset_group_response_t;
 
-update_asset_group_response_t *update_asset_group_response_create(
+__attribute__((deprecated)) update_asset_group_response_t *update_asset_group_response_create(
     list_t *updated_asset_groups,
     list_t *exceptions
 );

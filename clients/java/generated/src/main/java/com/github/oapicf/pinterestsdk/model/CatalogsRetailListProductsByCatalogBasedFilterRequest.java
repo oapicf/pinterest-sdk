@@ -51,7 +51,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Request object to list products for a given retail catalog_id and product group filter.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsRetailListProductsByCatalogBasedFilterRequest {
   /**
    * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
@@ -105,28 +105,33 @@ public class CatalogsRetailListProductsByCatalogBasedFilterRequest {
 
   public static final String SERIALIZED_NAME_CATALOG_TYPE = "catalog_type";
   @SerializedName(SERIALIZED_NAME_CATALOG_TYPE)
+  @javax.annotation.Nonnull
   private CatalogTypeEnum catalogType;
 
   public static final String SERIALIZED_NAME_CATALOG_ID = "catalog_id";
   @SerializedName(SERIALIZED_NAME_CATALOG_ID)
+  @javax.annotation.Nonnull
   private String catalogId;
 
   public static final String SERIALIZED_NAME_FILTERS = "filters";
   @SerializedName(SERIALIZED_NAME_FILTERS)
+  @javax.annotation.Nonnull
   private CatalogsProductGroupFilters filters;
 
   public static final String SERIALIZED_NAME_COUNTRY = "country";
   @SerializedName(SERIALIZED_NAME_COUNTRY)
+  @javax.annotation.Nonnull
   private Country country;
 
   public static final String SERIALIZED_NAME_LOCALE = "locale";
   @SerializedName(SERIALIZED_NAME_LOCALE)
+  @javax.annotation.Nonnull
   private CatalogsLocale locale;
 
   public CatalogsRetailListProductsByCatalogBasedFilterRequest() {
   }
 
-  public CatalogsRetailListProductsByCatalogBasedFilterRequest catalogType(CatalogTypeEnum catalogType) {
+  public CatalogsRetailListProductsByCatalogBasedFilterRequest catalogType(@javax.annotation.Nonnull CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -140,12 +145,12 @@ public class CatalogsRetailListProductsByCatalogBasedFilterRequest {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogTypeEnum catalogType) {
+  public void setCatalogType(@javax.annotation.Nonnull CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
 
-  public CatalogsRetailListProductsByCatalogBasedFilterRequest catalogId(String catalogId) {
+  public CatalogsRetailListProductsByCatalogBasedFilterRequest catalogId(@javax.annotation.Nonnull String catalogId) {
     this.catalogId = catalogId;
     return this;
   }
@@ -159,12 +164,12 @@ public class CatalogsRetailListProductsByCatalogBasedFilterRequest {
     return catalogId;
   }
 
-  public void setCatalogId(String catalogId) {
+  public void setCatalogId(@javax.annotation.Nonnull String catalogId) {
     this.catalogId = catalogId;
   }
 
 
-  public CatalogsRetailListProductsByCatalogBasedFilterRequest filters(CatalogsProductGroupFilters filters) {
+  public CatalogsRetailListProductsByCatalogBasedFilterRequest filters(@javax.annotation.Nonnull CatalogsProductGroupFilters filters) {
     this.filters = filters;
     return this;
   }
@@ -178,12 +183,12 @@ public class CatalogsRetailListProductsByCatalogBasedFilterRequest {
     return filters;
   }
 
-  public void setFilters(CatalogsProductGroupFilters filters) {
+  public void setFilters(@javax.annotation.Nonnull CatalogsProductGroupFilters filters) {
     this.filters = filters;
   }
 
 
-  public CatalogsRetailListProductsByCatalogBasedFilterRequest country(Country country) {
+  public CatalogsRetailListProductsByCatalogBasedFilterRequest country(@javax.annotation.Nonnull Country country) {
     this.country = country;
     return this;
   }
@@ -197,12 +202,12 @@ public class CatalogsRetailListProductsByCatalogBasedFilterRequest {
     return country;
   }
 
-  public void setCountry(Country country) {
+  public void setCountry(@javax.annotation.Nonnull Country country) {
     this.country = country;
   }
 
 
-  public CatalogsRetailListProductsByCatalogBasedFilterRequest locale(CatalogsLocale locale) {
+  public CatalogsRetailListProductsByCatalogBasedFilterRequest locale(@javax.annotation.Nonnull CatalogsLocale locale) {
     this.locale = locale;
     return this;
   }
@@ -216,7 +221,7 @@ public class CatalogsRetailListProductsByCatalogBasedFilterRequest {
     return locale;
   }
 
-  public void setLocale(CatalogsLocale locale) {
+  public void setLocale(@javax.annotation.Nonnull CatalogsLocale locale) {
     this.locale = locale;
   }
 

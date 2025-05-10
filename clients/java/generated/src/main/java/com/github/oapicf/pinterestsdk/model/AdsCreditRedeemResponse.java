@@ -49,24 +49,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdsCreditRedeemResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdsCreditRedeemResponse {
   public static final String SERIALIZED_NAME_SUCCESS = "success";
   @SerializedName(SERIALIZED_NAME_SUCCESS)
+  @javax.annotation.Nullable
   private Boolean success;
 
   public static final String SERIALIZED_NAME_ERROR_CODE = "errorCode";
   @SerializedName(SERIALIZED_NAME_ERROR_CODE)
+  @javax.annotation.Nullable
   private Integer errorCode;
 
   public static final String SERIALIZED_NAME_ERROR_MESSAGE = "errorMessage";
   @SerializedName(SERIALIZED_NAME_ERROR_MESSAGE)
+  @javax.annotation.Nullable
   private String errorMessage;
 
   public AdsCreditRedeemResponse() {
   }
 
-  public AdsCreditRedeemResponse success(Boolean success) {
+  public AdsCreditRedeemResponse success(@javax.annotation.Nullable Boolean success) {
     this.success = success;
     return this;
   }
@@ -80,12 +83,12 @@ public class AdsCreditRedeemResponse {
     return success;
   }
 
-  public void setSuccess(Boolean success) {
+  public void setSuccess(@javax.annotation.Nullable Boolean success) {
     this.success = success;
   }
 
 
-  public AdsCreditRedeemResponse errorCode(Integer errorCode) {
+  public AdsCreditRedeemResponse errorCode(@javax.annotation.Nullable Integer errorCode) {
     this.errorCode = errorCode;
     return this;
   }
@@ -99,12 +102,12 @@ public class AdsCreditRedeemResponse {
     return errorCode;
   }
 
-  public void setErrorCode(Integer errorCode) {
+  public void setErrorCode(@javax.annotation.Nullable Integer errorCode) {
     this.errorCode = errorCode;
   }
 
 
-  public AdsCreditRedeemResponse errorMessage(String errorMessage) {
+  public AdsCreditRedeemResponse errorMessage(@javax.annotation.Nullable String errorMessage) {
     this.errorMessage = errorMessage;
     return this;
   }
@@ -118,7 +121,7 @@ public class AdsCreditRedeemResponse {
     return errorMessage;
   }
 
-  public void setErrorMessage(String errorMessage) {
+  public void setErrorMessage(@javax.annotation.Nullable String errorMessage) {
     this.errorMessage = errorMessage;
   }
 

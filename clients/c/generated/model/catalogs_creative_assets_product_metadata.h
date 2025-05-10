@@ -17,25 +17,18 @@ typedef struct catalogs_creative_assets_product_metadata_t catalogs_creative_ass
 
 #include "creative_assets_visibility_type.h"
 
-// Enum  for catalogs_creative_assets_product_metadata
-
-typedef enum  { pinterest_rest_api_catalogs_creative_assets_product_metadata__NULL = 0, pinterest_rest_api_catalogs_creative_assets_product_metadata__VISIBLE, pinterest_rest_api_catalogs_creative_assets_product_metadata__HIDDEN } pinterest_rest_api_catalogs_creative_assets_product_metadata__e;
-
-char* catalogs_creative_assets_product_metadata_visibility_ToString(pinterest_rest_api_catalogs_creative_assets_product_metadata__e visibility);
-
-pinterest_rest_api_catalogs_creative_assets_product_metadata__e catalogs_creative_assets_product_metadata_visibility_FromString(char* visibility);
-
 
 
 typedef struct catalogs_creative_assets_product_metadata_t {
     char *creative_assets_id; // string
-    creative_assets_visibility_type_t *visibility; // custom
+    pinterest_rest_api_creative_assets_visibility_type__e visibility; //referenced enum
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_creative_assets_product_metadata_t;
 
-catalogs_creative_assets_product_metadata_t *catalogs_creative_assets_product_metadata_create(
+__attribute__((deprecated)) catalogs_creative_assets_product_metadata_t *catalogs_creative_assets_product_metadata_create(
     char *creative_assets_id,
-    creative_assets_visibility_type_t *visibility
+    pinterest_rest_api_creative_assets_visibility_type__e visibility
 );
 
 void catalogs_creative_assets_product_metadata_free(catalogs_creative_assets_product_metadata_t *catalogs_creative_assets_product_metadata);

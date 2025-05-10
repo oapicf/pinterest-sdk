@@ -42,8 +42,8 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum AudienceShareType: string
 {
-        case SHARED = "SHARED";
-        case RECEIVED = "RECEIVED";
+        case SHARED = 'SHARED';
+        case RECEIVED = 'RECEIVED';
 }
 
 

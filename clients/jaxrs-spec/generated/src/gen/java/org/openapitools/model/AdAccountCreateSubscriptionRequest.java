@@ -16,13 +16,23 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdAccountCreateSubscriptionRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdAccountCreateSubscriptionRequest   {
   private String webhookUrl;
   private String leadFormId;
   private String partnerAccessToken;
   private String partnerRefreshToken;
   private AdAccountCreateSubscriptionRequestPartnerMetadata partnerMetadata;
+
+  public AdAccountCreateSubscriptionRequest() {
+  }
+
+  @JsonCreator
+  public AdAccountCreateSubscriptionRequest(
+    @JsonProperty(required = true, value = "webhook_url") String webhookUrl
+  ) {
+    this.webhookUrl = webhookUrl;
+  }
 
   /**
    * Standard HTTPS webhook URL.
@@ -34,12 +44,12 @@ public class AdAccountCreateSubscriptionRequest   {
 
   
   @ApiModelProperty(example = "https://webhook.example.com/xyz", required = true, value = "Standard HTTPS webhook URL.")
-  @JsonProperty("webhook_url")
+  @JsonProperty(required = true, value = "webhook_url")
   @NotNull public String getWebhookUrl() {
     return webhookUrl;
   }
 
-  @JsonProperty("webhook_url")
+  @JsonProperty(required = true, value = "webhook_url")
   public void setWebhookUrl(String webhookUrl) {
     this.webhookUrl = webhookUrl;
   }

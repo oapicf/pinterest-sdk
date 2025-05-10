@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param id Billing ID.
@@ -20,6 +21,7 @@ package org.openapitools.server.models
  * @param advertiserId Advertiser ID of the billing.
  * @param paymentMethodBrand Brand of the payment method.
  */
+@Serializable
 data class BillingProfilesResponse(
     /* Billing ID. */
     val id: kotlin.String? = null,
@@ -31,7 +33,7 @@ data class BillingProfilesResponse(
     val advertiserId: kotlin.String? = null,
     /* Brand of the payment method. */
     val paymentMethodBrand: BillingProfilesResponse.PaymentMethodBrand? = null
-) 
+)
 {
     /**
     * Type of the card.

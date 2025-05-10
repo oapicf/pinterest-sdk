@@ -14,15 +14,17 @@ package org.openapitools.server.models
 import org.openapitools.server.models.AssetGroupBinding
 import org.openapitools.server.models.UpdateAssetGroupResponseExceptionsInner
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param updatedAssetGroups A list of successfully edited asset groups.
  * @param exceptions A list of errors associated with the asset groups. Will be returned if there is an error.
  */
+@Serializable
 data class UpdateAssetGroupResponse(
     /* A list of successfully edited asset groups. */
     val updatedAssetGroups: kotlin.collections.List<AssetGroupBinding>? = null,
     /* A list of errors associated with the asset groups. Will be returned if there is an error. */
     val exceptions: kotlin.collections.List<UpdateAssetGroupResponseExceptionsInner>? = null
-) 
+)
 

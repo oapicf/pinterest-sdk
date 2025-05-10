@@ -95,10 +95,35 @@ Keyword <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return Keyword in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return Keyword as a base R list.
+    #' @examples
+    #' # convert array of Keyword (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert Keyword to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       KeywordObject <- list()
       if (!is.null(self$`bid`)) {
         KeywordObject[["bid"]] <-
@@ -106,7 +131,7 @@ Keyword <- R6::R6Class(
       }
       if (!is.null(self$`match_type`)) {
         KeywordObject[["match_type"]] <-
-          self$`match_type`$toJSON()
+          self$`match_type`$toSimpleType()
       }
       if (!is.null(self$`value`)) {
         KeywordObject[["value"]] <-
@@ -132,7 +157,7 @@ Keyword <- R6::R6Class(
         KeywordObject[["type"]] <-
           self$`type`
       }
-      KeywordObject
+      return(KeywordObject)
     },
 
     #' @description
@@ -173,77 +198,13 @@ Keyword <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return Keyword in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`bid`)) {
-          sprintf(
-          '"bid":
-            %d
-                    ',
-          self$`bid`
-          )
-        },
-        if (!is.null(self$`match_type`)) {
-          sprintf(
-          '"match_type":
-          %s
-          ',
-          jsonlite::toJSON(self$`match_type`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`value`)) {
-          sprintf(
-          '"value":
-            "%s"
-                    ',
-          self$`value`
-          )
-        },
-        if (!is.null(self$`archived`)) {
-          sprintf(
-          '"archived":
-            %s
-                    ',
-          tolower(self$`archived`)
-          )
-        },
-        if (!is.null(self$`id`)) {
-          sprintf(
-          '"id":
-            "%s"
-                    ',
-          self$`id`
-          )
-        },
-        if (!is.null(self$`parent_id`)) {
-          sprintf(
-          '"parent_id":
-            "%s"
-                    ',
-          self$`parent_id`
-          )
-        },
-        if (!is.null(self$`parent_type`)) {
-          sprintf(
-          '"parent_type":
-            "%s"
-                    ',
-          self$`parent_type`
-          )
-        },
-        if (!is.null(self$`type`)) {
-          sprintf(
-          '"type":
-            "%s"
-                    ',
-          self$`type`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

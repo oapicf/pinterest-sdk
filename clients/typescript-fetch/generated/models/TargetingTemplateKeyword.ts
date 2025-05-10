@@ -65,11 +65,11 @@ export function TargetingTemplateKeywordFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function TargetingTemplateKeywordToJSON(json: any): TargetingTemplateKeyword {
-      return TargetingTemplateKeywordToJSONTyped(json, false);
-  }
+export function TargetingTemplateKeywordToJSON(json: any): TargetingTemplateKeyword {
+    return TargetingTemplateKeywordToJSONTyped(json, false);
+}
 
-  export function TargetingTemplateKeywordToJSONTyped(value?: TargetingTemplateKeyword | null, ignoreDiscriminator: boolean = false): any {
+export function TargetingTemplateKeywordToJSONTyped(value?: TargetingTemplateKeyword | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

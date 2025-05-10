@@ -43,7 +43,11 @@ export function ItemAttributesRequestAllOfImageLinkFromJSONTyped(json: any, igno
     return {} as any;
 }
 
-export function ItemAttributesRequestAllOfImageLinkToJSON(value?: ItemAttributesRequestAllOfImageLink | null): any {
+export function ItemAttributesRequestAllOfImageLinkToJSON(json: any): any {
+    return ItemAttributesRequestAllOfImageLinkToJSONTyped(json, false);
+}
+
+export function ItemAttributesRequestAllOfImageLinkToJSONTyped(value?: ItemAttributesRequestAllOfImageLink | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

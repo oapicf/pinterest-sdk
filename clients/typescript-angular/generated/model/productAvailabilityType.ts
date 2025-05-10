@@ -15,8 +15,11 @@
 export type ProductAvailabilityType = 'IN_STOCK' | 'OUT_OF_STOCK' | 'PREORDER';
 
 export const ProductAvailabilityType = {
+
     InStock: 'IN_STOCK' as ProductAvailabilityType,
+
     OutOfStock: 'OUT_OF_STOCK' as ProductAvailabilityType,
+
     Preorder: 'PREORDER' as ProductAvailabilityType
 };
 

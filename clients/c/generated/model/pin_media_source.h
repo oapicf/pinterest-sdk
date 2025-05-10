@@ -63,9 +63,10 @@ typedef struct pin_media_source_t {
     int index; //numeric
     int is_affiliate_link; //boolean
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } pin_media_source_t;
 
-pin_media_source_t *pin_media_source_create(
+__attribute__((deprecated)) pin_media_source_t *pin_media_source_create(
     pinterest_rest_api_pin_media_source_SOURCETYPE_e source_type,
     pinterest_rest_api_pin_media_source_CONTENTTYPE_e content_type,
     char *data,

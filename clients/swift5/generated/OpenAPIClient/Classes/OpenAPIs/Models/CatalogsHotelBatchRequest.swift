@@ -16,8 +16,8 @@ public struct CatalogsHotelBatchRequest: Codable, JSONEncodable, Hashable {
     public enum CatalogType: String, Codable, CaseIterable {
         case hotel = "HOTEL"
     }
-    static let itemsRule = ArrayRule(minItems: 1, maxItems: 1000, uniqueItems: false)
-    static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let itemsRule = ArrayRule(minItems: 1, maxItems: 1000, uniqueItems: false)
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public var catalogType: CatalogType
     public var country: Country
     public var language: CatalogsItemsRequestLanguage

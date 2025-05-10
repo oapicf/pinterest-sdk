@@ -235,10 +235,35 @@ TemplateResponse <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return TemplateResponse in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return TemplateResponse as a base R list.
+    #' @examples
+    #' # convert array of TemplateResponse (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert TemplateResponse to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       TemplateResponseObject <- list()
       if (!is.null(self$`id`)) {
         TemplateResponseObject[["id"]] <-
@@ -270,15 +295,15 @@ TemplateResponse <- R6::R6Class(
       }
       if (!is.null(self$`date_range`)) {
         TemplateResponseObject[["date_range"]] <-
-          self$`date_range`$toJSON()
+          self$`date_range`$toSimpleType()
       }
       if (!is.null(self$`report_level`)) {
         TemplateResponseObject[["report_level"]] <-
-          self$`report_level`$toJSON()
+          self$`report_level`$toSimpleType()
       }
       if (!is.null(self$`report_format`)) {
         TemplateResponseObject[["report_format"]] <-
-          self$`report_format`$toJSON()
+          self$`report_format`$toSimpleType()
       }
       if (!is.null(self$`columns`)) {
         TemplateResponseObject[["columns"]] <-
@@ -286,7 +311,7 @@ TemplateResponse <- R6::R6Class(
       }
       if (!is.null(self$`granularity`)) {
         TemplateResponseObject[["granularity"]] <-
-          self$`granularity`$toJSON()
+          self$`granularity`$toSimpleType()
       }
       if (!is.null(self$`view_window_days`)) {
         TemplateResponseObject[["view_window_days"]] <-
@@ -340,7 +365,7 @@ TemplateResponse <- R6::R6Class(
         TemplateResponseObject[["ingestion_sources"]] <-
           self$`ingestion_sources`
       }
-      TemplateResponseObject
+      return(TemplateResponseObject)
     },
 
     #' @description
@@ -447,213 +472,13 @@ TemplateResponse <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return TemplateResponse in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`id`)) {
-          sprintf(
-          '"id":
-            "%s"
-                    ',
-          self$`id`
-          )
-        },
-        if (!is.null(self$`ad_account_id`)) {
-          sprintf(
-          '"ad_account_id":
-            "%s"
-                    ',
-          self$`ad_account_id`
-          )
-        },
-        if (!is.null(self$`ad_account_ids`)) {
-          sprintf(
-          '"ad_account_ids":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`ad_account_ids`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`user_id`)) {
-          sprintf(
-          '"user_id":
-            "%s"
-                    ',
-          self$`user_id`
-          )
-        },
-        if (!is.null(self$`name`)) {
-          sprintf(
-          '"name":
-            "%s"
-                    ',
-          self$`name`
-          )
-        },
-        if (!is.null(self$`report_start_relative_days_in_past`)) {
-          sprintf(
-          '"report_start_relative_days_in_past":
-            %d
-                    ',
-          self$`report_start_relative_days_in_past`
-          )
-        },
-        if (!is.null(self$`report_end_relative_days_in_past`)) {
-          sprintf(
-          '"report_end_relative_days_in_past":
-            %d
-                    ',
-          self$`report_end_relative_days_in_past`
-          )
-        },
-        if (!is.null(self$`date_range`)) {
-          sprintf(
-          '"date_range":
-          %s
-          ',
-          jsonlite::toJSON(self$`date_range`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`report_level`)) {
-          sprintf(
-          '"report_level":
-          %s
-          ',
-          jsonlite::toJSON(self$`report_level`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`report_format`)) {
-          sprintf(
-          '"report_format":
-          %s
-          ',
-          jsonlite::toJSON(self$`report_format`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`columns`)) {
-          sprintf(
-          '"columns":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`columns`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`granularity`)) {
-          sprintf(
-          '"granularity":
-          %s
-          ',
-          jsonlite::toJSON(self$`granularity`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`view_window_days`)) {
-          sprintf(
-          '"view_window_days":
-            %d
-                    ',
-          self$`view_window_days`
-          )
-        },
-        if (!is.null(self$`click_window_days`)) {
-          sprintf(
-          '"click_window_days":
-            %d
-                    ',
-          self$`click_window_days`
-          )
-        },
-        if (!is.null(self$`engagement_window_days`)) {
-          sprintf(
-          '"engagement_window_days":
-            %d
-                    ',
-          self$`engagement_window_days`
-          )
-        },
-        if (!is.null(self$`conversion_report_time_type`)) {
-          sprintf(
-          '"conversion_report_time_type":
-            "%s"
-                    ',
-          self$`conversion_report_time_type`
-          )
-        },
-        if (!is.null(self$`filters_json`)) {
-          sprintf(
-          '"filters_json":
-            "%s"
-                    ',
-          self$`filters_json`
-          )
-        },
-        if (!is.null(self$`is_owned_by_user`)) {
-          sprintf(
-          '"is_owned_by_user":
-            %s
-                    ',
-          tolower(self$`is_owned_by_user`)
-          )
-        },
-        if (!is.null(self$`is_scheduled`)) {
-          sprintf(
-          '"is_scheduled":
-            %s
-                    ',
-          tolower(self$`is_scheduled`)
-          )
-        },
-        if (!is.null(self$`creation_source`)) {
-          sprintf(
-          '"creation_source":
-            "%s"
-                    ',
-          self$`creation_source`
-          )
-        },
-        if (!is.null(self$`is_deleted`)) {
-          sprintf(
-          '"is_deleted":
-            %s
-                    ',
-          tolower(self$`is_deleted`)
-          )
-        },
-        if (!is.null(self$`updated_time`)) {
-          sprintf(
-          '"updated_time":
-            %d
-                    ',
-          self$`updated_time`
-          )
-        },
-        if (!is.null(self$`custom_column_ids`)) {
-          sprintf(
-          '"custom_column_ids":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`custom_column_ids`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`type`)) {
-          sprintf(
-          '"type":
-            "%s"
-                    ',
-          self$`type`
-          )
-        },
-        if (!is.null(self$`ingestion_sources`)) {
-          sprintf(
-          '"ingestion_sources":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`ingestion_sources`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

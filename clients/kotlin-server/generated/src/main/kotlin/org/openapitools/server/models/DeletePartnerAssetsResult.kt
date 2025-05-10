@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * The terminated asset access.
  * @param assetId Unique identifier of a business asset.
@@ -20,6 +21,7 @@ package org.openapitools.server.models
  * @param isSharedPartner If is_shared_partner=FALSE, you terminated a partner's asset access to your business asset.<br> If is_shared_partner=TRUE, you terminated your asset access to your partner's business asset.
  * @param partnerId Unique identifier of a business partner.
  */
+@Serializable
 data class DeletePartnerAssetsResult(
     /* Unique identifier of a business asset. */
     val assetId: kotlin.String? = null,
@@ -31,5 +33,5 @@ data class DeletePartnerAssetsResult(
     val isSharedPartner: kotlin.Boolean? = null,
     /* Unique identifier of a business partner. */
     val partnerId: kotlin.String? = null
-) 
+)
 

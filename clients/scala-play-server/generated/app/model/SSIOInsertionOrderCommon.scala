@@ -17,7 +17,7 @@ import play.api.libs.json._
   * @param agencyLink URL link for agency
   * @param userEmail The email of user submitting the insertion order
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2025-05-10T05:44:38.070631387Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 case class SSIOInsertionOrderCommon(
   startDate: Option[String],
   endDate: Option[String],

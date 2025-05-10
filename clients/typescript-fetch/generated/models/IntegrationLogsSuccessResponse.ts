@@ -48,11 +48,11 @@ export function IntegrationLogsSuccessResponseFromJSONTyped(json: any, ignoreDis
     };
 }
 
-  export function IntegrationLogsSuccessResponseToJSON(json: any): IntegrationLogsSuccessResponse {
-      return IntegrationLogsSuccessResponseToJSONTyped(json, false);
-  }
+export function IntegrationLogsSuccessResponseToJSON(json: any): IntegrationLogsSuccessResponse {
+    return IntegrationLogsSuccessResponseToJSONTyped(json, false);
+}
 
-  export function IntegrationLogsSuccessResponseToJSONTyped(value?: IntegrationLogsSuccessResponse | null, ignoreDiscriminator: boolean = false): any {
+export function IntegrationLogsSuccessResponseToJSONTyped(value?: IntegrationLogsSuccessResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

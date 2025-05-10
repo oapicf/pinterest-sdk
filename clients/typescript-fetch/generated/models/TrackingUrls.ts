@@ -76,11 +76,11 @@ export function TrackingUrlsFromJSONTyped(json: any, ignoreDiscriminator: boolea
     };
 }
 
-  export function TrackingUrlsToJSON(json: any): TrackingUrls {
-      return TrackingUrlsToJSONTyped(json, false);
-  }
+export function TrackingUrlsToJSON(json: any): TrackingUrls {
+    return TrackingUrlsToJSONTyped(json, false);
+}
 
-  export function TrackingUrlsToJSONTyped(value?: TrackingUrls | null, ignoreDiscriminator: boolean = false): any {
+export function TrackingUrlsToJSONTyped(value?: TrackingUrls | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

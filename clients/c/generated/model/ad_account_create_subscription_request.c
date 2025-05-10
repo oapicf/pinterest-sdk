@@ -5,7 +5,7 @@
 
 
 
-ad_account_create_subscription_request_t *ad_account_create_subscription_request_create(
+static ad_account_create_subscription_request_t *ad_account_create_subscription_request_create_internal(
     char *webhook_url,
     char *lead_form_id,
     char *partner_access_token,
@@ -22,12 +22,32 @@ ad_account_create_subscription_request_t *ad_account_create_subscription_request
     ad_account_create_subscription_request_local_var->partner_refresh_token = partner_refresh_token;
     ad_account_create_subscription_request_local_var->partner_metadata = partner_metadata;
 
+    ad_account_create_subscription_request_local_var->_library_owned = 1;
     return ad_account_create_subscription_request_local_var;
 }
 
+__attribute__((deprecated)) ad_account_create_subscription_request_t *ad_account_create_subscription_request_create(
+    char *webhook_url,
+    char *lead_form_id,
+    char *partner_access_token,
+    char *partner_refresh_token,
+    ad_account_create_subscription_request_partner_metadata_t *partner_metadata
+    ) {
+    return ad_account_create_subscription_request_create_internal (
+        webhook_url,
+        lead_form_id,
+        partner_access_token,
+        partner_refresh_token,
+        partner_metadata
+        );
+}
 
 void ad_account_create_subscription_request_free(ad_account_create_subscription_request_t *ad_account_create_subscription_request) {
     if(NULL == ad_account_create_subscription_request){
+        return ;
+    }
+    if(ad_account_create_subscription_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ad_account_create_subscription_request_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -119,6 +139,9 @@ ad_account_create_subscription_request_t *ad_account_create_subscription_request
 
     // ad_account_create_subscription_request->webhook_url
     cJSON *webhook_url = cJSON_GetObjectItemCaseSensitive(ad_account_create_subscription_requestJSON, "webhook_url");
+    if (cJSON_IsNull(webhook_url)) {
+        webhook_url = NULL;
+    }
     if (!webhook_url) {
         goto end;
     }
@@ -131,6 +154,9 @@ ad_account_create_subscription_request_t *ad_account_create_subscription_request
 
     // ad_account_create_subscription_request->lead_form_id
     cJSON *lead_form_id = cJSON_GetObjectItemCaseSensitive(ad_account_create_subscription_requestJSON, "lead_form_id");
+    if (cJSON_IsNull(lead_form_id)) {
+        lead_form_id = NULL;
+    }
     if (lead_form_id) { 
     if(!cJSON_IsString(lead_form_id) && !cJSON_IsNull(lead_form_id))
     {
@@ -140,6 +166,9 @@ ad_account_create_subscription_request_t *ad_account_create_subscription_request
 
     // ad_account_create_subscription_request->partner_access_token
     cJSON *partner_access_token = cJSON_GetObjectItemCaseSensitive(ad_account_create_subscription_requestJSON, "partner_access_token");
+    if (cJSON_IsNull(partner_access_token)) {
+        partner_access_token = NULL;
+    }
     if (partner_access_token) { 
     if(!cJSON_IsString(partner_access_token) && !cJSON_IsNull(partner_access_token))
     {
@@ -149,6 +178,9 @@ ad_account_create_subscription_request_t *ad_account_create_subscription_request
 
     // ad_account_create_subscription_request->partner_refresh_token
     cJSON *partner_refresh_token = cJSON_GetObjectItemCaseSensitive(ad_account_create_subscription_requestJSON, "partner_refresh_token");
+    if (cJSON_IsNull(partner_refresh_token)) {
+        partner_refresh_token = NULL;
+    }
     if (partner_refresh_token) { 
     if(!cJSON_IsString(partner_refresh_token) && !cJSON_IsNull(partner_refresh_token))
     {
@@ -158,12 +190,15 @@ ad_account_create_subscription_request_t *ad_account_create_subscription_request
 
     // ad_account_create_subscription_request->partner_metadata
     cJSON *partner_metadata = cJSON_GetObjectItemCaseSensitive(ad_account_create_subscription_requestJSON, "partner_metadata");
+    if (cJSON_IsNull(partner_metadata)) {
+        partner_metadata = NULL;
+    }
     if (partner_metadata) { 
     partner_metadata_local_nonprim = ad_account_create_subscription_request_partner_metadata_parseFromJSON(partner_metadata); //nonprimitive
     }
 
 
-    ad_account_create_subscription_request_local_var = ad_account_create_subscription_request_create (
+    ad_account_create_subscription_request_local_var = ad_account_create_subscription_request_create_internal (
         strdup(webhook_url->valuestring),
         lead_form_id && !cJSON_IsNull(lead_form_id) ? strdup(lead_form_id->valuestring) : NULL,
         partner_access_token && !cJSON_IsNull(partner_access_token) ? strdup(partner_access_token->valuestring) : NULL,

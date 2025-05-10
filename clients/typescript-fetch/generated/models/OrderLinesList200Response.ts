@@ -64,11 +64,11 @@ export function OrderLinesList200ResponseFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function OrderLinesList200ResponseToJSON(json: any): OrderLinesList200Response {
-      return OrderLinesList200ResponseToJSONTyped(json, false);
-  }
+export function OrderLinesList200ResponseToJSON(json: any): OrderLinesList200Response {
+    return OrderLinesList200ResponseToJSONTyped(json, false);
+}
 
-  export function OrderLinesList200ResponseToJSONTyped(value?: OrderLinesList200Response | null, ignoreDiscriminator: boolean = false): any {
+export function OrderLinesList200ResponseToJSONTyped(value?: OrderLinesList200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

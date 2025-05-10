@@ -1,6 +1,6 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Multipart};
+use axum_extra::extract::{CookieJar, Host};
 use bytes::Bytes;
 use http::Method;
 use serde::{Deserialize, Serialize};
@@ -711,323 +711,323 @@ pub enum ReportsSlashStatsResponse {
 /// Catalogs
 #[async_trait]
 #[allow(clippy::ptr_arg)]
-pub trait Catalogs {
+pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHandler<E> {
     /// List products by product group.
     ///
     /// CatalogsProductGroupPinsSlashList - GET /v5/catalogs/product_groups/{product_group_id}/products
     async fn catalogs_product_group_pins_slash_list(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::CatalogsProductGroupPinsSlashListPathParams,
-      query_params: models::CatalogsProductGroupPinsSlashListQueryParams,
-    ) -> Result<CatalogsProductGroupPinsSlashListResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::CatalogsProductGroupPinsSlashListPathParams,
+      query_params: &models::CatalogsProductGroupPinsSlashListQueryParams,
+    ) -> Result<CatalogsProductGroupPinsSlashListResponse, E>;
 
     /// Create product group.
     ///
     /// CatalogsProductGroupsSlashCreate - POST /v5/catalogs/product_groups
     async fn catalogs_product_groups_slash_create(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::CatalogsProductGroupsSlashCreateQueryParams,
-            body: models::MultipleProductGroupsInner,
-    ) -> Result<CatalogsProductGroupsSlashCreateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::CatalogsProductGroupsSlashCreateQueryParams,
+            body: &models::MultipleProductGroupsInner,
+    ) -> Result<CatalogsProductGroupsSlashCreateResponse, E>;
 
     /// Create product groups.
     ///
     /// CatalogsProductGroupsSlashCreateMany - POST /v5/catalogs/product_groups/multiple
     async fn catalogs_product_groups_slash_create_many(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::CatalogsProductGroupsSlashCreateManyQueryParams,
-            body: Vec<models::MultipleProductGroupsInner>,
-    ) -> Result<CatalogsProductGroupsSlashCreateManyResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::CatalogsProductGroupsSlashCreateManyQueryParams,
+            body: &Vec<models::MultipleProductGroupsInner>,
+    ) -> Result<CatalogsProductGroupsSlashCreateManyResponse, E>;
 
     /// Delete product group.
     ///
     /// CatalogsProductGroupsSlashDelete - DELETE /v5/catalogs/product_groups/{product_group_id}
     async fn catalogs_product_groups_slash_delete(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::CatalogsProductGroupsSlashDeletePathParams,
-      query_params: models::CatalogsProductGroupsSlashDeleteQueryParams,
-    ) -> Result<CatalogsProductGroupsSlashDeleteResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::CatalogsProductGroupsSlashDeletePathParams,
+      query_params: &models::CatalogsProductGroupsSlashDeleteQueryParams,
+    ) -> Result<CatalogsProductGroupsSlashDeleteResponse, E>;
 
     /// Delete product groups.
     ///
     /// CatalogsProductGroupsSlashDeleteMany - DELETE /v5/catalogs/product_groups/multiple
     async fn catalogs_product_groups_slash_delete_many(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::CatalogsProductGroupsSlashDeleteManyQueryParams,
-    ) -> Result<CatalogsProductGroupsSlashDeleteManyResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::CatalogsProductGroupsSlashDeleteManyQueryParams,
+    ) -> Result<CatalogsProductGroupsSlashDeleteManyResponse, E>;
 
     /// Get product group.
     ///
     /// CatalogsProductGroupsSlashGet - GET /v5/catalogs/product_groups/{product_group_id}
     async fn catalogs_product_groups_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::CatalogsProductGroupsSlashGetPathParams,
-      query_params: models::CatalogsProductGroupsSlashGetQueryParams,
-    ) -> Result<CatalogsProductGroupsSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::CatalogsProductGroupsSlashGetPathParams,
+      query_params: &models::CatalogsProductGroupsSlashGetQueryParams,
+    ) -> Result<CatalogsProductGroupsSlashGetResponse, E>;
 
     /// List product groups.
     ///
     /// CatalogsProductGroupsSlashList - GET /v5/catalogs/product_groups
     async fn catalogs_product_groups_slash_list(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::CatalogsProductGroupsSlashListQueryParams,
-    ) -> Result<CatalogsProductGroupsSlashListResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::CatalogsProductGroupsSlashListQueryParams,
+    ) -> Result<CatalogsProductGroupsSlashListResponse, E>;
 
     /// Get product counts.
     ///
     /// CatalogsProductGroupsSlashProductCountsGet - GET /v5/catalogs/product_groups/{product_group_id}/product_counts
     async fn catalogs_product_groups_slash_product_counts_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::CatalogsProductGroupsSlashProductCountsGetPathParams,
-      query_params: models::CatalogsProductGroupsSlashProductCountsGetQueryParams,
-    ) -> Result<CatalogsProductGroupsSlashProductCountsGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::CatalogsProductGroupsSlashProductCountsGetPathParams,
+      query_params: &models::CatalogsProductGroupsSlashProductCountsGetQueryParams,
+    ) -> Result<CatalogsProductGroupsSlashProductCountsGetResponse, E>;
 
     /// Update single product group.
     ///
     /// CatalogsProductGroupsSlashUpdate - PATCH /v5/catalogs/product_groups/{product_group_id}
     async fn catalogs_product_groups_slash_update(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::CatalogsProductGroupsSlashUpdatePathParams,
-      query_params: models::CatalogsProductGroupsSlashUpdateQueryParams,
-            body: models::CatalogsProductGroupsUpdateRequest,
-    ) -> Result<CatalogsProductGroupsSlashUpdateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::CatalogsProductGroupsSlashUpdatePathParams,
+      query_params: &models::CatalogsProductGroupsSlashUpdateQueryParams,
+            body: &models::CatalogsProductGroupsUpdateRequest,
+    ) -> Result<CatalogsProductGroupsSlashUpdateResponse, E>;
 
     /// Create catalog.
     ///
     /// CatalogsSlashCreate - POST /v5/catalogs
     async fn catalogs_slash_create(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::CatalogsSlashCreateQueryParams,
-            body: models::CatalogsCreateRequest,
-    ) -> Result<CatalogsSlashCreateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::CatalogsSlashCreateQueryParams,
+            body: &models::CatalogsCreateRequest,
+    ) -> Result<CatalogsSlashCreateResponse, E>;
 
     /// List catalogs.
     ///
     /// CatalogsSlashList - GET /v5/catalogs
     async fn catalogs_slash_list(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::CatalogsSlashListQueryParams,
-    ) -> Result<CatalogsSlashListResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::CatalogsSlashListQueryParams,
+    ) -> Result<CatalogsSlashListResponse, E>;
 
     /// List feed processing results.
     ///
     /// FeedProcessingResultsSlashList - GET /v5/catalogs/feeds/{feed_id}/processing_results
     async fn feed_processing_results_slash_list(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::FeedProcessingResultsSlashListPathParams,
-      query_params: models::FeedProcessingResultsSlashListQueryParams,
-    ) -> Result<FeedProcessingResultsSlashListResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::FeedProcessingResultsSlashListPathParams,
+      query_params: &models::FeedProcessingResultsSlashListQueryParams,
+    ) -> Result<FeedProcessingResultsSlashListResponse, E>;
 
     /// Create feed.
     ///
     /// FeedsSlashCreate - POST /v5/catalogs/feeds
     async fn feeds_slash_create(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::FeedsSlashCreateQueryParams,
-            body: models::FeedsCreateRequest,
-    ) -> Result<FeedsSlashCreateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::FeedsSlashCreateQueryParams,
+            body: &models::FeedsCreateRequest,
+    ) -> Result<FeedsSlashCreateResponse, E>;
 
     /// Delete feed.
     ///
     /// FeedsSlashDelete - DELETE /v5/catalogs/feeds/{feed_id}
     async fn feeds_slash_delete(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::FeedsSlashDeletePathParams,
-      query_params: models::FeedsSlashDeleteQueryParams,
-    ) -> Result<FeedsSlashDeleteResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::FeedsSlashDeletePathParams,
+      query_params: &models::FeedsSlashDeleteQueryParams,
+    ) -> Result<FeedsSlashDeleteResponse, E>;
 
     /// Get feed.
     ///
     /// FeedsSlashGet - GET /v5/catalogs/feeds/{feed_id}
     async fn feeds_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::FeedsSlashGetPathParams,
-      query_params: models::FeedsSlashGetQueryParams,
-    ) -> Result<FeedsSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::FeedsSlashGetPathParams,
+      query_params: &models::FeedsSlashGetQueryParams,
+    ) -> Result<FeedsSlashGetResponse, E>;
 
     /// Ingest feed items.
     ///
     /// FeedsSlashIngest - POST /v5/catalogs/feeds/{feed_id}/ingest
     async fn feeds_slash_ingest(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::FeedsSlashIngestPathParams,
-      query_params: models::FeedsSlashIngestQueryParams,
-    ) -> Result<FeedsSlashIngestResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::FeedsSlashIngestPathParams,
+      query_params: &models::FeedsSlashIngestQueryParams,
+    ) -> Result<FeedsSlashIngestResponse, E>;
 
     /// List feeds.
     ///
     /// FeedsSlashList - GET /v5/catalogs/feeds
     async fn feeds_slash_list(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::FeedsSlashListQueryParams,
-    ) -> Result<FeedsSlashListResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::FeedsSlashListQueryParams,
+    ) -> Result<FeedsSlashListResponse, E>;
 
     /// Update feed.
     ///
     /// FeedsSlashUpdate - PATCH /v5/catalogs/feeds/{feed_id}
     async fn feeds_slash_update(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::FeedsSlashUpdatePathParams,
-      query_params: models::FeedsSlashUpdateQueryParams,
-            body: models::FeedsUpdateRequest,
-    ) -> Result<FeedsSlashUpdateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::FeedsSlashUpdatePathParams,
+      query_params: &models::FeedsSlashUpdateQueryParams,
+            body: &models::FeedsUpdateRequest,
+    ) -> Result<FeedsSlashUpdateResponse, E>;
 
     /// Get item batch status.
     ///
     /// ItemsBatchSlashGet - GET /v5/catalogs/items/batch/{batch_id}
     async fn items_batch_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::ItemsBatchSlashGetPathParams,
-      query_params: models::ItemsBatchSlashGetQueryParams,
-    ) -> Result<ItemsBatchSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::ItemsBatchSlashGetPathParams,
+      query_params: &models::ItemsBatchSlashGetQueryParams,
+    ) -> Result<ItemsBatchSlashGetResponse, E>;
 
     /// Operate on item batch.
     ///
     /// ItemsBatchSlashPost - POST /v5/catalogs/items/batch
     async fn items_batch_slash_post(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::ItemsBatchSlashPostQueryParams,
-            body: models::ItemsBatchPostRequest,
-    ) -> Result<ItemsBatchSlashPostResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::ItemsBatchSlashPostQueryParams,
+            body: &models::ItemsBatchPostRequest,
+    ) -> Result<ItemsBatchSlashPostResponse, E>;
 
     /// List item issues.
     ///
     /// ItemsIssuesSlashList - GET /v5/catalogs/processing_results/{processing_result_id}/item_issues
     async fn items_issues_slash_list(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::ItemsIssuesSlashListPathParams,
-      query_params: models::ItemsIssuesSlashListQueryParams,
-    ) -> Result<ItemsIssuesSlashListResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::ItemsIssuesSlashListPathParams,
+      query_params: &models::ItemsIssuesSlashListQueryParams,
+    ) -> Result<ItemsIssuesSlashListResponse, E>;
 
     /// Get catalogs items.
     ///
     /// ItemsSlashGet - GET /v5/catalogs/items
     async fn items_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::ItemsSlashGetQueryParams,
-    ) -> Result<ItemsSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::ItemsSlashGetQueryParams,
+    ) -> Result<ItemsSlashGetResponse, E>;
 
     /// Get catalogs items (POST).
     ///
     /// ItemsSlashPost - POST /v5/catalogs/items
     async fn items_slash_post(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::ItemsSlashPostQueryParams,
-            body: models::CatalogsItemsRequest,
-    ) -> Result<ItemsSlashPostResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::ItemsSlashPostQueryParams,
+            body: &models::CatalogsItemsRequest,
+    ) -> Result<ItemsSlashPostResponse, E>;
 
     /// List products by filter.
     ///
     /// ProductsByProductGroupFilterSlashList - POST /v5/catalogs/products/get_by_product_group_filters
     async fn products_by_product_group_filter_slash_list(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::ProductsByProductGroupFilterSlashListQueryParams,
-            body: models::CatalogsListProductsByFilterRequest,
-    ) -> Result<ProductsByProductGroupFilterSlashListResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::ProductsByProductGroupFilterSlashListQueryParams,
+            body: &models::CatalogsListProductsByFilterRequest,
+    ) -> Result<ProductsByProductGroupFilterSlashListResponse, E>;
 
     /// Build catalogs report.
     ///
     /// ReportsSlashCreate - POST /v5/catalogs/reports
     async fn reports_slash_create(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::ReportsSlashCreateQueryParams,
-            body: models::CatalogsReportParameters,
-    ) -> Result<ReportsSlashCreateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::ReportsSlashCreateQueryParams,
+            body: &models::CatalogsReportParameters,
+    ) -> Result<ReportsSlashCreateResponse, E>;
 
     /// Get catalogs report.
     ///
     /// ReportsSlashGet - GET /v5/catalogs/reports
     async fn reports_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::ReportsSlashGetQueryParams,
-    ) -> Result<ReportsSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::ReportsSlashGetQueryParams,
+    ) -> Result<ReportsSlashGetResponse, E>;
 
     /// List report stats.
     ///
     /// ReportsSlashStats - GET /v5/catalogs/reports/stats
     async fn reports_slash_stats(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::ReportsSlashStatsQueryParams,
-    ) -> Result<ReportsSlashStatsResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::ReportsSlashStatsQueryParams,
+    ) -> Result<ReportsSlashStatsResponse, E>;
 }

@@ -125,11 +125,11 @@ export function SSIOInsertionOrderCommonFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function SSIOInsertionOrderCommonToJSON(json: any): SSIOInsertionOrderCommon {
-      return SSIOInsertionOrderCommonToJSONTyped(json, false);
-  }
+export function SSIOInsertionOrderCommonToJSON(json: any): SSIOInsertionOrderCommon {
+    return SSIOInsertionOrderCommonToJSONTyped(json, false);
+}
 
-  export function SSIOInsertionOrderCommonToJSONTyped(value?: SSIOInsertionOrderCommon | null, ignoreDiscriminator: boolean = false): any {
+export function SSIOInsertionOrderCommonToJSONTyped(value?: SSIOInsertionOrderCommon | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -1,9 +1,5 @@
 package models
 
-import (
-	"gopkg.in/validator.v2"
-)
-
 // CatalogsItemsBatchRequest - Request object of catalogs items batch
 type CatalogsItemsBatchRequest struct {
 

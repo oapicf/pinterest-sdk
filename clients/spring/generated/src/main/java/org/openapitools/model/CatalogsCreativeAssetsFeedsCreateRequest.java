@@ -15,6 +15,7 @@ import org.openapitools.model.CatalogsStatus;
 import org.openapitools.model.CatalogsType;
 import org.openapitools.model.Country;
 import org.openapitools.model.NullableCurrency;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -34,7 +35,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsCreativeAssetsFeedsCreateRequest", description = "Request object for creating a feed.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsCreativeAssetsFeedsCreateRequest implements CatalogsVerticalFeedsCreateRequest {
 
   private JsonNullable<NullableCurrency> defaultCurrency = JsonNullable.<NullableCurrency>undefined();
@@ -57,7 +58,7 @@ public class CatalogsCreativeAssetsFeedsCreateRequest implements CatalogsVertica
 
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> catalogId = JsonNullable.<String>undefined();
 
-  private CatalogsStatus status;
+  private @Nullable CatalogsStatus status;
 
   public CatalogsCreativeAssetsFeedsCreateRequest() {
     super();

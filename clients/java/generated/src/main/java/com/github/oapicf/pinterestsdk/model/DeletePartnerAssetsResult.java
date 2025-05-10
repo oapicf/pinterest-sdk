@@ -50,32 +50,37 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * The terminated asset access.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class DeletePartnerAssetsResult {
   public static final String SERIALIZED_NAME_ASSET_ID = "asset_id";
   @SerializedName(SERIALIZED_NAME_ASSET_ID)
+  @javax.annotation.Nullable
   private String assetId;
 
   public static final String SERIALIZED_NAME_ASSET_TYPE = "asset_type";
   @SerializedName(SERIALIZED_NAME_ASSET_TYPE)
+  @javax.annotation.Nullable
   private String assetType;
 
   public static final String SERIALIZED_NAME_PERMISSIONS = "permissions";
   @SerializedName(SERIALIZED_NAME_PERMISSIONS)
+  @javax.annotation.Nullable
   private List<String> permissions = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_IS_SHARED_PARTNER = "is_shared_partner";
   @SerializedName(SERIALIZED_NAME_IS_SHARED_PARTNER)
+  @javax.annotation.Nullable
   private Boolean isSharedPartner;
 
   public static final String SERIALIZED_NAME_PARTNER_ID = "partner_id";
   @SerializedName(SERIALIZED_NAME_PARTNER_ID)
+  @javax.annotation.Nullable
   private String partnerId;
 
   public DeletePartnerAssetsResult() {
   }
 
-  public DeletePartnerAssetsResult assetId(String assetId) {
+  public DeletePartnerAssetsResult assetId(@javax.annotation.Nullable String assetId) {
     this.assetId = assetId;
     return this;
   }
@@ -89,12 +94,12 @@ public class DeletePartnerAssetsResult {
     return assetId;
   }
 
-  public void setAssetId(String assetId) {
+  public void setAssetId(@javax.annotation.Nullable String assetId) {
     this.assetId = assetId;
   }
 
 
-  public DeletePartnerAssetsResult assetType(String assetType) {
+  public DeletePartnerAssetsResult assetType(@javax.annotation.Nullable String assetType) {
     this.assetType = assetType;
     return this;
   }
@@ -108,12 +113,12 @@ public class DeletePartnerAssetsResult {
     return assetType;
   }
 
-  public void setAssetType(String assetType) {
+  public void setAssetType(@javax.annotation.Nullable String assetType) {
     this.assetType = assetType;
   }
 
 
-  public DeletePartnerAssetsResult permissions(List<String> permissions) {
+  public DeletePartnerAssetsResult permissions(@javax.annotation.Nullable List<String> permissions) {
     this.permissions = permissions;
     return this;
   }
@@ -135,12 +140,12 @@ public class DeletePartnerAssetsResult {
     return permissions;
   }
 
-  public void setPermissions(List<String> permissions) {
+  public void setPermissions(@javax.annotation.Nullable List<String> permissions) {
     this.permissions = permissions;
   }
 
 
-  public DeletePartnerAssetsResult isSharedPartner(Boolean isSharedPartner) {
+  public DeletePartnerAssetsResult isSharedPartner(@javax.annotation.Nullable Boolean isSharedPartner) {
     this.isSharedPartner = isSharedPartner;
     return this;
   }
@@ -154,12 +159,12 @@ public class DeletePartnerAssetsResult {
     return isSharedPartner;
   }
 
-  public void setIsSharedPartner(Boolean isSharedPartner) {
+  public void setIsSharedPartner(@javax.annotation.Nullable Boolean isSharedPartner) {
     this.isSharedPartner = isSharedPartner;
   }
 
 
-  public DeletePartnerAssetsResult partnerId(String partnerId) {
+  public DeletePartnerAssetsResult partnerId(@javax.annotation.Nullable String partnerId) {
     this.partnerId = partnerId;
     return this;
   }
@@ -173,7 +178,7 @@ public class DeletePartnerAssetsResult {
     return partnerId;
   }
 
-  public void setPartnerId(String partnerId) {
+  public void setPartnerId(@javax.annotation.Nullable String partnerId) {
     this.partnerId = partnerId;
   }
 

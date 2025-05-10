@@ -48,11 +48,11 @@ export function OptimizationGoalMetadataScrollupGoalMetadataFromJSONTyped(json: 
     };
 }
 
-  export function OptimizationGoalMetadataScrollupGoalMetadataToJSON(json: any): OptimizationGoalMetadataScrollupGoalMetadata {
-      return OptimizationGoalMetadataScrollupGoalMetadataToJSONTyped(json, false);
-  }
+export function OptimizationGoalMetadataScrollupGoalMetadataToJSON(json: any): OptimizationGoalMetadataScrollupGoalMetadata {
+    return OptimizationGoalMetadataScrollupGoalMetadataToJSONTyped(json, false);
+}
 
-  export function OptimizationGoalMetadataScrollupGoalMetadataToJSONTyped(value?: OptimizationGoalMetadataScrollupGoalMetadata | null, ignoreDiscriminator: boolean = false): any {
+export function OptimizationGoalMetadataScrollupGoalMetadataToJSONTyped(value?: OptimizationGoalMetadataScrollupGoalMetadata | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -83,11 +83,11 @@ export function CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequestFro
     };
 }
 
-  export function CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequestToJSON(json: any): CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest {
-      return CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequestToJSONTyped(json, false);
-  }
+export function CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequestToJSON(json: any): CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest {
+    return CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequestToJSONTyped(json, false);
+}
 
-  export function CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequestToJSONTyped(value?: CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequestToJSONTyped(value?: CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -5,7 +5,7 @@
 
 
 
-error_t *error_create(
+static error_t *error_create_internal(
     int code,
     char *message
     ) {
@@ -16,12 +16,26 @@ error_t *error_create(
     error_local_var->code = code;
     error_local_var->message = message;
 
+    error_local_var->_library_owned = 1;
     return error_local_var;
 }
 
+__attribute__((deprecated)) error_t *error_create(
+    int code,
+    char *message
+    ) {
+    return error_create_internal (
+        code,
+        message
+        );
+}
 
 void error_free(error_t *error) {
     if(NULL == error){
+        return ;
+    }
+    if(error->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "error_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -66,6 +80,9 @@ error_t *error_parseFromJSON(cJSON *errorJSON){
 
     // error->code
     cJSON *code = cJSON_GetObjectItemCaseSensitive(errorJSON, "code");
+    if (cJSON_IsNull(code)) {
+        code = NULL;
+    }
     if (!code) {
         goto end;
     }
@@ -78,6 +95,9 @@ error_t *error_parseFromJSON(cJSON *errorJSON){
 
     // error->message
     cJSON *message = cJSON_GetObjectItemCaseSensitive(errorJSON, "message");
+    if (cJSON_IsNull(message)) {
+        message = NULL;
+    }
     if (!message) {
         goto end;
     }
@@ -89,7 +109,7 @@ error_t *error_parseFromJSON(cJSON *errorJSON){
     }
 
 
-    error_local_var = error_create (
+    error_local_var = error_create_internal (
         code->valuedouble,
         strdup(message->valuestring)
         );

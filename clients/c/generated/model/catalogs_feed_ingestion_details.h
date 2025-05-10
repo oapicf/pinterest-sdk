@@ -26,9 +26,10 @@ typedef struct catalogs_feed_ingestion_details_t {
     struct catalogs_feed_ingestion_info_t *info; //model
     struct catalogs_feed_ingestion_warnings_t *warnings; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_feed_ingestion_details_t;
 
-catalogs_feed_ingestion_details_t *catalogs_feed_ingestion_details_create(
+__attribute__((deprecated)) catalogs_feed_ingestion_details_t *catalogs_feed_ingestion_details_create(
     catalogs_feed_ingestion_errors_t *errors,
     catalogs_feed_ingestion_info_t *info,
     catalogs_feed_ingestion_warnings_t *warnings

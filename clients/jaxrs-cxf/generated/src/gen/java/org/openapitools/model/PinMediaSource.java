@@ -76,7 +76,7 @@ PIN_URL(String.valueOf("pin_url"));
 
 public enum ContentTypeEnum {
 
-JPEG(String.valueOf("image/jpeg")), PNG(String.valueOf("image/png"));
+IMAGE_JPEG(String.valueOf("image/jpeg")), IMAGE_PNG(String.valueOf("image/png"));
 
 
     private String value;
@@ -129,7 +129,7 @@ JPEG(String.valueOf("image/jpeg")), PNG(String.valueOf("image/png"));
 
 public enum CoverImageContentTypeEnum {
 
-JPEG(String.valueOf("image/jpeg")), PNG(String.valueOf("image/png"));
+IMAGE_JPEG(String.valueOf("image/jpeg")), IMAGE_PNG(String.valueOf("image/png"));
 
 
     private String value;

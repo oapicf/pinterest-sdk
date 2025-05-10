@@ -14,16 +14,18 @@ package org.openapitools.server.models
 import org.openapitools.server.models.Exception
 import org.openapitools.server.models.UserListOperationType
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param records Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
  * @param operationType 
  * @param exceptions 
  */
+@Serializable
 data class CustomerListUpdateRequest(
     /* Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5. */
     val records: kotlin.String,
     val operationType: UserListOperationType,
     val exceptions: Exception? = null
-) 
+)
 

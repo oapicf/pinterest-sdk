@@ -24,9 +24,9 @@ char* media_upload_type_media_upload_type_ToString(pinterest_rest_api_media_uplo
 
 pinterest_rest_api_media_upload_type__e media_upload_type_media_upload_type_FromString(char* media_upload_type);
 
-//cJSON *media_upload_type_media_upload_type_convertToJSON(pinterest_rest_api_media_upload_type__e media_upload_type);
+cJSON *media_upload_type_convertToJSON(pinterest_rest_api_media_upload_type__e media_upload_type);
 
-//pinterest_rest_api_media_upload_type__e media_upload_type_media_upload_type_parseFromJSON(cJSON *media_upload_typeJSON);
+pinterest_rest_api_media_upload_type__e media_upload_type_parseFromJSON(cJSON *media_upload_typeJSON);
 
 #endif /* _media_upload_type_H_ */
 

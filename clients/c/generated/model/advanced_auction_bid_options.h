@@ -25,9 +25,10 @@ typedef struct advanced_auction_bid_options_t {
     app_type_multipliers_t *app_type_multipliers; // custom
     placement_multipliers_t *placement_multipliers; // custom
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } advanced_auction_bid_options_t;
 
-advanced_auction_bid_options_t *advanced_auction_bid_options_create(
+__attribute__((deprecated)) advanced_auction_bid_options_t *advanced_auction_bid_options_create(
     long bid_in_micro_currency,
     app_type_multipliers_t *app_type_multipliers,
     placement_multipliers_t *placement_multipliers

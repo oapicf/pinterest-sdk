@@ -12,7 +12,9 @@
 export type CatalogsProductGroupStatus = 'ACTIVE' | 'INACTIVE';
 
 export const CatalogsProductGroupStatus = {
+
     Active: 'ACTIVE' as CatalogsProductGroupStatus,
+
     Inactive: 'INACTIVE' as CatalogsProductGroupStatus
 };
 

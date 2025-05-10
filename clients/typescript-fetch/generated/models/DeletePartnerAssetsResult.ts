@@ -76,11 +76,11 @@ export function DeletePartnerAssetsResultFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function DeletePartnerAssetsResultToJSON(json: any): DeletePartnerAssetsResult {
-      return DeletePartnerAssetsResultToJSONTyped(json, false);
-  }
+export function DeletePartnerAssetsResultToJSON(json: any): DeletePartnerAssetsResult {
+    return DeletePartnerAssetsResultToJSONTyped(json, false);
+}
 
-  export function DeletePartnerAssetsResultToJSONTyped(value?: DeletePartnerAssetsResult | null, ignoreDiscriminator: boolean = false): any {
+export function DeletePartnerAssetsResultToJSONTyped(value?: DeletePartnerAssetsResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

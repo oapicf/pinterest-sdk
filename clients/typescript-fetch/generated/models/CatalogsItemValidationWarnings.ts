@@ -357,11 +357,11 @@ export function CatalogsItemValidationWarningsFromJSONTyped(json: any, ignoreDis
     };
 }
 
-  export function CatalogsItemValidationWarningsToJSON(json: any): CatalogsItemValidationWarnings {
-      return CatalogsItemValidationWarningsToJSONTyped(json, false);
-  }
+export function CatalogsItemValidationWarningsToJSON(json: any): CatalogsItemValidationWarnings {
+    return CatalogsItemValidationWarningsToJSONTyped(json, false);
+}
 
-  export function CatalogsItemValidationWarningsToJSONTyped(value?: CatalogsItemValidationWarnings | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsItemValidationWarningsToJSONTyped(value?: CatalogsItemValidationWarnings | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

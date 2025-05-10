@@ -22,7 +22,7 @@ pinterest_rest_api_catalogs_hotel_report_parameters_report_REPORTTYPE_e catalogs
     return 0;
 }
 
-catalogs_hotel_report_parameters_report_t *catalogs_hotel_report_parameters_report_create(
+static catalogs_hotel_report_parameters_report_t *catalogs_hotel_report_parameters_report_create_internal(
     pinterest_rest_api_catalogs_hotel_report_parameters_report_REPORTTYPE_e report_type,
     char *feed_id,
     char *processing_result_id,
@@ -37,12 +37,30 @@ catalogs_hotel_report_parameters_report_t *catalogs_hotel_report_parameters_repo
     catalogs_hotel_report_parameters_report_local_var->processing_result_id = processing_result_id;
     catalogs_hotel_report_parameters_report_local_var->catalog_id = catalog_id;
 
+    catalogs_hotel_report_parameters_report_local_var->_library_owned = 1;
     return catalogs_hotel_report_parameters_report_local_var;
 }
 
+__attribute__((deprecated)) catalogs_hotel_report_parameters_report_t *catalogs_hotel_report_parameters_report_create(
+    pinterest_rest_api_catalogs_hotel_report_parameters_report_REPORTTYPE_e report_type,
+    char *feed_id,
+    char *processing_result_id,
+    char *catalog_id
+    ) {
+    return catalogs_hotel_report_parameters_report_create_internal (
+        report_type,
+        feed_id,
+        processing_result_id,
+        catalog_id
+        );
+}
 
 void catalogs_hotel_report_parameters_report_free(catalogs_hotel_report_parameters_report_t *catalogs_hotel_report_parameters_report) {
     if(NULL == catalogs_hotel_report_parameters_report){
+        return ;
+    }
+    if(catalogs_hotel_report_parameters_report->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_hotel_report_parameters_report_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -66,7 +84,7 @@ cJSON *catalogs_hotel_report_parameters_report_convertToJSON(catalogs_hotel_repo
 
     // catalogs_hotel_report_parameters_report->report_type
     if(catalogs_hotel_report_parameters_report->report_type != pinterest_rest_api_catalogs_hotel_report_parameters_report_REPORTTYPE_NULL) {
-    if(cJSON_AddStringToObject(item, "report_type", report_typecatalogs_hotel_report_parameters_report_ToString(catalogs_hotel_report_parameters_report->report_type)) == NULL)
+    if(cJSON_AddStringToObject(item, "report_type", catalogs_hotel_report_parameters_report_report_type_ToString(catalogs_hotel_report_parameters_report->report_type)) == NULL)
     {
     goto fail; //Enum
     }
@@ -111,6 +129,9 @@ catalogs_hotel_report_parameters_report_t *catalogs_hotel_report_parameters_repo
 
     // catalogs_hotel_report_parameters_report->report_type
     cJSON *report_type = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_report_parameters_reportJSON, "report_type");
+    if (cJSON_IsNull(report_type)) {
+        report_type = NULL;
+    }
     pinterest_rest_api_catalogs_hotel_report_parameters_report_REPORTTYPE_e report_typeVariable;
     if (report_type) { 
     if(!cJSON_IsString(report_type))
@@ -122,6 +143,9 @@ catalogs_hotel_report_parameters_report_t *catalogs_hotel_report_parameters_repo
 
     // catalogs_hotel_report_parameters_report->feed_id
     cJSON *feed_id = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_report_parameters_reportJSON, "feed_id");
+    if (cJSON_IsNull(feed_id)) {
+        feed_id = NULL;
+    }
     if (!feed_id) {
         goto end;
     }
@@ -134,6 +158,9 @@ catalogs_hotel_report_parameters_report_t *catalogs_hotel_report_parameters_repo
 
     // catalogs_hotel_report_parameters_report->processing_result_id
     cJSON *processing_result_id = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_report_parameters_reportJSON, "processing_result_id");
+    if (cJSON_IsNull(processing_result_id)) {
+        processing_result_id = NULL;
+    }
     if (processing_result_id) { 
     if(!cJSON_IsString(processing_result_id) && !cJSON_IsNull(processing_result_id))
     {
@@ -143,6 +170,9 @@ catalogs_hotel_report_parameters_report_t *catalogs_hotel_report_parameters_repo
 
     // catalogs_hotel_report_parameters_report->catalog_id
     cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_report_parameters_reportJSON, "catalog_id");
+    if (cJSON_IsNull(catalog_id)) {
+        catalog_id = NULL;
+    }
     if (catalog_id) { 
     if(!cJSON_IsString(catalog_id) && !cJSON_IsNull(catalog_id))
     {
@@ -151,7 +181,7 @@ catalogs_hotel_report_parameters_report_t *catalogs_hotel_report_parameters_repo
     }
 
 
-    catalogs_hotel_report_parameters_report_local_var = catalogs_hotel_report_parameters_report_create (
+    catalogs_hotel_report_parameters_report_local_var = catalogs_hotel_report_parameters_report_create_internal (
         report_type ? report_typeVariable : pinterest_rest_api_catalogs_hotel_report_parameters_report_REPORTTYPE_NULL,
         strdup(feed_id->valuestring),
         processing_result_id && !cJSON_IsNull(processing_result_id) ? strdup(processing_result_id->valuestring) : NULL,

@@ -5,7 +5,7 @@
 
 
 
-integration_logs_request_t *integration_logs_request_create(
+static integration_logs_request_t *integration_logs_request_create_internal(
     list_t *logs
     ) {
     integration_logs_request_t *integration_logs_request_local_var = malloc(sizeof(integration_logs_request_t));
@@ -14,12 +14,24 @@ integration_logs_request_t *integration_logs_request_create(
     }
     integration_logs_request_local_var->logs = logs;
 
+    integration_logs_request_local_var->_library_owned = 1;
     return integration_logs_request_local_var;
 }
 
+__attribute__((deprecated)) integration_logs_request_t *integration_logs_request_create(
+    list_t *logs
+    ) {
+    return integration_logs_request_create_internal (
+        logs
+        );
+}
 
 void integration_logs_request_free(integration_logs_request_t *integration_logs_request) {
     if(NULL == integration_logs_request){
+        return ;
+    }
+    if(integration_logs_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "integration_logs_request_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -73,6 +85,9 @@ integration_logs_request_t *integration_logs_request_parseFromJSON(cJSON *integr
 
     // integration_logs_request->logs
     cJSON *logs = cJSON_GetObjectItemCaseSensitive(integration_logs_requestJSON, "logs");
+    if (cJSON_IsNull(logs)) {
+        logs = NULL;
+    }
     if (!logs) {
         goto end;
     }
@@ -96,7 +111,7 @@ integration_logs_request_t *integration_logs_request_parseFromJSON(cJSON *integr
     }
 
 
-    integration_logs_request_local_var = integration_logs_request_create (
+    integration_logs_request_local_var = integration_logs_request_create_internal (
         logsList
         );
 

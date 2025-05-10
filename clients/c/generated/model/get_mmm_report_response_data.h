@@ -31,9 +31,10 @@ typedef struct get_mmm_report_response_data_t {
     char *url; // string
     double size; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } get_mmm_report_response_data_t;
 
-get_mmm_report_response_data_t *get_mmm_report_response_data_create(
+__attribute__((deprecated)) get_mmm_report_response_data_t *get_mmm_report_response_data_create(
     pinterest_rest_api_get_mmm_report_response_data_REPORTSTATUS_e report_status,
     char *url,
     double size

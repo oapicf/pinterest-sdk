@@ -22,9 +22,10 @@ typedef struct pins_save_request_t {
     char *board_id; // string
     char *board_section_id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } pins_save_request_t;
 
-pins_save_request_t *pins_save_request_create(
+__attribute__((deprecated)) pins_save_request_t *pins_save_request_create(
     char *board_id,
     char *board_section_id
 );

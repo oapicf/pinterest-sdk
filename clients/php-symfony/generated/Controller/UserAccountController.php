@@ -586,35 +586,35 @@ class UserAccountController extends Controller
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "OTHER", "CLAIMED", "BOTH" ]);
+        $asserts[] = new Assert\Choice([ 'OTHER', 'CLAIMED', 'BOTH' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($fromClaimedContent, $asserts);
         if ($response instanceof Response) {
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "ALL", "ORGANIC_IMAGE", "ORGANIC_PRODUCT", "ORGANIC_VIDEO", "ADS_STANDARD", "ADS_PRODUCT", "ADS_VIDEO", "ADS_IDEA" ]);
+        $asserts[] = new Assert\Choice([ 'ALL', 'ORGANIC_IMAGE', 'ORGANIC_PRODUCT', 'ORGANIC_VIDEO', 'ADS_STANDARD', 'ADS_PRODUCT', 'ADS_VIDEO', 'ADS_IDEA' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($pinFormat, $asserts);
         if ($response instanceof Response) {
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "ALL", "MOBILE", "TABLET", "WEB" ]);
+        $asserts[] = new Assert\Choice([ 'ALL', 'MOBILE', 'TABLET', 'WEB' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($appTypes, $asserts);
         if ($response instanceof Response) {
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "ALL", "PAID", "ORGANIC" ]);
+        $asserts[] = new Assert\Choice([ 'ALL', 'PAID', 'ORGANIC' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($contentType, $asserts);
         if ($response instanceof Response) {
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "ALL", "YOUR_PINS", "OTHER_PINS" ]);
+        $asserts[] = new Assert\Choice([ 'ALL', 'YOUR_PINS', 'OTHER_PINS' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($source, $asserts);
         if ($response instanceof Response) {
@@ -622,7 +622,7 @@ class UserAccountController extends Controller
         }
         $asserts = [];
         $asserts[] = new Assert\All([
-            new Assert\Choice([ "ENGAGEMENT", "ENGAGEMENT_RATE", "IMPRESSION", "OUTBOUND_CLICK", "OUTBOUND_CLICK_RATE", "PIN_CLICK", "PIN_CLICK_RATE", "SAVE", "SAVE_RATE" ])
+            new Assert\Choice([ 'ENGAGEMENT', 'ENGAGEMENT_RATE', 'IMPRESSION', 'OUTBOUND_CLICK', 'OUTBOUND_CLICK_RATE', 'PIN_CLICK', 'PIN_CLICK_RATE', 'SAVE', 'SAVE_RATE' ])
         ]);
         $asserts[] = new Assert\All([
             new Assert\Type("string"),
@@ -633,7 +633,7 @@ class UserAccountController extends Controller
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "NO_SPLIT", "APP_TYPE", "OWNED_CONTENT", "SOURCE", "PIN_FORMAT" ]);
+        $asserts[] = new Assert\Choice([ 'NO_SPLIT', 'APP_TYPE', 'OWNED_CONTENT', 'SOURCE', 'PIN_FORMAT' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($splitField, $asserts);
         if ($response instanceof Response) {
@@ -765,42 +765,42 @@ class UserAccountController extends Controller
         }
         $asserts = [];
         $asserts[] = new Assert\NotNull();
-        $asserts[] = new Assert\Choice([ "ENGAGEMENT", "IMPRESSION", "OUTBOUND_CLICK", "PIN_CLICK", "SAVE" ]);
+        $asserts[] = new Assert\Choice([ 'ENGAGEMENT', 'IMPRESSION', 'OUTBOUND_CLICK', 'PIN_CLICK', 'SAVE' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($sortBy, $asserts);
         if ($response instanceof Response) {
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "OTHER", "CLAIMED", "BOTH" ]);
+        $asserts[] = new Assert\Choice([ 'OTHER', 'CLAIMED', 'BOTH' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($fromClaimedContent, $asserts);
         if ($response instanceof Response) {
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "ALL", "ORGANIC_IMAGE", "ORGANIC_PRODUCT", "ORGANIC_VIDEO", "ADS_STANDARD", "ADS_PRODUCT", "ADS_VIDEO", "ADS_IDEA" ]);
+        $asserts[] = new Assert\Choice([ 'ALL', 'ORGANIC_IMAGE', 'ORGANIC_PRODUCT', 'ORGANIC_VIDEO', 'ADS_STANDARD', 'ADS_PRODUCT', 'ADS_VIDEO', 'ADS_IDEA' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($pinFormat, $asserts);
         if ($response instanceof Response) {
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "ALL", "MOBILE", "TABLET", "WEB" ]);
+        $asserts[] = new Assert\Choice([ 'ALL', 'MOBILE', 'TABLET', 'WEB' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($appTypes, $asserts);
         if ($response instanceof Response) {
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "ALL", "PAID", "ORGANIC" ]);
+        $asserts[] = new Assert\Choice([ 'ALL', 'PAID', 'ORGANIC' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($contentType, $asserts);
         if ($response instanceof Response) {
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "ALL", "YOUR_PINS", "OTHER_PINS" ]);
+        $asserts[] = new Assert\Choice([ 'ALL', 'YOUR_PINS', 'OTHER_PINS' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($source, $asserts);
         if ($response instanceof Response) {
@@ -808,7 +808,7 @@ class UserAccountController extends Controller
         }
         $asserts = [];
         $asserts[] = new Assert\All([
-            new Assert\Choice([ "ENGAGEMENT", "ENGAGEMENT_RATE", "IMPRESSION", "OUTBOUND_CLICK", "OUTBOUND_CLICK_RATE", "PIN_CLICK", "PIN_CLICK_RATE", "SAVE", "SAVE_RATE" ])
+            new Assert\Choice([ 'ENGAGEMENT', 'ENGAGEMENT_RATE', 'IMPRESSION', 'OUTBOUND_CLICK', 'OUTBOUND_CLICK_RATE', 'PIN_CLICK', 'PIN_CLICK_RATE', 'SAVE', 'SAVE_RATE' ])
         ]);
         $asserts[] = new Assert\All([
             new Assert\Type("string"),
@@ -960,42 +960,42 @@ class UserAccountController extends Controller
         }
         $asserts = [];
         $asserts[] = new Assert\NotNull();
-        $asserts[] = new Assert\Choice([ "IMPRESSION", "SAVE", "OUTBOUND_CLICK", "VIDEO_MRC_VIEW", "VIDEO_AVG_WATCH_TIME", "VIDEO_V50_WATCH_TIME", "QUARTILE_95_PERCENT_VIEW", "VIDEO_10S_VIEW", "VIDEO_START" ]);
+        $asserts[] = new Assert\Choice([ 'IMPRESSION', 'SAVE', 'OUTBOUND_CLICK', 'VIDEO_MRC_VIEW', 'VIDEO_AVG_WATCH_TIME', 'VIDEO_V50_WATCH_TIME', 'QUARTILE_95_PERCENT_VIEW', 'VIDEO_10S_VIEW', 'VIDEO_START' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($sortBy, $asserts);
         if ($response instanceof Response) {
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "OTHER", "CLAIMED", "BOTH" ]);
+        $asserts[] = new Assert\Choice([ 'OTHER', 'CLAIMED', 'BOTH' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($fromClaimedContent, $asserts);
         if ($response instanceof Response) {
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "ALL", "ORGANIC_IMAGE", "ORGANIC_PRODUCT", "ORGANIC_VIDEO", "ADS_STANDARD", "ADS_PRODUCT", "ADS_VIDEO", "ADS_IDEA" ]);
+        $asserts[] = new Assert\Choice([ 'ALL', 'ORGANIC_IMAGE', 'ORGANIC_PRODUCT', 'ORGANIC_VIDEO', 'ADS_STANDARD', 'ADS_PRODUCT', 'ADS_VIDEO', 'ADS_IDEA' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($pinFormat, $asserts);
         if ($response instanceof Response) {
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "ALL", "MOBILE", "TABLET", "WEB" ]);
+        $asserts[] = new Assert\Choice([ 'ALL', 'MOBILE', 'TABLET', 'WEB' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($appTypes, $asserts);
         if ($response instanceof Response) {
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "ALL", "PAID", "ORGANIC" ]);
+        $asserts[] = new Assert\Choice([ 'ALL', 'PAID', 'ORGANIC' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($contentType, $asserts);
         if ($response instanceof Response) {
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "ALL", "YOUR_PINS", "OTHER_PINS" ]);
+        $asserts[] = new Assert\Choice([ 'ALL', 'YOUR_PINS', 'OTHER_PINS' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($source, $asserts);
         if ($response instanceof Response) {
@@ -1003,7 +1003,7 @@ class UserAccountController extends Controller
         }
         $asserts = [];
         $asserts[] = new Assert\All([
-            new Assert\Choice([ "IMPRESSION", "SAVE", "VIDEO_MRC_VIEW", "VIDEO_AVG_WATCH_TIME", "VIDEO_V50_WATCH_TIME", "QUARTILE_95_PERCENT_VIEW", "VIDEO_10S_VIEW", "VIDEO_START", "OUTBOUND_CLICK" ])
+            new Assert\Choice([ 'IMPRESSION', 'SAVE', 'VIDEO_MRC_VIEW', 'VIDEO_AVG_WATCH_TIME', 'VIDEO_V50_WATCH_TIME', 'QUARTILE_95_PERCENT_VIEW', 'VIDEO_10S_VIEW', 'VIDEO_START', 'OUTBOUND_CLICK' ])
         ]);
         $asserts[] = new Assert\All([
             new Assert\Type("string"),

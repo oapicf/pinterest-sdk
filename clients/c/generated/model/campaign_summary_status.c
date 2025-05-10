@@ -22,7 +22,7 @@ pinterest_rest_api_campaign_summary_status__e campaign_summary_status_campaign_s
     return 0;
 }
 
-cJSON *campaign_summary_status_campaign_summary_status_convertToJSON(pinterest_rest_api_campaign_summary_status__e campaign_summary_status) {
+cJSON *campaign_summary_status_convertToJSON(pinterest_rest_api_campaign_summary_status__e campaign_summary_status) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "campaign_summary_status", campaign_summary_status_campaign_summary_status_ToString(campaign_summary_status)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_campaign_summary_status__e campaign_summary_status_campaign_summary_status_parseFromJSON(cJSON *campaign_summary_statusJSON) {
-    pinterest_rest_api_campaign_summary_status__e *campaign_summary_status = NULL;
-    pinterest_rest_api_campaign_summary_status__e campaign_summary_statusVariable;
-    cJSON *campaign_summary_statusVar = cJSON_GetObjectItemCaseSensitive(campaign_summary_statusJSON, "campaign_summary_status");
-    if(!cJSON_IsString(campaign_summary_statusVar) || (campaign_summary_statusVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_campaign_summary_status__e campaign_summary_status_parseFromJSON(cJSON *campaign_summary_statusJSON) {
+    if(!cJSON_IsString(campaign_summary_statusJSON) || (campaign_summary_statusJSON->valuestring == NULL)) {
+        return 0;
     }
-    campaign_summary_statusVariable = campaign_summary_status_campaign_summary_status_FromString(campaign_summary_statusVar->valuestring);
-    return campaign_summary_statusVariable;
-end:
-    return 0;
+    return campaign_summary_status_campaign_summary_status_FromString(campaign_summary_statusJSON->valuestring);
 }

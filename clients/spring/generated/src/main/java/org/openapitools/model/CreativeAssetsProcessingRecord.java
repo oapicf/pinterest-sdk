@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.ItemProcessingStatus;
 import org.openapitools.model.ItemValidationEvent;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -25,10 +26,10 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CreativeAssetsProcessingRecord", description = "Object describing an item processing record")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CreativeAssetsProcessingRecord {
 
-  private String creativeAssetsId;
+  private @Nullable String creativeAssetsId;
 
   @Valid
   private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
@@ -36,7 +37,7 @@ public class CreativeAssetsProcessingRecord {
   @Valid
   private List<@Valid ItemValidationEvent> warnings = new ArrayList<>();
 
-  private ItemProcessingStatus status;
+  private @Nullable ItemProcessingStatus status;
 
   public CreativeAssetsProcessingRecord creativeAssetsId(String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;

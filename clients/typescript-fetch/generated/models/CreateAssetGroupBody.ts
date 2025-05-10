@@ -73,11 +73,11 @@ export function CreateAssetGroupBodyFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function CreateAssetGroupBodyToJSON(json: any): CreateAssetGroupBody {
-      return CreateAssetGroupBodyToJSONTyped(json, false);
-  }
+export function CreateAssetGroupBodyToJSON(json: any): CreateAssetGroupBody {
+    return CreateAssetGroupBodyToJSONTyped(json, false);
+}
 
-  export function CreateAssetGroupBodyToJSONTyped(value?: CreateAssetGroupBody | null, ignoreDiscriminator: boolean = false): any {
+export function CreateAssetGroupBodyToJSONTyped(value?: CreateAssetGroupBody | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

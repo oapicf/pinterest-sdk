@@ -22,7 +22,7 @@ pinterest_rest_api_match_type_response__e match_type_response_match_type_respons
     return 0;
 }
 
-cJSON *match_type_response_match_type_response_convertToJSON(pinterest_rest_api_match_type_response__e match_type_response) {
+cJSON *match_type_response_convertToJSON(pinterest_rest_api_match_type_response__e match_type_response) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "match_type_response", match_type_response_match_type_response_ToString(match_type_response)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_match_type_response__e match_type_response_match_type_response_parseFromJSON(cJSON *match_type_responseJSON) {
-    pinterest_rest_api_match_type_response__e *match_type_response = NULL;
-    pinterest_rest_api_match_type_response__e match_type_responseVariable;
-    cJSON *match_type_responseVar = cJSON_GetObjectItemCaseSensitive(match_type_responseJSON, "match_type_response");
-    if(!cJSON_IsString(match_type_responseVar) || (match_type_responseVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_match_type_response__e match_type_response_parseFromJSON(cJSON *match_type_responseJSON) {
+    if(!cJSON_IsString(match_type_responseJSON) || (match_type_responseJSON->valuestring == NULL)) {
+        return 0;
     }
-    match_type_responseVariable = match_type_response_match_type_response_FromString(match_type_responseVar->valuestring);
-    return match_type_responseVariable;
-end:
-    return 0;
+    return match_type_response_match_type_response_FromString(match_type_responseJSON->valuestring);
 }

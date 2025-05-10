@@ -12,10 +12,6 @@
 package openapi
 
 
-import (
-	"gopkg.in/validator.v2"
-)
-
 
 
 // CatalogsVerticalFeedsUpdateRequest - Request object for updating a feed.

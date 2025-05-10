@@ -33,9 +33,10 @@ typedef struct catalogs_creative_assets_product_t {
     struct catalogs_creative_assets_product_metadata_t *metadata; //model
     struct pin_t *pin; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_creative_assets_product_t;
 
-catalogs_creative_assets_product_t *catalogs_creative_assets_product_create(
+__attribute__((deprecated)) catalogs_creative_assets_product_t *catalogs_creative_assets_product_create(
     pinterest_rest_api_catalogs_creative_assets_product_CATALOGTYPE_e catalog_type,
     catalogs_creative_assets_product_metadata_t *metadata,
     pin_t *pin

@@ -5,7 +5,7 @@
 
 
 
-ads_analytics_response_inner_t *ads_analytics_response_inner_create(
+static ads_analytics_response_inner_t *ads_analytics_response_inner_create_internal(
     char *ad_id,
     char *date
     ) {
@@ -16,12 +16,26 @@ ads_analytics_response_inner_t *ads_analytics_response_inner_create(
     ads_analytics_response_inner_local_var->ad_id = ad_id;
     ads_analytics_response_inner_local_var->date = date;
 
+    ads_analytics_response_inner_local_var->_library_owned = 1;
     return ads_analytics_response_inner_local_var;
 }
 
+__attribute__((deprecated)) ads_analytics_response_inner_t *ads_analytics_response_inner_create(
+    char *ad_id,
+    char *date
+    ) {
+    return ads_analytics_response_inner_create_internal (
+        ad_id,
+        date
+        );
+}
 
 void ads_analytics_response_inner_free(ads_analytics_response_inner_t *ads_analytics_response_inner) {
     if(NULL == ads_analytics_response_inner){
+        return ;
+    }
+    if(ads_analytics_response_inner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ads_analytics_response_inner_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -69,6 +83,9 @@ ads_analytics_response_inner_t *ads_analytics_response_inner_parseFromJSON(cJSON
 
     // ads_analytics_response_inner->ad_id
     cJSON *ad_id = cJSON_GetObjectItemCaseSensitive(ads_analytics_response_innerJSON, "AD_ID");
+    if (cJSON_IsNull(ad_id)) {
+        ad_id = NULL;
+    }
     if (!ad_id) {
         goto end;
     }
@@ -81,6 +98,9 @@ ads_analytics_response_inner_t *ads_analytics_response_inner_parseFromJSON(cJSON
 
     // ads_analytics_response_inner->date
     cJSON *date = cJSON_GetObjectItemCaseSensitive(ads_analytics_response_innerJSON, "DATE");
+    if (cJSON_IsNull(date)) {
+        date = NULL;
+    }
     if (date) { 
     if(!cJSON_IsString(date))
     {
@@ -89,7 +109,7 @@ ads_analytics_response_inner_t *ads_analytics_response_inner_parseFromJSON(cJSON
     }
 
 
-    ads_analytics_response_inner_local_var = ads_analytics_response_inner_create (
+    ads_analytics_response_inner_local_var = ads_analytics_response_inner_create_internal (
         strdup(ad_id->valuestring),
         date ? strdup(date->valuestring) : NULL
         );

@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Retail product metadata entity")
 @JsonTypeName("CatalogsRetailProductMetadata")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsRetailProductMetadata   {
   private String itemId;
   private String itemGroupId;
@@ -28,6 +28,26 @@ public class CatalogsRetailProductMetadata   {
   private BigDecimal price;
   private BigDecimal salePrice;
   private NonNullableCatalogsCurrency currency;
+
+  public CatalogsRetailProductMetadata() {
+  }
+
+  @JsonCreator
+  public CatalogsRetailProductMetadata(
+    @JsonProperty(required = true, value = "item_id") String itemId,
+    @JsonProperty(required = true, value = "item_group_id") String itemGroupId,
+    @JsonProperty(required = true, value = "availability") NonNullableProductAvailabilityType availability,
+    @JsonProperty(required = true, value = "price") BigDecimal price,
+    @JsonProperty(required = true, value = "sale_price") BigDecimal salePrice,
+    @JsonProperty(required = true, value = "currency") NonNullableCatalogsCurrency currency
+  ) {
+    this.itemId = itemId;
+    this.itemGroupId = itemGroupId;
+    this.availability = availability;
+    this.price = price;
+    this.salePrice = salePrice;
+    this.currency = currency;
+  }
 
   /**
    * The user-created unique ID that represents the product.
@@ -39,12 +59,12 @@ public class CatalogsRetailProductMetadata   {
 
   
   @ApiModelProperty(example = "DS0294-L", required = true, value = "The user-created unique ID that represents the product.")
-  @JsonProperty("item_id")
+  @JsonProperty(required = true, value = "item_id")
   @NotNull public String getItemId() {
     return itemId;
   }
 
-  @JsonProperty("item_id")
+  @JsonProperty(required = true, value = "item_id")
   public void setItemId(String itemId) {
     this.itemId = itemId;
   }
@@ -59,12 +79,12 @@ public class CatalogsRetailProductMetadata   {
 
   
   @ApiModelProperty(example = "DS0294", required = true, value = "The parent ID of the product.")
-  @JsonProperty("item_group_id")
+  @JsonProperty(required = true, value = "item_group_id")
   @NotNull public String getItemGroupId() {
     return itemGroupId;
   }
 
-  @JsonProperty("item_group_id")
+  @JsonProperty(required = true, value = "item_group_id")
   public void setItemGroupId(String itemGroupId) {
     this.itemGroupId = itemGroupId;
   }
@@ -78,12 +98,12 @@ public class CatalogsRetailProductMetadata   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("availability")
+  @JsonProperty(required = true, value = "availability")
   @NotNull public NonNullableProductAvailabilityType getAvailability() {
     return availability;
   }
 
-  @JsonProperty("availability")
+  @JsonProperty(required = true, value = "availability")
   public void setAvailability(NonNullableProductAvailabilityType availability) {
     this.availability = availability;
   }
@@ -98,12 +118,12 @@ public class CatalogsRetailProductMetadata   {
 
   
   @ApiModelProperty(example = "24.99", required = true, value = "The price of the product.")
-  @JsonProperty("price")
+  @JsonProperty(required = true, value = "price")
   @NotNull @Valid public BigDecimal getPrice() {
     return price;
   }
 
-  @JsonProperty("price")
+  @JsonProperty(required = true, value = "price")
   public void setPrice(BigDecimal price) {
     this.price = price;
   }
@@ -118,12 +138,12 @@ public class CatalogsRetailProductMetadata   {
 
   
   @ApiModelProperty(example = "14.99", required = true, value = "The discounted price of the product.")
-  @JsonProperty("sale_price")
+  @JsonProperty(required = true, value = "sale_price")
   @NotNull @Valid public BigDecimal getSalePrice() {
     return salePrice;
   }
 
-  @JsonProperty("sale_price")
+  @JsonProperty(required = true, value = "sale_price")
   public void setSalePrice(BigDecimal salePrice) {
     this.salePrice = salePrice;
   }
@@ -137,12 +157,12 @@ public class CatalogsRetailProductMetadata   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("currency")
+  @JsonProperty(required = true, value = "currency")
   @NotNull public NonNullableCatalogsCurrency getCurrency() {
     return currency;
   }
 
-  @JsonProperty("currency")
+  @JsonProperty(required = true, value = "currency")
   public void setCurrency(NonNullableCatalogsCurrency currency) {
     this.currency = currency;
   }

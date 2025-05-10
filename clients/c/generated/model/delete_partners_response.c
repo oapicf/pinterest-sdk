@@ -5,7 +5,7 @@
 
 
 
-delete_partners_response_t *delete_partners_response_create(
+static delete_partners_response_t *delete_partners_response_create_internal(
     list_t *deleted_partners
     ) {
     delete_partners_response_t *delete_partners_response_local_var = malloc(sizeof(delete_partners_response_t));
@@ -14,12 +14,24 @@ delete_partners_response_t *delete_partners_response_create(
     }
     delete_partners_response_local_var->deleted_partners = deleted_partners;
 
+    delete_partners_response_local_var->_library_owned = 1;
     return delete_partners_response_local_var;
 }
 
+__attribute__((deprecated)) delete_partners_response_t *delete_partners_response_create(
+    list_t *deleted_partners
+    ) {
+    return delete_partners_response_create_internal (
+        deleted_partners
+        );
+}
 
 void delete_partners_response_free(delete_partners_response_t *delete_partners_response) {
     if(NULL == delete_partners_response){
+        return ;
+    }
+    if(delete_partners_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "delete_partners_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -45,7 +57,7 @@ cJSON *delete_partners_response_convertToJSON(delete_partners_response_t *delete
 
     listEntry_t *deleted_partnersListEntry;
     list_ForEach(deleted_partnersListEntry, delete_partners_response->deleted_partners) {
-    if(cJSON_AddStringToObject(deleted_partners, "", (char*)deleted_partnersListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(deleted_partners, "", deleted_partnersListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -69,6 +81,9 @@ delete_partners_response_t *delete_partners_response_parseFromJSON(cJSON *delete
 
     // delete_partners_response->deleted_partners
     cJSON *deleted_partners = cJSON_GetObjectItemCaseSensitive(delete_partners_responseJSON, "deleted_partners");
+    if (cJSON_IsNull(deleted_partners)) {
+        deleted_partners = NULL;
+    }
     if (deleted_partners) { 
     cJSON *deleted_partners_local = NULL;
     if(!cJSON_IsArray(deleted_partners)) {
@@ -87,7 +102,7 @@ delete_partners_response_t *delete_partners_response_parseFromJSON(cJSON *delete
     }
 
 
-    delete_partners_response_local_var = delete_partners_response_create (
+    delete_partners_response_local_var = delete_partners_response_create_internal (
         deleted_partners ? deleted_partnersList : NULL
         );
 

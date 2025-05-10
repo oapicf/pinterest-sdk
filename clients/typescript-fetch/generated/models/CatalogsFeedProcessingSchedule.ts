@@ -453,11 +453,11 @@ export function CatalogsFeedProcessingScheduleFromJSONTyped(json: any, ignoreDis
     };
 }
 
-  export function CatalogsFeedProcessingScheduleToJSON(json: any): CatalogsFeedProcessingSchedule {
-      return CatalogsFeedProcessingScheduleToJSONTyped(json, false);
-  }
+export function CatalogsFeedProcessingScheduleToJSON(json: any): CatalogsFeedProcessingSchedule {
+    return CatalogsFeedProcessingScheduleToJSONTyped(json, false);
+}
 
-  export function CatalogsFeedProcessingScheduleToJSONTyped(value?: CatalogsFeedProcessingSchedule | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsFeedProcessingScheduleToJSONTyped(value?: CatalogsFeedProcessingSchedule | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

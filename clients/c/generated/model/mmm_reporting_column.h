@@ -24,9 +24,9 @@ char* mmm_reporting_column_mmm_reporting_column_ToString(pinterest_rest_api_mmm_
 
 pinterest_rest_api_mmm_reporting_column__e mmm_reporting_column_mmm_reporting_column_FromString(char* mmm_reporting_column);
 
-//cJSON *mmm_reporting_column_mmm_reporting_column_convertToJSON(pinterest_rest_api_mmm_reporting_column__e mmm_reporting_column);
+cJSON *mmm_reporting_column_convertToJSON(pinterest_rest_api_mmm_reporting_column__e mmm_reporting_column);
 
-//pinterest_rest_api_mmm_reporting_column__e mmm_reporting_column_mmm_reporting_column_parseFromJSON(cJSON *mmm_reporting_columnJSON);
+pinterest_rest_api_mmm_reporting_column__e mmm_reporting_column_parseFromJSON(cJSON *mmm_reporting_columnJSON);
 
 #endif /* _mmm_reporting_column_H_ */
 

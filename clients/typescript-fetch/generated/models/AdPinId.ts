@@ -48,11 +48,11 @@ export function AdPinIdFromJSONTyped(json: any, ignoreDiscriminator: boolean): A
     };
 }
 
-  export function AdPinIdToJSON(json: any): AdPinId {
-      return AdPinIdToJSONTyped(json, false);
-  }
+export function AdPinIdToJSON(json: any): AdPinId {
+    return AdPinIdToJSONTyped(json, false);
+}
 
-  export function AdPinIdToJSONTyped(value?: AdPinId | null, ignoreDiscriminator: boolean = false): any {
+export function AdPinIdToJSONTyped(value?: AdPinId | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

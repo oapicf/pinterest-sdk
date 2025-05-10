@@ -13,14 +13,16 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.UserSingleAssetBinding
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items List of members with permissions to the asset.
  * @param bookmark 
  */
+@Serializable
 data class BusinessAssetMembersGet200Response(
     /* List of members with permissions to the asset. */
     val items: kotlin.collections.List<UserSingleAssetBinding>,
     val bookmark: kotlin.String? = null
-) 
+)
 

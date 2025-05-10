@@ -264,7 +264,7 @@ void OAILeadFormsApi::leadFormTest_create(const QString &ad_account_id, const QS
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAILeadFormsApi::leadFormTest_createCallback);
     connect(this, &OAILeadFormsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -286,7 +286,7 @@ void OAILeadFormsApi::leadFormTest_create(const QString &ad_account_id, const QS
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAILeadFormsApi::leadFormTest_createCallback);
     connect(this, &OAILeadFormsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -403,7 +403,7 @@ void OAILeadFormsApi::leadForm_get(const QString &ad_account_id, const QString &
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAILeadFormsApi::leadForm_getCallback);
     connect(this, &OAILeadFormsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -425,7 +425,7 @@ void OAILeadFormsApi::leadForm_get(const QString &ad_account_id, const QString &
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAILeadFormsApi::leadForm_getCallback);
     connect(this, &OAILeadFormsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -532,7 +532,7 @@ void OAILeadFormsApi::leadForms_create(const QString &ad_account_id, const QList
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAILeadFormsApi::leadForms_createCallback);
     connect(this, &OAILeadFormsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -554,7 +554,7 @@ void OAILeadFormsApi::leadForms_create(const QString &ad_account_id, const QList
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAILeadFormsApi::leadForms_createCallback);
     connect(this, &OAILeadFormsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -658,7 +658,7 @@ void OAILeadFormsApi::leadForms_list(const QString &ad_account_id, const ::OpenA
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     if (order.hasValue())
     {
@@ -673,7 +673,7 @@ void OAILeadFormsApi::leadForms_list(const QString &ad_account_id, const ::OpenA
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("order")).append(querySuffix).append(QUrl::toPercentEncoding(order.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("order")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(order.stringValue())));
     }
     if (bookmark.hasValue())
     {
@@ -688,7 +688,7 @@ void OAILeadFormsApi::leadForms_list(const QString &ad_account_id, const ::OpenA
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -703,7 +703,7 @@ void OAILeadFormsApi::leadForms_list(const QString &ad_account_id, const ::OpenA
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAILeadFormsApi::leadForms_listCallback);
     connect(this, &OAILeadFormsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -725,7 +725,7 @@ void OAILeadFormsApi::leadForms_list(const QString &ad_account_id, const ::OpenA
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAILeadFormsApi::leadForms_listCallback);
     connect(this, &OAILeadFormsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -832,7 +832,7 @@ void OAILeadFormsApi::leadForms_update(const QString &ad_account_id, const QList
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAILeadFormsApi::leadForms_updateCallback);
     connect(this, &OAILeadFormsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -854,7 +854,7 @@ void OAILeadFormsApi::leadForms_update(const QString &ad_account_id, const QList
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAILeadFormsApi::leadForms_updateCallback);
     connect(this, &OAILeadFormsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }

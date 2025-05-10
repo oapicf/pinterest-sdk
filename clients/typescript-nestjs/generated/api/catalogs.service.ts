@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { Catalog } from '../model/catalog';
 import { CatalogsCreateReportResponse } from '../model/catalogsCreateReportResponse';
@@ -54,10 +54,12 @@ export class CatalogsService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -76,9 +78,10 @@ export class CatalogsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [catalogsCreateOpts.config] Override http request option.
      */
-    public catalogsCreate(catalogsCreateRequest: CatalogsCreateRequest, adAccountId?: string, ): Observable<AxiosResponse<Catalog>>;
-    public catalogsCreate(catalogsCreateRequest: CatalogsCreateRequest, adAccountId?: string, ): Observable<any> {
+    public catalogsCreate(catalogsCreateRequest: CatalogsCreateRequest, adAccountId?: string, catalogsCreateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<Catalog>>;
+    public catalogsCreate(catalogsCreateRequest: CatalogsCreateRequest, adAccountId?: string, catalogsCreateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (catalogsCreateRequest === null || catalogsCreateRequest === undefined) {
             throw new Error('Required parameter catalogsCreateRequest was null or undefined when calling catalogsCreate.');
         }
@@ -127,7 +130,8 @@ export class CatalogsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...catalogsCreateOpts?.config,
+                        headers: {...headers, ...catalogsCreateOpts?.config?.headers},
                     }
                 );
             })
@@ -141,9 +145,10 @@ export class CatalogsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [catalogsListOpts.config] Override http request option.
      */
-    public catalogsList(bookmark?: string, pageSize?: number, adAccountId?: string, ): Observable<AxiosResponse<CatalogsList200Response>>;
-    public catalogsList(bookmark?: string, pageSize?: number, adAccountId?: string, ): Observable<any> {
+    public catalogsList(bookmark?: string, pageSize?: number, adAccountId?: string, catalogsListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CatalogsList200Response>>;
+    public catalogsList(bookmark?: string, pageSize?: number, adAccountId?: string, catalogsListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let queryParameters = new URLSearchParams();
         if (bookmark !== undefined && bookmark !== null) {
             queryParameters.append('bookmark', <any>bookmark);
@@ -188,7 +193,8 @@ export class CatalogsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...catalogsListOpts?.config,
+                        headers: {...headers, ...catalogsListOpts?.config?.headers},
                     }
                 );
             })
@@ -204,9 +210,10 @@ export class CatalogsService {
      * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [catalogsProductGroupPinsListOpts.config] Override http request option.
      */
-    public catalogsProductGroupPinsList(productGroupId: string, bookmark?: string, pageSize?: number, adAccountId?: string, pinMetrics?: boolean, ): Observable<AxiosResponse<CatalogsProductGroupPinsList200Response>>;
-    public catalogsProductGroupPinsList(productGroupId: string, bookmark?: string, pageSize?: number, adAccountId?: string, pinMetrics?: boolean, ): Observable<any> {
+    public catalogsProductGroupPinsList(productGroupId: string, bookmark?: string, pageSize?: number, adAccountId?: string, pinMetrics?: boolean, catalogsProductGroupPinsListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CatalogsProductGroupPinsList200Response>>;
+    public catalogsProductGroupPinsList(productGroupId: string, bookmark?: string, pageSize?: number, adAccountId?: string, pinMetrics?: boolean, catalogsProductGroupPinsListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (productGroupId === null || productGroupId === undefined) {
             throw new Error('Required parameter productGroupId was null or undefined when calling catalogsProductGroupPinsList.');
         }
@@ -258,7 +265,8 @@ export class CatalogsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...catalogsProductGroupPinsListOpts?.config,
+                        headers: {...headers, ...catalogsProductGroupPinsListOpts?.config?.headers},
                     }
                 );
             })
@@ -271,9 +279,10 @@ export class CatalogsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [catalogsProductGroupsCreateOpts.config] Override http request option.
      */
-    public catalogsProductGroupsCreate(multipleProductGroupsInner: MultipleProductGroupsInner, adAccountId?: string, ): Observable<AxiosResponse<CatalogsVerticalProductGroup>>;
-    public catalogsProductGroupsCreate(multipleProductGroupsInner: MultipleProductGroupsInner, adAccountId?: string, ): Observable<any> {
+    public catalogsProductGroupsCreate(multipleProductGroupsInner: MultipleProductGroupsInner, adAccountId?: string, catalogsProductGroupsCreateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CatalogsVerticalProductGroup>>;
+    public catalogsProductGroupsCreate(multipleProductGroupsInner: MultipleProductGroupsInner, adAccountId?: string, catalogsProductGroupsCreateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (multipleProductGroupsInner === null || multipleProductGroupsInner === undefined) {
             throw new Error('Required parameter multipleProductGroupsInner was null or undefined when calling catalogsProductGroupsCreate.');
         }
@@ -322,7 +331,8 @@ export class CatalogsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...catalogsProductGroupsCreateOpts?.config,
+                        headers: {...headers, ...catalogsProductGroupsCreateOpts?.config?.headers},
                     }
                 );
             })
@@ -335,9 +345,10 @@ export class CatalogsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [catalogsProductGroupsCreateManyOpts.config] Override http request option.
      */
-    public catalogsProductGroupsCreateMany(multipleProductGroupsInner: Array<MultipleProductGroupsInner>, adAccountId?: string, ): Observable<AxiosResponse<Array<string>>>;
-    public catalogsProductGroupsCreateMany(multipleProductGroupsInner: Array<MultipleProductGroupsInner>, adAccountId?: string, ): Observable<any> {
+    public catalogsProductGroupsCreateMany(multipleProductGroupsInner: Array<MultipleProductGroupsInner>, adAccountId?: string, catalogsProductGroupsCreateManyOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<Array<string>>>;
+    public catalogsProductGroupsCreateMany(multipleProductGroupsInner: Array<MultipleProductGroupsInner>, adAccountId?: string, catalogsProductGroupsCreateManyOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (multipleProductGroupsInner === null || multipleProductGroupsInner === undefined) {
             throw new Error('Required parameter multipleProductGroupsInner was null or undefined when calling catalogsProductGroupsCreateMany.');
         }
@@ -386,7 +397,8 @@ export class CatalogsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...catalogsProductGroupsCreateManyOpts?.config,
+                        headers: {...headers, ...catalogsProductGroupsCreateManyOpts?.config?.headers},
                     }
                 );
             })
@@ -399,9 +411,10 @@ export class CatalogsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [catalogsProductGroupsDeleteOpts.config] Override http request option.
      */
-    public catalogsProductGroupsDelete(productGroupId: string, adAccountId?: string, ): Observable<AxiosResponse<any>>;
-    public catalogsProductGroupsDelete(productGroupId: string, adAccountId?: string, ): Observable<any> {
+    public catalogsProductGroupsDelete(productGroupId: string, adAccountId?: string, catalogsProductGroupsDeleteOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public catalogsProductGroupsDelete(productGroupId: string, adAccountId?: string, catalogsProductGroupsDeleteOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (productGroupId === null || productGroupId === undefined) {
             throw new Error('Required parameter productGroupId was null or undefined when calling catalogsProductGroupsDelete.');
         }
@@ -444,7 +457,8 @@ export class CatalogsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...catalogsProductGroupsDeleteOpts?.config,
+                        headers: {...headers, ...catalogsProductGroupsDeleteOpts?.config?.headers},
                     }
                 );
             })
@@ -457,9 +471,10 @@ export class CatalogsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [catalogsProductGroupsDeleteManyOpts.config] Override http request option.
      */
-    public catalogsProductGroupsDeleteMany(id: Array<number>, adAccountId?: string, ): Observable<AxiosResponse<any>>;
-    public catalogsProductGroupsDeleteMany(id: Array<number>, adAccountId?: string, ): Observable<any> {
+    public catalogsProductGroupsDeleteMany(id: Array<number>, adAccountId?: string, catalogsProductGroupsDeleteManyOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public catalogsProductGroupsDeleteMany(id: Array<number>, adAccountId?: string, catalogsProductGroupsDeleteManyOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling catalogsProductGroupsDeleteMany.');
         }
@@ -505,7 +520,8 @@ export class CatalogsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...catalogsProductGroupsDeleteManyOpts?.config,
+                        headers: {...headers, ...catalogsProductGroupsDeleteManyOpts?.config?.headers},
                     }
                 );
             })
@@ -518,9 +534,10 @@ export class CatalogsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [catalogsProductGroupsGetOpts.config] Override http request option.
      */
-    public catalogsProductGroupsGet(productGroupId: string, adAccountId?: string, ): Observable<AxiosResponse<CatalogsVerticalProductGroup>>;
-    public catalogsProductGroupsGet(productGroupId: string, adAccountId?: string, ): Observable<any> {
+    public catalogsProductGroupsGet(productGroupId: string, adAccountId?: string, catalogsProductGroupsGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CatalogsVerticalProductGroup>>;
+    public catalogsProductGroupsGet(productGroupId: string, adAccountId?: string, catalogsProductGroupsGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (productGroupId === null || productGroupId === undefined) {
             throw new Error('Required parameter productGroupId was null or undefined when calling catalogsProductGroupsGet.');
         }
@@ -563,7 +580,8 @@ export class CatalogsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...catalogsProductGroupsGetOpts?.config,
+                        headers: {...headers, ...catalogsProductGroupsGetOpts?.config?.headers},
                     }
                 );
             })
@@ -580,9 +598,10 @@ export class CatalogsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [catalogsProductGroupsListOpts.config] Override http request option.
      */
-    public catalogsProductGroupsList(id?: Array<number>, feedId?: string, catalogId?: string, bookmark?: string, pageSize?: number, adAccountId?: string, ): Observable<AxiosResponse<CatalogsProductGroupsList200Response>>;
-    public catalogsProductGroupsList(id?: Array<number>, feedId?: string, catalogId?: string, bookmark?: string, pageSize?: number, adAccountId?: string, ): Observable<any> {
+    public catalogsProductGroupsList(id?: Array<number>, feedId?: string, catalogId?: string, bookmark?: string, pageSize?: number, adAccountId?: string, catalogsProductGroupsListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CatalogsProductGroupsList200Response>>;
+    public catalogsProductGroupsList(id?: Array<number>, feedId?: string, catalogId?: string, bookmark?: string, pageSize?: number, adAccountId?: string, catalogsProductGroupsListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let queryParameters = new URLSearchParams();
         if (id) {
             queryParameters['id'] = id.join(COLLECTION_FORMATS['csv']);
@@ -636,7 +655,8 @@ export class CatalogsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...catalogsProductGroupsListOpts?.config,
+                        headers: {...headers, ...catalogsProductGroupsListOpts?.config?.headers},
                     }
                 );
             })
@@ -649,9 +669,10 @@ export class CatalogsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [catalogsProductGroupsProductCountsGetOpts.config] Override http request option.
      */
-    public catalogsProductGroupsProductCountsGet(productGroupId: string, adAccountId?: string, ): Observable<AxiosResponse<CatalogsProductGroupProductCountsVertical>>;
-    public catalogsProductGroupsProductCountsGet(productGroupId: string, adAccountId?: string, ): Observable<any> {
+    public catalogsProductGroupsProductCountsGet(productGroupId: string, adAccountId?: string, catalogsProductGroupsProductCountsGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CatalogsProductGroupProductCountsVertical>>;
+    public catalogsProductGroupsProductCountsGet(productGroupId: string, adAccountId?: string, catalogsProductGroupsProductCountsGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (productGroupId === null || productGroupId === undefined) {
             throw new Error('Required parameter productGroupId was null or undefined when calling catalogsProductGroupsProductCountsGet.');
         }
@@ -694,7 +715,8 @@ export class CatalogsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...catalogsProductGroupsProductCountsGetOpts?.config,
+                        headers: {...headers, ...catalogsProductGroupsProductCountsGetOpts?.config?.headers},
                     }
                 );
             })
@@ -708,9 +730,10 @@ export class CatalogsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [catalogsProductGroupsUpdateOpts.config] Override http request option.
      */
-    public catalogsProductGroupsUpdate(productGroupId: string, catalogsProductGroupsUpdateRequest: CatalogsProductGroupsUpdateRequest, adAccountId?: string, ): Observable<AxiosResponse<CatalogsVerticalProductGroup>>;
-    public catalogsProductGroupsUpdate(productGroupId: string, catalogsProductGroupsUpdateRequest: CatalogsProductGroupsUpdateRequest, adAccountId?: string, ): Observable<any> {
+    public catalogsProductGroupsUpdate(productGroupId: string, catalogsProductGroupsUpdateRequest: CatalogsProductGroupsUpdateRequest, adAccountId?: string, catalogsProductGroupsUpdateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CatalogsVerticalProductGroup>>;
+    public catalogsProductGroupsUpdate(productGroupId: string, catalogsProductGroupsUpdateRequest: CatalogsProductGroupsUpdateRequest, adAccountId?: string, catalogsProductGroupsUpdateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (productGroupId === null || productGroupId === undefined) {
             throw new Error('Required parameter productGroupId was null or undefined when calling catalogsProductGroupsUpdate.');
         }
@@ -763,7 +786,8 @@ export class CatalogsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...catalogsProductGroupsUpdateOpts?.config,
+                        headers: {...headers, ...catalogsProductGroupsUpdateOpts?.config?.headers},
                     }
                 );
             })
@@ -778,9 +802,10 @@ export class CatalogsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [feedProcessingResultsListOpts.config] Override http request option.
      */
-    public feedProcessingResultsList(feedId: string, bookmark?: string, pageSize?: number, adAccountId?: string, ): Observable<AxiosResponse<FeedProcessingResultsList200Response>>;
-    public feedProcessingResultsList(feedId: string, bookmark?: string, pageSize?: number, adAccountId?: string, ): Observable<any> {
+    public feedProcessingResultsList(feedId: string, bookmark?: string, pageSize?: number, adAccountId?: string, feedProcessingResultsListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<FeedProcessingResultsList200Response>>;
+    public feedProcessingResultsList(feedId: string, bookmark?: string, pageSize?: number, adAccountId?: string, feedProcessingResultsListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (feedId === null || feedId === undefined) {
             throw new Error('Required parameter feedId was null or undefined when calling feedProcessingResultsList.');
         }
@@ -829,7 +854,8 @@ export class CatalogsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...feedProcessingResultsListOpts?.config,
+                        headers: {...headers, ...feedProcessingResultsListOpts?.config?.headers},
                     }
                 );
             })
@@ -842,9 +868,10 @@ export class CatalogsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [feedsCreateOpts.config] Override http request option.
      */
-    public feedsCreate(feedsCreateRequest: FeedsCreateRequest, adAccountId?: string, ): Observable<AxiosResponse<CatalogsFeed>>;
-    public feedsCreate(feedsCreateRequest: FeedsCreateRequest, adAccountId?: string, ): Observable<any> {
+    public feedsCreate(feedsCreateRequest: FeedsCreateRequest, adAccountId?: string, feedsCreateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CatalogsFeed>>;
+    public feedsCreate(feedsCreateRequest: FeedsCreateRequest, adAccountId?: string, feedsCreateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (feedsCreateRequest === null || feedsCreateRequest === undefined) {
             throw new Error('Required parameter feedsCreateRequest was null or undefined when calling feedsCreate.');
         }
@@ -900,7 +927,8 @@ export class CatalogsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...feedsCreateOpts?.config,
+                        headers: {...headers, ...feedsCreateOpts?.config?.headers},
                     }
                 );
             })
@@ -913,9 +941,10 @@ export class CatalogsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [feedsDeleteOpts.config] Override http request option.
      */
-    public feedsDelete(feedId: string, adAccountId?: string, ): Observable<AxiosResponse<any>>;
-    public feedsDelete(feedId: string, adAccountId?: string, ): Observable<any> {
+    public feedsDelete(feedId: string, adAccountId?: string, feedsDeleteOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public feedsDelete(feedId: string, adAccountId?: string, feedsDeleteOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (feedId === null || feedId === undefined) {
             throw new Error('Required parameter feedId was null or undefined when calling feedsDelete.');
         }
@@ -965,7 +994,8 @@ export class CatalogsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...feedsDeleteOpts?.config,
+                        headers: {...headers, ...feedsDeleteOpts?.config?.headers},
                     }
                 );
             })
@@ -978,9 +1008,10 @@ export class CatalogsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [feedsGetOpts.config] Override http request option.
      */
-    public feedsGet(feedId: string, adAccountId?: string, ): Observable<AxiosResponse<CatalogsFeed>>;
-    public feedsGet(feedId: string, adAccountId?: string, ): Observable<any> {
+    public feedsGet(feedId: string, adAccountId?: string, feedsGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CatalogsFeed>>;
+    public feedsGet(feedId: string, adAccountId?: string, feedsGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (feedId === null || feedId === undefined) {
             throw new Error('Required parameter feedId was null or undefined when calling feedsGet.');
         }
@@ -1030,7 +1061,8 @@ export class CatalogsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...feedsGetOpts?.config,
+                        headers: {...headers, ...feedsGetOpts?.config?.headers},
                     }
                 );
             })
@@ -1043,9 +1075,10 @@ export class CatalogsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [feedsIngestOpts.config] Override http request option.
      */
-    public feedsIngest(feedId: string, adAccountId?: string, ): Observable<AxiosResponse<CatalogsFeedIngestion>>;
-    public feedsIngest(feedId: string, adAccountId?: string, ): Observable<any> {
+    public feedsIngest(feedId: string, adAccountId?: string, feedsIngestOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CatalogsFeedIngestion>>;
+    public feedsIngest(feedId: string, adAccountId?: string, feedsIngestOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (feedId === null || feedId === undefined) {
             throw new Error('Required parameter feedId was null or undefined when calling feedsIngest.');
         }
@@ -1089,7 +1122,8 @@ export class CatalogsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...feedsIngestOpts?.config,
+                        headers: {...headers, ...feedsIngestOpts?.config?.headers},
                     }
                 );
             })
@@ -1104,9 +1138,10 @@ export class CatalogsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [feedsListOpts.config] Override http request option.
      */
-    public feedsList(bookmark?: string, pageSize?: number, catalogId?: string, adAccountId?: string, ): Observable<AxiosResponse<FeedsList200Response>>;
-    public feedsList(bookmark?: string, pageSize?: number, catalogId?: string, adAccountId?: string, ): Observable<any> {
+    public feedsList(bookmark?: string, pageSize?: number, catalogId?: string, adAccountId?: string, feedsListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<FeedsList200Response>>;
+    public feedsList(bookmark?: string, pageSize?: number, catalogId?: string, adAccountId?: string, feedsListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let queryParameters = new URLSearchParams();
         if (bookmark !== undefined && bookmark !== null) {
             queryParameters.append('bookmark', <any>bookmark);
@@ -1161,7 +1196,8 @@ export class CatalogsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...feedsListOpts?.config,
+                        headers: {...headers, ...feedsListOpts?.config?.headers},
                     }
                 );
             })
@@ -1175,9 +1211,10 @@ export class CatalogsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [feedsUpdateOpts.config] Override http request option.
      */
-    public feedsUpdate(feedId: string, feedsUpdateRequest: FeedsUpdateRequest, adAccountId?: string, ): Observable<AxiosResponse<CatalogsFeed>>;
-    public feedsUpdate(feedId: string, feedsUpdateRequest: FeedsUpdateRequest, adAccountId?: string, ): Observable<any> {
+    public feedsUpdate(feedId: string, feedsUpdateRequest: FeedsUpdateRequest, adAccountId?: string, feedsUpdateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CatalogsFeed>>;
+    public feedsUpdate(feedId: string, feedsUpdateRequest: FeedsUpdateRequest, adAccountId?: string, feedsUpdateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (feedId === null || feedId === undefined) {
             throw new Error('Required parameter feedId was null or undefined when calling feedsUpdate.');
         }
@@ -1237,7 +1274,8 @@ export class CatalogsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...feedsUpdateOpts?.config,
+                        headers: {...headers, ...feedsUpdateOpts?.config?.headers},
                     }
                 );
             })
@@ -1250,9 +1288,10 @@ export class CatalogsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [itemsBatchGetOpts.config] Override http request option.
      */
-    public itemsBatchGet(batchId: string, adAccountId?: string, ): Observable<AxiosResponse<CatalogsItemsBatch>>;
-    public itemsBatchGet(batchId: string, adAccountId?: string, ): Observable<any> {
+    public itemsBatchGet(batchId: string, adAccountId?: string, itemsBatchGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CatalogsItemsBatch>>;
+    public itemsBatchGet(batchId: string, adAccountId?: string, itemsBatchGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (batchId === null || batchId === undefined) {
             throw new Error('Required parameter batchId was null or undefined when calling itemsBatchGet.');
         }
@@ -1302,7 +1341,8 @@ export class CatalogsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...itemsBatchGetOpts?.config,
+                        headers: {...headers, ...itemsBatchGetOpts?.config?.headers},
                     }
                 );
             })
@@ -1315,9 +1355,10 @@ export class CatalogsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [itemsBatchPostOpts.config] Override http request option.
      */
-    public itemsBatchPost(catalogsVerticalBatchRequestCatalogsItemsBatchRequest: CatalogsVerticalBatchRequest | CatalogsItemsBatchRequest, adAccountId?: string, ): Observable<AxiosResponse<CatalogsItemsBatch>>;
-    public itemsBatchPost(catalogsVerticalBatchRequestCatalogsItemsBatchRequest: CatalogsVerticalBatchRequest | CatalogsItemsBatchRequest, adAccountId?: string, ): Observable<any> {
+    public itemsBatchPost(catalogsVerticalBatchRequestCatalogsItemsBatchRequest: CatalogsVerticalBatchRequest | CatalogsItemsBatchRequest, adAccountId?: string, itemsBatchPostOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CatalogsItemsBatch>>;
+    public itemsBatchPost(catalogsVerticalBatchRequestCatalogsItemsBatchRequest: CatalogsVerticalBatchRequest | CatalogsItemsBatchRequest, adAccountId?: string, itemsBatchPostOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (catalogsVerticalBatchRequestCatalogsItemsBatchRequest === null || catalogsVerticalBatchRequestCatalogsItemsBatchRequest === undefined) {
             throw new Error('Required parameter catalogsVerticalBatchRequestCatalogsItemsBatchRequest was null or undefined when calling itemsBatchPost.');
         }
@@ -1373,7 +1414,8 @@ export class CatalogsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...itemsBatchPostOpts?.config,
+                        headers: {...headers, ...itemsBatchPostOpts?.config?.headers},
                     }
                 );
             })
@@ -1389,9 +1431,10 @@ export class CatalogsService {
      * @param filters Identifies items to be retrieved. This is a required parameter.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [itemsGetOpts.config] Override http request option.
      */
-    public itemsGet(country: string, language: string, adAccountId?: string, itemIds?: Array<string>, filters?: CatalogsItemsFilters, ): Observable<AxiosResponse<CatalogsItems>>;
-    public itemsGet(country: string, language: string, adAccountId?: string, itemIds?: Array<string>, filters?: CatalogsItemsFilters, ): Observable<any> {
+    public itemsGet(country: string, language: string, adAccountId?: string, itemIds?: Array<string>, filters?: CatalogsItemsFilters, itemsGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CatalogsItems>>;
+    public itemsGet(country: string, language: string, adAccountId?: string, itemIds?: Array<string>, filters?: CatalogsItemsFilters, itemsGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (country === null || country === undefined) {
             throw new Error('Required parameter country was null or undefined when calling itemsGet.');
         }
@@ -1452,7 +1495,8 @@ export class CatalogsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...itemsGetOpts?.config,
+                        headers: {...headers, ...itemsGetOpts?.config?.headers},
                     }
                 );
             })
@@ -1469,9 +1513,10 @@ export class CatalogsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [itemsIssuesListOpts.config] Override http request option.
      */
-    public itemsIssuesList(processingResultId: string, bookmark?: string, pageSize?: number, itemNumbers?: Array<number>, itemValidationIssue?: CatalogsItemValidationIssue, adAccountId?: string, ): Observable<AxiosResponse<ItemsIssuesList200Response>>;
-    public itemsIssuesList(processingResultId: string, bookmark?: string, pageSize?: number, itemNumbers?: Array<number>, itemValidationIssue?: CatalogsItemValidationIssue, adAccountId?: string, ): Observable<any> {
+    public itemsIssuesList(processingResultId: string, bookmark?: string, pageSize?: number, itemNumbers?: Array<number>, itemValidationIssue?: CatalogsItemValidationIssue, adAccountId?: string, itemsIssuesListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<ItemsIssuesList200Response>>;
+    public itemsIssuesList(processingResultId: string, bookmark?: string, pageSize?: number, itemNumbers?: Array<number>, itemValidationIssue?: CatalogsItemValidationIssue, adAccountId?: string, itemsIssuesListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (processingResultId === null || processingResultId === undefined) {
             throw new Error('Required parameter processingResultId was null or undefined when calling itemsIssuesList.');
         }
@@ -1528,7 +1573,8 @@ export class CatalogsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...itemsIssuesListOpts?.config,
+                        headers: {...headers, ...itemsIssuesListOpts?.config?.headers},
                     }
                 );
             })
@@ -1541,9 +1587,10 @@ export class CatalogsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [itemsPostOpts.config] Override http request option.
      */
-    public itemsPost(catalogsItemsRequest: CatalogsItemsRequest, adAccountId?: string, ): Observable<AxiosResponse<CatalogsItems>>;
-    public itemsPost(catalogsItemsRequest: CatalogsItemsRequest, adAccountId?: string, ): Observable<any> {
+    public itemsPost(catalogsItemsRequest: CatalogsItemsRequest, adAccountId?: string, itemsPostOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CatalogsItems>>;
+    public itemsPost(catalogsItemsRequest: CatalogsItemsRequest, adAccountId?: string, itemsPostOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (catalogsItemsRequest === null || catalogsItemsRequest === undefined) {
             throw new Error('Required parameter catalogsItemsRequest was null or undefined when calling itemsPost.');
         }
@@ -1592,7 +1639,8 @@ export class CatalogsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...itemsPostOpts?.config,
+                        headers: {...headers, ...itemsPostOpts?.config?.headers},
                     }
                 );
             })
@@ -1608,9 +1656,10 @@ export class CatalogsService {
      * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [productsByProductGroupFilterListOpts.config] Override http request option.
      */
-    public productsByProductGroupFilterList(catalogsListProductsByFilterRequest: CatalogsListProductsByFilterRequest, bookmark?: string, pageSize?: number, adAccountId?: string, pinMetrics?: boolean, ): Observable<AxiosResponse<CatalogsProductGroupPinsList200Response>>;
-    public productsByProductGroupFilterList(catalogsListProductsByFilterRequest: CatalogsListProductsByFilterRequest, bookmark?: string, pageSize?: number, adAccountId?: string, pinMetrics?: boolean, ): Observable<any> {
+    public productsByProductGroupFilterList(catalogsListProductsByFilterRequest: CatalogsListProductsByFilterRequest, bookmark?: string, pageSize?: number, adAccountId?: string, pinMetrics?: boolean, productsByProductGroupFilterListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CatalogsProductGroupPinsList200Response>>;
+    public productsByProductGroupFilterList(catalogsListProductsByFilterRequest: CatalogsListProductsByFilterRequest, bookmark?: string, pageSize?: number, adAccountId?: string, pinMetrics?: boolean, productsByProductGroupFilterListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (catalogsListProductsByFilterRequest === null || catalogsListProductsByFilterRequest === undefined) {
             throw new Error('Required parameter catalogsListProductsByFilterRequest was null or undefined when calling productsByProductGroupFilterList.');
         }
@@ -1668,7 +1717,8 @@ export class CatalogsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...productsByProductGroupFilterListOpts?.config,
+                        headers: {...headers, ...productsByProductGroupFilterListOpts?.config?.headers},
                     }
                 );
             })
@@ -1681,9 +1731,10 @@ export class CatalogsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [reportsCreateOpts.config] Override http request option.
      */
-    public reportsCreate(catalogsReportParameters: CatalogsReportParameters, adAccountId?: string, ): Observable<AxiosResponse<CatalogsCreateReportResponse>>;
-    public reportsCreate(catalogsReportParameters: CatalogsReportParameters, adAccountId?: string, ): Observable<any> {
+    public reportsCreate(catalogsReportParameters: CatalogsReportParameters, adAccountId?: string, reportsCreateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CatalogsCreateReportResponse>>;
+    public reportsCreate(catalogsReportParameters: CatalogsReportParameters, adAccountId?: string, reportsCreateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (catalogsReportParameters === null || catalogsReportParameters === undefined) {
             throw new Error('Required parameter catalogsReportParameters was null or undefined when calling reportsCreate.');
         }
@@ -1732,7 +1783,8 @@ export class CatalogsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...reportsCreateOpts?.config,
+                        headers: {...headers, ...reportsCreateOpts?.config?.headers},
                     }
                 );
             })
@@ -1745,9 +1797,10 @@ export class CatalogsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [reportsGetOpts.config] Override http request option.
      */
-    public reportsGet(token: string, adAccountId?: string, ): Observable<AxiosResponse<CatalogsReport>>;
-    public reportsGet(token: string, adAccountId?: string, ): Observable<any> {
+    public reportsGet(token: string, adAccountId?: string, reportsGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<CatalogsReport>>;
+    public reportsGet(token: string, adAccountId?: string, reportsGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (token === null || token === undefined) {
             throw new Error('Required parameter token was null or undefined when calling reportsGet.');
         }
@@ -1793,7 +1846,8 @@ export class CatalogsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...reportsGetOpts?.config,
+                        headers: {...headers, ...reportsGetOpts?.config?.headers},
                     }
                 );
             })
@@ -1808,9 +1862,10 @@ export class CatalogsService {
      * @param bookmark Cursor used to fetch the next page of items
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [reportsStatsOpts.config] Override http request option.
      */
-    public reportsStats(parameters: CatalogsReportParameters, adAccountId?: string, pageSize?: number, bookmark?: string, ): Observable<AxiosResponse<ReportsStats200Response>>;
-    public reportsStats(parameters: CatalogsReportParameters, adAccountId?: string, pageSize?: number, bookmark?: string, ): Observable<any> {
+    public reportsStats(parameters: CatalogsReportParameters, adAccountId?: string, pageSize?: number, bookmark?: string, reportsStatsOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<ReportsStats200Response>>;
+    public reportsStats(parameters: CatalogsReportParameters, adAccountId?: string, pageSize?: number, bookmark?: string, reportsStatsOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (parameters === null || parameters === undefined) {
             throw new Error('Required parameter parameters was null or undefined when calling reportsStats.');
         }
@@ -1862,7 +1917,8 @@ export class CatalogsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...reportsStatsOpts?.config,
+                        headers: {...headers, ...reportsStatsOpts?.config?.headers},
                     }
                 );
             })

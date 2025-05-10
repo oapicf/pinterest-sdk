@@ -32,7 +32,7 @@ object Paths {
      * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to 1)
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to TIME_OF_AD_ACTION)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/analytics") class adAccountAnalytics(val adAccountId: kotlin.String, val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val columns: kotlin.collections.List<kotlin.String>, val granularity: Granularity, val clickWindowDays: kotlin.Int? = null, val engagementWindowDays: kotlin.Int? = null, val viewWindowDays: kotlin.Int? = null, val conversionReportTime: kotlin.String? = null)
+    @Resource("/ad_accounts/{ad_account_id}/analytics") class adAccountAnalytics(val adAccountId: kotlin.String, val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val columns: kotlin.collections.List<kotlin.String>, val granularity: Granularity, val clickWindowDays: kotlin.Int? = null, val engagementWindowDays: kotlin.Int? = null, val viewWindowDays: kotlin.Int? = null, val conversionReportTime: kotlin.String? = null)
 
     /**
      * Get targeting analytics for an ad account
@@ -56,7 +56,7 @@ of the necessary roles granted to them via
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to TIME_OF_AD_ACTION)
      * @param attributionTypes List of types of attribution for the conversion report (optional)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/targeting_analytics") class adAccountTargetingAnalyticsGet(val adAccountId: kotlin.String, val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val targetingTypes: kotlin.collections.List<AdsAnalyticsTargetingType>, val columns: kotlin.collections.List<kotlin.String>, val granularity: Granularity, val clickWindowDays: kotlin.Int? = null, val engagementWindowDays: kotlin.Int? = null, val viewWindowDays: kotlin.Int? = null, val conversionReportTime: kotlin.String? = null, val attributionTypes: ConversionReportAttributionType? = null)
+    @Resource("/ad_accounts/{ad_account_id}/targeting_analytics") class adAccountTargetingAnalyticsGet(val adAccountId: kotlin.String, val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val targetingTypes: kotlin.collections.List<AdsAnalyticsTargetingType>, val columns: kotlin.collections.List<kotlin.String>, val granularity: Granularity, val clickWindowDays: kotlin.Int? = null, val engagementWindowDays: kotlin.Int? = null, val viewWindowDays: kotlin.Int? = null, val conversionReportTime: kotlin.String? = null, val attributionTypes: ConversionReportAttributionType? = null)
 
     /**
      * Create ad account
@@ -66,14 +66,14 @@ You can set up up to 50 ad accounts per user. (The user must have a business acc
 For more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;https://help.pinterest.com/en/business/article/create-an-advertiser-account&quot;&gt;Create an advertiser account&lt;/a&gt;.
      * @param adAccountCreateRequest Ad account to create. 
      */
-    @Serializable @Resource("/ad_accounts") class adAccountsCreate(val adAccountCreateRequest: AdAccountCreateRequest)
+    @Resource("/ad_accounts") class adAccountsCreate()
 
     /**
      * Get ad account
      * Get an ad account
      * @param adAccountId Unique identifier of an ad account. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}") class adAccountsGet(val adAccountId: kotlin.String)
+    @Resource("/ad_accounts/{ad_account_id}") class adAccountsGet(val adAccountId: kotlin.String)
 
     /**
      * List ad accounts
@@ -83,7 +83,7 @@ For more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;ht
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param includeSharedAccounts Include shared ad accounts (optional, default to true)
      */
-    @Serializable @Resource("/ad_accounts") class adAccountsList(val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val includeSharedAccounts: kotlin.Boolean? = null)
+    @Resource("/ad_accounts") class adAccountsList(val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val includeSharedAccounts: kotlin.Boolean? = null)
 
     /**
      * Create a request for a Marketing Mix Modeling (MMM) report
@@ -92,7 +92,7 @@ the report when it is ready. NOTE: An additional limit of 5 queries per minute p
      * @param adAccountId Unique identifier of an ad account. 
      * @param createMMMReportRequest  
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/mmm_reports") class analyticsCreateMmmReport(val adAccountId: kotlin.String, val createMMMReportRequest: CreateMMMReportRequest)
+    @Resource("/ad_accounts/{ad_account_id}/mmm_reports") class analyticsCreateMmmReport(val adAccountId: kotlin.String)
 
     /**
      * Create async request for an account analytics report
@@ -105,7 +105,7 @@ the report when it is ready. NOTE: An additional limit of 5 queries per minute p
      * @param adAccountId Unique identifier of an ad account. 
      * @param adsAnalyticsCreateAsyncRequest  
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/reports") class analyticsCreateReport(val adAccountId: kotlin.String, val adsAnalyticsCreateAsyncRequest: AdsAnalyticsCreateAsyncRequest)
+    @Resource("/ad_accounts/{ad_account_id}/reports") class analyticsCreateReport(val adAccountId: kotlin.String)
 
     /**
      * Create async request for an analytics report using a template
@@ -117,7 +117,7 @@ template. It returns a token that you can use to download the report when it is 
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years past start date. (optional)
      * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly (optional)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/templates/{template_id}/reports") class analyticsCreateTemplateReport(val adAccountId: kotlin.String, val templateId: kotlin.String, val startDate: java.time.LocalDate? = null, val endDate: java.time.LocalDate? = null, val granularity: Granularity? = null)
+    @Resource("/ad_accounts/{ad_account_id}/templates/{template_id}/reports") class analyticsCreateTemplateReport(val adAccountId: kotlin.String, val templateId: kotlin.String, val startDate: java.time.LocalDate? = null, val endDate: java.time.LocalDate? = null, val granularity: Granularity? = null)
 
     /**
      * Get advertiser Marketing Mix Modeling (MMM) report.
@@ -126,7 +126,7 @@ create mmm report endpoint.
      * @param adAccountId Unique identifier of an ad account. 
      * @param token Token returned from the post request creation call 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/mmm_reports") class analyticsGetMmmReport(val adAccountId: kotlin.String, val token: kotlin.String)
+    @Resource("/ad_accounts/{ad_account_id}/mmm_reports") class analyticsGetMmmReport(val adAccountId: kotlin.String, val token: kotlin.String)
 
     /**
      * Get the account analytics report created by the async call
@@ -135,7 +135,7 @@ create mmm report endpoint.
      * @param adAccountId Unique identifier of an ad account. 
      * @param token Token returned from the post request creation call 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/reports") class analyticsGetReport(val adAccountId: kotlin.String, val token: kotlin.String)
+    @Resource("/ad_accounts/{ad_account_id}/reports") class analyticsGetReport(val adAccountId: kotlin.String, val token: kotlin.String)
 
     /**
      * Delete ads data for ad account in API Sandbox
@@ -146,7 +146,7 @@ Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sa
 Go to /docs/developer-tools/sandbox/ for more information.
      * @param adAccountId Unique identifier of an ad account. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/sandbox") class sandboxDelete(val adAccountId: kotlin.String)
+    @Resource("/ad_accounts/{ad_account_id}/sandbox") class sandboxDelete(val adAccountId: kotlin.String)
 
     /**
      * List templates
@@ -156,7 +156,7 @@ Go to /docs/developer-tools/sandbox/ for more information.
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/templates") class templatesList(val adAccountId: kotlin.String, val pageSize: kotlin.Int? = null, val order: kotlin.String? = null, val bookmark: kotlin.String? = null)
+    @Resource("/ad_accounts/{ad_account_id}/templates") class templatesList(val adAccountId: kotlin.String, val pageSize: kotlin.Int? = null, val order: kotlin.String? = null, val bookmark: kotlin.String? = null)
 
     /**
      * Get ad group analytics
@@ -175,7 +175,7 @@ Go to /docs/developer-tools/sandbox/ for more information.
      * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to 1)
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to TIME_OF_AD_ACTION)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/ad_groups/analytics") class adGroupsAnalytics(val adAccountId: kotlin.String, val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val adGroupIds: kotlin.collections.List<kotlin.String>, val columns: kotlin.collections.List<kotlin.String>, val granularity: Granularity, val clickWindowDays: kotlin.Int? = null, val engagementWindowDays: kotlin.Int? = null, val viewWindowDays: kotlin.Int? = null, val conversionReportTime: kotlin.String? = null)
+    @Resource("/ad_accounts/{ad_account_id}/ad_groups/analytics") class adGroupsAnalytics(val adAccountId: kotlin.String, val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val adGroupIds: kotlin.collections.List<kotlin.String>, val columns: kotlin.collections.List<kotlin.String>, val granularity: Granularity, val clickWindowDays: kotlin.Int? = null, val engagementWindowDays: kotlin.Int? = null, val viewWindowDays: kotlin.Int? = null, val conversionReportTime: kotlin.String? = null)
 
     /**
      * Get audience sizing
@@ -186,7 +186,7 @@ It does not guarantee results or take into account factors such as bid, budget, 
      * @param adAccountId Unique identifier of an ad account. 
      * @param adGroupAudienceSizingRequest  (optional)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/ad_groups/audience_sizing") class adGroupsAudienceSizing(val adAccountId: kotlin.String, val adGroupAudienceSizingRequest: AdGroupAudienceSizingRequest? = null)
+    @Resource("/ad_accounts/{ad_account_id}/ad_groups/audience_sizing") class adGroupsAudienceSizing(val adAccountId: kotlin.String)
 
     /**
      * Get bid floors
@@ -207,7 +207,7 @@ For more on bid floors see &lt;a class&#x3D;&quot;reference external&quot; href&
      * @param adAccountId Unique identifier of an ad account. 
      * @param bidFloorRequest Parameters to get bid_floor info 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/bid_floor") class adGroupsBidFloorGet(val adAccountId: kotlin.String, val bidFloorRequest: BidFloorRequest)
+    @Resource("/ad_accounts/{ad_account_id}/bid_floor") class adGroupsBidFloorGet(val adAccountId: kotlin.String)
 
     /**
      * Create ad groups
@@ -231,7 +231,7 @@ For more on bid floors see &lt;a class&#x3D;&quot;reference external&quot; href&
      * @param adAccountId Unique identifier of an ad account. 
      * @param adGroupCreateRequest List of ad groups to create, size limit [1, 30]. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/ad_groups") class adGroupsCreate(val adAccountId: kotlin.String, val adGroupCreateRequest: kotlin.collections.List<AdGroupCreateRequest>)
+    @Resource("/ad_accounts/{ad_account_id}/ad_groups") class adGroupsCreate(val adAccountId: kotlin.String)
 
     /**
      * Get ad group
@@ -241,7 +241,7 @@ For more information about our policies and rejection reasons see the &lt;a href
      * @param adAccountId Unique identifier of an ad account. 
      * @param adGroupId Unique identifier of an ad group. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}") class adGroupsGet(val adAccountId: kotlin.String, val adGroupId: kotlin.String)
+    @Resource("/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}") class adGroupsGet(val adAccountId: kotlin.String, val adGroupId: kotlin.String)
 
     /**
      * List ad groups
@@ -257,7 +257,7 @@ Provide only campaign_id or ad_group_id. Do not provide both.
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param translateInterestsToNames Return interests as text names (if value is true) rather than topic IDs. (optional, default to false)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/ad_groups") class adGroupsList(val adAccountId: kotlin.String, val campaignIds: kotlin.collections.List<kotlin.String>? = null, val adGroupIds: kotlin.collections.List<kotlin.String>? = null, val entityStatuses: kotlin.collections.List<kotlin.String>? = null, val pageSize: kotlin.Int? = null, val order: kotlin.String? = null, val bookmark: kotlin.String? = null, val translateInterestsToNames: kotlin.Boolean? = null)
+    @Resource("/ad_accounts/{ad_account_id}/ad_groups") class adGroupsList(val adAccountId: kotlin.String, val campaignIds: kotlin.collections.List<kotlin.String>? = null, val adGroupIds: kotlin.collections.List<kotlin.String>? = null, val entityStatuses: kotlin.collections.List<kotlin.String>? = null, val pageSize: kotlin.Int? = null, val order: kotlin.String? = null, val bookmark: kotlin.String? = null, val translateInterestsToNames: kotlin.Boolean? = null)
 
     /**
      * Get targeting analytics for ad groups
@@ -282,7 +282,7 @@ of the necessary roles granted to them via
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to TIME_OF_AD_ACTION)
      * @param attributionTypes List of types of attribution for the conversion report (optional)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/ad_groups/targeting_analytics") class adGroupsTargetingAnalyticsGet(val adAccountId: kotlin.String, val adGroupIds: kotlin.collections.List<kotlin.String>, val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val targetingTypes: kotlin.collections.List<AdsAnalyticsTargetingType>, val columns: kotlin.collections.List<kotlin.String>, val granularity: Granularity, val clickWindowDays: kotlin.Int? = null, val engagementWindowDays: kotlin.Int? = null, val viewWindowDays: kotlin.Int? = null, val conversionReportTime: kotlin.String? = null, val attributionTypes: ConversionReportAttributionType? = null)
+    @Resource("/ad_accounts/{ad_account_id}/ad_groups/targeting_analytics") class adGroupsTargetingAnalyticsGet(val adAccountId: kotlin.String, val adGroupIds: kotlin.collections.List<kotlin.String>, val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val targetingTypes: kotlin.collections.List<AdsAnalyticsTargetingType>, val columns: kotlin.collections.List<kotlin.String>, val granularity: Granularity, val clickWindowDays: kotlin.Int? = null, val engagementWindowDays: kotlin.Int? = null, val viewWindowDays: kotlin.Int? = null, val conversionReportTime: kotlin.String? = null, val attributionTypes: ConversionReportAttributionType? = null)
 
     /**
      * Update ad groups
@@ -290,7 +290,7 @@ of the necessary roles granted to them via
      * @param adAccountId Unique identifier of an ad account. 
      * @param adGroupUpdateRequest List of ad groups to update, size limit [1, 30]. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/ad_groups") class adGroupsUpdate(val adAccountId: kotlin.String, val adGroupUpdateRequest: kotlin.collections.List<AdGroupUpdateRequest>)
+    @Resource("/ad_accounts/{ad_account_id}/ad_groups") class adGroupsUpdate(val adAccountId: kotlin.String)
 
     /**
      * Create ad preview with pin or image
@@ -300,7 +300,7 @@ You can view the returned preview URL on a webpage or iframe for 7 days, after w
      * @param adAccountId Unique identifier of an ad account. 
      * @param adPreviewRequest Create ad preview with pin or image. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/ad_previews") class adPreviewsCreate(val adAccountId: kotlin.String, val adPreviewRequest: AdPreviewRequest)
+    @Resource("/ad_accounts/{ad_account_id}/ad_previews") class adPreviewsCreate(val adAccountId: kotlin.String)
 
     /**
      * Get targeting analytics for ads
@@ -325,7 +325,7 @@ of the necessary roles granted to them via
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to TIME_OF_AD_ACTION)
      * @param attributionTypes List of types of attribution for the conversion report (optional)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/ads/targeting_analytics") class adTargetingAnalyticsGet(val adAccountId: kotlin.String, val adIds: kotlin.collections.List<kotlin.String>, val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val targetingTypes: kotlin.collections.List<AdsAnalyticsAdTargetingType>, val columns: kotlin.collections.List<kotlin.String>, val granularity: Granularity, val clickWindowDays: kotlin.Int? = null, val engagementWindowDays: kotlin.Int? = null, val viewWindowDays: kotlin.Int? = null, val conversionReportTime: kotlin.String? = null, val attributionTypes: ConversionReportAttributionType? = null)
+    @Resource("/ad_accounts/{ad_account_id}/ads/targeting_analytics") class adTargetingAnalyticsGet(val adAccountId: kotlin.String, val adIds: kotlin.collections.List<kotlin.String>, val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val targetingTypes: kotlin.collections.List<AdsAnalyticsAdTargetingType>, val columns: kotlin.collections.List<kotlin.String>, val granularity: Granularity, val clickWindowDays: kotlin.Int? = null, val engagementWindowDays: kotlin.Int? = null, val viewWindowDays: kotlin.Int? = null, val conversionReportTime: kotlin.String? = null, val attributionTypes: ConversionReportAttributionType? = null)
 
     /**
      * Get ad analytics
@@ -347,7 +347,7 @@ of the necessary roles granted to them via
      * @param pinIds List of Pin IDs. (optional)
      * @param campaignIds List of Campaign Ids to use to filter the results. (optional)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/ads/analytics") class adsAnalytics(val adAccountId: kotlin.String, val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val columns: kotlin.collections.List<kotlin.String>, val granularity: Granularity, val adIds: kotlin.collections.List<kotlin.String>? = null, val clickWindowDays: kotlin.Int? = null, val engagementWindowDays: kotlin.Int? = null, val viewWindowDays: kotlin.Int? = null, val conversionReportTime: kotlin.String? = null, val pinIds: kotlin.collections.List<kotlin.String>? = null, val campaignIds: kotlin.collections.List<kotlin.String>? = null)
+    @Resource("/ad_accounts/{ad_account_id}/ads/analytics") class adsAnalytics(val adAccountId: kotlin.String, val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val adIds: kotlin.collections.List<kotlin.String>? = null, val columns: kotlin.collections.List<kotlin.String>, val granularity: Granularity, val clickWindowDays: kotlin.Int? = null, val engagementWindowDays: kotlin.Int? = null, val viewWindowDays: kotlin.Int? = null, val conversionReportTime: kotlin.String? = null, val pinIds: kotlin.collections.List<kotlin.String>? = null, val campaignIds: kotlin.collections.List<kotlin.String>? = null)
 
     /**
      * Create ads
@@ -355,7 +355,7 @@ of the necessary roles granted to them via
      * @param adAccountId Unique identifier of an ad account. 
      * @param adCreateRequest List of ads to create, size limit [1, 30]. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/ads") class adsCreate(val adAccountId: kotlin.String, val adCreateRequest: kotlin.collections.List<AdCreateRequest>)
+    @Resource("/ad_accounts/{ad_account_id}/ads") class adsCreate(val adAccountId: kotlin.String)
 
     /**
      * Get ad
@@ -365,7 +365,7 @@ For more information about our policies and rejection reasons see the &lt;a href
      * @param adAccountId Unique identifier of an ad account. 
      * @param adId Unique identifier of an ad. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/ads/{ad_id}") class adsGet(val adAccountId: kotlin.String, val adId: kotlin.String)
+    @Resource("/ad_accounts/{ad_account_id}/ads/{ad_id}") class adsGet(val adAccountId: kotlin.String, val adId: kotlin.String)
 
     /**
      * List ads
@@ -386,7 +386,7 @@ For more, see &lt;a href&#x3D;&quot;https://policy.pinterest.com/en/advertising-
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/ads") class adsList(val adAccountId: kotlin.String, val campaignIds: kotlin.collections.List<kotlin.String>? = null, val adGroupIds: kotlin.collections.List<kotlin.String>? = null, val adIds: kotlin.collections.List<kotlin.String>? = null, val entityStatuses: kotlin.collections.List<kotlin.String>? = null, val pageSize: kotlin.Int? = null, val order: kotlin.String? = null, val bookmark: kotlin.String? = null)
+    @Resource("/ad_accounts/{ad_account_id}/ads") class adsList(val adAccountId: kotlin.String, val campaignIds: kotlin.collections.List<kotlin.String>? = null, val adGroupIds: kotlin.collections.List<kotlin.String>? = null, val adIds: kotlin.collections.List<kotlin.String>? = null, val entityStatuses: kotlin.collections.List<kotlin.String>? = null, val pageSize: kotlin.Int? = null, val order: kotlin.String? = null, val bookmark: kotlin.String? = null)
 
     /**
      * Update ads
@@ -394,7 +394,7 @@ For more, see &lt;a href&#x3D;&quot;https://policy.pinterest.com/en/advertising-
      * @param adAccountId Unique identifier of an ad account. 
      * @param adUpdateRequest List of ads to update, size limit [1, 30] 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/ads") class adsUpdate(val adAccountId: kotlin.String, val adUpdateRequest: kotlin.collections.List<AdUpdateRequest>)
+    @Resource("/ad_accounts/{ad_account_id}/ads") class adsUpdate(val adAccountId: kotlin.String)
 
     /**
      * Get item bid options (POST)
@@ -408,7 +408,7 @@ This endpoint is not available to all users.
      * @param advancedAuctionItemsGetRequest Request object used to get bid options values for a batch of retail catalog items 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/advanced_auction/items/get") class advancedAuctionItemsGetPost(val advancedAuctionItemsGetRequest: AdvancedAuctionItemsGetRequest, val adAccountId: kotlin.String? = null)
+    @Resource("/advanced_auction/items/get") class advancedAuctionItemsGetPost(val adAccountId: kotlin.String? = null)
 
     /**
      * Operate on item level bid options
@@ -422,7 +422,7 @@ This endpoint is not available to all users.
      * @param advancedAuctionItemsSubmitRequest Request object used to upsert or delete bid options for a batch of retail catalog items 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/advanced_auction/items/submit") class advancedAuctionItemsSubmitPost(val advancedAuctionItemsSubmitRequest: AdvancedAuctionItemsSubmitRequest, val adAccountId: kotlin.String? = null)
+    @Resource("/advanced_auction/items/submit") class advancedAuctionItemsSubmitPost(val adAccountId: kotlin.String? = null)
 
     /**
      * Get audience insights
@@ -433,14 +433,14 @@ total audience.&lt;p/&gt;
      * @param adAccountId Unique identifier of an ad account. 
      * @param audienceInsightType Type of audience insights. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/audience_insights") class audienceInsightsGet(val adAccountId: kotlin.String, val audienceInsightType: AudienceInsightType)
+    @Resource("/ad_accounts/{ad_account_id}/audience_insights") class audienceInsightsGet(val adAccountId: kotlin.String, val audienceInsightType: AudienceInsightType)
 
     /**
      * Get audience insights scope and type
      * Get the scope and type of available audiences, which along with a date, is an audience that has recently had an interaction (referred to here as a type) on pins. Interacted pins can belong to at least the most common **partner** or **Pinterest** scopes. This means that user interactions made on advertiser or partner pins will have the **partner** scope. You can also have user interactions performed in general on Pinterest with the **Pinterest** scope. In that case, you can then use the returned type and scope values together on requests to other endpoints to retrieve insight metrics for a desired audience.
      * @param adAccountId Unique identifier of an ad account. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/insights/audiences") class audienceInsightsScopeAndTypeGet(val adAccountId: kotlin.String)
+    @Resource("/ad_accounts/{ad_account_id}/insights/audiences") class audienceInsightsScopeAndTypeGet(val adAccountId: kotlin.String)
 
     /**
      * List accounts with access to an audience owned by an ad account
@@ -451,7 +451,7 @@ total audience.&lt;p/&gt;
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/audiences/shared/accounts") class adAccountsAudiencesSharedAccountsList(val adAccountId: kotlin.String, val audienceId: kotlin.String, val accountType: AudienceAccountType, val pageSize: kotlin.Int? = null, val bookmark: kotlin.String? = null)
+    @Resource("/ad_accounts/{ad_account_id}/audiences/shared/accounts") class adAccountsAudiencesSharedAccountsList(val adAccountId: kotlin.String, val audienceId: kotlin.String, val accountType: AudienceAccountType, val pageSize: kotlin.Int? = null, val bookmark: kotlin.String? = null)
 
     /**
      * List accounts with access to an audience owned by a business
@@ -464,7 +464,7 @@ If the requesting business is not the owner of the audience, only ad accounts ow
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      */
-    @Serializable @Resource("/businesses/{business_id}/audiences/shared/accounts") class businessAccountAudiencesSharedAccountsList(val businessId: kotlin.String, val audienceId: kotlin.String, val accountType: AudienceAccountType, val pageSize: kotlin.Int? = null, val bookmark: kotlin.String? = null)
+    @Resource("/businesses/{business_id}/audiences/shared/accounts") class businessAccountAudiencesSharedAccountsList(val businessId: kotlin.String, val audienceId: kotlin.String, val accountType: AudienceAccountType, val pageSize: kotlin.Int? = null, val bookmark: kotlin.String? = null)
 
     /**
      * List received audiences for a business
@@ -474,7 +474,7 @@ If the requesting business is not the owner of the audience, only ad accounts ow
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      */
-    @Serializable @Resource("/businesses/{business_id}/audiences") class sharedAudiencesForBusinessList(val businessId: kotlin.String, val bookmark: kotlin.String? = null, val order: kotlin.String? = null, val pageSize: kotlin.Int? = null)
+    @Resource("/businesses/{business_id}/audiences") class sharedAudiencesForBusinessList(val businessId: kotlin.String, val bookmark: kotlin.String? = null, val order: kotlin.String? = null, val pageSize: kotlin.Int? = null)
 
     /**
      * Update audience sharing between ad accounts
@@ -482,7 +482,7 @@ If the requesting business is not the owner of the audience, only ad accounts ow
      * @param adAccountId Unique identifier of an ad account. 
      * @param sharedAudience  
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared") class updateAdAccountToAdAccountSharedAudience(val adAccountId: kotlin.String, val sharedAudience: SharedAudience)
+    @Resource("/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared") class updateAdAccountToAdAccountSharedAudience(val adAccountId: kotlin.String)
 
     /**
      * Update audience sharing from an ad account to businesses
@@ -490,7 +490,7 @@ If the requesting business is not the owner of the audience, only ad accounts ow
      * @param adAccountId Unique identifier of an ad account. 
      * @param businessSharedAudience  
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/audiences/businesses/shared") class updateAdAccountToBusinessSharedAudience(val adAccountId: kotlin.String, val businessSharedAudience: BusinessSharedAudience)
+    @Resource("/ad_accounts/{ad_account_id}/audiences/businesses/shared") class updateAdAccountToBusinessSharedAudience(val adAccountId: kotlin.String)
 
     /**
      * Update audience sharing from a business to ad accounts
@@ -498,7 +498,7 @@ If the requesting business is not the owner of the audience, only ad accounts ow
      * @param businessId Unique identifier of the requesting business. 
      * @param sharedAudience  
      */
-    @Serializable @Resource("/businesses/{business_id}/audiences/ad_accounts/shared") class updateBusinessToAdAccountSharedAudience(val businessId: kotlin.String, val sharedAudience: SharedAudience)
+    @Resource("/businesses/{business_id}/audiences/ad_accounts/shared") class updateBusinessToAdAccountSharedAudience(val businessId: kotlin.String)
 
     /**
      * Update audience sharing between businesses
@@ -506,7 +506,7 @@ If the requesting business is not the owner of the audience, only ad accounts ow
      * @param businessId Unique identifier of the requesting business. 
      * @param businessSharedAudience  
      */
-    @Serializable @Resource("/businesses/{business_id}/audiences/businesses/shared") class updateBusinessToBusinessSharedAudience(val businessId: kotlin.String, val businessSharedAudience: BusinessSharedAudience)
+    @Resource("/businesses/{business_id}/audiences/businesses/shared") class updateBusinessToBusinessSharedAudience(val businessId: kotlin.String)
 
     /**
      * Create audience
@@ -517,7 +517,7 @@ For more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;ht
      * @param adAccountId Unique identifier of an ad account. 
      * @param audienceCreateRequest List of ads to create, size limit [1, 30] 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/audiences") class audiencesCreate(val adAccountId: kotlin.String, val audienceCreateRequest: AudienceCreateRequest)
+    @Resource("/ad_accounts/{ad_account_id}/audiences") class audiencesCreate(val adAccountId: kotlin.String)
 
     /**
      * Create custom audience
@@ -525,7 +525,7 @@ For more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;ht
      * @param adAccountId Unique identifier of an ad account. 
      * @param audienceCreateCustomRequest Custom audience to create. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/audiences/custom") class audiencesCreateCustom(val adAccountId: kotlin.String, val audienceCreateCustomRequest: AudienceCreateCustomRequest)
+    @Resource("/ad_accounts/{ad_account_id}/audiences/custom") class audiencesCreateCustom(val adAccountId: kotlin.String)
 
     /**
      * Get audience
@@ -533,7 +533,7 @@ For more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;ht
      * @param adAccountId Unique identifier of an ad account. 
      * @param audienceId Unique identifier of an audience 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/audiences/{audience_id}") class audiencesGet(val adAccountId: kotlin.String, val audienceId: kotlin.String)
+    @Resource("/ad_accounts/{ad_account_id}/audiences/{audience_id}") class audiencesGet(val adAccountId: kotlin.String, val audienceId: kotlin.String)
 
     /**
      * List audiences
@@ -544,7 +544,7 @@ For more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;ht
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param ownershipType Filter audiences by ownership type. (optional, default to OWNED)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/audiences") class audiencesList(val adAccountId: kotlin.String, val bookmark: kotlin.String? = null, val order: kotlin.String? = null, val pageSize: kotlin.Int? = null, val ownershipType: kotlin.String? = null)
+    @Resource("/ad_accounts/{ad_account_id}/audiences") class audiencesList(val adAccountId: kotlin.String, val bookmark: kotlin.String? = null, val order: kotlin.String? = null, val pageSize: kotlin.Int? = null, val ownershipType: kotlin.String? = null)
 
     /**
      * Update audience
@@ -553,7 +553,7 @@ For more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;ht
      * @param audienceId Unique identifier of an audience 
      * @param audienceUpdateRequest The audience to be updated. (optional)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/audiences/{audience_id}") class audiencesUpdate(val adAccountId: kotlin.String, val audienceId: kotlin.String, val audienceUpdateRequest: AudienceUpdateRequest? = null)
+    @Resource("/ad_accounts/{ad_account_id}/audiences/{audience_id}") class audiencesUpdate(val adAccountId: kotlin.String, val audienceId: kotlin.String)
 
     /**
      * Redeem ad credits
@@ -563,7 +563,7 @@ For more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;ht
      * @param adAccountId Unique identifier of an ad account. 
      * @param adsCreditRedeemRequest Redeem ad credits request. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/ads_credit/redeem") class adsCreditRedeem(val adAccountId: kotlin.String, val adsCreditRedeemRequest: AdsCreditRedeemRequest)
+    @Resource("/ad_accounts/{ad_account_id}/ads_credit/redeem") class adsCreditRedeem(val adAccountId: kotlin.String)
 
     /**
      * Get ads credit discounts
@@ -574,7 +574,7 @@ For more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;ht
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/ads_credit/discounts") class adsCreditsDiscountsGet(val adAccountId: kotlin.String, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
+    @Resource("/ad_accounts/{ad_account_id}/ads_credit/discounts") class adsCreditsDiscountsGet(val adAccountId: kotlin.String, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
 
     /**
      * Get billing profiles
@@ -586,7 +586,7 @@ For more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;ht
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/billing_profiles") class billingProfilesGet(val adAccountId: kotlin.String, val isActive: kotlin.Boolean, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
+    @Resource("/ad_accounts/{ad_account_id}/billing_profiles") class billingProfilesGet(val adAccountId: kotlin.String, val isActive: kotlin.Boolean, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
 
     /**
      * Get Salesforce account details including bill-to information.
@@ -594,7 +594,7 @@ For more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;ht
 - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/ssio/accounts") class ssioAccountsGet(val adAccountId: kotlin.String)
+    @Resource("/ad_accounts/{ad_account_id}/ssio/accounts") class ssioAccountsGet(val adAccountId: kotlin.String)
 
     /**
      * Create insertion order through SSIO.
@@ -603,7 +603,7 @@ For more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;ht
      * @param adAccountId Unique identifier of an ad account. 
      * @param ssIOCreateInsertionOrderRequest Order line to create. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/ssio/insertion_orders") class ssioInsertionOrderCreate(val adAccountId: kotlin.String, val ssIOCreateInsertionOrderRequest: SSIOCreateInsertionOrderRequest)
+    @Resource("/ad_accounts/{ad_account_id}/ssio/insertion_orders") class ssioInsertionOrderCreate(val adAccountId: kotlin.String)
 
     /**
      * Edit insertion order through SSIO.
@@ -612,7 +612,7 @@ For more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;ht
      * @param adAccountId Unique identifier of an ad account. 
      * @param ssIOEditInsertionOrderRequest Order line to create. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/ssio/insertion_orders") class ssioInsertionOrderEdit(val adAccountId: kotlin.String, val ssIOEditInsertionOrderRequest: SSIOEditInsertionOrderRequest)
+    @Resource("/ad_accounts/{ad_account_id}/ssio/insertion_orders") class ssioInsertionOrderEdit(val adAccountId: kotlin.String)
 
     /**
      * Get insertion order status by ad account id.
@@ -622,7 +622,7 @@ For more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;ht
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/ssio/insertion_orders/status") class ssioInsertionOrdersStatusGetByAdAccount(val adAccountId: kotlin.String, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
+    @Resource("/ad_accounts/{ad_account_id}/ssio/insertion_orders/status") class ssioInsertionOrdersStatusGetByAdAccount(val adAccountId: kotlin.String, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
 
     /**
      * Get insertion order status by pin order id.
@@ -631,7 +631,7 @@ For more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;ht
      * @param adAccountId Unique identifier of an ad account. 
      * @param pinOrderId The pin order id associated with the ssio insertion order 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/ssio/insertion_orders/{pin_order_id}/status") class ssioInsertionOrdersStatusGetByPinOrderId(val adAccountId: kotlin.String, val pinOrderId: kotlin.String)
+    @Resource("/ad_accounts/{ad_account_id}/ssio/insertion_orders/{pin_order_id}/status") class ssioInsertionOrdersStatusGetByPinOrderId(val adAccountId: kotlin.String, val pinOrderId: kotlin.String)
 
     /**
      * Get Salesforce order lines by ad account id.
@@ -642,7 +642,7 @@ For more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;ht
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param pinOrderId The pin order id associated with the ssio insertino order (optional)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/ssio/order_lines") class ssioOrderLinesGetByAdAccount(val adAccountId: kotlin.String, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val pinOrderId: kotlin.String? = null)
+    @Resource("/ad_accounts/{ad_account_id}/ssio/order_lines") class ssioOrderLinesGetByAdAccount(val adAccountId: kotlin.String, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val pinOrderId: kotlin.String? = null)
 
     /**
      * Create board section
@@ -653,7 +653,7 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
      * @param boardSection Create a board section. 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/boards/{board_id}/sections") class boardSectionsCreate(val boardId: kotlin.String, val boardSection: BoardSection, val adAccountId: kotlin.String? = null)
+    @Resource("/boards/{board_id}/sections") class boardSectionsCreate(val boardId: kotlin.String, val adAccountId: kotlin.String? = null)
 
     /**
      * Delete board section
@@ -664,7 +664,7 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
      * @param sectionId Unique identifier of a board section. 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/boards/{board_id}/sections/{section_id}") class boardSectionsDelete(val boardId: kotlin.String, val sectionId: kotlin.String, val adAccountId: kotlin.String? = null)
+    @Resource("/boards/{board_id}/sections/{section_id}") class boardSectionsDelete(val boardId: kotlin.String, val sectionId: kotlin.String, val adAccountId: kotlin.String? = null)
 
     /**
      * List board sections
@@ -676,7 +676,7 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      */
-    @Serializable @Resource("/boards/{board_id}/sections") class boardSectionsList(val boardId: kotlin.String, val adAccountId: kotlin.String? = null, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
+    @Resource("/boards/{board_id}/sections") class boardSectionsList(val boardId: kotlin.String, val adAccountId: kotlin.String? = null, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
 
     /**
      * List Pins on board section
@@ -689,7 +689,7 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      */
-    @Serializable @Resource("/boards/{board_id}/sections/{section_id}/pins") class boardSectionsListPins(val boardId: kotlin.String, val sectionId: kotlin.String, val adAccountId: kotlin.String? = null, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
+    @Resource("/boards/{board_id}/sections/{section_id}/pins") class boardSectionsListPins(val boardId: kotlin.String, val sectionId: kotlin.String, val adAccountId: kotlin.String? = null, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
 
     /**
      * Update board section
@@ -701,7 +701,7 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
      * @param boardSection Update a board section. 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/boards/{board_id}/sections/{section_id}") class boardSectionsUpdate(val boardId: kotlin.String, val sectionId: kotlin.String, val boardSection: BoardSection, val adAccountId: kotlin.String? = null)
+    @Resource("/boards/{board_id}/sections/{section_id}") class boardSectionsUpdate(val boardId: kotlin.String, val sectionId: kotlin.String, val adAccountId: kotlin.String? = null)
 
     /**
      * Create board
@@ -711,7 +711,7 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
      * @param board Create a board using a single board json object. 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/boards") class boardsCreate(val board: Board, val adAccountId: kotlin.String? = null)
+    @Resource("/boards") class boardsCreate(val adAccountId: kotlin.String? = null)
 
     /**
      * Delete board
@@ -721,7 +721,7 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
      * @param boardId Unique identifier of a board. 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/boards/{board_id}") class boardsDelete(val boardId: kotlin.String, val adAccountId: kotlin.String? = null)
+    @Resource("/boards/{board_id}") class boardsDelete(val boardId: kotlin.String, val adAccountId: kotlin.String? = null)
 
     /**
      * Get board
@@ -731,7 +731,7 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
      * @param boardId Unique identifier of a board. 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/boards/{board_id}") class boardsGet(val boardId: kotlin.String, val adAccountId: kotlin.String? = null)
+    @Resource("/boards/{board_id}") class boardsGet(val boardId: kotlin.String, val adAccountId: kotlin.String? = null)
 
     /**
      * List boards
@@ -744,7 +744,7 @@ Optional: Specify a privacy type (public, protected, or secret) to indicate whic
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param privacy Privacy setting for a board. (optional)
      */
-    @Serializable @Resource("/boards") class boardsList(val adAccountId: kotlin.String? = null, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val privacy: kotlin.String? = null)
+    @Resource("/boards") class boardsList(val adAccountId: kotlin.String? = null, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val privacy: kotlin.String? = null)
 
     /**
      * List Pins on board
@@ -758,7 +758,7 @@ Optional: Specify a privacy type (public, protected, or secret) to indicate whic
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
      */
-    @Serializable @Resource("/boards/{board_id}/pins") class boardsListPins(val boardId: kotlin.String, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val creativeTypes: kotlin.collections.List<kotlin.String>? = null, val adAccountId: kotlin.String? = null, val pinMetrics: kotlin.Boolean? = null)
+    @Resource("/boards/{board_id}/pins") class boardsListPins(val boardId: kotlin.String, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val creativeTypes: kotlin.collections.List<kotlin.String>? = null, val adAccountId: kotlin.String? = null, val pinMetrics: kotlin.Boolean? = null)
 
     /**
      * Update board
@@ -769,7 +769,7 @@ Optional: Specify a privacy type (public, protected, or secret) to indicate whic
      * @param boardUpdate Update a board. 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/boards/{board_id}") class boardsUpdate(val boardId: kotlin.String, val boardUpdate: BoardUpdate, val adAccountId: kotlin.String? = null)
+    @Resource("/boards/{board_id}") class boardsUpdate(val boardId: kotlin.String, val adAccountId: kotlin.String? = null)
 
     /**
      * Get advertiser entities in bulk
@@ -779,7 +779,7 @@ only active entities will return data.
      * @param adAccountId Unique identifier of an ad account. 
      * @param bulkDownloadRequest Parameters to get ad entities in bulk 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/bulk/download") class bulkDownloadCreate(val adAccountId: kotlin.String, val bulkDownloadRequest: BulkDownloadRequest)
+    @Resource("/ad_accounts/{ad_account_id}/bulk/download") class bulkDownloadCreate(val adAccountId: kotlin.String)
 
     /**
      * Download advertiser entities in bulk
@@ -789,7 +789,7 @@ new or updated entity data (campaigns, ad groups, product groups, ads, or keywor
      * @param bulkRequestId Unique identifier of a bulk upsert request. 
      * @param includeDetails if set to True then attach the errors/details to all the requests (optional, default to false)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/bulk/{bulk_request_id}") class bulkRequestGet(val adAccountId: kotlin.String, val bulkRequestId: kotlin.String, val includeDetails: kotlin.Boolean? = null)
+    @Resource("/ad_accounts/{ad_account_id}/bulk/{bulk_request_id}") class bulkRequestGet(val adAccountId: kotlin.String, val bulkRequestId: kotlin.String, val includeDetails: kotlin.Boolean? = null)
 
     /**
      * Create/update ad entities in bulk
@@ -799,7 +799,7 @@ that can be used to obtain the status of the request.
      * @param adAccountId Unique identifier of an ad account. 
      * @param bulkUpsertRequest Parameters to get create/update ad entities in bulk 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/bulk/upsert") class bulkUpsertCreate(val adAccountId: kotlin.String, val bulkUpsertRequest: BulkUpsertRequest)
+    @Resource("/ad_accounts/{ad_account_id}/bulk/upsert") class bulkUpsertCreate(val adAccountId: kotlin.String)
 
     /**
      * Create a new asset group.
@@ -808,7 +808,7 @@ that can be used to obtain the status of the request.
      * @param businessId Unique identifier of the requesting business. 
      * @param createAssetGroupBody  
      */
-    @Serializable @Resource("/businesses/{business_id}/asset_groups") class assetGroupCreate(val businessId: kotlin.String, val createAssetGroupBody: CreateAssetGroupBody)
+    @Resource("/businesses/{business_id}/asset_groups") class assetGroupCreate(val businessId: kotlin.String)
 
     /**
      * Delete asset groups.
@@ -816,7 +816,7 @@ that can be used to obtain the status of the request.
      * @param businessId Unique identifier of the requesting business. 
      * @param deleteAssetGroupBody  
      */
-    @Serializable @Resource("/businesses/{business_id}/asset_groups") class assetGroupDelete(val businessId: kotlin.String, val deleteAssetGroupBody: DeleteAssetGroupBody)
+    @Resource("/businesses/{business_id}/asset_groups") class assetGroupDelete(val businessId: kotlin.String)
 
     /**
      * Update asset groups.
@@ -824,7 +824,7 @@ that can be used to obtain the status of the request.
      * @param businessId Unique identifier of the requesting business. 
      * @param updateAssetGroupBody  
      */
-    @Serializable @Resource("/businesses/{business_id}/asset_groups") class assetGroupUpdate(val businessId: kotlin.String, val updateAssetGroupBody: UpdateAssetGroupBody)
+    @Resource("/businesses/{business_id}/asset_groups") class assetGroupUpdate(val businessId: kotlin.String)
 
     /**
      * Get members with access to asset
@@ -835,7 +835,7 @@ that can be used to obtain the status of the request.
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
      */
-    @Serializable @Resource("/businesses/{business_id}/assets/{asset_id}/members") class businessAssetMembersGet(val businessId: kotlin.String, val assetId: kotlin.String, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val startIndex: kotlin.Int? = null)
+    @Resource("/businesses/{business_id}/assets/{asset_id}/members") class businessAssetMembersGet(val businessId: kotlin.String, val assetId: kotlin.String, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val startIndex: kotlin.Int? = null)
 
     /**
      * Get partners with access to asset
@@ -848,7 +848,7 @@ you cannot be shared with a different partner.
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      */
-    @Serializable @Resource("/businesses/{business_id}/assets/{asset_id}/partners") class businessAssetPartnersGet(val businessId: kotlin.String, val assetId: kotlin.String, val startIndex: kotlin.Int? = null, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
+    @Resource("/businesses/{business_id}/assets/{asset_id}/partners") class businessAssetPartnersGet(val businessId: kotlin.String, val assetId: kotlin.String, val startIndex: kotlin.Int? = null, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
 
     /**
      * List business assets
@@ -862,7 +862,7 @@ you cannot be shared with a different partner.
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      */
-    @Serializable @Resource("/businesses/{business_id}/assets") class businessAssetsGet(val businessId: kotlin.String, val permissions: kotlin.collections.List<PermissionsWithOwner>? = null, val childAssetId: kotlin.String? = null, val assetGroupId: kotlin.String? = null, val assetType: kotlin.String? = null, val startIndex: kotlin.Int? = null, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
+    @Resource("/businesses/{business_id}/assets") class businessAssetsGet(val businessId: kotlin.String, val permissions: kotlin.collections.List<PermissionsWithOwner>? = null, val childAssetId: kotlin.String? = null, val assetGroupId: kotlin.String? = null, val assetType: kotlin.String? = null, val startIndex: kotlin.Int? = null, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
 
     /**
      * Get assets assigned to a member
@@ -877,7 +877,7 @@ The return response will include the permissions the member has to that asset an
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      */
-    @Serializable @Resource("/businesses/{business_id}/members/{member_id}/assets") class businessMemberAssetsGet(val businessId: kotlin.String, val memberId: kotlin.String, val assetType: kotlin.String? = null, val startIndex: kotlin.Int? = null, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
+    @Resource("/businesses/{business_id}/members/{member_id}/assets") class businessMemberAssetsGet(val businessId: kotlin.String, val memberId: kotlin.String, val assetType: kotlin.String? = null, val startIndex: kotlin.Int? = null, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
 
     /**
      * Delete member access to asset
@@ -885,7 +885,7 @@ The return response will include the permissions the member has to that asset an
      * @param businessId Unique identifier of the requesting business. 
      * @param businessMembersAssetAccessDeleteRequest List member assset permissions to delete. 
      */
-    @Serializable @Resource("/businesses/{business_id}/members/assets/access") class businessMembersAssetAccessDelete(val businessId: kotlin.String, val businessMembersAssetAccessDeleteRequest: BusinessMembersAssetAccessDeleteRequest)
+    @Resource("/businesses/{business_id}/members/assets/access") class businessMembersAssetAccessDelete(val businessId: kotlin.String)
 
     /**
      * Assign/Update member asset permissions
@@ -895,7 +895,7 @@ Note: Not all listed permissions are applicable to each asset type. For example,
      * @param businessId Unique identifier of the requesting business. 
      * @param updateMemberAssetAccessBody List of member asset permissions to create or update. 
      */
-    @Serializable @Resource("/businesses/{business_id}/members/assets/access") class businessMembersAssetAccessUpdate(val businessId: kotlin.String, val updateMemberAssetAccessBody: UpdateMemberAssetAccessBody)
+    @Resource("/businesses/{business_id}/members/assets/access") class businessMembersAssetAccessUpdate(val businessId: kotlin.String)
 
     /**
      * Get assets assigned to a partner or assets assigned by a partner
@@ -911,7 +911,7 @@ granted your partner access to. If you specify:
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      */
-    @Serializable @Resource("/businesses/{business_id}/partners/{partner_id}/assets") class businessPartnerAssetAccessGet(val businessId: kotlin.String, val partnerId: kotlin.String, val partnerType: PartnerType? = null, val assetType: kotlin.String? = null, val startIndex: kotlin.Int? = null, val pageSize: kotlin.Int? = null, val bookmark: kotlin.String? = null)
+    @Resource("/businesses/{business_id}/partners/{partner_id}/assets") class businessPartnerAssetAccessGet(val businessId: kotlin.String, val partnerId: kotlin.String, val partnerType: PartnerType? = null, val assetType: kotlin.String? = null, val startIndex: kotlin.Int? = null, val pageSize: kotlin.Int? = null, val bookmark: kotlin.String? = null)
 
     /**
      * Delete partner access to asset
@@ -921,7 +921,7 @@ granted your partner access to. If you specify:
      * @param businessId Unique identifier of the requesting business. 
      * @param deletePartnerAssetAccessBody  
      */
-    @Serializable @Resource("/businesses/{business_id}/partners/assets") class deletePartnerAssetAccessHandlerImpl(val businessId: kotlin.String, val deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody)
+    @Resource("/businesses/{business_id}/partners/assets") class deletePartnerAssetAccessHandlerImpl(val businessId: kotlin.String)
 
     /**
      * Assign/Update partner asset permissions
@@ -935,7 +935,7 @@ the type PROFILE.
      * @param businessId Unique identifier of the requesting business. 
      * @param updatePartnerAssetAccessBody A list of assets and permissions to assign to your partners. 
      */
-    @Serializable @Resource("/businesses/{business_id}/partners/assets") class updatePartnerAssetAccessHandlerImpl(val businessId: kotlin.String, val updatePartnerAssetAccessBody: UpdatePartnerAssetAccessBody)
+    @Resource("/businesses/{business_id}/partners/assets") class updatePartnerAssetAccessHandlerImpl(val businessId: kotlin.String)
 
     /**
      * Create a request to access an existing partner&#39;s assets.
@@ -943,7 +943,7 @@ the type PROFILE.
      * @param businessId Unique identifier of the requesting business. 
      * @param createAssetAccessRequestBody  
      */
-    @Serializable @Resource("/businesses/{business_id}/requests/assets/access") class assetAccessRequestsCreate(val businessId: kotlin.String, val createAssetAccessRequestBody: CreateAssetAccessRequestBody)
+    @Resource("/businesses/{business_id}/requests/assets/access") class assetAccessRequestsCreate(val businessId: kotlin.String)
 
     /**
      * Cancel invites/requests
@@ -951,7 +951,7 @@ the type PROFILE.
      * @param businessId Business id 
      * @param cancelInvitesBody A list with invite ids 
      */
-    @Serializable @Resource("/businesses/{business_id}/invites") class cancelInvitesOrRequests(val businessId: kotlin.String, val cancelInvitesBody: CancelInvitesBody)
+    @Resource("/businesses/{business_id}/invites") class cancelInvitesOrRequests(val businessId: kotlin.String)
 
     /**
      * Update invite/request with an asset permission
@@ -973,7 +973,7 @@ To learn more about permission levels, visit https://help.pinterest.com/en/busin
      * @param businessId Unique identifier of the requesting business. 
      * @param createAssetInvitesRequest A list of invites/requests together with the asset permissions to be assigned to the invite/request.  
      */
-    @Serializable @Resource("/businesses/{business_id}/invites/assets/access") class createAssetInvites(val businessId: kotlin.String, val createAssetInvitesRequest: CreateAssetInvitesRequest)
+    @Resource("/businesses/{business_id}/invites/assets/access") class createAssetInvites(val businessId: kotlin.String)
 
     /**
      * Create invites or requests
@@ -994,7 +994,7 @@ To learn more about permission levels, visit https://help.pinterest.com/en/busin
      * @param businessId Business id 
      * @param createMembershipOrPartnershipInvitesBody An object with the properties: invite_type, partners, members, business_role 
      */
-    @Serializable @Resource("/businesses/{business_id}/invites") class createMembershipOrPartnershipInvites(val businessId: kotlin.String, val createMembershipOrPartnershipInvitesBody: CreateMembershipOrPartnershipInvitesBody)
+    @Resource("/businesses/{business_id}/invites") class createMembershipOrPartnershipInvites(val businessId: kotlin.String)
 
     /**
      * Get invites/requests
@@ -1006,14 +1006,14 @@ To learn more about permission levels, visit https://help.pinterest.com/en/busin
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      */
-    @Serializable @Resource("/businesses/{business_id}/invites") class getInvites(val businessId: kotlin.String, val isMember: kotlin.Boolean? = null, val inviteStatus: kotlin.collections.List<kotlin.String>? = null, val inviteType: InviteType? = null, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
+    @Resource("/businesses/{business_id}/invites") class getInvites(val businessId: kotlin.String, val isMember: kotlin.Boolean? = null, val inviteStatus: kotlin.collections.List<kotlin.String>? = null, val inviteType: InviteType? = null, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
 
     /**
      * Accept or decline an invite/request
      * Accept or decline invites or requests.
      * @param authRespondInvitesBody  
      */
-    @Serializable @Resource("/businesses/invites") class respondBusinessAccessInvites(val authRespondInvitesBody: AuthRespondInvitesBody)
+    @Resource("/businesses/invites") class respondBusinessAccessInvites()
 
     /**
      * Terminate business memberships
@@ -1021,7 +1021,7 @@ To learn more about permission levels, visit https://help.pinterest.com/en/busin
      * @param businessId Business id 
      * @param membersToDeleteBody List of members with role to delete. 
      */
-    @Serializable @Resource("/businesses/{business_id}/members") class deleteBusinessMembership(val businessId: kotlin.String, val membersToDeleteBody: MembersToDeleteBody)
+    @Resource("/businesses/{business_id}/members") class deleteBusinessMembership(val businessId: kotlin.String)
 
     /**
      * Terminate business partnerships
@@ -1030,7 +1030,7 @@ Note: You may only batch terminate partners of the same partner type.
      * @param businessId Unique identifier of the requesting business. 
      * @param deletePartnersRequest An object containing a \&quot;partner_ids\&quot; property composed of a list of partner IDs and a \&quot;partners_type\&quot; property specifying the type of partners to delete.  
      */
-    @Serializable @Resource("/businesses/{business_id}/partners") class deleteBusinessPartners(val businessId: kotlin.String, val deletePartnersRequest: DeletePartnersRequest)
+    @Resource("/businesses/{business_id}/partners") class deleteBusinessPartners(val businessId: kotlin.String)
 
     /**
      * List business employers for user
@@ -1038,7 +1038,7 @@ Note: You may only batch terminate partners of the same partner type.
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      */
-    @Serializable @Resource("/businesses/employers") class getBusinessEmployers(val pageSize: kotlin.Int? = null, val bookmark: kotlin.String? = null)
+    @Resource("/businesses/employers") class getBusinessEmployers(val pageSize: kotlin.Int? = null, val bookmark: kotlin.String? = null)
 
     /**
      * Get business members
@@ -1052,7 +1052,7 @@ The return response will include the member&#39;s business_role and assets they 
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      */
-    @Serializable @Resource("/businesses/{business_id}/members") class getBusinessMembers(val businessId: kotlin.String, val assetsSummary: kotlin.Boolean? = null, val businessRoles: kotlin.collections.List<MemberBusinessRole>? = null, val memberIds: kotlin.String? = null, val startIndex: kotlin.Int? = null, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
+    @Resource("/businesses/{business_id}/members") class getBusinessMembers(val businessId: kotlin.String, val assetsSummary: kotlin.Boolean? = null, val businessRoles: kotlin.collections.List<MemberBusinessRole>? = null, val memberIds: kotlin.String? = null, val startIndex: kotlin.Int? = null, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
 
     /**
      * Get business partners
@@ -1070,7 +1070,7 @@ If the assets_summary&#x3D;TRUE and:
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      */
-    @Serializable @Resource("/businesses/{business_id}/partners") class getBusinessPartners(val businessId: kotlin.String, val assetsSummary: kotlin.Boolean? = null, val partnerType: PartnerType? = null, val partnerIds: kotlin.String? = null, val startIndex: kotlin.Int? = null, val pageSize: kotlin.Int? = null, val bookmark: kotlin.String? = null)
+    @Resource("/businesses/{business_id}/partners") class getBusinessPartners(val businessId: kotlin.String, val assetsSummary: kotlin.Boolean? = null, val partnerType: PartnerType? = null, val partnerIds: kotlin.String? = null, val startIndex: kotlin.Int? = null, val pageSize: kotlin.Int? = null, val bookmark: kotlin.String? = null)
 
     /**
      * Update member&#39;s business role
@@ -1078,7 +1078,7 @@ If the assets_summary&#x3D;TRUE and:
      * @param businessId Business id 
      * @param updateMemberBusinessRoleBody List of objects with the member id and the business_role. 
      */
-    @Serializable @Resource("/businesses/{business_id}/members") class updateBusinessMemberships(val businessId: kotlin.String, val updateMemberBusinessRoleBody: kotlin.collections.List<UpdateMemberBusinessRoleBody>)
+    @Resource("/businesses/{business_id}/members") class updateBusinessMemberships(val businessId: kotlin.String)
 
     /**
      * Get targeting analytics for campaigns
@@ -1103,7 +1103,7 @@ of the necessary roles granted to them via
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to TIME_OF_AD_ACTION)
      * @param attributionTypes List of types of attribution for the conversion report (optional)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/campaigns/targeting_analytics") class campaignTargetingAnalyticsGet(val adAccountId: kotlin.String, val campaignIds: kotlin.collections.List<kotlin.String>, val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val targetingTypes: kotlin.collections.List<AdsAnalyticsCampaignTargetingType>, val columns: kotlin.collections.List<kotlin.String>, val granularity: Granularity, val clickWindowDays: kotlin.Int? = null, val engagementWindowDays: kotlin.Int? = null, val viewWindowDays: kotlin.Int? = null, val conversionReportTime: kotlin.String? = null, val attributionTypes: ConversionReportAttributionType? = null)
+    @Resource("/ad_accounts/{ad_account_id}/campaigns/targeting_analytics") class campaignTargetingAnalyticsGet(val adAccountId: kotlin.String, val campaignIds: kotlin.collections.List<kotlin.String>, val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val targetingTypes: kotlin.collections.List<AdsAnalyticsCampaignTargetingType>, val columns: kotlin.collections.List<kotlin.String>, val granularity: Granularity, val clickWindowDays: kotlin.Int? = null, val engagementWindowDays: kotlin.Int? = null, val viewWindowDays: kotlin.Int? = null, val conversionReportTime: kotlin.String? = null, val attributionTypes: ConversionReportAttributionType? = null)
 
     /**
      * Get campaign analytics
@@ -1122,7 +1122,7 @@ of the necessary roles granted to them via
      * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to 1)
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to TIME_OF_AD_ACTION)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/campaigns/analytics") class campaignsAnalytics(val adAccountId: kotlin.String, val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val campaignIds: kotlin.collections.List<kotlin.String>, val columns: kotlin.collections.List<kotlin.String>, val granularity: Granularity, val clickWindowDays: kotlin.Int? = null, val engagementWindowDays: kotlin.Int? = null, val viewWindowDays: kotlin.Int? = null, val conversionReportTime: kotlin.String? = null)
+    @Resource("/ad_accounts/{ad_account_id}/campaigns/analytics") class campaignsAnalytics(val adAccountId: kotlin.String, val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val campaignIds: kotlin.collections.List<kotlin.String>, val columns: kotlin.collections.List<kotlin.String>, val granularity: Granularity, val clickWindowDays: kotlin.Int? = null, val engagementWindowDays: kotlin.Int? = null, val viewWindowDays: kotlin.Int? = null, val conversionReportTime: kotlin.String? = null)
 
     /**
      * Create campaigns
@@ -1145,7 +1145,7 @@ For more, see &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/artic
      * @param adAccountId Unique identifier of an ad account. 
      * @param campaignCreateRequest Array of campaigns. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/campaigns") class campaignsCreate(val adAccountId: kotlin.String, val campaignCreateRequest: kotlin.collections.List<CampaignCreateRequest>)
+    @Resource("/ad_accounts/{ad_account_id}/campaigns") class campaignsCreate(val adAccountId: kotlin.String)
 
     /**
      * Get campaign
@@ -1153,7 +1153,7 @@ For more, see &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/artic
      * @param adAccountId Unique identifier of an ad account. 
      * @param campaignId Campaign ID, must be associated with the ad account ID provided in the path. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/campaigns/{campaign_id}") class campaignsGet(val adAccountId: kotlin.String, val campaignId: kotlin.String)
+    @Resource("/ad_accounts/{ad_account_id}/campaigns/{campaign_id}") class campaignsGet(val adAccountId: kotlin.String, val campaignId: kotlin.String)
 
     /**
      * List campaigns
@@ -1166,7 +1166,7 @@ For more, see &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/artic
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/campaigns") class campaignsList(val adAccountId: kotlin.String, val campaignIds: kotlin.collections.List<kotlin.String>? = null, val entityStatuses: kotlin.collections.List<kotlin.String>? = null, val pageSize: kotlin.Int? = null, val order: kotlin.String? = null, val bookmark: kotlin.String? = null)
+    @Resource("/ad_accounts/{ad_account_id}/campaigns") class campaignsList(val adAccountId: kotlin.String, val campaignIds: kotlin.collections.List<kotlin.String>? = null, val entityStatuses: kotlin.collections.List<kotlin.String>? = null, val pageSize: kotlin.Int? = null, val order: kotlin.String? = null, val bookmark: kotlin.String? = null)
 
     /**
      * Update campaigns
@@ -1188,7 +1188,7 @@ For more, see &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/artic
      * @param adAccountId Unique identifier of an ad account. 
      * @param campaignUpdateRequest Array of campaigns. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/campaigns") class campaignsUpdate(val adAccountId: kotlin.String, val campaignUpdateRequest: kotlin.collections.List<CampaignUpdateRequest>)
+    @Resource("/ad_accounts/{ad_account_id}/campaigns") class campaignsUpdate(val adAccountId: kotlin.String)
 
     /**
      * Create catalog
@@ -1203,7 +1203,7 @@ Note: this API only supports the catalog type of HOTEL for now.
      * @param catalogsCreateRequest Request object used to created a feed. 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/catalogs") class catalogsCreate(val catalogsCreateRequest: CatalogsCreateRequest, val adAccountId: kotlin.String? = null)
+    @Resource("/catalogs") class catalogsCreate(val adAccountId: kotlin.String? = null)
 
     /**
      * List catalogs
@@ -1217,7 +1217,7 @@ Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (ob
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/catalogs") class catalogsList(val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val adAccountId: kotlin.String? = null)
+    @Resource("/catalogs") class catalogsList(val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val adAccountId: kotlin.String? = null)
 
     /**
      * List products by product group
@@ -1233,7 +1233,7 @@ Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (ob
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
      */
-    @Serializable @Resource("/catalogs/product_groups/{product_group_id}/products") class catalogsProductGroupPinsList(val productGroupId: kotlin.String, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val adAccountId: kotlin.String? = null, val pinMetrics: kotlin.Boolean? = null)
+    @Resource("/catalogs/product_groups/{product_group_id}/products") class catalogsProductGroupPinsList(val productGroupId: kotlin.String, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val adAccountId: kotlin.String? = null, val pinMetrics: kotlin.Boolean? = null)
 
     /**
      * Create product group
@@ -1249,7 +1249,7 @@ If you require access, please reach out to your partner manager.
      * @param multipleProductGroupsInner Request object used to create a single catalogs product groups. 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/catalogs/product_groups") class catalogsProductGroupsCreate(val multipleProductGroupsInner: MultipleProductGroupsInner, val adAccountId: kotlin.String? = null)
+    @Resource("/catalogs/product_groups") class catalogsProductGroupsCreate(val adAccountId: kotlin.String? = null)
 
     /**
      * Create product groups
@@ -1265,7 +1265,7 @@ If you require access, please reach out to your partner manager.
      * @param multipleProductGroupsInner Request object used to create one or more catalogs product groups. 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/catalogs/product_groups/multiple") class catalogsProductGroupsCreateMany(val multipleProductGroupsInner: kotlin.collections.List<MultipleProductGroupsInner>, val adAccountId: kotlin.String? = null)
+    @Resource("/catalogs/product_groups/multiple") class catalogsProductGroupsCreateMany(val adAccountId: kotlin.String? = null)
 
     /**
      * Delete product group
@@ -1278,7 +1278,7 @@ Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (ob
      * @param productGroupId Unique identifier of a product group 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/catalogs/product_groups/{product_group_id}") class catalogsProductGroupsDelete(val productGroupId: kotlin.String, val adAccountId: kotlin.String? = null)
+    @Resource("/catalogs/product_groups/{product_group_id}") class catalogsProductGroupsDelete(val productGroupId: kotlin.String, val adAccountId: kotlin.String? = null)
 
     /**
      * Delete product groups
@@ -1291,7 +1291,7 @@ Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (ob
      * @param id Comma-separated list of product group ids 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/catalogs/product_groups/multiple") class catalogsProductGroupsDeleteMany(val id: kotlin.collections.List<kotlin.Int>, val adAccountId: kotlin.String? = null)
+    @Resource("/catalogs/product_groups/multiple") class catalogsProductGroupsDeleteMany(val id: kotlin.collections.List<kotlin.Int>, val adAccountId: kotlin.String? = null)
 
     /**
      * Get product group
@@ -1304,7 +1304,7 @@ Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (ob
      * @param productGroupId Unique identifier of a product group 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/catalogs/product_groups/{product_group_id}") class catalogsProductGroupsGet(val productGroupId: kotlin.String, val adAccountId: kotlin.String? = null)
+    @Resource("/catalogs/product_groups/{product_group_id}") class catalogsProductGroupsGet(val productGroupId: kotlin.String, val adAccountId: kotlin.String? = null)
 
     /**
      * List product groups
@@ -1321,7 +1321,7 @@ Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (ob
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/catalogs/product_groups") class catalogsProductGroupsList(val id: kotlin.collections.List<kotlin.Int>? = null, val feedId: kotlin.String? = null, val catalogId: kotlin.String? = null, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val adAccountId: kotlin.String? = null)
+    @Resource("/catalogs/product_groups") class catalogsProductGroupsList(val id: kotlin.collections.List<kotlin.Int>? = null, val feedId: kotlin.String? = null, val catalogId: kotlin.String? = null, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val adAccountId: kotlin.String? = null)
 
     /**
      * Get product counts
@@ -1334,7 +1334,7 @@ Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (ob
      * @param productGroupId Unique identifier of a product group 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/catalogs/product_groups/{product_group_id}/product_counts") class catalogsProductGroupsProductCountsGet(val productGroupId: kotlin.String, val adAccountId: kotlin.String? = null)
+    @Resource("/catalogs/product_groups/{product_group_id}/product_counts") class catalogsProductGroupsProductCountsGet(val productGroupId: kotlin.String, val adAccountId: kotlin.String? = null)
 
     /**
      * Update single product group
@@ -1351,7 +1351,7 @@ If you require access, please reach out to your partner manager.
      * @param catalogsProductGroupsUpdateRequest Request object used to Update a catalogs product group. 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/catalogs/product_groups/{product_group_id}") class catalogsProductGroupsUpdate(val productGroupId: kotlin.String, val catalogsProductGroupsUpdateRequest: CatalogsProductGroupsUpdateRequest, val adAccountId: kotlin.String? = null)
+    @Resource("/catalogs/product_groups/{product_group_id}") class catalogsProductGroupsUpdate(val productGroupId: kotlin.String, val adAccountId: kotlin.String? = null)
 
     /**
      * List feed processing results
@@ -1366,7 +1366,7 @@ Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (ob
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/catalogs/feeds/{feed_id}/processing_results") class feedProcessingResultsList(val feedId: kotlin.String, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val adAccountId: kotlin.String? = null)
+    @Resource("/catalogs/feeds/{feed_id}/processing_results") class feedProcessingResultsList(val feedId: kotlin.String, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val adAccountId: kotlin.String? = null)
 
     /**
      * Create feed
@@ -1386,7 +1386,7 @@ If you require access, please reach out to your partner manager.
      * @param feedsCreateRequest Request object used to created a feed. 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/catalogs/feeds") class feedsCreate(val feedsCreateRequest: FeedsCreateRequest, val adAccountId: kotlin.String? = null)
+    @Resource("/catalogs/feeds") class feedsCreate(val adAccountId: kotlin.String? = null)
 
     /**
      * Delete feed
@@ -1399,7 +1399,7 @@ For Retail partners, refer to &lt;a href&#x3D;&#39;https://help.pinterest.com/en
      * @param feedId Unique identifier of a feed 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/catalogs/feeds/{feed_id}") class feedsDelete(val feedId: kotlin.String, val adAccountId: kotlin.String? = null)
+    @Resource("/catalogs/feeds/{feed_id}") class feedsDelete(val feedId: kotlin.String, val adAccountId: kotlin.String? = null)
 
     /**
      * Get feed
@@ -1412,7 +1412,7 @@ For Retail partners, refer to &lt;a href&#x3D;&#39;https://help.pinterest.com/en
      * @param feedId Unique identifier of a feed 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/catalogs/feeds/{feed_id}") class feedsGet(val feedId: kotlin.String, val adAccountId: kotlin.String? = null)
+    @Resource("/catalogs/feeds/{feed_id}") class feedsGet(val feedId: kotlin.String, val adAccountId: kotlin.String? = null)
 
     /**
      * Ingest feed items
@@ -1426,7 +1426,7 @@ Note: This endpoint is restricted to a specific group of users. If you require a
      * @param feedId Unique identifier of a feed 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/catalogs/feeds/{feed_id}/ingest") class feedsIngest(val feedId: kotlin.String, val adAccountId: kotlin.String? = null)
+    @Resource("/catalogs/feeds/{feed_id}/ingest") class feedsIngest(val feedId: kotlin.String, val adAccountId: kotlin.String? = null)
 
     /**
      * List feeds
@@ -1441,7 +1441,7 @@ For Retail partners, refer to &lt;a href&#x3D;&#39;https://help.pinterest.com/en
      * @param catalogId Filter entities for a given catalog_id. If not given, all catalogs are considered. (optional)
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/catalogs/feeds") class feedsList(val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val catalogId: kotlin.String? = null, val adAccountId: kotlin.String? = null)
+    @Resource("/catalogs/feeds") class feedsList(val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val catalogId: kotlin.String? = null, val adAccountId: kotlin.String? = null)
 
     /**
      * Update feed
@@ -1458,7 +1458,7 @@ If you require access, please reach out to your partner manager.
      * @param feedsUpdateRequest Request object used to update a feed. 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/catalogs/feeds/{feed_id}") class feedsUpdate(val feedId: kotlin.String, val feedsUpdateRequest: FeedsUpdateRequest, val adAccountId: kotlin.String? = null)
+    @Resource("/catalogs/feeds/{feed_id}") class feedsUpdate(val feedId: kotlin.String, val adAccountId: kotlin.String? = null)
 
     /**
      * Get item batch status
@@ -1469,7 +1469,7 @@ Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (ob
      * @param batchId Id of a catalogs items batch to fetch 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/catalogs/items/batch/{batch_id}") class itemsBatchGet(val batchId: kotlin.String, val adAccountId: kotlin.String? = null)
+    @Resource("/catalogs/items/batch/{batch_id}") class itemsBatchGet(val batchId: kotlin.String, val adAccountId: kotlin.String? = null)
 
     /**
      * Operate on item batch
@@ -1485,7 +1485,7 @@ If you require access, please reach out to your partner manager.
      * @param itemsBatchPostRequest Request object used to create catalogs items in a batch 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/catalogs/items/batch") class itemsBatchPost(val itemsBatchPostRequest: ItemsBatchPostRequest, val adAccountId: kotlin.String? = null)
+    @Resource("/catalogs/items/batch") class itemsBatchPost(val adAccountId: kotlin.String? = null)
 
     /**
      * Get catalogs items
@@ -1501,7 +1501,7 @@ Note: this endpoint is deprecated and will be deleted soon. Please use &lt;a hre
      * @param itemIds This parameter is deprecated. Use filters instead. (optional)
      * @param filters Identifies items to be retrieved. This is a required parameter. (optional)
      */
-    @Serializable @Resource("/catalogs/items") class itemsGet(val country: kotlin.String, val language: kotlin.String, val adAccountId: kotlin.String? = null, val itemIds: kotlin.collections.List<kotlin.String>? = null, val filters: CatalogsItemsFilters? = null)
+    @Resource("/catalogs/items") class itemsGet(val adAccountId: kotlin.String? = null, val country: kotlin.String, val language: kotlin.String, val itemIds: kotlin.collections.List<kotlin.String>? = null, val filters: CatalogsItemsFilters? = null)
 
     /**
      * List item issues
@@ -1520,7 +1520,7 @@ Note: To get a list of all affected items instead of sampled issues, please refe
      * @param itemValidationIssue Filter item validation issues that have a given type of item validation issue. (optional)
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/catalogs/processing_results/{processing_result_id}/item_issues") class itemsIssuesList(val processingResultId: kotlin.String, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val itemNumbers: kotlin.collections.List<kotlin.Int>? = null, val itemValidationIssue: CatalogsItemValidationIssue? = null, val adAccountId: kotlin.String? = null)
+    @Resource("/catalogs/processing_results/{processing_result_id}/item_issues") class itemsIssuesList(val processingResultId: kotlin.String, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val itemNumbers: kotlin.collections.List<kotlin.Int>? = null, val itemValidationIssue: CatalogsItemValidationIssue? = null, val adAccountId: kotlin.String? = null)
 
     /**
      * Get catalogs items (POST)
@@ -1534,7 +1534,7 @@ If you require access, please reach out to your partner manager.
      * @param catalogsItemsRequest Request object used to get catalogs items 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/catalogs/items") class itemsPost(val catalogsItemsRequest: CatalogsItemsRequest, val adAccountId: kotlin.String? = null)
+    @Resource("/catalogs/items") class itemsPost(val adAccountId: kotlin.String? = null)
 
     /**
      * List products by filter
@@ -1553,7 +1553,7 @@ Note: This endpoint only supports RETAIL catalog at the moment.
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
      */
-    @Serializable @Resource("/catalogs/products/get_by_product_group_filters") class productsByProductGroupFilterList(val catalogsListProductsByFilterRequest: CatalogsListProductsByFilterRequest, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val adAccountId: kotlin.String? = null, val pinMetrics: kotlin.Boolean? = null)
+    @Resource("/catalogs/products/get_by_product_group_filters") class productsByProductGroupFilterList(val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val adAccountId: kotlin.String? = null, val pinMetrics: kotlin.Boolean? = null)
 
     /**
      * Build catalogs report
@@ -1564,7 +1564,7 @@ Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (ob
      * @param catalogsReportParameters Request object to asynchronously create a report. 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/catalogs/reports") class reportsCreate(val catalogsReportParameters: CatalogsReportParameters, val adAccountId: kotlin.String? = null)
+    @Resource("/catalogs/reports") class reportsCreate(val adAccountId: kotlin.String? = null)
 
     /**
      * Get catalogs report
@@ -1575,7 +1575,7 @@ Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (ob
      * @param token Token returned from async build report call 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/catalogs/reports") class reportsGet(val token: kotlin.String, val adAccountId: kotlin.String? = null)
+    @Resource("/catalogs/reports") class reportsGet(val adAccountId: kotlin.String? = null, val token: kotlin.String)
 
     /**
      * List report stats
@@ -1588,7 +1588,7 @@ Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (ob
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      */
-    @Serializable @Resource("/catalogs/reports/stats") class reportsStats(val parameters: CatalogsReportParameters, val adAccountId: kotlin.String? = null, val pageSize: kotlin.Int? = null, val bookmark: kotlin.String? = null)
+    @Resource("/catalogs/reports/stats") class reportsStats(val adAccountId: kotlin.String? = null, val pageSize: kotlin.Int? = null, val bookmark: kotlin.String? = null, val parameters: CatalogsReportParameters)
 
     /**
      * Send conversions
@@ -1601,7 +1601,7 @@ Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (ob
      * @param conversionEvents Conversion events. 
      * @param test Include query param ?test&#x3D;true to mark the request as a test request. The events will not be recorded but the API will still return the same response messages. Use this mode to verify your requests are working and your events are constructed correctly. Warning: If you use this query parameter, be certain that it is off (set to false or deleted) before sending a legitimate (non-testing) request. (optional)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/events") class eventsCreate(val adAccountId: kotlin.String, val conversionEvents: ConversionEvents, val test: kotlin.Boolean? = null)
+    @Resource("/ad_accounts/{ad_account_id}/events") class eventsCreate(val adAccountId: kotlin.String, val test: kotlin.Boolean? = null)
 
     /**
      * Create conversion tag
@@ -1614,7 +1614,7 @@ For more information, see:&lt;p/&gt;
      * @param adAccountId Unique identifier of an ad account. 
      * @param conversionTagCreate Conversion Tag to create 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/conversion_tags") class conversionTagsCreate(val adAccountId: kotlin.String, val conversionTagCreate: ConversionTagCreate)
+    @Resource("/ad_accounts/{ad_account_id}/conversion_tags") class conversionTagsCreate(val adAccountId: kotlin.String)
 
     /**
      * Get conversion tag
@@ -1622,7 +1622,7 @@ For more information, see:&lt;p/&gt;
      * @param adAccountId Unique identifier of an ad account. 
      * @param conversionTagId Id of the conversion tag. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}") class conversionTagsGet(val adAccountId: kotlin.String, val conversionTagId: kotlin.String)
+    @Resource("/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}") class conversionTagsGet(val adAccountId: kotlin.String, val conversionTagId: kotlin.String)
 
     /**
      * Get conversion tags
@@ -1630,14 +1630,14 @@ For more information, see:&lt;p/&gt;
      * @param adAccountId Unique identifier of an ad account. 
      * @param filterDeleted Filter out deleted tags. (optional, default to false)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/conversion_tags") class conversionTagsList(val adAccountId: kotlin.String, val filterDeleted: kotlin.Boolean? = null)
+    @Resource("/ad_accounts/{ad_account_id}/conversion_tags") class conversionTagsList(val adAccountId: kotlin.String, val filterDeleted: kotlin.Boolean? = null)
 
     /**
      * Get Ocpm eligible conversion tags
      * Get Ocpm eligible conversion tag events for an ad account.
      * @param adAccountId Unique identifier of an ad account. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible") class ocpmEligibleConversionTagsGet(val adAccountId: kotlin.String)
+    @Resource("/ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible") class ocpmEligibleConversionTagsGet(val adAccountId: kotlin.String)
 
     /**
      * Get page visit conversion tags
@@ -1647,7 +1647,7 @@ For more information, see:&lt;p/&gt;
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/conversion_tags/page_visit") class pageVisitConversionTagsGet(val adAccountId: kotlin.String, val pageSize: kotlin.Int? = null, val order: kotlin.String? = null, val bookmark: kotlin.String? = null)
+    @Resource("/ad_accounts/{ad_account_id}/conversion_tags/page_visit") class pageVisitConversionTagsGet(val adAccountId: kotlin.String, val pageSize: kotlin.Int? = null, val order: kotlin.String? = null, val bookmark: kotlin.String? = null)
 
     /**
      * Create customer lists
@@ -1664,7 +1664,7 @@ using the &lt;a href&#x3D;&quot;#operation/create_audience_handler&quot;&gt;crea
      * @param adAccountId Unique identifier of an ad account. 
      * @param customerListRequest Parameters to get Customer lists info 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/customer_lists") class customerListsCreate(val adAccountId: kotlin.String, val customerListRequest: CustomerListRequest)
+    @Resource("/ad_accounts/{ad_account_id}/customer_lists") class customerListsCreate(val adAccountId: kotlin.String)
 
     /**
      * Get customer list
@@ -1672,7 +1672,7 @@ using the &lt;a href&#x3D;&quot;#operation/create_audience_handler&quot;&gt;crea
      * @param adAccountId Unique identifier of an ad account. 
      * @param customerListId Unique identifier of a customer list 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}") class customerListsGet(val adAccountId: kotlin.String, val customerListId: kotlin.String)
+    @Resource("/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}") class customerListsGet(val adAccountId: kotlin.String, val customerListId: kotlin.String)
 
     /**
      * Get customer lists
@@ -1686,7 +1686,7 @@ section of the ads management guide.&lt;/p&gt;
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/customer_lists") class customerListsList(val adAccountId: kotlin.String, val pageSize: kotlin.Int? = null, val order: kotlin.String? = null, val bookmark: kotlin.String? = null)
+    @Resource("/ad_accounts/{ad_account_id}/customer_lists") class customerListsList(val adAccountId: kotlin.String, val pageSize: kotlin.Int? = null, val order: kotlin.String? = null, val bookmark: kotlin.String? = null)
 
     /**
      * Update customer list
@@ -1701,7 +1701,7 @@ section of the ads management guide.&lt;/p&gt;
      * @param customerListId Unique identifier of a customer list 
      * @param customerListUpdateRequest  
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}") class customerListsUpdate(val adAccountId: kotlin.String, val customerListId: kotlin.String, val customerListUpdateRequest: CustomerListUpdateRequest)
+    @Resource("/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}") class customerListsUpdate(val adAccountId: kotlin.String, val customerListId: kotlin.String)
 
     /**
      * Delete commerce integration
@@ -1709,7 +1709,7 @@ section of the ads management guide.&lt;/p&gt;
 Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @param externalBusinessId External business ID for the integration. 
      */
-    @Serializable @Resource("/integrations/commerce/{external_business_id}") class integrationsCommerceDel(val externalBusinessId: kotlin.String)
+    @Resource("/integrations/commerce/{external_business_id}") class integrationsCommerceDel(val externalBusinessId: kotlin.String)
 
     /**
      * Get commerce integration
@@ -1717,7 +1717,7 @@ Note: If you&#39;re interested in joining the beta, please reach out to your Pin
 Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @param externalBusinessId External business ID for the integration. 
      */
-    @Serializable @Resource("/integrations/commerce/{external_business_id}") class integrationsCommerceGet(val externalBusinessId: kotlin.String)
+    @Resource("/integrations/commerce/{external_business_id}") class integrationsCommerceGet(val externalBusinessId: kotlin.String)
 
     /**
      * Update commerce integration
@@ -1726,7 +1726,7 @@ Note: If you&#39;re interested in joining the beta, please reach out to your Pin
      * @param externalBusinessId External business ID for the integration. 
      * @param integrationRequestPatch Parameters to get create/update the Integration Metadata (optional)
      */
-    @Serializable @Resource("/integrations/commerce/{external_business_id}") class integrationsCommercePatch(val externalBusinessId: kotlin.String, val integrationRequestPatch: IntegrationRequestPatch? = null)
+    @Resource("/integrations/commerce/{external_business_id}") class integrationsCommercePatch(val externalBusinessId: kotlin.String)
 
     /**
      * Create commerce integration
@@ -1734,7 +1734,7 @@ Note: If you&#39;re interested in joining the beta, please reach out to your Pin
 Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @param integrationRequest Parameters to get create/update the Integration Metadata (optional)
      */
-    @Serializable @Resource("/integrations/commerce") class integrationsCommercePost(val integrationRequest: IntegrationRequest? = null)
+    @Resource("/integrations/commerce") class integrationsCommercePost()
 
     /**
      * Get integration metadata
@@ -1742,7 +1742,7 @@ Note: If you&#39;re interested in joining the beta, please reach out to your Pin
 Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @param id Integration ID. 
      */
-    @Serializable @Resource("/integrations/{id}") class integrationsGetById(val id: kotlin.String)
+    @Resource("/integrations/{id}") class integrationsGetById(val id: kotlin.String)
 
     /**
      * Get integration metadata list
@@ -1751,7 +1751,7 @@ Note: If you&#39;re interested in joining the beta, please reach out to your Pin
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      */
-    @Serializable @Resource("/integrations") class integrationsGetList(val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
+    @Resource("/integrations") class integrationsGetList(val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
 
     /**
      * Receives batched logs from integration applications.
@@ -1759,7 +1759,7 @@ Note: If you&#39;re interested in joining the beta, please reach out to your Pin
 Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @param integrationLogsRequest Ingest log information from external integration application. 
      */
-    @Serializable @Resource("/integrations/logs") class integrationsLogsPost(val integrationLogsRequest: IntegrationLogsRequest)
+    @Resource("/integrations/logs") class integrationsLogsPost()
 
     /**
      * Get country&#39;s keyword metrics
@@ -1770,7 +1770,7 @@ Note: If you&#39;re interested in joining the beta, please reach out to your Pin
      * @param countryCode Two letter country code (ISO 3166-1 alpha-2) 
      * @param keywords Comma-separated keywords 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/keywords/metrics") class countryKeywordsMetricsGet(val adAccountId: kotlin.String, val countryCode: kotlin.String, val keywords: kotlin.collections.List<kotlin.String>)
+    @Resource("/ad_accounts/{ad_account_id}/keywords/metrics") class countryKeywordsMetricsGet(val adAccountId: kotlin.String, val countryCode: kotlin.String, val keywords: kotlin.collections.List<kotlin.String>)
 
     /**
      * Create keywords
@@ -1781,7 +1781,7 @@ Note: If you&#39;re interested in joining the beta, please reach out to your Pin
      * @param adAccountId Unique identifier of an ad account. 
      * @param keywordsRequest  
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/keywords") class keywordsCreate(val adAccountId: kotlin.String, val keywordsRequest: KeywordsRequest)
+    @Resource("/ad_accounts/{ad_account_id}/keywords") class keywordsCreate(val adAccountId: kotlin.String)
 
     /**
      * Get keywords
@@ -1796,7 +1796,7 @@ Note: If you&#39;re interested in joining the beta, please reach out to your Pin
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/keywords") class keywordsGet(val adAccountId: kotlin.String, val campaignId: kotlin.String? = null, val adGroupId: kotlin.String? = null, val matchTypes: kotlin.collections.List<MatchType>? = null, val pageSize: kotlin.Int? = null, val bookmark: kotlin.String? = null)
+    @Resource("/ad_accounts/{ad_account_id}/keywords") class keywordsGet(val adAccountId: kotlin.String, val campaignId: kotlin.String? = null, val adGroupId: kotlin.String? = null, val matchTypes: kotlin.collections.List<MatchType>? = null, val pageSize: kotlin.Int? = null, val bookmark: kotlin.String? = null)
 
     /**
      * Update keywords
@@ -1804,7 +1804,7 @@ Note: If you&#39;re interested in joining the beta, please reach out to your Pin
      * @param adAccountId Unique identifier of an ad account. 
      * @param keywordUpdateBody  
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/keywords") class keywordsUpdate(val adAccountId: kotlin.String, val keywordUpdateBody: KeywordUpdateBody)
+    @Resource("/ad_accounts/{ad_account_id}/keywords") class keywordsUpdate(val adAccountId: kotlin.String)
 
     /**
      * List trending keywords
@@ -1819,7 +1819,7 @@ Note: If you&#39;re interested in joining the beta, please reach out to your Pin
      * @param normalizeAgainstGroup Governs how the resulting time series data will be normalized to a [0-100] scale.&lt;br /&gt; By default (&#x60;false&#x60;), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword&#39;s time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.&lt;br /&gt; If set to &#x60;true&#x60;, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords. (optional, default to false)
      * @param limit The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a &#x60;limit&#x60; of 50 will return the top 50 trends. (optional, default to 50)
      */
-    @Serializable @Resource("/trends/keywords/{region}/top/{trend_type}") class trendingKeywordsList(val region: TrendsSupportedRegion, val trendType: TrendType, val interests: kotlin.collections.List<kotlin.String>? = null, val genders: kotlin.collections.List<kotlin.String>? = null, val ages: kotlin.collections.List<kotlin.String>? = null, val includeKeywords: kotlin.collections.List<kotlin.String>? = null, val normalizeAgainstGroup: kotlin.Boolean? = null, val limit: kotlin.Int? = null)
+    @Resource("/trends/keywords/{region}/top/{trend_type}") class trendingKeywordsList(val region: TrendsSupportedRegion, val trendType: TrendType, val interests: kotlin.collections.List<kotlin.String>? = null, val genders: kotlin.collections.List<kotlin.String>? = null, val ages: kotlin.collections.List<kotlin.String>? = null, val includeKeywords: kotlin.collections.List<kotlin.String>? = null, val normalizeAgainstGroup: kotlin.Boolean? = null, val limit: kotlin.Int? = null)
 
     /**
      * Delete lead ads subscription
@@ -1830,7 +1830,7 @@ Note: If you&#39;re interested in joining the beta, please reach out to your Pin
      * @param adAccountId Unique identifier of an ad account. 
      * @param subscriptionId Unique identifier of a subscription. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}") class adAccountsSubscriptionsDelById(val adAccountId: kotlin.String, val subscriptionId: kotlin.String)
+    @Resource("/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}") class adAccountsSubscriptionsDelById(val adAccountId: kotlin.String, val subscriptionId: kotlin.String)
 
     /**
      * Get lead ads subscription
@@ -1841,7 +1841,7 @@ Note: If you&#39;re interested in joining the beta, please reach out to your Pin
      * @param adAccountId Unique identifier of an ad account. 
      * @param subscriptionId Unique identifier of a subscription. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}") class adAccountsSubscriptionsGetById(val adAccountId: kotlin.String, val subscriptionId: kotlin.String)
+    @Resource("/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}") class adAccountsSubscriptionsGetById(val adAccountId: kotlin.String, val subscriptionId: kotlin.String)
 
     /**
      * Get lead ads subscriptions
@@ -1853,7 +1853,7 @@ Note: If you&#39;re interested in joining the beta, please reach out to your Pin
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/leads/subscriptions") class adAccountsSubscriptionsGetList(val adAccountId: kotlin.String, val pageSize: kotlin.Int? = null, val bookmark: kotlin.String? = null)
+    @Resource("/ad_accounts/{ad_account_id}/leads/subscriptions") class adAccountsSubscriptionsGetList(val adAccountId: kotlin.String, val pageSize: kotlin.Int? = null, val bookmark: kotlin.String? = null)
 
     /**
      * Create lead ads subscription
@@ -1867,7 +1867,7 @@ Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to 
      * @param adAccountId Unique identifier of an ad account. 
      * @param adAccountCreateSubscriptionRequest Subscription to create. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/leads/subscriptions") class adAccountsSubscriptionsPost(val adAccountId: kotlin.String, val adAccountCreateSubscriptionRequest: AdAccountCreateSubscriptionRequest)
+    @Resource("/ad_accounts/{ad_account_id}/leads/subscriptions") class adAccountsSubscriptionsPost(val adAccountId: kotlin.String)
 
     /**
      * Get lead form by id
@@ -1879,7 +1879,7 @@ For more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;ht
      * @param adAccountId Unique identifier of an ad account. 
      * @param leadFormId Unique identifier of a lead form. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}") class leadFormGet(val adAccountId: kotlin.String, val leadFormId: kotlin.String)
+    @Resource("/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}") class leadFormGet(val adAccountId: kotlin.String, val leadFormId: kotlin.String)
 
     /**
      * Create lead form test data
@@ -1891,7 +1891,7 @@ For more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;ht
      * @param leadFormId Unique identifier of a lead form. 
      * @param leadFormTestRequest Subscription to create. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test") class leadFormTestCreate(val adAccountId: kotlin.String, val leadFormId: kotlin.String, val leadFormTestRequest: LeadFormTestRequest)
+    @Resource("/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test") class leadFormTestCreate(val adAccountId: kotlin.String, val leadFormId: kotlin.String)
 
     /**
      * Create lead forms
@@ -1903,7 +1903,7 @@ For more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;ht
      * @param adAccountId Unique identifier of an ad account. 
      * @param leadFormCreateRequest List of lead forms to create, size limit [1, 30]. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/lead_forms") class leadFormsCreate(val adAccountId: kotlin.String, val leadFormCreateRequest: kotlin.collections.List<LeadFormCreateRequest>)
+    @Resource("/ad_accounts/{ad_account_id}/lead_forms") class leadFormsCreate(val adAccountId: kotlin.String)
 
     /**
      * List lead forms
@@ -1917,7 +1917,7 @@ For more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;ht
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/lead_forms") class leadFormsList(val adAccountId: kotlin.String, val pageSize: kotlin.Int? = null, val order: kotlin.String? = null, val bookmark: kotlin.String? = null)
+    @Resource("/ad_accounts/{ad_account_id}/lead_forms") class leadFormsList(val adAccountId: kotlin.String, val pageSize: kotlin.Int? = null, val order: kotlin.String? = null, val bookmark: kotlin.String? = null)
 
     /**
      * Update lead forms
@@ -1929,7 +1929,7 @@ For more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;ht
      * @param adAccountId Unique identifier of an ad account. 
      * @param leadFormUpdateRequest List of lead forms to update, size limit [1, 30]. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/lead_forms") class leadFormsUpdate(val adAccountId: kotlin.String, val leadFormUpdateRequest: kotlin.collections.List<LeadFormUpdateRequest>)
+    @Resource("/ad_accounts/{ad_account_id}/lead_forms") class leadFormsUpdate(val adAccountId: kotlin.String)
 
     /**
      * Create a request to export leads collected from a lead ad
@@ -1943,7 +1943,7 @@ For more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;ht
      * @param adAccountId Unique identifier of an ad account. 
      * @param leadsExportCreateRequest  
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/leads_export") class leadsExportCreate(val adAccountId: kotlin.String, val leadsExportCreateRequest: LeadsExportCreateRequest)
+    @Resource("/ad_accounts/{ad_account_id}/leads_export") class leadsExportCreate(val adAccountId: kotlin.String)
 
     /**
      * Get the lead export from the lead export create call
@@ -1957,7 +1957,7 @@ For more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;ht
      * @param adAccountId Unique identifier of an ad account. 
      * @param leadsExportId lead_export_id token returned from the create a lead export endpoint 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/leads_export/{leads_export_id}") class leadsExportGet(val adAccountId: kotlin.String, val leadsExportId: kotlin.String)
+    @Resource("/ad_accounts/{ad_account_id}/leads_export/{leads_export_id}") class leadsExportGet(val adAccountId: kotlin.String, val leadsExportId: kotlin.String)
 
     /**
      * Register media upload
@@ -1975,7 +1975,7 @@ parameter and also include all of the parameters from
 &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
      * @param mediaUploadRequest Create a media upload request 
      */
-    @Serializable @Resource("/media") class mediaCreate(val mediaUploadRequest: MediaUploadRequest)
+    @Resource("/media") class mediaCreate()
 
     /**
      * Get media upload details
@@ -1984,7 +1984,7 @@ parameter and also include all of the parameters from
 &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
      * @param mediaId Media identifier 
      */
-    @Serializable @Resource("/media/{media_id}") class mediaGet(val mediaId: kotlin.String)
+    @Resource("/media/{media_id}") class mediaGet(val mediaId: kotlin.String)
 
     /**
      * List media uploads
@@ -1994,7 +1994,7 @@ parameter and also include all of the parameters from
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      */
-    @Serializable @Resource("/media") class mediaList(val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
+    @Resource("/media") class mediaList(val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
 
     /**
      * Generate OAuth access token
@@ -2009,7 +2009,7 @@ See &lt;a href&#x3D;&#39;/docs/getting-started/authentication-and-scopes/&#39;&g
 &lt;strong&gt;Grant type &lt;i&gt;client_credentials&lt;/i&gt; and its corresponding response type are not fully available. You will likely get a default error if you attempt to use this grant_type.&lt;/strong&gt;
      * @param grantType  
      */
-    @Serializable @Resource("/oauth/token") class oauthToken(val grantType: kotlin.String)
+    @Resource("/oauth/token") class oauthToken()
 
     /**
      * Get order line
@@ -2017,7 +2017,7 @@ See &lt;a href&#x3D;&#39;/docs/getting-started/authentication-and-scopes/&#39;&g
      * @param adAccountId Unique identifier of an ad account. 
      * @param orderLineId Unique identifier of an order line. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/order_lines/{order_line_id}") class orderLinesGet(val adAccountId: kotlin.String, val orderLineId: kotlin.String)
+    @Resource("/ad_accounts/{ad_account_id}/order_lines/{order_line_id}") class orderLinesGet(val adAccountId: kotlin.String, val orderLineId: kotlin.String)
 
     /**
      * Get order lines
@@ -2027,7 +2027,7 @@ See &lt;a href&#x3D;&#39;/docs/getting-started/authentication-and-scopes/&#39;&g
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/order_lines") class orderLinesList(val adAccountId: kotlin.String, val pageSize: kotlin.Int? = null, val order: kotlin.String? = null, val bookmark: kotlin.String? = null)
+    @Resource("/ad_accounts/{ad_account_id}/order_lines") class orderLinesList(val adAccountId: kotlin.String, val pageSize: kotlin.Int? = null, val order: kotlin.String? = null, val bookmark: kotlin.String? = null)
 
     /**
      * Get multiple Pin analytics
@@ -2050,7 +2050,7 @@ If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics w
      * @param appTypes Apps or devices to get data for, default is all. (optional, default to ALL)
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/pins/analytics") class multiPinsAnalytics(val pinIds: kotlin.collections.List<kotlin.String>, val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val metricTypes: kotlin.collections.List<PinsAnalyticsMetricTypesParameterInner>, val appTypes: kotlin.String? = null, val adAccountId: kotlin.String? = null)
+    @Resource("/pins/analytics") class multiPinsAnalytics(val pinIds: kotlin.collections.List<kotlin.String>, val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val appTypes: kotlin.String? = null, val metricTypes: kotlin.collections.List<PinsAnalyticsMetricTypesParameterInner>, val adAccountId: kotlin.String? = null)
 
     /**
      * Get Pin analytics
@@ -2071,7 +2071,7 @@ If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics w
      * @param splitField How to split the data into groups. Not including this param means data won&#39;t be split. (optional, default to NO_SPLIT)
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/pins/{pin_id}/analytics") class pinsAnalytics(val pinId: kotlin.String, val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val metricTypes: kotlin.collections.List<PinsAnalyticsMetricTypesParameterInner>, val appTypes: kotlin.String? = null, val splitField: kotlin.String? = null, val adAccountId: kotlin.String? = null)
+    @Resource("/pins/{pin_id}/analytics") class pinsAnalytics(val pinId: kotlin.String, val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val appTypes: kotlin.String? = null, val metricTypes: kotlin.collections.List<PinsAnalyticsMetricTypesParameterInner>, val splitField: kotlin.String? = null, val adAccountId: kotlin.String? = null)
 
     /**
      * Create Pin
@@ -2085,7 +2085,7 @@ Note: If the current &quot;operation user_account&quot; (defined by the access t
      * @param pinCreate Create a new Pin. 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/pins") class pinsCreate(val pinCreate: PinCreate?, val adAccountId: kotlin.String? = null)
+    @Resource("/pins") class pinsCreate(val adAccountId: kotlin.String? = null)
 
     /**
      * Delete Pin
@@ -2099,7 +2099,7 @@ Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (ob
      * @param pinId Unique identifier of a Pin. 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/pins/{pin_id}") class pinsDelete(val pinId: kotlin.String, val adAccountId: kotlin.String? = null)
+    @Resource("/pins/{pin_id}") class pinsDelete(val pinId: kotlin.String, val adAccountId: kotlin.String? = null)
 
     /**
      * Get Pin
@@ -2114,7 +2114,7 @@ Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (ob
      * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/pins/{pin_id}") class pinsGet(val pinId: kotlin.String, val pinMetrics: kotlin.Boolean? = null, val adAccountId: kotlin.String? = null)
+    @Resource("/pins/{pin_id}") class pinsGet(val pinId: kotlin.String, val pinMetrics: kotlin.Boolean? = null, val adAccountId: kotlin.String? = null)
 
     /**
      * List Pins
@@ -2134,7 +2134,7 @@ request is timing out in this scenario we encourage you to use &lt;a href&#x3D;&
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
      */
-    @Serializable @Resource("/pins") class pinsList(val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val pinFilter: kotlin.String? = null, val includeProtectedPins: kotlin.Boolean? = null, val pinType: kotlin.String? = null, val creativeTypes: kotlin.collections.List<kotlin.String>? = null, val adAccountId: kotlin.String? = null, val pinMetrics: kotlin.Boolean? = null)
+    @Resource("/pins") class pinsList(val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val pinFilter: kotlin.String? = null, val includeProtectedPins: kotlin.Boolean? = null, val pinType: kotlin.String? = null, val creativeTypes: kotlin.collections.List<kotlin.String>? = null, val adAccountId: kotlin.String? = null, val pinMetrics: kotlin.Boolean? = null)
 
     /**
      * Save Pin
@@ -2151,7 +2151,7 @@ Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (ob
      * @param pinsSaveRequest Request object used to save an existing pin 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/pins/{pin_id}/save") class pinsSave(val pinId: kotlin.String, val pinsSaveRequest: PinsSaveRequest, val adAccountId: kotlin.String? = null)
+    @Resource("/pins/{pin_id}/save") class pinsSave(val pinId: kotlin.String, val adAccountId: kotlin.String? = null)
 
     /**
      * Update Pin
@@ -2168,7 +2168,7 @@ Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (ob
      * @param pinUpdate  
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/pins/{pin_id}") class pinsUpdate(val pinId: kotlin.String, val pinUpdate: PinUpdate?, val adAccountId: kotlin.String? = null)
+    @Resource("/pins/{pin_id}") class pinsUpdate(val pinId: kotlin.String, val adAccountId: kotlin.String? = null)
 
     /**
      * Create product group promotions
@@ -2176,7 +2176,7 @@ Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (ob
      * @param adAccountId Unique identifier of an ad account. 
      * @param productGroupPromotionCreateRequest List of Product Group Promotions to create, size limit [1, 30]. 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/product_group_promotions") class productGroupPromotionsCreate(val adAccountId: kotlin.String, val productGroupPromotionCreateRequest: ProductGroupPromotionCreateRequest)
+    @Resource("/ad_accounts/{ad_account_id}/product_group_promotions") class productGroupPromotionsCreate(val adAccountId: kotlin.String)
 
     /**
      * Get a product group promotion by id
@@ -2184,7 +2184,7 @@ Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (ob
      * @param adAccountId Unique identifier of an ad account. 
      * @param productGroupPromotionId Unique identifier of a product group promotion 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/product_group_promotions/{product_group_promotion_id}") class productGroupPromotionsGet(val adAccountId: kotlin.String, val productGroupPromotionId: kotlin.String)
+    @Resource("/ad_accounts/{ad_account_id}/product_group_promotions/{product_group_promotion_id}") class productGroupPromotionsGet(val adAccountId: kotlin.String, val productGroupPromotionId: kotlin.String)
 
     /**
      * Get product group promotions
@@ -2202,7 +2202,7 @@ Only provide one. If multiple options are provided, product_group_promotion_ids 
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/product_group_promotions") class productGroupPromotionsList(val adAccountId: kotlin.String, val productGroupPromotionIds: kotlin.collections.List<kotlin.String>? = null, val entityStatuses: kotlin.collections.List<kotlin.String>? = null, val adGroupId: kotlin.String? = null, val pageSize: kotlin.Int? = null, val order: kotlin.String? = null, val bookmark: kotlin.String? = null)
+    @Resource("/ad_accounts/{ad_account_id}/product_group_promotions") class productGroupPromotionsList(val adAccountId: kotlin.String, val productGroupPromotionIds: kotlin.collections.List<kotlin.String>? = null, val entityStatuses: kotlin.collections.List<kotlin.String>? = null, val adGroupId: kotlin.String? = null, val pageSize: kotlin.Int? = null, val order: kotlin.String? = null, val bookmark: kotlin.String? = null)
 
     /**
      * Update product group promotions
@@ -2210,7 +2210,7 @@ Only provide one. If multiple options are provided, product_group_promotion_ids 
      * @param adAccountId Unique identifier of an ad account. 
      * @param productGroupPromotionUpdateRequest Parameters to update Product group promotions 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/product_group_promotions") class productGroupPromotionsUpdate(val adAccountId: kotlin.String, val productGroupPromotionUpdateRequest: ProductGroupPromotionUpdateRequest)
+    @Resource("/ad_accounts/{ad_account_id}/product_group_promotions") class productGroupPromotionsUpdate(val adAccountId: kotlin.String)
 
     /**
      * Get product group analytics
@@ -2229,13 +2229,13 @@ Only provide one. If multiple options are provided, product_group_promotion_ids 
      * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to 1)
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to TIME_OF_AD_ACTION)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/product_groups/analytics") class productGroupsAnalytics(val adAccountId: kotlin.String, val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val productGroupIds: kotlin.collections.List<kotlin.String>, val columns: kotlin.collections.List<kotlin.String>, val granularity: Granularity, val clickWindowDays: kotlin.Int? = null, val engagementWindowDays: kotlin.Int? = null, val viewWindowDays: kotlin.Int? = null, val conversionReportTime: kotlin.String? = null)
+    @Resource("/ad_accounts/{ad_account_id}/product_groups/analytics") class productGroupsAnalytics(val adAccountId: kotlin.String, val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val productGroupIds: kotlin.collections.List<kotlin.String>, val columns: kotlin.collections.List<kotlin.String>, val granularity: Granularity, val clickWindowDays: kotlin.Int? = null, val engagementWindowDays: kotlin.Int? = null, val viewWindowDays: kotlin.Int? = null, val conversionReportTime: kotlin.String? = null)
 
     /**
      * Get ad accounts countries
      * Get Ad Accounts countries
      */
-    @Serializable @Resource("/resources/ad_account_countries") class adAccountCountriesGet
+    @Resource("/resources/ad_account_countries") class adAccountCountriesGet
 
     /**
      * Get available metrics&#39; definitions
@@ -2244,14 +2244,14 @@ The &#x60;display_name&#x60; attribute will match how the metric is named in our
 See &lt;a href&#x3D;&#39;/docs/api-features/analytics-overview/&#39;&gt;Organic Analytics&lt;/a&gt; and &lt;a href&#x3D;&#39;/docs/api-features/ads-reporting/&#39;&gt;Ads Analytics&lt;/a&gt; for more information.
      * @param reportType Report type. (optional)
      */
-    @Serializable @Resource("/resources/delivery_metrics") class deliveryMetricsGet(val reportType: kotlin.String? = null)
+    @Resource("/resources/delivery_metrics") class deliveryMetricsGet(val reportType: kotlin.String? = null)
 
     /**
      * Get interest details
      * &lt;p&gt;Get details of a specific interest given interest ID.&lt;/p&gt; &lt;p&gt;Click &lt;a href&#x3D;&quot;https://docs.google.com/spreadsheets/d/1HxL-0Z3p2fgxis9YBP2HWC3tvPrs1hAuHDRtH-NJTIM/edit#gid&#x3D;118370875&quot; target&#x3D;&quot;_blank&quot;&gt;here&lt;/a&gt; for a spreadsheet listing interests and their IDs.&lt;/p&gt;
      * @param interestId Unique identifier of an interest. 
      */
-    @Serializable @Resource("/resources/targeting/interests/{interest_id}") class interestTargetingOptionsGet(val interestId: kotlin.String)
+    @Resource("/resources/targeting/interests/{interest_id}") class interestTargetingOptionsGet(val interestId: kotlin.String)
 
     /**
      * Get lead form questions
@@ -2259,14 +2259,14 @@ See &lt;a href&#x3D;&#39;/docs/api-features/analytics-overview/&#39;&gt;Organic 
 
 &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      */
-    @Serializable @Resource("/resources/lead_form_questions") class leadFormQuestionsGet
+    @Resource("/resources/lead_form_questions") class leadFormQuestionsGet
 
     /**
      * Get metrics ready state
      * Learn whether conversion or non-conversion metrics are finalized and ready to query.
      * @param date Analytics reports request date (UTC). Format: YYYY-MM-DD 
      */
-    @Serializable @Resource("/resources/metrics_ready_state") class metricsReadyStateGet(val date: kotlin.String)
+    @Resource("/resources/metrics_ready_state") class metricsReadyStateGet(val date: kotlin.String)
 
     /**
      * Get targeting options
@@ -2278,7 +2278,7 @@ See &lt;a href&#x3D;&#39;/docs/api-features/analytics-overview/&#39;&gt;Organic 
      * @param timestamp Timestamp (optional)
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/resources/targeting/{targeting_type}") class targetingOptionsGet(val targetingType: kotlin.String, val clientId: kotlin.String? = null, val oauthSignature: kotlin.String? = null, val timestamp: kotlin.String? = null, val adAccountId: kotlin.String? = null)
+    @Resource("/resources/targeting/{targeting_type}") class targetingOptionsGet(val targetingType: kotlin.String, val clientId: kotlin.String? = null, val oauthSignature: kotlin.String? = null, val timestamp: kotlin.String? = null, val adAccountId: kotlin.String? = null)
 
     /**
      * Search pins by a given search term
@@ -2291,7 +2291,7 @@ Get the top 10 Pins by a given search term.
      * @param locale Search locale. (optional)
      * @param limit Max search result size (optional, default to 10)
      */
-    @Serializable @Resource("/search/partner/pins") class searchPartnerPins(val term: kotlin.String, val countryCode: kotlin.String, val bookmark: kotlin.String? = null, val locale: kotlin.String? = null, val limit: kotlin.Int? = null)
+    @Resource("/search/partner/pins") class searchPartnerPins(val term: kotlin.String, val countryCode: kotlin.String, val bookmark: kotlin.String? = null, val locale: kotlin.String? = null, val limit: kotlin.Int? = null)
 
     /**
      * Search user&#39;s boards
@@ -2304,7 +2304,7 @@ If using Business Access: Specify an ad_account_id to use the owner of that ad_a
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param query Search query. Can contain pin description keywords or comma-separated pin IDs. (optional)
      */
-    @Serializable @Resource("/search/boards") class searchUserBoardsGet(val adAccountId: kotlin.String? = null, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val query: kotlin.String? = null)
+    @Resource("/search/boards") class searchUserBoardsGet(val adAccountId: kotlin.String? = null, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val query: kotlin.String? = null)
 
     /**
      * Search user&#39;s Pins
@@ -2316,7 +2316,7 @@ If using Business Access: Specify an ad_account_id to use the owner of that ad_a
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      */
-    @Serializable @Resource("/search/pins") class searchUserPinsList(val query: kotlin.String, val adAccountId: kotlin.String? = null, val bookmark: kotlin.String? = null)
+    @Resource("/search/pins") class searchUserPinsList(val adAccountId: kotlin.String? = null, val query: kotlin.String, val bookmark: kotlin.String? = null)
 
     /**
      * Create targeting templates
@@ -2327,7 +2327,7 @@ If using Business Access: Specify an ad_account_id to use the owner of that ad_a
      * @param adAccountId Unique identifier of an ad account. 
      * @param targetingTemplateCreate targeting template creation entity 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/targeting_templates") class targetingTemplateCreate(val adAccountId: kotlin.String, val targetingTemplateCreate: TargetingTemplateCreate)
+    @Resource("/ad_accounts/{ad_account_id}/targeting_templates") class targetingTemplateCreate(val adAccountId: kotlin.String)
 
     /**
      * List targeting templates
@@ -2339,7 +2339,7 @@ If using Business Access: Specify an ad_account_id to use the owner of that ad_a
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/targeting_templates") class targetingTemplateList(val adAccountId: kotlin.String, val order: kotlin.String? = null, val includeSizing: kotlin.Boolean? = null, val searchQuery: kotlin.String? = null, val pageSize: kotlin.Int? = null, val bookmark: kotlin.String? = null)
+    @Resource("/ad_accounts/{ad_account_id}/targeting_templates") class targetingTemplateList(val adAccountId: kotlin.String, val order: kotlin.String? = null, val includeSizing: kotlin.Boolean? = null, val searchQuery: kotlin.String? = null, val pageSize: kotlin.Int? = null, val bookmark: kotlin.String? = null)
 
     /**
      * Update targeting templates
@@ -2347,7 +2347,7 @@ If using Business Access: Specify an ad_account_id to use the owner of that ad_a
      * @param adAccountId Unique identifier of an ad account. 
      * @param targetingTemplateUpdateRequest Operation type and targeting template ID 
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/targeting_templates") class targetingTemplateUpdate(val adAccountId: kotlin.String, val targetingTemplateUpdateRequest: TargetingTemplateUpdateRequest)
+    @Resource("/ad_accounts/{ad_account_id}/targeting_templates") class targetingTemplateUpdate(val adAccountId: kotlin.String)
 
     /**
      * List related terms
@@ -2355,7 +2355,7 @@ If using Business Access: Specify an ad_account_id to use the owner of that ad_a
 Example: the term &#39;workout&#39; would list related terms like &#39;one song workout&#39;, &#39;yoga workout&#39;, &#39;workout motivation&#39;, etc.
      * @param terms List of input terms. 
      */
-    @Serializable @Resource("/terms/related") class termsRelatedList(val terms: kotlin.collections.List<kotlin.String>)
+    @Resource("/terms/related") class termsRelatedList(val terms: kotlin.collections.List<kotlin.String>)
 
     /**
      * List suggested terms
@@ -2364,7 +2364,7 @@ Example: &#39;sport&#39; would return popular terms like &#39;sports bar&#39; an
      * @param term Input term. 
      * @param limit Max suggested terms to return. (optional, default to 4)
      */
-    @Serializable @Resource("/terms/suggested") class termsSuggestedList(val term: kotlin.String, val limit: kotlin.Int? = null)
+    @Resource("/terms/suggested") class termsSuggestedList(val term: kotlin.String, val limit: kotlin.Int? = null)
 
     /**
      * Get terms of service
@@ -2373,7 +2373,7 @@ Example: &#39;sport&#39; would return popular terms like &#39;sports bar&#39; an
      * @param includeHtml Return HTML in TOS text. (optional, default to false)
      * @param tosType Request type. (optional)
      */
-    @Serializable @Resource("/ad_accounts/{ad_account_id}/terms_of_service") class termsOfServiceGet(val adAccountId: kotlin.String, val includeHtml: kotlin.Boolean? = null, val tosType: kotlin.String? = null)
+    @Resource("/ad_accounts/{ad_account_id}/terms_of_service") class termsOfServiceGet(val adAccountId: kotlin.String, val includeHtml: kotlin.Boolean? = null, val tosType: kotlin.String? = null)
 
     /**
      * List following boards
@@ -2383,7 +2383,7 @@ Example: &#39;sport&#39; would return popular terms like &#39;sports bar&#39; an
      * @param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/user_account/following/boards") class boardsUserFollowsList(val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val explicitFollowing: kotlin.Boolean? = null, val adAccountId: kotlin.String? = null)
+    @Resource("/user_account/following/boards") class boardsUserFollowsList(val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val explicitFollowing: kotlin.Boolean? = null, val adAccountId: kotlin.String? = null)
 
     /**
      * Follow user
@@ -2393,7 +2393,7 @@ Use this request, as a signed-in user, to follow another user.
      * @param username A valid username 
      * @param followUserRequest Follow a user. 
      */
-    @Serializable @Resource("/user_account/following/{username}") class followUserUpdate(val username: kotlin.String, val followUserRequest: FollowUserRequest)
+    @Resource("/user_account/following/{username}") class followUserUpdate(val username: kotlin.String)
 
     /**
      * List followers
@@ -2401,20 +2401,20 @@ Use this request, as a signed-in user, to follow another user.
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      */
-    @Serializable @Resource("/user_account/followers") class followersList(val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
+    @Resource("/user_account/followers") class followersList(val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
 
     /**
      * List linked businesses
      * Get a list of your linked business accounts.
      */
-    @Serializable @Resource("/user_account/businesses") class linkedBusinessAccountsGet
+    @Resource("/user_account/businesses") class linkedBusinessAccountsGet
 
     /**
      * Unverify website
      * Unverifu a website verified by the signed-in user.
      * @param website Website with path or domain only 
      */
-    @Serializable @Resource("/user_account/websites") class unverifyWebsiteDelete(val website: kotlin.String)
+    @Resource("/user_account/websites") class unverifyWebsiteDelete(val website: kotlin.String)
 
     /**
      * Get user account analytics
@@ -2433,7 +2433,7 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
      * @param splitField How to split the data into groups. Not including this param means data won&#39;t be split. (optional, default to NO_SPLIT)
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/user_account/analytics") class userAccountAnalytics(val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val fromClaimedContent: kotlin.String? = null, val pinFormat: kotlin.String? = null, val appTypes: kotlin.String? = null, val contentType: kotlin.String? = null, val source: kotlin.String? = null, val metricTypes: kotlin.collections.List<kotlin.String>? = null, val splitField: kotlin.String? = null, val adAccountId: kotlin.String? = null)
+    @Resource("/user_account/analytics") class userAccountAnalytics(val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val fromClaimedContent: kotlin.String? = null, val pinFormat: kotlin.String? = null, val appTypes: kotlin.String? = null, val contentType: kotlin.String? = null, val source: kotlin.String? = null, val metricTypes: kotlin.collections.List<kotlin.String>? = null, val splitField: kotlin.String? = null, val adAccountId: kotlin.String? = null)
 
     /**
      * Get user account top pins analytics
@@ -2454,7 +2454,7 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
      * @param createdInLastNDays Get metrics for pins created in the last \&quot;n\&quot; days. (optional)
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/user_account/analytics/top_pins") class userAccountAnalyticsTopPins(val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val sortBy: kotlin.String, val fromClaimedContent: kotlin.String? = null, val pinFormat: kotlin.String? = null, val appTypes: kotlin.String? = null, val contentType: kotlin.String? = null, val source: kotlin.String? = null, val metricTypes: kotlin.collections.List<kotlin.String>? = null, val numOfPins: kotlin.Int? = null, val createdInLastNDays: kotlin.Int? = null, val adAccountId: kotlin.String? = null)
+    @Resource("/user_account/analytics/top_pins") class userAccountAnalyticsTopPins(val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val sortBy: kotlin.String, val fromClaimedContent: kotlin.String? = null, val pinFormat: kotlin.String? = null, val appTypes: kotlin.String? = null, val contentType: kotlin.String? = null, val source: kotlin.String? = null, val metricTypes: kotlin.collections.List<kotlin.String>? = null, val numOfPins: kotlin.Int? = null, val createdInLastNDays: kotlin.Int? = null, val adAccountId: kotlin.String? = null)
 
     /**
      * Get user account top video pins analytics
@@ -2475,7 +2475,7 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
      * @param createdInLastNDays Get metrics for pins created in the last \&quot;n\&quot; days. (optional)
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/user_account/analytics/top_video_pins") class userAccountAnalyticsTopVideoPins(val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val sortBy: kotlin.String, val fromClaimedContent: kotlin.String? = null, val pinFormat: kotlin.String? = null, val appTypes: kotlin.String? = null, val contentType: kotlin.String? = null, val source: kotlin.String? = null, val metricTypes: kotlin.collections.List<kotlin.String>? = null, val numOfPins: kotlin.Int? = null, val createdInLastNDays: kotlin.Int? = null, val adAccountId: kotlin.String? = null)
+    @Resource("/user_account/analytics/top_video_pins") class userAccountAnalyticsTopVideoPins(val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val sortBy: kotlin.String, val fromClaimedContent: kotlin.String? = null, val pinFormat: kotlin.String? = null, val appTypes: kotlin.String? = null, val contentType: kotlin.String? = null, val source: kotlin.String? = null, val metricTypes: kotlin.collections.List<kotlin.String>? = null, val numOfPins: kotlin.Int? = null, val createdInLastNDays: kotlin.Int? = null, val adAccountId: kotlin.String? = null)
 
     /**
      * List following interests
@@ -2484,7 +2484,7 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      */
-    @Serializable @Resource("/users/{username}/interests/follow") class userAccountFollowedInterests(val username: kotlin.String, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
+    @Resource("/users/{username}/interests/follow") class userAccountFollowedInterests(val username: kotlin.String, val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
 
     /**
      * Get user account
@@ -2494,7 +2494,7 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
 If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the &quot;operation user_account&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/user_account") class userAccountGet(val adAccountId: kotlin.String? = null)
+    @Resource("/user_account") class userAccountGet(val adAccountId: kotlin.String? = null)
 
     /**
      * List following
@@ -2505,7 +2505,7 @@ If using Business Access: Specify an ad_account_id to use the owner of that ad_a
      * @param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/user_account/following") class userFollowingGet(val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val feedType: UserFollowingFeedType? = null, val explicitFollowing: kotlin.Boolean? = null, val adAccountId: kotlin.String? = null)
+    @Resource("/user_account/following") class userFollowingGet(val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null, val feedType: UserFollowingFeedType? = null, val explicitFollowing: kotlin.Boolean? = null, val adAccountId: kotlin.String? = null)
 
     /**
      * Get user websites
@@ -2513,7 +2513,7 @@ If using Business Access: Specify an ad_account_id to use the owner of that ad_a
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      */
-    @Serializable @Resource("/user_account/websites") class userWebsitesGet(val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
+    @Resource("/user_account/websites") class userWebsitesGet(val bookmark: kotlin.String? = null, val pageSize: kotlin.Int? = null)
 
     /**
      * Verify website
@@ -2521,13 +2521,13 @@ If using Business Access: Specify an ad_account_id to use the owner of that ad_a
      * @param userWebsiteVerifyRequest Verify a website. 
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/user_account/websites") class verifyWebsiteUpdate(val userWebsiteVerifyRequest: UserWebsiteVerifyRequest, val adAccountId: kotlin.String? = null)
+    @Resource("/user_account/websites") class verifyWebsiteUpdate(val adAccountId: kotlin.String? = null)
 
     /**
      * Get user verification code for website claiming
      * Get verification code for user to install on the website to claim it.
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Serializable @Resource("/user_account/websites/verification") class websiteVerificationGet(val adAccountId: kotlin.String? = null)
+    @Resource("/user_account/websites/verification") class websiteVerificationGet(val adAccountId: kotlin.String? = null)
 
 }

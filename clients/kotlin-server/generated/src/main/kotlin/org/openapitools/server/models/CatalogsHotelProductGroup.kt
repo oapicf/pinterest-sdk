@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsHotelProductGroupFilters
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param catalogType 
@@ -24,6 +25,7 @@ import org.openapitools.server.models.CatalogsHotelProductGroupFilters
  * @param createdAt Unix timestamp in seconds of when catalog product group was created.
  * @param updatedAt Unix timestamp in seconds of last time catalog product group was updated.
  */
+@Serializable
 data class CatalogsHotelProductGroup(
     val catalogType: CatalogsHotelProductGroup.CatalogType,
     /* ID of the hotel product group. */
@@ -38,7 +40,7 @@ data class CatalogsHotelProductGroup(
     val createdAt: kotlin.Int? = null,
     /* Unix timestamp in seconds of last time catalog product group was updated. */
     val updatedAt: kotlin.Int? = null
-) 
+)
 {
     /**
     * 

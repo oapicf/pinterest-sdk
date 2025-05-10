@@ -49,32 +49,37 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * TrendingKeywordsResponseTrendsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TrendingKeywordsResponseTrendsInner {
   public static final String SERIALIZED_NAME_KEYWORD = "keyword";
   @SerializedName(SERIALIZED_NAME_KEYWORD)
+  @javax.annotation.Nullable
   private String keyword;
 
   public static final String SERIALIZED_NAME_PCT_GROWTH_WOW = "pct_growth_wow";
   @SerializedName(SERIALIZED_NAME_PCT_GROWTH_WOW)
+  @javax.annotation.Nullable
   private Integer pctGrowthWow;
 
   public static final String SERIALIZED_NAME_PCT_GROWTH_MOM = "pct_growth_mom";
   @SerializedName(SERIALIZED_NAME_PCT_GROWTH_MOM)
+  @javax.annotation.Nullable
   private Integer pctGrowthMom;
 
   public static final String SERIALIZED_NAME_PCT_GROWTH_YOY = "pct_growth_yoy";
   @SerializedName(SERIALIZED_NAME_PCT_GROWTH_YOY)
+  @javax.annotation.Nullable
   private Integer pctGrowthYoy;
 
   public static final String SERIALIZED_NAME_TIME_SERIES = "time_series";
   @SerializedName(SERIALIZED_NAME_TIME_SERIES)
+  @javax.annotation.Nullable
   private TrendingKeywordsResponseTrendsInnerTimeSeries timeSeries;
 
   public TrendingKeywordsResponseTrendsInner() {
   }
 
-  public TrendingKeywordsResponseTrendsInner keyword(String keyword) {
+  public TrendingKeywordsResponseTrendsInner keyword(@javax.annotation.Nullable String keyword) {
     this.keyword = keyword;
     return this;
   }
@@ -88,12 +93,12 @@ public class TrendingKeywordsResponseTrendsInner {
     return keyword;
   }
 
-  public void setKeyword(String keyword) {
+  public void setKeyword(@javax.annotation.Nullable String keyword) {
     this.keyword = keyword;
   }
 
 
-  public TrendingKeywordsResponseTrendsInner pctGrowthWow(Integer pctGrowthWow) {
+  public TrendingKeywordsResponseTrendsInner pctGrowthWow(@javax.annotation.Nullable Integer pctGrowthWow) {
     this.pctGrowthWow = pctGrowthWow;
     return this;
   }
@@ -107,12 +112,12 @@ public class TrendingKeywordsResponseTrendsInner {
     return pctGrowthWow;
   }
 
-  public void setPctGrowthWow(Integer pctGrowthWow) {
+  public void setPctGrowthWow(@javax.annotation.Nullable Integer pctGrowthWow) {
     this.pctGrowthWow = pctGrowthWow;
   }
 
 
-  public TrendingKeywordsResponseTrendsInner pctGrowthMom(Integer pctGrowthMom) {
+  public TrendingKeywordsResponseTrendsInner pctGrowthMom(@javax.annotation.Nullable Integer pctGrowthMom) {
     this.pctGrowthMom = pctGrowthMom;
     return this;
   }
@@ -126,12 +131,12 @@ public class TrendingKeywordsResponseTrendsInner {
     return pctGrowthMom;
   }
 
-  public void setPctGrowthMom(Integer pctGrowthMom) {
+  public void setPctGrowthMom(@javax.annotation.Nullable Integer pctGrowthMom) {
     this.pctGrowthMom = pctGrowthMom;
   }
 
 
-  public TrendingKeywordsResponseTrendsInner pctGrowthYoy(Integer pctGrowthYoy) {
+  public TrendingKeywordsResponseTrendsInner pctGrowthYoy(@javax.annotation.Nullable Integer pctGrowthYoy) {
     this.pctGrowthYoy = pctGrowthYoy;
     return this;
   }
@@ -145,12 +150,12 @@ public class TrendingKeywordsResponseTrendsInner {
     return pctGrowthYoy;
   }
 
-  public void setPctGrowthYoy(Integer pctGrowthYoy) {
+  public void setPctGrowthYoy(@javax.annotation.Nullable Integer pctGrowthYoy) {
     this.pctGrowthYoy = pctGrowthYoy;
   }
 
 
-  public TrendingKeywordsResponseTrendsInner timeSeries(TrendingKeywordsResponseTrendsInnerTimeSeries timeSeries) {
+  public TrendingKeywordsResponseTrendsInner timeSeries(@javax.annotation.Nullable TrendingKeywordsResponseTrendsInnerTimeSeries timeSeries) {
     this.timeSeries = timeSeries;
     return this;
   }
@@ -164,7 +169,7 @@ public class TrendingKeywordsResponseTrendsInner {
     return timeSeries;
   }
 
-  public void setTimeSeries(TrendingKeywordsResponseTrendsInnerTimeSeries timeSeries) {
+  public void setTimeSeries(@javax.annotation.Nullable TrendingKeywordsResponseTrendsInnerTimeSeries timeSeries) {
     this.timeSeries = timeSeries;
   }
 

@@ -21,9 +21,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Batch of logs sent from an integration application.")
 @JsonTypeName("IntegrationLogsRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class IntegrationLogsRequest   {
   private @Valid List<@Valid IntegrationLog> logs = new ArrayList<>();
+
+  public IntegrationLogsRequest() {
+  }
+
+  @JsonCreator
+  public IntegrationLogsRequest(
+    @JsonProperty(required = true, value = "logs") List<@Valid IntegrationLog> logs
+  ) {
+    this.logs = logs;
+  }
 
   /**
    **/
@@ -34,12 +44,12 @@ public class IntegrationLogsRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("logs")
+  @JsonProperty(required = true, value = "logs")
   @NotNull @Valid  @Size(min=1,max=250)public List<@Valid IntegrationLog> getLogs() {
     return logs;
   }
 
-  @JsonProperty("logs")
+  @JsonProperty(required = true, value = "logs")
   public void setLogs(List<@Valid IntegrationLog> logs) {
     this.logs = logs;
   }

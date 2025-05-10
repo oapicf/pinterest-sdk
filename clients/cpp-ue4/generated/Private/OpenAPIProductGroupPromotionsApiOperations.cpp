@@ -1072,9 +1072,9 @@ inline FString ToString(const OpenAPIProductGroupPromotionsApi::ProductGroupsAna
 {
 	switch (Value)
 	{
-	case OpenAPIProductGroupPromotionsApi::ProductGroupsAnalyticsRequest::ConversionReportTimeEnum::AdAction:
+	case OpenAPIProductGroupPromotionsApi::ProductGroupsAnalyticsRequest::ConversionReportTimeEnum::TimeOfAdAction:
 		return TEXT("TIME_OF_AD_ACTION");
-	case OpenAPIProductGroupPromotionsApi::ProductGroupsAnalyticsRequest::ConversionReportTimeEnum::Conversion:
+	case OpenAPIProductGroupPromotionsApi::ProductGroupsAnalyticsRequest::ConversionReportTimeEnum::TimeOfConversion:
 		return TEXT("TIME_OF_CONVERSION");
 	}
 
@@ -1090,8 +1090,8 @@ FString OpenAPIProductGroupPromotionsApi::ProductGroupsAnalyticsRequest::EnumToS
 inline bool FromString(const FString& EnumAsString, OpenAPIProductGroupPromotionsApi::ProductGroupsAnalyticsRequest::ConversionReportTimeEnum& Value)
 {
 	static TMap<FString, OpenAPIProductGroupPromotionsApi::ProductGroupsAnalyticsRequest::ConversionReportTimeEnum> StringToEnum = { 
-		{ TEXT("TIME_OF_AD_ACTION"), OpenAPIProductGroupPromotionsApi::ProductGroupsAnalyticsRequest::ConversionReportTimeEnum::AdAction },
-		{ TEXT("TIME_OF_CONVERSION"), OpenAPIProductGroupPromotionsApi::ProductGroupsAnalyticsRequest::ConversionReportTimeEnum::Conversion }, };
+		{ TEXT("TIME_OF_AD_ACTION"), OpenAPIProductGroupPromotionsApi::ProductGroupsAnalyticsRequest::ConversionReportTimeEnum::TimeOfAdAction },
+		{ TEXT("TIME_OF_CONVERSION"), OpenAPIProductGroupPromotionsApi::ProductGroupsAnalyticsRequest::ConversionReportTimeEnum::TimeOfConversion }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)

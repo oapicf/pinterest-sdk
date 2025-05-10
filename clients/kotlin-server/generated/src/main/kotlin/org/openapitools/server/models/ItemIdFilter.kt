@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsProductGroupMultipleStringCriteria
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param ITEM_ID 
  */
+@Serializable
 data class ItemIdFilter(
     val ITEM_ID: CatalogsProductGroupMultipleStringCriteria
-) 
+)
 

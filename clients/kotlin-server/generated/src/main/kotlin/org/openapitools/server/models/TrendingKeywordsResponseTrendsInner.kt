@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.TrendingKeywordsResponseTrendsInnerTimeSeries
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param keyword The keyword that is trending.
@@ -21,6 +22,7 @@ import org.openapitools.server.models.TrendingKeywordsResponseTrendsInnerTimeSer
  * @param pctGrowthYoy The year-over-year percent change in search volume for this keyword.<br /> For example, a value of \"-5\" would represent a 5% decrease in searches in the last 365 days compared to the month prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% year-over-year growth.
  * @param timeSeries 
  */
+@Serializable
 data class TrendingKeywordsResponseTrendsInner(
     /* The keyword that is trending. */
     val keyword: kotlin.String? = null,
@@ -31,5 +33,5 @@ data class TrendingKeywordsResponseTrendsInner(
     /* The year-over-year percent change in search volume for this keyword.<br /> For example, a value of \"-5\" would represent a 5% decrease in searches in the last 365 days compared to the month prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% year-over-year growth. */
     val pctGrowthYoy: kotlin.Int? = null,
     val timeSeries: TrendingKeywordsResponseTrendsInnerTimeSeries? = null
-) 
+)
 

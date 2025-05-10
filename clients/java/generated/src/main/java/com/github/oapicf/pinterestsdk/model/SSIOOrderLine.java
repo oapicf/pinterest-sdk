@@ -52,100 +52,122 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * SSIOOrderLine
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SSIOOrderLine {
   public static final String SERIALIZED_NAME_SALESFORCE_ORDER_LINE_ID = "salesforce_order_line_id";
   @SerializedName(SERIALIZED_NAME_SALESFORCE_ORDER_LINE_ID)
+  @javax.annotation.Nullable
   private String salesforceOrderLineId;
 
   public static final String SERIALIZED_NAME_ADS_MANAGER_ORDER_LINE_ID = "ads_manager_order_line_id";
   @SerializedName(SERIALIZED_NAME_ADS_MANAGER_ORDER_LINE_ID)
+  @javax.annotation.Nullable
   private String adsManagerOrderLineId;
 
   public static final String SERIALIZED_NAME_PIN_ORDER_ID = "pin_order_id";
   @SerializedName(SERIALIZED_NAME_PIN_ORDER_ID)
+  @javax.annotation.Nullable
   private String pinOrderId;
 
   public static final String SERIALIZED_NAME_LAST_MODIFIED_DATE_TIME = "last_modified_date_time";
   @SerializedName(SERIALIZED_NAME_LAST_MODIFIED_DATE_TIME)
+  @javax.annotation.Nullable
   private String lastModifiedDateTime;
 
   public static final String SERIALIZED_NAME_START_DATE = "start_date";
   @SerializedName(SERIALIZED_NAME_START_DATE)
+  @javax.annotation.Nullable
   private LocalDate startDate;
 
   public static final String SERIALIZED_NAME_END_DATE = "end_date";
   @SerializedName(SERIALIZED_NAME_END_DATE)
+  @javax.annotation.Nullable
   private LocalDate endDate;
 
   public static final String SERIALIZED_NAME_BILL_TO_COMPANY_NAME = "bill_to_company_name";
   @SerializedName(SERIALIZED_NAME_BILL_TO_COMPANY_NAME)
+  @javax.annotation.Nullable
   private String billToCompanyName;
 
   public static final String SERIALIZED_NAME_BILLING_CONTACT_FIRSTNAME = "billing_contact_firstname";
   @SerializedName(SERIALIZED_NAME_BILLING_CONTACT_FIRSTNAME)
+  @javax.annotation.Nullable
   private String billingContactFirstname;
 
   public static final String SERIALIZED_NAME_BILLING_CONTACT_LASTNAME = "billing_contact_lastname";
   @SerializedName(SERIALIZED_NAME_BILLING_CONTACT_LASTNAME)
+  @javax.annotation.Nullable
   private String billingContactLastname;
 
   public static final String SERIALIZED_NAME_BILLING_CONTACT_EMAIL = "billing_contact_email";
   @SerializedName(SERIALIZED_NAME_BILLING_CONTACT_EMAIL)
+  @javax.annotation.Nullable
   private String billingContactEmail;
 
   public static final String SERIALIZED_NAME_MEDIA_CONTACT_EMAIL = "media_contact_email";
   @SerializedName(SERIALIZED_NAME_MEDIA_CONTACT_EMAIL)
+  @javax.annotation.Nullable
   private String mediaContactEmail;
 
   public static final String SERIALIZED_NAME_MEDIA_CONTACT_FIRSTNAME = "media_contact_firstname";
   @SerializedName(SERIALIZED_NAME_MEDIA_CONTACT_FIRSTNAME)
+  @javax.annotation.Nullable
   private String mediaContactFirstname;
 
   public static final String SERIALIZED_NAME_MEDIA_CONTACT_LASTNAME = "media_contact_lastname";
   @SerializedName(SERIALIZED_NAME_MEDIA_CONTACT_LASTNAME)
+  @javax.annotation.Nullable
   private String mediaContactLastname;
 
   public static final String SERIALIZED_NAME_CURRENCY_INFO = "currency_info";
   @SerializedName(SERIALIZED_NAME_CURRENCY_INFO)
+  @javax.annotation.Nullable
   private Currency currencyInfo;
 
   public static final String SERIALIZED_NAME_AGENCY_LINK = "agency_link";
   @SerializedName(SERIALIZED_NAME_AGENCY_LINK)
+  @javax.annotation.Nullable
   private String agencyLink;
 
   public static final String SERIALIZED_NAME_PO_NUMBER = "po_number";
   @SerializedName(SERIALIZED_NAME_PO_NUMBER)
+  @javax.annotation.Nullable
   private String poNumber;
 
   public static final String SERIALIZED_NAME_ORDER_NAME = "order_name";
   @SerializedName(SERIALIZED_NAME_ORDER_NAME)
+  @javax.annotation.Nullable
   private String orderName;
 
   public static final String SERIALIZED_NAME_PMP_NAME = "pmp_name";
   @SerializedName(SERIALIZED_NAME_PMP_NAME)
+  @javax.annotation.Nullable
   private String pmpName;
 
   public static final String SERIALIZED_NAME_ACCEPTED_TERMS_ID = "accepted_terms_id";
   @SerializedName(SERIALIZED_NAME_ACCEPTED_TERMS_ID)
+  @javax.annotation.Nullable
   private String acceptedTermsId;
 
   public static final String SERIALIZED_NAME_ACCEPTED_TERMS_TIME = "accepted_terms_time";
   @SerializedName(SERIALIZED_NAME_ACCEPTED_TERMS_TIME)
+  @javax.annotation.Nullable
   private String acceptedTermsTime;
 
   public static final String SERIALIZED_NAME_BUDGET_AMOUNT = "budget_amount";
   @SerializedName(SERIALIZED_NAME_BUDGET_AMOUNT)
+  @javax.annotation.Nullable
   private BigDecimal budgetAmount;
 
   public static final String SERIALIZED_NAME_ESTIMATED_MONTHLY_SPEND = "estimated_monthly_spend";
   @SerializedName(SERIALIZED_NAME_ESTIMATED_MONTHLY_SPEND)
+  @javax.annotation.Nullable
   private BigDecimal estimatedMonthlySpend;
 
   public SSIOOrderLine() {
   }
 
-  public SSIOOrderLine salesforceOrderLineId(String salesforceOrderLineId) {
+  public SSIOOrderLine salesforceOrderLineId(@javax.annotation.Nullable String salesforceOrderLineId) {
     this.salesforceOrderLineId = salesforceOrderLineId;
     return this;
   }
@@ -159,12 +181,12 @@ public class SSIOOrderLine {
     return salesforceOrderLineId;
   }
 
-  public void setSalesforceOrderLineId(String salesforceOrderLineId) {
+  public void setSalesforceOrderLineId(@javax.annotation.Nullable String salesforceOrderLineId) {
     this.salesforceOrderLineId = salesforceOrderLineId;
   }
 
 
-  public SSIOOrderLine adsManagerOrderLineId(String adsManagerOrderLineId) {
+  public SSIOOrderLine adsManagerOrderLineId(@javax.annotation.Nullable String adsManagerOrderLineId) {
     this.adsManagerOrderLineId = adsManagerOrderLineId;
     return this;
   }
@@ -178,12 +200,12 @@ public class SSIOOrderLine {
     return adsManagerOrderLineId;
   }
 
-  public void setAdsManagerOrderLineId(String adsManagerOrderLineId) {
+  public void setAdsManagerOrderLineId(@javax.annotation.Nullable String adsManagerOrderLineId) {
     this.adsManagerOrderLineId = adsManagerOrderLineId;
   }
 
 
-  public SSIOOrderLine pinOrderId(String pinOrderId) {
+  public SSIOOrderLine pinOrderId(@javax.annotation.Nullable String pinOrderId) {
     this.pinOrderId = pinOrderId;
     return this;
   }
@@ -197,12 +219,12 @@ public class SSIOOrderLine {
     return pinOrderId;
   }
 
-  public void setPinOrderId(String pinOrderId) {
+  public void setPinOrderId(@javax.annotation.Nullable String pinOrderId) {
     this.pinOrderId = pinOrderId;
   }
 
 
-  public SSIOOrderLine lastModifiedDateTime(String lastModifiedDateTime) {
+  public SSIOOrderLine lastModifiedDateTime(@javax.annotation.Nullable String lastModifiedDateTime) {
     this.lastModifiedDateTime = lastModifiedDateTime;
     return this;
   }
@@ -216,12 +238,12 @@ public class SSIOOrderLine {
     return lastModifiedDateTime;
   }
 
-  public void setLastModifiedDateTime(String lastModifiedDateTime) {
+  public void setLastModifiedDateTime(@javax.annotation.Nullable String lastModifiedDateTime) {
     this.lastModifiedDateTime = lastModifiedDateTime;
   }
 
 
-  public SSIOOrderLine startDate(LocalDate startDate) {
+  public SSIOOrderLine startDate(@javax.annotation.Nullable LocalDate startDate) {
     this.startDate = startDate;
     return this;
   }
@@ -235,12 +257,12 @@ public class SSIOOrderLine {
     return startDate;
   }
 
-  public void setStartDate(LocalDate startDate) {
+  public void setStartDate(@javax.annotation.Nullable LocalDate startDate) {
     this.startDate = startDate;
   }
 
 
-  public SSIOOrderLine endDate(LocalDate endDate) {
+  public SSIOOrderLine endDate(@javax.annotation.Nullable LocalDate endDate) {
     this.endDate = endDate;
     return this;
   }
@@ -254,12 +276,12 @@ public class SSIOOrderLine {
     return endDate;
   }
 
-  public void setEndDate(LocalDate endDate) {
+  public void setEndDate(@javax.annotation.Nullable LocalDate endDate) {
     this.endDate = endDate;
   }
 
 
-  public SSIOOrderLine billToCompanyName(String billToCompanyName) {
+  public SSIOOrderLine billToCompanyName(@javax.annotation.Nullable String billToCompanyName) {
     this.billToCompanyName = billToCompanyName;
     return this;
   }
@@ -273,12 +295,12 @@ public class SSIOOrderLine {
     return billToCompanyName;
   }
 
-  public void setBillToCompanyName(String billToCompanyName) {
+  public void setBillToCompanyName(@javax.annotation.Nullable String billToCompanyName) {
     this.billToCompanyName = billToCompanyName;
   }
 
 
-  public SSIOOrderLine billingContactFirstname(String billingContactFirstname) {
+  public SSIOOrderLine billingContactFirstname(@javax.annotation.Nullable String billingContactFirstname) {
     this.billingContactFirstname = billingContactFirstname;
     return this;
   }
@@ -292,12 +314,12 @@ public class SSIOOrderLine {
     return billingContactFirstname;
   }
 
-  public void setBillingContactFirstname(String billingContactFirstname) {
+  public void setBillingContactFirstname(@javax.annotation.Nullable String billingContactFirstname) {
     this.billingContactFirstname = billingContactFirstname;
   }
 
 
-  public SSIOOrderLine billingContactLastname(String billingContactLastname) {
+  public SSIOOrderLine billingContactLastname(@javax.annotation.Nullable String billingContactLastname) {
     this.billingContactLastname = billingContactLastname;
     return this;
   }
@@ -311,12 +333,12 @@ public class SSIOOrderLine {
     return billingContactLastname;
   }
 
-  public void setBillingContactLastname(String billingContactLastname) {
+  public void setBillingContactLastname(@javax.annotation.Nullable String billingContactLastname) {
     this.billingContactLastname = billingContactLastname;
   }
 
 
-  public SSIOOrderLine billingContactEmail(String billingContactEmail) {
+  public SSIOOrderLine billingContactEmail(@javax.annotation.Nullable String billingContactEmail) {
     this.billingContactEmail = billingContactEmail;
     return this;
   }
@@ -330,12 +352,12 @@ public class SSIOOrderLine {
     return billingContactEmail;
   }
 
-  public void setBillingContactEmail(String billingContactEmail) {
+  public void setBillingContactEmail(@javax.annotation.Nullable String billingContactEmail) {
     this.billingContactEmail = billingContactEmail;
   }
 
 
-  public SSIOOrderLine mediaContactEmail(String mediaContactEmail) {
+  public SSIOOrderLine mediaContactEmail(@javax.annotation.Nullable String mediaContactEmail) {
     this.mediaContactEmail = mediaContactEmail;
     return this;
   }
@@ -349,12 +371,12 @@ public class SSIOOrderLine {
     return mediaContactEmail;
   }
 
-  public void setMediaContactEmail(String mediaContactEmail) {
+  public void setMediaContactEmail(@javax.annotation.Nullable String mediaContactEmail) {
     this.mediaContactEmail = mediaContactEmail;
   }
 
 
-  public SSIOOrderLine mediaContactFirstname(String mediaContactFirstname) {
+  public SSIOOrderLine mediaContactFirstname(@javax.annotation.Nullable String mediaContactFirstname) {
     this.mediaContactFirstname = mediaContactFirstname;
     return this;
   }
@@ -368,12 +390,12 @@ public class SSIOOrderLine {
     return mediaContactFirstname;
   }
 
-  public void setMediaContactFirstname(String mediaContactFirstname) {
+  public void setMediaContactFirstname(@javax.annotation.Nullable String mediaContactFirstname) {
     this.mediaContactFirstname = mediaContactFirstname;
   }
 
 
-  public SSIOOrderLine mediaContactLastname(String mediaContactLastname) {
+  public SSIOOrderLine mediaContactLastname(@javax.annotation.Nullable String mediaContactLastname) {
     this.mediaContactLastname = mediaContactLastname;
     return this;
   }
@@ -387,12 +409,12 @@ public class SSIOOrderLine {
     return mediaContactLastname;
   }
 
-  public void setMediaContactLastname(String mediaContactLastname) {
+  public void setMediaContactLastname(@javax.annotation.Nullable String mediaContactLastname) {
     this.mediaContactLastname = mediaContactLastname;
   }
 
 
-  public SSIOOrderLine currencyInfo(Currency currencyInfo) {
+  public SSIOOrderLine currencyInfo(@javax.annotation.Nullable Currency currencyInfo) {
     this.currencyInfo = currencyInfo;
     return this;
   }
@@ -406,12 +428,12 @@ public class SSIOOrderLine {
     return currencyInfo;
   }
 
-  public void setCurrencyInfo(Currency currencyInfo) {
+  public void setCurrencyInfo(@javax.annotation.Nullable Currency currencyInfo) {
     this.currencyInfo = currencyInfo;
   }
 
 
-  public SSIOOrderLine agencyLink(String agencyLink) {
+  public SSIOOrderLine agencyLink(@javax.annotation.Nullable String agencyLink) {
     this.agencyLink = agencyLink;
     return this;
   }
@@ -425,12 +447,12 @@ public class SSIOOrderLine {
     return agencyLink;
   }
 
-  public void setAgencyLink(String agencyLink) {
+  public void setAgencyLink(@javax.annotation.Nullable String agencyLink) {
     this.agencyLink = agencyLink;
   }
 
 
-  public SSIOOrderLine poNumber(String poNumber) {
+  public SSIOOrderLine poNumber(@javax.annotation.Nullable String poNumber) {
     this.poNumber = poNumber;
     return this;
   }
@@ -444,12 +466,12 @@ public class SSIOOrderLine {
     return poNumber;
   }
 
-  public void setPoNumber(String poNumber) {
+  public void setPoNumber(@javax.annotation.Nullable String poNumber) {
     this.poNumber = poNumber;
   }
 
 
-  public SSIOOrderLine orderName(String orderName) {
+  public SSIOOrderLine orderName(@javax.annotation.Nullable String orderName) {
     this.orderName = orderName;
     return this;
   }
@@ -463,12 +485,12 @@ public class SSIOOrderLine {
     return orderName;
   }
 
-  public void setOrderName(String orderName) {
+  public void setOrderName(@javax.annotation.Nullable String orderName) {
     this.orderName = orderName;
   }
 
 
-  public SSIOOrderLine pmpName(String pmpName) {
+  public SSIOOrderLine pmpName(@javax.annotation.Nullable String pmpName) {
     this.pmpName = pmpName;
     return this;
   }
@@ -482,12 +504,12 @@ public class SSIOOrderLine {
     return pmpName;
   }
 
-  public void setPmpName(String pmpName) {
+  public void setPmpName(@javax.annotation.Nullable String pmpName) {
     this.pmpName = pmpName;
   }
 
 
-  public SSIOOrderLine acceptedTermsId(String acceptedTermsId) {
+  public SSIOOrderLine acceptedTermsId(@javax.annotation.Nullable String acceptedTermsId) {
     this.acceptedTermsId = acceptedTermsId;
     return this;
   }
@@ -501,12 +523,12 @@ public class SSIOOrderLine {
     return acceptedTermsId;
   }
 
-  public void setAcceptedTermsId(String acceptedTermsId) {
+  public void setAcceptedTermsId(@javax.annotation.Nullable String acceptedTermsId) {
     this.acceptedTermsId = acceptedTermsId;
   }
 
 
-  public SSIOOrderLine acceptedTermsTime(String acceptedTermsTime) {
+  public SSIOOrderLine acceptedTermsTime(@javax.annotation.Nullable String acceptedTermsTime) {
     this.acceptedTermsTime = acceptedTermsTime;
     return this;
   }
@@ -520,12 +542,12 @@ public class SSIOOrderLine {
     return acceptedTermsTime;
   }
 
-  public void setAcceptedTermsTime(String acceptedTermsTime) {
+  public void setAcceptedTermsTime(@javax.annotation.Nullable String acceptedTermsTime) {
     this.acceptedTermsTime = acceptedTermsTime;
   }
 
 
-  public SSIOOrderLine budgetAmount(BigDecimal budgetAmount) {
+  public SSIOOrderLine budgetAmount(@javax.annotation.Nullable BigDecimal budgetAmount) {
     this.budgetAmount = budgetAmount;
     return this;
   }
@@ -539,12 +561,12 @@ public class SSIOOrderLine {
     return budgetAmount;
   }
 
-  public void setBudgetAmount(BigDecimal budgetAmount) {
+  public void setBudgetAmount(@javax.annotation.Nullable BigDecimal budgetAmount) {
     this.budgetAmount = budgetAmount;
   }
 
 
-  public SSIOOrderLine estimatedMonthlySpend(BigDecimal estimatedMonthlySpend) {
+  public SSIOOrderLine estimatedMonthlySpend(@javax.annotation.Nullable BigDecimal estimatedMonthlySpend) {
     this.estimatedMonthlySpend = estimatedMonthlySpend;
     return this;
   }
@@ -558,7 +580,7 @@ public class SSIOOrderLine {
     return estimatedMonthlySpend;
   }
 
-  public void setEstimatedMonthlySpend(BigDecimal estimatedMonthlySpend) {
+  public void setEstimatedMonthlySpend(@javax.annotation.Nullable BigDecimal estimatedMonthlySpend) {
     this.estimatedMonthlySpend = estimatedMonthlySpend;
   }
 

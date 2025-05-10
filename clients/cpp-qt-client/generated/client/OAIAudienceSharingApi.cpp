@@ -250,7 +250,7 @@ void OAIAudienceSharingApi::adAccountsAudiencesSharedAccounts_list(const QString
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("audience_id")).append(querySuffix).append(QUrl::toPercentEncoding(audience_id));
+        fullPath.append(QUrl::toPercentEncoding("audience_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(audience_id)));
     }
     
     {
@@ -324,7 +324,7 @@ void OAIAudienceSharingApi::adAccountsAudiencesSharedAccounts_list(const QString
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     if (bookmark.hasValue())
     {
@@ -339,7 +339,7 @@ void OAIAudienceSharingApi::adAccountsAudiencesSharedAccounts_list(const QString
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -354,7 +354,7 @@ void OAIAudienceSharingApi::adAccountsAudiencesSharedAccounts_list(const QString
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAudienceSharingApi::adAccountsAudiencesSharedAccounts_listCallback);
     connect(this, &OAIAudienceSharingApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -376,7 +376,7 @@ void OAIAudienceSharingApi::adAccountsAudiencesSharedAccounts_list(const QString
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAudienceSharingApi::adAccountsAudiencesSharedAccounts_listCallback);
     connect(this, &OAIAudienceSharingApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -480,7 +480,7 @@ void OAIAudienceSharingApi::businessAccountAudiencesSharedAccounts_list(const QS
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("audience_id")).append(querySuffix).append(QUrl::toPercentEncoding(audience_id));
+        fullPath.append(QUrl::toPercentEncoding("audience_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(audience_id)));
     }
     
     {
@@ -554,7 +554,7 @@ void OAIAudienceSharingApi::businessAccountAudiencesSharedAccounts_list(const QS
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     if (bookmark.hasValue())
     {
@@ -569,7 +569,7 @@ void OAIAudienceSharingApi::businessAccountAudiencesSharedAccounts_list(const QS
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -584,7 +584,7 @@ void OAIAudienceSharingApi::businessAccountAudiencesSharedAccounts_list(const QS
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAudienceSharingApi::businessAccountAudiencesSharedAccounts_listCallback);
     connect(this, &OAIAudienceSharingApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -606,7 +606,7 @@ void OAIAudienceSharingApi::businessAccountAudiencesSharedAccounts_list(const QS
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAudienceSharingApi::businessAccountAudiencesSharedAccounts_listCallback);
     connect(this, &OAIAudienceSharingApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -710,7 +710,7 @@ void OAIAudienceSharingApi::sharedAudiencesForBusiness_list(const QString &busin
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     if (order.hasValue())
     {
@@ -725,7 +725,7 @@ void OAIAudienceSharingApi::sharedAudiencesForBusiness_list(const QString &busin
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("order")).append(querySuffix).append(QUrl::toPercentEncoding(order.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("order")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(order.stringValue())));
     }
     if (page_size.hasValue())
     {
@@ -740,7 +740,7 @@ void OAIAudienceSharingApi::sharedAudiencesForBusiness_list(const QString &busin
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -755,7 +755,7 @@ void OAIAudienceSharingApi::sharedAudiencesForBusiness_list(const QString &busin
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAudienceSharingApi::sharedAudiencesForBusiness_listCallback);
     connect(this, &OAIAudienceSharingApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -777,7 +777,7 @@ void OAIAudienceSharingApi::sharedAudiencesForBusiness_list(const QString &busin
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAudienceSharingApi::sharedAudiencesForBusiness_listCallback);
     connect(this, &OAIAudienceSharingApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -885,7 +885,7 @@ void OAIAudienceSharingApi::updateAdAccountToAdAccountSharedAudience(const QStri
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAudienceSharingApi::updateAdAccountToAdAccountSharedAudienceCallback);
     connect(this, &OAIAudienceSharingApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -907,7 +907,7 @@ void OAIAudienceSharingApi::updateAdAccountToAdAccountSharedAudience(const QStri
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAudienceSharingApi::updateAdAccountToAdAccountSharedAudienceCallback);
     connect(this, &OAIAudienceSharingApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1015,7 +1015,7 @@ void OAIAudienceSharingApi::updateAdAccountToBusinessSharedAudience(const QStrin
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAudienceSharingApi::updateAdAccountToBusinessSharedAudienceCallback);
     connect(this, &OAIAudienceSharingApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1037,7 +1037,7 @@ void OAIAudienceSharingApi::updateAdAccountToBusinessSharedAudience(const QStrin
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAudienceSharingApi::updateAdAccountToBusinessSharedAudienceCallback);
     connect(this, &OAIAudienceSharingApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1145,7 +1145,7 @@ void OAIAudienceSharingApi::updateBusinessToAdAccountSharedAudience(const QStrin
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAudienceSharingApi::updateBusinessToAdAccountSharedAudienceCallback);
     connect(this, &OAIAudienceSharingApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1167,7 +1167,7 @@ void OAIAudienceSharingApi::updateBusinessToAdAccountSharedAudience(const QStrin
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAudienceSharingApi::updateBusinessToAdAccountSharedAudienceCallback);
     connect(this, &OAIAudienceSharingApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1275,7 +1275,7 @@ void OAIAudienceSharingApi::updateBusinessToBusinessSharedAudience(const QString
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAudienceSharingApi::updateBusinessToBusinessSharedAudienceCallback);
     connect(this, &OAIAudienceSharingApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1297,7 +1297,7 @@ void OAIAudienceSharingApi::updateBusinessToBusinessSharedAudience(const QString
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAudienceSharingApi::updateBusinessToBusinessSharedAudienceCallback);
     connect(this, &OAIAudienceSharingApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }

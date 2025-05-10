@@ -13,7 +13,7 @@ import AnyCodable
 /** An object containing a list of all the asset access requests */
 public struct CreateAssetAccessRequestBody: Codable, JSONEncodable, Hashable {
 
-    static let assetRequestsRule = ArrayRule(minItems: 1, maxItems: 100, uniqueItems: false)
+    public static let assetRequestsRule = ArrayRule(minItems: 1, maxItems: 100, uniqueItems: false)
     public var assetRequests: [CreateAssetAccessRequestBodyAssetRequestsInner]
 
     public init(assetRequests: [CreateAssetAccessRequestBodyAssetRequestsInner]) {

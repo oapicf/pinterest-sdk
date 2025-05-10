@@ -28,8 +28,8 @@ message PinMediaSourceVideoID {
 
   // Content type for cover image Base64.
   enum Cover_image_content_typeEnum {
-    Cover_image_content_typeEnum_JPEG = 0;
-    Cover_image_content_typeEnum_PNG = 1;
+    Cover_image_content_typeEnum_IMAGE_JPEG = 0;
+    Cover_image_content_typeEnum_IMAGE_PNG = 1;
   }
 
   Cover_image_content_typeEnum cover_image_content_type = 449795375;

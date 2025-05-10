@@ -42,8 +42,8 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum CatalogsProductGroupStatus: string
 {
-        case ACTIVE = "ACTIVE";
-        case INACTIVE = "INACTIVE";
+        case ACTIVE = 'ACTIVE';
+        case INACTIVE = 'INACTIVE';
 }
 
 

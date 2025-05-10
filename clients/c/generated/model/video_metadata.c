@@ -5,7 +5,7 @@
 
 
 
-video_metadata_t *video_metadata_create(
+static video_metadata_t *video_metadata_create_internal(
     char *item_type,
     char *cover_image_url,
     char *video_url,
@@ -24,12 +24,34 @@ video_metadata_t *video_metadata_create(
     video_metadata_local_var->height = height;
     video_metadata_local_var->width = width;
 
+    video_metadata_local_var->_library_owned = 1;
     return video_metadata_local_var;
 }
 
+__attribute__((deprecated)) video_metadata_t *video_metadata_create(
+    char *item_type,
+    char *cover_image_url,
+    char *video_url,
+    double duration,
+    int height,
+    int width
+    ) {
+    return video_metadata_create_internal (
+        item_type,
+        cover_image_url,
+        video_url,
+        duration,
+        height,
+        width
+        );
+}
 
 void video_metadata_free(video_metadata_t *video_metadata) {
     if(NULL == video_metadata){
+        return ;
+    }
+    if(video_metadata->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "video_metadata_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -112,6 +134,9 @@ video_metadata_t *video_metadata_parseFromJSON(cJSON *video_metadataJSON){
 
     // video_metadata->item_type
     cJSON *item_type = cJSON_GetObjectItemCaseSensitive(video_metadataJSON, "item_type");
+    if (cJSON_IsNull(item_type)) {
+        item_type = NULL;
+    }
     if (item_type) { 
     if(!cJSON_IsString(item_type) && !cJSON_IsNull(item_type))
     {
@@ -121,6 +146,9 @@ video_metadata_t *video_metadata_parseFromJSON(cJSON *video_metadataJSON){
 
     // video_metadata->cover_image_url
     cJSON *cover_image_url = cJSON_GetObjectItemCaseSensitive(video_metadataJSON, "cover_image_url");
+    if (cJSON_IsNull(cover_image_url)) {
+        cover_image_url = NULL;
+    }
     if (cover_image_url) { 
     if(!cJSON_IsString(cover_image_url) && !cJSON_IsNull(cover_image_url))
     {
@@ -130,6 +158,9 @@ video_metadata_t *video_metadata_parseFromJSON(cJSON *video_metadataJSON){
 
     // video_metadata->video_url
     cJSON *video_url = cJSON_GetObjectItemCaseSensitive(video_metadataJSON, "video_url");
+    if (cJSON_IsNull(video_url)) {
+        video_url = NULL;
+    }
     if (video_url) { 
     if(!cJSON_IsString(video_url) && !cJSON_IsNull(video_url))
     {
@@ -139,6 +170,9 @@ video_metadata_t *video_metadata_parseFromJSON(cJSON *video_metadataJSON){
 
     // video_metadata->duration
     cJSON *duration = cJSON_GetObjectItemCaseSensitive(video_metadataJSON, "duration");
+    if (cJSON_IsNull(duration)) {
+        duration = NULL;
+    }
     if (duration) { 
     if(!cJSON_IsNumber(duration))
     {
@@ -148,6 +182,9 @@ video_metadata_t *video_metadata_parseFromJSON(cJSON *video_metadataJSON){
 
     // video_metadata->height
     cJSON *height = cJSON_GetObjectItemCaseSensitive(video_metadataJSON, "height");
+    if (cJSON_IsNull(height)) {
+        height = NULL;
+    }
     if (height) { 
     if(!cJSON_IsNumber(height))
     {
@@ -157,6 +194,9 @@ video_metadata_t *video_metadata_parseFromJSON(cJSON *video_metadataJSON){
 
     // video_metadata->width
     cJSON *width = cJSON_GetObjectItemCaseSensitive(video_metadataJSON, "width");
+    if (cJSON_IsNull(width)) {
+        width = NULL;
+    }
     if (width) { 
     if(!cJSON_IsNumber(width))
     {
@@ -165,7 +205,7 @@ video_metadata_t *video_metadata_parseFromJSON(cJSON *video_metadataJSON){
     }
 
 
-    video_metadata_local_var = video_metadata_create (
+    video_metadata_local_var = video_metadata_create_internal (
         item_type && !cJSON_IsNull(item_type) ? strdup(item_type->valuestring) : NULL,
         cover_image_url && !cJSON_IsNull(cover_image_url) ? strdup(cover_image_url->valuestring) : NULL,
         video_url && !cJSON_IsNull(video_url) ? strdup(video_url->valuestring) : NULL,

@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct SSIOOrderLine: Codable, JSONEncodable, Hashable {
 
-    static let lastModifiedDateTimeRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$/")
-    static let acceptedTermsTimeRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$/")
+    public static let lastModifiedDateTimeRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$/")
+    public static let acceptedTermsTimeRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$/")
     /** OrderLineId in SFDC */
     public var salesforceOrderLineId: String?
     /** Ads manager OrderLineId */

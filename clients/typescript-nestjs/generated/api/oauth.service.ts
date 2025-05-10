@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { OauthAccessTokenResponse } from '../model/oauthAccessTokenResponse';
 import { Configuration } from '../configuration';
@@ -26,10 +26,12 @@ export class OauthService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -47,9 +49,10 @@ export class OauthService {
      * @param grantType 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [oauthTokenOpts.config] Override http request option.
      */
-    public oauthToken(grantType: string, ): Observable<AxiosResponse<OauthAccessTokenResponse>>;
-    public oauthToken(grantType: string, ): Observable<any> {
+    public oauthToken(grantType: string, oauthTokenOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<OauthAccessTokenResponse>>;
+    public oauthToken(grantType: string, oauthTokenOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (grantType === null || grantType === undefined) {
             throw new Error('Required parameter grantType was null or undefined when calling oauthToken.');
         }
@@ -102,7 +105,8 @@ export class OauthService {
                     convertFormParamsToString ? formParams!.toString() : formParams!,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...oauthTokenOpts?.config,
+                        headers: {...headers, ...oauthTokenOpts?.config?.headers},
                     }
                 );
             })

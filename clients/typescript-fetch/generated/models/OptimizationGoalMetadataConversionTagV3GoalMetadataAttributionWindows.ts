@@ -62,11 +62,11 @@ export function OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWi
     };
 }
 
-  export function OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindowsToJSON(json: any): OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows {
-      return OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindowsToJSONTyped(json, false);
-  }
+export function OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindowsToJSON(json: any): OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows {
+    return OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindowsToJSONTyped(json, false);
+}
 
-  export function OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindowsToJSONTyped(value?: OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows | null, ignoreDiscriminator: boolean = false): any {
+export function OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindowsToJSONTyped(value?: OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -54,28 +54,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Request object to upsert catalogs items
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsItemsUpsertBatchRequest {
   public static final String SERIALIZED_NAME_COUNTRY = "country";
   @SerializedName(SERIALIZED_NAME_COUNTRY)
+  @javax.annotation.Nonnull
   private Country country;
 
   public static final String SERIALIZED_NAME_LANGUAGE = "language";
   @SerializedName(SERIALIZED_NAME_LANGUAGE)
+  @javax.annotation.Nonnull
   private CatalogsItemsRequestLanguage language;
 
   public static final String SERIALIZED_NAME_OPERATION = "operation";
   @SerializedName(SERIALIZED_NAME_OPERATION)
+  @javax.annotation.Nonnull
   private BatchOperation operation;
 
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
+  @javax.annotation.Nonnull
   private List<ItemUpsertBatchRecord> items = new ArrayList<>();
 
   public CatalogsItemsUpsertBatchRequest() {
   }
 
-  public CatalogsItemsUpsertBatchRequest country(Country country) {
+  public CatalogsItemsUpsertBatchRequest country(@javax.annotation.Nonnull Country country) {
     this.country = country;
     return this;
   }
@@ -89,12 +93,12 @@ public class CatalogsItemsUpsertBatchRequest {
     return country;
   }
 
-  public void setCountry(Country country) {
+  public void setCountry(@javax.annotation.Nonnull Country country) {
     this.country = country;
   }
 
 
-  public CatalogsItemsUpsertBatchRequest language(CatalogsItemsRequestLanguage language) {
+  public CatalogsItemsUpsertBatchRequest language(@javax.annotation.Nonnull CatalogsItemsRequestLanguage language) {
     this.language = language;
     return this;
   }
@@ -108,12 +112,12 @@ public class CatalogsItemsUpsertBatchRequest {
     return language;
   }
 
-  public void setLanguage(CatalogsItemsRequestLanguage language) {
+  public void setLanguage(@javax.annotation.Nonnull CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 
 
-  public CatalogsItemsUpsertBatchRequest operation(BatchOperation operation) {
+  public CatalogsItemsUpsertBatchRequest operation(@javax.annotation.Nonnull BatchOperation operation) {
     this.operation = operation;
     return this;
   }
@@ -127,12 +131,12 @@ public class CatalogsItemsUpsertBatchRequest {
     return operation;
   }
 
-  public void setOperation(BatchOperation operation) {
+  public void setOperation(@javax.annotation.Nonnull BatchOperation operation) {
     this.operation = operation;
   }
 
 
-  public CatalogsItemsUpsertBatchRequest items(List<ItemUpsertBatchRecord> items) {
+  public CatalogsItemsUpsertBatchRequest items(@javax.annotation.Nonnull List<ItemUpsertBatchRecord> items) {
     this.items = items;
     return this;
   }
@@ -154,7 +158,7 @@ public class CatalogsItemsUpsertBatchRequest {
     return items;
   }
 
-  public void setItems(List<ItemUpsertBatchRecord> items) {
+  public void setItems(@javax.annotation.Nonnull List<ItemUpsertBatchRecord> items) {
     this.items = items;
   }
 

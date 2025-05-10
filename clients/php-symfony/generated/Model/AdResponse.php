@@ -220,7 +220,7 @@ class AdResponse
      * @SerializedName("customizable_cta_type")
      * @Type("string")
     */
-    #[Assert\Choice(["GET_OFFER", "LEARN_MORE", "ORDER_NOW", "SHOP_NOW", "SIGN_UP", "SUBSCRIBE", "BUY_NOW", "CONTACT_US", "GET_QUOTE", "VISIT_SITE", "APPLY_NOW", "BOOK_NOW", "REQUEST_DEMO", "REGISTER_NOW", "FIND_A_DEALER", "ADD_TO_CART", "WATCH_NOW", "READ_MORE"])]
+    #[Assert\Choice(['GET_OFFER', 'LEARN_MORE', 'ORDER_NOW', 'SHOP_NOW', 'SIGN_UP', 'SUBSCRIBE', 'BUY_NOW', 'CONTACT_US', 'GET_QUOTE', 'VISIT_SITE', 'APPLY_NOW', 'BOOK_NOW', 'REQUEST_DEMO', 'REGISTER_NOW', 'FIND_A_DEALER', 'ADD_TO_CART', 'WATCH_NOW', 'READ_MORE'])]
     #[Assert\Type("string")]
     protected ?string $customizableCtaType = null;
 
@@ -306,7 +306,7 @@ class AdResponse
      * @Type("array<string>")
     */
     #[Assert\All([
-        new Assert\Choice(["HASHTAGS", "PROMOTIONS_AND_PRICES", "TARGETING", "LANDING_PAGE", "CAPS_AND_SYMBOLS", "SHOCKING", "WEIGHT_LOSS", "PROHIBITED_PRODUCT", "AUTHENTICITY", "NUDITY", "CONFUSING_DESIGN", "URGENCY", "RATINGS", "APP", "ALCOHOL", "CONTESTS", "POLITICAL", "OTHER", "IMAGE", "NAR", "INCONSISTENT", "CLICKBAIT", "NO_DESCRIPTION", "LOW_QUALITY", "EXAGGERATED_CLAIMS", "PINTEREST_BRAND", "ALCOHOL_NO_SALE", "LANDING_PAGE_SPEED", "LANDING_PAGE_HARDWALL", "LANDING_PAGE_BROKEN", "LANDING_PAGE_QUALITY", "OUT_OF_STOCK", "IMAGE_LOW_QUALITY", "IMAGE_BUSY", "IMAGE_POORLY_EDITED", "IMAGE_BEFORE_AFTER", "UGC", "FAKE_BUTTONS", "WEAPONS", "SENSITIVE", "UNACCEPTABLE_BUSINESS", "SUSPICIOUS_CLAIMS", "PHARMA", "SUSPICIOUS_SUPPLEMENTS", "ILLEGAL_RECREATIONAL_DRUG", "LOW_QUALITY_LANDING_PAGE", "RESTRICTED_HEALTHCARE", "INCONSISTENT_LANG_FR"]),
+        new Assert\Choice(['HASHTAGS', 'PROMOTIONS_AND_PRICES', 'TARGETING', 'LANDING_PAGE', 'CAPS_AND_SYMBOLS', 'SHOCKING', 'WEIGHT_LOSS', 'PROHIBITED_PRODUCT', 'AUTHENTICITY', 'NUDITY', 'CONFUSING_DESIGN', 'URGENCY', 'RATINGS', 'APP', 'ALCOHOL', 'CONTESTS', 'POLITICAL', 'OTHER', 'IMAGE', 'NAR', 'INCONSISTENT', 'CLICKBAIT', 'NO_DESCRIPTION', 'LOW_QUALITY', 'EXAGGERATED_CLAIMS', 'PINTEREST_BRAND', 'ALCOHOL_NO_SALE', 'LANDING_PAGE_SPEED', 'LANDING_PAGE_HARDWALL', 'LANDING_PAGE_BROKEN', 'LANDING_PAGE_QUALITY', 'OUT_OF_STOCK', 'IMAGE_LOW_QUALITY', 'IMAGE_BUSY', 'IMAGE_POORLY_EDITED', 'IMAGE_BEFORE_AFTER', 'UGC', 'FAKE_BUTTONS', 'WEAPONS', 'SENSITIVE', 'UNACCEPTABLE_BUSINESS', 'SUSPICIOUS_CLAIMS', 'PHARMA', 'SUSPICIOUS_SUPPLEMENTS', 'ILLEGAL_RECREATIONAL_DRUG', 'LOW_QUALITY_LANDING_PAGE', 'RESTRICTED_HEALTHCARE', 'INCONSISTENT_LANG_FR']),
     ])]
     #[Assert\All([
         new Assert\Type("string"),
@@ -332,7 +332,7 @@ class AdResponse
      * @SerializedName("review_status")
      * @Type("string")
     */
-    #[Assert\Choice(["OTHER", "PENDING", "REJECTED", "APPROVED"])]
+    #[Assert\Choice(['OTHER', 'PENDING', 'REJECTED', 'APPROVED'])]
     #[Assert\Type("string")]
     protected ?string $reviewStatus = null;
 
@@ -370,7 +370,7 @@ class AdResponse
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->adGroupId = array_key_exists('adGroupId', $data) ? $data['adGroupId'] : $this->adGroupId;

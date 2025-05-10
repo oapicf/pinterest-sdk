@@ -18,10 +18,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Request object to list products for a given feed_id and product group filter.")
 @JsonTypeName("CatalogsListProductsByFeedBasedFilter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsListProductsByFeedBasedFilter   {
   private String feedId;
   private CatalogsProductGroupFilters filters;
+
+  public CatalogsListProductsByFeedBasedFilter() {
+  }
+
+  @JsonCreator
+  public CatalogsListProductsByFeedBasedFilter(
+    @JsonProperty(required = true, value = "feed_id") String feedId,
+    @JsonProperty(required = true, value = "filters") CatalogsProductGroupFilters filters
+  ) {
+    this.feedId = feedId;
+    this.filters = filters;
+  }
 
   /**
    * Catalog Feed id pertaining to the catalog product group filter.
@@ -33,12 +45,12 @@ public class CatalogsListProductsByFeedBasedFilter   {
 
   
   @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog Feed id pertaining to the catalog product group filter.")
-  @JsonProperty("feed_id")
+  @JsonProperty(required = true, value = "feed_id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getFeedId() {
     return feedId;
   }
 
-  @JsonProperty("feed_id")
+  @JsonProperty(required = true, value = "feed_id")
   public void setFeedId(String feedId) {
     this.feedId = feedId;
   }
@@ -52,12 +64,12 @@ public class CatalogsListProductsByFeedBasedFilter   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("filters")
+  @JsonProperty(required = true, value = "filters")
   @NotNull @Valid public CatalogsProductGroupFilters getFilters() {
     return filters;
   }
 
-  @JsonProperty("filters")
+  @JsonProperty(required = true, value = "filters")
   public void setFilters(CatalogsProductGroupFilters filters) {
     this.filters = filters;
   }

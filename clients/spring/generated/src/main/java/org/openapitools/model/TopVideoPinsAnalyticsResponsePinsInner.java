@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import org.openapitools.model.DataStatus;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -25,7 +26,7 @@ import javax.annotation.Generated;
 
 @Schema(name = "TopVideoPinsAnalyticsResponse_pins_inner", description = "Array with metrics, status, and pin id for the requested metric")
 @JsonTypeName("TopVideoPinsAnalyticsResponse_pins_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TopVideoPinsAnalyticsResponsePinsInner {
 
   @Valid
@@ -34,7 +35,7 @@ public class TopVideoPinsAnalyticsResponsePinsInner {
   @Valid
   private Map<String, DataStatus> dataStatus = new HashMap<>();
 
-  private String pinId;
+  private @Nullable String pinId;
 
   public TopVideoPinsAnalyticsResponsePinsInner metrics(Map<String, BigDecimal> metrics) {
     this.metrics = metrics;

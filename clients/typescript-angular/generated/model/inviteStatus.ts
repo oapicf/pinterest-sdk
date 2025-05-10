@@ -15,10 +15,15 @@
 export type InviteStatus = 'PENDING' | 'ACCEPTED' | 'DECLINED' | 'CANCELLED' | 'EXPIRED';
 
 export const InviteStatus = {
+
     Pending: 'PENDING' as InviteStatus,
+
     Accepted: 'ACCEPTED' as InviteStatus,
+
     Declined: 'DECLINED' as InviteStatus,
+
     Cancelled: 'CANCELLED' as InviteStatus,
+
     Expired: 'EXPIRED' as InviteStatus
 };
 

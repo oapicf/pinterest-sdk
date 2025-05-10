@@ -13,12 +13,14 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.RelatedTermsRelatedTermsListInner
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param id First input term. For example, if you pass \"?terms=clothes,workout\", then id will be \"clothes\"
  * @param relatedTermCount Total number of related terms returned
  * @param relatedTermsList The id of the advertiser.
  */
+@Serializable
 data class RelatedTerms(
     /* First input term. For example, if you pass \"?terms=clothes,workout\", then id will be \"clothes\" */
     val id: kotlin.String? = null,
@@ -26,5 +28,5 @@ data class RelatedTerms(
     val relatedTermCount: kotlin.Int? = null,
     /* The id of the advertiser. */
     val relatedTermsList: kotlin.collections.List<RelatedTermsRelatedTermsListInner>? = null
-) 
+)
 

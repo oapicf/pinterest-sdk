@@ -70,11 +70,11 @@ export function CreateInvitesResultsResponseArrayItemsInnerFromJSONTyped(json: a
     };
 }
 
-  export function CreateInvitesResultsResponseArrayItemsInnerToJSON(json: any): CreateInvitesResultsResponseArrayItemsInner {
-      return CreateInvitesResultsResponseArrayItemsInnerToJSONTyped(json, false);
-  }
+export function CreateInvitesResultsResponseArrayItemsInnerToJSON(json: any): CreateInvitesResultsResponseArrayItemsInner {
+    return CreateInvitesResultsResponseArrayItemsInnerToJSONTyped(json, false);
+}
 
-  export function CreateInvitesResultsResponseArrayItemsInnerToJSONTyped(value?: CreateInvitesResultsResponseArrayItemsInner | null, ignoreDiscriminator: boolean = false): any {
+export function CreateInvitesResultsResponseArrayItemsInnerToJSONTyped(value?: CreateInvitesResultsResponseArrayItemsInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

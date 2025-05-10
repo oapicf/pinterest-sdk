@@ -290,7 +290,7 @@ void OAICatalogsApi::catalogsProductGroupPins_list(const QString &product_group_
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     if (page_size.hasValue())
     {
@@ -305,7 +305,7 @@ void OAICatalogsApi::catalogsProductGroupPins_list(const QString &product_group_
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     if (ad_account_id.hasValue())
     {
@@ -320,7 +320,7 @@ void OAICatalogsApi::catalogsProductGroupPins_list(const QString &product_group_
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     if (pin_metrics.hasValue())
     {
@@ -335,7 +335,7 @@ void OAICatalogsApi::catalogsProductGroupPins_list(const QString &product_group_
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("pin_metrics")).append(querySuffix).append(QUrl::toPercentEncoding(pin_metrics.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("pin_metrics")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(pin_metrics.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -350,7 +350,7 @@ void OAICatalogsApi::catalogsProductGroupPins_list(const QString &product_group_
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::catalogsProductGroupPins_listCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -374,7 +374,7 @@ void OAICatalogsApi::catalogsProductGroupPins_list(const QString &product_group_
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::catalogsProductGroupPins_listCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -466,7 +466,7 @@ void OAICatalogsApi::catalogsProductGroups_create(const OAIMultiple_product_grou
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -486,7 +486,7 @@ void OAICatalogsApi::catalogsProductGroups_create(const OAIMultiple_product_grou
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::catalogsProductGroups_createCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -508,7 +508,7 @@ void OAICatalogsApi::catalogsProductGroups_create(const OAIMultiple_product_grou
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::catalogsProductGroups_createCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -598,7 +598,7 @@ void OAICatalogsApi::catalogsProductGroups_createMany(const QList<OAIMultiple_pr
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -617,7 +617,7 @@ void OAICatalogsApi::catalogsProductGroups_createMany(const QList<OAIMultiple_pr
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::catalogsProductGroups_createManyCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -639,7 +639,7 @@ void OAICatalogsApi::catalogsProductGroups_createMany(const QList<OAIMultiple_pr
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::catalogsProductGroups_createManyCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -752,7 +752,7 @@ void OAICatalogsApi::catalogsProductGroups_delete(const QString &product_group_i
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -767,7 +767,7 @@ void OAICatalogsApi::catalogsProductGroups_delete(const QString &product_group_i
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::catalogsProductGroups_deleteCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -789,7 +789,7 @@ void OAICatalogsApi::catalogsProductGroups_delete(const QString &product_group_i
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::catalogsProductGroups_deleteCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -963,7 +963,7 @@ void OAICatalogsApi::catalogsProductGroups_deleteMany(const QList<qint32> &id, c
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -978,7 +978,7 @@ void OAICatalogsApi::catalogsProductGroups_deleteMany(const QList<qint32> &id, c
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::catalogsProductGroups_deleteManyCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1000,7 +1000,7 @@ void OAICatalogsApi::catalogsProductGroups_deleteMany(const QList<qint32> &id, c
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::catalogsProductGroups_deleteManyCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1103,7 +1103,7 @@ void OAICatalogsApi::catalogsProductGroups_get(const QString &product_group_id, 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -1118,7 +1118,7 @@ void OAICatalogsApi::catalogsProductGroups_get(const QString &product_group_id, 
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::catalogsProductGroups_getCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1140,7 +1140,7 @@ void OAICatalogsApi::catalogsProductGroups_get(const QString &product_group_id, 
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::catalogsProductGroups_getCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1315,7 +1315,7 @@ void OAICatalogsApi::catalogsProductGroups_list(const ::OpenAPI::OptionalParam<Q
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("feed_id")).append(querySuffix).append(QUrl::toPercentEncoding(feed_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("feed_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(feed_id.stringValue())));
     }
     if (catalog_id.hasValue())
     {
@@ -1330,7 +1330,7 @@ void OAICatalogsApi::catalogsProductGroups_list(const ::OpenAPI::OptionalParam<Q
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("catalog_id")).append(querySuffix).append(QUrl::toPercentEncoding(catalog_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("catalog_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(catalog_id.stringValue())));
     }
     if (bookmark.hasValue())
     {
@@ -1345,7 +1345,7 @@ void OAICatalogsApi::catalogsProductGroups_list(const ::OpenAPI::OptionalParam<Q
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     if (page_size.hasValue())
     {
@@ -1360,7 +1360,7 @@ void OAICatalogsApi::catalogsProductGroups_list(const ::OpenAPI::OptionalParam<Q
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     if (ad_account_id.hasValue())
     {
@@ -1375,7 +1375,7 @@ void OAICatalogsApi::catalogsProductGroups_list(const ::OpenAPI::OptionalParam<Q
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -1390,7 +1390,7 @@ void OAICatalogsApi::catalogsProductGroups_list(const ::OpenAPI::OptionalParam<Q
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::catalogsProductGroups_listCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1412,7 +1412,7 @@ void OAICatalogsApi::catalogsProductGroups_list(const ::OpenAPI::OptionalParam<Q
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::catalogsProductGroups_listCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1516,7 +1516,7 @@ void OAICatalogsApi::catalogsProductGroups_productCountsGet(const QString &produ
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -1531,7 +1531,7 @@ void OAICatalogsApi::catalogsProductGroups_productCountsGet(const QString &produ
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::catalogsProductGroups_productCountsGetCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1553,7 +1553,7 @@ void OAICatalogsApi::catalogsProductGroups_productCountsGet(const QString &produ
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::catalogsProductGroups_productCountsGetCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1657,7 +1657,7 @@ void OAICatalogsApi::catalogsProductGroups_update(const QString &product_group_i
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -1677,7 +1677,7 @@ void OAICatalogsApi::catalogsProductGroups_update(const QString &product_group_i
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::catalogsProductGroups_updateCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1699,7 +1699,7 @@ void OAICatalogsApi::catalogsProductGroups_update(const QString &product_group_i
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::catalogsProductGroups_updateCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1789,7 +1789,7 @@ void OAICatalogsApi::catalogs_create(const OAICatalogsCreateRequest &oai_catalog
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -1809,7 +1809,7 @@ void OAICatalogsApi::catalogs_create(const OAICatalogsCreateRequest &oai_catalog
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::catalogs_createCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1831,7 +1831,7 @@ void OAICatalogsApi::catalogs_create(const OAICatalogsCreateRequest &oai_catalog
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::catalogs_createCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1921,7 +1921,7 @@ void OAICatalogsApi::catalogs_list(const ::OpenAPI::OptionalParam<QString> &book
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     if (page_size.hasValue())
     {
@@ -1936,7 +1936,7 @@ void OAICatalogsApi::catalogs_list(const ::OpenAPI::OptionalParam<QString> &book
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     if (ad_account_id.hasValue())
     {
@@ -1951,7 +1951,7 @@ void OAICatalogsApi::catalogs_list(const ::OpenAPI::OptionalParam<QString> &book
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -1966,7 +1966,7 @@ void OAICatalogsApi::catalogs_list(const ::OpenAPI::OptionalParam<QString> &book
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::catalogs_listCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1988,7 +1988,7 @@ void OAICatalogsApi::catalogs_list(const ::OpenAPI::OptionalParam<QString> &book
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::catalogs_listCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -2092,7 +2092,7 @@ void OAICatalogsApi::feedProcessingResults_list(const QString &feed_id, const ::
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     if (page_size.hasValue())
     {
@@ -2107,7 +2107,7 @@ void OAICatalogsApi::feedProcessingResults_list(const QString &feed_id, const ::
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     if (ad_account_id.hasValue())
     {
@@ -2122,7 +2122,7 @@ void OAICatalogsApi::feedProcessingResults_list(const QString &feed_id, const ::
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -2137,7 +2137,7 @@ void OAICatalogsApi::feedProcessingResults_list(const QString &feed_id, const ::
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::feedProcessingResults_listCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -2159,7 +2159,7 @@ void OAICatalogsApi::feedProcessingResults_list(const QString &feed_id, const ::
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::feedProcessingResults_listCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -2249,7 +2249,7 @@ void OAICatalogsApi::feeds_create(const OAIFeeds_create_request &oai_feeds_creat
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -2269,7 +2269,7 @@ void OAICatalogsApi::feeds_create(const OAIFeeds_create_request &oai_feeds_creat
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::feeds_createCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -2292,7 +2292,7 @@ void OAICatalogsApi::feeds_create(const OAIFeeds_create_request &oai_feeds_creat
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::feeds_createCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -2322,7 +2322,7 @@ void OAICatalogsApi::feeds_create(const OAIFeeds_create_request &oai_feeds_creat
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::feeds_createCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -2437,7 +2437,7 @@ void OAICatalogsApi::feeds_delete(const QString &feed_id, const ::OpenAPI::Optio
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -2452,7 +2452,7 @@ void OAICatalogsApi::feeds_delete(const QString &feed_id, const ::OpenAPI::Optio
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::feeds_deleteCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -2475,7 +2475,7 @@ void OAICatalogsApi::feeds_delete(const QString &feed_id, const ::OpenAPI::Optio
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::feeds_deleteCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -2505,7 +2505,7 @@ void OAICatalogsApi::feeds_delete(const QString &feed_id, const ::OpenAPI::Optio
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::feeds_deleteCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -2619,7 +2619,7 @@ void OAICatalogsApi::feeds_get(const QString &feed_id, const ::OpenAPI::Optional
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -2634,7 +2634,7 @@ void OAICatalogsApi::feeds_get(const QString &feed_id, const ::OpenAPI::Optional
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::feeds_getCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -2656,7 +2656,7 @@ void OAICatalogsApi::feeds_get(const QString &feed_id, const ::OpenAPI::Optional
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::feeds_getCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -2685,7 +2685,7 @@ void OAICatalogsApi::feeds_get(const QString &feed_id, const ::OpenAPI::Optional
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::feeds_getCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -2798,7 +2798,7 @@ void OAICatalogsApi::feeds_ingest(const QString &feed_id, const ::OpenAPI::Optio
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -2813,7 +2813,7 @@ void OAICatalogsApi::feeds_ingest(const QString &feed_id, const ::OpenAPI::Optio
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::feeds_ingestCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -2835,7 +2835,7 @@ void OAICatalogsApi::feeds_ingest(const QString &feed_id, const ::OpenAPI::Optio
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::feeds_ingestCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -2925,7 +2925,7 @@ void OAICatalogsApi::feeds_list(const ::OpenAPI::OptionalParam<QString> &bookmar
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     if (page_size.hasValue())
     {
@@ -2940,7 +2940,7 @@ void OAICatalogsApi::feeds_list(const ::OpenAPI::OptionalParam<QString> &bookmar
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     if (catalog_id.hasValue())
     {
@@ -2955,7 +2955,7 @@ void OAICatalogsApi::feeds_list(const ::OpenAPI::OptionalParam<QString> &bookmar
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("catalog_id")).append(querySuffix).append(QUrl::toPercentEncoding(catalog_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("catalog_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(catalog_id.stringValue())));
     }
     if (ad_account_id.hasValue())
     {
@@ -2970,7 +2970,7 @@ void OAICatalogsApi::feeds_list(const ::OpenAPI::OptionalParam<QString> &bookmar
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -2985,7 +2985,7 @@ void OAICatalogsApi::feeds_list(const ::OpenAPI::OptionalParam<QString> &bookmar
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::feeds_listCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -3007,7 +3007,7 @@ void OAICatalogsApi::feeds_list(const ::OpenAPI::OptionalParam<QString> &bookmar
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::feeds_listCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -3036,7 +3036,7 @@ void OAICatalogsApi::feeds_list(const ::OpenAPI::OptionalParam<QString> &bookmar
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::feeds_listCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -3149,7 +3149,7 @@ void OAICatalogsApi::feeds_update(const QString &feed_id, const OAIFeeds_update_
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -3169,7 +3169,7 @@ void OAICatalogsApi::feeds_update(const QString &feed_id, const OAIFeeds_update_
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::feeds_updateCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -3192,7 +3192,7 @@ void OAICatalogsApi::feeds_update(const QString &feed_id, const OAIFeeds_update_
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::feeds_updateCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -3222,7 +3222,7 @@ void OAICatalogsApi::feeds_update(const QString &feed_id, const OAIFeeds_update_
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::feeds_updateCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -3337,7 +3337,7 @@ void OAICatalogsApi::itemsBatch_get(const QString &batch_id, const ::OpenAPI::Op
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -3352,7 +3352,7 @@ void OAICatalogsApi::itemsBatch_get(const QString &batch_id, const ::OpenAPI::Op
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::itemsBatch_getCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -3374,7 +3374,7 @@ void OAICatalogsApi::itemsBatch_get(const QString &batch_id, const ::OpenAPI::Op
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::itemsBatch_getCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -3403,7 +3403,7 @@ void OAICatalogsApi::itemsBatch_get(const QString &batch_id, const ::OpenAPI::Op
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::itemsBatch_getCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -3502,7 +3502,7 @@ void OAICatalogsApi::itemsBatch_post(const OAIItems_batch_post_request &oai_item
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -3522,7 +3522,7 @@ void OAICatalogsApi::itemsBatch_post(const OAIItems_batch_post_request &oai_item
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::itemsBatch_postCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -3545,7 +3545,7 @@ void OAICatalogsApi::itemsBatch_post(const OAIItems_batch_post_request &oai_item
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::itemsBatch_postCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -3575,7 +3575,7 @@ void OAICatalogsApi::itemsBatch_post(const OAIItems_batch_post_request &oai_item
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::itemsBatch_postCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -3690,7 +3690,7 @@ void OAICatalogsApi::itemsIssues_list(const QString &processing_result_id, const
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     if (page_size.hasValue())
     {
@@ -3705,7 +3705,7 @@ void OAICatalogsApi::itemsIssues_list(const QString &processing_result_id, const
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     if (item_numbers.hasValue())
     {
@@ -3864,7 +3864,7 @@ void OAICatalogsApi::itemsIssues_list(const QString &processing_result_id, const
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -3879,7 +3879,7 @@ void OAICatalogsApi::itemsIssues_list(const QString &processing_result_id, const
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::itemsIssues_listCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -3901,7 +3901,7 @@ void OAICatalogsApi::itemsIssues_list(const QString &processing_result_id, const
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::itemsIssues_listCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -3991,7 +3991,7 @@ void OAICatalogsApi::items_get(const QString &country, const QString &language, 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     
     {
@@ -4006,7 +4006,7 @@ void OAICatalogsApi::items_get(const QString &country, const QString &language, 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("country")).append(querySuffix).append(QUrl::toPercentEncoding(country));
+        fullPath.append(QUrl::toPercentEncoding("country")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(country)));
     }
     
     {
@@ -4021,7 +4021,7 @@ void OAICatalogsApi::items_get(const QString &country, const QString &language, 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("language")).append(querySuffix).append(QUrl::toPercentEncoding(language));
+        fullPath.append(QUrl::toPercentEncoding("language")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(language)));
     }
     if (item_ids.hasValue())
     {
@@ -4180,7 +4180,7 @@ void OAICatalogsApi::items_get(const QString &country, const QString &language, 
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::items_getCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -4202,7 +4202,7 @@ void OAICatalogsApi::items_get(const QString &country, const QString &language, 
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::items_getCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -4292,7 +4292,7 @@ void OAICatalogsApi::items_post(const OAICatalogsItemsRequest &oai_catalogs_item
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -4312,7 +4312,7 @@ void OAICatalogsApi::items_post(const OAICatalogsItemsRequest &oai_catalogs_item
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::items_postCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -4334,7 +4334,7 @@ void OAICatalogsApi::items_post(const OAICatalogsItemsRequest &oai_catalogs_item
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::items_postCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -4424,7 +4424,7 @@ void OAICatalogsApi::productsByProductGroupFilter_list(const OAICatalogsListProd
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     if (page_size.hasValue())
     {
@@ -4439,7 +4439,7 @@ void OAICatalogsApi::productsByProductGroupFilter_list(const OAICatalogsListProd
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     if (ad_account_id.hasValue())
     {
@@ -4454,7 +4454,7 @@ void OAICatalogsApi::productsByProductGroupFilter_list(const OAICatalogsListProd
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     if (pin_metrics.hasValue())
     {
@@ -4469,7 +4469,7 @@ void OAICatalogsApi::productsByProductGroupFilter_list(const OAICatalogsListProd
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("pin_metrics")).append(querySuffix).append(QUrl::toPercentEncoding(pin_metrics.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("pin_metrics")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(pin_metrics.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -4489,7 +4489,7 @@ void OAICatalogsApi::productsByProductGroupFilter_list(const OAICatalogsListProd
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::productsByProductGroupFilter_listCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -4513,7 +4513,7 @@ void OAICatalogsApi::productsByProductGroupFilter_list(const OAICatalogsListProd
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::productsByProductGroupFilter_listCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -4605,7 +4605,7 @@ void OAICatalogsApi::reports_create(const OAICatalogsReportParameters &oai_catal
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -4625,7 +4625,7 @@ void OAICatalogsApi::reports_create(const OAICatalogsReportParameters &oai_catal
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::reports_createCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -4647,7 +4647,7 @@ void OAICatalogsApi::reports_create(const OAICatalogsReportParameters &oai_catal
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::reports_createCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -4737,7 +4737,7 @@ void OAICatalogsApi::reports_get(const QString &token, const ::OpenAPI::Optional
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     
     {
@@ -4752,7 +4752,7 @@ void OAICatalogsApi::reports_get(const QString &token, const ::OpenAPI::Optional
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("token")).append(querySuffix).append(QUrl::toPercentEncoding(token));
+        fullPath.append(QUrl::toPercentEncoding("token")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(token)));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -4767,7 +4767,7 @@ void OAICatalogsApi::reports_get(const QString &token, const ::OpenAPI::Optional
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::reports_getCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -4789,7 +4789,7 @@ void OAICatalogsApi::reports_get(const QString &token, const ::OpenAPI::Optional
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::reports_getCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -4879,7 +4879,7 @@ void OAICatalogsApi::reports_stats(const OAICatalogsReportParameters &parameters
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     if (page_size.hasValue())
     {
@@ -4894,7 +4894,7 @@ void OAICatalogsApi::reports_stats(const OAICatalogsReportParameters &parameters
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     if (bookmark.hasValue())
     {
@@ -4909,7 +4909,7 @@ void OAICatalogsApi::reports_stats(const OAICatalogsReportParameters &parameters
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     
     {
@@ -4983,7 +4983,7 @@ void OAICatalogsApi::reports_stats(const OAICatalogsReportParameters &parameters
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::reports_statsCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -5005,7 +5005,7 @@ void OAICatalogsApi::reports_stats(const OAICatalogsReportParameters &parameters
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICatalogsApi::reports_statsCallback);
     connect(this, &OAICatalogsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }

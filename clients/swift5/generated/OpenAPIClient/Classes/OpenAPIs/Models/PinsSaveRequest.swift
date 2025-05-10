@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct PinsSaveRequest: Codable, JSONEncodable, Hashable {
 
-    static let boardIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let boardSectionIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let boardIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let boardSectionIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Unique identifier of the board to which the pin will be saved. */
     public var boardId: String?
     /** Unique identifier of the board section to which the pin will be saved. */

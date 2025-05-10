@@ -16,8 +16,8 @@ public struct TargetingTemplateResponseData: Codable, JSONEncodable, Hashable {
         case active = "ACTIVE"
         case deleted = "DELETED"
     }
-    static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** targeting template name */
     public var name: String?
     /** Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. */
@@ -87,3 +87,6 @@ public struct TargetingTemplateResponseData: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension TargetingTemplateResponseData: Identifiable {}

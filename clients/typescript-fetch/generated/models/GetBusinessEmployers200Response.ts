@@ -64,11 +64,11 @@ export function GetBusinessEmployers200ResponseFromJSONTyped(json: any, ignoreDi
     };
 }
 
-  export function GetBusinessEmployers200ResponseToJSON(json: any): GetBusinessEmployers200Response {
-      return GetBusinessEmployers200ResponseToJSONTyped(json, false);
-  }
+export function GetBusinessEmployers200ResponseToJSON(json: any): GetBusinessEmployers200Response {
+    return GetBusinessEmployers200ResponseToJSONTyped(json, false);
+}
 
-  export function GetBusinessEmployers200ResponseToJSONTyped(value?: GetBusinessEmployers200Response | null, ignoreDiscriminator: boolean = false): any {
+export function GetBusinessEmployers200ResponseToJSONTyped(value?: GetBusinessEmployers200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -17,7 +17,7 @@ import org.openapitools.model.QuizPinResult;
  * This field includes all quiz data including questions, options, and results.
  */
 @ApiModel(description = "This field includes all quiz data including questions, options, and results.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2025-05-10T05:39:24.501669360Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class QuizPinData   {
   @JsonProperty("questions")
   private List<@Valid QuizPinQuestion> questions = null;

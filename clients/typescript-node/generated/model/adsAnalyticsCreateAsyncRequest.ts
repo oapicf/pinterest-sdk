@@ -54,7 +54,7 @@ export class AdsAnalyticsCreateAsyncRequest {
     /**
     * The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
     */
-    'conversionReportTime'?: ConversionReportTimeType = ConversionReportTimeType.AdAction;
+    'conversionReportTime'?: ConversionReportTimeType = ConversionReportTimeType.TimeOfAdAction;
     /**
     * List of types of attribution for the conversion report
     */
@@ -273,7 +273,7 @@ export class AdsAnalyticsCreateAsyncRequest {
 
 export namespace AdsAnalyticsCreateAsyncRequest {
     export enum PrimarySortEnum {
-        Id = <any> 'BY_ID',
-        Date = <any> 'BY_DATE'
+        ById = <any> 'BY_ID',
+        ByDate = <any> 'BY_DATE'
     }
 }

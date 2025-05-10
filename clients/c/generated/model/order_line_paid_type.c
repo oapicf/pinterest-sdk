@@ -22,7 +22,7 @@ pinterest_rest_api_order_line_paid_type__e order_line_paid_type_order_line_paid_
     return 0;
 }
 
-cJSON *order_line_paid_type_order_line_paid_type_convertToJSON(pinterest_rest_api_order_line_paid_type__e order_line_paid_type) {
+cJSON *order_line_paid_type_convertToJSON(pinterest_rest_api_order_line_paid_type__e order_line_paid_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "order_line_paid_type", order_line_paid_type_order_line_paid_type_ToString(order_line_paid_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_order_line_paid_type__e order_line_paid_type_order_line_paid_type_parseFromJSON(cJSON *order_line_paid_typeJSON) {
-    pinterest_rest_api_order_line_paid_type__e *order_line_paid_type = NULL;
-    pinterest_rest_api_order_line_paid_type__e order_line_paid_typeVariable;
-    cJSON *order_line_paid_typeVar = cJSON_GetObjectItemCaseSensitive(order_line_paid_typeJSON, "order_line_paid_type");
-    if(!cJSON_IsString(order_line_paid_typeVar) || (order_line_paid_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_order_line_paid_type__e order_line_paid_type_parseFromJSON(cJSON *order_line_paid_typeJSON) {
+    if(!cJSON_IsString(order_line_paid_typeJSON) || (order_line_paid_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    order_line_paid_typeVariable = order_line_paid_type_order_line_paid_type_FromString(order_line_paid_typeVar->valuestring);
-    return order_line_paid_typeVariable;
-end:
-    return 0;
+    return order_line_paid_type_order_line_paid_type_FromString(order_line_paid_typeJSON->valuestring);
 }

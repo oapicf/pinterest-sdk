@@ -108,11 +108,11 @@ export function OauthAccessTokenResponseCodeFromJSONTyped(json: any, ignoreDiscr
     };
 }
 
-  export function OauthAccessTokenResponseCodeToJSON(json: any): OauthAccessTokenResponseCode {
-      return OauthAccessTokenResponseCodeToJSONTyped(json, false);
-  }
+export function OauthAccessTokenResponseCodeToJSON(json: any): OauthAccessTokenResponseCode {
+    return OauthAccessTokenResponseCodeToJSONTyped(json, false);
+}
 
-  export function OauthAccessTokenResponseCodeToJSONTyped(value?: OauthAccessTokenResponseCode | null, ignoreDiscriminator: boolean = false): any {
+export function OauthAccessTokenResponseCodeToJSONTyped(value?: OauthAccessTokenResponseCode | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

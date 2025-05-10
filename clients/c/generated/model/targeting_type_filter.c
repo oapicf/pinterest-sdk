@@ -22,7 +22,7 @@ pinterest_rest_api_targeting_type_filter__e targeting_type_filter_targeting_type
     return 0;
 }
 
-targeting_type_filter_t *targeting_type_filter_create(
+static targeting_type_filter_t *targeting_type_filter_create_internal(
     list_t *targeting_types
     ) {
     targeting_type_filter_t *targeting_type_filter_local_var = malloc(sizeof(targeting_type_filter_t));
@@ -31,12 +31,24 @@ targeting_type_filter_t *targeting_type_filter_create(
     }
     targeting_type_filter_local_var->targeting_types = targeting_types;
 
+    targeting_type_filter_local_var->_library_owned = 1;
     return targeting_type_filter_local_var;
 }
 
+__attribute__((deprecated)) targeting_type_filter_t *targeting_type_filter_create(
+    list_t *targeting_types
+    ) {
+    return targeting_type_filter_create_internal (
+        targeting_types
+        );
+}
 
 void targeting_type_filter_free(targeting_type_filter_t *targeting_type_filter) {
     if(NULL == targeting_type_filter){
+        return ;
+    }
+    if(targeting_type_filter->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "targeting_type_filter_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -54,7 +66,7 @@ cJSON *targeting_type_filter_convertToJSON(targeting_type_filter_t *targeting_ty
     cJSON *item = cJSON_CreateObject();
 
     // targeting_type_filter->targeting_types
-    if(targeting_type_filter->targeting_types != pinterest_rest_api_targeting_type_filter_TARGETINGTYPES_NULL) {
+    if(targeting_type_filter->targeting_types != pinterest_rest_api_list_TARGETINGTYPES_NULL) {
     cJSON *targeting_types = cJSON_AddArrayToObject(item, "targeting_types");
     if(targeting_types == NULL) {
     goto fail; //nonprimitive container
@@ -89,6 +101,9 @@ targeting_type_filter_t *targeting_type_filter_parseFromJSON(cJSON *targeting_ty
 
     // targeting_type_filter->targeting_types
     cJSON *targeting_types = cJSON_GetObjectItemCaseSensitive(targeting_type_filterJSON, "targeting_types");
+    if (cJSON_IsNull(targeting_types)) {
+        targeting_types = NULL;
+    }
     if (targeting_types) { 
     cJSON *targeting_types_local_nonprimitive = NULL;
     if(!cJSON_IsArray(targeting_types)){
@@ -109,7 +124,7 @@ targeting_type_filter_t *targeting_type_filter_parseFromJSON(cJSON *targeting_ty
     }
 
 
-    targeting_type_filter_local_var = targeting_type_filter_create (
+    targeting_type_filter_local_var = targeting_type_filter_create_internal (
         targeting_types ? targeting_typesList : NULL
         );
 

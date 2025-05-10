@@ -21,6 +21,7 @@ import org.openapitools.model.GoogleProductCategory4Filter;
 import org.openapitools.model.GoogleProductCategory5Filter;
 import org.openapitools.model.GoogleProductCategory6Filter;
 import org.openapitools.model.MediaTypeFilter;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -35,7 +36,7 @@ import javax.annotation.Generated;
  * CatalogsCreativeAssetsProductGroupFilterKeys
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsCreativeAssetsProductGroupFilterKeys {
 
   private CatalogsProductGroupMultipleStringCriteria CREATIVE_ASSETS_ID;

@@ -22,9 +22,10 @@ typedef struct business_access_error_t {
     int code; //numeric
     char *message; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } business_access_error_t;
 
-business_access_error_t *business_access_error_create(
+__attribute__((deprecated)) business_access_error_t *business_access_error_create(
     int code,
     char *message
 );

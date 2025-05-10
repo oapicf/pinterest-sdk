@@ -22,9 +22,10 @@ typedef struct ad_preview_create_from_image_t {
     char *image_url; // string
     char *title; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } ad_preview_create_from_image_t;
 
-ad_preview_create_from_image_t *ad_preview_create_from_image_create(
+__attribute__((deprecated)) ad_preview_create_from_image_t *ad_preview_create_from_image_create(
     char *image_url,
     char *title
 );

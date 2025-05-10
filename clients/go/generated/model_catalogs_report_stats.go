@@ -13,8 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // CatalogsReportStats - Diagnostics aggregated numbers
@@ -113,6 +113,20 @@ func (obj *CatalogsReportStats) GetActualInstance() (interface{}) {
 
 	if obj.CatalogsReportFeedIngestionStats != nil {
 		return obj.CatalogsReportFeedIngestionStats
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj CatalogsReportStats) GetActualInstanceValue() (interface{}) {
+	if obj.CatalogsReportDistributionStats != nil {
+		return *obj.CatalogsReportDistributionStats
+	}
+
+	if obj.CatalogsReportFeedIngestionStats != nil {
+		return *obj.CatalogsReportFeedIngestionStats
 	}
 
 	// all schemas are nil

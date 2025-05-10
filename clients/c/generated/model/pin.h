@@ -44,9 +44,10 @@ typedef struct pin_t {
     char *note; // string
     object_t *pin_metrics; //object
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } pin_t;
 
-pin_t *pin_create(
+__attribute__((deprecated)) pin_t *pin_create(
     char *id,
     char *created_at,
     char *link,

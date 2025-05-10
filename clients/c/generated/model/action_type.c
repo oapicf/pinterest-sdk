@@ -22,7 +22,7 @@ pinterest_rest_api_action_type__e action_type_action_type_FromString(char* actio
     return 0;
 }
 
-cJSON *action_type_action_type_convertToJSON(pinterest_rest_api_action_type__e action_type) {
+cJSON *action_type_convertToJSON(pinterest_rest_api_action_type__e action_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "action_type", action_type_action_type_ToString(action_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_action_type__e action_type_action_type_parseFromJSON(cJSON *action_typeJSON) {
-    pinterest_rest_api_action_type__e *action_type = NULL;
-    pinterest_rest_api_action_type__e action_typeVariable;
-    cJSON *action_typeVar = cJSON_GetObjectItemCaseSensitive(action_typeJSON, "action_type");
-    if(!cJSON_IsString(action_typeVar) || (action_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_action_type__e action_type_parseFromJSON(cJSON *action_typeJSON) {
+    if(!cJSON_IsString(action_typeJSON) || (action_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    action_typeVariable = action_type_action_type_FromString(action_typeVar->valuestring);
-    return action_typeVariable;
-end:
-    return 0;
+    return action_type_action_type_FromString(action_typeJSON->valuestring);
 }

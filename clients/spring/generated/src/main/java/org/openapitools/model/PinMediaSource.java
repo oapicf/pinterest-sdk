@@ -18,6 +18,7 @@ import org.openapitools.model.PinMediaSourceImagesURL;
 import org.openapitools.model.PinMediaSourceImagesURLItemsInner;
 import org.openapitools.model.PinMediaSourcePinURL;
 import org.openapitools.model.PinMediaSourceVideoID;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -49,7 +50,7 @@ import javax.annotation.Generated;
   @JsonSubTypes.Type(value = PinMediaSourceVideoID.class, name = "PinMediaSourceVideoID")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public interface PinMediaSource {
     public String getSourceType();
 }

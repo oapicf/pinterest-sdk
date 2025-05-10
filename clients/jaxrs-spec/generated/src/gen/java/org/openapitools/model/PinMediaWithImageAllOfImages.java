@@ -16,12 +16,15 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("PinMediaWithImage_allOf_images")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMediaWithImageAllOfImages   {
   private Object _150x150;
   private Object _400x300;
   private Object _600x;
   private Object _1200x;
+
+  public PinMediaWithImageAllOfImages() {
+  }
 
   /**
    **/

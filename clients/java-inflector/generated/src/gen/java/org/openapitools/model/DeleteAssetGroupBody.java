@@ -16,7 +16,7 @@ import java.util.List;
  **/
 
 @ApiModel(description = "Request body used to delete asset groups")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-11-05T02:02:36.960464654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2025-05-10T05:38:59.250229241Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class DeleteAssetGroupBody   {
   @JsonProperty("asset_groups_to_delete")
   private List<String> assetGroupsToDelete = new ArrayList<>();

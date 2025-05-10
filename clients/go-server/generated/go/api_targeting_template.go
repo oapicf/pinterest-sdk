@@ -156,7 +156,7 @@ func (c *TargetingTemplateAPIController) TargetingTemplateCreate(w http.Response
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	targetingTemplateCreateParam := TargetingTemplateCreate{}
+	var targetingTemplateCreateParam TargetingTemplateCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&targetingTemplateCreateParam); err != nil {
@@ -189,7 +189,7 @@ func (c *TargetingTemplateAPIController) TargetingTemplateUpdate(w http.Response
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	targetingTemplateUpdateRequestParam := TargetingTemplateUpdateRequest{}
+	var targetingTemplateUpdateRequestParam TargetingTemplateUpdateRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&targetingTemplateUpdateRequestParam); err != nil {

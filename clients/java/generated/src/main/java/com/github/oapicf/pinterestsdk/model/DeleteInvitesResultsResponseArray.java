@@ -51,16 +51,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Response to delete invites sent to Members or Partners, if there is an exception, return the exception mapped with the invite id
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class DeleteInvitesResultsResponseArray {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
+  @javax.annotation.Nullable
   private List<DeleteInvitesResultsResponseArrayItemsInner> items = new ArrayList<>();
 
   public DeleteInvitesResultsResponseArray() {
   }
 
-  public DeleteInvitesResultsResponseArray items(List<DeleteInvitesResultsResponseArrayItemsInner> items) {
+  public DeleteInvitesResultsResponseArray items(@javax.annotation.Nullable List<DeleteInvitesResultsResponseArrayItemsInner> items) {
     this.items = items;
     return this;
   }
@@ -82,7 +83,7 @@ public class DeleteInvitesResultsResponseArray {
     return items;
   }
 
-  public void setItems(List<DeleteInvitesResultsResponseArrayItemsInner> items) {
+  public void setItems(@javax.annotation.Nullable List<DeleteInvitesResultsResponseArrayItemsInner> items) {
     this.items = items;
   }
 

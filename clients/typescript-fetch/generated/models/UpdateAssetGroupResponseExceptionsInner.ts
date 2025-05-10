@@ -62,11 +62,11 @@ export function UpdateAssetGroupResponseExceptionsInnerFromJSONTyped(json: any, 
     };
 }
 
-  export function UpdateAssetGroupResponseExceptionsInnerToJSON(json: any): UpdateAssetGroupResponseExceptionsInner {
-      return UpdateAssetGroupResponseExceptionsInnerToJSONTyped(json, false);
-  }
+export function UpdateAssetGroupResponseExceptionsInnerToJSON(json: any): UpdateAssetGroupResponseExceptionsInner {
+    return UpdateAssetGroupResponseExceptionsInnerToJSONTyped(json, false);
+}
 
-  export function UpdateAssetGroupResponseExceptionsInnerToJSONTyped(value?: UpdateAssetGroupResponseExceptionsInner | null, ignoreDiscriminator: boolean = false): any {
+export function UpdateAssetGroupResponseExceptionsInnerToJSONTyped(value?: UpdateAssetGroupResponseExceptionsInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

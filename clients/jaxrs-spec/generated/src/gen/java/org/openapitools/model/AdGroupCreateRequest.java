@@ -27,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdGroupCreateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdGroupCreateRequest   {
   private String name;
   private EntityStatus status;
@@ -95,6 +95,20 @@ public class AdGroupCreateRequest   {
   private BidStrategyTypeEnum bidStrategyType;
   private @Valid List<@Pattern(regexp = "^\\d+$")String> targetingTemplateIds;
 
+  public AdGroupCreateRequest() {
+  }
+
+  @JsonCreator
+  public AdGroupCreateRequest(
+    @JsonProperty(required = true, value = "name") String name,
+    @JsonProperty(required = true, value = "campaign_id") String campaignId,
+    @JsonProperty(required = true, value = "billable_event") ActionType billableEvent
+  ) {
+    this.name = name;
+    this.campaignId = campaignId;
+    this.billableEvent = billableEvent;
+  }
+
   /**
    * Ad group name.
    **/
@@ -105,12 +119,12 @@ public class AdGroupCreateRequest   {
 
   
   @ApiModelProperty(example = "Ad Group For Pin: 687195905986", required = true, value = "Ad group name.")
-  @JsonProperty("name")
+  @JsonProperty(required = true, value = "name")
   @NotNull public String getName() {
     return name;
   }
 
-  @JsonProperty("name")
+  @JsonProperty(required = true, value = "name")
   public void setName(String name) {
     this.name = name;
   }
@@ -382,12 +396,12 @@ public class AdGroupCreateRequest   {
 
   
   @ApiModelProperty(example = "626736533506", required = true, value = "Campaign ID of the ad group.")
-  @JsonProperty("campaign_id")
+  @JsonProperty(required = true, value = "campaign_id")
   @NotNull  @Pattern(regexp="^[C]?\\d+$")public String getCampaignId() {
     return campaignId;
   }
 
-  @JsonProperty("campaign_id")
+  @JsonProperty(required = true, value = "campaign_id")
   public void setCampaignId(String campaignId) {
     this.campaignId = campaignId;
   }
@@ -401,12 +415,12 @@ public class AdGroupCreateRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("billable_event")
+  @JsonProperty(required = true, value = "billable_event")
   @NotNull public ActionType getBillableEvent() {
     return billableEvent;
   }
 
-  @JsonProperty("billable_event")
+  @JsonProperty(required = true, value = "billable_event")
   public void setBillableEvent(ActionType billableEvent) {
     this.billableEvent = billableEvent;
   }

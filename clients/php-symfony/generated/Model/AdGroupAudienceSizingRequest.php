@@ -61,7 +61,7 @@ class AdGroupAudienceSizingRequest
     * @Accessor(getter="getSerializedPlacementGroup", setter="setDeserializedPlacementGroup")
     * @Type("string")
     */
-    protected ?PlacementGroupType $placementGroup = 'ALL';
+    protected ?PlacementGroupType $placementGroup = self::OpenAPI\Server\Model\PlacementGroupType_ALL;
 
     /**
      * Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
@@ -71,7 +71,7 @@ class AdGroupAudienceSizingRequest
      * @Type("array<string>")
     */
     #[Assert\All([
-        new Assert\Choice(["REGULAR", "VIDEO", "SHOPPING", "CAROUSEL", "MAX_VIDEO", "SHOP_THE_PIN", "COLLECTION", "IDEA"]),
+        new Assert\Choice(['REGULAR', 'VIDEO', 'SHOPPING', 'CAROUSEL', 'MAX_VIDEO', 'SHOP_THE_PIN', 'COLLECTION', 'IDEA']),
     ])]
     #[Assert\All([
         new Assert\Type("string"),
@@ -114,7 +114,7 @@ class AdGroupAudienceSizingRequest
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->autoTargetingEnabled = array_key_exists('autoTargetingEnabled', $data) ? $data['autoTargetingEnabled'] : $this->autoTargetingEnabled;

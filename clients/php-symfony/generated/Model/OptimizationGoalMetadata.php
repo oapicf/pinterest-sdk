@@ -71,7 +71,7 @@ class OptimizationGoalMetadata
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->conversionTagV3GoalMetadata = array_key_exists('conversionTagV3GoalMetadata', $data) ? $data['conversionTagV3GoalMetadata'] : $this->conversionTagV3GoalMetadata;

@@ -27,7 +27,7 @@ import org.openapitools.model.PinMediaSourceVideoID;
  **/
 
 @ApiModel(description = "Pin media source.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-11-05T02:02:36.960464654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2025-05-10T05:38:59.250229241Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMediaSource   {
   /**
    * Gets or Sets sourceType
@@ -65,9 +65,9 @@ public class PinMediaSource   {
    * Gets or Sets contentType
    */
   public enum ContentTypeEnum {
-    JPEG("image/jpeg"),
+    IMAGE_JPEG("image/jpeg"),
     
-    PNG("image/png");
+    IMAGE_PNG("image/png");
 
     private String value;
 
@@ -111,9 +111,9 @@ public class PinMediaSource   {
    * Content type for cover image Base64.
    */
   public enum CoverImageContentTypeEnum {
-    JPEG("image/jpeg"),
+    IMAGE_JPEG("image/jpeg"),
     
-    PNG("image/png");
+    IMAGE_PNG("image/png");
 
     private String value;
 

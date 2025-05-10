@@ -1,6 +1,6 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Multipart};
+use axum_extra::extract::{CookieJar, Host};
 use bytes::Bytes;
 use http::Method;
 use serde::{Deserialize, Serialize};
@@ -24,16 +24,16 @@ pub enum TermsOfServiceSlashGetResponse {
 /// TermsOfService
 #[async_trait]
 #[allow(clippy::ptr_arg)]
-pub trait TermsOfService {
+pub trait TermsOfService<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHandler<E> {
     /// Get terms of service.
     ///
     /// TermsOfServiceSlashGet - GET /v5/ad_accounts/{ad_account_id}/terms_of_service
     async fn terms_of_service_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::TermsOfServiceSlashGetPathParams,
-      query_params: models::TermsOfServiceSlashGetQueryParams,
-    ) -> Result<TermsOfServiceSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::TermsOfServiceSlashGetPathParams,
+      query_params: &models::TermsOfServiceSlashGetQueryParams,
+    ) -> Result<TermsOfServiceSlashGetResponse, E>;
 }

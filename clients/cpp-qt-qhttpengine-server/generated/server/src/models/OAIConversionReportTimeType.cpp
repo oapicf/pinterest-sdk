@@ -42,11 +42,11 @@ void OAIConversionReportTimeType::initializeModel() {
 void OAIConversionReportTimeType::fromJson(QString jsonString) {
     
     if ( jsonString.compare("TIME_OF_AD_ACTION", Qt::CaseInsensitive) == 0) {
-        m_value = eOAIConversionReportTimeType::AD_ACTION;
+        m_value = eOAIConversionReportTimeType::TIME_OF_AD_ACTION;
         m_value_isSet = m_value_isValid = true;
     }
     else if ( jsonString.compare("TIME_OF_CONVERSION", Qt::CaseInsensitive) == 0) {
-        m_value = eOAIConversionReportTimeType::CONVERSION;
+        m_value = eOAIConversionReportTimeType::TIME_OF_CONVERSION;
         m_value_isSet = m_value_isValid = true;
     }
 }
@@ -59,10 +59,10 @@ QString OAIConversionReportTimeType::asJson() const {
     
     QString val;
     switch (m_value){
-        case eOAIConversionReportTimeType::AD_ACTION:
+        case eOAIConversionReportTimeType::TIME_OF_AD_ACTION:
             val = "TIME_OF_AD_ACTION";
             break;
-        case eOAIConversionReportTimeType::CONVERSION:
+        case eOAIConversionReportTimeType::TIME_OF_CONVERSION:
             val = "TIME_OF_CONVERSION";
             break;
         default:

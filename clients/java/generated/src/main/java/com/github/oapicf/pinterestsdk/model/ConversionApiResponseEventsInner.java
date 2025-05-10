@@ -49,7 +49,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ConversionApiResponseEventsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConversionApiResponseEventsInner {
   /**
    * Whether the event was processed successfully.
@@ -105,20 +105,23 @@ public class ConversionApiResponseEventsInner {
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nonnull
   private StatusEnum status;
 
   public static final String SERIALIZED_NAME_ERROR_MESSAGE = "error_message";
   @SerializedName(SERIALIZED_NAME_ERROR_MESSAGE)
+  @javax.annotation.Nullable
   private String errorMessage;
 
   public static final String SERIALIZED_NAME_WARNING_MESSAGE = "warning_message";
   @SerializedName(SERIALIZED_NAME_WARNING_MESSAGE)
+  @javax.annotation.Nullable
   private String warningMessage;
 
   public ConversionApiResponseEventsInner() {
   }
 
-  public ConversionApiResponseEventsInner status(StatusEnum status) {
+  public ConversionApiResponseEventsInner status(@javax.annotation.Nonnull StatusEnum status) {
     this.status = status;
     return this;
   }
@@ -132,12 +135,12 @@ public class ConversionApiResponseEventsInner {
     return status;
   }
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(@javax.annotation.Nonnull StatusEnum status) {
     this.status = status;
   }
 
 
-  public ConversionApiResponseEventsInner errorMessage(String errorMessage) {
+  public ConversionApiResponseEventsInner errorMessage(@javax.annotation.Nullable String errorMessage) {
     this.errorMessage = errorMessage;
     return this;
   }
@@ -151,12 +154,12 @@ public class ConversionApiResponseEventsInner {
     return errorMessage;
   }
 
-  public void setErrorMessage(String errorMessage) {
+  public void setErrorMessage(@javax.annotation.Nullable String errorMessage) {
     this.errorMessage = errorMessage;
   }
 
 
-  public ConversionApiResponseEventsInner warningMessage(String warningMessage) {
+  public ConversionApiResponseEventsInner warningMessage(@javax.annotation.Nullable String warningMessage) {
     this.warningMessage = warningMessage;
     return this;
   }
@@ -170,7 +173,7 @@ public class ConversionApiResponseEventsInner {
     return warningMessage;
   }
 
-  public void setWarningMessage(String warningMessage) {
+  public void setWarningMessage(@javax.annotation.Nullable String warningMessage) {
     this.warningMessage = warningMessage;
   }
 

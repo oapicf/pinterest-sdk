@@ -21,28 +21,11 @@ pinterest_rest_api_catalogs_product_group_pricing_currency_criteria_OPERATOR_e c
     }
     return 0;
 }
-char* catalogs_product_group_pricing_currency_criteria_currency_ToString(pinterest_rest_api_catalogs_product_group_pricing_currency_criteria__e currency) {
-    char* currencyArray[] =  { "NULL", "AED", "AFN", "ALL", "AMD", "ANG", "AOA", "ARS", "AUD", "AWG", "AZN", "BAM", "BBD", "BDT", "BGN", "BHD", "BIF", "BMD", "BND", "BOB", "BRL", "BSD", "BTN", "BWP", "BYN", "BYR", "BZD", "CAD", "CDF", "CHF", "CLP", "CNY", "COP", "CRC", "CUC", "CUP", "CVE", "CZK", "DJF", "DKK", "DOP", "DZD", "EGP", "ERN", "ETB", "EUR", "FJD", "FKP", "GBP", "GEL", "GGP", "GHS", "GIP", "GMD", "GNF", "GTQ", "GYD", "HKD", "HNL", "HRK", "HTG", "HUF", "IDR", "ILS", "IMP", "INR", "IQD", "IRR", "ISK", "JEP", "JMD", "JOD", "JPY", "KES", "KGS", "KHR", "KMF", "KPW", "KRW", "KWD", "KYD", "KZT", "LAK", "LBP", "LKR", "LRD", "LSL", "LYD", "MAD", "MDL", "MGA", "MKD", "MMK", "MNT", "MOP", "MRO", "MUR", "MVR", "MWK", "MXN", "MYR", "MZN", "NAD", "NGN", "NIO", "NOK", "NPR", "NZD", "OMR", "PAB", "PEN", "PGK", "PHP", "PKR", "PLN", "PYG", "QAR", "RON", "RSD", "RUB", "RWF", "SAR", "SBD", "SCR", "SDG", "SEK", "SGD", "SHP", "SLL", "SOS", "SPL", "SRD", "STD", "SVC", "SYP", "SZL", "THB", "TJS", "TMT", "TND", "TOP", "TRY", "TTD", "TVD", "TWD", "TZS", "UAH", "UGX", "USD", "UYU", "UZS", "VEF", "VND", "VUV", "WST", "XAF", "XCD", "XDR", "XOF", "XPF", "YER", "ZAR", "ZMW", "ZWD" };
-    return currencyArray[currency];
-}
 
-pinterest_rest_api_catalogs_product_group_pricing_currency_criteria__e catalogs_product_group_pricing_currency_criteria_currency_FromString(char* currency){
-    int stringToReturn = 0;
-    char *currencyArray[] =  { "NULL", "AED", "AFN", "ALL", "AMD", "ANG", "AOA", "ARS", "AUD", "AWG", "AZN", "BAM", "BBD", "BDT", "BGN", "BHD", "BIF", "BMD", "BND", "BOB", "BRL", "BSD", "BTN", "BWP", "BYN", "BYR", "BZD", "CAD", "CDF", "CHF", "CLP", "CNY", "COP", "CRC", "CUC", "CUP", "CVE", "CZK", "DJF", "DKK", "DOP", "DZD", "EGP", "ERN", "ETB", "EUR", "FJD", "FKP", "GBP", "GEL", "GGP", "GHS", "GIP", "GMD", "GNF", "GTQ", "GYD", "HKD", "HNL", "HRK", "HTG", "HUF", "IDR", "ILS", "IMP", "INR", "IQD", "IRR", "ISK", "JEP", "JMD", "JOD", "JPY", "KES", "KGS", "KHR", "KMF", "KPW", "KRW", "KWD", "KYD", "KZT", "LAK", "LBP", "LKR", "LRD", "LSL", "LYD", "MAD", "MDL", "MGA", "MKD", "MMK", "MNT", "MOP", "MRO", "MUR", "MVR", "MWK", "MXN", "MYR", "MZN", "NAD", "NGN", "NIO", "NOK", "NPR", "NZD", "OMR", "PAB", "PEN", "PGK", "PHP", "PKR", "PLN", "PYG", "QAR", "RON", "RSD", "RUB", "RWF", "SAR", "SBD", "SCR", "SDG", "SEK", "SGD", "SHP", "SLL", "SOS", "SPL", "SRD", "STD", "SVC", "SYP", "SZL", "THB", "TJS", "TMT", "TND", "TOP", "TRY", "TTD", "TVD", "TWD", "TZS", "UAH", "UGX", "USD", "UYU", "UZS", "VEF", "VND", "VUV", "WST", "XAF", "XCD", "XDR", "XOF", "XPF", "YER", "ZAR", "ZMW", "ZWD" };
-    size_t sizeofArray = sizeof(currencyArray) / sizeof(currencyArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(currency, currencyArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-
-catalogs_product_group_pricing_currency_criteria_t *catalogs_product_group_pricing_currency_criteria_create(
+static catalogs_product_group_pricing_currency_criteria_t *catalogs_product_group_pricing_currency_criteria_create_internal(
     pinterest_rest_api_catalogs_product_group_pricing_currency_criteria_OPERATOR_e _operator,
     double value,
-    non_nullable_catalogs_currency_t *currency,
+    pinterest_rest_api_non_nullable_catalogs_currency__e currency,
     int negated
     ) {
     catalogs_product_group_pricing_currency_criteria_t *catalogs_product_group_pricing_currency_criteria_local_var = malloc(sizeof(catalogs_product_group_pricing_currency_criteria_t));
@@ -54,19 +37,33 @@ catalogs_product_group_pricing_currency_criteria_t *catalogs_product_group_prici
     catalogs_product_group_pricing_currency_criteria_local_var->currency = currency;
     catalogs_product_group_pricing_currency_criteria_local_var->negated = negated;
 
+    catalogs_product_group_pricing_currency_criteria_local_var->_library_owned = 1;
     return catalogs_product_group_pricing_currency_criteria_local_var;
 }
 
+__attribute__((deprecated)) catalogs_product_group_pricing_currency_criteria_t *catalogs_product_group_pricing_currency_criteria_create(
+    pinterest_rest_api_catalogs_product_group_pricing_currency_criteria_OPERATOR_e _operator,
+    double value,
+    pinterest_rest_api_non_nullable_catalogs_currency__e currency,
+    int negated
+    ) {
+    return catalogs_product_group_pricing_currency_criteria_create_internal (
+        _operator,
+        value,
+        currency,
+        negated
+        );
+}
 
 void catalogs_product_group_pricing_currency_criteria_free(catalogs_product_group_pricing_currency_criteria_t *catalogs_product_group_pricing_currency_criteria) {
     if(NULL == catalogs_product_group_pricing_currency_criteria){
         return ;
     }
-    listEntry_t *listEntry;
-    if (catalogs_product_group_pricing_currency_criteria->currency) {
-        non_nullable_catalogs_currency_free(catalogs_product_group_pricing_currency_criteria->currency);
-        catalogs_product_group_pricing_currency_criteria->currency = NULL;
+    if(catalogs_product_group_pricing_currency_criteria->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_product_group_pricing_currency_criteria_free");
+        return ;
     }
+    listEntry_t *listEntry;
     free(catalogs_product_group_pricing_currency_criteria);
 }
 
@@ -77,7 +74,7 @@ cJSON *catalogs_product_group_pricing_currency_criteria_convertToJSON(catalogs_p
     if (pinterest_rest_api_catalogs_product_group_pricing_currency_criteria_OPERATOR_NULL == catalogs_product_group_pricing_currency_criteria->_operator) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "operator", _operatorcatalogs_product_group_pricing_currency_criteria_ToString(catalogs_product_group_pricing_currency_criteria->_operator)) == NULL)
+    if(cJSON_AddStringToObject(item, "operator", catalogs_product_group_pricing_currency_criteria__operator_ToString(catalogs_product_group_pricing_currency_criteria->_operator)) == NULL)
     {
     goto fail; //Enum
     }
@@ -93,7 +90,7 @@ cJSON *catalogs_product_group_pricing_currency_criteria_convertToJSON(catalogs_p
 
 
     // catalogs_product_group_pricing_currency_criteria->currency
-    if (pinterest_rest_api_catalogs_product_group_pricing_currency_criteria__NULL == catalogs_product_group_pricing_currency_criteria->currency) {
+    if (pinterest_rest_api_non_nullable_catalogs_currency__NULL == catalogs_product_group_pricing_currency_criteria->currency) {
         goto fail;
     }
     cJSON *currency_local_JSON = non_nullable_catalogs_currency_convertToJSON(catalogs_product_group_pricing_currency_criteria->currency);
@@ -126,10 +123,13 @@ catalogs_product_group_pricing_currency_criteria_t *catalogs_product_group_prici
     catalogs_product_group_pricing_currency_criteria_t *catalogs_product_group_pricing_currency_criteria_local_var = NULL;
 
     // define the local variable for catalogs_product_group_pricing_currency_criteria->currency
-    non_nullable_catalogs_currency_t *currency_local_nonprim = NULL;
+    pinterest_rest_api_non_nullable_catalogs_currency__e currency_local_nonprim = 0;
 
     // catalogs_product_group_pricing_currency_criteria->_operator
     cJSON *_operator = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_pricing_currency_criteriaJSON, "operator");
+    if (cJSON_IsNull(_operator)) {
+        _operator = NULL;
+    }
     if (!_operator) {
         goto end;
     }
@@ -144,6 +144,9 @@ catalogs_product_group_pricing_currency_criteria_t *catalogs_product_group_prici
 
     // catalogs_product_group_pricing_currency_criteria->value
     cJSON *value = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_pricing_currency_criteriaJSON, "value");
+    if (cJSON_IsNull(value)) {
+        value = NULL;
+    }
     if (!value) {
         goto end;
     }
@@ -156,6 +159,9 @@ catalogs_product_group_pricing_currency_criteria_t *catalogs_product_group_prici
 
     // catalogs_product_group_pricing_currency_criteria->currency
     cJSON *currency = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_pricing_currency_criteriaJSON, "currency");
+    if (cJSON_IsNull(currency)) {
+        currency = NULL;
+    }
     if (!currency) {
         goto end;
     }
@@ -165,6 +171,9 @@ catalogs_product_group_pricing_currency_criteria_t *catalogs_product_group_prici
 
     // catalogs_product_group_pricing_currency_criteria->negated
     cJSON *negated = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_pricing_currency_criteriaJSON, "negated");
+    if (cJSON_IsNull(negated)) {
+        negated = NULL;
+    }
     if (negated) { 
     if(!cJSON_IsBool(negated))
     {
@@ -173,7 +182,7 @@ catalogs_product_group_pricing_currency_criteria_t *catalogs_product_group_prici
     }
 
 
-    catalogs_product_group_pricing_currency_criteria_local_var = catalogs_product_group_pricing_currency_criteria_create (
+    catalogs_product_group_pricing_currency_criteria_local_var = catalogs_product_group_pricing_currency_criteria_create_internal (
         _operatorVariable,
         value->valuedouble,
         currency_local_nonprim,
@@ -183,8 +192,7 @@ catalogs_product_group_pricing_currency_criteria_t *catalogs_product_group_prici
     return catalogs_product_group_pricing_currency_criteria_local_var;
 end:
     if (currency_local_nonprim) {
-        non_nullable_catalogs_currency_free(currency_local_nonprim);
-        currency_local_nonprim = NULL;
+        currency_local_nonprim = 0;
     }
     return NULL;
 

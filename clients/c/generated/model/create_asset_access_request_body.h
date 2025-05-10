@@ -22,9 +22,10 @@ typedef struct create_asset_access_request_body_t create_asset_access_request_bo
 typedef struct create_asset_access_request_body_t {
     list_t *asset_requests; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } create_asset_access_request_body_t;
 
-create_asset_access_request_body_t *create_asset_access_request_body_create(
+__attribute__((deprecated)) create_asset_access_request_body_t *create_asset_access_request_body_create(
     list_t *asset_requests
 );
 

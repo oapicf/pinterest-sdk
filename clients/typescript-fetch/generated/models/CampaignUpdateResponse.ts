@@ -56,11 +56,11 @@ export function CampaignUpdateResponseFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-  export function CampaignUpdateResponseToJSON(json: any): CampaignUpdateResponse {
-      return CampaignUpdateResponseToJSONTyped(json, false);
-  }
+export function CampaignUpdateResponseToJSON(json: any): CampaignUpdateResponse {
+    return CampaignUpdateResponseToJSONTyped(json, false);
+}
 
-  export function CampaignUpdateResponseToJSONTyped(value?: CampaignUpdateResponse | null, ignoreDiscriminator: boolean = false): any {
+export function CampaignUpdateResponseToJSONTyped(value?: CampaignUpdateResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

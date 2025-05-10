@@ -5,7 +5,7 @@
 
 
 
-audience_insight_category_array_response_t *audience_insight_category_array_response_create(
+static audience_insight_category_array_response_t *audience_insight_category_array_response_create_internal(
     list_t *items
     ) {
     audience_insight_category_array_response_t *audience_insight_category_array_response_local_var = malloc(sizeof(audience_insight_category_array_response_t));
@@ -14,12 +14,24 @@ audience_insight_category_array_response_t *audience_insight_category_array_resp
     }
     audience_insight_category_array_response_local_var->items = items;
 
+    audience_insight_category_array_response_local_var->_library_owned = 1;
     return audience_insight_category_array_response_local_var;
 }
 
+__attribute__((deprecated)) audience_insight_category_array_response_t *audience_insight_category_array_response_create(
+    list_t *items
+    ) {
+    return audience_insight_category_array_response_create_internal (
+        items
+        );
+}
 
 void audience_insight_category_array_response_free(audience_insight_category_array_response_t *audience_insight_category_array_response) {
     if(NULL == audience_insight_category_array_response){
+        return ;
+    }
+    if(audience_insight_category_array_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "audience_insight_category_array_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -72,6 +84,9 @@ audience_insight_category_array_response_t *audience_insight_category_array_resp
 
     // audience_insight_category_array_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(audience_insight_category_array_responseJSON, "items");
+    if (cJSON_IsNull(items)) {
+        items = NULL;
+    }
     if (items) { 
     cJSON *items_local_nonprimitive = NULL;
     if(!cJSON_IsArray(items)){
@@ -92,7 +107,7 @@ audience_insight_category_array_response_t *audience_insight_category_array_resp
     }
 
 
-    audience_insight_category_array_response_local_var = audience_insight_category_array_response_create (
+    audience_insight_category_array_response_local_var = audience_insight_category_array_response_create_internal (
         items ? itemsList : NULL
         );
 

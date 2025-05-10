@@ -20,6 +20,7 @@ import org.openapitools.server.models.Country
 import org.openapitools.server.models.NullableCurrency
 import org.openapitools.server.models.ProductAvailabilityType
 
+import kotlinx.serialization.Serializable
 /**
  * Catalogs Retail Feed object
  * @param createdAt 
@@ -37,23 +38,24 @@ import org.openapitools.server.models.ProductAvailabilityType
  * @param defaultCountry 
  * @param defaultAvailability 
  */
+@Serializable
 data class CatalogsRetailFeed(
-    val createdAt: java.time.OffsetDateTime,
+    val createdAt: kotlin.String,
     val id: kotlin.String,
-    val updatedAt: java.time.OffsetDateTime,
+    val updatedAt: kotlin.String,
     /* A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. */
-    val name: kotlin.String,
+    val name: kotlin.String?,
     val format: CatalogsFormat,
     val catalogType: CatalogsType,
-    val credentials: CatalogsFeedCredentials,
+    val credentials: CatalogsFeedCredentials?,
     /* The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
     val location: kotlin.String,
-    val preferredProcessingSchedule: CatalogsFeedProcessingSchedule,
+    val preferredProcessingSchedule: CatalogsFeedProcessingSchedule?,
     val status: CatalogsStatus,
-    val defaultCurrency: NullableCurrency,
+    val defaultCurrency: NullableCurrency?,
     /* The locale used within a feed for product descriptions. */
     val defaultLocale: kotlin.String,
     val defaultCountry: Country,
-    val defaultAvailability: ProductAvailabilityType
-) 
+    val defaultAvailability: ProductAvailabilityType?
+)
 

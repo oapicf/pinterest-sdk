@@ -50,24 +50,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Object uniquely identifying a retail catalog item
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdvancedAuctionKey {
   public static final String SERIALIZED_NAME_ITEM_ID = "item_id";
   @SerializedName(SERIALIZED_NAME_ITEM_ID)
+  @javax.annotation.Nonnull
   private String itemId;
 
   public static final String SERIALIZED_NAME_COUNTRY = "country";
   @SerializedName(SERIALIZED_NAME_COUNTRY)
+  @javax.annotation.Nonnull
   private Country country;
 
   public static final String SERIALIZED_NAME_LANGUAGE = "language";
   @SerializedName(SERIALIZED_NAME_LANGUAGE)
+  @javax.annotation.Nonnull
   private Language language;
 
   public AdvancedAuctionKey() {
   }
 
-  public AdvancedAuctionKey itemId(String itemId) {
+  public AdvancedAuctionKey itemId(@javax.annotation.Nonnull String itemId) {
     this.itemId = itemId;
     return this;
   }
@@ -81,12 +84,12 @@ public class AdvancedAuctionKey {
     return itemId;
   }
 
-  public void setItemId(String itemId) {
+  public void setItemId(@javax.annotation.Nonnull String itemId) {
     this.itemId = itemId;
   }
 
 
-  public AdvancedAuctionKey country(Country country) {
+  public AdvancedAuctionKey country(@javax.annotation.Nonnull Country country) {
     this.country = country;
     return this;
   }
@@ -100,12 +103,12 @@ public class AdvancedAuctionKey {
     return country;
   }
 
-  public void setCountry(Country country) {
+  public void setCountry(@javax.annotation.Nonnull Country country) {
     this.country = country;
   }
 
 
-  public AdvancedAuctionKey language(Language language) {
+  public AdvancedAuctionKey language(@javax.annotation.Nonnull Language language) {
     this.language = language;
     return this;
   }
@@ -119,7 +122,7 @@ public class AdvancedAuctionKey {
     return language;
   }
 
-  public void setLanguage(Language language) {
+  public void setLanguage(@javax.annotation.Nonnull Language language) {
     this.language = language;
   }
 

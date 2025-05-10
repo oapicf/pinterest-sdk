@@ -23,9 +23,10 @@ typedef struct keywords_request_t {
     list_t *keywords; //nonprimitive container
     char *parent_id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } keywords_request_t;
 
-keywords_request_t *keywords_request_create(
+__attribute__((deprecated)) keywords_request_t *keywords_request_create(
     list_t *keywords,
     char *parent_id
 );

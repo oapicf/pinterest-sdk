@@ -191,11 +191,11 @@ export function CampaignResponseFromJSONTyped(json: any, ignoreDiscriminator: bo
     };
 }
 
-  export function CampaignResponseToJSON(json: any): CampaignResponse {
-      return CampaignResponseToJSONTyped(json, false);
-  }
+export function CampaignResponseToJSON(json: any): CampaignResponse {
+    return CampaignResponseToJSONTyped(json, false);
+}
 
-  export function CampaignResponseToJSONTyped(value?: CampaignResponse | null, ignoreDiscriminator: boolean = false): any {
+export function CampaignResponseToJSONTyped(value?: CampaignResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

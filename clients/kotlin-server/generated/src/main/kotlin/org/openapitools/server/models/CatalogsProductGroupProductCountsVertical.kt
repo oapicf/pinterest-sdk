@@ -16,6 +16,7 @@ import org.openapitools.server.models.CatalogsHotelProductGroupProductCounts
 import org.openapitools.server.models.CatalogsRetailProductGroupProductCounts
 import org.openapitools.server.models.CatalogsType
 
+import kotlinx.serialization.Serializable
 /**
  * Product counts for a CatalogsProductGroup
  * @param catalogType 
@@ -25,6 +26,7 @@ import org.openapitools.server.models.CatalogsType
  * @param total 
  * @param videos 
  */
+@Serializable
 data class CatalogsProductGroupProductCountsVertical(
     val catalogType: CatalogsType,
     val inStock: java.math.BigDecimal,
@@ -32,7 +34,7 @@ data class CatalogsProductGroupProductCountsVertical(
     val preorder: java.math.BigDecimal,
     val total: java.math.BigDecimal,
     val videos: java.math.BigDecimal
-) 
+)
 {
 }
 

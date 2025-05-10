@@ -40,9 +40,10 @@ typedef struct pin_media_source_image_base64_t {
     char *data; // string
     int is_standard; //boolean
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } pin_media_source_image_base64_t;
 
-pin_media_source_image_base64_t *pin_media_source_image_base64_create(
+__attribute__((deprecated)) pin_media_source_image_base64_t *pin_media_source_image_base64_create(
     pinterest_rest_api_pin_media_source_image_base64_SOURCETYPE_e source_type,
     pinterest_rest_api_pin_media_source_image_base64_CONTENTTYPE_e content_type,
     char *data,

@@ -16,7 +16,7 @@ public struct CatalogsHotelListProductsByCatalogBasedFilterRequest: Codable, JSO
     public enum CatalogType: String, Codable, CaseIterable {
         case hotel = "HOTEL"
     }
-    static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public var catalogType: CatalogType
     /** Catalog id pertaining to the hotel product group. */
     public var catalogId: String

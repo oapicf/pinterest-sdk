@@ -57,11 +57,11 @@ export function TrendingKeywordsResponseFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function TrendingKeywordsResponseToJSON(json: any): TrendingKeywordsResponse {
-      return TrendingKeywordsResponseToJSONTyped(json, false);
-  }
+export function TrendingKeywordsResponseToJSON(json: any): TrendingKeywordsResponse {
+    return TrendingKeywordsResponseToJSONTyped(json, false);
+}
 
-  export function TrendingKeywordsResponseToJSONTyped(value?: TrendingKeywordsResponse | null, ignoreDiscriminator: boolean = false): any {
+export function TrendingKeywordsResponseToJSONTyped(value?: TrendingKeywordsResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

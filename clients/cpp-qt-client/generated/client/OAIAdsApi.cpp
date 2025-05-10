@@ -254,7 +254,7 @@ void OAIAdsApi::adPreviews_create(const QString &ad_account_id, const OAIAdPrevi
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAdsApi::adPreviews_createCallback);
     connect(this, &OAIAdsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -276,7 +276,7 @@ void OAIAdsApi::adPreviews_create(const QString &ad_account_id, const OAIAdPrevi
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAdsApi::adPreviews_createCallback);
     connect(this, &OAIAdsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -465,7 +465,7 @@ void OAIAdsApi::adTargetingAnalytics_get(const QString &ad_account_id, const QLi
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("start_date")).append(querySuffix).append(QUrl::toPercentEncoding(start_date));
+        fullPath.append(QUrl::toPercentEncoding("start_date")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(start_date)));
     }
     
     {
@@ -480,7 +480,7 @@ void OAIAdsApi::adTargetingAnalytics_get(const QString &ad_account_id, const QLi
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("end_date")).append(querySuffix).append(QUrl::toPercentEncoding(end_date));
+        fullPath.append(QUrl::toPercentEncoding("end_date")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(end_date)));
     }
     
     {
@@ -724,7 +724,7 @@ void OAIAdsApi::adTargetingAnalytics_get(const QString &ad_account_id, const QLi
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("click_window_days")).append(querySuffix).append(QUrl::toPercentEncoding(click_window_days.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("click_window_days")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(click_window_days.stringValue())));
     }
     if (engagement_window_days.hasValue())
     {
@@ -739,7 +739,7 @@ void OAIAdsApi::adTargetingAnalytics_get(const QString &ad_account_id, const QLi
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("engagement_window_days")).append(querySuffix).append(QUrl::toPercentEncoding(engagement_window_days.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("engagement_window_days")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(engagement_window_days.stringValue())));
     }
     if (view_window_days.hasValue())
     {
@@ -754,7 +754,7 @@ void OAIAdsApi::adTargetingAnalytics_get(const QString &ad_account_id, const QLi
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("view_window_days")).append(querySuffix).append(QUrl::toPercentEncoding(view_window_days.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("view_window_days")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(view_window_days.stringValue())));
     }
     if (conversion_report_time.hasValue())
     {
@@ -769,7 +769,7 @@ void OAIAdsApi::adTargetingAnalytics_get(const QString &ad_account_id, const QLi
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("conversion_report_time")).append(querySuffix).append(QUrl::toPercentEncoding(conversion_report_time.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("conversion_report_time")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(conversion_report_time.stringValue())));
     }
     if (attribution_types.hasValue())
     {
@@ -843,7 +843,7 @@ void OAIAdsApi::adTargetingAnalytics_get(const QString &ad_account_id, const QLi
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAdsApi::adTargetingAnalytics_getCallback);
     connect(this, &OAIAdsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -865,7 +865,7 @@ void OAIAdsApi::adTargetingAnalytics_get(const QString &ad_account_id, const QLi
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAdsApi::adTargetingAnalytics_getCallback);
     connect(this, &OAIAdsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -969,7 +969,7 @@ void OAIAdsApi::ads_analytics(const QString &ad_account_id, const QDate &start_d
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("start_date")).append(querySuffix).append(QUrl::toPercentEncoding(start_date));
+        fullPath.append(QUrl::toPercentEncoding("start_date")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(start_date)));
     }
     
     {
@@ -984,7 +984,7 @@ void OAIAdsApi::ads_analytics(const QString &ad_account_id, const QDate &start_d
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("end_date")).append(querySuffix).append(QUrl::toPercentEncoding(end_date));
+        fullPath.append(QUrl::toPercentEncoding("end_date")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(end_date)));
     }
     if (ad_ids.hasValue())
     {
@@ -1228,7 +1228,7 @@ void OAIAdsApi::ads_analytics(const QString &ad_account_id, const QDate &start_d
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("click_window_days")).append(querySuffix).append(QUrl::toPercentEncoding(click_window_days.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("click_window_days")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(click_window_days.stringValue())));
     }
     if (engagement_window_days.hasValue())
     {
@@ -1243,7 +1243,7 @@ void OAIAdsApi::ads_analytics(const QString &ad_account_id, const QDate &start_d
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("engagement_window_days")).append(querySuffix).append(QUrl::toPercentEncoding(engagement_window_days.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("engagement_window_days")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(engagement_window_days.stringValue())));
     }
     if (view_window_days.hasValue())
     {
@@ -1258,7 +1258,7 @@ void OAIAdsApi::ads_analytics(const QString &ad_account_id, const QDate &start_d
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("view_window_days")).append(querySuffix).append(QUrl::toPercentEncoding(view_window_days.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("view_window_days")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(view_window_days.stringValue())));
     }
     if (conversion_report_time.hasValue())
     {
@@ -1273,7 +1273,7 @@ void OAIAdsApi::ads_analytics(const QString &ad_account_id, const QDate &start_d
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("conversion_report_time")).append(querySuffix).append(QUrl::toPercentEncoding(conversion_report_time.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("conversion_report_time")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(conversion_report_time.stringValue())));
     }
     if (pin_ids.hasValue())
     {
@@ -1458,7 +1458,7 @@ void OAIAdsApi::ads_analytics(const QString &ad_account_id, const QDate &start_d
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAdsApi::ads_analyticsCallback);
     connect(this, &OAIAdsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1480,7 +1480,7 @@ void OAIAdsApi::ads_analytics(const QString &ad_account_id, const QDate &start_d
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAdsApi::ads_analyticsCallback);
     connect(this, &OAIAdsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1596,7 +1596,7 @@ void OAIAdsApi::ads_create(const QString &ad_account_id, const QList<OAIAdCreate
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAdsApi::ads_createCallback);
     connect(this, &OAIAdsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1618,7 +1618,7 @@ void OAIAdsApi::ads_create(const QString &ad_account_id, const QList<OAIAdCreate
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAdsApi::ads_createCallback);
     connect(this, &OAIAdsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1735,7 +1735,7 @@ void OAIAdsApi::ads_get(const QString &ad_account_id, const QString &ad_id) {
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAdsApi::ads_getCallback);
     connect(this, &OAIAdsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1757,7 +1757,7 @@ void OAIAdsApi::ads_get(const QString &ad_account_id, const QString &ad_id) {
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAdsApi::ads_getCallback);
     connect(this, &OAIAdsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -2201,7 +2201,7 @@ void OAIAdsApi::ads_list(const QString &ad_account_id, const ::OpenAPI::Optional
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     if (order.hasValue())
     {
@@ -2216,7 +2216,7 @@ void OAIAdsApi::ads_list(const QString &ad_account_id, const ::OpenAPI::Optional
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("order")).append(querySuffix).append(QUrl::toPercentEncoding(order.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("order")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(order.stringValue())));
     }
     if (bookmark.hasValue())
     {
@@ -2231,7 +2231,7 @@ void OAIAdsApi::ads_list(const QString &ad_account_id, const ::OpenAPI::Optional
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -2246,7 +2246,7 @@ void OAIAdsApi::ads_list(const QString &ad_account_id, const ::OpenAPI::Optional
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAdsApi::ads_listCallback);
     connect(this, &OAIAdsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -2268,7 +2268,7 @@ void OAIAdsApi::ads_list(const QString &ad_account_id, const ::OpenAPI::Optional
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAdsApi::ads_listCallback);
     connect(this, &OAIAdsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -2375,7 +2375,7 @@ void OAIAdsApi::ads_update(const QString &ad_account_id, const QList<OAIAdUpdate
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAdsApi::ads_updateCallback);
     connect(this, &OAIAdsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -2397,7 +2397,7 @@ void OAIAdsApi::ads_update(const QString &ad_account_id, const QList<OAIAdUpdate
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAdsApi::ads_updateCallback);
     connect(this, &OAIAdsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }

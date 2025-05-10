@@ -49,20 +49,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * An invite object if the invite/request was successfully created. Will only be provided if the an invite/request is successfully created.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CreateInvitesResultsResponseArrayItemsInnerInvite {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_USER = "user";
   @SerializedName(SERIALIZED_NAME_USER)
+  @javax.annotation.Nullable
   private BusinessAccessUserSummary user;
 
   public CreateInvitesResultsResponseArrayItemsInnerInvite() {
   }
 
-  public CreateInvitesResultsResponseArrayItemsInnerInvite id(String id) {
+  public CreateInvitesResultsResponseArrayItemsInnerInvite id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -76,12 +78,12 @@ public class CreateInvitesResultsResponseArrayItemsInnerInvite {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public CreateInvitesResultsResponseArrayItemsInnerInvite user(BusinessAccessUserSummary user) {
+  public CreateInvitesResultsResponseArrayItemsInnerInvite user(@javax.annotation.Nullable BusinessAccessUserSummary user) {
     this.user = user;
     return this;
   }
@@ -95,7 +97,7 @@ public class CreateInvitesResultsResponseArrayItemsInnerInvite {
     return user;
   }
 
-  public void setUser(BusinessAccessUserSummary user) {
+  public void setUser(@javax.annotation.Nullable BusinessAccessUserSummary user) {
     this.user = user;
   }
 

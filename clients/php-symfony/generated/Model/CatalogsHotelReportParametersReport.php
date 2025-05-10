@@ -48,7 +48,7 @@ class CatalogsHotelReportParametersReport
      * @SerializedName("report_type")
      * @Type("string")
     */
-    #[Assert\Choice(["FEED_INGESTION_ISSUES", "DISTRIBUTION_ISSUES"])]
+    #[Assert\Choice(['FEED_INGESTION_ISSUES', 'DISTRIBUTION_ISSUES'])]
     #[Assert\Type("string")]
     protected ?string $reportType = null;
 
@@ -90,7 +90,7 @@ class CatalogsHotelReportParametersReport
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->reportType = array_key_exists('reportType', $data) ? $data['reportType'] : $this->reportType;

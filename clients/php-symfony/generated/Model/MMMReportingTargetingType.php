@@ -44,11 +44,11 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum MMMReportingTargetingType: string
 {
-        case APPTYPE = "APPTYPE";
-        case COUNTRY = "COUNTRY";
-        case CREATIVE_TYPE = "CREATIVE_TYPE";
-        case GENDER = "GENDER";
-        case LOCATION = "LOCATION";
+        case APPTYPE = 'APPTYPE';
+        case COUNTRY = 'COUNTRY';
+        case CREATIVE_TYPE = 'CREATIVE_TYPE';
+        case GENDER = 'GENDER';
+        case LOCATION = 'LOCATION';
 }
 
 

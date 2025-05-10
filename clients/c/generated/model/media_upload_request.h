@@ -22,9 +22,10 @@ typedef struct media_upload_request_t media_upload_request_t;
 typedef struct media_upload_request_t {
     media_upload_type_t *media_type; // custom
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } media_upload_request_t;
 
-media_upload_request_t *media_upload_request_create(
+__attribute__((deprecated)) media_upload_request_t *media_upload_request_create(
     media_upload_type_t *media_type
 );
 

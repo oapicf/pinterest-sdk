@@ -83,11 +83,11 @@ export function ConversionEventsDataInnerCustomDataContentsInnerFromJSONTyped(js
     };
 }
 
-  export function ConversionEventsDataInnerCustomDataContentsInnerToJSON(json: any): ConversionEventsDataInnerCustomDataContentsInner {
-      return ConversionEventsDataInnerCustomDataContentsInnerToJSONTyped(json, false);
-  }
+export function ConversionEventsDataInnerCustomDataContentsInnerToJSON(json: any): ConversionEventsDataInnerCustomDataContentsInner {
+    return ConversionEventsDataInnerCustomDataContentsInnerToJSONTyped(json, false);
+}
 
-  export function ConversionEventsDataInnerCustomDataContentsInnerToJSONTyped(value?: ConversionEventsDataInnerCustomDataContentsInner | null, ignoreDiscriminator: boolean = false): any {
+export function ConversionEventsDataInnerCustomDataContentsInnerToJSONTyped(value?: ConversionEventsDataInnerCustomDataContentsInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

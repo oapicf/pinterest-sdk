@@ -53,32 +53,37 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Ad entities to get in bulk request.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BulkDownloadRequest {
   public static final String SERIALIZED_NAME_ENTITY_TYPES = "entity_types";
   @SerializedName(SERIALIZED_NAME_ENTITY_TYPES)
+  @javax.annotation.Nullable
   private List<BulkEntityType> entityTypes = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_ENTITY_IDS = "entity_ids";
   @SerializedName(SERIALIZED_NAME_ENTITY_IDS)
+  @javax.annotation.Nullable
   private List<String> entityIds = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_UPDATED_SINCE = "updated_since";
   @SerializedName(SERIALIZED_NAME_UPDATED_SINCE)
+  @javax.annotation.Nullable
   private String updatedSince;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_FILTER = "campaign_filter";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_FILTER)
+  @javax.annotation.Nullable
   private BulkDownloadRequestCampaignFilter campaignFilter;
 
   public static final String SERIALIZED_NAME_OUTPUT_FORMAT = "output_format";
   @SerializedName(SERIALIZED_NAME_OUTPUT_FORMAT)
+  @javax.annotation.Nullable
   private BulkOutputFormat outputFormat = "JSON";
 
   public BulkDownloadRequest() {
   }
 
-  public BulkDownloadRequest entityTypes(List<BulkEntityType> entityTypes) {
+  public BulkDownloadRequest entityTypes(@javax.annotation.Nullable List<BulkEntityType> entityTypes) {
     this.entityTypes = entityTypes;
     return this;
   }
@@ -100,12 +105,12 @@ public class BulkDownloadRequest {
     return entityTypes;
   }
 
-  public void setEntityTypes(List<BulkEntityType> entityTypes) {
+  public void setEntityTypes(@javax.annotation.Nullable List<BulkEntityType> entityTypes) {
     this.entityTypes = entityTypes;
   }
 
 
-  public BulkDownloadRequest entityIds(List<String> entityIds) {
+  public BulkDownloadRequest entityIds(@javax.annotation.Nullable List<String> entityIds) {
     this.entityIds = entityIds;
     return this;
   }
@@ -127,12 +132,12 @@ public class BulkDownloadRequest {
     return entityIds;
   }
 
-  public void setEntityIds(List<String> entityIds) {
+  public void setEntityIds(@javax.annotation.Nullable List<String> entityIds) {
     this.entityIds = entityIds;
   }
 
 
-  public BulkDownloadRequest updatedSince(String updatedSince) {
+  public BulkDownloadRequest updatedSince(@javax.annotation.Nullable String updatedSince) {
     this.updatedSince = updatedSince;
     return this;
   }
@@ -146,12 +151,12 @@ public class BulkDownloadRequest {
     return updatedSince;
   }
 
-  public void setUpdatedSince(String updatedSince) {
+  public void setUpdatedSince(@javax.annotation.Nullable String updatedSince) {
     this.updatedSince = updatedSince;
   }
 
 
-  public BulkDownloadRequest campaignFilter(BulkDownloadRequestCampaignFilter campaignFilter) {
+  public BulkDownloadRequest campaignFilter(@javax.annotation.Nullable BulkDownloadRequestCampaignFilter campaignFilter) {
     this.campaignFilter = campaignFilter;
     return this;
   }
@@ -165,12 +170,12 @@ public class BulkDownloadRequest {
     return campaignFilter;
   }
 
-  public void setCampaignFilter(BulkDownloadRequestCampaignFilter campaignFilter) {
+  public void setCampaignFilter(@javax.annotation.Nullable BulkDownloadRequestCampaignFilter campaignFilter) {
     this.campaignFilter = campaignFilter;
   }
 
 
-  public BulkDownloadRequest outputFormat(BulkOutputFormat outputFormat) {
+  public BulkDownloadRequest outputFormat(@javax.annotation.Nullable BulkOutputFormat outputFormat) {
     this.outputFormat = outputFormat;
     return this;
   }
@@ -184,7 +189,7 @@ public class BulkDownloadRequest {
     return outputFormat;
   }
 
-  public void setOutputFormat(BulkOutputFormat outputFormat) {
+  public void setOutputFormat(@javax.annotation.Nullable BulkOutputFormat outputFormat) {
     this.outputFormat = outputFormat;
   }
 

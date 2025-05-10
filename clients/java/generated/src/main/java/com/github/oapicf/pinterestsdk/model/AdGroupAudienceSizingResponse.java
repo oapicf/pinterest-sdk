@@ -49,20 +49,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdGroupAudienceSizingResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdGroupAudienceSizingResponse {
   public static final String SERIALIZED_NAME_AUDIENCE_SIZE_LOWER_BOUND = "audience_size_lower_bound";
   @SerializedName(SERIALIZED_NAME_AUDIENCE_SIZE_LOWER_BOUND)
+  @javax.annotation.Nullable
   private BigDecimal audienceSizeLowerBound;
 
   public static final String SERIALIZED_NAME_AUDIENCE_SIZE_UPPER_BOUND = "audience_size_upper_bound";
   @SerializedName(SERIALIZED_NAME_AUDIENCE_SIZE_UPPER_BOUND)
+  @javax.annotation.Nullable
   private BigDecimal audienceSizeUpperBound;
 
   public AdGroupAudienceSizingResponse() {
   }
 
-  public AdGroupAudienceSizingResponse audienceSizeLowerBound(BigDecimal audienceSizeLowerBound) {
+  public AdGroupAudienceSizingResponse audienceSizeLowerBound(@javax.annotation.Nullable BigDecimal audienceSizeLowerBound) {
     this.audienceSizeLowerBound = audienceSizeLowerBound;
     return this;
   }
@@ -76,12 +78,12 @@ public class AdGroupAudienceSizingResponse {
     return audienceSizeLowerBound;
   }
 
-  public void setAudienceSizeLowerBound(BigDecimal audienceSizeLowerBound) {
+  public void setAudienceSizeLowerBound(@javax.annotation.Nullable BigDecimal audienceSizeLowerBound) {
     this.audienceSizeLowerBound = audienceSizeLowerBound;
   }
 
 
-  public AdGroupAudienceSizingResponse audienceSizeUpperBound(BigDecimal audienceSizeUpperBound) {
+  public AdGroupAudienceSizingResponse audienceSizeUpperBound(@javax.annotation.Nullable BigDecimal audienceSizeUpperBound) {
     this.audienceSizeUpperBound = audienceSizeUpperBound;
     return this;
   }
@@ -95,7 +97,7 @@ public class AdGroupAudienceSizingResponse {
     return audienceSizeUpperBound;
   }
 
-  public void setAudienceSizeUpperBound(BigDecimal audienceSizeUpperBound) {
+  public void setAudienceSizeUpperBound(@javax.annotation.Nullable BigDecimal audienceSizeUpperBound) {
     this.audienceSizeUpperBound = audienceSizeUpperBound;
   }
 

@@ -5,7 +5,7 @@
 
 
 
-image_details_t *image_details_create(
+static image_details_t *image_details_create_internal(
     int width,
     int height,
     char *url
@@ -18,12 +18,28 @@ image_details_t *image_details_create(
     image_details_local_var->height = height;
     image_details_local_var->url = url;
 
+    image_details_local_var->_library_owned = 1;
     return image_details_local_var;
 }
 
+__attribute__((deprecated)) image_details_t *image_details_create(
+    int width,
+    int height,
+    char *url
+    ) {
+    return image_details_create_internal (
+        width,
+        height,
+        url
+        );
+}
 
 void image_details_free(image_details_t *image_details) {
     if(NULL == image_details){
+        return ;
+    }
+    if(image_details->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "image_details_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -77,6 +93,9 @@ image_details_t *image_details_parseFromJSON(cJSON *image_detailsJSON){
 
     // image_details->width
     cJSON *width = cJSON_GetObjectItemCaseSensitive(image_detailsJSON, "width");
+    if (cJSON_IsNull(width)) {
+        width = NULL;
+    }
     if (!width) {
         goto end;
     }
@@ -89,6 +108,9 @@ image_details_t *image_details_parseFromJSON(cJSON *image_detailsJSON){
 
     // image_details->height
     cJSON *height = cJSON_GetObjectItemCaseSensitive(image_detailsJSON, "height");
+    if (cJSON_IsNull(height)) {
+        height = NULL;
+    }
     if (!height) {
         goto end;
     }
@@ -101,6 +123,9 @@ image_details_t *image_details_parseFromJSON(cJSON *image_detailsJSON){
 
     // image_details->url
     cJSON *url = cJSON_GetObjectItemCaseSensitive(image_detailsJSON, "url");
+    if (cJSON_IsNull(url)) {
+        url = NULL;
+    }
     if (!url) {
         goto end;
     }
@@ -112,7 +137,7 @@ image_details_t *image_details_parseFromJSON(cJSON *image_detailsJSON){
     }
 
 
-    image_details_local_var = image_details_create (
+    image_details_local_var = image_details_create_internal (
         width->valuedouble,
         height->valuedouble,
         strdup(url->valuestring)

@@ -13,7 +13,7 @@ import AnyCodable
 /** Single instance of a business member to have its role updated */
 public struct UpdateMemberBusinessRoleBody: Codable, JSONEncodable, Hashable {
 
-    static let memberIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
+    public static let memberIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
     public var businessRole: BusinessRoleForMembers
     /** Unique identifier of the member */
     public var memberId: String

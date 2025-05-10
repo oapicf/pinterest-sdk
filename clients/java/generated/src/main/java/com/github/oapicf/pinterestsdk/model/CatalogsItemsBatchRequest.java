@@ -68,7 +68,7 @@ import com.google.gson.JsonParseException;
 
 import com.github.oapicf.pinterestsdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsItemsBatchRequest extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CatalogsItemsBatchRequest.class.getName());
 
@@ -293,6 +293,7 @@ public class CatalogsItemsBatchRequest extends AbstractOpenApiSchema {
     public CatalogsItemsUpdateBatchRequest getCatalogsItemsUpdateBatchRequest() throws ClassCastException {
         return (CatalogsItemsUpdateBatchRequest)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CatalogsItemsUpsertBatchRequest`. If the actual instance is not `CatalogsItemsUpsertBatchRequest`,
      * the ClassCastException will be thrown.
@@ -303,6 +304,7 @@ public class CatalogsItemsBatchRequest extends AbstractOpenApiSchema {
     public CatalogsItemsUpsertBatchRequest getCatalogsItemsUpsertBatchRequest() throws ClassCastException {
         return (CatalogsItemsUpsertBatchRequest)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CatalogsItemsCreateBatchRequest`. If the actual instance is not `CatalogsItemsCreateBatchRequest`,
      * the ClassCastException will be thrown.
@@ -313,6 +315,7 @@ public class CatalogsItemsBatchRequest extends AbstractOpenApiSchema {
     public CatalogsItemsCreateBatchRequest getCatalogsItemsCreateBatchRequest() throws ClassCastException {
         return (CatalogsItemsCreateBatchRequest)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CatalogsItemsDeleteDiscontinuedBatchRequest`. If the actual instance is not `CatalogsItemsDeleteDiscontinuedBatchRequest`,
      * the ClassCastException will be thrown.
@@ -323,6 +326,7 @@ public class CatalogsItemsBatchRequest extends AbstractOpenApiSchema {
     public CatalogsItemsDeleteDiscontinuedBatchRequest getCatalogsItemsDeleteDiscontinuedBatchRequest() throws ClassCastException {
         return (CatalogsItemsDeleteDiscontinuedBatchRequest)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CatalogsItemsDeleteBatchRequest`. If the actual instance is not `CatalogsItemsDeleteBatchRequest`,
      * the ClassCastException will be thrown.

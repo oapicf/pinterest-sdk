@@ -44,15 +44,15 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum CatalogsProductGroupType: string
 {
-        case MERCHANT_CREATED = "MERCHANT_CREATED";
-        case ALL_PRODUCTS = "ALL_PRODUCTS";
-        case BEST_DEALS = "BEST_DEALS";
-        case PINNER_FAVORITES = "PINNER_FAVORITES";
-        case TOP_SELLERS = "TOP_SELLERS";
-        case BACK_IN_STOCK = "BACK_IN_STOCK";
-        case NEW_ARRIVALS = "NEW_ARRIVALS";
-        case SHOPIFY_COLLECTIONS = "SHOPIFY_COLLECTIONS";
-        case I2_PC = "I2PC";
+        case MERCHANT_CREATED = 'MERCHANT_CREATED';
+        case ALL_PRODUCTS = 'ALL_PRODUCTS';
+        case BEST_DEALS = 'BEST_DEALS';
+        case PINNER_FAVORITES = 'PINNER_FAVORITES';
+        case TOP_SELLERS = 'TOP_SELLERS';
+        case BACK_IN_STOCK = 'BACK_IN_STOCK';
+        case NEW_ARRIVALS = 'NEW_ARRIVALS';
+        case SHOPIFY_COLLECTIONS = 'SHOPIFY_COLLECTIONS';
+        case I2_PC = 'I2PC';
 }
 
 

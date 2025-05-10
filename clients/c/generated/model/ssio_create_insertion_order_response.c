@@ -5,7 +5,7 @@
 
 
 
-ssio_create_insertion_order_response_t *ssio_create_insertion_order_response_create(
+static ssio_create_insertion_order_response_t *ssio_create_insertion_order_response_create_internal(
     char *pin_order_id
     ) {
     ssio_create_insertion_order_response_t *ssio_create_insertion_order_response_local_var = malloc(sizeof(ssio_create_insertion_order_response_t));
@@ -14,12 +14,24 @@ ssio_create_insertion_order_response_t *ssio_create_insertion_order_response_cre
     }
     ssio_create_insertion_order_response_local_var->pin_order_id = pin_order_id;
 
+    ssio_create_insertion_order_response_local_var->_library_owned = 1;
     return ssio_create_insertion_order_response_local_var;
 }
 
+__attribute__((deprecated)) ssio_create_insertion_order_response_t *ssio_create_insertion_order_response_create(
+    char *pin_order_id
+    ) {
+    return ssio_create_insertion_order_response_create_internal (
+        pin_order_id
+        );
+}
 
 void ssio_create_insertion_order_response_free(ssio_create_insertion_order_response_t *ssio_create_insertion_order_response) {
     if(NULL == ssio_create_insertion_order_response){
+        return ;
+    }
+    if(ssio_create_insertion_order_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ssio_create_insertion_order_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -54,6 +66,9 @@ ssio_create_insertion_order_response_t *ssio_create_insertion_order_response_par
 
     // ssio_create_insertion_order_response->pin_order_id
     cJSON *pin_order_id = cJSON_GetObjectItemCaseSensitive(ssio_create_insertion_order_responseJSON, "pin_order_id");
+    if (cJSON_IsNull(pin_order_id)) {
+        pin_order_id = NULL;
+    }
     if (pin_order_id) { 
     if(!cJSON_IsString(pin_order_id) && !cJSON_IsNull(pin_order_id))
     {
@@ -62,7 +77,7 @@ ssio_create_insertion_order_response_t *ssio_create_insertion_order_response_par
     }
 
 
-    ssio_create_insertion_order_response_local_var = ssio_create_insertion_order_response_create (
+    ssio_create_insertion_order_response_local_var = ssio_create_insertion_order_response_create_internal (
         pin_order_id && !cJSON_IsNull(pin_order_id) ? strdup(pin_order_id->valuestring) : NULL
         );
 

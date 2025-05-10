@@ -40,7 +40,7 @@ import javax.validation.Valid;
   PinUpdate.JSON_PROPERTY_CAROUSEL_SLOTS,
   PinUpdate.JSON_PROPERTY_NOTE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-11-05T02:20:07.425136412Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinUpdate   {
   public static final String JSON_PROPERTY_ALT_TEXT = "alt_text";
   @JsonProperty(JSON_PROPERTY_ALT_TEXT)

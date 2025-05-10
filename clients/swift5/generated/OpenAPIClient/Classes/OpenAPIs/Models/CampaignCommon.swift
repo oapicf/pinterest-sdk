@@ -13,8 +13,8 @@ import AnyCodable
 /** Campaign Data */
 public struct CampaignCommon: Codable, JSONEncodable, Hashable {
 
-    static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let orderLineIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let orderLineIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema. */
     public var adAccountId: String?
     /** Campaign name. */

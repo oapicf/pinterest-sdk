@@ -5,7 +5,7 @@
 
 
 
-book_closed_response_t *book_closed_response_create(
+static book_closed_response_t *book_closed_response_create_internal(
     int conversion_metrics_ready,
     int non_conversion_metrics_ready
     ) {
@@ -16,12 +16,26 @@ book_closed_response_t *book_closed_response_create(
     book_closed_response_local_var->conversion_metrics_ready = conversion_metrics_ready;
     book_closed_response_local_var->non_conversion_metrics_ready = non_conversion_metrics_ready;
 
+    book_closed_response_local_var->_library_owned = 1;
     return book_closed_response_local_var;
 }
 
+__attribute__((deprecated)) book_closed_response_t *book_closed_response_create(
+    int conversion_metrics_ready,
+    int non_conversion_metrics_ready
+    ) {
+    return book_closed_response_create_internal (
+        conversion_metrics_ready,
+        non_conversion_metrics_ready
+        );
+}
 
 void book_closed_response_free(book_closed_response_t *book_closed_response) {
     if(NULL == book_closed_response){
+        return ;
+    }
+    if(book_closed_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "book_closed_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -60,6 +74,9 @@ book_closed_response_t *book_closed_response_parseFromJSON(cJSON *book_closed_re
 
     // book_closed_response->conversion_metrics_ready
     cJSON *conversion_metrics_ready = cJSON_GetObjectItemCaseSensitive(book_closed_responseJSON, "conversion_metrics_ready");
+    if (cJSON_IsNull(conversion_metrics_ready)) {
+        conversion_metrics_ready = NULL;
+    }
     if (conversion_metrics_ready) { 
     if(!cJSON_IsBool(conversion_metrics_ready))
     {
@@ -69,6 +86,9 @@ book_closed_response_t *book_closed_response_parseFromJSON(cJSON *book_closed_re
 
     // book_closed_response->non_conversion_metrics_ready
     cJSON *non_conversion_metrics_ready = cJSON_GetObjectItemCaseSensitive(book_closed_responseJSON, "non_conversion_metrics_ready");
+    if (cJSON_IsNull(non_conversion_metrics_ready)) {
+        non_conversion_metrics_ready = NULL;
+    }
     if (non_conversion_metrics_ready) { 
     if(!cJSON_IsBool(non_conversion_metrics_ready))
     {
@@ -77,7 +97,7 @@ book_closed_response_t *book_closed_response_parseFromJSON(cJSON *book_closed_re
     }
 
 
-    book_closed_response_local_var = book_closed_response_create (
+    book_closed_response_local_var = book_closed_response_create_internal (
         conversion_metrics_ready ? conversion_metrics_ready->valueint : 0,
         non_conversion_metrics_ready ? non_conversion_metrics_ready->valueint : 0
         );

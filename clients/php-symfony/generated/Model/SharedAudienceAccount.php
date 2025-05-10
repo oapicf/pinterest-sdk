@@ -74,7 +74,7 @@ class SharedAudienceAccount
      * @Type("string")
     */
     #[Assert\NotNull]
-    #[Assert\Choice(["AD_ACCOUNT", "BUSINESS_ACCOUNT"])]
+    #[Assert\Choice(['AD_ACCOUNT', 'BUSINESS_ACCOUNT'])]
     #[Assert\Type("string")]
     protected ?string $accountType = null;
 
@@ -93,7 +93,7 @@ class SharedAudienceAccount
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->accountId = array_key_exists('accountId', $data) ? $data['accountId'] : $this->accountId;

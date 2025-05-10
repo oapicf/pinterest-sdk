@@ -5,7 +5,7 @@
 
 
 
-templates_list_200_response_t *templates_list_200_response_create(
+static templates_list_200_response_t *templates_list_200_response_create_internal(
     list_t *items,
     char *bookmark
     ) {
@@ -16,12 +16,26 @@ templates_list_200_response_t *templates_list_200_response_create(
     templates_list_200_response_local_var->items = items;
     templates_list_200_response_local_var->bookmark = bookmark;
 
+    templates_list_200_response_local_var->_library_owned = 1;
     return templates_list_200_response_local_var;
 }
 
+__attribute__((deprecated)) templates_list_200_response_t *templates_list_200_response_create(
+    list_t *items,
+    char *bookmark
+    ) {
+    return templates_list_200_response_create_internal (
+        items,
+        bookmark
+        );
+}
 
 void templates_list_200_response_free(templates_list_200_response_t *templates_list_200_response) {
     if(NULL == templates_list_200_response){
+        return ;
+    }
+    if(templates_list_200_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "templates_list_200_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -87,6 +101,9 @@ templates_list_200_response_t *templates_list_200_response_parseFromJSON(cJSON *
 
     // templates_list_200_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(templates_list_200_responseJSON, "items");
+    if (cJSON_IsNull(items)) {
+        items = NULL;
+    }
     if (!items) {
         goto end;
     }
@@ -111,6 +128,9 @@ templates_list_200_response_t *templates_list_200_response_parseFromJSON(cJSON *
 
     // templates_list_200_response->bookmark
     cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(templates_list_200_responseJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
     if (bookmark) { 
     if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
     {
@@ -119,7 +139,7 @@ templates_list_200_response_t *templates_list_200_response_parseFromJSON(cJSON *
     }
 
 
-    templates_list_200_response_local_var = templates_list_200_response_create (
+    templates_list_200_response_local_var = templates_list_200_response_create_internal (
         itemsList,
         bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
         );

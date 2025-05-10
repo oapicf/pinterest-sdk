@@ -139,11 +139,11 @@ export function CatalogsCreativeAssetsAttributesFromJSONTyped(json: any, ignoreD
     };
 }
 
-  export function CatalogsCreativeAssetsAttributesToJSON(json: any): CatalogsCreativeAssetsAttributes {
-      return CatalogsCreativeAssetsAttributesToJSONTyped(json, false);
-  }
+export function CatalogsCreativeAssetsAttributesToJSON(json: any): CatalogsCreativeAssetsAttributes {
+    return CatalogsCreativeAssetsAttributesToJSONTyped(json, false);
+}
 
-  export function CatalogsCreativeAssetsAttributesToJSONTyped(value?: CatalogsCreativeAssetsAttributes | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsCreativeAssetsAttributesToJSONTyped(value?: CatalogsCreativeAssetsAttributes | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

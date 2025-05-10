@@ -79,11 +79,11 @@ export function AdAccountsCountryResponseDataFromJSONTyped(json: any, ignoreDisc
     };
 }
 
-  export function AdAccountsCountryResponseDataToJSON(json: any): AdAccountsCountryResponseData {
-      return AdAccountsCountryResponseDataToJSONTyped(json, false);
-  }
+export function AdAccountsCountryResponseDataToJSON(json: any): AdAccountsCountryResponseData {
+    return AdAccountsCountryResponseDataToJSONTyped(json, false);
+}
 
-  export function AdAccountsCountryResponseDataToJSONTyped(value?: AdAccountsCountryResponseData | null, ignoreDiscriminator: boolean = false): any {
+export function AdAccountsCountryResponseDataToJSONTyped(value?: AdAccountsCountryResponseData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

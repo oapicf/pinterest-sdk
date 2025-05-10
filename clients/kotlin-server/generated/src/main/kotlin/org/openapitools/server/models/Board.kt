@@ -14,6 +14,7 @@ package org.openapitools.server.models
 import org.openapitools.server.models.BoardMedia
 import org.openapitools.server.models.BoardOwner
 
+import kotlinx.serialization.Serializable
 /**
  * Board
  * @param name 
@@ -28,13 +29,14 @@ import org.openapitools.server.models.BoardOwner
  * @param owner 
  * @param privacy Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>
  */
+@Serializable
 data class Board(
     val name: kotlin.String,
     val id: kotlin.String? = null,
     /* Date and time of board creation. */
-    val createdAt: java.time.OffsetDateTime? = null,
+    val createdAt: kotlin.String? = null,
     /* Date and time of last board pins modified. */
-    val boardPinsModifiedAt: java.time.OffsetDateTime? = null,
+    val boardPinsModifiedAt: kotlin.String? = null,
     val description: kotlin.String? = null,
     /* Count of collaborators on the board. */
     val collaboratorCount: kotlin.Int? = null,
@@ -46,7 +48,7 @@ data class Board(
     val owner: BoardOwner? = null,
     /* Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a> */
     val privacy: Board.Privacy? = Privacy.PUBLIC
-) 
+)
 {
     /**
     * Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>

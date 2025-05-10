@@ -5,7 +5,7 @@
 
 
 
-user_website_verification_code_t *user_website_verification_code_create(
+static user_website_verification_code_t *user_website_verification_code_create_internal(
     char *verification_code,
     char *dns_txt_record,
     char *metatag,
@@ -22,12 +22,32 @@ user_website_verification_code_t *user_website_verification_code_create(
     user_website_verification_code_local_var->filename = filename;
     user_website_verification_code_local_var->file_content = file_content;
 
+    user_website_verification_code_local_var->_library_owned = 1;
     return user_website_verification_code_local_var;
 }
 
+__attribute__((deprecated)) user_website_verification_code_t *user_website_verification_code_create(
+    char *verification_code,
+    char *dns_txt_record,
+    char *metatag,
+    char *filename,
+    char *file_content
+    ) {
+    return user_website_verification_code_create_internal (
+        verification_code,
+        dns_txt_record,
+        metatag,
+        filename,
+        file_content
+        );
+}
 
 void user_website_verification_code_free(user_website_verification_code_t *user_website_verification_code) {
     if(NULL == user_website_verification_code){
+        return ;
+    }
+    if(user_website_verification_code->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "user_website_verification_code_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -110,6 +130,9 @@ user_website_verification_code_t *user_website_verification_code_parseFromJSON(c
 
     // user_website_verification_code->verification_code
     cJSON *verification_code = cJSON_GetObjectItemCaseSensitive(user_website_verification_codeJSON, "verification_code");
+    if (cJSON_IsNull(verification_code)) {
+        verification_code = NULL;
+    }
     if (verification_code) { 
     if(!cJSON_IsString(verification_code) && !cJSON_IsNull(verification_code))
     {
@@ -119,6 +142,9 @@ user_website_verification_code_t *user_website_verification_code_parseFromJSON(c
 
     // user_website_verification_code->dns_txt_record
     cJSON *dns_txt_record = cJSON_GetObjectItemCaseSensitive(user_website_verification_codeJSON, "dns_txt_record");
+    if (cJSON_IsNull(dns_txt_record)) {
+        dns_txt_record = NULL;
+    }
     if (dns_txt_record) { 
     if(!cJSON_IsString(dns_txt_record) && !cJSON_IsNull(dns_txt_record))
     {
@@ -128,6 +154,9 @@ user_website_verification_code_t *user_website_verification_code_parseFromJSON(c
 
     // user_website_verification_code->metatag
     cJSON *metatag = cJSON_GetObjectItemCaseSensitive(user_website_verification_codeJSON, "metatag");
+    if (cJSON_IsNull(metatag)) {
+        metatag = NULL;
+    }
     if (metatag) { 
     if(!cJSON_IsString(metatag) && !cJSON_IsNull(metatag))
     {
@@ -137,6 +166,9 @@ user_website_verification_code_t *user_website_verification_code_parseFromJSON(c
 
     // user_website_verification_code->filename
     cJSON *filename = cJSON_GetObjectItemCaseSensitive(user_website_verification_codeJSON, "filename");
+    if (cJSON_IsNull(filename)) {
+        filename = NULL;
+    }
     if (filename) { 
     if(!cJSON_IsString(filename) && !cJSON_IsNull(filename))
     {
@@ -146,6 +178,9 @@ user_website_verification_code_t *user_website_verification_code_parseFromJSON(c
 
     // user_website_verification_code->file_content
     cJSON *file_content = cJSON_GetObjectItemCaseSensitive(user_website_verification_codeJSON, "file_content");
+    if (cJSON_IsNull(file_content)) {
+        file_content = NULL;
+    }
     if (file_content) { 
     if(!cJSON_IsString(file_content) && !cJSON_IsNull(file_content))
     {
@@ -154,7 +189,7 @@ user_website_verification_code_t *user_website_verification_code_parseFromJSON(c
     }
 
 
-    user_website_verification_code_local_var = user_website_verification_code_create (
+    user_website_verification_code_local_var = user_website_verification_code_create_internal (
         verification_code && !cJSON_IsNull(verification_code) ? strdup(verification_code->valuestring) : NULL,
         dns_txt_record && !cJSON_IsNull(dns_txt_record) ? strdup(dns_txt_record->valuestring) : NULL,
         metatag && !cJSON_IsNull(metatag) ? strdup(metatag->valuestring) : NULL,

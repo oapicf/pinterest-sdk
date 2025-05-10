@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 // Functions for enum BUSINESSROLES for BusinessAccessRelationshipsAPI_getBusinessMembers
 
@@ -111,15 +106,20 @@ BusinessAccessRelationshipsAPI_deleteBusinessMembership(apiClient_t *apiClient, 
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/businesses/{business_id}/members")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/businesses/{business_id}/members");
+    char *localVarPath = strdup("/businesses/{business_id}/members");
+
+    if(!business_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen("{ business_id }");
+    long sizeOfPathParams_business_id = strlen(business_id)+3 + sizeof("{ business_id }") - 1;
     if(business_id == NULL) {
         goto end;
     }
@@ -134,9 +134,10 @@ BusinessAccessRelationshipsAPI_deleteBusinessMembership(apiClient_t *apiClient, 
     cJSON *localVarSingleItemJSON_members_to_delete_body = NULL;
     if (members_to_delete_body != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_members_to_delete_body = members_to_delete_body_convertToJSON(members_to_delete_body);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_members_to_delete_body);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -148,6 +149,7 @@ BusinessAccessRelationshipsAPI_deleteBusinessMembership(apiClient_t *apiClient, 
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "DELETE");
 
     // uncomment below to debug the error response
@@ -159,11 +161,14 @@ BusinessAccessRelationshipsAPI_deleteBusinessMembership(apiClient_t *apiClient, 
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BusinessAccessRelationshipsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    deleted_members_response_t *elementToReturn = deleted_members_response_parseFromJSON(BusinessAccessRelationshipsAPIlocalVarJSON);
-    cJSON_Delete(BusinessAccessRelationshipsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    deleted_members_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BusinessAccessRelationshipsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = deleted_members_response_parseFromJSON(BusinessAccessRelationshipsAPIlocalVarJSON);
+        cJSON_Delete(BusinessAccessRelationshipsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -204,15 +209,20 @@ BusinessAccessRelationshipsAPI_deleteBusinessPartners(apiClient_t *apiClient, ch
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/businesses/{business_id}/partners")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/businesses/{business_id}/partners");
+    char *localVarPath = strdup("/businesses/{business_id}/partners");
+
+    if(!business_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen("{ business_id }");
+    long sizeOfPathParams_business_id = strlen(business_id)+3 + sizeof("{ business_id }") - 1;
     if(business_id == NULL) {
         goto end;
     }
@@ -227,9 +237,10 @@ BusinessAccessRelationshipsAPI_deleteBusinessPartners(apiClient_t *apiClient, ch
     cJSON *localVarSingleItemJSON_delete_partners_request = NULL;
     if (delete_partners_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_delete_partners_request = delete_partners_request_convertToJSON(delete_partners_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_delete_partners_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -241,6 +252,7 @@ BusinessAccessRelationshipsAPI_deleteBusinessPartners(apiClient_t *apiClient, ch
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "DELETE");
 
     // uncomment below to debug the error response
@@ -256,11 +268,14 @@ BusinessAccessRelationshipsAPI_deleteBusinessPartners(apiClient_t *apiClient, ch
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BusinessAccessRelationshipsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    delete_partners_response_t *elementToReturn = delete_partners_response_parseFromJSON(BusinessAccessRelationshipsAPIlocalVarJSON);
-    cJSON_Delete(BusinessAccessRelationshipsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    delete_partners_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BusinessAccessRelationshipsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = delete_partners_response_parseFromJSON(BusinessAccessRelationshipsAPIlocalVarJSON);
+        cJSON_Delete(BusinessAccessRelationshipsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -301,11 +316,14 @@ BusinessAccessRelationshipsAPI_getBusinessEmployers(apiClient_t *apiClient, int 
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/businesses/employers")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/businesses/employers");
+    char *localVarPath = strdup("/businesses/employers");
+
 
 
 
@@ -343,6 +361,7 @@ BusinessAccessRelationshipsAPI_getBusinessEmployers(apiClient_t *apiClient, int 
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -354,11 +373,14 @@ BusinessAccessRelationshipsAPI_getBusinessEmployers(apiClient_t *apiClient, int 
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BusinessAccessRelationshipsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    get_business_employers_200_response_t *elementToReturn = get_business_employers_200_response_parseFromJSON(BusinessAccessRelationshipsAPIlocalVarJSON);
-    cJSON_Delete(BusinessAccessRelationshipsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    get_business_employers_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BusinessAccessRelationshipsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = get_business_employers_200_response_parseFromJSON(BusinessAccessRelationshipsAPIlocalVarJSON);
+        cJSON_Delete(BusinessAccessRelationshipsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -417,15 +439,20 @@ BusinessAccessRelationshipsAPI_getBusinessMembers(apiClient_t *apiClient, char *
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/businesses/{business_id}/members")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/businesses/{business_id}/members");
+    char *localVarPath = strdup("/businesses/{business_id}/members");
+
+    if(!business_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen("{ business_id }");
+    long sizeOfPathParams_business_id = strlen(business_id)+3 + sizeof("{ business_id }") - 1;
     if(business_id == NULL) {
         goto end;
     }
@@ -513,6 +540,7 @@ BusinessAccessRelationshipsAPI_getBusinessMembers(apiClient_t *apiClient, char *
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -524,11 +552,14 @@ BusinessAccessRelationshipsAPI_getBusinessMembers(apiClient_t *apiClient, char *
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BusinessAccessRelationshipsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    get_business_members_200_response_t *elementToReturn = get_business_members_200_response_parseFromJSON(BusinessAccessRelationshipsAPIlocalVarJSON);
-    cJSON_Delete(BusinessAccessRelationshipsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    get_business_members_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BusinessAccessRelationshipsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = get_business_members_200_response_parseFromJSON(BusinessAccessRelationshipsAPIlocalVarJSON);
+        cJSON_Delete(BusinessAccessRelationshipsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -624,15 +655,20 @@ BusinessAccessRelationshipsAPI_getBusinessPartners(apiClient_t *apiClient, char 
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/businesses/{business_id}/partners")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/businesses/{business_id}/partners");
+    char *localVarPath = strdup("/businesses/{business_id}/partners");
+
+    if(!business_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen("{ business_id }");
+    long sizeOfPathParams_business_id = strlen(business_id)+3 + sizeof("{ business_id }") - 1;
     if(business_id == NULL) {
         goto end;
     }
@@ -664,7 +700,7 @@ BusinessAccessRelationshipsAPI_getBusinessPartners(apiClient_t *apiClient, char 
     {
         keyQuery_partner_type = strdup("partner_type");
         valueQuery_partner_type = (partner_type);
-        keyPairQuery_partner_type = keyValuePair_create(keyQuery_partner_type, (void *)strdup(getBusinessPartners__ToString(
+        keyPairQuery_partner_type = keyValuePair_create(keyQuery_partner_type, strdup(getBusinessPartners__ToString(
         &valueQuery_partner_type)));
         list_addElement(localVarQueryParameters,keyPairQuery_partner_type);
     }
@@ -727,6 +763,7 @@ BusinessAccessRelationshipsAPI_getBusinessPartners(apiClient_t *apiClient, char 
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -738,11 +775,14 @@ BusinessAccessRelationshipsAPI_getBusinessPartners(apiClient_t *apiClient, char 
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BusinessAccessRelationshipsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    get_business_partners_200_response_t *elementToReturn = get_business_partners_200_response_parseFromJSON(BusinessAccessRelationshipsAPIlocalVarJSON);
-    cJSON_Delete(BusinessAccessRelationshipsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    get_business_partners_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BusinessAccessRelationshipsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = get_business_partners_200_response_parseFromJSON(BusinessAccessRelationshipsAPIlocalVarJSON);
+        cJSON_Delete(BusinessAccessRelationshipsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -846,15 +886,20 @@ BusinessAccessRelationshipsAPI_updateBusinessMemberships(apiClient_t *apiClient,
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/businesses/{business_id}/members")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/businesses/{business_id}/members");
+    char *localVarPath = strdup("/businesses/{business_id}/members");
+
+    if(!business_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen("{ business_id }");
+    long sizeOfPathParams_business_id = strlen(business_id)+3 + sizeof("{ business_id }") - 1;
     if(business_id == NULL) {
         goto end;
     }
@@ -892,6 +937,7 @@ BusinessAccessRelationshipsAPI_updateBusinessMemberships(apiClient_t *apiClient,
         }
         cJSON_AddItemToArray(localVarSingleItemJSON_update_member_business_role_body, localVar_update_member_business_role_body);
         localVarBodyParameters = cJSON_Print(localVarItemJSON_update_member_business_role_body);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -903,6 +949,7 @@ BusinessAccessRelationshipsAPI_updateBusinessMemberships(apiClient_t *apiClient,
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "PATCH");
 
     // uncomment below to debug the error response
@@ -914,11 +961,14 @@ BusinessAccessRelationshipsAPI_updateBusinessMemberships(apiClient_t *apiClient,
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BusinessAccessRelationshipsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    update_member_results_response_array_t *elementToReturn = update_member_results_response_array_parseFromJSON(BusinessAccessRelationshipsAPIlocalVarJSON);
-    cJSON_Delete(BusinessAccessRelationshipsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    update_member_results_response_array_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BusinessAccessRelationshipsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = update_member_results_response_array_parseFromJSON(BusinessAccessRelationshipsAPIlocalVarJSON);
+        cJSON_Delete(BusinessAccessRelationshipsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type

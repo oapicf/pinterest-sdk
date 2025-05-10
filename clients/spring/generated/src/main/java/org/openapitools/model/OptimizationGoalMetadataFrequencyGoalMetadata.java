@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -21,10 +22,10 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("OptimizationGoalMetadata_frequency_goal_metadata")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class OptimizationGoalMetadataFrequencyGoalMetadata {
 
-  private Integer frequency;
+  private @Nullable Integer frequency;
 
   /**
    * User entity counts time range
@@ -69,7 +70,7 @@ public class OptimizationGoalMetadataFrequencyGoalMetadata {
     }
   }
 
-  private TimerangeEnum timerange;
+  private @Nullable TimerangeEnum timerange;
 
   public OptimizationGoalMetadataFrequencyGoalMetadata frequency(Integer frequency) {
     this.frequency = frequency;

@@ -10,10 +10,6 @@
 
 package openapi
 
-import (
-	"gopkg.in/validator.v2"
-)
-
 // CatalogsVerticalBatchRequest - A request object that can have multiple operations on a single batch
 type CatalogsVerticalBatchRequest struct {
 

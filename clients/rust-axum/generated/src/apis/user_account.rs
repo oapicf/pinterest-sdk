@@ -1,6 +1,6 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Multipart};
+use axum_extra::extract::{CookieJar, Host};
 use bytes::Bytes;
 use http::Method;
 use serde::{Deserialize, Serialize};
@@ -248,160 +248,160 @@ pub enum WebsiteVerificationSlashGetResponse {
 /// UserAccount
 #[async_trait]
 #[allow(clippy::ptr_arg)]
-pub trait UserAccount {
+pub trait UserAccount<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHandler<E> {
     /// List following boards.
     ///
     /// BoardsUserFollowsSlashList - GET /v5/user_account/following/boards
     async fn boards_user_follows_slash_list(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::BoardsUserFollowsSlashListQueryParams,
-    ) -> Result<BoardsUserFollowsSlashListResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::BoardsUserFollowsSlashListQueryParams,
+    ) -> Result<BoardsUserFollowsSlashListResponse, E>;
 
     /// Follow user.
     ///
     /// FollowUserSlashUpdate - POST /v5/user_account/following/{username}
     async fn follow_user_slash_update(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::FollowUserSlashUpdatePathParams,
-            body: models::FollowUserRequest,
-    ) -> Result<FollowUserSlashUpdateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::FollowUserSlashUpdatePathParams,
+            body: &models::FollowUserRequest,
+    ) -> Result<FollowUserSlashUpdateResponse, E>;
 
     /// List followers.
     ///
     /// FollowersSlashList - GET /v5/user_account/followers
     async fn followers_slash_list(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::FollowersSlashListQueryParams,
-    ) -> Result<FollowersSlashListResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::FollowersSlashListQueryParams,
+    ) -> Result<FollowersSlashListResponse, E>;
 
     /// List linked businesses.
     ///
     /// LinkedBusinessAccountsSlashGet - GET /v5/user_account/businesses
     async fn linked_business_accounts_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-    ) -> Result<LinkedBusinessAccountsSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+    ) -> Result<LinkedBusinessAccountsSlashGetResponse, E>;
 
     /// Unverify website.
     ///
     /// UnverifyWebsiteSlashDelete - DELETE /v5/user_account/websites
     async fn unverify_website_slash_delete(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::UnverifyWebsiteSlashDeleteQueryParams,
-    ) -> Result<UnverifyWebsiteSlashDeleteResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::UnverifyWebsiteSlashDeleteQueryParams,
+    ) -> Result<UnverifyWebsiteSlashDeleteResponse, E>;
 
     /// Get user account analytics.
     ///
     /// UserAccountSlashAnalytics - GET /v5/user_account/analytics
     async fn user_account_slash_analytics(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::UserAccountSlashAnalyticsQueryParams,
-    ) -> Result<UserAccountSlashAnalyticsResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::UserAccountSlashAnalyticsQueryParams,
+    ) -> Result<UserAccountSlashAnalyticsResponse, E>;
 
     /// Get user account top pins analytics.
     ///
     /// UserAccountSlashAnalyticsSlashTopPins - GET /v5/user_account/analytics/top_pins
     async fn user_account_slash_analytics_slash_top_pins(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::UserAccountSlashAnalyticsSlashTopPinsQueryParams,
-    ) -> Result<UserAccountSlashAnalyticsSlashTopPinsResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::UserAccountSlashAnalyticsSlashTopPinsQueryParams,
+    ) -> Result<UserAccountSlashAnalyticsSlashTopPinsResponse, E>;
 
     /// Get user account top video pins analytics.
     ///
     /// UserAccountSlashAnalyticsSlashTopVideoPins - GET /v5/user_account/analytics/top_video_pins
     async fn user_account_slash_analytics_slash_top_video_pins(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::UserAccountSlashAnalyticsSlashTopVideoPinsQueryParams,
-    ) -> Result<UserAccountSlashAnalyticsSlashTopVideoPinsResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::UserAccountSlashAnalyticsSlashTopVideoPinsQueryParams,
+    ) -> Result<UserAccountSlashAnalyticsSlashTopVideoPinsResponse, E>;
 
     /// List following interests.
     ///
     /// UserAccountSlashFollowedInterests - GET /v5/users/{username}/interests/follow
     async fn user_account_slash_followed_interests(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::UserAccountSlashFollowedInterestsPathParams,
-      query_params: models::UserAccountSlashFollowedInterestsQueryParams,
-    ) -> Result<UserAccountSlashFollowedInterestsResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::UserAccountSlashFollowedInterestsPathParams,
+      query_params: &models::UserAccountSlashFollowedInterestsQueryParams,
+    ) -> Result<UserAccountSlashFollowedInterestsResponse, E>;
 
     /// Get user account.
     ///
     /// UserAccountSlashGet - GET /v5/user_account
     async fn user_account_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::UserAccountSlashGetQueryParams,
-    ) -> Result<UserAccountSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::UserAccountSlashGetQueryParams,
+    ) -> Result<UserAccountSlashGetResponse, E>;
 
     /// List following.
     ///
     /// UserFollowingSlashGet - GET /v5/user_account/following
     async fn user_following_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::UserFollowingSlashGetQueryParams,
-    ) -> Result<UserFollowingSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::UserFollowingSlashGetQueryParams,
+    ) -> Result<UserFollowingSlashGetResponse, E>;
 
     /// Get user websites.
     ///
     /// UserWebsitesSlashGet - GET /v5/user_account/websites
     async fn user_websites_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::UserWebsitesSlashGetQueryParams,
-    ) -> Result<UserWebsitesSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::UserWebsitesSlashGetQueryParams,
+    ) -> Result<UserWebsitesSlashGetResponse, E>;
 
     /// Verify website.
     ///
     /// VerifyWebsiteSlashUpdate - POST /v5/user_account/websites
     async fn verify_website_slash_update(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::VerifyWebsiteSlashUpdateQueryParams,
-            body: models::UserWebsiteVerifyRequest,
-    ) -> Result<VerifyWebsiteSlashUpdateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::VerifyWebsiteSlashUpdateQueryParams,
+            body: &models::UserWebsiteVerifyRequest,
+    ) -> Result<VerifyWebsiteSlashUpdateResponse, E>;
 
     /// Get user verification code for website claiming.
     ///
     /// WebsiteVerificationSlashGet - GET /v5/user_account/websites/verification
     async fn website_verification_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::WebsiteVerificationSlashGetQueryParams,
-    ) -> Result<WebsiteVerificationSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::WebsiteVerificationSlashGetQueryParams,
+    ) -> Result<WebsiteVerificationSlashGetResponse, E>;
 }

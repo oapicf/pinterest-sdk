@@ -48,20 +48,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Error which occurred when applying a bid options operation to a specific item.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdvancedAuctionOperationError {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
+  @javax.annotation.Nullable
   private Integer code;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
+  @javax.annotation.Nullable
   private String message;
 
   public AdvancedAuctionOperationError() {
   }
 
-  public AdvancedAuctionOperationError code(Integer code) {
+  public AdvancedAuctionOperationError code(@javax.annotation.Nullable Integer code) {
     this.code = code;
     return this;
   }
@@ -75,12 +77,12 @@ public class AdvancedAuctionOperationError {
     return code;
   }
 
-  public void setCode(Integer code) {
+  public void setCode(@javax.annotation.Nullable Integer code) {
     this.code = code;
   }
 
 
-  public AdvancedAuctionOperationError message(String message) {
+  public AdvancedAuctionOperationError message(@javax.annotation.Nullable String message) {
     this.message = message;
     return this;
   }
@@ -94,7 +96,7 @@ public class AdvancedAuctionOperationError {
     return message;
   }
 
-  public void setMessage(String message) {
+  public void setMessage(@javax.annotation.Nullable String message) {
     this.message = message;
   }
 

@@ -62,7 +62,7 @@ class TemplateResponseDateRangeDynamicDateRange
      * @SerializedName("range")
      * @Type("string")
     */
-    #[Assert\Choice(["YEAR_TO_DATE", "QUARTER_TO_DATE", "MONTH_TO_DATE", "LAST_MONTH"])]
+    #[Assert\Choice(['YEAR_TO_DATE', 'QUARTER_TO_DATE', 'MONTH_TO_DATE', 'LAST_MONTH'])]
     #[Assert\Type("string")]
     protected ?string $range = null;
 
@@ -70,7 +70,7 @@ class TemplateResponseDateRangeDynamicDateRange
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->type = array_key_exists('type', $data) ? $data['type'] : $this->type;

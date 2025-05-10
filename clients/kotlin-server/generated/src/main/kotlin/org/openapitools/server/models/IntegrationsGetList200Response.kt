@@ -13,13 +13,15 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.IntegrationRecord
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items 
  * @param bookmark 
  */
+@Serializable
 data class IntegrationsGetList200Response(
     val items: kotlin.collections.List<IntegrationRecord>,
     val bookmark: kotlin.String? = null
-) 
+)
 

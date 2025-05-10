@@ -5,7 +5,7 @@
 
 
 
-catalogs_hotel_product_group_filter_keys_t *catalogs_hotel_product_group_filter_keys_create(
+static catalogs_hotel_product_group_filter_keys_t *catalogs_hotel_product_group_filter_keys_create_internal(
     catalogs_product_group_pricing_currency_criteria_t *price,
     catalogs_product_group_multiple_string_criteria_t *hotel_id,
     catalogs_product_group_multiple_string_criteria_t *brand,
@@ -30,12 +30,40 @@ catalogs_hotel_product_group_filter_keys_t *catalogs_hotel_product_group_filter_
     catalogs_hotel_product_group_filter_keys_local_var->custom_label_4 = custom_label_4;
     catalogs_hotel_product_group_filter_keys_local_var->country = country;
 
+    catalogs_hotel_product_group_filter_keys_local_var->_library_owned = 1;
     return catalogs_hotel_product_group_filter_keys_local_var;
 }
 
+__attribute__((deprecated)) catalogs_hotel_product_group_filter_keys_t *catalogs_hotel_product_group_filter_keys_create(
+    catalogs_product_group_pricing_currency_criteria_t *price,
+    catalogs_product_group_multiple_string_criteria_t *hotel_id,
+    catalogs_product_group_multiple_string_criteria_t *brand,
+    catalogs_product_group_multiple_string_criteria_t *custom_label_0,
+    catalogs_product_group_multiple_string_criteria_t *custom_label_1,
+    catalogs_product_group_multiple_string_criteria_t *custom_label_2,
+    catalogs_product_group_multiple_string_criteria_t *custom_label_3,
+    catalogs_product_group_multiple_string_criteria_t *custom_label_4,
+    catalogs_product_group_multiple_countries_criteria_t *country
+    ) {
+    return catalogs_hotel_product_group_filter_keys_create_internal (
+        price,
+        hotel_id,
+        brand,
+        custom_label_0,
+        custom_label_1,
+        custom_label_2,
+        custom_label_3,
+        custom_label_4,
+        country
+        );
+}
 
 void catalogs_hotel_product_group_filter_keys_free(catalogs_hotel_product_group_filter_keys_t *catalogs_hotel_product_group_filter_keys) {
     if(NULL == catalogs_hotel_product_group_filter_keys){
+        return ;
+    }
+    if(catalogs_hotel_product_group_filter_keys->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_hotel_product_group_filter_keys_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -223,6 +251,9 @@ catalogs_hotel_product_group_filter_keys_t *catalogs_hotel_product_group_filter_
 
     // catalogs_hotel_product_group_filter_keys->price
     cJSON *price = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_product_group_filter_keysJSON, "PRICE");
+    if (cJSON_IsNull(price)) {
+        price = NULL;
+    }
     if (!price) {
         goto end;
     }
@@ -232,6 +263,9 @@ catalogs_hotel_product_group_filter_keys_t *catalogs_hotel_product_group_filter_
 
     // catalogs_hotel_product_group_filter_keys->hotel_id
     cJSON *hotel_id = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_product_group_filter_keysJSON, "HOTEL_ID");
+    if (cJSON_IsNull(hotel_id)) {
+        hotel_id = NULL;
+    }
     if (!hotel_id) {
         goto end;
     }
@@ -242,6 +276,9 @@ catalogs_hotel_product_group_filter_keys_t *catalogs_hotel_product_group_filter_
 
     // catalogs_hotel_product_group_filter_keys->brand
     cJSON *brand = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_product_group_filter_keysJSON, "BRAND");
+    if (cJSON_IsNull(brand)) {
+        brand = NULL;
+    }
     if (!brand) {
         goto end;
     }
@@ -252,6 +289,9 @@ catalogs_hotel_product_group_filter_keys_t *catalogs_hotel_product_group_filter_
 
     // catalogs_hotel_product_group_filter_keys->custom_label_0
     cJSON *custom_label_0 = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_product_group_filter_keysJSON, "CUSTOM_LABEL_0");
+    if (cJSON_IsNull(custom_label_0)) {
+        custom_label_0 = NULL;
+    }
     if (!custom_label_0) {
         goto end;
     }
@@ -262,6 +302,9 @@ catalogs_hotel_product_group_filter_keys_t *catalogs_hotel_product_group_filter_
 
     // catalogs_hotel_product_group_filter_keys->custom_label_1
     cJSON *custom_label_1 = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_product_group_filter_keysJSON, "CUSTOM_LABEL_1");
+    if (cJSON_IsNull(custom_label_1)) {
+        custom_label_1 = NULL;
+    }
     if (!custom_label_1) {
         goto end;
     }
@@ -272,6 +315,9 @@ catalogs_hotel_product_group_filter_keys_t *catalogs_hotel_product_group_filter_
 
     // catalogs_hotel_product_group_filter_keys->custom_label_2
     cJSON *custom_label_2 = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_product_group_filter_keysJSON, "CUSTOM_LABEL_2");
+    if (cJSON_IsNull(custom_label_2)) {
+        custom_label_2 = NULL;
+    }
     if (!custom_label_2) {
         goto end;
     }
@@ -282,6 +328,9 @@ catalogs_hotel_product_group_filter_keys_t *catalogs_hotel_product_group_filter_
 
     // catalogs_hotel_product_group_filter_keys->custom_label_3
     cJSON *custom_label_3 = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_product_group_filter_keysJSON, "CUSTOM_LABEL_3");
+    if (cJSON_IsNull(custom_label_3)) {
+        custom_label_3 = NULL;
+    }
     if (!custom_label_3) {
         goto end;
     }
@@ -292,6 +341,9 @@ catalogs_hotel_product_group_filter_keys_t *catalogs_hotel_product_group_filter_
 
     // catalogs_hotel_product_group_filter_keys->custom_label_4
     cJSON *custom_label_4 = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_product_group_filter_keysJSON, "CUSTOM_LABEL_4");
+    if (cJSON_IsNull(custom_label_4)) {
+        custom_label_4 = NULL;
+    }
     if (!custom_label_4) {
         goto end;
     }
@@ -302,6 +354,9 @@ catalogs_hotel_product_group_filter_keys_t *catalogs_hotel_product_group_filter_
 
     // catalogs_hotel_product_group_filter_keys->country
     cJSON *country = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_product_group_filter_keysJSON, "COUNTRY");
+    if (cJSON_IsNull(country)) {
+        country = NULL;
+    }
     if (!country) {
         goto end;
     }
@@ -311,7 +366,7 @@ catalogs_hotel_product_group_filter_keys_t *catalogs_hotel_product_group_filter_
     country_local_object = object_parseFromJSON(country); //object
 
 
-    catalogs_hotel_product_group_filter_keys_local_var = catalogs_hotel_product_group_filter_keys_create (
+    catalogs_hotel_product_group_filter_keys_local_var = catalogs_hotel_product_group_filter_keys_create_internal (
         price_local_nonprim,
         hotel_id_local_object,
         brand_local_object,

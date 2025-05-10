@@ -32,9 +32,10 @@ typedef struct catalogs_updatable_creative_assets_attributes_t {
     char *custom_label_4; // string
     char *visibility; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_updatable_creative_assets_attributes_t;
 
-catalogs_updatable_creative_assets_attributes_t *catalogs_updatable_creative_assets_attributes_create(
+__attribute__((deprecated)) catalogs_updatable_creative_assets_attributes_t *catalogs_updatable_creative_assets_attributes_create(
     char *title,
     char *description,
     char *link,

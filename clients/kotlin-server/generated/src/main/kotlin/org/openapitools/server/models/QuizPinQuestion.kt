@@ -13,15 +13,17 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.QuizPinOption
 
+import kotlinx.serialization.Serializable
 /**
  * A specific quiz inquiry.
  * @param questionId 
  * @param questionText 
  * @param options 
  */
+@Serializable
 data class QuizPinQuestion(
     val questionId: java.math.BigDecimal? = null,
     val questionText: kotlin.String? = null,
     val options: kotlin.collections.List<QuizPinOption>? = null
-) 
+)
 

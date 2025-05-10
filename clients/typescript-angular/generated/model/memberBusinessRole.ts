@@ -15,7 +15,9 @@
 export type MemberBusinessRole = 'EMPLOYEE' | 'BIZ_ADMIN';
 
 export const MemberBusinessRole = {
+
     Employee: 'EMPLOYEE' as MemberBusinessRole,
+
     BizAdmin: 'BIZ_ADMIN' as MemberBusinessRole
 };
 

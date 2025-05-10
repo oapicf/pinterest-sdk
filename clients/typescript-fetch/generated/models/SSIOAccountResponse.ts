@@ -98,11 +98,11 @@ export function SSIOAccountResponseFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function SSIOAccountResponseToJSON(json: any): SSIOAccountResponse {
-      return SSIOAccountResponseToJSONTyped(json, false);
-  }
+export function SSIOAccountResponseToJSON(json: any): SSIOAccountResponse {
+    return SSIOAccountResponseToJSONTyped(json, false);
+}
 
-  export function SSIOAccountResponseToJSONTyped(value?: SSIOAccountResponse | null, ignoreDiscriminator: boolean = false): any {
+export function SSIOAccountResponseToJSONTyped(value?: SSIOAccountResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

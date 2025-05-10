@@ -5,7 +5,7 @@
 
 
 
-targeting_template_audience_sizing_reach_estimate_t *targeting_template_audience_sizing_reach_estimate_create(
+static targeting_template_audience_sizing_reach_estimate_t *targeting_template_audience_sizing_reach_estimate_create_internal(
     long estimate,
     long lower_bound,
     long upper_bound
@@ -18,12 +18,28 @@ targeting_template_audience_sizing_reach_estimate_t *targeting_template_audience
     targeting_template_audience_sizing_reach_estimate_local_var->lower_bound = lower_bound;
     targeting_template_audience_sizing_reach_estimate_local_var->upper_bound = upper_bound;
 
+    targeting_template_audience_sizing_reach_estimate_local_var->_library_owned = 1;
     return targeting_template_audience_sizing_reach_estimate_local_var;
 }
 
+__attribute__((deprecated)) targeting_template_audience_sizing_reach_estimate_t *targeting_template_audience_sizing_reach_estimate_create(
+    long estimate,
+    long lower_bound,
+    long upper_bound
+    ) {
+    return targeting_template_audience_sizing_reach_estimate_create_internal (
+        estimate,
+        lower_bound,
+        upper_bound
+        );
+}
 
 void targeting_template_audience_sizing_reach_estimate_free(targeting_template_audience_sizing_reach_estimate_t *targeting_template_audience_sizing_reach_estimate) {
     if(NULL == targeting_template_audience_sizing_reach_estimate){
+        return ;
+    }
+    if(targeting_template_audience_sizing_reach_estimate->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "targeting_template_audience_sizing_reach_estimate_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -70,6 +86,9 @@ targeting_template_audience_sizing_reach_estimate_t *targeting_template_audience
 
     // targeting_template_audience_sizing_reach_estimate->estimate
     cJSON *estimate = cJSON_GetObjectItemCaseSensitive(targeting_template_audience_sizing_reach_estimateJSON, "estimate");
+    if (cJSON_IsNull(estimate)) {
+        estimate = NULL;
+    }
     if (estimate) { 
     if(!cJSON_IsNumber(estimate))
     {
@@ -79,6 +98,9 @@ targeting_template_audience_sizing_reach_estimate_t *targeting_template_audience
 
     // targeting_template_audience_sizing_reach_estimate->lower_bound
     cJSON *lower_bound = cJSON_GetObjectItemCaseSensitive(targeting_template_audience_sizing_reach_estimateJSON, "lower_bound");
+    if (cJSON_IsNull(lower_bound)) {
+        lower_bound = NULL;
+    }
     if (lower_bound) { 
     if(!cJSON_IsNumber(lower_bound))
     {
@@ -88,6 +110,9 @@ targeting_template_audience_sizing_reach_estimate_t *targeting_template_audience
 
     // targeting_template_audience_sizing_reach_estimate->upper_bound
     cJSON *upper_bound = cJSON_GetObjectItemCaseSensitive(targeting_template_audience_sizing_reach_estimateJSON, "upper_bound");
+    if (cJSON_IsNull(upper_bound)) {
+        upper_bound = NULL;
+    }
     if (upper_bound) { 
     if(!cJSON_IsNumber(upper_bound))
     {
@@ -96,7 +121,7 @@ targeting_template_audience_sizing_reach_estimate_t *targeting_template_audience
     }
 
 
-    targeting_template_audience_sizing_reach_estimate_local_var = targeting_template_audience_sizing_reach_estimate_create (
+    targeting_template_audience_sizing_reach_estimate_local_var = targeting_template_audience_sizing_reach_estimate_create_internal (
         estimate ? estimate->valuedouble : 0,
         lower_bound ? lower_bound->valuedouble : 0,
         upper_bound ? upper_bound->valuedouble : 0

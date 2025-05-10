@@ -4,26 +4,9 @@
 #include "ad_group_audience_sizing_request_keywords_inner.h"
 
 
-char* ad_group_audience_sizing_request_keywords_inner_match_type_ToString(pinterest_rest_api_ad_group_audience_sizing_request_keywords_inner__e match_type) {
-    char* match_typeArray[] =  { "NULL", "BROAD", "PHRASE", "EXACT", "EXACT_NEGATIVE", "PHRASE_NEGATIVE", "" };
-    return match_typeArray[match_type];
-}
 
-pinterest_rest_api_ad_group_audience_sizing_request_keywords_inner__e ad_group_audience_sizing_request_keywords_inner_match_type_FromString(char* match_type){
-    int stringToReturn = 0;
-    char *match_typeArray[] =  { "NULL", "BROAD", "PHRASE", "EXACT", "EXACT_NEGATIVE", "PHRASE_NEGATIVE", "" };
-    size_t sizeofArray = sizeof(match_typeArray) / sizeof(match_typeArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(match_type, match_typeArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-
-ad_group_audience_sizing_request_keywords_inner_t *ad_group_audience_sizing_request_keywords_inner_create(
-    match_type_response_t *match_type,
+static ad_group_audience_sizing_request_keywords_inner_t *ad_group_audience_sizing_request_keywords_inner_create_internal(
+    pinterest_rest_api_match_type_response__e match_type,
     char *value
     ) {
     ad_group_audience_sizing_request_keywords_inner_t *ad_group_audience_sizing_request_keywords_inner_local_var = malloc(sizeof(ad_group_audience_sizing_request_keywords_inner_t));
@@ -33,19 +16,29 @@ ad_group_audience_sizing_request_keywords_inner_t *ad_group_audience_sizing_requ
     ad_group_audience_sizing_request_keywords_inner_local_var->match_type = match_type;
     ad_group_audience_sizing_request_keywords_inner_local_var->value = value;
 
+    ad_group_audience_sizing_request_keywords_inner_local_var->_library_owned = 1;
     return ad_group_audience_sizing_request_keywords_inner_local_var;
 }
 
+__attribute__((deprecated)) ad_group_audience_sizing_request_keywords_inner_t *ad_group_audience_sizing_request_keywords_inner_create(
+    pinterest_rest_api_match_type_response__e match_type,
+    char *value
+    ) {
+    return ad_group_audience_sizing_request_keywords_inner_create_internal (
+        match_type,
+        value
+        );
+}
 
 void ad_group_audience_sizing_request_keywords_inner_free(ad_group_audience_sizing_request_keywords_inner_t *ad_group_audience_sizing_request_keywords_inner) {
     if(NULL == ad_group_audience_sizing_request_keywords_inner){
         return ;
     }
-    listEntry_t *listEntry;
-    if (ad_group_audience_sizing_request_keywords_inner->match_type) {
-        match_type_response_free(ad_group_audience_sizing_request_keywords_inner->match_type);
-        ad_group_audience_sizing_request_keywords_inner->match_type = NULL;
+    if(ad_group_audience_sizing_request_keywords_inner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ad_group_audience_sizing_request_keywords_inner_free");
+        return ;
     }
+    listEntry_t *listEntry;
     if (ad_group_audience_sizing_request_keywords_inner->value) {
         free(ad_group_audience_sizing_request_keywords_inner->value);
         ad_group_audience_sizing_request_keywords_inner->value = NULL;
@@ -57,7 +50,7 @@ cJSON *ad_group_audience_sizing_request_keywords_inner_convertToJSON(ad_group_au
     cJSON *item = cJSON_CreateObject();
 
     // ad_group_audience_sizing_request_keywords_inner->match_type
-    if (pinterest_rest_api_ad_group_audience_sizing_request_keywords_inner__NULL == ad_group_audience_sizing_request_keywords_inner->match_type) {
+    if (pinterest_rest_api_match_type_response__NULL == ad_group_audience_sizing_request_keywords_inner->match_type) {
         goto fail;
     }
     cJSON *match_type_local_JSON = match_type_response_convertToJSON(ad_group_audience_sizing_request_keywords_inner->match_type);
@@ -91,10 +84,13 @@ ad_group_audience_sizing_request_keywords_inner_t *ad_group_audience_sizing_requ
     ad_group_audience_sizing_request_keywords_inner_t *ad_group_audience_sizing_request_keywords_inner_local_var = NULL;
 
     // define the local variable for ad_group_audience_sizing_request_keywords_inner->match_type
-    match_type_response_t *match_type_local_nonprim = NULL;
+    pinterest_rest_api_match_type_response__e match_type_local_nonprim = 0;
 
     // ad_group_audience_sizing_request_keywords_inner->match_type
     cJSON *match_type = cJSON_GetObjectItemCaseSensitive(ad_group_audience_sizing_request_keywords_innerJSON, "match_type");
+    if (cJSON_IsNull(match_type)) {
+        match_type = NULL;
+    }
     if (!match_type) {
         goto end;
     }
@@ -104,6 +100,9 @@ ad_group_audience_sizing_request_keywords_inner_t *ad_group_audience_sizing_requ
 
     // ad_group_audience_sizing_request_keywords_inner->value
     cJSON *value = cJSON_GetObjectItemCaseSensitive(ad_group_audience_sizing_request_keywords_innerJSON, "value");
+    if (cJSON_IsNull(value)) {
+        value = NULL;
+    }
     if (!value) {
         goto end;
     }
@@ -115,7 +114,7 @@ ad_group_audience_sizing_request_keywords_inner_t *ad_group_audience_sizing_requ
     }
 
 
-    ad_group_audience_sizing_request_keywords_inner_local_var = ad_group_audience_sizing_request_keywords_inner_create (
+    ad_group_audience_sizing_request_keywords_inner_local_var = ad_group_audience_sizing_request_keywords_inner_create_internal (
         match_type_local_nonprim,
         strdup(value->valuestring)
         );
@@ -123,8 +122,7 @@ ad_group_audience_sizing_request_keywords_inner_t *ad_group_audience_sizing_requ
     return ad_group_audience_sizing_request_keywords_inner_local_var;
 end:
     if (match_type_local_nonprim) {
-        match_type_response_free(match_type_local_nonprim);
-        match_type_local_nonprim = NULL;
+        match_type_local_nonprim = 0;
     }
     return NULL;
 

@@ -53,11 +53,11 @@ export function TrendingKeywordsResponseTrendsInnerTimeSeriesFromJSONTyped(json:
     };
 }
 
-  export function TrendingKeywordsResponseTrendsInnerTimeSeriesToJSON(json: any): TrendingKeywordsResponseTrendsInnerTimeSeries {
-      return TrendingKeywordsResponseTrendsInnerTimeSeriesToJSONTyped(json, false);
-  }
+export function TrendingKeywordsResponseTrendsInnerTimeSeriesToJSON(json: any): TrendingKeywordsResponseTrendsInnerTimeSeries {
+    return TrendingKeywordsResponseTrendsInnerTimeSeriesToJSONTyped(json, false);
+}
 
-  export function TrendingKeywordsResponseTrendsInnerTimeSeriesToJSONTyped(value?: TrendingKeywordsResponseTrendsInnerTimeSeries | null, ignoreDiscriminator: boolean = false): any {
+export function TrendingKeywordsResponseTrendsInnerTimeSeriesToJSONTyped(value?: TrendingKeywordsResponseTrendsInnerTimeSeries | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

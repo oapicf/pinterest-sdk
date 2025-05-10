@@ -5,7 +5,7 @@
 
 
 
-media_list_200_response_t *media_list_200_response_create(
+static media_list_200_response_t *media_list_200_response_create_internal(
     list_t *items,
     char *bookmark
     ) {
@@ -16,12 +16,26 @@ media_list_200_response_t *media_list_200_response_create(
     media_list_200_response_local_var->items = items;
     media_list_200_response_local_var->bookmark = bookmark;
 
+    media_list_200_response_local_var->_library_owned = 1;
     return media_list_200_response_local_var;
 }
 
+__attribute__((deprecated)) media_list_200_response_t *media_list_200_response_create(
+    list_t *items,
+    char *bookmark
+    ) {
+    return media_list_200_response_create_internal (
+        items,
+        bookmark
+        );
+}
 
 void media_list_200_response_free(media_list_200_response_t *media_list_200_response) {
     if(NULL == media_list_200_response){
+        return ;
+    }
+    if(media_list_200_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "media_list_200_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -87,6 +101,9 @@ media_list_200_response_t *media_list_200_response_parseFromJSON(cJSON *media_li
 
     // media_list_200_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(media_list_200_responseJSON, "items");
+    if (cJSON_IsNull(items)) {
+        items = NULL;
+    }
     if (!items) {
         goto end;
     }
@@ -111,6 +128,9 @@ media_list_200_response_t *media_list_200_response_parseFromJSON(cJSON *media_li
 
     // media_list_200_response->bookmark
     cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(media_list_200_responseJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
     if (bookmark) { 
     if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
     {
@@ -119,7 +139,7 @@ media_list_200_response_t *media_list_200_response_parseFromJSON(cJSON *media_li
     }
 
 
-    media_list_200_response_local_var = media_list_200_response_create (
+    media_list_200_response_local_var = media_list_200_response_create_internal (
         itemsList,
         bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
         );

@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 
 // Create a request to export leads collected from a lead ad
@@ -25,15 +20,20 @@ LeadsExportAPI_leadsExportCreate(apiClient_t *apiClient, char *ad_account_id, le
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/leads_export")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/leads_export");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/leads_export");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -48,9 +48,10 @@ LeadsExportAPI_leadsExportCreate(apiClient_t *apiClient, char *ad_account_id, le
     cJSON *localVarSingleItemJSON_leads_export_create_request = NULL;
     if (leads_export_create_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_leads_export_create_request = leads_export_create_request_convertToJSON(leads_export_create_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_leads_export_create_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -62,6 +63,7 @@ LeadsExportAPI_leadsExportCreate(apiClient_t *apiClient, char *ad_account_id, le
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -77,11 +79,14 @@ LeadsExportAPI_leadsExportCreate(apiClient_t *apiClient, char *ad_account_id, le
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *LeadsExportAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    leads_export_create_response_t *elementToReturn = leads_export_create_response_parseFromJSON(LeadsExportAPIlocalVarJSON);
-    cJSON_Delete(LeadsExportAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    leads_export_create_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *LeadsExportAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = leads_export_create_response_parseFromJSON(LeadsExportAPIlocalVarJSON);
+        cJSON_Delete(LeadsExportAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -122,15 +127,22 @@ LeadsExportAPI_leadsExportGet(apiClient_t *apiClient, char *ad_account_id, char 
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/leads_export/{leads_export_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/leads_export/{leads_export_id}");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/leads_export/{leads_export_id}");
+
+    if(!ad_account_id)
+        goto end;
+    if(!leads_export_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(leads_export_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(leads_export_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -140,7 +152,7 @@ LeadsExportAPI_leadsExportGet(apiClient_t *apiClient, char *ad_account_id, char 
     localVarPath = strReplace(localVarPath, localVarToReplace_ad_account_id, ad_account_id);
 
     // Path Params
-    long sizeOfPathParams_leads_export_id = strlen(ad_account_id)+3 + strlen(leads_export_id)+3 + strlen("{ leads_export_id }");
+    long sizeOfPathParams_leads_export_id = strlen(ad_account_id)+3 + strlen(leads_export_id)+3 + sizeof("{ leads_export_id }") - 1;
     if(leads_export_id == NULL) {
         goto end;
     }
@@ -159,6 +171,7 @@ LeadsExportAPI_leadsExportGet(apiClient_t *apiClient, char *ad_account_id, char 
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -178,11 +191,14 @@ LeadsExportAPI_leadsExportGet(apiClient_t *apiClient, char *ad_account_id, char 
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *LeadsExportAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    leads_export_response_data_t *elementToReturn = leads_export_response_data_parseFromJSON(LeadsExportAPIlocalVarJSON);
-    cJSON_Delete(LeadsExportAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    leads_export_response_data_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *LeadsExportAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = leads_export_response_data_parseFromJSON(LeadsExportAPIlocalVarJSON);
+        cJSON_Delete(LeadsExportAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type

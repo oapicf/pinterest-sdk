@@ -52,24 +52,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Object describing a creative assets item error
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsCreativeAssetsItemErrorResponse {
   public static final String SERIALIZED_NAME_CATALOG_TYPE = "catalog_type";
   @SerializedName(SERIALIZED_NAME_CATALOG_TYPE)
+  @javax.annotation.Nonnull
   private CatalogsType catalogType;
 
   public static final String SERIALIZED_NAME_CREATIVE_ASSETS_ID = "creative_assets_id";
   @SerializedName(SERIALIZED_NAME_CREATIVE_ASSETS_ID)
+  @javax.annotation.Nullable
   private String creativeAssetsId;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
+  @javax.annotation.Nullable
   private List<ItemValidationEvent> errors = new ArrayList<>();
 
   public CatalogsCreativeAssetsItemErrorResponse() {
   }
 
-  public CatalogsCreativeAssetsItemErrorResponse catalogType(CatalogsType catalogType) {
+  public CatalogsCreativeAssetsItemErrorResponse catalogType(@javax.annotation.Nonnull CatalogsType catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -83,12 +86,12 @@ public class CatalogsCreativeAssetsItemErrorResponse {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(@javax.annotation.Nonnull CatalogsType catalogType) {
     this.catalogType = catalogType;
   }
 
 
-  public CatalogsCreativeAssetsItemErrorResponse creativeAssetsId(String creativeAssetsId) {
+  public CatalogsCreativeAssetsItemErrorResponse creativeAssetsId(@javax.annotation.Nullable String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
     return this;
   }
@@ -102,12 +105,12 @@ public class CatalogsCreativeAssetsItemErrorResponse {
     return creativeAssetsId;
   }
 
-  public void setCreativeAssetsId(String creativeAssetsId) {
+  public void setCreativeAssetsId(@javax.annotation.Nullable String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
   }
 
 
-  public CatalogsCreativeAssetsItemErrorResponse errors(List<ItemValidationEvent> errors) {
+  public CatalogsCreativeAssetsItemErrorResponse errors(@javax.annotation.Nullable List<ItemValidationEvent> errors) {
     this.errors = errors;
     return this;
   }
@@ -129,7 +132,7 @@ public class CatalogsCreativeAssetsItemErrorResponse {
     return errors;
   }
 
-  public void setErrors(List<ItemValidationEvent> errors) {
+  public void setErrors(@javax.annotation.Nullable List<ItemValidationEvent> errors) {
     this.errors = errors;
   }
 

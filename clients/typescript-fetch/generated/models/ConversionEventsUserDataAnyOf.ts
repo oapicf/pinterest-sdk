@@ -70,11 +70,11 @@ export function ConversionEventsUserDataAnyOfFromJSONTyped(json: any, ignoreDisc
     };
 }
 
-  export function ConversionEventsUserDataAnyOfToJSON(json: any): ConversionEventsUserDataAnyOf {
-      return ConversionEventsUserDataAnyOfToJSONTyped(json, false);
-  }
+export function ConversionEventsUserDataAnyOfToJSON(json: any): ConversionEventsUserDataAnyOf {
+    return ConversionEventsUserDataAnyOfToJSONTyped(json, false);
+}
 
-  export function ConversionEventsUserDataAnyOfToJSONTyped(value?: ConversionEventsUserDataAnyOf | null, ignoreDiscriminator: boolean = false): any {
+export function ConversionEventsUserDataAnyOfToJSONTyped(value?: ConversionEventsUserDataAnyOf | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

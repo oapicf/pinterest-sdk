@@ -22,7 +22,7 @@ pinterest_rest_api_board_PRIVACY_e board_privacy_FromString(char* privacy){
     return 0;
 }
 
-board_t *board_create(
+static board_t *board_create_internal(
     char *id,
     char *created_at,
     char *board_pins_modified_at,
@@ -51,12 +51,44 @@ board_t *board_create(
     board_local_var->owner = owner;
     board_local_var->privacy = privacy;
 
+    board_local_var->_library_owned = 1;
     return board_local_var;
 }
 
+__attribute__((deprecated)) board_t *board_create(
+    char *id,
+    char *created_at,
+    char *board_pins_modified_at,
+    char *name,
+    char *description,
+    int collaborator_count,
+    int pin_count,
+    int follower_count,
+    board_media_t *media,
+    board_owner_t *owner,
+    pinterest_rest_api_board_PRIVACY_e privacy
+    ) {
+    return board_create_internal (
+        id,
+        created_at,
+        board_pins_modified_at,
+        name,
+        description,
+        collaborator_count,
+        pin_count,
+        follower_count,
+        media,
+        owner,
+        privacy
+        );
+}
 
 void board_free(board_t *board) {
     if(NULL == board){
+        return ;
+    }
+    if(board->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "board_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -187,7 +219,7 @@ cJSON *board_convertToJSON(board_t *board) {
 
     // board->privacy
     if(board->privacy != pinterest_rest_api_board_PRIVACY_NULL) {
-    if(cJSON_AddStringToObject(item, "privacy", privacyboard_ToString(board->privacy)) == NULL)
+    if(cJSON_AddStringToObject(item, "privacy", board_privacy_ToString(board->privacy)) == NULL)
     {
     goto fail; //Enum
     }
@@ -213,6 +245,9 @@ board_t *board_parseFromJSON(cJSON *boardJSON){
 
     // board->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(boardJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -222,6 +257,9 @@ board_t *board_parseFromJSON(cJSON *boardJSON){
 
     // board->created_at
     cJSON *created_at = cJSON_GetObjectItemCaseSensitive(boardJSON, "created_at");
+    if (cJSON_IsNull(created_at)) {
+        created_at = NULL;
+    }
     if (created_at) { 
     if(!cJSON_IsString(created_at) && !cJSON_IsNull(created_at))
     {
@@ -231,6 +269,9 @@ board_t *board_parseFromJSON(cJSON *boardJSON){
 
     // board->board_pins_modified_at
     cJSON *board_pins_modified_at = cJSON_GetObjectItemCaseSensitive(boardJSON, "board_pins_modified_at");
+    if (cJSON_IsNull(board_pins_modified_at)) {
+        board_pins_modified_at = NULL;
+    }
     if (board_pins_modified_at) { 
     if(!cJSON_IsString(board_pins_modified_at) && !cJSON_IsNull(board_pins_modified_at))
     {
@@ -240,6 +281,9 @@ board_t *board_parseFromJSON(cJSON *boardJSON){
 
     // board->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(boardJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
     if (!name) {
         goto end;
     }
@@ -252,6 +296,9 @@ board_t *board_parseFromJSON(cJSON *boardJSON){
 
     // board->description
     cJSON *description = cJSON_GetObjectItemCaseSensitive(boardJSON, "description");
+    if (cJSON_IsNull(description)) {
+        description = NULL;
+    }
     if (description) { 
     if(!cJSON_IsString(description) && !cJSON_IsNull(description))
     {
@@ -261,6 +308,9 @@ board_t *board_parseFromJSON(cJSON *boardJSON){
 
     // board->collaborator_count
     cJSON *collaborator_count = cJSON_GetObjectItemCaseSensitive(boardJSON, "collaborator_count");
+    if (cJSON_IsNull(collaborator_count)) {
+        collaborator_count = NULL;
+    }
     if (collaborator_count) { 
     if(!cJSON_IsNumber(collaborator_count))
     {
@@ -270,6 +320,9 @@ board_t *board_parseFromJSON(cJSON *boardJSON){
 
     // board->pin_count
     cJSON *pin_count = cJSON_GetObjectItemCaseSensitive(boardJSON, "pin_count");
+    if (cJSON_IsNull(pin_count)) {
+        pin_count = NULL;
+    }
     if (pin_count) { 
     if(!cJSON_IsNumber(pin_count))
     {
@@ -279,6 +332,9 @@ board_t *board_parseFromJSON(cJSON *boardJSON){
 
     // board->follower_count
     cJSON *follower_count = cJSON_GetObjectItemCaseSensitive(boardJSON, "follower_count");
+    if (cJSON_IsNull(follower_count)) {
+        follower_count = NULL;
+    }
     if (follower_count) { 
     if(!cJSON_IsNumber(follower_count))
     {
@@ -288,18 +344,27 @@ board_t *board_parseFromJSON(cJSON *boardJSON){
 
     // board->media
     cJSON *media = cJSON_GetObjectItemCaseSensitive(boardJSON, "media");
+    if (cJSON_IsNull(media)) {
+        media = NULL;
+    }
     if (media) { 
     media_local_nonprim = board_media_parseFromJSON(media); //nonprimitive
     }
 
     // board->owner
     cJSON *owner = cJSON_GetObjectItemCaseSensitive(boardJSON, "owner");
+    if (cJSON_IsNull(owner)) {
+        owner = NULL;
+    }
     if (owner) { 
     owner_local_nonprim = board_owner_parseFromJSON(owner); //nonprimitive
     }
 
     // board->privacy
     cJSON *privacy = cJSON_GetObjectItemCaseSensitive(boardJSON, "privacy");
+    if (cJSON_IsNull(privacy)) {
+        privacy = NULL;
+    }
     pinterest_rest_api_board_PRIVACY_e privacyVariable;
     if (privacy) { 
     if(!cJSON_IsString(privacy))
@@ -310,7 +375,7 @@ board_t *board_parseFromJSON(cJSON *boardJSON){
     }
 
 
-    board_local_var = board_create (
+    board_local_var = board_create_internal (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         created_at && !cJSON_IsNull(created_at) ? strdup(created_at->valuestring) : NULL,
         board_pins_modified_at && !cJSON_IsNull(board_pins_modified_at) ? strdup(board_pins_modified_at->valuestring) : NULL,

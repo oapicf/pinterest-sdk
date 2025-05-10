@@ -15,6 +15,7 @@ import org.openapitools.server.models.ConversionEventsUserDataAnyOf
 import org.openapitools.server.models.ConversionEventsUserDataAnyOf1
 import org.openapitools.server.models.ConversionEventsUserDataAnyOf2
 
+import kotlinx.serialization.Serializable
 /**
  * Object containing customer information data. Note, It is required at least one of 1) em, 2) hashed_maids or 3) pair client_ip_address + client_user_agent.
  * @param em Sha256 hashes of lowercase version of user's email addresses. Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
@@ -34,6 +35,7 @@ import org.openapitools.server.models.ConversionEventsUserDataAnyOf2
  * @param clickId The unique identifier stored in _epik cookie on your domain or &epik= query parameter in the URL. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.
  * @param partnerId A unique identifier of visitors' information defined by third party partners. e.g RampID
  */
+@Serializable
 data class ConversionEventsUserData(
     /* Sha256 hashes of lowercase version of user's email addresses. Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format. */
     val em: kotlin.collections.List<kotlin.String>,
@@ -67,5 +69,5 @@ data class ConversionEventsUserData(
     val clickId: kotlin.String? = null,
     /* A unique identifier of visitors' information defined by third party partners. e.g RampID */
     val partnerId: kotlin.String? = null
-) 
+)
 

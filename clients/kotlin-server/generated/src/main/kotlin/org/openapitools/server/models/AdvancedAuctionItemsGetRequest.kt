@@ -13,15 +13,17 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.AdvancedAuctionItemsGetRecord
 
+import kotlinx.serialization.Serializable
 /**
  * Request object used to get bid options values for a batch of retail catalog items
  * @param catalogId Catalog id pertaining to the retail item
  * @param items A list of retail catalog items to fetch bid options for
  */
+@Serializable
 data class AdvancedAuctionItemsGetRequest(
     /* Catalog id pertaining to the retail item */
     val catalogId: kotlin.String,
     /* A list of retail catalog items to fetch bid options for */
     val items: kotlin.collections.List<AdvancedAuctionItemsGetRecord>
-) 
+)
 

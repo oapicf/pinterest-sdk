@@ -38,13 +38,13 @@ data class PinMediaSourceImagesBase64ItemsInner (
 
     /**
     * 
-    * Values: jpeg,png
+    * Values: imageSlashJpeg,imageSlashPng
     */
     enum class ContentType(val value: kotlin.String){
     
-        jpeg("image/jpeg"),
+        imageSlashJpeg("image/jpeg"),
     
-        png("image/png");
+        imageSlashPng("image/png");
     
     }
 

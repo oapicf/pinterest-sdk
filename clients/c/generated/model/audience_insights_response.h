@@ -19,30 +19,23 @@ typedef struct audience_insights_response_t audience_insights_response_t;
 #include "audience_demographics.h"
 #include "audience_insight_type.h"
 
-// Enum  for audience_insights_response
-
-typedef enum  { pinterest_rest_api_audience_insights_response__NULL = 0, pinterest_rest_api_audience_insights_response__YOUR_TOTAL_AUDIENCE, pinterest_rest_api_audience_insights_response__YOUR_ENGAGED_AUDIENCE, pinterest_rest_api_audience_insights_response__PINTEREST_TOTAL_AUDIENCE } pinterest_rest_api_audience_insights_response__e;
-
-char* audience_insights_response_type_ToString(pinterest_rest_api_audience_insights_response__e type);
-
-pinterest_rest_api_audience_insights_response__e audience_insights_response_type_FromString(char* type);
-
 
 
 typedef struct audience_insights_response_t {
     list_t *categories; //nonprimitive container
     struct audience_demographics_t *demographics; //model
-    audience_insight_type_t *type; // custom
+    pinterest_rest_api_audience_insight_type__e type; //referenced enum
     char *date; // string
     int size; //numeric
     int size_is_upper_bound; //boolean
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } audience_insights_response_t;
 
-audience_insights_response_t *audience_insights_response_create(
+__attribute__((deprecated)) audience_insights_response_t *audience_insights_response_create(
     list_t *categories,
     audience_demographics_t *demographics,
-    audience_insight_type_t *type,
+    pinterest_rest_api_audience_insight_type__e type,
     char *date,
     int size,
     int size_is_upper_bound

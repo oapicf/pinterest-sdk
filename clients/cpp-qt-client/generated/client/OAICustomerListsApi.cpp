@@ -248,7 +248,7 @@ void OAICustomerListsApi::customerLists_create(const QString &ad_account_id, con
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICustomerListsApi::customerLists_createCallback);
     connect(this, &OAICustomerListsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -270,7 +270,7 @@ void OAICustomerListsApi::customerLists_create(const QString &ad_account_id, con
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICustomerListsApi::customerLists_createCallback);
     connect(this, &OAICustomerListsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -387,7 +387,7 @@ void OAICustomerListsApi::customerLists_get(const QString &ad_account_id, const 
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICustomerListsApi::customerLists_getCallback);
     connect(this, &OAICustomerListsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -409,7 +409,7 @@ void OAICustomerListsApi::customerLists_get(const QString &ad_account_id, const 
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICustomerListsApi::customerLists_getCallback);
     connect(this, &OAICustomerListsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -513,7 +513,7 @@ void OAICustomerListsApi::customerLists_list(const QString &ad_account_id, const
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     if (order.hasValue())
     {
@@ -528,7 +528,7 @@ void OAICustomerListsApi::customerLists_list(const QString &ad_account_id, const
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("order")).append(querySuffix).append(QUrl::toPercentEncoding(order.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("order")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(order.stringValue())));
     }
     if (bookmark.hasValue())
     {
@@ -543,7 +543,7 @@ void OAICustomerListsApi::customerLists_list(const QString &ad_account_id, const
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -558,7 +558,7 @@ void OAICustomerListsApi::customerLists_list(const QString &ad_account_id, const
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICustomerListsApi::customerLists_listCallback);
     connect(this, &OAICustomerListsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -580,7 +580,7 @@ void OAICustomerListsApi::customerLists_list(const QString &ad_account_id, const
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICustomerListsApi::customerLists_listCallback);
     connect(this, &OAICustomerListsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -702,7 +702,7 @@ void OAICustomerListsApi::customerLists_update(const QString &ad_account_id, con
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICustomerListsApi::customerLists_updateCallback);
     connect(this, &OAICustomerListsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -724,7 +724,7 @@ void OAICustomerListsApi::customerLists_update(const QString &ad_account_id, con
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAICustomerListsApi::customerLists_updateCallback);
     connect(this, &OAICustomerListsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }

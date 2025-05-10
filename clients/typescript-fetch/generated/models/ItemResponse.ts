@@ -122,11 +122,11 @@ export function ItemResponseFromJSONTyped(json: any, ignoreDiscriminator: boolea
     };
 }
 
-  export function ItemResponseToJSON(json: any): ItemResponse {
-      return ItemResponseToJSONTyped(json, false);
-  }
+export function ItemResponseToJSON(json: any): ItemResponse {
+    return ItemResponseToJSONTyped(json, false);
+}
 
-  export function ItemResponseToJSONTyped(value?: ItemResponse | null, ignoreDiscriminator: boolean = false): any {
+export function ItemResponseToJSONTyped(value?: ItemResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

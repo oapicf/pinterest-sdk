@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { Account } from '../model/account';
 import { AnalyticsMetricsResponse } from '../model/analyticsMetricsResponse';
@@ -41,10 +41,12 @@ export class UserAccountService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -65,9 +67,10 @@ export class UserAccountService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [boardsUserFollowsListOpts.config] Override http request option.
      */
-    public boardsUserFollowsList(bookmark?: string, pageSize?: number, explicitFollowing?: boolean, adAccountId?: string, ): Observable<AxiosResponse<BoardsUserFollowsList200Response>>;
-    public boardsUserFollowsList(bookmark?: string, pageSize?: number, explicitFollowing?: boolean, adAccountId?: string, ): Observable<any> {
+    public boardsUserFollowsList(bookmark?: string, pageSize?: number, explicitFollowing?: boolean, adAccountId?: string, boardsUserFollowsListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<BoardsUserFollowsList200Response>>;
+    public boardsUserFollowsList(bookmark?: string, pageSize?: number, explicitFollowing?: boolean, adAccountId?: string, boardsUserFollowsListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let queryParameters = new URLSearchParams();
         if (bookmark !== undefined && bookmark !== null) {
             queryParameters.append('bookmark', <any>bookmark);
@@ -122,7 +125,8 @@ export class UserAccountService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...boardsUserFollowsListOpts?.config,
+                        headers: {...headers, ...boardsUserFollowsListOpts?.config?.headers},
                     }
                 );
             })
@@ -135,9 +139,10 @@ export class UserAccountService {
      * @param followUserRequest Follow a user.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [followUserUpdateOpts.config] Override http request option.
      */
-    public followUserUpdate(username: string, followUserRequest: FollowUserRequest, ): Observable<AxiosResponse<UserSummary>>;
-    public followUserUpdate(username: string, followUserRequest: FollowUserRequest, ): Observable<any> {
+    public followUserUpdate(username: string, followUserRequest: FollowUserRequest, followUserUpdateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<UserSummary>>;
+    public followUserUpdate(username: string, followUserRequest: FollowUserRequest, followUserUpdateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (username === null || username === undefined) {
             throw new Error('Required parameter username was null or undefined when calling followUserUpdate.');
         }
@@ -184,7 +189,8 @@ export class UserAccountService {
                     followUserRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...followUserUpdateOpts?.config,
+                        headers: {...headers, ...followUserUpdateOpts?.config?.headers},
                     }
                 );
             })
@@ -197,9 +203,10 @@ export class UserAccountService {
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [followersListOpts.config] Override http request option.
      */
-    public followersList(bookmark?: string, pageSize?: number, ): Observable<AxiosResponse<FollowersList200Response>>;
-    public followersList(bookmark?: string, pageSize?: number, ): Observable<any> {
+    public followersList(bookmark?: string, pageSize?: number, followersListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<FollowersList200Response>>;
+    public followersList(bookmark?: string, pageSize?: number, followersListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let queryParameters = new URLSearchParams();
         if (bookmark !== undefined && bookmark !== null) {
             queryParameters.append('bookmark', <any>bookmark);
@@ -248,7 +255,8 @@ export class UserAccountService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...followersListOpts?.config,
+                        headers: {...headers, ...followersListOpts?.config?.headers},
                     }
                 );
             })
@@ -259,9 +267,10 @@ export class UserAccountService {
      * Get a list of your linked business accounts.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [linkedBusinessAccountsGetOpts.config] Override http request option.
      */
-    public linkedBusinessAccountsGet(): Observable<AxiosResponse<Array<LinkedBusiness>>>;
-    public linkedBusinessAccountsGet(): Observable<any> {
+    public linkedBusinessAccountsGet(linkedBusinessAccountsGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<Array<LinkedBusiness>>>;
+    public linkedBusinessAccountsGet(linkedBusinessAccountsGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let headers = {...this.defaultHeaders};
 
         let accessTokenObservable: Observable<any> = of(null);
@@ -301,7 +310,8 @@ export class UserAccountService {
                 return this.httpClient.get<Array<LinkedBusiness>>(`${this.basePath}/user_account/businesses`,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...linkedBusinessAccountsGetOpts?.config,
+                        headers: {...headers, ...linkedBusinessAccountsGetOpts?.config?.headers},
                     }
                 );
             })
@@ -313,9 +323,10 @@ export class UserAccountService {
      * @param website Website with path or domain only
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [unverifyWebsiteDeleteOpts.config] Override http request option.
      */
-    public unverifyWebsiteDelete(website: string, ): Observable<AxiosResponse<any>>;
-    public unverifyWebsiteDelete(website: string, ): Observable<any> {
+    public unverifyWebsiteDelete(website: string, unverifyWebsiteDeleteOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public unverifyWebsiteDelete(website: string, unverifyWebsiteDeleteOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (website === null || website === undefined) {
             throw new Error('Required parameter website was null or undefined when calling unverifyWebsiteDelete.');
         }
@@ -358,7 +369,8 @@ export class UserAccountService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...unverifyWebsiteDeleteOpts?.config,
+                        headers: {...headers, ...unverifyWebsiteDeleteOpts?.config?.headers},
                     }
                 );
             })
@@ -379,9 +391,10 @@ export class UserAccountService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [userAccountAnalyticsOpts.config] Override http request option.
      */
-    public userAccountAnalytics(startDate: string, endDate: string, fromClaimedContent?: 'OTHER' | 'CLAIMED' | 'BOTH', pinFormat?: 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA', appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', contentType?: 'ALL' | 'PAID' | 'ORGANIC', source?: 'ALL' | 'YOUR_PINS' | 'OTHER_PINS', metricTypes?: Array<'ENGAGEMENT' | 'ENGAGEMENT_RATE' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'OUTBOUND_CLICK_RATE' | 'PIN_CLICK' | 'PIN_CLICK_RATE' | 'SAVE' | 'SAVE_RATE'>, splitField?: 'NO_SPLIT' | 'APP_TYPE' | 'OWNED_CONTENT' | 'SOURCE' | 'PIN_FORMAT', adAccountId?: string, ): Observable<AxiosResponse<{ [key: string]: AnalyticsMetricsResponse; }>>;
-    public userAccountAnalytics(startDate: string, endDate: string, fromClaimedContent?: 'OTHER' | 'CLAIMED' | 'BOTH', pinFormat?: 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA', appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', contentType?: 'ALL' | 'PAID' | 'ORGANIC', source?: 'ALL' | 'YOUR_PINS' | 'OTHER_PINS', metricTypes?: Array<'ENGAGEMENT' | 'ENGAGEMENT_RATE' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'OUTBOUND_CLICK_RATE' | 'PIN_CLICK' | 'PIN_CLICK_RATE' | 'SAVE' | 'SAVE_RATE'>, splitField?: 'NO_SPLIT' | 'APP_TYPE' | 'OWNED_CONTENT' | 'SOURCE' | 'PIN_FORMAT', adAccountId?: string, ): Observable<any> {
+    public userAccountAnalytics(startDate: string, endDate: string, fromClaimedContent?: 'OTHER' | 'CLAIMED' | 'BOTH', pinFormat?: 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA', appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', contentType?: 'ALL' | 'PAID' | 'ORGANIC', source?: 'ALL' | 'YOUR_PINS' | 'OTHER_PINS', metricTypes?: Array<'ENGAGEMENT' | 'ENGAGEMENT_RATE' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'OUTBOUND_CLICK_RATE' | 'PIN_CLICK' | 'PIN_CLICK_RATE' | 'SAVE' | 'SAVE_RATE'>, splitField?: 'NO_SPLIT' | 'APP_TYPE' | 'OWNED_CONTENT' | 'SOURCE' | 'PIN_FORMAT', adAccountId?: string, userAccountAnalyticsOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<{ [key: string]: AnalyticsMetricsResponse; }>>;
+    public userAccountAnalytics(startDate: string, endDate: string, fromClaimedContent?: 'OTHER' | 'CLAIMED' | 'BOTH', pinFormat?: 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA', appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', contentType?: 'ALL' | 'PAID' | 'ORGANIC', source?: 'ALL' | 'YOUR_PINS' | 'OTHER_PINS', metricTypes?: Array<'ENGAGEMENT' | 'ENGAGEMENT_RATE' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'OUTBOUND_CLICK_RATE' | 'PIN_CLICK' | 'PIN_CLICK_RATE' | 'SAVE' | 'SAVE_RATE'>, splitField?: 'NO_SPLIT' | 'APP_TYPE' | 'OWNED_CONTENT' | 'SOURCE' | 'PIN_FORMAT', adAccountId?: string, userAccountAnalyticsOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (startDate === null || startDate === undefined) {
             throw new Error('Required parameter startDate was null or undefined when calling userAccountAnalytics.');
         }
@@ -455,7 +468,8 @@ export class UserAccountService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...userAccountAnalyticsOpts?.config,
+                        headers: {...headers, ...userAccountAnalyticsOpts?.config?.headers},
                     }
                 );
             })
@@ -478,9 +492,10 @@ export class UserAccountService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [userAccountAnalyticsTopPinsOpts.config] Override http request option.
      */
-    public userAccountAnalyticsTopPins(startDate: string, endDate: string, sortBy: 'ENGAGEMENT' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE', fromClaimedContent?: 'OTHER' | 'CLAIMED' | 'BOTH', pinFormat?: 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA', appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', contentType?: 'ALL' | 'PAID' | 'ORGANIC', source?: 'ALL' | 'YOUR_PINS' | 'OTHER_PINS', metricTypes?: Array<'ENGAGEMENT' | 'ENGAGEMENT_RATE' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'OUTBOUND_CLICK_RATE' | 'PIN_CLICK' | 'PIN_CLICK_RATE' | 'SAVE' | 'SAVE_RATE'>, numOfPins?: number, createdInLastNDays?: 30, adAccountId?: string, ): Observable<AxiosResponse<TopPinsAnalyticsResponse>>;
-    public userAccountAnalyticsTopPins(startDate: string, endDate: string, sortBy: 'ENGAGEMENT' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE', fromClaimedContent?: 'OTHER' | 'CLAIMED' | 'BOTH', pinFormat?: 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA', appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', contentType?: 'ALL' | 'PAID' | 'ORGANIC', source?: 'ALL' | 'YOUR_PINS' | 'OTHER_PINS', metricTypes?: Array<'ENGAGEMENT' | 'ENGAGEMENT_RATE' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'OUTBOUND_CLICK_RATE' | 'PIN_CLICK' | 'PIN_CLICK_RATE' | 'SAVE' | 'SAVE_RATE'>, numOfPins?: number, createdInLastNDays?: 30, adAccountId?: string, ): Observable<any> {
+    public userAccountAnalyticsTopPins(startDate: string, endDate: string, sortBy: 'ENGAGEMENT' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE', fromClaimedContent?: 'OTHER' | 'CLAIMED' | 'BOTH', pinFormat?: 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA', appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', contentType?: 'ALL' | 'PAID' | 'ORGANIC', source?: 'ALL' | 'YOUR_PINS' | 'OTHER_PINS', metricTypes?: Array<'ENGAGEMENT' | 'ENGAGEMENT_RATE' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'OUTBOUND_CLICK_RATE' | 'PIN_CLICK' | 'PIN_CLICK_RATE' | 'SAVE' | 'SAVE_RATE'>, numOfPins?: number, createdInLastNDays?: 30, adAccountId?: string, userAccountAnalyticsTopPinsOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<TopPinsAnalyticsResponse>>;
+    public userAccountAnalyticsTopPins(startDate: string, endDate: string, sortBy: 'ENGAGEMENT' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE', fromClaimedContent?: 'OTHER' | 'CLAIMED' | 'BOTH', pinFormat?: 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA', appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', contentType?: 'ALL' | 'PAID' | 'ORGANIC', source?: 'ALL' | 'YOUR_PINS' | 'OTHER_PINS', metricTypes?: Array<'ENGAGEMENT' | 'ENGAGEMENT_RATE' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'OUTBOUND_CLICK_RATE' | 'PIN_CLICK' | 'PIN_CLICK_RATE' | 'SAVE' | 'SAVE_RATE'>, numOfPins?: number, createdInLastNDays?: 30, adAccountId?: string, userAccountAnalyticsTopPinsOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (startDate === null || startDate === undefined) {
             throw new Error('Required parameter startDate was null or undefined when calling userAccountAnalyticsTopPins.');
         }
@@ -571,7 +586,8 @@ export class UserAccountService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...userAccountAnalyticsTopPinsOpts?.config,
+                        headers: {...headers, ...userAccountAnalyticsTopPinsOpts?.config?.headers},
                     }
                 );
             })
@@ -594,9 +610,10 @@ export class UserAccountService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [userAccountAnalyticsTopVideoPinsOpts.config] Override http request option.
      */
-    public userAccountAnalyticsTopVideoPins(startDate: string, endDate: string, sortBy: 'IMPRESSION' | 'SAVE' | 'OUTBOUND_CLICK' | 'VIDEO_MRC_VIEW' | 'VIDEO_AVG_WATCH_TIME' | 'VIDEO_V50_WATCH_TIME' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_10S_VIEW' | 'VIDEO_START', fromClaimedContent?: 'OTHER' | 'CLAIMED' | 'BOTH', pinFormat?: 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA', appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', contentType?: 'ALL' | 'PAID' | 'ORGANIC', source?: 'ALL' | 'YOUR_PINS' | 'OTHER_PINS', metricTypes?: Array<'IMPRESSION' | 'SAVE' | 'VIDEO_MRC_VIEW' | 'VIDEO_AVG_WATCH_TIME' | 'VIDEO_V50_WATCH_TIME' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_10S_VIEW' | 'VIDEO_START' | 'OUTBOUND_CLICK'>, numOfPins?: number, createdInLastNDays?: 30, adAccountId?: string, ): Observable<AxiosResponse<TopVideoPinsAnalyticsResponse>>;
-    public userAccountAnalyticsTopVideoPins(startDate: string, endDate: string, sortBy: 'IMPRESSION' | 'SAVE' | 'OUTBOUND_CLICK' | 'VIDEO_MRC_VIEW' | 'VIDEO_AVG_WATCH_TIME' | 'VIDEO_V50_WATCH_TIME' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_10S_VIEW' | 'VIDEO_START', fromClaimedContent?: 'OTHER' | 'CLAIMED' | 'BOTH', pinFormat?: 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA', appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', contentType?: 'ALL' | 'PAID' | 'ORGANIC', source?: 'ALL' | 'YOUR_PINS' | 'OTHER_PINS', metricTypes?: Array<'IMPRESSION' | 'SAVE' | 'VIDEO_MRC_VIEW' | 'VIDEO_AVG_WATCH_TIME' | 'VIDEO_V50_WATCH_TIME' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_10S_VIEW' | 'VIDEO_START' | 'OUTBOUND_CLICK'>, numOfPins?: number, createdInLastNDays?: 30, adAccountId?: string, ): Observable<any> {
+    public userAccountAnalyticsTopVideoPins(startDate: string, endDate: string, sortBy: 'IMPRESSION' | 'SAVE' | 'OUTBOUND_CLICK' | 'VIDEO_MRC_VIEW' | 'VIDEO_AVG_WATCH_TIME' | 'VIDEO_V50_WATCH_TIME' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_10S_VIEW' | 'VIDEO_START', fromClaimedContent?: 'OTHER' | 'CLAIMED' | 'BOTH', pinFormat?: 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA', appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', contentType?: 'ALL' | 'PAID' | 'ORGANIC', source?: 'ALL' | 'YOUR_PINS' | 'OTHER_PINS', metricTypes?: Array<'IMPRESSION' | 'SAVE' | 'VIDEO_MRC_VIEW' | 'VIDEO_AVG_WATCH_TIME' | 'VIDEO_V50_WATCH_TIME' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_10S_VIEW' | 'VIDEO_START' | 'OUTBOUND_CLICK'>, numOfPins?: number, createdInLastNDays?: 30, adAccountId?: string, userAccountAnalyticsTopVideoPinsOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<TopVideoPinsAnalyticsResponse>>;
+    public userAccountAnalyticsTopVideoPins(startDate: string, endDate: string, sortBy: 'IMPRESSION' | 'SAVE' | 'OUTBOUND_CLICK' | 'VIDEO_MRC_VIEW' | 'VIDEO_AVG_WATCH_TIME' | 'VIDEO_V50_WATCH_TIME' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_10S_VIEW' | 'VIDEO_START', fromClaimedContent?: 'OTHER' | 'CLAIMED' | 'BOTH', pinFormat?: 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA', appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', contentType?: 'ALL' | 'PAID' | 'ORGANIC', source?: 'ALL' | 'YOUR_PINS' | 'OTHER_PINS', metricTypes?: Array<'IMPRESSION' | 'SAVE' | 'VIDEO_MRC_VIEW' | 'VIDEO_AVG_WATCH_TIME' | 'VIDEO_V50_WATCH_TIME' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_10S_VIEW' | 'VIDEO_START' | 'OUTBOUND_CLICK'>, numOfPins?: number, createdInLastNDays?: 30, adAccountId?: string, userAccountAnalyticsTopVideoPinsOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (startDate === null || startDate === undefined) {
             throw new Error('Required parameter startDate was null or undefined when calling userAccountAnalyticsTopVideoPins.');
         }
@@ -687,7 +704,8 @@ export class UserAccountService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...userAccountAnalyticsTopVideoPinsOpts?.config,
+                        headers: {...headers, ...userAccountAnalyticsTopVideoPinsOpts?.config?.headers},
                     }
                 );
             })
@@ -701,9 +719,10 @@ export class UserAccountService {
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [userAccountFollowedInterestsOpts.config] Override http request option.
      */
-    public userAccountFollowedInterests(username: string, bookmark?: string, pageSize?: number, ): Observable<AxiosResponse<UserAccountFollowedInterests200Response>>;
-    public userAccountFollowedInterests(username: string, bookmark?: string, pageSize?: number, ): Observable<any> {
+    public userAccountFollowedInterests(username: string, bookmark?: string, pageSize?: number, userAccountFollowedInterestsOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<UserAccountFollowedInterests200Response>>;
+    public userAccountFollowedInterests(username: string, bookmark?: string, pageSize?: number, userAccountFollowedInterestsOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (username === null || username === undefined) {
             throw new Error('Required parameter username was null or undefined when calling userAccountFollowedInterests.');
         }
@@ -756,7 +775,8 @@ export class UserAccountService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...userAccountFollowedInterestsOpts?.config,
+                        headers: {...headers, ...userAccountFollowedInterestsOpts?.config?.headers},
                     }
                 );
             })
@@ -768,9 +788,10 @@ export class UserAccountService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [userAccountGetOpts.config] Override http request option.
      */
-    public userAccountGet(adAccountId?: string, ): Observable<AxiosResponse<Account>>;
-    public userAccountGet(adAccountId?: string, ): Observable<any> {
+    public userAccountGet(adAccountId?: string, userAccountGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<Account>>;
+    public userAccountGet(adAccountId?: string, userAccountGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let queryParameters = new URLSearchParams();
         if (adAccountId !== undefined && adAccountId !== null) {
             queryParameters.append('ad_account_id', <any>adAccountId);
@@ -816,7 +837,8 @@ export class UserAccountService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...userAccountGetOpts?.config,
+                        headers: {...headers, ...userAccountGetOpts?.config?.headers},
                     }
                 );
             })
@@ -832,9 +854,10 @@ export class UserAccountService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [userFollowingGetOpts.config] Override http request option.
      */
-    public userFollowingGet(bookmark?: string, pageSize?: number, feedType?: UserFollowingFeedType, explicitFollowing?: boolean, adAccountId?: string, ): Observable<AxiosResponse<UserFollowingGet200Response>>;
-    public userFollowingGet(bookmark?: string, pageSize?: number, feedType?: UserFollowingFeedType, explicitFollowing?: boolean, adAccountId?: string, ): Observable<any> {
+    public userFollowingGet(bookmark?: string, pageSize?: number, feedType?: UserFollowingFeedType, explicitFollowing?: boolean, adAccountId?: string, userFollowingGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<UserFollowingGet200Response>>;
+    public userFollowingGet(bookmark?: string, pageSize?: number, feedType?: UserFollowingFeedType, explicitFollowing?: boolean, adAccountId?: string, userFollowingGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let queryParameters = new URLSearchParams();
         if (bookmark !== undefined && bookmark !== null) {
             queryParameters.append('bookmark', <any>bookmark);
@@ -892,7 +915,8 @@ export class UserAccountService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...userFollowingGetOpts?.config,
+                        headers: {...headers, ...userFollowingGetOpts?.config?.headers},
                     }
                 );
             })
@@ -905,9 +929,10 @@ export class UserAccountService {
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [userWebsitesGetOpts.config] Override http request option.
      */
-    public userWebsitesGet(bookmark?: string, pageSize?: number, ): Observable<AxiosResponse<UserWebsitesGet200Response>>;
-    public userWebsitesGet(bookmark?: string, pageSize?: number, ): Observable<any> {
+    public userWebsitesGet(bookmark?: string, pageSize?: number, userWebsitesGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<UserWebsitesGet200Response>>;
+    public userWebsitesGet(bookmark?: string, pageSize?: number, userWebsitesGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let queryParameters = new URLSearchParams();
         if (bookmark !== undefined && bookmark !== null) {
             queryParameters.append('bookmark', <any>bookmark);
@@ -949,7 +974,8 @@ export class UserAccountService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...userWebsitesGetOpts?.config,
+                        headers: {...headers, ...userWebsitesGetOpts?.config?.headers},
                     }
                 );
             })
@@ -962,9 +988,10 @@ export class UserAccountService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [verifyWebsiteUpdateOpts.config] Override http request option.
      */
-    public verifyWebsiteUpdate(userWebsiteVerifyRequest: UserWebsiteVerifyRequest, adAccountId?: string, ): Observable<AxiosResponse<UserWebsiteSummary>>;
-    public verifyWebsiteUpdate(userWebsiteVerifyRequest: UserWebsiteVerifyRequest, adAccountId?: string, ): Observable<any> {
+    public verifyWebsiteUpdate(userWebsiteVerifyRequest: UserWebsiteVerifyRequest, adAccountId?: string, verifyWebsiteUpdateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<UserWebsiteSummary>>;
+    public verifyWebsiteUpdate(userWebsiteVerifyRequest: UserWebsiteVerifyRequest, adAccountId?: string, verifyWebsiteUpdateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (userWebsiteVerifyRequest === null || userWebsiteVerifyRequest === undefined) {
             throw new Error('Required parameter userWebsiteVerifyRequest was null or undefined when calling verifyWebsiteUpdate.');
         }
@@ -1013,7 +1040,8 @@ export class UserAccountService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...verifyWebsiteUpdateOpts?.config,
+                        headers: {...headers, ...verifyWebsiteUpdateOpts?.config?.headers},
                     }
                 );
             })
@@ -1025,9 +1053,10 @@ export class UserAccountService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [websiteVerificationGetOpts.config] Override http request option.
      */
-    public websiteVerificationGet(adAccountId?: string, ): Observable<AxiosResponse<UserWebsiteVerificationCode>>;
-    public websiteVerificationGet(adAccountId?: string, ): Observable<any> {
+    public websiteVerificationGet(adAccountId?: string, websiteVerificationGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<UserWebsiteVerificationCode>>;
+    public websiteVerificationGet(adAccountId?: string, websiteVerificationGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let queryParameters = new URLSearchParams();
         if (adAccountId !== undefined && adAccountId !== null) {
             queryParameters.append('ad_account_id', <any>adAccountId);
@@ -1073,7 +1102,8 @@ export class UserAccountService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...websiteVerificationGetOpts?.config,
+                        headers: {...headers, ...websiteVerificationGetOpts?.config?.headers},
                     }
                 );
             })

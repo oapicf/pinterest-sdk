@@ -4,42 +4,8 @@
 #include "product_group_promotion.h"
 
 
-char* product_group_promotion_status_ToString(pinterest_rest_api_product_group_promotion__e status) {
-    char* statusArray[] =  { "NULL", "ACTIVE", "PAUSED", "ARCHIVED", "DRAFT", "DELETED_DRAFT" };
-    return statusArray[status];
-}
 
-pinterest_rest_api_product_group_promotion__e product_group_promotion_status_FromString(char* status){
-    int stringToReturn = 0;
-    char *statusArray[] =  { "NULL", "ACTIVE", "PAUSED", "ARCHIVED", "DRAFT", "DELETED_DRAFT" };
-    size_t sizeofArray = sizeof(statusArray) / sizeof(statusArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(status, statusArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-char* product_group_promotion_grid_click_type_ToString(pinterest_rest_api_product_group_promotion__e grid_click_type) {
-    char* grid_click_typeArray[] =  { "NULL", "CLOSEUP", "DIRECT_TO_DESTINATION" };
-    return grid_click_typeArray[grid_click_type];
-}
-
-pinterest_rest_api_product_group_promotion__e product_group_promotion_grid_click_type_FromString(char* grid_click_type){
-    int stringToReturn = 0;
-    char *grid_click_typeArray[] =  { "NULL", "CLOSEUP", "DIRECT_TO_DESTINATION" };
-    size_t sizeofArray = sizeof(grid_click_typeArray) / sizeof(grid_click_typeArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(grid_click_type, grid_click_typeArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-
-product_group_promotion_t *product_group_promotion_create(
+static product_group_promotion_t *product_group_promotion_create_internal(
     char *id,
     char *ad_group_id,
     int bid_in_micro_currency,
@@ -50,13 +16,13 @@ product_group_promotion_t *product_group_promotion_create(
     char *slideshow_collections_title,
     char *slideshow_collections_description,
     int is_mdl,
-    entity_status_t *status,
+    pinterest_rest_api_entity_status__e status,
     char *tracking_url,
     char *catalog_product_group_id,
     char *catalog_product_group_name,
     char *collections_hero_pin_id,
     char *collections_hero_destination_url,
-    grid_click_type_t *grid_click_type
+    pinterest_rest_api_grid_click_type__e grid_click_type
     ) {
     product_group_promotion_t *product_group_promotion_local_var = malloc(sizeof(product_group_promotion_t));
     if (!product_group_promotion_local_var) {
@@ -80,12 +46,56 @@ product_group_promotion_t *product_group_promotion_create(
     product_group_promotion_local_var->collections_hero_destination_url = collections_hero_destination_url;
     product_group_promotion_local_var->grid_click_type = grid_click_type;
 
+    product_group_promotion_local_var->_library_owned = 1;
     return product_group_promotion_local_var;
 }
 
+__attribute__((deprecated)) product_group_promotion_t *product_group_promotion_create(
+    char *id,
+    char *ad_group_id,
+    int bid_in_micro_currency,
+    int included,
+    char *definition,
+    char *relative_definition,
+    char *parent_id,
+    char *slideshow_collections_title,
+    char *slideshow_collections_description,
+    int is_mdl,
+    pinterest_rest_api_entity_status__e status,
+    char *tracking_url,
+    char *catalog_product_group_id,
+    char *catalog_product_group_name,
+    char *collections_hero_pin_id,
+    char *collections_hero_destination_url,
+    pinterest_rest_api_grid_click_type__e grid_click_type
+    ) {
+    return product_group_promotion_create_internal (
+        id,
+        ad_group_id,
+        bid_in_micro_currency,
+        included,
+        definition,
+        relative_definition,
+        parent_id,
+        slideshow_collections_title,
+        slideshow_collections_description,
+        is_mdl,
+        status,
+        tracking_url,
+        catalog_product_group_id,
+        catalog_product_group_name,
+        collections_hero_pin_id,
+        collections_hero_destination_url,
+        grid_click_type
+        );
+}
 
 void product_group_promotion_free(product_group_promotion_t *product_group_promotion) {
     if(NULL == product_group_promotion){
+        return ;
+    }
+    if(product_group_promotion->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "product_group_promotion_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -117,10 +127,6 @@ void product_group_promotion_free(product_group_promotion_t *product_group_promo
         free(product_group_promotion->slideshow_collections_description);
         product_group_promotion->slideshow_collections_description = NULL;
     }
-    if (product_group_promotion->status) {
-        entity_status_free(product_group_promotion->status);
-        product_group_promotion->status = NULL;
-    }
     if (product_group_promotion->tracking_url) {
         free(product_group_promotion->tracking_url);
         product_group_promotion->tracking_url = NULL;
@@ -140,10 +146,6 @@ void product_group_promotion_free(product_group_promotion_t *product_group_promo
     if (product_group_promotion->collections_hero_destination_url) {
         free(product_group_promotion->collections_hero_destination_url);
         product_group_promotion->collections_hero_destination_url = NULL;
-    }
-    if (product_group_promotion->grid_click_type) {
-        grid_click_type_free(product_group_promotion->grid_click_type);
-        product_group_promotion->grid_click_type = NULL;
     }
     free(product_group_promotion);
 }
@@ -232,7 +234,7 @@ cJSON *product_group_promotion_convertToJSON(product_group_promotion_t *product_
 
 
     // product_group_promotion->status
-    if(product_group_promotion->status != pinterest_rest_api_product_group_promotion__NULL) {
+    if(product_group_promotion->status != pinterest_rest_api_entity_status__NULL) {
     cJSON *status_local_JSON = entity_status_convertToJSON(product_group_promotion->status);
     if(status_local_JSON == NULL) {
         goto fail; // custom
@@ -285,7 +287,7 @@ cJSON *product_group_promotion_convertToJSON(product_group_promotion_t *product_
 
 
     // product_group_promotion->grid_click_type
-    if(product_group_promotion->grid_click_type != pinterest_rest_api_product_group_promotion__NULL) {
+    if(product_group_promotion->grid_click_type != pinterest_rest_api_grid_click_type__NULL) {
     cJSON *grid_click_type_local_JSON = grid_click_type_convertToJSON(product_group_promotion->grid_click_type);
     if(grid_click_type_local_JSON == NULL) {
         goto fail; // custom
@@ -309,13 +311,16 @@ product_group_promotion_t *product_group_promotion_parseFromJSON(cJSON *product_
     product_group_promotion_t *product_group_promotion_local_var = NULL;
 
     // define the local variable for product_group_promotion->status
-    entity_status_t *status_local_nonprim = NULL;
+    pinterest_rest_api_entity_status__e status_local_nonprim = 0;
 
     // define the local variable for product_group_promotion->grid_click_type
-    grid_click_type_t *grid_click_type_local_nonprim = NULL;
+    pinterest_rest_api_grid_click_type__e grid_click_type_local_nonprim = 0;
 
     // product_group_promotion->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(product_group_promotionJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -325,6 +330,9 @@ product_group_promotion_t *product_group_promotion_parseFromJSON(cJSON *product_
 
     // product_group_promotion->ad_group_id
     cJSON *ad_group_id = cJSON_GetObjectItemCaseSensitive(product_group_promotionJSON, "ad_group_id");
+    if (cJSON_IsNull(ad_group_id)) {
+        ad_group_id = NULL;
+    }
     if (ad_group_id) { 
     if(!cJSON_IsString(ad_group_id) && !cJSON_IsNull(ad_group_id))
     {
@@ -334,6 +342,9 @@ product_group_promotion_t *product_group_promotion_parseFromJSON(cJSON *product_
 
     // product_group_promotion->bid_in_micro_currency
     cJSON *bid_in_micro_currency = cJSON_GetObjectItemCaseSensitive(product_group_promotionJSON, "bid_in_micro_currency");
+    if (cJSON_IsNull(bid_in_micro_currency)) {
+        bid_in_micro_currency = NULL;
+    }
     if (bid_in_micro_currency) { 
     if(!cJSON_IsNumber(bid_in_micro_currency))
     {
@@ -343,6 +354,9 @@ product_group_promotion_t *product_group_promotion_parseFromJSON(cJSON *product_
 
     // product_group_promotion->included
     cJSON *included = cJSON_GetObjectItemCaseSensitive(product_group_promotionJSON, "included");
+    if (cJSON_IsNull(included)) {
+        included = NULL;
+    }
     if (included) { 
     if(!cJSON_IsBool(included))
     {
@@ -352,6 +366,9 @@ product_group_promotion_t *product_group_promotion_parseFromJSON(cJSON *product_
 
     // product_group_promotion->definition
     cJSON *definition = cJSON_GetObjectItemCaseSensitive(product_group_promotionJSON, "definition");
+    if (cJSON_IsNull(definition)) {
+        definition = NULL;
+    }
     if (definition) { 
     if(!cJSON_IsString(definition) && !cJSON_IsNull(definition))
     {
@@ -361,6 +378,9 @@ product_group_promotion_t *product_group_promotion_parseFromJSON(cJSON *product_
 
     // product_group_promotion->relative_definition
     cJSON *relative_definition = cJSON_GetObjectItemCaseSensitive(product_group_promotionJSON, "relative_definition");
+    if (cJSON_IsNull(relative_definition)) {
+        relative_definition = NULL;
+    }
     if (relative_definition) { 
     if(!cJSON_IsString(relative_definition) && !cJSON_IsNull(relative_definition))
     {
@@ -370,6 +390,9 @@ product_group_promotion_t *product_group_promotion_parseFromJSON(cJSON *product_
 
     // product_group_promotion->parent_id
     cJSON *parent_id = cJSON_GetObjectItemCaseSensitive(product_group_promotionJSON, "parent_id");
+    if (cJSON_IsNull(parent_id)) {
+        parent_id = NULL;
+    }
     if (parent_id) { 
     if(!cJSON_IsString(parent_id) && !cJSON_IsNull(parent_id))
     {
@@ -379,6 +402,9 @@ product_group_promotion_t *product_group_promotion_parseFromJSON(cJSON *product_
 
     // product_group_promotion->slideshow_collections_title
     cJSON *slideshow_collections_title = cJSON_GetObjectItemCaseSensitive(product_group_promotionJSON, "slideshow_collections_title");
+    if (cJSON_IsNull(slideshow_collections_title)) {
+        slideshow_collections_title = NULL;
+    }
     if (slideshow_collections_title) { 
     if(!cJSON_IsString(slideshow_collections_title) && !cJSON_IsNull(slideshow_collections_title))
     {
@@ -388,6 +414,9 @@ product_group_promotion_t *product_group_promotion_parseFromJSON(cJSON *product_
 
     // product_group_promotion->slideshow_collections_description
     cJSON *slideshow_collections_description = cJSON_GetObjectItemCaseSensitive(product_group_promotionJSON, "slideshow_collections_description");
+    if (cJSON_IsNull(slideshow_collections_description)) {
+        slideshow_collections_description = NULL;
+    }
     if (slideshow_collections_description) { 
     if(!cJSON_IsString(slideshow_collections_description) && !cJSON_IsNull(slideshow_collections_description))
     {
@@ -397,6 +426,9 @@ product_group_promotion_t *product_group_promotion_parseFromJSON(cJSON *product_
 
     // product_group_promotion->is_mdl
     cJSON *is_mdl = cJSON_GetObjectItemCaseSensitive(product_group_promotionJSON, "is_mdl");
+    if (cJSON_IsNull(is_mdl)) {
+        is_mdl = NULL;
+    }
     if (is_mdl) { 
     if(!cJSON_IsBool(is_mdl))
     {
@@ -406,12 +438,18 @@ product_group_promotion_t *product_group_promotion_parseFromJSON(cJSON *product_
 
     // product_group_promotion->status
     cJSON *status = cJSON_GetObjectItemCaseSensitive(product_group_promotionJSON, "status");
+    if (cJSON_IsNull(status)) {
+        status = NULL;
+    }
     if (status) { 
     status_local_nonprim = entity_status_parseFromJSON(status); //custom
     }
 
     // product_group_promotion->tracking_url
     cJSON *tracking_url = cJSON_GetObjectItemCaseSensitive(product_group_promotionJSON, "tracking_url");
+    if (cJSON_IsNull(tracking_url)) {
+        tracking_url = NULL;
+    }
     if (tracking_url) { 
     if(!cJSON_IsString(tracking_url) && !cJSON_IsNull(tracking_url))
     {
@@ -421,6 +459,9 @@ product_group_promotion_t *product_group_promotion_parseFromJSON(cJSON *product_
 
     // product_group_promotion->catalog_product_group_id
     cJSON *catalog_product_group_id = cJSON_GetObjectItemCaseSensitive(product_group_promotionJSON, "catalog_product_group_id");
+    if (cJSON_IsNull(catalog_product_group_id)) {
+        catalog_product_group_id = NULL;
+    }
     if (catalog_product_group_id) { 
     if(!cJSON_IsString(catalog_product_group_id) && !cJSON_IsNull(catalog_product_group_id))
     {
@@ -430,6 +471,9 @@ product_group_promotion_t *product_group_promotion_parseFromJSON(cJSON *product_
 
     // product_group_promotion->catalog_product_group_name
     cJSON *catalog_product_group_name = cJSON_GetObjectItemCaseSensitive(product_group_promotionJSON, "catalog_product_group_name");
+    if (cJSON_IsNull(catalog_product_group_name)) {
+        catalog_product_group_name = NULL;
+    }
     if (catalog_product_group_name) { 
     if(!cJSON_IsString(catalog_product_group_name) && !cJSON_IsNull(catalog_product_group_name))
     {
@@ -439,6 +483,9 @@ product_group_promotion_t *product_group_promotion_parseFromJSON(cJSON *product_
 
     // product_group_promotion->collections_hero_pin_id
     cJSON *collections_hero_pin_id = cJSON_GetObjectItemCaseSensitive(product_group_promotionJSON, "collections_hero_pin_id");
+    if (cJSON_IsNull(collections_hero_pin_id)) {
+        collections_hero_pin_id = NULL;
+    }
     if (collections_hero_pin_id) { 
     if(!cJSON_IsString(collections_hero_pin_id) && !cJSON_IsNull(collections_hero_pin_id))
     {
@@ -448,6 +495,9 @@ product_group_promotion_t *product_group_promotion_parseFromJSON(cJSON *product_
 
     // product_group_promotion->collections_hero_destination_url
     cJSON *collections_hero_destination_url = cJSON_GetObjectItemCaseSensitive(product_group_promotionJSON, "collections_hero_destination_url");
+    if (cJSON_IsNull(collections_hero_destination_url)) {
+        collections_hero_destination_url = NULL;
+    }
     if (collections_hero_destination_url) { 
     if(!cJSON_IsString(collections_hero_destination_url) && !cJSON_IsNull(collections_hero_destination_url))
     {
@@ -457,12 +507,15 @@ product_group_promotion_t *product_group_promotion_parseFromJSON(cJSON *product_
 
     // product_group_promotion->grid_click_type
     cJSON *grid_click_type = cJSON_GetObjectItemCaseSensitive(product_group_promotionJSON, "grid_click_type");
+    if (cJSON_IsNull(grid_click_type)) {
+        grid_click_type = NULL;
+    }
     if (grid_click_type) { 
     grid_click_type_local_nonprim = grid_click_type_parseFromJSON(grid_click_type); //custom
     }
 
 
-    product_group_promotion_local_var = product_group_promotion_create (
+    product_group_promotion_local_var = product_group_promotion_create_internal (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         ad_group_id && !cJSON_IsNull(ad_group_id) ? strdup(ad_group_id->valuestring) : NULL,
         bid_in_micro_currency ? bid_in_micro_currency->valuedouble : 0,
@@ -473,24 +526,22 @@ product_group_promotion_t *product_group_promotion_parseFromJSON(cJSON *product_
         slideshow_collections_title && !cJSON_IsNull(slideshow_collections_title) ? strdup(slideshow_collections_title->valuestring) : NULL,
         slideshow_collections_description && !cJSON_IsNull(slideshow_collections_description) ? strdup(slideshow_collections_description->valuestring) : NULL,
         is_mdl ? is_mdl->valueint : 0,
-        status ? status_local_nonprim : NULL,
+        status ? status_local_nonprim : 0,
         tracking_url && !cJSON_IsNull(tracking_url) ? strdup(tracking_url->valuestring) : NULL,
         catalog_product_group_id && !cJSON_IsNull(catalog_product_group_id) ? strdup(catalog_product_group_id->valuestring) : NULL,
         catalog_product_group_name && !cJSON_IsNull(catalog_product_group_name) ? strdup(catalog_product_group_name->valuestring) : NULL,
         collections_hero_pin_id && !cJSON_IsNull(collections_hero_pin_id) ? strdup(collections_hero_pin_id->valuestring) : NULL,
         collections_hero_destination_url && !cJSON_IsNull(collections_hero_destination_url) ? strdup(collections_hero_destination_url->valuestring) : NULL,
-        grid_click_type ? grid_click_type_local_nonprim : NULL
+        grid_click_type ? grid_click_type_local_nonprim : 0
         );
 
     return product_group_promotion_local_var;
 end:
     if (status_local_nonprim) {
-        entity_status_free(status_local_nonprim);
-        status_local_nonprim = NULL;
+        status_local_nonprim = 0;
     }
     if (grid_click_type_local_nonprim) {
-        grid_click_type_free(grid_click_type_local_nonprim);
-        grid_click_type_local_nonprim = NULL;
+        grid_click_type_local_nonprim = 0;
     }
     return NULL;
 

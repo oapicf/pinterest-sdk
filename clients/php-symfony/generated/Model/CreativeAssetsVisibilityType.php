@@ -44,8 +44,8 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum CreativeAssetsVisibilityType: string
 {
-        case VISIBLE = "VISIBLE";
-        case HIDDEN = "HIDDEN";
+        case VISIBLE = 'VISIBLE';
+        case HIDDEN = 'HIDDEN';
 }
 
 

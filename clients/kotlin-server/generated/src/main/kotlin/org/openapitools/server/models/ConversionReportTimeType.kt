@@ -14,13 +14,13 @@ package org.openapitools.server.models
 
 /**
 * Conversion report time type
-* Values: AD_ACTION,CONVERSION
+* Values: TIME_OF_AD_ACTION,TIME_OF_CONVERSION
 */
 enum class ConversionReportTimeType(val value: kotlin.String) {
 
-    AD_ACTION("TIME_OF_AD_ACTION"),
+    TIME_OF_AD_ACTION("TIME_OF_AD_ACTION"),
 
-    CONVERSION("TIME_OF_CONVERSION");
+    TIME_OF_CONVERSION("TIME_OF_CONVERSION");
 
 }
 

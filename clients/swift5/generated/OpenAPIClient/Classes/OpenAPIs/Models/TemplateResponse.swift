@@ -1602,13 +1602,13 @@ public struct TemplateResponse: Codable, JSONEncodable, Hashable {
         case totalOfflineUnknownConversionProductCountUnique = "TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_COUNT_UNIQUE"
     }
     public enum ConversionReportTimeType: String, Codable, CaseIterable {
-        case adAction = "TIME_OF_AD_ACTION"
-        case conversion = "TIME_OF_CONVERSION"
+        case timeOfAdAction = "TIME_OF_AD_ACTION"
+        case timeOfConversion = "TIME_OF_CONVERSION"
     }
     public enum CreationSource: String, Codable, CaseIterable {
-        case api = "ADS_API"
-        case managerReportingPage = "ADS_MANAGER_REPORTING_PAGE"
-        case managerReportBuilder = "ADS_MANAGER_REPORT_BUILDER"
+        case adsApi = "ADS_API"
+        case adsManagerReportingPage = "ADS_MANAGER_REPORTING_PAGE"
+        case adsManagerReportBuilder = "ADS_MANAGER_REPORT_BUILDER"
     }
     public enum ModelType: String, Codable, CaseIterable {
         case unspecified = "UNSPECIFIED"
@@ -1758,3 +1758,6 @@ public struct TemplateResponse: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension TemplateResponse: Identifiable {}

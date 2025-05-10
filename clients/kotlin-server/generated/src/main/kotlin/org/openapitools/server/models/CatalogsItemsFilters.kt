@@ -16,6 +16,7 @@ import org.openapitools.server.models.CatalogsHotelItemsFilter
 import org.openapitools.server.models.CatalogsRetailItemsFilter
 import org.openapitools.server.models.CatalogsType
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param catalogType 
@@ -24,6 +25,7 @@ import org.openapitools.server.models.CatalogsType
  * @param creativeAssetsIds 
  * @param catalogId Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
  */
+@Serializable
 data class CatalogsItemsFilters(
     val catalogType: CatalogsType,
     val itemIds: kotlin.collections.List<kotlin.String>,
@@ -31,7 +33,7 @@ data class CatalogsItemsFilters(
     val creativeAssetsIds: kotlin.collections.List<kotlin.String>,
     /* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
     val catalogId: kotlin.String? = null
-) 
+)
 {
 }
 

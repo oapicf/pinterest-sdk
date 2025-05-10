@@ -177,10 +177,35 @@ ProductGroupPromotion <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return ProductGroupPromotion in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return ProductGroupPromotion as a base R list.
+    #' @examples
+    #' # convert array of ProductGroupPromotion (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert ProductGroupPromotion to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       ProductGroupPromotionObject <- list()
       if (!is.null(self$`id`)) {
         ProductGroupPromotionObject[["id"]] <-
@@ -224,7 +249,7 @@ ProductGroupPromotion <- R6::R6Class(
       }
       if (!is.null(self$`status`)) {
         ProductGroupPromotionObject[["status"]] <-
-          self$`status`$toJSON()
+          self$`status`$toSimpleType()
       }
       if (!is.null(self$`tracking_url`)) {
         ProductGroupPromotionObject[["tracking_url"]] <-
@@ -248,9 +273,9 @@ ProductGroupPromotion <- R6::R6Class(
       }
       if (!is.null(self$`grid_click_type`)) {
         ProductGroupPromotionObject[["grid_click_type"]] <-
-          self$`grid_click_type`$toJSON()
+          self$`grid_click_type`$toSimpleType()
       }
-      ProductGroupPromotionObject
+      return(ProductGroupPromotionObject)
     },
 
     #' @description
@@ -320,149 +345,13 @@ ProductGroupPromotion <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return ProductGroupPromotion in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`id`)) {
-          sprintf(
-          '"id":
-            "%s"
-                    ',
-          self$`id`
-          )
-        },
-        if (!is.null(self$`ad_group_id`)) {
-          sprintf(
-          '"ad_group_id":
-            "%s"
-                    ',
-          self$`ad_group_id`
-          )
-        },
-        if (!is.null(self$`bid_in_micro_currency`)) {
-          sprintf(
-          '"bid_in_micro_currency":
-            %d
-                    ',
-          self$`bid_in_micro_currency`
-          )
-        },
-        if (!is.null(self$`included`)) {
-          sprintf(
-          '"included":
-            %s
-                    ',
-          tolower(self$`included`)
-          )
-        },
-        if (!is.null(self$`definition`)) {
-          sprintf(
-          '"definition":
-            "%s"
-                    ',
-          self$`definition`
-          )
-        },
-        if (!is.null(self$`relative_definition`)) {
-          sprintf(
-          '"relative_definition":
-            "%s"
-                    ',
-          self$`relative_definition`
-          )
-        },
-        if (!is.null(self$`parent_id`)) {
-          sprintf(
-          '"parent_id":
-            "%s"
-                    ',
-          self$`parent_id`
-          )
-        },
-        if (!is.null(self$`slideshow_collections_title`)) {
-          sprintf(
-          '"slideshow_collections_title":
-            "%s"
-                    ',
-          self$`slideshow_collections_title`
-          )
-        },
-        if (!is.null(self$`slideshow_collections_description`)) {
-          sprintf(
-          '"slideshow_collections_description":
-            "%s"
-                    ',
-          self$`slideshow_collections_description`
-          )
-        },
-        if (!is.null(self$`is_mdl`)) {
-          sprintf(
-          '"is_mdl":
-            %s
-                    ',
-          tolower(self$`is_mdl`)
-          )
-        },
-        if (!is.null(self$`status`)) {
-          sprintf(
-          '"status":
-          %s
-          ',
-          jsonlite::toJSON(self$`status`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`tracking_url`)) {
-          sprintf(
-          '"tracking_url":
-            "%s"
-                    ',
-          self$`tracking_url`
-          )
-        },
-        if (!is.null(self$`catalog_product_group_id`)) {
-          sprintf(
-          '"catalog_product_group_id":
-            "%s"
-                    ',
-          self$`catalog_product_group_id`
-          )
-        },
-        if (!is.null(self$`catalog_product_group_name`)) {
-          sprintf(
-          '"catalog_product_group_name":
-            "%s"
-                    ',
-          self$`catalog_product_group_name`
-          )
-        },
-        if (!is.null(self$`collections_hero_pin_id`)) {
-          sprintf(
-          '"collections_hero_pin_id":
-            "%s"
-                    ',
-          self$`collections_hero_pin_id`
-          )
-        },
-        if (!is.null(self$`collections_hero_destination_url`)) {
-          sprintf(
-          '"collections_hero_destination_url":
-            "%s"
-                    ',
-          self$`collections_hero_destination_url`
-          )
-        },
-        if (!is.null(self$`grid_click_type`)) {
-          sprintf(
-          '"grid_click_type":
-          %s
-          ',
-          jsonlite::toJSON(self$`grid_click_type`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

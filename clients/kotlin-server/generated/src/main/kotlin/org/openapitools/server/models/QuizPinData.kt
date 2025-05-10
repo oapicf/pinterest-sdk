@@ -14,6 +14,7 @@ package org.openapitools.server.models
 import org.openapitools.server.models.QuizPinQuestion
 import org.openapitools.server.models.QuizPinResult
 
+import kotlinx.serialization.Serializable
 /**
  * This field includes all quiz data including questions, options, and results.
  * @param questions 
@@ -21,13 +22,14 @@ import org.openapitools.server.models.QuizPinResult
  * @param tieBreakerType Quiz ad tie breaker type, default is RANDOM
  * @param tieBreakerCustomResult 
  */
+@Serializable
 data class QuizPinData(
     val questions: kotlin.collections.List<QuizPinQuestion>? = null,
     val results: kotlin.collections.List<QuizPinResult>? = null,
     /* Quiz ad tie breaker type, default is RANDOM */
     val tieBreakerType: QuizPinData.TieBreakerType? = null,
     val tieBreakerCustomResult: QuizPinResult? = null
-) 
+)
 {
     /**
     * Quiz ad tie breaker type, default is RANDOM

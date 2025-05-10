@@ -76,11 +76,11 @@ export function QuizPinResultFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-  export function QuizPinResultToJSON(json: any): QuizPinResult {
-      return QuizPinResultToJSONTyped(json, false);
-  }
+export function QuizPinResultToJSON(json: any): QuizPinResult {
+    return QuizPinResultToJSONTyped(json, false);
+}
 
-  export function QuizPinResultToJSONTyped(value?: QuizPinResult | null, ignoreDiscriminator: boolean = false): any {
+export function QuizPinResultToJSONTyped(value?: QuizPinResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

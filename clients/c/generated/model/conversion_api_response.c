@@ -5,7 +5,7 @@
 
 
 
-conversion_api_response_t *conversion_api_response_create(
+static conversion_api_response_t *conversion_api_response_create_internal(
     int num_events_received,
     int num_events_processed,
     list_t *events
@@ -18,12 +18,28 @@ conversion_api_response_t *conversion_api_response_create(
     conversion_api_response_local_var->num_events_processed = num_events_processed;
     conversion_api_response_local_var->events = events;
 
+    conversion_api_response_local_var->_library_owned = 1;
     return conversion_api_response_local_var;
 }
 
+__attribute__((deprecated)) conversion_api_response_t *conversion_api_response_create(
+    int num_events_received,
+    int num_events_processed,
+    list_t *events
+    ) {
+    return conversion_api_response_create_internal (
+        num_events_received,
+        num_events_processed,
+        events
+        );
+}
 
 void conversion_api_response_free(conversion_api_response_t *conversion_api_response) {
     if(NULL == conversion_api_response){
+        return ;
+    }
+    if(conversion_api_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "conversion_api_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -95,6 +111,9 @@ conversion_api_response_t *conversion_api_response_parseFromJSON(cJSON *conversi
 
     // conversion_api_response->num_events_received
     cJSON *num_events_received = cJSON_GetObjectItemCaseSensitive(conversion_api_responseJSON, "num_events_received");
+    if (cJSON_IsNull(num_events_received)) {
+        num_events_received = NULL;
+    }
     if (!num_events_received) {
         goto end;
     }
@@ -107,6 +126,9 @@ conversion_api_response_t *conversion_api_response_parseFromJSON(cJSON *conversi
 
     // conversion_api_response->num_events_processed
     cJSON *num_events_processed = cJSON_GetObjectItemCaseSensitive(conversion_api_responseJSON, "num_events_processed");
+    if (cJSON_IsNull(num_events_processed)) {
+        num_events_processed = NULL;
+    }
     if (!num_events_processed) {
         goto end;
     }
@@ -119,6 +141,9 @@ conversion_api_response_t *conversion_api_response_parseFromJSON(cJSON *conversi
 
     // conversion_api_response->events
     cJSON *events = cJSON_GetObjectItemCaseSensitive(conversion_api_responseJSON, "events");
+    if (cJSON_IsNull(events)) {
+        events = NULL;
+    }
     if (!events) {
         goto end;
     }
@@ -142,7 +167,7 @@ conversion_api_response_t *conversion_api_response_parseFromJSON(cJSON *conversi
     }
 
 
-    conversion_api_response_local_var = conversion_api_response_create (
+    conversion_api_response_local_var = conversion_api_response_create_internal (
         num_events_received->valuedouble,
         num_events_processed->valuedouble,
         eventsList

@@ -122,9 +122,9 @@ class AudiencesApiSimulation extends Simulation {
         .feed(audiences/listPATHFeeder)
         .exec(http("audiencesList")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/audiences")
+        .queryParam("page_size","${page_size}")
         .queryParam("order","${order}")
         .queryParam("ownership_type","${ownership_type}")
-        .queryParam("page_size","${page_size}")
         .queryParam("bookmark","${bookmark}")
 )
 

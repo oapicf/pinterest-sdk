@@ -34,9 +34,10 @@ typedef struct campaign_create_common_t {
     int default_ad_group_budget_in_micro_currency; //numeric
     int is_automated_campaign; //boolean
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } campaign_create_common_t;
 
-campaign_create_common_t *campaign_create_common_create(
+__attribute__((deprecated)) campaign_create_common_t *campaign_create_common_create(
     char *ad_account_id,
     char *name,
     entity_status_t *status,

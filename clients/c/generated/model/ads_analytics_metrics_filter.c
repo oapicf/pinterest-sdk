@@ -4,44 +4,10 @@
 #include "ads_analytics_metrics_filter.h"
 
 
-char* ads_analytics_metrics_filter_field_ToString(pinterest_rest_api_ads_analytics_metrics_filter__e field) {
-    char* fieldArray[] =  { "NULL", "SPEND_IN_DOLLAR", "TOTAL_IMPRESSION" };
-    return fieldArray[field];
-}
 
-pinterest_rest_api_ads_analytics_metrics_filter__e ads_analytics_metrics_filter_field_FromString(char* field){
-    int stringToReturn = 0;
-    char *fieldArray[] =  { "NULL", "SPEND_IN_DOLLAR", "TOTAL_IMPRESSION" };
-    size_t sizeofArray = sizeof(fieldArray) / sizeof(fieldArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(field, fieldArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-char* ads_analytics_metrics_filter__operator_ToString(pinterest_rest_api_ads_analytics_metrics_filter__e _operator) {
-    char* _operatorArray[] =  { "NULL", "LESS_THAN", "GREATER_THAN" };
-    return _operatorArray[_operator];
-}
-
-pinterest_rest_api_ads_analytics_metrics_filter__e ads_analytics_metrics_filter__operator_FromString(char* _operator){
-    int stringToReturn = 0;
-    char *_operatorArray[] =  { "NULL", "LESS_THAN", "GREATER_THAN" };
-    size_t sizeofArray = sizeof(_operatorArray) / sizeof(_operatorArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(_operator, _operatorArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-
-ads_analytics_metrics_filter_t *ads_analytics_metrics_filter_create(
-    ads_analytics_filter_column_t *field,
-    ads_analytics_filter_operator_t *_operator,
+static ads_analytics_metrics_filter_t *ads_analytics_metrics_filter_create_internal(
+    pinterest_rest_api_ads_analytics_filter_column__e field,
+    pinterest_rest_api_ads_analytics_filter_operator__e _operator,
     list_t *values
     ) {
     ads_analytics_metrics_filter_t *ads_analytics_metrics_filter_local_var = malloc(sizeof(ads_analytics_metrics_filter_t));
@@ -52,23 +18,31 @@ ads_analytics_metrics_filter_t *ads_analytics_metrics_filter_create(
     ads_analytics_metrics_filter_local_var->_operator = _operator;
     ads_analytics_metrics_filter_local_var->values = values;
 
+    ads_analytics_metrics_filter_local_var->_library_owned = 1;
     return ads_analytics_metrics_filter_local_var;
 }
 
+__attribute__((deprecated)) ads_analytics_metrics_filter_t *ads_analytics_metrics_filter_create(
+    pinterest_rest_api_ads_analytics_filter_column__e field,
+    pinterest_rest_api_ads_analytics_filter_operator__e _operator,
+    list_t *values
+    ) {
+    return ads_analytics_metrics_filter_create_internal (
+        field,
+        _operator,
+        values
+        );
+}
 
 void ads_analytics_metrics_filter_free(ads_analytics_metrics_filter_t *ads_analytics_metrics_filter) {
     if(NULL == ads_analytics_metrics_filter){
         return ;
     }
+    if(ads_analytics_metrics_filter->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ads_analytics_metrics_filter_free");
+        return ;
+    }
     listEntry_t *listEntry;
-    if (ads_analytics_metrics_filter->field) {
-        ads_analytics_filter_column_free(ads_analytics_metrics_filter->field);
-        ads_analytics_metrics_filter->field = NULL;
-    }
-    if (ads_analytics_metrics_filter->_operator) {
-        ads_analytics_filter_operator_free(ads_analytics_metrics_filter->_operator);
-        ads_analytics_metrics_filter->_operator = NULL;
-    }
     if (ads_analytics_metrics_filter->values) {
         list_ForEach(listEntry, ads_analytics_metrics_filter->values) {
             free(listEntry->data);
@@ -83,7 +57,7 @@ cJSON *ads_analytics_metrics_filter_convertToJSON(ads_analytics_metrics_filter_t
     cJSON *item = cJSON_CreateObject();
 
     // ads_analytics_metrics_filter->field
-    if (pinterest_rest_api_ads_analytics_metrics_filter__NULL == ads_analytics_metrics_filter->field) {
+    if (pinterest_rest_api_ads_analytics_filter_column__NULL == ads_analytics_metrics_filter->field) {
         goto fail;
     }
     cJSON *field_local_JSON = ads_analytics_filter_column_convertToJSON(ads_analytics_metrics_filter->field);
@@ -97,7 +71,7 @@ cJSON *ads_analytics_metrics_filter_convertToJSON(ads_analytics_metrics_filter_t
 
 
     // ads_analytics_metrics_filter->_operator
-    if (pinterest_rest_api_ads_analytics_metrics_filter__NULL == ads_analytics_metrics_filter->_operator) {
+    if (pinterest_rest_api_ads_analytics_filter_operator__NULL == ads_analytics_metrics_filter->_operator) {
         goto fail;
     }
     cJSON *_operator_local_JSON = ads_analytics_filter_operator_convertToJSON(ads_analytics_metrics_filter->_operator);
@@ -140,16 +114,19 @@ ads_analytics_metrics_filter_t *ads_analytics_metrics_filter_parseFromJSON(cJSON
     ads_analytics_metrics_filter_t *ads_analytics_metrics_filter_local_var = NULL;
 
     // define the local variable for ads_analytics_metrics_filter->field
-    ads_analytics_filter_column_t *field_local_nonprim = NULL;
+    pinterest_rest_api_ads_analytics_filter_column__e field_local_nonprim = 0;
 
     // define the local variable for ads_analytics_metrics_filter->_operator
-    ads_analytics_filter_operator_t *_operator_local_nonprim = NULL;
+    pinterest_rest_api_ads_analytics_filter_operator__e _operator_local_nonprim = 0;
 
     // define the local list for ads_analytics_metrics_filter->values
     list_t *valuesList = NULL;
 
     // ads_analytics_metrics_filter->field
     cJSON *field = cJSON_GetObjectItemCaseSensitive(ads_analytics_metrics_filterJSON, "field");
+    if (cJSON_IsNull(field)) {
+        field = NULL;
+    }
     if (!field) {
         goto end;
     }
@@ -159,6 +136,9 @@ ads_analytics_metrics_filter_t *ads_analytics_metrics_filter_parseFromJSON(cJSON
 
     // ads_analytics_metrics_filter->_operator
     cJSON *_operator = cJSON_GetObjectItemCaseSensitive(ads_analytics_metrics_filterJSON, "operator");
+    if (cJSON_IsNull(_operator)) {
+        _operator = NULL;
+    }
     if (!_operator) {
         goto end;
     }
@@ -168,6 +148,9 @@ ads_analytics_metrics_filter_t *ads_analytics_metrics_filter_parseFromJSON(cJSON
 
     // ads_analytics_metrics_filter->values
     cJSON *values = cJSON_GetObjectItemCaseSensitive(ads_analytics_metrics_filterJSON, "values");
+    if (cJSON_IsNull(values)) {
+        values = NULL;
+    }
     if (!values) {
         goto end;
     }
@@ -185,7 +168,7 @@ ads_analytics_metrics_filter_t *ads_analytics_metrics_filter_parseFromJSON(cJSON
         {
             goto end;
         }
-        double *values_local_value = (double *)calloc(1, sizeof(double));
+        double *values_local_value = calloc(1, sizeof(double));
         if(!values_local_value)
         {
             goto end;
@@ -195,7 +178,7 @@ ads_analytics_metrics_filter_t *ads_analytics_metrics_filter_parseFromJSON(cJSON
     }
 
 
-    ads_analytics_metrics_filter_local_var = ads_analytics_metrics_filter_create (
+    ads_analytics_metrics_filter_local_var = ads_analytics_metrics_filter_create_internal (
         field_local_nonprim,
         _operator_local_nonprim,
         valuesList
@@ -204,12 +187,10 @@ ads_analytics_metrics_filter_t *ads_analytics_metrics_filter_parseFromJSON(cJSON
     return ads_analytics_metrics_filter_local_var;
 end:
     if (field_local_nonprim) {
-        ads_analytics_filter_column_free(field_local_nonprim);
-        field_local_nonprim = NULL;
+        field_local_nonprim = 0;
     }
     if (_operator_local_nonprim) {
-        ads_analytics_filter_operator_free(_operator_local_nonprim);
-        _operator_local_nonprim = NULL;
+        _operator_local_nonprim = 0;
     }
     if (valuesList) {
         listEntry_t *listEntry = NULL;

@@ -22,7 +22,7 @@ pinterest_rest_api_create_asset_access_request_body_asset_requests_inner_INNER_e
     return 0;
 }
 
-create_asset_access_request_body_asset_requests_inner_t *create_asset_access_request_body_asset_requests_inner_create(
+static create_asset_access_request_body_asset_requests_inner_t *create_asset_access_request_body_asset_requests_inner_create_internal(
     char *partner_id,
     list_t* asset_id_to_permissions
     ) {
@@ -33,12 +33,26 @@ create_asset_access_request_body_asset_requests_inner_t *create_asset_access_req
     create_asset_access_request_body_asset_requests_inner_local_var->partner_id = partner_id;
     create_asset_access_request_body_asset_requests_inner_local_var->asset_id_to_permissions = asset_id_to_permissions;
 
+    create_asset_access_request_body_asset_requests_inner_local_var->_library_owned = 1;
     return create_asset_access_request_body_asset_requests_inner_local_var;
 }
 
+__attribute__((deprecated)) create_asset_access_request_body_asset_requests_inner_t *create_asset_access_request_body_asset_requests_inner_create(
+    char *partner_id,
+    list_t* asset_id_to_permissions
+    ) {
+    return create_asset_access_request_body_asset_requests_inner_create_internal (
+        partner_id,
+        asset_id_to_permissions
+        );
+}
 
 void create_asset_access_request_body_asset_requests_inner_free(create_asset_access_request_body_asset_requests_inner_t *create_asset_access_request_body_asset_requests_inner) {
     if(NULL == create_asset_access_request_body_asset_requests_inner){
+        return ;
+    }
+    if(create_asset_access_request_body_asset_requests_inner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "create_asset_access_request_body_asset_requests_inner_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -48,7 +62,7 @@ void create_asset_access_request_body_asset_requests_inner_free(create_asset_acc
     }
     if (create_asset_access_request_body_asset_requests_inner->asset_id_to_permissions) {
         list_ForEach(listEntry, create_asset_access_request_body_asset_requests_inner->asset_id_to_permissions) {
-            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            keyValuePair_t *localKeyValue = listEntry->data;
             free (localKeyValue->key);
             free (localKeyValue->value);
             keyValuePair_free(localKeyValue);
@@ -83,7 +97,7 @@ cJSON *create_asset_access_request_body_asset_requests_inner_convertToJSON(creat
     listEntry_t *asset_id_to_permissionsListEntry;
     if (create_asset_access_request_body_asset_requests_inner->asset_id_to_permissions) {
     list_ForEach(asset_id_to_permissionsListEntry, create_asset_access_request_body_asset_requests_inner->asset_id_to_permissions) {
-        keyValuePair_t *localKeyValue = (keyValuePair_t*)asset_id_to_permissionsListEntry->data;
+        keyValuePair_t *localKeyValue = asset_id_to_permissionsListEntry->data;
     }
     }
 
@@ -104,6 +118,9 @@ create_asset_access_request_body_asset_requests_inner_t *create_asset_access_req
 
     // create_asset_access_request_body_asset_requests_inner->partner_id
     cJSON *partner_id = cJSON_GetObjectItemCaseSensitive(create_asset_access_request_body_asset_requests_innerJSON, "partner_id");
+    if (cJSON_IsNull(partner_id)) {
+        partner_id = NULL;
+    }
     if (!partner_id) {
         goto end;
     }
@@ -116,6 +133,9 @@ create_asset_access_request_body_asset_requests_inner_t *create_asset_access_req
 
     // create_asset_access_request_body_asset_requests_inner->asset_id_to_permissions
     cJSON *asset_id_to_permissions = cJSON_GetObjectItemCaseSensitive(create_asset_access_request_body_asset_requests_innerJSON, "asset_id_to_permissions");
+    if (cJSON_IsNull(asset_id_to_permissions)) {
+        asset_id_to_permissions = NULL;
+    }
     if (!asset_id_to_permissions) {
         goto end;
     }
@@ -138,7 +158,7 @@ create_asset_access_request_body_asset_requests_inner_t *create_asset_access_req
     }
 
 
-    create_asset_access_request_body_asset_requests_inner_local_var = create_asset_access_request_body_asset_requests_inner_create (
+    create_asset_access_request_body_asset_requests_inner_local_var = create_asset_access_request_body_asset_requests_inner_create_internal (
         strdup(partner_id->valuestring),
         asset_id_to_permissionsList
         );
@@ -148,7 +168,7 @@ end:
     if (asset_id_to_permissionsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, asset_id_to_permissionsList) {
-            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            keyValuePair_t *localKeyValue = listEntry->data;
             free(localKeyValue->key);
             localKeyValue->key = NULL;
             keyValuePair_free(localKeyValue);

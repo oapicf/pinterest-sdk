@@ -49,32 +49,37 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * The result, and link out, based on the user’s choice.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class QuizPinResult {
   public static final String SERIALIZED_NAME_ORGANIC_PIN_ID = "organic_pin_id";
   @SerializedName(SERIALIZED_NAME_ORGANIC_PIN_ID)
+  @javax.annotation.Nullable
   private String organicPinId;
 
   public static final String SERIALIZED_NAME_ANDROID_DEEP_LINK = "android_deep_link";
   @SerializedName(SERIALIZED_NAME_ANDROID_DEEP_LINK)
+  @javax.annotation.Nullable
   private String androidDeepLink;
 
   public static final String SERIALIZED_NAME_IOS_DEEP_LINK = "ios_deep_link";
   @SerializedName(SERIALIZED_NAME_IOS_DEEP_LINK)
+  @javax.annotation.Nullable
   private String iosDeepLink;
 
   public static final String SERIALIZED_NAME_DESTINATION_URL = "destination_url";
   @SerializedName(SERIALIZED_NAME_DESTINATION_URL)
+  @javax.annotation.Nullable
   private String destinationUrl;
 
   public static final String SERIALIZED_NAME_RESULT_ID = "result_id";
   @SerializedName(SERIALIZED_NAME_RESULT_ID)
+  @javax.annotation.Nullable
   private BigDecimal resultId;
 
   public QuizPinResult() {
   }
 
-  public QuizPinResult organicPinId(String organicPinId) {
+  public QuizPinResult organicPinId(@javax.annotation.Nullable String organicPinId) {
     this.organicPinId = organicPinId;
     return this;
   }
@@ -88,12 +93,12 @@ public class QuizPinResult {
     return organicPinId;
   }
 
-  public void setOrganicPinId(String organicPinId) {
+  public void setOrganicPinId(@javax.annotation.Nullable String organicPinId) {
     this.organicPinId = organicPinId;
   }
 
 
-  public QuizPinResult androidDeepLink(String androidDeepLink) {
+  public QuizPinResult androidDeepLink(@javax.annotation.Nullable String androidDeepLink) {
     this.androidDeepLink = androidDeepLink;
     return this;
   }
@@ -107,12 +112,12 @@ public class QuizPinResult {
     return androidDeepLink;
   }
 
-  public void setAndroidDeepLink(String androidDeepLink) {
+  public void setAndroidDeepLink(@javax.annotation.Nullable String androidDeepLink) {
     this.androidDeepLink = androidDeepLink;
   }
 
 
-  public QuizPinResult iosDeepLink(String iosDeepLink) {
+  public QuizPinResult iosDeepLink(@javax.annotation.Nullable String iosDeepLink) {
     this.iosDeepLink = iosDeepLink;
     return this;
   }
@@ -126,12 +131,12 @@ public class QuizPinResult {
     return iosDeepLink;
   }
 
-  public void setIosDeepLink(String iosDeepLink) {
+  public void setIosDeepLink(@javax.annotation.Nullable String iosDeepLink) {
     this.iosDeepLink = iosDeepLink;
   }
 
 
-  public QuizPinResult destinationUrl(String destinationUrl) {
+  public QuizPinResult destinationUrl(@javax.annotation.Nullable String destinationUrl) {
     this.destinationUrl = destinationUrl;
     return this;
   }
@@ -145,12 +150,12 @@ public class QuizPinResult {
     return destinationUrl;
   }
 
-  public void setDestinationUrl(String destinationUrl) {
+  public void setDestinationUrl(@javax.annotation.Nullable String destinationUrl) {
     this.destinationUrl = destinationUrl;
   }
 
 
-  public QuizPinResult resultId(BigDecimal resultId) {
+  public QuizPinResult resultId(@javax.annotation.Nullable BigDecimal resultId) {
     this.resultId = resultId;
     return this;
   }
@@ -164,7 +169,7 @@ public class QuizPinResult {
     return resultId;
   }
 
-  public void setResultId(BigDecimal resultId) {
+  public void setResultId(@javax.annotation.Nullable BigDecimal resultId) {
     this.resultId = resultId;
   }
 

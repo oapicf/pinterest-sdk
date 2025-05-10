@@ -52,44 +52,52 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Pin fields for updates
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinUpdate {
   public static final String SERIALIZED_NAME_ALT_TEXT = "alt_text";
   @SerializedName(SERIALIZED_NAME_ALT_TEXT)
+  @javax.annotation.Nullable
   private String altText;
 
   public static final String SERIALIZED_NAME_BOARD_ID = "board_id";
   @SerializedName(SERIALIZED_NAME_BOARD_ID)
+  @javax.annotation.Nullable
   private String boardId;
 
   public static final String SERIALIZED_NAME_BOARD_SECTION_ID = "board_section_id";
   @SerializedName(SERIALIZED_NAME_BOARD_SECTION_ID)
+  @javax.annotation.Nullable
   private String boardSectionId;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nullable
   private String description;
 
   public static final String SERIALIZED_NAME_LINK = "link";
   @SerializedName(SERIALIZED_NAME_LINK)
+  @javax.annotation.Nullable
   private String link;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
+  @javax.annotation.Nullable
   private String title;
 
   public static final String SERIALIZED_NAME_CAROUSEL_SLOTS = "carousel_slots";
   @SerializedName(SERIALIZED_NAME_CAROUSEL_SLOTS)
+  @javax.annotation.Nullable
   private List<PinUpdateCarouselSlotsInner> carouselSlots = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_NOTE = "note";
   @SerializedName(SERIALIZED_NAME_NOTE)
+  @javax.annotation.Nullable
   private String note;
 
   public PinUpdate() {
   }
 
-  public PinUpdate altText(String altText) {
+  public PinUpdate altText(@javax.annotation.Nullable String altText) {
     this.altText = altText;
     return this;
   }
@@ -103,12 +111,12 @@ public class PinUpdate {
     return altText;
   }
 
-  public void setAltText(String altText) {
+  public void setAltText(@javax.annotation.Nullable String altText) {
     this.altText = altText;
   }
 
 
-  public PinUpdate boardId(String boardId) {
+  public PinUpdate boardId(@javax.annotation.Nullable String boardId) {
     this.boardId = boardId;
     return this;
   }
@@ -122,12 +130,12 @@ public class PinUpdate {
     return boardId;
   }
 
-  public void setBoardId(String boardId) {
+  public void setBoardId(@javax.annotation.Nullable String boardId) {
     this.boardId = boardId;
   }
 
 
-  public PinUpdate boardSectionId(String boardSectionId) {
+  public PinUpdate boardSectionId(@javax.annotation.Nullable String boardSectionId) {
     this.boardSectionId = boardSectionId;
     return this;
   }
@@ -141,12 +149,12 @@ public class PinUpdate {
     return boardSectionId;
   }
 
-  public void setBoardSectionId(String boardSectionId) {
+  public void setBoardSectionId(@javax.annotation.Nullable String boardSectionId) {
     this.boardSectionId = boardSectionId;
   }
 
 
-  public PinUpdate description(String description) {
+  public PinUpdate description(@javax.annotation.Nullable String description) {
     this.description = description;
     return this;
   }
@@ -160,12 +168,12 @@ public class PinUpdate {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
 
-  public PinUpdate link(String link) {
+  public PinUpdate link(@javax.annotation.Nullable String link) {
     this.link = link;
     return this;
   }
@@ -179,12 +187,12 @@ public class PinUpdate {
     return link;
   }
 
-  public void setLink(String link) {
+  public void setLink(@javax.annotation.Nullable String link) {
     this.link = link;
   }
 
 
-  public PinUpdate title(String title) {
+  public PinUpdate title(@javax.annotation.Nullable String title) {
     this.title = title;
     return this;
   }
@@ -198,12 +206,12 @@ public class PinUpdate {
     return title;
   }
 
-  public void setTitle(String title) {
+  public void setTitle(@javax.annotation.Nullable String title) {
     this.title = title;
   }
 
 
-  public PinUpdate carouselSlots(List<PinUpdateCarouselSlotsInner> carouselSlots) {
+  public PinUpdate carouselSlots(@javax.annotation.Nullable List<PinUpdateCarouselSlotsInner> carouselSlots) {
     this.carouselSlots = carouselSlots;
     return this;
   }
@@ -225,12 +233,12 @@ public class PinUpdate {
     return carouselSlots;
   }
 
-  public void setCarouselSlots(List<PinUpdateCarouselSlotsInner> carouselSlots) {
+  public void setCarouselSlots(@javax.annotation.Nullable List<PinUpdateCarouselSlotsInner> carouselSlots) {
     this.carouselSlots = carouselSlots;
   }
 
 
-  public PinUpdate note(String note) {
+  public PinUpdate note(@javax.annotation.Nullable String note) {
     this.note = note;
     return this;
   }
@@ -244,7 +252,7 @@ public class PinUpdate {
     return note;
   }
 
-  public void setNote(String note) {
+  public void setNote(@javax.annotation.Nullable String note) {
     this.note = note;
   }
 

@@ -77,11 +77,11 @@ export function AssetIdPermissionsFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-  export function AssetIdPermissionsToJSON(json: any): AssetIdPermissions {
-      return AssetIdPermissionsToJSONTyped(json, false);
-  }
+export function AssetIdPermissionsToJSON(json: any): AssetIdPermissions {
+    return AssetIdPermissionsToJSONTyped(json, false);
+}
 
-  export function AssetIdPermissionsToJSONTyped(value?: AssetIdPermissions | null, ignoreDiscriminator: boolean = false): any {
+export function AssetIdPermissionsToJSONTyped(value?: AssetIdPermissions | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

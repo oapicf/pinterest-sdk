@@ -49,20 +49,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ID of the bulk request.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BulkUpsertStatusResponse {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private BulkUpsertStatus status;
 
   public static final String SERIALIZED_NAME_RESULT_URL = "result_url";
   @SerializedName(SERIALIZED_NAME_RESULT_URL)
+  @javax.annotation.Nullable
   private String resultUrl;
 
   public BulkUpsertStatusResponse() {
   }
 
-  public BulkUpsertStatusResponse status(BulkUpsertStatus status) {
+  public BulkUpsertStatusResponse status(@javax.annotation.Nullable BulkUpsertStatus status) {
     this.status = status;
     return this;
   }
@@ -76,12 +78,12 @@ public class BulkUpsertStatusResponse {
     return status;
   }
 
-  public void setStatus(BulkUpsertStatus status) {
+  public void setStatus(@javax.annotation.Nullable BulkUpsertStatus status) {
     this.status = status;
   }
 
 
-  public BulkUpsertStatusResponse resultUrl(String resultUrl) {
+  public BulkUpsertStatusResponse resultUrl(@javax.annotation.Nullable String resultUrl) {
     this.resultUrl = resultUrl;
     return this;
   }
@@ -95,7 +97,7 @@ public class BulkUpsertStatusResponse {
     return resultUrl;
   }
 
-  public void setResultUrl(String resultUrl) {
+  public void setResultUrl(@javax.annotation.Nullable String resultUrl) {
     this.resultUrl = resultUrl;
   }
 

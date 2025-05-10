@@ -66,7 +66,7 @@ class TopPinsAnalyticsResponse
      * @SerializedName("sort_by")
      * @Type("string")
     */
-    #[Assert\Choice(["ENGAGEMENT", "SAVE", "IMPRESSION", "OUTBOUND_CLICK", "PIN_CLICK"])]
+    #[Assert\Choice(['ENGAGEMENT', 'SAVE', 'IMPRESSION', 'OUTBOUND_CLICK', 'PIN_CLICK'])]
     #[Assert\Type("string")]
     protected ?string $sortBy = null;
 
@@ -74,7 +74,7 @@ class TopPinsAnalyticsResponse
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->dateAvailability = array_key_exists('dateAvailability', $data) ? $data['dateAvailability'] : $this->dateAvailability;

@@ -802,7 +802,6 @@ stringFromColumns model =
 
 
 
-
 type ClickWindowDays
     = ClickWindowDays0
     | ClickWindowDays1
@@ -843,7 +842,6 @@ stringFromClickWindowDays model =
 
         ClickWindowDays60 ->
             60
-
 
 
 
@@ -890,7 +888,6 @@ stringFromEngagementWindowDays model =
 
 
 
-
 type ViewWindowDays
     = ViewWindowDays0
     | ViewWindowDays1
@@ -934,28 +931,26 @@ stringFromViewWindowDays model =
 
 
 
-
 type ConversionReportTime
-    = ConversionReportTimeADACTION
-    | ConversionReportTimeCONVERSION
+    = ConversionReportTimeTIMEOFADACTION
+    | ConversionReportTimeTIMEOFCONVERSION
 
 
 conversionReportTimeVariants : List ConversionReportTime
 conversionReportTimeVariants =
-    [ ConversionReportTimeADACTION
-    , ConversionReportTimeCONVERSION
+    [ ConversionReportTimeTIMEOFADACTION
+    , ConversionReportTimeTIMEOFCONVERSION
     ]
 
 
 stringFromConversionReportTime : ConversionReportTime -> String
 stringFromConversionReportTime model =
     case model of
-        ConversionReportTimeADACTION ->
+        ConversionReportTimeTIMEOFADACTION ->
             "TIME_OF_AD_ACTION"
 
-        ConversionReportTimeCONVERSION ->
+        ConversionReportTimeTIMEOFCONVERSION ->
             "TIME_OF_CONVERSION"
-
 
 
 
@@ -997,7 +992,6 @@ stringFromEntityStatuses model =
 
 
 
-
 type Order_
     = Order_ASCENDING
     | Order_DESCENDING
@@ -1018,7 +1012,6 @@ stringFromOrder_ model =
 
         Order_DESCENDING ->
             "DESCENDING"
-
 
 
 
@@ -1790,7 +1783,6 @@ stringFromColumns model =
 
 
 
-
 type ClickWindowDays
     = ClickWindowDays0
     | ClickWindowDays1
@@ -1831,7 +1823,6 @@ stringFromClickWindowDays model =
 
         ClickWindowDays60 ->
             60
-
 
 
 
@@ -1878,7 +1869,6 @@ stringFromEngagementWindowDays model =
 
 
 
-
 type ViewWindowDays
     = ViewWindowDays0
     | ViewWindowDays1
@@ -1922,136 +1912,159 @@ stringFromViewWindowDays model =
 
 
 
-
 type ConversionReportTime
-    = ConversionReportTimeADACTION
-    | ConversionReportTimeCONVERSION
+    = ConversionReportTimeTIMEOFADACTION
+    | ConversionReportTimeTIMEOFCONVERSION
 
 
 conversionReportTimeVariants : List ConversionReportTime
 conversionReportTimeVariants =
-    [ ConversionReportTimeADACTION
-    , ConversionReportTimeCONVERSION
+    [ ConversionReportTimeTIMEOFADACTION
+    , ConversionReportTimeTIMEOFCONVERSION
     ]
 
 
 stringFromConversionReportTime : ConversionReportTime -> String
 stringFromConversionReportTime model =
     case model of
-        ConversionReportTimeADACTION ->
+        ConversionReportTimeTIMEOFADACTION ->
             "TIME_OF_AD_ACTION"
 
-        ConversionReportTimeCONVERSION ->
+        ConversionReportTimeTIMEOFCONVERSION ->
             "TIME_OF_CONVERSION"
 
 
 
-{-| Get analytics for the specified ad groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+{-| Get ad group analytics
+
+Get analytics for the specified ad groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+
 -}
 adGroupsAnalytics : String -> Posix -> Posix -> List String -> List Columns -> Granularity -> Maybe ClickWindowDays -> Maybe EngagementWindowDays -> Maybe ViewWindowDays -> Maybe ConversionReportTime -> Api.Request (List AdGroupsAnalyticsResponseInner)
 adGroupsAnalytics adAccountId_path startDate_query endDate_query adGroupIds_query columns_query granularity_query clickWindowDays_query engagementWindowDays_query viewWindowDays_query conversionReportTime_query =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/ad_groups/analytics"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         [ ( "start_date", Just <| Api.Time.dateToString startDate_query ), ( "end_date", Just <| Api.Time.dateToString endDate_query ), ( "ad_group_ids", Just <| (String.join "," << List.map identity) adGroupIds_query ), ( "columns", Just <| (String.join "," << List.map stringFromColumns) columns_query ), ( "granularity", Just <| Api.Data.stringFromGranularity granularity_query ), ( "click_window_days", Maybe.map String.fromInt stringFromClickWindowDays clickWindowDays_query ), ( "engagement_window_days", Maybe.map String.fromInt stringFromEngagementWindowDays engagementWindowDays_query ), ( "view_window_days", Maybe.map String.fromInt stringFromViewWindowDays viewWindowDays_query ), ( "conversion_report_time", Maybe.map stringFromConversionReportTime conversionReportTime_query ) ]
         []
         Nothing
         (Json.Decode.list Api.Data.adGroupsAnalyticsResponseInnerDecoder)
 
 
-{-| Get potential audience size for an ad group with given targeting criteria.  Potential audience size estimates the number of people you may be able to reach per month with your campaign.  It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.
+{-| Get audience sizing
+
+Get potential audience size for an ad group with given targeting criteria.  Potential audience size estimates the number of people you may be able to reach per month with your campaign.  It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.
+
 -}
 adGroupsAudienceSizing : String -> Maybe Api.Data.AdGroupAudienceSizingRequest -> Api.Request Api.Data.AdGroupAudienceSizingResponse
 adGroupsAudienceSizing adAccountId_path adGroupAudienceSizingRequest_body =
     Api.request
         "POST"
         "/ad_accounts/{ad_account_id}/ad_groups/audience_sizing"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Maybe.map Api.Data.encodeAdGroupAudienceSizingRequest adGroupAudienceSizingRequest_body))
         Api.Data.adGroupAudienceSizingResponseDecoder
 
 
-{-| List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li>  </ul> For more on bid floors see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-your-bid\"> Set your bid</a>.
+{-| Get bid floors
+
+List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li>  </ul> For more on bid floors see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-your-bid\"> Set your bid</a>.
+
 -}
 adGroupsBidFloorGet : String -> Api.Data.BidFloorRequest -> Api.Request Api.Data.BidFloor
 adGroupsBidFloorGet adAccountId_path bidFloorRequest_body =
     Api.request
         "POST"
         "/ad_accounts/{ad_account_id}/bid_floor"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Just (Api.Data.encodeBidFloorRequest bidFloorRequest_body)))
         Api.Data.bidFloorDecoder
 
 
-{-| Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, <a href=\"https://help.pinterest.com/en/business/article/campaign-structure\" target=\"_blank\"> click here</a>.</p> <strong>Note:</strong> - 'bid_in_micro_currency' and 'budget_in_micro_currency' should be expressed in microcurrency amounts based on the currency field set in the advertiser's profile.<p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>  <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Start and end time cannot be set for ad groups that belong to CBO campaigns. Currently, campaigns with the following objective types: TRAFFIC, AWARENESS, WEB_CONVERSIONS, and CATALOG_SALES will default to CBO.
+{-| Create ad groups
+
+Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, <a href=\"https://help.pinterest.com/en/business/article/campaign-structure\" target=\"_blank\"> click here</a>.</p> <strong>Note:</strong> - 'bid_in_micro_currency' and 'budget_in_micro_currency' should be expressed in microcurrency amounts based on the currency field set in the advertiser's profile.<p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>  <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Start and end time cannot be set for ad groups that belong to CBO campaigns. Currently, campaigns with the following objective types: TRAFFIC, AWARENESS, WEB_CONVERSIONS, and CATALOG_SALES will default to CBO.
+
 -}
 adGroupsCreate : String -> List Api.Data.AdGroupCreateRequest -> Api.Request Api.Data.AdGroupArrayResponse
 adGroupsCreate adAccountId_path adGroupCreateRequest_body =
     Api.request
         "POST"
         "/ad_accounts/{ad_account_id}/ad_groups"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Just (Json.Encode.list encodeAdGroupCreateRequest adGroupCreateRequest_body)))
         Api.Data.adGroupArrayResponseDecoder
 
 
-{-| Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will contain additional information from the Ad Review process. For more information about our policies and rejection reasons see the <a href=\"https://www.pinterest.com/_/_/policy/advertising-guidelines/\" target=\"_blank\">Pinterest advertising standards</a>.
+{-| Get ad group
+
+Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will contain additional information from the Ad Review process. For more information about our policies and rejection reasons see the <a href=\"https://www.pinterest.com/_/_/policy/advertising-guidelines/\" target=\"_blank\">Pinterest advertising standards</a>.
+
 -}
 adGroupsGet : String -> String -> Api.Request Api.Data.AdGroupResponse
 adGroupsGet adAccountId_path adGroupId_path =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}"
-        [ ( "adAccountId", identity adAccountId_path ), ( "adGroupId", identity adGroupId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ), ( "ad_group_id", identity adGroupId_path ) ]
         []
         []
         Nothing
         Api.Data.adGroupResponseDecoder
 
 
-{-| List ad groups based on provided campaign IDs or ad group IDs.(campaign_ids or ad_group_ids). <p/> <strong>Note:</strong><p/> Provide only campaign_id or ad_group_id. Do not provide both.
+{-| List ad groups
+
+List ad groups based on provided campaign IDs or ad group IDs.(campaign_ids or ad_group_ids). <p/> <strong>Note:</strong><p/> Provide only campaign_id or ad_group_id. Do not provide both.
+
 -}
 adGroupsList : String -> Maybe (List String) -> Maybe (List String) -> Maybe (List EntityStatuses) -> Maybe Int -> Maybe Order_ -> Maybe String -> Maybe Bool -> Api.Request Api.Data.AdGroupsList200Response
 adGroupsList adAccountId_path campaignIds_query adGroupIds_query entityStatuses_query pageSize_query order_query bookmark_query translateInterestsToNames_query =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/ad_groups"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         [ ( "campaign_ids", Maybe.map (String.join "," << List.map identity) campaignIds_query ), ( "ad_group_ids", Maybe.map (String.join "," << List.map identity) adGroupIds_query ), ( "entity_statuses", Maybe.map (String.join "," << List.map stringFromEntityStatuses) entityStatuses_query ), ( "page_size", Maybe.map String.fromInt pageSize_query ), ( "order", Maybe.map stringFromOrder_ order_query ), ( "bookmark", Maybe.map identity bookmark_query ), ( "translate_interests_to_names", Maybe.map (\val -> if val then "true" else "false") translateInterestsToNames_query ) ]
         []
         Nothing
         Api.Data.adGroupsList200ResponseDecoder
 
 
-{-| Get targeting analytics for one or more ad groups. For the requested ad group(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+{-| Get targeting analytics for ad groups
+
+Get targeting analytics for one or more ad groups. For the requested ad group(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+
 -}
 adGroupsTargetingAnalyticsGet : String -> List String -> Posix -> Posix -> List AdsAnalyticsTargetingType -> List Columns -> Granularity -> Maybe ClickWindowDays -> Maybe EngagementWindowDays -> Maybe ViewWindowDays -> Maybe ConversionReportTime -> Maybe ConversionReportAttributionType -> Api.Request Api.Data.MetricsResponse
 adGroupsTargetingAnalyticsGet adAccountId_path adGroupIds_query startDate_query endDate_query targetingTypes_query columns_query granularity_query clickWindowDays_query engagementWindowDays_query viewWindowDays_query conversionReportTime_query attributionTypes_query =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/ad_groups/targeting_analytics"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         [ ( "ad_group_ids", Just <| (String.join "," << List.map identity) adGroupIds_query ), ( "start_date", Just <| Api.Time.dateToString startDate_query ), ( "end_date", Just <| Api.Time.dateToString endDate_query ), ( "targeting_types", Just <| (String.join "," << List.map Api.Data.stringFromAdsAnalyticsTargetingType) targetingTypes_query ), ( "columns", Just <| (String.join "," << List.map stringFromColumns) columns_query ), ( "granularity", Just <| Api.Data.stringFromGranularity granularity_query ), ( "click_window_days", Maybe.map String.fromInt stringFromClickWindowDays clickWindowDays_query ), ( "engagement_window_days", Maybe.map String.fromInt stringFromEngagementWindowDays engagementWindowDays_query ), ( "view_window_days", Maybe.map String.fromInt stringFromViewWindowDays viewWindowDays_query ), ( "conversion_report_time", Maybe.map stringFromConversionReportTime conversionReportTime_query ), ( "attribution_types", Maybe.map Api.Data.stringFromConversionReportAttributionType attributionTypes_query ) ]
         []
         Nothing
         Api.Data.metricsResponseDecoder
 
 
-{-| Update multiple existing ad groups.
+{-| Update ad groups
+
+Update multiple existing ad groups.
+
 -}
 adGroupsUpdate : String -> List Api.Data.AdGroupUpdateRequest -> Api.Request Api.Data.AdGroupArrayResponse
 adGroupsUpdate adAccountId_path adGroupUpdateRequest_body =
     Api.request
         "PATCH"
         "/ad_accounts/{ad_account_id}/ad_groups"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Just (Json.Encode.list encodeAdGroupUpdateRequest adGroupUpdateRequest_body)))

@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.AudienceInsightCategoryCommon
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items 
  */
+@Serializable
 data class AudienceInsightCategoryArrayResponse(
     val items: kotlin.collections.List<AudienceInsightCategoryCommon>? = null
-) 
+)
 

@@ -18,10 +18,10 @@ module PinMediaSource =
   type SourceTypeEnum = PinUrlEnum of string  
   //#endregion
   //#region enums
-  type ContentTypeEnum = JpegEnum of string  |  PngEnum of string  
+  type ContentTypeEnum = ImageJpegEnum of string  |  ImagePngEnum of string  
   //#endregion
   //#region enums
-  type CoverImageContentTypeEnum = JpegEnum of string  |  PngEnum of string  
+  type CoverImageContentTypeEnum = ImageJpegEnum of string  |  ImagePngEnum of string  
   //#endregion
 
   type PinMediaSource = {

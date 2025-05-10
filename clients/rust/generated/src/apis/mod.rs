@@ -90,6 +90,27 @@ pub fn parse_deep_object(prefix: &str, value: &serde_json::Value) -> Vec<(String
     unimplemented!("Only objects are supported with style=deepObject")
 }
 
+/// Internal use only
+/// A content type supported by this client.
+#[allow(dead_code)]
+enum ContentType {
+    Json,
+    Text,
+    Unsupported(String)
+}
+
+impl From<&str> for ContentType {
+    fn from(content_type: &str) -> Self {
+        if content_type.starts_with("application") && content_type.contains("json") {
+            return Self::Json;
+        } else if content_type.starts_with("text/plain") {
+            return Self::Text;
+        } else {
+            return Self::Unsupported(content_type.to_string());
+        }
+    }
+}
+
 pub mod ad_accounts_api;
 pub mod ad_groups_api;
 pub mod ads_api;

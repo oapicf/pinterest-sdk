@@ -273,11 +273,11 @@ export function CatalogsCreativeAssetsProductGroupFilterKeysFromJSONTyped(json: 
     };
 }
 
-  export function CatalogsCreativeAssetsProductGroupFilterKeysToJSON(json: any): CatalogsCreativeAssetsProductGroupFilterKeys {
-      return CatalogsCreativeAssetsProductGroupFilterKeysToJSONTyped(json, false);
-  }
+export function CatalogsCreativeAssetsProductGroupFilterKeysToJSON(json: any): CatalogsCreativeAssetsProductGroupFilterKeys {
+    return CatalogsCreativeAssetsProductGroupFilterKeysToJSONTyped(json, false);
+}
 
-  export function CatalogsCreativeAssetsProductGroupFilterKeysToJSONTyped(value?: CatalogsCreativeAssetsProductGroupFilterKeys | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsCreativeAssetsProductGroupFilterKeysToJSONTyped(value?: CatalogsCreativeAssetsProductGroupFilterKeys | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

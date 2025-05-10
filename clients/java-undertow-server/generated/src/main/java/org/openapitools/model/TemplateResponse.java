@@ -33,7 +33,7 @@ import org.openapitools.model.TemplateResponseDateRange;
  */
 
 @ApiModel(description = "Template fields")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-11-05T02:05:24.181167181Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2025-05-10T05:39:45.096615976Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TemplateResponse   {
   
   private String id;
@@ -1657,8 +1657,8 @@ public class TemplateResponse   {
 
 
   public enum ConversionReportTimeTypeEnum {
-    AD_ACTION("TIME_OF_AD_ACTION"),
-    CONVERSION("TIME_OF_CONVERSION");
+    TIME_OF_AD_ACTION("TIME_OF_AD_ACTION"),
+    TIME_OF_CONVERSION("TIME_OF_CONVERSION");
 
     private String value;
 
@@ -1680,9 +1680,9 @@ public class TemplateResponse   {
 
 
   public enum CreationSourceEnum {
-    API("ADS_API"),
-    MANAGER_REPORTING_PAGE("ADS_MANAGER_REPORTING_PAGE"),
-    MANAGER_REPORT_BUILDER("ADS_MANAGER_REPORT_BUILDER");
+    ADS_API("ADS_API"),
+    ADS_MANAGER_REPORTING_PAGE("ADS_MANAGER_REPORTING_PAGE"),
+    ADS_MANAGER_REPORT_BUILDER("ADS_MANAGER_REPORT_BUILDER");
 
     private String value;
 

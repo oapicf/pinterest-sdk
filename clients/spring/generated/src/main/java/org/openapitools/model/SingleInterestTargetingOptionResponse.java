@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -21,17 +22,17 @@ import javax.annotation.Generated;
  * SingleInterestTargetingOptionResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SingleInterestTargetingOptionResponse {
 
-  private String id;
+  private @Nullable String id;
 
-  private String name;
+  private @Nullable String name;
 
   @Valid
   private List<String> childInterests = new ArrayList<>();
 
-  private Integer level;
+  private @Nullable Integer level;
 
   public SingleInterestTargetingOptionResponse id(String id) {
     this.id = id;

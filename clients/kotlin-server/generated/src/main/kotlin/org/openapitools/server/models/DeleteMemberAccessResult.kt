@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * The terminated asset access.
  * @param assetId Unique identifier of the business asset.
  * @param memberId Unique identifier of the business member.
  */
+@Serializable
 data class DeleteMemberAccessResult(
     /* Unique identifier of the business asset. */
     val assetId: kotlin.String? = null,
     /* Unique identifier of the business member. */
     val memberId: kotlin.String? = null
-) 
+)
 

@@ -23,9 +23,10 @@ typedef struct ad_groups_analytics_response_inner_t {
     char *ad_group_id; // string
     char *date; //date
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } ad_groups_analytics_response_inner_t;
 
-ad_groups_analytics_response_inner_t *ad_groups_analytics_response_inner_create(
+__attribute__((deprecated)) ad_groups_analytics_response_inner_t *ad_groups_analytics_response_inner_create(
     char *ad_group_id,
     char *date
 );

@@ -24,9 +24,9 @@ char* bulk_entity_type_bulk_entity_type_ToString(pinterest_rest_api_bulk_entity_
 
 pinterest_rest_api_bulk_entity_type__e bulk_entity_type_bulk_entity_type_FromString(char* bulk_entity_type);
 
-//cJSON *bulk_entity_type_bulk_entity_type_convertToJSON(pinterest_rest_api_bulk_entity_type__e bulk_entity_type);
+cJSON *bulk_entity_type_convertToJSON(pinterest_rest_api_bulk_entity_type__e bulk_entity_type);
 
-//pinterest_rest_api_bulk_entity_type__e bulk_entity_type_bulk_entity_type_parseFromJSON(cJSON *bulk_entity_typeJSON);
+pinterest_rest_api_bulk_entity_type__e bulk_entity_type_parseFromJSON(cJSON *bulk_entity_typeJSON);
 
 #endif /* _bulk_entity_type_H_ */
 

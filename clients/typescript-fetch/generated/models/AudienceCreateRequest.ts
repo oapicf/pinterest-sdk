@@ -94,11 +94,11 @@ export function AudienceCreateRequestFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function AudienceCreateRequestToJSON(json: any): AudienceCreateRequest {
-      return AudienceCreateRequestToJSONTyped(json, false);
-  }
+export function AudienceCreateRequestToJSON(json: any): AudienceCreateRequest {
+    return AudienceCreateRequestToJSONTyped(json, false);
+}
 
-  export function AudienceCreateRequestToJSONTyped(value?: AudienceCreateRequest | null, ignoreDiscriminator: boolean = false): any {
+export function AudienceCreateRequestToJSONTyped(value?: AudienceCreateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

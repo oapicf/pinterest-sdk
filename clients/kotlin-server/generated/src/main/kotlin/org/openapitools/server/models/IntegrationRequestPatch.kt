@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Schema used for updating the integration metadata.
  * @param connectedMerchantId 
@@ -27,6 +28,7 @@ package org.openapitools.server.models
  * @param additionalId1 
  * @param partnerMetadata 
  */
+@Serializable
 data class IntegrationRequestPatch(
     val connectedMerchantId: kotlin.String? = null,
     val connectedAdvertiserId: kotlin.String? = null,
@@ -40,5 +42,5 @@ data class IntegrationRequestPatch(
     val scopes: kotlin.String? = null,
     val additionalId1: kotlin.String? = null,
     val partnerMetadata: kotlin.String? = null
-) 
+)
 

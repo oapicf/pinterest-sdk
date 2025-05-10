@@ -48,10 +48,11 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * OptimizationGoalMetadataFrequencyGoalMetadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class OptimizationGoalMetadataFrequencyGoalMetadata {
   public static final String SERIALIZED_NAME_FREQUENCY = "frequency";
   @SerializedName(SERIALIZED_NAME_FREQUENCY)
+  @javax.annotation.Nullable
   private Integer frequency;
 
   /**
@@ -116,12 +117,13 @@ public class OptimizationGoalMetadataFrequencyGoalMetadata {
 
   public static final String SERIALIZED_NAME_TIMERANGE = "timerange";
   @SerializedName(SERIALIZED_NAME_TIMERANGE)
+  @javax.annotation.Nullable
   private TimerangeEnum timerange;
 
   public OptimizationGoalMetadataFrequencyGoalMetadata() {
   }
 
-  public OptimizationGoalMetadataFrequencyGoalMetadata frequency(Integer frequency) {
+  public OptimizationGoalMetadataFrequencyGoalMetadata frequency(@javax.annotation.Nullable Integer frequency) {
     this.frequency = frequency;
     return this;
   }
@@ -135,12 +137,12 @@ public class OptimizationGoalMetadataFrequencyGoalMetadata {
     return frequency;
   }
 
-  public void setFrequency(Integer frequency) {
+  public void setFrequency(@javax.annotation.Nullable Integer frequency) {
     this.frequency = frequency;
   }
 
 
-  public OptimizationGoalMetadataFrequencyGoalMetadata timerange(TimerangeEnum timerange) {
+  public OptimizationGoalMetadataFrequencyGoalMetadata timerange(@javax.annotation.Nullable TimerangeEnum timerange) {
     this.timerange = timerange;
     return this;
   }
@@ -154,7 +156,7 @@ public class OptimizationGoalMetadataFrequencyGoalMetadata {
     return timerange;
   }
 
-  public void setTimerange(TimerangeEnum timerange) {
+  public void setTimerange(@javax.annotation.Nullable TimerangeEnum timerange) {
     this.timerange = timerange;
   }
 

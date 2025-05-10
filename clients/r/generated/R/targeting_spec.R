@@ -110,10 +110,35 @@ TargetingSpec <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return TargetingSpec in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return TargetingSpec as a base R list.
+    #' @examples
+    #' # convert array of TargetingSpec (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert TargetingSpec to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       TargetingSpecObject <- list()
       if (!is.null(self$`AGE_BUCKET`)) {
         TargetingSpecObject[["AGE_BUCKET"]] <-
@@ -153,13 +178,13 @@ TargetingSpec <- R6::R6Class(
       }
       if (!is.null(self$`SHOPPING_RETARGETING`)) {
         TargetingSpecObject[["SHOPPING_RETARGETING"]] <-
-          lapply(self$`SHOPPING_RETARGETING`, function(x) x$toJSON())
+          lapply(self$`SHOPPING_RETARGETING`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`TARGETING_STRATEGY`)) {
         TargetingSpecObject[["TARGETING_STRATEGY"]] <-
           self$`TARGETING_STRATEGY`
       }
-      TargetingSpecObject
+      return(TargetingSpecObject)
     },
 
     #' @description
@@ -207,101 +232,13 @@ TargetingSpec <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return TargetingSpec in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`AGE_BUCKET`)) {
-          sprintf(
-          '"AGE_BUCKET":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`AGE_BUCKET`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`APPTYPE`)) {
-          sprintf(
-          '"APPTYPE":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`APPTYPE`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`AUDIENCE_EXCLUDE`)) {
-          sprintf(
-          '"AUDIENCE_EXCLUDE":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`AUDIENCE_EXCLUDE`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`AUDIENCE_INCLUDE`)) {
-          sprintf(
-          '"AUDIENCE_INCLUDE":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`AUDIENCE_INCLUDE`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`GENDER`)) {
-          sprintf(
-          '"GENDER":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`GENDER`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`GEO`)) {
-          sprintf(
-          '"GEO":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`GEO`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`INTEREST`)) {
-          sprintf(
-          '"INTEREST":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`INTEREST`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`LOCALE`)) {
-          sprintf(
-          '"LOCALE":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`LOCALE`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`LOCATION`)) {
-          sprintf(
-          '"LOCATION":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`LOCATION`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`SHOPPING_RETARGETING`)) {
-          sprintf(
-          '"SHOPPING_RETARGETING":
-          [%s]
-',
-          paste(sapply(self$`SHOPPING_RETARGETING`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`TARGETING_STRATEGY`)) {
-          sprintf(
-          '"TARGETING_STRATEGY":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`TARGETING_STRATEGY`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

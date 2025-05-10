@@ -44,33 +44,33 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum Currency: string
 {
-        case UNK = "UNK";
-        case USD = "USD";
-        case GBP = "GBP";
-        case CAD = "CAD";
-        case EUR = "EUR";
-        case AUD = "AUD";
-        case NZD = "NZD";
-        case SEK = "SEK";
-        case ILS = "ILS";
-        case CHF = "CHF";
-        case HKD = "HKD";
-        case JPY = "JPY";
-        case SGD = "SGD";
-        case KRW = "KRW";
-        case NOK = "NOK";
-        case DKK = "DKK";
-        case PLN = "PLN";
-        case RON = "RON";
-        case HUF = "HUF";
-        case CZK = "CZK";
-        case BRL = "BRL";
-        case MXN = "MXN";
-        case ARS = "ARS";
-        case CLP = "CLP";
-        case COP = "COP";
-        case INR = "INR";
-        case _TRY = "TRY";
+        case UNK = 'UNK';
+        case USD = 'USD';
+        case GBP = 'GBP';
+        case CAD = 'CAD';
+        case EUR = 'EUR';
+        case AUD = 'AUD';
+        case NZD = 'NZD';
+        case SEK = 'SEK';
+        case ILS = 'ILS';
+        case CHF = 'CHF';
+        case HKD = 'HKD';
+        case JPY = 'JPY';
+        case SGD = 'SGD';
+        case KRW = 'KRW';
+        case NOK = 'NOK';
+        case DKK = 'DKK';
+        case PLN = 'PLN';
+        case RON = 'RON';
+        case HUF = 'HUF';
+        case CZK = 'CZK';
+        case BRL = 'BRL';
+        case MXN = 'MXN';
+        case ARS = 'ARS';
+        case CLP = 'CLP';
+        case COP = 'COP';
+        case INR = 'INR';
+        case _TRY = 'TRY';
 }
 
 

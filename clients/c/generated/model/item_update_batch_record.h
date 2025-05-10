@@ -33,9 +33,10 @@ typedef struct item_update_batch_record_t {
     struct updatable_item_attributes_t *attributes; //model
     list_t *update_mask; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } item_update_batch_record_t;
 
-item_update_batch_record_t *item_update_batch_record_create(
+__attribute__((deprecated)) item_update_batch_record_t *item_update_batch_record_create(
     char *item_id,
     updatable_item_attributes_t *attributes,
     list_t *update_mask

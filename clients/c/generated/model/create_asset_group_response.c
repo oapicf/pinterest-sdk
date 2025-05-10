@@ -5,7 +5,7 @@
 
 
 
-create_asset_group_response_t *create_asset_group_response_create(
+static create_asset_group_response_t *create_asset_group_response_create_internal(
     asset_group_binding_t *asset_group
     ) {
     create_asset_group_response_t *create_asset_group_response_local_var = malloc(sizeof(create_asset_group_response_t));
@@ -14,12 +14,24 @@ create_asset_group_response_t *create_asset_group_response_create(
     }
     create_asset_group_response_local_var->asset_group = asset_group;
 
+    create_asset_group_response_local_var->_library_owned = 1;
     return create_asset_group_response_local_var;
 }
 
+__attribute__((deprecated)) create_asset_group_response_t *create_asset_group_response_create(
+    asset_group_binding_t *asset_group
+    ) {
+    return create_asset_group_response_create_internal (
+        asset_group
+        );
+}
 
 void create_asset_group_response_free(create_asset_group_response_t *create_asset_group_response) {
     if(NULL == create_asset_group_response){
+        return ;
+    }
+    if(create_asset_group_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "create_asset_group_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -62,12 +74,15 @@ create_asset_group_response_t *create_asset_group_response_parseFromJSON(cJSON *
 
     // create_asset_group_response->asset_group
     cJSON *asset_group = cJSON_GetObjectItemCaseSensitive(create_asset_group_responseJSON, "asset_group");
+    if (cJSON_IsNull(asset_group)) {
+        asset_group = NULL;
+    }
     if (asset_group) { 
     asset_group_local_nonprim = asset_group_binding_parseFromJSON(asset_group); //nonprimitive
     }
 
 
-    create_asset_group_response_local_var = create_asset_group_response_create (
+    create_asset_group_response_local_var = create_asset_group_response_create_internal (
         asset_group ? asset_group_local_nonprim : NULL
         );
 

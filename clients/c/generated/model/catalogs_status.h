@@ -24,9 +24,9 @@ char* catalogs_status_catalogs_status_ToString(pinterest_rest_api_catalogs_statu
 
 pinterest_rest_api_catalogs_status__e catalogs_status_catalogs_status_FromString(char* catalogs_status);
 
-//cJSON *catalogs_status_catalogs_status_convertToJSON(pinterest_rest_api_catalogs_status__e catalogs_status);
+cJSON *catalogs_status_convertToJSON(pinterest_rest_api_catalogs_status__e catalogs_status);
 
-//pinterest_rest_api_catalogs_status__e catalogs_status_catalogs_status_parseFromJSON(cJSON *catalogs_statusJSON);
+pinterest_rest_api_catalogs_status__e catalogs_status_parseFromJSON(cJSON *catalogs_statusJSON);
 
 #endif /* _catalogs_status_H_ */
 

@@ -19,10 +19,20 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsProductGroupMultipleGenderCriteria")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsProductGroupMultipleGenderCriteria   {
   private @Valid List<Gender> values = new ArrayList<>();
   private Boolean negated = false;
+
+  public CatalogsProductGroupMultipleGenderCriteria() {
+  }
+
+  @JsonCreator
+  public CatalogsProductGroupMultipleGenderCriteria(
+    @JsonProperty(required = true, value = "values") List<Gender> values
+  ) {
+    this.values = values;
+  }
 
   /**
    **/
@@ -33,12 +43,12 @@ public class CatalogsProductGroupMultipleGenderCriteria   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("values")
+  @JsonProperty(required = true, value = "values")
   @NotNull public List<Gender> getValues() {
     return values;
   }
 
-  @JsonProperty("values")
+  @JsonProperty(required = true, value = "values")
   public void setValues(List<Gender> values) {
     this.values = values;
   }

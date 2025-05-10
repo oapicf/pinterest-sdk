@@ -13,12 +13,14 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.AssetGroupType
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param assetGroupName Asset Group name
  * @param assetGroupDescription Asset group description
  * @param assetGroupTypes Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
  */
+@Serializable
 data class CreateAssetGroupBody(
     /* Asset Group name */
     val assetGroupName: kotlin.String,
@@ -26,5 +28,5 @@ data class CreateAssetGroupBody(
     val assetGroupDescription: kotlin.String,
     /* Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group. */
     val assetGroupTypes: kotlin.collections.List<AssetGroupType>
-) 
+)
 

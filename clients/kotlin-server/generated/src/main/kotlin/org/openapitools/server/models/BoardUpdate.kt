@@ -12,17 +12,19 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Board fields for updates
  * @param name 
  * @param description 
  * @param privacy 
  */
+@Serializable
 data class BoardUpdate(
     val name: kotlin.String? = null,
     val description: kotlin.String? = null,
     val privacy: BoardUpdate.Privacy? = null
-) 
+)
 {
     /**
     * 

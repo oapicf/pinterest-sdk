@@ -22,7 +22,7 @@ pinterest_rest_api_grid_click_type__e grid_click_type_grid_click_type_FromString
     return 0;
 }
 
-cJSON *grid_click_type_grid_click_type_convertToJSON(pinterest_rest_api_grid_click_type__e grid_click_type) {
+cJSON *grid_click_type_convertToJSON(pinterest_rest_api_grid_click_type__e grid_click_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "grid_click_type", grid_click_type_grid_click_type_ToString(grid_click_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_grid_click_type__e grid_click_type_grid_click_type_parseFromJSON(cJSON *grid_click_typeJSON) {
-    pinterest_rest_api_grid_click_type__e *grid_click_type = NULL;
-    pinterest_rest_api_grid_click_type__e grid_click_typeVariable;
-    cJSON *grid_click_typeVar = cJSON_GetObjectItemCaseSensitive(grid_click_typeJSON, "grid_click_type");
-    if(!cJSON_IsString(grid_click_typeVar) || (grid_click_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_grid_click_type__e grid_click_type_parseFromJSON(cJSON *grid_click_typeJSON) {
+    if(!cJSON_IsString(grid_click_typeJSON) || (grid_click_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    grid_click_typeVariable = grid_click_type_grid_click_type_FromString(grid_click_typeVar->valuestring);
-    return grid_click_typeVariable;
-end:
-    return 0;
+    return grid_click_type_grid_click_type_FromString(grid_click_typeJSON->valuestring);
 }

@@ -164,7 +164,7 @@ func (c *KeywordsAPIController) KeywordsCreate(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	keywordsRequestParam := KeywordsRequest{}
+	var keywordsRequestParam KeywordsRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&keywordsRequestParam); err != nil {
@@ -197,7 +197,7 @@ func (c *KeywordsAPIController) KeywordsUpdate(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	keywordUpdateBodyParam := KeywordUpdateBody{}
+	var keywordUpdateBodyParam KeywordUpdateBody
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&keywordUpdateBodyParam); err != nil {

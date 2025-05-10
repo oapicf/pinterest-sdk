@@ -31,8 +31,8 @@ message PinMediaSource {
   Source_typeEnum source_type = 84625186;
 
   enum Content_typeEnum {
-    Content_typeEnum_JPEG = 0;
-    Content_typeEnum_PNG = 1;
+    Content_typeEnum_IMAGE_JPEG = 0;
+    Content_typeEnum_IMAGE_PNG = 1;
   }
 
   Content_typeEnum content_type = 294975297;
@@ -49,8 +49,8 @@ message PinMediaSource {
 
   // Content type for cover image Base64.
   enum Cover_image_content_typeEnum {
-    Cover_image_content_typeEnum_JPEG = 0;
-    Cover_image_content_typeEnum_PNG = 1;
+    Cover_image_content_typeEnum_IMAGE_JPEG = 0;
+    Cover_image_content_typeEnum_IMAGE_PNG = 1;
   }
 
   Cover_image_content_typeEnum cover_image_content_type = 449795375;

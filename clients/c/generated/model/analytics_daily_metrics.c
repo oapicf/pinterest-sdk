@@ -4,26 +4,9 @@
 #include "analytics_daily_metrics.h"
 
 
-char* analytics_daily_metrics_data_status_ToString(pinterest_rest_api_analytics_daily_metrics__e data_status) {
-    char* data_statusArray[] =  { "NULL", "PROCESSING", "READY", "ESTIMATE", "BEFORE_BUSINESS_CREATED", "BEFORE_DATA_RETENTION_PERIOD", "BEFORE_PIN_DATA_RETENTION_PERIOD", "BEFORE_METRIC_START_DATE", "BEFORE_CORE_METRIC_START_DATE", "BEFORE_PIN_FORMAT_METRIC_START_DATE", "BEFORE_AUDIENCE_METRIC_START_DATE", "BEFORE_AUDIENCE_MONTHLY_METRIC_START_DATE", "BEFORE_VIDEO_METRIC_START_DATE", "BEFORE_CONVERSION_METRIC_START_DATE", "PURCHASERS_METRIC_SMALLER_THAN_THRESHOLD", "IN_BAD_TAG_DATE", "BEFORE_PUBLISHED_METRIC_START_DATE", "BEFORE_ASSIST_METRIC_START_DATE", "BEFORE_PIN_CREATED", "BEFORE_ACCOUNT_CLAIMED", "BEFORE_DEMOGRAPHIC_FILTERS_START_DATE", "AUDIENCE_SEGMENT_SMALLER_THAN_THRESHOLD", "AUDIENCE_TOTAL_SMALLER_THAN_THRESHOLD", "BEFORE_PRODUCT_GROUP_FILTER_START_DATE" };
-    return data_statusArray[data_status];
-}
 
-pinterest_rest_api_analytics_daily_metrics__e analytics_daily_metrics_data_status_FromString(char* data_status){
-    int stringToReturn = 0;
-    char *data_statusArray[] =  { "NULL", "PROCESSING", "READY", "ESTIMATE", "BEFORE_BUSINESS_CREATED", "BEFORE_DATA_RETENTION_PERIOD", "BEFORE_PIN_DATA_RETENTION_PERIOD", "BEFORE_METRIC_START_DATE", "BEFORE_CORE_METRIC_START_DATE", "BEFORE_PIN_FORMAT_METRIC_START_DATE", "BEFORE_AUDIENCE_METRIC_START_DATE", "BEFORE_AUDIENCE_MONTHLY_METRIC_START_DATE", "BEFORE_VIDEO_METRIC_START_DATE", "BEFORE_CONVERSION_METRIC_START_DATE", "PURCHASERS_METRIC_SMALLER_THAN_THRESHOLD", "IN_BAD_TAG_DATE", "BEFORE_PUBLISHED_METRIC_START_DATE", "BEFORE_ASSIST_METRIC_START_DATE", "BEFORE_PIN_CREATED", "BEFORE_ACCOUNT_CLAIMED", "BEFORE_DEMOGRAPHIC_FILTERS_START_DATE", "AUDIENCE_SEGMENT_SMALLER_THAN_THRESHOLD", "AUDIENCE_TOTAL_SMALLER_THAN_THRESHOLD", "BEFORE_PRODUCT_GROUP_FILTER_START_DATE" };
-    size_t sizeofArray = sizeof(data_statusArray) / sizeof(data_statusArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(data_status, data_statusArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-
-analytics_daily_metrics_t *analytics_daily_metrics_create(
-    data_status_t *data_status,
+static analytics_daily_metrics_t *analytics_daily_metrics_create_internal(
+    pinterest_rest_api_data_status__e data_status,
     char *date,
     list_t* metrics
     ) {
@@ -35,26 +18,38 @@ analytics_daily_metrics_t *analytics_daily_metrics_create(
     analytics_daily_metrics_local_var->date = date;
     analytics_daily_metrics_local_var->metrics = metrics;
 
+    analytics_daily_metrics_local_var->_library_owned = 1;
     return analytics_daily_metrics_local_var;
 }
 
+__attribute__((deprecated)) analytics_daily_metrics_t *analytics_daily_metrics_create(
+    pinterest_rest_api_data_status__e data_status,
+    char *date,
+    list_t* metrics
+    ) {
+    return analytics_daily_metrics_create_internal (
+        data_status,
+        date,
+        metrics
+        );
+}
 
 void analytics_daily_metrics_free(analytics_daily_metrics_t *analytics_daily_metrics) {
     if(NULL == analytics_daily_metrics){
         return ;
     }
-    listEntry_t *listEntry;
-    if (analytics_daily_metrics->data_status) {
-        data_status_free(analytics_daily_metrics->data_status);
-        analytics_daily_metrics->data_status = NULL;
+    if(analytics_daily_metrics->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "analytics_daily_metrics_free");
+        return ;
     }
+    listEntry_t *listEntry;
     if (analytics_daily_metrics->date) {
         free(analytics_daily_metrics->date);
         analytics_daily_metrics->date = NULL;
     }
     if (analytics_daily_metrics->metrics) {
         list_ForEach(listEntry, analytics_daily_metrics->metrics) {
-            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            keyValuePair_t *localKeyValue = listEntry->data;
             free (localKeyValue->key);
             free (localKeyValue->value);
             keyValuePair_free(localKeyValue);
@@ -69,7 +64,7 @@ cJSON *analytics_daily_metrics_convertToJSON(analytics_daily_metrics_t *analytic
     cJSON *item = cJSON_CreateObject();
 
     // analytics_daily_metrics->data_status
-    if(analytics_daily_metrics->data_status != pinterest_rest_api_analytics_daily_metrics__NULL) {
+    if(analytics_daily_metrics->data_status != pinterest_rest_api_data_status__NULL) {
     cJSON *data_status_local_JSON = data_status_convertToJSON(analytics_daily_metrics->data_status);
     if(data_status_local_JSON == NULL) {
         goto fail; // custom
@@ -99,7 +94,7 @@ cJSON *analytics_daily_metrics_convertToJSON(analytics_daily_metrics_t *analytic
     listEntry_t *metricsListEntry;
     if (analytics_daily_metrics->metrics) {
     list_ForEach(metricsListEntry, analytics_daily_metrics->metrics) {
-        keyValuePair_t *localKeyValue = (keyValuePair_t*)metricsListEntry->data;
+        keyValuePair_t *localKeyValue = metricsListEntry->data;
         if(cJSON_AddNumberToObject(localMapObject, localKeyValue->key, *(double *)localKeyValue->value) == NULL)
         {
             goto fail;
@@ -121,19 +116,25 @@ analytics_daily_metrics_t *analytics_daily_metrics_parseFromJSON(cJSON *analytic
     analytics_daily_metrics_t *analytics_daily_metrics_local_var = NULL;
 
     // define the local variable for analytics_daily_metrics->data_status
-    data_status_t *data_status_local_nonprim = NULL;
+    pinterest_rest_api_data_status__e data_status_local_nonprim = 0;
 
     // define the local map for analytics_daily_metrics->metrics
     list_t *metricsList = NULL;
 
     // analytics_daily_metrics->data_status
     cJSON *data_status = cJSON_GetObjectItemCaseSensitive(analytics_daily_metricsJSON, "data_status");
+    if (cJSON_IsNull(data_status)) {
+        data_status = NULL;
+    }
     if (data_status) { 
     data_status_local_nonprim = data_status_parseFromJSON(data_status); //custom
     }
 
     // analytics_daily_metrics->date
     cJSON *date = cJSON_GetObjectItemCaseSensitive(analytics_daily_metricsJSON, "date");
+    if (cJSON_IsNull(date)) {
+        date = NULL;
+    }
     if (date) { 
     if(!cJSON_IsString(date) && !cJSON_IsNull(date))
     {
@@ -143,6 +144,9 @@ analytics_daily_metrics_t *analytics_daily_metrics_parseFromJSON(cJSON *analytic
 
     // analytics_daily_metrics->metrics
     cJSON *metrics = cJSON_GetObjectItemCaseSensitive(analytics_daily_metricsJSON, "metrics");
+    if (cJSON_IsNull(metrics)) {
+        metrics = NULL;
+    }
     if (metrics) { 
     cJSON *metrics_local_map = NULL;
     if(!cJSON_IsObject(metrics) && !cJSON_IsNull(metrics))
@@ -167,8 +171,8 @@ analytics_daily_metrics_t *analytics_daily_metrics_parseFromJSON(cJSON *analytic
     }
 
 
-    analytics_daily_metrics_local_var = analytics_daily_metrics_create (
-        data_status ? data_status_local_nonprim : NULL,
+    analytics_daily_metrics_local_var = analytics_daily_metrics_create_internal (
+        data_status ? data_status_local_nonprim : 0,
         date && !cJSON_IsNull(date) ? strdup(date->valuestring) : NULL,
         metrics ? metricsList : NULL
         );
@@ -176,13 +180,12 @@ analytics_daily_metrics_t *analytics_daily_metrics_parseFromJSON(cJSON *analytic
     return analytics_daily_metrics_local_var;
 end:
     if (data_status_local_nonprim) {
-        data_status_free(data_status_local_nonprim);
-        data_status_local_nonprim = NULL;
+        data_status_local_nonprim = 0;
     }
     if (metricsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, metricsList) {
-            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            keyValuePair_t *localKeyValue = listEntry->data;
             free(localKeyValue->key);
             localKeyValue->key = NULL;
             keyValuePair_free(localKeyValue);

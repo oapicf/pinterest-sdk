@@ -63,11 +63,11 @@ export function CreateInvitesResultsResponseArrayItemsInnerInviteFromJSONTyped(j
     };
 }
 
-  export function CreateInvitesResultsResponseArrayItemsInnerInviteToJSON(json: any): CreateInvitesResultsResponseArrayItemsInnerInvite {
-      return CreateInvitesResultsResponseArrayItemsInnerInviteToJSONTyped(json, false);
-  }
+export function CreateInvitesResultsResponseArrayItemsInnerInviteToJSON(json: any): CreateInvitesResultsResponseArrayItemsInnerInvite {
+    return CreateInvitesResultsResponseArrayItemsInnerInviteToJSONTyped(json, false);
+}
 
-  export function CreateInvitesResultsResponseArrayItemsInnerInviteToJSONTyped(value?: CreateInvitesResultsResponseArrayItemsInnerInvite | null, ignoreDiscriminator: boolean = false): any {
+export function CreateInvitesResultsResponseArrayItemsInnerInviteToJSONTyped(value?: CreateInvitesResultsResponseArrayItemsInnerInvite | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

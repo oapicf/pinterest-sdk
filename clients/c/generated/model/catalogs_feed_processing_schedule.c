@@ -22,7 +22,7 @@ pinterest_rest_api_catalogs_feed_processing_schedule_TIMEZONE_e catalogs_feed_pr
     return 0;
 }
 
-catalogs_feed_processing_schedule_t *catalogs_feed_processing_schedule_create(
+static catalogs_feed_processing_schedule_t *catalogs_feed_processing_schedule_create_internal(
     char *time,
     pinterest_rest_api_catalogs_feed_processing_schedule_TIMEZONE_e timezone
     ) {
@@ -33,12 +33,26 @@ catalogs_feed_processing_schedule_t *catalogs_feed_processing_schedule_create(
     catalogs_feed_processing_schedule_local_var->time = time;
     catalogs_feed_processing_schedule_local_var->timezone = timezone;
 
+    catalogs_feed_processing_schedule_local_var->_library_owned = 1;
     return catalogs_feed_processing_schedule_local_var;
 }
 
+__attribute__((deprecated)) catalogs_feed_processing_schedule_t *catalogs_feed_processing_schedule_create(
+    char *time,
+    pinterest_rest_api_catalogs_feed_processing_schedule_TIMEZONE_e timezone
+    ) {
+    return catalogs_feed_processing_schedule_create_internal (
+        time,
+        timezone
+        );
+}
 
 void catalogs_feed_processing_schedule_free(catalogs_feed_processing_schedule_t *catalogs_feed_processing_schedule) {
     if(NULL == catalogs_feed_processing_schedule){
+        return ;
+    }
+    if(catalogs_feed_processing_schedule->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_feed_processing_schedule_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -65,7 +79,7 @@ cJSON *catalogs_feed_processing_schedule_convertToJSON(catalogs_feed_processing_
     if (pinterest_rest_api_catalogs_feed_processing_schedule_TIMEZONE_NULL == catalogs_feed_processing_schedule->timezone) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "timezone", timezonecatalogs_feed_processing_schedule_ToString(catalogs_feed_processing_schedule->timezone)) == NULL)
+    if(cJSON_AddStringToObject(item, "timezone", catalogs_feed_processing_schedule_timezone_ToString(catalogs_feed_processing_schedule->timezone)) == NULL)
     {
     goto fail; //Enum
     }
@@ -84,6 +98,9 @@ catalogs_feed_processing_schedule_t *catalogs_feed_processing_schedule_parseFrom
 
     // catalogs_feed_processing_schedule->time
     cJSON *time = cJSON_GetObjectItemCaseSensitive(catalogs_feed_processing_scheduleJSON, "time");
+    if (cJSON_IsNull(time)) {
+        time = NULL;
+    }
     if (!time) {
         goto end;
     }
@@ -96,6 +113,9 @@ catalogs_feed_processing_schedule_t *catalogs_feed_processing_schedule_parseFrom
 
     // catalogs_feed_processing_schedule->timezone
     cJSON *timezone = cJSON_GetObjectItemCaseSensitive(catalogs_feed_processing_scheduleJSON, "timezone");
+    if (cJSON_IsNull(timezone)) {
+        timezone = NULL;
+    }
     if (!timezone) {
         goto end;
     }
@@ -109,7 +129,7 @@ catalogs_feed_processing_schedule_t *catalogs_feed_processing_schedule_parseFrom
     timezoneVariable = catalogs_feed_processing_schedule_timezone_FromString(timezone->valuestring);
 
 
-    catalogs_feed_processing_schedule_local_var = catalogs_feed_processing_schedule_create (
+    catalogs_feed_processing_schedule_local_var = catalogs_feed_processing_schedule_create_internal (
         strdup(time->valuestring),
         timezoneVariable
         );

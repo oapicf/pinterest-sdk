@@ -24,9 +24,10 @@ typedef struct campaign_create_response_item_t {
     struct campaign_create_response_data_t *data; //model
     list_t *exceptions; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } campaign_create_response_item_t;
 
-campaign_create_response_item_t *campaign_create_response_item_create(
+__attribute__((deprecated)) campaign_create_response_item_t *campaign_create_response_item_create(
     campaign_create_response_data_t *data,
     list_t *exceptions
 );

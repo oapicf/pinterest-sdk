@@ -5,7 +5,7 @@
 
 
 
-get_partner_assets_response_t *get_partner_assets_response_create(
+static get_partner_assets_response_t *get_partner_assets_response_create_internal(
     char *asset_id,
     char *asset_type,
     list_t *permissions,
@@ -20,12 +20,30 @@ get_partner_assets_response_t *get_partner_assets_response_create(
     get_partner_assets_response_local_var->permissions = permissions;
     get_partner_assets_response_local_var->asset_group_info = asset_group_info;
 
+    get_partner_assets_response_local_var->_library_owned = 1;
     return get_partner_assets_response_local_var;
 }
 
+__attribute__((deprecated)) get_partner_assets_response_t *get_partner_assets_response_create(
+    char *asset_id,
+    char *asset_type,
+    list_t *permissions,
+    asset_group_binding_t *asset_group_info
+    ) {
+    return get_partner_assets_response_create_internal (
+        asset_id,
+        asset_type,
+        permissions,
+        asset_group_info
+        );
+}
 
 void get_partner_assets_response_free(get_partner_assets_response_t *get_partner_assets_response) {
     if(NULL == get_partner_assets_response){
+        return ;
+    }
+    if(get_partner_assets_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "get_partner_assets_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -79,7 +97,7 @@ cJSON *get_partner_assets_response_convertToJSON(get_partner_assets_response_t *
 
     listEntry_t *permissionsListEntry;
     list_ForEach(permissionsListEntry, get_partner_assets_response->permissions) {
-    if(cJSON_AddStringToObject(permissions, "", (char*)permissionsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(permissions, "", permissionsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -119,6 +137,9 @@ get_partner_assets_response_t *get_partner_assets_response_parseFromJSON(cJSON *
 
     // get_partner_assets_response->asset_id
     cJSON *asset_id = cJSON_GetObjectItemCaseSensitive(get_partner_assets_responseJSON, "asset_id");
+    if (cJSON_IsNull(asset_id)) {
+        asset_id = NULL;
+    }
     if (asset_id) { 
     if(!cJSON_IsString(asset_id) && !cJSON_IsNull(asset_id))
     {
@@ -128,6 +149,9 @@ get_partner_assets_response_t *get_partner_assets_response_parseFromJSON(cJSON *
 
     // get_partner_assets_response->asset_type
     cJSON *asset_type = cJSON_GetObjectItemCaseSensitive(get_partner_assets_responseJSON, "asset_type");
+    if (cJSON_IsNull(asset_type)) {
+        asset_type = NULL;
+    }
     if (asset_type) { 
     if(!cJSON_IsString(asset_type) && !cJSON_IsNull(asset_type))
     {
@@ -137,6 +161,9 @@ get_partner_assets_response_t *get_partner_assets_response_parseFromJSON(cJSON *
 
     // get_partner_assets_response->permissions
     cJSON *permissions = cJSON_GetObjectItemCaseSensitive(get_partner_assets_responseJSON, "permissions");
+    if (cJSON_IsNull(permissions)) {
+        permissions = NULL;
+    }
     if (permissions) { 
     cJSON *permissions_local = NULL;
     if(!cJSON_IsArray(permissions)) {
@@ -156,12 +183,15 @@ get_partner_assets_response_t *get_partner_assets_response_parseFromJSON(cJSON *
 
     // get_partner_assets_response->asset_group_info
     cJSON *asset_group_info = cJSON_GetObjectItemCaseSensitive(get_partner_assets_responseJSON, "asset_group_info");
+    if (cJSON_IsNull(asset_group_info)) {
+        asset_group_info = NULL;
+    }
     if (asset_group_info) { 
     asset_group_info_local_nonprim = asset_group_binding_parseFromJSON(asset_group_info); //nonprimitive
     }
 
 
-    get_partner_assets_response_local_var = get_partner_assets_response_create (
+    get_partner_assets_response_local_var = get_partner_assets_response_create_internal (
         asset_id && !cJSON_IsNull(asset_id) ? strdup(asset_id->valuestring) : NULL,
         asset_type && !cJSON_IsNull(asset_type) ? strdup(asset_type->valuestring) : NULL,
         permissions ? permissionsList : NULL,

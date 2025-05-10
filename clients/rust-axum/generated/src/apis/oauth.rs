@@ -1,6 +1,6 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Multipart};
+use axum_extra::extract::{CookieJar, Host};
 use bytes::Bytes;
 use http::Method;
 use serde::{Deserialize, Serialize};
@@ -24,15 +24,18 @@ pub enum OauthSlashTokenResponse {
 /// Oauth
 #[async_trait]
 #[allow(clippy::ptr_arg)]
-pub trait Oauth {
+pub trait Oauth<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHandler<E> {
+    type Claims;
+
     /// Generate OAuth access token.
     ///
     /// OauthSlashToken - POST /v5/oauth/token
     async fn oauth_slash_token(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-            body: models::OauthAccessTokenRequest,
-    ) -> Result<OauthSlashTokenResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+        claims: &Self::Claims,
+            body: &models::OauthAccessTokenRequest,
+    ) -> Result<OauthSlashTokenResponse, E>;
 }

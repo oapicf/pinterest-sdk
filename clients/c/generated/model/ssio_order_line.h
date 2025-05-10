@@ -17,14 +17,6 @@ typedef struct ssio_order_line_t ssio_order_line_t;
 
 #include "currency.h"
 
-// Enum  for ssio_order_line
-
-typedef enum  { pinterest_rest_api_ssio_order_line__NULL = 0, pinterest_rest_api_ssio_order_line__UNK, pinterest_rest_api_ssio_order_line__USD, pinterest_rest_api_ssio_order_line__GBP, pinterest_rest_api_ssio_order_line__CAD, pinterest_rest_api_ssio_order_line__EUR, pinterest_rest_api_ssio_order_line__AUD, pinterest_rest_api_ssio_order_line__NZD, pinterest_rest_api_ssio_order_line__SEK, pinterest_rest_api_ssio_order_line__ILS, pinterest_rest_api_ssio_order_line__CHF, pinterest_rest_api_ssio_order_line__HKD, pinterest_rest_api_ssio_order_line__JPY, pinterest_rest_api_ssio_order_line__SGD, pinterest_rest_api_ssio_order_line__KRW, pinterest_rest_api_ssio_order_line__NOK, pinterest_rest_api_ssio_order_line__DKK, pinterest_rest_api_ssio_order_line__PLN, pinterest_rest_api_ssio_order_line__RON, pinterest_rest_api_ssio_order_line__HUF, pinterest_rest_api_ssio_order_line__CZK, pinterest_rest_api_ssio_order_line__BRL, pinterest_rest_api_ssio_order_line__MXN, pinterest_rest_api_ssio_order_line__ARS, pinterest_rest_api_ssio_order_line__CLP, pinterest_rest_api_ssio_order_line__COP, pinterest_rest_api_ssio_order_line__INR, pinterest_rest_api_ssio_order_line___TRY } pinterest_rest_api_ssio_order_line__e;
-
-char* ssio_order_line_currency_info_ToString(pinterest_rest_api_ssio_order_line__e currency_info);
-
-pinterest_rest_api_ssio_order_line__e ssio_order_line_currency_info_FromString(char* currency_info);
-
 
 
 typedef struct ssio_order_line_t {
@@ -41,7 +33,7 @@ typedef struct ssio_order_line_t {
     char *media_contact_email; // string
     char *media_contact_firstname; // string
     char *media_contact_lastname; // string
-    currency_t *currency_info; // custom
+    pinterest_rest_api_currency__e currency_info; //referenced enum
     char *agency_link; // string
     char *po_number; // string
     char *order_name; // string
@@ -51,9 +43,10 @@ typedef struct ssio_order_line_t {
     double budget_amount; //numeric
     double estimated_monthly_spend; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } ssio_order_line_t;
 
-ssio_order_line_t *ssio_order_line_create(
+__attribute__((deprecated)) ssio_order_line_t *ssio_order_line_create(
     char *salesforce_order_line_id,
     char *ads_manager_order_line_id,
     char *pin_order_id,
@@ -67,7 +60,7 @@ ssio_order_line_t *ssio_order_line_create(
     char *media_contact_email,
     char *media_contact_firstname,
     char *media_contact_lastname,
-    currency_t *currency_info,
+    pinterest_rest_api_currency__e currency_info,
     char *agency_link,
     char *po_number,
     char *order_name,

@@ -5,7 +5,7 @@
 
 
 
-conversion_events_user_data_any_of_2_t *conversion_events_user_data_any_of_2_create(
+static conversion_events_user_data_any_of_2_t *conversion_events_user_data_any_of_2_create_internal(
     list_t *em,
     list_t *hashed_maids,
     char *client_ip_address,
@@ -20,12 +20,30 @@ conversion_events_user_data_any_of_2_t *conversion_events_user_data_any_of_2_cre
     conversion_events_user_data_any_of_2_local_var->client_ip_address = client_ip_address;
     conversion_events_user_data_any_of_2_local_var->client_user_agent = client_user_agent;
 
+    conversion_events_user_data_any_of_2_local_var->_library_owned = 1;
     return conversion_events_user_data_any_of_2_local_var;
 }
 
+__attribute__((deprecated)) conversion_events_user_data_any_of_2_t *conversion_events_user_data_any_of_2_create(
+    list_t *em,
+    list_t *hashed_maids,
+    char *client_ip_address,
+    char *client_user_agent
+    ) {
+    return conversion_events_user_data_any_of_2_create_internal (
+        em,
+        hashed_maids,
+        client_ip_address,
+        client_user_agent
+        );
+}
 
 void conversion_events_user_data_any_of_2_free(conversion_events_user_data_any_of_2_t *conversion_events_user_data_any_of_2) {
     if(NULL == conversion_events_user_data_any_of_2){
+        return ;
+    }
+    if(conversion_events_user_data_any_of_2->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "conversion_events_user_data_any_of_2_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -66,7 +84,7 @@ cJSON *conversion_events_user_data_any_of_2_convertToJSON(conversion_events_user
 
     listEntry_t *emListEntry;
     list_ForEach(emListEntry, conversion_events_user_data_any_of_2->em) {
-    if(cJSON_AddStringToObject(em, "", (char*)emListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(em, "", emListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -83,7 +101,7 @@ cJSON *conversion_events_user_data_any_of_2_convertToJSON(conversion_events_user
 
     listEntry_t *hashed_maidsListEntry;
     list_ForEach(hashed_maidsListEntry, conversion_events_user_data_any_of_2->hashed_maids) {
-    if(cJSON_AddStringToObject(hashed_maids, "", (char*)hashed_maidsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(hashed_maids, "", hashed_maidsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -128,6 +146,9 @@ conversion_events_user_data_any_of_2_t *conversion_events_user_data_any_of_2_par
 
     // conversion_events_user_data_any_of_2->em
     cJSON *em = cJSON_GetObjectItemCaseSensitive(conversion_events_user_data_any_of_2JSON, "em");
+    if (cJSON_IsNull(em)) {
+        em = NULL;
+    }
     if (em) { 
     cJSON *em_local = NULL;
     if(!cJSON_IsArray(em)) {
@@ -147,6 +168,9 @@ conversion_events_user_data_any_of_2_t *conversion_events_user_data_any_of_2_par
 
     // conversion_events_user_data_any_of_2->hashed_maids
     cJSON *hashed_maids = cJSON_GetObjectItemCaseSensitive(conversion_events_user_data_any_of_2JSON, "hashed_maids");
+    if (cJSON_IsNull(hashed_maids)) {
+        hashed_maids = NULL;
+    }
     if (hashed_maids) { 
     cJSON *hashed_maids_local = NULL;
     if(!cJSON_IsArray(hashed_maids)) {
@@ -166,6 +190,9 @@ conversion_events_user_data_any_of_2_t *conversion_events_user_data_any_of_2_par
 
     // conversion_events_user_data_any_of_2->client_ip_address
     cJSON *client_ip_address = cJSON_GetObjectItemCaseSensitive(conversion_events_user_data_any_of_2JSON, "client_ip_address");
+    if (cJSON_IsNull(client_ip_address)) {
+        client_ip_address = NULL;
+    }
     if (!client_ip_address) {
         goto end;
     }
@@ -178,6 +205,9 @@ conversion_events_user_data_any_of_2_t *conversion_events_user_data_any_of_2_par
 
     // conversion_events_user_data_any_of_2->client_user_agent
     cJSON *client_user_agent = cJSON_GetObjectItemCaseSensitive(conversion_events_user_data_any_of_2JSON, "client_user_agent");
+    if (cJSON_IsNull(client_user_agent)) {
+        client_user_agent = NULL;
+    }
     if (!client_user_agent) {
         goto end;
     }
@@ -189,7 +219,7 @@ conversion_events_user_data_any_of_2_t *conversion_events_user_data_any_of_2_par
     }
 
 
-    conversion_events_user_data_any_of_2_local_var = conversion_events_user_data_any_of_2_create (
+    conversion_events_user_data_any_of_2_local_var = conversion_events_user_data_any_of_2_create_internal (
         em ? emList : NULL,
         hashed_maids ? hashed_maidsList : NULL,
         strdup(client_ip_address->valuestring),

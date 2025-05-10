@@ -5,7 +5,7 @@
 
 
 
-catalogs_list_products_by_feed_based_filter_t *catalogs_list_products_by_feed_based_filter_create(
+static catalogs_list_products_by_feed_based_filter_t *catalogs_list_products_by_feed_based_filter_create_internal(
     char *feed_id,
     catalogs_product_group_filters_t *filters
     ) {
@@ -16,12 +16,26 @@ catalogs_list_products_by_feed_based_filter_t *catalogs_list_products_by_feed_ba
     catalogs_list_products_by_feed_based_filter_local_var->feed_id = feed_id;
     catalogs_list_products_by_feed_based_filter_local_var->filters = filters;
 
+    catalogs_list_products_by_feed_based_filter_local_var->_library_owned = 1;
     return catalogs_list_products_by_feed_based_filter_local_var;
 }
 
+__attribute__((deprecated)) catalogs_list_products_by_feed_based_filter_t *catalogs_list_products_by_feed_based_filter_create(
+    char *feed_id,
+    catalogs_product_group_filters_t *filters
+    ) {
+    return catalogs_list_products_by_feed_based_filter_create_internal (
+        feed_id,
+        filters
+        );
+}
 
 void catalogs_list_products_by_feed_based_filter_free(catalogs_list_products_by_feed_based_filter_t *catalogs_list_products_by_feed_based_filter) {
     if(NULL == catalogs_list_products_by_feed_based_filter){
+        return ;
+    }
+    if(catalogs_list_products_by_feed_based_filter->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_list_products_by_feed_based_filter_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -78,6 +92,9 @@ catalogs_list_products_by_feed_based_filter_t *catalogs_list_products_by_feed_ba
 
     // catalogs_list_products_by_feed_based_filter->feed_id
     cJSON *feed_id = cJSON_GetObjectItemCaseSensitive(catalogs_list_products_by_feed_based_filterJSON, "feed_id");
+    if (cJSON_IsNull(feed_id)) {
+        feed_id = NULL;
+    }
     if (!feed_id) {
         goto end;
     }
@@ -90,6 +107,9 @@ catalogs_list_products_by_feed_based_filter_t *catalogs_list_products_by_feed_ba
 
     // catalogs_list_products_by_feed_based_filter->filters
     cJSON *filters = cJSON_GetObjectItemCaseSensitive(catalogs_list_products_by_feed_based_filterJSON, "filters");
+    if (cJSON_IsNull(filters)) {
+        filters = NULL;
+    }
     if (!filters) {
         goto end;
     }
@@ -98,7 +118,7 @@ catalogs_list_products_by_feed_based_filter_t *catalogs_list_products_by_feed_ba
     filters_local_nonprim = catalogs_product_group_filters_parseFromJSON(filters); //nonprimitive
 
 
-    catalogs_list_products_by_feed_based_filter_local_var = catalogs_list_products_by_feed_based_filter_create (
+    catalogs_list_products_by_feed_based_filter_local_var = catalogs_list_products_by_feed_based_filter_create_internal (
         strdup(feed_id->valuestring),
         filters_local_nonprim
         );

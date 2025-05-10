@@ -16,15 +16,17 @@ import org.openapitools.server.models.CatalogsHotelReportParametersReport
 import org.openapitools.server.models.CatalogsRetailReportParameters
 import org.openapitools.server.models.CatalogsType
 
+import kotlinx.serialization.Serializable
 /**
  * Report parameters
  * @param catalogType 
  * @param report 
  */
+@Serializable
 data class CatalogsReportParameters(
     val catalogType: CatalogsType,
     val report: CatalogsHotelReportParametersReport
-) 
+)
 {
 }
 

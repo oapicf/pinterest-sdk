@@ -16,12 +16,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("PinMediaSourceImagesURL_items_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMediaSourceImagesURLItemsInner   {
   private String title;
   private String description;
   private String link;
   private String url;
+
+  public PinMediaSourceImagesURLItemsInner() {
+  }
+
+  @JsonCreator
+  public PinMediaSourceImagesURLItemsInner(
+    @JsonProperty(required = true, value = "url") String url
+  ) {
+    this.url = url;
+  }
 
   /**
    **/
@@ -91,12 +101,12 @@ public class PinMediaSourceImagesURLItemsInner   {
 
   
   @ApiModelProperty(required = true, value = "URL of image to upload.")
-  @JsonProperty("url")
+  @JsonProperty(required = true, value = "url")
   @NotNull public String getUrl() {
     return url;
   }
 
-  @JsonProperty("url")
+  @JsonProperty(required = true, value = "url")
   public void setUrl(String url) {
     this.url = url;
   }

@@ -64,9 +64,10 @@ typedef struct targeting_spec_t {
     list_t *shopping_retargeting; //nonprimitive container
     list_t *targeting_strategy; //primitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } targeting_spec_t;
 
-targeting_spec_t *targeting_spec_create(
+__attribute__((deprecated)) targeting_spec_t *targeting_spec_create(
     list_t *age_bucket,
     list_t *apptype,
     list_t *audience_exclude,

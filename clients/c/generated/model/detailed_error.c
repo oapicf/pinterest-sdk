@@ -5,7 +5,7 @@
 
 
 
-detailed_error_t *detailed_error_create(
+static detailed_error_t *detailed_error_create_internal(
     int code,
     char *message,
     object_t *details
@@ -18,12 +18,28 @@ detailed_error_t *detailed_error_create(
     detailed_error_local_var->message = message;
     detailed_error_local_var->details = details;
 
+    detailed_error_local_var->_library_owned = 1;
     return detailed_error_local_var;
 }
 
+__attribute__((deprecated)) detailed_error_t *detailed_error_create(
+    int code,
+    char *message,
+    object_t *details
+    ) {
+    return detailed_error_create_internal (
+        code,
+        message,
+        details
+        );
+}
 
 void detailed_error_free(detailed_error_t *detailed_error) {
     if(NULL == detailed_error){
+        return ;
+    }
+    if(detailed_error->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "detailed_error_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -86,6 +102,9 @@ detailed_error_t *detailed_error_parseFromJSON(cJSON *detailed_errorJSON){
 
     // detailed_error->code
     cJSON *code = cJSON_GetObjectItemCaseSensitive(detailed_errorJSON, "code");
+    if (cJSON_IsNull(code)) {
+        code = NULL;
+    }
     if (!code) {
         goto end;
     }
@@ -98,6 +117,9 @@ detailed_error_t *detailed_error_parseFromJSON(cJSON *detailed_errorJSON){
 
     // detailed_error->message
     cJSON *message = cJSON_GetObjectItemCaseSensitive(detailed_errorJSON, "message");
+    if (cJSON_IsNull(message)) {
+        message = NULL;
+    }
     if (!message) {
         goto end;
     }
@@ -110,6 +132,9 @@ detailed_error_t *detailed_error_parseFromJSON(cJSON *detailed_errorJSON){
 
     // detailed_error->details
     cJSON *details = cJSON_GetObjectItemCaseSensitive(detailed_errorJSON, "details");
+    if (cJSON_IsNull(details)) {
+        details = NULL;
+    }
     if (!details) {
         goto end;
     }
@@ -119,7 +144,7 @@ detailed_error_t *detailed_error_parseFromJSON(cJSON *detailed_errorJSON){
     details_local_object = object_parseFromJSON(details); //object
 
 
-    detailed_error_local_var = detailed_error_create (
+    detailed_error_local_var = detailed_error_create_internal (
         code->valuedouble,
         strdup(message->valuestring),
         details_local_object

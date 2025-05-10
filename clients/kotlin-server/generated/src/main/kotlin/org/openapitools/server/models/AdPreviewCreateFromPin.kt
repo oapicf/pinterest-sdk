@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param pinId Pin ID.
  */
+@Serializable
 data class AdPreviewCreateFromPin(
     /* Pin ID. */
     val pinId: kotlin.String
-) 
+)
 

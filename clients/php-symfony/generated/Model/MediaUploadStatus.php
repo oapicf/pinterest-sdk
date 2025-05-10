@@ -44,10 +44,10 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum MediaUploadStatus: string
 {
-        case REGISTERED = "registered";
-        case PROCESSING = "processing";
-        case SUCCEEDED = "succeeded";
-        case FAILED = "failed";
+        case REGISTERED = 'registered';
+        case PROCESSING = 'processing';
+        case SUCCEEDED = 'succeeded';
+        case FAILED = 'failed';
 }
 
 

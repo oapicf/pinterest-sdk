@@ -52,7 +52,11 @@ export function FeedsCreateRequestFromJSONTyped(json: any, ignoreDiscriminator: 
     return {} as any;
 }
 
-export function FeedsCreateRequestToJSON(value?: FeedsCreateRequest | null): any {
+export function FeedsCreateRequestToJSON(json: any): any {
+    return FeedsCreateRequestToJSONTyped(json, false);
+}
+
+export function FeedsCreateRequestToJSONTyped(value?: FeedsCreateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

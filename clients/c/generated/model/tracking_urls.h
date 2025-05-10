@@ -25,9 +25,10 @@ typedef struct tracking_urls_t {
     list_t *buyable_button; //primitive container
     list_t *audience_verification; //primitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } tracking_urls_t;
 
-tracking_urls_t *tracking_urls_create(
+__attribute__((deprecated)) tracking_urls_t *tracking_urls_create(
     list_t *impression,
     list_t *click,
     list_t *engagement,

@@ -12,16 +12,18 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Pin URL-based media source for product pin creation. Currently the field is only available to a list of beta users.
  * @param sourceType 
  * @param isAffiliateLink This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
  */
+@Serializable
 data class PinMediaSourcePinURL(
     val sourceType: PinMediaSourcePinURL.SourceType,
     /* This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products. */
     val isAffiliateLink: kotlin.Boolean? = false
-) 
+)
 {
     /**
     * 

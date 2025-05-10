@@ -48,16 +48,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Object describing an item batch record to discontinue items
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ItemDeleteDiscontinuedBatchRecord {
   public static final String SERIALIZED_NAME_ITEM_ID = "item_id";
   @SerializedName(SERIALIZED_NAME_ITEM_ID)
+  @javax.annotation.Nullable
   private String itemId;
 
   public ItemDeleteDiscontinuedBatchRecord() {
   }
 
-  public ItemDeleteDiscontinuedBatchRecord itemId(String itemId) {
+  public ItemDeleteDiscontinuedBatchRecord itemId(@javax.annotation.Nullable String itemId) {
     this.itemId = itemId;
     return this;
   }
@@ -71,7 +72,7 @@ public class ItemDeleteDiscontinuedBatchRecord {
     return itemId;
   }
 
-  public void setItemId(String itemId) {
+  public void setItemId(@javax.annotation.Nullable String itemId) {
     this.itemId = itemId;
   }
 

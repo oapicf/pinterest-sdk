@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsProductGroupFiltersRequest
 
+import kotlinx.serialization.Serializable
 /**
  * Request object for creating a product group.
  * @param name 
@@ -21,6 +22,7 @@ import org.openapitools.server.models.CatalogsProductGroupFiltersRequest
  * @param description 
  * @param isFeatured boolean indicator of whether the product group is being featured or not
  */
+@Serializable
 data class CatalogsProductGroupCreateRequest(
     val name: kotlin.String,
     val filters: CatalogsProductGroupFiltersRequest,
@@ -29,5 +31,5 @@ data class CatalogsProductGroupCreateRequest(
     val description: kotlin.String? = null,
     /* boolean indicator of whether the product group is being featured or not */
     val isFeatured: kotlin.Boolean? = false
-) 
+)
 

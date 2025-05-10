@@ -23,9 +23,10 @@ typedef struct update_partner_results_response_array_items_inner_t {
     struct business_access_error_t *exception; //model
     char *member_or_partner_id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } update_partner_results_response_array_items_inner_t;
 
-update_partner_results_response_array_items_inner_t *update_partner_results_response_array_items_inner_create(
+__attribute__((deprecated)) update_partner_results_response_array_items_inner_t *update_partner_results_response_array_items_inner_create(
     business_access_error_t *exception,
     char *member_or_partner_id
 );

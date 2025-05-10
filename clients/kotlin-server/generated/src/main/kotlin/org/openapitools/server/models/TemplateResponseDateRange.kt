@@ -15,15 +15,17 @@ import org.openapitools.server.models.TemplateResponseDateRangeAbsoluteDateRange
 import org.openapitools.server.models.TemplateResponseDateRangeDynamicDateRange
 import org.openapitools.server.models.TemplateResponseDateRangeRelativeDateRange
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param dynamicDateRange 
  * @param relativeDateRange 
  * @param absoluteDateRange 
  */
+@Serializable
 data class TemplateResponseDateRange(
     val dynamicDateRange: TemplateResponseDateRangeDynamicDateRange? = null,
     val relativeDateRange: TemplateResponseDateRangeRelativeDateRange? = null,
     val absoluteDateRange: TemplateResponseDateRangeAbsoluteDateRange? = null
-) 
+)
 

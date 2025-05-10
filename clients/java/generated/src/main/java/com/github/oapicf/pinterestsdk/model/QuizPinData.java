@@ -53,14 +53,16 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * This field includes all quiz data including questions, options, and results.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class QuizPinData {
   public static final String SERIALIZED_NAME_QUESTIONS = "questions";
   @SerializedName(SERIALIZED_NAME_QUESTIONS)
+  @javax.annotation.Nullable
   private List<QuizPinQuestion> questions = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_RESULTS = "results";
   @SerializedName(SERIALIZED_NAME_RESULTS)
+  @javax.annotation.Nullable
   private List<QuizPinResult> results = new ArrayList<>();
 
   /**
@@ -117,16 +119,18 @@ public class QuizPinData {
 
   public static final String SERIALIZED_NAME_TIE_BREAKER_TYPE = "tie_breaker_type";
   @SerializedName(SERIALIZED_NAME_TIE_BREAKER_TYPE)
+  @javax.annotation.Nullable
   private TieBreakerTypeEnum tieBreakerType;
 
   public static final String SERIALIZED_NAME_TIE_BREAKER_CUSTOM_RESULT = "tie_breaker_custom_result";
   @SerializedName(SERIALIZED_NAME_TIE_BREAKER_CUSTOM_RESULT)
+  @javax.annotation.Nullable
   private QuizPinResult tieBreakerCustomResult;
 
   public QuizPinData() {
   }
 
-  public QuizPinData questions(List<QuizPinQuestion> questions) {
+  public QuizPinData questions(@javax.annotation.Nullable List<QuizPinQuestion> questions) {
     this.questions = questions;
     return this;
   }
@@ -148,12 +152,12 @@ public class QuizPinData {
     return questions;
   }
 
-  public void setQuestions(List<QuizPinQuestion> questions) {
+  public void setQuestions(@javax.annotation.Nullable List<QuizPinQuestion> questions) {
     this.questions = questions;
   }
 
 
-  public QuizPinData results(List<QuizPinResult> results) {
+  public QuizPinData results(@javax.annotation.Nullable List<QuizPinResult> results) {
     this.results = results;
     return this;
   }
@@ -175,12 +179,12 @@ public class QuizPinData {
     return results;
   }
 
-  public void setResults(List<QuizPinResult> results) {
+  public void setResults(@javax.annotation.Nullable List<QuizPinResult> results) {
     this.results = results;
   }
 
 
-  public QuizPinData tieBreakerType(TieBreakerTypeEnum tieBreakerType) {
+  public QuizPinData tieBreakerType(@javax.annotation.Nullable TieBreakerTypeEnum tieBreakerType) {
     this.tieBreakerType = tieBreakerType;
     return this;
   }
@@ -194,12 +198,12 @@ public class QuizPinData {
     return tieBreakerType;
   }
 
-  public void setTieBreakerType(TieBreakerTypeEnum tieBreakerType) {
+  public void setTieBreakerType(@javax.annotation.Nullable TieBreakerTypeEnum tieBreakerType) {
     this.tieBreakerType = tieBreakerType;
   }
 
 
-  public QuizPinData tieBreakerCustomResult(QuizPinResult tieBreakerCustomResult) {
+  public QuizPinData tieBreakerCustomResult(@javax.annotation.Nullable QuizPinResult tieBreakerCustomResult) {
     this.tieBreakerCustomResult = tieBreakerCustomResult;
     return this;
   }
@@ -213,7 +217,7 @@ public class QuizPinData {
     return tieBreakerCustomResult;
   }
 
-  public void setTieBreakerCustomResult(QuizPinResult tieBreakerCustomResult) {
+  public void setTieBreakerCustomResult(@javax.annotation.Nullable QuizPinResult tieBreakerCustomResult) {
     this.tieBreakerCustomResult = tieBreakerCustomResult;
   }
 

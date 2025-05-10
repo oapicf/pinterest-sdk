@@ -27,7 +27,7 @@ import org.openapitools.model.ConversionEventsDataInner;
  */
 
 @ApiModel(description = "A list of events (one or more) encapsulated by a data object.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-11-05T02:05:24.181167181Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2025-05-10T05:39:45.096615976Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConversionEvents   {
   
   private List<ConversionEventsDataInner> data = new ArrayList<>();

@@ -62,7 +62,7 @@ class CatalogsDeleteCreativeAssetsItem
      * @Type("string")
     */
     #[Assert\NotNull]
-    #[Assert\Choice(["DELETE"])]
+    #[Assert\Choice(['DELETE'])]
     #[Assert\Type("string")]
     protected ?string $operation = null;
 
@@ -70,7 +70,7 @@ class CatalogsDeleteCreativeAssetsItem
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->creativeAssetsId = array_key_exists('creativeAssetsId', $data) ? $data['creativeAssetsId'] : $this->creativeAssetsId;

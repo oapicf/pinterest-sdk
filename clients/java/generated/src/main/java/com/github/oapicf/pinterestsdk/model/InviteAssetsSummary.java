@@ -52,20 +52,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Ad accounts and profiles the member/partner will be granted access to with this invite/request.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class InviteAssetsSummary {
   public static final String SERIALIZED_NAME_AD_ACCOUNTS = "ad_accounts";
   @SerializedName(SERIALIZED_NAME_AD_ACCOUNTS)
+  @javax.annotation.Nullable
   private List<InviteAssetsSummaryAdAccountsInner> adAccounts = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_PROFILES = "profiles";
   @SerializedName(SERIALIZED_NAME_PROFILES)
+  @javax.annotation.Nullable
   private List<InviteAssetsSummaryProfilesInner> profiles = new ArrayList<>();
 
   public InviteAssetsSummary() {
   }
 
-  public InviteAssetsSummary adAccounts(List<InviteAssetsSummaryAdAccountsInner> adAccounts) {
+  public InviteAssetsSummary adAccounts(@javax.annotation.Nullable List<InviteAssetsSummaryAdAccountsInner> adAccounts) {
     this.adAccounts = adAccounts;
     return this;
   }
@@ -87,12 +89,12 @@ public class InviteAssetsSummary {
     return adAccounts;
   }
 
-  public void setAdAccounts(List<InviteAssetsSummaryAdAccountsInner> adAccounts) {
+  public void setAdAccounts(@javax.annotation.Nullable List<InviteAssetsSummaryAdAccountsInner> adAccounts) {
     this.adAccounts = adAccounts;
   }
 
 
-  public InviteAssetsSummary profiles(List<InviteAssetsSummaryProfilesInner> profiles) {
+  public InviteAssetsSummary profiles(@javax.annotation.Nullable List<InviteAssetsSummaryProfilesInner> profiles) {
     this.profiles = profiles;
     return this;
   }
@@ -114,7 +116,7 @@ public class InviteAssetsSummary {
     return profiles;
   }
 
-  public void setProfiles(List<InviteAssetsSummaryProfilesInner> profiles) {
+  public void setProfiles(@javax.annotation.Nullable List<InviteAssetsSummaryProfilesInner> profiles) {
     this.profiles = profiles;
   }
 

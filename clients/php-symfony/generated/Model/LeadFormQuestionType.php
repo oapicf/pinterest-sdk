@@ -44,20 +44,20 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum LeadFormQuestionType: string
 {
-        case CUSTOM = "CUSTOM";
-        case FULL_NAME = "FULL_NAME";
-        case FIRST_NAME = "FIRST_NAME";
-        case LAST_NAME = "LAST_NAME";
-        case EMAIL = "EMAIL";
-        case PHONE_NUMBER = "PHONE_NUMBER";
-        case ZIP_CODE = "ZIP_CODE";
-        case GENDER = "GENDER";
-        case CITY = "CITY";
-        case COUNTRY = "COUNTRY";
-        case STATE_PROVINCE = "STATE_PROVINCE";
-        case ADDRESS = "ADDRESS";
-        case DATE_OF_BIRTH = "DATE_OF_BIRTH";
-        case AGE = "AGE";
+        case CUSTOM = 'CUSTOM';
+        case FULL_NAME = 'FULL_NAME';
+        case FIRST_NAME = 'FIRST_NAME';
+        case LAST_NAME = 'LAST_NAME';
+        case EMAIL = 'EMAIL';
+        case PHONE_NUMBER = 'PHONE_NUMBER';
+        case ZIP_CODE = 'ZIP_CODE';
+        case GENDER = 'GENDER';
+        case CITY = 'CITY';
+        case COUNTRY = 'COUNTRY';
+        case STATE_PROVINCE = 'STATE_PROVINCE';
+        case ADDRESS = 'ADDRESS';
+        case DATE_OF_BIRTH = 'DATE_OF_BIRTH';
+        case AGE = 'AGE';
 }
 
 

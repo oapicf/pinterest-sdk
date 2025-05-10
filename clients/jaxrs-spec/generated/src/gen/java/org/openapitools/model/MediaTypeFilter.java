@@ -16,9 +16,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("MediaTypeFilter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class MediaTypeFilter   {
   private CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE;
+
+  public MediaTypeFilter() {
+  }
+
+  @JsonCreator
+  public MediaTypeFilter(
+    @JsonProperty(required = true, value = "MEDIA_TYPE") CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE
+  ) {
+    this.MEDIA_TYPE = MEDIA_TYPE;
+  }
 
   /**
    **/
@@ -29,12 +39,12 @@ public class MediaTypeFilter   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("MEDIA_TYPE")
+  @JsonProperty(required = true, value = "MEDIA_TYPE")
   @NotNull @Valid public CatalogsProductGroupMultipleMediaTypesCriteria getMEDIATYPE() {
     return MEDIA_TYPE;
   }
 
-  @JsonProperty("MEDIA_TYPE")
+  @JsonProperty(required = true, value = "MEDIA_TYPE")
   public void setMEDIATYPE(CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE) {
     this.MEDIA_TYPE = MEDIA_TYPE;
   }

@@ -5,7 +5,7 @@
 
 
 
-pin_create_t *pin_create_create(
+static pin_create_t *pin_create_create_internal(
     char *id,
     char *created_at,
     char *link,
@@ -40,12 +40,50 @@ pin_create_t *pin_create_create(
     pin_create_local_var->parent_pin_id = parent_pin_id;
     pin_create_local_var->note = note;
 
+    pin_create_local_var->_library_owned = 1;
     return pin_create_local_var;
 }
 
+__attribute__((deprecated)) pin_create_t *pin_create_create(
+    char *id,
+    char *created_at,
+    char *link,
+    char *title,
+    char *description,
+    char *dominant_color,
+    char *alt_text,
+    char *board_id,
+    char *board_section_id,
+    board_owner_t *board_owner,
+    pin_media_t *media,
+    pin_media_source_t *media_source,
+    char *parent_pin_id,
+    char *note
+    ) {
+    return pin_create_create_internal (
+        id,
+        created_at,
+        link,
+        title,
+        description,
+        dominant_color,
+        alt_text,
+        board_id,
+        board_section_id,
+        board_owner,
+        media,
+        media_source,
+        parent_pin_id,
+        note
+        );
+}
 
 void pin_create_free(pin_create_t *pin_create) {
     if(NULL == pin_create){
+        return ;
+    }
+    if(pin_create->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "pin_create_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -260,6 +298,9 @@ pin_create_t *pin_create_parseFromJSON(cJSON *pin_createJSON){
 
     // pin_create->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(pin_createJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -269,6 +310,9 @@ pin_create_t *pin_create_parseFromJSON(cJSON *pin_createJSON){
 
     // pin_create->created_at
     cJSON *created_at = cJSON_GetObjectItemCaseSensitive(pin_createJSON, "created_at");
+    if (cJSON_IsNull(created_at)) {
+        created_at = NULL;
+    }
     if (created_at) { 
     if(!cJSON_IsString(created_at) && !cJSON_IsNull(created_at))
     {
@@ -278,6 +322,9 @@ pin_create_t *pin_create_parseFromJSON(cJSON *pin_createJSON){
 
     // pin_create->link
     cJSON *link = cJSON_GetObjectItemCaseSensitive(pin_createJSON, "link");
+    if (cJSON_IsNull(link)) {
+        link = NULL;
+    }
     if (link) { 
     if(!cJSON_IsString(link) && !cJSON_IsNull(link))
     {
@@ -287,6 +334,9 @@ pin_create_t *pin_create_parseFromJSON(cJSON *pin_createJSON){
 
     // pin_create->title
     cJSON *title = cJSON_GetObjectItemCaseSensitive(pin_createJSON, "title");
+    if (cJSON_IsNull(title)) {
+        title = NULL;
+    }
     if (title) { 
     if(!cJSON_IsString(title) && !cJSON_IsNull(title))
     {
@@ -296,6 +346,9 @@ pin_create_t *pin_create_parseFromJSON(cJSON *pin_createJSON){
 
     // pin_create->description
     cJSON *description = cJSON_GetObjectItemCaseSensitive(pin_createJSON, "description");
+    if (cJSON_IsNull(description)) {
+        description = NULL;
+    }
     if (description) { 
     if(!cJSON_IsString(description) && !cJSON_IsNull(description))
     {
@@ -305,6 +358,9 @@ pin_create_t *pin_create_parseFromJSON(cJSON *pin_createJSON){
 
     // pin_create->dominant_color
     cJSON *dominant_color = cJSON_GetObjectItemCaseSensitive(pin_createJSON, "dominant_color");
+    if (cJSON_IsNull(dominant_color)) {
+        dominant_color = NULL;
+    }
     if (dominant_color) { 
     if(!cJSON_IsString(dominant_color) && !cJSON_IsNull(dominant_color))
     {
@@ -314,6 +370,9 @@ pin_create_t *pin_create_parseFromJSON(cJSON *pin_createJSON){
 
     // pin_create->alt_text
     cJSON *alt_text = cJSON_GetObjectItemCaseSensitive(pin_createJSON, "alt_text");
+    if (cJSON_IsNull(alt_text)) {
+        alt_text = NULL;
+    }
     if (alt_text) { 
     if(!cJSON_IsString(alt_text) && !cJSON_IsNull(alt_text))
     {
@@ -323,6 +382,9 @@ pin_create_t *pin_create_parseFromJSON(cJSON *pin_createJSON){
 
     // pin_create->board_id
     cJSON *board_id = cJSON_GetObjectItemCaseSensitive(pin_createJSON, "board_id");
+    if (cJSON_IsNull(board_id)) {
+        board_id = NULL;
+    }
     if (board_id) { 
     if(!cJSON_IsString(board_id) && !cJSON_IsNull(board_id))
     {
@@ -332,6 +394,9 @@ pin_create_t *pin_create_parseFromJSON(cJSON *pin_createJSON){
 
     // pin_create->board_section_id
     cJSON *board_section_id = cJSON_GetObjectItemCaseSensitive(pin_createJSON, "board_section_id");
+    if (cJSON_IsNull(board_section_id)) {
+        board_section_id = NULL;
+    }
     if (board_section_id) { 
     if(!cJSON_IsString(board_section_id) && !cJSON_IsNull(board_section_id))
     {
@@ -341,24 +406,36 @@ pin_create_t *pin_create_parseFromJSON(cJSON *pin_createJSON){
 
     // pin_create->board_owner
     cJSON *board_owner = cJSON_GetObjectItemCaseSensitive(pin_createJSON, "board_owner");
+    if (cJSON_IsNull(board_owner)) {
+        board_owner = NULL;
+    }
     if (board_owner) { 
     board_owner_local_nonprim = board_owner_parseFromJSON(board_owner); //nonprimitive
     }
 
     // pin_create->media
     cJSON *media = cJSON_GetObjectItemCaseSensitive(pin_createJSON, "media");
+    if (cJSON_IsNull(media)) {
+        media = NULL;
+    }
     if (media) { 
     media_local_nonprim = pin_media_parseFromJSON(media); //nonprimitive
     }
 
     // pin_create->media_source
     cJSON *media_source = cJSON_GetObjectItemCaseSensitive(pin_createJSON, "media_source");
+    if (cJSON_IsNull(media_source)) {
+        media_source = NULL;
+    }
     if (media_source) { 
     media_source_local_nonprim = pin_media_source_parseFromJSON(media_source); //nonprimitive
     }
 
     // pin_create->parent_pin_id
     cJSON *parent_pin_id = cJSON_GetObjectItemCaseSensitive(pin_createJSON, "parent_pin_id");
+    if (cJSON_IsNull(parent_pin_id)) {
+        parent_pin_id = NULL;
+    }
     if (parent_pin_id) { 
     if(!cJSON_IsString(parent_pin_id) && !cJSON_IsNull(parent_pin_id))
     {
@@ -368,6 +445,9 @@ pin_create_t *pin_create_parseFromJSON(cJSON *pin_createJSON){
 
     // pin_create->note
     cJSON *note = cJSON_GetObjectItemCaseSensitive(pin_createJSON, "note");
+    if (cJSON_IsNull(note)) {
+        note = NULL;
+    }
     if (note) { 
     if(!cJSON_IsString(note) && !cJSON_IsNull(note))
     {
@@ -376,7 +456,7 @@ pin_create_t *pin_create_parseFromJSON(cJSON *pin_createJSON){
     }
 
 
-    pin_create_local_var = pin_create_create (
+    pin_create_local_var = pin_create_create_internal (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         created_at && !cJSON_IsNull(created_at) ? strdup(created_at->valuestring) : NULL,
         link && !cJSON_IsNull(link) ? strdup(link->valuestring) : NULL,

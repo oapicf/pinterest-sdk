@@ -44,10 +44,10 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum LeadFormQuestionFieldType: string
 {
-        case TEXT_FIELD = "TEXT_FIELD";
-        case TEXT_AREA = "TEXT_AREA";
-        case RADIO_LIST = "RADIO_LIST";
-        case CHECKBOX = "CHECKBOX";
+        case TEXT_FIELD = 'TEXT_FIELD';
+        case TEXT_AREA = 'TEXT_AREA';
+        case RADIO_LIST = 'RADIO_LIST';
+        case CHECKBOX = 'CHECKBOX';
 }
 
 

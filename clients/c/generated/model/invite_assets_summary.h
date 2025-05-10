@@ -24,9 +24,10 @@ typedef struct invite_assets_summary_t {
     list_t *ad_accounts; //nonprimitive container
     list_t *profiles; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } invite_assets_summary_t;
 
-invite_assets_summary_t *invite_assets_summary_create(
+__attribute__((deprecated)) invite_assets_summary_t *invite_assets_summary_create(
     list_t *ad_accounts,
     list_t *profiles
 );

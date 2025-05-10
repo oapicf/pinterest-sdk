@@ -22,7 +22,7 @@ pinterest_rest_api_targeting_advertiser_country__e targeting_advertiser_country_
     return 0;
 }
 
-cJSON *targeting_advertiser_country_targeting_advertiser_country_convertToJSON(pinterest_rest_api_targeting_advertiser_country__e targeting_advertiser_country) {
+cJSON *targeting_advertiser_country_convertToJSON(pinterest_rest_api_targeting_advertiser_country__e targeting_advertiser_country) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "targeting_advertiser_country", targeting_advertiser_country_targeting_advertiser_country_ToString(targeting_advertiser_country)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_targeting_advertiser_country__e targeting_advertiser_country_targeting_advertiser_country_parseFromJSON(cJSON *targeting_advertiser_countryJSON) {
-    pinterest_rest_api_targeting_advertiser_country__e *targeting_advertiser_country = NULL;
-    pinterest_rest_api_targeting_advertiser_country__e targeting_advertiser_countryVariable;
-    cJSON *targeting_advertiser_countryVar = cJSON_GetObjectItemCaseSensitive(targeting_advertiser_countryJSON, "targeting_advertiser_country");
-    if(!cJSON_IsString(targeting_advertiser_countryVar) || (targeting_advertiser_countryVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_targeting_advertiser_country__e targeting_advertiser_country_parseFromJSON(cJSON *targeting_advertiser_countryJSON) {
+    if(!cJSON_IsString(targeting_advertiser_countryJSON) || (targeting_advertiser_countryJSON->valuestring == NULL)) {
+        return 0;
     }
-    targeting_advertiser_countryVariable = targeting_advertiser_country_targeting_advertiser_country_FromString(targeting_advertiser_countryVar->valuestring);
-    return targeting_advertiser_countryVariable;
-end:
-    return 0;
+    return targeting_advertiser_country_targeting_advertiser_country_FromString(targeting_advertiser_countryJSON->valuestring);
 }

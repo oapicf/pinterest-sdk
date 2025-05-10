@@ -32,9 +32,9 @@ class PinMediaSourceImageBase64 {
 
     enum ContentTypeEnum {
     
-        JPEG("image/jpeg"),
+        IMAGE_JPEG("image/jpeg"),
         
-        PNG("image/png")
+        IMAGE_PNG("image/png")
     
         private final String value
     

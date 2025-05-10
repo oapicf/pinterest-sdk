@@ -5,7 +5,7 @@
 
 
 
-conversion_tag_configs_t *conversion_tag_configs_create(
+static conversion_tag_configs_t *conversion_tag_configs_create_internal(
     int aem_enabled,
     double md_frequency,
     int aem_fnln_enabled,
@@ -26,12 +26,36 @@ conversion_tag_configs_t *conversion_tag_configs_create(
     conversion_tag_configs_local_var->aem_db_enabled = aem_db_enabled;
     conversion_tag_configs_local_var->aem_loc_enabled = aem_loc_enabled;
 
+    conversion_tag_configs_local_var->_library_owned = 1;
     return conversion_tag_configs_local_var;
 }
 
+__attribute__((deprecated)) conversion_tag_configs_t *conversion_tag_configs_create(
+    int aem_enabled,
+    double md_frequency,
+    int aem_fnln_enabled,
+    int aem_ph_enabled,
+    int aem_ge_enabled,
+    int aem_db_enabled,
+    int aem_loc_enabled
+    ) {
+    return conversion_tag_configs_create_internal (
+        aem_enabled,
+        md_frequency,
+        aem_fnln_enabled,
+        aem_ph_enabled,
+        aem_ge_enabled,
+        aem_db_enabled,
+        aem_loc_enabled
+        );
+}
 
 void conversion_tag_configs_free(conversion_tag_configs_t *conversion_tag_configs) {
     if(NULL == conversion_tag_configs){
+        return ;
+    }
+    if(conversion_tag_configs->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "conversion_tag_configs_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -110,6 +134,9 @@ conversion_tag_configs_t *conversion_tag_configs_parseFromJSON(cJSON *conversion
 
     // conversion_tag_configs->aem_enabled
     cJSON *aem_enabled = cJSON_GetObjectItemCaseSensitive(conversion_tag_configsJSON, "aem_enabled");
+    if (cJSON_IsNull(aem_enabled)) {
+        aem_enabled = NULL;
+    }
     if (aem_enabled) { 
     if(!cJSON_IsBool(aem_enabled))
     {
@@ -119,6 +146,9 @@ conversion_tag_configs_t *conversion_tag_configs_parseFromJSON(cJSON *conversion
 
     // conversion_tag_configs->md_frequency
     cJSON *md_frequency = cJSON_GetObjectItemCaseSensitive(conversion_tag_configsJSON, "md_frequency");
+    if (cJSON_IsNull(md_frequency)) {
+        md_frequency = NULL;
+    }
     if (md_frequency) { 
     if(!cJSON_IsNumber(md_frequency))
     {
@@ -128,6 +158,9 @@ conversion_tag_configs_t *conversion_tag_configs_parseFromJSON(cJSON *conversion
 
     // conversion_tag_configs->aem_fnln_enabled
     cJSON *aem_fnln_enabled = cJSON_GetObjectItemCaseSensitive(conversion_tag_configsJSON, "aem_fnln_enabled");
+    if (cJSON_IsNull(aem_fnln_enabled)) {
+        aem_fnln_enabled = NULL;
+    }
     if (aem_fnln_enabled) { 
     if(!cJSON_IsBool(aem_fnln_enabled))
     {
@@ -137,6 +170,9 @@ conversion_tag_configs_t *conversion_tag_configs_parseFromJSON(cJSON *conversion
 
     // conversion_tag_configs->aem_ph_enabled
     cJSON *aem_ph_enabled = cJSON_GetObjectItemCaseSensitive(conversion_tag_configsJSON, "aem_ph_enabled");
+    if (cJSON_IsNull(aem_ph_enabled)) {
+        aem_ph_enabled = NULL;
+    }
     if (aem_ph_enabled) { 
     if(!cJSON_IsBool(aem_ph_enabled))
     {
@@ -146,6 +182,9 @@ conversion_tag_configs_t *conversion_tag_configs_parseFromJSON(cJSON *conversion
 
     // conversion_tag_configs->aem_ge_enabled
     cJSON *aem_ge_enabled = cJSON_GetObjectItemCaseSensitive(conversion_tag_configsJSON, "aem_ge_enabled");
+    if (cJSON_IsNull(aem_ge_enabled)) {
+        aem_ge_enabled = NULL;
+    }
     if (aem_ge_enabled) { 
     if(!cJSON_IsBool(aem_ge_enabled))
     {
@@ -155,6 +194,9 @@ conversion_tag_configs_t *conversion_tag_configs_parseFromJSON(cJSON *conversion
 
     // conversion_tag_configs->aem_db_enabled
     cJSON *aem_db_enabled = cJSON_GetObjectItemCaseSensitive(conversion_tag_configsJSON, "aem_db_enabled");
+    if (cJSON_IsNull(aem_db_enabled)) {
+        aem_db_enabled = NULL;
+    }
     if (aem_db_enabled) { 
     if(!cJSON_IsBool(aem_db_enabled))
     {
@@ -164,6 +206,9 @@ conversion_tag_configs_t *conversion_tag_configs_parseFromJSON(cJSON *conversion
 
     // conversion_tag_configs->aem_loc_enabled
     cJSON *aem_loc_enabled = cJSON_GetObjectItemCaseSensitive(conversion_tag_configsJSON, "aem_loc_enabled");
+    if (cJSON_IsNull(aem_loc_enabled)) {
+        aem_loc_enabled = NULL;
+    }
     if (aem_loc_enabled) { 
     if(!cJSON_IsBool(aem_loc_enabled))
     {
@@ -172,7 +217,7 @@ conversion_tag_configs_t *conversion_tag_configs_parseFromJSON(cJSON *conversion
     }
 
 
-    conversion_tag_configs_local_var = conversion_tag_configs_create (
+    conversion_tag_configs_local_var = conversion_tag_configs_create_internal (
         aem_enabled ? aem_enabled->valueint : 0,
         md_frequency ? md_frequency->valuedouble : 0,
         aem_fnln_enabled ? aem_fnln_enabled->valueint : 0,

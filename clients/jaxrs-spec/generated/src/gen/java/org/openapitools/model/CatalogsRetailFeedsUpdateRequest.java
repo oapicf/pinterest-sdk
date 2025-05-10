@@ -25,7 +25,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Request object for updating a feed.")
 @JsonTypeName("CatalogsRetailFeedsUpdateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsRetailFeedsUpdateRequest   {
   private NullableCurrency defaultCurrency;
   private String name;
@@ -36,6 +36,16 @@ public class CatalogsRetailFeedsUpdateRequest   {
   private CatalogsStatus status;
   private CatalogsType catalogType;
   private ProductAvailabilityType defaultAvailability;
+
+  public CatalogsRetailFeedsUpdateRequest() {
+  }
+
+  @JsonCreator
+  public CatalogsRetailFeedsUpdateRequest(
+    @JsonProperty(required = true, value = "catalog_type") CatalogsType catalogType
+  ) {
+    this.catalogType = catalogType;
+  }
 
   /**
    **/
@@ -181,12 +191,12 @@ public class CatalogsRetailFeedsUpdateRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   @NotNull public CatalogsType getCatalogType() {
     return catalogType;
   }
 
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   public void setCatalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
   }

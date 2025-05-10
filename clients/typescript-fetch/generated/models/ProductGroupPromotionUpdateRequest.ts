@@ -65,11 +65,11 @@ export function ProductGroupPromotionUpdateRequestFromJSONTyped(json: any, ignor
     };
 }
 
-  export function ProductGroupPromotionUpdateRequestToJSON(json: any): ProductGroupPromotionUpdateRequest {
-      return ProductGroupPromotionUpdateRequestToJSONTyped(json, false);
-  }
+export function ProductGroupPromotionUpdateRequestToJSON(json: any): ProductGroupPromotionUpdateRequest {
+    return ProductGroupPromotionUpdateRequestToJSONTyped(json, false);
+}
 
-  export function ProductGroupPromotionUpdateRequestToJSONTyped(value?: ProductGroupPromotionUpdateRequest | null, ignoreDiscriminator: boolean = false): any {
+export function ProductGroupPromotionUpdateRequestToJSONTyped(value?: ProductGroupPromotionUpdateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

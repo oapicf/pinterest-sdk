@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * A successful OAuth access token response for the authorization code flow.
  * @param accessToken 
@@ -22,15 +23,16 @@ package org.openapitools.server.models
  * @param refreshTokenExpiresIn 
  * @param responseType 
  */
+@Serializable
 data class OauthAccessTokenResponseCode(
     val accessToken: kotlin.String,
-    val tokenType: kotlin.String,
+    val tokenType: kotlin.String = "bearer",
     val expiresIn: kotlin.Int,
     val scope: kotlin.String,
     val refreshToken: kotlin.String,
     val refreshTokenExpiresIn: kotlin.Int,
     val responseType: OauthAccessTokenResponseCode.ResponseType? = null
-) 
+)
 {
     /**
     * 

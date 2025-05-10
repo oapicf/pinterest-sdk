@@ -69,11 +69,11 @@ export function CatalogsHotelGuestRatingsFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function CatalogsHotelGuestRatingsToJSON(json: any): CatalogsHotelGuestRatings {
-      return CatalogsHotelGuestRatingsToJSONTyped(json, false);
-  }
+export function CatalogsHotelGuestRatingsToJSON(json: any): CatalogsHotelGuestRatings {
+    return CatalogsHotelGuestRatingsToJSONTyped(json, false);
+}
 
-  export function CatalogsHotelGuestRatingsToJSONTyped(value?: CatalogsHotelGuestRatings | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsHotelGuestRatingsToJSONTyped(value?: CatalogsHotelGuestRatings | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -13,14 +13,16 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.MediaUploadDetails
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items Media
  * @param bookmark 
  */
+@Serializable
 data class MediaList200Response(
     /* Media */
     val items: kotlin.collections.List<MediaUploadDetails>,
     val bookmark: kotlin.String? = null
-) 
+)
 

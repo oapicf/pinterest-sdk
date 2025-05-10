@@ -215,10 +215,35 @@ SSIOOrderLine <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return SSIOOrderLine in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return SSIOOrderLine as a base R list.
+    #' @examples
+    #' # convert array of SSIOOrderLine (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert SSIOOrderLine to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       SSIOOrderLineObject <- list()
       if (!is.null(self$`salesforce_order_line_id`)) {
         SSIOOrderLineObject[["salesforce_order_line_id"]] <-
@@ -274,7 +299,7 @@ SSIOOrderLine <- R6::R6Class(
       }
       if (!is.null(self$`currency_info`)) {
         SSIOOrderLineObject[["currency_info"]] <-
-          self$`currency_info`$toJSON()
+          self$`currency_info`$toSimpleType()
       }
       if (!is.null(self$`agency_link`)) {
         SSIOOrderLineObject[["agency_link"]] <-
@@ -308,7 +333,7 @@ SSIOOrderLine <- R6::R6Class(
         SSIOOrderLineObject[["estimated_monthly_spend"]] <-
           self$`estimated_monthly_spend`
       }
-      SSIOOrderLineObject
+      return(SSIOOrderLineObject)
     },
 
     #' @description
@@ -391,189 +416,13 @@ SSIOOrderLine <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return SSIOOrderLine in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`salesforce_order_line_id`)) {
-          sprintf(
-          '"salesforce_order_line_id":
-            "%s"
-                    ',
-          self$`salesforce_order_line_id`
-          )
-        },
-        if (!is.null(self$`ads_manager_order_line_id`)) {
-          sprintf(
-          '"ads_manager_order_line_id":
-            "%s"
-                    ',
-          self$`ads_manager_order_line_id`
-          )
-        },
-        if (!is.null(self$`pin_order_id`)) {
-          sprintf(
-          '"pin_order_id":
-            "%s"
-                    ',
-          self$`pin_order_id`
-          )
-        },
-        if (!is.null(self$`last_modified_date_time`)) {
-          sprintf(
-          '"last_modified_date_time":
-            "%s"
-                    ',
-          self$`last_modified_date_time`
-          )
-        },
-        if (!is.null(self$`start_date`)) {
-          sprintf(
-          '"start_date":
-            "%s"
-                    ',
-          self$`start_date`
-          )
-        },
-        if (!is.null(self$`end_date`)) {
-          sprintf(
-          '"end_date":
-            "%s"
-                    ',
-          self$`end_date`
-          )
-        },
-        if (!is.null(self$`bill_to_company_name`)) {
-          sprintf(
-          '"bill_to_company_name":
-            "%s"
-                    ',
-          self$`bill_to_company_name`
-          )
-        },
-        if (!is.null(self$`billing_contact_firstname`)) {
-          sprintf(
-          '"billing_contact_firstname":
-            "%s"
-                    ',
-          self$`billing_contact_firstname`
-          )
-        },
-        if (!is.null(self$`billing_contact_lastname`)) {
-          sprintf(
-          '"billing_contact_lastname":
-            "%s"
-                    ',
-          self$`billing_contact_lastname`
-          )
-        },
-        if (!is.null(self$`billing_contact_email`)) {
-          sprintf(
-          '"billing_contact_email":
-            "%s"
-                    ',
-          self$`billing_contact_email`
-          )
-        },
-        if (!is.null(self$`media_contact_email`)) {
-          sprintf(
-          '"media_contact_email":
-            "%s"
-                    ',
-          self$`media_contact_email`
-          )
-        },
-        if (!is.null(self$`media_contact_firstname`)) {
-          sprintf(
-          '"media_contact_firstname":
-            "%s"
-                    ',
-          self$`media_contact_firstname`
-          )
-        },
-        if (!is.null(self$`media_contact_lastname`)) {
-          sprintf(
-          '"media_contact_lastname":
-            "%s"
-                    ',
-          self$`media_contact_lastname`
-          )
-        },
-        if (!is.null(self$`currency_info`)) {
-          sprintf(
-          '"currency_info":
-          %s
-          ',
-          jsonlite::toJSON(self$`currency_info`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`agency_link`)) {
-          sprintf(
-          '"agency_link":
-            "%s"
-                    ',
-          self$`agency_link`
-          )
-        },
-        if (!is.null(self$`po_number`)) {
-          sprintf(
-          '"po_number":
-            "%s"
-                    ',
-          self$`po_number`
-          )
-        },
-        if (!is.null(self$`order_name`)) {
-          sprintf(
-          '"order_name":
-            "%s"
-                    ',
-          self$`order_name`
-          )
-        },
-        if (!is.null(self$`pmp_name`)) {
-          sprintf(
-          '"pmp_name":
-            "%s"
-                    ',
-          self$`pmp_name`
-          )
-        },
-        if (!is.null(self$`accepted_terms_id`)) {
-          sprintf(
-          '"accepted_terms_id":
-            "%s"
-                    ',
-          self$`accepted_terms_id`
-          )
-        },
-        if (!is.null(self$`accepted_terms_time`)) {
-          sprintf(
-          '"accepted_terms_time":
-            "%s"
-                    ',
-          self$`accepted_terms_time`
-          )
-        },
-        if (!is.null(self$`budget_amount`)) {
-          sprintf(
-          '"budget_amount":
-            %d
-                    ',
-          self$`budget_amount`
-          )
-        },
-        if (!is.null(self$`estimated_monthly_spend`)) {
-          sprintf(
-          '"estimated_monthly_spend":
-            %d
-                    ',
-          self$`estimated_monthly_spend`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

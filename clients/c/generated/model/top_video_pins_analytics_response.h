@@ -33,9 +33,10 @@ typedef struct top_video_pins_analytics_response_t {
     list_t *pins; //nonprimitive container
     pinterest_rest_api_top_video_pins_analytics_response_SORTBY_e sort_by; //enum
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } top_video_pins_analytics_response_t;
 
-top_video_pins_analytics_response_t *top_video_pins_analytics_response_create(
+__attribute__((deprecated)) top_video_pins_analytics_response_t *top_video_pins_analytics_response_create(
     top_pins_analytics_response_date_availability_t *date_availability,
     list_t *pins,
     pinterest_rest_api_top_video_pins_analytics_response_SORTBY_e sort_by

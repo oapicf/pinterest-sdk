@@ -50,7 +50,7 @@ class Account
      * @SerializedName("account_type")
      * @Type("string")
     */
-    #[Assert\Choice(["PINNER", "BUSINESS"])]
+    #[Assert\Choice(['PINNER', 'BUSINESS'])]
     #[Assert\Type("string")]
     protected ?string $accountType = null;
 
@@ -161,7 +161,7 @@ class Account
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->accountType = array_key_exists('accountType', $data) ? $data['accountType'] : $this->accountType;

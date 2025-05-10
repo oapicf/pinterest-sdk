@@ -22,9 +22,10 @@ typedef struct catalogs_product_group_filters_request_any_of_1_t catalogs_produc
 typedef struct catalogs_product_group_filters_request_any_of_1_t {
     list_t *all_of; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_product_group_filters_request_any_of_1_t;
 
-catalogs_product_group_filters_request_any_of_1_t *catalogs_product_group_filters_request_any_of_1_create(
+__attribute__((deprecated)) catalogs_product_group_filters_request_any_of_1_t *catalogs_product_group_filters_request_any_of_1_create(
     list_t *all_of
 );
 

@@ -36,11 +36,11 @@ export function AudienceCreateRequest1AudienceTypeFromJSONTyped(json: any, ignor
     return json;
 }
 
-  export function AudienceCreateRequest1AudienceTypeToJSON(json: any): AudienceCreateRequest1AudienceType {
-      return AudienceCreateRequest1AudienceTypeToJSONTyped(json, false);
-  }
+export function AudienceCreateRequest1AudienceTypeToJSON(json: any): AudienceCreateRequest1AudienceType {
+    return AudienceCreateRequest1AudienceTypeToJSONTyped(json, false);
+}
 
-  export function AudienceCreateRequest1AudienceTypeToJSONTyped(value?: AudienceCreateRequest1AudienceType | null, ignoreDiscriminator: boolean = false): any {
+export function AudienceCreateRequest1AudienceTypeToJSONTyped(value?: AudienceCreateRequest1AudienceType | null, ignoreDiscriminator: boolean = false): any {
     return value;
 }
 

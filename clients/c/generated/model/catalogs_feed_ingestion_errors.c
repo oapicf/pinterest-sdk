@@ -22,7 +22,7 @@ pinterest_rest_api_catalogs_feed_ingestion_errors_LARGEPRODUCTCOUNTDECREASE_e ca
     return 0;
 }
 
-catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors_create(
+static catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors_create_internal(
     int line_level_internal_error,
     int large_product_count_decrease,
     int account_flagged,
@@ -45,12 +45,38 @@ catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors_create(
     catalogs_feed_ingestion_errors_local_var->image_file_not_found = image_file_not_found;
     catalogs_feed_ingestion_errors_local_var->image_invalid_file = image_invalid_file;
 
+    catalogs_feed_ingestion_errors_local_var->_library_owned = 1;
     return catalogs_feed_ingestion_errors_local_var;
 }
 
+__attribute__((deprecated)) catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors_create(
+    int line_level_internal_error,
+    int large_product_count_decrease,
+    int account_flagged,
+    int image_level_internal_error,
+    int image_file_not_accessible,
+    int image_malformed_url,
+    int image_file_not_found,
+    int image_invalid_file
+    ) {
+    return catalogs_feed_ingestion_errors_create_internal (
+        line_level_internal_error,
+        large_product_count_decrease,
+        account_flagged,
+        image_level_internal_error,
+        image_file_not_accessible,
+        image_malformed_url,
+        image_file_not_found,
+        image_invalid_file
+        );
+}
 
 void catalogs_feed_ingestion_errors_free(catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors) {
     if(NULL == catalogs_feed_ingestion_errors){
+        return ;
+    }
+    if(catalogs_feed_ingestion_errors->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_feed_ingestion_errors_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -137,6 +163,9 @@ catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors_parseFromJSON(c
 
     // catalogs_feed_ingestion_errors->line_level_internal_error
     cJSON *line_level_internal_error = cJSON_GetObjectItemCaseSensitive(catalogs_feed_ingestion_errorsJSON, "LINE_LEVEL_INTERNAL_ERROR");
+    if (cJSON_IsNull(line_level_internal_error)) {
+        line_level_internal_error = NULL;
+    }
     if (line_level_internal_error) { 
     if(!cJSON_IsNumber(line_level_internal_error))
     {
@@ -146,6 +175,9 @@ catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors_parseFromJSON(c
 
     // catalogs_feed_ingestion_errors->large_product_count_decrease
     cJSON *large_product_count_decrease = cJSON_GetObjectItemCaseSensitive(catalogs_feed_ingestion_errorsJSON, "LARGE_PRODUCT_COUNT_DECREASE");
+    if (cJSON_IsNull(large_product_count_decrease)) {
+        large_product_count_decrease = NULL;
+    }
     if (large_product_count_decrease) { 
     if(!cJSON_IsNumber(large_product_count_decrease))
     {
@@ -155,6 +187,9 @@ catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors_parseFromJSON(c
 
     // catalogs_feed_ingestion_errors->account_flagged
     cJSON *account_flagged = cJSON_GetObjectItemCaseSensitive(catalogs_feed_ingestion_errorsJSON, "ACCOUNT_FLAGGED");
+    if (cJSON_IsNull(account_flagged)) {
+        account_flagged = NULL;
+    }
     if (account_flagged) { 
     if(!cJSON_IsNumber(account_flagged))
     {
@@ -164,6 +199,9 @@ catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors_parseFromJSON(c
 
     // catalogs_feed_ingestion_errors->image_level_internal_error
     cJSON *image_level_internal_error = cJSON_GetObjectItemCaseSensitive(catalogs_feed_ingestion_errorsJSON, "IMAGE_LEVEL_INTERNAL_ERROR");
+    if (cJSON_IsNull(image_level_internal_error)) {
+        image_level_internal_error = NULL;
+    }
     if (image_level_internal_error) { 
     if(!cJSON_IsNumber(image_level_internal_error))
     {
@@ -173,6 +211,9 @@ catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors_parseFromJSON(c
 
     // catalogs_feed_ingestion_errors->image_file_not_accessible
     cJSON *image_file_not_accessible = cJSON_GetObjectItemCaseSensitive(catalogs_feed_ingestion_errorsJSON, "IMAGE_FILE_NOT_ACCESSIBLE");
+    if (cJSON_IsNull(image_file_not_accessible)) {
+        image_file_not_accessible = NULL;
+    }
     if (image_file_not_accessible) { 
     if(!cJSON_IsNumber(image_file_not_accessible))
     {
@@ -182,6 +223,9 @@ catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors_parseFromJSON(c
 
     // catalogs_feed_ingestion_errors->image_malformed_url
     cJSON *image_malformed_url = cJSON_GetObjectItemCaseSensitive(catalogs_feed_ingestion_errorsJSON, "IMAGE_MALFORMED_URL");
+    if (cJSON_IsNull(image_malformed_url)) {
+        image_malformed_url = NULL;
+    }
     if (image_malformed_url) { 
     if(!cJSON_IsNumber(image_malformed_url))
     {
@@ -191,6 +235,9 @@ catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors_parseFromJSON(c
 
     // catalogs_feed_ingestion_errors->image_file_not_found
     cJSON *image_file_not_found = cJSON_GetObjectItemCaseSensitive(catalogs_feed_ingestion_errorsJSON, "IMAGE_FILE_NOT_FOUND");
+    if (cJSON_IsNull(image_file_not_found)) {
+        image_file_not_found = NULL;
+    }
     if (image_file_not_found) { 
     if(!cJSON_IsNumber(image_file_not_found))
     {
@@ -200,6 +247,9 @@ catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors_parseFromJSON(c
 
     // catalogs_feed_ingestion_errors->image_invalid_file
     cJSON *image_invalid_file = cJSON_GetObjectItemCaseSensitive(catalogs_feed_ingestion_errorsJSON, "IMAGE_INVALID_FILE");
+    if (cJSON_IsNull(image_invalid_file)) {
+        image_invalid_file = NULL;
+    }
     if (image_invalid_file) { 
     if(!cJSON_IsNumber(image_invalid_file))
     {
@@ -208,7 +258,7 @@ catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors_parseFromJSON(c
     }
 
 
-    catalogs_feed_ingestion_errors_local_var = catalogs_feed_ingestion_errors_create (
+    catalogs_feed_ingestion_errors_local_var = catalogs_feed_ingestion_errors_create_internal (
         line_level_internal_error ? line_level_internal_error->valuedouble : 0,
         large_product_count_decrease ? large_product_count_decrease->valuedouble : 0,
         account_flagged ? account_flagged->valuedouble : 0,

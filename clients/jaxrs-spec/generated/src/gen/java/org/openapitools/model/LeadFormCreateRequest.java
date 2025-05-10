@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("LeadFormCreateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class LeadFormCreateRequest   {
   private String name;
   private String privacyPolicyLink;
@@ -32,6 +32,24 @@ public class LeadFormCreateRequest   {
   private String disclosureLanguage;
   private @Valid List<@Valid LeadFormQuestion> questions = new ArrayList<>();
   private @Valid List<@Valid LeadFormCommonPolicyLinksInner> policyLinks = new ArrayList<>();
+
+  public LeadFormCreateRequest() {
+  }
+
+  @JsonCreator
+  public LeadFormCreateRequest(
+    @JsonProperty(required = true, value = "name") String name,
+    @JsonProperty(required = true, value = "privacy_policy_link") String privacyPolicyLink,
+    @JsonProperty(required = true, value = "has_accepted_terms") Boolean hasAcceptedTerms,
+    @JsonProperty(required = true, value = "completion_message") String completionMessage,
+    @JsonProperty(required = true, value = "questions") List<@Valid LeadFormQuestion> questions
+  ) {
+    this.name = name;
+    this.privacyPolicyLink = privacyPolicyLink;
+    this.hasAcceptedTerms = hasAcceptedTerms;
+    this.completionMessage = completionMessage;
+    this.questions = questions;
+  }
 
   /**
    * Internal name of the lead form.
@@ -43,12 +61,12 @@ public class LeadFormCreateRequest   {
 
   
   @ApiModelProperty(example = "Lead Form 3/14/2023", required = true, value = "Internal name of the lead form.")
-  @JsonProperty("name")
+  @JsonProperty(required = true, value = "name")
   @NotNull public String getName() {
     return name;
   }
 
-  @JsonProperty("name")
+  @JsonProperty(required = true, value = "name")
   public void setName(String name) {
     this.name = name;
   }
@@ -63,12 +81,12 @@ public class LeadFormCreateRequest   {
 
   
   @ApiModelProperty(example = "https://www.advertisername.com/privacy-policy", required = true, value = "A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.")
-  @JsonProperty("privacy_policy_link")
+  @JsonProperty(required = true, value = "privacy_policy_link")
   @NotNull public String getPrivacyPolicyLink() {
     return privacyPolicyLink;
   }
 
-  @JsonProperty("privacy_policy_link")
+  @JsonProperty(required = true, value = "privacy_policy_link")
   public void setPrivacyPolicyLink(String privacyPolicyLink) {
     this.privacyPolicyLink = privacyPolicyLink;
   }
@@ -83,12 +101,12 @@ public class LeadFormCreateRequest   {
 
   
   @ApiModelProperty(example = "false", required = true, value = "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO")
-  @JsonProperty("has_accepted_terms")
+  @JsonProperty(required = true, value = "has_accepted_terms")
   @NotNull public Boolean getHasAcceptedTerms() {
     return hasAcceptedTerms;
   }
 
-  @JsonProperty("has_accepted_terms")
+  @JsonProperty(required = true, value = "has_accepted_terms")
   public void setHasAcceptedTerms(Boolean hasAcceptedTerms) {
     this.hasAcceptedTerms = hasAcceptedTerms;
   }
@@ -103,12 +121,12 @@ public class LeadFormCreateRequest   {
 
   
   @ApiModelProperty(example = "Thank you for submitting. We will contact you soon.", required = true, value = "A message for people who complete the form to let them know what happens next.")
-  @JsonProperty("completion_message")
+  @JsonProperty(required = true, value = "completion_message")
   @NotNull public String getCompletionMessage() {
     return completionMessage;
   }
 
-  @JsonProperty("completion_message")
+  @JsonProperty(required = true, value = "completion_message")
   public void setCompletionMessage(String completionMessage) {
     this.completionMessage = completionMessage;
   }
@@ -162,12 +180,12 @@ public class LeadFormCreateRequest   {
 
   
   @ApiModelProperty(example = "[{question_type=CUSTOM, custom_question_field_type=CHECKBOX, custom_question_label=What is your favorite animal?, custom_question_options=[Dog, Cat, Bird, Turtle]}]", required = true, value = "List of questions to be displayed on the lead form.")
-  @JsonProperty("questions")
+  @JsonProperty(required = true, value = "questions")
   @NotNull @Valid  @Size(min=0,max=10)public List<@Valid LeadFormQuestion> getQuestions() {
     return questions;
   }
 
-  @JsonProperty("questions")
+  @JsonProperty(required = true, value = "questions")
   public void setQuestions(List<@Valid LeadFormQuestion> questions) {
     this.questions = questions;
   }

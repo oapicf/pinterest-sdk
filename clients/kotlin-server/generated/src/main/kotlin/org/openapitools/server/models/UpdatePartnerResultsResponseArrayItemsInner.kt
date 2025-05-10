@@ -13,13 +13,15 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.BusinessAccessError
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param exception 
  * @param memberOrPartnerId 
  */
+@Serializable
 data class UpdatePartnerResultsResponseArrayItemsInner(
     val exception: BusinessAccessError? = null,
     val memberOrPartnerId: kotlin.String? = null
-) 
+)
 

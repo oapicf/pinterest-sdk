@@ -205,11 +205,11 @@ export function CampaignCreateResponseDataFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-  export function CampaignCreateResponseDataToJSON(json: any): CampaignCreateResponseData {
-      return CampaignCreateResponseDataToJSONTyped(json, false);
-  }
+export function CampaignCreateResponseDataToJSON(json: any): CampaignCreateResponseData {
+    return CampaignCreateResponseDataToJSONTyped(json, false);
+}
 
-  export function CampaignCreateResponseDataToJSONTyped(value?: CampaignCreateResponseData | null, ignoreDiscriminator: boolean = false): any {
+export function CampaignCreateResponseDataToJSONTyped(value?: CampaignCreateResponseData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

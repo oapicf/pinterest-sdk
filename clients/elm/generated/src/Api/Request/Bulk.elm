@@ -27,42 +27,52 @@ import Http
 import Json.Decode
 import Json.Encode
 
-{-| Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, and/or keywords; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+
+{-| Get advertiser entities in bulk
+
+Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, and/or keywords; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+
 -}
 bulkDownloadCreate : String -> Api.Data.BulkDownloadRequest -> Api.Request Api.Data.BulkDownloadResponse
 bulkDownloadCreate adAccountId_path bulkDownloadRequest_body =
     Api.request
         "POST"
         "/ad_accounts/{ad_account_id}/bulk/download"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Just (Api.Data.encodeBulkDownloadRequest bulkDownloadRequest_body)))
         Api.Data.bulkDownloadResponseDecoder
 
 
-{-| Get the status of a bulk request by <code>request_id</code>, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+{-| Download advertiser entities in bulk
+
+Get the status of a bulk request by <code>request_id</code>, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+
 -}
 bulkRequestGet : String -> String -> Maybe Bool -> Api.Request Api.Data.BulkUpsertStatusResponse
 bulkRequestGet adAccountId_path bulkRequestId_path includeDetails_query =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/bulk/{bulk_request_id}"
-        [ ( "adAccountId", identity adAccountId_path ), ( "bulkRequestId", identity bulkRequestId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ), ( "bulk_request_id", identity bulkRequestId_path ) ]
         [ ( "include_details", Maybe.map (\val -> if val then "true" else "false") includeDetails_query ) ]
         []
         Nothing
         Api.Data.bulkUpsertStatusResponseDecoder
 
 
-{-| Either create or update any combination of campaigns, ad groups, product groups, ads, or keywords. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
+{-| Create/update ad entities in bulk
+
+Either create or update any combination of campaigns, ad groups, product groups, ads, or keywords. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
+
 -}
 bulkUpsertCreate : String -> Api.Data.BulkUpsertRequest -> Api.Request Api.Data.BulkUpsertResponse
 bulkUpsertCreate adAccountId_path bulkUpsertRequest_body =
     Api.request
         "POST"
         "/ad_accounts/{ad_account_id}/bulk/upsert"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Just (Api.Data.encodeBulkUpsertRequest bulkUpsertRequest_body)))

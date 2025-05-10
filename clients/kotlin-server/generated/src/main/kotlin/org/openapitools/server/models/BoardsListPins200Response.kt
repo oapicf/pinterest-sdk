@@ -13,14 +13,16 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.Pin
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items Pins
  * @param bookmark 
  */
+@Serializable
 data class BoardsListPins200Response(
     /* Pins */
     val items: kotlin.collections.List<Pin>,
     val bookmark: kotlin.String? = null
-) 
+)
 

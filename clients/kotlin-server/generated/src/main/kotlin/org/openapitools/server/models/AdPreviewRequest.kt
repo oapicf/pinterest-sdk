@@ -14,12 +14,14 @@ package org.openapitools.server.models
 import org.openapitools.server.models.AdPreviewCreateFromImage
 import org.openapitools.server.models.AdPreviewCreateFromPin
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param imageUrl Image URL.
  * @param title Title displayed below ad.
  * @param pinId Pin ID.
  */
+@Serializable
 data class AdPreviewRequest(
     /* Image URL. */
     val imageUrl: kotlin.String,
@@ -27,5 +29,5 @@ data class AdPreviewRequest(
     val title: kotlin.String,
     /* Pin ID. */
     val pinId: kotlin.String
-) 
+)
 

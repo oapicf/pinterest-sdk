@@ -18,18 +18,10 @@ typedef struct pinterest_tag_event_data_t pinterest_tag_event_data_t;
 #include "currency.h"
 #include "line_item.h"
 
-// Enum  for pinterest_tag_event_data
-
-typedef enum  { pinterest_rest_api_pinterest_tag_event_data__NULL = 0, pinterest_rest_api_pinterest_tag_event_data__UNK, pinterest_rest_api_pinterest_tag_event_data__USD, pinterest_rest_api_pinterest_tag_event_data__GBP, pinterest_rest_api_pinterest_tag_event_data__CAD, pinterest_rest_api_pinterest_tag_event_data__EUR, pinterest_rest_api_pinterest_tag_event_data__AUD, pinterest_rest_api_pinterest_tag_event_data__NZD, pinterest_rest_api_pinterest_tag_event_data__SEK, pinterest_rest_api_pinterest_tag_event_data__ILS, pinterest_rest_api_pinterest_tag_event_data__CHF, pinterest_rest_api_pinterest_tag_event_data__HKD, pinterest_rest_api_pinterest_tag_event_data__JPY, pinterest_rest_api_pinterest_tag_event_data__SGD, pinterest_rest_api_pinterest_tag_event_data__KRW, pinterest_rest_api_pinterest_tag_event_data__NOK, pinterest_rest_api_pinterest_tag_event_data__DKK, pinterest_rest_api_pinterest_tag_event_data__PLN, pinterest_rest_api_pinterest_tag_event_data__RON, pinterest_rest_api_pinterest_tag_event_data__HUF, pinterest_rest_api_pinterest_tag_event_data__CZK, pinterest_rest_api_pinterest_tag_event_data__BRL, pinterest_rest_api_pinterest_tag_event_data__MXN, pinterest_rest_api_pinterest_tag_event_data__ARS, pinterest_rest_api_pinterest_tag_event_data__CLP, pinterest_rest_api_pinterest_tag_event_data__COP, pinterest_rest_api_pinterest_tag_event_data__INR, pinterest_rest_api_pinterest_tag_event_data___TRY } pinterest_rest_api_pinterest_tag_event_data__e;
-
-char* pinterest_tag_event_data_currency_ToString(pinterest_rest_api_pinterest_tag_event_data__e currency);
-
-pinterest_rest_api_pinterest_tag_event_data__e pinterest_tag_event_data_currency_FromString(char* currency);
-
 
 
 typedef struct pinterest_tag_event_data_t {
-    currency_t *currency; // custom
+    pinterest_rest_api_currency__e currency; //referenced enum
     char *lead_type; // string
     struct line_item_t *line_items; //model
     char *order_id; // string
@@ -41,10 +33,11 @@ typedef struct pinterest_tag_event_data_t {
     char *value; // string
     char *video_title; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } pinterest_tag_event_data_t;
 
-pinterest_tag_event_data_t *pinterest_tag_event_data_create(
-    currency_t *currency,
+__attribute__((deprecated)) pinterest_tag_event_data_t *pinterest_tag_event_data_create(
+    pinterest_rest_api_currency__e currency,
     char *lead_type,
     line_item_t *line_items,
     char *order_id,

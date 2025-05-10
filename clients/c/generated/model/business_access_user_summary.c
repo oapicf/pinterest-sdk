@@ -5,7 +5,7 @@
 
 
 
-business_access_user_summary_t *business_access_user_summary_create(
+static business_access_user_summary_t *business_access_user_summary_create_internal(
     char *email,
     char *id,
     char *username
@@ -18,12 +18,28 @@ business_access_user_summary_t *business_access_user_summary_create(
     business_access_user_summary_local_var->id = id;
     business_access_user_summary_local_var->username = username;
 
+    business_access_user_summary_local_var->_library_owned = 1;
     return business_access_user_summary_local_var;
 }
 
+__attribute__((deprecated)) business_access_user_summary_t *business_access_user_summary_create(
+    char *email,
+    char *id,
+    char *username
+    ) {
+    return business_access_user_summary_create_internal (
+        email,
+        id,
+        username
+        );
+}
 
 void business_access_user_summary_free(business_access_user_summary_t *business_access_user_summary) {
     if(NULL == business_access_user_summary){
+        return ;
+    }
+    if(business_access_user_summary->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "business_access_user_summary_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -82,6 +98,9 @@ business_access_user_summary_t *business_access_user_summary_parseFromJSON(cJSON
 
     // business_access_user_summary->email
     cJSON *email = cJSON_GetObjectItemCaseSensitive(business_access_user_summaryJSON, "email");
+    if (cJSON_IsNull(email)) {
+        email = NULL;
+    }
     if (email) { 
     if(!cJSON_IsString(email) && !cJSON_IsNull(email))
     {
@@ -91,6 +110,9 @@ business_access_user_summary_t *business_access_user_summary_parseFromJSON(cJSON
 
     // business_access_user_summary->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(business_access_user_summaryJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -100,6 +122,9 @@ business_access_user_summary_t *business_access_user_summary_parseFromJSON(cJSON
 
     // business_access_user_summary->username
     cJSON *username = cJSON_GetObjectItemCaseSensitive(business_access_user_summaryJSON, "username");
+    if (cJSON_IsNull(username)) {
+        username = NULL;
+    }
     if (username) { 
     if(!cJSON_IsString(username) && !cJSON_IsNull(username))
     {
@@ -108,7 +133,7 @@ business_access_user_summary_t *business_access_user_summary_parseFromJSON(cJSON
     }
 
 
-    business_access_user_summary_local_var = business_access_user_summary_create (
+    business_access_user_summary_local_var = business_access_user_summary_create_internal (
         email && !cJSON_IsNull(email) ? strdup(email->valuestring) : NULL,
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         username && !cJSON_IsNull(username) ? strdup(username->valuestring) : NULL

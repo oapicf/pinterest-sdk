@@ -14,17 +14,19 @@ package org.openapitools.server.models
 import org.openapitools.server.models.TopPinsAnalyticsResponseDateAvailability
 import org.openapitools.server.models.TopVideoPinsAnalyticsResponsePinsInner
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param dateAvailability 
  * @param pins 
  * @param sortBy 
  */
+@Serializable
 data class TopVideoPinsAnalyticsResponse(
     val dateAvailability: TopPinsAnalyticsResponseDateAvailability? = null,
     val pins: kotlin.collections.List<TopVideoPinsAnalyticsResponsePinsInner>? = null,
     val sortBy: TopVideoPinsAnalyticsResponse.SortBy? = null
-) 
+)
 {
     /**
     * 

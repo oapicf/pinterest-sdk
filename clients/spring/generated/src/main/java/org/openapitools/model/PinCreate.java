@@ -11,6 +11,7 @@ import org.openapitools.model.BoardOwner;
 import org.openapitools.model.PinMedia;
 import org.openapitools.model.PinMediaSource;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -27,13 +28,13 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "PinCreate", description = "Pin")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinCreate {
 
-  private String id;
+  private @Nullable String id;
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-  private OffsetDateTime createdAt;
+  private @Nullable OffsetDateTime createdAt;
 
   private JsonNullable<@Size(max = 2048) String> link = JsonNullable.<String>undefined();
 
@@ -45,15 +46,15 @@ public class PinCreate {
 
   private JsonNullable<@Size(max = 500) String> altText = JsonNullable.<String>undefined();
 
-  private String boardId;
+  private @Nullable String boardId;
 
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> boardSectionId = JsonNullable.<String>undefined();
 
-  private BoardOwner boardOwner;
+  private @Nullable BoardOwner boardOwner;
 
-  private PinMedia media;
+  private @Nullable PinMedia media;
 
-  private PinMediaSource mediaSource;
+  private @Nullable PinMediaSource mediaSource;
 
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> parentPinId = JsonNullable.<String>undefined();
 

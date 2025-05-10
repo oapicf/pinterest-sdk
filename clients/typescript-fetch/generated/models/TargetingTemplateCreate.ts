@@ -116,11 +116,11 @@ export function TargetingTemplateCreateFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-  export function TargetingTemplateCreateToJSON(json: any): TargetingTemplateCreate {
-      return TargetingTemplateCreateToJSONTyped(json, false);
-  }
+export function TargetingTemplateCreateToJSON(json: any): TargetingTemplateCreate {
+    return TargetingTemplateCreateToJSONTyped(json, false);
+}
 
-  export function TargetingTemplateCreateToJSONTyped(value?: TargetingTemplateCreate | null, ignoreDiscriminator: boolean = false): any {
+export function TargetingTemplateCreateToJSONTyped(value?: TargetingTemplateCreate | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

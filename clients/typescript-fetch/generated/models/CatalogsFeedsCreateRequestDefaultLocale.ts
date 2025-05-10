@@ -44,11 +44,11 @@ export function CatalogsFeedsCreateRequestDefaultLocaleFromJSONTyped(json: any, 
     return json;
 }
 
-  export function CatalogsFeedsCreateRequestDefaultLocaleToJSON(json: any): CatalogsFeedsCreateRequestDefaultLocale {
-      return CatalogsFeedsCreateRequestDefaultLocaleToJSONTyped(json, false);
-  }
+export function CatalogsFeedsCreateRequestDefaultLocaleToJSON(json: any): CatalogsFeedsCreateRequestDefaultLocale {
+    return CatalogsFeedsCreateRequestDefaultLocaleToJSONTyped(json, false);
+}
 
-  export function CatalogsFeedsCreateRequestDefaultLocaleToJSONTyped(value?: CatalogsFeedsCreateRequestDefaultLocale | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsFeedsCreateRequestDefaultLocaleToJSONTyped(value?: CatalogsFeedsCreateRequestDefaultLocale | null, ignoreDiscriminator: boolean = false): any {
     return value;
 }
 

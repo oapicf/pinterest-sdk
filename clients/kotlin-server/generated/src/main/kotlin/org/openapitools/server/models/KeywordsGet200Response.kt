@@ -13,13 +13,15 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.Keyword
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items 
  * @param bookmark 
  */
+@Serializable
 data class KeywordsGet200Response(
     val items: kotlin.collections.List<Keyword>,
     val bookmark: kotlin.String? = null
-) 
+)
 

@@ -22,9 +22,10 @@ typedef struct members_to_delete_body_t members_to_delete_body_t;
 typedef struct members_to_delete_body_t {
     list_t *members; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } members_to_delete_body_t;
 
-members_to_delete_body_t *members_to_delete_body_create(
+__attribute__((deprecated)) members_to_delete_body_t *members_to_delete_body_create(
     list_t *members
 );
 

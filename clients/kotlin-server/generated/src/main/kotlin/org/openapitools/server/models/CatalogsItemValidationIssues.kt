@@ -14,6 +14,7 @@ package org.openapitools.server.models
 import org.openapitools.server.models.CatalogsItemValidationErrors
 import org.openapitools.server.models.CatalogsItemValidationWarnings
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param itemNumber Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
@@ -21,12 +22,13 @@ import org.openapitools.server.models.CatalogsItemValidationWarnings
  * @param errors 
  * @param warnings 
  */
+@Serializable
 data class CatalogsItemValidationIssues(
     /* Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation. */
     val itemNumber: kotlin.Int,
     /* The merchant-created unique ID that represents the product. */
-    val itemId: kotlin.String,
+    val itemId: kotlin.String?,
     val errors: CatalogsItemValidationErrors,
     val warnings: CatalogsItemValidationWarnings
-) 
+)
 

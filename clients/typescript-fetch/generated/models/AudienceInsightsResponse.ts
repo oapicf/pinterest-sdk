@@ -107,11 +107,11 @@ export function AudienceInsightsResponseFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function AudienceInsightsResponseToJSON(json: any): AudienceInsightsResponse {
-      return AudienceInsightsResponseToJSONTyped(json, false);
-  }
+export function AudienceInsightsResponseToJSON(json: any): AudienceInsightsResponse {
+    return AudienceInsightsResponseToJSONTyped(json, false);
+}
 
-  export function AudienceInsightsResponseToJSONTyped(value?: AudienceInsightsResponse | null, ignoreDiscriminator: boolean = false): any {
+export function AudienceInsightsResponseToJSONTyped(value?: AudienceInsightsResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

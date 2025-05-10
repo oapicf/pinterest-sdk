@@ -48,7 +48,7 @@ class GetMMMReportResponseData
      * @SerializedName("report_status")
      * @Type("string")
     */
-    #[Assert\Choice(["DOES_NOT_EXIST", "FINISHED", "IN_PROGRESS", "EXPIRED", "FAILED", "CANCELLED"])]
+    #[Assert\Choice(['DOES_NOT_EXIST', 'FINISHED', 'IN_PROGRESS', 'EXPIRED', 'FAILED', 'CANCELLED'])]
     #[Assert\Type("string")]
     protected ?string $reportStatus = null;
 
@@ -72,7 +72,7 @@ class GetMMMReportResponseData
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->reportStatus = array_key_exists('reportStatus', $data) ? $data['reportStatus'] : $this->reportStatus;

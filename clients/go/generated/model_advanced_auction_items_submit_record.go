@@ -13,8 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // AdvancedAuctionItemsSubmitRecord - Object describing an item bid option operation
@@ -113,6 +113,20 @@ func (obj *AdvancedAuctionItemsSubmitRecord) GetActualInstance() (interface{}) {
 
 	if obj.AdvancedAuctionItemsSubmitUpsertRecord != nil {
 		return obj.AdvancedAuctionItemsSubmitUpsertRecord
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj AdvancedAuctionItemsSubmitRecord) GetActualInstanceValue() (interface{}) {
+	if obj.AdvancedAuctionItemsSubmitDeleteRecord != nil {
+		return *obj.AdvancedAuctionItemsSubmitDeleteRecord
+	}
+
+	if obj.AdvancedAuctionItemsSubmitUpsertRecord != nil {
+		return *obj.AdvancedAuctionItemsSubmitUpsertRecord
 	}
 
 	// all schemas are nil

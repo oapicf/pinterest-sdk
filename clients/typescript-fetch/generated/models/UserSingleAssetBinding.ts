@@ -63,11 +63,11 @@ export function UserSingleAssetBindingFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-  export function UserSingleAssetBindingToJSON(json: any): UserSingleAssetBinding {
-      return UserSingleAssetBindingToJSONTyped(json, false);
-  }
+export function UserSingleAssetBindingToJSON(json: any): UserSingleAssetBinding {
+    return UserSingleAssetBindingToJSONTyped(json, false);
+}
 
-  export function UserSingleAssetBindingToJSONTyped(value?: UserSingleAssetBinding | null, ignoreDiscriminator: boolean = false): any {
+export function UserSingleAssetBindingToJSONTyped(value?: UserSingleAssetBinding | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

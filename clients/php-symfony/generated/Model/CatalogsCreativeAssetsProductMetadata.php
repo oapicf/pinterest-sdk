@@ -70,7 +70,7 @@ class CatalogsCreativeAssetsProductMetadata
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->creativeAssetsId = array_key_exists('creativeAssetsId', $data) ? $data['creativeAssetsId'] : $this->creativeAssetsId;

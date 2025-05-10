@@ -50,11 +50,11 @@ export function AdPreviewURLResponseFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function AdPreviewURLResponseToJSON(json: any): AdPreviewURLResponse {
-      return AdPreviewURLResponseToJSONTyped(json, false);
-  }
+export function AdPreviewURLResponseToJSON(json: any): AdPreviewURLResponse {
+    return AdPreviewURLResponseToJSONTyped(json, false);
+}
 
-  export function AdPreviewURLResponseToJSONTyped(value?: AdPreviewURLResponse | null, ignoreDiscriminator: boolean = false): any {
+export function AdPreviewURLResponseToJSONTyped(value?: AdPreviewURLResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

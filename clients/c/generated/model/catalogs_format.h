@@ -24,9 +24,9 @@ char* catalogs_format_catalogs_format_ToString(pinterest_rest_api_catalogs_forma
 
 pinterest_rest_api_catalogs_format__e catalogs_format_catalogs_format_FromString(char* catalogs_format);
 
-//cJSON *catalogs_format_catalogs_format_convertToJSON(pinterest_rest_api_catalogs_format__e catalogs_format);
+cJSON *catalogs_format_convertToJSON(pinterest_rest_api_catalogs_format__e catalogs_format);
 
-//pinterest_rest_api_catalogs_format__e catalogs_format_catalogs_format_parseFromJSON(cJSON *catalogs_formatJSON);
+pinterest_rest_api_catalogs_format__e catalogs_format_parseFromJSON(cJSON *catalogs_formatJSON);
 
 #endif /* _catalogs_format_H_ */
 

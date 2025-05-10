@@ -50,20 +50,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * RelatedTermsRelatedTermsListInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class RelatedTermsRelatedTermsListInner {
   public static final String SERIALIZED_NAME_TERM = "term";
   @SerializedName(SERIALIZED_NAME_TERM)
+  @javax.annotation.Nullable
   private String term;
 
   public static final String SERIALIZED_NAME_RELATED_TERMS = "related_terms";
   @SerializedName(SERIALIZED_NAME_RELATED_TERMS)
+  @javax.annotation.Nullable
   private List<String> relatedTerms = new ArrayList<>();
 
   public RelatedTermsRelatedTermsListInner() {
   }
 
-  public RelatedTermsRelatedTermsListInner term(String term) {
+  public RelatedTermsRelatedTermsListInner term(@javax.annotation.Nullable String term) {
     this.term = term;
     return this;
   }
@@ -77,12 +79,12 @@ public class RelatedTermsRelatedTermsListInner {
     return term;
   }
 
-  public void setTerm(String term) {
+  public void setTerm(@javax.annotation.Nullable String term) {
     this.term = term;
   }
 
 
-  public RelatedTermsRelatedTermsListInner relatedTerms(List<String> relatedTerms) {
+  public RelatedTermsRelatedTermsListInner relatedTerms(@javax.annotation.Nullable List<String> relatedTerms) {
     this.relatedTerms = relatedTerms;
     return this;
   }
@@ -104,7 +106,7 @@ public class RelatedTermsRelatedTermsListInner {
     return relatedTerms;
   }
 
-  public void setRelatedTerms(List<String> relatedTerms) {
+  public void setRelatedTerms(@javax.annotation.Nullable List<String> relatedTerms) {
     this.relatedTerms = relatedTerms;
   }
 

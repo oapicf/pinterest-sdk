@@ -57,18 +57,18 @@ class DeletePartnersRequest
     protected ?array $partnerIds = null;
 
     /**
-     * @var string|null
+     * @var 
      * @SerializedName("partner_type")
-     * @Type("string")
+     * @Type("StringOpenAPIServerModelBusinessRoleCheckMode")
     */
-    #[Assert\Type("string")]
-    protected ?string $partnerType = null;
+    #[Assert\Type("StringOpenAPIServerModelBusinessRoleCheckMode")]
+    protected  $partnerType = null;
 
     /**
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->partnerIds = array_key_exists('partnerIds', $data) ? $data['partnerIds'] : $this->partnerIds;
@@ -106,9 +106,9 @@ class DeletePartnersRequest
     /**
      * Gets partnerType.
      *
-     * @return string|null
+     * @return 
      */
-    public function getPartnerType(): ?string
+    public function getPartnerType(): 
     {
         return $this->partnerType;
     }
@@ -116,11 +116,11 @@ class DeletePartnersRequest
     /**
     * Sets partnerType.
     *
-    * @param string|null $partnerType
+    * @param  $partnerType
     *
     * @return $this
     */
-    public function setPartnerType(?string $partnerType = null): self
+    public function setPartnerType( $partnerType = null): self
     {
         $this->partnerType = $partnerType;
 

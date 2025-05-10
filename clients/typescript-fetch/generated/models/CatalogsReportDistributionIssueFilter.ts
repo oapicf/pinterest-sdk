@@ -66,11 +66,11 @@ export function CatalogsReportDistributionIssueFilterFromJSONTyped(json: any, ig
     };
 }
 
-  export function CatalogsReportDistributionIssueFilterToJSON(json: any): CatalogsReportDistributionIssueFilter {
-      return CatalogsReportDistributionIssueFilterToJSONTyped(json, false);
-  }
+export function CatalogsReportDistributionIssueFilterToJSON(json: any): CatalogsReportDistributionIssueFilter {
+    return CatalogsReportDistributionIssueFilterToJSONTyped(json, false);
+}
 
-  export function CatalogsReportDistributionIssueFilterToJSONTyped(value?: CatalogsReportDistributionIssueFilter | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsReportDistributionIssueFilterToJSONTyped(value?: CatalogsReportDistributionIssueFilter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

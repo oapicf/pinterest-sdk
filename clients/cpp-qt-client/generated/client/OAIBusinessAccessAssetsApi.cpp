@@ -264,7 +264,7 @@ void OAIBusinessAccessAssetsApi::assetGroup_create(const QString &business_id, c
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessAssetsApi::assetGroup_createCallback);
     connect(this, &OAIBusinessAccessAssetsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -287,7 +287,7 @@ void OAIBusinessAccessAssetsApi::assetGroup_create(const QString &business_id, c
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessAssetsApi::assetGroup_createCallback);
     connect(this, &OAIBusinessAccessAssetsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -396,7 +396,7 @@ void OAIBusinessAccessAssetsApi::assetGroup_delete(const QString &business_id, c
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessAssetsApi::assetGroup_deleteCallback);
     connect(this, &OAIBusinessAccessAssetsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -419,7 +419,7 @@ void OAIBusinessAccessAssetsApi::assetGroup_delete(const QString &business_id, c
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessAssetsApi::assetGroup_deleteCallback);
     connect(this, &OAIBusinessAccessAssetsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -528,7 +528,7 @@ void OAIBusinessAccessAssetsApi::assetGroup_update(const QString &business_id, c
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessAssetsApi::assetGroup_updateCallback);
     connect(this, &OAIBusinessAccessAssetsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -551,7 +551,7 @@ void OAIBusinessAccessAssetsApi::assetGroup_update(const QString &business_id, c
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessAssetsApi::assetGroup_updateCallback);
     connect(this, &OAIBusinessAccessAssetsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -670,7 +670,7 @@ void OAIBusinessAccessAssetsApi::businessAssetMembers_get(const QString &busines
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     if (page_size.hasValue())
     {
@@ -685,7 +685,7 @@ void OAIBusinessAccessAssetsApi::businessAssetMembers_get(const QString &busines
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     if (start_index.hasValue())
     {
@@ -700,7 +700,7 @@ void OAIBusinessAccessAssetsApi::businessAssetMembers_get(const QString &busines
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("start_index")).append(querySuffix).append(QUrl::toPercentEncoding(start_index.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("start_index")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(start_index.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -715,7 +715,7 @@ void OAIBusinessAccessAssetsApi::businessAssetMembers_get(const QString &busines
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessAssetsApi::businessAssetMembers_getCallback);
     connect(this, &OAIBusinessAccessAssetsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -737,7 +737,7 @@ void OAIBusinessAccessAssetsApi::businessAssetMembers_get(const QString &busines
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessAssetsApi::businessAssetMembers_getCallback);
     connect(this, &OAIBusinessAccessAssetsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -855,7 +855,7 @@ void OAIBusinessAccessAssetsApi::businessAssetPartners_get(const QString &busine
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("start_index")).append(querySuffix).append(QUrl::toPercentEncoding(start_index.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("start_index")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(start_index.stringValue())));
     }
     if (bookmark.hasValue())
     {
@@ -870,7 +870,7 @@ void OAIBusinessAccessAssetsApi::businessAssetPartners_get(const QString &busine
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     if (page_size.hasValue())
     {
@@ -885,7 +885,7 @@ void OAIBusinessAccessAssetsApi::businessAssetPartners_get(const QString &busine
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -900,7 +900,7 @@ void OAIBusinessAccessAssetsApi::businessAssetPartners_get(const QString &busine
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessAssetsApi::businessAssetPartners_getCallback);
     connect(this, &OAIBusinessAccessAssetsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -922,7 +922,7 @@ void OAIBusinessAccessAssetsApi::businessAssetPartners_get(const QString &busine
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessAssetsApi::businessAssetPartners_getCallback);
     connect(this, &OAIBusinessAccessAssetsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1111,7 +1111,7 @@ void OAIBusinessAccessAssetsApi::businessAssets_get(const QString &business_id, 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("child_asset_id")).append(querySuffix).append(QUrl::toPercentEncoding(child_asset_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("child_asset_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(child_asset_id.stringValue())));
     }
     if (asset_group_id.hasValue())
     {
@@ -1126,7 +1126,7 @@ void OAIBusinessAccessAssetsApi::businessAssets_get(const QString &business_id, 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("asset_group_id")).append(querySuffix).append(QUrl::toPercentEncoding(asset_group_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("asset_group_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(asset_group_id.stringValue())));
     }
     if (asset_type.hasValue())
     {
@@ -1141,7 +1141,7 @@ void OAIBusinessAccessAssetsApi::businessAssets_get(const QString &business_id, 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("asset_type")).append(querySuffix).append(QUrl::toPercentEncoding(asset_type.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("asset_type")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(asset_type.stringValue())));
     }
     if (start_index.hasValue())
     {
@@ -1156,7 +1156,7 @@ void OAIBusinessAccessAssetsApi::businessAssets_get(const QString &business_id, 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("start_index")).append(querySuffix).append(QUrl::toPercentEncoding(start_index.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("start_index")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(start_index.stringValue())));
     }
     if (bookmark.hasValue())
     {
@@ -1171,7 +1171,7 @@ void OAIBusinessAccessAssetsApi::businessAssets_get(const QString &business_id, 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     if (page_size.hasValue())
     {
@@ -1186,7 +1186,7 @@ void OAIBusinessAccessAssetsApi::businessAssets_get(const QString &business_id, 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -1201,7 +1201,7 @@ void OAIBusinessAccessAssetsApi::businessAssets_get(const QString &business_id, 
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessAssetsApi::businessAssets_getCallback);
     connect(this, &OAIBusinessAccessAssetsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1223,7 +1223,7 @@ void OAIBusinessAccessAssetsApi::businessAssets_get(const QString &business_id, 
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessAssetsApi::businessAssets_getCallback);
     connect(this, &OAIBusinessAccessAssetsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1341,7 +1341,7 @@ void OAIBusinessAccessAssetsApi::businessMemberAssets_get(const QString &busines
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("asset_type")).append(querySuffix).append(QUrl::toPercentEncoding(asset_type.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("asset_type")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(asset_type.stringValue())));
     }
     if (start_index.hasValue())
     {
@@ -1356,7 +1356,7 @@ void OAIBusinessAccessAssetsApi::businessMemberAssets_get(const QString &busines
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("start_index")).append(querySuffix).append(QUrl::toPercentEncoding(start_index.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("start_index")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(start_index.stringValue())));
     }
     if (bookmark.hasValue())
     {
@@ -1371,7 +1371,7 @@ void OAIBusinessAccessAssetsApi::businessMemberAssets_get(const QString &busines
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     if (page_size.hasValue())
     {
@@ -1386,7 +1386,7 @@ void OAIBusinessAccessAssetsApi::businessMemberAssets_get(const QString &busines
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -1401,7 +1401,7 @@ void OAIBusinessAccessAssetsApi::businessMemberAssets_get(const QString &busines
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessAssetsApi::businessMemberAssets_getCallback);
     connect(this, &OAIBusinessAccessAssetsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1423,7 +1423,7 @@ void OAIBusinessAccessAssetsApi::businessMemberAssets_get(const QString &busines
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessAssetsApi::businessMemberAssets_getCallback);
     connect(this, &OAIBusinessAccessAssetsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1531,7 +1531,7 @@ void OAIBusinessAccessAssetsApi::businessMembersAssetAccess_delete(const QString
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessAssetsApi::businessMembersAssetAccess_deleteCallback);
     connect(this, &OAIBusinessAccessAssetsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1553,7 +1553,7 @@ void OAIBusinessAccessAssetsApi::businessMembersAssetAccess_delete(const QString
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessAssetsApi::businessMembersAssetAccess_deleteCallback);
     connect(this, &OAIBusinessAccessAssetsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1661,7 +1661,7 @@ void OAIBusinessAccessAssetsApi::businessMembersAssetAccess_update(const QString
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessAssetsApi::businessMembersAssetAccess_updateCallback);
     connect(this, &OAIBusinessAccessAssetsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1683,7 +1683,7 @@ void OAIBusinessAccessAssetsApi::businessMembersAssetAccess_update(const QString
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessAssetsApi::businessMembersAssetAccess_updateCallback);
     connect(this, &OAIBusinessAccessAssetsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1860,7 +1860,7 @@ void OAIBusinessAccessAssetsApi::businessPartnerAssetAccess_get(const QString &b
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("asset_type")).append(querySuffix).append(QUrl::toPercentEncoding(asset_type.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("asset_type")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(asset_type.stringValue())));
     }
     if (start_index.hasValue())
     {
@@ -1875,7 +1875,7 @@ void OAIBusinessAccessAssetsApi::businessPartnerAssetAccess_get(const QString &b
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("start_index")).append(querySuffix).append(QUrl::toPercentEncoding(start_index.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("start_index")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(start_index.stringValue())));
     }
     if (page_size.hasValue())
     {
@@ -1890,7 +1890,7 @@ void OAIBusinessAccessAssetsApi::businessPartnerAssetAccess_get(const QString &b
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     if (bookmark.hasValue())
     {
@@ -1905,7 +1905,7 @@ void OAIBusinessAccessAssetsApi::businessPartnerAssetAccess_get(const QString &b
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -1920,7 +1920,7 @@ void OAIBusinessAccessAssetsApi::businessPartnerAssetAccess_get(const QString &b
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessAssetsApi::businessPartnerAssetAccess_getCallback);
     connect(this, &OAIBusinessAccessAssetsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1942,7 +1942,7 @@ void OAIBusinessAccessAssetsApi::businessPartnerAssetAccess_get(const QString &b
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessAssetsApi::businessPartnerAssetAccess_getCallback);
     connect(this, &OAIBusinessAccessAssetsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -2050,7 +2050,7 @@ void OAIBusinessAccessAssetsApi::deletePartnerAssetAccessHandlerImpl(const QStri
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessAssetsApi::deletePartnerAssetAccessHandlerImplCallback);
     connect(this, &OAIBusinessAccessAssetsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -2072,7 +2072,7 @@ void OAIBusinessAccessAssetsApi::deletePartnerAssetAccessHandlerImpl(const QStri
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessAssetsApi::deletePartnerAssetAccessHandlerImplCallback);
     connect(this, &OAIBusinessAccessAssetsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -2180,7 +2180,7 @@ void OAIBusinessAccessAssetsApi::updatePartnerAssetAccessHandlerImpl(const QStri
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessAssetsApi::updatePartnerAssetAccessHandlerImplCallback);
     connect(this, &OAIBusinessAccessAssetsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -2202,7 +2202,7 @@ void OAIBusinessAccessAssetsApi::updatePartnerAssetAccessHandlerImpl(const QStri
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessAssetsApi::updatePartnerAssetAccessHandlerImplCallback);
     connect(this, &OAIBusinessAccessAssetsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }

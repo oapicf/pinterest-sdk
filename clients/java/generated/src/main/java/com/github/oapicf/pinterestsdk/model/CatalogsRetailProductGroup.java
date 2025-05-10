@@ -52,7 +52,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsRetailProductGroup
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsRetailProductGroup {
   /**
    * Gets or Sets catalogType
@@ -106,65 +106,79 @@ public class CatalogsRetailProductGroup {
 
   public static final String SERIALIZED_NAME_CATALOG_TYPE = "catalog_type";
   @SerializedName(SERIALIZED_NAME_CATALOG_TYPE)
+  @javax.annotation.Nonnull
   private CatalogTypeEnum catalogType;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nonnull
   private String id;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nullable
   private String description;
 
   public static final String SERIALIZED_NAME_FILTERS = "filters";
   @SerializedName(SERIALIZED_NAME_FILTERS)
+  @javax.annotation.Nonnull
   private CatalogsProductGroupFilters filters;
 
   public static final String SERIALIZED_NAME_IS_FEATURED = "is_featured";
   @Deprecated
   @SerializedName(SERIALIZED_NAME_IS_FEATURED)
+  @javax.annotation.Nullable
   private Boolean isFeatured;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nullable
   private CatalogsProductGroupType type;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private CatalogsProductGroupStatus status;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  @javax.annotation.Nullable
   private Integer createdAt;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updated_at";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+  @javax.annotation.Nullable
   private Integer updatedAt;
 
   public static final String SERIALIZED_NAME_CATALOG_ID = "catalog_id";
   @SerializedName(SERIALIZED_NAME_CATALOG_ID)
+  @javax.annotation.Nonnull
   private String catalogId;
 
   public static final String SERIALIZED_NAME_FEED_ID = "feed_id";
   @SerializedName(SERIALIZED_NAME_FEED_ID)
+  @javax.annotation.Nullable
   private String feedId;
 
   public static final String SERIALIZED_NAME_COUNTRY = "country";
   @SerializedName(SERIALIZED_NAME_COUNTRY)
+  @javax.annotation.Nullable
   private String country;
 
   public static final String SERIALIZED_NAME_LOCALE = "locale";
   @SerializedName(SERIALIZED_NAME_LOCALE)
+  @javax.annotation.Nullable
   private String locale;
 
   public CatalogsRetailProductGroup() {
   }
 
-  public CatalogsRetailProductGroup catalogType(CatalogTypeEnum catalogType) {
+  public CatalogsRetailProductGroup catalogType(@javax.annotation.Nonnull CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -178,12 +192,12 @@ public class CatalogsRetailProductGroup {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogTypeEnum catalogType) {
+  public void setCatalogType(@javax.annotation.Nonnull CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
 
-  public CatalogsRetailProductGroup id(String id) {
+  public CatalogsRetailProductGroup id(@javax.annotation.Nonnull String id) {
     this.id = id;
     return this;
   }
@@ -197,12 +211,12 @@ public class CatalogsRetailProductGroup {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 
 
-  public CatalogsRetailProductGroup name(String name) {
+  public CatalogsRetailProductGroup name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -216,12 +230,12 @@ public class CatalogsRetailProductGroup {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public CatalogsRetailProductGroup description(String description) {
+  public CatalogsRetailProductGroup description(@javax.annotation.Nullable String description) {
     this.description = description;
     return this;
   }
@@ -235,12 +249,12 @@ public class CatalogsRetailProductGroup {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
 
-  public CatalogsRetailProductGroup filters(CatalogsProductGroupFilters filters) {
+  public CatalogsRetailProductGroup filters(@javax.annotation.Nonnull CatalogsProductGroupFilters filters) {
     this.filters = filters;
     return this;
   }
@@ -254,13 +268,13 @@ public class CatalogsRetailProductGroup {
     return filters;
   }
 
-  public void setFilters(CatalogsProductGroupFilters filters) {
+  public void setFilters(@javax.annotation.Nonnull CatalogsProductGroupFilters filters) {
     this.filters = filters;
   }
 
 
   @Deprecated
-  public CatalogsRetailProductGroup isFeatured(Boolean isFeatured) {
+  public CatalogsRetailProductGroup isFeatured(@javax.annotation.Nullable Boolean isFeatured) {
     this.isFeatured = isFeatured;
     return this;
   }
@@ -277,12 +291,12 @@ public class CatalogsRetailProductGroup {
   }
 
   @Deprecated
-  public void setIsFeatured(Boolean isFeatured) {
+  public void setIsFeatured(@javax.annotation.Nullable Boolean isFeatured) {
     this.isFeatured = isFeatured;
   }
 
 
-  public CatalogsRetailProductGroup type(CatalogsProductGroupType type) {
+  public CatalogsRetailProductGroup type(@javax.annotation.Nullable CatalogsProductGroupType type) {
     this.type = type;
     return this;
   }
@@ -296,12 +310,12 @@ public class CatalogsRetailProductGroup {
     return type;
   }
 
-  public void setType(CatalogsProductGroupType type) {
+  public void setType(@javax.annotation.Nullable CatalogsProductGroupType type) {
     this.type = type;
   }
 
 
-  public CatalogsRetailProductGroup status(CatalogsProductGroupStatus status) {
+  public CatalogsRetailProductGroup status(@javax.annotation.Nullable CatalogsProductGroupStatus status) {
     this.status = status;
     return this;
   }
@@ -315,12 +329,12 @@ public class CatalogsRetailProductGroup {
     return status;
   }
 
-  public void setStatus(CatalogsProductGroupStatus status) {
+  public void setStatus(@javax.annotation.Nullable CatalogsProductGroupStatus status) {
     this.status = status;
   }
 
 
-  public CatalogsRetailProductGroup createdAt(Integer createdAt) {
+  public CatalogsRetailProductGroup createdAt(@javax.annotation.Nullable Integer createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -334,12 +348,12 @@ public class CatalogsRetailProductGroup {
     return createdAt;
   }
 
-  public void setCreatedAt(Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
     this.createdAt = createdAt;
   }
 
 
-  public CatalogsRetailProductGroup updatedAt(Integer updatedAt) {
+  public CatalogsRetailProductGroup updatedAt(@javax.annotation.Nullable Integer updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
@@ -353,12 +367,12 @@ public class CatalogsRetailProductGroup {
     return updatedAt;
   }
 
-  public void setUpdatedAt(Integer updatedAt) {
+  public void setUpdatedAt(@javax.annotation.Nullable Integer updatedAt) {
     this.updatedAt = updatedAt;
   }
 
 
-  public CatalogsRetailProductGroup catalogId(String catalogId) {
+  public CatalogsRetailProductGroup catalogId(@javax.annotation.Nonnull String catalogId) {
     this.catalogId = catalogId;
     return this;
   }
@@ -372,12 +386,12 @@ public class CatalogsRetailProductGroup {
     return catalogId;
   }
 
-  public void setCatalogId(String catalogId) {
+  public void setCatalogId(@javax.annotation.Nonnull String catalogId) {
     this.catalogId = catalogId;
   }
 
 
-  public CatalogsRetailProductGroup feedId(String feedId) {
+  public CatalogsRetailProductGroup feedId(@javax.annotation.Nullable String feedId) {
     this.feedId = feedId;
     return this;
   }
@@ -391,12 +405,12 @@ public class CatalogsRetailProductGroup {
     return feedId;
   }
 
-  public void setFeedId(String feedId) {
+  public void setFeedId(@javax.annotation.Nullable String feedId) {
     this.feedId = feedId;
   }
 
 
-  public CatalogsRetailProductGroup country(String country) {
+  public CatalogsRetailProductGroup country(@javax.annotation.Nullable String country) {
     this.country = country;
     return this;
   }
@@ -410,12 +424,12 @@ public class CatalogsRetailProductGroup {
     return country;
   }
 
-  public void setCountry(String country) {
+  public void setCountry(@javax.annotation.Nullable String country) {
     this.country = country;
   }
 
 
-  public CatalogsRetailProductGroup locale(String locale) {
+  public CatalogsRetailProductGroup locale(@javax.annotation.Nullable String locale) {
     this.locale = locale;
     return this;
   }
@@ -429,7 +443,7 @@ public class CatalogsRetailProductGroup {
     return locale;
   }
 
-  public void setLocale(String locale) {
+  public void setLocale(@javax.annotation.Nullable String locale) {
     this.locale = locale;
   }
 

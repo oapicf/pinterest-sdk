@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.UsersForIndividualAssetResponse
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param response 
  */
+@Serializable
 data class UpdateMemberAssetsResultsResponseArrayItemsInner(
     val response: UsersForIndividualAssetResponse? = null
-) 
+)
 

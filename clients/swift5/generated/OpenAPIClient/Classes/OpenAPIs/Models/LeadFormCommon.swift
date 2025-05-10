@@ -13,8 +13,8 @@ import AnyCodable
 /** Creation fields */
 public struct LeadFormCommon: Codable, JSONEncodable, Hashable {
 
-    static let questionsRule = ArrayRule(minItems: 0, maxItems: 10, uniqueItems: false)
-    static let policyLinksRule = ArrayRule(minItems: 0, maxItems: 3, uniqueItems: false)
+    public static let questionsRule = ArrayRule(minItems: 0, maxItems: 10, uniqueItems: false)
+    public static let policyLinksRule = ArrayRule(minItems: 0, maxItems: 3, uniqueItems: false)
     /** Internal name of the lead form. */
     public var name: String?
     /** A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language. */

@@ -41,9 +41,9 @@ class PinMediaSource {
 
     enum ContentTypeEnum {
     
-        JPEG("image/jpeg"),
+        IMAGE_JPEG("image/jpeg"),
         
-        PNG("image/png")
+        IMAGE_PNG("image/png")
     
         private final String value
     
@@ -74,9 +74,9 @@ class PinMediaSource {
 
     enum CoverImageContentTypeEnum {
     
-        JPEG("image/jpeg"),
+        IMAGE_JPEG("image/jpeg"),
         
-        PNG("image/png")
+        IMAGE_PNG("image/png")
     
         private final String value
     

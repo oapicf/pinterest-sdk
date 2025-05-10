@@ -51,24 +51,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * UpdatePartnerAssetAccessBodyAccessesInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class UpdatePartnerAssetAccessBodyAccessesInner {
   public static final String SERIALIZED_NAME_PARTNER_ID = "partner_id";
   @SerializedName(SERIALIZED_NAME_PARTNER_ID)
+  @javax.annotation.Nonnull
   private String partnerId;
 
   public static final String SERIALIZED_NAME_ASSET_ID = "asset_id";
   @SerializedName(SERIALIZED_NAME_ASSET_ID)
+  @javax.annotation.Nonnull
   private String assetId;
 
   public static final String SERIALIZED_NAME_PERMISSIONS = "permissions";
   @SerializedName(SERIALIZED_NAME_PERMISSIONS)
+  @javax.annotation.Nonnull
   private List<Permissions> permissions = new ArrayList<>();
 
   public UpdatePartnerAssetAccessBodyAccessesInner() {
   }
 
-  public UpdatePartnerAssetAccessBodyAccessesInner partnerId(String partnerId) {
+  public UpdatePartnerAssetAccessBodyAccessesInner partnerId(@javax.annotation.Nonnull String partnerId) {
     this.partnerId = partnerId;
     return this;
   }
@@ -82,12 +85,12 @@ public class UpdatePartnerAssetAccessBodyAccessesInner {
     return partnerId;
   }
 
-  public void setPartnerId(String partnerId) {
+  public void setPartnerId(@javax.annotation.Nonnull String partnerId) {
     this.partnerId = partnerId;
   }
 
 
-  public UpdatePartnerAssetAccessBodyAccessesInner assetId(String assetId) {
+  public UpdatePartnerAssetAccessBodyAccessesInner assetId(@javax.annotation.Nonnull String assetId) {
     this.assetId = assetId;
     return this;
   }
@@ -101,12 +104,12 @@ public class UpdatePartnerAssetAccessBodyAccessesInner {
     return assetId;
   }
 
-  public void setAssetId(String assetId) {
+  public void setAssetId(@javax.annotation.Nonnull String assetId) {
     this.assetId = assetId;
   }
 
 
-  public UpdatePartnerAssetAccessBodyAccessesInner permissions(List<Permissions> permissions) {
+  public UpdatePartnerAssetAccessBodyAccessesInner permissions(@javax.annotation.Nonnull List<Permissions> permissions) {
     this.permissions = permissions;
     return this;
   }
@@ -128,7 +131,7 @@ public class UpdatePartnerAssetAccessBodyAccessesInner {
     return permissions;
   }
 
-  public void setPermissions(List<Permissions> permissions) {
+  public void setPermissions(@javax.annotation.Nonnull List<Permissions> permissions) {
     this.permissions = permissions;
   }
 

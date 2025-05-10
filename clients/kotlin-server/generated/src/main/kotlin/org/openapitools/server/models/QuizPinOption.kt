@@ -12,13 +12,15 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  *  This field contains multiple options to a quiz question.
  * @param id 
  * @param text 
  */
+@Serializable
 data class QuizPinOption(
     val id: java.math.BigDecimal? = null,
     val text: kotlin.String? = null
-) 
+)
 

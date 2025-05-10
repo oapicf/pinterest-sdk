@@ -56,11 +56,11 @@ export function CatalogsProductGroupMultipleStringListCriteriaFromJSONTyped(json
     };
 }
 
-  export function CatalogsProductGroupMultipleStringListCriteriaToJSON(json: any): CatalogsProductGroupMultipleStringListCriteria {
-      return CatalogsProductGroupMultipleStringListCriteriaToJSONTyped(json, false);
-  }
+export function CatalogsProductGroupMultipleStringListCriteriaToJSON(json: any): CatalogsProductGroupMultipleStringListCriteria {
+    return CatalogsProductGroupMultipleStringListCriteriaToJSONTyped(json, false);
+}
 
-  export function CatalogsProductGroupMultipleStringListCriteriaToJSONTyped(value?: CatalogsProductGroupMultipleStringListCriteria | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsProductGroupMultipleStringListCriteriaToJSONTyped(value?: CatalogsProductGroupMultipleStringListCriteria | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

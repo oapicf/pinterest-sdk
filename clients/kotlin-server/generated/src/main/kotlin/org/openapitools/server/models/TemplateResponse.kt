@@ -16,6 +16,7 @@ import org.openapitools.server.models.Granularity
 import org.openapitools.server.models.MetricsReportingLevel
 import org.openapitools.server.models.TemplateResponseDateRange
 
+import kotlinx.serialization.Serializable
 /**
  * Template fields
  * @param id Template ID
@@ -44,6 +45,7 @@ import org.openapitools.server.models.TemplateResponseDateRange
  * @param type Reporting template type
  * @param ingestionSources The filter on the conversion ingestion source method for conversion metrics
  */
+@Serializable
 data class TemplateResponse(
     /* Template ID */
     val id: kotlin.String? = null,
@@ -91,7 +93,7 @@ data class TemplateResponse(
     val type: TemplateResponse.Type? = null,
     /* The filter on the conversion ingestion source method for conversion metrics */
     val ingestionSources: TemplateResponse.IngestionSources? = null
-) 
+)
 {
     /**
     * A list of columns to be included in the report
@@ -1687,20 +1689,20 @@ data class TemplateResponse(
     }
     /**
     * Conversion report time type
-    * Values: AD_ACTION,CONVERSION
+    * Values: TIME_OF_AD_ACTION,TIME_OF_CONVERSION
     */
     enum class ConversionReportTimeType(val value: kotlin.String){
-        AD_ACTION("TIME_OF_AD_ACTION"),
-        CONVERSION("TIME_OF_CONVERSION");
+        TIME_OF_AD_ACTION("TIME_OF_AD_ACTION"),
+        TIME_OF_CONVERSION("TIME_OF_CONVERSION");
     }
     /**
     * The surface used to create this template
-    * Values: API,MANAGER_REPORTING_PAGE,MANAGER_REPORT_BUILDER
+    * Values: ADS_API,ADS_MANAGER_REPORTING_PAGE,ADS_MANAGER_REPORT_BUILDER
     */
     enum class CreationSource(val value: kotlin.String){
-        API("ADS_API"),
-        MANAGER_REPORTING_PAGE("ADS_MANAGER_REPORTING_PAGE"),
-        MANAGER_REPORT_BUILDER("ADS_MANAGER_REPORT_BUILDER");
+        ADS_API("ADS_API"),
+        ADS_MANAGER_REPORTING_PAGE("ADS_MANAGER_REPORTING_PAGE"),
+        ADS_MANAGER_REPORT_BUILDER("ADS_MANAGER_REPORT_BUILDER");
     }
     /**
     * Reporting template type

@@ -5,7 +5,7 @@
 
 
 
-pin_t *pin_create(
+static pin_t *pin_create_internal(
     char *id,
     char *created_at,
     char *link,
@@ -50,12 +50,60 @@ pin_t *pin_create(
     pin_local_var->note = note;
     pin_local_var->pin_metrics = pin_metrics;
 
+    pin_local_var->_library_owned = 1;
     return pin_local_var;
 }
 
+__attribute__((deprecated)) pin_t *pin_create(
+    char *id,
+    char *created_at,
+    char *link,
+    char *title,
+    char *description,
+    char *dominant_color,
+    char *alt_text,
+    creative_type_t *creative_type,
+    char *board_id,
+    char *board_section_id,
+    board_owner_t *board_owner,
+    int is_owner,
+    pin_media_t *media,
+    pin_media_source_t *media_source,
+    char *parent_pin_id,
+    int is_standard,
+    int has_been_promoted,
+    char *note,
+    object_t *pin_metrics
+    ) {
+    return pin_create_internal (
+        id,
+        created_at,
+        link,
+        title,
+        description,
+        dominant_color,
+        alt_text,
+        creative_type,
+        board_id,
+        board_section_id,
+        board_owner,
+        is_owner,
+        media,
+        media_source,
+        parent_pin_id,
+        is_standard,
+        has_been_promoted,
+        note,
+        pin_metrics
+        );
+}
 
 void pin_free(pin_t *pin) {
     if(NULL == pin){
+        return ;
+    }
+    if(pin->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "pin_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -331,6 +379,9 @@ pin_t *pin_parseFromJSON(cJSON *pinJSON){
 
     // pin->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(pinJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -340,6 +391,9 @@ pin_t *pin_parseFromJSON(cJSON *pinJSON){
 
     // pin->created_at
     cJSON *created_at = cJSON_GetObjectItemCaseSensitive(pinJSON, "created_at");
+    if (cJSON_IsNull(created_at)) {
+        created_at = NULL;
+    }
     if (created_at) { 
     if(!cJSON_IsString(created_at) && !cJSON_IsNull(created_at))
     {
@@ -349,6 +403,9 @@ pin_t *pin_parseFromJSON(cJSON *pinJSON){
 
     // pin->link
     cJSON *link = cJSON_GetObjectItemCaseSensitive(pinJSON, "link");
+    if (cJSON_IsNull(link)) {
+        link = NULL;
+    }
     if (link) { 
     if(!cJSON_IsString(link) && !cJSON_IsNull(link))
     {
@@ -358,6 +415,9 @@ pin_t *pin_parseFromJSON(cJSON *pinJSON){
 
     // pin->title
     cJSON *title = cJSON_GetObjectItemCaseSensitive(pinJSON, "title");
+    if (cJSON_IsNull(title)) {
+        title = NULL;
+    }
     if (title) { 
     if(!cJSON_IsString(title) && !cJSON_IsNull(title))
     {
@@ -367,6 +427,9 @@ pin_t *pin_parseFromJSON(cJSON *pinJSON){
 
     // pin->description
     cJSON *description = cJSON_GetObjectItemCaseSensitive(pinJSON, "description");
+    if (cJSON_IsNull(description)) {
+        description = NULL;
+    }
     if (description) { 
     if(!cJSON_IsString(description) && !cJSON_IsNull(description))
     {
@@ -376,6 +439,9 @@ pin_t *pin_parseFromJSON(cJSON *pinJSON){
 
     // pin->dominant_color
     cJSON *dominant_color = cJSON_GetObjectItemCaseSensitive(pinJSON, "dominant_color");
+    if (cJSON_IsNull(dominant_color)) {
+        dominant_color = NULL;
+    }
     if (dominant_color) { 
     if(!cJSON_IsString(dominant_color) && !cJSON_IsNull(dominant_color))
     {
@@ -385,6 +451,9 @@ pin_t *pin_parseFromJSON(cJSON *pinJSON){
 
     // pin->alt_text
     cJSON *alt_text = cJSON_GetObjectItemCaseSensitive(pinJSON, "alt_text");
+    if (cJSON_IsNull(alt_text)) {
+        alt_text = NULL;
+    }
     if (alt_text) { 
     if(!cJSON_IsString(alt_text) && !cJSON_IsNull(alt_text))
     {
@@ -394,12 +463,18 @@ pin_t *pin_parseFromJSON(cJSON *pinJSON){
 
     // pin->creative_type
     cJSON *creative_type = cJSON_GetObjectItemCaseSensitive(pinJSON, "creative_type");
+    if (cJSON_IsNull(creative_type)) {
+        creative_type = NULL;
+    }
     if (creative_type) { 
     creative_type_local_nonprim = creative_type_parseFromJSON(creative_type); //custom
     }
 
     // pin->board_id
     cJSON *board_id = cJSON_GetObjectItemCaseSensitive(pinJSON, "board_id");
+    if (cJSON_IsNull(board_id)) {
+        board_id = NULL;
+    }
     if (board_id) { 
     if(!cJSON_IsString(board_id) && !cJSON_IsNull(board_id))
     {
@@ -409,6 +484,9 @@ pin_t *pin_parseFromJSON(cJSON *pinJSON){
 
     // pin->board_section_id
     cJSON *board_section_id = cJSON_GetObjectItemCaseSensitive(pinJSON, "board_section_id");
+    if (cJSON_IsNull(board_section_id)) {
+        board_section_id = NULL;
+    }
     if (board_section_id) { 
     if(!cJSON_IsString(board_section_id) && !cJSON_IsNull(board_section_id))
     {
@@ -418,12 +496,18 @@ pin_t *pin_parseFromJSON(cJSON *pinJSON){
 
     // pin->board_owner
     cJSON *board_owner = cJSON_GetObjectItemCaseSensitive(pinJSON, "board_owner");
+    if (cJSON_IsNull(board_owner)) {
+        board_owner = NULL;
+    }
     if (board_owner) { 
     board_owner_local_nonprim = board_owner_parseFromJSON(board_owner); //nonprimitive
     }
 
     // pin->is_owner
     cJSON *is_owner = cJSON_GetObjectItemCaseSensitive(pinJSON, "is_owner");
+    if (cJSON_IsNull(is_owner)) {
+        is_owner = NULL;
+    }
     if (is_owner) { 
     if(!cJSON_IsBool(is_owner))
     {
@@ -433,18 +517,27 @@ pin_t *pin_parseFromJSON(cJSON *pinJSON){
 
     // pin->media
     cJSON *media = cJSON_GetObjectItemCaseSensitive(pinJSON, "media");
+    if (cJSON_IsNull(media)) {
+        media = NULL;
+    }
     if (media) { 
     media_local_nonprim = pin_media_parseFromJSON(media); //nonprimitive
     }
 
     // pin->media_source
     cJSON *media_source = cJSON_GetObjectItemCaseSensitive(pinJSON, "media_source");
+    if (cJSON_IsNull(media_source)) {
+        media_source = NULL;
+    }
     if (media_source) { 
     media_source_local_nonprim = pin_media_source_parseFromJSON(media_source); //nonprimitive
     }
 
     // pin->parent_pin_id
     cJSON *parent_pin_id = cJSON_GetObjectItemCaseSensitive(pinJSON, "parent_pin_id");
+    if (cJSON_IsNull(parent_pin_id)) {
+        parent_pin_id = NULL;
+    }
     if (parent_pin_id) { 
     if(!cJSON_IsString(parent_pin_id) && !cJSON_IsNull(parent_pin_id))
     {
@@ -454,6 +547,9 @@ pin_t *pin_parseFromJSON(cJSON *pinJSON){
 
     // pin->is_standard
     cJSON *is_standard = cJSON_GetObjectItemCaseSensitive(pinJSON, "is_standard");
+    if (cJSON_IsNull(is_standard)) {
+        is_standard = NULL;
+    }
     if (is_standard) { 
     if(!cJSON_IsBool(is_standard))
     {
@@ -463,6 +559,9 @@ pin_t *pin_parseFromJSON(cJSON *pinJSON){
 
     // pin->has_been_promoted
     cJSON *has_been_promoted = cJSON_GetObjectItemCaseSensitive(pinJSON, "has_been_promoted");
+    if (cJSON_IsNull(has_been_promoted)) {
+        has_been_promoted = NULL;
+    }
     if (has_been_promoted) { 
     if(!cJSON_IsBool(has_been_promoted))
     {
@@ -472,6 +571,9 @@ pin_t *pin_parseFromJSON(cJSON *pinJSON){
 
     // pin->note
     cJSON *note = cJSON_GetObjectItemCaseSensitive(pinJSON, "note");
+    if (cJSON_IsNull(note)) {
+        note = NULL;
+    }
     if (note) { 
     if(!cJSON_IsString(note) && !cJSON_IsNull(note))
     {
@@ -481,13 +583,16 @@ pin_t *pin_parseFromJSON(cJSON *pinJSON){
 
     // pin->pin_metrics
     cJSON *pin_metrics = cJSON_GetObjectItemCaseSensitive(pinJSON, "pin_metrics");
+    if (cJSON_IsNull(pin_metrics)) {
+        pin_metrics = NULL;
+    }
     object_t *pin_metrics_local_object = NULL;
     if (pin_metrics) { 
     pin_metrics_local_object = object_parseFromJSON(pin_metrics); //object
     }
 
 
-    pin_local_var = pin_create (
+    pin_local_var = pin_create_internal (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         created_at && !cJSON_IsNull(created_at) ? strdup(created_at->valuestring) : NULL,
         link && !cJSON_IsNull(link) ? strdup(link->valuestring) : NULL,

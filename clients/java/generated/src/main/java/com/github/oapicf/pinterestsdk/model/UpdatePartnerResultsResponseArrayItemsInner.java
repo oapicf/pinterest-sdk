@@ -50,20 +50,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * UpdatePartnerResultsResponseArrayItemsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class UpdatePartnerResultsResponseArrayItemsInner {
   public static final String SERIALIZED_NAME_EXCEPTION = "exception";
   @SerializedName(SERIALIZED_NAME_EXCEPTION)
+  @javax.annotation.Nullable
   private BusinessAccessError exception;
 
   public static final String SERIALIZED_NAME_MEMBER_OR_PARTNER_ID = "member_or_partner_id";
   @SerializedName(SERIALIZED_NAME_MEMBER_OR_PARTNER_ID)
+  @javax.annotation.Nullable
   private String memberOrPartnerId;
 
   public UpdatePartnerResultsResponseArrayItemsInner() {
   }
 
-  public UpdatePartnerResultsResponseArrayItemsInner exception(BusinessAccessError exception) {
+  public UpdatePartnerResultsResponseArrayItemsInner exception(@javax.annotation.Nullable BusinessAccessError exception) {
     this.exception = exception;
     return this;
   }
@@ -77,12 +79,12 @@ public class UpdatePartnerResultsResponseArrayItemsInner {
     return exception;
   }
 
-  public void setException(BusinessAccessError exception) {
+  public void setException(@javax.annotation.Nullable BusinessAccessError exception) {
     this.exception = exception;
   }
 
 
-  public UpdatePartnerResultsResponseArrayItemsInner memberOrPartnerId(String memberOrPartnerId) {
+  public UpdatePartnerResultsResponseArrayItemsInner memberOrPartnerId(@javax.annotation.Nullable String memberOrPartnerId) {
     this.memberOrPartnerId = memberOrPartnerId;
     return this;
   }
@@ -96,7 +98,7 @@ public class UpdatePartnerResultsResponseArrayItemsInner {
     return memberOrPartnerId;
   }
 
-  public void setMemberOrPartnerId(String memberOrPartnerId) {
+  public void setMemberOrPartnerId(@javax.annotation.Nullable String memberOrPartnerId) {
     this.memberOrPartnerId = memberOrPartnerId;
   }
 

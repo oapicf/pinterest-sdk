@@ -55,11 +55,11 @@ export function AdvancedAuctionOperationErrorFromJSONTyped(json: any, ignoreDisc
     };
 }
 
-  export function AdvancedAuctionOperationErrorToJSON(json: any): AdvancedAuctionOperationError {
-      return AdvancedAuctionOperationErrorToJSONTyped(json, false);
-  }
+export function AdvancedAuctionOperationErrorToJSON(json: any): AdvancedAuctionOperationError {
+    return AdvancedAuctionOperationErrorToJSONTyped(json, false);
+}
 
-  export function AdvancedAuctionOperationErrorToJSONTyped(value?: AdvancedAuctionOperationError | null, ignoreDiscriminator: boolean = false): any {
+export function AdvancedAuctionOperationErrorToJSONTyped(value?: AdvancedAuctionOperationError | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

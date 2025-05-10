@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct ItemAttributes: Codable, JSONEncodable, Hashable {
 
-    static let imageLinkRule = ArrayRule(minItems: 1, maxItems: nil, uniqueItems: false)
+    public static let imageLinkRule = ArrayRule(minItems: 1, maxItems: nil, uniqueItems: false)
     /** Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://. */
     public var adLink: String?
     /** Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest. */
@@ -269,3 +269,6 @@ public struct ItemAttributes: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension ItemAttributes: Identifiable {}

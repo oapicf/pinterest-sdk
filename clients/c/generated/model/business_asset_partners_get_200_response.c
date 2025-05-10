@@ -5,7 +5,7 @@
 
 
 
-business_asset_partners_get_200_response_t *business_asset_partners_get_200_response_create(
+static business_asset_partners_get_200_response_t *business_asset_partners_get_200_response_create_internal(
     list_t *items,
     char *bookmark
     ) {
@@ -16,12 +16,26 @@ business_asset_partners_get_200_response_t *business_asset_partners_get_200_resp
     business_asset_partners_get_200_response_local_var->items = items;
     business_asset_partners_get_200_response_local_var->bookmark = bookmark;
 
+    business_asset_partners_get_200_response_local_var->_library_owned = 1;
     return business_asset_partners_get_200_response_local_var;
 }
 
+__attribute__((deprecated)) business_asset_partners_get_200_response_t *business_asset_partners_get_200_response_create(
+    list_t *items,
+    char *bookmark
+    ) {
+    return business_asset_partners_get_200_response_create_internal (
+        items,
+        bookmark
+        );
+}
 
 void business_asset_partners_get_200_response_free(business_asset_partners_get_200_response_t *business_asset_partners_get_200_response) {
     if(NULL == business_asset_partners_get_200_response){
+        return ;
+    }
+    if(business_asset_partners_get_200_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "business_asset_partners_get_200_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -87,6 +101,9 @@ business_asset_partners_get_200_response_t *business_asset_partners_get_200_resp
 
     // business_asset_partners_get_200_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(business_asset_partners_get_200_responseJSON, "items");
+    if (cJSON_IsNull(items)) {
+        items = NULL;
+    }
     if (!items) {
         goto end;
     }
@@ -111,6 +128,9 @@ business_asset_partners_get_200_response_t *business_asset_partners_get_200_resp
 
     // business_asset_partners_get_200_response->bookmark
     cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(business_asset_partners_get_200_responseJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
     if (bookmark) { 
     if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
     {
@@ -119,7 +139,7 @@ business_asset_partners_get_200_response_t *business_asset_partners_get_200_resp
     }
 
 
-    business_asset_partners_get_200_response_local_var = business_asset_partners_get_200_response_create (
+    business_asset_partners_get_200_response_local_var = business_asset_partners_get_200_response_create_internal (
         itemsList,
         bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
         );

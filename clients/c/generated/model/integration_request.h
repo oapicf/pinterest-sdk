@@ -33,9 +33,10 @@ typedef struct integration_request_t {
     char *additional_id_1; // string
     char *partner_metadata; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } integration_request_t;
 
-integration_request_t *integration_request_create(
+__attribute__((deprecated)) integration_request_t *integration_request_create(
     char *external_business_id,
     char *connected_merchant_id,
     char *connected_advertiser_id,

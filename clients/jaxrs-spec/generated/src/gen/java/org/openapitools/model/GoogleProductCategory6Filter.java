@@ -16,9 +16,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("GoogleProductCategory6Filter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class GoogleProductCategory6Filter   {
   private CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_6;
+
+  public GoogleProductCategory6Filter() {
+  }
+
+  @JsonCreator
+  public GoogleProductCategory6Filter(
+    @JsonProperty(required = true, value = "GOOGLE_PRODUCT_CATEGORY_6") CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_6
+  ) {
+    this.GOOGLE_PRODUCT_CATEGORY_6 = GOOGLE_PRODUCT_CATEGORY_6;
+  }
 
   /**
    **/
@@ -29,12 +39,12 @@ public class GoogleProductCategory6Filter   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("GOOGLE_PRODUCT_CATEGORY_6")
+  @JsonProperty(required = true, value = "GOOGLE_PRODUCT_CATEGORY_6")
   @NotNull @Valid public CatalogsProductGroupMultipleStringListCriteria getGOOGLEPRODUCTCATEGORY6() {
     return GOOGLE_PRODUCT_CATEGORY_6;
   }
 
-  @JsonProperty("GOOGLE_PRODUCT_CATEGORY_6")
+  @JsonProperty(required = true, value = "GOOGLE_PRODUCT_CATEGORY_6")
   public void setGOOGLEPRODUCTCATEGORY6(CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_6) {
     this.GOOGLE_PRODUCT_CATEGORY_6 = GOOGLE_PRODUCT_CATEGORY_6;
   }

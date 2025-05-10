@@ -23,9 +23,10 @@ typedef struct catalogs_feed_ingestion_info_t {
     int out_of_stock; //numeric
     int preorder; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_feed_ingestion_info_t;
 
-catalogs_feed_ingestion_info_t *catalogs_feed_ingestion_info_create(
+__attribute__((deprecated)) catalogs_feed_ingestion_info_t *catalogs_feed_ingestion_info_create(
     int in_stock,
     int out_of_stock,
     int preorder

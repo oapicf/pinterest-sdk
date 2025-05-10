@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct ProductGroupPromotionCreateRequest: Codable, JSONEncodable, Hashable {
 
-    static let adGroupIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(AG)?\\d+$/")
+    public static let adGroupIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(AG)?\\d+$/")
     /** ID of the Ad Group the Product Group Promotion belongs to. */
     public var adGroupId: String
     public var productGroupPromotion: [ProductGroupPromotionCreateRequestElement]

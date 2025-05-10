@@ -52,60 +52,72 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Object containing other custom data.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConversionEventsDataInnerCustomData {
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
+  @javax.annotation.Nullable
   private String currency;
 
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
+  @javax.annotation.Nullable
   private String value;
 
   public static final String SERIALIZED_NAME_CONTENT_IDS = "content_ids";
   @SerializedName(SERIALIZED_NAME_CONTENT_IDS)
+  @javax.annotation.Nullable
   private List<String> contentIds = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_CONTENT_NAME = "content_name";
   @SerializedName(SERIALIZED_NAME_CONTENT_NAME)
+  @javax.annotation.Nullable
   private String contentName;
 
   public static final String SERIALIZED_NAME_CONTENT_CATEGORY = "content_category";
   @SerializedName(SERIALIZED_NAME_CONTENT_CATEGORY)
+  @javax.annotation.Nullable
   private String contentCategory;
 
   public static final String SERIALIZED_NAME_CONTENT_BRAND = "content_brand";
   @SerializedName(SERIALIZED_NAME_CONTENT_BRAND)
+  @javax.annotation.Nullable
   private String contentBrand;
 
   public static final String SERIALIZED_NAME_CONTENTS = "contents";
   @SerializedName(SERIALIZED_NAME_CONTENTS)
+  @javax.annotation.Nullable
   private List<ConversionEventsDataInnerCustomDataContentsInner> contents = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_NUM_ITEMS = "num_items";
   @SerializedName(SERIALIZED_NAME_NUM_ITEMS)
+  @javax.annotation.Nullable
   private Long numItems;
 
   public static final String SERIALIZED_NAME_ORDER_ID = "order_id";
   @SerializedName(SERIALIZED_NAME_ORDER_ID)
+  @javax.annotation.Nullable
   private String orderId;
 
   public static final String SERIALIZED_NAME_SEARCH_STRING = "search_string";
   @SerializedName(SERIALIZED_NAME_SEARCH_STRING)
+  @javax.annotation.Nullable
   private String searchString;
 
   public static final String SERIALIZED_NAME_OPT_OUT_TYPE = "opt_out_type";
   @SerializedName(SERIALIZED_NAME_OPT_OUT_TYPE)
+  @javax.annotation.Nullable
   private String optOutType;
 
   public static final String SERIALIZED_NAME_NP = "np";
   @SerializedName(SERIALIZED_NAME_NP)
+  @javax.annotation.Nullable
   private String np;
 
   public ConversionEventsDataInnerCustomData() {
   }
 
-  public ConversionEventsDataInnerCustomData currency(String currency) {
+  public ConversionEventsDataInnerCustomData currency(@javax.annotation.Nullable String currency) {
     this.currency = currency;
     return this;
   }
@@ -119,12 +131,12 @@ public class ConversionEventsDataInnerCustomData {
     return currency;
   }
 
-  public void setCurrency(String currency) {
+  public void setCurrency(@javax.annotation.Nullable String currency) {
     this.currency = currency;
   }
 
 
-  public ConversionEventsDataInnerCustomData value(String value) {
+  public ConversionEventsDataInnerCustomData value(@javax.annotation.Nullable String value) {
     this.value = value;
     return this;
   }
@@ -138,12 +150,12 @@ public class ConversionEventsDataInnerCustomData {
     return value;
   }
 
-  public void setValue(String value) {
+  public void setValue(@javax.annotation.Nullable String value) {
     this.value = value;
   }
 
 
-  public ConversionEventsDataInnerCustomData contentIds(List<String> contentIds) {
+  public ConversionEventsDataInnerCustomData contentIds(@javax.annotation.Nullable List<String> contentIds) {
     this.contentIds = contentIds;
     return this;
   }
@@ -165,12 +177,12 @@ public class ConversionEventsDataInnerCustomData {
     return contentIds;
   }
 
-  public void setContentIds(List<String> contentIds) {
+  public void setContentIds(@javax.annotation.Nullable List<String> contentIds) {
     this.contentIds = contentIds;
   }
 
 
-  public ConversionEventsDataInnerCustomData contentName(String contentName) {
+  public ConversionEventsDataInnerCustomData contentName(@javax.annotation.Nullable String contentName) {
     this.contentName = contentName;
     return this;
   }
@@ -184,12 +196,12 @@ public class ConversionEventsDataInnerCustomData {
     return contentName;
   }
 
-  public void setContentName(String contentName) {
+  public void setContentName(@javax.annotation.Nullable String contentName) {
     this.contentName = contentName;
   }
 
 
-  public ConversionEventsDataInnerCustomData contentCategory(String contentCategory) {
+  public ConversionEventsDataInnerCustomData contentCategory(@javax.annotation.Nullable String contentCategory) {
     this.contentCategory = contentCategory;
     return this;
   }
@@ -203,12 +215,12 @@ public class ConversionEventsDataInnerCustomData {
     return contentCategory;
   }
 
-  public void setContentCategory(String contentCategory) {
+  public void setContentCategory(@javax.annotation.Nullable String contentCategory) {
     this.contentCategory = contentCategory;
   }
 
 
-  public ConversionEventsDataInnerCustomData contentBrand(String contentBrand) {
+  public ConversionEventsDataInnerCustomData contentBrand(@javax.annotation.Nullable String contentBrand) {
     this.contentBrand = contentBrand;
     return this;
   }
@@ -222,12 +234,12 @@ public class ConversionEventsDataInnerCustomData {
     return contentBrand;
   }
 
-  public void setContentBrand(String contentBrand) {
+  public void setContentBrand(@javax.annotation.Nullable String contentBrand) {
     this.contentBrand = contentBrand;
   }
 
 
-  public ConversionEventsDataInnerCustomData contents(List<ConversionEventsDataInnerCustomDataContentsInner> contents) {
+  public ConversionEventsDataInnerCustomData contents(@javax.annotation.Nullable List<ConversionEventsDataInnerCustomDataContentsInner> contents) {
     this.contents = contents;
     return this;
   }
@@ -249,12 +261,12 @@ public class ConversionEventsDataInnerCustomData {
     return contents;
   }
 
-  public void setContents(List<ConversionEventsDataInnerCustomDataContentsInner> contents) {
+  public void setContents(@javax.annotation.Nullable List<ConversionEventsDataInnerCustomDataContentsInner> contents) {
     this.contents = contents;
   }
 
 
-  public ConversionEventsDataInnerCustomData numItems(Long numItems) {
+  public ConversionEventsDataInnerCustomData numItems(@javax.annotation.Nullable Long numItems) {
     this.numItems = numItems;
     return this;
   }
@@ -268,12 +280,12 @@ public class ConversionEventsDataInnerCustomData {
     return numItems;
   }
 
-  public void setNumItems(Long numItems) {
+  public void setNumItems(@javax.annotation.Nullable Long numItems) {
     this.numItems = numItems;
   }
 
 
-  public ConversionEventsDataInnerCustomData orderId(String orderId) {
+  public ConversionEventsDataInnerCustomData orderId(@javax.annotation.Nullable String orderId) {
     this.orderId = orderId;
     return this;
   }
@@ -287,12 +299,12 @@ public class ConversionEventsDataInnerCustomData {
     return orderId;
   }
 
-  public void setOrderId(String orderId) {
+  public void setOrderId(@javax.annotation.Nullable String orderId) {
     this.orderId = orderId;
   }
 
 
-  public ConversionEventsDataInnerCustomData searchString(String searchString) {
+  public ConversionEventsDataInnerCustomData searchString(@javax.annotation.Nullable String searchString) {
     this.searchString = searchString;
     return this;
   }
@@ -306,12 +318,12 @@ public class ConversionEventsDataInnerCustomData {
     return searchString;
   }
 
-  public void setSearchString(String searchString) {
+  public void setSearchString(@javax.annotation.Nullable String searchString) {
     this.searchString = searchString;
   }
 
 
-  public ConversionEventsDataInnerCustomData optOutType(String optOutType) {
+  public ConversionEventsDataInnerCustomData optOutType(@javax.annotation.Nullable String optOutType) {
     this.optOutType = optOutType;
     return this;
   }
@@ -325,12 +337,12 @@ public class ConversionEventsDataInnerCustomData {
     return optOutType;
   }
 
-  public void setOptOutType(String optOutType) {
+  public void setOptOutType(@javax.annotation.Nullable String optOutType) {
     this.optOutType = optOutType;
   }
 
 
-  public ConversionEventsDataInnerCustomData np(String np) {
+  public ConversionEventsDataInnerCustomData np(@javax.annotation.Nullable String np) {
     this.np = np;
     return this;
   }
@@ -344,7 +356,7 @@ public class ConversionEventsDataInnerCustomData {
     return np;
   }
 
-  public void setNp(String np) {
+  public void setNp(@javax.annotation.Nullable String np) {
     this.np = np;
   }
 

@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.NonNullableCatalogsCurrency
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param `operator` 
@@ -20,12 +21,13 @@ import org.openapitools.server.models.NonNullableCatalogsCurrency
  * @param currency 
  * @param negated 
  */
+@Serializable
 data class CatalogsProductGroupPricingCurrencyCriteria(
     val `operator`: CatalogsProductGroupPricingCurrencyCriteria.`Operator`,
     val `value`: java.math.BigDecimal,
     val currency: NonNullableCatalogsCurrency,
     val negated: kotlin.Boolean? = false
-) 
+)
 {
     /**
     * 

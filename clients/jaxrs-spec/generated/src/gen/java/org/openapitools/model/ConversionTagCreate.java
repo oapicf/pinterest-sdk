@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ConversionTagCreate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConversionTagCreate   {
   private String name;
   private Boolean aemEnabled = false;
@@ -27,6 +27,16 @@ public class ConversionTagCreate   {
   private Boolean aemGeEnabled = false;
   private Boolean aemDbEnabled = false;
   private Boolean aemLocEnabled = false;
+
+  public ConversionTagCreate() {
+  }
+
+  @JsonCreator
+  public ConversionTagCreate(
+    @JsonProperty(required = true, value = "name") String name
+  ) {
+    this.name = name;
+  }
 
   /**
    * Conversion tag name.
@@ -38,12 +48,12 @@ public class ConversionTagCreate   {
 
   
   @ApiModelProperty(example = "ACME Tools Tag", required = true, value = "Conversion tag name.")
-  @JsonProperty("name")
+  @JsonProperty(required = true, value = "name")
   @NotNull public String getName() {
     return name;
   }
 
-  @JsonProperty("name")
+  @JsonProperty(required = true, value = "name")
   public void setName(String name) {
     this.name = name;
   }

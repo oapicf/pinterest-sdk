@@ -19,10 +19,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "An invite object if the invite/request was successfully created. Will only be provided if the an invite/request is successfully created.")
 @JsonTypeName("CreateInvitesResultsResponseArray_items_inner_invite")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CreateInvitesResultsResponseArrayItemsInnerInvite   {
   private String id;
   private BusinessAccessUserSummary user;
+
+  public CreateInvitesResultsResponseArrayItemsInnerInvite() {
+  }
 
   /**
    * Unique identifier of the invite/request.

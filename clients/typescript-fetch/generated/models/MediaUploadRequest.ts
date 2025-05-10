@@ -59,11 +59,11 @@ export function MediaUploadRequestFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-  export function MediaUploadRequestToJSON(json: any): MediaUploadRequest {
-      return MediaUploadRequestToJSONTyped(json, false);
-  }
+export function MediaUploadRequestToJSON(json: any): MediaUploadRequest {
+    return MediaUploadRequestToJSONTyped(json, false);
+}
 
-  export function MediaUploadRequestToJSONTyped(value?: MediaUploadRequest | null, ignoreDiscriminator: boolean = false): any {
+export function MediaUploadRequestToJSONTyped(value?: MediaUploadRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

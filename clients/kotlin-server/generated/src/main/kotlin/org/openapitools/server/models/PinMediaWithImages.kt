@@ -14,12 +14,14 @@ package org.openapitools.server.models
 import org.openapitools.server.models.ImageMetadata
 import org.openapitools.server.models.PinMedia
 
+import kotlinx.serialization.Serializable
 /**
  * Pin with multiple images.
  * @param items 
  */
+@Serializable
 data class PinMediaWithImages(
     val items: kotlin.collections.List<ImageMetadata>? = null,
     val mediaType: kotlin.String? = null
-) 
+)
 

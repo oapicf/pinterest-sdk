@@ -100,7 +100,7 @@ class AdGroupCreateRequest
     * @Accessor(getter="getSerializedBudgetType", setter="setDeserializedBudgetType")
     * @Type("string")
     */
-    protected ?BudgetType $budgetType = 'DAILY';
+    protected ?BudgetType $budgetType = self::OpenAPI\Server\Model\BudgetType_DAILY;
 
     /**
      * Ad group start time. Unix timestamp in seconds. Defaults to current time.
@@ -176,7 +176,7 @@ class AdGroupCreateRequest
     * @Accessor(getter="getSerializedPacingDeliveryType", setter="setDeserializedPacingDeliveryType")
     * @Type("string")
     */
-    protected ?PacingDeliveryType $pacingDeliveryType = 'STANDARD';
+    protected ?PacingDeliveryType $pacingDeliveryType = self::OpenAPI\Server\Model\PacingDeliveryType_STANDARD;
 
     /**
      * Campaign ID of the ad group.
@@ -207,7 +207,7 @@ class AdGroupCreateRequest
      * @SerializedName("bid_strategy_type")
      * @Type("string")
     */
-    #[Assert\Choice(["AUTOMATIC_BID", "MAX_BID", "TARGET_AVG"])]
+    #[Assert\Choice(['AUTOMATIC_BID', 'MAX_BID', 'TARGET_AVG'])]
     #[Assert\Type("string")]
     protected ?string $bidStrategyType = null;
 
@@ -228,7 +228,7 @@ class AdGroupCreateRequest
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->name = array_key_exists('name', $data) ? $data['name'] : $this->name;

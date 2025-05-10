@@ -5,7 +5,7 @@
 
 
 
-get_invites_200_response_t *get_invites_200_response_create(
+static get_invites_200_response_t *get_invites_200_response_create_internal(
     list_t *items,
     char *bookmark
     ) {
@@ -16,12 +16,26 @@ get_invites_200_response_t *get_invites_200_response_create(
     get_invites_200_response_local_var->items = items;
     get_invites_200_response_local_var->bookmark = bookmark;
 
+    get_invites_200_response_local_var->_library_owned = 1;
     return get_invites_200_response_local_var;
 }
 
+__attribute__((deprecated)) get_invites_200_response_t *get_invites_200_response_create(
+    list_t *items,
+    char *bookmark
+    ) {
+    return get_invites_200_response_create_internal (
+        items,
+        bookmark
+        );
+}
 
 void get_invites_200_response_free(get_invites_200_response_t *get_invites_200_response) {
     if(NULL == get_invites_200_response){
+        return ;
+    }
+    if(get_invites_200_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "get_invites_200_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -87,6 +101,9 @@ get_invites_200_response_t *get_invites_200_response_parseFromJSON(cJSON *get_in
 
     // get_invites_200_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(get_invites_200_responseJSON, "items");
+    if (cJSON_IsNull(items)) {
+        items = NULL;
+    }
     if (!items) {
         goto end;
     }
@@ -111,6 +128,9 @@ get_invites_200_response_t *get_invites_200_response_parseFromJSON(cJSON *get_in
 
     // get_invites_200_response->bookmark
     cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(get_invites_200_responseJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
     if (bookmark) { 
     if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
     {
@@ -119,7 +139,7 @@ get_invites_200_response_t *get_invites_200_response_parseFromJSON(cJSON *get_in
     }
 
 
-    get_invites_200_response_local_var = get_invites_200_response_create (
+    get_invites_200_response_local_var = get_invites_200_response_create_internal (
         itemsList,
         bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
         );

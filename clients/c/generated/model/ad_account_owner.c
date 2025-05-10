@@ -5,7 +5,7 @@
 
 
 
-ad_account_owner_t *ad_account_owner_create(
+static ad_account_owner_t *ad_account_owner_create_internal(
     char *username,
     char *id
     ) {
@@ -16,12 +16,26 @@ ad_account_owner_t *ad_account_owner_create(
     ad_account_owner_local_var->username = username;
     ad_account_owner_local_var->id = id;
 
+    ad_account_owner_local_var->_library_owned = 1;
     return ad_account_owner_local_var;
 }
 
+__attribute__((deprecated)) ad_account_owner_t *ad_account_owner_create(
+    char *username,
+    char *id
+    ) {
+    return ad_account_owner_create_internal (
+        username,
+        id
+        );
+}
 
 void ad_account_owner_free(ad_account_owner_t *ad_account_owner) {
     if(NULL == ad_account_owner){
+        return ;
+    }
+    if(ad_account_owner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ad_account_owner_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -68,6 +82,9 @@ ad_account_owner_t *ad_account_owner_parseFromJSON(cJSON *ad_account_ownerJSON){
 
     // ad_account_owner->username
     cJSON *username = cJSON_GetObjectItemCaseSensitive(ad_account_ownerJSON, "username");
+    if (cJSON_IsNull(username)) {
+        username = NULL;
+    }
     if (username) { 
     if(!cJSON_IsString(username) && !cJSON_IsNull(username))
     {
@@ -77,6 +94,9 @@ ad_account_owner_t *ad_account_owner_parseFromJSON(cJSON *ad_account_ownerJSON){
 
     // ad_account_owner->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(ad_account_ownerJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -85,7 +105,7 @@ ad_account_owner_t *ad_account_owner_parseFromJSON(cJSON *ad_account_ownerJSON){
     }
 
 
-    ad_account_owner_local_var = ad_account_owner_create (
+    ad_account_owner_local_var = ad_account_owner_create_internal (
         username && !cJSON_IsNull(username) ? strdup(username->valuestring) : NULL,
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL
         );

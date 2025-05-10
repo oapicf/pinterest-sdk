@@ -55,11 +55,11 @@ export function SSIOAccountPMPNameFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-  export function SSIOAccountPMPNameToJSON(json: any): SSIOAccountPMPName {
-      return SSIOAccountPMPNameToJSONTyped(json, false);
-  }
+export function SSIOAccountPMPNameToJSON(json: any): SSIOAccountPMPName {
+    return SSIOAccountPMPNameToJSONTyped(json, false);
+}
 
-  export function SSIOAccountPMPNameToJSONTyped(value?: SSIOAccountPMPName | null, ignoreDiscriminator: boolean = false): any {
+export function SSIOAccountPMPNameToJSONTyped(value?: SSIOAccountPMPName | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -13,8 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // CatalogsProductGroupProductCountsVertical - Product counts for a CatalogsProductGroup
@@ -147,6 +147,24 @@ func (obj *CatalogsProductGroupProductCountsVertical) GetActualInstance() (inter
 
 	if obj.CatalogsRetailProductGroupProductCounts != nil {
 		return obj.CatalogsRetailProductGroupProductCounts
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj CatalogsProductGroupProductCountsVertical) GetActualInstanceValue() (interface{}) {
+	if obj.CatalogsCreativeAssetsProductGroupProductCounts != nil {
+		return *obj.CatalogsCreativeAssetsProductGroupProductCounts
+	}
+
+	if obj.CatalogsHotelProductGroupProductCounts != nil {
+		return *obj.CatalogsHotelProductGroupProductCounts
+	}
+
+	if obj.CatalogsRetailProductGroupProductCounts != nil {
+		return *obj.CatalogsRetailProductGroupProductCounts
 	}
 
 	// all schemas are nil

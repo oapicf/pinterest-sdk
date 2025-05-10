@@ -12,13 +12,15 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Sections help organize pins within a board.
  * @param name 
  * @param id 
  */
+@Serializable
 data class BoardSection(
     val name: kotlin.String,
     val id: kotlin.String? = null
-) 
+)
 

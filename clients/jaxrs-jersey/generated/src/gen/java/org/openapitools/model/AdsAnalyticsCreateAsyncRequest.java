@@ -71,7 +71,7 @@ import javax.validation.Valid;
   AdsAnalyticsCreateAsyncRequest.JSON_PROPERTY_START_HOUR,
   AdsAnalyticsCreateAsyncRequest.JSON_PROPERTY_END_HOUR
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-11-05T02:20:07.425136412Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdsAnalyticsCreateAsyncRequest   {
   public static final String JSON_PROPERTY_START_DATE = "start_date";
   @JsonProperty(JSON_PROPERTY_START_DATE)
@@ -169,9 +169,9 @@ public class AdsAnalyticsCreateAsyncRequest   {
    * Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
    */
   public enum PrimarySortEnum {
-    ID("BY_ID"),
+    BY_ID("BY_ID"),
     
-    DATE("BY_DATE");
+    BY_DATE("BY_DATE");
 
     private String value;
 

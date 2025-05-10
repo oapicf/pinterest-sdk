@@ -22,40 +22,25 @@ typedef struct catalogs_items_batch_t catalogs_items_batch_t;
 #include "catalogs_type.h"
 #include "creative_assets_processing_record.h"
 
-// Enum  for catalogs_items_batch
-
-typedef enum  { pinterest_rest_api_catalogs_items_batch__NULL = 0, pinterest_rest_api_catalogs_items_batch__RETAIL, pinterest_rest_api_catalogs_items_batch__HOTEL, pinterest_rest_api_catalogs_items_batch__CREATIVE_ASSETS } pinterest_rest_api_catalogs_items_batch__e;
-
-char* catalogs_items_batch_catalog_type_ToString(pinterest_rest_api_catalogs_items_batch__e catalog_type);
-
-pinterest_rest_api_catalogs_items_batch__e catalogs_items_batch_catalog_type_FromString(char* catalog_type);
-
-// Enum  for catalogs_items_batch
-
-typedef enum  { pinterest_rest_api_catalogs_items_batch__NULL = 0, pinterest_rest_api_catalogs_items_batch__PROCESSING, pinterest_rest_api_catalogs_items_batch__COMPLETED, pinterest_rest_api_catalogs_items_batch__FAILED } pinterest_rest_api_catalogs_items_batch__e;
-
-char* catalogs_items_batch_status_ToString(pinterest_rest_api_catalogs_items_batch__e status);
-
-pinterest_rest_api_catalogs_items_batch__e catalogs_items_batch_status_FromString(char* status);
-
 
 
 typedef struct catalogs_items_batch_t {
-    catalogs_type_t *catalog_type; // custom
+    pinterest_rest_api_catalogs_type__e catalog_type; //referenced enum
     char *batch_id; // string
     char *created_time; //date time
     char *completed_time; //date time
-    batch_operation_status_t *status; // custom
+    pinterest_rest_api_batch_operation_status__e status; //referenced enum
     list_t *items; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_items_batch_t;
 
-catalogs_items_batch_t *catalogs_items_batch_create(
-    catalogs_type_t *catalog_type,
+__attribute__((deprecated)) catalogs_items_batch_t *catalogs_items_batch_create(
+    pinterest_rest_api_catalogs_type__e catalog_type,
     char *batch_id,
     char *created_time,
     char *completed_time,
-    batch_operation_status_t *status,
+    pinterest_rest_api_batch_operation_status__e status,
     list_t *items
 );
 

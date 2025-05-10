@@ -52,36 +52,42 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * SSIOAccountResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SSIOAccountResponse {
   public static final String SERIALIZED_NAME_ELIGIBLE = "eligible";
   @SerializedName(SERIALIZED_NAME_ELIGIBLE)
+  @javax.annotation.Nullable
   private Boolean eligible;
 
   public static final String SERIALIZED_NAME_CAN_EDIT = "can_edit";
   @SerializedName(SERIALIZED_NAME_CAN_EDIT)
+  @javax.annotation.Nullable
   private Boolean canEdit;
 
   public static final String SERIALIZED_NAME_BILLTO_INFOS = "billto_infos";
   @SerializedName(SERIALIZED_NAME_BILLTO_INFOS)
+  @javax.annotation.Nullable
   private List<SSIOAccountItem> billtoInfos = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
+  @javax.annotation.Nullable
   private String currency;
 
   public static final String SERIALIZED_NAME_PMP_NAMES = "pmp_names";
   @SerializedName(SERIALIZED_NAME_PMP_NAMES)
+  @javax.annotation.Nullable
   private List<SSIOAccountPMPName> pmpNames = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_ERROR = "error";
   @SerializedName(SERIALIZED_NAME_ERROR)
+  @javax.annotation.Nullable
   private String error;
 
   public SSIOAccountResponse() {
   }
 
-  public SSIOAccountResponse eligible(Boolean eligible) {
+  public SSIOAccountResponse eligible(@javax.annotation.Nullable Boolean eligible) {
     this.eligible = eligible;
     return this;
   }
@@ -95,12 +101,12 @@ public class SSIOAccountResponse {
     return eligible;
   }
 
-  public void setEligible(Boolean eligible) {
+  public void setEligible(@javax.annotation.Nullable Boolean eligible) {
     this.eligible = eligible;
   }
 
 
-  public SSIOAccountResponse canEdit(Boolean canEdit) {
+  public SSIOAccountResponse canEdit(@javax.annotation.Nullable Boolean canEdit) {
     this.canEdit = canEdit;
     return this;
   }
@@ -114,12 +120,12 @@ public class SSIOAccountResponse {
     return canEdit;
   }
 
-  public void setCanEdit(Boolean canEdit) {
+  public void setCanEdit(@javax.annotation.Nullable Boolean canEdit) {
     this.canEdit = canEdit;
   }
 
 
-  public SSIOAccountResponse billtoInfos(List<SSIOAccountItem> billtoInfos) {
+  public SSIOAccountResponse billtoInfos(@javax.annotation.Nullable List<SSIOAccountItem> billtoInfos) {
     this.billtoInfos = billtoInfos;
     return this;
   }
@@ -141,12 +147,12 @@ public class SSIOAccountResponse {
     return billtoInfos;
   }
 
-  public void setBilltoInfos(List<SSIOAccountItem> billtoInfos) {
+  public void setBilltoInfos(@javax.annotation.Nullable List<SSIOAccountItem> billtoInfos) {
     this.billtoInfos = billtoInfos;
   }
 
 
-  public SSIOAccountResponse currency(String currency) {
+  public SSIOAccountResponse currency(@javax.annotation.Nullable String currency) {
     this.currency = currency;
     return this;
   }
@@ -160,12 +166,12 @@ public class SSIOAccountResponse {
     return currency;
   }
 
-  public void setCurrency(String currency) {
+  public void setCurrency(@javax.annotation.Nullable String currency) {
     this.currency = currency;
   }
 
 
-  public SSIOAccountResponse pmpNames(List<SSIOAccountPMPName> pmpNames) {
+  public SSIOAccountResponse pmpNames(@javax.annotation.Nullable List<SSIOAccountPMPName> pmpNames) {
     this.pmpNames = pmpNames;
     return this;
   }
@@ -187,12 +193,12 @@ public class SSIOAccountResponse {
     return pmpNames;
   }
 
-  public void setPmpNames(List<SSIOAccountPMPName> pmpNames) {
+  public void setPmpNames(@javax.annotation.Nullable List<SSIOAccountPMPName> pmpNames) {
     this.pmpNames = pmpNames;
   }
 
 
-  public SSIOAccountResponse error(String error) {
+  public SSIOAccountResponse error(@javax.annotation.Nullable String error) {
     this.error = error;
     return this;
   }
@@ -206,7 +212,7 @@ public class SSIOAccountResponse {
     return error;
   }
 
-  public void setError(String error) {
+  public void setError(@javax.annotation.Nullable String error) {
     this.error = error;
   }
 

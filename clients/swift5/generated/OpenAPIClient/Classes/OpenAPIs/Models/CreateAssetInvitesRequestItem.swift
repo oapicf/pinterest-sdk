@@ -13,7 +13,7 @@ import AnyCodable
 /** Object declaring an asset role update to an invite. */
 public struct CreateAssetInvitesRequestItem: Codable, JSONEncodable, Hashable {
 
-    static let inviteIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let inviteIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Unique identifier of an invite. */
     public var inviteId: String
     public var inviteType: InviteType

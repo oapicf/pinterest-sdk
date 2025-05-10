@@ -49,11 +49,11 @@ export function CancelInvitesBodyFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-  export function CancelInvitesBodyToJSON(json: any): CancelInvitesBody {
-      return CancelInvitesBodyToJSONTyped(json, false);
-  }
+export function CancelInvitesBodyToJSON(json: any): CancelInvitesBody {
+    return CancelInvitesBodyToJSONTyped(json, false);
+}
 
-  export function CancelInvitesBodyToJSONTyped(value?: CancelInvitesBody | null, ignoreDiscriminator: boolean = false): any {
+export function CancelInvitesBodyToJSONTyped(value?: CancelInvitesBody | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

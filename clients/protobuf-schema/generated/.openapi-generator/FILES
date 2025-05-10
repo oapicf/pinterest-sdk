@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 README.md
 models/account.proto
 models/action_type.proto

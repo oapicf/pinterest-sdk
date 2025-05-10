@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param lookbackWindow Number of days ago to start lookback timeframe for dynamic retargeting
  * @param tagTypes Event types to target for dynamic retargeting
  * @param exclusionWindow Number of days ago to stop lookback timeframe for dynamic retargeting
  */
+@Serializable
 data class TargetingSpecSHOPPINGRETARGETING(
     /* Number of days ago to start lookback timeframe for dynamic retargeting */
     val lookbackWindow: kotlin.Int? = null,
@@ -25,5 +27,5 @@ data class TargetingSpecSHOPPINGRETARGETING(
     val tagTypes: kotlin.collections.List<kotlin.Int>? = null,
     /* Number of days ago to stop lookback timeframe for dynamic retargeting */
     val exclusionWindow: kotlin.Int? = null
-) 
+)
 

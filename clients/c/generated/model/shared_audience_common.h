@@ -17,25 +17,18 @@ typedef struct shared_audience_common_t shared_audience_common_t;
 
 #include "operation_type.h"
 
-// Enum  for shared_audience_common
-
-typedef enum  { pinterest_rest_api_shared_audience_common__NULL = 0, pinterest_rest_api_shared_audience_common__SHARE, pinterest_rest_api_shared_audience_common__REVOKE } pinterest_rest_api_shared_audience_common__e;
-
-char* shared_audience_common_operation_type_ToString(pinterest_rest_api_shared_audience_common__e operation_type);
-
-pinterest_rest_api_shared_audience_common__e shared_audience_common_operation_type_FromString(char* operation_type);
-
 
 
 typedef struct shared_audience_common_t {
     char *audience_id; // string
-    operation_type_t *operation_type; // custom
+    pinterest_rest_api_operation_type__e operation_type; //referenced enum
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } shared_audience_common_t;
 
-shared_audience_common_t *shared_audience_common_create(
+__attribute__((deprecated)) shared_audience_common_t *shared_audience_common_create(
     char *audience_id,
-    operation_type_t *operation_type
+    pinterest_rest_api_operation_type__e operation_type
 );
 
 void shared_audience_common_free(shared_audience_common_t *shared_audience_common);

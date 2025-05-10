@@ -22,6 +22,7 @@ import org.openapitools.model.ObjectiveType;
 import org.openapitools.model.PinPromotionSummaryStatus;
 import org.openapitools.model.ProductGroupSummaryStatus;
 import org.openapitools.model.ReportingColumnAsync;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -36,7 +37,7 @@ import javax.annotation.Generated;
  * AdsAnalyticsCreateAsyncRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdsAnalyticsCreateAsyncRequest {
 
   private String startDate;
@@ -103,9 +104,9 @@ public class AdsAnalyticsCreateAsyncRequest {
    * Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
    */
   public enum PrimarySortEnum {
-    ID("BY_ID"),
+    BY_ID("BY_ID"),
     
-    DATE("BY_DATE");
+    BY_DATE("BY_DATE");
 
     private String value;
 
@@ -134,11 +135,11 @@ public class AdsAnalyticsCreateAsyncRequest {
     }
   }
 
-  private PrimarySortEnum primarySort;
+  private @Nullable PrimarySortEnum primarySort;
 
-  private Integer startHour;
+  private @Nullable Integer startHour;
 
-  private Integer endHour;
+  private @Nullable Integer endHour;
 
   public AdsAnalyticsCreateAsyncRequest() {
     super();

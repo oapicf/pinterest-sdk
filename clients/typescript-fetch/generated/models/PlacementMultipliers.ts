@@ -63,11 +63,11 @@ export function PlacementMultipliersFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function PlacementMultipliersToJSON(json: any): PlacementMultipliers {
-      return PlacementMultipliersToJSONTyped(json, false);
-  }
+export function PlacementMultipliersToJSON(json: any): PlacementMultipliers {
+    return PlacementMultipliersToJSONTyped(json, false);
+}
 
-  export function PlacementMultipliersToJSONTyped(value?: PlacementMultipliers | null, ignoreDiscriminator: boolean = false): any {
+export function PlacementMultipliersToJSONTyped(value?: PlacementMultipliers | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

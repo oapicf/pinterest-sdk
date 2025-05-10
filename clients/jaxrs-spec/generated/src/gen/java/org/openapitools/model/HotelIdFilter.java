@@ -16,9 +16,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("HotelIdFilter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class HotelIdFilter   {
   private CatalogsProductGroupMultipleStringCriteria HOTEL_ID;
+
+  public HotelIdFilter() {
+  }
+
+  @JsonCreator
+  public HotelIdFilter(
+    @JsonProperty(required = true, value = "HOTEL_ID") CatalogsProductGroupMultipleStringCriteria HOTEL_ID
+  ) {
+    this.HOTEL_ID = HOTEL_ID;
+  }
 
   /**
    **/
@@ -29,12 +39,12 @@ public class HotelIdFilter   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("HOTEL_ID")
+  @JsonProperty(required = true, value = "HOTEL_ID")
   @NotNull @Valid public CatalogsProductGroupMultipleStringCriteria getHOTELID() {
     return HOTEL_ID;
   }
 
-  @JsonProperty("HOTEL_ID")
+  @JsonProperty(required = true, value = "HOTEL_ID")
   public void setHOTELID(CatalogsProductGroupMultipleStringCriteria HOTEL_ID) {
     this.HOTEL_ID = HOTEL_ID;
   }

@@ -5,7 +5,7 @@
 
 
 
-bid_floor_request_t *bid_floor_request_create(
+static bid_floor_request_t *bid_floor_request_create_internal(
     list_t *bid_floor_specs,
     targeting_spec_t *targeting_spec
     ) {
@@ -16,12 +16,26 @@ bid_floor_request_t *bid_floor_request_create(
     bid_floor_request_local_var->bid_floor_specs = bid_floor_specs;
     bid_floor_request_local_var->targeting_spec = targeting_spec;
 
+    bid_floor_request_local_var->_library_owned = 1;
     return bid_floor_request_local_var;
 }
 
+__attribute__((deprecated)) bid_floor_request_t *bid_floor_request_create(
+    list_t *bid_floor_specs,
+    targeting_spec_t *targeting_spec
+    ) {
+    return bid_floor_request_create_internal (
+        bid_floor_specs,
+        targeting_spec
+        );
+}
 
 void bid_floor_request_free(bid_floor_request_t *bid_floor_request) {
     if(NULL == bid_floor_request){
+        return ;
+    }
+    if(bid_floor_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "bid_floor_request_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -95,6 +109,9 @@ bid_floor_request_t *bid_floor_request_parseFromJSON(cJSON *bid_floor_requestJSO
 
     // bid_floor_request->bid_floor_specs
     cJSON *bid_floor_specs = cJSON_GetObjectItemCaseSensitive(bid_floor_requestJSON, "bid_floor_specs");
+    if (cJSON_IsNull(bid_floor_specs)) {
+        bid_floor_specs = NULL;
+    }
     if (!bid_floor_specs) {
         goto end;
     }
@@ -119,12 +136,15 @@ bid_floor_request_t *bid_floor_request_parseFromJSON(cJSON *bid_floor_requestJSO
 
     // bid_floor_request->targeting_spec
     cJSON *targeting_spec = cJSON_GetObjectItemCaseSensitive(bid_floor_requestJSON, "targeting_spec");
+    if (cJSON_IsNull(targeting_spec)) {
+        targeting_spec = NULL;
+    }
     if (targeting_spec) { 
     targeting_spec_local_nonprim = targeting_spec_parseFromJSON(targeting_spec); //nonprimitive
     }
 
 
-    bid_floor_request_local_var = bid_floor_request_create (
+    bid_floor_request_local_var = bid_floor_request_create_internal (
         bid_floor_specsList,
         targeting_spec ? targeting_spec_local_nonprim : NULL
         );

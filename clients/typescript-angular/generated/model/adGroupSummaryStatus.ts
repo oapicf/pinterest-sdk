@@ -15,13 +15,21 @@
 export type AdGroupSummaryStatus = 'RUNNING' | 'PAUSED' | 'NOT_STARTED' | 'COMPLETED' | 'ADVERTISER_DISABLED' | 'ARCHIVED' | 'DRAFT' | 'DELETED_DRAFT';
 
 export const AdGroupSummaryStatus = {
+
     Running: 'RUNNING' as AdGroupSummaryStatus,
+
     Paused: 'PAUSED' as AdGroupSummaryStatus,
+
     NotStarted: 'NOT_STARTED' as AdGroupSummaryStatus,
+
     Completed: 'COMPLETED' as AdGroupSummaryStatus,
+
     AdvertiserDisabled: 'ADVERTISER_DISABLED' as AdGroupSummaryStatus,
+
     Archived: 'ARCHIVED' as AdGroupSummaryStatus,
+
     Draft: 'DRAFT' as AdGroupSummaryStatus,
+
     DeletedDraft: 'DELETED_DRAFT' as AdGroupSummaryStatus
 };
 

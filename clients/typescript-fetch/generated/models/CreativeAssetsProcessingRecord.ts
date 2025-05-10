@@ -87,11 +87,11 @@ export function CreativeAssetsProcessingRecordFromJSONTyped(json: any, ignoreDis
     };
 }
 
-  export function CreativeAssetsProcessingRecordToJSON(json: any): CreativeAssetsProcessingRecord {
-      return CreativeAssetsProcessingRecordToJSONTyped(json, false);
-  }
+export function CreativeAssetsProcessingRecordToJSON(json: any): CreativeAssetsProcessingRecord {
+    return CreativeAssetsProcessingRecordToJSONTyped(json, false);
+}
 
-  export function CreativeAssetsProcessingRecordToJSONTyped(value?: CreativeAssetsProcessingRecord | null, ignoreDiscriminator: boolean = false): any {
+export function CreativeAssetsProcessingRecordToJSONTyped(value?: CreativeAssetsProcessingRecord | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

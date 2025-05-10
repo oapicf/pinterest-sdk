@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -18,18 +19,18 @@ import javax.annotation.Generated;
  * UserWebsiteVerificationCode
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class UserWebsiteVerificationCode {
 
-  private String verificationCode;
+  private @Nullable String verificationCode;
 
-  private String dnsTxtRecord;
+  private @Nullable String dnsTxtRecord;
 
-  private String metatag;
+  private @Nullable String metatag;
 
-  private String filename;
+  private @Nullable String filename;
 
-  private String fileContent;
+  private @Nullable String fileContent;
 
   public UserWebsiteVerificationCode verificationCode(String verificationCode) {
     this.verificationCode = verificationCode;

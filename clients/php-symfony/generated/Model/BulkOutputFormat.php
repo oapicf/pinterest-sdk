@@ -44,8 +44,8 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum BulkOutputFormat: string
 {
-        case CSV = "CSV";
-        case JSON = "JSON";
+        case CSV = 'CSV';
+        case JSON = 'JSON';
 }
 
 

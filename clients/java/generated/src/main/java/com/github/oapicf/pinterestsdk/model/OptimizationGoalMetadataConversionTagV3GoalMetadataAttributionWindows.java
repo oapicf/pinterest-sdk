@@ -48,24 +48,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows {
   public static final String SERIALIZED_NAME_CLICK_WINDOW_DAYS = "click_window_days";
   @SerializedName(SERIALIZED_NAME_CLICK_WINDOW_DAYS)
+  @javax.annotation.Nullable
   private Integer clickWindowDays;
 
   public static final String SERIALIZED_NAME_ENGAGEMENT_WINDOW_DAYS = "engagement_window_days";
   @SerializedName(SERIALIZED_NAME_ENGAGEMENT_WINDOW_DAYS)
+  @javax.annotation.Nullable
   private Integer engagementWindowDays;
 
   public static final String SERIALIZED_NAME_VIEW_WINDOW_DAYS = "view_window_days";
   @SerializedName(SERIALIZED_NAME_VIEW_WINDOW_DAYS)
+  @javax.annotation.Nullable
   private Integer viewWindowDays;
 
   public OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows() {
   }
 
-  public OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows clickWindowDays(Integer clickWindowDays) {
+  public OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows clickWindowDays(@javax.annotation.Nullable Integer clickWindowDays) {
     this.clickWindowDays = clickWindowDays;
     return this;
   }
@@ -79,12 +82,12 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindo
     return clickWindowDays;
   }
 
-  public void setClickWindowDays(Integer clickWindowDays) {
+  public void setClickWindowDays(@javax.annotation.Nullable Integer clickWindowDays) {
     this.clickWindowDays = clickWindowDays;
   }
 
 
-  public OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows engagementWindowDays(Integer engagementWindowDays) {
+  public OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows engagementWindowDays(@javax.annotation.Nullable Integer engagementWindowDays) {
     this.engagementWindowDays = engagementWindowDays;
     return this;
   }
@@ -98,12 +101,12 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindo
     return engagementWindowDays;
   }
 
-  public void setEngagementWindowDays(Integer engagementWindowDays) {
+  public void setEngagementWindowDays(@javax.annotation.Nullable Integer engagementWindowDays) {
     this.engagementWindowDays = engagementWindowDays;
   }
 
 
-  public OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows viewWindowDays(Integer viewWindowDays) {
+  public OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows viewWindowDays(@javax.annotation.Nullable Integer viewWindowDays) {
     this.viewWindowDays = viewWindowDays;
     return this;
   }
@@ -117,7 +120,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindo
     return viewWindowDays;
   }
 
-  public void setViewWindowDays(Integer viewWindowDays) {
+  public void setViewWindowDays(@javax.annotation.Nullable Integer viewWindowDays) {
     this.viewWindowDays = viewWindowDays;
   }
 

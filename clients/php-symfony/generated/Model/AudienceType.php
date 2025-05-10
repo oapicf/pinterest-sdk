@@ -44,11 +44,11 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum AudienceType: string
 {
-        case CUSTOMER_LIST = "CUSTOMER_LIST";
-        case VISITOR = "VISITOR";
-        case ENGAGEMENT = "ENGAGEMENT";
-        case ACTALIKE = "ACTALIKE";
-        case PERSONA = "PERSONA";
+        case CUSTOMER_LIST = 'CUSTOMER_LIST';
+        case VISITOR = 'VISITOR';
+        case ENGAGEMENT = 'ENGAGEMENT';
+        case ACTALIKE = 'ACTALIKE';
+        case PERSONA = 'PERSONA';
 }
 
 

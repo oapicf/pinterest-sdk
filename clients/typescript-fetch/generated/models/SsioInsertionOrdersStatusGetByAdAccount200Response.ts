@@ -64,11 +64,11 @@ export function SsioInsertionOrdersStatusGetByAdAccount200ResponseFromJSONTyped(
     };
 }
 
-  export function SsioInsertionOrdersStatusGetByAdAccount200ResponseToJSON(json: any): SsioInsertionOrdersStatusGetByAdAccount200Response {
-      return SsioInsertionOrdersStatusGetByAdAccount200ResponseToJSONTyped(json, false);
-  }
+export function SsioInsertionOrdersStatusGetByAdAccount200ResponseToJSON(json: any): SsioInsertionOrdersStatusGetByAdAccount200Response {
+    return SsioInsertionOrdersStatusGetByAdAccount200ResponseToJSONTyped(json, false);
+}
 
-  export function SsioInsertionOrdersStatusGetByAdAccount200ResponseToJSONTyped(value?: SsioInsertionOrdersStatusGetByAdAccount200Response | null, ignoreDiscriminator: boolean = false): any {
+export function SsioInsertionOrdersStatusGetByAdAccount200ResponseToJSONTyped(value?: SsioInsertionOrdersStatusGetByAdAccount200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

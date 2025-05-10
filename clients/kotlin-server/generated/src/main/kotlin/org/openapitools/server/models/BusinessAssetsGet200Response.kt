@@ -13,14 +13,16 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.GetBusinessAssetsResponse
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items List of assets the requesting business has access to.
  * @param bookmark 
  */
+@Serializable
 data class BusinessAssetsGet200Response(
     /* List of assets the requesting business has access to. */
     val items: kotlin.collections.List<GetBusinessAssetsResponse>,
     val bookmark: kotlin.String? = null
-) 
+)
 

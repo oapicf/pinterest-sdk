@@ -108,11 +108,11 @@ export function OauthAccessTokenResponseIntegrationRefreshFromJSONTyped(json: an
     };
 }
 
-  export function OauthAccessTokenResponseIntegrationRefreshToJSON(json: any): OauthAccessTokenResponseIntegrationRefresh {
-      return OauthAccessTokenResponseIntegrationRefreshToJSONTyped(json, false);
-  }
+export function OauthAccessTokenResponseIntegrationRefreshToJSON(json: any): OauthAccessTokenResponseIntegrationRefresh {
+    return OauthAccessTokenResponseIntegrationRefreshToJSONTyped(json, false);
+}
 
-  export function OauthAccessTokenResponseIntegrationRefreshToJSONTyped(value?: OauthAccessTokenResponseIntegrationRefresh | null, ignoreDiscriminator: boolean = false): any {
+export function OauthAccessTokenResponseIntegrationRefreshToJSONTyped(value?: OauthAccessTokenResponseIntegrationRefresh | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

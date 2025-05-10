@@ -5,7 +5,7 @@
 
 
 
-create_asset_access_request_response_t *create_asset_access_request_response_create(
+static create_asset_access_request_response_t *create_asset_access_request_response_create_internal(
     list_t *exceptions,
     list_t* invites
     ) {
@@ -16,12 +16,26 @@ create_asset_access_request_response_t *create_asset_access_request_response_cre
     create_asset_access_request_response_local_var->exceptions = exceptions;
     create_asset_access_request_response_local_var->invites = invites;
 
+    create_asset_access_request_response_local_var->_library_owned = 1;
     return create_asset_access_request_response_local_var;
 }
 
+__attribute__((deprecated)) create_asset_access_request_response_t *create_asset_access_request_response_create(
+    list_t *exceptions,
+    list_t* invites
+    ) {
+    return create_asset_access_request_response_create_internal (
+        exceptions,
+        invites
+        );
+}
 
 void create_asset_access_request_response_free(create_asset_access_request_response_t *create_asset_access_request_response) {
     if(NULL == create_asset_access_request_response){
+        return ;
+    }
+    if(create_asset_access_request_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "create_asset_access_request_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -34,7 +48,7 @@ void create_asset_access_request_response_free(create_asset_access_request_respo
     }
     if (create_asset_access_request_response->invites) {
         list_ForEach(listEntry, create_asset_access_request_response->invites) {
-            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            keyValuePair_t *localKeyValue = listEntry->data;
             free (localKeyValue->key);
             free (localKeyValue->value);
             keyValuePair_free(localKeyValue);
@@ -78,8 +92,8 @@ cJSON *create_asset_access_request_response_convertToJSON(create_asset_access_re
     listEntry_t *invitesListEntry;
     if (create_asset_access_request_response->invites) {
     list_ForEach(invitesListEntry, create_asset_access_request_response->invites) {
-        keyValuePair_t *localKeyValue = (keyValuePair_t*)invitesListEntry->data;
-        if(cJSON_AddStringToObject(localMapObject, localKeyValue->key, (char*)localKeyValue->value) == NULL)
+        keyValuePair_t *localKeyValue = invitesListEntry->data;
+        if(cJSON_AddStringToObject(localMapObject, localKeyValue->key, localKeyValue->value) == NULL)
         {
             goto fail;
         }
@@ -107,6 +121,9 @@ create_asset_access_request_response_t *create_asset_access_request_response_par
 
     // create_asset_access_request_response->exceptions
     cJSON *exceptions = cJSON_GetObjectItemCaseSensitive(create_asset_access_request_responseJSON, "exceptions");
+    if (cJSON_IsNull(exceptions)) {
+        exceptions = NULL;
+    }
     if (exceptions) { 
     cJSON *exceptions_local_nonprimitive = NULL;
     if(!cJSON_IsArray(exceptions)){
@@ -128,6 +145,9 @@ create_asset_access_request_response_t *create_asset_access_request_response_par
 
     // create_asset_access_request_response->invites
     cJSON *invites = cJSON_GetObjectItemCaseSensitive(create_asset_access_request_responseJSON, "invites");
+    if (cJSON_IsNull(invites)) {
+        invites = NULL;
+    }
     if (invites) { 
     cJSON *invites_local_map = NULL;
     if(!cJSON_IsObject(invites) && !cJSON_IsNull(invites))
@@ -152,7 +172,7 @@ create_asset_access_request_response_t *create_asset_access_request_response_par
     }
 
 
-    create_asset_access_request_response_local_var = create_asset_access_request_response_create (
+    create_asset_access_request_response_local_var = create_asset_access_request_response_create_internal (
         exceptions ? exceptionsList : NULL,
         invites ? invitesList : NULL
         );
@@ -171,7 +191,7 @@ end:
     if (invitesList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, invitesList) {
-            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            keyValuePair_t *localKeyValue = listEntry->data;
             free(localKeyValue->key);
             localKeyValue->key = NULL;
             free(localKeyValue->value);

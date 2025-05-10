@@ -23,9 +23,10 @@ typedef struct pin_update_carousel_slots_inner_t {
     char *description; // string
     char *link; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } pin_update_carousel_slots_inner_t;
 
-pin_update_carousel_slots_inner_t *pin_update_carousel_slots_inner_create(
+__attribute__((deprecated)) pin_update_carousel_slots_inner_t *pin_update_carousel_slots_inner_create(
     char *title,
     char *description,
     char *link

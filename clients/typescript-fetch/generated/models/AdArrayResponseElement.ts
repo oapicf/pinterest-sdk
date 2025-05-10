@@ -70,11 +70,11 @@ export function AdArrayResponseElementFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-  export function AdArrayResponseElementToJSON(json: any): AdArrayResponseElement {
-      return AdArrayResponseElementToJSONTyped(json, false);
-  }
+export function AdArrayResponseElementToJSON(json: any): AdArrayResponseElement {
+    return AdArrayResponseElementToJSONTyped(json, false);
+}
 
-  export function AdArrayResponseElementToJSONTyped(value?: AdArrayResponseElement | null, ignoreDiscriminator: boolean = false): any {
+export function AdArrayResponseElementToJSONTyped(value?: AdArrayResponseElement | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

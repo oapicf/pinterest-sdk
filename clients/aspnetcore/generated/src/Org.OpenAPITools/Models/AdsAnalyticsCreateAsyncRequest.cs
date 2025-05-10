@@ -217,16 +217,16 @@ namespace Org.OpenAPITools.Models
         {
             
             /// <summary>
-            /// Enum IDEnum for BY_ID
+            /// Enum BYIDEnum for BY_ID
             /// </summary>
             [EnumMember(Value = "BY_ID")]
-            IDEnum = 1,
+            BYIDEnum = 1,
             
             /// <summary>
-            /// Enum DATEEnum for BY_DATE
+            /// Enum BYDATEEnum for BY_DATE
             /// </summary>
             [EnumMember(Value = "BY_DATE")]
-            DATEEnum = 2
+            BYDATEEnum = 2
         }
 
         /// <summary>

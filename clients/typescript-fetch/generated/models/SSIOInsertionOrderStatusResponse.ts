@@ -62,11 +62,11 @@ export function SSIOInsertionOrderStatusResponseFromJSONTyped(json: any, ignoreD
     };
 }
 
-  export function SSIOInsertionOrderStatusResponseToJSON(json: any): SSIOInsertionOrderStatusResponse {
-      return SSIOInsertionOrderStatusResponseToJSONTyped(json, false);
-  }
+export function SSIOInsertionOrderStatusResponseToJSON(json: any): SSIOInsertionOrderStatusResponse {
+    return SSIOInsertionOrderStatusResponseToJSONTyped(json, false);
+}
 
-  export function SSIOInsertionOrderStatusResponseToJSONTyped(value?: SSIOInsertionOrderStatusResponse | null, ignoreDiscriminator: boolean = false): any {
+export function SSIOInsertionOrderStatusResponseToJSONTyped(value?: SSIOInsertionOrderStatusResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -16,6 +16,6 @@ import { HttpFile } from '../http/http';
 * Conversion report time type
 */
 export enum ConversionReportTimeType {
-    AdAction = 'TIME_OF_AD_ACTION',
-    Conversion = 'TIME_OF_CONVERSION'
+    TimeOfAdAction = 'TIME_OF_AD_ACTION',
+    TimeOfConversion = 'TIME_OF_CONVERSION'
 }

@@ -51,24 +51,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsFeedIngestionDetails
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsFeedIngestionDetails {
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
+  @javax.annotation.Nonnull
   private CatalogsFeedIngestionErrors errors;
 
   public static final String SERIALIZED_NAME_INFO = "info";
   @SerializedName(SERIALIZED_NAME_INFO)
+  @javax.annotation.Nonnull
   private CatalogsFeedIngestionInfo info;
 
   public static final String SERIALIZED_NAME_WARNINGS = "warnings";
   @SerializedName(SERIALIZED_NAME_WARNINGS)
+  @javax.annotation.Nonnull
   private CatalogsFeedIngestionWarnings warnings;
 
   public CatalogsFeedIngestionDetails() {
   }
 
-  public CatalogsFeedIngestionDetails errors(CatalogsFeedIngestionErrors errors) {
+  public CatalogsFeedIngestionDetails errors(@javax.annotation.Nonnull CatalogsFeedIngestionErrors errors) {
     this.errors = errors;
     return this;
   }
@@ -82,12 +85,12 @@ public class CatalogsFeedIngestionDetails {
     return errors;
   }
 
-  public void setErrors(CatalogsFeedIngestionErrors errors) {
+  public void setErrors(@javax.annotation.Nonnull CatalogsFeedIngestionErrors errors) {
     this.errors = errors;
   }
 
 
-  public CatalogsFeedIngestionDetails info(CatalogsFeedIngestionInfo info) {
+  public CatalogsFeedIngestionDetails info(@javax.annotation.Nonnull CatalogsFeedIngestionInfo info) {
     this.info = info;
     return this;
   }
@@ -101,12 +104,12 @@ public class CatalogsFeedIngestionDetails {
     return info;
   }
 
-  public void setInfo(CatalogsFeedIngestionInfo info) {
+  public void setInfo(@javax.annotation.Nonnull CatalogsFeedIngestionInfo info) {
     this.info = info;
   }
 
 
-  public CatalogsFeedIngestionDetails warnings(CatalogsFeedIngestionWarnings warnings) {
+  public CatalogsFeedIngestionDetails warnings(@javax.annotation.Nonnull CatalogsFeedIngestionWarnings warnings) {
     this.warnings = warnings;
     return this;
   }
@@ -120,7 +123,7 @@ public class CatalogsFeedIngestionDetails {
     return warnings;
   }
 
-  public void setWarnings(CatalogsFeedIngestionWarnings warnings) {
+  public void setWarnings(@javax.annotation.Nonnull CatalogsFeedIngestionWarnings warnings) {
     this.warnings = warnings;
   }
 

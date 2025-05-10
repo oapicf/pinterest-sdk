@@ -24,9 +24,9 @@ char* user_list_type_user_list_type_ToString(pinterest_rest_api_user_list_type__
 
 pinterest_rest_api_user_list_type__e user_list_type_user_list_type_FromString(char* user_list_type);
 
-//cJSON *user_list_type_user_list_type_convertToJSON(pinterest_rest_api_user_list_type__e user_list_type);
+cJSON *user_list_type_convertToJSON(pinterest_rest_api_user_list_type__e user_list_type);
 
-//pinterest_rest_api_user_list_type__e user_list_type_user_list_type_parseFromJSON(cJSON *user_list_typeJSON);
+pinterest_rest_api_user_list_type__e user_list_type_parseFromJSON(cJSON *user_list_typeJSON);
 
 #endif /* _user_list_type_H_ */
 

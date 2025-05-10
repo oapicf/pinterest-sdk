@@ -32,9 +32,10 @@ typedef struct delivery_metrics_response_items_inner_t {
     char *definition; // string
     char *display_name; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } delivery_metrics_response_items_inner_t;
 
-delivery_metrics_response_items_inner_t *delivery_metrics_response_items_inner_create(
+__attribute__((deprecated)) delivery_metrics_response_items_inner_t *delivery_metrics_response_items_inner_create(
     char *name,
     pinterest_rest_api_delivery_metrics_response_items_inner_CATEGORY_e category,
     char *definition,

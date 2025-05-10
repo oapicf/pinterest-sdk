@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsFeedIngestionWarnings")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsFeedIngestionWarnings   {
   private Integer ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR;
   private Integer ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE;
@@ -23,6 +23,9 @@ public class CatalogsFeedIngestionWarnings   {
   private Integer ADDITIONAL_IMAGE_FILE_NOT_FOUND;
   private Integer ADDITIONAL_IMAGE_INVALID_FILE;
   private Integer HOTEL_PRICE_HEADER_IS_PRESENT;
+
+  public CatalogsFeedIngestionWarnings() {
+  }
 
   /**
    * We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.

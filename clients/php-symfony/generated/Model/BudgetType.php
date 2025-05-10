@@ -44,9 +44,9 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum BudgetType: string
 {
-        case DAILY = "DAILY";
-        case LIFETIME = "LIFETIME";
-        case CBO_ADGROUP = "CBO_ADGROUP";
+        case DAILY = 'DAILY';
+        case LIFETIME = 'LIFETIME';
+        case CBO_ADGROUP = 'CBO_ADGROUP';
 }
 
 

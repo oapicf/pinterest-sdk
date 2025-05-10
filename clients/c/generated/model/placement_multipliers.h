@@ -29,9 +29,10 @@ pinterest_rest_api_placement_multipliers_PLACEMENT_e placement_multipliers_place
 typedef struct placement_multipliers_t {
     pinterest_rest_api_placement_multipliers_PLACEMENT_e placement; //enum
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } placement_multipliers_t;
 
-placement_multipliers_t *placement_multipliers_create(
+__attribute__((deprecated)) placement_multipliers_t *placement_multipliers_create(
     pinterest_rest_api_placement_multipliers_PLACEMENT_e placement
 );
 

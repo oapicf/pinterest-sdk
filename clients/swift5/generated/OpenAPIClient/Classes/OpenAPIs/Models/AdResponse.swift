@@ -88,12 +88,12 @@ public struct AdResponse: Codable, JSONEncodable, Hashable {
         case rejected = "REJECTED"
         case approved = "APPROVED"
     }
-    static let adGroupIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(AG)?\\d+$/")
-    static let leadFormIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(AG)?\\d+$/")
-    static let pinIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let campaignIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adGroupIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(AG)?\\d+$/")
+    public static let leadFormIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(AG)?\\d+$/")
+    public static let pinIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let campaignIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** ID of the ad group that contains the ad. */
     public var adGroupId: String?
     /** Deep link URL for Android devices. */
@@ -259,3 +259,6 @@ public struct AdResponse: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension AdResponse: Identifiable {}

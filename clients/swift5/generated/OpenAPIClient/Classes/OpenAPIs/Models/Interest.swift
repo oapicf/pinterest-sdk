@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct Interest: Codable, JSONEncodable, Hashable {
 
-    static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public var canonicalUrl: String?
     public var id: String?
     public var key: String?
@@ -43,3 +43,6 @@ public struct Interest: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension Interest: Identifiable {}

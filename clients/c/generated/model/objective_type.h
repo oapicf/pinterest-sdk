@@ -24,9 +24,9 @@ char* objective_type_objective_type_ToString(pinterest_rest_api_objective_type__
 
 pinterest_rest_api_objective_type__e objective_type_objective_type_FromString(char* objective_type);
 
-//cJSON *objective_type_objective_type_convertToJSON(pinterest_rest_api_objective_type__e objective_type);
+cJSON *objective_type_convertToJSON(pinterest_rest_api_objective_type__e objective_type);
 
-//pinterest_rest_api_objective_type__e objective_type_objective_type_parseFromJSON(cJSON *objective_typeJSON);
+pinterest_rest_api_objective_type__e objective_type_parseFromJSON(cJSON *objective_typeJSON);
 
 #endif /* _objective_type_H_ */
 

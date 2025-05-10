@@ -51,7 +51,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Body to be used on path to send Members or Partners Invite or Request
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CreateMembershipOrPartnershipInvitesBody {
   /**
    * The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
@@ -109,24 +109,28 @@ public class CreateMembershipOrPartnershipInvitesBody {
 
   public static final String SERIALIZED_NAME_BUSINESS_ROLE = "business_role";
   @SerializedName(SERIALIZED_NAME_BUSINESS_ROLE)
+  @javax.annotation.Nonnull
   private BusinessRoleEnum businessRole;
 
   public static final String SERIALIZED_NAME_INVITE_TYPE = "invite_type";
   @SerializedName(SERIALIZED_NAME_INVITE_TYPE)
+  @javax.annotation.Nonnull
   private InviteType inviteType;
 
   public static final String SERIALIZED_NAME_MEMBERS = "members";
   @SerializedName(SERIALIZED_NAME_MEMBERS)
+  @javax.annotation.Nullable
   private List<String> members = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_PARTNERS = "partners";
   @SerializedName(SERIALIZED_NAME_PARTNERS)
+  @javax.annotation.Nullable
   private List<String> partners = new ArrayList<>();
 
   public CreateMembershipOrPartnershipInvitesBody() {
   }
 
-  public CreateMembershipOrPartnershipInvitesBody businessRole(BusinessRoleEnum businessRole) {
+  public CreateMembershipOrPartnershipInvitesBody businessRole(@javax.annotation.Nonnull BusinessRoleEnum businessRole) {
     this.businessRole = businessRole;
     return this;
   }
@@ -140,12 +144,12 @@ public class CreateMembershipOrPartnershipInvitesBody {
     return businessRole;
   }
 
-  public void setBusinessRole(BusinessRoleEnum businessRole) {
+  public void setBusinessRole(@javax.annotation.Nonnull BusinessRoleEnum businessRole) {
     this.businessRole = businessRole;
   }
 
 
-  public CreateMembershipOrPartnershipInvitesBody inviteType(InviteType inviteType) {
+  public CreateMembershipOrPartnershipInvitesBody inviteType(@javax.annotation.Nonnull InviteType inviteType) {
     this.inviteType = inviteType;
     return this;
   }
@@ -159,12 +163,12 @@ public class CreateMembershipOrPartnershipInvitesBody {
     return inviteType;
   }
 
-  public void setInviteType(InviteType inviteType) {
+  public void setInviteType(@javax.annotation.Nonnull InviteType inviteType) {
     this.inviteType = inviteType;
   }
 
 
-  public CreateMembershipOrPartnershipInvitesBody members(List<String> members) {
+  public CreateMembershipOrPartnershipInvitesBody members(@javax.annotation.Nullable List<String> members) {
     this.members = members;
     return this;
   }
@@ -186,12 +190,12 @@ public class CreateMembershipOrPartnershipInvitesBody {
     return members;
   }
 
-  public void setMembers(List<String> members) {
+  public void setMembers(@javax.annotation.Nullable List<String> members) {
     this.members = members;
   }
 
 
-  public CreateMembershipOrPartnershipInvitesBody partners(List<String> partners) {
+  public CreateMembershipOrPartnershipInvitesBody partners(@javax.annotation.Nullable List<String> partners) {
     this.partners = partners;
     return this;
   }
@@ -213,7 +217,7 @@ public class CreateMembershipOrPartnershipInvitesBody {
     return partners;
   }
 
-  public void setPartners(List<String> partners) {
+  public void setPartners(@javax.annotation.Nullable List<String> partners) {
     this.partners = partners;
   }
 

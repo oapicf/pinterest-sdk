@@ -49,24 +49,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * An object containing the permissions a business has on the asset.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class GetBusinessAssetsResponse {
   public static final String SERIALIZED_NAME_ASSET_ID = "asset_id";
   @SerializedName(SERIALIZED_NAME_ASSET_ID)
+  @javax.annotation.Nullable
   private String assetId;
 
   public static final String SERIALIZED_NAME_ASSET_TYPE = "asset_type";
   @SerializedName(SERIALIZED_NAME_ASSET_TYPE)
+  @javax.annotation.Nullable
   private String assetType;
 
   public static final String SERIALIZED_NAME_ASSET_GROUP_INFO = "asset_group_info";
   @SerializedName(SERIALIZED_NAME_ASSET_GROUP_INFO)
+  @javax.annotation.Nullable
   private AssetGroupBinding assetGroupInfo;
 
   public GetBusinessAssetsResponse() {
   }
 
-  public GetBusinessAssetsResponse assetId(String assetId) {
+  public GetBusinessAssetsResponse assetId(@javax.annotation.Nullable String assetId) {
     this.assetId = assetId;
     return this;
   }
@@ -80,12 +83,12 @@ public class GetBusinessAssetsResponse {
     return assetId;
   }
 
-  public void setAssetId(String assetId) {
+  public void setAssetId(@javax.annotation.Nullable String assetId) {
     this.assetId = assetId;
   }
 
 
-  public GetBusinessAssetsResponse assetType(String assetType) {
+  public GetBusinessAssetsResponse assetType(@javax.annotation.Nullable String assetType) {
     this.assetType = assetType;
     return this;
   }
@@ -99,12 +102,12 @@ public class GetBusinessAssetsResponse {
     return assetType;
   }
 
-  public void setAssetType(String assetType) {
+  public void setAssetType(@javax.annotation.Nullable String assetType) {
     this.assetType = assetType;
   }
 
 
-  public GetBusinessAssetsResponse assetGroupInfo(AssetGroupBinding assetGroupInfo) {
+  public GetBusinessAssetsResponse assetGroupInfo(@javax.annotation.Nullable AssetGroupBinding assetGroupInfo) {
     this.assetGroupInfo = assetGroupInfo;
     return this;
   }
@@ -118,7 +121,7 @@ public class GetBusinessAssetsResponse {
     return assetGroupInfo;
   }
 
-  public void setAssetGroupInfo(AssetGroupBinding assetGroupInfo) {
+  public void setAssetGroupInfo(@javax.annotation.Nullable AssetGroupBinding assetGroupInfo) {
     this.assetGroupInfo = assetGroupInfo;
   }
 

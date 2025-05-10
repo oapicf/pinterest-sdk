@@ -72,7 +72,7 @@ class QuizPinData
      * @SerializedName("tie_breaker_type")
      * @Type("string")
     */
-    #[Assert\Choice(["RANDOM", "CUSTOM"])]
+    #[Assert\Choice(['RANDOM', 'CUSTOM'])]
     #[Assert\Type("string")]
     protected ?string $tieBreakerType = null;
 
@@ -88,7 +88,7 @@ class QuizPinData
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->questions = array_key_exists('questions', $data) ? $data['questions'] : $this->questions;

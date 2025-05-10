@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.TopPinsAnalyticsResponseDateAvailability;
 import org.openapitools.model.TopVideoPinsAnalyticsResponsePinsInner;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -24,10 +25,10 @@ import javax.annotation.Generated;
  * TopVideoPinsAnalyticsResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TopVideoPinsAnalyticsResponse {
 
-  private TopPinsAnalyticsResponseDateAvailability dateAvailability;
+  private @Nullable TopPinsAnalyticsResponseDateAvailability dateAvailability;
 
   @Valid
   private List<@Valid TopVideoPinsAnalyticsResponsePinsInner> pins = new ArrayList<>();
@@ -81,7 +82,7 @@ public class TopVideoPinsAnalyticsResponse {
     }
   }
 
-  private SortByEnum sortBy;
+  private @Nullable SortByEnum sortBy;
 
   public TopVideoPinsAnalyticsResponse dateAvailability(TopPinsAnalyticsResponseDateAvailability dateAvailability) {
     this.dateAvailability = dateAvailability;

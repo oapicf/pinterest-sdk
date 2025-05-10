@@ -444,7 +444,7 @@ func (c *BusinessAccessAssetsAPIController) BusinessMembersAssetAccessDelete(w h
 		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
 		return
 	}
-	businessMembersAssetAccessDeleteRequestParam := BusinessMembersAssetAccessDeleteRequest{}
+	var businessMembersAssetAccessDeleteRequestParam BusinessMembersAssetAccessDeleteRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&businessMembersAssetAccessDeleteRequestParam); err != nil {
@@ -477,7 +477,7 @@ func (c *BusinessAccessAssetsAPIController) BusinessMembersAssetAccessUpdate(w h
 		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
 		return
 	}
-	updateMemberAssetAccessBodyParam := UpdateMemberAssetAccessBody{}
+	var updateMemberAssetAccessBodyParam UpdateMemberAssetAccessBody
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&updateMemberAssetAccessBodyParam); err != nil {
@@ -510,7 +510,7 @@ func (c *BusinessAccessAssetsAPIController) DeletePartnerAssetAccessHandlerImpl(
 		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
 		return
 	}
-	deletePartnerAssetAccessBodyParam := DeletePartnerAssetAccessBody{}
+	var deletePartnerAssetAccessBodyParam DeletePartnerAssetAccessBody
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&deletePartnerAssetAccessBodyParam); err != nil {
@@ -543,7 +543,7 @@ func (c *BusinessAccessAssetsAPIController) UpdatePartnerAssetAccessHandlerImpl(
 		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
 		return
 	}
-	updatePartnerAssetAccessBodyParam := UpdatePartnerAssetAccessBody{}
+	var updatePartnerAssetAccessBodyParam UpdatePartnerAssetAccessBody
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&updatePartnerAssetAccessBodyParam); err != nil {
@@ -662,7 +662,7 @@ func (c *BusinessAccessAssetsAPIController) AssetGroupCreate(w http.ResponseWrit
 		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
 		return
 	}
-	createAssetGroupBodyParam := CreateAssetGroupBody{}
+	var createAssetGroupBodyParam CreateAssetGroupBody
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&createAssetGroupBodyParam); err != nil {
@@ -695,7 +695,7 @@ func (c *BusinessAccessAssetsAPIController) AssetGroupDelete(w http.ResponseWrit
 		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
 		return
 	}
-	deleteAssetGroupBodyParam := DeleteAssetGroupBody{}
+	var deleteAssetGroupBodyParam DeleteAssetGroupBody
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&deleteAssetGroupBodyParam); err != nil {
@@ -728,7 +728,7 @@ func (c *BusinessAccessAssetsAPIController) AssetGroupUpdate(w http.ResponseWrit
 		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
 		return
 	}
-	updateAssetGroupBodyParam := UpdateAssetGroupBody{}
+	var updateAssetGroupBodyParam UpdateAssetGroupBody
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&updateAssetGroupBodyParam); err != nil {

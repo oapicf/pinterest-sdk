@@ -49,34 +49,41 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CustomerList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CustomerList {
   public static final String SERIALIZED_NAME_AD_ACCOUNT_ID = "ad_account_id";
   @SerializedName(SERIALIZED_NAME_AD_ACCOUNT_ID)
+  @javax.annotation.Nullable
   private String adAccountId;
 
   public static final String SERIALIZED_NAME_CREATED_TIME = "created_time";
   @SerializedName(SERIALIZED_NAME_CREATED_TIME)
+  @javax.annotation.Nullable
   private BigDecimal createdTime;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_NUM_BATCHES = "num_batches";
   @SerializedName(SERIALIZED_NAME_NUM_BATCHES)
+  @javax.annotation.Nullable
   private BigDecimal numBatches;
 
   public static final String SERIALIZED_NAME_NUM_REMOVED_USER_RECORDS = "num_removed_user_records";
   @SerializedName(SERIALIZED_NAME_NUM_REMOVED_USER_RECORDS)
+  @javax.annotation.Nullable
   private BigDecimal numRemovedUserRecords;
 
   public static final String SERIALIZED_NAME_NUM_UPLOADED_USER_RECORDS = "num_uploaded_user_records";
   @SerializedName(SERIALIZED_NAME_NUM_UPLOADED_USER_RECORDS)
+  @javax.annotation.Nullable
   private BigDecimal numUploadedUserRecords;
 
   /**
@@ -137,24 +144,28 @@ public class CustomerList {
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private StatusEnum status;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nullable
   private String type;
 
   public static final String SERIALIZED_NAME_UPDATED_TIME = "updated_time";
   @SerializedName(SERIALIZED_NAME_UPDATED_TIME)
+  @javax.annotation.Nullable
   private BigDecimal updatedTime;
 
   public static final String SERIALIZED_NAME_EXCEPTIONS = "exceptions";
   @SerializedName(SERIALIZED_NAME_EXCEPTIONS)
+  @javax.annotation.Nullable
   private Object exceptions;
 
   public CustomerList() {
   }
 
-  public CustomerList adAccountId(String adAccountId) {
+  public CustomerList adAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -168,12 +179,12 @@ public class CustomerList {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
 
-  public CustomerList createdTime(BigDecimal createdTime) {
+  public CustomerList createdTime(@javax.annotation.Nullable BigDecimal createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -187,12 +198,12 @@ public class CustomerList {
     return createdTime;
   }
 
-  public void setCreatedTime(BigDecimal createdTime) {
+  public void setCreatedTime(@javax.annotation.Nullable BigDecimal createdTime) {
     this.createdTime = createdTime;
   }
 
 
-  public CustomerList id(String id) {
+  public CustomerList id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -206,12 +217,12 @@ public class CustomerList {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public CustomerList name(String name) {
+  public CustomerList name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -225,12 +236,12 @@ public class CustomerList {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public CustomerList numBatches(BigDecimal numBatches) {
+  public CustomerList numBatches(@javax.annotation.Nullable BigDecimal numBatches) {
     this.numBatches = numBatches;
     return this;
   }
@@ -244,12 +255,12 @@ public class CustomerList {
     return numBatches;
   }
 
-  public void setNumBatches(BigDecimal numBatches) {
+  public void setNumBatches(@javax.annotation.Nullable BigDecimal numBatches) {
     this.numBatches = numBatches;
   }
 
 
-  public CustomerList numRemovedUserRecords(BigDecimal numRemovedUserRecords) {
+  public CustomerList numRemovedUserRecords(@javax.annotation.Nullable BigDecimal numRemovedUserRecords) {
     this.numRemovedUserRecords = numRemovedUserRecords;
     return this;
   }
@@ -263,12 +274,12 @@ public class CustomerList {
     return numRemovedUserRecords;
   }
 
-  public void setNumRemovedUserRecords(BigDecimal numRemovedUserRecords) {
+  public void setNumRemovedUserRecords(@javax.annotation.Nullable BigDecimal numRemovedUserRecords) {
     this.numRemovedUserRecords = numRemovedUserRecords;
   }
 
 
-  public CustomerList numUploadedUserRecords(BigDecimal numUploadedUserRecords) {
+  public CustomerList numUploadedUserRecords(@javax.annotation.Nullable BigDecimal numUploadedUserRecords) {
     this.numUploadedUserRecords = numUploadedUserRecords;
     return this;
   }
@@ -282,12 +293,12 @@ public class CustomerList {
     return numUploadedUserRecords;
   }
 
-  public void setNumUploadedUserRecords(BigDecimal numUploadedUserRecords) {
+  public void setNumUploadedUserRecords(@javax.annotation.Nullable BigDecimal numUploadedUserRecords) {
     this.numUploadedUserRecords = numUploadedUserRecords;
   }
 
 
-  public CustomerList status(StatusEnum status) {
+  public CustomerList status(@javax.annotation.Nullable StatusEnum status) {
     this.status = status;
     return this;
   }
@@ -301,12 +312,12 @@ public class CustomerList {
     return status;
   }
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(@javax.annotation.Nullable StatusEnum status) {
     this.status = status;
   }
 
 
-  public CustomerList type(String type) {
+  public CustomerList type(@javax.annotation.Nullable String type) {
     this.type = type;
     return this;
   }
@@ -320,12 +331,12 @@ public class CustomerList {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@javax.annotation.Nullable String type) {
     this.type = type;
   }
 
 
-  public CustomerList updatedTime(BigDecimal updatedTime) {
+  public CustomerList updatedTime(@javax.annotation.Nullable BigDecimal updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -339,12 +350,12 @@ public class CustomerList {
     return updatedTime;
   }
 
-  public void setUpdatedTime(BigDecimal updatedTime) {
+  public void setUpdatedTime(@javax.annotation.Nullable BigDecimal updatedTime) {
     this.updatedTime = updatedTime;
   }
 
 
-  public CustomerList exceptions(Object exceptions) {
+  public CustomerList exceptions(@javax.annotation.Nullable Object exceptions) {
     this.exceptions = exceptions;
     return this;
   }
@@ -358,7 +369,7 @@ public class CustomerList {
     return exceptions;
   }
 
-  public void setExceptions(Object exceptions) {
+  public void setExceptions(@javax.annotation.Nullable Object exceptions) {
     this.exceptions = exceptions;
   }
 

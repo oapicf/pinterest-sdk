@@ -22,7 +22,7 @@ pinterest_rest_api_match_type__e match_type_match_type_FromString(char* match_ty
     return 0;
 }
 
-cJSON *match_type_match_type_convertToJSON(pinterest_rest_api_match_type__e match_type) {
+cJSON *match_type_convertToJSON(pinterest_rest_api_match_type__e match_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "match_type", match_type_match_type_ToString(match_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_match_type__e match_type_match_type_parseFromJSON(cJSON *match_typeJSON) {
-    pinterest_rest_api_match_type__e *match_type = NULL;
-    pinterest_rest_api_match_type__e match_typeVariable;
-    cJSON *match_typeVar = cJSON_GetObjectItemCaseSensitive(match_typeJSON, "match_type");
-    if(!cJSON_IsString(match_typeVar) || (match_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_match_type__e match_type_parseFromJSON(cJSON *match_typeJSON) {
+    if(!cJSON_IsString(match_typeJSON) || (match_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    match_typeVariable = match_type_match_type_FromString(match_typeVar->valuestring);
-    return match_typeVariable;
-end:
-    return 0;
+    return match_type_match_type_FromString(match_typeJSON->valuestring);
 }

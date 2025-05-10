@@ -194,10 +194,35 @@ CampaignCreateResponseData <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return CampaignCreateResponseData in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return CampaignCreateResponseData as a base R list.
+    #' @examples
+    #' # convert array of CampaignCreateResponseData (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert CampaignCreateResponseData to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       CampaignCreateResponseDataObject <- list()
       if (!is.null(self$`ad_account_id`)) {
         CampaignCreateResponseDataObject[["ad_account_id"]] <-
@@ -209,7 +234,7 @@ CampaignCreateResponseData <- R6::R6Class(
       }
       if (!is.null(self$`status`)) {
         CampaignCreateResponseDataObject[["status"]] <-
-          self$`status`$toJSON()
+          self$`status`$toSimpleType()
       }
       if (!is.null(self$`lifetime_spend_cap`)) {
         CampaignCreateResponseDataObject[["lifetime_spend_cap"]] <-
@@ -225,7 +250,7 @@ CampaignCreateResponseData <- R6::R6Class(
       }
       if (!is.null(self$`tracking_urls`)) {
         CampaignCreateResponseDataObject[["tracking_urls"]] <-
-          self$`tracking_urls`$toJSON()
+          self$`tracking_urls`$toSimpleType()
       }
       if (!is.null(self$`start_time`)) {
         CampaignCreateResponseDataObject[["start_time"]] <-
@@ -253,7 +278,7 @@ CampaignCreateResponseData <- R6::R6Class(
       }
       if (!is.null(self$`objective_type`)) {
         CampaignCreateResponseDataObject[["objective_type"]] <-
-          self$`objective_type`$toJSON()
+          self$`objective_type`$toSimpleType()
       }
       if (!is.null(self$`created_time`)) {
         CampaignCreateResponseDataObject[["created_time"]] <-
@@ -273,9 +298,9 @@ CampaignCreateResponseData <- R6::R6Class(
       }
       if (!is.null(self$`summary_status`)) {
         CampaignCreateResponseDataObject[["summary_status"]] <-
-          self$`summary_status`$toJSON()
+          self$`summary_status`$toSimpleType()
       }
-      CampaignCreateResponseDataObject
+      return(CampaignCreateResponseDataObject)
     },
 
     #' @description
@@ -355,165 +380,13 @@ CampaignCreateResponseData <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return CampaignCreateResponseData in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`ad_account_id`)) {
-          sprintf(
-          '"ad_account_id":
-            "%s"
-                    ',
-          self$`ad_account_id`
-          )
-        },
-        if (!is.null(self$`name`)) {
-          sprintf(
-          '"name":
-            "%s"
-                    ',
-          self$`name`
-          )
-        },
-        if (!is.null(self$`status`)) {
-          sprintf(
-          '"status":
-          %s
-          ',
-          jsonlite::toJSON(self$`status`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`lifetime_spend_cap`)) {
-          sprintf(
-          '"lifetime_spend_cap":
-            %d
-                    ',
-          self$`lifetime_spend_cap`
-          )
-        },
-        if (!is.null(self$`daily_spend_cap`)) {
-          sprintf(
-          '"daily_spend_cap":
-            %d
-                    ',
-          self$`daily_spend_cap`
-          )
-        },
-        if (!is.null(self$`order_line_id`)) {
-          sprintf(
-          '"order_line_id":
-            "%s"
-                    ',
-          self$`order_line_id`
-          )
-        },
-        if (!is.null(self$`tracking_urls`)) {
-          sprintf(
-          '"tracking_urls":
-          %s
-          ',
-          jsonlite::toJSON(self$`tracking_urls`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`start_time`)) {
-          sprintf(
-          '"start_time":
-            %d
-                    ',
-          self$`start_time`
-          )
-        },
-        if (!is.null(self$`end_time`)) {
-          sprintf(
-          '"end_time":
-            %d
-                    ',
-          self$`end_time`
-          )
-        },
-        if (!is.null(self$`is_flexible_daily_budgets`)) {
-          sprintf(
-          '"is_flexible_daily_budgets":
-            %s
-                    ',
-          tolower(self$`is_flexible_daily_budgets`)
-          )
-        },
-        if (!is.null(self$`default_ad_group_budget_in_micro_currency`)) {
-          sprintf(
-          '"default_ad_group_budget_in_micro_currency":
-            %d
-                    ',
-          self$`default_ad_group_budget_in_micro_currency`
-          )
-        },
-        if (!is.null(self$`is_automated_campaign`)) {
-          sprintf(
-          '"is_automated_campaign":
-            %s
-                    ',
-          tolower(self$`is_automated_campaign`)
-          )
-        },
-        if (!is.null(self$`id`)) {
-          sprintf(
-          '"id":
-            "%s"
-                    ',
-          self$`id`
-          )
-        },
-        if (!is.null(self$`objective_type`)) {
-          sprintf(
-          '"objective_type":
-          %s
-          ',
-          jsonlite::toJSON(self$`objective_type`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`created_time`)) {
-          sprintf(
-          '"created_time":
-            %d
-                    ',
-          self$`created_time`
-          )
-        },
-        if (!is.null(self$`updated_time`)) {
-          sprintf(
-          '"updated_time":
-            %d
-                    ',
-          self$`updated_time`
-          )
-        },
-        if (!is.null(self$`type`)) {
-          sprintf(
-          '"type":
-            "%s"
-                    ',
-          self$`type`
-          )
-        },
-        if (!is.null(self$`is_campaign_budget_optimization`)) {
-          sprintf(
-          '"is_campaign_budget_optimization":
-            %s
-                    ',
-          tolower(self$`is_campaign_budget_optimization`)
-          )
-        },
-        if (!is.null(self$`summary_status`)) {
-          sprintf(
-          '"summary_status":
-          %s
-          ',
-          jsonlite::toJSON(self$`summary_status`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

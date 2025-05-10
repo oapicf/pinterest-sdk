@@ -42,9 +42,10 @@ typedef struct pin_media_source_video_id_t {
     char *media_id; // string
     int is_standard; //boolean
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } pin_media_source_video_id_t;
 
-pin_media_source_video_id_t *pin_media_source_video_id_create(
+__attribute__((deprecated)) pin_media_source_video_id_t *pin_media_source_video_id_create(
     pinterest_rest_api_pin_media_source_video_id_SOURCETYPE_e source_type,
     char *cover_image_url,
     pinterest_rest_api_pin_media_source_video_id_COVERIMAGECONTENTTYPE_e cover_image_content_type,

@@ -22,7 +22,7 @@ pinterest_rest_api_conversion_report_attribution_type__e conversion_report_attri
     return 0;
 }
 
-cJSON *conversion_report_attribution_type_conversion_report_attribution_type_convertToJSON(pinterest_rest_api_conversion_report_attribution_type__e conversion_report_attribution_type) {
+cJSON *conversion_report_attribution_type_convertToJSON(pinterest_rest_api_conversion_report_attribution_type__e conversion_report_attribution_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "conversion_report_attribution_type", conversion_report_attribution_type_conversion_report_attribution_type_ToString(conversion_report_attribution_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_conversion_report_attribution_type__e conversion_report_attribution_type_conversion_report_attribution_type_parseFromJSON(cJSON *conversion_report_attribution_typeJSON) {
-    pinterest_rest_api_conversion_report_attribution_type__e *conversion_report_attribution_type = NULL;
-    pinterest_rest_api_conversion_report_attribution_type__e conversion_report_attribution_typeVariable;
-    cJSON *conversion_report_attribution_typeVar = cJSON_GetObjectItemCaseSensitive(conversion_report_attribution_typeJSON, "conversion_report_attribution_type");
-    if(!cJSON_IsString(conversion_report_attribution_typeVar) || (conversion_report_attribution_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_conversion_report_attribution_type__e conversion_report_attribution_type_parseFromJSON(cJSON *conversion_report_attribution_typeJSON) {
+    if(!cJSON_IsString(conversion_report_attribution_typeJSON) || (conversion_report_attribution_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    conversion_report_attribution_typeVariable = conversion_report_attribution_type_conversion_report_attribution_type_FromString(conversion_report_attribution_typeVar->valuestring);
-    return conversion_report_attribution_typeVariable;
-end:
-    return 0;
+    return conversion_report_attribution_type_conversion_report_attribution_type_FromString(conversion_report_attribution_typeJSON->valuestring);
 }

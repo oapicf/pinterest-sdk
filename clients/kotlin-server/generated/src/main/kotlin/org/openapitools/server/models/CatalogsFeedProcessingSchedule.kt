@@ -12,17 +12,19 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Daily processing schedule. This field is **OPTIONAL**. Use this to configure the preferred time for processing a feed (otherwise random).
  * @param time A time in format HH:MM with leading 0 (zero)
  * @param timezone The timezone considered for the processing schedule time.
  */
+@Serializable
 data class CatalogsFeedProcessingSchedule(
     /* A time in format HH:MM with leading 0 (zero) */
     val time: kotlin.String,
     /* The timezone considered for the processing schedule time. */
-    val timezone: CatalogsFeedProcessingSchedule.Timezone
-) 
+    val timezone: CatalogsFeedProcessingSchedule.Timezone?
+)
 {
     /**
     * The timezone considered for the processing schedule time.

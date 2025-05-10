@@ -73,7 +73,7 @@ pinterest_rest_api_targeting_spec_TARGETINGSTRATEGY_e targeting_spec_targeting_s
     return 0;
 }
 
-targeting_spec_t *targeting_spec_create(
+static targeting_spec_t *targeting_spec_create_internal(
     list_t *age_bucket,
     list_t *apptype,
     list_t *audience_exclude,
@@ -102,12 +102,44 @@ targeting_spec_t *targeting_spec_create(
     targeting_spec_local_var->shopping_retargeting = shopping_retargeting;
     targeting_spec_local_var->targeting_strategy = targeting_strategy;
 
+    targeting_spec_local_var->_library_owned = 1;
     return targeting_spec_local_var;
 }
 
+__attribute__((deprecated)) targeting_spec_t *targeting_spec_create(
+    list_t *age_bucket,
+    list_t *apptype,
+    list_t *audience_exclude,
+    list_t *audience_include,
+    list_t *gender,
+    list_t *geo,
+    list_t *interest,
+    list_t *locale,
+    list_t *location,
+    list_t *shopping_retargeting,
+    list_t *targeting_strategy
+    ) {
+    return targeting_spec_create_internal (
+        age_bucket,
+        apptype,
+        audience_exclude,
+        audience_include,
+        gender,
+        geo,
+        interest,
+        locale,
+        location,
+        shopping_retargeting,
+        targeting_strategy
+        );
+}
 
 void targeting_spec_free(targeting_spec_t *targeting_spec) {
     if(NULL == targeting_spec){
+        return ;
+    }
+    if(targeting_spec->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "targeting_spec_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -203,7 +235,7 @@ cJSON *targeting_spec_convertToJSON(targeting_spec_t *targeting_spec) {
 
     listEntry_t *age_bucketListEntry;
     list_ForEach(age_bucketListEntry, targeting_spec->age_bucket) {
-    if(cJSON_AddStringToObject(age_bucket, "", (char*)age_bucketListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(age_bucket, "", age_bucketListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -220,7 +252,7 @@ cJSON *targeting_spec_convertToJSON(targeting_spec_t *targeting_spec) {
 
     listEntry_t *apptypeListEntry;
     list_ForEach(apptypeListEntry, targeting_spec->apptype) {
-    if(cJSON_AddStringToObject(apptype, "", (char*)apptypeListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(apptype, "", apptypeListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -237,7 +269,7 @@ cJSON *targeting_spec_convertToJSON(targeting_spec_t *targeting_spec) {
 
     listEntry_t *audience_excludeListEntry;
     list_ForEach(audience_excludeListEntry, targeting_spec->audience_exclude) {
-    if(cJSON_AddStringToObject(audience_exclude, "", (char*)audience_excludeListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(audience_exclude, "", audience_excludeListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -254,7 +286,7 @@ cJSON *targeting_spec_convertToJSON(targeting_spec_t *targeting_spec) {
 
     listEntry_t *audience_includeListEntry;
     list_ForEach(audience_includeListEntry, targeting_spec->audience_include) {
-    if(cJSON_AddStringToObject(audience_include, "", (char*)audience_includeListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(audience_include, "", audience_includeListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -271,7 +303,7 @@ cJSON *targeting_spec_convertToJSON(targeting_spec_t *targeting_spec) {
 
     listEntry_t *genderListEntry;
     list_ForEach(genderListEntry, targeting_spec->gender) {
-    if(cJSON_AddStringToObject(gender, "", (char*)genderListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(gender, "", genderListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -288,7 +320,7 @@ cJSON *targeting_spec_convertToJSON(targeting_spec_t *targeting_spec) {
 
     listEntry_t *geoListEntry;
     list_ForEach(geoListEntry, targeting_spec->geo) {
-    if(cJSON_AddStringToObject(geo, "", (char*)geoListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(geo, "", geoListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -305,7 +337,7 @@ cJSON *targeting_spec_convertToJSON(targeting_spec_t *targeting_spec) {
 
     listEntry_t *interestListEntry;
     list_ForEach(interestListEntry, targeting_spec->interest) {
-    if(cJSON_AddStringToObject(interest, "", (char*)interestListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(interest, "", interestListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -322,7 +354,7 @@ cJSON *targeting_spec_convertToJSON(targeting_spec_t *targeting_spec) {
 
     listEntry_t *localeListEntry;
     list_ForEach(localeListEntry, targeting_spec->locale) {
-    if(cJSON_AddStringToObject(locale, "", (char*)localeListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(locale, "", localeListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -339,7 +371,7 @@ cJSON *targeting_spec_convertToJSON(targeting_spec_t *targeting_spec) {
 
     listEntry_t *locationListEntry;
     list_ForEach(locationListEntry, targeting_spec->location) {
-    if(cJSON_AddStringToObject(location, "", (char*)locationListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(location, "", locationListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -376,7 +408,7 @@ cJSON *targeting_spec_convertToJSON(targeting_spec_t *targeting_spec) {
 
     listEntry_t *targeting_strategyListEntry;
     list_ForEach(targeting_strategyListEntry, targeting_spec->targeting_strategy) {
-    if(cJSON_AddStringToObject(targeting_strategy, "", (char*)targeting_strategyListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(targeting_strategy, "", targeting_strategyListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -430,6 +462,9 @@ targeting_spec_t *targeting_spec_parseFromJSON(cJSON *targeting_specJSON){
 
     // targeting_spec->age_bucket
     cJSON *age_bucket = cJSON_GetObjectItemCaseSensitive(targeting_specJSON, "AGE_BUCKET");
+    if (cJSON_IsNull(age_bucket)) {
+        age_bucket = NULL;
+    }
     if (age_bucket) { 
     cJSON *age_bucket_local = NULL;
     if(!cJSON_IsArray(age_bucket)) {
@@ -449,6 +484,9 @@ targeting_spec_t *targeting_spec_parseFromJSON(cJSON *targeting_specJSON){
 
     // targeting_spec->apptype
     cJSON *apptype = cJSON_GetObjectItemCaseSensitive(targeting_specJSON, "APPTYPE");
+    if (cJSON_IsNull(apptype)) {
+        apptype = NULL;
+    }
     if (apptype) { 
     cJSON *apptype_local = NULL;
     if(!cJSON_IsArray(apptype)) {
@@ -468,6 +506,9 @@ targeting_spec_t *targeting_spec_parseFromJSON(cJSON *targeting_specJSON){
 
     // targeting_spec->audience_exclude
     cJSON *audience_exclude = cJSON_GetObjectItemCaseSensitive(targeting_specJSON, "AUDIENCE_EXCLUDE");
+    if (cJSON_IsNull(audience_exclude)) {
+        audience_exclude = NULL;
+    }
     if (audience_exclude) { 
     cJSON *audience_exclude_local = NULL;
     if(!cJSON_IsArray(audience_exclude)) {
@@ -487,6 +528,9 @@ targeting_spec_t *targeting_spec_parseFromJSON(cJSON *targeting_specJSON){
 
     // targeting_spec->audience_include
     cJSON *audience_include = cJSON_GetObjectItemCaseSensitive(targeting_specJSON, "AUDIENCE_INCLUDE");
+    if (cJSON_IsNull(audience_include)) {
+        audience_include = NULL;
+    }
     if (audience_include) { 
     cJSON *audience_include_local = NULL;
     if(!cJSON_IsArray(audience_include)) {
@@ -506,6 +550,9 @@ targeting_spec_t *targeting_spec_parseFromJSON(cJSON *targeting_specJSON){
 
     // targeting_spec->gender
     cJSON *gender = cJSON_GetObjectItemCaseSensitive(targeting_specJSON, "GENDER");
+    if (cJSON_IsNull(gender)) {
+        gender = NULL;
+    }
     if (gender) { 
     cJSON *gender_local = NULL;
     if(!cJSON_IsArray(gender)) {
@@ -525,6 +572,9 @@ targeting_spec_t *targeting_spec_parseFromJSON(cJSON *targeting_specJSON){
 
     // targeting_spec->geo
     cJSON *geo = cJSON_GetObjectItemCaseSensitive(targeting_specJSON, "GEO");
+    if (cJSON_IsNull(geo)) {
+        geo = NULL;
+    }
     if (geo) { 
     cJSON *geo_local = NULL;
     if(!cJSON_IsArray(geo)) {
@@ -544,6 +594,9 @@ targeting_spec_t *targeting_spec_parseFromJSON(cJSON *targeting_specJSON){
 
     // targeting_spec->interest
     cJSON *interest = cJSON_GetObjectItemCaseSensitive(targeting_specJSON, "INTEREST");
+    if (cJSON_IsNull(interest)) {
+        interest = NULL;
+    }
     if (interest) { 
     cJSON *interest_local = NULL;
     if(!cJSON_IsArray(interest)) {
@@ -563,6 +616,9 @@ targeting_spec_t *targeting_spec_parseFromJSON(cJSON *targeting_specJSON){
 
     // targeting_spec->locale
     cJSON *locale = cJSON_GetObjectItemCaseSensitive(targeting_specJSON, "LOCALE");
+    if (cJSON_IsNull(locale)) {
+        locale = NULL;
+    }
     if (locale) { 
     cJSON *locale_local = NULL;
     if(!cJSON_IsArray(locale)) {
@@ -582,6 +638,9 @@ targeting_spec_t *targeting_spec_parseFromJSON(cJSON *targeting_specJSON){
 
     // targeting_spec->location
     cJSON *location = cJSON_GetObjectItemCaseSensitive(targeting_specJSON, "LOCATION");
+    if (cJSON_IsNull(location)) {
+        location = NULL;
+    }
     if (location) { 
     cJSON *location_local = NULL;
     if(!cJSON_IsArray(location)) {
@@ -601,6 +660,9 @@ targeting_spec_t *targeting_spec_parseFromJSON(cJSON *targeting_specJSON){
 
     // targeting_spec->shopping_retargeting
     cJSON *shopping_retargeting = cJSON_GetObjectItemCaseSensitive(targeting_specJSON, "SHOPPING_RETARGETING");
+    if (cJSON_IsNull(shopping_retargeting)) {
+        shopping_retargeting = NULL;
+    }
     if (shopping_retargeting) { 
     cJSON *shopping_retargeting_local_nonprimitive = NULL;
     if(!cJSON_IsArray(shopping_retargeting)){
@@ -622,6 +684,9 @@ targeting_spec_t *targeting_spec_parseFromJSON(cJSON *targeting_specJSON){
 
     // targeting_spec->targeting_strategy
     cJSON *targeting_strategy = cJSON_GetObjectItemCaseSensitive(targeting_specJSON, "TARGETING_STRATEGY");
+    if (cJSON_IsNull(targeting_strategy)) {
+        targeting_strategy = NULL;
+    }
     if (targeting_strategy) { 
     cJSON *targeting_strategy_local = NULL;
     if(!cJSON_IsArray(targeting_strategy)) {
@@ -640,7 +705,7 @@ targeting_spec_t *targeting_spec_parseFromJSON(cJSON *targeting_specJSON){
     }
 
 
-    targeting_spec_local_var = targeting_spec_create (
+    targeting_spec_local_var = targeting_spec_create_internal (
         age_bucket ? age_bucketList : NULL,
         apptype ? apptypeList : NULL,
         audience_exclude ? audience_excludeList : NULL,

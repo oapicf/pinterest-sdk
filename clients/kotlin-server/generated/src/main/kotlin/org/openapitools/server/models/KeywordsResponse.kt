@@ -14,13 +14,15 @@ package org.openapitools.server.models
 import org.openapitools.server.models.Keyword
 import org.openapitools.server.models.KeywordError
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param errors 
  * @param keywords 
  */
+@Serializable
 data class KeywordsResponse(
     val errors: kotlin.collections.List<KeywordError>? = null,
     val keywords: kotlin.collections.List<Keyword>? = null
-) 
+)
 

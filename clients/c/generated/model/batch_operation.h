@@ -24,9 +24,9 @@ char* batch_operation_batch_operation_ToString(pinterest_rest_api_batch_operatio
 
 pinterest_rest_api_batch_operation__e batch_operation_batch_operation_FromString(char* batch_operation);
 
-//cJSON *batch_operation_batch_operation_convertToJSON(pinterest_rest_api_batch_operation__e batch_operation);
+cJSON *batch_operation_convertToJSON(pinterest_rest_api_batch_operation__e batch_operation);
 
-//pinterest_rest_api_batch_operation__e batch_operation_batch_operation_parseFromJSON(cJSON *batch_operationJSON);
+pinterest_rest_api_batch_operation__e batch_operation_parseFromJSON(cJSON *batch_operationJSON);
 
 #endif /* _batch_operation_H_ */
 

@@ -20,10 +20,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CreateAssetAccessRequestBody_asset_requests_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CreateAssetAccessRequestBodyAssetRequestsInner   {
   private String partnerId;
   private @Valid Map<String, List<Permissions>> assetIdToPermissions = new HashMap<>();
+
+  public CreateAssetAccessRequestBodyAssetRequestsInner() {
+  }
+
+  @JsonCreator
+  public CreateAssetAccessRequestBodyAssetRequestsInner(
+    @JsonProperty(required = true, value = "partner_id") String partnerId,
+    @JsonProperty(required = true, value = "asset_id_to_permissions") Map<String, List<Permissions>> assetIdToPermissions
+  ) {
+    this.partnerId = partnerId;
+    this.assetIdToPermissions = assetIdToPermissions;
+  }
 
   /**
    * Unique identifier of a business partner to request asset access to.
@@ -35,12 +47,12 @@ public class CreateAssetAccessRequestBodyAssetRequestsInner   {
 
   
   @ApiModelProperty(example = "809944451643622187", required = true, value = "Unique identifier of a business partner to request asset access to.")
-  @JsonProperty("partner_id")
+  @JsonProperty(required = true, value = "partner_id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getPartnerId() {
     return partnerId;
   }
 
-  @JsonProperty("partner_id")
+  @JsonProperty(required = true, value = "partner_id")
   public void setPartnerId(String partnerId) {
     this.partnerId = partnerId;
   }
@@ -55,12 +67,12 @@ public class CreateAssetAccessRequestBodyAssetRequestsInner   {
 
   
   @ApiModelProperty(example = "{\"549760723247\":[\"ANALYST\"],\"549760723248\":[\"ANALYST\",\"ADMIN\"],\"809944451643622187\":[\"PROFILE_PUBLISHER\"]}", required = true, value = "An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. ")
-  @JsonProperty("asset_id_to_permissions")
+  @JsonProperty(required = true, value = "asset_id_to_permissions")
   @NotNull @Valid  @Size(min=1)public Map<String, List<Permissions>> getAssetIdToPermissions() {
     return assetIdToPermissions;
   }
 
-  @JsonProperty("asset_id_to_permissions")
+  @JsonProperty(required = true, value = "asset_id_to_permissions")
   public void setAssetIdToPermissions(Map<String, List<Permissions>> assetIdToPermissions) {
     this.assetIdToPermissions = assetIdToPermissions;
   }

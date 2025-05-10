@@ -132,11 +132,11 @@ export function LeadFormUpdateRequestFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function LeadFormUpdateRequestToJSON(json: any): LeadFormUpdateRequest {
-      return LeadFormUpdateRequestToJSONTyped(json, false);
-  }
+export function LeadFormUpdateRequestToJSON(json: any): LeadFormUpdateRequest {
+    return LeadFormUpdateRequestToJSONTyped(json, false);
+}
 
-  export function LeadFormUpdateRequestToJSONTyped(value?: LeadFormUpdateRequest | null, ignoreDiscriminator: boolean = false): any {
+export function LeadFormUpdateRequestToJSONTyped(value?: LeadFormUpdateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

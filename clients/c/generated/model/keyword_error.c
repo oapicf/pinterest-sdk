@@ -5,7 +5,7 @@
 
 
 
-keyword_error_t *keyword_error_create(
+static keyword_error_t *keyword_error_create_internal(
     keyword_t *data,
     list_t *error_messages
     ) {
@@ -16,12 +16,26 @@ keyword_error_t *keyword_error_create(
     keyword_error_local_var->data = data;
     keyword_error_local_var->error_messages = error_messages;
 
+    keyword_error_local_var->_library_owned = 1;
     return keyword_error_local_var;
 }
 
+__attribute__((deprecated)) keyword_error_t *keyword_error_create(
+    keyword_t *data,
+    list_t *error_messages
+    ) {
+    return keyword_error_create_internal (
+        data,
+        error_messages
+        );
+}
 
 void keyword_error_free(keyword_error_t *keyword_error) {
     if(NULL == keyword_error){
+        return ;
+    }
+    if(keyword_error->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "keyword_error_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -64,7 +78,7 @@ cJSON *keyword_error_convertToJSON(keyword_error_t *keyword_error) {
 
     listEntry_t *error_messagesListEntry;
     list_ForEach(error_messagesListEntry, keyword_error->error_messages) {
-    if(cJSON_AddStringToObject(error_messages, "", (char*)error_messagesListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(error_messages, "", error_messagesListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -91,12 +105,18 @@ keyword_error_t *keyword_error_parseFromJSON(cJSON *keyword_errorJSON){
 
     // keyword_error->data
     cJSON *data = cJSON_GetObjectItemCaseSensitive(keyword_errorJSON, "data");
+    if (cJSON_IsNull(data)) {
+        data = NULL;
+    }
     if (data) { 
     data_local_nonprim = keyword_parseFromJSON(data); //nonprimitive
     }
 
     // keyword_error->error_messages
     cJSON *error_messages = cJSON_GetObjectItemCaseSensitive(keyword_errorJSON, "error_messages");
+    if (cJSON_IsNull(error_messages)) {
+        error_messages = NULL;
+    }
     if (error_messages) { 
     cJSON *error_messages_local = NULL;
     if(!cJSON_IsArray(error_messages)) {
@@ -115,7 +135,7 @@ keyword_error_t *keyword_error_parseFromJSON(cJSON *keyword_errorJSON){
     }
 
 
-    keyword_error_local_var = keyword_error_create (
+    keyword_error_local_var = keyword_error_create_internal (
         data ? data_local_nonprim : NULL,
         error_messages ? error_messagesList : NULL
         );

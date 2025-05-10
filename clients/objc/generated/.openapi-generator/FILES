@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 OpenAPIClient.podspec
 OpenAPIClient/Api/OAIAdAccountsApi.h
 OpenAPIClient/Api/OAIAdAccountsApi.m

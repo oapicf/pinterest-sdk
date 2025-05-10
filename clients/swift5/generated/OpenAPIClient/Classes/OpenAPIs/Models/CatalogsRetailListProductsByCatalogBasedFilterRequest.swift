@@ -16,7 +16,7 @@ public struct CatalogsRetailListProductsByCatalogBasedFilterRequest: Codable, JS
     public enum CatalogType: String, Codable, CaseIterable {
         case retail = "RETAIL"
     }
-    static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. */
     public var catalogType: CatalogType
     /** Catalog id pertaining to the retail product group. */

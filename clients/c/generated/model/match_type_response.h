@@ -24,9 +24,9 @@ char* match_type_response_match_type_response_ToString(pinterest_rest_api_match_
 
 pinterest_rest_api_match_type_response__e match_type_response_match_type_response_FromString(char* match_type_response);
 
-//cJSON *match_type_response_match_type_response_convertToJSON(pinterest_rest_api_match_type_response__e match_type_response);
+cJSON *match_type_response_convertToJSON(pinterest_rest_api_match_type_response__e match_type_response);
 
-//pinterest_rest_api_match_type_response__e match_type_response_match_type_response_parseFromJSON(cJSON *match_type_responseJSON);
+pinterest_rest_api_match_type_response__e match_type_response_parseFromJSON(cJSON *match_type_responseJSON);
 
 #endif /* _match_type_response_H_ */
 

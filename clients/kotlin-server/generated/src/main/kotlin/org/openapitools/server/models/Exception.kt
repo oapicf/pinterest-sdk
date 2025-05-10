@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param code Exception error code.
  * @param message Exception message.
  */
+@Serializable
 data class Exception(
     /* Exception error code. */
     val code: kotlin.Int? = null,
     /* Exception message. */
     val message: kotlin.String? = null
-) 
+)
 

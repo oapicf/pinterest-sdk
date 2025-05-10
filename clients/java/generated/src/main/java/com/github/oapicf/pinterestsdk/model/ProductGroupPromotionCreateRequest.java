@@ -51,20 +51,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ProductGroupPromotionCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ProductGroupPromotionCreateRequest {
   public static final String SERIALIZED_NAME_AD_GROUP_ID = "ad_group_id";
   @SerializedName(SERIALIZED_NAME_AD_GROUP_ID)
+  @javax.annotation.Nonnull
   private String adGroupId;
 
   public static final String SERIALIZED_NAME_PRODUCT_GROUP_PROMOTION = "product_group_promotion";
   @SerializedName(SERIALIZED_NAME_PRODUCT_GROUP_PROMOTION)
+  @javax.annotation.Nonnull
   private List<ProductGroupPromotionCreateRequestElement> productGroupPromotion = new ArrayList<>();
 
   public ProductGroupPromotionCreateRequest() {
   }
 
-  public ProductGroupPromotionCreateRequest adGroupId(String adGroupId) {
+  public ProductGroupPromotionCreateRequest adGroupId(@javax.annotation.Nonnull String adGroupId) {
     this.adGroupId = adGroupId;
     return this;
   }
@@ -78,12 +80,12 @@ public class ProductGroupPromotionCreateRequest {
     return adGroupId;
   }
 
-  public void setAdGroupId(String adGroupId) {
+  public void setAdGroupId(@javax.annotation.Nonnull String adGroupId) {
     this.adGroupId = adGroupId;
   }
 
 
-  public ProductGroupPromotionCreateRequest productGroupPromotion(List<ProductGroupPromotionCreateRequestElement> productGroupPromotion) {
+  public ProductGroupPromotionCreateRequest productGroupPromotion(@javax.annotation.Nonnull List<ProductGroupPromotionCreateRequestElement> productGroupPromotion) {
     this.productGroupPromotion = productGroupPromotion;
     return this;
   }
@@ -105,7 +107,7 @@ public class ProductGroupPromotionCreateRequest {
     return productGroupPromotion;
   }
 
-  public void setProductGroupPromotion(List<ProductGroupPromotionCreateRequestElement> productGroupPromotion) {
+  public void setProductGroupPromotion(@javax.annotation.Nonnull List<ProductGroupPromotionCreateRequestElement> productGroupPromotion) {
     this.productGroupPromotion = productGroupPromotion;
   }
 

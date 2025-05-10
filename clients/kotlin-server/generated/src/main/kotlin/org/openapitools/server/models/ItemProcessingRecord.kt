@@ -14,6 +14,7 @@ package org.openapitools.server.models
 import org.openapitools.server.models.ItemProcessingStatus
 import org.openapitools.server.models.ItemValidationEvent
 
+import kotlinx.serialization.Serializable
 /**
  * Object describing an item processing record
  * @param itemId The catalog item id in the merchant namespace
@@ -21,6 +22,7 @@ import org.openapitools.server.models.ItemValidationEvent
  * @param warnings Array with the validation warnings for the item processing record
  * @param status 
  */
+@Serializable
 data class ItemProcessingRecord(
     /* The catalog item id in the merchant namespace */
     val itemId: kotlin.String? = null,
@@ -29,5 +31,5 @@ data class ItemProcessingRecord(
     /* Array with the validation warnings for the item processing record */
     val warnings: kotlin.collections.List<ItemValidationEvent>? = null,
     val status: ItemProcessingStatus? = null
-) 
+)
 

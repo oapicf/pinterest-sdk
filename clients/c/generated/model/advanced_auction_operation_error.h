@@ -22,9 +22,10 @@ typedef struct advanced_auction_operation_error_t {
     int code; //numeric
     char *message; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } advanced_auction_operation_error_t;
 
-advanced_auction_operation_error_t *advanced_auction_operation_error_create(
+__attribute__((deprecated)) advanced_auction_operation_error_t *advanced_auction_operation_error_create(
     int code,
     char *message
 );

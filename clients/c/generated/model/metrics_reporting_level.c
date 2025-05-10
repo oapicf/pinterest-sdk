@@ -22,7 +22,7 @@ pinterest_rest_api_metrics_reporting_level__e metrics_reporting_level_metrics_re
     return 0;
 }
 
-cJSON *metrics_reporting_level_metrics_reporting_level_convertToJSON(pinterest_rest_api_metrics_reporting_level__e metrics_reporting_level) {
+cJSON *metrics_reporting_level_convertToJSON(pinterest_rest_api_metrics_reporting_level__e metrics_reporting_level) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "metrics_reporting_level", metrics_reporting_level_metrics_reporting_level_ToString(metrics_reporting_level)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_metrics_reporting_level__e metrics_reporting_level_metrics_reporting_level_parseFromJSON(cJSON *metrics_reporting_levelJSON) {
-    pinterest_rest_api_metrics_reporting_level__e *metrics_reporting_level = NULL;
-    pinterest_rest_api_metrics_reporting_level__e metrics_reporting_levelVariable;
-    cJSON *metrics_reporting_levelVar = cJSON_GetObjectItemCaseSensitive(metrics_reporting_levelJSON, "metrics_reporting_level");
-    if(!cJSON_IsString(metrics_reporting_levelVar) || (metrics_reporting_levelVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_metrics_reporting_level__e metrics_reporting_level_parseFromJSON(cJSON *metrics_reporting_levelJSON) {
+    if(!cJSON_IsString(metrics_reporting_levelJSON) || (metrics_reporting_levelJSON->valuestring == NULL)) {
+        return 0;
     }
-    metrics_reporting_levelVariable = metrics_reporting_level_metrics_reporting_level_FromString(metrics_reporting_levelVar->valuestring);
-    return metrics_reporting_levelVariable;
-end:
-    return 0;
+    return metrics_reporting_level_metrics_reporting_level_FromString(metrics_reporting_levelJSON->valuestring);
 }

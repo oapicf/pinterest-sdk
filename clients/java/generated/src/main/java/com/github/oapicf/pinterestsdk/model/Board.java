@@ -52,46 +52,56 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Board
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class Board {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  @javax.annotation.Nullable
   private OffsetDateTime createdAt;
 
   public static final String SERIALIZED_NAME_BOARD_PINS_MODIFIED_AT = "board_pins_modified_at";
   @SerializedName(SERIALIZED_NAME_BOARD_PINS_MODIFIED_AT)
+  @javax.annotation.Nullable
   private OffsetDateTime boardPinsModifiedAt;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nonnull
   private String name;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nullable
   private String description;
 
   public static final String SERIALIZED_NAME_COLLABORATOR_COUNT = "collaborator_count";
   @SerializedName(SERIALIZED_NAME_COLLABORATOR_COUNT)
+  @javax.annotation.Nullable
   private Integer collaboratorCount;
 
   public static final String SERIALIZED_NAME_PIN_COUNT = "pin_count";
   @SerializedName(SERIALIZED_NAME_PIN_COUNT)
+  @javax.annotation.Nullable
   private Integer pinCount;
 
   public static final String SERIALIZED_NAME_FOLLOWER_COUNT = "follower_count";
   @SerializedName(SERIALIZED_NAME_FOLLOWER_COUNT)
+  @javax.annotation.Nullable
   private Integer followerCount;
 
   public static final String SERIALIZED_NAME_MEDIA = "media";
   @SerializedName(SERIALIZED_NAME_MEDIA)
+  @javax.annotation.Nullable
   private BoardMedia media;
 
   public static final String SERIALIZED_NAME_OWNER = "owner";
   @SerializedName(SERIALIZED_NAME_OWNER)
+  @javax.annotation.Nullable
   private BoardOwner owner;
 
   /**
@@ -150,6 +160,7 @@ public class Board {
 
   public static final String SERIALIZED_NAME_PRIVACY = "privacy";
   @SerializedName(SERIALIZED_NAME_PRIVACY)
+  @javax.annotation.Nullable
   private PrivacyEnum privacy = PrivacyEnum.PUBLIC;
 
   public Board() {
@@ -207,7 +218,7 @@ public class Board {
 
 
 
-  public Board name(String name) {
+  public Board name(@javax.annotation.Nonnull String name) {
     this.name = name;
     return this;
   }
@@ -221,12 +232,12 @@ public class Board {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
 
-  public Board description(String description) {
+  public Board description(@javax.annotation.Nullable String description) {
     this.description = description;
     return this;
   }
@@ -240,7 +251,7 @@ public class Board {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
@@ -281,7 +292,7 @@ public class Board {
 
 
 
-  public Board media(BoardMedia media) {
+  public Board media(@javax.annotation.Nullable BoardMedia media) {
     this.media = media;
     return this;
   }
@@ -295,7 +306,7 @@ public class Board {
     return media;
   }
 
-  public void setMedia(BoardMedia media) {
+  public void setMedia(@javax.annotation.Nullable BoardMedia media) {
     this.media = media;
   }
 
@@ -311,7 +322,7 @@ public class Board {
 
 
 
-  public Board privacy(PrivacyEnum privacy) {
+  public Board privacy(@javax.annotation.Nullable PrivacyEnum privacy) {
     this.privacy = privacy;
     return this;
   }
@@ -325,7 +336,7 @@ public class Board {
     return privacy;
   }
 
-  public void setPrivacy(PrivacyEnum privacy) {
+  public void setPrivacy(@javax.annotation.Nullable PrivacyEnum privacy) {
     this.privacy = privacy;
   }
 

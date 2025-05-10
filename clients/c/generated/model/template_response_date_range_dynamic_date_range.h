@@ -30,9 +30,10 @@ typedef struct template_response_date_range_dynamic_date_range_t {
     char *type; // string
     pinterest_rest_api_template_response_date_range_dynamic_date_range_RANGE_e range; //enum
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } template_response_date_range_dynamic_date_range_t;
 
-template_response_date_range_dynamic_date_range_t *template_response_date_range_dynamic_date_range_create(
+__attribute__((deprecated)) template_response_date_range_dynamic_date_range_t *template_response_date_range_dynamic_date_range_create(
     char *type,
     pinterest_rest_api_template_response_date_range_dynamic_date_range_RANGE_e range
 );

@@ -63,11 +63,11 @@ export function UpdatePartnerResultsResponseArrayItemsInnerFromJSONTyped(json: a
     };
 }
 
-  export function UpdatePartnerResultsResponseArrayItemsInnerToJSON(json: any): UpdatePartnerResultsResponseArrayItemsInner {
-      return UpdatePartnerResultsResponseArrayItemsInnerToJSONTyped(json, false);
-  }
+export function UpdatePartnerResultsResponseArrayItemsInnerToJSON(json: any): UpdatePartnerResultsResponseArrayItemsInner {
+    return UpdatePartnerResultsResponseArrayItemsInnerToJSONTyped(json, false);
+}
 
-  export function UpdatePartnerResultsResponseArrayItemsInnerToJSONTyped(value?: UpdatePartnerResultsResponseArrayItemsInner | null, ignoreDiscriminator: boolean = false): any {
+export function UpdatePartnerResultsResponseArrayItemsInnerToJSONTyped(value?: UpdatePartnerResultsResponseArrayItemsInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -15,7 +15,9 @@
 export type CatalogsStatus = 'ACTIVE' | 'INACTIVE';
 
 export const CatalogsStatus = {
+
     Active: 'ACTIVE' as CatalogsStatus,
+
     Inactive: 'INACTIVE' as CatalogsStatus
 };
 

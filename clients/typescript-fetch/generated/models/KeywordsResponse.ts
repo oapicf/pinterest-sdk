@@ -70,11 +70,11 @@ export function KeywordsResponseFromJSONTyped(json: any, ignoreDiscriminator: bo
     };
 }
 
-  export function KeywordsResponseToJSON(json: any): KeywordsResponse {
-      return KeywordsResponseToJSONTyped(json, false);
-  }
+export function KeywordsResponseToJSON(json: any): KeywordsResponse {
+    return KeywordsResponseToJSONTyped(json, false);
+}
 
-  export function KeywordsResponseToJSONTyped(value?: KeywordsResponse | null, ignoreDiscriminator: boolean = false): any {
+export function KeywordsResponseToJSONTyped(value?: KeywordsResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

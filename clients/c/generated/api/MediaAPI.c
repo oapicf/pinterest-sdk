@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 
 // Register media upload
@@ -25,11 +20,14 @@ MediaAPI_mediaCreate(apiClient_t *apiClient, media_upload_request_t *media_uploa
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/media")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/media");
+    char *localVarPath = strdup("/media");
+
 
 
 
@@ -38,9 +36,10 @@ MediaAPI_mediaCreate(apiClient_t *apiClient, media_upload_request_t *media_uploa
     cJSON *localVarSingleItemJSON_media_upload_request = NULL;
     if (media_upload_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_media_upload_request = media_upload_request_convertToJSON(media_upload_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_media_upload_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -52,6 +51,7 @@ MediaAPI_mediaCreate(apiClient_t *apiClient, media_upload_request_t *media_uploa
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -63,11 +63,14 @@ MediaAPI_mediaCreate(apiClient_t *apiClient, media_upload_request_t *media_uploa
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *MediaAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    media_upload_t *elementToReturn = media_upload_parseFromJSON(MediaAPIlocalVarJSON);
-    cJSON_Delete(MediaAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    media_upload_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *MediaAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = media_upload_parseFromJSON(MediaAPIlocalVarJSON);
+        cJSON_Delete(MediaAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -107,15 +110,20 @@ MediaAPI_mediaGet(apiClient_t *apiClient, char *media_id)
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/media/{media_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/media/{media_id}");
+    char *localVarPath = strdup("/media/{media_id}");
+
+    if(!media_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_media_id = strlen(media_id)+3 + strlen("{ media_id }");
+    long sizeOfPathParams_media_id = strlen(media_id)+3 + sizeof("{ media_id }") - 1;
     if(media_id == NULL) {
         goto end;
     }
@@ -134,6 +142,7 @@ MediaAPI_mediaGet(apiClient_t *apiClient, char *media_id)
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -149,11 +158,14 @@ MediaAPI_mediaGet(apiClient_t *apiClient, char *media_id)
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *MediaAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    media_upload_details_t *elementToReturn = media_upload_details_parseFromJSON(MediaAPIlocalVarJSON);
-    cJSON_Delete(MediaAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    media_upload_details_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *MediaAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = media_upload_details_parseFromJSON(MediaAPIlocalVarJSON);
+        cJSON_Delete(MediaAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -189,11 +201,14 @@ MediaAPI_mediaList(apiClient_t *apiClient, char *bookmark, int *page_size)
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/media")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/media");
+    char *localVarPath = strdup("/media");
+
 
 
 
@@ -231,6 +246,7 @@ MediaAPI_mediaList(apiClient_t *apiClient, char *bookmark, int *page_size)
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -242,11 +258,14 @@ MediaAPI_mediaList(apiClient_t *apiClient, char *bookmark, int *page_size)
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *MediaAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    media_list_200_response_t *elementToReturn = media_list_200_response_parseFromJSON(MediaAPIlocalVarJSON);
-    cJSON_Delete(MediaAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    media_list_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *MediaAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = media_list_200_response_parseFromJSON(MediaAPIlocalVarJSON);
+        cJSON_Delete(MediaAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type

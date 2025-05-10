@@ -16,7 +16,7 @@ public struct SharedAudienceAccount: Codable, JSONEncodable, Hashable {
         case adAccount = "AD_ACCOUNT"
         case businessAccount = "BUSINESS_ACCOUNT"
     }
-    static let accountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let accountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Account ID (ad account or business ID). */
     public var accountId: String
     /** Account name. */

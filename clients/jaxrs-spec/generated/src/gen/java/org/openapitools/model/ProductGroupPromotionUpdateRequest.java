@@ -19,10 +19,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ProductGroupPromotionUpdateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ProductGroupPromotionUpdateRequest   {
   private String adGroupId;
   private @Valid List<@Valid ProductGroupPromotion> productGroupPromotion = new ArrayList<>();
+
+  public ProductGroupPromotionUpdateRequest() {
+  }
+
+  @JsonCreator
+  public ProductGroupPromotionUpdateRequest(
+    @JsonProperty(required = true, value = "ad_group_id") String adGroupId,
+    @JsonProperty(required = true, value = "product_group_promotion") List<@Valid ProductGroupPromotion> productGroupPromotion
+  ) {
+    this.adGroupId = adGroupId;
+    this.productGroupPromotion = productGroupPromotion;
+  }
 
   /**
    * ID of the ad group the product group belongs to.
@@ -34,12 +46,12 @@ public class ProductGroupPromotionUpdateRequest   {
 
   
   @ApiModelProperty(example = "2680059592705", required = true, value = "ID of the ad group the product group belongs to.")
-  @JsonProperty("ad_group_id")
+  @JsonProperty(required = true, value = "ad_group_id")
   @NotNull  @Pattern(regexp="^(AG)?\\d+$")public String getAdGroupId() {
     return adGroupId;
   }
 
-  @JsonProperty("ad_group_id")
+  @JsonProperty(required = true, value = "ad_group_id")
   public void setAdGroupId(String adGroupId) {
     this.adGroupId = adGroupId;
   }
@@ -53,12 +65,12 @@ public class ProductGroupPromotionUpdateRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("product_group_promotion")
+  @JsonProperty(required = true, value = "product_group_promotion")
   @NotNull @Valid public List<@Valid ProductGroupPromotion> getProductGroupPromotion() {
     return productGroupPromotion;
   }
 
-  @JsonProperty("product_group_promotion")
+  @JsonProperty(required = true, value = "product_group_promotion")
   public void setProductGroupPromotion(List<@Valid ProductGroupPromotion> productGroupPromotion) {
     this.productGroupPromotion = productGroupPromotion;
   }

@@ -154,7 +154,7 @@ func (dst *CatalogsHotelProductGroupFilterKeys) UnmarshalJSON(data []byte) error
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src *CatalogsHotelProductGroupFilterKeys) MarshalJSON() ([]byte, error) {
+func (src CatalogsHotelProductGroupFilterKeys) MarshalJSON() ([]byte, error) {
 	if src.BrandFilter != nil {
 		return json.Marshal(&src.BrandFilter)
 	}

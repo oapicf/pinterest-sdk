@@ -23,11 +23,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Object describing an item batch record to update items")
 @JsonTypeName("ItemUpdateBatchRecord")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ItemUpdateBatchRecord   {
   private String itemId;
   private UpdatableItemAttributes attributes;
   private @Valid List<UpdateMaskFieldType> updateMask;
+
+  public ItemUpdateBatchRecord() {
+  }
 
   /**
    * The catalog item id in the merchant namespace

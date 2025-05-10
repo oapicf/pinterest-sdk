@@ -63,11 +63,11 @@ export function PinMediaWithImageAndVideoFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function PinMediaWithImageAndVideoToJSON(json: any): PinMediaWithImageAndVideo {
-      return PinMediaWithImageAndVideoToJSONTyped(json, false);
-  }
+export function PinMediaWithImageAndVideoToJSON(json: any): PinMediaWithImageAndVideo {
+    return PinMediaWithImageAndVideoToJSONTyped(json, false);
+}
 
-  export function PinMediaWithImageAndVideoToJSONTyped(value?: PinMediaWithImageAndVideo | null, ignoreDiscriminator: boolean = false): any {
+export function PinMediaWithImageAndVideoToJSONTyped(value?: PinMediaWithImageAndVideo | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

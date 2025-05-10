@@ -12,7 +12,9 @@
 export type AudienceAccountType = 'AD_ACCOUNT' | 'BUSINESS_ACCOUNT';
 
 export const AudienceAccountType = {
+
     AdAccount: 'AD_ACCOUNT' as AudienceAccountType,
+
     BusinessAccount: 'BUSINESS_ACCOUNT' as AudienceAccountType
 };
 

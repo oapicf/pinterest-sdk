@@ -22,9 +22,10 @@ typedef struct business_members_asset_access_delete_request_t business_members_a
 typedef struct business_members_asset_access_delete_request_t {
     list_t *accesses; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } business_members_asset_access_delete_request_t;
 
-business_members_asset_access_delete_request_t *business_members_asset_access_delete_request_create(
+__attribute__((deprecated)) business_members_asset_access_delete_request_t *business_members_asset_access_delete_request_create(
     list_t *accesses
 );
 

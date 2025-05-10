@@ -58,11 +58,11 @@ export function CampaignsAnalyticsResponseInnerFromJSONTyped(json: any, ignoreDi
     };
 }
 
-  export function CampaignsAnalyticsResponseInnerToJSON(json: any): CampaignsAnalyticsResponseInner {
-      return CampaignsAnalyticsResponseInnerToJSONTyped(json, false);
-  }
+export function CampaignsAnalyticsResponseInnerToJSON(json: any): CampaignsAnalyticsResponseInner {
+    return CampaignsAnalyticsResponseInnerToJSONTyped(json, false);
+}
 
-  export function CampaignsAnalyticsResponseInnerToJSONTyped(value?: CampaignsAnalyticsResponseInner | null, ignoreDiscriminator: boolean = false): any {
+export function CampaignsAnalyticsResponseInnerToJSONTyped(value?: CampaignsAnalyticsResponseInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

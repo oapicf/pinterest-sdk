@@ -12,6 +12,7 @@
 export type MediaUploadType = 'video';
 
 export const MediaUploadType = {
+
     Video: 'video' as MediaUploadType
 };
 

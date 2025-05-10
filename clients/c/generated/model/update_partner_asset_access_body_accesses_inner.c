@@ -22,7 +22,7 @@ pinterest_rest_api_update_partner_asset_access_body_accesses_inner__e update_par
     return 0;
 }
 
-update_partner_asset_access_body_accesses_inner_t *update_partner_asset_access_body_accesses_inner_create(
+static update_partner_asset_access_body_accesses_inner_t *update_partner_asset_access_body_accesses_inner_create_internal(
     char *partner_id,
     char *asset_id,
     list_t *permissions
@@ -35,12 +35,28 @@ update_partner_asset_access_body_accesses_inner_t *update_partner_asset_access_b
     update_partner_asset_access_body_accesses_inner_local_var->asset_id = asset_id;
     update_partner_asset_access_body_accesses_inner_local_var->permissions = permissions;
 
+    update_partner_asset_access_body_accesses_inner_local_var->_library_owned = 1;
     return update_partner_asset_access_body_accesses_inner_local_var;
 }
 
+__attribute__((deprecated)) update_partner_asset_access_body_accesses_inner_t *update_partner_asset_access_body_accesses_inner_create(
+    char *partner_id,
+    char *asset_id,
+    list_t *permissions
+    ) {
+    return update_partner_asset_access_body_accesses_inner_create_internal (
+        partner_id,
+        asset_id,
+        permissions
+        );
+}
 
 void update_partner_asset_access_body_accesses_inner_free(update_partner_asset_access_body_accesses_inner_t *update_partner_asset_access_body_accesses_inner) {
     if(NULL == update_partner_asset_access_body_accesses_inner){
+        return ;
+    }
+    if(update_partner_asset_access_body_accesses_inner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "update_partner_asset_access_body_accesses_inner_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -84,7 +100,7 @@ cJSON *update_partner_asset_access_body_accesses_inner_convertToJSON(update_part
 
 
     // update_partner_asset_access_body_accesses_inner->permissions
-    if (pinterest_rest_api_update_partner_asset_access_body_accesses_inner_PERMISSIONS_NULL == update_partner_asset_access_body_accesses_inner->permissions) {
+    if (pinterest_rest_api_list_PERMISSIONS_NULL == update_partner_asset_access_body_accesses_inner->permissions) {
         goto fail;
     }
     cJSON *permissions = cJSON_AddArrayToObject(item, "permissions");
@@ -120,6 +136,9 @@ update_partner_asset_access_body_accesses_inner_t *update_partner_asset_access_b
 
     // update_partner_asset_access_body_accesses_inner->partner_id
     cJSON *partner_id = cJSON_GetObjectItemCaseSensitive(update_partner_asset_access_body_accesses_innerJSON, "partner_id");
+    if (cJSON_IsNull(partner_id)) {
+        partner_id = NULL;
+    }
     if (!partner_id) {
         goto end;
     }
@@ -132,6 +151,9 @@ update_partner_asset_access_body_accesses_inner_t *update_partner_asset_access_b
 
     // update_partner_asset_access_body_accesses_inner->asset_id
     cJSON *asset_id = cJSON_GetObjectItemCaseSensitive(update_partner_asset_access_body_accesses_innerJSON, "asset_id");
+    if (cJSON_IsNull(asset_id)) {
+        asset_id = NULL;
+    }
     if (!asset_id) {
         goto end;
     }
@@ -144,6 +166,9 @@ update_partner_asset_access_body_accesses_inner_t *update_partner_asset_access_b
 
     // update_partner_asset_access_body_accesses_inner->permissions
     cJSON *permissions = cJSON_GetObjectItemCaseSensitive(update_partner_asset_access_body_accesses_innerJSON, "permissions");
+    if (cJSON_IsNull(permissions)) {
+        permissions = NULL;
+    }
     if (!permissions) {
         goto end;
     }
@@ -167,7 +192,7 @@ update_partner_asset_access_body_accesses_inner_t *update_partner_asset_access_b
     }
 
 
-    update_partner_asset_access_body_accesses_inner_local_var = update_partner_asset_access_body_accesses_inner_create (
+    update_partner_asset_access_body_accesses_inner_local_var = update_partner_asset_access_body_accesses_inner_create_internal (
         strdup(partner_id->valuestring),
         strdup(asset_id->valuestring),
         permissionsList

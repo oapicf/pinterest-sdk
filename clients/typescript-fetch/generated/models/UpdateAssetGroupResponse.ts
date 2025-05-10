@@ -70,11 +70,11 @@ export function UpdateAssetGroupResponseFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function UpdateAssetGroupResponseToJSON(json: any): UpdateAssetGroupResponse {
-      return UpdateAssetGroupResponseToJSONTyped(json, false);
-  }
+export function UpdateAssetGroupResponseToJSON(json: any): UpdateAssetGroupResponse {
+    return UpdateAssetGroupResponseToJSONTyped(json, false);
+}
 
-  export function UpdateAssetGroupResponseToJSONTyped(value?: UpdateAssetGroupResponse | null, ignoreDiscriminator: boolean = false): any {
+export function UpdateAssetGroupResponseToJSONTyped(value?: UpdateAssetGroupResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

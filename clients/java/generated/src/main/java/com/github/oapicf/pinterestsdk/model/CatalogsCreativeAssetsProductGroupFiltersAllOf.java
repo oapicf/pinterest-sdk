@@ -51,16 +51,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsCreativeAssetsProductGroupFiltersAllOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsCreativeAssetsProductGroupFiltersAllOf {
   public static final String SERIALIZED_NAME_ALL_OF = "all_of";
   @SerializedName(SERIALIZED_NAME_ALL_OF)
+  @javax.annotation.Nonnull
   private List<CatalogsCreativeAssetsProductGroupFilterKeys> allOf = new ArrayList<>();
 
   public CatalogsCreativeAssetsProductGroupFiltersAllOf() {
   }
 
-  public CatalogsCreativeAssetsProductGroupFiltersAllOf allOf(List<CatalogsCreativeAssetsProductGroupFilterKeys> allOf) {
+  public CatalogsCreativeAssetsProductGroupFiltersAllOf allOf(@javax.annotation.Nonnull List<CatalogsCreativeAssetsProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
     return this;
   }
@@ -82,7 +83,7 @@ public class CatalogsCreativeAssetsProductGroupFiltersAllOf {
     return allOf;
   }
 
-  public void setAllOf(List<CatalogsCreativeAssetsProductGroupFilterKeys> allOf) {
+  public void setAllOf(@javax.annotation.Nonnull List<CatalogsCreativeAssetsProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
   }
 

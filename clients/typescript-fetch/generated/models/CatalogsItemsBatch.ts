@@ -61,17 +61,21 @@ export function CatalogsItemsBatchFromJSONTyped(json: any, ignoreDiscriminator: 
     }
 }
 
-export function CatalogsItemsBatchToJSON(value?: CatalogsItemsBatch | null): any {
+export function CatalogsItemsBatchToJSON(json: any): any {
+    return CatalogsItemsBatchToJSONTyped(json, false);
+}
+
+export function CatalogsItemsBatchToJSONTyped(value?: CatalogsItemsBatch | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
     switch (value['catalogType']) {
         case 'CREATIVE_ASSETS':
-            return CatalogsCreativeAssetsItemsBatchToJSON(value);
+            return Object.assign({}, CatalogsCreativeAssetsItemsBatchToJSON(value), { catalogType: 'CREATIVE_ASSETS' } as const);
         case 'HOTEL':
-            return CatalogsHotelItemsBatchToJSON(value);
+            return Object.assign({}, CatalogsHotelItemsBatchToJSON(value), { catalogType: 'HOTEL' } as const);
         case 'RETAIL':
-            return CatalogsRetailItemsBatchToJSON(value);
+            return Object.assign({}, CatalogsRetailItemsBatchToJSON(value), { catalogType: 'RETAIL' } as const);
         default:
             throw new Error(`No variant of CatalogsItemsBatch exists with 'catalogType=${value['catalogType']}'`);
     }

@@ -103,10 +103,35 @@ AdAccountGetSubscriptionResponse <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return AdAccountGetSubscriptionResponse in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return AdAccountGetSubscriptionResponse as a base R list.
+    #' @examples
+    #' # convert array of AdAccountGetSubscriptionResponse (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert AdAccountGetSubscriptionResponse to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       AdAccountGetSubscriptionResponseObject <- list()
       if (!is.null(self$`lead_form_id`)) {
         AdAccountGetSubscriptionResponseObject[["lead_form_id"]] <-
@@ -144,7 +169,7 @@ AdAccountGetSubscriptionResponse <- R6::R6Class(
         AdAccountGetSubscriptionResponseObject[["created_time"]] <-
           self$`created_time`
       }
-      AdAccountGetSubscriptionResponseObject
+      return(AdAccountGetSubscriptionResponseObject)
     },
 
     #' @description
@@ -186,85 +211,13 @@ AdAccountGetSubscriptionResponse <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return AdAccountGetSubscriptionResponse in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`lead_form_id`)) {
-          sprintf(
-          '"lead_form_id":
-            "%s"
-                    ',
-          self$`lead_form_id`
-          )
-        },
-        if (!is.null(self$`webhook_url`)) {
-          sprintf(
-          '"webhook_url":
-            "%s"
-                    ',
-          self$`webhook_url`
-          )
-        },
-        if (!is.null(self$`id`)) {
-          sprintf(
-          '"id":
-            "%s"
-                    ',
-          self$`id`
-          )
-        },
-        if (!is.null(self$`user_account_id`)) {
-          sprintf(
-          '"user_account_id":
-            "%s"
-                    ',
-          self$`user_account_id`
-          )
-        },
-        if (!is.null(self$`ad_account_id`)) {
-          sprintf(
-          '"ad_account_id":
-            "%s"
-                    ',
-          self$`ad_account_id`
-          )
-        },
-        if (!is.null(self$`api_version`)) {
-          sprintf(
-          '"api_version":
-            "%s"
-                    ',
-          self$`api_version`
-          )
-        },
-        if (!is.null(self$`cryptographic_key`)) {
-          sprintf(
-          '"cryptographic_key":
-            "%s"
-                    ',
-          self$`cryptographic_key`
-          )
-        },
-        if (!is.null(self$`cryptographic_algorithm`)) {
-          sprintf(
-          '"cryptographic_algorithm":
-            "%s"
-                    ',
-          self$`cryptographic_algorithm`
-          )
-        },
-        if (!is.null(self$`created_time`)) {
-          sprintf(
-          '"created_time":
-            %d
-                    ',
-          self$`created_time`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

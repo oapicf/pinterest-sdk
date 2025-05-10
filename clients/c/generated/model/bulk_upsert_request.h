@@ -24,9 +24,10 @@ typedef struct bulk_upsert_request_t {
     struct bulk_upsert_request_create_t *create; //model
     struct bulk_upsert_request_update_t *update; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } bulk_upsert_request_t;
 
-bulk_upsert_request_t *bulk_upsert_request_create(
+__attribute__((deprecated)) bulk_upsert_request_t *bulk_upsert_request_create(
     bulk_upsert_request_create_t *create,
     bulk_upsert_request_update_t *update
 );

@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("BidFloorSpec")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BidFloorSpec   {
   private @Valid List<Country> countries = new ArrayList<>();
   private Currency currency;
@@ -32,6 +32,18 @@ public class BidFloorSpec   {
   private ActionType billableEvent;
   private OptimizationGoalMetadata optimizationGoalMetadata;
   private CreativeType creativeType;
+
+  public BidFloorSpec() {
+  }
+
+  @JsonCreator
+  public BidFloorSpec(
+    @JsonProperty(required = true, value = "currency") Currency currency,
+    @JsonProperty(required = true, value = "billable_event") ActionType billableEvent
+  ) {
+    this.currency = currency;
+    this.billableEvent = billableEvent;
+  }
 
   /**
    **/
@@ -77,12 +89,12 @@ public class BidFloorSpec   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("currency")
+  @JsonProperty(required = true, value = "currency")
   @NotNull public Currency getCurrency() {
     return currency;
   }
 
-  @JsonProperty("currency")
+  @JsonProperty(required = true, value = "currency")
   public void setCurrency(Currency currency) {
     this.currency = currency;
   }
@@ -115,12 +127,12 @@ public class BidFloorSpec   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("billable_event")
+  @JsonProperty(required = true, value = "billable_event")
   @NotNull public ActionType getBillableEvent() {
     return billableEvent;
   }
 
-  @JsonProperty("billable_event")
+  @JsonProperty(required = true, value = "billable_event")
   public void setBillableEvent(ActionType billableEvent) {
     this.billableEvent = billableEvent;
   }

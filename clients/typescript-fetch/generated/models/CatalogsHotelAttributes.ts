@@ -199,11 +199,11 @@ export function CatalogsHotelAttributesFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-  export function CatalogsHotelAttributesToJSON(json: any): CatalogsHotelAttributes {
-      return CatalogsHotelAttributesToJSONTyped(json, false);
-  }
+export function CatalogsHotelAttributesToJSON(json: any): CatalogsHotelAttributes {
+    return CatalogsHotelAttributesToJSONTyped(json, false);
+}
 
-  export function CatalogsHotelAttributesToJSONTyped(value?: CatalogsHotelAttributes | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsHotelAttributesToJSONTyped(value?: CatalogsHotelAttributes | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

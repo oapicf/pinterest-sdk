@@ -57,11 +57,11 @@ export function UpdateMemberAssetAccessBodyFromJSONTyped(json: any, ignoreDiscri
     };
 }
 
-  export function UpdateMemberAssetAccessBodyToJSON(json: any): UpdateMemberAssetAccessBody {
-      return UpdateMemberAssetAccessBodyToJSONTyped(json, false);
-  }
+export function UpdateMemberAssetAccessBodyToJSON(json: any): UpdateMemberAssetAccessBody {
+    return UpdateMemberAssetAccessBodyToJSONTyped(json, false);
+}
 
-  export function UpdateMemberAssetAccessBodyToJSONTyped(value?: UpdateMemberAssetAccessBody | null, ignoreDiscriminator: boolean = false): any {
+export function UpdateMemberAssetAccessBodyToJSONTyped(value?: UpdateMemberAssetAccessBody | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

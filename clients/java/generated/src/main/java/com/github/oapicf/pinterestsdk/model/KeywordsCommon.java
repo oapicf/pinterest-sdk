@@ -50,24 +50,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * KeywordsCommon
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class KeywordsCommon {
   public static final String SERIALIZED_NAME_BID = "bid";
   @SerializedName(SERIALIZED_NAME_BID)
+  @javax.annotation.Nullable
   private Integer bid;
 
   public static final String SERIALIZED_NAME_MATCH_TYPE = "match_type";
   @SerializedName(SERIALIZED_NAME_MATCH_TYPE)
+  @javax.annotation.Nullable
   private MatchTypeResponse matchType;
 
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
+  @javax.annotation.Nonnull
   private String value;
 
   public KeywordsCommon() {
   }
 
-  public KeywordsCommon bid(Integer bid) {
+  public KeywordsCommon bid(@javax.annotation.Nullable Integer bid) {
     this.bid = bid;
     return this;
   }
@@ -81,12 +84,12 @@ public class KeywordsCommon {
     return bid;
   }
 
-  public void setBid(Integer bid) {
+  public void setBid(@javax.annotation.Nullable Integer bid) {
     this.bid = bid;
   }
 
 
-  public KeywordsCommon matchType(MatchTypeResponse matchType) {
+  public KeywordsCommon matchType(@javax.annotation.Nullable MatchTypeResponse matchType) {
     this.matchType = matchType;
     return this;
   }
@@ -100,12 +103,12 @@ public class KeywordsCommon {
     return matchType;
   }
 
-  public void setMatchType(MatchTypeResponse matchType) {
+  public void setMatchType(@javax.annotation.Nullable MatchTypeResponse matchType) {
     this.matchType = matchType;
   }
 
 
-  public KeywordsCommon value(String value) {
+  public KeywordsCommon value(@javax.annotation.Nonnull String value) {
     this.value = value;
     return this;
   }
@@ -119,7 +122,7 @@ public class KeywordsCommon {
     return value;
   }
 
-  public void setValue(String value) {
+  public void setValue(@javax.annotation.Nonnull String value) {
     this.value = value;
   }
 

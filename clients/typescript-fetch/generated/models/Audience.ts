@@ -126,11 +126,11 @@ export function AudienceFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
     };
 }
 
-  export function AudienceToJSON(json: any): Audience {
-      return AudienceToJSONTyped(json, false);
-  }
+export function AudienceToJSON(json: any): Audience {
+    return AudienceToJSONTyped(json, false);
+}
 
-  export function AudienceToJSONTyped(value?: Audience | null, ignoreDiscriminator: boolean = false): any {
+export function AudienceToJSONTyped(value?: Audience | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

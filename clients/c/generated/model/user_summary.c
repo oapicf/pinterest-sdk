@@ -5,7 +5,7 @@
 
 
 
-user_summary_t *user_summary_create(
+static user_summary_t *user_summary_create_internal(
     char *username,
     char *type
     ) {
@@ -16,12 +16,26 @@ user_summary_t *user_summary_create(
     user_summary_local_var->username = username;
     user_summary_local_var->type = type;
 
+    user_summary_local_var->_library_owned = 1;
     return user_summary_local_var;
 }
 
+__attribute__((deprecated)) user_summary_t *user_summary_create(
+    char *username,
+    char *type
+    ) {
+    return user_summary_create_internal (
+        username,
+        type
+        );
+}
 
 void user_summary_free(user_summary_t *user_summary) {
     if(NULL == user_summary){
+        return ;
+    }
+    if(user_summary->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "user_summary_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -68,6 +82,9 @@ user_summary_t *user_summary_parseFromJSON(cJSON *user_summaryJSON){
 
     // user_summary->username
     cJSON *username = cJSON_GetObjectItemCaseSensitive(user_summaryJSON, "username");
+    if (cJSON_IsNull(username)) {
+        username = NULL;
+    }
     if (username) { 
     if(!cJSON_IsString(username) && !cJSON_IsNull(username))
     {
@@ -77,6 +94,9 @@ user_summary_t *user_summary_parseFromJSON(cJSON *user_summaryJSON){
 
     // user_summary->type
     cJSON *type = cJSON_GetObjectItemCaseSensitive(user_summaryJSON, "type");
+    if (cJSON_IsNull(type)) {
+        type = NULL;
+    }
     if (type) { 
     if(!cJSON_IsString(type) && !cJSON_IsNull(type))
     {
@@ -85,7 +105,7 @@ user_summary_t *user_summary_parseFromJSON(cJSON *user_summaryJSON){
     }
 
 
-    user_summary_local_var = user_summary_create (
+    user_summary_local_var = user_summary_create_internal (
         username && !cJSON_IsNull(username) ? strdup(username->valuestring) : NULL,
         type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL
         );

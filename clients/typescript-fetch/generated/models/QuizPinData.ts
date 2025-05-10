@@ -95,11 +95,11 @@ export function QuizPinDataFromJSONTyped(json: any, ignoreDiscriminator: boolean
     };
 }
 
-  export function QuizPinDataToJSON(json: any): QuizPinData {
-      return QuizPinDataToJSONTyped(json, false);
-  }
+export function QuizPinDataToJSON(json: any): QuizPinData {
+    return QuizPinDataToJSONTyped(json, false);
+}
 
-  export function QuizPinDataToJSONTyped(value?: QuizPinData | null, ignoreDiscriminator: boolean = false): any {
+export function QuizPinDataToJSONTyped(value?: QuizPinData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

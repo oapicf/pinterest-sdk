@@ -48,11 +48,11 @@ export function LeadFormTestResponseFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function LeadFormTestResponseToJSON(json: any): LeadFormTestResponse {
-      return LeadFormTestResponseToJSONTyped(json, false);
-  }
+export function LeadFormTestResponseToJSON(json: any): LeadFormTestResponse {
+    return LeadFormTestResponseToJSONTyped(json, false);
+}
 
-  export function LeadFormTestResponseToJSONTyped(value?: LeadFormTestResponse | null, ignoreDiscriminator: boolean = false): any {
+export function LeadFormTestResponseToJSONTyped(value?: LeadFormTestResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

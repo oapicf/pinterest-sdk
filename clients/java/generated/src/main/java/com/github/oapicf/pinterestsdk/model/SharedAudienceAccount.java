@@ -48,14 +48,16 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * SharedAudienceAccount
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SharedAudienceAccount {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "account_id";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
+  @javax.annotation.Nonnull
   private String accountId;
 
   public static final String SERIALIZED_NAME_ACCOUNT_NAME = "account_name";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_NAME)
+  @javax.annotation.Nonnull
   private String accountName;
 
   /**
@@ -112,16 +114,18 @@ public class SharedAudienceAccount {
 
   public static final String SERIALIZED_NAME_ACCOUNT_TYPE = "account_type";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_TYPE)
+  @javax.annotation.Nonnull
   private AccountTypeEnum accountType;
 
   public static final String SERIALIZED_NAME_SHARED_ON_TIMESTAMP = "shared_on_timestamp";
   @SerializedName(SERIALIZED_NAME_SHARED_ON_TIMESTAMP)
+  @javax.annotation.Nonnull
   private Integer sharedOnTimestamp;
 
   public SharedAudienceAccount() {
   }
 
-  public SharedAudienceAccount accountId(String accountId) {
+  public SharedAudienceAccount accountId(@javax.annotation.Nonnull String accountId) {
     this.accountId = accountId;
     return this;
   }
@@ -135,12 +139,12 @@ public class SharedAudienceAccount {
     return accountId;
   }
 
-  public void setAccountId(String accountId) {
+  public void setAccountId(@javax.annotation.Nonnull String accountId) {
     this.accountId = accountId;
   }
 
 
-  public SharedAudienceAccount accountName(String accountName) {
+  public SharedAudienceAccount accountName(@javax.annotation.Nonnull String accountName) {
     this.accountName = accountName;
     return this;
   }
@@ -154,12 +158,12 @@ public class SharedAudienceAccount {
     return accountName;
   }
 
-  public void setAccountName(String accountName) {
+  public void setAccountName(@javax.annotation.Nonnull String accountName) {
     this.accountName = accountName;
   }
 
 
-  public SharedAudienceAccount accountType(AccountTypeEnum accountType) {
+  public SharedAudienceAccount accountType(@javax.annotation.Nonnull AccountTypeEnum accountType) {
     this.accountType = accountType;
     return this;
   }
@@ -173,12 +177,12 @@ public class SharedAudienceAccount {
     return accountType;
   }
 
-  public void setAccountType(AccountTypeEnum accountType) {
+  public void setAccountType(@javax.annotation.Nonnull AccountTypeEnum accountType) {
     this.accountType = accountType;
   }
 
 
-  public SharedAudienceAccount sharedOnTimestamp(Integer sharedOnTimestamp) {
+  public SharedAudienceAccount sharedOnTimestamp(@javax.annotation.Nonnull Integer sharedOnTimestamp) {
     this.sharedOnTimestamp = sharedOnTimestamp;
     return this;
   }
@@ -192,7 +196,7 @@ public class SharedAudienceAccount {
     return sharedOnTimestamp;
   }
 
-  public void setSharedOnTimestamp(Integer sharedOnTimestamp) {
+  public void setSharedOnTimestamp(@javax.annotation.Nonnull Integer sharedOnTimestamp) {
     this.sharedOnTimestamp = sharedOnTimestamp;
   }
 

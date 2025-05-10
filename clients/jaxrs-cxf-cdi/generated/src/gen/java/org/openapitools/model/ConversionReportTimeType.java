@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum ConversionReportTimeType {
 
-    @JsonProperty("TIME_OF_AD_ACTION") AD_ACTION(String.valueOf("TIME_OF_AD_ACTION")), @JsonProperty("TIME_OF_CONVERSION") CONVERSION(String.valueOf("TIME_OF_CONVERSION"));
+    @JsonProperty("TIME_OF_AD_ACTION") TIME_OF_AD_ACTION(String.valueOf("TIME_OF_AD_ACTION")), @JsonProperty("TIME_OF_CONVERSION") TIME_OF_CONVERSION(String.valueOf("TIME_OF_CONVERSION"));
 
 
     private String value;

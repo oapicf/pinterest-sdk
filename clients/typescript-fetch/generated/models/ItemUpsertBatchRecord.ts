@@ -63,11 +63,11 @@ export function ItemUpsertBatchRecordFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function ItemUpsertBatchRecordToJSON(json: any): ItemUpsertBatchRecord {
-      return ItemUpsertBatchRecordToJSONTyped(json, false);
-  }
+export function ItemUpsertBatchRecordToJSON(json: any): ItemUpsertBatchRecord {
+    return ItemUpsertBatchRecordToJSONTyped(json, false);
+}
 
-  export function ItemUpsertBatchRecordToJSONTyped(value?: ItemUpsertBatchRecord | null, ignoreDiscriminator: boolean = false): any {
+export function ItemUpsertBatchRecordToJSONTyped(value?: ItemUpsertBatchRecord | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

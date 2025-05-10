@@ -69,11 +69,11 @@ export function OauthAccessTokenRequestClientCredentialsFromJSONTyped(json: any,
     };
 }
 
-  export function OauthAccessTokenRequestClientCredentialsToJSON(json: any): OauthAccessTokenRequestClientCredentials {
-      return OauthAccessTokenRequestClientCredentialsToJSONTyped(json, false);
-  }
+export function OauthAccessTokenRequestClientCredentialsToJSON(json: any): OauthAccessTokenRequestClientCredentials {
+    return OauthAccessTokenRequestClientCredentialsToJSONTyped(json, false);
+}
 
-  export function OauthAccessTokenRequestClientCredentialsToJSONTyped(value?: OauthAccessTokenRequestClientCredentials | null, ignoreDiscriminator: boolean = false): any {
+export function OauthAccessTokenRequestClientCredentialsToJSONTyped(value?: OauthAccessTokenRequestClientCredentials | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

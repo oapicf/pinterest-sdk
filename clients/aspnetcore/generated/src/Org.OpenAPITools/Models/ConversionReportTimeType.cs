@@ -30,15 +30,15 @@ namespace Org.OpenAPITools.Models
         {
             
             /// <summary>
-            /// Enum ADACTIONEnum for TIME_OF_AD_ACTION
+            /// Enum TIMEOFADACTIONEnum for TIME_OF_AD_ACTION
             /// </summary>
             [EnumMember(Value = "TIME_OF_AD_ACTION")]
-            ADACTIONEnum = 1,
+            TIMEOFADACTIONEnum = 1,
             
             /// <summary>
-            /// Enum CONVERSIONEnum for TIME_OF_CONVERSION
+            /// Enum TIMEOFCONVERSIONEnum for TIME_OF_CONVERSION
             /// </summary>
             [EnumMember(Value = "TIME_OF_CONVERSION")]
-            CONVERSIONEnum = 2
+            TIMEOFCONVERSIONEnum = 2
         }
 }

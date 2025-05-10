@@ -1,6 +1,6 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Multipart};
+use axum_extra::extract::{CookieJar, Host};
 use bytes::Bytes;
 use http::Method;
 use serde::{Deserialize, Serialize};
@@ -133,82 +133,82 @@ pub enum IntegrationsSlashGetListResponse {
 /// Integrations
 #[async_trait]
 #[allow(clippy::ptr_arg)]
-pub trait Integrations {
+pub trait Integrations<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHandler<E> {
     /// Delete commerce integration.
     ///
     /// IntegrationsCommerceSlashDel - DELETE /v5/integrations/commerce/{external_business_id}
     async fn integrations_commerce_slash_del(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::IntegrationsCommerceSlashDelPathParams,
-    ) -> Result<IntegrationsCommerceSlashDelResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::IntegrationsCommerceSlashDelPathParams,
+    ) -> Result<IntegrationsCommerceSlashDelResponse, E>;
 
     /// Get commerce integration.
     ///
     /// IntegrationsCommerceSlashGet - GET /v5/integrations/commerce/{external_business_id}
     async fn integrations_commerce_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::IntegrationsCommerceSlashGetPathParams,
-    ) -> Result<IntegrationsCommerceSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::IntegrationsCommerceSlashGetPathParams,
+    ) -> Result<IntegrationsCommerceSlashGetResponse, E>;
 
     /// Update commerce integration.
     ///
     /// IntegrationsCommerceSlashPatch - PATCH /v5/integrations/commerce/{external_business_id}
     async fn integrations_commerce_slash_patch(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::IntegrationsCommerceSlashPatchPathParams,
-            body: Option<models::IntegrationRequestPatch>,
-    ) -> Result<IntegrationsCommerceSlashPatchResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::IntegrationsCommerceSlashPatchPathParams,
+            body: &Option<models::IntegrationRequestPatch>,
+    ) -> Result<IntegrationsCommerceSlashPatchResponse, E>;
 
     /// Create commerce integration.
     ///
     /// IntegrationsCommerceSlashPost - POST /v5/integrations/commerce
     async fn integrations_commerce_slash_post(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-            body: Option<models::IntegrationRequest>,
-    ) -> Result<IntegrationsCommerceSlashPostResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+            body: &Option<models::IntegrationRequest>,
+    ) -> Result<IntegrationsCommerceSlashPostResponse, E>;
 
     /// Receives batched logs from integration applications..
     ///
     /// IntegrationsLogsSlashPost - POST /v5/integrations/logs
     async fn integrations_logs_slash_post(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-            body: models::IntegrationLogsRequest,
-    ) -> Result<IntegrationsLogsSlashPostResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+            body: &models::IntegrationLogsRequest,
+    ) -> Result<IntegrationsLogsSlashPostResponse, E>;
 
     /// Get integration metadata.
     ///
     /// IntegrationsSlashGetById - GET /v5/integrations/{id}
     async fn integrations_slash_get_by_id(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::IntegrationsSlashGetByIdPathParams,
-    ) -> Result<IntegrationsSlashGetByIdResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::IntegrationsSlashGetByIdPathParams,
+    ) -> Result<IntegrationsSlashGetByIdResponse, E>;
 
     /// Get integration metadata list.
     ///
     /// IntegrationsSlashGetList - GET /v5/integrations
     async fn integrations_slash_get_list(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::IntegrationsSlashGetListQueryParams,
-    ) -> Result<IntegrationsSlashGetListResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::IntegrationsSlashGetListQueryParams,
+    ) -> Result<IntegrationsSlashGetListResponse, E>;
 }

@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsProductGroupFiltersRequest;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -25,17 +26,17 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsProductGroupUpdateRequest", description = "Request object for updating a product group.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsProductGroupUpdateRequest implements CatalogsProductGroupsUpdateRequest {
 
-  private String name;
+  private @Nullable String name;
 
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
   @Deprecated
-  private Boolean isFeatured;
+  private @Nullable Boolean isFeatured;
 
-  private CatalogsProductGroupFiltersRequest filters;
+  private @Nullable CatalogsProductGroupFiltersRequest filters;
 
   public CatalogsProductGroupUpdateRequest name(String name) {
     this.name = name;

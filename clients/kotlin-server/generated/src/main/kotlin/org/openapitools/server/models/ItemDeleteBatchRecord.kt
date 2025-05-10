@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Object describing an item batch record to delete items
  * @param itemId The catalog item id in the merchant namespace
  */
+@Serializable
 data class ItemDeleteBatchRecord(
     /* The catalog item id in the merchant namespace */
     val itemId: kotlin.String? = null
-) 
+)
 

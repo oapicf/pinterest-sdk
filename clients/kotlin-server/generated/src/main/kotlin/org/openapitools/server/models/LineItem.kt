@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param productBrand Product brand. For example, \"Parker\".
@@ -23,6 +24,7 @@ package org.openapitools.server.models
  * @param productVariant Product variant. For example, \"Red\".
  * @param productVariantId Product variant ID. For example, \"1414-34832\".
  */
+@Serializable
 data class LineItem(
     /* Product brand. For example, \"Parker\". */
     val productBrand: kotlin.String? = null,
@@ -40,5 +42,5 @@ data class LineItem(
     val productVariant: kotlin.String? = null,
     /* Product variant ID. For example, \"1414-34832\". */
     val productVariantId: kotlin.String? = null
-) 
+)
 

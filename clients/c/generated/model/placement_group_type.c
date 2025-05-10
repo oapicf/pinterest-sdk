@@ -22,7 +22,7 @@ pinterest_rest_api_placement_group_type__e placement_group_type_placement_group_
     return 0;
 }
 
-cJSON *placement_group_type_placement_group_type_convertToJSON(pinterest_rest_api_placement_group_type__e placement_group_type) {
+cJSON *placement_group_type_convertToJSON(pinterest_rest_api_placement_group_type__e placement_group_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "placement_group_type", placement_group_type_placement_group_type_ToString(placement_group_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_placement_group_type__e placement_group_type_placement_group_type_parseFromJSON(cJSON *placement_group_typeJSON) {
-    pinterest_rest_api_placement_group_type__e *placement_group_type = NULL;
-    pinterest_rest_api_placement_group_type__e placement_group_typeVariable;
-    cJSON *placement_group_typeVar = cJSON_GetObjectItemCaseSensitive(placement_group_typeJSON, "placement_group_type");
-    if(!cJSON_IsString(placement_group_typeVar) || (placement_group_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_placement_group_type__e placement_group_type_parseFromJSON(cJSON *placement_group_typeJSON) {
+    if(!cJSON_IsString(placement_group_typeJSON) || (placement_group_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    placement_group_typeVariable = placement_group_type_placement_group_type_FromString(placement_group_typeVar->valuestring);
-    return placement_group_typeVariable;
-end:
-    return 0;
+    return placement_group_type_placement_group_type_FromString(placement_group_typeJSON->valuestring);
 }

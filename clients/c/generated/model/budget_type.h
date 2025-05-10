@@ -24,9 +24,9 @@ char* budget_type_budget_type_ToString(pinterest_rest_api_budget_type__e budget_
 
 pinterest_rest_api_budget_type__e budget_type_budget_type_FromString(char* budget_type);
 
-//cJSON *budget_type_budget_type_convertToJSON(pinterest_rest_api_budget_type__e budget_type);
+cJSON *budget_type_convertToJSON(pinterest_rest_api_budget_type__e budget_type);
 
-//pinterest_rest_api_budget_type__e budget_type_budget_type_parseFromJSON(cJSON *budget_typeJSON);
+pinterest_rest_api_budget_type__e budget_type_parseFromJSON(cJSON *budget_typeJSON);
 
 #endif /* _budget_type_H_ */
 

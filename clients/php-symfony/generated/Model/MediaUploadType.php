@@ -42,7 +42,7 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum MediaUploadType: string
 {
-        case VIDEO = "video";
+        case VIDEO = 'video';
 }
 
 

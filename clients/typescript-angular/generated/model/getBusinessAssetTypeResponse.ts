@@ -15,9 +15,13 @@
 export type GetBusinessAssetTypeResponse = 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CONVERSION_TAG';
 
 export const GetBusinessAssetTypeResponse = {
+
     AdAccount: 'AD_ACCOUNT' as GetBusinessAssetTypeResponse,
+
     Profile: 'PROFILE' as GetBusinessAssetTypeResponse,
+
     AssetGroup: 'ASSET_GROUP' as GetBusinessAssetTypeResponse,
+
     ConversionTag: 'CONVERSION_TAG' as GetBusinessAssetTypeResponse
 };
 

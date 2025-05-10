@@ -12,17 +12,19 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Product counts for a Creative Assets CatalogsProductGroup
  * @param catalogType 
  * @param total 
  * @param videos 
  */
+@Serializable
 data class CatalogsCreativeAssetsProductGroupProductCounts(
     val catalogType: CatalogsCreativeAssetsProductGroupProductCounts.CatalogType,
     val total: java.math.BigDecimal,
     val videos: java.math.BigDecimal
-) 
+)
 {
     /**
     * 

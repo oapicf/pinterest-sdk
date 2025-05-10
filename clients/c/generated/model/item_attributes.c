@@ -5,7 +5,7 @@
 
 
 
-item_attributes_t *item_attributes_create(
+static item_attributes_t *item_attributes_create_internal(
     char *ad_link,
     int adult,
     char *age_group,
@@ -108,12 +108,118 @@ item_attributes_t *item_attributes_create(
     item_attributes_local_var->image_link = image_link;
     item_attributes_local_var->video_link = video_link;
 
+    item_attributes_local_var->_library_owned = 1;
     return item_attributes_local_var;
 }
 
+__attribute__((deprecated)) item_attributes_t *item_attributes_create(
+    char *ad_link,
+    int adult,
+    char *age_group,
+    char *availability,
+    double average_review_rating,
+    char *brand,
+    int checkout_enabled,
+    char *color,
+    char *condition,
+    char *custom_label_0,
+    char *custom_label_1,
+    char *custom_label_2,
+    char *custom_label_3,
+    char *custom_label_4,
+    char *description,
+    int free_shipping_label,
+    char *free_shipping_limit,
+    char *gender,
+    char *google_product_category,
+    int gtin,
+    char *id,
+    char *item_group_id,
+    long last_updated_time,
+    char *link,
+    char *material,
+    char *min_ad_price,
+    char *mobile_link,
+    char *mpn,
+    int number_of_ratings,
+    int number_of_reviews,
+    char *pattern,
+    char *price,
+    char *product_type,
+    char *sale_price,
+    char *shipping,
+    char *shipping_height,
+    char *shipping_weight,
+    char *shipping_width,
+    char *size,
+    char *size_system,
+    char *size_type,
+    char *tax,
+    char *title,
+    list_t *variant_names,
+    list_t *variant_values,
+    list_t *additional_image_link,
+    list_t *image_link,
+    char *video_link
+    ) {
+    return item_attributes_create_internal (
+        ad_link,
+        adult,
+        age_group,
+        availability,
+        average_review_rating,
+        brand,
+        checkout_enabled,
+        color,
+        condition,
+        custom_label_0,
+        custom_label_1,
+        custom_label_2,
+        custom_label_3,
+        custom_label_4,
+        description,
+        free_shipping_label,
+        free_shipping_limit,
+        gender,
+        google_product_category,
+        gtin,
+        id,
+        item_group_id,
+        last_updated_time,
+        link,
+        material,
+        min_ad_price,
+        mobile_link,
+        mpn,
+        number_of_ratings,
+        number_of_reviews,
+        pattern,
+        price,
+        product_type,
+        sale_price,
+        shipping,
+        shipping_height,
+        shipping_weight,
+        shipping_width,
+        size,
+        size_system,
+        size_type,
+        tax,
+        title,
+        variant_names,
+        variant_values,
+        additional_image_link,
+        image_link,
+        video_link
+        );
+}
 
 void item_attributes_free(item_attributes_t *item_attributes) {
     if(NULL == item_attributes){
+        return ;
+    }
+    if(item_attributes->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "item_attributes_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -648,7 +754,7 @@ cJSON *item_attributes_convertToJSON(item_attributes_t *item_attributes) {
 
     listEntry_t *variant_namesListEntry;
     list_ForEach(variant_namesListEntry, item_attributes->variant_names) {
-    if(cJSON_AddStringToObject(variant_names, "", (char*)variant_namesListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(variant_names, "", variant_namesListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -665,7 +771,7 @@ cJSON *item_attributes_convertToJSON(item_attributes_t *item_attributes) {
 
     listEntry_t *variant_valuesListEntry;
     list_ForEach(variant_valuesListEntry, item_attributes->variant_values) {
-    if(cJSON_AddStringToObject(variant_values, "", (char*)variant_valuesListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(variant_values, "", variant_valuesListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -682,7 +788,7 @@ cJSON *item_attributes_convertToJSON(item_attributes_t *item_attributes) {
 
     listEntry_t *additional_image_linkListEntry;
     list_ForEach(additional_image_linkListEntry, item_attributes->additional_image_link) {
-    if(cJSON_AddStringToObject(additional_image_link, "", (char*)additional_image_linkListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(additional_image_link, "", additional_image_linkListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -699,7 +805,7 @@ cJSON *item_attributes_convertToJSON(item_attributes_t *item_attributes) {
 
     listEntry_t *image_linkListEntry;
     list_ForEach(image_linkListEntry, item_attributes->image_link) {
-    if(cJSON_AddStringToObject(image_link, "", (char*)image_linkListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(image_link, "", image_linkListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -740,6 +846,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->ad_link
     cJSON *ad_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "ad_link");
+    if (cJSON_IsNull(ad_link)) {
+        ad_link = NULL;
+    }
     if (ad_link) { 
     if(!cJSON_IsString(ad_link) && !cJSON_IsNull(ad_link))
     {
@@ -749,6 +858,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->adult
     cJSON *adult = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "adult");
+    if (cJSON_IsNull(adult)) {
+        adult = NULL;
+    }
     if (adult) { 
     if(!cJSON_IsBool(adult))
     {
@@ -758,6 +870,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->age_group
     cJSON *age_group = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "age_group");
+    if (cJSON_IsNull(age_group)) {
+        age_group = NULL;
+    }
     if (age_group) { 
     if(!cJSON_IsString(age_group) && !cJSON_IsNull(age_group))
     {
@@ -767,6 +882,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->availability
     cJSON *availability = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "availability");
+    if (cJSON_IsNull(availability)) {
+        availability = NULL;
+    }
     if (availability) { 
     if(!cJSON_IsString(availability) && !cJSON_IsNull(availability))
     {
@@ -776,6 +894,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->average_review_rating
     cJSON *average_review_rating = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "average_review_rating");
+    if (cJSON_IsNull(average_review_rating)) {
+        average_review_rating = NULL;
+    }
     if (average_review_rating) { 
     if(!cJSON_IsNumber(average_review_rating))
     {
@@ -785,6 +906,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->brand
     cJSON *brand = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "brand");
+    if (cJSON_IsNull(brand)) {
+        brand = NULL;
+    }
     if (brand) { 
     if(!cJSON_IsString(brand) && !cJSON_IsNull(brand))
     {
@@ -794,6 +918,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->checkout_enabled
     cJSON *checkout_enabled = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "checkout_enabled");
+    if (cJSON_IsNull(checkout_enabled)) {
+        checkout_enabled = NULL;
+    }
     if (checkout_enabled) { 
     if(!cJSON_IsBool(checkout_enabled))
     {
@@ -803,6 +930,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->color
     cJSON *color = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "color");
+    if (cJSON_IsNull(color)) {
+        color = NULL;
+    }
     if (color) { 
     if(!cJSON_IsString(color) && !cJSON_IsNull(color))
     {
@@ -812,6 +942,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->condition
     cJSON *condition = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "condition");
+    if (cJSON_IsNull(condition)) {
+        condition = NULL;
+    }
     if (condition) { 
     if(!cJSON_IsString(condition) && !cJSON_IsNull(condition))
     {
@@ -821,6 +954,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->custom_label_0
     cJSON *custom_label_0 = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "custom_label_0");
+    if (cJSON_IsNull(custom_label_0)) {
+        custom_label_0 = NULL;
+    }
     if (custom_label_0) { 
     if(!cJSON_IsString(custom_label_0) && !cJSON_IsNull(custom_label_0))
     {
@@ -830,6 +966,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->custom_label_1
     cJSON *custom_label_1 = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "custom_label_1");
+    if (cJSON_IsNull(custom_label_1)) {
+        custom_label_1 = NULL;
+    }
     if (custom_label_1) { 
     if(!cJSON_IsString(custom_label_1) && !cJSON_IsNull(custom_label_1))
     {
@@ -839,6 +978,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->custom_label_2
     cJSON *custom_label_2 = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "custom_label_2");
+    if (cJSON_IsNull(custom_label_2)) {
+        custom_label_2 = NULL;
+    }
     if (custom_label_2) { 
     if(!cJSON_IsString(custom_label_2) && !cJSON_IsNull(custom_label_2))
     {
@@ -848,6 +990,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->custom_label_3
     cJSON *custom_label_3 = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "custom_label_3");
+    if (cJSON_IsNull(custom_label_3)) {
+        custom_label_3 = NULL;
+    }
     if (custom_label_3) { 
     if(!cJSON_IsString(custom_label_3) && !cJSON_IsNull(custom_label_3))
     {
@@ -857,6 +1002,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->custom_label_4
     cJSON *custom_label_4 = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "custom_label_4");
+    if (cJSON_IsNull(custom_label_4)) {
+        custom_label_4 = NULL;
+    }
     if (custom_label_4) { 
     if(!cJSON_IsString(custom_label_4) && !cJSON_IsNull(custom_label_4))
     {
@@ -866,6 +1014,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->description
     cJSON *description = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "description");
+    if (cJSON_IsNull(description)) {
+        description = NULL;
+    }
     if (description) { 
     if(!cJSON_IsString(description) && !cJSON_IsNull(description))
     {
@@ -875,6 +1026,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->free_shipping_label
     cJSON *free_shipping_label = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "free_shipping_label");
+    if (cJSON_IsNull(free_shipping_label)) {
+        free_shipping_label = NULL;
+    }
     if (free_shipping_label) { 
     if(!cJSON_IsBool(free_shipping_label))
     {
@@ -884,6 +1038,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->free_shipping_limit
     cJSON *free_shipping_limit = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "free_shipping_limit");
+    if (cJSON_IsNull(free_shipping_limit)) {
+        free_shipping_limit = NULL;
+    }
     if (free_shipping_limit) { 
     if(!cJSON_IsString(free_shipping_limit) && !cJSON_IsNull(free_shipping_limit))
     {
@@ -893,6 +1050,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->gender
     cJSON *gender = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "gender");
+    if (cJSON_IsNull(gender)) {
+        gender = NULL;
+    }
     if (gender) { 
     if(!cJSON_IsString(gender) && !cJSON_IsNull(gender))
     {
@@ -902,6 +1062,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->google_product_category
     cJSON *google_product_category = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "google_product_category");
+    if (cJSON_IsNull(google_product_category)) {
+        google_product_category = NULL;
+    }
     if (google_product_category) { 
     if(!cJSON_IsString(google_product_category) && !cJSON_IsNull(google_product_category))
     {
@@ -911,6 +1074,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->gtin
     cJSON *gtin = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "gtin");
+    if (cJSON_IsNull(gtin)) {
+        gtin = NULL;
+    }
     if (gtin) { 
     if(!cJSON_IsNumber(gtin))
     {
@@ -920,6 +1086,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -929,6 +1098,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->item_group_id
     cJSON *item_group_id = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "item_group_id");
+    if (cJSON_IsNull(item_group_id)) {
+        item_group_id = NULL;
+    }
     if (item_group_id) { 
     if(!cJSON_IsString(item_group_id) && !cJSON_IsNull(item_group_id))
     {
@@ -938,6 +1110,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->last_updated_time
     cJSON *last_updated_time = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "last_updated_time");
+    if (cJSON_IsNull(last_updated_time)) {
+        last_updated_time = NULL;
+    }
     if (last_updated_time) { 
     if(!cJSON_IsNumber(last_updated_time))
     {
@@ -947,6 +1122,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->link
     cJSON *link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "link");
+    if (cJSON_IsNull(link)) {
+        link = NULL;
+    }
     if (link) { 
     if(!cJSON_IsString(link) && !cJSON_IsNull(link))
     {
@@ -956,6 +1134,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->material
     cJSON *material = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "material");
+    if (cJSON_IsNull(material)) {
+        material = NULL;
+    }
     if (material) { 
     if(!cJSON_IsString(material) && !cJSON_IsNull(material))
     {
@@ -965,6 +1146,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->min_ad_price
     cJSON *min_ad_price = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "min_ad_price");
+    if (cJSON_IsNull(min_ad_price)) {
+        min_ad_price = NULL;
+    }
     if (min_ad_price) { 
     if(!cJSON_IsString(min_ad_price) && !cJSON_IsNull(min_ad_price))
     {
@@ -974,6 +1158,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->mobile_link
     cJSON *mobile_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "mobile_link");
+    if (cJSON_IsNull(mobile_link)) {
+        mobile_link = NULL;
+    }
     if (mobile_link) { 
     if(!cJSON_IsString(mobile_link) && !cJSON_IsNull(mobile_link))
     {
@@ -983,6 +1170,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->mpn
     cJSON *mpn = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "mpn");
+    if (cJSON_IsNull(mpn)) {
+        mpn = NULL;
+    }
     if (mpn) { 
     if(!cJSON_IsString(mpn) && !cJSON_IsNull(mpn))
     {
@@ -992,6 +1182,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->number_of_ratings
     cJSON *number_of_ratings = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "number_of_ratings");
+    if (cJSON_IsNull(number_of_ratings)) {
+        number_of_ratings = NULL;
+    }
     if (number_of_ratings) { 
     if(!cJSON_IsNumber(number_of_ratings))
     {
@@ -1001,6 +1194,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->number_of_reviews
     cJSON *number_of_reviews = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "number_of_reviews");
+    if (cJSON_IsNull(number_of_reviews)) {
+        number_of_reviews = NULL;
+    }
     if (number_of_reviews) { 
     if(!cJSON_IsNumber(number_of_reviews))
     {
@@ -1010,6 +1206,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->pattern
     cJSON *pattern = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "pattern");
+    if (cJSON_IsNull(pattern)) {
+        pattern = NULL;
+    }
     if (pattern) { 
     if(!cJSON_IsString(pattern) && !cJSON_IsNull(pattern))
     {
@@ -1019,6 +1218,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->price
     cJSON *price = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "price");
+    if (cJSON_IsNull(price)) {
+        price = NULL;
+    }
     if (price) { 
     if(!cJSON_IsString(price) && !cJSON_IsNull(price))
     {
@@ -1028,6 +1230,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->product_type
     cJSON *product_type = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "product_type");
+    if (cJSON_IsNull(product_type)) {
+        product_type = NULL;
+    }
     if (product_type) { 
     if(!cJSON_IsString(product_type) && !cJSON_IsNull(product_type))
     {
@@ -1037,6 +1242,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->sale_price
     cJSON *sale_price = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "sale_price");
+    if (cJSON_IsNull(sale_price)) {
+        sale_price = NULL;
+    }
     if (sale_price) { 
     if(!cJSON_IsString(sale_price) && !cJSON_IsNull(sale_price))
     {
@@ -1046,6 +1254,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->shipping
     cJSON *shipping = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "shipping");
+    if (cJSON_IsNull(shipping)) {
+        shipping = NULL;
+    }
     if (shipping) { 
     if(!cJSON_IsString(shipping) && !cJSON_IsNull(shipping))
     {
@@ -1055,6 +1266,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->shipping_height
     cJSON *shipping_height = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "shipping_height");
+    if (cJSON_IsNull(shipping_height)) {
+        shipping_height = NULL;
+    }
     if (shipping_height) { 
     if(!cJSON_IsString(shipping_height) && !cJSON_IsNull(shipping_height))
     {
@@ -1064,6 +1278,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->shipping_weight
     cJSON *shipping_weight = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "shipping_weight");
+    if (cJSON_IsNull(shipping_weight)) {
+        shipping_weight = NULL;
+    }
     if (shipping_weight) { 
     if(!cJSON_IsString(shipping_weight) && !cJSON_IsNull(shipping_weight))
     {
@@ -1073,6 +1290,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->shipping_width
     cJSON *shipping_width = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "shipping_width");
+    if (cJSON_IsNull(shipping_width)) {
+        shipping_width = NULL;
+    }
     if (shipping_width) { 
     if(!cJSON_IsString(shipping_width) && !cJSON_IsNull(shipping_width))
     {
@@ -1082,6 +1302,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->size
     cJSON *size = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "size");
+    if (cJSON_IsNull(size)) {
+        size = NULL;
+    }
     if (size) { 
     if(!cJSON_IsString(size) && !cJSON_IsNull(size))
     {
@@ -1091,6 +1314,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->size_system
     cJSON *size_system = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "size_system");
+    if (cJSON_IsNull(size_system)) {
+        size_system = NULL;
+    }
     if (size_system) { 
     if(!cJSON_IsString(size_system) && !cJSON_IsNull(size_system))
     {
@@ -1100,6 +1326,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->size_type
     cJSON *size_type = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "size_type");
+    if (cJSON_IsNull(size_type)) {
+        size_type = NULL;
+    }
     if (size_type) { 
     if(!cJSON_IsString(size_type) && !cJSON_IsNull(size_type))
     {
@@ -1109,6 +1338,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->tax
     cJSON *tax = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "tax");
+    if (cJSON_IsNull(tax)) {
+        tax = NULL;
+    }
     if (tax) { 
     if(!cJSON_IsString(tax) && !cJSON_IsNull(tax))
     {
@@ -1118,6 +1350,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->title
     cJSON *title = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "title");
+    if (cJSON_IsNull(title)) {
+        title = NULL;
+    }
     if (title) { 
     if(!cJSON_IsString(title) && !cJSON_IsNull(title))
     {
@@ -1127,6 +1362,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->variant_names
     cJSON *variant_names = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "variant_names");
+    if (cJSON_IsNull(variant_names)) {
+        variant_names = NULL;
+    }
     if (variant_names) { 
     cJSON *variant_names_local = NULL;
     if(!cJSON_IsArray(variant_names)) {
@@ -1146,6 +1384,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->variant_values
     cJSON *variant_values = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "variant_values");
+    if (cJSON_IsNull(variant_values)) {
+        variant_values = NULL;
+    }
     if (variant_values) { 
     cJSON *variant_values_local = NULL;
     if(!cJSON_IsArray(variant_values)) {
@@ -1165,6 +1406,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->additional_image_link
     cJSON *additional_image_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "additional_image_link");
+    if (cJSON_IsNull(additional_image_link)) {
+        additional_image_link = NULL;
+    }
     if (additional_image_link) { 
     cJSON *additional_image_link_local = NULL;
     if(!cJSON_IsArray(additional_image_link)) {
@@ -1184,6 +1428,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->image_link
     cJSON *image_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "image_link");
+    if (cJSON_IsNull(image_link)) {
+        image_link = NULL;
+    }
     if (image_link) { 
     cJSON *image_link_local = NULL;
     if(!cJSON_IsArray(image_link)) {
@@ -1203,6 +1450,9 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
 
     // item_attributes->video_link
     cJSON *video_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "video_link");
+    if (cJSON_IsNull(video_link)) {
+        video_link = NULL;
+    }
     if (video_link) { 
     if(!cJSON_IsString(video_link) && !cJSON_IsNull(video_link))
     {
@@ -1211,7 +1461,7 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
     }
 
 
-    item_attributes_local_var = item_attributes_create (
+    item_attributes_local_var = item_attributes_create_internal (
         ad_link && !cJSON_IsNull(ad_link) ? strdup(ad_link->valuestring) : NULL,
         adult ? adult->valueint : 0,
         age_group && !cJSON_IsNull(age_group) ? strdup(age_group->valuestring) : NULL,

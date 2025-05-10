@@ -25,9 +25,10 @@ typedef struct get_partner_assets_response_t {
     list_t *permissions; //primitive container
     struct asset_group_binding_t *asset_group_info; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } get_partner_assets_response_t;
 
-get_partner_assets_response_t *get_partner_assets_response_create(
+__attribute__((deprecated)) get_partner_assets_response_t *get_partner_assets_response_create(
     char *asset_id,
     char *asset_type,
     list_t *permissions,

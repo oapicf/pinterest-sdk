@@ -52,24 +52,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AnalyticsDailyMetrics
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AnalyticsDailyMetrics {
   public static final String SERIALIZED_NAME_DATA_STATUS = "data_status";
   @SerializedName(SERIALIZED_NAME_DATA_STATUS)
+  @javax.annotation.Nullable
   private DataStatus dataStatus;
 
   public static final String SERIALIZED_NAME_DATE = "date";
   @SerializedName(SERIALIZED_NAME_DATE)
+  @javax.annotation.Nullable
   private String date;
 
   public static final String SERIALIZED_NAME_METRICS = "metrics";
   @SerializedName(SERIALIZED_NAME_METRICS)
+  @javax.annotation.Nullable
   private Map<String, BigDecimal> metrics = new HashMap<>();
 
   public AnalyticsDailyMetrics() {
   }
 
-  public AnalyticsDailyMetrics dataStatus(DataStatus dataStatus) {
+  public AnalyticsDailyMetrics dataStatus(@javax.annotation.Nullable DataStatus dataStatus) {
     this.dataStatus = dataStatus;
     return this;
   }
@@ -83,12 +86,12 @@ public class AnalyticsDailyMetrics {
     return dataStatus;
   }
 
-  public void setDataStatus(DataStatus dataStatus) {
+  public void setDataStatus(@javax.annotation.Nullable DataStatus dataStatus) {
     this.dataStatus = dataStatus;
   }
 
 
-  public AnalyticsDailyMetrics date(String date) {
+  public AnalyticsDailyMetrics date(@javax.annotation.Nullable String date) {
     this.date = date;
     return this;
   }
@@ -102,12 +105,12 @@ public class AnalyticsDailyMetrics {
     return date;
   }
 
-  public void setDate(String date) {
+  public void setDate(@javax.annotation.Nullable String date) {
     this.date = date;
   }
 
 
-  public AnalyticsDailyMetrics metrics(Map<String, BigDecimal> metrics) {
+  public AnalyticsDailyMetrics metrics(@javax.annotation.Nullable Map<String, BigDecimal> metrics) {
     this.metrics = metrics;
     return this;
   }
@@ -129,7 +132,7 @@ public class AnalyticsDailyMetrics {
     return metrics;
   }
 
-  public void setMetrics(Map<String, BigDecimal> metrics) {
+  public void setMetrics(@javax.annotation.Nullable Map<String, BigDecimal> metrics) {
     this.metrics = metrics;
   }
 

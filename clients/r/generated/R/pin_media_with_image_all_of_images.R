@@ -46,10 +46,35 @@ PinMediaWithImageAllOfImages <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return PinMediaWithImageAllOfImages in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return PinMediaWithImageAllOfImages as a base R list.
+    #' @examples
+    #' # convert array of PinMediaWithImageAllOfImages (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert PinMediaWithImageAllOfImages to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       PinMediaWithImageAllOfImagesObject <- list()
       if (!is.null(self$`150x150`)) {
         PinMediaWithImageAllOfImagesObject[["150x150"]] <-
@@ -67,7 +92,7 @@ PinMediaWithImageAllOfImages <- R6::R6Class(
         PinMediaWithImageAllOfImagesObject[["1200x"]] <-
           self$`1200x`
       }
-      PinMediaWithImageAllOfImagesObject
+      return(PinMediaWithImageAllOfImagesObject)
     },
 
     #' @description
@@ -94,45 +119,13 @@ PinMediaWithImageAllOfImages <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return PinMediaWithImageAllOfImages in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`150x150`)) {
-          sprintf(
-          '"150x150":
-            "%s"
-                    ',
-          self$`150x150`
-          )
-        },
-        if (!is.null(self$`400x300`)) {
-          sprintf(
-          '"400x300":
-            "%s"
-                    ',
-          self$`400x300`
-          )
-        },
-        if (!is.null(self$`600x`)) {
-          sprintf(
-          '"600x":
-            "%s"
-                    ',
-          self$`600x`
-          )
-        },
-        if (!is.null(self$`1200x`)) {
-          sprintf(
-          '"1200x":
-            "%s"
-                    ',
-          self$`1200x`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

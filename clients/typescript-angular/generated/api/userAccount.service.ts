@@ -52,72 +52,17 @@ import { UserWebsitesGet200Response } from '../model/userWebsitesGet200Response'
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
+import { BaseService } from '../api.base.service';
 
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserAccountService {
+export class UserAccountService extends BaseService {
 
-    protected basePath = 'https://api.pinterest.com/v5';
-    public defaultHeaders = new HttpHeaders();
-    public configuration = new Configuration();
-    public encoder: HttpParameterCodec;
-
-    constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string|string[], @Optional() configuration: Configuration) {
-        if (configuration) {
-            this.configuration = configuration;
-        }
-        if (typeof this.configuration.basePath !== 'string') {
-            const firstBasePath = Array.isArray(basePath) ? basePath[0] : undefined;
-            if (firstBasePath != undefined) {
-                basePath = firstBasePath;
-            }
-
-            if (typeof basePath !== 'string') {
-                basePath = this.basePath;
-            }
-            this.configuration.basePath = basePath;
-        }
-        this.encoder = this.configuration.encoder || new CustomHttpParameterCodec();
-    }
-
-
-    // @ts-ignore
-    private addToHttpParams(httpParams: HttpParams, value: any, key?: string): HttpParams {
-        if (typeof value === "object" && value instanceof Date === false) {
-            httpParams = this.addToHttpParamsRecursive(httpParams, value);
-        } else {
-            httpParams = this.addToHttpParamsRecursive(httpParams, value, key);
-        }
-        return httpParams;
-    }
-
-    private addToHttpParamsRecursive(httpParams: HttpParams, value?: any, key?: string): HttpParams {
-        if (value == null) {
-            return httpParams;
-        }
-
-        if (typeof value === "object") {
-            if (Array.isArray(value)) {
-                (value as any[]).forEach( elem => httpParams = this.addToHttpParamsRecursive(httpParams, elem, key));
-            } else if (value instanceof Date) {
-                if (key != null) {
-                    httpParams = httpParams.append(key, (value as Date).toISOString().substring(0, 10));
-                } else {
-                   throw Error("key may not be null if value is Date");
-                }
-            } else {
-                Object.keys(value).forEach( k => httpParams = this.addToHttpParamsRecursive(
-                    httpParams, value[k], key != null ? `${key}.${k}` : k));
-            }
-        } else if (key != null) {
-            httpParams = httpParams.append(key, value);
-        } else {
-            throw Error("key may not be null if value is not object or array");
-        }
-        return httpParams;
+    constructor(protected httpClient: HttpClient, @Optional() @Inject(BASE_PATH) basePath: string|string[], @Optional() configuration?: Configuration) {
+        super(basePath, configuration);
     }
 
     /**
@@ -136,59 +81,33 @@ export class UserAccountService {
     public boardsUserFollowsList(bookmark?: string, pageSize?: number, explicitFollowing?: boolean, adAccountId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        if (bookmark !== undefined && bookmark !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>bookmark, 'bookmark');
-        }
-        if (pageSize !== undefined && pageSize !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>pageSize, 'page_size');
-        }
-        if (explicitFollowing !== undefined && explicitFollowing !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>explicitFollowing, 'explicit_following');
-        }
-        if (adAccountId !== undefined && adAccountId !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>adAccountId, 'ad_account_id');
-        }
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>bookmark, 'bookmark');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>pageSize, 'page_size');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>explicitFollowing, 'explicit_following');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>adAccountId, 'ad_account_id');
 
         let localVarHeaders = this.defaultHeaders;
 
-        let localVarCredential: string | undefined;
-        // authentication (pinterest_oauth2) required
-        localVarCredential = this.configuration.lookupCredential('pinterest_oauth2');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
-
         // authentication (client_credentials) required
-        localVarCredential = this.configuration.lookupCredential('client_credentials');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
+        localVarHeaders = this.configuration.addCredentialToHeaders('client_credentials', 'Authorization', localVarHeaders, 'Bearer ');
 
-        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
-        if (localVarHttpHeaderAcceptSelected === undefined) {
-            // to determine the Accept header
-            const httpHeaderAccepts: string[] = [
-                'application/json'
-            ];
-            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        }
+        // authentication (pinterest_oauth2) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'application/json'
+        ]);
         if (localVarHttpHeaderAcceptSelected !== undefined) {
             localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
         }
 
-        let localVarHttpContext: HttpContext | undefined = options && options.context;
-        if (localVarHttpContext === undefined) {
-            localVarHttpContext = new HttpContext();
-        }
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
 
-        let localVarTransferCache: boolean | undefined = options && options.transferCache;
-        if (localVarTransferCache === undefined) {
-            localVarTransferCache = true;
-        }
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
 
 
         let responseType_: 'text' | 'json' | 'blob' = 'json';
@@ -238,34 +157,19 @@ export class UserAccountService {
 
         let localVarHeaders = this.defaultHeaders;
 
-        let localVarCredential: string | undefined;
         // authentication (pinterest_oauth2) required
-        localVarCredential = this.configuration.lookupCredential('pinterest_oauth2');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
+        localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
 
-        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
-        if (localVarHttpHeaderAcceptSelected === undefined) {
-            // to determine the Accept header
-            const httpHeaderAccepts: string[] = [
-                'application/json'
-            ];
-            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        }
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'application/json'
+        ]);
         if (localVarHttpHeaderAcceptSelected !== undefined) {
             localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
         }
 
-        let localVarHttpContext: HttpContext | undefined = options && options.context;
-        if (localVarHttpContext === undefined) {
-            localVarHttpContext = new HttpContext();
-        }
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
 
-        let localVarTransferCache: boolean | undefined = options && options.transferCache;
-        if (localVarTransferCache === undefined) {
-            localVarTransferCache = true;
-        }
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
 
 
         // to determine the Content-Type header
@@ -317,51 +221,29 @@ export class UserAccountService {
     public followersList(bookmark?: string, pageSize?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        if (bookmark !== undefined && bookmark !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>bookmark, 'bookmark');
-        }
-        if (pageSize !== undefined && pageSize !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>pageSize, 'page_size');
-        }
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>bookmark, 'bookmark');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>pageSize, 'page_size');
 
         let localVarHeaders = this.defaultHeaders;
 
-        let localVarCredential: string | undefined;
-        // authentication (pinterest_oauth2) required
-        localVarCredential = this.configuration.lookupCredential('pinterest_oauth2');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
-
         // authentication (client_credentials) required
-        localVarCredential = this.configuration.lookupCredential('client_credentials');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
+        localVarHeaders = this.configuration.addCredentialToHeaders('client_credentials', 'Authorization', localVarHeaders, 'Bearer ');
 
-        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
-        if (localVarHttpHeaderAcceptSelected === undefined) {
-            // to determine the Accept header
-            const httpHeaderAccepts: string[] = [
-                'application/json'
-            ];
-            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        }
+        // authentication (pinterest_oauth2) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'application/json'
+        ]);
         if (localVarHttpHeaderAcceptSelected !== undefined) {
             localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
         }
 
-        let localVarHttpContext: HttpContext | undefined = options && options.context;
-        if (localVarHttpContext === undefined) {
-            localVarHttpContext = new HttpContext();
-        }
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
 
-        let localVarTransferCache: boolean | undefined = options && options.transferCache;
-        if (localVarTransferCache === undefined) {
-            localVarTransferCache = true;
-        }
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
 
 
         let responseType_: 'text' | 'json' | 'blob' = 'json';
@@ -403,40 +285,22 @@ export class UserAccountService {
 
         let localVarHeaders = this.defaultHeaders;
 
-        let localVarCredential: string | undefined;
-        // authentication (pinterest_oauth2) required
-        localVarCredential = this.configuration.lookupCredential('pinterest_oauth2');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
-
         // authentication (client_credentials) required
-        localVarCredential = this.configuration.lookupCredential('client_credentials');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
+        localVarHeaders = this.configuration.addCredentialToHeaders('client_credentials', 'Authorization', localVarHeaders, 'Bearer ');
 
-        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
-        if (localVarHttpHeaderAcceptSelected === undefined) {
-            // to determine the Accept header
-            const httpHeaderAccepts: string[] = [
-                'application/json'
-            ];
-            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        }
+        // authentication (pinterest_oauth2) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'application/json'
+        ]);
         if (localVarHttpHeaderAcceptSelected !== undefined) {
             localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
         }
 
-        let localVarHttpContext: HttpContext | undefined = options && options.context;
-        if (localVarHttpContext === undefined) {
-            localVarHttpContext = new HttpContext();
-        }
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
 
-        let localVarTransferCache: boolean | undefined = options && options.transferCache;
-        if (localVarTransferCache === undefined) {
-            localVarTransferCache = true;
-        }
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
 
 
         let responseType_: 'text' | 'json' | 'blob' = 'json';
@@ -480,41 +344,24 @@ export class UserAccountService {
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        if (website !== undefined && website !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>website, 'website');
-        }
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>website, 'website');
 
         let localVarHeaders = this.defaultHeaders;
 
-        let localVarCredential: string | undefined;
         // authentication (pinterest_oauth2) required
-        localVarCredential = this.configuration.lookupCredential('pinterest_oauth2');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
+        localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
 
-        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
-        if (localVarHttpHeaderAcceptSelected === undefined) {
-            // to determine the Accept header
-            const httpHeaderAccepts: string[] = [
-                'application/json'
-            ];
-            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        }
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'application/json'
+        ]);
         if (localVarHttpHeaderAcceptSelected !== undefined) {
             localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
         }
 
-        let localVarHttpContext: HttpContext | undefined = options && options.context;
-        if (localVarHttpContext === undefined) {
-            localVarHttpContext = new HttpContext();
-        }
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
 
-        let localVarTransferCache: boolean | undefined = options && options.transferCache;
-        if (localVarTransferCache === undefined) {
-            localVarTransferCache = true;
-        }
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
 
 
         let responseType_: 'text' | 'json' | 'blob' = 'json';
@@ -571,77 +418,44 @@ export class UserAccountService {
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        if (startDate !== undefined && startDate !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>startDate, 'start_date');
-        }
-        if (endDate !== undefined && endDate !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>endDate, 'end_date');
-        }
-        if (fromClaimedContent !== undefined && fromClaimedContent !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>fromClaimedContent, 'from_claimed_content');
-        }
-        if (pinFormat !== undefined && pinFormat !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>pinFormat, 'pin_format');
-        }
-        if (appTypes !== undefined && appTypes !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>appTypes, 'app_types');
-        }
-        if (contentType !== undefined && contentType !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>contentType, 'content_type');
-        }
-        if (source !== undefined && source !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>source, 'source');
-        }
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>startDate, 'start_date');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>endDate, 'end_date');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>fromClaimedContent, 'from_claimed_content');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>pinFormat, 'pin_format');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>appTypes, 'app_types');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>contentType, 'content_type');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>source, 'source');
         if (metricTypes) {
             localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
                 [...metricTypes].join(COLLECTION_FORMATS['csv']), 'metric_types');
         }
-        if (splitField !== undefined && splitField !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>splitField, 'split_field');
-        }
-        if (adAccountId !== undefined && adAccountId !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>adAccountId, 'ad_account_id');
-        }
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>splitField, 'split_field');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>adAccountId, 'ad_account_id');
 
         let localVarHeaders = this.defaultHeaders;
 
-        let localVarCredential: string | undefined;
         // authentication (pinterest_oauth2) required
-        localVarCredential = this.configuration.lookupCredential('pinterest_oauth2');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
+        localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
 
-        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
-        if (localVarHttpHeaderAcceptSelected === undefined) {
-            // to determine the Accept header
-            const httpHeaderAccepts: string[] = [
-                'application/json'
-            ];
-            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        }
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'application/json'
+        ]);
         if (localVarHttpHeaderAcceptSelected !== undefined) {
             localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
         }
 
-        let localVarHttpContext: HttpContext | undefined = options && options.context;
-        if (localVarHttpContext === undefined) {
-            localVarHttpContext = new HttpContext();
-        }
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
 
-        let localVarTransferCache: boolean | undefined = options && options.transferCache;
-        if (localVarTransferCache === undefined) {
-            localVarTransferCache = true;
-        }
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
 
 
         let responseType_: 'text' | 'json' | 'blob' = 'json';
@@ -703,91 +517,51 @@ export class UserAccountService {
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        if (startDate !== undefined && startDate !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>startDate, 'start_date');
-        }
-        if (endDate !== undefined && endDate !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>endDate, 'end_date');
-        }
-        if (sortBy !== undefined && sortBy !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>sortBy, 'sort_by');
-        }
-        if (fromClaimedContent !== undefined && fromClaimedContent !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>fromClaimedContent, 'from_claimed_content');
-        }
-        if (pinFormat !== undefined && pinFormat !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>pinFormat, 'pin_format');
-        }
-        if (appTypes !== undefined && appTypes !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>appTypes, 'app_types');
-        }
-        if (contentType !== undefined && contentType !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>contentType, 'content_type');
-        }
-        if (source !== undefined && source !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>source, 'source');
-        }
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>startDate, 'start_date');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>endDate, 'end_date');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>sortBy, 'sort_by');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>fromClaimedContent, 'from_claimed_content');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>pinFormat, 'pin_format');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>appTypes, 'app_types');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>contentType, 'content_type');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>source, 'source');
         if (metricTypes) {
             localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
                 [...metricTypes].join(COLLECTION_FORMATS['csv']), 'metric_types');
         }
-        if (numOfPins !== undefined && numOfPins !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>numOfPins, 'num_of_pins');
-        }
-        if (createdInLastNDays !== undefined && createdInLastNDays !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>createdInLastNDays, 'created_in_last_n_days');
-        }
-        if (adAccountId !== undefined && adAccountId !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>adAccountId, 'ad_account_id');
-        }
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>numOfPins, 'num_of_pins');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>createdInLastNDays, 'created_in_last_n_days');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>adAccountId, 'ad_account_id');
 
         let localVarHeaders = this.defaultHeaders;
 
-        let localVarCredential: string | undefined;
-        // authentication (pinterest_oauth2) required
-        localVarCredential = this.configuration.lookupCredential('pinterest_oauth2');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
-
         // authentication (client_credentials) required
-        localVarCredential = this.configuration.lookupCredential('client_credentials');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
+        localVarHeaders = this.configuration.addCredentialToHeaders('client_credentials', 'Authorization', localVarHeaders, 'Bearer ');
 
-        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
-        if (localVarHttpHeaderAcceptSelected === undefined) {
-            // to determine the Accept header
-            const httpHeaderAccepts: string[] = [
-                'application/json'
-            ];
-            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        }
+        // authentication (pinterest_oauth2) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'application/json'
+        ]);
         if (localVarHttpHeaderAcceptSelected !== undefined) {
             localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
         }
 
-        let localVarHttpContext: HttpContext | undefined = options && options.context;
-        if (localVarHttpContext === undefined) {
-            localVarHttpContext = new HttpContext();
-        }
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
 
-        let localVarTransferCache: boolean | undefined = options && options.transferCache;
-        if (localVarTransferCache === undefined) {
-            localVarTransferCache = true;
-        }
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
 
 
         let responseType_: 'text' | 'json' | 'blob' = 'json';
@@ -849,91 +623,51 @@ export class UserAccountService {
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        if (startDate !== undefined && startDate !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>startDate, 'start_date');
-        }
-        if (endDate !== undefined && endDate !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>endDate, 'end_date');
-        }
-        if (sortBy !== undefined && sortBy !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>sortBy, 'sort_by');
-        }
-        if (fromClaimedContent !== undefined && fromClaimedContent !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>fromClaimedContent, 'from_claimed_content');
-        }
-        if (pinFormat !== undefined && pinFormat !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>pinFormat, 'pin_format');
-        }
-        if (appTypes !== undefined && appTypes !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>appTypes, 'app_types');
-        }
-        if (contentType !== undefined && contentType !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>contentType, 'content_type');
-        }
-        if (source !== undefined && source !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>source, 'source');
-        }
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>startDate, 'start_date');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>endDate, 'end_date');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>sortBy, 'sort_by');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>fromClaimedContent, 'from_claimed_content');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>pinFormat, 'pin_format');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>appTypes, 'app_types');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>contentType, 'content_type');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>source, 'source');
         if (metricTypes) {
             localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
                 [...metricTypes].join(COLLECTION_FORMATS['csv']), 'metric_types');
         }
-        if (numOfPins !== undefined && numOfPins !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>numOfPins, 'num_of_pins');
-        }
-        if (createdInLastNDays !== undefined && createdInLastNDays !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>createdInLastNDays, 'created_in_last_n_days');
-        }
-        if (adAccountId !== undefined && adAccountId !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>adAccountId, 'ad_account_id');
-        }
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>numOfPins, 'num_of_pins');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>createdInLastNDays, 'created_in_last_n_days');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>adAccountId, 'ad_account_id');
 
         let localVarHeaders = this.defaultHeaders;
 
-        let localVarCredential: string | undefined;
-        // authentication (pinterest_oauth2) required
-        localVarCredential = this.configuration.lookupCredential('pinterest_oauth2');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
-
         // authentication (client_credentials) required
-        localVarCredential = this.configuration.lookupCredential('client_credentials');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
+        localVarHeaders = this.configuration.addCredentialToHeaders('client_credentials', 'Authorization', localVarHeaders, 'Bearer ');
 
-        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
-        if (localVarHttpHeaderAcceptSelected === undefined) {
-            // to determine the Accept header
-            const httpHeaderAccepts: string[] = [
-                'application/json'
-            ];
-            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        }
+        // authentication (pinterest_oauth2) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'application/json'
+        ]);
         if (localVarHttpHeaderAcceptSelected !== undefined) {
             localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
         }
 
-        let localVarHttpContext: HttpContext | undefined = options && options.context;
-        if (localVarHttpContext === undefined) {
-            localVarHttpContext = new HttpContext();
-        }
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
 
-        let localVarTransferCache: boolean | undefined = options && options.transferCache;
-        if (localVarTransferCache === undefined) {
-            localVarTransferCache = true;
-        }
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
 
 
         let responseType_: 'text' | 'json' | 'blob' = 'json';
@@ -980,51 +714,29 @@ export class UserAccountService {
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        if (bookmark !== undefined && bookmark !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>bookmark, 'bookmark');
-        }
-        if (pageSize !== undefined && pageSize !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>pageSize, 'page_size');
-        }
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>bookmark, 'bookmark');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>pageSize, 'page_size');
 
         let localVarHeaders = this.defaultHeaders;
 
-        let localVarCredential: string | undefined;
-        // authentication (pinterest_oauth2) required
-        localVarCredential = this.configuration.lookupCredential('pinterest_oauth2');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
-
         // authentication (client_credentials) required
-        localVarCredential = this.configuration.lookupCredential('client_credentials');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
+        localVarHeaders = this.configuration.addCredentialToHeaders('client_credentials', 'Authorization', localVarHeaders, 'Bearer ');
 
-        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
-        if (localVarHttpHeaderAcceptSelected === undefined) {
-            // to determine the Accept header
-            const httpHeaderAccepts: string[] = [
-                'application/json'
-            ];
-            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        }
+        // authentication (pinterest_oauth2) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'application/json'
+        ]);
         if (localVarHttpHeaderAcceptSelected !== undefined) {
             localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
         }
 
-        let localVarHttpContext: HttpContext | undefined = options && options.context;
-        if (localVarHttpContext === undefined) {
-            localVarHttpContext = new HttpContext();
-        }
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
 
-        let localVarTransferCache: boolean | undefined = options && options.transferCache;
-        if (localVarTransferCache === undefined) {
-            localVarTransferCache = true;
-        }
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
 
 
         let responseType_: 'text' | 'json' | 'blob' = 'json';
@@ -1066,47 +778,27 @@ export class UserAccountService {
     public userAccountGet(adAccountId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        if (adAccountId !== undefined && adAccountId !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>adAccountId, 'ad_account_id');
-        }
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>adAccountId, 'ad_account_id');
 
         let localVarHeaders = this.defaultHeaders;
 
-        let localVarCredential: string | undefined;
-        // authentication (pinterest_oauth2) required
-        localVarCredential = this.configuration.lookupCredential('pinterest_oauth2');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
-
         // authentication (client_credentials) required
-        localVarCredential = this.configuration.lookupCredential('client_credentials');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
+        localVarHeaders = this.configuration.addCredentialToHeaders('client_credentials', 'Authorization', localVarHeaders, 'Bearer ');
 
-        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
-        if (localVarHttpHeaderAcceptSelected === undefined) {
-            // to determine the Accept header
-            const httpHeaderAccepts: string[] = [
-                'application/json'
-            ];
-            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        }
+        // authentication (pinterest_oauth2) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'application/json'
+        ]);
         if (localVarHttpHeaderAcceptSelected !== undefined) {
             localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
         }
 
-        let localVarHttpContext: HttpContext | undefined = options && options.context;
-        if (localVarHttpContext === undefined) {
-            localVarHttpContext = new HttpContext();
-        }
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
 
-        let localVarTransferCache: boolean | undefined = options && options.transferCache;
-        if (localVarTransferCache === undefined) {
-            localVarTransferCache = true;
-        }
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
 
 
         let responseType_: 'text' | 'json' | 'blob' = 'json';
@@ -1152,63 +844,35 @@ export class UserAccountService {
     public userFollowingGet(bookmark?: string, pageSize?: number, feedType?: UserFollowingFeedType, explicitFollowing?: boolean, adAccountId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        if (bookmark !== undefined && bookmark !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>bookmark, 'bookmark');
-        }
-        if (pageSize !== undefined && pageSize !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>pageSize, 'page_size');
-        }
-        if (feedType !== undefined && feedType !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>feedType, 'feed_type');
-        }
-        if (explicitFollowing !== undefined && explicitFollowing !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>explicitFollowing, 'explicit_following');
-        }
-        if (adAccountId !== undefined && adAccountId !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>adAccountId, 'ad_account_id');
-        }
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>bookmark, 'bookmark');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>pageSize, 'page_size');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>feedType, 'feed_type');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>explicitFollowing, 'explicit_following');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>adAccountId, 'ad_account_id');
 
         let localVarHeaders = this.defaultHeaders;
 
-        let localVarCredential: string | undefined;
-        // authentication (pinterest_oauth2) required
-        localVarCredential = this.configuration.lookupCredential('pinterest_oauth2');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
-
         // authentication (client_credentials) required
-        localVarCredential = this.configuration.lookupCredential('client_credentials');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
+        localVarHeaders = this.configuration.addCredentialToHeaders('client_credentials', 'Authorization', localVarHeaders, 'Bearer ');
 
-        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
-        if (localVarHttpHeaderAcceptSelected === undefined) {
-            // to determine the Accept header
-            const httpHeaderAccepts: string[] = [
-                'application/json'
-            ];
-            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        }
+        // authentication (pinterest_oauth2) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'application/json'
+        ]);
         if (localVarHttpHeaderAcceptSelected !== undefined) {
             localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
         }
 
-        let localVarHttpContext: HttpContext | undefined = options && options.context;
-        if (localVarHttpContext === undefined) {
-            localVarHttpContext = new HttpContext();
-        }
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
 
-        let localVarTransferCache: boolean | undefined = options && options.transferCache;
-        if (localVarTransferCache === undefined) {
-            localVarTransferCache = true;
-        }
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
 
 
         let responseType_: 'text' | 'json' | 'blob' = 'json';
@@ -1251,45 +915,26 @@ export class UserAccountService {
     public userWebsitesGet(bookmark?: string, pageSize?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        if (bookmark !== undefined && bookmark !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>bookmark, 'bookmark');
-        }
-        if (pageSize !== undefined && pageSize !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>pageSize, 'page_size');
-        }
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>bookmark, 'bookmark');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>pageSize, 'page_size');
 
         let localVarHeaders = this.defaultHeaders;
 
-        let localVarCredential: string | undefined;
         // authentication (pinterest_oauth2) required
-        localVarCredential = this.configuration.lookupCredential('pinterest_oauth2');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
+        localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
 
-        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
-        if (localVarHttpHeaderAcceptSelected === undefined) {
-            // to determine the Accept header
-            const httpHeaderAccepts: string[] = [
-                'application/json'
-            ];
-            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        }
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'application/json'
+        ]);
         if (localVarHttpHeaderAcceptSelected !== undefined) {
             localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
         }
 
-        let localVarHttpContext: HttpContext | undefined = options && options.context;
-        if (localVarHttpContext === undefined) {
-            localVarHttpContext = new HttpContext();
-        }
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
 
-        let localVarTransferCache: boolean | undefined = options && options.transferCache;
-        if (localVarTransferCache === undefined) {
-            localVarTransferCache = true;
-        }
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
 
 
         let responseType_: 'text' | 'json' | 'blob' = 'json';
@@ -1335,41 +980,24 @@ export class UserAccountService {
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        if (adAccountId !== undefined && adAccountId !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>adAccountId, 'ad_account_id');
-        }
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>adAccountId, 'ad_account_id');
 
         let localVarHeaders = this.defaultHeaders;
 
-        let localVarCredential: string | undefined;
         // authentication (pinterest_oauth2) required
-        localVarCredential = this.configuration.lookupCredential('pinterest_oauth2');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
+        localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
 
-        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
-        if (localVarHttpHeaderAcceptSelected === undefined) {
-            // to determine the Accept header
-            const httpHeaderAccepts: string[] = [
-                'application/json'
-            ];
-            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        }
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'application/json'
+        ]);
         if (localVarHttpHeaderAcceptSelected !== undefined) {
             localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
         }
 
-        let localVarHttpContext: HttpContext | undefined = options && options.context;
-        if (localVarHttpContext === undefined) {
-            localVarHttpContext = new HttpContext();
-        }
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
 
-        let localVarTransferCache: boolean | undefined = options && options.transferCache;
-        if (localVarTransferCache === undefined) {
-            localVarTransferCache = true;
-        }
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
 
 
         // to determine the Content-Type header
@@ -1421,47 +1049,27 @@ export class UserAccountService {
     public websiteVerificationGet(adAccountId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        if (adAccountId !== undefined && adAccountId !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>adAccountId, 'ad_account_id');
-        }
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>adAccountId, 'ad_account_id');
 
         let localVarHeaders = this.defaultHeaders;
 
-        let localVarCredential: string | undefined;
-        // authentication (pinterest_oauth2) required
-        localVarCredential = this.configuration.lookupCredential('pinterest_oauth2');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
-
         // authentication (client_credentials) required
-        localVarCredential = this.configuration.lookupCredential('client_credentials');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
+        localVarHeaders = this.configuration.addCredentialToHeaders('client_credentials', 'Authorization', localVarHeaders, 'Bearer ');
 
-        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
-        if (localVarHttpHeaderAcceptSelected === undefined) {
-            // to determine the Accept header
-            const httpHeaderAccepts: string[] = [
-                'application/json'
-            ];
-            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        }
+        // authentication (pinterest_oauth2) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'application/json'
+        ]);
         if (localVarHttpHeaderAcceptSelected !== undefined) {
             localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
         }
 
-        let localVarHttpContext: HttpContext | undefined = options && options.context;
-        if (localVarHttpContext === undefined) {
-            localVarHttpContext = new HttpContext();
-        }
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
 
-        let localVarTransferCache: boolean | undefined = options && options.transferCache;
-        if (localVarTransferCache === undefined) {
-            localVarTransferCache = true;
-        }
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
 
 
         let responseType_: 'text' | 'json' | 'blob' = 'json';

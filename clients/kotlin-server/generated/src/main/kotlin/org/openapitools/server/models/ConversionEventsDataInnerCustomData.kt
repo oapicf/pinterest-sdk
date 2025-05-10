@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.ConversionEventsDataInnerCustomDataContentsInner
 
+import kotlinx.serialization.Serializable
 /**
  * Object containing other custom data.
  * @param currency The ISO-4217 currency code. If not provided, we will default to the advertiser's currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.
@@ -28,6 +29,7 @@ import org.openapitools.server.models.ConversionEventsDataInnerCustomDataContent
  * @param optOutType Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"/docs/api-features/conversion-overview/\" target=\"_blank\">dev site</a> for specific opt_out_type set up.
  * @param np Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided.
  */
+@Serializable
 data class ConversionEventsDataInnerCustomData(
     /* The ISO-4217 currency code. If not provided, we will default to the advertiser's currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA. */
     val currency: kotlin.String? = null,
@@ -53,5 +55,5 @@ data class ConversionEventsDataInnerCustomData(
     val optOutType: kotlin.String? = null,
     /* Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided. */
     val np: kotlin.String? = null
-) 
+)
 

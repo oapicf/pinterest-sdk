@@ -177,11 +177,11 @@ export function CatalogsRetailProductGroupFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-  export function CatalogsRetailProductGroupToJSON(json: any): CatalogsRetailProductGroup {
-      return CatalogsRetailProductGroupToJSONTyped(json, false);
-  }
+export function CatalogsRetailProductGroupToJSON(json: any): CatalogsRetailProductGroup {
+    return CatalogsRetailProductGroupToJSONTyped(json, false);
+}
 
-  export function CatalogsRetailProductGroupToJSONTyped(value?: CatalogsRetailProductGroup | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsRetailProductGroupToJSONTyped(value?: CatalogsRetailProductGroup | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

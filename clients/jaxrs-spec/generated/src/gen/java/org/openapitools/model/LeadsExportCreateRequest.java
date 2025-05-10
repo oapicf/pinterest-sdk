@@ -15,11 +15,25 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("LeadsExportCreateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class LeadsExportCreateRequest   {
   private String startDate;
   private String endDate;
   private String adId;
+
+  public LeadsExportCreateRequest() {
+  }
+
+  @JsonCreator
+  public LeadsExportCreateRequest(
+    @JsonProperty(required = true, value = "start_date") String startDate,
+    @JsonProperty(required = true, value = "end_date") String endDate,
+    @JsonProperty(required = true, value = "ad_id") String adId
+  ) {
+    this.startDate = startDate;
+    this.endDate = endDate;
+    this.adId = adId;
+  }
 
   /**
    * Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
@@ -31,12 +45,12 @@ public class LeadsExportCreateRequest   {
 
   
   @ApiModelProperty(example = "2020-12-20", required = true, value = "Export leads collected on and after start date (UTC). Format: YYYY-MM-DD")
-  @JsonProperty("start_date")
+  @JsonProperty(required = true, value = "start_date")
   @NotNull  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")public String getStartDate() {
     return startDate;
   }
 
-  @JsonProperty("start_date")
+  @JsonProperty(required = true, value = "start_date")
   public void setStartDate(String startDate) {
     this.startDate = startDate;
   }
@@ -51,12 +65,12 @@ public class LeadsExportCreateRequest   {
 
   
   @ApiModelProperty(example = "2020-12-20", required = true, value = "Export leads collected on and before end date (UTC). Format: YYYY-MM-DD")
-  @JsonProperty("end_date")
+  @JsonProperty(required = true, value = "end_date")
   @NotNull  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")public String getEndDate() {
     return endDate;
   }
 
-  @JsonProperty("end_date")
+  @JsonProperty(required = true, value = "end_date")
   public void setEndDate(String endDate) {
     this.endDate = endDate;
   }
@@ -71,12 +85,12 @@ public class LeadsExportCreateRequest   {
 
   
   @ApiModelProperty(example = "687201361754", required = true, value = "ID for the ad collecting leads")
-  @JsonProperty("ad_id")
+  @JsonProperty(required = true, value = "ad_id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getAdId() {
     return adId;
   }
 
-  @JsonProperty("ad_id")
+  @JsonProperty(required = true, value = "ad_id")
   public void setAdId(String adId) {
     this.adId = adId;
   }

@@ -22,7 +22,7 @@ pinterest_rest_api_ad_group_audience_sizing_request_CREATIVETYPES_e ad_group_aud
     return 0;
 }
 
-ad_group_audience_sizing_request_t *ad_group_audience_sizing_request_create(
+static ad_group_audience_sizing_request_t *ad_group_audience_sizing_request_create_internal(
     int auto_targeting_enabled,
     placement_group_type_t *placement_group,
     list_t *creative_types,
@@ -41,12 +41,34 @@ ad_group_audience_sizing_request_t *ad_group_audience_sizing_request_create(
     ad_group_audience_sizing_request_local_var->product_group_ids = product_group_ids;
     ad_group_audience_sizing_request_local_var->keywords = keywords;
 
+    ad_group_audience_sizing_request_local_var->_library_owned = 1;
     return ad_group_audience_sizing_request_local_var;
 }
 
+__attribute__((deprecated)) ad_group_audience_sizing_request_t *ad_group_audience_sizing_request_create(
+    int auto_targeting_enabled,
+    placement_group_type_t *placement_group,
+    list_t *creative_types,
+    targeting_spec_t *targeting_spec,
+    list_t *product_group_ids,
+    list_t *keywords
+    ) {
+    return ad_group_audience_sizing_request_create_internal (
+        auto_targeting_enabled,
+        placement_group,
+        creative_types,
+        targeting_spec,
+        product_group_ids,
+        keywords
+        );
+}
 
 void ad_group_audience_sizing_request_free(ad_group_audience_sizing_request_t *ad_group_audience_sizing_request) {
     if(NULL == ad_group_audience_sizing_request){
+        return ;
+    }
+    if(ad_group_audience_sizing_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ad_group_audience_sizing_request_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -115,7 +137,7 @@ cJSON *ad_group_audience_sizing_request_convertToJSON(ad_group_audience_sizing_r
 
     listEntry_t *creative_typesListEntry;
     list_ForEach(creative_typesListEntry, ad_group_audience_sizing_request->creative_types) {
-    if(cJSON_AddStringToObject(creative_types, "", (char*)creative_typesListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(creative_types, "", creative_typesListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -145,7 +167,7 @@ cJSON *ad_group_audience_sizing_request_convertToJSON(ad_group_audience_sizing_r
 
     listEntry_t *product_group_idsListEntry;
     list_ForEach(product_group_idsListEntry, ad_group_audience_sizing_request->product_group_ids) {
-    if(cJSON_AddStringToObject(product_group_ids, "", (char*)product_group_idsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(product_group_ids, "", product_group_idsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -201,6 +223,9 @@ ad_group_audience_sizing_request_t *ad_group_audience_sizing_request_parseFromJS
 
     // ad_group_audience_sizing_request->auto_targeting_enabled
     cJSON *auto_targeting_enabled = cJSON_GetObjectItemCaseSensitive(ad_group_audience_sizing_requestJSON, "auto_targeting_enabled");
+    if (cJSON_IsNull(auto_targeting_enabled)) {
+        auto_targeting_enabled = NULL;
+    }
     if (auto_targeting_enabled) { 
     if(!cJSON_IsBool(auto_targeting_enabled))
     {
@@ -210,12 +235,18 @@ ad_group_audience_sizing_request_t *ad_group_audience_sizing_request_parseFromJS
 
     // ad_group_audience_sizing_request->placement_group
     cJSON *placement_group = cJSON_GetObjectItemCaseSensitive(ad_group_audience_sizing_requestJSON, "placement_group");
+    if (cJSON_IsNull(placement_group)) {
+        placement_group = NULL;
+    }
     if (placement_group) { 
     placement_group_local_nonprim = placement_group_type_parseFromJSON(placement_group); //custom
     }
 
     // ad_group_audience_sizing_request->creative_types
     cJSON *creative_types = cJSON_GetObjectItemCaseSensitive(ad_group_audience_sizing_requestJSON, "creative_types");
+    if (cJSON_IsNull(creative_types)) {
+        creative_types = NULL;
+    }
     if (creative_types) { 
     cJSON *creative_types_local = NULL;
     if(!cJSON_IsArray(creative_types)) {
@@ -235,12 +266,18 @@ ad_group_audience_sizing_request_t *ad_group_audience_sizing_request_parseFromJS
 
     // ad_group_audience_sizing_request->targeting_spec
     cJSON *targeting_spec = cJSON_GetObjectItemCaseSensitive(ad_group_audience_sizing_requestJSON, "targeting_spec");
+    if (cJSON_IsNull(targeting_spec)) {
+        targeting_spec = NULL;
+    }
     if (targeting_spec) { 
     targeting_spec_local_nonprim = targeting_spec_parseFromJSON(targeting_spec); //nonprimitive
     }
 
     // ad_group_audience_sizing_request->product_group_ids
     cJSON *product_group_ids = cJSON_GetObjectItemCaseSensitive(ad_group_audience_sizing_requestJSON, "product_group_ids");
+    if (cJSON_IsNull(product_group_ids)) {
+        product_group_ids = NULL;
+    }
     if (product_group_ids) { 
     cJSON *product_group_ids_local = NULL;
     if(!cJSON_IsArray(product_group_ids)) {
@@ -260,6 +297,9 @@ ad_group_audience_sizing_request_t *ad_group_audience_sizing_request_parseFromJS
 
     // ad_group_audience_sizing_request->keywords
     cJSON *keywords = cJSON_GetObjectItemCaseSensitive(ad_group_audience_sizing_requestJSON, "keywords");
+    if (cJSON_IsNull(keywords)) {
+        keywords = NULL;
+    }
     if (keywords) { 
     cJSON *keywords_local_nonprimitive = NULL;
     if(!cJSON_IsArray(keywords)){
@@ -280,7 +320,7 @@ ad_group_audience_sizing_request_t *ad_group_audience_sizing_request_parseFromJS
     }
 
 
-    ad_group_audience_sizing_request_local_var = ad_group_audience_sizing_request_create (
+    ad_group_audience_sizing_request_local_var = ad_group_audience_sizing_request_create_internal (
         auto_targeting_enabled ? auto_targeting_enabled->valueint : 0,
         placement_group ? placement_group_local_nonprim : NULL,
         creative_types ? creative_typesList : NULL,

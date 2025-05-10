@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.IntegrationLogsInvalidLogResponseRejectedLogsInner
 
+import kotlinx.serialization.Serializable
 /**
  * Schema describing the response when a log has invalid fields.
  * @param rejectedLogs 
  */
+@Serializable
 data class IntegrationLogsInvalidLogResponse(
     val rejectedLogs: kotlin.collections.List<IntegrationLogsInvalidLogResponseRejectedLogsInner>? = null
-) 
+)
 

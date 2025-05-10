@@ -21,10 +21,20 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("get_business_partners_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class GetBusinessPartners200Response   {
   private @Valid List<@Valid UserBusinessRoleBinding> items = new ArrayList<>();
   private String bookmark;
+
+  public GetBusinessPartners200Response() {
+  }
+
+  @JsonCreator
+  public GetBusinessPartners200Response(
+    @JsonProperty(required = true, value = "items") List<@Valid UserBusinessRoleBinding> items
+  ) {
+    this.items = items;
+  }
 
   /**
    * List of business partners.
@@ -36,12 +46,12 @@ public class GetBusinessPartners200Response   {
 
   
   @ApiModelProperty(required = true, value = "List of business partners.")
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   @NotNull @Valid public List<@Valid UserBusinessRoleBinding> getItems() {
     return items;
   }
 
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   public void setItems(List<@Valid UserBusinessRoleBinding> items) {
     this.items = items;
   }

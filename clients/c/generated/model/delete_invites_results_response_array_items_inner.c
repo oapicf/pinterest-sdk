@@ -5,7 +5,7 @@
 
 
 
-delete_invites_results_response_array_items_inner_t *delete_invites_results_response_array_items_inner_create(
+static delete_invites_results_response_array_items_inner_t *delete_invites_results_response_array_items_inner_create_internal(
     delete_invites_results_response_array_items_inner_exception_t *exception,
     base_invite_data_response_t *invite
     ) {
@@ -16,12 +16,26 @@ delete_invites_results_response_array_items_inner_t *delete_invites_results_resp
     delete_invites_results_response_array_items_inner_local_var->exception = exception;
     delete_invites_results_response_array_items_inner_local_var->invite = invite;
 
+    delete_invites_results_response_array_items_inner_local_var->_library_owned = 1;
     return delete_invites_results_response_array_items_inner_local_var;
 }
 
+__attribute__((deprecated)) delete_invites_results_response_array_items_inner_t *delete_invites_results_response_array_items_inner_create(
+    delete_invites_results_response_array_items_inner_exception_t *exception,
+    base_invite_data_response_t *invite
+    ) {
+    return delete_invites_results_response_array_items_inner_create_internal (
+        exception,
+        invite
+        );
+}
 
 void delete_invites_results_response_array_items_inner_free(delete_invites_results_response_array_items_inner_t *delete_invites_results_response_array_items_inner) {
     if(NULL == delete_invites_results_response_array_items_inner){
+        return ;
+    }
+    if(delete_invites_results_response_array_items_inner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "delete_invites_results_response_array_items_inner_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -84,18 +98,24 @@ delete_invites_results_response_array_items_inner_t *delete_invites_results_resp
 
     // delete_invites_results_response_array_items_inner->exception
     cJSON *exception = cJSON_GetObjectItemCaseSensitive(delete_invites_results_response_array_items_innerJSON, "exception");
+    if (cJSON_IsNull(exception)) {
+        exception = NULL;
+    }
     if (exception) { 
     exception_local_nonprim = delete_invites_results_response_array_items_inner_exception_parseFromJSON(exception); //nonprimitive
     }
 
     // delete_invites_results_response_array_items_inner->invite
     cJSON *invite = cJSON_GetObjectItemCaseSensitive(delete_invites_results_response_array_items_innerJSON, "invite");
+    if (cJSON_IsNull(invite)) {
+        invite = NULL;
+    }
     if (invite) { 
     invite_local_nonprim = base_invite_data_response_parseFromJSON(invite); //nonprimitive
     }
 
 
-    delete_invites_results_response_array_items_inner_local_var = delete_invites_results_response_array_items_inner_create (
+    delete_invites_results_response_array_items_inner_local_var = delete_invites_results_response_array_items_inner_create_internal (
         exception ? exception_local_nonprim : NULL,
         invite ? invite_local_nonprim : NULL
         );

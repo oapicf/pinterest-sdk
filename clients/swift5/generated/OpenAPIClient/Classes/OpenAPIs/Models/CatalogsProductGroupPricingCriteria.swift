@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct CatalogsProductGroupPricingCriteria: Codable, JSONEncodable, Hashable {
 
-    static let valuesRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
+    public static let valuesRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
     public var inclusion: Bool? = true
     public var values: Double
     public var negated: Bool? = false

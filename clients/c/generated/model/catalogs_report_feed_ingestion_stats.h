@@ -43,9 +43,10 @@ typedef struct catalogs_report_feed_ingestion_stats_t {
     int occurrences; //numeric
     pinterest_rest_api_catalogs_report_feed_ingestion_stats_SEVERITY_e severity; //enum
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_report_feed_ingestion_stats_t;
 
-catalogs_report_feed_ingestion_stats_t *catalogs_report_feed_ingestion_stats_create(
+__attribute__((deprecated)) catalogs_report_feed_ingestion_stats_t *catalogs_report_feed_ingestion_stats_create(
     pinterest_rest_api_catalogs_report_feed_ingestion_stats_REPORTTYPE_e report_type,
     char *catalog_id,
     int code,

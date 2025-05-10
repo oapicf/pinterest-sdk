@@ -48,32 +48,37 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Metadata for the invite/request.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BaseInviteDataResponseInviteData {
   public static final String SERIALIZED_NAME_INVITE_EXPIRATION = "invite_expiration";
   @SerializedName(SERIALIZED_NAME_INVITE_EXPIRATION)
+  @javax.annotation.Nullable
   private Integer inviteExpiration;
 
   public static final String SERIALIZED_NAME_INVITE_STATUS = "invite_status";
   @SerializedName(SERIALIZED_NAME_INVITE_STATUS)
+  @javax.annotation.Nullable
   private String inviteStatus;
 
   public static final String SERIALIZED_NAME_INVITE_TYPE = "invite_type";
   @SerializedName(SERIALIZED_NAME_INVITE_TYPE)
+  @javax.annotation.Nullable
   private String inviteType;
 
   public static final String SERIALIZED_NAME_LAST_UPDATED_TIME = "last_updated_time";
   @SerializedName(SERIALIZED_NAME_LAST_UPDATED_TIME)
+  @javax.annotation.Nullable
   private Integer lastUpdatedTime;
 
   public static final String SERIALIZED_NAME_SENT_AT = "sent_at";
   @SerializedName(SERIALIZED_NAME_SENT_AT)
+  @javax.annotation.Nullable
   private Integer sentAt;
 
   public BaseInviteDataResponseInviteData() {
   }
 
-  public BaseInviteDataResponseInviteData inviteExpiration(Integer inviteExpiration) {
+  public BaseInviteDataResponseInviteData inviteExpiration(@javax.annotation.Nullable Integer inviteExpiration) {
     this.inviteExpiration = inviteExpiration;
     return this;
   }
@@ -87,12 +92,12 @@ public class BaseInviteDataResponseInviteData {
     return inviteExpiration;
   }
 
-  public void setInviteExpiration(Integer inviteExpiration) {
+  public void setInviteExpiration(@javax.annotation.Nullable Integer inviteExpiration) {
     this.inviteExpiration = inviteExpiration;
   }
 
 
-  public BaseInviteDataResponseInviteData inviteStatus(String inviteStatus) {
+  public BaseInviteDataResponseInviteData inviteStatus(@javax.annotation.Nullable String inviteStatus) {
     this.inviteStatus = inviteStatus;
     return this;
   }
@@ -106,12 +111,12 @@ public class BaseInviteDataResponseInviteData {
     return inviteStatus;
   }
 
-  public void setInviteStatus(String inviteStatus) {
+  public void setInviteStatus(@javax.annotation.Nullable String inviteStatus) {
     this.inviteStatus = inviteStatus;
   }
 
 
-  public BaseInviteDataResponseInviteData inviteType(String inviteType) {
+  public BaseInviteDataResponseInviteData inviteType(@javax.annotation.Nullable String inviteType) {
     this.inviteType = inviteType;
     return this;
   }
@@ -125,12 +130,12 @@ public class BaseInviteDataResponseInviteData {
     return inviteType;
   }
 
-  public void setInviteType(String inviteType) {
+  public void setInviteType(@javax.annotation.Nullable String inviteType) {
     this.inviteType = inviteType;
   }
 
 
-  public BaseInviteDataResponseInviteData lastUpdatedTime(Integer lastUpdatedTime) {
+  public BaseInviteDataResponseInviteData lastUpdatedTime(@javax.annotation.Nullable Integer lastUpdatedTime) {
     this.lastUpdatedTime = lastUpdatedTime;
     return this;
   }
@@ -144,12 +149,12 @@ public class BaseInviteDataResponseInviteData {
     return lastUpdatedTime;
   }
 
-  public void setLastUpdatedTime(Integer lastUpdatedTime) {
+  public void setLastUpdatedTime(@javax.annotation.Nullable Integer lastUpdatedTime) {
     this.lastUpdatedTime = lastUpdatedTime;
   }
 
 
-  public BaseInviteDataResponseInviteData sentAt(Integer sentAt) {
+  public BaseInviteDataResponseInviteData sentAt(@javax.annotation.Nullable Integer sentAt) {
     this.sentAt = sentAt;
     return this;
   }
@@ -163,7 +168,7 @@ public class BaseInviteDataResponseInviteData {
     return sentAt;
   }
 
-  public void setSentAt(Integer sentAt) {
+  public void setSentAt(@javax.annotation.Nullable Integer sentAt) {
     this.sentAt = sentAt;
   }
 

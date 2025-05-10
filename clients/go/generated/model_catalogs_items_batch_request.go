@@ -13,8 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // CatalogsItemsBatchRequest - Request object of catalogs items batch
@@ -215,6 +215,32 @@ func (obj *CatalogsItemsBatchRequest) GetActualInstance() (interface{}) {
 
 	if obj.CatalogsItemsUpsertBatchRequest != nil {
 		return obj.CatalogsItemsUpsertBatchRequest
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj CatalogsItemsBatchRequest) GetActualInstanceValue() (interface{}) {
+	if obj.CatalogsItemsCreateBatchRequest != nil {
+		return *obj.CatalogsItemsCreateBatchRequest
+	}
+
+	if obj.CatalogsItemsDeleteBatchRequest != nil {
+		return *obj.CatalogsItemsDeleteBatchRequest
+	}
+
+	if obj.CatalogsItemsDeleteDiscontinuedBatchRequest != nil {
+		return *obj.CatalogsItemsDeleteDiscontinuedBatchRequest
+	}
+
+	if obj.CatalogsItemsUpdateBatchRequest != nil {
+		return *obj.CatalogsItemsUpdateBatchRequest
+	}
+
+	if obj.CatalogsItemsUpsertBatchRequest != nil {
+		return *obj.CatalogsItemsUpsertBatchRequest
 	}
 
 	// all schemas are nil

@@ -52,15 +52,19 @@ export function CatalogsReportStatsFromJSONTyped(json: any, ignoreDiscriminator:
     }
 }
 
-export function CatalogsReportStatsToJSON(value?: CatalogsReportStats | null): any {
+export function CatalogsReportStatsToJSON(json: any): any {
+    return CatalogsReportStatsToJSONTyped(json, false);
+}
+
+export function CatalogsReportStatsToJSONTyped(value?: CatalogsReportStats | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
     switch (value['reportType']) {
         case 'DISTRIBUTION_ISSUES':
-            return CatalogsReportDistributionStatsToJSON(value);
+            return Object.assign({}, CatalogsReportDistributionStatsToJSON(value), { reportType: 'DISTRIBUTION_ISSUES' } as const);
         case 'FEED_INGESTION_ISSUES':
-            return CatalogsReportFeedIngestionStatsToJSON(value);
+            return Object.assign({}, CatalogsReportFeedIngestionStatsToJSON(value), { reportType: 'FEED_INGESTION_ISSUES' } as const);
         default:
             throw new Error(`No variant of CatalogsReportStats exists with 'reportType=${value['reportType']}'`);
     }

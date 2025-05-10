@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param id The id of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
@@ -21,6 +22,7 @@ package org.openapitools.server.models
  * @param itemCategory The category of a product.
  * @param itemBrand The brand of a product.
  */
+@Serializable
 data class ConversionEventsDataInnerCustomDataContentsInner(
     /* The id of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section). */
     val id: kotlin.String? = null,
@@ -34,5 +36,5 @@ data class ConversionEventsDataInnerCustomDataContentsInner(
     val itemCategory: kotlin.String? = null,
     /* The brand of a product. */
     val itemBrand: kotlin.String? = null
-) 
+)
 

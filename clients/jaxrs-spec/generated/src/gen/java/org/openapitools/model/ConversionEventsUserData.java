@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Object containing customer information data. Note, It is required at least one of 1) em, 2) hashed_maids or 3) pair client_ip_address + client_user_agent.")
 @JsonTypeName("ConversionEventsUserData")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConversionEventsUserData   {
   private @Valid List<String> ph = new ArrayList<>();
   private @Valid List<String> ge = new ArrayList<>();
@@ -42,6 +42,22 @@ public class ConversionEventsUserData   {
   private @Valid List<String> hashedMaids = new ArrayList<>();
   private String clientIpAddress;
   private String clientUserAgent;
+
+  public ConversionEventsUserData() {
+  }
+
+  @JsonCreator
+  public ConversionEventsUserData(
+    @JsonProperty(required = true, value = "em") List<String> em,
+    @JsonProperty(required = true, value = "hashed_maids") List<String> hashedMaids,
+    @JsonProperty(required = true, value = "client_ip_address") String clientIpAddress,
+    @JsonProperty(required = true, value = "client_user_agent") String clientUserAgent
+  ) {
+    this.em = em;
+    this.hashedMaids = hashedMaids;
+    this.clientIpAddress = clientIpAddress;
+    this.clientUserAgent = clientUserAgent;
+  }
 
   /**
    * Sha256 hashes of user&#39;s phone numbers, only digits with country code, area code, and number. Remove any symbols, letters, spaces and leading zeros. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
@@ -453,12 +469,12 @@ public class ConversionEventsUserData   {
 
   
   @ApiModelProperty(example = "[411e44ce1261728ffd2c0686e44e3fffe413c0e2c5adc498bc7da883d476b9c8, 09831ea51bd1b7b32a836683a00a9ccaf3d05f59499f42d9883412ed79289969]", required = true, value = "Sha256 hashes of lowercase version of user's email addresses. Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.")
-  @JsonProperty("em")
+  @JsonProperty(required = true, value = "em")
   @NotNull public List<String> getEm() {
     return em;
   }
 
-  @JsonProperty("em")
+  @JsonProperty(required = true, value = "em")
   public void setEm(List<String> em) {
     this.em = em;
   }
@@ -489,12 +505,12 @@ public class ConversionEventsUserData   {
 
   
   @ApiModelProperty(example = "[0192518eb84137ccfe82c8b6322d29631dae7e28ed9d0f6dd5f245d73a58c5f1, 837b850ac46d62b2272a71de73c27801ff011ac1e36c5432620c8755cf90db46]", required = true, value = "Sha256 hashes of user's \"Google Advertising IDs\" (GAIDs) or \"Apple's Identifier for Advertisers\" (IDFAs). Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.")
-  @JsonProperty("hashed_maids")
+  @JsonProperty(required = true, value = "hashed_maids")
   @NotNull public List<String> getHashedMaids() {
     return hashedMaids;
   }
 
-  @JsonProperty("hashed_maids")
+  @JsonProperty(required = true, value = "hashed_maids")
   public void setHashedMaids(List<String> hashedMaids) {
     this.hashedMaids = hashedMaids;
   }
@@ -525,12 +541,12 @@ public class ConversionEventsUserData   {
 
   
   @ApiModelProperty(example = "216.3.128.12", required = true, value = "The user's IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.")
-  @JsonProperty("client_ip_address")
+  @JsonProperty(required = true, value = "client_ip_address")
   @NotNull public String getClientIpAddress() {
     return clientIpAddress;
   }
 
-  @JsonProperty("client_ip_address")
+  @JsonProperty(required = true, value = "client_ip_address")
   public void setClientIpAddress(String clientIpAddress) {
     this.clientIpAddress = clientIpAddress;
   }
@@ -545,12 +561,12 @@ public class ConversionEventsUserData   {
 
   
   @ApiModelProperty(example = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36", required = true, value = "The user agent string of the user's web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.")
-  @JsonProperty("client_user_agent")
+  @JsonProperty(required = true, value = "client_user_agent")
   @NotNull public String getClientUserAgent() {
     return clientUserAgent;
   }
 
-  @JsonProperty("client_user_agent")
+  @JsonProperty(required = true, value = "client_user_agent")
   public void setClientUserAgent(String clientUserAgent) {
     this.clientUserAgent = clientUserAgent;
   }

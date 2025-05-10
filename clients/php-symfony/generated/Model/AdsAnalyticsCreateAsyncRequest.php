@@ -117,7 +117,7 @@ class AdsAnalyticsCreateAsyncRequest
     * @Accessor(getter="getSerializedConversionReportTime", setter="setDeserializedConversionReportTime")
     * @Type("string")
     */
-    protected ?ConversionReportTimeType $conversionReportTime = 'TIME_OF_AD_ACTION';
+    protected ?ConversionReportTimeType $conversionReportTime = self::OpenAPI\Server\Model\ConversionReportTimeType_TIME_OF_AD_ACTION;
 
     /**
      * List of types of attribution for the conversion report
@@ -340,7 +340,7 @@ class AdsAnalyticsCreateAsyncRequest
     * @Accessor(getter="getSerializedReportFormat", setter="setDeserializedReportFormat")
     * @Type("string")
     */
-    protected ?DataOutputFormat $reportFormat = 'JSON';
+    protected ?DataOutputFormat $reportFormat = self::OpenAPI\Server\Model\DataOutputFormat_JSON;
 
     /**
      * Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
@@ -349,7 +349,7 @@ class AdsAnalyticsCreateAsyncRequest
      * @SerializedName("primary_sort")
      * @Type("string")
     */
-    #[Assert\Choice(["BY_ID", "BY_DATE"])]
+    #[Assert\Choice(['BY_ID', 'BY_DATE'])]
     #[Assert\Type("string")]
     protected ?string $primarySort = null;
 
@@ -381,7 +381,7 @@ class AdsAnalyticsCreateAsyncRequest
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->startDate = array_key_exists('startDate', $data) ? $data['startDate'] : $this->startDate;

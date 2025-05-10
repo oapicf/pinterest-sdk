@@ -22,11 +22,25 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Object declaring an asset role update to an invite.")
 @JsonTypeName("CreateAssetInvitesRequestItem")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CreateAssetInvitesRequestItem   {
   private String inviteId;
   private InviteType inviteType;
   private @Valid Map<String, List<Permissions>> assetIdToPermissions = new HashMap<>();
+
+  public CreateAssetInvitesRequestItem() {
+  }
+
+  @JsonCreator
+  public CreateAssetInvitesRequestItem(
+    @JsonProperty(required = true, value = "invite_id") String inviteId,
+    @JsonProperty(required = true, value = "invite_type") InviteType inviteType,
+    @JsonProperty(required = true, value = "asset_id_to_permissions") Map<String, List<Permissions>> assetIdToPermissions
+  ) {
+    this.inviteId = inviteId;
+    this.inviteType = inviteType;
+    this.assetIdToPermissions = assetIdToPermissions;
+  }
 
   /**
    * Unique identifier of an invite.
@@ -38,12 +52,12 @@ public class CreateAssetInvitesRequestItem   {
 
   
   @ApiModelProperty(example = "1234567890123", required = true, value = "Unique identifier of an invite.")
-  @JsonProperty("invite_id")
+  @JsonProperty(required = true, value = "invite_id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getInviteId() {
     return inviteId;
   }
 
-  @JsonProperty("invite_id")
+  @JsonProperty(required = true, value = "invite_id")
   public void setInviteId(String inviteId) {
     this.inviteId = inviteId;
   }
@@ -57,12 +71,12 @@ public class CreateAssetInvitesRequestItem   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("invite_type")
+  @JsonProperty(required = true, value = "invite_type")
   @NotNull public InviteType getInviteType() {
     return inviteType;
   }
 
-  @JsonProperty("invite_type")
+  @JsonProperty(required = true, value = "invite_type")
   public void setInviteType(InviteType inviteType) {
     this.inviteType = inviteType;
   }
@@ -77,12 +91,12 @@ public class CreateAssetInvitesRequestItem   {
 
   
   @ApiModelProperty(example = "{\"549760723247\":[\"ANALYST\"],\"549760723248\":[\"ANALYST\",\"ADMIN\"],\"809944451643622187\":[\"PROFILE_PUBLISHER\"]}", required = true, value = "An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. ")
-  @JsonProperty("asset_id_to_permissions")
+  @JsonProperty(required = true, value = "asset_id_to_permissions")
   @NotNull @Valid  @Size(min=1)public Map<String, List<Permissions>> getAssetIdToPermissions() {
     return assetIdToPermissions;
   }
 
-  @JsonProperty("asset_id_to_permissions")
+  @JsonProperty(required = true, value = "asset_id_to_permissions")
   public void setAssetIdToPermissions(Map<String, List<Permissions>> assetIdToPermissions) {
     this.assetIdToPermissions = assetIdToPermissions;
   }

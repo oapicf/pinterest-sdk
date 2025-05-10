@@ -5,7 +5,7 @@
 
 
 
-lead_form_common_policy_links_inner_t *lead_form_common_policy_links_inner_create(
+static lead_form_common_policy_links_inner_t *lead_form_common_policy_links_inner_create_internal(
     char *label,
     char *link
     ) {
@@ -16,12 +16,26 @@ lead_form_common_policy_links_inner_t *lead_form_common_policy_links_inner_creat
     lead_form_common_policy_links_inner_local_var->label = label;
     lead_form_common_policy_links_inner_local_var->link = link;
 
+    lead_form_common_policy_links_inner_local_var->_library_owned = 1;
     return lead_form_common_policy_links_inner_local_var;
 }
 
+__attribute__((deprecated)) lead_form_common_policy_links_inner_t *lead_form_common_policy_links_inner_create(
+    char *label,
+    char *link
+    ) {
+    return lead_form_common_policy_links_inner_create_internal (
+        label,
+        link
+        );
+}
 
 void lead_form_common_policy_links_inner_free(lead_form_common_policy_links_inner_t *lead_form_common_policy_links_inner) {
     if(NULL == lead_form_common_policy_links_inner){
+        return ;
+    }
+    if(lead_form_common_policy_links_inner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "lead_form_common_policy_links_inner_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -68,6 +82,9 @@ lead_form_common_policy_links_inner_t *lead_form_common_policy_links_inner_parse
 
     // lead_form_common_policy_links_inner->label
     cJSON *label = cJSON_GetObjectItemCaseSensitive(lead_form_common_policy_links_innerJSON, "label");
+    if (cJSON_IsNull(label)) {
+        label = NULL;
+    }
     if (label) { 
     if(!cJSON_IsString(label) && !cJSON_IsNull(label))
     {
@@ -77,6 +94,9 @@ lead_form_common_policy_links_inner_t *lead_form_common_policy_links_inner_parse
 
     // lead_form_common_policy_links_inner->link
     cJSON *link = cJSON_GetObjectItemCaseSensitive(lead_form_common_policy_links_innerJSON, "link");
+    if (cJSON_IsNull(link)) {
+        link = NULL;
+    }
     if (link) { 
     if(!cJSON_IsString(link) && !cJSON_IsNull(link))
     {
@@ -85,7 +105,7 @@ lead_form_common_policy_links_inner_t *lead_form_common_policy_links_inner_parse
     }
 
 
-    lead_form_common_policy_links_inner_local_var = lead_form_common_policy_links_inner_create (
+    lead_form_common_policy_links_inner_local_var = lead_form_common_policy_links_inner_create_internal (
         label && !cJSON_IsNull(label) ? strdup(label->valuestring) : NULL,
         link && !cJSON_IsNull(link) ? strdup(link->valuestring) : NULL
         );

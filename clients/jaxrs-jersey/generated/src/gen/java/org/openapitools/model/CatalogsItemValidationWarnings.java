@@ -72,7 +72,7 @@ import javax.validation.Valid;
   CatalogsItemValidationWarnings.JSON_PROPERTY_U_T_M_S_O_U_R_C_E_A_U_T_O_C_O_R_R_E_C_T_E_D,
   CatalogsItemValidationWarnings.JSON_PROPERTY_W_E_I_G_H_T_U_N_I_T_I_N_V_A_L_I_D
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-11-05T02:20:07.425136412Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsItemValidationWarnings   {
   public static final String JSON_PROPERTY_A_D_L_I_N_K_F_O_R_M_A_T_W_A_R_N_I_N_G = "AD_LINK_FORMAT_WARNING";
   @JsonProperty(JSON_PROPERTY_A_D_L_I_N_K_F_O_R_M_A_T_W_A_R_N_I_N_G)

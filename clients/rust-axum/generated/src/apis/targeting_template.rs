@@ -1,6 +1,6 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Multipart};
+use axum_extra::extract::{CookieJar, Host};
 use bytes::Bytes;
 use http::Method;
 use serde::{Deserialize, Serialize};
@@ -61,40 +61,40 @@ pub enum TargetingTemplateSlashUpdateResponse {
 /// TargetingTemplate
 #[async_trait]
 #[allow(clippy::ptr_arg)]
-pub trait TargetingTemplate {
+pub trait TargetingTemplate<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHandler<E> {
     /// Create targeting templates.
     ///
     /// TargetingTemplateSlashCreate - POST /v5/ad_accounts/{ad_account_id}/targeting_templates
     async fn targeting_template_slash_create(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::TargetingTemplateSlashCreatePathParams,
-            body: models::TargetingTemplateCreate,
-    ) -> Result<TargetingTemplateSlashCreateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::TargetingTemplateSlashCreatePathParams,
+            body: &models::TargetingTemplateCreate,
+    ) -> Result<TargetingTemplateSlashCreateResponse, E>;
 
     /// List targeting templates.
     ///
     /// TargetingTemplateSlashList - GET /v5/ad_accounts/{ad_account_id}/targeting_templates
     async fn targeting_template_slash_list(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::TargetingTemplateSlashListPathParams,
-      query_params: models::TargetingTemplateSlashListQueryParams,
-    ) -> Result<TargetingTemplateSlashListResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::TargetingTemplateSlashListPathParams,
+      query_params: &models::TargetingTemplateSlashListQueryParams,
+    ) -> Result<TargetingTemplateSlashListResponse, E>;
 
     /// Update targeting templates.
     ///
     /// TargetingTemplateSlashUpdate - PATCH /v5/ad_accounts/{ad_account_id}/targeting_templates
     async fn targeting_template_slash_update(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::TargetingTemplateSlashUpdatePathParams,
-            body: models::TargetingTemplateUpdateRequest,
-    ) -> Result<TargetingTemplateSlashUpdateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::TargetingTemplateSlashUpdatePathParams,
+            body: &models::TargetingTemplateUpdateRequest,
+    ) -> Result<TargetingTemplateSlashUpdateResponse, E>;
 }

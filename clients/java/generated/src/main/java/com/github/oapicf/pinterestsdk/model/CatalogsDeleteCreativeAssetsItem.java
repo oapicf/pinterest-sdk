@@ -48,10 +48,11 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * A creative assets item to be deleted
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsDeleteCreativeAssetsItem {
   public static final String SERIALIZED_NAME_CREATIVE_ASSETS_ID = "creative_assets_id";
   @SerializedName(SERIALIZED_NAME_CREATIVE_ASSETS_ID)
+  @javax.annotation.Nonnull
   private String creativeAssetsId;
 
   /**
@@ -106,12 +107,13 @@ public class CatalogsDeleteCreativeAssetsItem {
 
   public static final String SERIALIZED_NAME_OPERATION = "operation";
   @SerializedName(SERIALIZED_NAME_OPERATION)
+  @javax.annotation.Nonnull
   private OperationEnum operation;
 
   public CatalogsDeleteCreativeAssetsItem() {
   }
 
-  public CatalogsDeleteCreativeAssetsItem creativeAssetsId(String creativeAssetsId) {
+  public CatalogsDeleteCreativeAssetsItem creativeAssetsId(@javax.annotation.Nonnull String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
     return this;
   }
@@ -125,12 +127,12 @@ public class CatalogsDeleteCreativeAssetsItem {
     return creativeAssetsId;
   }
 
-  public void setCreativeAssetsId(String creativeAssetsId) {
+  public void setCreativeAssetsId(@javax.annotation.Nonnull String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
   }
 
 
-  public CatalogsDeleteCreativeAssetsItem operation(OperationEnum operation) {
+  public CatalogsDeleteCreativeAssetsItem operation(@javax.annotation.Nonnull OperationEnum operation) {
     this.operation = operation;
     return this;
   }
@@ -144,7 +146,7 @@ public class CatalogsDeleteCreativeAssetsItem {
     return operation;
   }
 
-  public void setOperation(OperationEnum operation) {
+  public void setOperation(@javax.annotation.Nonnull OperationEnum operation) {
     this.operation = operation;
   }
 

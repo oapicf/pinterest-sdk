@@ -21,6 +21,7 @@ import org.openapitools.server.models.PlacementGroupType
 import org.openapitools.server.models.TargetingSpec
 import org.openapitools.server.models.TrackingUrls
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param name Ad group name.
@@ -51,6 +52,7 @@ import org.openapitools.server.models.TrackingUrls
  * @param feedProfileId Feed Profile ID associated to the adgroup.
  * @param dcaAssets [DCA] The Dynamic creative assets to use for DCA. Dynamic Creative Assembly (DCA) accepts basic creative assets of an ad (image, video, title, call to action, logo etc). Then it automatically generates optimized ad combinations based on these assets.
  */
+@Serializable
 data class AdGroupResponse(
     /* Ad group name. */
     val name: kotlin.String? = null,
@@ -102,7 +104,7 @@ data class AdGroupResponse(
     val feedProfileId: kotlin.String? = null,
     /* [DCA] The Dynamic creative assets to use for DCA. Dynamic Creative Assembly (DCA) accepts basic creative assets of an ad (image, video, title, call to action, logo etc). Then it automatically generates optimized ad combinations based on these assets. */
     val dcaAssets: kotlin.Any? = null
-) 
+)
 {
     /**
     * Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.

@@ -13,14 +13,16 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsProductGroupFilters
 
+import kotlinx.serialization.Serializable
 /**
  * Request object to list products for a given feed_id and product group filter.
  * @param feedId Catalog Feed id pertaining to the catalog product group filter.
  * @param filters 
  */
+@Serializable
 data class CatalogsListProductsByFeedBasedFilter(
     /* Catalog Feed id pertaining to the catalog product group filter. */
     val feedId: kotlin.String,
     val filters: CatalogsProductGroupFilters
-) 
+)
 

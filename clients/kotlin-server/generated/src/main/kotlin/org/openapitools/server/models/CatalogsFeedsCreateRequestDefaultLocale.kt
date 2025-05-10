@@ -13,10 +13,12 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsLocale
 
+import kotlinx.serialization.Serializable
 /**
  * The locale used within a feed for product descriptions.
  */
+@Serializable
 class CatalogsFeedsCreateRequestDefaultLocale(
 
-) 
+)
 

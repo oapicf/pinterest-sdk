@@ -14,15 +14,17 @@ package org.openapitools.server.models
 import org.openapitools.server.models.OrderLine
 import org.openapitools.server.models.OrderLineError
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param errors Error list if update(s) fail.
  * @param orderLine Order Line object array.
  */
+@Serializable
 data class OrderLineResponse(
     /* Error list if update(s) fail. */
     val errors: kotlin.collections.List<OrderLineError>? = null,
     /* Order Line object array. */
     val orderLine: kotlin.collections.List<OrderLine>? = null
-) 
+)
 

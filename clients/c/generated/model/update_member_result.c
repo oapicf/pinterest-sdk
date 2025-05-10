@@ -5,7 +5,7 @@
 
 
 
-update_member_result_t *update_member_result_create(
+static update_member_result_t *update_member_result_create_internal(
     char *business_role,
     char *member_id
     ) {
@@ -16,12 +16,26 @@ update_member_result_t *update_member_result_create(
     update_member_result_local_var->business_role = business_role;
     update_member_result_local_var->member_id = member_id;
 
+    update_member_result_local_var->_library_owned = 1;
     return update_member_result_local_var;
 }
 
+__attribute__((deprecated)) update_member_result_t *update_member_result_create(
+    char *business_role,
+    char *member_id
+    ) {
+    return update_member_result_create_internal (
+        business_role,
+        member_id
+        );
+}
 
 void update_member_result_free(update_member_result_t *update_member_result) {
     if(NULL == update_member_result){
+        return ;
+    }
+    if(update_member_result->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "update_member_result_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -68,6 +82,9 @@ update_member_result_t *update_member_result_parseFromJSON(cJSON *update_member_
 
     // update_member_result->business_role
     cJSON *business_role = cJSON_GetObjectItemCaseSensitive(update_member_resultJSON, "business_role");
+    if (cJSON_IsNull(business_role)) {
+        business_role = NULL;
+    }
     if (business_role) { 
     if(!cJSON_IsString(business_role) && !cJSON_IsNull(business_role))
     {
@@ -77,6 +94,9 @@ update_member_result_t *update_member_result_parseFromJSON(cJSON *update_member_
 
     // update_member_result->member_id
     cJSON *member_id = cJSON_GetObjectItemCaseSensitive(update_member_resultJSON, "member_id");
+    if (cJSON_IsNull(member_id)) {
+        member_id = NULL;
+    }
     if (member_id) { 
     if(!cJSON_IsString(member_id) && !cJSON_IsNull(member_id))
     {
@@ -85,7 +105,7 @@ update_member_result_t *update_member_result_parseFromJSON(cJSON *update_member_
     }
 
 
-    update_member_result_local_var = update_member_result_create (
+    update_member_result_local_var = update_member_result_create_internal (
         business_role && !cJSON_IsNull(business_role) ? strdup(business_role->valuestring) : NULL,
         member_id && !cJSON_IsNull(member_id) ? strdup(member_id->valuestring) : NULL
         );

@@ -43,9 +43,10 @@ typedef struct bulk_download_request_campaign_filter_t {
     list_t *campaign_status; //nonprimitive container
     list_t *objective_type; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } bulk_download_request_campaign_filter_t;
 
-bulk_download_request_campaign_filter_t *bulk_download_request_campaign_filter_create(
+__attribute__((deprecated)) bulk_download_request_campaign_filter_t *bulk_download_request_campaign_filter_create(
     char *start_time,
     char *end_time,
     char *name,

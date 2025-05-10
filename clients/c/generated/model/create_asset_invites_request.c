@@ -5,7 +5,7 @@
 
 
 
-create_asset_invites_request_t *create_asset_invites_request_create(
+static create_asset_invites_request_t *create_asset_invites_request_create_internal(
     list_t *invites
     ) {
     create_asset_invites_request_t *create_asset_invites_request_local_var = malloc(sizeof(create_asset_invites_request_t));
@@ -14,12 +14,24 @@ create_asset_invites_request_t *create_asset_invites_request_create(
     }
     create_asset_invites_request_local_var->invites = invites;
 
+    create_asset_invites_request_local_var->_library_owned = 1;
     return create_asset_invites_request_local_var;
 }
 
+__attribute__((deprecated)) create_asset_invites_request_t *create_asset_invites_request_create(
+    list_t *invites
+    ) {
+    return create_asset_invites_request_create_internal (
+        invites
+        );
+}
 
 void create_asset_invites_request_free(create_asset_invites_request_t *create_asset_invites_request) {
     if(NULL == create_asset_invites_request){
+        return ;
+    }
+    if(create_asset_invites_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "create_asset_invites_request_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -73,6 +85,9 @@ create_asset_invites_request_t *create_asset_invites_request_parseFromJSON(cJSON
 
     // create_asset_invites_request->invites
     cJSON *invites = cJSON_GetObjectItemCaseSensitive(create_asset_invites_requestJSON, "invites");
+    if (cJSON_IsNull(invites)) {
+        invites = NULL;
+    }
     if (!invites) {
         goto end;
     }
@@ -96,7 +111,7 @@ create_asset_invites_request_t *create_asset_invites_request_parseFromJSON(cJSON
     }
 
 
-    create_asset_invites_request_local_var = create_asset_invites_request_create (
+    create_asset_invites_request_local_var = create_asset_invites_request_create_internal (
         invitesList
         );
 

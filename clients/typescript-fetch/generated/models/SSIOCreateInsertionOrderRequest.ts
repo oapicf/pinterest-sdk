@@ -230,11 +230,11 @@ export function SSIOCreateInsertionOrderRequestFromJSONTyped(json: any, ignoreDi
     };
 }
 
-  export function SSIOCreateInsertionOrderRequestToJSON(json: any): SSIOCreateInsertionOrderRequest {
-      return SSIOCreateInsertionOrderRequestToJSONTyped(json, false);
-  }
+export function SSIOCreateInsertionOrderRequestToJSON(json: any): SSIOCreateInsertionOrderRequest {
+    return SSIOCreateInsertionOrderRequestToJSONTyped(json, false);
+}
 
-  export function SSIOCreateInsertionOrderRequestToJSONTyped(value?: SSIOCreateInsertionOrderRequest | null, ignoreDiscriminator: boolean = false): any {
+export function SSIOCreateInsertionOrderRequestToJSONTyped(value?: SSIOCreateInsertionOrderRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

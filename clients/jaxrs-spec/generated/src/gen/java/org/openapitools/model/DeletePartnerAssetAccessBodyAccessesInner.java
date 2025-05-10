@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("DeletePartnerAssetAccessBody_accesses_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class DeletePartnerAssetAccessBodyAccessesInner   {
   private String partnerId;
   private String assetId;
@@ -69,6 +69,18 @@ public class DeletePartnerAssetAccessBodyAccessesInner   {
 
   private PartnerTypeEnum partnerType = PartnerTypeEnum.INTERNAL;
 
+  public DeletePartnerAssetAccessBodyAccessesInner() {
+  }
+
+  @JsonCreator
+  public DeletePartnerAssetAccessBodyAccessesInner(
+    @JsonProperty(required = true, value = "partner_id") String partnerId,
+    @JsonProperty(required = true, value = "asset_id") String assetId
+  ) {
+    this.partnerId = partnerId;
+    this.assetId = assetId;
+  }
+
   /**
    * Unique identifier of a business partner to update asset access to.
    **/
@@ -79,12 +91,12 @@ public class DeletePartnerAssetAccessBodyAccessesInner   {
 
   
   @ApiModelProperty(example = "1234567890123", required = true, value = "Unique identifier of a business partner to update asset access to.")
-  @JsonProperty("partner_id")
+  @JsonProperty(required = true, value = "partner_id")
   @NotNull  @Pattern(regexp="^\\d+$") @Size(max=25)public String getPartnerId() {
     return partnerId;
   }
 
-  @JsonProperty("partner_id")
+  @JsonProperty(required = true, value = "partner_id")
   public void setPartnerId(String partnerId) {
     this.partnerId = partnerId;
   }
@@ -99,12 +111,12 @@ public class DeletePartnerAssetAccessBodyAccessesInner   {
 
   
   @ApiModelProperty(example = "549755885175", required = true, value = "Unique identifier of the business asset.")
-  @JsonProperty("asset_id")
+  @JsonProperty(required = true, value = "asset_id")
   @NotNull  @Pattern(regexp="^\\d+$") @Size(max=25)public String getAssetId() {
     return assetId;
   }
 
-  @JsonProperty("asset_id")
+  @JsonProperty(required = true, value = "asset_id")
   public void setAssetId(String assetId) {
     this.assetId = assetId;
   }

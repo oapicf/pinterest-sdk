@@ -90,11 +90,11 @@ export function CatalogsCreativeAssetsProductFromJSONTyped(json: any, ignoreDisc
     };
 }
 
-  export function CatalogsCreativeAssetsProductToJSON(json: any): CatalogsCreativeAssetsProduct {
-      return CatalogsCreativeAssetsProductToJSONTyped(json, false);
-  }
+export function CatalogsCreativeAssetsProductToJSON(json: any): CatalogsCreativeAssetsProduct {
+    return CatalogsCreativeAssetsProductToJSONTyped(json, false);
+}
 
-  export function CatalogsCreativeAssetsProductToJSONTyped(value?: CatalogsCreativeAssetsProduct | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsCreativeAssetsProductToJSONTyped(value?: CatalogsCreativeAssetsProduct | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

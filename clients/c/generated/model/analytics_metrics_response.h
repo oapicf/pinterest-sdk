@@ -23,9 +23,10 @@ typedef struct analytics_metrics_response_t {
     list_t* summary_metrics; //map
     list_t *daily_metrics; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } analytics_metrics_response_t;
 
-analytics_metrics_response_t *analytics_metrics_response_create(
+__attribute__((deprecated)) analytics_metrics_response_t *analytics_metrics_response_create(
     list_t* summary_metrics,
     list_t *daily_metrics
 );

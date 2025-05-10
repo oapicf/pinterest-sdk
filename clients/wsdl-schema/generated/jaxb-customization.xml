@@ -58,8 +58,8 @@
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='PrimaryUnderscoresort']">
     	<jaxb:typesafeEnumClass>
-	        <jaxb:typesafeEnumMember value="BY_ID" name="ID" />
-	        <jaxb:typesafeEnumMember value="BY_DATE" name="DATE" />
+	        <jaxb:typesafeEnumMember value="BY_ID" name="BY_ID" />
+	        <jaxb:typesafeEnumMember value="BY_DATE" name="BY_DATE" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='DiscountType']">
@@ -1043,14 +1043,14 @@
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='ContentUnderscoretype']">
     	<jaxb:typesafeEnumClass>
-	        <jaxb:typesafeEnumMember value="image/jpeg" name="JPEG" />
-	        <jaxb:typesafeEnumMember value="image/png" name="PNG" />
+	        <jaxb:typesafeEnumMember value="image/jpeg" name="IMAGE_JPEG" />
+	        <jaxb:typesafeEnumMember value="image/png" name="IMAGE_PNG" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='CoverUnderscoreimageUnderscorecontentUnderscoretype']">
     	<jaxb:typesafeEnumClass>
-	        <jaxb:typesafeEnumMember value="image/jpeg" name="JPEG" />
-	        <jaxb:typesafeEnumMember value="image/png" name="PNG" />
+	        <jaxb:typesafeEnumMember value="image/jpeg" name="IMAGE_JPEG" />
+	        <jaxb:typesafeEnumMember value="image/png" name="IMAGE_PNG" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='SourceUnderscoretype']">
@@ -1060,8 +1060,8 @@
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='ContentUnderscoretype']">
     	<jaxb:typesafeEnumClass>
-	        <jaxb:typesafeEnumMember value="image/jpeg" name="JPEG" />
-	        <jaxb:typesafeEnumMember value="image/png" name="PNG" />
+	        <jaxb:typesafeEnumMember value="image/jpeg" name="IMAGE_JPEG" />
+	        <jaxb:typesafeEnumMember value="image/png" name="IMAGE_PNG" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='SourceUnderscoretype']">
@@ -1076,8 +1076,8 @@
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='ContentUnderscoretype']">
     	<jaxb:typesafeEnumClass>
-	        <jaxb:typesafeEnumMember value="image/jpeg" name="JPEG" />
-	        <jaxb:typesafeEnumMember value="image/png" name="PNG" />
+	        <jaxb:typesafeEnumMember value="image/jpeg" name="IMAGE_JPEG" />
+	        <jaxb:typesafeEnumMember value="image/png" name="IMAGE_PNG" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='SourceUnderscoretype']">
@@ -1097,8 +1097,8 @@
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='CoverUnderscoreimageUnderscorecontentUnderscoretype']">
     	<jaxb:typesafeEnumClass>
-	        <jaxb:typesafeEnumMember value="image/jpeg" name="JPEG" />
-	        <jaxb:typesafeEnumMember value="image/png" name="PNG" />
+	        <jaxb:typesafeEnumMember value="image/jpeg" name="IMAGE_JPEG" />
+	        <jaxb:typesafeEnumMember value="image/png" name="IMAGE_PNG" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='PLACEMENT']">
@@ -2752,15 +2752,15 @@
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='ConversionUnderscorereportUnderscoretimeUnderscoretype']">
     	<jaxb:typesafeEnumClass>
-	        <jaxb:typesafeEnumMember value="TIME_OF_AD_ACTION" name="AD_ACTION" />
-	        <jaxb:typesafeEnumMember value="TIME_OF_CONVERSION" name="CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TIME_OF_AD_ACTION" name="TIME_OF_AD_ACTION" />
+	        <jaxb:typesafeEnumMember value="TIME_OF_CONVERSION" name="TIME_OF_CONVERSION" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='CreationUnderscoresource']">
     	<jaxb:typesafeEnumClass>
-	        <jaxb:typesafeEnumMember value="ADS_API" name="API" />
-	        <jaxb:typesafeEnumMember value="ADS_MANAGER_REPORTING_PAGE" name="MANAGER_REPORTING_PAGE" />
-	        <jaxb:typesafeEnumMember value="ADS_MANAGER_REPORT_BUILDER" name="MANAGER_REPORT_BUILDER" />
+	        <jaxb:typesafeEnumMember value="ADS_API" name="ADS_API" />
+	        <jaxb:typesafeEnumMember value="ADS_MANAGER_REPORTING_PAGE" name="ADS_MANAGER_REPORTING_PAGE" />
+	        <jaxb:typesafeEnumMember value="ADS_MANAGER_REPORT_BUILDER" name="ADS_MANAGER_REPORT_BUILDER" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='Type']">
@@ -3516,8 +3516,8 @@
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='ConversionReportTimeType']">
     	<jaxb:typesafeEnumClass>
-	        <jaxb:typesafeEnumMember value="TIME_OF_AD_ACTION" name="AD_ACTION" />
-	        <jaxb:typesafeEnumMember value="TIME_OF_CONVERSION" name="CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TIME_OF_AD_ACTION" name="TIME_OF_AD_ACTION" />
+	        <jaxb:typesafeEnumMember value="TIME_OF_CONVERSION" name="TIME_OF_CONVERSION" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='ConversionTagType']">

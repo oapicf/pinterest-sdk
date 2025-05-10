@@ -65,11 +65,11 @@ export function BulkUpsertStatusResponseFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function BulkUpsertStatusResponseToJSON(json: any): BulkUpsertStatusResponse {
-      return BulkUpsertStatusResponseToJSONTyped(json, false);
-  }
+export function BulkUpsertStatusResponseToJSON(json: any): BulkUpsertStatusResponse {
+    return BulkUpsertStatusResponseToJSONTyped(json, false);
+}
 
-  export function BulkUpsertStatusResponseToJSONTyped(value?: BulkUpsertStatusResponse | null, ignoreDiscriminator: boolean = false): any {
+export function BulkUpsertStatusResponseToJSONTyped(value?: BulkUpsertStatusResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

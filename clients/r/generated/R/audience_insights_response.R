@@ -74,22 +74,47 @@ AudienceInsightsResponse <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return AudienceInsightsResponse in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return AudienceInsightsResponse as a base R list.
+    #' @examples
+    #' # convert array of AudienceInsightsResponse (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert AudienceInsightsResponse to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       AudienceInsightsResponseObject <- list()
       if (!is.null(self$`categories`)) {
         AudienceInsightsResponseObject[["categories"]] <-
-          lapply(self$`categories`, function(x) x$toJSON())
+          lapply(self$`categories`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`demographics`)) {
         AudienceInsightsResponseObject[["demographics"]] <-
-          self$`demographics`$toJSON()
+          self$`demographics`$toSimpleType()
       }
       if (!is.null(self$`type`)) {
         AudienceInsightsResponseObject[["type"]] <-
-          self$`type`$toJSON()
+          self$`type`$toSimpleType()
       }
       if (!is.null(self$`date`)) {
         AudienceInsightsResponseObject[["date"]] <-
@@ -103,7 +128,7 @@ AudienceInsightsResponse <- R6::R6Class(
         AudienceInsightsResponseObject[["size_is_upper_bound"]] <-
           self$`size_is_upper_bound`
       }
-      AudienceInsightsResponseObject
+      return(AudienceInsightsResponseObject)
     },
 
     #' @description
@@ -140,61 +165,13 @@ AudienceInsightsResponse <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return AudienceInsightsResponse in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`categories`)) {
-          sprintf(
-          '"categories":
-          [%s]
-',
-          paste(sapply(self$`categories`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`demographics`)) {
-          sprintf(
-          '"demographics":
-          %s
-          ',
-          jsonlite::toJSON(self$`demographics`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`type`)) {
-          sprintf(
-          '"type":
-          %s
-          ',
-          jsonlite::toJSON(self$`type`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`date`)) {
-          sprintf(
-          '"date":
-            "%s"
-                    ',
-          self$`date`
-          )
-        },
-        if (!is.null(self$`size`)) {
-          sprintf(
-          '"size":
-            %d
-                    ',
-          self$`size`
-          )
-        },
-        if (!is.null(self$`size_is_upper_bound`)) {
-          sprintf(
-          '"size_is_upper_bound":
-            %s
-                    ',
-          tolower(self$`size_is_upper_bound`)
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

@@ -13,13 +13,15 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.TemplateResponse
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items 
  * @param bookmark 
  */
+@Serializable
 data class TemplatesList200Response(
     val items: kotlin.collections.List<TemplateResponse>,
     val bookmark: kotlin.String? = null
-) 
+)
 

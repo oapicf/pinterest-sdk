@@ -11,6 +11,7 @@ import org.openapitools.model.CampaignSummaryStatus;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.ObjectiveType;
 import org.openapitools.model.TrackingUrls;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -26,14 +27,14 @@ import javax.annotation.Generated;
  * CampaignCreateResponseData
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CampaignCreateResponseData {
 
-  private String adAccountId;
+  private @Nullable String adAccountId;
 
-  private String name;
+  private @Nullable String name;
 
-  private EntityStatus status;
+  private @Nullable EntityStatus status;
 
   private JsonNullable<Integer> lifetimeSpendCap = JsonNullable.<Integer>undefined();
 
@@ -53,19 +54,19 @@ public class CampaignCreateResponseData {
 
   private JsonNullable<Boolean> isAutomatedCampaign = JsonNullable.<Boolean>undefined();
 
-  private String id;
+  private @Nullable String id;
 
-  private ObjectiveType objectiveType;
+  private @Nullable ObjectiveType objectiveType;
 
-  private Integer createdTime;
+  private @Nullable Integer createdTime;
 
-  private Integer updatedTime;
+  private @Nullable Integer updatedTime;
 
-  private String type;
+  private @Nullable String type;
 
   private JsonNullable<Boolean> isCampaignBudgetOptimization = JsonNullable.<Boolean>undefined();
 
-  private CampaignSummaryStatus summaryStatus;
+  private @Nullable CampaignSummaryStatus summaryStatus;
 
   public CampaignCreateResponseData adAccountId(String adAccountId) {
     this.adAccountId = adAccountId;

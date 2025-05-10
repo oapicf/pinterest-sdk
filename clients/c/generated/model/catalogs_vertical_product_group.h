@@ -30,22 +30,6 @@ char* catalogs_vertical_product_group_catalog_type_ToString(pinterest_rest_api_c
 
 pinterest_rest_api_catalogs_vertical_product_group_CATALOGTYPE_e catalogs_vertical_product_group_catalog_type_FromString(char* catalog_type);
 
-// Enum  for catalogs_vertical_product_group
-
-typedef enum  { pinterest_rest_api_catalogs_vertical_product_group__NULL = 0, pinterest_rest_api_catalogs_vertical_product_group__MERCHANT_CREATED, pinterest_rest_api_catalogs_vertical_product_group__ALL_PRODUCTS, pinterest_rest_api_catalogs_vertical_product_group__BEST_DEALS, pinterest_rest_api_catalogs_vertical_product_group__PINNER_FAVORITES, pinterest_rest_api_catalogs_vertical_product_group__TOP_SELLERS, pinterest_rest_api_catalogs_vertical_product_group__BACK_IN_STOCK, pinterest_rest_api_catalogs_vertical_product_group__NEW_ARRIVALS, pinterest_rest_api_catalogs_vertical_product_group__SHOPIFY_COLLECTIONS, pinterest_rest_api_catalogs_vertical_product_group__I2PC } pinterest_rest_api_catalogs_vertical_product_group__e;
-
-char* catalogs_vertical_product_group_type_ToString(pinterest_rest_api_catalogs_vertical_product_group__e type);
-
-pinterest_rest_api_catalogs_vertical_product_group__e catalogs_vertical_product_group_type_FromString(char* type);
-
-// Enum  for catalogs_vertical_product_group
-
-typedef enum  { pinterest_rest_api_catalogs_vertical_product_group__NULL = 0, pinterest_rest_api_catalogs_vertical_product_group__ACTIVE, pinterest_rest_api_catalogs_vertical_product_group__INACTIVE } pinterest_rest_api_catalogs_vertical_product_group__e;
-
-char* catalogs_vertical_product_group_status_ToString(pinterest_rest_api_catalogs_vertical_product_group__e status);
-
-pinterest_rest_api_catalogs_vertical_product_group__e catalogs_vertical_product_group_status_FromString(char* status);
-
 
 
 typedef struct catalogs_vertical_product_group_t {
@@ -55,8 +39,8 @@ typedef struct catalogs_vertical_product_group_t {
     char *description; // string
     struct catalogs_creative_assets_product_group_filters_t *filters; //model
     int is_featured; //boolean
-    catalogs_product_group_type_t *type; // custom
-    catalogs_product_group_status_t *status; // custom
+    pinterest_rest_api_catalogs_product_group_type__e type; //referenced enum
+    pinterest_rest_api_catalogs_product_group_status__e status; //referenced enum
     int created_at; //numeric
     int updated_at; //numeric
     char *catalog_id; // string
@@ -64,17 +48,18 @@ typedef struct catalogs_vertical_product_group_t {
     char *country; // string
     char *locale; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_vertical_product_group_t;
 
-catalogs_vertical_product_group_t *catalogs_vertical_product_group_create(
+__attribute__((deprecated)) catalogs_vertical_product_group_t *catalogs_vertical_product_group_create(
     pinterest_rest_api_catalogs_vertical_product_group_CATALOGTYPE_e catalog_type,
     char *id,
     char *name,
     char *description,
     catalogs_creative_assets_product_group_filters_t *filters,
     int is_featured,
-    catalogs_product_group_type_t *type,
-    catalogs_product_group_status_t *status,
+    pinterest_rest_api_catalogs_product_group_type__e type,
+    pinterest_rest_api_catalogs_product_group_status__e status,
     int created_at,
     int updated_at,
     char *catalog_id,

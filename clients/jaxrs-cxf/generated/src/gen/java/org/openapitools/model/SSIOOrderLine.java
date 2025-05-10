@@ -40,13 +40,13 @@ public class SSIOOrderLine  {
   **/
   private String lastModifiedDateTime;
 
-  @ApiModelProperty(example = "Thu Mar 01 00:00:00 UTC 2018", value = "Start date of the order line.")
+  @ApiModelProperty(example = "2018-03-01", value = "Start date of the order line.")
  /**
    * Start date of the order line.
   **/
   private LocalDate startDate;
 
-  @ApiModelProperty(example = "Mon Oct 05 00:00:00 UTC 2020", value = "End date of the order line.")
+  @ApiModelProperty(example = "2020-10-05", value = "End date of the order line.")
  /**
    * End date of the order line.
   **/

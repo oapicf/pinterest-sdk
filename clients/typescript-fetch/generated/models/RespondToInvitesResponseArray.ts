@@ -56,11 +56,11 @@ export function RespondToInvitesResponseArrayFromJSONTyped(json: any, ignoreDisc
     };
 }
 
-  export function RespondToInvitesResponseArrayToJSON(json: any): RespondToInvitesResponseArray {
-      return RespondToInvitesResponseArrayToJSONTyped(json, false);
-  }
+export function RespondToInvitesResponseArrayToJSON(json: any): RespondToInvitesResponseArray {
+    return RespondToInvitesResponseArrayToJSONTyped(json, false);
+}
 
-  export function RespondToInvitesResponseArrayToJSONTyped(value?: RespondToInvitesResponseArray | null, ignoreDiscriminator: boolean = false): any {
+export function RespondToInvitesResponseArrayToJSONTyped(value?: RespondToInvitesResponseArray | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

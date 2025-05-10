@@ -93,11 +93,11 @@ export function AudienceUpdateRequestFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function AudienceUpdateRequestToJSON(json: any): AudienceUpdateRequest {
-      return AudienceUpdateRequestToJSONTyped(json, false);
-  }
+export function AudienceUpdateRequestToJSON(json: any): AudienceUpdateRequest {
+    return AudienceUpdateRequestToJSONTyped(json, false);
+}
 
-  export function AudienceUpdateRequestToJSONTyped(value?: AudienceUpdateRequest | null, ignoreDiscriminator: boolean = false): any {
+export function AudienceUpdateRequestToJSONTyped(value?: AudienceUpdateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

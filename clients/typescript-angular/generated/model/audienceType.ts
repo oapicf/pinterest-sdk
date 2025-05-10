@@ -15,10 +15,15 @@
 export type AudienceType = 'CUSTOMER_LIST' | 'VISITOR' | 'ENGAGEMENT' | 'ACTALIKE' | 'PERSONA';
 
 export const AudienceType = {
+
     CustomerList: 'CUSTOMER_LIST' as AudienceType,
+
     Visitor: 'VISITOR' as AudienceType,
+
     Engagement: 'ENGAGEMENT' as AudienceType,
+
     Actalike: 'ACTALIKE' as AudienceType,
+
     Persona: 'PERSONA' as AudienceType
 };
 

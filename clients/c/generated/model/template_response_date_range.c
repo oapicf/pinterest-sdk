@@ -5,7 +5,7 @@
 
 
 
-template_response_date_range_t *template_response_date_range_create(
+static template_response_date_range_t *template_response_date_range_create_internal(
     template_response_date_range_dynamic_date_range_t *dynamic_date_range,
     template_response_date_range_relative_date_range_t *relative_date_range,
     template_response_date_range_absolute_date_range_t *absolute_date_range
@@ -18,12 +18,28 @@ template_response_date_range_t *template_response_date_range_create(
     template_response_date_range_local_var->relative_date_range = relative_date_range;
     template_response_date_range_local_var->absolute_date_range = absolute_date_range;
 
+    template_response_date_range_local_var->_library_owned = 1;
     return template_response_date_range_local_var;
 }
 
+__attribute__((deprecated)) template_response_date_range_t *template_response_date_range_create(
+    template_response_date_range_dynamic_date_range_t *dynamic_date_range,
+    template_response_date_range_relative_date_range_t *relative_date_range,
+    template_response_date_range_absolute_date_range_t *absolute_date_range
+    ) {
+    return template_response_date_range_create_internal (
+        dynamic_date_range,
+        relative_date_range,
+        absolute_date_range
+        );
+}
 
 void template_response_date_range_free(template_response_date_range_t *template_response_date_range) {
     if(NULL == template_response_date_range){
+        return ;
+    }
+    if(template_response_date_range->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "template_response_date_range_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -106,24 +122,33 @@ template_response_date_range_t *template_response_date_range_parseFromJSON(cJSON
 
     // template_response_date_range->dynamic_date_range
     cJSON *dynamic_date_range = cJSON_GetObjectItemCaseSensitive(template_response_date_rangeJSON, "dynamic_date_range");
+    if (cJSON_IsNull(dynamic_date_range)) {
+        dynamic_date_range = NULL;
+    }
     if (dynamic_date_range) { 
     dynamic_date_range_local_nonprim = template_response_date_range_dynamic_date_range_parseFromJSON(dynamic_date_range); //nonprimitive
     }
 
     // template_response_date_range->relative_date_range
     cJSON *relative_date_range = cJSON_GetObjectItemCaseSensitive(template_response_date_rangeJSON, "relative_date_range");
+    if (cJSON_IsNull(relative_date_range)) {
+        relative_date_range = NULL;
+    }
     if (relative_date_range) { 
     relative_date_range_local_nonprim = template_response_date_range_relative_date_range_parseFromJSON(relative_date_range); //nonprimitive
     }
 
     // template_response_date_range->absolute_date_range
     cJSON *absolute_date_range = cJSON_GetObjectItemCaseSensitive(template_response_date_rangeJSON, "absolute_date_range");
+    if (cJSON_IsNull(absolute_date_range)) {
+        absolute_date_range = NULL;
+    }
     if (absolute_date_range) { 
     absolute_date_range_local_nonprim = template_response_date_range_absolute_date_range_parseFromJSON(absolute_date_range); //nonprimitive
     }
 
 
-    template_response_date_range_local_var = template_response_date_range_create (
+    template_response_date_range_local_var = template_response_date_range_create_internal (
         dynamic_date_range ? dynamic_date_range_local_nonprim : NULL,
         relative_date_range ? relative_date_range_local_nonprim : NULL,
         absolute_date_range ? absolute_date_range_local_nonprim : NULL

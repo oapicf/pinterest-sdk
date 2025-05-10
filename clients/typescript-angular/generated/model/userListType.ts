@@ -15,11 +15,17 @@
 export type UserListType = 'EMAIL' | 'IDFA' | 'MAID' | 'LR_ID' | 'DLX_ID' | 'HASHED_PINNER_ID';
 
 export const UserListType = {
+
     Email: 'EMAIL' as UserListType,
+
     Idfa: 'IDFA' as UserListType,
+
     Maid: 'MAID' as UserListType,
+
     LrId: 'LR_ID' as UserListType,
+
     DlxId: 'DLX_ID' as UserListType,
+
     HashedPinnerId: 'HASHED_PINNER_ID' as UserListType
 };
 

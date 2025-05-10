@@ -31,8 +31,8 @@ public class OASPinMediaSource implements OASPinMediaSourceImageBase64, OASPinMe
      * Gets or Sets contentType
      */
     public enum ContentTypeEnum {
-        JPEG,
-        PNG
+        IMAGE_JPEG,
+        IMAGE_PNG
     }
 
     /**
@@ -69,8 +69,8 @@ public class OASPinMediaSource implements OASPinMediaSourceImageBase64, OASPinMe
      * Content type for cover image Base64.
      */
     public enum CoverImageContentTypeEnum {
-        JPEG,
-        PNG
+        IMAGE_JPEG,
+        IMAGE_PNG
     }
 
     /**

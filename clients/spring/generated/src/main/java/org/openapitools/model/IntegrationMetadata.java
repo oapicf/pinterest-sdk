@@ -5,6 +5,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -20,36 +21,36 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "IntegrationMetadata", description = "Integration metadata")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class IntegrationMetadata {
 
-  private String id;
+  private @Nullable String id;
 
-  private String externalBusinessId;
+  private @Nullable String externalBusinessId;
 
-  private String connectedMerchantId;
+  private @Nullable String connectedMerchantId;
 
-  private String connectedUserId;
+  private @Nullable String connectedUserId;
 
-  private String connectedAdvertiserId;
+  private @Nullable String connectedAdvertiserId;
 
-  private String connectedLbaId;
+  private @Nullable String connectedLbaId;
 
-  private String connectedTagId;
+  private @Nullable String connectedTagId;
 
-  private BigDecimal partnerAccessTokenExpiry;
+  private @Nullable BigDecimal partnerAccessTokenExpiry;
 
-  private BigDecimal partnerRefreshTokenExpiry;
+  private @Nullable BigDecimal partnerRefreshTokenExpiry;
 
-  private String scopes;
+  private @Nullable String scopes;
 
-  private BigDecimal createdTimestamp;
+  private @Nullable BigDecimal createdTimestamp;
 
-  private BigDecimal updatedTimestamp;
+  private @Nullable BigDecimal updatedTimestamp;
 
-  private String additionalId1;
+  private @Nullable String additionalId1;
 
-  private String partnerMetadata;
+  private @Nullable String partnerMetadata;
 
   public IntegrationMetadata id(String id) {
     this.id = id;

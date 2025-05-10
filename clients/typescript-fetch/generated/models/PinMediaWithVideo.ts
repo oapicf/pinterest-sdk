@@ -98,11 +98,11 @@ export function PinMediaWithVideoFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-  export function PinMediaWithVideoToJSON(json: any): PinMediaWithVideo {
-      return PinMediaWithVideoToJSONTyped(json, false);
-  }
+export function PinMediaWithVideoToJSON(json: any): PinMediaWithVideo {
+    return PinMediaWithVideoToJSONTyped(json, false);
+}
 
-  export function PinMediaWithVideoToJSONTyped(value?: PinMediaWithVideo | null, ignoreDiscriminator: boolean = false): any {
+export function PinMediaWithVideoToJSONTyped(value?: PinMediaWithVideo | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

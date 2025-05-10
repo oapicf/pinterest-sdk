@@ -14,6 +14,7 @@ import org.openapitools.model.TargetingSpec;
 import org.openapitools.model.TargetingTemplateAudienceSizing;
 import org.openapitools.model.TargetingTemplateKeyword;
 import org.openapitools.model.TrackingUrls;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -29,14 +30,14 @@ import javax.annotation.Generated;
  * TargetingTemplateResponseData
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TargetingTemplateResponseData {
 
-  private String name;
+  private @Nullable String name;
 
   private Boolean autoTargetingEnabled = true;
 
-  private TargetingSpec targetingAttributes;
+  private @Nullable TargetingSpec targetingAttributes;
 
   private PlacementGroupType placementGroup = PlacementGroupType.ALL;
 
@@ -45,13 +46,13 @@ public class TargetingTemplateResponseData {
 
   private JsonNullable<TrackingUrls> trackingUrls = JsonNullable.<TrackingUrls>undefined();
 
-  private String id;
+  private @Nullable String id;
 
-  private Integer createdTime;
+  private @Nullable Integer createdTime;
 
-  private Integer updatedTime;
+  private @Nullable Integer updatedTime;
 
-  private String adAccountId;
+  private @Nullable String adAccountId;
 
   /**
    * Indicate targeting template is active or Deleted

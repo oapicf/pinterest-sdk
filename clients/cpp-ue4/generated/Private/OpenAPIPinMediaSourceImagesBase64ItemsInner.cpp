@@ -24,9 +24,9 @@ inline FString ToString(const OpenAPIPinMediaSourceImagesBase64ItemsInner::Conte
 {
 	switch (Value)
 	{
-	case OpenAPIPinMediaSourceImagesBase64ItemsInner::ContentTypeEnum::Jpeg:
+	case OpenAPIPinMediaSourceImagesBase64ItemsInner::ContentTypeEnum::ImageJpeg:
 		return TEXT("image/jpeg");
-	case OpenAPIPinMediaSourceImagesBase64ItemsInner::ContentTypeEnum::Png:
+	case OpenAPIPinMediaSourceImagesBase64ItemsInner::ContentTypeEnum::ImagePng:
 		return TEXT("image/png");
 	}
 
@@ -42,8 +42,8 @@ FString OpenAPIPinMediaSourceImagesBase64ItemsInner::EnumToString(const OpenAPIP
 inline bool FromString(const FString& EnumAsString, OpenAPIPinMediaSourceImagesBase64ItemsInner::ContentTypeEnum& Value)
 {
 	static TMap<FString, OpenAPIPinMediaSourceImagesBase64ItemsInner::ContentTypeEnum> StringToEnum = { 
-		{ TEXT("image/jpeg"), OpenAPIPinMediaSourceImagesBase64ItemsInner::ContentTypeEnum::Jpeg },
-		{ TEXT("image/png"), OpenAPIPinMediaSourceImagesBase64ItemsInner::ContentTypeEnum::Png }, };
+		{ TEXT("image/jpeg"), OpenAPIPinMediaSourceImagesBase64ItemsInner::ContentTypeEnum::ImageJpeg },
+		{ TEXT("image/png"), OpenAPIPinMediaSourceImagesBase64ItemsInner::ContentTypeEnum::ImagePng }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)

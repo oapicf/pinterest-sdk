@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsCreativeAssetsProductGroup")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsCreativeAssetsProductGroup   {
   public enum CatalogTypeEnum {
 
@@ -75,6 +75,22 @@ public class CatalogsCreativeAssetsProductGroup   {
   private Integer updatedAt;
   private String catalogId;
 
+  public CatalogsCreativeAssetsProductGroup() {
+  }
+
+  @JsonCreator
+  public CatalogsCreativeAssetsProductGroup(
+    @JsonProperty(required = true, value = "catalog_type") CatalogTypeEnum catalogType,
+    @JsonProperty(required = true, value = "id") String id,
+    @JsonProperty(required = true, value = "filters") CatalogsCreativeAssetsProductGroupFilters filters,
+    @JsonProperty(required = true, value = "catalog_id") String catalogId
+  ) {
+    this.catalogType = catalogType;
+    this.id = id;
+    this.filters = filters;
+    this.catalogId = catalogId;
+  }
+
   /**
    **/
   public CatalogsCreativeAssetsProductGroup catalogType(CatalogTypeEnum catalogType) {
@@ -84,12 +100,12 @@ public class CatalogsCreativeAssetsProductGroup   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   @NotNull public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
@@ -104,12 +120,12 @@ public class CatalogsCreativeAssetsProductGroup   {
 
   
   @ApiModelProperty(example = "443727193917", required = true, value = "ID of the creative assets product group.")
-  @JsonProperty("id")
+  @JsonProperty(required = true, value = "id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getId() {
     return id;
   }
 
-  @JsonProperty("id")
+  @JsonProperty(required = true, value = "id")
   public void setId(String id) {
     this.id = id;
   }
@@ -162,12 +178,12 @@ public class CatalogsCreativeAssetsProductGroup   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("filters")
+  @JsonProperty(required = true, value = "filters")
   @NotNull @Valid public CatalogsCreativeAssetsProductGroupFilters getFilters() {
     return filters;
   }
 
-  @JsonProperty("filters")
+  @JsonProperty(required = true, value = "filters")
   public void setFilters(CatalogsCreativeAssetsProductGroupFilters filters) {
     this.filters = filters;
   }
@@ -222,12 +238,12 @@ public class CatalogsCreativeAssetsProductGroup   {
 
   
   @ApiModelProperty(required = true, value = "Catalog id pertaining to the creative assets product group.")
-  @JsonProperty("catalog_id")
+  @JsonProperty(required = true, value = "catalog_id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getCatalogId() {
     return catalogId;
   }
 
-  @JsonProperty("catalog_id")
+  @JsonProperty(required = true, value = "catalog_id")
   public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
   }

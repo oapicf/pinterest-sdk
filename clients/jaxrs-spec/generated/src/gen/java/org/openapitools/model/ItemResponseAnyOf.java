@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ItemResponse_anyOf")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ItemResponseAnyOf   {
   private CatalogsType catalogType;
   private String itemId;
@@ -43,6 +43,16 @@ public class ItemResponseAnyOf   {
   private CatalogsCreativeAssetsAttributes attributes;
   private String hotelId;
   private String creativeAssetsId;
+
+  public ItemResponseAnyOf() {
+  }
+
+  @JsonCreator
+  public ItemResponseAnyOf(
+    @JsonProperty(required = true, value = "catalog_type") CatalogsType catalogType
+  ) {
+    this.catalogType = catalogType;
+  }
 
   /**
    **/
@@ -53,12 +63,12 @@ public class ItemResponseAnyOf   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   @NotNull public CatalogsType getCatalogType() {
     return catalogType;
   }
 
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   public void setCatalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
   }

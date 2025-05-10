@@ -14,6 +14,7 @@ package org.openapitools.server.models
 import org.openapitools.server.models.EntityStatus
 import org.openapitools.server.models.TrackingUrls
 
+import kotlinx.serialization.Serializable
 /**
  * Campaign Data
  * @param adAccountId Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.
@@ -27,6 +28,7 @@ import org.openapitools.server.models.TrackingUrls
  * @param endTime Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
  * @param isFlexibleDailyBudgets Determine if a campaign has flexible daily budgets setup.
  */
+@Serializable
 data class CampaignCommon(
     /* Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema. */
     val adAccountId: kotlin.String? = null,
@@ -46,5 +48,5 @@ data class CampaignCommon(
     val endTime: kotlin.Int? = null,
     /* Determine if a campaign has flexible daily budgets setup. */
     val isFlexibleDailyBudgets: kotlin.Boolean? = null
-) 
+)
 

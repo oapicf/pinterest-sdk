@@ -5,7 +5,7 @@
 
 
 
-delete_partner_assets_result_t *delete_partner_assets_result_create(
+static delete_partner_assets_result_t *delete_partner_assets_result_create_internal(
     char *asset_id,
     char *asset_type,
     list_t *permissions,
@@ -22,12 +22,32 @@ delete_partner_assets_result_t *delete_partner_assets_result_create(
     delete_partner_assets_result_local_var->is_shared_partner = is_shared_partner;
     delete_partner_assets_result_local_var->partner_id = partner_id;
 
+    delete_partner_assets_result_local_var->_library_owned = 1;
     return delete_partner_assets_result_local_var;
 }
 
+__attribute__((deprecated)) delete_partner_assets_result_t *delete_partner_assets_result_create(
+    char *asset_id,
+    char *asset_type,
+    list_t *permissions,
+    int is_shared_partner,
+    char *partner_id
+    ) {
+    return delete_partner_assets_result_create_internal (
+        asset_id,
+        asset_type,
+        permissions,
+        is_shared_partner,
+        partner_id
+        );
+}
 
 void delete_partner_assets_result_free(delete_partner_assets_result_t *delete_partner_assets_result) {
     if(NULL == delete_partner_assets_result){
+        return ;
+    }
+    if(delete_partner_assets_result->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "delete_partner_assets_result_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -81,7 +101,7 @@ cJSON *delete_partner_assets_result_convertToJSON(delete_partner_assets_result_t
 
     listEntry_t *permissionsListEntry;
     list_ForEach(permissionsListEntry, delete_partner_assets_result->permissions) {
-    if(cJSON_AddStringToObject(permissions, "", (char*)permissionsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(permissions, "", permissionsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -121,6 +141,9 @@ delete_partner_assets_result_t *delete_partner_assets_result_parseFromJSON(cJSON
 
     // delete_partner_assets_result->asset_id
     cJSON *asset_id = cJSON_GetObjectItemCaseSensitive(delete_partner_assets_resultJSON, "asset_id");
+    if (cJSON_IsNull(asset_id)) {
+        asset_id = NULL;
+    }
     if (asset_id) { 
     if(!cJSON_IsString(asset_id) && !cJSON_IsNull(asset_id))
     {
@@ -130,6 +153,9 @@ delete_partner_assets_result_t *delete_partner_assets_result_parseFromJSON(cJSON
 
     // delete_partner_assets_result->asset_type
     cJSON *asset_type = cJSON_GetObjectItemCaseSensitive(delete_partner_assets_resultJSON, "asset_type");
+    if (cJSON_IsNull(asset_type)) {
+        asset_type = NULL;
+    }
     if (asset_type) { 
     if(!cJSON_IsString(asset_type) && !cJSON_IsNull(asset_type))
     {
@@ -139,6 +165,9 @@ delete_partner_assets_result_t *delete_partner_assets_result_parseFromJSON(cJSON
 
     // delete_partner_assets_result->permissions
     cJSON *permissions = cJSON_GetObjectItemCaseSensitive(delete_partner_assets_resultJSON, "permissions");
+    if (cJSON_IsNull(permissions)) {
+        permissions = NULL;
+    }
     if (permissions) { 
     cJSON *permissions_local = NULL;
     if(!cJSON_IsArray(permissions)) {
@@ -158,6 +187,9 @@ delete_partner_assets_result_t *delete_partner_assets_result_parseFromJSON(cJSON
 
     // delete_partner_assets_result->is_shared_partner
     cJSON *is_shared_partner = cJSON_GetObjectItemCaseSensitive(delete_partner_assets_resultJSON, "is_shared_partner");
+    if (cJSON_IsNull(is_shared_partner)) {
+        is_shared_partner = NULL;
+    }
     if (is_shared_partner) { 
     if(!cJSON_IsBool(is_shared_partner))
     {
@@ -167,6 +199,9 @@ delete_partner_assets_result_t *delete_partner_assets_result_parseFromJSON(cJSON
 
     // delete_partner_assets_result->partner_id
     cJSON *partner_id = cJSON_GetObjectItemCaseSensitive(delete_partner_assets_resultJSON, "partner_id");
+    if (cJSON_IsNull(partner_id)) {
+        partner_id = NULL;
+    }
     if (partner_id) { 
     if(!cJSON_IsString(partner_id) && !cJSON_IsNull(partner_id))
     {
@@ -175,7 +210,7 @@ delete_partner_assets_result_t *delete_partner_assets_result_parseFromJSON(cJSON
     }
 
 
-    delete_partner_assets_result_local_var = delete_partner_assets_result_create (
+    delete_partner_assets_result_local_var = delete_partner_assets_result_create_internal (
         asset_id && !cJSON_IsNull(asset_id) ? strdup(asset_id->valuestring) : NULL,
         asset_type && !cJSON_IsNull(asset_type) ? strdup(asset_type->valuestring) : NULL,
         permissions ? permissionsList : NULL,

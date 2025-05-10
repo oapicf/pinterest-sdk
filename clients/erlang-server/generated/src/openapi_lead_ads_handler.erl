@@ -51,7 +51,7 @@ Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver
         {operation_id :: operation_id(),
          accept_callback :: openapi_logic_handler:accept_callback(),
          provide_callback :: openapi_logic_handler:provide_callback(),
-         api_key_handler :: openapi_logic_handler:api_key_callback(),
+         api_key_callback :: openapi_logic_handler:api_key_callback(),
          context = #{} :: openapi_logic_handler:context()}).
 
 -type state() :: #state{}.
@@ -67,7 +67,7 @@ init(Req, {Operations, Module}) ->
     State = #state{operation_id = OperationID,
                    accept_callback = fun Module:accept_callback/4,
                    provide_callback = fun Module:provide_callback/4,
-                   api_key_handler = fun Module:authorize_api_key/2},
+                   api_key_callback = fun Module:api_key_callback/2},
     {cowboy_rest, Req, State}.
 
 -spec allowed_methods(cowboy_req:req(), state()) ->
@@ -87,8 +87,8 @@ allowed_methods(Req, State) ->
     {true | {false, iodata()}, cowboy_req:req(), state()}.
 is_authorized(Req0,
               #state{operation_id = 'ad_accounts_subscriptions/del_by_id' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -96,8 +96,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'ad_accounts_subscriptions/get_by_id' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -105,8 +105,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'ad_accounts_subscriptions/get_list' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -114,8 +114,8 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'ad_accounts_subscriptions/post' = OperationID,
-                     api_key_handler = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
             {true, Req, State#state{context = Context}};
         {false, AuthHeader, Req} ->
@@ -188,7 +188,7 @@ handle_type_accepted(Req, #state{operation_id = OperationID,
     {Res, Req1, State#state{context = Context1}}.
 
 -spec handle_type_provided(cowboy_req:req(), state()) ->
-    {cowboy_req:resp_body(), cowboy_req:req(), state()}.
+    { openapi_logic_handler:provide_callback_return(), cowboy_req:req(), state()}.
 handle_type_provided(Req, #state{operation_id = OperationID,
                                  provide_callback = Handler,
                                  context = Context} = State) ->

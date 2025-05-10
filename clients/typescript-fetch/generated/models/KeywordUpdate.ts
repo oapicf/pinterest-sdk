@@ -63,11 +63,11 @@ export function KeywordUpdateFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-  export function KeywordUpdateToJSON(json: any): KeywordUpdate {
-      return KeywordUpdateToJSONTyped(json, false);
-  }
+export function KeywordUpdateToJSON(json: any): KeywordUpdate {
+    return KeywordUpdateToJSONTyped(json, false);
+}
 
-  export function KeywordUpdateToJSONTyped(value?: KeywordUpdate | null, ignoreDiscriminator: boolean = false): any {
+export function KeywordUpdateToJSONTyped(value?: KeywordUpdate | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

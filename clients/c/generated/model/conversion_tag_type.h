@@ -24,9 +24,9 @@ char* conversion_tag_type_conversion_tag_type_ToString(pinterest_rest_api_conver
 
 pinterest_rest_api_conversion_tag_type__e conversion_tag_type_conversion_tag_type_FromString(char* conversion_tag_type);
 
-//cJSON *conversion_tag_type_conversion_tag_type_convertToJSON(pinterest_rest_api_conversion_tag_type__e conversion_tag_type);
+cJSON *conversion_tag_type_convertToJSON(pinterest_rest_api_conversion_tag_type__e conversion_tag_type);
 
-//pinterest_rest_api_conversion_tag_type__e conversion_tag_type_conversion_tag_type_parseFromJSON(cJSON *conversion_tag_typeJSON);
+pinterest_rest_api_conversion_tag_type__e conversion_tag_type_parseFromJSON(cJSON *conversion_tag_typeJSON);
 
 #endif /* _conversion_tag_type_H_ */
 

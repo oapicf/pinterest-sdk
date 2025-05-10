@@ -57,11 +57,11 @@ export function CatalogsHotelProductGroupFiltersAnyOfFromJSONTyped(json: any, ig
     };
 }
 
-  export function CatalogsHotelProductGroupFiltersAnyOfToJSON(json: any): CatalogsHotelProductGroupFiltersAnyOf {
-      return CatalogsHotelProductGroupFiltersAnyOfToJSONTyped(json, false);
-  }
+export function CatalogsHotelProductGroupFiltersAnyOfToJSON(json: any): CatalogsHotelProductGroupFiltersAnyOf {
+    return CatalogsHotelProductGroupFiltersAnyOfToJSONTyped(json, false);
+}
 
-  export function CatalogsHotelProductGroupFiltersAnyOfToJSONTyped(value?: CatalogsHotelProductGroupFiltersAnyOf | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsHotelProductGroupFiltersAnyOfToJSONTyped(value?: CatalogsHotelProductGroupFiltersAnyOf | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

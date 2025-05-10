@@ -29,16 +29,41 @@ AvailabilityFilter <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return AvailabilityFilter in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return AvailabilityFilter as a base R list.
+    #' @examples
+    #' # convert array of AvailabilityFilter (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert AvailabilityFilter to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       AvailabilityFilterObject <- list()
       if (!is.null(self$`AVAILABILITY`)) {
         AvailabilityFilterObject[["AVAILABILITY"]] <-
-          self$`AVAILABILITY`$toJSON()
+          self$`AVAILABILITY`$toSimpleType()
       }
-      AvailabilityFilterObject
+      return(AvailabilityFilterObject)
     },
 
     #' @description
@@ -58,21 +83,13 @@ AvailabilityFilter <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return AvailabilityFilter in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`AVAILABILITY`)) {
-          sprintf(
-          '"AVAILABILITY":
-          %s
-          ',
-          jsonlite::toJSON(self$`AVAILABILITY`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

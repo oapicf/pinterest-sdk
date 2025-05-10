@@ -70,11 +70,11 @@ export function RelatedTermsFromJSONTyped(json: any, ignoreDiscriminator: boolea
     };
 }
 
-  export function RelatedTermsToJSON(json: any): RelatedTerms {
-      return RelatedTermsToJSONTyped(json, false);
-  }
+export function RelatedTermsToJSON(json: any): RelatedTerms {
+    return RelatedTermsToJSONTyped(json, false);
+}
 
-  export function RelatedTermsToJSONTyped(value?: RelatedTerms | null, ignoreDiscriminator: boolean = false): any {
+export function RelatedTermsToJSONTyped(value?: RelatedTerms | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

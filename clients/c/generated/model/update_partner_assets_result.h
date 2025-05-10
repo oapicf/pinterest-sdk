@@ -24,9 +24,10 @@ typedef struct update_partner_assets_result_t {
     char *partner_id; // string
     list_t *permissions; //primitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } update_partner_assets_result_t;
 
-update_partner_assets_result_t *update_partner_assets_result_create(
+__attribute__((deprecated)) update_partner_assets_result_t *update_partner_assets_result_create(
     char *asset_id,
     char *asset_type,
     char *partner_id,

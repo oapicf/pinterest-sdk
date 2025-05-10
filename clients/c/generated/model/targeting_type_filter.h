@@ -30,9 +30,10 @@ pinterest_rest_api_targeting_type_filter__e targeting_type_filter_targeting_type
 typedef struct targeting_type_filter_t {
     list_t *targeting_types; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } targeting_type_filter_t;
 
-targeting_type_filter_t *targeting_type_filter_create(
+__attribute__((deprecated)) targeting_type_filter_t *targeting_type_filter_create(
     list_t *targeting_types
 );
 

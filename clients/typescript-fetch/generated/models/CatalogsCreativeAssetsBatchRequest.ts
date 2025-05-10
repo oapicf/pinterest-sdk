@@ -112,11 +112,11 @@ export function CatalogsCreativeAssetsBatchRequestFromJSONTyped(json: any, ignor
     };
 }
 
-  export function CatalogsCreativeAssetsBatchRequestToJSON(json: any): CatalogsCreativeAssetsBatchRequest {
-      return CatalogsCreativeAssetsBatchRequestToJSONTyped(json, false);
-  }
+export function CatalogsCreativeAssetsBatchRequestToJSON(json: any): CatalogsCreativeAssetsBatchRequest {
+    return CatalogsCreativeAssetsBatchRequestToJSONTyped(json, false);
+}
 
-  export function CatalogsCreativeAssetsBatchRequestToJSONTyped(value?: CatalogsCreativeAssetsBatchRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsCreativeAssetsBatchRequestToJSONTyped(value?: CatalogsCreativeAssetsBatchRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

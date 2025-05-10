@@ -44,8 +44,8 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum AudienceUpdateOperationType: string
 {
-        case UPDATE = "UPDATE";
-        case REMOVE = "REMOVE";
+        case UPDATE = 'UPDATE';
+        case REMOVE = 'REMOVE';
 }
 
 

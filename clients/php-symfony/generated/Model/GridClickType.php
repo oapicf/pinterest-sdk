@@ -44,8 +44,8 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum GridClickType: string
 {
-        case CLOSEUP = "CLOSEUP";
-        case DIRECT_TO_DESTINATION = "DIRECT_TO_DESTINATION";
+        case CLOSEUP = 'CLOSEUP';
+        case DIRECT_TO_DESTINATION = 'DIRECT_TO_DESTINATION';
 }
 
 

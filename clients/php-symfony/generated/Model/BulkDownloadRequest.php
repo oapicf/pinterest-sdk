@@ -97,13 +97,13 @@ class BulkDownloadRequest
     * @Accessor(getter="getSerializedOutputFormat", setter="setDeserializedOutputFormat")
     * @Type("string")
     */
-    protected ?BulkOutputFormat $outputFormat = 'JSON';
+    protected ?BulkOutputFormat $outputFormat = self::OpenAPI\Server\Model\BulkOutputFormat_JSON;
 
     /**
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->entityTypes = array_key_exists('entityTypes', $data) ? $data['entityTypes'] : $this->entityTypes;

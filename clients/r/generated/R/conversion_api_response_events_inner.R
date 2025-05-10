@@ -52,10 +52,35 @@ ConversionApiResponseEventsInner <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return ConversionApiResponseEventsInner in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return ConversionApiResponseEventsInner as a base R list.
+    #' @examples
+    #' # convert array of ConversionApiResponseEventsInner (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert ConversionApiResponseEventsInner to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       ConversionApiResponseEventsInnerObject <- list()
       if (!is.null(self$`status`)) {
         ConversionApiResponseEventsInnerObject[["status"]] <-
@@ -69,7 +94,7 @@ ConversionApiResponseEventsInner <- R6::R6Class(
         ConversionApiResponseEventsInnerObject[["warning_message"]] <-
           self$`warning_message`
       }
-      ConversionApiResponseEventsInnerObject
+      return(ConversionApiResponseEventsInnerObject)
     },
 
     #' @description
@@ -96,37 +121,13 @@ ConversionApiResponseEventsInner <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return ConversionApiResponseEventsInner in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`status`)) {
-          sprintf(
-          '"status":
-            "%s"
-                    ',
-          self$`status`
-          )
-        },
-        if (!is.null(self$`error_message`)) {
-          sprintf(
-          '"error_message":
-            "%s"
-                    ',
-          self$`error_message`
-          )
-        },
-        if (!is.null(self$`warning_message`)) {
-          sprintf(
-          '"warning_message":
-            "%s"
-                    ',
-          self$`warning_message`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

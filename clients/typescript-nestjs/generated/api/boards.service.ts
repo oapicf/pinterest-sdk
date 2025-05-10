@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { Board } from '../model/board';
 import { BoardSection } from '../model/boardSection';
@@ -31,10 +31,12 @@ export class BoardsService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -54,9 +56,10 @@ export class BoardsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [boardSectionsCreateOpts.config] Override http request option.
      */
-    public boardSectionsCreate(boardId: string, boardSection: BoardSection, adAccountId?: string, ): Observable<AxiosResponse<BoardSection>>;
-    public boardSectionsCreate(boardId: string, boardSection: BoardSection, adAccountId?: string, ): Observable<any> {
+    public boardSectionsCreate(boardId: string, boardSection: BoardSection, adAccountId?: string, boardSectionsCreateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<BoardSection>>;
+    public boardSectionsCreate(boardId: string, boardSection: BoardSection, adAccountId?: string, boardSectionsCreateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (boardId === null || boardId === undefined) {
             throw new Error('Required parameter boardId was null or undefined when calling boardSectionsCreate.');
         }
@@ -109,7 +112,8 @@ export class BoardsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...boardSectionsCreateOpts?.config,
+                        headers: {...headers, ...boardSectionsCreateOpts?.config?.headers},
                     }
                 );
             })
@@ -123,9 +127,10 @@ export class BoardsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [boardSectionsDeleteOpts.config] Override http request option.
      */
-    public boardSectionsDelete(boardId: string, sectionId: string, adAccountId?: string, ): Observable<AxiosResponse<any>>;
-    public boardSectionsDelete(boardId: string, sectionId: string, adAccountId?: string, ): Observable<any> {
+    public boardSectionsDelete(boardId: string, sectionId: string, adAccountId?: string, boardSectionsDeleteOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public boardSectionsDelete(boardId: string, sectionId: string, adAccountId?: string, boardSectionsDeleteOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (boardId === null || boardId === undefined) {
             throw new Error('Required parameter boardId was null or undefined when calling boardSectionsDelete.');
         }
@@ -172,7 +177,8 @@ export class BoardsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...boardSectionsDeleteOpts?.config,
+                        headers: {...headers, ...boardSectionsDeleteOpts?.config?.headers},
                     }
                 );
             })
@@ -187,9 +193,10 @@ export class BoardsService {
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [boardSectionsListOpts.config] Override http request option.
      */
-    public boardSectionsList(boardId: string, adAccountId?: string, bookmark?: string, pageSize?: number, ): Observable<AxiosResponse<BoardSectionsList200Response>>;
-    public boardSectionsList(boardId: string, adAccountId?: string, bookmark?: string, pageSize?: number, ): Observable<any> {
+    public boardSectionsList(boardId: string, adAccountId?: string, bookmark?: string, pageSize?: number, boardSectionsListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<BoardSectionsList200Response>>;
+    public boardSectionsList(boardId: string, adAccountId?: string, bookmark?: string, pageSize?: number, boardSectionsListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (boardId === null || boardId === undefined) {
             throw new Error('Required parameter boardId was null or undefined when calling boardSectionsList.');
         }
@@ -245,7 +252,8 @@ export class BoardsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...boardSectionsListOpts?.config,
+                        headers: {...headers, ...boardSectionsListOpts?.config?.headers},
                     }
                 );
             })
@@ -261,9 +269,10 @@ export class BoardsService {
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [boardSectionsListPinsOpts.config] Override http request option.
      */
-    public boardSectionsListPins(boardId: string, sectionId: string, adAccountId?: string, bookmark?: string, pageSize?: number, ): Observable<AxiosResponse<BoardsListPins200Response>>;
-    public boardSectionsListPins(boardId: string, sectionId: string, adAccountId?: string, bookmark?: string, pageSize?: number, ): Observable<any> {
+    public boardSectionsListPins(boardId: string, sectionId: string, adAccountId?: string, bookmark?: string, pageSize?: number, boardSectionsListPinsOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<BoardsListPins200Response>>;
+    public boardSectionsListPins(boardId: string, sectionId: string, adAccountId?: string, bookmark?: string, pageSize?: number, boardSectionsListPinsOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (boardId === null || boardId === undefined) {
             throw new Error('Required parameter boardId was null or undefined when calling boardSectionsListPins.');
         }
@@ -323,7 +332,8 @@ export class BoardsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...boardSectionsListPinsOpts?.config,
+                        headers: {...headers, ...boardSectionsListPinsOpts?.config?.headers},
                     }
                 );
             })
@@ -338,9 +348,10 @@ export class BoardsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [boardSectionsUpdateOpts.config] Override http request option.
      */
-    public boardSectionsUpdate(boardId: string, sectionId: string, boardSection: BoardSection, adAccountId?: string, ): Observable<AxiosResponse<BoardSection>>;
-    public boardSectionsUpdate(boardId: string, sectionId: string, boardSection: BoardSection, adAccountId?: string, ): Observable<any> {
+    public boardSectionsUpdate(boardId: string, sectionId: string, boardSection: BoardSection, adAccountId?: string, boardSectionsUpdateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<BoardSection>>;
+    public boardSectionsUpdate(boardId: string, sectionId: string, boardSection: BoardSection, adAccountId?: string, boardSectionsUpdateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (boardId === null || boardId === undefined) {
             throw new Error('Required parameter boardId was null or undefined when calling boardSectionsUpdate.');
         }
@@ -397,7 +408,8 @@ export class BoardsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...boardSectionsUpdateOpts?.config,
+                        headers: {...headers, ...boardSectionsUpdateOpts?.config?.headers},
                     }
                 );
             })
@@ -410,9 +422,10 @@ export class BoardsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [boardsCreateOpts.config] Override http request option.
      */
-    public boardsCreate(board: Board, adAccountId?: string, ): Observable<AxiosResponse<Board>>;
-    public boardsCreate(board: Board, adAccountId?: string, ): Observable<any> {
+    public boardsCreate(board: Board, adAccountId?: string, boardsCreateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<Board>>;
+    public boardsCreate(board: Board, adAccountId?: string, boardsCreateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (board === null || board === undefined) {
             throw new Error('Required parameter board was null or undefined when calling boardsCreate.');
         }
@@ -461,7 +474,8 @@ export class BoardsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...boardsCreateOpts?.config,
+                        headers: {...headers, ...boardsCreateOpts?.config?.headers},
                     }
                 );
             })
@@ -474,9 +488,10 @@ export class BoardsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [boardsDeleteOpts.config] Override http request option.
      */
-    public boardsDelete(boardId: string, adAccountId?: string, ): Observable<AxiosResponse<any>>;
-    public boardsDelete(boardId: string, adAccountId?: string, ): Observable<any> {
+    public boardsDelete(boardId: string, adAccountId?: string, boardsDeleteOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public boardsDelete(boardId: string, adAccountId?: string, boardsDeleteOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (boardId === null || boardId === undefined) {
             throw new Error('Required parameter boardId was null or undefined when calling boardsDelete.');
         }
@@ -519,7 +534,8 @@ export class BoardsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...boardsDeleteOpts?.config,
+                        headers: {...headers, ...boardsDeleteOpts?.config?.headers},
                     }
                 );
             })
@@ -532,9 +548,10 @@ export class BoardsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [boardsGetOpts.config] Override http request option.
      */
-    public boardsGet(boardId: string, adAccountId?: string, ): Observable<AxiosResponse<Board>>;
-    public boardsGet(boardId: string, adAccountId?: string, ): Observable<any> {
+    public boardsGet(boardId: string, adAccountId?: string, boardsGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<Board>>;
+    public boardsGet(boardId: string, adAccountId?: string, boardsGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (boardId === null || boardId === undefined) {
             throw new Error('Required parameter boardId was null or undefined when calling boardsGet.');
         }
@@ -584,7 +601,8 @@ export class BoardsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...boardsGetOpts?.config,
+                        headers: {...headers, ...boardsGetOpts?.config?.headers},
                     }
                 );
             })
@@ -599,9 +617,10 @@ export class BoardsService {
      * @param privacy Privacy setting for a board.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [boardsListOpts.config] Override http request option.
      */
-    public boardsList(adAccountId?: string, bookmark?: string, pageSize?: number, privacy?: 'ALL' | 'PROTECTED' | 'PUBLIC' | 'SECRET' | 'PUBLIC_AND_SECRET', ): Observable<AxiosResponse<BoardsList200Response>>;
-    public boardsList(adAccountId?: string, bookmark?: string, pageSize?: number, privacy?: 'ALL' | 'PROTECTED' | 'PUBLIC' | 'SECRET' | 'PUBLIC_AND_SECRET', ): Observable<any> {
+    public boardsList(adAccountId?: string, bookmark?: string, pageSize?: number, privacy?: 'ALL' | 'PROTECTED' | 'PUBLIC' | 'SECRET' | 'PUBLIC_AND_SECRET', boardsListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<BoardsList200Response>>;
+    public boardsList(adAccountId?: string, bookmark?: string, pageSize?: number, privacy?: 'ALL' | 'PROTECTED' | 'PUBLIC' | 'SECRET' | 'PUBLIC_AND_SECRET', boardsListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let queryParameters = new URLSearchParams();
         if (adAccountId !== undefined && adAccountId !== null) {
             queryParameters.append('ad_account_id', <any>adAccountId);
@@ -656,7 +675,8 @@ export class BoardsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...boardsListOpts?.config,
+                        headers: {...headers, ...boardsListOpts?.config?.headers},
                     }
                 );
             })
@@ -673,9 +693,10 @@ export class BoardsService {
      * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [boardsListPinsOpts.config] Override http request option.
      */
-    public boardsListPins(boardId: string, bookmark?: string, pageSize?: number, creativeTypes?: Array<'REGULAR' | 'VIDEO' | 'SHOPPING' | 'CAROUSEL' | 'MAX_VIDEO' | 'SHOP_THE_PIN' | 'COLLECTION' | 'IDEA'>, adAccountId?: string, pinMetrics?: boolean, ): Observable<AxiosResponse<BoardsListPins200Response>>;
-    public boardsListPins(boardId: string, bookmark?: string, pageSize?: number, creativeTypes?: Array<'REGULAR' | 'VIDEO' | 'SHOPPING' | 'CAROUSEL' | 'MAX_VIDEO' | 'SHOP_THE_PIN' | 'COLLECTION' | 'IDEA'>, adAccountId?: string, pinMetrics?: boolean, ): Observable<any> {
+    public boardsListPins(boardId: string, bookmark?: string, pageSize?: number, creativeTypes?: Array<'REGULAR' | 'VIDEO' | 'SHOPPING' | 'CAROUSEL' | 'MAX_VIDEO' | 'SHOP_THE_PIN' | 'COLLECTION' | 'IDEA'>, adAccountId?: string, pinMetrics?: boolean, boardsListPinsOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<BoardsListPins200Response>>;
+    public boardsListPins(boardId: string, bookmark?: string, pageSize?: number, creativeTypes?: Array<'REGULAR' | 'VIDEO' | 'SHOPPING' | 'CAROUSEL' | 'MAX_VIDEO' | 'SHOP_THE_PIN' | 'COLLECTION' | 'IDEA'>, adAccountId?: string, pinMetrics?: boolean, boardsListPinsOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (boardId === null || boardId === undefined) {
             throw new Error('Required parameter boardId was null or undefined when calling boardsListPins.');
         }
@@ -739,7 +760,8 @@ export class BoardsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...boardsListPinsOpts?.config,
+                        headers: {...headers, ...boardsListPinsOpts?.config?.headers},
                     }
                 );
             })
@@ -753,9 +775,10 @@ export class BoardsService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [boardsUpdateOpts.config] Override http request option.
      */
-    public boardsUpdate(boardId: string, boardUpdate: BoardUpdate, adAccountId?: string, ): Observable<AxiosResponse<Board>>;
-    public boardsUpdate(boardId: string, boardUpdate: BoardUpdate, adAccountId?: string, ): Observable<any> {
+    public boardsUpdate(boardId: string, boardUpdate: BoardUpdate, adAccountId?: string, boardsUpdateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<Board>>;
+    public boardsUpdate(boardId: string, boardUpdate: BoardUpdate, adAccountId?: string, boardsUpdateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (boardId === null || boardId === undefined) {
             throw new Error('Required parameter boardId was null or undefined when calling boardsUpdate.');
         }
@@ -808,7 +831,8 @@ export class BoardsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...boardsUpdateOpts?.config,
+                        headers: {...headers, ...boardsUpdateOpts?.config?.headers},
                     }
                 );
             })

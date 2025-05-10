@@ -84,11 +84,11 @@ export function BaseInviteDataResponseFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-  export function BaseInviteDataResponseToJSON(json: any): BaseInviteDataResponse {
-      return BaseInviteDataResponseToJSONTyped(json, false);
-  }
+export function BaseInviteDataResponseToJSON(json: any): BaseInviteDataResponse {
+    return BaseInviteDataResponseToJSONTyped(json, false);
+}
 
-  export function BaseInviteDataResponseToJSONTyped(value?: BaseInviteDataResponse | null, ignoreDiscriminator: boolean = false): any {
+export function BaseInviteDataResponseToJSONTyped(value?: BaseInviteDataResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

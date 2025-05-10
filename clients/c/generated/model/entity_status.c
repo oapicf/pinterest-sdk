@@ -22,7 +22,7 @@ pinterest_rest_api_entity_status__e entity_status_entity_status_FromString(char*
     return 0;
 }
 
-cJSON *entity_status_entity_status_convertToJSON(pinterest_rest_api_entity_status__e entity_status) {
+cJSON *entity_status_convertToJSON(pinterest_rest_api_entity_status__e entity_status) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "entity_status", entity_status_entity_status_ToString(entity_status)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_entity_status__e entity_status_entity_status_parseFromJSON(cJSON *entity_statusJSON) {
-    pinterest_rest_api_entity_status__e *entity_status = NULL;
-    pinterest_rest_api_entity_status__e entity_statusVariable;
-    cJSON *entity_statusVar = cJSON_GetObjectItemCaseSensitive(entity_statusJSON, "entity_status");
-    if(!cJSON_IsString(entity_statusVar) || (entity_statusVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_entity_status__e entity_status_parseFromJSON(cJSON *entity_statusJSON) {
+    if(!cJSON_IsString(entity_statusJSON) || (entity_statusJSON->valuestring == NULL)) {
+        return 0;
     }
-    entity_statusVariable = entity_status_entity_status_FromString(entity_statusVar->valuestring);
-    return entity_statusVariable;
-end:
-    return 0;
+    return entity_status_entity_status_FromString(entity_statusJSON->valuestring);
 }

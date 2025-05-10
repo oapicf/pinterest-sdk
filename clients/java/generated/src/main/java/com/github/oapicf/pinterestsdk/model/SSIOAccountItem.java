@@ -51,48 +51,57 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * SSIOAccountItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SSIOAccountItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_IO_TERMS_ID = "io_terms_id";
   @SerializedName(SERIALIZED_NAME_IO_TERMS_ID)
+  @javax.annotation.Nullable
   private String ioTermsId;
 
   public static final String SERIALIZED_NAME_IO_TERMS = "io_terms";
   @SerializedName(SERIALIZED_NAME_IO_TERMS)
+  @javax.annotation.Nullable
   private String ioTerms;
 
   public static final String SERIALIZED_NAME_US_TERMS_ID = "us_terms_id";
   @SerializedName(SERIALIZED_NAME_US_TERMS_ID)
+  @javax.annotation.Nullable
   private String usTermsId;
 
   public static final String SERIALIZED_NAME_US_TERMS = "us_terms";
   @SerializedName(SERIALIZED_NAME_US_TERMS)
+  @javax.annotation.Nullable
   private String usTerms;
 
   public static final String SERIALIZED_NAME_ROW_TERMS_ID = "row_terms_id";
   @SerializedName(SERIALIZED_NAME_ROW_TERMS_ID)
+  @javax.annotation.Nullable
   private String rowTermsId;
 
   public static final String SERIALIZED_NAME_ROW_TERMS = "row_terms";
   @SerializedName(SERIALIZED_NAME_ROW_TERMS)
+  @javax.annotation.Nullable
   private String rowTerms;
 
   public static final String SERIALIZED_NAME_IO_TYPE = "io_type";
   @SerializedName(SERIALIZED_NAME_IO_TYPE)
+  @javax.annotation.Nullable
   private String ioType;
 
   public static final String SERIALIZED_NAME_ADDRESSES = "addresses";
   @SerializedName(SERIALIZED_NAME_ADDRESSES)
+  @javax.annotation.Nullable
   private List<SSIOAccountAddress> addresses = new ArrayList<>();
 
   public SSIOAccountItem() {
   }
 
-  public SSIOAccountItem id(String id) {
+  public SSIOAccountItem id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -106,12 +115,12 @@ public class SSIOAccountItem {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public SSIOAccountItem ioTermsId(String ioTermsId) {
+  public SSIOAccountItem ioTermsId(@javax.annotation.Nullable String ioTermsId) {
     this.ioTermsId = ioTermsId;
     return this;
   }
@@ -125,12 +134,12 @@ public class SSIOAccountItem {
     return ioTermsId;
   }
 
-  public void setIoTermsId(String ioTermsId) {
+  public void setIoTermsId(@javax.annotation.Nullable String ioTermsId) {
     this.ioTermsId = ioTermsId;
   }
 
 
-  public SSIOAccountItem ioTerms(String ioTerms) {
+  public SSIOAccountItem ioTerms(@javax.annotation.Nullable String ioTerms) {
     this.ioTerms = ioTerms;
     return this;
   }
@@ -144,12 +153,12 @@ public class SSIOAccountItem {
     return ioTerms;
   }
 
-  public void setIoTerms(String ioTerms) {
+  public void setIoTerms(@javax.annotation.Nullable String ioTerms) {
     this.ioTerms = ioTerms;
   }
 
 
-  public SSIOAccountItem usTermsId(String usTermsId) {
+  public SSIOAccountItem usTermsId(@javax.annotation.Nullable String usTermsId) {
     this.usTermsId = usTermsId;
     return this;
   }
@@ -163,12 +172,12 @@ public class SSIOAccountItem {
     return usTermsId;
   }
 
-  public void setUsTermsId(String usTermsId) {
+  public void setUsTermsId(@javax.annotation.Nullable String usTermsId) {
     this.usTermsId = usTermsId;
   }
 
 
-  public SSIOAccountItem usTerms(String usTerms) {
+  public SSIOAccountItem usTerms(@javax.annotation.Nullable String usTerms) {
     this.usTerms = usTerms;
     return this;
   }
@@ -182,12 +191,12 @@ public class SSIOAccountItem {
     return usTerms;
   }
 
-  public void setUsTerms(String usTerms) {
+  public void setUsTerms(@javax.annotation.Nullable String usTerms) {
     this.usTerms = usTerms;
   }
 
 
-  public SSIOAccountItem rowTermsId(String rowTermsId) {
+  public SSIOAccountItem rowTermsId(@javax.annotation.Nullable String rowTermsId) {
     this.rowTermsId = rowTermsId;
     return this;
   }
@@ -201,12 +210,12 @@ public class SSIOAccountItem {
     return rowTermsId;
   }
 
-  public void setRowTermsId(String rowTermsId) {
+  public void setRowTermsId(@javax.annotation.Nullable String rowTermsId) {
     this.rowTermsId = rowTermsId;
   }
 
 
-  public SSIOAccountItem rowTerms(String rowTerms) {
+  public SSIOAccountItem rowTerms(@javax.annotation.Nullable String rowTerms) {
     this.rowTerms = rowTerms;
     return this;
   }
@@ -220,12 +229,12 @@ public class SSIOAccountItem {
     return rowTerms;
   }
 
-  public void setRowTerms(String rowTerms) {
+  public void setRowTerms(@javax.annotation.Nullable String rowTerms) {
     this.rowTerms = rowTerms;
   }
 
 
-  public SSIOAccountItem ioType(String ioType) {
+  public SSIOAccountItem ioType(@javax.annotation.Nullable String ioType) {
     this.ioType = ioType;
     return this;
   }
@@ -239,12 +248,12 @@ public class SSIOAccountItem {
     return ioType;
   }
 
-  public void setIoType(String ioType) {
+  public void setIoType(@javax.annotation.Nullable String ioType) {
     this.ioType = ioType;
   }
 
 
-  public SSIOAccountItem addresses(List<SSIOAccountAddress> addresses) {
+  public SSIOAccountItem addresses(@javax.annotation.Nullable List<SSIOAccountAddress> addresses) {
     this.addresses = addresses;
     return this;
   }
@@ -266,7 +275,7 @@ public class SSIOAccountItem {
     return addresses;
   }
 
-  public void setAddresses(List<SSIOAccountAddress> addresses) {
+  public void setAddresses(@javax.annotation.Nullable List<SSIOAccountAddress> addresses) {
     this.addresses = addresses;
   }
 

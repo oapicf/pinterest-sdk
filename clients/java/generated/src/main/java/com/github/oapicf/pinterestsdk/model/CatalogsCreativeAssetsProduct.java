@@ -50,7 +50,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsCreativeAssetsProduct
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsCreativeAssetsProduct {
   /**
    * Gets or Sets catalogType
@@ -104,20 +104,23 @@ public class CatalogsCreativeAssetsProduct {
 
   public static final String SERIALIZED_NAME_CATALOG_TYPE = "catalog_type";
   @SerializedName(SERIALIZED_NAME_CATALOG_TYPE)
+  @javax.annotation.Nonnull
   private CatalogTypeEnum catalogType;
 
   public static final String SERIALIZED_NAME_METADATA = "metadata";
   @SerializedName(SERIALIZED_NAME_METADATA)
+  @javax.annotation.Nonnull
   private CatalogsCreativeAssetsProductMetadata metadata;
 
   public static final String SERIALIZED_NAME_PIN = "pin";
   @SerializedName(SERIALIZED_NAME_PIN)
+  @javax.annotation.Nullable
   private Pin pin;
 
   public CatalogsCreativeAssetsProduct() {
   }
 
-  public CatalogsCreativeAssetsProduct catalogType(CatalogTypeEnum catalogType) {
+  public CatalogsCreativeAssetsProduct catalogType(@javax.annotation.Nonnull CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -131,12 +134,12 @@ public class CatalogsCreativeAssetsProduct {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogTypeEnum catalogType) {
+  public void setCatalogType(@javax.annotation.Nonnull CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
 
-  public CatalogsCreativeAssetsProduct metadata(CatalogsCreativeAssetsProductMetadata metadata) {
+  public CatalogsCreativeAssetsProduct metadata(@javax.annotation.Nonnull CatalogsCreativeAssetsProductMetadata metadata) {
     this.metadata = metadata;
     return this;
   }
@@ -150,12 +153,12 @@ public class CatalogsCreativeAssetsProduct {
     return metadata;
   }
 
-  public void setMetadata(CatalogsCreativeAssetsProductMetadata metadata) {
+  public void setMetadata(@javax.annotation.Nonnull CatalogsCreativeAssetsProductMetadata metadata) {
     this.metadata = metadata;
   }
 
 
-  public CatalogsCreativeAssetsProduct pin(Pin pin) {
+  public CatalogsCreativeAssetsProduct pin(@javax.annotation.Nullable Pin pin) {
     this.pin = pin;
     return this;
   }
@@ -169,7 +172,7 @@ public class CatalogsCreativeAssetsProduct {
     return pin;
   }
 
-  public void setPin(Pin pin) {
+  public void setPin(@javax.annotation.Nullable Pin pin) {
     this.pin = pin;
   }
 

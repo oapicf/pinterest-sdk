@@ -13,14 +13,16 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CreativeAssetsVisibilityType
 
+import kotlinx.serialization.Serializable
 /**
  * Creative assets product metadata entity
  * @param creativeAssetsId The user-created unique ID that represents the creative assets item.
  * @param visibility 
  */
+@Serializable
 data class CatalogsCreativeAssetsProductMetadata(
     /* The user-created unique ID that represents the creative assets item. */
     val creativeAssetsId: kotlin.String,
     val visibility: CreativeAssetsVisibilityType
-) 
+)
 

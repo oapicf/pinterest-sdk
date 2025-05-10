@@ -61,7 +61,7 @@ class MembersToDeleteBody
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->members = array_key_exists('members', $data) ? $data['members'] : $this->members;

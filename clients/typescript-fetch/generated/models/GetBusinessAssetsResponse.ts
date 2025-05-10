@@ -70,11 +70,11 @@ export function GetBusinessAssetsResponseFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function GetBusinessAssetsResponseToJSON(json: any): GetBusinessAssetsResponse {
-      return GetBusinessAssetsResponseToJSONTyped(json, false);
-  }
+export function GetBusinessAssetsResponseToJSON(json: any): GetBusinessAssetsResponse {
+    return GetBusinessAssetsResponseToJSONTyped(json, false);
+}
 
-  export function GetBusinessAssetsResponseToJSONTyped(value?: GetBusinessAssetsResponse | null, ignoreDiscriminator: boolean = false): any {
+export function GetBusinessAssetsResponseToJSONTyped(value?: GetBusinessAssetsResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

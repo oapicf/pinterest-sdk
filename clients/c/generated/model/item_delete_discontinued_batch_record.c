@@ -5,7 +5,7 @@
 
 
 
-item_delete_discontinued_batch_record_t *item_delete_discontinued_batch_record_create(
+static item_delete_discontinued_batch_record_t *item_delete_discontinued_batch_record_create_internal(
     char *item_id
     ) {
     item_delete_discontinued_batch_record_t *item_delete_discontinued_batch_record_local_var = malloc(sizeof(item_delete_discontinued_batch_record_t));
@@ -14,12 +14,24 @@ item_delete_discontinued_batch_record_t *item_delete_discontinued_batch_record_c
     }
     item_delete_discontinued_batch_record_local_var->item_id = item_id;
 
+    item_delete_discontinued_batch_record_local_var->_library_owned = 1;
     return item_delete_discontinued_batch_record_local_var;
 }
 
+__attribute__((deprecated)) item_delete_discontinued_batch_record_t *item_delete_discontinued_batch_record_create(
+    char *item_id
+    ) {
+    return item_delete_discontinued_batch_record_create_internal (
+        item_id
+        );
+}
 
 void item_delete_discontinued_batch_record_free(item_delete_discontinued_batch_record_t *item_delete_discontinued_batch_record) {
     if(NULL == item_delete_discontinued_batch_record){
+        return ;
+    }
+    if(item_delete_discontinued_batch_record->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "item_delete_discontinued_batch_record_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -54,6 +66,9 @@ item_delete_discontinued_batch_record_t *item_delete_discontinued_batch_record_p
 
     // item_delete_discontinued_batch_record->item_id
     cJSON *item_id = cJSON_GetObjectItemCaseSensitive(item_delete_discontinued_batch_recordJSON, "item_id");
+    if (cJSON_IsNull(item_id)) {
+        item_id = NULL;
+    }
     if (item_id) { 
     if(!cJSON_IsString(item_id) && !cJSON_IsNull(item_id))
     {
@@ -62,7 +77,7 @@ item_delete_discontinued_batch_record_t *item_delete_discontinued_batch_record_p
     }
 
 
-    item_delete_discontinued_batch_record_local_var = item_delete_discontinued_batch_record_create (
+    item_delete_discontinued_batch_record_local_var = item_delete_discontinued_batch_record_create_internal (
         item_id && !cJSON_IsNull(item_id) ? strdup(item_id->valuestring) : NULL
         );
 

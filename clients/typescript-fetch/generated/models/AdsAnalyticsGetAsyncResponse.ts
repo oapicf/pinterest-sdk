@@ -72,11 +72,11 @@ export function AdsAnalyticsGetAsyncResponseFromJSONTyped(json: any, ignoreDiscr
     };
 }
 
-  export function AdsAnalyticsGetAsyncResponseToJSON(json: any): AdsAnalyticsGetAsyncResponse {
-      return AdsAnalyticsGetAsyncResponseToJSONTyped(json, false);
-  }
+export function AdsAnalyticsGetAsyncResponseToJSON(json: any): AdsAnalyticsGetAsyncResponse {
+    return AdsAnalyticsGetAsyncResponseToJSONTyped(json, false);
+}
 
-  export function AdsAnalyticsGetAsyncResponseToJSONTyped(value?: AdsAnalyticsGetAsyncResponse | null, ignoreDiscriminator: boolean = false): any {
+export function AdsAnalyticsGetAsyncResponseToJSONTyped(value?: AdsAnalyticsGetAsyncResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

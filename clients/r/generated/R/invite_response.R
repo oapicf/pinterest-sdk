@@ -92,14 +92,39 @@ InviteResponse <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return InviteResponse in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return InviteResponse as a base R list.
+    #' @examples
+    #' # convert array of InviteResponse (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert InviteResponse to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       InviteResponseObject <- list()
       if (!is.null(self$`assets_summary`)) {
         InviteResponseObject[["assets_summary"]] <-
-          self$`assets_summary`$toJSON()
+          self$`assets_summary`$toSimpleType()
       }
       if (!is.null(self$`business_roles`)) {
         InviteResponseObject[["business_roles"]] <-
@@ -107,11 +132,11 @@ InviteResponse <- R6::R6Class(
       }
       if (!is.null(self$`created_by_business`)) {
         InviteResponseObject[["created_by_business"]] <-
-          self$`created_by_business`$toJSON()
+          self$`created_by_business`$toSimpleType()
       }
       if (!is.null(self$`created_by_user`)) {
         InviteResponseObject[["created_by_user"]] <-
-          self$`created_by_user`$toJSON()
+          self$`created_by_user`$toSimpleType()
       }
       if (!is.null(self$`created_time`)) {
         InviteResponseObject[["created_time"]] <-
@@ -123,7 +148,7 @@ InviteResponse <- R6::R6Class(
       }
       if (!is.null(self$`invite_data`)) {
         InviteResponseObject[["invite_data"]] <-
-          self$`invite_data`$toJSON()
+          self$`invite_data`$toSimpleType()
       }
       if (!is.null(self$`is_received_invite`)) {
         InviteResponseObject[["is_received_invite"]] <-
@@ -131,9 +156,9 @@ InviteResponse <- R6::R6Class(
       }
       if (!is.null(self$`user`)) {
         InviteResponseObject[["user"]] <-
-          self$`user`$toJSON()
+          self$`user`$toSimpleType()
       }
-      InviteResponseObject
+      return(InviteResponseObject)
     },
 
     #' @description
@@ -185,85 +210,13 @@ InviteResponse <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return InviteResponse in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`assets_summary`)) {
-          sprintf(
-          '"assets_summary":
-          %s
-          ',
-          jsonlite::toJSON(self$`assets_summary`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`business_roles`)) {
-          sprintf(
-          '"business_roles":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`business_roles`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`created_by_business`)) {
-          sprintf(
-          '"created_by_business":
-          %s
-          ',
-          jsonlite::toJSON(self$`created_by_business`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`created_by_user`)) {
-          sprintf(
-          '"created_by_user":
-          %s
-          ',
-          jsonlite::toJSON(self$`created_by_user`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`created_time`)) {
-          sprintf(
-          '"created_time":
-            %d
-                    ',
-          self$`created_time`
-          )
-        },
-        if (!is.null(self$`id`)) {
-          sprintf(
-          '"id":
-            "%s"
-                    ',
-          self$`id`
-          )
-        },
-        if (!is.null(self$`invite_data`)) {
-          sprintf(
-          '"invite_data":
-          %s
-          ',
-          jsonlite::toJSON(self$`invite_data`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`is_received_invite`)) {
-          sprintf(
-          '"is_received_invite":
-            %s
-                    ',
-          tolower(self$`is_received_invite`)
-          )
-        },
-        if (!is.null(self$`user`)) {
-          sprintf(
-          '"user":
-          %s
-          ',
-          jsonlite::toJSON(self$`user`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

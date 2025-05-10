@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.AdAccountCreateSubscriptionRequestPartnerMetadata
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param webhookUrl Standard HTTPS webhook URL.
@@ -21,6 +22,7 @@ import org.openapitools.server.models.AdAccountCreateSubscriptionRequestPartnerM
  * @param partnerRefreshToken Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
  * @param partnerMetadata 
  */
+@Serializable
 data class AdAccountCreateSubscriptionRequest(
     /* Standard HTTPS webhook URL. */
     val webhookUrl: kotlin.String,
@@ -31,5 +33,5 @@ data class AdAccountCreateSubscriptionRequest(
     /* Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param. */
     val partnerRefreshToken: kotlin.String? = null,
     val partnerMetadata: AdAccountCreateSubscriptionRequestPartnerMetadata? = null
-) 
+)
 

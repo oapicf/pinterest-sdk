@@ -26,9 +26,10 @@ typedef struct ad_account_create_subscription_request_t {
     char *partner_refresh_token; // string
     struct ad_account_create_subscription_request_partner_metadata_t *partner_metadata; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } ad_account_create_subscription_request_t;
 
-ad_account_create_subscription_request_t *ad_account_create_subscription_request_create(
+__attribute__((deprecated)) ad_account_create_subscription_request_t *ad_account_create_subscription_request_create(
     char *webhook_url,
     char *lead_form_id,
     char *partner_access_token,

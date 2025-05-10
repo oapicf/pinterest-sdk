@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.AudienceRule
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param adAccountId Ad account ID.
@@ -27,6 +28,7 @@ import org.openapitools.server.models.AudienceRule
  * @param createdTimestamp Creation time. Unix timestamp in seconds.
  * @param updatedTimestamp Last update time. Unix timestamp in seconds.
  */
+@Serializable
 data class Audience(
     /* Ad account ID. */
     val adAccountId: kotlin.String? = null,
@@ -49,5 +51,5 @@ data class Audience(
     val createdTimestamp: kotlin.Int? = null,
     /* Last update time. Unix timestamp in seconds. */
     val updatedTimestamp: kotlin.Int? = null
-) 
+)
 

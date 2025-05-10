@@ -22,9 +22,10 @@ typedef struct delivery_metrics_response_t delivery_metrics_response_t;
 typedef struct delivery_metrics_response_t {
     list_t *items; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } delivery_metrics_response_t;
 
-delivery_metrics_response_t *delivery_metrics_response_create(
+__attribute__((deprecated)) delivery_metrics_response_t *delivery_metrics_response_create(
     list_t *items
 );
 

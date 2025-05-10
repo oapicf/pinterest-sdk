@@ -5,7 +5,7 @@
 
 
 
-price_filter_t *price_filter_create(
+static price_filter_t *price_filter_create_internal(
     catalogs_product_group_pricing_currency_criteria_t *price
     ) {
     price_filter_t *price_filter_local_var = malloc(sizeof(price_filter_t));
@@ -14,12 +14,24 @@ price_filter_t *price_filter_create(
     }
     price_filter_local_var->price = price;
 
+    price_filter_local_var->_library_owned = 1;
     return price_filter_local_var;
 }
 
+__attribute__((deprecated)) price_filter_t *price_filter_create(
+    catalogs_product_group_pricing_currency_criteria_t *price
+    ) {
+    return price_filter_create_internal (
+        price
+        );
+}
 
 void price_filter_free(price_filter_t *price_filter) {
     if(NULL == price_filter){
+        return ;
+    }
+    if(price_filter->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "price_filter_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -63,6 +75,9 @@ price_filter_t *price_filter_parseFromJSON(cJSON *price_filterJSON){
 
     // price_filter->price
     cJSON *price = cJSON_GetObjectItemCaseSensitive(price_filterJSON, "PRICE");
+    if (cJSON_IsNull(price)) {
+        price = NULL;
+    }
     if (!price) {
         goto end;
     }
@@ -71,7 +86,7 @@ price_filter_t *price_filter_parseFromJSON(cJSON *price_filterJSON){
     price_local_nonprim = catalogs_product_group_pricing_currency_criteria_parseFromJSON(price); //nonprimitive
 
 
-    price_filter_local_var = price_filter_create (
+    price_filter_local_var = price_filter_create_internal (
         price_local_nonprim
         );
 

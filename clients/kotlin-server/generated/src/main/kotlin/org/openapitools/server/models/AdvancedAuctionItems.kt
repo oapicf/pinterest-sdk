@@ -13,15 +13,17 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.AdvancedAuctionItem
 
+import kotlinx.serialization.Serializable
 /**
  * Response object containing item bid options
  * @param catalogId Response object of item bid options
  * @param items Array with item bid options
  */
+@Serializable
 data class AdvancedAuctionItems(
     /* Response object of item bid options */
     val catalogId: kotlin.String? = null,
     /* Array with item bid options */
     val items: kotlin.collections.List<AdvancedAuctionItem>? = null
-) 
+)
 

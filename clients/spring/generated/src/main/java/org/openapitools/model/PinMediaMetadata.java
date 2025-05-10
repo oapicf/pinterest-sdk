@@ -10,6 +10,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.ImageMetadata;
 import org.openapitools.model.ImageMetadataImages;
 import org.openapitools.model.VideoMetadata;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -25,10 +26,10 @@ import javax.annotation.Generated;
  * PinMediaMetadata
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMediaMetadata {
 
-  private String itemType;
+  private @Nullable String itemType;
 
   private JsonNullable<String> title = JsonNullable.<String>undefined();
 
@@ -36,17 +37,17 @@ public class PinMediaMetadata {
 
   private JsonNullable<String> link = JsonNullable.<String>undefined();
 
-  private ImageMetadataImages images;
+  private @Nullable ImageMetadataImages images;
 
-  private String coverImageUrl;
+  private @Nullable String coverImageUrl;
 
   private JsonNullable<String> videoUrl = JsonNullable.<String>undefined();
 
-  private BigDecimal duration;
+  private @Nullable BigDecimal duration;
 
-  private Integer height;
+  private @Nullable Integer height;
 
-  private Integer width;
+  private @Nullable Integer width;
 
   public PinMediaMetadata itemType(String itemType) {
     this.itemType = itemType;

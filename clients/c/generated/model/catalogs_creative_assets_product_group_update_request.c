@@ -22,7 +22,7 @@ pinterest_rest_api_catalogs_creative_assets_product_group_update_request_CATALOG
     return 0;
 }
 
-catalogs_creative_assets_product_group_update_request_t *catalogs_creative_assets_product_group_update_request_create(
+static catalogs_creative_assets_product_group_update_request_t *catalogs_creative_assets_product_group_update_request_create_internal(
     pinterest_rest_api_catalogs_creative_assets_product_group_update_request_CATALOGTYPE_e catalog_type,
     char *name,
     char *description,
@@ -37,12 +37,30 @@ catalogs_creative_assets_product_group_update_request_t *catalogs_creative_asset
     catalogs_creative_assets_product_group_update_request_local_var->description = description;
     catalogs_creative_assets_product_group_update_request_local_var->filters = filters;
 
+    catalogs_creative_assets_product_group_update_request_local_var->_library_owned = 1;
     return catalogs_creative_assets_product_group_update_request_local_var;
 }
 
+__attribute__((deprecated)) catalogs_creative_assets_product_group_update_request_t *catalogs_creative_assets_product_group_update_request_create(
+    pinterest_rest_api_catalogs_creative_assets_product_group_update_request_CATALOGTYPE_e catalog_type,
+    char *name,
+    char *description,
+    catalogs_creative_assets_product_group_filters_t *filters
+    ) {
+    return catalogs_creative_assets_product_group_update_request_create_internal (
+        catalog_type,
+        name,
+        description,
+        filters
+        );
+}
 
 void catalogs_creative_assets_product_group_update_request_free(catalogs_creative_assets_product_group_update_request_t *catalogs_creative_assets_product_group_update_request) {
     if(NULL == catalogs_creative_assets_product_group_update_request){
+        return ;
+    }
+    if(catalogs_creative_assets_product_group_update_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_creative_assets_product_group_update_request_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -66,7 +84,7 @@ cJSON *catalogs_creative_assets_product_group_update_request_convertToJSON(catal
 
     // catalogs_creative_assets_product_group_update_request->catalog_type
     if(catalogs_creative_assets_product_group_update_request->catalog_type != pinterest_rest_api_catalogs_creative_assets_product_group_update_request_CATALOGTYPE_NULL) {
-    if(cJSON_AddStringToObject(item, "catalog_type", catalog_typecatalogs_creative_assets_product_group_update_request_ToString(catalogs_creative_assets_product_group_update_request->catalog_type)) == NULL)
+    if(cJSON_AddStringToObject(item, "catalog_type", catalogs_creative_assets_product_group_update_request_catalog_type_ToString(catalogs_creative_assets_product_group_update_request->catalog_type)) == NULL)
     {
     goto fail; //Enum
     }
@@ -118,6 +136,9 @@ catalogs_creative_assets_product_group_update_request_t *catalogs_creative_asset
 
     // catalogs_creative_assets_product_group_update_request->catalog_type
     cJSON *catalog_type = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_product_group_update_requestJSON, "catalog_type");
+    if (cJSON_IsNull(catalog_type)) {
+        catalog_type = NULL;
+    }
     pinterest_rest_api_catalogs_creative_assets_product_group_update_request_CATALOGTYPE_e catalog_typeVariable;
     if (catalog_type) { 
     if(!cJSON_IsString(catalog_type))
@@ -129,6 +150,9 @@ catalogs_creative_assets_product_group_update_request_t *catalogs_creative_asset
 
     // catalogs_creative_assets_product_group_update_request->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_product_group_update_requestJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
     if (name) { 
     if(!cJSON_IsString(name) && !cJSON_IsNull(name))
     {
@@ -138,6 +162,9 @@ catalogs_creative_assets_product_group_update_request_t *catalogs_creative_asset
 
     // catalogs_creative_assets_product_group_update_request->description
     cJSON *description = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_product_group_update_requestJSON, "description");
+    if (cJSON_IsNull(description)) {
+        description = NULL;
+    }
     if (description) { 
     if(!cJSON_IsString(description) && !cJSON_IsNull(description))
     {
@@ -147,12 +174,15 @@ catalogs_creative_assets_product_group_update_request_t *catalogs_creative_asset
 
     // catalogs_creative_assets_product_group_update_request->filters
     cJSON *filters = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_product_group_update_requestJSON, "filters");
+    if (cJSON_IsNull(filters)) {
+        filters = NULL;
+    }
     if (filters) { 
     filters_local_nonprim = catalogs_creative_assets_product_group_filters_parseFromJSON(filters); //nonprimitive
     }
 
 
-    catalogs_creative_assets_product_group_update_request_local_var = catalogs_creative_assets_product_group_update_request_create (
+    catalogs_creative_assets_product_group_update_request_local_var = catalogs_creative_assets_product_group_update_request_create_internal (
         catalog_type ? catalog_typeVariable : pinterest_rest_api_catalogs_creative_assets_product_group_update_request_CATALOGTYPE_NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,

@@ -4,27 +4,10 @@
 #include "catalogs_creative_assets_product_metadata.h"
 
 
-char* catalogs_creative_assets_product_metadata_visibility_ToString(pinterest_rest_api_catalogs_creative_assets_product_metadata__e visibility) {
-    char* visibilityArray[] =  { "NULL", "VISIBLE", "HIDDEN" };
-    return visibilityArray[visibility];
-}
 
-pinterest_rest_api_catalogs_creative_assets_product_metadata__e catalogs_creative_assets_product_metadata_visibility_FromString(char* visibility){
-    int stringToReturn = 0;
-    char *visibilityArray[] =  { "NULL", "VISIBLE", "HIDDEN" };
-    size_t sizeofArray = sizeof(visibilityArray) / sizeof(visibilityArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(visibility, visibilityArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-
-catalogs_creative_assets_product_metadata_t *catalogs_creative_assets_product_metadata_create(
+static catalogs_creative_assets_product_metadata_t *catalogs_creative_assets_product_metadata_create_internal(
     char *creative_assets_id,
-    creative_assets_visibility_type_t *visibility
+    pinterest_rest_api_creative_assets_visibility_type__e visibility
     ) {
     catalogs_creative_assets_product_metadata_t *catalogs_creative_assets_product_metadata_local_var = malloc(sizeof(catalogs_creative_assets_product_metadata_t));
     if (!catalogs_creative_assets_product_metadata_local_var) {
@@ -33,22 +16,32 @@ catalogs_creative_assets_product_metadata_t *catalogs_creative_assets_product_me
     catalogs_creative_assets_product_metadata_local_var->creative_assets_id = creative_assets_id;
     catalogs_creative_assets_product_metadata_local_var->visibility = visibility;
 
+    catalogs_creative_assets_product_metadata_local_var->_library_owned = 1;
     return catalogs_creative_assets_product_metadata_local_var;
 }
 
+__attribute__((deprecated)) catalogs_creative_assets_product_metadata_t *catalogs_creative_assets_product_metadata_create(
+    char *creative_assets_id,
+    pinterest_rest_api_creative_assets_visibility_type__e visibility
+    ) {
+    return catalogs_creative_assets_product_metadata_create_internal (
+        creative_assets_id,
+        visibility
+        );
+}
 
 void catalogs_creative_assets_product_metadata_free(catalogs_creative_assets_product_metadata_t *catalogs_creative_assets_product_metadata) {
     if(NULL == catalogs_creative_assets_product_metadata){
+        return ;
+    }
+    if(catalogs_creative_assets_product_metadata->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_creative_assets_product_metadata_free");
         return ;
     }
     listEntry_t *listEntry;
     if (catalogs_creative_assets_product_metadata->creative_assets_id) {
         free(catalogs_creative_assets_product_metadata->creative_assets_id);
         catalogs_creative_assets_product_metadata->creative_assets_id = NULL;
-    }
-    if (catalogs_creative_assets_product_metadata->visibility) {
-        creative_assets_visibility_type_free(catalogs_creative_assets_product_metadata->visibility);
-        catalogs_creative_assets_product_metadata->visibility = NULL;
     }
     free(catalogs_creative_assets_product_metadata);
 }
@@ -66,7 +59,7 @@ cJSON *catalogs_creative_assets_product_metadata_convertToJSON(catalogs_creative
 
 
     // catalogs_creative_assets_product_metadata->visibility
-    if (pinterest_rest_api_catalogs_creative_assets_product_metadata__NULL == catalogs_creative_assets_product_metadata->visibility) {
+    if (pinterest_rest_api_creative_assets_visibility_type__NULL == catalogs_creative_assets_product_metadata->visibility) {
         goto fail;
     }
     cJSON *visibility_local_JSON = creative_assets_visibility_type_convertToJSON(catalogs_creative_assets_product_metadata->visibility);
@@ -91,10 +84,13 @@ catalogs_creative_assets_product_metadata_t *catalogs_creative_assets_product_me
     catalogs_creative_assets_product_metadata_t *catalogs_creative_assets_product_metadata_local_var = NULL;
 
     // define the local variable for catalogs_creative_assets_product_metadata->visibility
-    creative_assets_visibility_type_t *visibility_local_nonprim = NULL;
+    pinterest_rest_api_creative_assets_visibility_type__e visibility_local_nonprim = 0;
 
     // catalogs_creative_assets_product_metadata->creative_assets_id
     cJSON *creative_assets_id = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_product_metadataJSON, "creative_assets_id");
+    if (cJSON_IsNull(creative_assets_id)) {
+        creative_assets_id = NULL;
+    }
     if (!creative_assets_id) {
         goto end;
     }
@@ -107,6 +103,9 @@ catalogs_creative_assets_product_metadata_t *catalogs_creative_assets_product_me
 
     // catalogs_creative_assets_product_metadata->visibility
     cJSON *visibility = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_product_metadataJSON, "visibility");
+    if (cJSON_IsNull(visibility)) {
+        visibility = NULL;
+    }
     if (!visibility) {
         goto end;
     }
@@ -115,7 +114,7 @@ catalogs_creative_assets_product_metadata_t *catalogs_creative_assets_product_me
     visibility_local_nonprim = creative_assets_visibility_type_parseFromJSON(visibility); //custom
 
 
-    catalogs_creative_assets_product_metadata_local_var = catalogs_creative_assets_product_metadata_create (
+    catalogs_creative_assets_product_metadata_local_var = catalogs_creative_assets_product_metadata_create_internal (
         strdup(creative_assets_id->valuestring),
         visibility_local_nonprim
         );
@@ -123,8 +122,7 @@ catalogs_creative_assets_product_metadata_t *catalogs_creative_assets_product_me
     return catalogs_creative_assets_product_metadata_local_var;
 end:
     if (visibility_local_nonprim) {
-        creative_assets_visibility_type_free(visibility_local_nonprim);
-        visibility_local_nonprim = NULL;
+        visibility_local_nonprim = 0;
     }
     return NULL;
 

@@ -1389,9 +1389,9 @@ Protected Module Models
 	#tag Method, Flags = &h21
 		Protected Function ConversionReportTimeTypeToString(value As ConversionReportTimeType) As String
 		  Select Case value
-		    Case ConversionReportTimeType.AdAction
+		    Case ConversionReportTimeType.TimeOfAdAction
 		      Return "TIME_OF_AD_ACTION"
-		    Case ConversionReportTimeType.Conversion
+		    Case ConversionReportTimeType.TimeOfConversion
 		      Return "TIME_OF_CONVERSION"
 		    
 		  End Select
@@ -5932,8 +5932,8 @@ Protected Module Models
 	#tag EndEnum
 	#tag Enum, Name = ConversionReportTimeType, Type = Integer, Flags = &h1
 		
-		AdAction
-		Conversion
+		TimeOfAdAction
+		TimeOfConversion
 		
 	#tag EndEnum
 	#tag Enum, Name = ConversionTagType, Type = Integer, Flags = &h1

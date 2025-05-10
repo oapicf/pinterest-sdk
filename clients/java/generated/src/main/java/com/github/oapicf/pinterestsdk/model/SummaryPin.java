@@ -50,26 +50,31 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Summarized pin information
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SummaryPin {
   public static final String SERIALIZED_NAME_MEDIA = "media";
   @SerializedName(SERIALIZED_NAME_MEDIA)
+  @javax.annotation.Nullable
   private PinMedia media;
 
   public static final String SERIALIZED_NAME_ALT_TEXT = "alt_text";
   @SerializedName(SERIALIZED_NAME_ALT_TEXT)
+  @javax.annotation.Nullable
   private String altText;
 
   public static final String SERIALIZED_NAME_LINK = "link";
   @SerializedName(SERIALIZED_NAME_LINK)
+  @javax.annotation.Nullable
   private String link;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
+  @javax.annotation.Nullable
   private String title;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nullable
   private String description;
 
   public SummaryPin() {
@@ -93,7 +98,7 @@ public class SummaryPin {
 
 
 
-  public SummaryPin altText(String altText) {
+  public SummaryPin altText(@javax.annotation.Nullable String altText) {
     this.altText = altText;
     return this;
   }
@@ -107,12 +112,12 @@ public class SummaryPin {
     return altText;
   }
 
-  public void setAltText(String altText) {
+  public void setAltText(@javax.annotation.Nullable String altText) {
     this.altText = altText;
   }
 
 
-  public SummaryPin link(String link) {
+  public SummaryPin link(@javax.annotation.Nullable String link) {
     this.link = link;
     return this;
   }
@@ -126,12 +131,12 @@ public class SummaryPin {
     return link;
   }
 
-  public void setLink(String link) {
+  public void setLink(@javax.annotation.Nullable String link) {
     this.link = link;
   }
 
 
-  public SummaryPin title(String title) {
+  public SummaryPin title(@javax.annotation.Nullable String title) {
     this.title = title;
     return this;
   }
@@ -145,12 +150,12 @@ public class SummaryPin {
     return title;
   }
 
-  public void setTitle(String title) {
+  public void setTitle(@javax.annotation.Nullable String title) {
     this.title = title;
   }
 
 
-  public SummaryPin description(String description) {
+  public SummaryPin description(@javax.annotation.Nullable String description) {
     this.description = description;
     return this;
   }
@@ -164,7 +169,7 @@ public class SummaryPin {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 

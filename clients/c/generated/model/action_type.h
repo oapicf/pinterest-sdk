@@ -24,9 +24,9 @@ char* action_type_action_type_ToString(pinterest_rest_api_action_type__e action_
 
 pinterest_rest_api_action_type__e action_type_action_type_FromString(char* action_type);
 
-//cJSON *action_type_action_type_convertToJSON(pinterest_rest_api_action_type__e action_type);
+cJSON *action_type_convertToJSON(pinterest_rest_api_action_type__e action_type);
 
-//pinterest_rest_api_action_type__e action_type_action_type_parseFromJSON(cJSON *action_typeJSON);
+pinterest_rest_api_action_type__e action_type_parseFromJSON(cJSON *action_typeJSON);
 
 #endif /* _action_type_H_ */
 

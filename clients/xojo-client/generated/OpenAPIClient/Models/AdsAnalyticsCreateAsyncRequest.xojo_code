@@ -211,8 +211,8 @@ Protected Class AdsAnalyticsCreateAsyncRequest
 
     #tag Enum, Name = Primary_sortEnum, Type = Integer, Flags = &h0
         
-        Id
-        Date
+        ById
+        ByDate
         
     #tag EndEnum
 
@@ -221,9 +221,9 @@ Protected Class AdsAnalyticsCreateAsyncRequest
 		Shared Function Primary_sortEnumToString(value As Primary_sortEnum) As String
 		  Select Case value
 		    
-		    Case Primary_sortEnum.Id
+		    Case Primary_sortEnum.ById
 		      Return "BY_ID"
-		    Case Primary_sortEnum.Date
+		    Case Primary_sortEnum.ByDate
 		      Return "BY_DATE"
 		    
 		  End Select

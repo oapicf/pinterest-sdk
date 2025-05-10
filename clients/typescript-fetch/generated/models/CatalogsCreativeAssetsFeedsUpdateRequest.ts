@@ -143,11 +143,11 @@ export function CatalogsCreativeAssetsFeedsUpdateRequestFromJSONTyped(json: any,
     };
 }
 
-  export function CatalogsCreativeAssetsFeedsUpdateRequestToJSON(json: any): CatalogsCreativeAssetsFeedsUpdateRequest {
-      return CatalogsCreativeAssetsFeedsUpdateRequestToJSONTyped(json, false);
-  }
+export function CatalogsCreativeAssetsFeedsUpdateRequestToJSON(json: any): CatalogsCreativeAssetsFeedsUpdateRequest {
+    return CatalogsCreativeAssetsFeedsUpdateRequestToJSONTyped(json, false);
+}
 
-  export function CatalogsCreativeAssetsFeedsUpdateRequestToJSONTyped(value?: CatalogsCreativeAssetsFeedsUpdateRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsCreativeAssetsFeedsUpdateRequestToJSONTyped(value?: CatalogsCreativeAssetsFeedsUpdateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

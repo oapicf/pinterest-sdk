@@ -146,7 +146,7 @@ class TargetingTemplateResponseData
      * @SerializedName("status")
      * @Type("string")
     */
-    #[Assert\Choice(["ACTIVE", "DELETED"])]
+    #[Assert\Choice(['ACTIVE', 'DELETED'])]
     #[Assert\Type("string")]
     protected ?string $status = 'ACTIVE';
 
@@ -162,7 +162,7 @@ class TargetingTemplateResponseData
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->name = array_key_exists('name', $data) ? $data['name'] : $this->name;

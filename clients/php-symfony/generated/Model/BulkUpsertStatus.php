@@ -42,9 +42,9 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum BulkUpsertStatus: string
 {
-        case RUNNING = "RUNNING";
-        case SUCCEEDED = "SUCCEEDED";
-        case FAILED = "FAILED";
+        case RUNNING = 'RUNNING';
+        case SUCCEEDED = 'SUCCEEDED';
+        case FAILED = 'FAILED';
 }
 
 

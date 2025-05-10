@@ -1,9 +1,5 @@
 package models
 
-import (
-	"gopkg.in/validator.v2"
-)
-
 // CatalogsProductGroupProductCountsVertical - Product counts for a CatalogsProductGroup
 type CatalogsProductGroupProductCountsVertical struct {
 

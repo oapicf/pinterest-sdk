@@ -64,11 +64,11 @@ export function LeadFormsList200ResponseFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function LeadFormsList200ResponseToJSON(json: any): LeadFormsList200Response {
-      return LeadFormsList200ResponseToJSONTyped(json, false);
-  }
+export function LeadFormsList200ResponseToJSON(json: any): LeadFormsList200Response {
+    return LeadFormsList200ResponseToJSONTyped(json, false);
+}
 
-  export function LeadFormsList200ResponseToJSONTyped(value?: LeadFormsList200Response | null, ignoreDiscriminator: boolean = false): any {
+export function LeadFormsList200ResponseToJSONTyped(value?: LeadFormsList200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

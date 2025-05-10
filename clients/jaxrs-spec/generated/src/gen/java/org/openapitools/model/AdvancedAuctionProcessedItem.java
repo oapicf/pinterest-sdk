@@ -27,9 +27,31 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Object describing the result of an operation on an item bid option")
 @JsonTypeName("AdvancedAuctionProcessedItem")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdvancedAuctionProcessedItem extends AdvancedAuctionItemsSubmitRecord  {
   private @Valid List<@Valid AdvancedAuctionOperationError> errors = new ArrayList<>();
+
+  public AdvancedAuctionProcessedItem() {
+  }
+
+  @JsonCreator
+  public AdvancedAuctionProcessedItem(
+    @JsonProperty(required = true, value = "operation") AdvancedAuctionOperation operation,
+    @JsonProperty(required = true, value = "item_id") String itemId,
+    @JsonProperty(required = true, value = "country") Country country,
+    @JsonProperty(required = true, value = "language") Language language,
+    @JsonProperty(required = true, value = "bid_options") AdvancedAuctionBidOptions bidOptions,
+    @JsonProperty(required = true, value = "update_mask") List<UpdateMaskBidOptionField> updateMask
+  ) {
+    super(
+      operation,
+      itemId,
+      country,
+      language,
+      bidOptions,
+      updateMask
+    );
+  }
 
   /**
    * Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.

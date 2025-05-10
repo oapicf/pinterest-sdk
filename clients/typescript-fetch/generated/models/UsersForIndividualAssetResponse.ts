@@ -62,11 +62,11 @@ export function UsersForIndividualAssetResponseFromJSONTyped(json: any, ignoreDi
     };
 }
 
-  export function UsersForIndividualAssetResponseToJSON(json: any): UsersForIndividualAssetResponse {
-      return UsersForIndividualAssetResponseToJSONTyped(json, false);
-  }
+export function UsersForIndividualAssetResponseToJSON(json: any): UsersForIndividualAssetResponse {
+    return UsersForIndividualAssetResponseToJSONTyped(json, false);
+}
 
-  export function UsersForIndividualAssetResponseToJSONTyped(value?: UsersForIndividualAssetResponse | null, ignoreDiscriminator: boolean = false): any {
+export function UsersForIndividualAssetResponseToJSONTyped(value?: UsersForIndividualAssetResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

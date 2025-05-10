@@ -13,12 +13,14 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.DeletePartnerAssetsResult
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items List of terminated asset access.
  */
+@Serializable
 data class DeletePartnerAssetsResultsResponseArray(
     /* List of terminated asset access. */
     val items: kotlin.collections.List<DeletePartnerAssetsResult>? = null
-) 
+)
 

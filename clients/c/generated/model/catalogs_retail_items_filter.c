@@ -22,7 +22,7 @@ pinterest_rest_api_catalogs_retail_items_filter_CATALOGTYPE_e catalogs_retail_it
     return 0;
 }
 
-catalogs_retail_items_filter_t *catalogs_retail_items_filter_create(
+static catalogs_retail_items_filter_t *catalogs_retail_items_filter_create_internal(
     pinterest_rest_api_catalogs_retail_items_filter_CATALOGTYPE_e catalog_type,
     list_t *item_ids,
     char *catalog_id
@@ -35,12 +35,28 @@ catalogs_retail_items_filter_t *catalogs_retail_items_filter_create(
     catalogs_retail_items_filter_local_var->item_ids = item_ids;
     catalogs_retail_items_filter_local_var->catalog_id = catalog_id;
 
+    catalogs_retail_items_filter_local_var->_library_owned = 1;
     return catalogs_retail_items_filter_local_var;
 }
 
+__attribute__((deprecated)) catalogs_retail_items_filter_t *catalogs_retail_items_filter_create(
+    pinterest_rest_api_catalogs_retail_items_filter_CATALOGTYPE_e catalog_type,
+    list_t *item_ids,
+    char *catalog_id
+    ) {
+    return catalogs_retail_items_filter_create_internal (
+        catalog_type,
+        item_ids,
+        catalog_id
+        );
+}
 
 void catalogs_retail_items_filter_free(catalogs_retail_items_filter_t *catalogs_retail_items_filter) {
     if(NULL == catalogs_retail_items_filter){
+        return ;
+    }
+    if(catalogs_retail_items_filter->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_retail_items_filter_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -65,7 +81,7 @@ cJSON *catalogs_retail_items_filter_convertToJSON(catalogs_retail_items_filter_t
     if (pinterest_rest_api_catalogs_retail_items_filter_CATALOGTYPE_NULL == catalogs_retail_items_filter->catalog_type) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "catalog_type", catalog_typecatalogs_retail_items_filter_ToString(catalogs_retail_items_filter->catalog_type)) == NULL)
+    if(cJSON_AddStringToObject(item, "catalog_type", catalogs_retail_items_filter_catalog_type_ToString(catalogs_retail_items_filter->catalog_type)) == NULL)
     {
     goto fail; //Enum
     }
@@ -82,7 +98,7 @@ cJSON *catalogs_retail_items_filter_convertToJSON(catalogs_retail_items_filter_t
 
     listEntry_t *item_idsListEntry;
     list_ForEach(item_idsListEntry, catalogs_retail_items_filter->item_ids) {
-    if(cJSON_AddStringToObject(item_ids, "", (char*)item_idsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(item_ids, "", item_idsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -113,6 +129,9 @@ catalogs_retail_items_filter_t *catalogs_retail_items_filter_parseFromJSON(cJSON
 
     // catalogs_retail_items_filter->catalog_type
     cJSON *catalog_type = cJSON_GetObjectItemCaseSensitive(catalogs_retail_items_filterJSON, "catalog_type");
+    if (cJSON_IsNull(catalog_type)) {
+        catalog_type = NULL;
+    }
     if (!catalog_type) {
         goto end;
     }
@@ -127,6 +146,9 @@ catalogs_retail_items_filter_t *catalogs_retail_items_filter_parseFromJSON(cJSON
 
     // catalogs_retail_items_filter->item_ids
     cJSON *item_ids = cJSON_GetObjectItemCaseSensitive(catalogs_retail_items_filterJSON, "item_ids");
+    if (cJSON_IsNull(item_ids)) {
+        item_ids = NULL;
+    }
     if (!item_ids) {
         goto end;
     }
@@ -149,6 +171,9 @@ catalogs_retail_items_filter_t *catalogs_retail_items_filter_parseFromJSON(cJSON
 
     // catalogs_retail_items_filter->catalog_id
     cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(catalogs_retail_items_filterJSON, "catalog_id");
+    if (cJSON_IsNull(catalog_id)) {
+        catalog_id = NULL;
+    }
     if (catalog_id) { 
     if(!cJSON_IsString(catalog_id) && !cJSON_IsNull(catalog_id))
     {
@@ -157,7 +182,7 @@ catalogs_retail_items_filter_t *catalogs_retail_items_filter_parseFromJSON(cJSON
     }
 
 
-    catalogs_retail_items_filter_local_var = catalogs_retail_items_filter_create (
+    catalogs_retail_items_filter_local_var = catalogs_retail_items_filter_create_internal (
         catalog_typeVariable,
         item_idsList,
         catalog_id && !cJSON_IsNull(catalog_id) ? strdup(catalog_id->valuestring) : NULL

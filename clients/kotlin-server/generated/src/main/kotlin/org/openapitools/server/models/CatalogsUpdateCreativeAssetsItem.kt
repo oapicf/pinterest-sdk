@@ -13,18 +13,20 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsUpdatableCreativeAssetsAttributes
 
+import kotlinx.serialization.Serializable
 /**
  * A creative assets item to be updated.
  * @param creativeAssetsId The catalog creative assets item id in the merchant namespace
  * @param operation 
  * @param attributes 
  */
+@Serializable
 data class CatalogsUpdateCreativeAssetsItem(
     /* The catalog creative assets item id in the merchant namespace */
     val creativeAssetsId: kotlin.String,
     val operation: CatalogsUpdateCreativeAssetsItem.Operation,
     val attributes: CatalogsUpdatableCreativeAssetsAttributes
-) 
+)
 {
     /**
     * 

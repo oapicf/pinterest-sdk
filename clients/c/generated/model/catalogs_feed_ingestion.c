@@ -4,29 +4,12 @@
 #include "catalogs_feed_ingestion.h"
 
 
-char* catalogs_feed_ingestion_status_ToString(pinterest_rest_api_catalogs_feed_ingestion__e status) {
-    char* statusArray[] =  { "NULL", "COMPLETED", "FAILED", "PROCESSING" };
-    return statusArray[status];
-}
 
-pinterest_rest_api_catalogs_feed_ingestion__e catalogs_feed_ingestion_status_FromString(char* status){
-    int stringToReturn = 0;
-    char *statusArray[] =  { "NULL", "COMPLETED", "FAILED", "PROCESSING" };
-    size_t sizeofArray = sizeof(statusArray) / sizeof(statusArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(status, statusArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-
-catalogs_feed_ingestion_t *catalogs_feed_ingestion_create(
+static catalogs_feed_ingestion_t *catalogs_feed_ingestion_create_internal(
     char *id,
     char *feed_id,
     char *created_at,
-    catalogs_feed_processing_status_t *status
+    pinterest_rest_api_catalogs_feed_processing_status__e status
     ) {
     catalogs_feed_ingestion_t *catalogs_feed_ingestion_local_var = malloc(sizeof(catalogs_feed_ingestion_t));
     if (!catalogs_feed_ingestion_local_var) {
@@ -37,12 +20,30 @@ catalogs_feed_ingestion_t *catalogs_feed_ingestion_create(
     catalogs_feed_ingestion_local_var->created_at = created_at;
     catalogs_feed_ingestion_local_var->status = status;
 
+    catalogs_feed_ingestion_local_var->_library_owned = 1;
     return catalogs_feed_ingestion_local_var;
 }
 
+__attribute__((deprecated)) catalogs_feed_ingestion_t *catalogs_feed_ingestion_create(
+    char *id,
+    char *feed_id,
+    char *created_at,
+    pinterest_rest_api_catalogs_feed_processing_status__e status
+    ) {
+    return catalogs_feed_ingestion_create_internal (
+        id,
+        feed_id,
+        created_at,
+        status
+        );
+}
 
 void catalogs_feed_ingestion_free(catalogs_feed_ingestion_t *catalogs_feed_ingestion) {
     if(NULL == catalogs_feed_ingestion){
+        return ;
+    }
+    if(catalogs_feed_ingestion->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_feed_ingestion_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -57,10 +58,6 @@ void catalogs_feed_ingestion_free(catalogs_feed_ingestion_t *catalogs_feed_inges
     if (catalogs_feed_ingestion->created_at) {
         free(catalogs_feed_ingestion->created_at);
         catalogs_feed_ingestion->created_at = NULL;
-    }
-    if (catalogs_feed_ingestion->status) {
-        catalogs_feed_processing_status_free(catalogs_feed_ingestion->status);
-        catalogs_feed_ingestion->status = NULL;
     }
     free(catalogs_feed_ingestion);
 }
@@ -96,7 +93,7 @@ cJSON *catalogs_feed_ingestion_convertToJSON(catalogs_feed_ingestion_t *catalogs
 
 
     // catalogs_feed_ingestion->status
-    if (pinterest_rest_api_catalogs_feed_ingestion__NULL == catalogs_feed_ingestion->status) {
+    if (pinterest_rest_api_catalogs_feed_processing_status__NULL == catalogs_feed_ingestion->status) {
         goto fail;
     }
     cJSON *status_local_JSON = catalogs_feed_processing_status_convertToJSON(catalogs_feed_ingestion->status);
@@ -121,10 +118,13 @@ catalogs_feed_ingestion_t *catalogs_feed_ingestion_parseFromJSON(cJSON *catalogs
     catalogs_feed_ingestion_t *catalogs_feed_ingestion_local_var = NULL;
 
     // define the local variable for catalogs_feed_ingestion->status
-    catalogs_feed_processing_status_t *status_local_nonprim = NULL;
+    pinterest_rest_api_catalogs_feed_processing_status__e status_local_nonprim = 0;
 
     // catalogs_feed_ingestion->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(catalogs_feed_ingestionJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (!id) {
         goto end;
     }
@@ -137,6 +137,9 @@ catalogs_feed_ingestion_t *catalogs_feed_ingestion_parseFromJSON(cJSON *catalogs
 
     // catalogs_feed_ingestion->feed_id
     cJSON *feed_id = cJSON_GetObjectItemCaseSensitive(catalogs_feed_ingestionJSON, "feed_id");
+    if (cJSON_IsNull(feed_id)) {
+        feed_id = NULL;
+    }
     if (!feed_id) {
         goto end;
     }
@@ -149,6 +152,9 @@ catalogs_feed_ingestion_t *catalogs_feed_ingestion_parseFromJSON(cJSON *catalogs
 
     // catalogs_feed_ingestion->created_at
     cJSON *created_at = cJSON_GetObjectItemCaseSensitive(catalogs_feed_ingestionJSON, "created_at");
+    if (cJSON_IsNull(created_at)) {
+        created_at = NULL;
+    }
     if (!created_at) {
         goto end;
     }
@@ -161,6 +167,9 @@ catalogs_feed_ingestion_t *catalogs_feed_ingestion_parseFromJSON(cJSON *catalogs
 
     // catalogs_feed_ingestion->status
     cJSON *status = cJSON_GetObjectItemCaseSensitive(catalogs_feed_ingestionJSON, "status");
+    if (cJSON_IsNull(status)) {
+        status = NULL;
+    }
     if (!status) {
         goto end;
     }
@@ -169,7 +178,7 @@ catalogs_feed_ingestion_t *catalogs_feed_ingestion_parseFromJSON(cJSON *catalogs
     status_local_nonprim = catalogs_feed_processing_status_parseFromJSON(status); //custom
 
 
-    catalogs_feed_ingestion_local_var = catalogs_feed_ingestion_create (
+    catalogs_feed_ingestion_local_var = catalogs_feed_ingestion_create_internal (
         strdup(id->valuestring),
         strdup(feed_id->valuestring),
         strdup(created_at->valuestring),
@@ -179,8 +188,7 @@ catalogs_feed_ingestion_t *catalogs_feed_ingestion_parseFromJSON(cJSON *catalogs
     return catalogs_feed_ingestion_local_var;
 end:
     if (status_local_nonprim) {
-        catalogs_feed_processing_status_free(status_local_nonprim);
-        status_local_nonprim = NULL;
+        status_local_nonprim = 0;
     }
     return NULL;
 

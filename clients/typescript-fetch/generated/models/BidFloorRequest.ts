@@ -71,11 +71,11 @@ export function BidFloorRequestFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-  export function BidFloorRequestToJSON(json: any): BidFloorRequest {
-      return BidFloorRequestToJSONTyped(json, false);
-  }
+export function BidFloorRequestToJSON(json: any): BidFloorRequest {
+    return BidFloorRequestToJSONTyped(json, false);
+}
 
-  export function BidFloorRequestToJSONTyped(value?: BidFloorRequest | null, ignoreDiscriminator: boolean = false): any {
+export function BidFloorRequestToJSONTyped(value?: BidFloorRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -57,11 +57,11 @@ export function UpdateMemberAssetsResultsResponseArrayFromJSONTyped(json: any, i
     };
 }
 
-  export function UpdateMemberAssetsResultsResponseArrayToJSON(json: any): UpdateMemberAssetsResultsResponseArray {
-      return UpdateMemberAssetsResultsResponseArrayToJSONTyped(json, false);
-  }
+export function UpdateMemberAssetsResultsResponseArrayToJSON(json: any): UpdateMemberAssetsResultsResponseArray {
+    return UpdateMemberAssetsResultsResponseArrayToJSONTyped(json, false);
+}
 
-  export function UpdateMemberAssetsResultsResponseArrayToJSONTyped(value?: UpdateMemberAssetsResultsResponseArray | null, ignoreDiscriminator: boolean = false): any {
+export function UpdateMemberAssetsResultsResponseArrayToJSONTyped(value?: UpdateMemberAssetsResultsResponseArray | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

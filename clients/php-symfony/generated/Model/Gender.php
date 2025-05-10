@@ -42,9 +42,9 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum Gender: string
 {
-        case FEMALE = "FEMALE";
-        case MALE = "MALE";
-        case UNISEX = "UNISEX";
+        case FEMALE = 'FEMALE';
+        case MALE = 'MALE';
+        case UNISEX = 'UNISEX';
 }
 
 

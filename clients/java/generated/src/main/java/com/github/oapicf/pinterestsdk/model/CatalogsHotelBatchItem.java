@@ -62,7 +62,7 @@ import com.google.gson.JsonParseException;
 
 import com.github.oapicf.pinterestsdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsHotelBatchItem extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CatalogsHotelBatchItem.class.getName());
 
@@ -259,6 +259,7 @@ public class CatalogsHotelBatchItem extends AbstractOpenApiSchema {
     public CatalogsCreateHotelItem getCatalogsCreateHotelItem() throws ClassCastException {
         return (CatalogsCreateHotelItem)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CatalogsUpsertHotelItem`. If the actual instance is not `CatalogsUpsertHotelItem`,
      * the ClassCastException will be thrown.
@@ -269,6 +270,7 @@ public class CatalogsHotelBatchItem extends AbstractOpenApiSchema {
     public CatalogsUpsertHotelItem getCatalogsUpsertHotelItem() throws ClassCastException {
         return (CatalogsUpsertHotelItem)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CatalogsUpdateHotelItem`. If the actual instance is not `CatalogsUpdateHotelItem`,
      * the ClassCastException will be thrown.
@@ -279,6 +281,7 @@ public class CatalogsHotelBatchItem extends AbstractOpenApiSchema {
     public CatalogsUpdateHotelItem getCatalogsUpdateHotelItem() throws ClassCastException {
         return (CatalogsUpdateHotelItem)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CatalogsDeleteHotelItem`. If the actual instance is not `CatalogsDeleteHotelItem`,
      * the ClassCastException will be thrown.

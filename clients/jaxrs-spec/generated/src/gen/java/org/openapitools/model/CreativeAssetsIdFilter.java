@@ -16,9 +16,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CreativeAssetsIdFilter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CreativeAssetsIdFilter   {
   private CatalogsProductGroupMultipleStringCriteria CREATIVE_ASSETS_ID;
+
+  public CreativeAssetsIdFilter() {
+  }
+
+  @JsonCreator
+  public CreativeAssetsIdFilter(
+    @JsonProperty(required = true, value = "CREATIVE_ASSETS_ID") CatalogsProductGroupMultipleStringCriteria CREATIVE_ASSETS_ID
+  ) {
+    this.CREATIVE_ASSETS_ID = CREATIVE_ASSETS_ID;
+  }
 
   /**
    **/
@@ -29,12 +39,12 @@ public class CreativeAssetsIdFilter   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("CREATIVE_ASSETS_ID")
+  @JsonProperty(required = true, value = "CREATIVE_ASSETS_ID")
   @NotNull @Valid public CatalogsProductGroupMultipleStringCriteria getCREATIVEASSETSID() {
     return CREATIVE_ASSETS_ID;
   }
 
-  @JsonProperty("CREATIVE_ASSETS_ID")
+  @JsonProperty(required = true, value = "CREATIVE_ASSETS_ID")
   public void setCREATIVEASSETSID(CatalogsProductGroupMultipleStringCriteria CREATIVE_ASSETS_ID) {
     this.CREATIVE_ASSETS_ID = CREATIVE_ASSETS_ID;
   }

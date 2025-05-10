@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import org.openapitools.model.DataStatus;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -25,12 +26,12 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("PinAnalyticsMetricsResponse_daily_metrics_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinAnalyticsMetricsResponseDailyMetricsInner {
 
-  private DataStatus dataStatus;
+  private @Nullable DataStatus dataStatus;
 
-  private String date;
+  private @Nullable String date;
 
   @Valid
   private Map<String, BigDecimal> metrics = new HashMap<>();

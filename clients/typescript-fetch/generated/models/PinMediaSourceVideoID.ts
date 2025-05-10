@@ -70,8 +70,8 @@ export type PinMediaSourceVideoIDSourceTypeEnum = typeof PinMediaSourceVideoIDSo
  * @export
  */
 export const PinMediaSourceVideoIDCoverImageContentTypeEnum = {
-    Jpeg: 'image/jpeg',
-    Png: 'image/png'
+    ImageJpeg: 'image/jpeg',
+    ImagePng: 'image/png'
 } as const;
 export type PinMediaSourceVideoIDCoverImageContentTypeEnum = typeof PinMediaSourceVideoIDCoverImageContentTypeEnum[keyof typeof PinMediaSourceVideoIDCoverImageContentTypeEnum];
 
@@ -104,11 +104,11 @@ export function PinMediaSourceVideoIDFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function PinMediaSourceVideoIDToJSON(json: any): PinMediaSourceVideoID {
-      return PinMediaSourceVideoIDToJSONTyped(json, false);
-  }
+export function PinMediaSourceVideoIDToJSON(json: any): PinMediaSourceVideoID {
+    return PinMediaSourceVideoIDToJSONTyped(json, false);
+}
 
-  export function PinMediaSourceVideoIDToJSONTyped(value?: PinMediaSourceVideoID | null, ignoreDiscriminator: boolean = false): any {
+export function PinMediaSourceVideoIDToJSONTyped(value?: PinMediaSourceVideoID | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

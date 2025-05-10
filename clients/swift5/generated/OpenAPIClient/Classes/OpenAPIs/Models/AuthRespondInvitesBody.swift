@@ -13,7 +13,7 @@ import AnyCodable
 /** An object with a list of all the invites the user would like to respond to and the action to take. */
 public struct AuthRespondInvitesBody: Codable, JSONEncodable, Hashable {
 
-    static let invitesRule = ArrayRule(minItems: 1, maxItems: 100, uniqueItems: false)
+    public static let invitesRule = ArrayRule(minItems: 1, maxItems: 100, uniqueItems: false)
     public var invites: [AuthRespondInvitesBodyInvitesInner]
 
     public init(invites: [AuthRespondInvitesBodyInvitesInner]) {

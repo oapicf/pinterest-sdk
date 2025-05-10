@@ -23,9 +23,10 @@ typedef struct create_asset_access_request_response_t {
     list_t *exceptions; //nonprimitive container
     list_t* invites; //map
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } create_asset_access_request_response_t;
 
-create_asset_access_request_response_t *create_asset_access_request_response_create(
+__attribute__((deprecated)) create_asset_access_request_response_t *create_asset_access_request_response_create(
     list_t *exceptions,
     list_t* invites
 );

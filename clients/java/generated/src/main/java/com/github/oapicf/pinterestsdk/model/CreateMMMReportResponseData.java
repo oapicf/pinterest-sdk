@@ -50,28 +50,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CreateMMMReportResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CreateMMMReportResponseData {
   public static final String SERIALIZED_NAME_REPORT_STATUS = "report_status";
   @SerializedName(SERIALIZED_NAME_REPORT_STATUS)
+  @javax.annotation.Nullable
   private BulkReportingJobStatus reportStatus;
 
   public static final String SERIALIZED_NAME_TOKEN = "token";
   @SerializedName(SERIALIZED_NAME_TOKEN)
+  @javax.annotation.Nullable
   private String token;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
+  @javax.annotation.Nullable
   private String message;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private String status;
 
   public CreateMMMReportResponseData() {
   }
 
-  public CreateMMMReportResponseData reportStatus(BulkReportingJobStatus reportStatus) {
+  public CreateMMMReportResponseData reportStatus(@javax.annotation.Nullable BulkReportingJobStatus reportStatus) {
     this.reportStatus = reportStatus;
     return this;
   }
@@ -85,12 +89,12 @@ public class CreateMMMReportResponseData {
     return reportStatus;
   }
 
-  public void setReportStatus(BulkReportingJobStatus reportStatus) {
+  public void setReportStatus(@javax.annotation.Nullable BulkReportingJobStatus reportStatus) {
     this.reportStatus = reportStatus;
   }
 
 
-  public CreateMMMReportResponseData token(String token) {
+  public CreateMMMReportResponseData token(@javax.annotation.Nullable String token) {
     this.token = token;
     return this;
   }
@@ -104,12 +108,12 @@ public class CreateMMMReportResponseData {
     return token;
   }
 
-  public void setToken(String token) {
+  public void setToken(@javax.annotation.Nullable String token) {
     this.token = token;
   }
 
 
-  public CreateMMMReportResponseData message(String message) {
+  public CreateMMMReportResponseData message(@javax.annotation.Nullable String message) {
     this.message = message;
     return this;
   }
@@ -123,12 +127,12 @@ public class CreateMMMReportResponseData {
     return message;
   }
 
-  public void setMessage(String message) {
+  public void setMessage(@javax.annotation.Nullable String message) {
     this.message = message;
   }
 
 
-  public CreateMMMReportResponseData status(String status) {
+  public CreateMMMReportResponseData status(@javax.annotation.Nullable String status) {
     this.status = status;
     return this;
   }
@@ -142,7 +146,7 @@ public class CreateMMMReportResponseData {
     return status;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(@javax.annotation.Nullable String status) {
     this.status = status;
   }
 

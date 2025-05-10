@@ -44,9 +44,10 @@ typedef struct catalogs_item_validation_errors_t {
     struct catalogs_item_validation_details_t *product_price_invalid; //model
     struct catalogs_item_validation_details_t *title_missing; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_item_validation_errors_t;
 
-catalogs_item_validation_errors_t *catalogs_item_validation_errors_create(
+__attribute__((deprecated)) catalogs_item_validation_errors_t *catalogs_item_validation_errors_create(
     catalogs_item_validation_details_t *adult_invalid,
     catalogs_item_validation_details_t *adwords_format_invalid,
     catalogs_item_validation_details_t *availability_invalid,

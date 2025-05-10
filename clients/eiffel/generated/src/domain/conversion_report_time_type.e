@@ -25,13 +25,13 @@ feature -- Access
 
 feature -- Enum
 
- val_ad_action: CONVERSION_REPORT_TIME_TYPE
+ val_time_of_ad_action: CONVERSION_REPORT_TIME_TYPE
     once
       create Result
       Result.set_value ("TIME_OF_AD_ACTION")
     end
 
- val_conversion: CONVERSION_REPORT_TIME_TYPE
+ val_time_of_conversion: CONVERSION_REPORT_TIME_TYPE
     once
       create Result
       Result.set_value ("TIME_OF_CONVERSION")

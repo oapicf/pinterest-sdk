@@ -22,9 +22,10 @@ typedef struct business_member_assets_summary_profiles_inner_t {
     char *id; // string
     list_t *permissions; //primitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } business_member_assets_summary_profiles_inner_t;
 
-business_member_assets_summary_profiles_inner_t *business_member_assets_summary_profiles_inner_create(
+__attribute__((deprecated)) business_member_assets_summary_profiles_inner_t *business_member_assets_summary_profiles_inner_create(
     char *id,
     list_t *permissions
 );

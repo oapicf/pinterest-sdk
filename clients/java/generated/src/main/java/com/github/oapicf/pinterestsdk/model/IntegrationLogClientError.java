@@ -48,48 +48,57 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * System error details included in the log sent by the client.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class IntegrationLogClientError {
   public static final String SERIALIZED_NAME_CAUSE = "cause";
   @SerializedName(SERIALIZED_NAME_CAUSE)
+  @javax.annotation.Nullable
   private String cause;
 
   public static final String SERIALIZED_NAME_COLUMN_NUMBER = "column_number";
   @SerializedName(SERIALIZED_NAME_COLUMN_NUMBER)
+  @javax.annotation.Nullable
   private Integer columnNumber;
 
   public static final String SERIALIZED_NAME_FILE_NAME = "file_name";
   @SerializedName(SERIALIZED_NAME_FILE_NAME)
+  @javax.annotation.Nullable
   private String fileName;
 
   public static final String SERIALIZED_NAME_LINE_NUMBER = "line_number";
   @SerializedName(SERIALIZED_NAME_LINE_NUMBER)
+  @javax.annotation.Nullable
   private Integer lineNumber;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
+  @javax.annotation.Nullable
   private String message;
 
   public static final String SERIALIZED_NAME_MESSAGE_DETAIL = "message_detail";
   @SerializedName(SERIALIZED_NAME_MESSAGE_DETAIL)
+  @javax.annotation.Nullable
   private String messageDetail;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_NUMBER = "number";
   @SerializedName(SERIALIZED_NAME_NUMBER)
+  @javax.annotation.Nullable
   private Integer number;
 
   public static final String SERIALIZED_NAME_STACK_TRACE = "stack_trace";
   @SerializedName(SERIALIZED_NAME_STACK_TRACE)
+  @javax.annotation.Nullable
   private String stackTrace;
 
   public IntegrationLogClientError() {
   }
 
-  public IntegrationLogClientError cause(String cause) {
+  public IntegrationLogClientError cause(@javax.annotation.Nullable String cause) {
     this.cause = cause;
     return this;
   }
@@ -103,12 +112,12 @@ public class IntegrationLogClientError {
     return cause;
   }
 
-  public void setCause(String cause) {
+  public void setCause(@javax.annotation.Nullable String cause) {
     this.cause = cause;
   }
 
 
-  public IntegrationLogClientError columnNumber(Integer columnNumber) {
+  public IntegrationLogClientError columnNumber(@javax.annotation.Nullable Integer columnNumber) {
     this.columnNumber = columnNumber;
     return this;
   }
@@ -122,12 +131,12 @@ public class IntegrationLogClientError {
     return columnNumber;
   }
 
-  public void setColumnNumber(Integer columnNumber) {
+  public void setColumnNumber(@javax.annotation.Nullable Integer columnNumber) {
     this.columnNumber = columnNumber;
   }
 
 
-  public IntegrationLogClientError fileName(String fileName) {
+  public IntegrationLogClientError fileName(@javax.annotation.Nullable String fileName) {
     this.fileName = fileName;
     return this;
   }
@@ -141,12 +150,12 @@ public class IntegrationLogClientError {
     return fileName;
   }
 
-  public void setFileName(String fileName) {
+  public void setFileName(@javax.annotation.Nullable String fileName) {
     this.fileName = fileName;
   }
 
 
-  public IntegrationLogClientError lineNumber(Integer lineNumber) {
+  public IntegrationLogClientError lineNumber(@javax.annotation.Nullable Integer lineNumber) {
     this.lineNumber = lineNumber;
     return this;
   }
@@ -160,12 +169,12 @@ public class IntegrationLogClientError {
     return lineNumber;
   }
 
-  public void setLineNumber(Integer lineNumber) {
+  public void setLineNumber(@javax.annotation.Nullable Integer lineNumber) {
     this.lineNumber = lineNumber;
   }
 
 
-  public IntegrationLogClientError message(String message) {
+  public IntegrationLogClientError message(@javax.annotation.Nullable String message) {
     this.message = message;
     return this;
   }
@@ -179,12 +188,12 @@ public class IntegrationLogClientError {
     return message;
   }
 
-  public void setMessage(String message) {
+  public void setMessage(@javax.annotation.Nullable String message) {
     this.message = message;
   }
 
 
-  public IntegrationLogClientError messageDetail(String messageDetail) {
+  public IntegrationLogClientError messageDetail(@javax.annotation.Nullable String messageDetail) {
     this.messageDetail = messageDetail;
     return this;
   }
@@ -198,12 +207,12 @@ public class IntegrationLogClientError {
     return messageDetail;
   }
 
-  public void setMessageDetail(String messageDetail) {
+  public void setMessageDetail(@javax.annotation.Nullable String messageDetail) {
     this.messageDetail = messageDetail;
   }
 
 
-  public IntegrationLogClientError name(String name) {
+  public IntegrationLogClientError name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -217,12 +226,12 @@ public class IntegrationLogClientError {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public IntegrationLogClientError number(Integer number) {
+  public IntegrationLogClientError number(@javax.annotation.Nullable Integer number) {
     this.number = number;
     return this;
   }
@@ -236,12 +245,12 @@ public class IntegrationLogClientError {
     return number;
   }
 
-  public void setNumber(Integer number) {
+  public void setNumber(@javax.annotation.Nullable Integer number) {
     this.number = number;
   }
 
 
-  public IntegrationLogClientError stackTrace(String stackTrace) {
+  public IntegrationLogClientError stackTrace(@javax.annotation.Nullable String stackTrace) {
     this.stackTrace = stackTrace;
     return this;
   }
@@ -255,7 +264,7 @@ public class IntegrationLogClientError {
     return stackTrace;
   }
 
-  public void setStackTrace(String stackTrace) {
+  public void setStackTrace(@javax.annotation.Nullable String stackTrace) {
     this.stackTrace = stackTrace;
   }
 

@@ -16,11 +16,21 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsProductGroupPricingCriteria")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsProductGroupPricingCriteria   {
   private Boolean inclusion = true;
   private BigDecimal values;
   private Boolean negated = false;
+
+  public CatalogsProductGroupPricingCriteria() {
+  }
+
+  @JsonCreator
+  public CatalogsProductGroupPricingCriteria(
+    @JsonProperty(required = true, value = "values") BigDecimal values
+  ) {
+    this.values = values;
+  }
 
   /**
    **/
@@ -51,12 +61,12 @@ public class CatalogsProductGroupPricingCriteria   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("values")
+  @JsonProperty(required = true, value = "values")
   @NotNull @Valid  @DecimalMin("0")public BigDecimal getValues() {
     return values;
   }
 
-  @JsonProperty("values")
+  @JsonProperty(required = true, value = "values")
   public void setValues(BigDecimal values) {
     this.values = values;
   }

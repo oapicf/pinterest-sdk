@@ -5,7 +5,7 @@
 
 
 
-get_mmm_report_response_t *get_mmm_report_response_create(
+static get_mmm_report_response_t *get_mmm_report_response_create_internal(
     double code,
     get_mmm_report_response_data_t *data,
     char *message,
@@ -20,12 +20,30 @@ get_mmm_report_response_t *get_mmm_report_response_create(
     get_mmm_report_response_local_var->message = message;
     get_mmm_report_response_local_var->status = status;
 
+    get_mmm_report_response_local_var->_library_owned = 1;
     return get_mmm_report_response_local_var;
 }
 
+__attribute__((deprecated)) get_mmm_report_response_t *get_mmm_report_response_create(
+    double code,
+    get_mmm_report_response_data_t *data,
+    char *message,
+    char *status
+    ) {
+    return get_mmm_report_response_create_internal (
+        code,
+        data,
+        message,
+        status
+        );
+}
 
 void get_mmm_report_response_free(get_mmm_report_response_t *get_mmm_report_response) {
     if(NULL == get_mmm_report_response){
+        return ;
+    }
+    if(get_mmm_report_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "get_mmm_report_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -100,6 +118,9 @@ get_mmm_report_response_t *get_mmm_report_response_parseFromJSON(cJSON *get_mmm_
 
     // get_mmm_report_response->code
     cJSON *code = cJSON_GetObjectItemCaseSensitive(get_mmm_report_responseJSON, "code");
+    if (cJSON_IsNull(code)) {
+        code = NULL;
+    }
     if (code) { 
     if(!cJSON_IsNumber(code))
     {
@@ -109,12 +130,18 @@ get_mmm_report_response_t *get_mmm_report_response_parseFromJSON(cJSON *get_mmm_
 
     // get_mmm_report_response->data
     cJSON *data = cJSON_GetObjectItemCaseSensitive(get_mmm_report_responseJSON, "data");
+    if (cJSON_IsNull(data)) {
+        data = NULL;
+    }
     if (data) { 
     data_local_nonprim = get_mmm_report_response_data_parseFromJSON(data); //nonprimitive
     }
 
     // get_mmm_report_response->message
     cJSON *message = cJSON_GetObjectItemCaseSensitive(get_mmm_report_responseJSON, "message");
+    if (cJSON_IsNull(message)) {
+        message = NULL;
+    }
     if (message) { 
     if(!cJSON_IsString(message) && !cJSON_IsNull(message))
     {
@@ -124,6 +151,9 @@ get_mmm_report_response_t *get_mmm_report_response_parseFromJSON(cJSON *get_mmm_
 
     // get_mmm_report_response->status
     cJSON *status = cJSON_GetObjectItemCaseSensitive(get_mmm_report_responseJSON, "status");
+    if (cJSON_IsNull(status)) {
+        status = NULL;
+    }
     if (status) { 
     if(!cJSON_IsString(status) && !cJSON_IsNull(status))
     {
@@ -132,7 +162,7 @@ get_mmm_report_response_t *get_mmm_report_response_parseFromJSON(cJSON *get_mmm_
     }
 
 
-    get_mmm_report_response_local_var = get_mmm_report_response_create (
+    get_mmm_report_response_local_var = get_mmm_report_response_create_internal (
         code ? code->valuedouble : 0,
         data ? data_local_nonprim : NULL,
         message && !cJSON_IsNull(message) ? strdup(message->valuestring) : NULL,

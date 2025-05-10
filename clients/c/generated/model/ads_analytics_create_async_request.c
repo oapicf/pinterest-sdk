@@ -158,7 +158,7 @@ pinterest_rest_api_ads_analytics_create_async_request_PRIMARYSORT_e ads_analytic
     return 0;
 }
 
-ads_analytics_create_async_request_t *ads_analytics_create_async_request_create(
+static ads_analytics_create_async_request_t *ads_analytics_create_async_request_create_internal(
     char *start_date,
     char *end_date,
     granularity_t *granularity,
@@ -217,12 +217,74 @@ ads_analytics_create_async_request_t *ads_analytics_create_async_request_create(
     ads_analytics_create_async_request_local_var->start_hour = start_hour;
     ads_analytics_create_async_request_local_var->end_hour = end_hour;
 
+    ads_analytics_create_async_request_local_var->_library_owned = 1;
     return ads_analytics_create_async_request_local_var;
 }
 
+__attribute__((deprecated)) ads_analytics_create_async_request_t *ads_analytics_create_async_request_create(
+    char *start_date,
+    char *end_date,
+    granularity_t *granularity,
+    conversion_attribution_window_days_t *click_window_days,
+    conversion_attribution_window_days_t *engagement_window_days,
+    conversion_attribution_window_days_t *view_window_days,
+    conversion_report_time_type_t *conversion_report_time,
+    list_t *attribution_types,
+    list_t *campaign_ids,
+    list_t *campaign_statuses,
+    list_t *campaign_objective_types,
+    list_t *ad_group_ids,
+    list_t *ad_group_statuses,
+    list_t *ad_ids,
+    list_t *ad_statuses,
+    list_t *product_group_ids,
+    list_t *product_group_statuses,
+    list_t *product_item_ids,
+    list_t *targeting_types,
+    list_t *metrics_filters,
+    list_t *columns,
+    metrics_reporting_level_t *level,
+    data_output_format_t *report_format,
+    pinterest_rest_api_ads_analytics_create_async_request_PRIMARYSORT_e primary_sort,
+    int start_hour,
+    int end_hour
+    ) {
+    return ads_analytics_create_async_request_create_internal (
+        start_date,
+        end_date,
+        granularity,
+        click_window_days,
+        engagement_window_days,
+        view_window_days,
+        conversion_report_time,
+        attribution_types,
+        campaign_ids,
+        campaign_statuses,
+        campaign_objective_types,
+        ad_group_ids,
+        ad_group_statuses,
+        ad_ids,
+        ad_statuses,
+        product_group_ids,
+        product_group_statuses,
+        product_item_ids,
+        targeting_types,
+        metrics_filters,
+        columns,
+        level,
+        report_format,
+        primary_sort,
+        start_hour,
+        end_hour
+        );
+}
 
 void ads_analytics_create_async_request_free(ads_analytics_create_async_request_t *ads_analytics_create_async_request) {
     if(NULL == ads_analytics_create_async_request){
+        return ;
+    }
+    if(ads_analytics_create_async_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ads_analytics_create_async_request_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -451,7 +513,7 @@ cJSON *ads_analytics_create_async_request_convertToJSON(ads_analytics_create_asy
 
 
     // ads_analytics_create_async_request->attribution_types
-    if(ads_analytics_create_async_request->attribution_types != pinterest_rest_api_ads_analytics_create_async_request_ATTRIBUTIONTYPES_NULL) {
+    if(ads_analytics_create_async_request->attribution_types != pinterest_rest_api_list_ATTRIBUTIONTYPES_NULL) {
     cJSON *attribution_types = cJSON_AddArrayToObject(item, "attribution_types");
     if(attribution_types == NULL) {
     goto fail; //nonprimitive container
@@ -479,7 +541,7 @@ cJSON *ads_analytics_create_async_request_convertToJSON(ads_analytics_create_asy
 
     listEntry_t *campaign_idsListEntry;
     list_ForEach(campaign_idsListEntry, ads_analytics_create_async_request->campaign_ids) {
-    if(cJSON_AddStringToObject(campaign_ids, "", (char*)campaign_idsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(campaign_ids, "", campaign_idsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -488,7 +550,7 @@ cJSON *ads_analytics_create_async_request_convertToJSON(ads_analytics_create_asy
 
 
     // ads_analytics_create_async_request->campaign_statuses
-    if(ads_analytics_create_async_request->campaign_statuses != pinterest_rest_api_ads_analytics_create_async_request_CAMPAIGNSTATUSES_NULL) {
+    if(ads_analytics_create_async_request->campaign_statuses != pinterest_rest_api_list_CAMPAIGNSTATUSES_NULL) {
     cJSON *campaign_statuses = cJSON_AddArrayToObject(item, "campaign_statuses");
     if(campaign_statuses == NULL) {
     goto fail; //nonprimitive container
@@ -508,7 +570,7 @@ cJSON *ads_analytics_create_async_request_convertToJSON(ads_analytics_create_asy
 
 
     // ads_analytics_create_async_request->campaign_objective_types
-    if(ads_analytics_create_async_request->campaign_objective_types != pinterest_rest_api_ads_analytics_create_async_request_CAMPAIGNOBJECTIVETYPES_NULL) {
+    if(ads_analytics_create_async_request->campaign_objective_types != pinterest_rest_api_list_CAMPAIGNOBJECTIVETYPES_NULL) {
     cJSON *campaign_objective_types = cJSON_AddArrayToObject(item, "campaign_objective_types");
     if(campaign_objective_types == NULL) {
     goto fail; //nonprimitive container
@@ -536,7 +598,7 @@ cJSON *ads_analytics_create_async_request_convertToJSON(ads_analytics_create_asy
 
     listEntry_t *ad_group_idsListEntry;
     list_ForEach(ad_group_idsListEntry, ads_analytics_create_async_request->ad_group_ids) {
-    if(cJSON_AddStringToObject(ad_group_ids, "", (char*)ad_group_idsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(ad_group_ids, "", ad_group_idsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -545,7 +607,7 @@ cJSON *ads_analytics_create_async_request_convertToJSON(ads_analytics_create_asy
 
 
     // ads_analytics_create_async_request->ad_group_statuses
-    if(ads_analytics_create_async_request->ad_group_statuses != pinterest_rest_api_ads_analytics_create_async_request_ADGROUPSTATUSES_NULL) {
+    if(ads_analytics_create_async_request->ad_group_statuses != pinterest_rest_api_list_ADGROUPSTATUSES_NULL) {
     cJSON *ad_group_statuses = cJSON_AddArrayToObject(item, "ad_group_statuses");
     if(ad_group_statuses == NULL) {
     goto fail; //nonprimitive container
@@ -573,7 +635,7 @@ cJSON *ads_analytics_create_async_request_convertToJSON(ads_analytics_create_asy
 
     listEntry_t *ad_idsListEntry;
     list_ForEach(ad_idsListEntry, ads_analytics_create_async_request->ad_ids) {
-    if(cJSON_AddStringToObject(ad_ids, "", (char*)ad_idsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(ad_ids, "", ad_idsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -582,7 +644,7 @@ cJSON *ads_analytics_create_async_request_convertToJSON(ads_analytics_create_asy
 
 
     // ads_analytics_create_async_request->ad_statuses
-    if(ads_analytics_create_async_request->ad_statuses != pinterest_rest_api_ads_analytics_create_async_request_ADSTATUSES_NULL) {
+    if(ads_analytics_create_async_request->ad_statuses != pinterest_rest_api_list_ADSTATUSES_NULL) {
     cJSON *ad_statuses = cJSON_AddArrayToObject(item, "ad_statuses");
     if(ad_statuses == NULL) {
     goto fail; //nonprimitive container
@@ -610,7 +672,7 @@ cJSON *ads_analytics_create_async_request_convertToJSON(ads_analytics_create_asy
 
     listEntry_t *product_group_idsListEntry;
     list_ForEach(product_group_idsListEntry, ads_analytics_create_async_request->product_group_ids) {
-    if(cJSON_AddStringToObject(product_group_ids, "", (char*)product_group_idsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(product_group_ids, "", product_group_idsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -619,7 +681,7 @@ cJSON *ads_analytics_create_async_request_convertToJSON(ads_analytics_create_asy
 
 
     // ads_analytics_create_async_request->product_group_statuses
-    if(ads_analytics_create_async_request->product_group_statuses != pinterest_rest_api_ads_analytics_create_async_request_PRODUCTGROUPSTATUSES_NULL) {
+    if(ads_analytics_create_async_request->product_group_statuses != pinterest_rest_api_list_PRODUCTGROUPSTATUSES_NULL) {
     cJSON *product_group_statuses = cJSON_AddArrayToObject(item, "product_group_statuses");
     if(product_group_statuses == NULL) {
     goto fail; //nonprimitive container
@@ -647,7 +709,7 @@ cJSON *ads_analytics_create_async_request_convertToJSON(ads_analytics_create_asy
 
     listEntry_t *product_item_idsListEntry;
     list_ForEach(product_item_idsListEntry, ads_analytics_create_async_request->product_item_ids) {
-    if(cJSON_AddStringToObject(product_item_ids, "", (char*)product_item_idsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(product_item_ids, "", product_item_idsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -656,7 +718,7 @@ cJSON *ads_analytics_create_async_request_convertToJSON(ads_analytics_create_asy
 
 
     // ads_analytics_create_async_request->targeting_types
-    if(ads_analytics_create_async_request->targeting_types != pinterest_rest_api_ads_analytics_create_async_request_TARGETINGTYPES_NULL) {
+    if(ads_analytics_create_async_request->targeting_types != pinterest_rest_api_list_TARGETINGTYPES_NULL) {
     cJSON *targeting_types = cJSON_AddArrayToObject(item, "targeting_types");
     if(targeting_types == NULL) {
     goto fail; //nonprimitive container
@@ -696,7 +758,7 @@ cJSON *ads_analytics_create_async_request_convertToJSON(ads_analytics_create_asy
 
 
     // ads_analytics_create_async_request->columns
-    if (pinterest_rest_api_ads_analytics_create_async_request_COLUMNS_NULL == ads_analytics_create_async_request->columns) {
+    if (pinterest_rest_api_list_COLUMNS_NULL == ads_analytics_create_async_request->columns) {
         goto fail;
     }
     cJSON *columns = cJSON_AddArrayToObject(item, "columns");
@@ -745,7 +807,7 @@ cJSON *ads_analytics_create_async_request_convertToJSON(ads_analytics_create_asy
 
     // ads_analytics_create_async_request->primary_sort
     if(ads_analytics_create_async_request->primary_sort != pinterest_rest_api_ads_analytics_create_async_request_PRIMARYSORT_NULL) {
-    if(cJSON_AddStringToObject(item, "primary_sort", primary_sortads_analytics_create_async_request_ToString(ads_analytics_create_async_request->primary_sort)) == NULL)
+    if(cJSON_AddStringToObject(item, "primary_sort", ads_analytics_create_async_request_primary_sort_ToString(ads_analytics_create_async_request->primary_sort)) == NULL)
     {
     goto fail; //Enum
     }
@@ -844,6 +906,9 @@ ads_analytics_create_async_request_t *ads_analytics_create_async_request_parseFr
 
     // ads_analytics_create_async_request->start_date
     cJSON *start_date = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_requestJSON, "start_date");
+    if (cJSON_IsNull(start_date)) {
+        start_date = NULL;
+    }
     if (!start_date) {
         goto end;
     }
@@ -856,6 +921,9 @@ ads_analytics_create_async_request_t *ads_analytics_create_async_request_parseFr
 
     // ads_analytics_create_async_request->end_date
     cJSON *end_date = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_requestJSON, "end_date");
+    if (cJSON_IsNull(end_date)) {
+        end_date = NULL;
+    }
     if (!end_date) {
         goto end;
     }
@@ -868,6 +936,9 @@ ads_analytics_create_async_request_t *ads_analytics_create_async_request_parseFr
 
     // ads_analytics_create_async_request->granularity
     cJSON *granularity = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_requestJSON, "granularity");
+    if (cJSON_IsNull(granularity)) {
+        granularity = NULL;
+    }
     if (!granularity) {
         goto end;
     }
@@ -877,30 +948,45 @@ ads_analytics_create_async_request_t *ads_analytics_create_async_request_parseFr
 
     // ads_analytics_create_async_request->click_window_days
     cJSON *click_window_days = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_requestJSON, "click_window_days");
+    if (cJSON_IsNull(click_window_days)) {
+        click_window_days = NULL;
+    }
     if (click_window_days) { 
     click_window_days_local_nonprim = conversion_attribution_window_days_parseFromJSON(click_window_days); //custom
     }
 
     // ads_analytics_create_async_request->engagement_window_days
     cJSON *engagement_window_days = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_requestJSON, "engagement_window_days");
+    if (cJSON_IsNull(engagement_window_days)) {
+        engagement_window_days = NULL;
+    }
     if (engagement_window_days) { 
     engagement_window_days_local_nonprim = conversion_attribution_window_days_parseFromJSON(engagement_window_days); //custom
     }
 
     // ads_analytics_create_async_request->view_window_days
     cJSON *view_window_days = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_requestJSON, "view_window_days");
+    if (cJSON_IsNull(view_window_days)) {
+        view_window_days = NULL;
+    }
     if (view_window_days) { 
     view_window_days_local_nonprim = conversion_attribution_window_days_parseFromJSON(view_window_days); //custom
     }
 
     // ads_analytics_create_async_request->conversion_report_time
     cJSON *conversion_report_time = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_requestJSON, "conversion_report_time");
+    if (cJSON_IsNull(conversion_report_time)) {
+        conversion_report_time = NULL;
+    }
     if (conversion_report_time) { 
     conversion_report_time_local_nonprim = conversion_report_time_type_parseFromJSON(conversion_report_time); //custom
     }
 
     // ads_analytics_create_async_request->attribution_types
     cJSON *attribution_types = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_requestJSON, "attribution_types");
+    if (cJSON_IsNull(attribution_types)) {
+        attribution_types = NULL;
+    }
     if (attribution_types) { 
     cJSON *attribution_types_local_nonprimitive = NULL;
     if(!cJSON_IsArray(attribution_types)){
@@ -922,6 +1008,9 @@ ads_analytics_create_async_request_t *ads_analytics_create_async_request_parseFr
 
     // ads_analytics_create_async_request->campaign_ids
     cJSON *campaign_ids = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_requestJSON, "campaign_ids");
+    if (cJSON_IsNull(campaign_ids)) {
+        campaign_ids = NULL;
+    }
     if (campaign_ids) { 
     cJSON *campaign_ids_local = NULL;
     if(!cJSON_IsArray(campaign_ids)) {
@@ -941,6 +1030,9 @@ ads_analytics_create_async_request_t *ads_analytics_create_async_request_parseFr
 
     // ads_analytics_create_async_request->campaign_statuses
     cJSON *campaign_statuses = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_requestJSON, "campaign_statuses");
+    if (cJSON_IsNull(campaign_statuses)) {
+        campaign_statuses = NULL;
+    }
     if (campaign_statuses) { 
     cJSON *campaign_statuses_local_nonprimitive = NULL;
     if(!cJSON_IsArray(campaign_statuses)){
@@ -962,6 +1054,9 @@ ads_analytics_create_async_request_t *ads_analytics_create_async_request_parseFr
 
     // ads_analytics_create_async_request->campaign_objective_types
     cJSON *campaign_objective_types = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_requestJSON, "campaign_objective_types");
+    if (cJSON_IsNull(campaign_objective_types)) {
+        campaign_objective_types = NULL;
+    }
     if (campaign_objective_types) { 
     cJSON *campaign_objective_types_local_nonprimitive = NULL;
     if(!cJSON_IsArray(campaign_objective_types)){
@@ -983,6 +1078,9 @@ ads_analytics_create_async_request_t *ads_analytics_create_async_request_parseFr
 
     // ads_analytics_create_async_request->ad_group_ids
     cJSON *ad_group_ids = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_requestJSON, "ad_group_ids");
+    if (cJSON_IsNull(ad_group_ids)) {
+        ad_group_ids = NULL;
+    }
     if (ad_group_ids) { 
     cJSON *ad_group_ids_local = NULL;
     if(!cJSON_IsArray(ad_group_ids)) {
@@ -1002,6 +1100,9 @@ ads_analytics_create_async_request_t *ads_analytics_create_async_request_parseFr
 
     // ads_analytics_create_async_request->ad_group_statuses
     cJSON *ad_group_statuses = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_requestJSON, "ad_group_statuses");
+    if (cJSON_IsNull(ad_group_statuses)) {
+        ad_group_statuses = NULL;
+    }
     if (ad_group_statuses) { 
     cJSON *ad_group_statuses_local_nonprimitive = NULL;
     if(!cJSON_IsArray(ad_group_statuses)){
@@ -1023,6 +1124,9 @@ ads_analytics_create_async_request_t *ads_analytics_create_async_request_parseFr
 
     // ads_analytics_create_async_request->ad_ids
     cJSON *ad_ids = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_requestJSON, "ad_ids");
+    if (cJSON_IsNull(ad_ids)) {
+        ad_ids = NULL;
+    }
     if (ad_ids) { 
     cJSON *ad_ids_local = NULL;
     if(!cJSON_IsArray(ad_ids)) {
@@ -1042,6 +1146,9 @@ ads_analytics_create_async_request_t *ads_analytics_create_async_request_parseFr
 
     // ads_analytics_create_async_request->ad_statuses
     cJSON *ad_statuses = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_requestJSON, "ad_statuses");
+    if (cJSON_IsNull(ad_statuses)) {
+        ad_statuses = NULL;
+    }
     if (ad_statuses) { 
     cJSON *ad_statuses_local_nonprimitive = NULL;
     if(!cJSON_IsArray(ad_statuses)){
@@ -1063,6 +1170,9 @@ ads_analytics_create_async_request_t *ads_analytics_create_async_request_parseFr
 
     // ads_analytics_create_async_request->product_group_ids
     cJSON *product_group_ids = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_requestJSON, "product_group_ids");
+    if (cJSON_IsNull(product_group_ids)) {
+        product_group_ids = NULL;
+    }
     if (product_group_ids) { 
     cJSON *product_group_ids_local = NULL;
     if(!cJSON_IsArray(product_group_ids)) {
@@ -1082,6 +1192,9 @@ ads_analytics_create_async_request_t *ads_analytics_create_async_request_parseFr
 
     // ads_analytics_create_async_request->product_group_statuses
     cJSON *product_group_statuses = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_requestJSON, "product_group_statuses");
+    if (cJSON_IsNull(product_group_statuses)) {
+        product_group_statuses = NULL;
+    }
     if (product_group_statuses) { 
     cJSON *product_group_statuses_local_nonprimitive = NULL;
     if(!cJSON_IsArray(product_group_statuses)){
@@ -1103,6 +1216,9 @@ ads_analytics_create_async_request_t *ads_analytics_create_async_request_parseFr
 
     // ads_analytics_create_async_request->product_item_ids
     cJSON *product_item_ids = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_requestJSON, "product_item_ids");
+    if (cJSON_IsNull(product_item_ids)) {
+        product_item_ids = NULL;
+    }
     if (product_item_ids) { 
     cJSON *product_item_ids_local = NULL;
     if(!cJSON_IsArray(product_item_ids)) {
@@ -1122,6 +1238,9 @@ ads_analytics_create_async_request_t *ads_analytics_create_async_request_parseFr
 
     // ads_analytics_create_async_request->targeting_types
     cJSON *targeting_types = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_requestJSON, "targeting_types");
+    if (cJSON_IsNull(targeting_types)) {
+        targeting_types = NULL;
+    }
     if (targeting_types) { 
     cJSON *targeting_types_local_nonprimitive = NULL;
     if(!cJSON_IsArray(targeting_types)){
@@ -1143,6 +1262,9 @@ ads_analytics_create_async_request_t *ads_analytics_create_async_request_parseFr
 
     // ads_analytics_create_async_request->metrics_filters
     cJSON *metrics_filters = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_requestJSON, "metrics_filters");
+    if (cJSON_IsNull(metrics_filters)) {
+        metrics_filters = NULL;
+    }
     if (metrics_filters) { 
     cJSON *metrics_filters_local_nonprimitive = NULL;
     if(!cJSON_IsArray(metrics_filters)){
@@ -1164,6 +1286,9 @@ ads_analytics_create_async_request_t *ads_analytics_create_async_request_parseFr
 
     // ads_analytics_create_async_request->columns
     cJSON *columns = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_requestJSON, "columns");
+    if (cJSON_IsNull(columns)) {
+        columns = NULL;
+    }
     if (!columns) {
         goto end;
     }
@@ -1188,6 +1313,9 @@ ads_analytics_create_async_request_t *ads_analytics_create_async_request_parseFr
 
     // ads_analytics_create_async_request->level
     cJSON *level = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_requestJSON, "level");
+    if (cJSON_IsNull(level)) {
+        level = NULL;
+    }
     if (!level) {
         goto end;
     }
@@ -1197,12 +1325,18 @@ ads_analytics_create_async_request_t *ads_analytics_create_async_request_parseFr
 
     // ads_analytics_create_async_request->report_format
     cJSON *report_format = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_requestJSON, "report_format");
+    if (cJSON_IsNull(report_format)) {
+        report_format = NULL;
+    }
     if (report_format) { 
     report_format_local_nonprim = data_output_format_parseFromJSON(report_format); //custom
     }
 
     // ads_analytics_create_async_request->primary_sort
     cJSON *primary_sort = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_requestJSON, "primary_sort");
+    if (cJSON_IsNull(primary_sort)) {
+        primary_sort = NULL;
+    }
     pinterest_rest_api_ads_analytics_create_async_request_PRIMARYSORT_e primary_sortVariable;
     if (primary_sort) { 
     if(!cJSON_IsString(primary_sort))
@@ -1214,6 +1348,9 @@ ads_analytics_create_async_request_t *ads_analytics_create_async_request_parseFr
 
     // ads_analytics_create_async_request->start_hour
     cJSON *start_hour = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_requestJSON, "start_hour");
+    if (cJSON_IsNull(start_hour)) {
+        start_hour = NULL;
+    }
     if (start_hour) { 
     if(!cJSON_IsNumber(start_hour))
     {
@@ -1223,6 +1360,9 @@ ads_analytics_create_async_request_t *ads_analytics_create_async_request_parseFr
 
     // ads_analytics_create_async_request->end_hour
     cJSON *end_hour = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_requestJSON, "end_hour");
+    if (cJSON_IsNull(end_hour)) {
+        end_hour = NULL;
+    }
     if (end_hour) { 
     if(!cJSON_IsNumber(end_hour))
     {
@@ -1231,7 +1371,7 @@ ads_analytics_create_async_request_t *ads_analytics_create_async_request_parseFr
     }
 
 
-    ads_analytics_create_async_request_local_var = ads_analytics_create_async_request_create (
+    ads_analytics_create_async_request_local_var = ads_analytics_create_async_request_create_internal (
         strdup(start_date->valuestring),
         strdup(end_date->valuestring),
         granularity_local_nonprim,

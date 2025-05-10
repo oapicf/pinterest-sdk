@@ -75,10 +75,10 @@ void to_json(nlohmann::json& j, const ConversionReportTimeType& o)
         case ConversionReportTimeType::eConversionReportTimeType::INVALID_VALUE_OPENAPI_GENERATED:
             j = "INVALID_VALUE_OPENAPI_GENERATED";
             break;
-        case ConversionReportTimeType::eConversionReportTimeType::AD_ACTION:
+        case ConversionReportTimeType::eConversionReportTimeType::TIME_OF_AD_ACTION:
             j = "TIME_OF_AD_ACTION";
             break;
-        case ConversionReportTimeType::eConversionReportTimeType::CONVERSION:
+        case ConversionReportTimeType::eConversionReportTimeType::TIME_OF_CONVERSION:
             j = "TIME_OF_CONVERSION";
             break;
     }
@@ -89,10 +89,10 @@ void from_json(const nlohmann::json& j, ConversionReportTimeType& o)
     
     auto s = j.get<std::string>();
     if (s == "TIME_OF_AD_ACTION") {
-     o.setValue(ConversionReportTimeType::eConversionReportTimeType::AD_ACTION);
+     o.setValue(ConversionReportTimeType::eConversionReportTimeType::TIME_OF_AD_ACTION);
     } 
     else if (s == "TIME_OF_CONVERSION") {
-     o.setValue(ConversionReportTimeType::eConversionReportTimeType::CONVERSION);
+     o.setValue(ConversionReportTimeType::eConversionReportTimeType::TIME_OF_CONVERSION);
     }  else {
      std::stringstream ss;
      ss << "Unexpected value " << s << " in json"

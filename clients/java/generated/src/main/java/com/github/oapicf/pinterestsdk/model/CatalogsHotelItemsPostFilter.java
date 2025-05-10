@@ -50,7 +50,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsHotelItemsPostFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsHotelItemsPostFilter {
   /**
    * Gets or Sets catalogType
@@ -104,20 +104,23 @@ public class CatalogsHotelItemsPostFilter {
 
   public static final String SERIALIZED_NAME_CATALOG_TYPE = "catalog_type";
   @SerializedName(SERIALIZED_NAME_CATALOG_TYPE)
+  @javax.annotation.Nonnull
   private CatalogTypeEnum catalogType;
 
   public static final String SERIALIZED_NAME_HOTEL_IDS = "hotel_ids";
   @SerializedName(SERIALIZED_NAME_HOTEL_IDS)
+  @javax.annotation.Nonnull
   private List<String> hotelIds = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_CATALOG_ID = "catalog_id";
   @SerializedName(SERIALIZED_NAME_CATALOG_ID)
+  @javax.annotation.Nullable
   private String catalogId;
 
   public CatalogsHotelItemsPostFilter() {
   }
 
-  public CatalogsHotelItemsPostFilter catalogType(CatalogTypeEnum catalogType) {
+  public CatalogsHotelItemsPostFilter catalogType(@javax.annotation.Nonnull CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -131,12 +134,12 @@ public class CatalogsHotelItemsPostFilter {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogTypeEnum catalogType) {
+  public void setCatalogType(@javax.annotation.Nonnull CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
 
-  public CatalogsHotelItemsPostFilter hotelIds(List<String> hotelIds) {
+  public CatalogsHotelItemsPostFilter hotelIds(@javax.annotation.Nonnull List<String> hotelIds) {
     this.hotelIds = hotelIds;
     return this;
   }
@@ -158,12 +161,12 @@ public class CatalogsHotelItemsPostFilter {
     return hotelIds;
   }
 
-  public void setHotelIds(List<String> hotelIds) {
+  public void setHotelIds(@javax.annotation.Nonnull List<String> hotelIds) {
     this.hotelIds = hotelIds;
   }
 
 
-  public CatalogsHotelItemsPostFilter catalogId(String catalogId) {
+  public CatalogsHotelItemsPostFilter catalogId(@javax.annotation.Nullable String catalogId) {
     this.catalogId = catalogId;
     return this;
   }
@@ -177,7 +180,7 @@ public class CatalogsHotelItemsPostFilter {
     return catalogId;
   }
 
-  public void setCatalogId(String catalogId) {
+  public void setCatalogId(@javax.annotation.Nullable String catalogId) {
     this.catalogId = catalogId;
   }
 

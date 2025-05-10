@@ -15,10 +15,15 @@
 export type MatchTypeResponse = 'BROAD' | 'PHRASE' | 'EXACT' | 'EXACT_NEGATIVE' | 'PHRASE_NEGATIVE';
 
 export const MatchTypeResponse = {
+
     Broad: 'BROAD' as MatchTypeResponse,
+
     Phrase: 'PHRASE' as MatchTypeResponse,
+
     Exact: 'EXACT' as MatchTypeResponse,
+
     ExactNegative: 'EXACT_NEGATIVE' as MatchTypeResponse,
+
     PhraseNegative: 'PHRASE_NEGATIVE' as MatchTypeResponse
 };
 

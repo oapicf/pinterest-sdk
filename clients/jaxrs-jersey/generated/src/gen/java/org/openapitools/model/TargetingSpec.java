@@ -44,7 +44,7 @@ import javax.validation.Valid;
   TargetingSpec.JSON_PROPERTY_S_H_O_P_P_I_N_G_R_E_T_A_R_G_E_T_I_N_G,
   TargetingSpec.JSON_PROPERTY_T_A_R_G_E_T_I_N_G_S_T_R_A_T_E_G_Y
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-11-05T02:20:07.425136412Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TargetingSpec   {
   /**
    * Gets or Sets AGE_BUCKET

@@ -16,9 +16,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("GenderFilter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class GenderFilter   {
   private CatalogsProductGroupMultipleGenderCriteria GENDER;
+
+  public GenderFilter() {
+  }
+
+  @JsonCreator
+  public GenderFilter(
+    @JsonProperty(required = true, value = "GENDER") CatalogsProductGroupMultipleGenderCriteria GENDER
+  ) {
+    this.GENDER = GENDER;
+  }
 
   /**
    **/
@@ -29,12 +39,12 @@ public class GenderFilter   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("GENDER")
+  @JsonProperty(required = true, value = "GENDER")
   @NotNull @Valid public CatalogsProductGroupMultipleGenderCriteria getGENDER() {
     return GENDER;
   }
 
-  @JsonProperty("GENDER")
+  @JsonProperty(required = true, value = "GENDER")
   public void setGENDER(CatalogsProductGroupMultipleGenderCriteria GENDER) {
     this.GENDER = GENDER;
   }

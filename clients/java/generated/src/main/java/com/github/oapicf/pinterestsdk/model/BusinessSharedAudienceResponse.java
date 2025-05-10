@@ -51,24 +51,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * BusinessSharedAudienceResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BusinessSharedAudienceResponse {
   public static final String SERIALIZED_NAME_AUDIENCE_ID = "audience_id";
   @SerializedName(SERIALIZED_NAME_AUDIENCE_ID)
+  @javax.annotation.Nullable
   private String audienceId;
 
   public static final String SERIALIZED_NAME_PERMISSIONS = "permissions";
   @SerializedName(SERIALIZED_NAME_PERMISSIONS)
+  @javax.annotation.Nullable
   private List<Role> permissions = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_RECIPIENT_BUSINESS_IDS = "recipient_business_ids";
   @SerializedName(SERIALIZED_NAME_RECIPIENT_BUSINESS_IDS)
+  @javax.annotation.Nullable
   private List<String> recipientBusinessIds = new ArrayList<>();
 
   public BusinessSharedAudienceResponse() {
   }
 
-  public BusinessSharedAudienceResponse audienceId(String audienceId) {
+  public BusinessSharedAudienceResponse audienceId(@javax.annotation.Nullable String audienceId) {
     this.audienceId = audienceId;
     return this;
   }
@@ -82,12 +85,12 @@ public class BusinessSharedAudienceResponse {
     return audienceId;
   }
 
-  public void setAudienceId(String audienceId) {
+  public void setAudienceId(@javax.annotation.Nullable String audienceId) {
     this.audienceId = audienceId;
   }
 
 
-  public BusinessSharedAudienceResponse permissions(List<Role> permissions) {
+  public BusinessSharedAudienceResponse permissions(@javax.annotation.Nullable List<Role> permissions) {
     this.permissions = permissions;
     return this;
   }
@@ -109,12 +112,12 @@ public class BusinessSharedAudienceResponse {
     return permissions;
   }
 
-  public void setPermissions(List<Role> permissions) {
+  public void setPermissions(@javax.annotation.Nullable List<Role> permissions) {
     this.permissions = permissions;
   }
 
 
-  public BusinessSharedAudienceResponse recipientBusinessIds(List<String> recipientBusinessIds) {
+  public BusinessSharedAudienceResponse recipientBusinessIds(@javax.annotation.Nullable List<String> recipientBusinessIds) {
     this.recipientBusinessIds = recipientBusinessIds;
     return this;
   }
@@ -136,7 +139,7 @@ public class BusinessSharedAudienceResponse {
     return recipientBusinessIds;
   }
 
-  public void setRecipientBusinessIds(List<String> recipientBusinessIds) {
+  public void setRecipientBusinessIds(@javax.annotation.Nullable List<String> recipientBusinessIds) {
     this.recipientBusinessIds = recipientBusinessIds;
   }
 

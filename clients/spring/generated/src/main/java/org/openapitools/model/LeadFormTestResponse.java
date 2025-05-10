@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -19,10 +20,10 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "LeadFormTestResponse", description = "Response for lead data test API.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class LeadFormTestResponse {
 
-  private String subscriptionId;
+  private @Nullable String subscriptionId;
 
   public LeadFormTestResponse subscriptionId(String subscriptionId) {
     this.subscriptionId = subscriptionId;

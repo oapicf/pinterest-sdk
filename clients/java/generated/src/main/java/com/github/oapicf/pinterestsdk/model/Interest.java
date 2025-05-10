@@ -48,28 +48,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Interest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class Interest {
   public static final String SERIALIZED_NAME_CANONICAL_URL = "canonical_url";
   @SerializedName(SERIALIZED_NAME_CANONICAL_URL)
+  @javax.annotation.Nullable
   private String canonicalUrl;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)
+  @javax.annotation.Nullable
   private String key;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public Interest() {
   }
 
-  public Interest canonicalUrl(String canonicalUrl) {
+  public Interest canonicalUrl(@javax.annotation.Nullable String canonicalUrl) {
     this.canonicalUrl = canonicalUrl;
     return this;
   }
@@ -83,12 +87,12 @@ public class Interest {
     return canonicalUrl;
   }
 
-  public void setCanonicalUrl(String canonicalUrl) {
+  public void setCanonicalUrl(@javax.annotation.Nullable String canonicalUrl) {
     this.canonicalUrl = canonicalUrl;
   }
 
 
-  public Interest id(String id) {
+  public Interest id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -102,12 +106,12 @@ public class Interest {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public Interest key(String key) {
+  public Interest key(@javax.annotation.Nullable String key) {
     this.key = key;
     return this;
   }
@@ -121,12 +125,12 @@ public class Interest {
     return key;
   }
 
-  public void setKey(String key) {
+  public void setKey(@javax.annotation.Nullable String key) {
     this.key = key;
   }
 
 
-  public Interest name(String name) {
+  public Interest name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -140,7 +144,7 @@ public class Interest {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 

@@ -51,7 +51,7 @@ class OauthAccessTokenRequestClientCredentials
      * @Type("string")
     */
     #[Assert\NotNull]
-    #[Assert\Choice(["authorization_code", "refresh_token", "client_credentials"])]
+    #[Assert\Choice(['authorization_code', 'refresh_token', 'client_credentials'])]
     #[Assert\Type("string")]
     protected ?string $grantType = null;
 
@@ -68,7 +68,7 @@ class OauthAccessTokenRequestClientCredentials
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->grantType = array_key_exists('grantType', $data) ? $data['grantType'] : $this->grantType;

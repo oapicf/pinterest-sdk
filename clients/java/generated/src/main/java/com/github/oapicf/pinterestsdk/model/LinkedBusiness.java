@@ -48,32 +48,37 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * LinkedBusiness
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class LinkedBusiness {
   public static final String SERIALIZED_NAME_USERNAME = "username";
   @SerializedName(SERIALIZED_NAME_USERNAME)
+  @javax.annotation.Nullable
   private String username;
 
   public static final String SERIALIZED_NAME_IMAGE_SMALL_URL = "image_small_url";
   @SerializedName(SERIALIZED_NAME_IMAGE_SMALL_URL)
+  @javax.annotation.Nullable
   private String imageSmallUrl;
 
   public static final String SERIALIZED_NAME_IMAGE_MEDIUM_URL = "image_medium_url";
   @SerializedName(SERIALIZED_NAME_IMAGE_MEDIUM_URL)
+  @javax.annotation.Nullable
   private String imageMediumUrl;
 
   public static final String SERIALIZED_NAME_IMAGE_LARGE_URL = "image_large_url";
   @SerializedName(SERIALIZED_NAME_IMAGE_LARGE_URL)
+  @javax.annotation.Nullable
   private String imageLargeUrl;
 
   public static final String SERIALIZED_NAME_IMAGE_XLARGE_URL = "image_xlarge_url";
   @SerializedName(SERIALIZED_NAME_IMAGE_XLARGE_URL)
+  @javax.annotation.Nullable
   private String imageXlargeUrl;
 
   public LinkedBusiness() {
   }
 
-  public LinkedBusiness username(String username) {
+  public LinkedBusiness username(@javax.annotation.Nullable String username) {
     this.username = username;
     return this;
   }
@@ -87,12 +92,12 @@ public class LinkedBusiness {
     return username;
   }
 
-  public void setUsername(String username) {
+  public void setUsername(@javax.annotation.Nullable String username) {
     this.username = username;
   }
 
 
-  public LinkedBusiness imageSmallUrl(String imageSmallUrl) {
+  public LinkedBusiness imageSmallUrl(@javax.annotation.Nullable String imageSmallUrl) {
     this.imageSmallUrl = imageSmallUrl;
     return this;
   }
@@ -106,12 +111,12 @@ public class LinkedBusiness {
     return imageSmallUrl;
   }
 
-  public void setImageSmallUrl(String imageSmallUrl) {
+  public void setImageSmallUrl(@javax.annotation.Nullable String imageSmallUrl) {
     this.imageSmallUrl = imageSmallUrl;
   }
 
 
-  public LinkedBusiness imageMediumUrl(String imageMediumUrl) {
+  public LinkedBusiness imageMediumUrl(@javax.annotation.Nullable String imageMediumUrl) {
     this.imageMediumUrl = imageMediumUrl;
     return this;
   }
@@ -125,12 +130,12 @@ public class LinkedBusiness {
     return imageMediumUrl;
   }
 
-  public void setImageMediumUrl(String imageMediumUrl) {
+  public void setImageMediumUrl(@javax.annotation.Nullable String imageMediumUrl) {
     this.imageMediumUrl = imageMediumUrl;
   }
 
 
-  public LinkedBusiness imageLargeUrl(String imageLargeUrl) {
+  public LinkedBusiness imageLargeUrl(@javax.annotation.Nullable String imageLargeUrl) {
     this.imageLargeUrl = imageLargeUrl;
     return this;
   }
@@ -144,12 +149,12 @@ public class LinkedBusiness {
     return imageLargeUrl;
   }
 
-  public void setImageLargeUrl(String imageLargeUrl) {
+  public void setImageLargeUrl(@javax.annotation.Nullable String imageLargeUrl) {
     this.imageLargeUrl = imageLargeUrl;
   }
 
 
-  public LinkedBusiness imageXlargeUrl(String imageXlargeUrl) {
+  public LinkedBusiness imageXlargeUrl(@javax.annotation.Nullable String imageXlargeUrl) {
     this.imageXlargeUrl = imageXlargeUrl;
     return this;
   }
@@ -163,7 +168,7 @@ public class LinkedBusiness {
     return imageXlargeUrl;
   }
 
-  public void setImageXlargeUrl(String imageXlargeUrl) {
+  public void setImageXlargeUrl(@javax.annotation.Nullable String imageXlargeUrl) {
     this.imageXlargeUrl = imageXlargeUrl;
   }
 

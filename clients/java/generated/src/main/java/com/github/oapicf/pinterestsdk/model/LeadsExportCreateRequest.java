@@ -48,24 +48,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * LeadsExportCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class LeadsExportCreateRequest {
   public static final String SERIALIZED_NAME_START_DATE = "start_date";
   @SerializedName(SERIALIZED_NAME_START_DATE)
+  @javax.annotation.Nonnull
   private String startDate;
 
   public static final String SERIALIZED_NAME_END_DATE = "end_date";
   @SerializedName(SERIALIZED_NAME_END_DATE)
+  @javax.annotation.Nonnull
   private String endDate;
 
   public static final String SERIALIZED_NAME_AD_ID = "ad_id";
   @SerializedName(SERIALIZED_NAME_AD_ID)
+  @javax.annotation.Nonnull
   private String adId;
 
   public LeadsExportCreateRequest() {
   }
 
-  public LeadsExportCreateRequest startDate(String startDate) {
+  public LeadsExportCreateRequest startDate(@javax.annotation.Nonnull String startDate) {
     this.startDate = startDate;
     return this;
   }
@@ -79,12 +82,12 @@ public class LeadsExportCreateRequest {
     return startDate;
   }
 
-  public void setStartDate(String startDate) {
+  public void setStartDate(@javax.annotation.Nonnull String startDate) {
     this.startDate = startDate;
   }
 
 
-  public LeadsExportCreateRequest endDate(String endDate) {
+  public LeadsExportCreateRequest endDate(@javax.annotation.Nonnull String endDate) {
     this.endDate = endDate;
     return this;
   }
@@ -98,12 +101,12 @@ public class LeadsExportCreateRequest {
     return endDate;
   }
 
-  public void setEndDate(String endDate) {
+  public void setEndDate(@javax.annotation.Nonnull String endDate) {
     this.endDate = endDate;
   }
 
 
-  public LeadsExportCreateRequest adId(String adId) {
+  public LeadsExportCreateRequest adId(@javax.annotation.Nonnull String adId) {
     this.adId = adId;
     return this;
   }
@@ -117,7 +120,7 @@ public class LeadsExportCreateRequest {
     return adId;
   }
 
-  public void setAdId(String adId) {
+  public void setAdId(@javax.annotation.Nonnull String adId) {
     this.adId = adId;
   }
 

@@ -15,7 +15,9 @@
 export type AudienceUpdateOperationType = 'UPDATE' | 'REMOVE';
 
 export const AudienceUpdateOperationType = {
+
     Update: 'UPDATE' as AudienceUpdateOperationType,
+
     Remove: 'REMOVE' as AudienceUpdateOperationType
 };
 

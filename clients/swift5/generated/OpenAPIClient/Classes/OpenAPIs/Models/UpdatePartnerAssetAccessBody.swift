@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct UpdatePartnerAssetAccessBody: Codable, JSONEncodable, Hashable {
 
-    static let accessesRule = ArrayRule(minItems: 1, maxItems: 50, uniqueItems: false)
+    public static let accessesRule = ArrayRule(minItems: 1, maxItems: 50, uniqueItems: false)
     public var accesses: [UpdatePartnerAssetAccessBodyAccessesInner]
 
     public init(accesses: [UpdatePartnerAssetAccessBodyAccessesInner]) {

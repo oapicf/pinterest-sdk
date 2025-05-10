@@ -136,11 +136,11 @@ export function AccountFromJSONTyped(json: any, ignoreDiscriminator: boolean): A
     };
 }
 
-  export function AccountToJSON(json: any): Account {
-      return AccountToJSONTyped(json, false);
-  }
+export function AccountToJSON(json: any): Account {
+    return AccountToJSONTyped(json, false);
+}
 
-  export function AccountToJSONTyped(value?: Omit<Account, 'board_count'|'pin_count'|'follower_count'|'following_count'|'monthly_views'> | null, ignoreDiscriminator: boolean = false): any {
+export function AccountToJSONTyped(value?: Omit<Account, 'board_count'|'pin_count'|'follower_count'|'following_count'|'monthly_views'> | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

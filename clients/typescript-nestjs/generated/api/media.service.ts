@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { MediaList200Response } from '../model/mediaList200Response';
 import { MediaUpload } from '../model/mediaUpload';
@@ -29,10 +29,12 @@ export class MediaService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -50,9 +52,10 @@ export class MediaService {
      * @param mediaUploadRequest Create a media upload request
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [mediaCreateOpts.config] Override http request option.
      */
-    public mediaCreate(mediaUploadRequest: MediaUploadRequest, ): Observable<AxiosResponse<MediaUpload>>;
-    public mediaCreate(mediaUploadRequest: MediaUploadRequest, ): Observable<any> {
+    public mediaCreate(mediaUploadRequest: MediaUploadRequest, mediaCreateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MediaUpload>>;
+    public mediaCreate(mediaUploadRequest: MediaUploadRequest, mediaCreateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (mediaUploadRequest === null || mediaUploadRequest === undefined) {
             throw new Error('Required parameter mediaUploadRequest was null or undefined when calling mediaCreate.');
         }
@@ -95,7 +98,8 @@ export class MediaService {
                     mediaUploadRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...mediaCreateOpts?.config,
+                        headers: {...headers, ...mediaCreateOpts?.config?.headers},
                     }
                 );
             })
@@ -107,9 +111,10 @@ export class MediaService {
      * @param mediaId Media identifier
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [mediaGetOpts.config] Override http request option.
      */
-    public mediaGet(mediaId: string, ): Observable<AxiosResponse<MediaUploadDetails>>;
-    public mediaGet(mediaId: string, ): Observable<any> {
+    public mediaGet(mediaId: string, mediaGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MediaUploadDetails>>;
+    public mediaGet(mediaId: string, mediaGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (mediaId === null || mediaId === undefined) {
             throw new Error('Required parameter mediaId was null or undefined when calling mediaGet.');
         }
@@ -146,7 +151,8 @@ export class MediaService {
                 return this.httpClient.get<MediaUploadDetails>(`${this.basePath}/media/${encodeURIComponent(String(media_id))}`,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...mediaGetOpts?.config,
+                        headers: {...headers, ...mediaGetOpts?.config?.headers},
                     }
                 );
             })
@@ -159,9 +165,10 @@ export class MediaService {
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [mediaListOpts.config] Override http request option.
      */
-    public mediaList(bookmark?: string, pageSize?: number, ): Observable<AxiosResponse<MediaList200Response>>;
-    public mediaList(bookmark?: string, pageSize?: number, ): Observable<any> {
+    public mediaList(bookmark?: string, pageSize?: number, mediaListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<MediaList200Response>>;
+    public mediaList(bookmark?: string, pageSize?: number, mediaListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let queryParameters = new URLSearchParams();
         if (bookmark !== undefined && bookmark !== null) {
             queryParameters.append('bookmark', <any>bookmark);
@@ -203,7 +210,8 @@ export class MediaService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...mediaListOpts?.config,
+                        headers: {...headers, ...mediaListOpts?.config?.headers},
                     }
                 );
             })

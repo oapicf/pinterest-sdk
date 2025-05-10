@@ -13,8 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // ItemsBatchPostRequest - struct for ItemsBatchPostRequest
@@ -113,6 +113,20 @@ func (obj *ItemsBatchPostRequest) GetActualInstance() (interface{}) {
 
 	if obj.CatalogsVerticalBatchRequest != nil {
 		return obj.CatalogsVerticalBatchRequest
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj ItemsBatchPostRequest) GetActualInstanceValue() (interface{}) {
+	if obj.CatalogsItemsBatchRequest != nil {
+		return *obj.CatalogsItemsBatchRequest
+	}
+
+	if obj.CatalogsVerticalBatchRequest != nil {
+		return *obj.CatalogsVerticalBatchRequest
 	}
 
 	// all schemas are nil

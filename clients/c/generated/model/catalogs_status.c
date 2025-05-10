@@ -22,7 +22,7 @@ pinterest_rest_api_catalogs_status__e catalogs_status_catalogs_status_FromString
     return 0;
 }
 
-cJSON *catalogs_status_catalogs_status_convertToJSON(pinterest_rest_api_catalogs_status__e catalogs_status) {
+cJSON *catalogs_status_convertToJSON(pinterest_rest_api_catalogs_status__e catalogs_status) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "catalogs_status", catalogs_status_catalogs_status_ToString(catalogs_status)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_catalogs_status__e catalogs_status_catalogs_status_parseFromJSON(cJSON *catalogs_statusJSON) {
-    pinterest_rest_api_catalogs_status__e *catalogs_status = NULL;
-    pinterest_rest_api_catalogs_status__e catalogs_statusVariable;
-    cJSON *catalogs_statusVar = cJSON_GetObjectItemCaseSensitive(catalogs_statusJSON, "catalogs_status");
-    if(!cJSON_IsString(catalogs_statusVar) || (catalogs_statusVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_catalogs_status__e catalogs_status_parseFromJSON(cJSON *catalogs_statusJSON) {
+    if(!cJSON_IsString(catalogs_statusJSON) || (catalogs_statusJSON->valuestring == NULL)) {
+        return 0;
     }
-    catalogs_statusVariable = catalogs_status_catalogs_status_FromString(catalogs_statusVar->valuestring);
-    return catalogs_statusVariable;
-end:
-    return 0;
+    return catalogs_status_catalogs_status_FromString(catalogs_statusJSON->valuestring);
 }

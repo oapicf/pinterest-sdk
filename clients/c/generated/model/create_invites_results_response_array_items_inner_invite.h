@@ -23,9 +23,10 @@ typedef struct create_invites_results_response_array_items_inner_invite_t {
     char *id; // string
     struct business_access_user_summary_t *user; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } create_invites_results_response_array_items_inner_invite_t;
 
-create_invites_results_response_array_items_inner_invite_t *create_invites_results_response_array_items_inner_invite_create(
+__attribute__((deprecated)) create_invites_results_response_array_items_inner_invite_t *create_invites_results_response_array_items_inner_invite_create(
     char *id,
     business_access_user_summary_t *user
 );

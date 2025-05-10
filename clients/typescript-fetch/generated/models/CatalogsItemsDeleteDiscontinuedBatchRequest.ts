@@ -104,11 +104,11 @@ export function CatalogsItemsDeleteDiscontinuedBatchRequestFromJSONTyped(json: a
     };
 }
 
-  export function CatalogsItemsDeleteDiscontinuedBatchRequestToJSON(json: any): CatalogsItemsDeleteDiscontinuedBatchRequest {
-      return CatalogsItemsDeleteDiscontinuedBatchRequestToJSONTyped(json, false);
-  }
+export function CatalogsItemsDeleteDiscontinuedBatchRequestToJSON(json: any): CatalogsItemsDeleteDiscontinuedBatchRequest {
+    return CatalogsItemsDeleteDiscontinuedBatchRequestToJSONTyped(json, false);
+}
 
-  export function CatalogsItemsDeleteDiscontinuedBatchRequestToJSONTyped(value?: CatalogsItemsDeleteDiscontinuedBatchRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsItemsDeleteDiscontinuedBatchRequestToJSONTyped(value?: CatalogsItemsDeleteDiscontinuedBatchRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

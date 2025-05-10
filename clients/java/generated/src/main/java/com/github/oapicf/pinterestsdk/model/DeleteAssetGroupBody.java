@@ -50,16 +50,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Request body used to delete asset groups
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class DeleteAssetGroupBody {
   public static final String SERIALIZED_NAME_ASSET_GROUPS_TO_DELETE = "asset_groups_to_delete";
   @SerializedName(SERIALIZED_NAME_ASSET_GROUPS_TO_DELETE)
+  @javax.annotation.Nonnull
   private List<String> assetGroupsToDelete = new ArrayList<>();
 
   public DeleteAssetGroupBody() {
   }
 
-  public DeleteAssetGroupBody assetGroupsToDelete(List<String> assetGroupsToDelete) {
+  public DeleteAssetGroupBody assetGroupsToDelete(@javax.annotation.Nonnull List<String> assetGroupsToDelete) {
     this.assetGroupsToDelete = assetGroupsToDelete;
     return this;
   }
@@ -81,7 +82,7 @@ public class DeleteAssetGroupBody {
     return assetGroupsToDelete;
   }
 
-  public void setAssetGroupsToDelete(List<String> assetGroupsToDelete) {
+  public void setAssetGroupsToDelete(@javax.annotation.Nonnull List<String> assetGroupsToDelete) {
     this.assetGroupsToDelete = assetGroupsToDelete;
   }
 

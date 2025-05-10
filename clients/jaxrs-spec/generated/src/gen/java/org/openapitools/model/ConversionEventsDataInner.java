@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ConversionEvents_data_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConversionEventsDataInner   {
   private String eventName;
   private String actionSource;
@@ -41,6 +41,24 @@ public class ConversionEventsDataInner   {
   private Boolean wifi;
   private String language;
 
+  public ConversionEventsDataInner() {
+  }
+
+  @JsonCreator
+  public ConversionEventsDataInner(
+    @JsonProperty(required = true, value = "event_name") String eventName,
+    @JsonProperty(required = true, value = "action_source") String actionSource,
+    @JsonProperty(required = true, value = "event_time") Long eventTime,
+    @JsonProperty(required = true, value = "event_id") String eventId,
+    @JsonProperty(required = true, value = "user_data") ConversionEventsUserData userData
+  ) {
+    this.eventName = eventName;
+    this.actionSource = actionSource;
+    this.eventTime = eventTime;
+    this.eventId = eventId;
+    this.userData = userData;
+  }
+
   /**
    * &lt;p&gt;The type of the user event. Please use the right event_name otherwise the event won&#39;t be accepted and show up correctly in reports.   &lt;ul&gt;   &lt;li&gt;&lt;code&gt;add_to_cart&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;checkout&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;custom&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;lead&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;page_visit&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;search&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;signup&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;view_category&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;watch_video&lt;/code&gt;&lt;/li&gt;   &lt;/ul&gt; &lt;/p&gt; 
    **/
@@ -51,12 +69,12 @@ public class ConversionEventsDataInner   {
 
   
   @ApiModelProperty(example = "checkout", required = true, value = "<p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p> ")
-  @JsonProperty("event_name")
+  @JsonProperty(required = true, value = "event_name")
   @NotNull public String getEventName() {
     return eventName;
   }
 
-  @JsonProperty("event_name")
+  @JsonProperty(required = true, value = "event_name")
   public void setEventName(String eventName) {
     this.eventName = eventName;
   }
@@ -71,12 +89,12 @@ public class ConversionEventsDataInner   {
 
   
   @ApiModelProperty(example = "app_ios", required = true, value = "<p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p> ")
-  @JsonProperty("action_source")
+  @JsonProperty(required = true, value = "action_source")
   @NotNull public String getActionSource() {
     return actionSource;
   }
 
-  @JsonProperty("action_source")
+  @JsonProperty(required = true, value = "action_source")
   public void setActionSource(String actionSource) {
     this.actionSource = actionSource;
   }
@@ -91,12 +109,12 @@ public class ConversionEventsDataInner   {
 
   
   @ApiModelProperty(example = "1451431341", required = true, value = "The time when the event happened. Unix timestamp in seconds.")
-  @JsonProperty("event_time")
+  @JsonProperty(required = true, value = "event_time")
   @NotNull public Long getEventTime() {
     return eventTime;
   }
 
-  @JsonProperty("event_time")
+  @JsonProperty(required = true, value = "event_time")
   public void setEventTime(Long eventTime) {
     this.eventTime = eventTime;
   }
@@ -111,12 +129,12 @@ public class ConversionEventsDataInner   {
 
   
   @ApiModelProperty(example = "eventId0001", required = true, value = "A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.")
-  @JsonProperty("event_id")
+  @JsonProperty(required = true, value = "event_id")
   @NotNull public String getEventId() {
     return eventId;
   }
 
-  @JsonProperty("event_id")
+  @JsonProperty(required = true, value = "event_id")
   public void setEventId(String eventId) {
     this.eventId = eventId;
   }
@@ -190,12 +208,12 @@ public class ConversionEventsDataInner   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("user_data")
+  @JsonProperty(required = true, value = "user_data")
   @NotNull @Valid public ConversionEventsUserData getUserData() {
     return userData;
   }
 
-  @JsonProperty("user_data")
+  @JsonProperty(required = true, value = "user_data")
   public void setUserData(ConversionEventsUserData userData) {
     this.userData = userData;
   }

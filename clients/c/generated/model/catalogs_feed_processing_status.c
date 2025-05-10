@@ -22,7 +22,7 @@ pinterest_rest_api_catalogs_feed_processing_status__e catalogs_feed_processing_s
     return 0;
 }
 
-cJSON *catalogs_feed_processing_status_catalogs_feed_processing_status_convertToJSON(pinterest_rest_api_catalogs_feed_processing_status__e catalogs_feed_processing_status) {
+cJSON *catalogs_feed_processing_status_convertToJSON(pinterest_rest_api_catalogs_feed_processing_status__e catalogs_feed_processing_status) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "catalogs_feed_processing_status", catalogs_feed_processing_status_catalogs_feed_processing_status_ToString(catalogs_feed_processing_status)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_catalogs_feed_processing_status__e catalogs_feed_processing_status_catalogs_feed_processing_status_parseFromJSON(cJSON *catalogs_feed_processing_statusJSON) {
-    pinterest_rest_api_catalogs_feed_processing_status__e *catalogs_feed_processing_status = NULL;
-    pinterest_rest_api_catalogs_feed_processing_status__e catalogs_feed_processing_statusVariable;
-    cJSON *catalogs_feed_processing_statusVar = cJSON_GetObjectItemCaseSensitive(catalogs_feed_processing_statusJSON, "catalogs_feed_processing_status");
-    if(!cJSON_IsString(catalogs_feed_processing_statusVar) || (catalogs_feed_processing_statusVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_catalogs_feed_processing_status__e catalogs_feed_processing_status_parseFromJSON(cJSON *catalogs_feed_processing_statusJSON) {
+    if(!cJSON_IsString(catalogs_feed_processing_statusJSON) || (catalogs_feed_processing_statusJSON->valuestring == NULL)) {
+        return 0;
     }
-    catalogs_feed_processing_statusVariable = catalogs_feed_processing_status_catalogs_feed_processing_status_FromString(catalogs_feed_processing_statusVar->valuestring);
-    return catalogs_feed_processing_statusVariable;
-end:
-    return 0;
+    return catalogs_feed_processing_status_catalogs_feed_processing_status_FromString(catalogs_feed_processing_statusJSON->valuestring);
 }

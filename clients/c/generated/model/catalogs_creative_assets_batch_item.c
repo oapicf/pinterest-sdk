@@ -22,7 +22,7 @@ pinterest_rest_api_catalogs_creative_assets_batch_item_OPERATION_e catalogs_crea
     return 0;
 }
 
-catalogs_creative_assets_batch_item_t *catalogs_creative_assets_batch_item_create(
+static catalogs_creative_assets_batch_item_t *catalogs_creative_assets_batch_item_create_internal(
     char *creative_assets_id,
     pinterest_rest_api_catalogs_creative_assets_batch_item_OPERATION_e operation,
     catalogs_updatable_creative_assets_attributes_t *attributes
@@ -35,12 +35,28 @@ catalogs_creative_assets_batch_item_t *catalogs_creative_assets_batch_item_creat
     catalogs_creative_assets_batch_item_local_var->operation = operation;
     catalogs_creative_assets_batch_item_local_var->attributes = attributes;
 
+    catalogs_creative_assets_batch_item_local_var->_library_owned = 1;
     return catalogs_creative_assets_batch_item_local_var;
 }
 
+__attribute__((deprecated)) catalogs_creative_assets_batch_item_t *catalogs_creative_assets_batch_item_create(
+    char *creative_assets_id,
+    pinterest_rest_api_catalogs_creative_assets_batch_item_OPERATION_e operation,
+    catalogs_updatable_creative_assets_attributes_t *attributes
+    ) {
+    return catalogs_creative_assets_batch_item_create_internal (
+        creative_assets_id,
+        operation,
+        attributes
+        );
+}
 
 void catalogs_creative_assets_batch_item_free(catalogs_creative_assets_batch_item_t *catalogs_creative_assets_batch_item) {
     if(NULL == catalogs_creative_assets_batch_item){
+        return ;
+    }
+    if(catalogs_creative_assets_batch_item->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_creative_assets_batch_item_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -71,7 +87,7 @@ cJSON *catalogs_creative_assets_batch_item_convertToJSON(catalogs_creative_asset
     if (pinterest_rest_api_catalogs_creative_assets_batch_item_OPERATION_NULL == catalogs_creative_assets_batch_item->operation) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "operation", operationcatalogs_creative_assets_batch_item_ToString(catalogs_creative_assets_batch_item->operation)) == NULL)
+    if(cJSON_AddStringToObject(item, "operation", catalogs_creative_assets_batch_item_operation_ToString(catalogs_creative_assets_batch_item->operation)) == NULL)
     {
     goto fail; //Enum
     }
@@ -107,6 +123,9 @@ catalogs_creative_assets_batch_item_t *catalogs_creative_assets_batch_item_parse
 
     // catalogs_creative_assets_batch_item->creative_assets_id
     cJSON *creative_assets_id = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_batch_itemJSON, "creative_assets_id");
+    if (cJSON_IsNull(creative_assets_id)) {
+        creative_assets_id = NULL;
+    }
     if (!creative_assets_id) {
         goto end;
     }
@@ -119,6 +138,9 @@ catalogs_creative_assets_batch_item_t *catalogs_creative_assets_batch_item_parse
 
     // catalogs_creative_assets_batch_item->operation
     cJSON *operation = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_batch_itemJSON, "operation");
+    if (cJSON_IsNull(operation)) {
+        operation = NULL;
+    }
     if (!operation) {
         goto end;
     }
@@ -133,6 +155,9 @@ catalogs_creative_assets_batch_item_t *catalogs_creative_assets_batch_item_parse
 
     // catalogs_creative_assets_batch_item->attributes
     cJSON *attributes = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_batch_itemJSON, "attributes");
+    if (cJSON_IsNull(attributes)) {
+        attributes = NULL;
+    }
     if (!attributes) {
         goto end;
     }
@@ -141,7 +166,7 @@ catalogs_creative_assets_batch_item_t *catalogs_creative_assets_batch_item_parse
     attributes_local_nonprim = catalogs_updatable_creative_assets_attributes_parseFromJSON(attributes); //nonprimitive
 
 
-    catalogs_creative_assets_batch_item_local_var = catalogs_creative_assets_batch_item_create (
+    catalogs_creative_assets_batch_item_local_var = catalogs_creative_assets_batch_item_create_internal (
         strdup(creative_assets_id->valuestring),
         operationVariable,
         attributes_local_nonprim

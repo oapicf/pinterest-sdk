@@ -5,7 +5,7 @@
 
 
 
-product_group_analytics_response_inner_t *product_group_analytics_response_inner_create(
+static product_group_analytics_response_inner_t *product_group_analytics_response_inner_create_internal(
     char *product_group_id,
     char *date
     ) {
@@ -16,12 +16,26 @@ product_group_analytics_response_inner_t *product_group_analytics_response_inner
     product_group_analytics_response_inner_local_var->product_group_id = product_group_id;
     product_group_analytics_response_inner_local_var->date = date;
 
+    product_group_analytics_response_inner_local_var->_library_owned = 1;
     return product_group_analytics_response_inner_local_var;
 }
 
+__attribute__((deprecated)) product_group_analytics_response_inner_t *product_group_analytics_response_inner_create(
+    char *product_group_id,
+    char *date
+    ) {
+    return product_group_analytics_response_inner_create_internal (
+        product_group_id,
+        date
+        );
+}
 
 void product_group_analytics_response_inner_free(product_group_analytics_response_inner_t *product_group_analytics_response_inner) {
     if(NULL == product_group_analytics_response_inner){
+        return ;
+    }
+    if(product_group_analytics_response_inner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "product_group_analytics_response_inner_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -69,6 +83,9 @@ product_group_analytics_response_inner_t *product_group_analytics_response_inner
 
     // product_group_analytics_response_inner->product_group_id
     cJSON *product_group_id = cJSON_GetObjectItemCaseSensitive(product_group_analytics_response_innerJSON, "PRODUCT_GROUP_ID");
+    if (cJSON_IsNull(product_group_id)) {
+        product_group_id = NULL;
+    }
     if (!product_group_id) {
         goto end;
     }
@@ -81,6 +98,9 @@ product_group_analytics_response_inner_t *product_group_analytics_response_inner
 
     // product_group_analytics_response_inner->date
     cJSON *date = cJSON_GetObjectItemCaseSensitive(product_group_analytics_response_innerJSON, "DATE");
+    if (cJSON_IsNull(date)) {
+        date = NULL;
+    }
     if (date) { 
     if(!cJSON_IsString(date))
     {
@@ -89,7 +109,7 @@ product_group_analytics_response_inner_t *product_group_analytics_response_inner
     }
 
 
-    product_group_analytics_response_inner_local_var = product_group_analytics_response_inner_create (
+    product_group_analytics_response_inner_local_var = product_group_analytics_response_inner_create_internal (
         strdup(product_group_id->valuestring),
         date ? strdup(date->valuestring) : NULL
         );

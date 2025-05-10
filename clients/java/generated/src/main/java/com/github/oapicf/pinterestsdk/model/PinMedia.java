@@ -48,17 +48,18 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Pin media objects.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMedia {
   public static final String SERIALIZED_NAME_MEDIA_TYPE = "media_type";
   @SerializedName(SERIALIZED_NAME_MEDIA_TYPE)
+  @javax.annotation.Nullable
   protected String mediaType;
 
   public PinMedia() {
     this.mediaType = this.getClass().getSimpleName();
   }
 
-  public PinMedia mediaType(String mediaType) {
+  public PinMedia mediaType(@javax.annotation.Nullable String mediaType) {
     this.mediaType = mediaType;
     return this;
   }
@@ -72,7 +73,7 @@ public class PinMedia {
     return mediaType;
   }
 
-  public void setMediaType(String mediaType) {
+  public void setMediaType(@javax.annotation.Nullable String mediaType) {
     this.mediaType = mediaType;
   }
 

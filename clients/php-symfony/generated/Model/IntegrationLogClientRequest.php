@@ -51,7 +51,7 @@ class IntegrationLogClientRequest
      * @Type("string")
     */
     #[Assert\NotNull]
-    #[Assert\Choice(["GET", "HEAD", "POST", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE", "PATCH"])]
+    #[Assert\Choice(['GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'CONNECT', 'OPTIONS', 'TRACE', 'PATCH'])]
     #[Assert\Type("string")]
     protected ?string $method = null;
 
@@ -113,7 +113,7 @@ class IntegrationLogClientRequest
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->method = array_key_exists('method', $data) ? $data['method'] : $this->method;

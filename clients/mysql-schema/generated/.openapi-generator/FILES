@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 Model/Account.sql
 Model/ActionType.sql
 Model/AdAccount.sql

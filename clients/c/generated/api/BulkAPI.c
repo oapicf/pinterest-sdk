@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 
 // Get advertiser entities in bulk
@@ -25,15 +20,20 @@ BulkAPI_bulkDownloadCreate(apiClient_t *apiClient, char *ad_account_id, bulk_dow
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/bulk/download")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/bulk/download");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/bulk/download");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -48,9 +48,10 @@ BulkAPI_bulkDownloadCreate(apiClient_t *apiClient, char *ad_account_id, bulk_dow
     cJSON *localVarSingleItemJSON_bulk_download_request = NULL;
     if (bulk_download_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_bulk_download_request = bulk_download_request_convertToJSON(bulk_download_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_bulk_download_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -62,6 +63,7 @@ BulkAPI_bulkDownloadCreate(apiClient_t *apiClient, char *ad_account_id, bulk_dow
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -73,11 +75,14 @@ BulkAPI_bulkDownloadCreate(apiClient_t *apiClient, char *ad_account_id, bulk_dow
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BulkAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    bulk_download_response_t *elementToReturn = bulk_download_response_parseFromJSON(BulkAPIlocalVarJSON);
-    cJSON_Delete(BulkAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    bulk_download_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BulkAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = bulk_download_response_parseFromJSON(BulkAPIlocalVarJSON);
+        cJSON_Delete(BulkAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -118,15 +123,22 @@ BulkAPI_bulkRequestGet(apiClient_t *apiClient, char *ad_account_id, char *bulk_r
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/bulk/{bulk_request_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/bulk/{bulk_request_id}");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/bulk/{bulk_request_id}");
+
+    if(!ad_account_id)
+        goto end;
+    if(!bulk_request_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(bulk_request_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(bulk_request_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -136,7 +148,7 @@ BulkAPI_bulkRequestGet(apiClient_t *apiClient, char *ad_account_id, char *bulk_r
     localVarPath = strReplace(localVarPath, localVarToReplace_ad_account_id, ad_account_id);
 
     // Path Params
-    long sizeOfPathParams_bulk_request_id = strlen(ad_account_id)+3 + strlen(bulk_request_id)+3 + strlen("{ bulk_request_id }");
+    long sizeOfPathParams_bulk_request_id = strlen(ad_account_id)+3 + strlen(bulk_request_id)+3 + sizeof("{ bulk_request_id }") - 1;
     if(bulk_request_id == NULL) {
         goto end;
     }
@@ -168,6 +180,7 @@ BulkAPI_bulkRequestGet(apiClient_t *apiClient, char *ad_account_id, char *bulk_r
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -179,11 +192,14 @@ BulkAPI_bulkRequestGet(apiClient_t *apiClient, char *ad_account_id, char *bulk_r
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BulkAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    bulk_upsert_status_response_t *elementToReturn = bulk_upsert_status_response_parseFromJSON(BulkAPIlocalVarJSON);
-    cJSON_Delete(BulkAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    bulk_upsert_status_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BulkAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = bulk_upsert_status_response_parseFromJSON(BulkAPIlocalVarJSON);
+        cJSON_Delete(BulkAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -232,15 +248,20 @@ BulkAPI_bulkUpsertCreate(apiClient_t *apiClient, char *ad_account_id, bulk_upser
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/bulk/upsert")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/bulk/upsert");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/bulk/upsert");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -255,9 +276,10 @@ BulkAPI_bulkUpsertCreate(apiClient_t *apiClient, char *ad_account_id, bulk_upser
     cJSON *localVarSingleItemJSON_bulk_upsert_request = NULL;
     if (bulk_upsert_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_bulk_upsert_request = bulk_upsert_request_convertToJSON(bulk_upsert_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_bulk_upsert_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -269,6 +291,7 @@ BulkAPI_bulkUpsertCreate(apiClient_t *apiClient, char *ad_account_id, bulk_upser
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -280,11 +303,14 @@ BulkAPI_bulkUpsertCreate(apiClient_t *apiClient, char *ad_account_id, bulk_upser
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BulkAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    bulk_upsert_response_t *elementToReturn = bulk_upsert_response_parseFromJSON(BulkAPIlocalVarJSON);
-    cJSON_Delete(BulkAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    bulk_upsert_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BulkAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = bulk_upsert_response_parseFromJSON(BulkAPIlocalVarJSON);
+        cJSON_Delete(BulkAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type

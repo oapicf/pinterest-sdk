@@ -22,7 +22,7 @@ pinterest_rest_api_catalogs_hotel_list_products_by_catalog_based_filter_request_
     return 0;
 }
 
-catalogs_hotel_list_products_by_catalog_based_filter_request_t *catalogs_hotel_list_products_by_catalog_based_filter_request_create(
+static catalogs_hotel_list_products_by_catalog_based_filter_request_t *catalogs_hotel_list_products_by_catalog_based_filter_request_create_internal(
     pinterest_rest_api_catalogs_hotel_list_products_by_catalog_based_filter_request_CATALOGTYPE_e catalog_type,
     char *catalog_id,
     catalogs_hotel_product_group_filters_t *filters
@@ -35,12 +35,28 @@ catalogs_hotel_list_products_by_catalog_based_filter_request_t *catalogs_hotel_l
     catalogs_hotel_list_products_by_catalog_based_filter_request_local_var->catalog_id = catalog_id;
     catalogs_hotel_list_products_by_catalog_based_filter_request_local_var->filters = filters;
 
+    catalogs_hotel_list_products_by_catalog_based_filter_request_local_var->_library_owned = 1;
     return catalogs_hotel_list_products_by_catalog_based_filter_request_local_var;
 }
 
+__attribute__((deprecated)) catalogs_hotel_list_products_by_catalog_based_filter_request_t *catalogs_hotel_list_products_by_catalog_based_filter_request_create(
+    pinterest_rest_api_catalogs_hotel_list_products_by_catalog_based_filter_request_CATALOGTYPE_e catalog_type,
+    char *catalog_id,
+    catalogs_hotel_product_group_filters_t *filters
+    ) {
+    return catalogs_hotel_list_products_by_catalog_based_filter_request_create_internal (
+        catalog_type,
+        catalog_id,
+        filters
+        );
+}
 
 void catalogs_hotel_list_products_by_catalog_based_filter_request_free(catalogs_hotel_list_products_by_catalog_based_filter_request_t *catalogs_hotel_list_products_by_catalog_based_filter_request) {
     if(NULL == catalogs_hotel_list_products_by_catalog_based_filter_request){
+        return ;
+    }
+    if(catalogs_hotel_list_products_by_catalog_based_filter_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_hotel_list_products_by_catalog_based_filter_request_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -62,7 +78,7 @@ cJSON *catalogs_hotel_list_products_by_catalog_based_filter_request_convertToJSO
     if (pinterest_rest_api_catalogs_hotel_list_products_by_catalog_based_filter_request_CATALOGTYPE_NULL == catalogs_hotel_list_products_by_catalog_based_filter_request->catalog_type) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "catalog_type", catalog_typecatalogs_hotel_list_products_by_catalog_based_filter_request_ToString(catalogs_hotel_list_products_by_catalog_based_filter_request->catalog_type)) == NULL)
+    if(cJSON_AddStringToObject(item, "catalog_type", catalogs_hotel_list_products_by_catalog_based_filter_request_catalog_type_ToString(catalogs_hotel_list_products_by_catalog_based_filter_request->catalog_type)) == NULL)
     {
     goto fail; //Enum
     }
@@ -107,6 +123,9 @@ catalogs_hotel_list_products_by_catalog_based_filter_request_t *catalogs_hotel_l
 
     // catalogs_hotel_list_products_by_catalog_based_filter_request->catalog_type
     cJSON *catalog_type = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_list_products_by_catalog_based_filter_requestJSON, "catalog_type");
+    if (cJSON_IsNull(catalog_type)) {
+        catalog_type = NULL;
+    }
     if (!catalog_type) {
         goto end;
     }
@@ -121,6 +140,9 @@ catalogs_hotel_list_products_by_catalog_based_filter_request_t *catalogs_hotel_l
 
     // catalogs_hotel_list_products_by_catalog_based_filter_request->catalog_id
     cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_list_products_by_catalog_based_filter_requestJSON, "catalog_id");
+    if (cJSON_IsNull(catalog_id)) {
+        catalog_id = NULL;
+    }
     if (!catalog_id) {
         goto end;
     }
@@ -133,6 +155,9 @@ catalogs_hotel_list_products_by_catalog_based_filter_request_t *catalogs_hotel_l
 
     // catalogs_hotel_list_products_by_catalog_based_filter_request->filters
     cJSON *filters = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_list_products_by_catalog_based_filter_requestJSON, "filters");
+    if (cJSON_IsNull(filters)) {
+        filters = NULL;
+    }
     if (!filters) {
         goto end;
     }
@@ -141,7 +166,7 @@ catalogs_hotel_list_products_by_catalog_based_filter_request_t *catalogs_hotel_l
     filters_local_nonprim = catalogs_hotel_product_group_filters_parseFromJSON(filters); //nonprimitive
 
 
-    catalogs_hotel_list_products_by_catalog_based_filter_request_local_var = catalogs_hotel_list_products_by_catalog_based_filter_request_create (
+    catalogs_hotel_list_products_by_catalog_based_filter_request_local_var = catalogs_hotel_list_products_by_catalog_based_filter_request_create_internal (
         catalog_typeVariable,
         strdup(catalog_id->valuestring),
         filters_local_nonprim

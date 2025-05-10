@@ -15,8 +15,11 @@
 export type LeadsExportStatus = 'IN_PROGRESS' | 'FINISHED' | 'FAILED';
 
 export const LeadsExportStatus = {
+
     InProgress: 'IN_PROGRESS' as LeadsExportStatus,
+
     Finished: 'FINISHED' as LeadsExportStatus,
+
     Failed: 'FAILED' as LeadsExportStatus
 };
 

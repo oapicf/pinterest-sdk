@@ -17,8 +17,8 @@ public struct AdGroupCreateRequest: Codable, JSONEncodable, Hashable {
         case maxBid = "MAX_BID"
         case targetAvg = "TARGET_AVG"
     }
-    static let campaignIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^[C]?\\d+$/")
-    static let targetingTemplateIdsRule = ArrayRule(minItems: nil, maxItems: 1, uniqueItems: false)
+    public static let campaignIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^[C]?\\d+$/")
+    public static let targetingTemplateIdsRule = ArrayRule(minItems: nil, maxItems: 1, uniqueItems: false)
     /** Ad group name. */
     public var name: String
     /** Ad group/entity status. */

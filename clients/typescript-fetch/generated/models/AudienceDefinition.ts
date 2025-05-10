@@ -62,11 +62,11 @@ export function AudienceDefinitionFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-  export function AudienceDefinitionToJSON(json: any): AudienceDefinition {
-      return AudienceDefinitionToJSONTyped(json, false);
-  }
+export function AudienceDefinitionToJSON(json: any): AudienceDefinition {
+    return AudienceDefinitionToJSONTyped(json, false);
+}
 
-  export function AudienceDefinitionToJSONTyped(value?: AudienceDefinition | null, ignoreDiscriminator: boolean = false): any {
+export function AudienceDefinitionToJSONTyped(value?: AudienceDefinition | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

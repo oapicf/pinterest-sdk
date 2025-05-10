@@ -72,10 +72,35 @@ CatalogsRetailProductMetadata <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return CatalogsRetailProductMetadata in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return CatalogsRetailProductMetadata as a base R list.
+    #' @examples
+    #' # convert array of CatalogsRetailProductMetadata (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert CatalogsRetailProductMetadata to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       CatalogsRetailProductMetadataObject <- list()
       if (!is.null(self$`item_id`)) {
         CatalogsRetailProductMetadataObject[["item_id"]] <-
@@ -87,7 +112,7 @@ CatalogsRetailProductMetadata <- R6::R6Class(
       }
       if (!is.null(self$`availability`)) {
         CatalogsRetailProductMetadataObject[["availability"]] <-
-          self$`availability`$toJSON()
+          self$`availability`$toSimpleType()
       }
       if (!is.null(self$`price`)) {
         CatalogsRetailProductMetadataObject[["price"]] <-
@@ -99,9 +124,9 @@ CatalogsRetailProductMetadata <- R6::R6Class(
       }
       if (!is.null(self$`currency`)) {
         CatalogsRetailProductMetadataObject[["currency"]] <-
-          self$`currency`$toJSON()
+          self$`currency`$toSimpleType()
       }
-      CatalogsRetailProductMetadataObject
+      return(CatalogsRetailProductMetadataObject)
     },
 
     #' @description
@@ -138,61 +163,13 @@ CatalogsRetailProductMetadata <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return CatalogsRetailProductMetadata in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`item_id`)) {
-          sprintf(
-          '"item_id":
-            "%s"
-                    ',
-          self$`item_id`
-          )
-        },
-        if (!is.null(self$`item_group_id`)) {
-          sprintf(
-          '"item_group_id":
-            "%s"
-                    ',
-          self$`item_group_id`
-          )
-        },
-        if (!is.null(self$`availability`)) {
-          sprintf(
-          '"availability":
-          %s
-          ',
-          jsonlite::toJSON(self$`availability`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`price`)) {
-          sprintf(
-          '"price":
-            %d
-                    ',
-          self$`price`
-          )
-        },
-        if (!is.null(self$`sale_price`)) {
-          sprintf(
-          '"sale_price":
-            %d
-                    ',
-          self$`sale_price`
-          )
-        },
-        if (!is.null(self$`currency`)) {
-          sprintf(
-          '"currency":
-          %s
-          ',
-          jsonlite::toJSON(self$`currency`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 // Functions for enum ORDER for CustomerListsAPI_customerListsList
 
@@ -77,15 +72,20 @@ CustomerListsAPI_customerListsCreate(apiClient_t *apiClient, char *ad_account_id
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/customer_lists")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/customer_lists");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/customer_lists");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -100,9 +100,10 @@ CustomerListsAPI_customerListsCreate(apiClient_t *apiClient, char *ad_account_id
     cJSON *localVarSingleItemJSON_customer_list_request = NULL;
     if (customer_list_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_customer_list_request = customer_list_request_convertToJSON(customer_list_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_customer_list_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -114,6 +115,7 @@ CustomerListsAPI_customerListsCreate(apiClient_t *apiClient, char *ad_account_id
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -125,11 +127,14 @@ CustomerListsAPI_customerListsCreate(apiClient_t *apiClient, char *ad_account_id
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *CustomerListsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    customer_list_t *elementToReturn = customer_list_parseFromJSON(CustomerListsAPIlocalVarJSON);
-    cJSON_Delete(CustomerListsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    customer_list_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CustomerListsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = customer_list_parseFromJSON(CustomerListsAPIlocalVarJSON);
+        cJSON_Delete(CustomerListsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -170,15 +175,22 @@ CustomerListsAPI_customerListsGet(apiClient_t *apiClient, char *ad_account_id, c
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}");
+
+    if(!ad_account_id)
+        goto end;
+    if(!customer_list_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(customer_list_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(customer_list_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -188,7 +200,7 @@ CustomerListsAPI_customerListsGet(apiClient_t *apiClient, char *ad_account_id, c
     localVarPath = strReplace(localVarPath, localVarToReplace_ad_account_id, ad_account_id);
 
     // Path Params
-    long sizeOfPathParams_customer_list_id = strlen(ad_account_id)+3 + strlen(customer_list_id)+3 + strlen("{ customer_list_id }");
+    long sizeOfPathParams_customer_list_id = strlen(ad_account_id)+3 + strlen(customer_list_id)+3 + sizeof("{ customer_list_id }") - 1;
     if(customer_list_id == NULL) {
         goto end;
     }
@@ -207,6 +219,7 @@ CustomerListsAPI_customerListsGet(apiClient_t *apiClient, char *ad_account_id, c
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -218,11 +231,14 @@ CustomerListsAPI_customerListsGet(apiClient_t *apiClient, char *ad_account_id, c
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *CustomerListsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    customer_list_t *elementToReturn = customer_list_parseFromJSON(CustomerListsAPIlocalVarJSON);
-    cJSON_Delete(CustomerListsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    customer_list_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CustomerListsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = customer_list_parseFromJSON(CustomerListsAPIlocalVarJSON);
+        cJSON_Delete(CustomerListsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -259,15 +275,20 @@ CustomerListsAPI_customerListsList(apiClient_t *apiClient, char *ad_account_id, 
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/customer_lists")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/customer_lists");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/customer_lists");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -299,7 +320,7 @@ CustomerListsAPI_customerListsList(apiClient_t *apiClient, char *ad_account_id, 
     {
         keyQuery_order = strdup("order");
         valueQuery_order = (order);
-        keyPairQuery_order = keyValuePair_create(keyQuery_order, (void *)strdup(customerListsList_ORDER_ToString(
+        keyPairQuery_order = keyValuePair_create(keyQuery_order, strdup(customerListsList_ORDER_ToString(
         valueQuery_order)));
         list_addElement(localVarQueryParameters,keyPairQuery_order);
     }
@@ -324,6 +345,7 @@ CustomerListsAPI_customerListsList(apiClient_t *apiClient, char *ad_account_id, 
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -335,11 +357,14 @@ CustomerListsAPI_customerListsList(apiClient_t *apiClient, char *ad_account_id, 
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *CustomerListsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    customer_lists_list_200_response_t *elementToReturn = customer_lists_list_200_response_parseFromJSON(CustomerListsAPIlocalVarJSON);
-    cJSON_Delete(CustomerListsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    customer_lists_list_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CustomerListsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = customer_lists_list_200_response_parseFromJSON(CustomerListsAPIlocalVarJSON);
+        cJSON_Delete(CustomerListsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -407,15 +432,22 @@ CustomerListsAPI_customerListsUpdate(apiClient_t *apiClient, char *ad_account_id
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}");
+
+    if(!ad_account_id)
+        goto end;
+    if(!customer_list_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(customer_list_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(customer_list_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -425,7 +457,7 @@ CustomerListsAPI_customerListsUpdate(apiClient_t *apiClient, char *ad_account_id
     localVarPath = strReplace(localVarPath, localVarToReplace_ad_account_id, ad_account_id);
 
     // Path Params
-    long sizeOfPathParams_customer_list_id = strlen(ad_account_id)+3 + strlen(customer_list_id)+3 + strlen("{ customer_list_id }");
+    long sizeOfPathParams_customer_list_id = strlen(ad_account_id)+3 + strlen(customer_list_id)+3 + sizeof("{ customer_list_id }") - 1;
     if(customer_list_id == NULL) {
         goto end;
     }
@@ -440,9 +472,10 @@ CustomerListsAPI_customerListsUpdate(apiClient_t *apiClient, char *ad_account_id
     cJSON *localVarSingleItemJSON_customer_list_update_request = NULL;
     if (customer_list_update_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_customer_list_update_request = customer_list_update_request_convertToJSON(customer_list_update_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_customer_list_update_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -454,6 +487,7 @@ CustomerListsAPI_customerListsUpdate(apiClient_t *apiClient, char *ad_account_id
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "PATCH");
 
     // uncomment below to debug the error response
@@ -465,11 +499,14 @@ CustomerListsAPI_customerListsUpdate(apiClient_t *apiClient, char *ad_account_id
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *CustomerListsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    customer_list_t *elementToReturn = customer_list_parseFromJSON(CustomerListsAPIlocalVarJSON);
-    cJSON_Delete(CustomerListsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    customer_list_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CustomerListsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = customer_list_parseFromJSON(CustomerListsAPIlocalVarJSON);
+        cJSON_Delete(CustomerListsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type

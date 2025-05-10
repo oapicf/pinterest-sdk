@@ -48,28 +48,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * PinMediaSourceImagesURLItemsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMediaSourceImagesURLItemsInner {
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
+  @javax.annotation.Nullable
   private String title;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nullable
   private String description;
 
   public static final String SERIALIZED_NAME_LINK = "link";
   @SerializedName(SERIALIZED_NAME_LINK)
+  @javax.annotation.Nullable
   private String link;
 
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)
+  @javax.annotation.Nonnull
   private String url;
 
   public PinMediaSourceImagesURLItemsInner() {
   }
 
-  public PinMediaSourceImagesURLItemsInner title(String title) {
+  public PinMediaSourceImagesURLItemsInner title(@javax.annotation.Nullable String title) {
     this.title = title;
     return this;
   }
@@ -83,12 +87,12 @@ public class PinMediaSourceImagesURLItemsInner {
     return title;
   }
 
-  public void setTitle(String title) {
+  public void setTitle(@javax.annotation.Nullable String title) {
     this.title = title;
   }
 
 
-  public PinMediaSourceImagesURLItemsInner description(String description) {
+  public PinMediaSourceImagesURLItemsInner description(@javax.annotation.Nullable String description) {
     this.description = description;
     return this;
   }
@@ -102,12 +106,12 @@ public class PinMediaSourceImagesURLItemsInner {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
 
-  public PinMediaSourceImagesURLItemsInner link(String link) {
+  public PinMediaSourceImagesURLItemsInner link(@javax.annotation.Nullable String link) {
     this.link = link;
     return this;
   }
@@ -121,12 +125,12 @@ public class PinMediaSourceImagesURLItemsInner {
     return link;
   }
 
-  public void setLink(String link) {
+  public void setLink(@javax.annotation.Nullable String link) {
     this.link = link;
   }
 
 
-  public PinMediaSourceImagesURLItemsInner url(String url) {
+  public PinMediaSourceImagesURLItemsInner url(@javax.annotation.Nonnull String url) {
     this.url = url;
     return this;
   }
@@ -140,7 +144,7 @@ public class PinMediaSourceImagesURLItemsInner {
     return url;
   }
 
-  public void setUrl(String url) {
+  public void setUrl(@javax.annotation.Nonnull String url) {
     this.url = url;
   }
 

@@ -31,9 +31,10 @@ typedef struct board_update_t {
     char *description; // string
     pinterest_rest_api_board_update_PRIVACY_e privacy; //enum
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } board_update_t;
 
-board_update_t *board_update_create(
+__attribute__((deprecated)) board_update_t *board_update_create(
     char *name,
     char *description,
     pinterest_rest_api_board_update_PRIVACY_e privacy

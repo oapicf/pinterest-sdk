@@ -11,7 +11,7 @@ module PinMediaSourceVideoID =
   type SourceTypeEnum = VideoIdEnum of string  
   //#endregion
   //#region enums
-  type CoverImageContentTypeEnum = JpegEnum of string  |  PngEnum of string  
+  type CoverImageContentTypeEnum = ImageJpegEnum of string  |  ImagePngEnum of string  
   //#endregion
 
   type PinMediaSourceVideoID = {

@@ -91,11 +91,11 @@ export function CatalogFromJSONTyped(json: any, ignoreDiscriminator: boolean): C
     };
 }
 
-  export function CatalogToJSON(json: any): Catalog {
-      return CatalogToJSONTyped(json, false);
-  }
+export function CatalogToJSON(json: any): Catalog {
+    return CatalogToJSONTyped(json, false);
+}
 
-  export function CatalogToJSONTyped(value?: Catalog | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogToJSONTyped(value?: Catalog | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -5,7 +5,7 @@
 
 
 
-base_invite_data_response_t *base_invite_data_response_create(
+static base_invite_data_response_t *base_invite_data_response_create_internal(
     char *id,
     base_invite_data_response_invite_data_t *invite_data,
     int is_received_invite,
@@ -20,12 +20,30 @@ base_invite_data_response_t *base_invite_data_response_create(
     base_invite_data_response_local_var->is_received_invite = is_received_invite;
     base_invite_data_response_local_var->user = user;
 
+    base_invite_data_response_local_var->_library_owned = 1;
     return base_invite_data_response_local_var;
 }
 
+__attribute__((deprecated)) base_invite_data_response_t *base_invite_data_response_create(
+    char *id,
+    base_invite_data_response_invite_data_t *invite_data,
+    int is_received_invite,
+    business_access_user_summary_t *user
+    ) {
+    return base_invite_data_response_create_internal (
+        id,
+        invite_data,
+        is_received_invite,
+        user
+        );
+}
 
 void base_invite_data_response_free(base_invite_data_response_t *base_invite_data_response) {
     if(NULL == base_invite_data_response){
+        return ;
+    }
+    if(base_invite_data_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "base_invite_data_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -108,6 +126,9 @@ base_invite_data_response_t *base_invite_data_response_parseFromJSON(cJSON *base
 
     // base_invite_data_response->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(base_invite_data_responseJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -117,12 +138,18 @@ base_invite_data_response_t *base_invite_data_response_parseFromJSON(cJSON *base
 
     // base_invite_data_response->invite_data
     cJSON *invite_data = cJSON_GetObjectItemCaseSensitive(base_invite_data_responseJSON, "invite_data");
+    if (cJSON_IsNull(invite_data)) {
+        invite_data = NULL;
+    }
     if (invite_data) { 
     invite_data_local_nonprim = base_invite_data_response_invite_data_parseFromJSON(invite_data); //nonprimitive
     }
 
     // base_invite_data_response->is_received_invite
     cJSON *is_received_invite = cJSON_GetObjectItemCaseSensitive(base_invite_data_responseJSON, "is_received_invite");
+    if (cJSON_IsNull(is_received_invite)) {
+        is_received_invite = NULL;
+    }
     if (is_received_invite) { 
     if(!cJSON_IsBool(is_received_invite))
     {
@@ -132,12 +159,15 @@ base_invite_data_response_t *base_invite_data_response_parseFromJSON(cJSON *base
 
     // base_invite_data_response->user
     cJSON *user = cJSON_GetObjectItemCaseSensitive(base_invite_data_responseJSON, "user");
+    if (cJSON_IsNull(user)) {
+        user = NULL;
+    }
     if (user) { 
     user_local_nonprim = business_access_user_summary_parseFromJSON(user); //nonprimitive
     }
 
 
-    base_invite_data_response_local_var = base_invite_data_response_create (
+    base_invite_data_response_local_var = base_invite_data_response_create_internal (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         invite_data ? invite_data_local_nonprim : NULL,
         is_received_invite ? is_received_invite->valueint : 0,

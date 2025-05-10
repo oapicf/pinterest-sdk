@@ -73,7 +73,7 @@ Get analytics for the specified <code>ad_account_id</code>, filtered by the spec
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -220,7 +220,7 @@ Get targeting analytics for an ad account. For the requested account and metrics
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -461,7 +461,7 @@ Get an ad account
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -647,7 +647,7 @@ This creates an asynchronous mmm report based on the given request. It returns a
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -752,7 +752,7 @@ This returns a token that you can use to download the report when it is ready. N
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -857,13 +857,13 @@ This takes a template ID and an optional custom timeframe and constructs an asyn
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | template_id
 | Unique identifier of a template. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -980,7 +980,7 @@ Get an mmm report for an ad account. This returns a URL to an mmm metrics report
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -1085,7 +1085,7 @@ This returns a URL to an analytics report given a token returned from the post r
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -1190,7 +1190,7 @@ Delete an ad account and all the ads data associated with that account. A string
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -1283,7 +1283,7 @@ Gets all Templates associated with an ad account ID.
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -1404,7 +1404,7 @@ Get analytics for the specified ad groups in the specified <code>ad_account_id</
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -1557,7 +1557,7 @@ Get potential audience size for an ad group with given targeting criteria.  Pote
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -1667,7 +1667,7 @@ Create multiple new ad groups. All ads in a given ad group will have the same bu
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -1767,13 +1767,13 @@ Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons wil
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | ad_group_id
 | Unique identifier of an ad group. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -1860,7 +1860,7 @@ List ad groups based on provided campaign IDs or ad group IDs.(campaign_ids or a
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -2001,7 +2001,7 @@ Update multiple existing ad groups.
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -2101,7 +2101,7 @@ List bid floors for your campaign configuration. Bid floors are given in microcu
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -2201,7 +2201,7 @@ Get targeting analytics for one or more ad groups. For the requested ad group(s)
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -2365,7 +2365,7 @@ Create an ad preview given an ad account ID and either an existing organic pin I
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -2470,7 +2470,7 @@ Get targeting analytics for one or more ads. For the requested ad(s) and metrics
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -2630,7 +2630,7 @@ Get analytics for the specified ads in the specified <code>ad_account_id</code>,
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -2795,7 +2795,7 @@ Create multiple new ads. Request must contain ad_group_id, creative_type, and th
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -2895,13 +2895,13 @@ Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons wil
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | ad_id
 | Unique identifier of an ad. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -2988,7 +2988,7 @@ List ads that meet the filters provided:   - Listed campaign ids or ad group ids
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -3129,7 +3129,7 @@ Update multiple existing ads
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -3250,7 +3250,7 @@ Get the bid options for a batch of retail catalog items.  The catalog must be ow
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -3370,7 +3370,7 @@ This endpoint supports multiple operations on a set of one or more bid options (
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -3477,7 +3477,7 @@ Get Audience Insights for an ad account. The response will return insights for 3
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -3577,7 +3577,7 @@ Get the scope and type of available audiences, which along with a date, is an au
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -3668,7 +3668,7 @@ List all ad accounts and/or businesses that have access to a specific audience. 
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -3685,7 +3685,7 @@ List all ad accounts and/or businesses that have access to a specific audience. 
 | Unique identifier of the audience to use to filter the results. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | account_type
 | Filter accounts by account type. 
@@ -3796,7 +3796,7 @@ List all ad accounts and/or businesses that have access to a specific audience. 
 | Unique identifier of the requesting business. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -3813,7 +3813,7 @@ List all ad accounts and/or businesses that have access to a specific audience. 
 | Unique identifier of the audience to use to filter the results. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | account_type
 | Filter accounts by account type. 
@@ -3924,7 +3924,7 @@ Get a list of received audiences for the given business.
 | Unique identifier of the requesting business. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -4041,7 +4041,7 @@ From an ad account, share a specific audience with another ad account, or revoke
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -4146,7 +4146,7 @@ From an ad account, share a specific audience with a business account, or revoke
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -4251,7 +4251,7 @@ From a business, share a specific audience with other ad account(s), or revoke a
 | Unique identifier of the requesting business. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -4356,7 +4356,7 @@ From a business, share a specific audience with another business account, or rev
 | Unique identifier of the requesting business. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -4465,7 +4465,7 @@ Create an audience you can use in targeting for specific ad groups. Targeting co
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -4565,7 +4565,7 @@ Create a custom audience and find the audiences you want your ads to reach.
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -4665,13 +4665,13 @@ Get a specific audience given the audience ID.
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | audience_id
 | Unique identifier of an audience 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -4763,7 +4763,7 @@ Get list of audiences for the ad account.
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -4886,13 +4886,13 @@ Update (edit or remove) an existing targeting audience.
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | audience_id
 | Unique identifier of an audience 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -4996,7 +4996,7 @@ Redeem ads credit on behalf of the ad account id and apply it towards billing.  
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -5101,7 +5101,7 @@ Returns the list of discounts applied to the account.  <strong>This endpoint mig
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -5207,7 +5207,7 @@ Get billing profiles in the advertiser account.  <strong>This endpoint might not
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -5319,7 +5319,7 @@ Get Salesforce account details including bill-to information to be used in inser
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -5411,7 +5411,7 @@ Create insertion order through SSIO for <code>ad_account_id</code>. - The token'
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -5516,7 +5516,7 @@ Edit insertion order through SSIO for <code>ad_account_id</code>. - The token's 
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -5621,7 +5621,7 @@ Get insertion order status for account id <code>ad_account_id</code>. - The toke
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -5732,7 +5732,7 @@ Get insertion order status for pin order id <code>pin_order_id</code>. - The tok
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | pin_order_id
 | The pin order id associated with the ssio insertion order 
@@ -5830,7 +5830,7 @@ Get Salesforce order lines for account id <code>ad_account_id</code>. - The toke
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -5951,7 +5951,7 @@ Create a board section on a board owned by the \"operation user_account\" - or o
 | Unique identifier of a board. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -5981,7 +5981,7 @@ Create a board section on a board owned by the \"operation user_account\" - or o
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -6084,13 +6084,13 @@ Delete a board section on a board owned by the \"operation user_account\" - or o
 | Unique identifier of a board. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | section_id
 | Unique identifier of a board section. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -6107,7 +6107,7 @@ Delete a board section on a board owned by the \"operation user_account\" - or o
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -6206,7 +6206,7 @@ Get a list of all board sections from a board owned by the \"operation user_acco
 | Unique identifier of a board. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -6223,7 +6223,7 @@ Get a list of all board sections from a board owned by the \"operation user_acco
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | bookmark
 | Cursor used to fetch the next page of items 
@@ -6318,13 +6318,13 @@ Get a list of the Pins on a board section of a board owned by the \"operation us
 | Unique identifier of a board. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | section_id
 | Unique identifier of a board section. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -6341,7 +6341,7 @@ Get a list of the Pins on a board section of a board owned by the \"operation us
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | bookmark
 | Cursor used to fetch the next page of items 
@@ -6451,13 +6451,13 @@ Update a board section on a board owned by the \"operation user_account\" - or o
 | Unique identifier of a board. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | section_id
 | Unique identifier of a board section. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -6487,7 +6487,7 @@ Update a board section on a board owned by the \"operation user_account\" - or o
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -6602,7 +6602,7 @@ Create a board owned by the \"operation user_account\". Optional: Business Acces
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -6690,7 +6690,7 @@ Delete a board owned by the \"operation user_account\". - Optional: Business Acc
 | Unique identifier of a board. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -6707,7 +6707,7 @@ Delete a board owned by the \"operation user_account\". - Optional: Business Acc
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -6811,7 +6811,7 @@ Get a board owned by the operation user_account - or a group board that has been
 | Unique identifier of a board. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -6828,7 +6828,7 @@ Get a board owned by the operation user_account - or a group board that has been
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -6920,7 +6920,7 @@ Get a list of the boards owned by the \"operation user_account\" + group boards 
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | bookmark
 | Cursor used to fetch the next page of items 
@@ -7021,7 +7021,7 @@ Get a list of the Pins on a board owned by the \"operation user_account\" - or o
 | Unique identifier of a board. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -7056,7 +7056,7 @@ Get a list of the Pins on a board owned by the \"operation user_account\" - or o
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | pin_metrics
 | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. 
@@ -7150,7 +7150,7 @@ Update a board owned by the \"operating user_account\". - Optional: Business Acc
 | Unique identifier of a board. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -7180,7 +7180,7 @@ Update a board owned by the \"operating user_account\". - Optional: Business Acc
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -7282,7 +7282,7 @@ Create an asynchronous report that may include information on campaigns, ad grou
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -7382,7 +7382,7 @@ Get the status of a bulk request by <code>request_id</code>, along with a downlo
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | bulk_request_id
 | Unique identifier of a bulk upsert request. 
@@ -7488,7 +7488,7 @@ Either create or update any combination of campaigns, ad groups, product groups,
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -7592,7 +7592,7 @@ Create a new asset group with the specified parameters. - An <a href=\"https://h
 | Unique identifier of the requesting business. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -7697,7 +7697,7 @@ Delete a batch of asset groups.
 | Unique identifier of the requesting business. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -7802,7 +7802,7 @@ Update a batch of asset groups with the specified parameters.
 | Unique identifier of the requesting business. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -7907,13 +7907,13 @@ Get all the members the requesting business has granted access to on the given a
 | Unique identifier of the requesting business. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | asset_id
 | Unique identifier of a business asset. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -8025,13 +8025,13 @@ Get all the partners the requesting business has granted access to on the given 
 | Unique identifier of the requesting business. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | asset_id
 | Unique identifier of a business asset. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -8143,7 +8143,7 @@ Get all the assets the requesting business has access to. This includes assets t
 | Unique identifier of the requesting business. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -8166,13 +8166,13 @@ Get all the assets the requesting business has access to. This includes assets t
 | A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | asset_group_id
 | An asset group unique identifier. Used to fetch assets contained within the specified asset group. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | asset_type
 | A resource type to filter the assets by. Only assets of the specified type will be returned. 
@@ -8279,13 +8279,13 @@ Get assets on which you assigned asset permissions to the given member. Can be u
 | Unique identifier of the requesting business. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | member_id
 | The member id to fetch assets for. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -8403,7 +8403,7 @@ Terminate multiple members' access to an asset.
 | Unique identifier of the requesting business. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -8503,7 +8503,7 @@ Grant multiple members access to assets and/or update multiple member's exisitin
 | Unique identifier of the requesting business. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -8603,13 +8603,13 @@ Can be used to get the business assets your partner has granted you access to or
 | Unique identifier of the requesting business. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | partner_id
 | The partner id to be bound to the Business 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -8733,7 +8733,7 @@ Terminate multiple partners' access to an asset. If - partner_type=INTERNAL: You
 | Unique identifier of the requesting business. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -8833,7 +8833,7 @@ Grant multiple partners access to assets and/or update multiple partner's exisit
 | Unique identifier of the requesting business. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -8937,7 +8937,7 @@ Create a request to access an existing partner's assets with the specified permi
 | Unique identifier of the requesting business. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -9037,7 +9037,7 @@ Cancel membership/partnership invites and/or requests.
 | Business id 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -9137,7 +9137,7 @@ Assign asset permissions information to an existing invite/request. Can be used 
 | Unique identifier of the requesting business. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -9237,7 +9237,7 @@ Create batch invites or requests. Can create batch invites or requests as descri
 | Business id 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -9337,7 +9337,7 @@ Get the membership/partnership invites and/or requests for the authorized user.
 | Unique identifier of the requesting business. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -9552,7 +9552,7 @@ Terminate memberships between the specified members and your business.
 | Business id 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -9652,7 +9652,7 @@ Terminate partnerships between the specified partners and your business. Note: Y
 | Unique identifier of the requesting business. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -9850,7 +9850,7 @@ Get all members of the specified business. The return response will include the 
 | Unique identifier of the requesting business. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -9980,7 +9980,7 @@ Get all partners of the specified business.  If the assets_summary=TRUE and: - p
 | Unique identifier of the requesting business. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -10110,7 +10110,7 @@ Update a member's business role within the business.
 | Business id 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -10214,7 +10214,7 @@ Get targeting analytics for one or more campaigns. For the requested account and
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -10374,7 +10374,7 @@ Get analytics for the specified campaigns in the specified <code>ad_account_id</
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -10527,7 +10527,7 @@ Create multiple new campaigns. Every campaign has its own campaign_id and houses
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -10627,13 +10627,13 @@ Get a specific campaign given the campaign ID.
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | campaign_id
 | Campaign ID, must be associated with the ad account ID provided in the path. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -10720,7 +10720,7 @@ Get a list of the campaigns in the specified <code>ad_account_id</code>, filtere
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -10849,7 +10849,7 @@ Update multiple ad campaigns based on campaign_ids. <p/> <strong>Note:</strong><
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -10970,7 +10970,7 @@ Create a new catalog owned by the \"operation user_account\". - By default, the 
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -11079,7 +11079,7 @@ Fetch catalogs owned by the \"operation user_account\". - By default, the \"oper
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -11172,7 +11172,7 @@ Get a list of product pins for a given Catalogs Product Group Id owned by the \"
 | Unique identifier of a product group 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -11201,7 +11201,7 @@ Get a list of product pins for a given Catalogs Product Group Id owned by the \"
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | pin_metrics
 | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. 
@@ -11322,7 +11322,7 @@ Create product group to use in Catalogs owned by the \"operation user_account\".
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -11442,7 +11442,7 @@ Create product group to use in Catalogs owned by the \"operation user_account\".
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -11546,7 +11546,7 @@ Delete a product group owned by the \"operation user_account\" from being in use
 | Unique identifier of a product group 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -11563,7 +11563,7 @@ Delete a product group owned by the \"operation user_account\" from being in use
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -11682,7 +11682,7 @@ Delete product groups owned by the \"operation user_account\". - By default, the
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -11786,7 +11786,7 @@ Get a singe product group for a given Catalogs Product Group Id owned by the \"o
 | Unique identifier of a product group 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -11803,7 +11803,7 @@ Get a singe product group for a given Catalogs Product Group Id owned by the \"o
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -11921,13 +11921,13 @@ Get a list of product groups for a given Catalogs Feed Id owned by the \"operati
 | Filter entities for a given feed_id. If not given, all feeds are considered. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | catalog_id
 | Filter entities for a given catalog_id. If not given, all catalogs are considered. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | bookmark
 | Cursor used to fetch the next page of items 
@@ -11945,7 +11945,7 @@ Get a list of product groups for a given Catalogs Feed Id owned by the \"operati
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -12053,7 +12053,7 @@ Get a product counts for a given Catalogs Product Group owned by the \"operation
 | Unique identifier of a product group 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -12070,7 +12070,7 @@ Get a product counts for a given Catalogs Product Group owned by the \"operation
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -12163,7 +12163,7 @@ Update product group owned by the \"operation user_account\" to use in Catalogs.
 | Unique identifier of a product group 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -12193,7 +12193,7 @@ Update product group owned by the \"operation user_account\" to use in Catalogs.
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -12301,7 +12301,7 @@ Fetch a feed processing results owned by the \"operation user_account\". Please 
 | Unique identifier of a feed 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -12330,7 +12330,7 @@ Fetch a feed processing results owned by the \"operation user_account\". Please 
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -12445,7 +12445,7 @@ Create a new feed owned by the \"operation user_account\". - By default, the \"o
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -12558,7 +12558,7 @@ Delete a feed owned by the \"operating user_account\". - By default, the \"opera
 | Unique identifier of a feed 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -12575,7 +12575,7 @@ Delete a feed owned by the \"operating user_account\". - By default, the \"opera
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -12679,7 +12679,7 @@ Get a single feed owned by the \"operation user_account\". - By default, the \"o
 | Unique identifier of a feed 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -12696,7 +12696,7 @@ Get a single feed owned by the \"operation user_account\". - By default, the \"o
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -12794,7 +12794,7 @@ Ingest items for a given feed owned by the \"operation user_account\".  Optional
 | Unique identifier of a feed 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -12811,7 +12811,7 @@ Ingest items for a given feed owned by the \"operation user_account\".  Optional
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -12925,13 +12925,13 @@ Fetch feeds owned by the \"operation user_account\". - By default, the \"operati
 | Filter entities for a given catalog_id. If not given, all catalogs are considered. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | ad_account_id
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -13024,7 +13024,7 @@ Update a feed owned by the \"operation user_account\". - By default, the \"opera
 | Unique identifier of a feed 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -13054,7 +13054,7 @@ Update a feed owned by the \"operation user_account\". - By default, the \"opera
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -13156,7 +13156,7 @@ Get the items of the catalog owned by the \"operation user_account\". <a href=\"
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | country
 | Country for the Catalogs Items 
@@ -13295,7 +13295,7 @@ Get the items of the catalog owned by the \"operation user_account\". <a href=\"
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -13410,7 +13410,7 @@ Get a single catalogs items batch owned by the \"operating user_account\". <a hr
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -13530,7 +13530,7 @@ This endpoint supports multiple operations on a set of one or more catalog items
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -13628,7 +13628,7 @@ List item validation issues for a given feed processing result owned by the \"op
 | Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -13669,7 +13669,7 @@ List item validation issues for a given feed processing result owned by the \"op
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -13796,7 +13796,7 @@ List products Pins owned by the \"operation user_account\" that meet the criteri
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | pin_metrics
 | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. 
@@ -13912,7 +13912,7 @@ Async request to create a report of the catalog owned by the \"operation user_ac
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -14009,7 +14009,7 @@ This returns a URL to a report given a token returned from <a href='/docs/api/v5
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | token
 | Token returned from async build report call 
@@ -14112,7 +14112,7 @@ List aggregated numbers of issues for a catalog owned by the \"operation user_ac
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | page_size
 | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. 
@@ -14222,7 +14222,7 @@ The Pinterest API offers advertisers a way to send Pinterest their conversion in
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -14369,7 +14369,7 @@ Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/b
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -14469,13 +14469,13 @@ Get information about an existing conversion tag.
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | conversion_tag_id
 | Id of the conversion tag. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -14562,7 +14562,7 @@ List conversion tags associated with an ad account.
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -14662,7 +14662,7 @@ Get Ocpm eligible conversion tag events for an ad account.
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -14750,7 +14750,7 @@ Get all page visit conversion tag events for an ad account.
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -14866,7 +14866,7 @@ Create customer lists
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -14966,13 +14966,13 @@ Gets a specific customer list given the customer list ID.
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | customer_list_id
 | Unique identifier of a customer list 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -15059,7 +15059,7 @@ Get customer lists
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -15171,13 +15171,13 @@ Update customer list
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | customer_list_id
 | Unique identifier of a customer list 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -15954,7 +15954,7 @@ See keyword metrics for a specified country, aggregated across all of Pinterest.
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -16060,7 +16060,7 @@ Create keywords
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -16160,7 +16160,7 @@ Get keywords
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -16177,13 +16177,13 @@ Get keywords
 | Campaign Id to use to filter the results. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | ad_group_id
 | Ad group Id. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | match_types
 | Keyword &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot;&gt;match type&lt;/a&gt; <<MatchType>>
@@ -16284,7 +16284,7 @@ Update keywords
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -16529,13 +16529,13 @@ Delete an existing lead ads webhook subscription by ID. - Only requests for the 
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | subscription_id
 | Unique identifier of a subscription. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -16638,13 +16638,13 @@ Get a specific lead ads subscription record. - Only requests for the OWNER or AD
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | subscription_id
 | Unique identifier of a subscription. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -16746,7 +16746,7 @@ Get the advertiser's list of lead ads subscriptions. - Only requests for the OWN
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -16857,7 +16857,7 @@ Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -16971,13 +16971,13 @@ Get lead form by id
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | lead_form_id
 | Unique identifier of a lead form. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -17074,13 +17074,13 @@ Create lead form test data based on the list of answers provided as part of the 
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | lead_form_id
 | Unique identifier of a lead form. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -17190,7 +17190,7 @@ Create lead forms
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -17295,7 +17295,7 @@ List lead forms
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -17412,7 +17412,7 @@ Update lead forms
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -17521,7 +17521,7 @@ Create a request to export leads collected from a lead ad
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -17626,13 +17626,13 @@ Get the lead export from the lead export create call
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | leads_export_id
 | lead_export_id token returned from the create a lead export endpoint 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -17820,7 +17820,7 @@ Get details for a registered media upload, including its current status.  <stron
 | Media identifier 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -18100,13 +18100,13 @@ Get a specific existing order line associated with an ad account.
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | order_line_id
 | Unique identifier of an order line. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -18193,7 +18193,7 @@ List existing order lines associated with an ad account.
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -18343,7 +18343,7 @@ Get multiple Pin analytics
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -18494,7 +18494,7 @@ Get analytics for a Pin owned by the \"operation user_account\" - or on a group 
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -18609,7 +18609,7 @@ Create a Pin on a board or board section owned by the \"operation user_account\"
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -18729,7 +18729,7 @@ Delete a Pins owned by the \"operation user_account\" - or on a group board that
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -18846,7 +18846,7 @@ Get a Pin owned by the \"operation user_account\" - or on a group board that has
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -18979,7 +18979,7 @@ Get a list of the Pins owned by the \"operation user_account\".   - By default, 
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | pin_metrics
 | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. 
@@ -19103,7 +19103,7 @@ Save a Pin on a board or board section owned by the \"operation user_account\". 
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -19226,7 +19226,7 @@ Update a pin owned by the \"operating user_account\". - By default, the \"operat
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -19328,7 +19328,7 @@ Add one or more product groups from your catalog to an existing ad group. (Produ
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -19428,13 +19428,13 @@ Get a product group promotion by id
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | product_group_promotion_id
 | Unique identifier of a product group promotion 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -19521,7 +19521,7 @@ List existing product group promotions associated with an ad account.  Include e
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -19550,7 +19550,7 @@ List existing product group promotions associated with an ad account.  Include e
 | Ad group Id. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | page_size
 | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. 
@@ -19651,7 +19651,7 @@ Update multiple existing Product Group Promotions (by product_group_id)
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -19751,7 +19751,7 @@ Get analytics for the specified product groups in the specified <code>ad_account
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -20069,7 +20069,7 @@ Get interest details
 | Unique identifier of an interest. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -20235,7 +20235,7 @@ Learn whether conversion or non-conversion metrics are finalized and ready to qu
 | Analytics reports request date (UTC). Format: YYYY-MM-DD 
 | X
 | null
-| /^(\\d{4})-(\\d{2})-(\\d{2})$/
+| /^(\d{4})-(\d{2})-(\d{2})$/
 
 |===
 
@@ -20335,7 +20335,7 @@ Get targeting options
 | Client ID. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | oauth_signature
 | Oauth signature 
@@ -20347,13 +20347,13 @@ Get targeting options
 | Timestamp 
 | -
 | null
-| /\\d+/
+| /\d+/
 
 | ad_account_id
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -20561,7 +20561,7 @@ Search for boards for the \"operation user_account\". This includes boards of al
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | bookmark
 | Cursor used to fetch the next page of items 
@@ -20666,7 +20666,7 @@ Search for pins for the \"operation user_account\". - By default, the \"operatio
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 | query
 | Search query. Can contain pin description keywords or comma-separated pin IDs. 
@@ -20770,7 +20770,7 @@ Create targeting templates
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -20875,7 +20875,7 @@ Get a list of the targeting templates in the specified <code>ad_account_id</code
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -21004,7 +21004,7 @@ Update targeting templates
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -21309,7 +21309,7 @@ Get the text of the terms of service and see whether the advertiser has accepted
 | Unique identifier of an ad account. 
 | X
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -21441,7 +21441,7 @@ Get a list of the boards a user follows. The request returns a board summary obj
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -21529,7 +21529,7 @@ Follow user
 | A valid username 
 | X
 | null
-| /(?!^\\d+$)^.+$/
+| /(?!^\d+$)^.+$/
 
 |===
 
@@ -21957,7 +21957,7 @@ Get analytics for the \"operation user_account\" - By default, the \"operation u
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -22120,7 +22120,7 @@ Gets analytics data about a user's top pins (limited to the top 50). - By defaul
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -22278,7 +22278,7 @@ Gets analytics data about a user's top video pins (limited to the top 50). - By 
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -22366,7 +22366,7 @@ Get a list of a user's following interests in one place.
 | A valid username 
 | X
 | null
-| /(?!^\\d+$)^.+$/
+| /(?!^\d+$)^.+$/
 
 |===
 
@@ -22491,7 +22491,7 @@ Get account information for the \"operation user_account\" - By default, the \"o
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -22607,7 +22607,7 @@ Get a list of who a certain user follows.
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -22805,7 +22805,7 @@ Verify a website as a signed-in user.
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 
@@ -22892,7 +22892,7 @@ Get verification code for user to install on the website to claim it.
 | Unique identifier of an ad account. 
 | -
 | null
-| /^\\d+$/
+| /^\d+$/
 
 |===
 

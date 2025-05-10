@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Object describing an item validation event
  * @param attribute The attribute that the item validation event references
  * @param code The event code that the item validation event references
  * @param message Title message describing the item validation event
  */
+@Serializable
 data class ItemValidationEvent(
     /* The attribute that the item validation event references */
     val attribute: kotlin.String? = null,
@@ -25,5 +27,5 @@ data class ItemValidationEvent(
     val code: kotlin.Int? = null,
     /* Title message describing the item validation event */
     val message: kotlin.String? = null
-) 
+)
 

@@ -65,11 +65,11 @@ export function AdvancedAuctionItemsSubmitRequestFromJSONTyped(json: any, ignore
     };
 }
 
-  export function AdvancedAuctionItemsSubmitRequestToJSON(json: any): AdvancedAuctionItemsSubmitRequest {
-      return AdvancedAuctionItemsSubmitRequestToJSONTyped(json, false);
-  }
+export function AdvancedAuctionItemsSubmitRequestToJSON(json: any): AdvancedAuctionItemsSubmitRequest {
+    return AdvancedAuctionItemsSubmitRequestToJSONTyped(json, false);
+}
 
-  export function AdvancedAuctionItemsSubmitRequestToJSONTyped(value?: AdvancedAuctionItemsSubmitRequest | null, ignoreDiscriminator: boolean = false): any {
+export function AdvancedAuctionItemsSubmitRequestToJSONTyped(value?: AdvancedAuctionItemsSubmitRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

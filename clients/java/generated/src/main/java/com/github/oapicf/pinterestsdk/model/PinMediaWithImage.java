@@ -50,17 +50,18 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Pin with image.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMediaWithImage extends PinMedia {
   public static final String SERIALIZED_NAME_IMAGES = "images";
   @SerializedName(SERIALIZED_NAME_IMAGES)
+  @javax.annotation.Nullable
   private PinMediaWithImageAllOfImages images;
 
   public PinMediaWithImage() {
     this.mediaType = this.getClass().getSimpleName();
   }
 
-  public PinMediaWithImage images(PinMediaWithImageAllOfImages images) {
+  public PinMediaWithImage images(@javax.annotation.Nullable PinMediaWithImageAllOfImages images) {
     this.images = images;
     return this;
   }
@@ -74,7 +75,7 @@ public class PinMediaWithImage extends PinMedia {
     return images;
   }
 
-  public void setImages(PinMediaWithImageAllOfImages images) {
+  public void setImages(@javax.annotation.Nullable PinMediaWithImageAllOfImages images) {
     this.images = images;
   }
 

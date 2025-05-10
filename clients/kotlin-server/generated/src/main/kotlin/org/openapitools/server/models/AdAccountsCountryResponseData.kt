@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.AdCountry
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param code 
@@ -20,6 +21,7 @@ import org.openapitools.server.models.AdCountry
  * @param index Country index
  * @param name Country name
  */
+@Serializable
 data class AdAccountsCountryResponseData(
     val code: AdCountry? = null,
     /* Country currency. */
@@ -28,5 +30,5 @@ data class AdAccountsCountryResponseData(
     val index: java.math.BigDecimal? = null,
     /* Country name */
     val name: kotlin.String? = null
-) 
+)
 

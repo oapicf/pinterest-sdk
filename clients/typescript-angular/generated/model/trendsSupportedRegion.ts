@@ -12,23 +12,41 @@
 export type TrendsSupportedRegion = 'US' | 'CA' | 'DE' | 'FR' | 'ES' | 'IT' | 'DE+AT+CH' | 'GB+IE' | 'IT+ES+PT+GR+MT' | 'PL+RO+HU+SK+CZ' | 'SE+DK+FI+NO' | 'NL+BE+LU' | 'AR' | 'BR' | 'CO' | 'MX' | 'MX+AR+CO+CL' | 'AU+NZ';
 
 export const TrendsSupportedRegion = {
+
     Us: 'US' as TrendsSupportedRegion,
+
     Ca: 'CA' as TrendsSupportedRegion,
+
     De: 'DE' as TrendsSupportedRegion,
+
     Fr: 'FR' as TrendsSupportedRegion,
+
     Es: 'ES' as TrendsSupportedRegion,
+
     It: 'IT' as TrendsSupportedRegion,
+
     Deatch: 'DE+AT+CH' as TrendsSupportedRegion,
+
     Gbie: 'GB+IE' as TrendsSupportedRegion,
+
     Itesptgrmt: 'IT+ES+PT+GR+MT' as TrendsSupportedRegion,
+
     Plrohuskcz: 'PL+RO+HU+SK+CZ' as TrendsSupportedRegion,
+
     Sedkfino: 'SE+DK+FI+NO' as TrendsSupportedRegion,
+
     Nlbelu: 'NL+BE+LU' as TrendsSupportedRegion,
+
     Ar: 'AR' as TrendsSupportedRegion,
+
     Br: 'BR' as TrendsSupportedRegion,
+
     Co: 'CO' as TrendsSupportedRegion,
+
     Mx: 'MX' as TrendsSupportedRegion,
+
     Mxarcocl: 'MX+AR+CO+CL' as TrendsSupportedRegion,
+
     Aunz: 'AU+NZ' as TrendsSupportedRegion
 };
 

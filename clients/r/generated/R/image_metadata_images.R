@@ -50,28 +50,53 @@ ImageMetadataImages <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return ImageMetadataImages in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return ImageMetadataImages as a base R list.
+    #' @examples
+    #' # convert array of ImageMetadataImages (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert ImageMetadataImages to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       ImageMetadataImagesObject <- list()
       if (!is.null(self$`150x150`)) {
         ImageMetadataImagesObject[["150x150"]] <-
-          self$`150x150`$toJSON()
+          self$`150x150`$toSimpleType()
       }
       if (!is.null(self$`400x300`)) {
         ImageMetadataImagesObject[["400x300"]] <-
-          self$`400x300`$toJSON()
+          self$`400x300`$toSimpleType()
       }
       if (!is.null(self$`600x`)) {
         ImageMetadataImagesObject[["600x"]] <-
-          self$`600x`$toJSON()
+          self$`600x`$toSimpleType()
       }
       if (!is.null(self$`1200x`)) {
         ImageMetadataImagesObject[["1200x"]] <-
-          self$`1200x`$toJSON()
+          self$`1200x`$toSimpleType()
       }
-      ImageMetadataImagesObject
+      return(ImageMetadataImagesObject)
     },
 
     #' @description
@@ -106,45 +131,13 @@ ImageMetadataImages <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return ImageMetadataImages in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`150x150`)) {
-          sprintf(
-          '"150x150":
-          %s
-          ',
-          jsonlite::toJSON(self$`150x150`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`400x300`)) {
-          sprintf(
-          '"400x300":
-          %s
-          ',
-          jsonlite::toJSON(self$`400x300`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`600x`)) {
-          sprintf(
-          '"600x":
-          %s
-          ',
-          jsonlite::toJSON(self$`600x`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`1200x`)) {
-          sprintf(
-          '"1200x":
-          %s
-          ',
-          jsonlite::toJSON(self$`1200x`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

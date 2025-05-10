@@ -50,56 +50,67 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Optional for VISITOR &#x60;audience_type&#x60;. With the Pinterest tag, you can use event data to capture event details from your website. This object lists all the available predefined event data fields in the Pinterest tag. You can include these event data fields as part of a VISITOR audience’ s &#x60;rule&#x60;; however, you **must** specify an &#x60;event&#x60; for the &#x60;event_data&#x60; fields to be evaluated. Besides what’s listed, you can also create your own set of &#x60;event_data&#x60; fields and define their usages or purposes according to your website needs. However, the benefit of using the predefined event data fields is that we can provide various metrics based on those fields&#39; data.&lt;br&gt;Examples per &#x60;event&#x60; type:&lt;br&gt;&#x60;pagevisit&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;page_name\&quot;: \&quot;My online store 123 | view items | shoe\&quot; }&lt;br&gt;&#x60;signup&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;New release promotion\&quot; }&lt;br&gt;&#x60;checkout&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;value\&quot;: 116, \&quot;order_quantity\&quot;: 2, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Pillows (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;11\&quot;, \&quot;product_price\&quot;: 48, \&quot;product_quantity\&quot;: 1 }, { \&quot;product_name\&quot;: \&quot;Pillows, Large (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;15\&quot;, \&quot;product_price\&quot;: 68, \&quot;product_quantity\&quot;: 1 } ] }&lt;br&gt;&#x60;addtocart&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;value\&quot;: 499, \&quot;order_quantity\&quot;: 1, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Red leather boots\&quot;, \&quot;product_id\&quot;: \&quot;3486\&quot;, \&quot;product_category\&quot;: \&quot;shoe\&quot;, \&quot;product_variant_id\&quot;: \&quot;JB11103000\&quot;, \&quot;product_price\&quot;: 499, \&quot;product_quantity\&quot;: \&quot;1\&quot; , \&quot;product_brand\&quot;: \&quot;My brand\&quot; }]}&lt;br&gt;&#x60;watchvideo&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;video_title\&quot;: \&quot;My Product Video 01\&quot; }&lt;br&gt;&#x60;lead&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;Newsletter\&quot; }
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinterestTagEventData {
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
+  @javax.annotation.Nullable
   private Currency currency;
 
   public static final String SERIALIZED_NAME_LEAD_TYPE = "lead_type";
   @SerializedName(SERIALIZED_NAME_LEAD_TYPE)
+  @javax.annotation.Nullable
   private String leadType;
 
   public static final String SERIALIZED_NAME_LINE_ITEMS = "line_items";
   @SerializedName(SERIALIZED_NAME_LINE_ITEMS)
+  @javax.annotation.Nullable
   private LineItem lineItems;
 
   public static final String SERIALIZED_NAME_ORDER_ID = "order_id";
   @SerializedName(SERIALIZED_NAME_ORDER_ID)
+  @javax.annotation.Nullable
   private String orderId;
 
   public static final String SERIALIZED_NAME_ORDER_QUANTITY = "order_quantity";
   @SerializedName(SERIALIZED_NAME_ORDER_QUANTITY)
+  @javax.annotation.Nullable
   private Integer orderQuantity;
 
   public static final String SERIALIZED_NAME_PAGE_NAME = "page_name";
   @SerializedName(SERIALIZED_NAME_PAGE_NAME)
+  @javax.annotation.Nullable
   private String pageName;
 
   public static final String SERIALIZED_NAME_PROMO_CODE = "promo_code";
   @SerializedName(SERIALIZED_NAME_PROMO_CODE)
+  @javax.annotation.Nullable
   private String promoCode;
 
   public static final String SERIALIZED_NAME_PROPERTY = "property";
   @SerializedName(SERIALIZED_NAME_PROPERTY)
+  @javax.annotation.Nullable
   private String property;
 
   public static final String SERIALIZED_NAME_SEARCH_QUERY = "search_query";
   @SerializedName(SERIALIZED_NAME_SEARCH_QUERY)
+  @javax.annotation.Nullable
   private String searchQuery;
 
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
+  @javax.annotation.Nullable
   private String value;
 
   public static final String SERIALIZED_NAME_VIDEO_TITLE = "video_title";
   @SerializedName(SERIALIZED_NAME_VIDEO_TITLE)
+  @javax.annotation.Nullable
   private String videoTitle;
 
   public PinterestTagEventData() {
   }
 
-  public PinterestTagEventData currency(Currency currency) {
+  public PinterestTagEventData currency(@javax.annotation.Nullable Currency currency) {
     this.currency = currency;
     return this;
   }
@@ -113,12 +124,12 @@ public class PinterestTagEventData {
     return currency;
   }
 
-  public void setCurrency(Currency currency) {
+  public void setCurrency(@javax.annotation.Nullable Currency currency) {
     this.currency = currency;
   }
 
 
-  public PinterestTagEventData leadType(String leadType) {
+  public PinterestTagEventData leadType(@javax.annotation.Nullable String leadType) {
     this.leadType = leadType;
     return this;
   }
@@ -132,12 +143,12 @@ public class PinterestTagEventData {
     return leadType;
   }
 
-  public void setLeadType(String leadType) {
+  public void setLeadType(@javax.annotation.Nullable String leadType) {
     this.leadType = leadType;
   }
 
 
-  public PinterestTagEventData lineItems(LineItem lineItems) {
+  public PinterestTagEventData lineItems(@javax.annotation.Nullable LineItem lineItems) {
     this.lineItems = lineItems;
     return this;
   }
@@ -151,12 +162,12 @@ public class PinterestTagEventData {
     return lineItems;
   }
 
-  public void setLineItems(LineItem lineItems) {
+  public void setLineItems(@javax.annotation.Nullable LineItem lineItems) {
     this.lineItems = lineItems;
   }
 
 
-  public PinterestTagEventData orderId(String orderId) {
+  public PinterestTagEventData orderId(@javax.annotation.Nullable String orderId) {
     this.orderId = orderId;
     return this;
   }
@@ -170,12 +181,12 @@ public class PinterestTagEventData {
     return orderId;
   }
 
-  public void setOrderId(String orderId) {
+  public void setOrderId(@javax.annotation.Nullable String orderId) {
     this.orderId = orderId;
   }
 
 
-  public PinterestTagEventData orderQuantity(Integer orderQuantity) {
+  public PinterestTagEventData orderQuantity(@javax.annotation.Nullable Integer orderQuantity) {
     this.orderQuantity = orderQuantity;
     return this;
   }
@@ -189,12 +200,12 @@ public class PinterestTagEventData {
     return orderQuantity;
   }
 
-  public void setOrderQuantity(Integer orderQuantity) {
+  public void setOrderQuantity(@javax.annotation.Nullable Integer orderQuantity) {
     this.orderQuantity = orderQuantity;
   }
 
 
-  public PinterestTagEventData pageName(String pageName) {
+  public PinterestTagEventData pageName(@javax.annotation.Nullable String pageName) {
     this.pageName = pageName;
     return this;
   }
@@ -208,12 +219,12 @@ public class PinterestTagEventData {
     return pageName;
   }
 
-  public void setPageName(String pageName) {
+  public void setPageName(@javax.annotation.Nullable String pageName) {
     this.pageName = pageName;
   }
 
 
-  public PinterestTagEventData promoCode(String promoCode) {
+  public PinterestTagEventData promoCode(@javax.annotation.Nullable String promoCode) {
     this.promoCode = promoCode;
     return this;
   }
@@ -227,12 +238,12 @@ public class PinterestTagEventData {
     return promoCode;
   }
 
-  public void setPromoCode(String promoCode) {
+  public void setPromoCode(@javax.annotation.Nullable String promoCode) {
     this.promoCode = promoCode;
   }
 
 
-  public PinterestTagEventData property(String property) {
+  public PinterestTagEventData property(@javax.annotation.Nullable String property) {
     this.property = property;
     return this;
   }
@@ -246,12 +257,12 @@ public class PinterestTagEventData {
     return property;
   }
 
-  public void setProperty(String property) {
+  public void setProperty(@javax.annotation.Nullable String property) {
     this.property = property;
   }
 
 
-  public PinterestTagEventData searchQuery(String searchQuery) {
+  public PinterestTagEventData searchQuery(@javax.annotation.Nullable String searchQuery) {
     this.searchQuery = searchQuery;
     return this;
   }
@@ -265,12 +276,12 @@ public class PinterestTagEventData {
     return searchQuery;
   }
 
-  public void setSearchQuery(String searchQuery) {
+  public void setSearchQuery(@javax.annotation.Nullable String searchQuery) {
     this.searchQuery = searchQuery;
   }
 
 
-  public PinterestTagEventData value(String value) {
+  public PinterestTagEventData value(@javax.annotation.Nullable String value) {
     this.value = value;
     return this;
   }
@@ -284,12 +295,12 @@ public class PinterestTagEventData {
     return value;
   }
 
-  public void setValue(String value) {
+  public void setValue(@javax.annotation.Nullable String value) {
     this.value = value;
   }
 
 
-  public PinterestTagEventData videoTitle(String videoTitle) {
+  public PinterestTagEventData videoTitle(@javax.annotation.Nullable String videoTitle) {
     this.videoTitle = videoTitle;
     return this;
   }
@@ -303,7 +314,7 @@ public class PinterestTagEventData {
     return videoTitle;
   }
 
-  public void setVideoTitle(String videoTitle) {
+  public void setVideoTitle(@javax.annotation.Nullable String videoTitle) {
     this.videoTitle = videoTitle;
   }
 

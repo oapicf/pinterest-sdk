@@ -18,8 +18,8 @@ public struct CreateMembershipOrPartnershipInvitesBody: Codable, JSONEncodable, 
         case bizAdmin = "BIZ_ADMIN"
         case partner = "PARTNER"
     }
-    static let membersRule = ArrayRule(minItems: 1, maxItems: 50, uniqueItems: false)
-    static let partnersRule = ArrayRule(minItems: 1, maxItems: 50, uniqueItems: false)
+    public static let membersRule = ArrayRule(minItems: 1, maxItems: 50, uniqueItems: false)
+    public static let partnersRule = ArrayRule(minItems: 1, maxItems: 50, uniqueItems: false)
     /** The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you. */
     public var businessRole: BusinessRole
     public var inviteType: InviteType

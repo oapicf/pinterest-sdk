@@ -21,9 +21,10 @@ typedef struct ad_preview_create_from_pin_t ad_preview_create_from_pin_t;
 typedef struct ad_preview_create_from_pin_t {
     char *pin_id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } ad_preview_create_from_pin_t;
 
-ad_preview_create_from_pin_t *ad_preview_create_from_pin_create(
+__attribute__((deprecated)) ad_preview_create_from_pin_t *ad_preview_create_from_pin_create(
     char *pin_id
 );
 

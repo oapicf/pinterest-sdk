@@ -212,11 +212,11 @@ export function CatalogsRetailFeedFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-  export function CatalogsRetailFeedToJSON(json: any): CatalogsRetailFeed {
-      return CatalogsRetailFeedToJSONTyped(json, false);
-  }
+export function CatalogsRetailFeedToJSON(json: any): CatalogsRetailFeed {
+    return CatalogsRetailFeedToJSONTyped(json, false);
+}
 
-  export function CatalogsRetailFeedToJSONTyped(value?: CatalogsRetailFeed | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsRetailFeedToJSONTyped(value?: CatalogsRetailFeed | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

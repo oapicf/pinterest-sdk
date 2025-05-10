@@ -44,10 +44,10 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum AssetGroupType: string
 {
-        case BRAND = "BRAND";
-        case LOCATION_OR_LANGUAGE = "LOCATION_OR_LANGUAGE";
-        case PRODUCT_LINE = "PRODUCT_LINE";
-        case OTHER = "OTHER";
+        case BRAND = 'BRAND';
+        case LOCATION_OR_LANGUAGE = 'LOCATION_OR_LANGUAGE';
+        case PRODUCT_LINE = 'PRODUCT_LINE';
+        case OTHER = 'OTHER';
 }
 
 

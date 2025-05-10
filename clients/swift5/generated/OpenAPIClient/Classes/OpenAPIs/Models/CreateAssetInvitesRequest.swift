@@ -13,7 +13,7 @@ import AnyCodable
 /** Request body for updating asset roles for existing invites. */
 public struct CreateAssetInvitesRequest: Codable, JSONEncodable, Hashable {
 
-    static let invitesRule = ArrayRule(minItems: 1, maxItems: 50, uniqueItems: false)
+    public static let invitesRule = ArrayRule(minItems: 1, maxItems: 50, uniqueItems: false)
     public var invites: [CreateAssetInvitesRequestItem]
 
     public init(invites: [CreateAssetInvitesRequestItem]) {

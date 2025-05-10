@@ -17,6 +17,7 @@ import org.openapitools.server.models.CatalogsRetailItemErrorResponse
 import org.openapitools.server.models.CatalogsType
 import org.openapitools.server.models.ItemValidationEvent
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param catalogType 
@@ -25,6 +26,7 @@ import org.openapitools.server.models.ItemValidationEvent
  * @param hotelId The catalog hotel id in the merchant namespace
  * @param creativeAssetsId The catalog creative assets id in the merchant namespace
  */
+@Serializable
 data class ItemResponseAnyOf1(
     val catalogType: CatalogsType,
     /* The catalog item id in the merchant namespace */
@@ -35,7 +37,7 @@ data class ItemResponseAnyOf1(
     val hotelId: kotlin.String? = null,
     /* The catalog creative assets id in the merchant namespace */
     val creativeAssetsId: kotlin.String? = null
-) 
+)
 {
 }
 

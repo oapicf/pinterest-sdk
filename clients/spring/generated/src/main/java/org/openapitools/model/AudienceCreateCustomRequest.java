@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.model.AudienceDataParty;
 import org.openapitools.model.AudienceRule;
 import org.openapitools.model.AudienceSharingType;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -22,10 +23,10 @@ import javax.annotation.Generated;
  * AudienceCreateCustomRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AudienceCreateCustomRequest {
 
-  private String adAccountId;
+  private @Nullable String adAccountId;
 
   private String name;
 
@@ -35,7 +36,7 @@ public class AudienceCreateCustomRequest {
 
   private AudienceDataParty dataParty;
 
-  private String category;
+  private @Nullable String category;
 
   public AudienceCreateCustomRequest() {
     super();

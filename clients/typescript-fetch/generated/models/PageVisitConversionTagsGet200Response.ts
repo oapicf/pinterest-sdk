@@ -64,11 +64,11 @@ export function PageVisitConversionTagsGet200ResponseFromJSONTyped(json: any, ig
     };
 }
 
-  export function PageVisitConversionTagsGet200ResponseToJSON(json: any): PageVisitConversionTagsGet200Response {
-      return PageVisitConversionTagsGet200ResponseToJSONTyped(json, false);
-  }
+export function PageVisitConversionTagsGet200ResponseToJSON(json: any): PageVisitConversionTagsGet200Response {
+    return PageVisitConversionTagsGet200ResponseToJSONTyped(json, false);
+}
 
-  export function PageVisitConversionTagsGet200ResponseToJSONTyped(value?: PageVisitConversionTagsGet200Response | null, ignoreDiscriminator: boolean = false): any {
+export function PageVisitConversionTagsGet200ResponseToJSONTyped(value?: PageVisitConversionTagsGet200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

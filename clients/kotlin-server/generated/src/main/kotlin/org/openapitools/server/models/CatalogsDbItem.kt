@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param createdAt 
  * @param id 
  * @param updatedAt 
  */
+@Serializable
 data class CatalogsDbItem(
-    val createdAt: java.time.OffsetDateTime,
+    val createdAt: kotlin.String,
     val id: kotlin.String,
-    val updatedAt: java.time.OffsetDateTime
-) 
+    val updatedAt: kotlin.String
+)
 

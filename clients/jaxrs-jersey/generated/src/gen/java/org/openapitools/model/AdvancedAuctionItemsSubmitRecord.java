@@ -48,7 +48,7 @@ import javax.validation.Valid;
   AdvancedAuctionItemsSubmitRecord.JSON_PROPERTY_BID_OPTIONS,
   AdvancedAuctionItemsSubmitRecord.JSON_PROPERTY_UPDATE_MASK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-11-05T02:20:07.425136412Z[Etc/UTC]", comments = "Generator version: 7.9.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "operation", visible = true)
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "operation", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = AdvancedAuctionItemsSubmitDeleteRecord.class, name = "DELETE"),
   @JsonSubTypes.Type(value = AdvancedAuctionItemsSubmitUpsertRecord.class, name = "UPSERT"),

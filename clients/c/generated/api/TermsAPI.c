@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 
 // List related terms
@@ -25,11 +20,14 @@ TermsAPI_termsRelatedList(apiClient_t *apiClient, list_t *terms)
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/terms/related")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/terms/related");
+    char *localVarPath = strdup("/terms/related");
+
 
 
 
@@ -48,6 +46,7 @@ TermsAPI_termsRelatedList(apiClient_t *apiClient, list_t *terms)
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -63,11 +62,14 @@ TermsAPI_termsRelatedList(apiClient_t *apiClient, list_t *terms)
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *TermsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    related_terms_t *elementToReturn = related_terms_parseFromJSON(TermsAPIlocalVarJSON);
-    cJSON_Delete(TermsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    related_terms_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *TermsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = related_terms_parseFromJSON(TermsAPIlocalVarJSON);
+        cJSON_Delete(TermsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -102,11 +104,14 @@ TermsAPI_termsSuggestedList(apiClient_t *apiClient, char *term, int *limit)
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/terms/suggested")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/terms/suggested");
+    char *localVarPath = strdup("/terms/suggested");
+
 
 
 
@@ -144,6 +149,7 @@ TermsAPI_termsSuggestedList(apiClient_t *apiClient, char *term, int *limit)
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -159,14 +165,17 @@ TermsAPI_termsSuggestedList(apiClient_t *apiClient, char *term, int *limit)
     //    printf("%s\n","Unexpected error");
     //}
     //primitive return type not simple
-    cJSON *localVarJSON = cJSON_Parse(apiClient->dataReceived);
-    cJSON *VarJSON;
-    list_t *elementToReturn = list_createList();
-    cJSON_ArrayForEach(VarJSON, localVarJSON){
-        keyValuePair_t *keyPair = keyValuePair_create(strdup(VarJSON->string), cJSON_Print(VarJSON));
-        list_addElement(elementToReturn, keyPair);
+    list_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *localVarJSON = cJSON_Parse(apiClient->dataReceived);
+        cJSON *VarJSON;
+        elementToReturn = list_createList();
+        cJSON_ArrayForEach(VarJSON, localVarJSON){
+            keyValuePair_t *keyPair = keyValuePair_create(strdup(VarJSON->string), cJSON_Print(VarJSON));
+            list_addElement(elementToReturn, keyPair);
+        }
+        cJSON_Delete(localVarJSON);
     }
-    cJSON_Delete(localVarJSON);
 
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);

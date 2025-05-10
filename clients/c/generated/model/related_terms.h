@@ -24,9 +24,10 @@ typedef struct related_terms_t {
     int related_term_count; //numeric
     list_t *related_terms_list; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } related_terms_t;
 
-related_terms_t *related_terms_create(
+__attribute__((deprecated)) related_terms_t *related_terms_create(
     char *id,
     int related_term_count,
     list_t *related_terms_list

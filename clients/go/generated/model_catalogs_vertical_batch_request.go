@@ -13,8 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // CatalogsVerticalBatchRequest - A request object that can have multiple operations on a single batch
@@ -147,6 +147,24 @@ func (obj *CatalogsVerticalBatchRequest) GetActualInstance() (interface{}) {
 
 	if obj.CatalogsRetailBatchRequest != nil {
 		return obj.CatalogsRetailBatchRequest
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj CatalogsVerticalBatchRequest) GetActualInstanceValue() (interface{}) {
+	if obj.CatalogsCreativeAssetsBatchRequest != nil {
+		return *obj.CatalogsCreativeAssetsBatchRequest
+	}
+
+	if obj.CatalogsHotelBatchRequest != nil {
+		return *obj.CatalogsHotelBatchRequest
+	}
+
+	if obj.CatalogsRetailBatchRequest != nil {
+		return *obj.CatalogsRetailBatchRequest
 	}
 
 	// all schemas are nil

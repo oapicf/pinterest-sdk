@@ -20,6 +20,7 @@ import org.openapitools.model.CatalogsRetailItemsBatch;
 import org.openapitools.model.CatalogsType;
 import org.openapitools.model.CreativeAssetsProcessingRecord;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -46,7 +47,7 @@ import javax.annotation.Generated;
   @JsonSubTypes.Type(value = CatalogsRetailItemsBatch.class, name = "CatalogsRetailItemsBatch")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public interface CatalogsItemsBatch {
     public CatalogsType getCatalogType();
 }

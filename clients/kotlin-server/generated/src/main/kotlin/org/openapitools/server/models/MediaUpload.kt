@@ -14,6 +14,7 @@ package org.openapitools.server.models
 import org.openapitools.server.models.MediaUploadAllOfUploadParameters
 import org.openapitools.server.models.MediaUploadType
 
+import kotlinx.serialization.Serializable
 /**
  * Media upload that has been registered but not uploaded/processed yet.
  * @param mediaId Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
@@ -21,6 +22,7 @@ import org.openapitools.server.models.MediaUploadType
  * @param uploadUrl The URL where you will POST your media file.
  * @param uploadParameters 
  */
+@Serializable
 data class MediaUpload(
     /* Unique identifier for this media upload. Used to track status and for attaching during Pin creation. */
     val mediaId: kotlin.String? = null,
@@ -28,5 +30,5 @@ data class MediaUpload(
     /* The URL where you will POST your media file. */
     val uploadUrl: kotlin.String? = null,
     val uploadParameters: MediaUploadAllOfUploadParameters? = null
-) 
+)
 

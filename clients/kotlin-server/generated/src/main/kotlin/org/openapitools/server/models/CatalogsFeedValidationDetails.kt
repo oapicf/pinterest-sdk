@@ -14,13 +14,15 @@ package org.openapitools.server.models
 import org.openapitools.server.models.CatalogsFeedValidationErrors
 import org.openapitools.server.models.CatalogsFeedValidationWarnings
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param errors 
  * @param warnings 
  */
+@Serializable
 data class CatalogsFeedValidationDetails(
     val errors: CatalogsFeedValidationErrors,
     val warnings: CatalogsFeedValidationWarnings
-) 
+)
 

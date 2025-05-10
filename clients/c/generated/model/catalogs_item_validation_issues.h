@@ -26,9 +26,10 @@ typedef struct catalogs_item_validation_issues_t {
     struct catalogs_item_validation_errors_t *errors; //model
     struct catalogs_item_validation_warnings_t *warnings; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_item_validation_issues_t;
 
-catalogs_item_validation_issues_t *catalogs_item_validation_issues_create(
+__attribute__((deprecated)) catalogs_item_validation_issues_t *catalogs_item_validation_issues_create(
     int item_number,
     char *item_id,
     catalogs_item_validation_errors_t *errors,

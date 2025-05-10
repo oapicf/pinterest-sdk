@@ -5,7 +5,7 @@
 
 
 
-ad_preview_request_t *ad_preview_request_create(
+static ad_preview_request_t *ad_preview_request_create_internal(
     char *image_url,
     char *title,
     char *pin_id
@@ -18,12 +18,28 @@ ad_preview_request_t *ad_preview_request_create(
     ad_preview_request_local_var->title = title;
     ad_preview_request_local_var->pin_id = pin_id;
 
+    ad_preview_request_local_var->_library_owned = 1;
     return ad_preview_request_local_var;
 }
 
+__attribute__((deprecated)) ad_preview_request_t *ad_preview_request_create(
+    char *image_url,
+    char *title,
+    char *pin_id
+    ) {
+    return ad_preview_request_create_internal (
+        image_url,
+        title,
+        pin_id
+        );
+}
 
 void ad_preview_request_free(ad_preview_request_t *ad_preview_request) {
     if(NULL == ad_preview_request){
+        return ;
+    }
+    if(ad_preview_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ad_preview_request_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -85,6 +101,9 @@ ad_preview_request_t *ad_preview_request_parseFromJSON(cJSON *ad_preview_request
 
     // ad_preview_request->image_url
     cJSON *image_url = cJSON_GetObjectItemCaseSensitive(ad_preview_requestJSON, "image_url");
+    if (cJSON_IsNull(image_url)) {
+        image_url = NULL;
+    }
     if (!image_url) {
         goto end;
     }
@@ -97,6 +116,9 @@ ad_preview_request_t *ad_preview_request_parseFromJSON(cJSON *ad_preview_request
 
     // ad_preview_request->title
     cJSON *title = cJSON_GetObjectItemCaseSensitive(ad_preview_requestJSON, "title");
+    if (cJSON_IsNull(title)) {
+        title = NULL;
+    }
     if (!title) {
         goto end;
     }
@@ -109,6 +131,9 @@ ad_preview_request_t *ad_preview_request_parseFromJSON(cJSON *ad_preview_request
 
     // ad_preview_request->pin_id
     cJSON *pin_id = cJSON_GetObjectItemCaseSensitive(ad_preview_requestJSON, "pin_id");
+    if (cJSON_IsNull(pin_id)) {
+        pin_id = NULL;
+    }
     if (!pin_id) {
         goto end;
     }
@@ -120,7 +145,7 @@ ad_preview_request_t *ad_preview_request_parseFromJSON(cJSON *ad_preview_request
     }
 
 
-    ad_preview_request_local_var = ad_preview_request_create (
+    ad_preview_request_local_var = ad_preview_request_create_internal (
         strdup(image_url->valuestring),
         strdup(title->valuestring),
         strdup(pin_id->valuestring)

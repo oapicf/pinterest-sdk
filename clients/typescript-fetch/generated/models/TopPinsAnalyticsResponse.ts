@@ -91,11 +91,11 @@ export function TopPinsAnalyticsResponseFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function TopPinsAnalyticsResponseToJSON(json: any): TopPinsAnalyticsResponse {
-      return TopPinsAnalyticsResponseToJSONTyped(json, false);
-  }
+export function TopPinsAnalyticsResponseToJSON(json: any): TopPinsAnalyticsResponse {
+    return TopPinsAnalyticsResponseToJSONTyped(json, false);
+}
 
-  export function TopPinsAnalyticsResponseToJSONTyped(value?: TopPinsAnalyticsResponse | null, ignoreDiscriminator: boolean = false): any {
+export function TopPinsAnalyticsResponseToJSONTyped(value?: TopPinsAnalyticsResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

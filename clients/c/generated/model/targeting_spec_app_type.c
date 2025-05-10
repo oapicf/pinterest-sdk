@@ -22,7 +22,7 @@ pinterest_rest_api_targeting_spec_app_type__e targeting_spec_app_type_targeting_
     return 0;
 }
 
-cJSON *targeting_spec_app_type_targeting_spec_app_type_convertToJSON(pinterest_rest_api_targeting_spec_app_type__e targeting_spec_app_type) {
+cJSON *targeting_spec_app_type_convertToJSON(pinterest_rest_api_targeting_spec_app_type__e targeting_spec_app_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "targeting_spec_app_type", targeting_spec_app_type_targeting_spec_app_type_ToString(targeting_spec_app_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_targeting_spec_app_type__e targeting_spec_app_type_targeting_spec_app_type_parseFromJSON(cJSON *targeting_spec_app_typeJSON) {
-    pinterest_rest_api_targeting_spec_app_type__e *targeting_spec_app_type = NULL;
-    pinterest_rest_api_targeting_spec_app_type__e targeting_spec_app_typeVariable;
-    cJSON *targeting_spec_app_typeVar = cJSON_GetObjectItemCaseSensitive(targeting_spec_app_typeJSON, "targeting_spec_app_type");
-    if(!cJSON_IsString(targeting_spec_app_typeVar) || (targeting_spec_app_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_targeting_spec_app_type__e targeting_spec_app_type_parseFromJSON(cJSON *targeting_spec_app_typeJSON) {
+    if(!cJSON_IsString(targeting_spec_app_typeJSON) || (targeting_spec_app_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    targeting_spec_app_typeVariable = targeting_spec_app_type_targeting_spec_app_type_FromString(targeting_spec_app_typeVar->valuestring);
-    return targeting_spec_app_typeVariable;
-end:
-    return 0;
+    return targeting_spec_app_type_targeting_spec_app_type_FromString(targeting_spec_app_typeJSON->valuestring);
 }

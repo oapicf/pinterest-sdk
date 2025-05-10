@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Schema used for creating the integration metadata.
  * @param externalBusinessId External business ID for the integration.
@@ -28,6 +29,7 @@ package org.openapitools.server.models
  * @param additionalId1 
  * @param partnerMetadata 
  */
+@Serializable
 data class IntegrationRequest(
     /* External business ID for the integration. */
     val externalBusinessId: kotlin.String? = null,
@@ -43,5 +45,5 @@ data class IntegrationRequest(
     val scopes: kotlin.String? = null,
     val additionalId1: kotlin.String? = null,
     val partnerMetadata: kotlin.String? = null
-) 
+)
 

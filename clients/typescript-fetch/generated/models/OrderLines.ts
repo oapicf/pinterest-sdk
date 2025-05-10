@@ -135,11 +135,11 @@ export function OrderLinesFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     };
 }
 
-  export function OrderLinesToJSON(json: any): OrderLines {
-      return OrderLinesToJSONTyped(json, false);
-  }
+export function OrderLinesToJSON(json: any): OrderLines {
+    return OrderLinesToJSONTyped(json, false);
+}
 
-  export function OrderLinesToJSONTyped(value?: OrderLines | null, ignoreDiscriminator: boolean = false): any {
+export function OrderLinesToJSONTyped(value?: OrderLines | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

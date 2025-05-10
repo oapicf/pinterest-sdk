@@ -22,7 +22,7 @@ pinterest_rest_api_nullable_currency__e nullable_currency_nullable_currency_From
     return 0;
 }
 
-cJSON *nullable_currency_nullable_currency_convertToJSON(pinterest_rest_api_nullable_currency__e nullable_currency) {
+cJSON *nullable_currency_convertToJSON(pinterest_rest_api_nullable_currency__e nullable_currency) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "nullable_currency", nullable_currency_nullable_currency_ToString(nullable_currency)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_nullable_currency__e nullable_currency_nullable_currency_parseFromJSON(cJSON *nullable_currencyJSON) {
-    pinterest_rest_api_nullable_currency__e *nullable_currency = NULL;
-    pinterest_rest_api_nullable_currency__e nullable_currencyVariable;
-    cJSON *nullable_currencyVar = cJSON_GetObjectItemCaseSensitive(nullable_currencyJSON, "nullable_currency");
-    if(!cJSON_IsString(nullable_currencyVar) || (nullable_currencyVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_nullable_currency__e nullable_currency_parseFromJSON(cJSON *nullable_currencyJSON) {
+    if(!cJSON_IsString(nullable_currencyJSON) || (nullable_currencyJSON->valuestring == NULL)) {
+        return 0;
     }
-    nullable_currencyVariable = nullable_currency_nullable_currency_FromString(nullable_currencyVar->valuestring);
-    return nullable_currencyVariable;
-end:
-    return 0;
+    return nullable_currency_nullable_currency_FromString(nullable_currencyJSON->valuestring);
 }

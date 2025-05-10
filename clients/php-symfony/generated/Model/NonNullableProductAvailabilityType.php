@@ -44,9 +44,9 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum NonNullableProductAvailabilityType: string
 {
-        case IN_STOCK = "IN_STOCK";
-        case OUT_OF_STOCK = "OUT_OF_STOCK";
-        case PREORDER = "PREORDER";
+        case IN_STOCK = 'IN_STOCK';
+        case OUT_OF_STOCK = 'OUT_OF_STOCK';
+        case PREORDER = 'PREORDER';
 }
 
 

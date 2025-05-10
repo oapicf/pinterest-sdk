@@ -69,11 +69,11 @@ export function AdAccountCreateSubscriptionResponseFromJSONTyped(json: any, igno
     };
 }
 
-  export function AdAccountCreateSubscriptionResponseToJSON(json: any): AdAccountCreateSubscriptionResponse {
-      return AdAccountCreateSubscriptionResponseToJSONTyped(json, false);
-  }
+export function AdAccountCreateSubscriptionResponseToJSON(json: any): AdAccountCreateSubscriptionResponse {
+    return AdAccountCreateSubscriptionResponseToJSONTyped(json, false);
+}
 
-  export function AdAccountCreateSubscriptionResponseToJSONTyped(value?: AdAccountCreateSubscriptionResponse | null, ignoreDiscriminator: boolean = false): any {
+export function AdAccountCreateSubscriptionResponseToJSONTyped(value?: AdAccountCreateSubscriptionResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

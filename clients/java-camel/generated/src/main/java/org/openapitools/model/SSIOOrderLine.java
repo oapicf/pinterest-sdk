@@ -26,7 +26,7 @@ import javax.annotation.Generated;
  * SSIOOrderLine
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SSIOOrderLine {
 
   private JsonNullable<String> salesforceOrderLineId = JsonNullable.<String>undefined();
@@ -165,7 +165,7 @@ public class SSIOOrderLine {
    * @return startDate
    */
   @Valid 
-  @Schema(name = "start_date", example = "Thu Mar 01 00:00:00 UTC 2018", description = "Start date of the order line.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "start_date", example = "2018-03-01", description = "Start date of the order line.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("start_date")
   public JsonNullable<Date> getStartDate() {
     return startDate;
@@ -185,7 +185,7 @@ public class SSIOOrderLine {
    * @return endDate
    */
   @Valid 
-  @Schema(name = "end_date", example = "Mon Oct 05 00:00:00 UTC 2020", description = "End date of the order line.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "end_date", example = "2020-10-05", description = "End date of the order line.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("end_date")
   public JsonNullable<Date> getEndDate() {
     return endDate;

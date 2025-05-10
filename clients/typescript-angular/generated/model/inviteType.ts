@@ -15,8 +15,11 @@
 export type InviteType = 'MEMBER_INVITE' | 'PARTNER_INVITE' | 'PARTNER_REQUEST';
 
 export const InviteType = {
+
     MemberInvite: 'MEMBER_INVITE' as InviteType,
+
     PartnerInvite: 'PARTNER_INVITE' as InviteType,
+
     PartnerRequest: 'PARTNER_REQUEST' as InviteType
 };
 

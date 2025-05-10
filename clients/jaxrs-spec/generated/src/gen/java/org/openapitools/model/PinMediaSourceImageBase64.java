@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Base64-encoded image media source")
 @JsonTypeName("PinMediaSourceImageBase64")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMediaSourceImageBase64   {
   public enum SourceTypeEnum {
 
@@ -69,7 +69,7 @@ public class PinMediaSourceImageBase64   {
   private SourceTypeEnum sourceType;
   public enum ContentTypeEnum {
 
-    JPEG(String.valueOf("image/jpeg")), PNG(String.valueOf("image/png"));
+    IMAGE_JPEG(String.valueOf("image/jpeg")), IMAGE_PNG(String.valueOf("image/png"));
 
 
     private String value;
@@ -118,6 +118,20 @@ public class PinMediaSourceImageBase64   {
   private String data;
   private Boolean isStandard = true;
 
+  public PinMediaSourceImageBase64() {
+  }
+
+  @JsonCreator
+  public PinMediaSourceImageBase64(
+    @JsonProperty(required = true, value = "source_type") SourceTypeEnum sourceType,
+    @JsonProperty(required = true, value = "content_type") ContentTypeEnum contentType,
+    @JsonProperty(required = true, value = "data") String data
+  ) {
+    this.sourceType = sourceType;
+    this.contentType = contentType;
+    this.data = data;
+  }
+
   /**
    **/
   public PinMediaSourceImageBase64 sourceType(SourceTypeEnum sourceType) {
@@ -127,12 +141,12 @@ public class PinMediaSourceImageBase64   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("source_type")
+  @JsonProperty(required = true, value = "source_type")
   @NotNull public SourceTypeEnum getSourceType() {
     return sourceType;
   }
 
-  @JsonProperty("source_type")
+  @JsonProperty(required = true, value = "source_type")
   public void setSourceType(SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
   }
@@ -146,12 +160,12 @@ public class PinMediaSourceImageBase64   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("content_type")
+  @JsonProperty(required = true, value = "content_type")
   @NotNull public ContentTypeEnum getContentType() {
     return contentType;
   }
 
-  @JsonProperty("content_type")
+  @JsonProperty(required = true, value = "content_type")
   public void setContentType(ContentTypeEnum contentType) {
     this.contentType = contentType;
   }
@@ -165,12 +179,12 @@ public class PinMediaSourceImageBase64   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("data")
+  @JsonProperty(required = true, value = "data")
   @NotNull  @Pattern(regexp="[a-zA-Z0-9+/=]+")public String getData() {
     return data;
   }
 
-  @JsonProperty("data")
+  @JsonProperty(required = true, value = "data")
   public void setData(String data) {
     this.data = data;
   }

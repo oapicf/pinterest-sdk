@@ -49,20 +49,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * MembersToDeleteBodyMembersInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class MembersToDeleteBodyMembersInner {
   public static final String SERIALIZED_NAME_MEMBER_ID = "member_id";
   @SerializedName(SERIALIZED_NAME_MEMBER_ID)
+  @javax.annotation.Nonnull
   private String memberId;
 
   public static final String SERIALIZED_NAME_BUSINESS_ROLE = "business_role";
   @SerializedName(SERIALIZED_NAME_BUSINESS_ROLE)
+  @javax.annotation.Nonnull
   private BusinessRoleForMembers businessRole;
 
   public MembersToDeleteBodyMembersInner() {
   }
 
-  public MembersToDeleteBodyMembersInner memberId(String memberId) {
+  public MembersToDeleteBodyMembersInner memberId(@javax.annotation.Nonnull String memberId) {
     this.memberId = memberId;
     return this;
   }
@@ -76,12 +78,12 @@ public class MembersToDeleteBodyMembersInner {
     return memberId;
   }
 
-  public void setMemberId(String memberId) {
+  public void setMemberId(@javax.annotation.Nonnull String memberId) {
     this.memberId = memberId;
   }
 
 
-  public MembersToDeleteBodyMembersInner businessRole(BusinessRoleForMembers businessRole) {
+  public MembersToDeleteBodyMembersInner businessRole(@javax.annotation.Nonnull BusinessRoleForMembers businessRole) {
     this.businessRole = businessRole;
     return this;
   }
@@ -95,7 +97,7 @@ public class MembersToDeleteBodyMembersInner {
     return businessRole;
   }
 
-  public void setBusinessRole(BusinessRoleForMembers businessRole) {
+  public void setBusinessRole(@javax.annotation.Nonnull BusinessRoleForMembers businessRole) {
     this.businessRole = businessRole;
   }
 

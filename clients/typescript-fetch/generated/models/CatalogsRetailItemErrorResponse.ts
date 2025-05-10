@@ -80,11 +80,11 @@ export function CatalogsRetailItemErrorResponseFromJSONTyped(json: any, ignoreDi
     };
 }
 
-  export function CatalogsRetailItemErrorResponseToJSON(json: any): CatalogsRetailItemErrorResponse {
-      return CatalogsRetailItemErrorResponseToJSONTyped(json, false);
-  }
+export function CatalogsRetailItemErrorResponseToJSON(json: any): CatalogsRetailItemErrorResponse {
+    return CatalogsRetailItemErrorResponseToJSONTyped(json, false);
+}
 
-  export function CatalogsRetailItemErrorResponseToJSONTyped(value?: CatalogsRetailItemErrorResponse | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsRetailItemErrorResponseToJSONTyped(value?: CatalogsRetailItemErrorResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

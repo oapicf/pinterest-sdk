@@ -88,7 +88,7 @@ func (c *BusinessAccessInviteAPIController) Routes() Routes {
 
 // RespondBusinessAccessInvites - Accept or decline an invite/request
 func (c *BusinessAccessInviteAPIController) RespondBusinessAccessInvites(w http.ResponseWriter, r *http.Request) {
-	authRespondInvitesBodyParam := AuthRespondInvitesBody{}
+	var authRespondInvitesBodyParam AuthRespondInvitesBody
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&authRespondInvitesBodyParam); err != nil {
@@ -121,7 +121,7 @@ func (c *BusinessAccessInviteAPIController) CreateAssetInvites(w http.ResponseWr
 		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
 		return
 	}
-	createAssetInvitesRequestParam := CreateAssetInvitesRequest{}
+	var createAssetInvitesRequestParam CreateAssetInvitesRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&createAssetInvitesRequestParam); err != nil {
@@ -154,7 +154,7 @@ func (c *BusinessAccessInviteAPIController) AssetAccessRequestsCreate(w http.Res
 		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
 		return
 	}
-	createAssetAccessRequestBodyParam := CreateAssetAccessRequestBody{}
+	var createAssetAccessRequestBodyParam CreateAssetAccessRequestBody
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&createAssetAccessRequestBodyParam); err != nil {
@@ -262,7 +262,7 @@ func (c *BusinessAccessInviteAPIController) CreateMembershipOrPartnershipInvites
 		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
 		return
 	}
-	createMembershipOrPartnershipInvitesBodyParam := CreateMembershipOrPartnershipInvitesBody{}
+	var createMembershipOrPartnershipInvitesBodyParam CreateMembershipOrPartnershipInvitesBody
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&createMembershipOrPartnershipInvitesBodyParam); err != nil {
@@ -295,7 +295,7 @@ func (c *BusinessAccessInviteAPIController) CancelInvitesOrRequests(w http.Respo
 		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
 		return
 	}
-	cancelInvitesBodyParam := CancelInvitesBody{}
+	var cancelInvitesBodyParam CancelInvitesBody
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&cancelInvitesBodyParam); err != nil {

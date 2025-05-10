@@ -62,11 +62,11 @@ export function AppTypeMultipliersFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-  export function AppTypeMultipliersToJSON(json: any): AppTypeMultipliers {
-      return AppTypeMultipliersToJSONTyped(json, false);
-  }
+export function AppTypeMultipliersToJSON(json: any): AppTypeMultipliers {
+    return AppTypeMultipliersToJSONTyped(json, false);
+}
 
-  export function AppTypeMultipliersToJSONTyped(value?: AppTypeMultipliers | null, ignoreDiscriminator: boolean = false): any {
+export function AppTypeMultipliersToJSONTyped(value?: AppTypeMultipliers | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

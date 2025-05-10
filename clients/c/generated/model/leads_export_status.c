@@ -22,7 +22,7 @@ pinterest_rest_api_leads_export_status__e leads_export_status_leads_export_statu
     return 0;
 }
 
-cJSON *leads_export_status_leads_export_status_convertToJSON(pinterest_rest_api_leads_export_status__e leads_export_status) {
+cJSON *leads_export_status_convertToJSON(pinterest_rest_api_leads_export_status__e leads_export_status) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "leads_export_status", leads_export_status_leads_export_status_ToString(leads_export_status)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_leads_export_status__e leads_export_status_leads_export_status_parseFromJSON(cJSON *leads_export_statusJSON) {
-    pinterest_rest_api_leads_export_status__e *leads_export_status = NULL;
-    pinterest_rest_api_leads_export_status__e leads_export_statusVariable;
-    cJSON *leads_export_statusVar = cJSON_GetObjectItemCaseSensitive(leads_export_statusJSON, "leads_export_status");
-    if(!cJSON_IsString(leads_export_statusVar) || (leads_export_statusVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_leads_export_status__e leads_export_status_parseFromJSON(cJSON *leads_export_statusJSON) {
+    if(!cJSON_IsString(leads_export_statusJSON) || (leads_export_statusJSON->valuestring == NULL)) {
+        return 0;
     }
-    leads_export_statusVariable = leads_export_status_leads_export_status_FromString(leads_export_statusVar->valuestring);
-    return leads_export_statusVariable;
-end:
-    return 0;
+    return leads_export_status_leads_export_status_FromString(leads_export_statusJSON->valuestring);
 }

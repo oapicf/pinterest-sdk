@@ -57,11 +57,11 @@ export function GoogleProductCategory5FilterFromJSONTyped(json: any, ignoreDiscr
     };
 }
 
-  export function GoogleProductCategory5FilterToJSON(json: any): GoogleProductCategory5Filter {
-      return GoogleProductCategory5FilterToJSONTyped(json, false);
-  }
+export function GoogleProductCategory5FilterToJSON(json: any): GoogleProductCategory5Filter {
+    return GoogleProductCategory5FilterToJSONTyped(json, false);
+}
 
-  export function GoogleProductCategory5FilterToJSONTyped(value?: GoogleProductCategory5Filter | null, ignoreDiscriminator: boolean = false): any {
+export function GoogleProductCategory5FilterToJSONTyped(value?: GoogleProductCategory5Filter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

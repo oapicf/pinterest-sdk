@@ -58,11 +58,11 @@ export function UpdateMemberResultFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-  export function UpdateMemberResultToJSON(json: any): UpdateMemberResult {
-      return UpdateMemberResultToJSONTyped(json, false);
-  }
+export function UpdateMemberResultToJSON(json: any): UpdateMemberResult {
+    return UpdateMemberResultToJSONTyped(json, false);
+}
 
-  export function UpdateMemberResultToJSONTyped(value?: UpdateMemberResult | null, ignoreDiscriminator: boolean = false): any {
+export function UpdateMemberResultToJSONTyped(value?: UpdateMemberResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

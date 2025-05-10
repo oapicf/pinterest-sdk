@@ -13,8 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // CatalogsVerticalFeedsCreateRequest - Request object for creating a feed.
@@ -147,6 +147,24 @@ func (obj *CatalogsVerticalFeedsCreateRequest) GetActualInstance() (interface{})
 
 	if obj.CatalogsRetailFeedsCreateRequest != nil {
 		return obj.CatalogsRetailFeedsCreateRequest
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj CatalogsVerticalFeedsCreateRequest) GetActualInstanceValue() (interface{}) {
+	if obj.CatalogsCreativeAssetsFeedsCreateRequest != nil {
+		return *obj.CatalogsCreativeAssetsFeedsCreateRequest
+	}
+
+	if obj.CatalogsHotelFeedsCreateRequest != nil {
+		return *obj.CatalogsHotelFeedsCreateRequest
+	}
+
+	if obj.CatalogsRetailFeedsCreateRequest != nil {
+		return *obj.CatalogsRetailFeedsCreateRequest
 	}
 
 	// all schemas are nil

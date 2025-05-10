@@ -5,7 +5,7 @@
 
 
 
-paginated_t *paginated_create(
+static paginated_t *paginated_create_internal(
     list_t *items,
     char *bookmark
     ) {
@@ -16,12 +16,26 @@ paginated_t *paginated_create(
     paginated_local_var->items = items;
     paginated_local_var->bookmark = bookmark;
 
+    paginated_local_var->_library_owned = 1;
     return paginated_local_var;
 }
 
+__attribute__((deprecated)) paginated_t *paginated_create(
+    list_t *items,
+    char *bookmark
+    ) {
+    return paginated_create_internal (
+        items,
+        bookmark
+        );
+}
 
 void paginated_free(paginated_t *paginated) {
     if(NULL == paginated){
+        return ;
+    }
+    if(paginated->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "paginated_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -87,6 +101,9 @@ paginated_t *paginated_parseFromJSON(cJSON *paginatedJSON){
 
     // paginated->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(paginatedJSON, "items");
+    if (cJSON_IsNull(items)) {
+        items = NULL;
+    }
     if (!items) {
         goto end;
     }
@@ -111,6 +128,9 @@ paginated_t *paginated_parseFromJSON(cJSON *paginatedJSON){
 
     // paginated->bookmark
     cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(paginatedJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
     if (bookmark) { 
     if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
     {
@@ -119,7 +139,7 @@ paginated_t *paginated_parseFromJSON(cJSON *paginatedJSON){
     }
 
 
-    paginated_local_var = paginated_create (
+    paginated_local_var = paginated_create_internal (
         itemsList,
         bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
         );

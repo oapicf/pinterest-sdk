@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.TargetingSpecSHOPPINGRETARGETING
 
+import kotlinx.serialization.Serializable
 /**
  * Ad group targeting specification defining the ad group target audience. For example, `{\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"AGE_BUCKET\":[\"25-34\"]}`
  * @param AGE_BUCKET Age ranges. If the AGE_BUCKET field is missing, the default behavior in terms of ad delivery is that **All age buckets** will be targeted.
@@ -27,6 +28,7 @@ import org.openapitools.server.models.TargetingSpecSHOPPINGRETARGETING
  * @param SHOPPING_RETARGETING Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting
  * @param TARGETING_STRATEGY 
  */
+@Serializable
 data class TargetingSpec(
     /* Age ranges. If the AGE_BUCKET field is missing, the default behavior in terms of ad delivery is that **All age buckets** will be targeted. */
     val AGE_BUCKET: TargetingSpec.AGEBUCKET? = null,
@@ -50,7 +52,7 @@ data class TargetingSpec(
     val SHOPPING_RETARGETING: kotlin.collections.List<TargetingSpecSHOPPINGRETARGETING>? = null,
     /*  */
     val TARGETING_STRATEGY: TargetingSpec.TARGETINGSTRATEGY? = null
-) 
+)
 {
     /**
     * Age ranges. If the AGE_BUCKET field is missing, the default behavior in terms of ad delivery is that **All age buckets** will be targeted.

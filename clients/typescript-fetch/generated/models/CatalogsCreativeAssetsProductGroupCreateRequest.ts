@@ -98,11 +98,11 @@ export function CatalogsCreativeAssetsProductGroupCreateRequestFromJSONTyped(jso
     };
 }
 
-  export function CatalogsCreativeAssetsProductGroupCreateRequestToJSON(json: any): CatalogsCreativeAssetsProductGroupCreateRequest {
-      return CatalogsCreativeAssetsProductGroupCreateRequestToJSONTyped(json, false);
-  }
+export function CatalogsCreativeAssetsProductGroupCreateRequestToJSON(json: any): CatalogsCreativeAssetsProductGroupCreateRequest {
+    return CatalogsCreativeAssetsProductGroupCreateRequestToJSONTyped(json, false);
+}
 
-  export function CatalogsCreativeAssetsProductGroupCreateRequestToJSONTyped(value?: CatalogsCreativeAssetsProductGroupCreateRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsCreativeAssetsProductGroupCreateRequestToJSONTyped(value?: CatalogsCreativeAssetsProductGroupCreateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

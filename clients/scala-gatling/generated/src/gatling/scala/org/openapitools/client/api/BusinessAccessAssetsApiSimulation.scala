@@ -140,9 +140,9 @@ class BusinessAccessAssetsApiSimulation extends Simulation {
         .feed(business_asset_members/getPATHFeeder)
         .exec(http("businessAssetMembersGet")
         .httpRequest("GET","/businesses/${business_id}/assets/${asset_id}/members")
+        .queryParam("start_index","${start_index}")
         .queryParam("page_size","${page_size}")
         .queryParam("bookmark","${bookmark}")
-        .queryParam("start_index","${start_index}")
 )
 
     // Run scnbusinessAssetMembersGet with warm up and reach a constant rate for entire duration
@@ -158,8 +158,8 @@ class BusinessAccessAssetsApiSimulation extends Simulation {
         .feed(business_asset_partners/getPATHFeeder)
         .exec(http("businessAssetPartnersGet")
         .httpRequest("GET","/businesses/${business_id}/assets/${asset_id}/partners")
-        .queryParam("page_size","${page_size}")
         .queryParam("start_index","${start_index}")
+        .queryParam("page_size","${page_size}")
         .queryParam("bookmark","${bookmark}")
 )
 
@@ -176,13 +176,13 @@ class BusinessAccessAssetsApiSimulation extends Simulation {
         .feed(business_assets/getPATHFeeder)
         .exec(http("businessAssetsGet")
         .httpRequest("GET","/businesses/${business_id}/assets")
+        .queryParam("start_index","${start_index}")
+        .queryParam("page_size","${page_size}")
+        .queryParam("child_asset_id","${child_asset_id}")
         .queryParam("asset_type","${asset_type}")
         .queryParam("asset_group_id","${asset_group_id}")
-        .queryParam("child_asset_id","${child_asset_id}")
-        .queryParam("page_size","${page_size}")
-        .queryParam("permissions","${permissions}")
-        .queryParam("start_index","${start_index}")
         .queryParam("bookmark","${bookmark}")
+        .queryParam("permissions","${permissions}")
 )
 
     // Run scnbusinessAssetsGet with warm up and reach a constant rate for entire duration
@@ -198,9 +198,9 @@ class BusinessAccessAssetsApiSimulation extends Simulation {
         .feed(business_member_assets/getPATHFeeder)
         .exec(http("businessMemberAssetsGet")
         .httpRequest("GET","/businesses/${business_id}/members/${member_id}/assets")
-        .queryParam("asset_type","${asset_type}")
-        .queryParam("page_size","${page_size}")
         .queryParam("start_index","${start_index}")
+        .queryParam("page_size","${page_size}")
+        .queryParam("asset_type","${asset_type}")
         .queryParam("bookmark","${bookmark}")
 )
 
@@ -245,10 +245,10 @@ class BusinessAccessAssetsApiSimulation extends Simulation {
         .feed(business_partner_asset_access/getPATHFeeder)
         .exec(http("businessPartnerAssetAccessGet")
         .httpRequest("GET","/businesses/${business_id}/partners/${partner_id}/assets")
+        .queryParam("start_index","${start_index}")
+        .queryParam("page_size","${page_size}")
         .queryParam("partner_type","${partner_type}")
         .queryParam("asset_type","${asset_type}")
-        .queryParam("page_size","${page_size}")
-        .queryParam("start_index","${start_index}")
         .queryParam("bookmark","${bookmark}")
 )
 

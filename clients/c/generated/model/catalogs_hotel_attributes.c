@@ -5,7 +5,7 @@
 
 
 
-catalogs_hotel_attributes_t *catalogs_hotel_attributes_create(
+static catalogs_hotel_attributes_t *catalogs_hotel_attributes_create_internal(
     char *name,
     char *link,
     char *description,
@@ -50,12 +50,60 @@ catalogs_hotel_attributes_t *catalogs_hotel_attributes_create(
     catalogs_hotel_attributes_local_var->main_image = main_image;
     catalogs_hotel_attributes_local_var->additional_image_link = additional_image_link;
 
+    catalogs_hotel_attributes_local_var->_library_owned = 1;
     return catalogs_hotel_attributes_local_var;
 }
 
+__attribute__((deprecated)) catalogs_hotel_attributes_t *catalogs_hotel_attributes_create(
+    char *name,
+    char *link,
+    char *description,
+    char *brand,
+    double latitude,
+    double longitude,
+    list_t *neighborhood,
+    catalogs_hotel_address_t *address,
+    char *custom_label_0,
+    char *custom_label_1,
+    char *custom_label_2,
+    char *custom_label_3,
+    char *custom_label_4,
+    char *category,
+    char *base_price,
+    char *sale_price,
+    catalogs_hotel_guest_ratings_t *guest_ratings,
+    catalogs_hotel_attributes_all_of_main_image_t *main_image,
+    list_t *additional_image_link
+    ) {
+    return catalogs_hotel_attributes_create_internal (
+        name,
+        link,
+        description,
+        brand,
+        latitude,
+        longitude,
+        neighborhood,
+        address,
+        custom_label_0,
+        custom_label_1,
+        custom_label_2,
+        custom_label_3,
+        custom_label_4,
+        category,
+        base_price,
+        sale_price,
+        guest_ratings,
+        main_image,
+        additional_image_link
+        );
+}
 
 void catalogs_hotel_attributes_free(catalogs_hotel_attributes_t *catalogs_hotel_attributes) {
     if(NULL == catalogs_hotel_attributes){
+        return ;
+    }
+    if(catalogs_hotel_attributes->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_hotel_attributes_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -196,7 +244,7 @@ cJSON *catalogs_hotel_attributes_convertToJSON(catalogs_hotel_attributes_t *cata
 
     listEntry_t *neighborhoodListEntry;
     list_ForEach(neighborhoodListEntry, catalogs_hotel_attributes->neighborhood) {
-    if(cJSON_AddStringToObject(neighborhood, "", (char*)neighborhoodListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(neighborhood, "", neighborhoodListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -316,7 +364,7 @@ cJSON *catalogs_hotel_attributes_convertToJSON(catalogs_hotel_attributes_t *cata
 
     listEntry_t *additional_image_linkListEntry;
     list_ForEach(additional_image_linkListEntry, catalogs_hotel_attributes->additional_image_link) {
-    if(cJSON_AddStringToObject(additional_image_link, "", (char*)additional_image_linkListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(additional_image_link, "", additional_image_linkListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -352,6 +400,9 @@ catalogs_hotel_attributes_t *catalogs_hotel_attributes_parseFromJSON(cJSON *cata
 
     // catalogs_hotel_attributes->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_attributesJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
     if (name) { 
     if(!cJSON_IsString(name) && !cJSON_IsNull(name))
     {
@@ -361,6 +412,9 @@ catalogs_hotel_attributes_t *catalogs_hotel_attributes_parseFromJSON(cJSON *cata
 
     // catalogs_hotel_attributes->link
     cJSON *link = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_attributesJSON, "link");
+    if (cJSON_IsNull(link)) {
+        link = NULL;
+    }
     if (link) { 
     if(!cJSON_IsString(link) && !cJSON_IsNull(link))
     {
@@ -370,6 +424,9 @@ catalogs_hotel_attributes_t *catalogs_hotel_attributes_parseFromJSON(cJSON *cata
 
     // catalogs_hotel_attributes->description
     cJSON *description = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_attributesJSON, "description");
+    if (cJSON_IsNull(description)) {
+        description = NULL;
+    }
     if (description) { 
     if(!cJSON_IsString(description) && !cJSON_IsNull(description))
     {
@@ -379,6 +436,9 @@ catalogs_hotel_attributes_t *catalogs_hotel_attributes_parseFromJSON(cJSON *cata
 
     // catalogs_hotel_attributes->brand
     cJSON *brand = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_attributesJSON, "brand");
+    if (cJSON_IsNull(brand)) {
+        brand = NULL;
+    }
     if (brand) { 
     if(!cJSON_IsString(brand) && !cJSON_IsNull(brand))
     {
@@ -388,6 +448,9 @@ catalogs_hotel_attributes_t *catalogs_hotel_attributes_parseFromJSON(cJSON *cata
 
     // catalogs_hotel_attributes->latitude
     cJSON *latitude = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_attributesJSON, "latitude");
+    if (cJSON_IsNull(latitude)) {
+        latitude = NULL;
+    }
     if (latitude) { 
     if(!cJSON_IsNumber(latitude))
     {
@@ -397,6 +460,9 @@ catalogs_hotel_attributes_t *catalogs_hotel_attributes_parseFromJSON(cJSON *cata
 
     // catalogs_hotel_attributes->longitude
     cJSON *longitude = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_attributesJSON, "longitude");
+    if (cJSON_IsNull(longitude)) {
+        longitude = NULL;
+    }
     if (longitude) { 
     if(!cJSON_IsNumber(longitude))
     {
@@ -406,6 +472,9 @@ catalogs_hotel_attributes_t *catalogs_hotel_attributes_parseFromJSON(cJSON *cata
 
     // catalogs_hotel_attributes->neighborhood
     cJSON *neighborhood = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_attributesJSON, "neighborhood");
+    if (cJSON_IsNull(neighborhood)) {
+        neighborhood = NULL;
+    }
     if (neighborhood) { 
     cJSON *neighborhood_local = NULL;
     if(!cJSON_IsArray(neighborhood)) {
@@ -425,12 +494,18 @@ catalogs_hotel_attributes_t *catalogs_hotel_attributes_parseFromJSON(cJSON *cata
 
     // catalogs_hotel_attributes->address
     cJSON *address = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_attributesJSON, "address");
+    if (cJSON_IsNull(address)) {
+        address = NULL;
+    }
     if (address) { 
     address_local_nonprim = catalogs_hotel_address_parseFromJSON(address); //nonprimitive
     }
 
     // catalogs_hotel_attributes->custom_label_0
     cJSON *custom_label_0 = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_attributesJSON, "custom_label_0");
+    if (cJSON_IsNull(custom_label_0)) {
+        custom_label_0 = NULL;
+    }
     if (custom_label_0) { 
     if(!cJSON_IsString(custom_label_0) && !cJSON_IsNull(custom_label_0))
     {
@@ -440,6 +515,9 @@ catalogs_hotel_attributes_t *catalogs_hotel_attributes_parseFromJSON(cJSON *cata
 
     // catalogs_hotel_attributes->custom_label_1
     cJSON *custom_label_1 = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_attributesJSON, "custom_label_1");
+    if (cJSON_IsNull(custom_label_1)) {
+        custom_label_1 = NULL;
+    }
     if (custom_label_1) { 
     if(!cJSON_IsString(custom_label_1) && !cJSON_IsNull(custom_label_1))
     {
@@ -449,6 +527,9 @@ catalogs_hotel_attributes_t *catalogs_hotel_attributes_parseFromJSON(cJSON *cata
 
     // catalogs_hotel_attributes->custom_label_2
     cJSON *custom_label_2 = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_attributesJSON, "custom_label_2");
+    if (cJSON_IsNull(custom_label_2)) {
+        custom_label_2 = NULL;
+    }
     if (custom_label_2) { 
     if(!cJSON_IsString(custom_label_2) && !cJSON_IsNull(custom_label_2))
     {
@@ -458,6 +539,9 @@ catalogs_hotel_attributes_t *catalogs_hotel_attributes_parseFromJSON(cJSON *cata
 
     // catalogs_hotel_attributes->custom_label_3
     cJSON *custom_label_3 = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_attributesJSON, "custom_label_3");
+    if (cJSON_IsNull(custom_label_3)) {
+        custom_label_3 = NULL;
+    }
     if (custom_label_3) { 
     if(!cJSON_IsString(custom_label_3) && !cJSON_IsNull(custom_label_3))
     {
@@ -467,6 +551,9 @@ catalogs_hotel_attributes_t *catalogs_hotel_attributes_parseFromJSON(cJSON *cata
 
     // catalogs_hotel_attributes->custom_label_4
     cJSON *custom_label_4 = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_attributesJSON, "custom_label_4");
+    if (cJSON_IsNull(custom_label_4)) {
+        custom_label_4 = NULL;
+    }
     if (custom_label_4) { 
     if(!cJSON_IsString(custom_label_4) && !cJSON_IsNull(custom_label_4))
     {
@@ -476,6 +563,9 @@ catalogs_hotel_attributes_t *catalogs_hotel_attributes_parseFromJSON(cJSON *cata
 
     // catalogs_hotel_attributes->category
     cJSON *category = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_attributesJSON, "category");
+    if (cJSON_IsNull(category)) {
+        category = NULL;
+    }
     if (category) { 
     if(!cJSON_IsString(category) && !cJSON_IsNull(category))
     {
@@ -485,6 +575,9 @@ catalogs_hotel_attributes_t *catalogs_hotel_attributes_parseFromJSON(cJSON *cata
 
     // catalogs_hotel_attributes->base_price
     cJSON *base_price = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_attributesJSON, "base_price");
+    if (cJSON_IsNull(base_price)) {
+        base_price = NULL;
+    }
     if (base_price) { 
     if(!cJSON_IsString(base_price) && !cJSON_IsNull(base_price))
     {
@@ -494,6 +587,9 @@ catalogs_hotel_attributes_t *catalogs_hotel_attributes_parseFromJSON(cJSON *cata
 
     // catalogs_hotel_attributes->sale_price
     cJSON *sale_price = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_attributesJSON, "sale_price");
+    if (cJSON_IsNull(sale_price)) {
+        sale_price = NULL;
+    }
     if (sale_price) { 
     if(!cJSON_IsString(sale_price) && !cJSON_IsNull(sale_price))
     {
@@ -503,18 +599,27 @@ catalogs_hotel_attributes_t *catalogs_hotel_attributes_parseFromJSON(cJSON *cata
 
     // catalogs_hotel_attributes->guest_ratings
     cJSON *guest_ratings = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_attributesJSON, "guest_ratings");
+    if (cJSON_IsNull(guest_ratings)) {
+        guest_ratings = NULL;
+    }
     if (guest_ratings) { 
     guest_ratings_local_nonprim = catalogs_hotel_guest_ratings_parseFromJSON(guest_ratings); //nonprimitive
     }
 
     // catalogs_hotel_attributes->main_image
     cJSON *main_image = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_attributesJSON, "main_image");
+    if (cJSON_IsNull(main_image)) {
+        main_image = NULL;
+    }
     if (main_image) { 
     main_image_local_nonprim = catalogs_hotel_attributes_all_of_main_image_parseFromJSON(main_image); //nonprimitive
     }
 
     // catalogs_hotel_attributes->additional_image_link
     cJSON *additional_image_link = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_attributesJSON, "additional_image_link");
+    if (cJSON_IsNull(additional_image_link)) {
+        additional_image_link = NULL;
+    }
     if (additional_image_link) { 
     cJSON *additional_image_link_local = NULL;
     if(!cJSON_IsArray(additional_image_link)) {
@@ -533,7 +638,7 @@ catalogs_hotel_attributes_t *catalogs_hotel_attributes_parseFromJSON(cJSON *cata
     }
 
 
-    catalogs_hotel_attributes_local_var = catalogs_hotel_attributes_create (
+    catalogs_hotel_attributes_local_var = catalogs_hotel_attributes_create_internal (
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         link && !cJSON_IsNull(link) ? strdup(link->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,

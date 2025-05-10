@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param code Error code associated with the error deleting asset group.
  * @param message Error message associated with the error deleting asset group.
  * @param assetGroupId Asset group id of the exception.
  */
+@Serializable
 data class DeleteAssetGroupResponseExceptionsInner(
     /* Error code associated with the error deleting asset group. */
     val code: kotlin.Int? = null,
@@ -25,5 +27,5 @@ data class DeleteAssetGroupResponseExceptionsInner(
     val message: kotlin.String? = null,
     /* Asset group id of the exception. */
     val assetGroupId: kotlin.String? = null
-) 
+)
 

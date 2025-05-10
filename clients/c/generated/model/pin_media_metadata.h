@@ -33,9 +33,10 @@ typedef struct pin_media_metadata_t {
     int height; //numeric
     int width; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } pin_media_metadata_t;
 
-pin_media_metadata_t *pin_media_metadata_create(
+__attribute__((deprecated)) pin_media_metadata_t *pin_media_metadata_create(
     char *item_type,
     char *title,
     char *description,

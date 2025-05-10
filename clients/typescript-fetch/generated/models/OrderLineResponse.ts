@@ -70,11 +70,11 @@ export function OrderLineResponseFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-  export function OrderLineResponseToJSON(json: any): OrderLineResponse {
-      return OrderLineResponseToJSONTyped(json, false);
-  }
+export function OrderLineResponseToJSON(json: any): OrderLineResponse {
+    return OrderLineResponseToJSONTyped(json, false);
+}
 
-  export function OrderLineResponseToJSONTyped(value?: OrderLineResponse | null, ignoreDiscriminator: boolean = false): any {
+export function OrderLineResponseToJSONTyped(value?: OrderLineResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

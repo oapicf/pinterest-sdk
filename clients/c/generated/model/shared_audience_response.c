@@ -22,7 +22,7 @@ pinterest_rest_api_shared_audience_response__e shared_audience_response_permissi
     return 0;
 }
 
-shared_audience_response_t *shared_audience_response_create(
+static shared_audience_response_t *shared_audience_response_create_internal(
     char *audience_id,
     list_t *permissions,
     list_t *recipient_account_ids
@@ -35,12 +35,28 @@ shared_audience_response_t *shared_audience_response_create(
     shared_audience_response_local_var->permissions = permissions;
     shared_audience_response_local_var->recipient_account_ids = recipient_account_ids;
 
+    shared_audience_response_local_var->_library_owned = 1;
     return shared_audience_response_local_var;
 }
 
+__attribute__((deprecated)) shared_audience_response_t *shared_audience_response_create(
+    char *audience_id,
+    list_t *permissions,
+    list_t *recipient_account_ids
+    ) {
+    return shared_audience_response_create_internal (
+        audience_id,
+        permissions,
+        recipient_account_ids
+        );
+}
 
 void shared_audience_response_free(shared_audience_response_t *shared_audience_response) {
     if(NULL == shared_audience_response){
+        return ;
+    }
+    if(shared_audience_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "shared_audience_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -77,7 +93,7 @@ cJSON *shared_audience_response_convertToJSON(shared_audience_response_t *shared
 
 
     // shared_audience_response->permissions
-    if(shared_audience_response->permissions != pinterest_rest_api_shared_audience_response_PERMISSIONS_NULL) {
+    if(shared_audience_response->permissions != pinterest_rest_api_list_PERMISSIONS_NULL) {
     cJSON *permissions = cJSON_AddArrayToObject(item, "permissions");
     if(permissions == NULL) {
     goto fail; //nonprimitive container
@@ -105,7 +121,7 @@ cJSON *shared_audience_response_convertToJSON(shared_audience_response_t *shared
 
     listEntry_t *recipient_account_idsListEntry;
     list_ForEach(recipient_account_idsListEntry, shared_audience_response->recipient_account_ids) {
-    if(cJSON_AddStringToObject(recipient_account_ids, "", (char*)recipient_account_idsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(recipient_account_ids, "", recipient_account_idsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -132,6 +148,9 @@ shared_audience_response_t *shared_audience_response_parseFromJSON(cJSON *shared
 
     // shared_audience_response->audience_id
     cJSON *audience_id = cJSON_GetObjectItemCaseSensitive(shared_audience_responseJSON, "audience_id");
+    if (cJSON_IsNull(audience_id)) {
+        audience_id = NULL;
+    }
     if (audience_id) { 
     if(!cJSON_IsString(audience_id) && !cJSON_IsNull(audience_id))
     {
@@ -141,6 +160,9 @@ shared_audience_response_t *shared_audience_response_parseFromJSON(cJSON *shared
 
     // shared_audience_response->permissions
     cJSON *permissions = cJSON_GetObjectItemCaseSensitive(shared_audience_responseJSON, "permissions");
+    if (cJSON_IsNull(permissions)) {
+        permissions = NULL;
+    }
     if (permissions) { 
     cJSON *permissions_local_nonprimitive = NULL;
     if(!cJSON_IsArray(permissions)){
@@ -162,6 +184,9 @@ shared_audience_response_t *shared_audience_response_parseFromJSON(cJSON *shared
 
     // shared_audience_response->recipient_account_ids
     cJSON *recipient_account_ids = cJSON_GetObjectItemCaseSensitive(shared_audience_responseJSON, "recipient_account_ids");
+    if (cJSON_IsNull(recipient_account_ids)) {
+        recipient_account_ids = NULL;
+    }
     if (recipient_account_ids) { 
     cJSON *recipient_account_ids_local = NULL;
     if(!cJSON_IsArray(recipient_account_ids)) {
@@ -180,7 +205,7 @@ shared_audience_response_t *shared_audience_response_parseFromJSON(cJSON *shared
     }
 
 
-    shared_audience_response_local_var = shared_audience_response_create (
+    shared_audience_response_local_var = shared_audience_response_create_internal (
         audience_id && !cJSON_IsNull(audience_id) ? strdup(audience_id->valuestring) : NULL,
         permissions ? permissionsList : NULL,
         recipient_account_ids ? recipient_account_idsList : NULL

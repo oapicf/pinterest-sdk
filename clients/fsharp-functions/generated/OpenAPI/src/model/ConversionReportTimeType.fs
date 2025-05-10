@@ -8,8 +8,8 @@ module ConversionReportTimeType =
 
   //#region ConversionReportTimeType
 
-  let ADACTIONEnum = "TIME_OF_AD_ACTION"
-  let CONVERSIONEnum = "TIME_OF_CONVERSION"
+  let TIMEOFADACTIONEnum = "TIME_OF_AD_ACTION"
+  let TIMEOFCONVERSIONEnum = "TIME_OF_CONVERSION"
   type ConversionReportTimeType = string
 
   //#endregion

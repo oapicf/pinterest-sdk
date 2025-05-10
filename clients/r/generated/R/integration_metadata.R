@@ -136,10 +136,35 @@ IntegrationMetadata <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return IntegrationMetadata in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return IntegrationMetadata as a base R list.
+    #' @examples
+    #' # convert array of IntegrationMetadata (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert IntegrationMetadata to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       IntegrationMetadataObject <- list()
       if (!is.null(self$`id`)) {
         IntegrationMetadataObject[["id"]] <-
@@ -197,7 +222,7 @@ IntegrationMetadata <- R6::R6Class(
         IntegrationMetadataObject[["partner_metadata"]] <-
           self$`partner_metadata`
       }
-      IntegrationMetadataObject
+      return(IntegrationMetadataObject)
     },
 
     #' @description
@@ -254,125 +279,13 @@ IntegrationMetadata <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return IntegrationMetadata in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`id`)) {
-          sprintf(
-          '"id":
-            "%s"
-                    ',
-          self$`id`
-          )
-        },
-        if (!is.null(self$`external_business_id`)) {
-          sprintf(
-          '"external_business_id":
-            "%s"
-                    ',
-          self$`external_business_id`
-          )
-        },
-        if (!is.null(self$`connected_merchant_id`)) {
-          sprintf(
-          '"connected_merchant_id":
-            "%s"
-                    ',
-          self$`connected_merchant_id`
-          )
-        },
-        if (!is.null(self$`connected_user_id`)) {
-          sprintf(
-          '"connected_user_id":
-            "%s"
-                    ',
-          self$`connected_user_id`
-          )
-        },
-        if (!is.null(self$`connected_advertiser_id`)) {
-          sprintf(
-          '"connected_advertiser_id":
-            "%s"
-                    ',
-          self$`connected_advertiser_id`
-          )
-        },
-        if (!is.null(self$`connected_lba_id`)) {
-          sprintf(
-          '"connected_lba_id":
-            "%s"
-                    ',
-          self$`connected_lba_id`
-          )
-        },
-        if (!is.null(self$`connected_tag_id`)) {
-          sprintf(
-          '"connected_tag_id":
-            "%s"
-                    ',
-          self$`connected_tag_id`
-          )
-        },
-        if (!is.null(self$`partner_access_token_expiry`)) {
-          sprintf(
-          '"partner_access_token_expiry":
-            %d
-                    ',
-          self$`partner_access_token_expiry`
-          )
-        },
-        if (!is.null(self$`partner_refresh_token_expiry`)) {
-          sprintf(
-          '"partner_refresh_token_expiry":
-            %d
-                    ',
-          self$`partner_refresh_token_expiry`
-          )
-        },
-        if (!is.null(self$`scopes`)) {
-          sprintf(
-          '"scopes":
-            "%s"
-                    ',
-          self$`scopes`
-          )
-        },
-        if (!is.null(self$`created_timestamp`)) {
-          sprintf(
-          '"created_timestamp":
-            %d
-                    ',
-          self$`created_timestamp`
-          )
-        },
-        if (!is.null(self$`updated_timestamp`)) {
-          sprintf(
-          '"updated_timestamp":
-            %d
-                    ',
-          self$`updated_timestamp`
-          )
-        },
-        if (!is.null(self$`additional_id_1`)) {
-          sprintf(
-          '"additional_id_1":
-            "%s"
-                    ',
-          self$`additional_id_1`
-          )
-        },
-        if (!is.null(self$`partner_metadata`)) {
-          sprintf(
-          '"partner_metadata":
-            "%s"
-                    ',
-          self$`partner_metadata`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

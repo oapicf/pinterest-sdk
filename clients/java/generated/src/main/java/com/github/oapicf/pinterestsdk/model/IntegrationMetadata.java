@@ -49,62 +49,76 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Integration metadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class IntegrationMetadata {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_EXTERNAL_BUSINESS_ID = "external_business_id";
   @SerializedName(SERIALIZED_NAME_EXTERNAL_BUSINESS_ID)
+  @javax.annotation.Nullable
   private String externalBusinessId;
 
   public static final String SERIALIZED_NAME_CONNECTED_MERCHANT_ID = "connected_merchant_id";
   @SerializedName(SERIALIZED_NAME_CONNECTED_MERCHANT_ID)
+  @javax.annotation.Nullable
   private String connectedMerchantId;
 
   public static final String SERIALIZED_NAME_CONNECTED_USER_ID = "connected_user_id";
   @SerializedName(SERIALIZED_NAME_CONNECTED_USER_ID)
+  @javax.annotation.Nullable
   private String connectedUserId;
 
   public static final String SERIALIZED_NAME_CONNECTED_ADVERTISER_ID = "connected_advertiser_id";
   @SerializedName(SERIALIZED_NAME_CONNECTED_ADVERTISER_ID)
+  @javax.annotation.Nullable
   private String connectedAdvertiserId;
 
   public static final String SERIALIZED_NAME_CONNECTED_LBA_ID = "connected_lba_id";
   @SerializedName(SERIALIZED_NAME_CONNECTED_LBA_ID)
+  @javax.annotation.Nullable
   private String connectedLbaId;
 
   public static final String SERIALIZED_NAME_CONNECTED_TAG_ID = "connected_tag_id";
   @SerializedName(SERIALIZED_NAME_CONNECTED_TAG_ID)
+  @javax.annotation.Nullable
   private String connectedTagId;
 
   public static final String SERIALIZED_NAME_PARTNER_ACCESS_TOKEN_EXPIRY = "partner_access_token_expiry";
   @SerializedName(SERIALIZED_NAME_PARTNER_ACCESS_TOKEN_EXPIRY)
+  @javax.annotation.Nullable
   private BigDecimal partnerAccessTokenExpiry;
 
   public static final String SERIALIZED_NAME_PARTNER_REFRESH_TOKEN_EXPIRY = "partner_refresh_token_expiry";
   @SerializedName(SERIALIZED_NAME_PARTNER_REFRESH_TOKEN_EXPIRY)
+  @javax.annotation.Nullable
   private BigDecimal partnerRefreshTokenExpiry;
 
   public static final String SERIALIZED_NAME_SCOPES = "scopes";
   @SerializedName(SERIALIZED_NAME_SCOPES)
+  @javax.annotation.Nullable
   private String scopes;
 
   public static final String SERIALIZED_NAME_CREATED_TIMESTAMP = "created_timestamp";
   @SerializedName(SERIALIZED_NAME_CREATED_TIMESTAMP)
+  @javax.annotation.Nullable
   private BigDecimal createdTimestamp;
 
   public static final String SERIALIZED_NAME_UPDATED_TIMESTAMP = "updated_timestamp";
   @SerializedName(SERIALIZED_NAME_UPDATED_TIMESTAMP)
+  @javax.annotation.Nullable
   private BigDecimal updatedTimestamp;
 
   public static final String SERIALIZED_NAME_ADDITIONAL_ID1 = "additional_id_1";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_ID1)
+  @javax.annotation.Nullable
   private String additionalId1;
 
   public static final String SERIALIZED_NAME_PARTNER_METADATA = "partner_metadata";
   @SerializedName(SERIALIZED_NAME_PARTNER_METADATA)
+  @javax.annotation.Nullable
   private String partnerMetadata;
 
   public IntegrationMetadata() {
@@ -119,7 +133,7 @@ public class IntegrationMetadata {
     this.connectedAdvertiserId = connectedAdvertiserId;
   }
 
-  public IntegrationMetadata id(String id) {
+  public IntegrationMetadata id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -133,12 +147,12 @@ public class IntegrationMetadata {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public IntegrationMetadata externalBusinessId(String externalBusinessId) {
+  public IntegrationMetadata externalBusinessId(@javax.annotation.Nullable String externalBusinessId) {
     this.externalBusinessId = externalBusinessId;
     return this;
   }
@@ -152,12 +166,12 @@ public class IntegrationMetadata {
     return externalBusinessId;
   }
 
-  public void setExternalBusinessId(String externalBusinessId) {
+  public void setExternalBusinessId(@javax.annotation.Nullable String externalBusinessId) {
     this.externalBusinessId = externalBusinessId;
   }
 
 
-  public IntegrationMetadata connectedMerchantId(String connectedMerchantId) {
+  public IntegrationMetadata connectedMerchantId(@javax.annotation.Nullable String connectedMerchantId) {
     this.connectedMerchantId = connectedMerchantId;
     return this;
   }
@@ -171,7 +185,7 @@ public class IntegrationMetadata {
     return connectedMerchantId;
   }
 
-  public void setConnectedMerchantId(String connectedMerchantId) {
+  public void setConnectedMerchantId(@javax.annotation.Nullable String connectedMerchantId) {
     this.connectedMerchantId = connectedMerchantId;
   }
 
@@ -198,7 +212,7 @@ public class IntegrationMetadata {
 
 
 
-  public IntegrationMetadata connectedLbaId(String connectedLbaId) {
+  public IntegrationMetadata connectedLbaId(@javax.annotation.Nullable String connectedLbaId) {
     this.connectedLbaId = connectedLbaId;
     return this;
   }
@@ -212,12 +226,12 @@ public class IntegrationMetadata {
     return connectedLbaId;
   }
 
-  public void setConnectedLbaId(String connectedLbaId) {
+  public void setConnectedLbaId(@javax.annotation.Nullable String connectedLbaId) {
     this.connectedLbaId = connectedLbaId;
   }
 
 
-  public IntegrationMetadata connectedTagId(String connectedTagId) {
+  public IntegrationMetadata connectedTagId(@javax.annotation.Nullable String connectedTagId) {
     this.connectedTagId = connectedTagId;
     return this;
   }
@@ -231,12 +245,12 @@ public class IntegrationMetadata {
     return connectedTagId;
   }
 
-  public void setConnectedTagId(String connectedTagId) {
+  public void setConnectedTagId(@javax.annotation.Nullable String connectedTagId) {
     this.connectedTagId = connectedTagId;
   }
 
 
-  public IntegrationMetadata partnerAccessTokenExpiry(BigDecimal partnerAccessTokenExpiry) {
+  public IntegrationMetadata partnerAccessTokenExpiry(@javax.annotation.Nullable BigDecimal partnerAccessTokenExpiry) {
     this.partnerAccessTokenExpiry = partnerAccessTokenExpiry;
     return this;
   }
@@ -250,12 +264,12 @@ public class IntegrationMetadata {
     return partnerAccessTokenExpiry;
   }
 
-  public void setPartnerAccessTokenExpiry(BigDecimal partnerAccessTokenExpiry) {
+  public void setPartnerAccessTokenExpiry(@javax.annotation.Nullable BigDecimal partnerAccessTokenExpiry) {
     this.partnerAccessTokenExpiry = partnerAccessTokenExpiry;
   }
 
 
-  public IntegrationMetadata partnerRefreshTokenExpiry(BigDecimal partnerRefreshTokenExpiry) {
+  public IntegrationMetadata partnerRefreshTokenExpiry(@javax.annotation.Nullable BigDecimal partnerRefreshTokenExpiry) {
     this.partnerRefreshTokenExpiry = partnerRefreshTokenExpiry;
     return this;
   }
@@ -269,12 +283,12 @@ public class IntegrationMetadata {
     return partnerRefreshTokenExpiry;
   }
 
-  public void setPartnerRefreshTokenExpiry(BigDecimal partnerRefreshTokenExpiry) {
+  public void setPartnerRefreshTokenExpiry(@javax.annotation.Nullable BigDecimal partnerRefreshTokenExpiry) {
     this.partnerRefreshTokenExpiry = partnerRefreshTokenExpiry;
   }
 
 
-  public IntegrationMetadata scopes(String scopes) {
+  public IntegrationMetadata scopes(@javax.annotation.Nullable String scopes) {
     this.scopes = scopes;
     return this;
   }
@@ -288,12 +302,12 @@ public class IntegrationMetadata {
     return scopes;
   }
 
-  public void setScopes(String scopes) {
+  public void setScopes(@javax.annotation.Nullable String scopes) {
     this.scopes = scopes;
   }
 
 
-  public IntegrationMetadata createdTimestamp(BigDecimal createdTimestamp) {
+  public IntegrationMetadata createdTimestamp(@javax.annotation.Nullable BigDecimal createdTimestamp) {
     this.createdTimestamp = createdTimestamp;
     return this;
   }
@@ -307,12 +321,12 @@ public class IntegrationMetadata {
     return createdTimestamp;
   }
 
-  public void setCreatedTimestamp(BigDecimal createdTimestamp) {
+  public void setCreatedTimestamp(@javax.annotation.Nullable BigDecimal createdTimestamp) {
     this.createdTimestamp = createdTimestamp;
   }
 
 
-  public IntegrationMetadata updatedTimestamp(BigDecimal updatedTimestamp) {
+  public IntegrationMetadata updatedTimestamp(@javax.annotation.Nullable BigDecimal updatedTimestamp) {
     this.updatedTimestamp = updatedTimestamp;
     return this;
   }
@@ -326,12 +340,12 @@ public class IntegrationMetadata {
     return updatedTimestamp;
   }
 
-  public void setUpdatedTimestamp(BigDecimal updatedTimestamp) {
+  public void setUpdatedTimestamp(@javax.annotation.Nullable BigDecimal updatedTimestamp) {
     this.updatedTimestamp = updatedTimestamp;
   }
 
 
-  public IntegrationMetadata additionalId1(String additionalId1) {
+  public IntegrationMetadata additionalId1(@javax.annotation.Nullable String additionalId1) {
     this.additionalId1 = additionalId1;
     return this;
   }
@@ -345,12 +359,12 @@ public class IntegrationMetadata {
     return additionalId1;
   }
 
-  public void setAdditionalId1(String additionalId1) {
+  public void setAdditionalId1(@javax.annotation.Nullable String additionalId1) {
     this.additionalId1 = additionalId1;
   }
 
 
-  public IntegrationMetadata partnerMetadata(String partnerMetadata) {
+  public IntegrationMetadata partnerMetadata(@javax.annotation.Nullable String partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
     return this;
   }
@@ -364,7 +378,7 @@ public class IntegrationMetadata {
     return partnerMetadata;
   }
 
-  public void setPartnerMetadata(String partnerMetadata) {
+  public void setPartnerMetadata(@javax.annotation.Nullable String partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
   }
 

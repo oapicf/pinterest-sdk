@@ -24,9 +24,10 @@ typedef struct pin_media_with_videos_t {
     char *media_type; // string
     list_t *items; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } pin_media_with_videos_t;
 
-pin_media_with_videos_t *pin_media_with_videos_create(
+__attribute__((deprecated)) pin_media_with_videos_t *pin_media_with_videos_create(
     char *media_type,
     list_t *items
 );

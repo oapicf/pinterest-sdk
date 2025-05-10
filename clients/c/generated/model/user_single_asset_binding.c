@@ -5,7 +5,7 @@
 
 
 
-user_single_asset_binding_t *user_single_asset_binding_create(
+static user_single_asset_binding_t *user_single_asset_binding_create_internal(
     list_t *permissions,
     business_access_user_summary_t *user
     ) {
@@ -16,12 +16,26 @@ user_single_asset_binding_t *user_single_asset_binding_create(
     user_single_asset_binding_local_var->permissions = permissions;
     user_single_asset_binding_local_var->user = user;
 
+    user_single_asset_binding_local_var->_library_owned = 1;
     return user_single_asset_binding_local_var;
 }
 
+__attribute__((deprecated)) user_single_asset_binding_t *user_single_asset_binding_create(
+    list_t *permissions,
+    business_access_user_summary_t *user
+    ) {
+    return user_single_asset_binding_create_internal (
+        permissions,
+        user
+        );
+}
 
 void user_single_asset_binding_free(user_single_asset_binding_t *user_single_asset_binding) {
     if(NULL == user_single_asset_binding){
+        return ;
+    }
+    if(user_single_asset_binding->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "user_single_asset_binding_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -51,7 +65,7 @@ cJSON *user_single_asset_binding_convertToJSON(user_single_asset_binding_t *user
 
     listEntry_t *permissionsListEntry;
     list_ForEach(permissionsListEntry, user_single_asset_binding->permissions) {
-    if(cJSON_AddStringToObject(permissions, "", (char*)permissionsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(permissions, "", permissionsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -91,6 +105,9 @@ user_single_asset_binding_t *user_single_asset_binding_parseFromJSON(cJSON *user
 
     // user_single_asset_binding->permissions
     cJSON *permissions = cJSON_GetObjectItemCaseSensitive(user_single_asset_bindingJSON, "permissions");
+    if (cJSON_IsNull(permissions)) {
+        permissions = NULL;
+    }
     if (permissions) { 
     cJSON *permissions_local = NULL;
     if(!cJSON_IsArray(permissions)) {
@@ -110,12 +127,15 @@ user_single_asset_binding_t *user_single_asset_binding_parseFromJSON(cJSON *user
 
     // user_single_asset_binding->user
     cJSON *user = cJSON_GetObjectItemCaseSensitive(user_single_asset_bindingJSON, "user");
+    if (cJSON_IsNull(user)) {
+        user = NULL;
+    }
     if (user) { 
     user_local_nonprim = business_access_user_summary_parseFromJSON(user); //nonprimitive
     }
 
 
-    user_single_asset_binding_local_var = user_single_asset_binding_create (
+    user_single_asset_binding_local_var = user_single_asset_binding_create_internal (
         permissions ? permissionsList : NULL,
         user ? user_local_nonprim : NULL
         );

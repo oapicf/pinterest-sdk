@@ -13,13 +13,15 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.LeadsExportStatus
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param exportStatus 
  * @param downloadUrl 
  */
+@Serializable
 data class LeadsExportResponseData(
     val exportStatus: LeadsExportStatus? = null,
     val downloadUrl: kotlin.String? = null
-) 
+)
 

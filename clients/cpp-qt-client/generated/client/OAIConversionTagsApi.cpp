@@ -250,7 +250,7 @@ void OAIConversionTagsApi::conversionTags_create(const QString &ad_account_id, c
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIConversionTagsApi::conversionTags_createCallback);
     connect(this, &OAIConversionTagsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -272,7 +272,7 @@ void OAIConversionTagsApi::conversionTags_create(const QString &ad_account_id, c
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIConversionTagsApi::conversionTags_createCallback);
     connect(this, &OAIConversionTagsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -389,7 +389,7 @@ void OAIConversionTagsApi::conversionTags_get(const QString &ad_account_id, cons
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIConversionTagsApi::conversionTags_getCallback);
     connect(this, &OAIConversionTagsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -411,7 +411,7 @@ void OAIConversionTagsApi::conversionTags_get(const QString &ad_account_id, cons
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIConversionTagsApi::conversionTags_getCallback);
     connect(this, &OAIConversionTagsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -515,7 +515,7 @@ void OAIConversionTagsApi::conversionTags_list(const QString &ad_account_id, con
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("filter_deleted")).append(querySuffix).append(QUrl::toPercentEncoding(filter_deleted.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("filter_deleted")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(filter_deleted.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -530,7 +530,7 @@ void OAIConversionTagsApi::conversionTags_list(const QString &ad_account_id, con
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIConversionTagsApi::conversionTags_listCallback);
     connect(this, &OAIConversionTagsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -552,7 +552,7 @@ void OAIConversionTagsApi::conversionTags_list(const QString &ad_account_id, con
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIConversionTagsApi::conversionTags_listCallback);
     connect(this, &OAIConversionTagsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -655,7 +655,7 @@ void OAIConversionTagsApi::ocpmEligibleConversionTags_get(const QString &ad_acco
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIConversionTagsApi::ocpmEligibleConversionTags_getCallback);
     connect(this, &OAIConversionTagsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -677,7 +677,7 @@ void OAIConversionTagsApi::ocpmEligibleConversionTags_get(const QString &ad_acco
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIConversionTagsApi::ocpmEligibleConversionTags_getCallback);
     connect(this, &OAIConversionTagsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -790,7 +790,7 @@ void OAIConversionTagsApi::pageVisitConversionTags_get(const QString &ad_account
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     if (order.hasValue())
     {
@@ -805,7 +805,7 @@ void OAIConversionTagsApi::pageVisitConversionTags_get(const QString &ad_account
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("order")).append(querySuffix).append(QUrl::toPercentEncoding(order.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("order")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(order.stringValue())));
     }
     if (bookmark.hasValue())
     {
@@ -820,7 +820,7 @@ void OAIConversionTagsApi::pageVisitConversionTags_get(const QString &ad_account
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -835,7 +835,7 @@ void OAIConversionTagsApi::pageVisitConversionTags_get(const QString &ad_account
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIConversionTagsApi::pageVisitConversionTags_getCallback);
     connect(this, &OAIConversionTagsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -857,7 +857,7 @@ void OAIConversionTagsApi::pageVisitConversionTags_get(const QString &ad_account
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIConversionTagsApi::pageVisitConversionTags_getCallback);
     connect(this, &OAIConversionTagsApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }

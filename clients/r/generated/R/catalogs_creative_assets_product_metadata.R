@@ -41,10 +41,35 @@ CatalogsCreativeAssetsProductMetadata <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return CatalogsCreativeAssetsProductMetadata in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return CatalogsCreativeAssetsProductMetadata as a base R list.
+    #' @examples
+    #' # convert array of CatalogsCreativeAssetsProductMetadata (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert CatalogsCreativeAssetsProductMetadata to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       CatalogsCreativeAssetsProductMetadataObject <- list()
       if (!is.null(self$`creative_assets_id`)) {
         CatalogsCreativeAssetsProductMetadataObject[["creative_assets_id"]] <-
@@ -52,9 +77,9 @@ CatalogsCreativeAssetsProductMetadata <- R6::R6Class(
       }
       if (!is.null(self$`visibility`)) {
         CatalogsCreativeAssetsProductMetadataObject[["visibility"]] <-
-          self$`visibility`$toJSON()
+          self$`visibility`$toSimpleType()
       }
-      CatalogsCreativeAssetsProductMetadataObject
+      return(CatalogsCreativeAssetsProductMetadataObject)
     },
 
     #' @description
@@ -77,29 +102,13 @@ CatalogsCreativeAssetsProductMetadata <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return CatalogsCreativeAssetsProductMetadata in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`creative_assets_id`)) {
-          sprintf(
-          '"creative_assets_id":
-            "%s"
-                    ',
-          self$`creative_assets_id`
-          )
-        },
-        if (!is.null(self$`visibility`)) {
-          sprintf(
-          '"visibility":
-          %s
-          ',
-          jsonlite::toJSON(self$`visibility`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

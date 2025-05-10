@@ -56,46 +56,56 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * TargetingTemplateGetResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TargetingTemplateGetResponseData {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_AUTO_TARGETING_ENABLED = "auto_targeting_enabled";
   @SerializedName(SERIALIZED_NAME_AUTO_TARGETING_ENABLED)
+  @javax.annotation.Nullable
   private Boolean autoTargetingEnabled = true;
 
   public static final String SERIALIZED_NAME_TARGETING_ATTRIBUTES = "targeting_attributes";
   @SerializedName(SERIALIZED_NAME_TARGETING_ATTRIBUTES)
+  @javax.annotation.Nullable
   private TargetingSpec targetingAttributes;
 
   public static final String SERIALIZED_NAME_PLACEMENT_GROUP = "placement_group";
   @SerializedName(SERIALIZED_NAME_PLACEMENT_GROUP)
+  @javax.annotation.Nullable
   private PlacementGroupType placementGroup = PlacementGroupType.ALL;
 
   public static final String SERIALIZED_NAME_KEYWORDS = "keywords";
   @SerializedName(SERIALIZED_NAME_KEYWORDS)
+  @javax.annotation.Nullable
   private List<TargetingTemplateKeyword> keywords = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_TRACKING_URLS = "tracking_urls";
   @SerializedName(SERIALIZED_NAME_TRACKING_URLS)
+  @javax.annotation.Nullable
   private TrackingUrls trackingUrls;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_CREATED_TIME = "created_time";
   @SerializedName(SERIALIZED_NAME_CREATED_TIME)
+  @javax.annotation.Nullable
   private Integer createdTime;
 
   public static final String SERIALIZED_NAME_UPDATED_TIME = "updated_time";
   @SerializedName(SERIALIZED_NAME_UPDATED_TIME)
+  @javax.annotation.Nullable
   private Integer updatedTime;
 
   public static final String SERIALIZED_NAME_AD_ACCOUNT_ID = "ad_account_id";
   @SerializedName(SERIALIZED_NAME_AD_ACCOUNT_ID)
+  @javax.annotation.Nullable
   private String adAccountId;
 
   /**
@@ -152,20 +162,23 @@ public class TargetingTemplateGetResponseData {
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private StatusEnum status = StatusEnum.ACTIVE;
 
   public static final String SERIALIZED_NAME_SIZING = "sizing";
   @SerializedName(SERIALIZED_NAME_SIZING)
+  @javax.annotation.Nullable
   private TargetingTemplateAudienceSizing sizing;
 
   public static final String SERIALIZED_NAME_VALID = "valid";
   @SerializedName(SERIALIZED_NAME_VALID)
+  @javax.annotation.Nullable
   private Boolean valid;
 
   public TargetingTemplateGetResponseData() {
   }
 
-  public TargetingTemplateGetResponseData name(String name) {
+  public TargetingTemplateGetResponseData name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -179,12 +192,12 @@ public class TargetingTemplateGetResponseData {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public TargetingTemplateGetResponseData autoTargetingEnabled(Boolean autoTargetingEnabled) {
+  public TargetingTemplateGetResponseData autoTargetingEnabled(@javax.annotation.Nullable Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
     return this;
   }
@@ -198,12 +211,12 @@ public class TargetingTemplateGetResponseData {
     return autoTargetingEnabled;
   }
 
-  public void setAutoTargetingEnabled(Boolean autoTargetingEnabled) {
+  public void setAutoTargetingEnabled(@javax.annotation.Nullable Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
   }
 
 
-  public TargetingTemplateGetResponseData targetingAttributes(TargetingSpec targetingAttributes) {
+  public TargetingTemplateGetResponseData targetingAttributes(@javax.annotation.Nullable TargetingSpec targetingAttributes) {
     this.targetingAttributes = targetingAttributes;
     return this;
   }
@@ -217,12 +230,12 @@ public class TargetingTemplateGetResponseData {
     return targetingAttributes;
   }
 
-  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
+  public void setTargetingAttributes(@javax.annotation.Nullable TargetingSpec targetingAttributes) {
     this.targetingAttributes = targetingAttributes;
   }
 
 
-  public TargetingTemplateGetResponseData placementGroup(PlacementGroupType placementGroup) {
+  public TargetingTemplateGetResponseData placementGroup(@javax.annotation.Nullable PlacementGroupType placementGroup) {
     this.placementGroup = placementGroup;
     return this;
   }
@@ -236,12 +249,12 @@ public class TargetingTemplateGetResponseData {
     return placementGroup;
   }
 
-  public void setPlacementGroup(PlacementGroupType placementGroup) {
+  public void setPlacementGroup(@javax.annotation.Nullable PlacementGroupType placementGroup) {
     this.placementGroup = placementGroup;
   }
 
 
-  public TargetingTemplateGetResponseData keywords(List<TargetingTemplateKeyword> keywords) {
+  public TargetingTemplateGetResponseData keywords(@javax.annotation.Nullable List<TargetingTemplateKeyword> keywords) {
     this.keywords = keywords;
     return this;
   }
@@ -263,12 +276,12 @@ public class TargetingTemplateGetResponseData {
     return keywords;
   }
 
-  public void setKeywords(List<TargetingTemplateKeyword> keywords) {
+  public void setKeywords(@javax.annotation.Nullable List<TargetingTemplateKeyword> keywords) {
     this.keywords = keywords;
   }
 
 
-  public TargetingTemplateGetResponseData trackingUrls(TrackingUrls trackingUrls) {
+  public TargetingTemplateGetResponseData trackingUrls(@javax.annotation.Nullable TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
@@ -282,12 +295,12 @@ public class TargetingTemplateGetResponseData {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(TrackingUrls trackingUrls) {
+  public void setTrackingUrls(@javax.annotation.Nullable TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
 
-  public TargetingTemplateGetResponseData id(String id) {
+  public TargetingTemplateGetResponseData id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -301,12 +314,12 @@ public class TargetingTemplateGetResponseData {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public TargetingTemplateGetResponseData createdTime(Integer createdTime) {
+  public TargetingTemplateGetResponseData createdTime(@javax.annotation.Nullable Integer createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -320,12 +333,12 @@ public class TargetingTemplateGetResponseData {
     return createdTime;
   }
 
-  public void setCreatedTime(Integer createdTime) {
+  public void setCreatedTime(@javax.annotation.Nullable Integer createdTime) {
     this.createdTime = createdTime;
   }
 
 
-  public TargetingTemplateGetResponseData updatedTime(Integer updatedTime) {
+  public TargetingTemplateGetResponseData updatedTime(@javax.annotation.Nullable Integer updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -339,12 +352,12 @@ public class TargetingTemplateGetResponseData {
     return updatedTime;
   }
 
-  public void setUpdatedTime(Integer updatedTime) {
+  public void setUpdatedTime(@javax.annotation.Nullable Integer updatedTime) {
     this.updatedTime = updatedTime;
   }
 
 
-  public TargetingTemplateGetResponseData adAccountId(String adAccountId) {
+  public TargetingTemplateGetResponseData adAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -358,12 +371,12 @@ public class TargetingTemplateGetResponseData {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
 
-  public TargetingTemplateGetResponseData status(StatusEnum status) {
+  public TargetingTemplateGetResponseData status(@javax.annotation.Nullable StatusEnum status) {
     this.status = status;
     return this;
   }
@@ -377,12 +390,12 @@ public class TargetingTemplateGetResponseData {
     return status;
   }
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(@javax.annotation.Nullable StatusEnum status) {
     this.status = status;
   }
 
 
-  public TargetingTemplateGetResponseData sizing(TargetingTemplateAudienceSizing sizing) {
+  public TargetingTemplateGetResponseData sizing(@javax.annotation.Nullable TargetingTemplateAudienceSizing sizing) {
     this.sizing = sizing;
     return this;
   }
@@ -396,12 +409,12 @@ public class TargetingTemplateGetResponseData {
     return sizing;
   }
 
-  public void setSizing(TargetingTemplateAudienceSizing sizing) {
+  public void setSizing(@javax.annotation.Nullable TargetingTemplateAudienceSizing sizing) {
     this.sizing = sizing;
   }
 
 
-  public TargetingTemplateGetResponseData valid(Boolean valid) {
+  public TargetingTemplateGetResponseData valid(@javax.annotation.Nullable Boolean valid) {
     this.valid = valid;
     return this;
   }
@@ -415,7 +428,7 @@ public class TargetingTemplateGetResponseData {
     return valid;
   }
 
-  public void setValid(Boolean valid) {
+  public void setValid(@javax.annotation.Nullable Boolean valid) {
     this.valid = valid;
   }
 

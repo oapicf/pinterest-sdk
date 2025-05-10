@@ -196,11 +196,11 @@ export function AudienceRuleFromJSONTyped(json: any, ignoreDiscriminator: boolea
     };
 }
 
-  export function AudienceRuleToJSON(json: any): AudienceRule {
-      return AudienceRuleToJSONTyped(json, false);
-  }
+export function AudienceRuleToJSON(json: any): AudienceRule {
+    return AudienceRuleToJSONTyped(json, false);
+}
 
-  export function AudienceRuleToJSONTyped(value?: AudienceRule | null, ignoreDiscriminator: boolean = false): any {
+export function AudienceRuleToJSONTyped(value?: AudienceRule | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

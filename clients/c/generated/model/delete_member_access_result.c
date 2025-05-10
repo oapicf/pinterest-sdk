@@ -5,7 +5,7 @@
 
 
 
-delete_member_access_result_t *delete_member_access_result_create(
+static delete_member_access_result_t *delete_member_access_result_create_internal(
     char *asset_id,
     char *member_id
     ) {
@@ -16,12 +16,26 @@ delete_member_access_result_t *delete_member_access_result_create(
     delete_member_access_result_local_var->asset_id = asset_id;
     delete_member_access_result_local_var->member_id = member_id;
 
+    delete_member_access_result_local_var->_library_owned = 1;
     return delete_member_access_result_local_var;
 }
 
+__attribute__((deprecated)) delete_member_access_result_t *delete_member_access_result_create(
+    char *asset_id,
+    char *member_id
+    ) {
+    return delete_member_access_result_create_internal (
+        asset_id,
+        member_id
+        );
+}
 
 void delete_member_access_result_free(delete_member_access_result_t *delete_member_access_result) {
     if(NULL == delete_member_access_result){
+        return ;
+    }
+    if(delete_member_access_result->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "delete_member_access_result_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -68,6 +82,9 @@ delete_member_access_result_t *delete_member_access_result_parseFromJSON(cJSON *
 
     // delete_member_access_result->asset_id
     cJSON *asset_id = cJSON_GetObjectItemCaseSensitive(delete_member_access_resultJSON, "asset_id");
+    if (cJSON_IsNull(asset_id)) {
+        asset_id = NULL;
+    }
     if (asset_id) { 
     if(!cJSON_IsString(asset_id) && !cJSON_IsNull(asset_id))
     {
@@ -77,6 +94,9 @@ delete_member_access_result_t *delete_member_access_result_parseFromJSON(cJSON *
 
     // delete_member_access_result->member_id
     cJSON *member_id = cJSON_GetObjectItemCaseSensitive(delete_member_access_resultJSON, "member_id");
+    if (cJSON_IsNull(member_id)) {
+        member_id = NULL;
+    }
     if (member_id) { 
     if(!cJSON_IsString(member_id) && !cJSON_IsNull(member_id))
     {
@@ -85,7 +105,7 @@ delete_member_access_result_t *delete_member_access_result_parseFromJSON(cJSON *
     }
 
 
-    delete_member_access_result_local_var = delete_member_access_result_create (
+    delete_member_access_result_local_var = delete_member_access_result_create_internal (
         asset_id && !cJSON_IsNull(asset_id) ? strdup(asset_id->valuestring) : NULL,
         member_id && !cJSON_IsNull(member_id) ? strdup(member_id->valuestring) : NULL
         );

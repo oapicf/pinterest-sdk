@@ -3305,30 +3305,30 @@ impl Default for Columns {
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum ConversionReportTimeType {
     #[serde(rename = "TIME_OF_AD_ACTION")]
-    AdAction,
+    TimeOfAdAction,
     #[serde(rename = "TIME_OF_CONVERSION")]
-    Conversion,
+    TimeOfConversion,
 }
 
 impl Default for ConversionReportTimeType {
     fn default() -> ConversionReportTimeType {
-        Self::AdAction
+        Self::TimeOfAdAction
     }
 }
 /// The surface used to create this template
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum CreationSource {
     #[serde(rename = "ADS_API")]
-    Api,
+    AdsApi,
     #[serde(rename = "ADS_MANAGER_REPORTING_PAGE")]
-    ManagerReportingPage,
+    AdsManagerReportingPage,
     #[serde(rename = "ADS_MANAGER_REPORT_BUILDER")]
-    ManagerReportBuilder,
+    AdsManagerReportBuilder,
 }
 
 impl Default for CreationSource {
     fn default() -> CreationSource {
-        Self::Api
+        Self::AdsApi
     }
 }
 /// Reporting template type

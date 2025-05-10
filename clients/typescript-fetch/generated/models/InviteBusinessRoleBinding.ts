@@ -98,11 +98,11 @@ export function InviteBusinessRoleBindingFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function InviteBusinessRoleBindingToJSON(json: any): InviteBusinessRoleBinding {
-      return InviteBusinessRoleBindingToJSONTyped(json, false);
-  }
+export function InviteBusinessRoleBindingToJSON(json: any): InviteBusinessRoleBinding {
+    return InviteBusinessRoleBindingToJSONTyped(json, false);
+}
 
-  export function InviteBusinessRoleBindingToJSONTyped(value?: InviteBusinessRoleBinding | null, ignoreDiscriminator: boolean = false): any {
+export function InviteBusinessRoleBindingToJSONTyped(value?: InviteBusinessRoleBinding | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

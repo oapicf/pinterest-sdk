@@ -1633,8 +1633,8 @@ Template fields
 
 | Name | Value |
 |---- | -----|
-| AD_ACTION | &quot;TIME_OF_AD_ACTION&quot; |
-| CONVERSION | &quot;TIME_OF_CONVERSION&quot; |
+| TIME_OF_AD_ACTION | &quot;TIME_OF_AD_ACTION&quot; |
+| TIME_OF_CONVERSION | &quot;TIME_OF_CONVERSION&quot; |
 
 
 
@@ -1642,9 +1642,9 @@ Template fields
 
 | Name | Value |
 |---- | -----|
-| API | &quot;ADS_API&quot; |
-| MANAGER_REPORTING_PAGE | &quot;ADS_MANAGER_REPORTING_PAGE&quot; |
-| MANAGER_REPORT_BUILDER | &quot;ADS_MANAGER_REPORT_BUILDER&quot; |
+| ADS_API | &quot;ADS_API&quot; |
+| ADS_MANAGER_REPORTING_PAGE | &quot;ADS_MANAGER_REPORTING_PAGE&quot; |
+| ADS_MANAGER_REPORT_BUILDER | &quot;ADS_MANAGER_REPORT_BUILDER&quot; |
 
 
 

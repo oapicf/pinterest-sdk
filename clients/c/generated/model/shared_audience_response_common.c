@@ -22,7 +22,7 @@ pinterest_rest_api_shared_audience_response_common__e shared_audience_response_c
     return 0;
 }
 
-shared_audience_response_common_t *shared_audience_response_common_create(
+static shared_audience_response_common_t *shared_audience_response_common_create_internal(
     char *audience_id,
     list_t *permissions
     ) {
@@ -33,12 +33,26 @@ shared_audience_response_common_t *shared_audience_response_common_create(
     shared_audience_response_common_local_var->audience_id = audience_id;
     shared_audience_response_common_local_var->permissions = permissions;
 
+    shared_audience_response_common_local_var->_library_owned = 1;
     return shared_audience_response_common_local_var;
 }
 
+__attribute__((deprecated)) shared_audience_response_common_t *shared_audience_response_common_create(
+    char *audience_id,
+    list_t *permissions
+    ) {
+    return shared_audience_response_common_create_internal (
+        audience_id,
+        permissions
+        );
+}
 
 void shared_audience_response_common_free(shared_audience_response_common_t *shared_audience_response_common) {
     if(NULL == shared_audience_response_common){
+        return ;
+    }
+    if(shared_audience_response_common->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "shared_audience_response_common_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -68,7 +82,7 @@ cJSON *shared_audience_response_common_convertToJSON(shared_audience_response_co
 
 
     // shared_audience_response_common->permissions
-    if(shared_audience_response_common->permissions != pinterest_rest_api_shared_audience_response_common_PERMISSIONS_NULL) {
+    if(shared_audience_response_common->permissions != pinterest_rest_api_list_PERMISSIONS_NULL) {
     cJSON *permissions = cJSON_AddArrayToObject(item, "permissions");
     if(permissions == NULL) {
     goto fail; //nonprimitive container
@@ -103,6 +117,9 @@ shared_audience_response_common_t *shared_audience_response_common_parseFromJSON
 
     // shared_audience_response_common->audience_id
     cJSON *audience_id = cJSON_GetObjectItemCaseSensitive(shared_audience_response_commonJSON, "audience_id");
+    if (cJSON_IsNull(audience_id)) {
+        audience_id = NULL;
+    }
     if (audience_id) { 
     if(!cJSON_IsString(audience_id) && !cJSON_IsNull(audience_id))
     {
@@ -112,6 +129,9 @@ shared_audience_response_common_t *shared_audience_response_common_parseFromJSON
 
     // shared_audience_response_common->permissions
     cJSON *permissions = cJSON_GetObjectItemCaseSensitive(shared_audience_response_commonJSON, "permissions");
+    if (cJSON_IsNull(permissions)) {
+        permissions = NULL;
+    }
     if (permissions) { 
     cJSON *permissions_local_nonprimitive = NULL;
     if(!cJSON_IsArray(permissions)){
@@ -132,7 +152,7 @@ shared_audience_response_common_t *shared_audience_response_common_parseFromJSON
     }
 
 
-    shared_audience_response_common_local_var = shared_audience_response_common_create (
+    shared_audience_response_common_local_var = shared_audience_response_common_create_internal (
         audience_id && !cJSON_IsNull(audience_id) ? strdup(audience_id->valuestring) : NULL,
         permissions ? permissionsList : NULL
         );

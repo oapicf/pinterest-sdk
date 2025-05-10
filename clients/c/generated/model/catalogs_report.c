@@ -22,7 +22,7 @@ pinterest_rest_api_catalogs_report_REPORTSTATUS_e catalogs_report_report_status_
     return 0;
 }
 
-catalogs_report_t *catalogs_report_create(
+static catalogs_report_t *catalogs_report_create_internal(
     pinterest_rest_api_catalogs_report_REPORTSTATUS_e report_status,
     char *url,
     double size
@@ -35,12 +35,28 @@ catalogs_report_t *catalogs_report_create(
     catalogs_report_local_var->url = url;
     catalogs_report_local_var->size = size;
 
+    catalogs_report_local_var->_library_owned = 1;
     return catalogs_report_local_var;
 }
 
+__attribute__((deprecated)) catalogs_report_t *catalogs_report_create(
+    pinterest_rest_api_catalogs_report_REPORTSTATUS_e report_status,
+    char *url,
+    double size
+    ) {
+    return catalogs_report_create_internal (
+        report_status,
+        url,
+        size
+        );
+}
 
 void catalogs_report_free(catalogs_report_t *catalogs_report) {
     if(NULL == catalogs_report){
+        return ;
+    }
+    if(catalogs_report->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_report_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -56,7 +72,7 @@ cJSON *catalogs_report_convertToJSON(catalogs_report_t *catalogs_report) {
 
     // catalogs_report->report_status
     if(catalogs_report->report_status != pinterest_rest_api_catalogs_report_REPORTSTATUS_NULL) {
-    if(cJSON_AddStringToObject(item, "report_status", report_statuscatalogs_report_ToString(catalogs_report->report_status)) == NULL)
+    if(cJSON_AddStringToObject(item, "report_status", catalogs_report_report_status_ToString(catalogs_report->report_status)) == NULL)
     {
     goto fail; //Enum
     }
@@ -92,6 +108,9 @@ catalogs_report_t *catalogs_report_parseFromJSON(cJSON *catalogs_reportJSON){
 
     // catalogs_report->report_status
     cJSON *report_status = cJSON_GetObjectItemCaseSensitive(catalogs_reportJSON, "report_status");
+    if (cJSON_IsNull(report_status)) {
+        report_status = NULL;
+    }
     pinterest_rest_api_catalogs_report_REPORTSTATUS_e report_statusVariable;
     if (report_status) { 
     if(!cJSON_IsString(report_status))
@@ -103,6 +122,9 @@ catalogs_report_t *catalogs_report_parseFromJSON(cJSON *catalogs_reportJSON){
 
     // catalogs_report->url
     cJSON *url = cJSON_GetObjectItemCaseSensitive(catalogs_reportJSON, "url");
+    if (cJSON_IsNull(url)) {
+        url = NULL;
+    }
     if (url) { 
     if(!cJSON_IsString(url) && !cJSON_IsNull(url))
     {
@@ -112,6 +134,9 @@ catalogs_report_t *catalogs_report_parseFromJSON(cJSON *catalogs_reportJSON){
 
     // catalogs_report->size
     cJSON *size = cJSON_GetObjectItemCaseSensitive(catalogs_reportJSON, "size");
+    if (cJSON_IsNull(size)) {
+        size = NULL;
+    }
     if (size) { 
     if(!cJSON_IsNumber(size))
     {
@@ -120,7 +145,7 @@ catalogs_report_t *catalogs_report_parseFromJSON(cJSON *catalogs_reportJSON){
     }
 
 
-    catalogs_report_local_var = catalogs_report_create (
+    catalogs_report_local_var = catalogs_report_create_internal (
         report_status ? report_statusVariable : pinterest_rest_api_catalogs_report_REPORTSTATUS_NULL,
         url && !cJSON_IsNull(url) ? strdup(url->valuestring) : NULL,
         size ? size->valuedouble : 0

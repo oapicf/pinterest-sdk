@@ -13,18 +13,20 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.PinMediaSourceImagesURLItemsInner
 
+import kotlinx.serialization.Serializable
 /**
  * Multiple images urls-based media source
  * @param items Array with image objects.
  * @param sourceType 
  * @param index 
  */
+@Serializable
 data class PinMediaSourceImagesURL(
     /* Array with image objects. */
     val items: kotlin.collections.List<PinMediaSourceImagesURLItemsInner>,
     val sourceType: PinMediaSourceImagesURL.SourceType? = null,
     val index: kotlin.Int? = null
-) 
+)
 {
     /**
     * 

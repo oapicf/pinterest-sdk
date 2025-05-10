@@ -16,7 +16,7 @@ public struct CatalogsHotelProductGroupProductCounts: Codable, JSONEncodable, Ha
     public enum CatalogType: String, Codable, CaseIterable {
         case hotel = "HOTEL"
     }
-    static let totalRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
+    public static let totalRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
     public var catalogType: CatalogType
     public var total: Double
 

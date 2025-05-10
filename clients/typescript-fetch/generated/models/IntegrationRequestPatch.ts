@@ -125,11 +125,11 @@ export function IntegrationRequestPatchFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-  export function IntegrationRequestPatchToJSON(json: any): IntegrationRequestPatch {
-      return IntegrationRequestPatchToJSONTyped(json, false);
-  }
+export function IntegrationRequestPatchToJSON(json: any): IntegrationRequestPatch {
+    return IntegrationRequestPatchToJSONTyped(json, false);
+}
 
-  export function IntegrationRequestPatchToJSONTyped(value?: IntegrationRequestPatch | null, ignoreDiscriminator: boolean = false): any {
+export function IntegrationRequestPatchToJSONTyped(value?: IntegrationRequestPatch | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

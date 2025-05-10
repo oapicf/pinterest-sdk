@@ -172,11 +172,11 @@ export function CampaignUpdateRequestFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function CampaignUpdateRequestToJSON(json: any): CampaignUpdateRequest {
-      return CampaignUpdateRequestToJSONTyped(json, false);
-  }
+export function CampaignUpdateRequestToJSON(json: any): CampaignUpdateRequest {
+    return CampaignUpdateRequestToJSONTyped(json, false);
+}
 
-  export function CampaignUpdateRequestToJSONTyped(value?: CampaignUpdateRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CampaignUpdateRequestToJSONTyped(value?: CampaignUpdateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

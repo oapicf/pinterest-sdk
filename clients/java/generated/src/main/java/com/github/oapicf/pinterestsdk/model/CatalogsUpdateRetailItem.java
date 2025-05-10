@@ -53,10 +53,11 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * An item to be updated
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsUpdateRetailItem {
   public static final String SERIALIZED_NAME_ITEM_ID = "item_id";
   @SerializedName(SERIALIZED_NAME_ITEM_ID)
+  @javax.annotation.Nonnull
   private String itemId;
 
   /**
@@ -111,20 +112,23 @@ public class CatalogsUpdateRetailItem {
 
   public static final String SERIALIZED_NAME_OPERATION = "operation";
   @SerializedName(SERIALIZED_NAME_OPERATION)
+  @javax.annotation.Nonnull
   private OperationEnum operation;
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  @javax.annotation.Nonnull
   private UpdatableItemAttributes attributes;
 
   public static final String SERIALIZED_NAME_UPDATE_MASK = "update_mask";
   @SerializedName(SERIALIZED_NAME_UPDATE_MASK)
+  @javax.annotation.Nullable
   private List<UpdateMaskFieldType> updateMask;
 
   public CatalogsUpdateRetailItem() {
   }
 
-  public CatalogsUpdateRetailItem itemId(String itemId) {
+  public CatalogsUpdateRetailItem itemId(@javax.annotation.Nonnull String itemId) {
     this.itemId = itemId;
     return this;
   }
@@ -138,12 +142,12 @@ public class CatalogsUpdateRetailItem {
     return itemId;
   }
 
-  public void setItemId(String itemId) {
+  public void setItemId(@javax.annotation.Nonnull String itemId) {
     this.itemId = itemId;
   }
 
 
-  public CatalogsUpdateRetailItem operation(OperationEnum operation) {
+  public CatalogsUpdateRetailItem operation(@javax.annotation.Nonnull OperationEnum operation) {
     this.operation = operation;
     return this;
   }
@@ -157,12 +161,12 @@ public class CatalogsUpdateRetailItem {
     return operation;
   }
 
-  public void setOperation(OperationEnum operation) {
+  public void setOperation(@javax.annotation.Nonnull OperationEnum operation) {
     this.operation = operation;
   }
 
 
-  public CatalogsUpdateRetailItem attributes(UpdatableItemAttributes attributes) {
+  public CatalogsUpdateRetailItem attributes(@javax.annotation.Nonnull UpdatableItemAttributes attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -176,12 +180,12 @@ public class CatalogsUpdateRetailItem {
     return attributes;
   }
 
-  public void setAttributes(UpdatableItemAttributes attributes) {
+  public void setAttributes(@javax.annotation.Nonnull UpdatableItemAttributes attributes) {
     this.attributes = attributes;
   }
 
 
-  public CatalogsUpdateRetailItem updateMask(List<UpdateMaskFieldType> updateMask) {
+  public CatalogsUpdateRetailItem updateMask(@javax.annotation.Nullable List<UpdateMaskFieldType> updateMask) {
     this.updateMask = updateMask;
     return this;
   }
@@ -203,7 +207,7 @@ public class CatalogsUpdateRetailItem {
     return updateMask;
   }
 
-  public void setUpdateMask(List<UpdateMaskFieldType> updateMask) {
+  public void setUpdateMask(@javax.annotation.Nullable List<UpdateMaskFieldType> updateMask) {
     this.updateMask = updateMask;
   }
 

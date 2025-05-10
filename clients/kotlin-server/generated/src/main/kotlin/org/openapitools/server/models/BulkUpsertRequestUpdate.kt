@@ -17,6 +17,7 @@ import org.openapitools.server.models.CampaignUpdateRequest
 import org.openapitools.server.models.KeywordUpdate
 import org.openapitools.server.models.ProductGroupPromotionUpdateRequest
 
+import kotlinx.serialization.Serializable
 /**
  * Request for creation of entities in bulk.
  * @param campaigns 
@@ -25,11 +26,12 @@ import org.openapitools.server.models.ProductGroupPromotionUpdateRequest
  * @param productGroups 
  * @param keywords 
  */
+@Serializable
 data class BulkUpsertRequestUpdate(
     val campaigns: kotlin.collections.List<CampaignUpdateRequest>? = null,
     val adGroups: kotlin.collections.List<AdGroupUpdateRequest>? = null,
     val ads: kotlin.collections.List<AdUpdateRequest>? = null,
     val productGroups: kotlin.collections.List<ProductGroupPromotionUpdateRequest>? = null,
     val keywords: kotlin.collections.List<KeywordUpdate>? = null
-) 
+)
 

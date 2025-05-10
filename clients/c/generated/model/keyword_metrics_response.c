@@ -5,7 +5,7 @@
 
 
 
-keyword_metrics_response_t *keyword_metrics_response_create(
+static keyword_metrics_response_t *keyword_metrics_response_create_internal(
     char *keyword,
     keyword_metrics_t *metrics
     ) {
@@ -16,12 +16,26 @@ keyword_metrics_response_t *keyword_metrics_response_create(
     keyword_metrics_response_local_var->keyword = keyword;
     keyword_metrics_response_local_var->metrics = metrics;
 
+    keyword_metrics_response_local_var->_library_owned = 1;
     return keyword_metrics_response_local_var;
 }
 
+__attribute__((deprecated)) keyword_metrics_response_t *keyword_metrics_response_create(
+    char *keyword,
+    keyword_metrics_t *metrics
+    ) {
+    return keyword_metrics_response_create_internal (
+        keyword,
+        metrics
+        );
+}
 
 void keyword_metrics_response_free(keyword_metrics_response_t *keyword_metrics_response) {
     if(NULL == keyword_metrics_response){
+        return ;
+    }
+    if(keyword_metrics_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "keyword_metrics_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -76,6 +90,9 @@ keyword_metrics_response_t *keyword_metrics_response_parseFromJSON(cJSON *keywor
 
     // keyword_metrics_response->keyword
     cJSON *keyword = cJSON_GetObjectItemCaseSensitive(keyword_metrics_responseJSON, "keyword");
+    if (cJSON_IsNull(keyword)) {
+        keyword = NULL;
+    }
     if (keyword) { 
     if(!cJSON_IsString(keyword) && !cJSON_IsNull(keyword))
     {
@@ -85,12 +102,15 @@ keyword_metrics_response_t *keyword_metrics_response_parseFromJSON(cJSON *keywor
 
     // keyword_metrics_response->metrics
     cJSON *metrics = cJSON_GetObjectItemCaseSensitive(keyword_metrics_responseJSON, "metrics");
+    if (cJSON_IsNull(metrics)) {
+        metrics = NULL;
+    }
     if (metrics) { 
     metrics_local_nonprim = keyword_metrics_parseFromJSON(metrics); //nonprimitive
     }
 
 
-    keyword_metrics_response_local_var = keyword_metrics_response_create (
+    keyword_metrics_response_local_var = keyword_metrics_response_create_internal (
         keyword && !cJSON_IsNull(keyword) ? strdup(keyword->valuestring) : NULL,
         metrics ? metrics_local_nonprim : NULL
         );

@@ -21,10 +21,20 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("user_following_get_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class UserFollowingGet200Response   {
   private @Valid List<@Valid UserSummary> items = new ArrayList<>();
   private String bookmark;
+
+  public UserFollowingGet200Response() {
+  }
+
+  @JsonCreator
+  public UserFollowingGet200Response(
+    @JsonProperty(required = true, value = "items") List<@Valid UserSummary> items
+  ) {
+    this.items = items;
+  }
 
   /**
    * Users
@@ -36,12 +46,12 @@ public class UserFollowingGet200Response   {
 
   
   @ApiModelProperty(required = true, value = "Users")
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   @NotNull @Valid public List<@Valid UserSummary> getItems() {
     return items;
   }
 
-  @JsonProperty("items")
+  @JsonProperty(required = true, value = "items")
   public void setItems(List<@Valid UserSummary> items) {
     this.items = items;
   }

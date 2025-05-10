@@ -49,20 +49,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ProductGroupAnalyticsResponseInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ProductGroupAnalyticsResponseInner {
   public static final String SERIALIZED_NAME_P_R_O_D_U_C_T_G_R_O_U_P_I_D = "PRODUCT_GROUP_ID";
   @SerializedName(SERIALIZED_NAME_P_R_O_D_U_C_T_G_R_O_U_P_I_D)
+  @javax.annotation.Nonnull
   private String PRODUCT_GROUP_ID;
 
   public static final String SERIALIZED_NAME_D_A_T_E = "DATE";
   @SerializedName(SERIALIZED_NAME_D_A_T_E)
+  @javax.annotation.Nullable
   private LocalDate DATE;
 
   public ProductGroupAnalyticsResponseInner() {
   }
 
-  public ProductGroupAnalyticsResponseInner PRODUCT_GROUP_ID(String PRODUCT_GROUP_ID) {
+  public ProductGroupAnalyticsResponseInner PRODUCT_GROUP_ID(@javax.annotation.Nonnull String PRODUCT_GROUP_ID) {
     this.PRODUCT_GROUP_ID = PRODUCT_GROUP_ID;
     return this;
   }
@@ -76,12 +78,12 @@ public class ProductGroupAnalyticsResponseInner {
     return PRODUCT_GROUP_ID;
   }
 
-  public void setPRODUCTGROUPID(String PRODUCT_GROUP_ID) {
+  public void setPRODUCTGROUPID(@javax.annotation.Nonnull String PRODUCT_GROUP_ID) {
     this.PRODUCT_GROUP_ID = PRODUCT_GROUP_ID;
   }
 
 
-  public ProductGroupAnalyticsResponseInner DATE(LocalDate DATE) {
+  public ProductGroupAnalyticsResponseInner DATE(@javax.annotation.Nullable LocalDate DATE) {
     this.DATE = DATE;
     return this;
   }
@@ -95,7 +97,7 @@ public class ProductGroupAnalyticsResponseInner {
     return DATE;
   }
 
-  public void setDATE(LocalDate DATE) {
+  public void setDATE(@javax.annotation.Nullable LocalDate DATE) {
     this.DATE = DATE;
   }
 

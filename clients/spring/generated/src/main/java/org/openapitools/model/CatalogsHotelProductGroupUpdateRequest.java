@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsHotelProductGroupFilters;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -27,7 +28,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsHotelProductGroupUpdateRequest", description = "Request object for updating a hotel product group.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsHotelProductGroupUpdateRequest implements CatalogsVerticalProductGroupUpdateRequest {
 
   /**
@@ -63,13 +64,13 @@ public class CatalogsHotelProductGroupUpdateRequest implements CatalogsVerticalP
     }
   }
 
-  private CatalogTypeEnum catalogType;
+  private @Nullable CatalogTypeEnum catalogType;
 
-  private String name;
+  private @Nullable String name;
 
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
-  private CatalogsHotelProductGroupFilters filters;
+  private @Nullable CatalogsHotelProductGroupFilters filters;
 
   public CatalogsHotelProductGroupUpdateRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;

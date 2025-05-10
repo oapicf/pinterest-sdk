@@ -163,10 +163,35 @@ SSIOEditInsertionOrderRequest <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return SSIOEditInsertionOrderRequest in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return SSIOEditInsertionOrderRequest as a base R list.
+    #' @examples
+    #' # convert array of SSIOEditInsertionOrderRequest (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert SSIOEditInsertionOrderRequest to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       SSIOEditInsertionOrderRequestObject <- list()
       if (!is.null(self$`start_date`)) {
         SSIOEditInsertionOrderRequestObject[["start_date"]] <-
@@ -232,7 +257,7 @@ SSIOEditInsertionOrderRequest <- R6::R6Class(
         SSIOEditInsertionOrderRequestObject[["ads_manager_order_line_id"]] <-
           self$`ads_manager_order_line_id`
       }
-      SSIOEditInsertionOrderRequestObject
+      return(SSIOEditInsertionOrderRequestObject)
     },
 
     #' @description
@@ -295,141 +320,13 @@ SSIOEditInsertionOrderRequest <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return SSIOEditInsertionOrderRequest in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`start_date`)) {
-          sprintf(
-          '"start_date":
-            "%s"
-                    ',
-          self$`start_date`
-          )
-        },
-        if (!is.null(self$`end_date`)) {
-          sprintf(
-          '"end_date":
-            "%s"
-                    ',
-          self$`end_date`
-          )
-        },
-        if (!is.null(self$`po_number`)) {
-          sprintf(
-          '"po_number":
-            "%s"
-                    ',
-          self$`po_number`
-          )
-        },
-        if (!is.null(self$`budget_amount`)) {
-          sprintf(
-          '"budget_amount":
-            %d
-                    ',
-          self$`budget_amount`
-          )
-        },
-        if (!is.null(self$`billing_contact_firstname`)) {
-          sprintf(
-          '"billing_contact_firstname":
-            "%s"
-                    ',
-          self$`billing_contact_firstname`
-          )
-        },
-        if (!is.null(self$`billing_contact_lastname`)) {
-          sprintf(
-          '"billing_contact_lastname":
-            "%s"
-                    ',
-          self$`billing_contact_lastname`
-          )
-        },
-        if (!is.null(self$`billing_contact_email`)) {
-          sprintf(
-          '"billing_contact_email":
-            "%s"
-                    ',
-          self$`billing_contact_email`
-          )
-        },
-        if (!is.null(self$`media_contact_firstname`)) {
-          sprintf(
-          '"media_contact_firstname":
-            "%s"
-                    ',
-          self$`media_contact_firstname`
-          )
-        },
-        if (!is.null(self$`media_contact_lastname`)) {
-          sprintf(
-          '"media_contact_lastname":
-            "%s"
-                    ',
-          self$`media_contact_lastname`
-          )
-        },
-        if (!is.null(self$`media_contact_email`)) {
-          sprintf(
-          '"media_contact_email":
-            "%s"
-                    ',
-          self$`media_contact_email`
-          )
-        },
-        if (!is.null(self$`agency_link`)) {
-          sprintf(
-          '"agency_link":
-            "%s"
-                    ',
-          self$`agency_link`
-          )
-        },
-        if (!is.null(self$`user_email`)) {
-          sprintf(
-          '"user_email":
-            "%s"
-                    ',
-          self$`user_email`
-          )
-        },
-        if (!is.null(self$`oracle_line_id`)) {
-          sprintf(
-          '"oracle_line_id":
-            "%s"
-                    ',
-          self$`oracle_line_id`
-          )
-        },
-        if (!is.null(self$`salesforce_order_id`)) {
-          sprintf(
-          '"salesforce_order_id":
-            "%s"
-                    ',
-          self$`salesforce_order_id`
-          )
-        },
-        if (!is.null(self$`salesforce_order_line_id`)) {
-          sprintf(
-          '"salesforce_order_line_id":
-            "%s"
-                    ',
-          self$`salesforce_order_line_id`
-          )
-        },
-        if (!is.null(self$`ads_manager_order_line_id`)) {
-          sprintf(
-          '"ads_manager_order_line_id":
-            "%s"
-                    ',
-          self$`ads_manager_order_line_id`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

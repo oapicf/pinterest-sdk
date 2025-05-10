@@ -24,9 +24,9 @@ char* bulk_upsert_status_bulk_upsert_status_ToString(pinterest_rest_api_bulk_ups
 
 pinterest_rest_api_bulk_upsert_status__e bulk_upsert_status_bulk_upsert_status_FromString(char* bulk_upsert_status);
 
-//cJSON *bulk_upsert_status_bulk_upsert_status_convertToJSON(pinterest_rest_api_bulk_upsert_status__e bulk_upsert_status);
+cJSON *bulk_upsert_status_convertToJSON(pinterest_rest_api_bulk_upsert_status__e bulk_upsert_status);
 
-//pinterest_rest_api_bulk_upsert_status__e bulk_upsert_status_bulk_upsert_status_parseFromJSON(cJSON *bulk_upsert_statusJSON);
+pinterest_rest_api_bulk_upsert_status__e bulk_upsert_status_parseFromJSON(cJSON *bulk_upsert_statusJSON);
 
 #endif /* _bulk_upsert_status_H_ */
 

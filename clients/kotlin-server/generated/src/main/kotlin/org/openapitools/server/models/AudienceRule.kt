@@ -14,6 +14,7 @@ package org.openapitools.server.models
 import org.openapitools.server.models.ObjectiveType
 import org.openapitools.server.models.PinterestTagEventData
 
+import kotlinx.serialization.Serializable
 /**
  * JSON object defining targeted audience users. Example rule formats per audience type:<br>CUSTOMER_LIST: { \"customer_list_id\": \"&lt;customer list ID&gt;\"}<br>ACTALIKE: { \"seed_id\": [\"&lt;audience ID&gt;\"], \"country\": \"US\", \"percentage\": \"10\" }<br>(Valid countries include: \"US\", \"CA\", and \"GB\". Percentage should be 1-10.<br>The targeted audience should be this % size across Pinterest.)<br>VISITOR: { \"visitor_source_id\": [\"&lt;conversion tag ID&gt;\"], \"retention_days\": \"180\", \"event_source\": {\"=\": [\"web\", \"mobile\"]}, \"ingestion_source\": {\"=\": [\"tag\"]}}<br>(Retention days should be 1-540. Retention applies to specific customers.)<br>ENGAGEMENT: {\"engagement_domain\": [\"www.entomi.com\"], \"engager_type\": 1}<br>For more details on engagement audiences, see <a href=\"/docs/redoc/adtech_ads_v4/#section/November-2021\" target=\"_blank\">November 2021 changelog</a>.
  * @param country Valid countries include: \"US\", \"CA\", and \"GB\".
@@ -37,6 +38,7 @@ import org.openapitools.server.models.PinterestTagEventData
  * @param objectiveType Objective for engagement audience filter.
  * @param adAccountId Ad account ID.
  */
+@Serializable
 data class AudienceRule(
     /* Valid countries include: \"US\", \"CA\", and \"GB\". */
     val country: kotlin.String? = null,
@@ -77,5 +79,5 @@ data class AudienceRule(
     val objectiveType: kotlin.collections.List<ObjectiveType>? = null,
     /* Ad account ID. */
     val adAccountId: kotlin.String? = null
-) 
+)
 

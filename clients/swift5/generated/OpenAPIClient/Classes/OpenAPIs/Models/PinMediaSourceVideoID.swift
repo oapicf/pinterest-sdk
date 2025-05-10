@@ -17,10 +17,10 @@ public struct PinMediaSourceVideoID: Codable, JSONEncodable, Hashable {
         case videoId = "video_id"
     }
     public enum CoverImageContentType: String, Codable, CaseIterable {
-        case jpeg = "image/jpeg"
-        case png = "image/png"
+        case imageSlashJpeg = "image/jpeg"
+        case imageSlashPng = "image/png"
     }
-    static let mediaIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let mediaIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public var sourceType: SourceType
     /** Cover image url. */
     public var coverImageUrl: String?

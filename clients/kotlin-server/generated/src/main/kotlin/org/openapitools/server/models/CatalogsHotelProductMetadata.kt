@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Hotel product metadata entity
  * @param hotelId The user-created unique ID that represents the hotel item.
  */
+@Serializable
 data class CatalogsHotelProductMetadata(
     /* The user-created unique ID that represents the hotel item. */
     val hotelId: kotlin.String
-) 
+)
 

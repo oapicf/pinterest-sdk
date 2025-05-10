@@ -48,28 +48,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * PinMediaWithImageAllOfImages
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMediaWithImageAllOfImages {
   public static final String SERIALIZED_NAME_150X150 = "150x150";
   @SerializedName(SERIALIZED_NAME_150X150)
+  @javax.annotation.Nullable
   private Object _150x150;
 
   public static final String SERIALIZED_NAME_400X300 = "400x300";
   @SerializedName(SERIALIZED_NAME_400X300)
+  @javax.annotation.Nullable
   private Object _400x300;
 
   public static final String SERIALIZED_NAME_600X = "600x";
   @SerializedName(SERIALIZED_NAME_600X)
+  @javax.annotation.Nullable
   private Object _600x;
 
   public static final String SERIALIZED_NAME_1200X = "1200x";
   @SerializedName(SERIALIZED_NAME_1200X)
+  @javax.annotation.Nullable
   private Object _1200x;
 
   public PinMediaWithImageAllOfImages() {
   }
 
-  public PinMediaWithImageAllOfImages _150x150(Object _150x150) {
+  public PinMediaWithImageAllOfImages _150x150(@javax.annotation.Nullable Object _150x150) {
     this._150x150 = _150x150;
     return this;
   }
@@ -83,12 +87,12 @@ public class PinMediaWithImageAllOfImages {
     return _150x150;
   }
 
-  public void set150x150(Object _150x150) {
+  public void set150x150(@javax.annotation.Nullable Object _150x150) {
     this._150x150 = _150x150;
   }
 
 
-  public PinMediaWithImageAllOfImages _400x300(Object _400x300) {
+  public PinMediaWithImageAllOfImages _400x300(@javax.annotation.Nullable Object _400x300) {
     this._400x300 = _400x300;
     return this;
   }
@@ -102,12 +106,12 @@ public class PinMediaWithImageAllOfImages {
     return _400x300;
   }
 
-  public void set400x300(Object _400x300) {
+  public void set400x300(@javax.annotation.Nullable Object _400x300) {
     this._400x300 = _400x300;
   }
 
 
-  public PinMediaWithImageAllOfImages _600x(Object _600x) {
+  public PinMediaWithImageAllOfImages _600x(@javax.annotation.Nullable Object _600x) {
     this._600x = _600x;
     return this;
   }
@@ -121,12 +125,12 @@ public class PinMediaWithImageAllOfImages {
     return _600x;
   }
 
-  public void set600x(Object _600x) {
+  public void set600x(@javax.annotation.Nullable Object _600x) {
     this._600x = _600x;
   }
 
 
-  public PinMediaWithImageAllOfImages _1200x(Object _1200x) {
+  public PinMediaWithImageAllOfImages _1200x(@javax.annotation.Nullable Object _1200x) {
     this._1200x = _1200x;
     return this;
   }
@@ -140,7 +144,7 @@ public class PinMediaWithImageAllOfImages {
     return _1200x;
   }
 
-  public void set1200x(Object _1200x) {
+  public void set1200x(@javax.annotation.Nullable Object _1200x) {
     this._1200x = _1200x;
   }
 

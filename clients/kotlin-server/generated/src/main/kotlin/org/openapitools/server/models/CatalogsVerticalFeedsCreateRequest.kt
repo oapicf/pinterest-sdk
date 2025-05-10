@@ -24,6 +24,7 @@ import org.openapitools.server.models.Country
 import org.openapitools.server.models.NullableCurrency
 import org.openapitools.server.models.ProductAvailabilityType
 
+import kotlinx.serialization.Serializable
 /**
  * Request object for creating a feed.
  * @param name A human-friendly name associated to a given feed.
@@ -39,6 +40,7 @@ import org.openapitools.server.models.ProductAvailabilityType
  * @param status 
  * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
  */
+@Serializable
 data class CatalogsVerticalFeedsCreateRequest(
     /* A human-friendly name associated to a given feed. */
     val name: kotlin.String,
@@ -55,7 +57,7 @@ data class CatalogsVerticalFeedsCreateRequest(
     val status: CatalogsStatus? = null,
     /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. */
     val catalogId: kotlin.String? = null
-) 
+)
 {
 }
 

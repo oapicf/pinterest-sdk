@@ -83,11 +83,11 @@ export function VideoMetadataFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-  export function VideoMetadataToJSON(json: any): VideoMetadata {
-      return VideoMetadataToJSONTyped(json, false);
-  }
+export function VideoMetadataToJSON(json: any): VideoMetadata {
+    return VideoMetadataToJSONTyped(json, false);
+}
 
-  export function VideoMetadataToJSONTyped(value?: VideoMetadata | null, ignoreDiscriminator: boolean = false): any {
+export function VideoMetadataToJSONTyped(value?: VideoMetadata | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

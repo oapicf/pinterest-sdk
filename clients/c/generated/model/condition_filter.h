@@ -22,9 +22,10 @@ typedef struct condition_filter_t condition_filter_t;
 typedef struct condition_filter_t {
     catalogs_product_group_multiple_string_criteria_t *condition; //object
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } condition_filter_t;
 
-condition_filter_t *condition_filter_create(
+__attribute__((deprecated)) condition_filter_t *condition_filter_create(
     catalogs_product_group_multiple_string_criteria_t *condition
 );
 

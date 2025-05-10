@@ -22,7 +22,7 @@ module AdsAnalyticsCreateAsyncRequest =
   //#region AdsAnalyticsCreateAsyncRequest
 
   //#region enums
-  type PrimarySortEnum = IDEnum of string  |  DATEEnum of string  
+  type PrimarySortEnum = BYIDEnum of string  |  BYDATEEnum of string  
   //#endregion
 
   type AdsAnalyticsCreateAsyncRequest = {

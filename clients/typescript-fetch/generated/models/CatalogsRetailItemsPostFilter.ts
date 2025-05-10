@@ -74,11 +74,11 @@ export function CatalogsRetailItemsPostFilterFromJSONTyped(json: any, ignoreDisc
     };
 }
 
-  export function CatalogsRetailItemsPostFilterToJSON(json: any): CatalogsRetailItemsPostFilter {
-      return CatalogsRetailItemsPostFilterToJSONTyped(json, false);
-  }
+export function CatalogsRetailItemsPostFilterToJSON(json: any): CatalogsRetailItemsPostFilter {
+    return CatalogsRetailItemsPostFilterToJSONTyped(json, false);
+}
 
-  export function CatalogsRetailItemsPostFilterToJSONTyped(value?: CatalogsRetailItemsPostFilter | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsRetailItemsPostFilterToJSONTyped(value?: CatalogsRetailItemsPostFilter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

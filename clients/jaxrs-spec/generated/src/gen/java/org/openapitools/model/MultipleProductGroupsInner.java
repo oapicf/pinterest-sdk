@@ -22,13 +22,31 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("multiple_product_groups_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class MultipleProductGroupsInner   {
   private String name;
   private String description;
   private Boolean isFeatured = false;
   private CatalogsProductGroupFiltersRequest filters;
   private String feedId;
+
+  public MultipleProductGroupsInner() {
+  }
+
+  @JsonCreator
+  public MultipleProductGroupsInner(
+    @JsonProperty(required = true, value = "name") String name,
+    @JsonProperty(required = true, value = "filters") CatalogsProductGroupFiltersRequest filters,
+    @JsonProperty(required = true, value = "feed_id") String feedId,
+    @JsonProperty(required = true, value = "catalog_type") CatalogTypeEnum catalogType,
+    @JsonProperty(required = true, value = "catalog_id") String catalogId,
+    @JsonProperty(required = true, value = "country") Country country,
+    @JsonProperty(required = true, value = "locale") CatalogsLocale locale
+  ) {
+    this.name = name;
+    this.filters = filters;
+    this.feedId = feedId;
+  }
 
   /**
    **/
@@ -39,12 +57,12 @@ public class MultipleProductGroupsInner   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("name")
+  @JsonProperty(required = true, value = "name")
   @NotNull public String getName() {
     return name;
   }
 
-  @JsonProperty("name")
+  @JsonProperty(required = true, value = "name")
   public void setName(String name) {
     this.name = name;
   }
@@ -97,12 +115,12 @@ public class MultipleProductGroupsInner   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("filters")
+  @JsonProperty(required = true, value = "filters")
   @NotNull @Valid public CatalogsProductGroupFiltersRequest getFilters() {
     return filters;
   }
 
-  @JsonProperty("filters")
+  @JsonProperty(required = true, value = "filters")
   public void setFilters(CatalogsProductGroupFiltersRequest filters) {
     this.filters = filters;
   }
@@ -117,12 +135,12 @@ public class MultipleProductGroupsInner   {
 
   
   @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog Feed id pertaining to the catalog product group.")
-  @JsonProperty("feed_id")
+  @JsonProperty(required = true, value = "feed_id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getFeedId() {
     return feedId;
   }
 
-  @JsonProperty("feed_id")
+  @JsonProperty(required = true, value = "feed_id")
   public void setFeedId(String feedId) {
     this.feedId = feedId;
   }

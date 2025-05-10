@@ -13,7 +13,7 @@ import org.openapitools.model.Language;
  * Object uniquely identifying a retail catalog item
  */
 @ApiModel(description = "Object uniquely identifying a retail catalog item")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2025-05-10T05:39:24.501669360Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdvancedAuctionKey   {
   @JsonProperty("item_id")
   private String itemId;

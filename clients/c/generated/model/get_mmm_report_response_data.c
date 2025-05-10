@@ -22,7 +22,7 @@ pinterest_rest_api_get_mmm_report_response_data_REPORTSTATUS_e get_mmm_report_re
     return 0;
 }
 
-get_mmm_report_response_data_t *get_mmm_report_response_data_create(
+static get_mmm_report_response_data_t *get_mmm_report_response_data_create_internal(
     pinterest_rest_api_get_mmm_report_response_data_REPORTSTATUS_e report_status,
     char *url,
     double size
@@ -35,12 +35,28 @@ get_mmm_report_response_data_t *get_mmm_report_response_data_create(
     get_mmm_report_response_data_local_var->url = url;
     get_mmm_report_response_data_local_var->size = size;
 
+    get_mmm_report_response_data_local_var->_library_owned = 1;
     return get_mmm_report_response_data_local_var;
 }
 
+__attribute__((deprecated)) get_mmm_report_response_data_t *get_mmm_report_response_data_create(
+    pinterest_rest_api_get_mmm_report_response_data_REPORTSTATUS_e report_status,
+    char *url,
+    double size
+    ) {
+    return get_mmm_report_response_data_create_internal (
+        report_status,
+        url,
+        size
+        );
+}
 
 void get_mmm_report_response_data_free(get_mmm_report_response_data_t *get_mmm_report_response_data) {
     if(NULL == get_mmm_report_response_data){
+        return ;
+    }
+    if(get_mmm_report_response_data->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "get_mmm_report_response_data_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -56,7 +72,7 @@ cJSON *get_mmm_report_response_data_convertToJSON(get_mmm_report_response_data_t
 
     // get_mmm_report_response_data->report_status
     if(get_mmm_report_response_data->report_status != pinterest_rest_api_get_mmm_report_response_data_REPORTSTATUS_NULL) {
-    if(cJSON_AddStringToObject(item, "report_status", report_statusget_mmm_report_response_data_ToString(get_mmm_report_response_data->report_status)) == NULL)
+    if(cJSON_AddStringToObject(item, "report_status", get_mmm_report_response_data_report_status_ToString(get_mmm_report_response_data->report_status)) == NULL)
     {
     goto fail; //Enum
     }
@@ -92,6 +108,9 @@ get_mmm_report_response_data_t *get_mmm_report_response_data_parseFromJSON(cJSON
 
     // get_mmm_report_response_data->report_status
     cJSON *report_status = cJSON_GetObjectItemCaseSensitive(get_mmm_report_response_dataJSON, "report_status");
+    if (cJSON_IsNull(report_status)) {
+        report_status = NULL;
+    }
     pinterest_rest_api_get_mmm_report_response_data_REPORTSTATUS_e report_statusVariable;
     if (report_status) { 
     if(!cJSON_IsString(report_status))
@@ -103,6 +122,9 @@ get_mmm_report_response_data_t *get_mmm_report_response_data_parseFromJSON(cJSON
 
     // get_mmm_report_response_data->url
     cJSON *url = cJSON_GetObjectItemCaseSensitive(get_mmm_report_response_dataJSON, "url");
+    if (cJSON_IsNull(url)) {
+        url = NULL;
+    }
     if (url) { 
     if(!cJSON_IsString(url) && !cJSON_IsNull(url))
     {
@@ -112,6 +134,9 @@ get_mmm_report_response_data_t *get_mmm_report_response_data_parseFromJSON(cJSON
 
     // get_mmm_report_response_data->size
     cJSON *size = cJSON_GetObjectItemCaseSensitive(get_mmm_report_response_dataJSON, "size");
+    if (cJSON_IsNull(size)) {
+        size = NULL;
+    }
     if (size) { 
     if(!cJSON_IsNumber(size))
     {
@@ -120,7 +145,7 @@ get_mmm_report_response_data_t *get_mmm_report_response_data_parseFromJSON(cJSON
     }
 
 
-    get_mmm_report_response_data_local_var = get_mmm_report_response_data_create (
+    get_mmm_report_response_data_local_var = get_mmm_report_response_data_create_internal (
         report_status ? report_statusVariable : pinterest_rest_api_get_mmm_report_response_data_REPORTSTATUS_NULL,
         url && !cJSON_IsNull(url) ? strdup(url->valuestring) : NULL,
         size ? size->valuedouble : 0

@@ -20,10 +20,20 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AuthRespondInvitesBody_invites_inner_action")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AuthRespondInvitesBodyInvitesInnerAction   {
   private Boolean acceptInvite;
   private @Valid Map<String, List<Permissions>> assetIdToPermissions = new HashMap<>();
+
+  public AuthRespondInvitesBodyInvitesInnerAction() {
+  }
+
+  @JsonCreator
+  public AuthRespondInvitesBodyInvitesInnerAction(
+    @JsonProperty(required = true, value = "accept_invite") Boolean acceptInvite
+  ) {
+    this.acceptInvite = acceptInvite;
+  }
 
   /**
    * Whether the invite/request is accepted.
@@ -35,12 +45,12 @@ public class AuthRespondInvitesBodyInvitesInnerAction   {
 
   
   @ApiModelProperty(required = true, value = "Whether the invite/request is accepted.")
-  @JsonProperty("accept_invite")
+  @JsonProperty(required = true, value = "accept_invite")
   @NotNull public Boolean getAcceptInvite() {
     return acceptInvite;
   }
 
-  @JsonProperty("accept_invite")
+  @JsonProperty(required = true, value = "accept_invite")
   public void setAcceptInvite(Boolean acceptInvite) {
     this.acceptInvite = acceptInvite;
   }

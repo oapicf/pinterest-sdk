@@ -15,8 +15,11 @@
 export type BatchOperationStatus = 'PROCESSING' | 'COMPLETED' | 'FAILED';
 
 export const BatchOperationStatus = {
+
     Processing: 'PROCESSING' as BatchOperationStatus,
+
     Completed: 'COMPLETED' as BatchOperationStatus,
+
     Failed: 'FAILED' as BatchOperationStatus
 };
 

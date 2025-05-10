@@ -13,14 +13,16 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.MatchType
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param matchType 
  * @param `value` The keyword targeting (120 chars max).
  */
+@Serializable
 data class TargetingTemplateKeyword(
     val matchType: MatchType? = null,
     /* The keyword targeting (120 chars max). */
     val `value`: kotlin.String? = null
-) 
+)
 

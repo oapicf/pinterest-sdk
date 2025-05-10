@@ -14,6 +14,7 @@ package org.openapitools.server.models
 import org.openapitools.server.models.IntegrationLogClientError
 import org.openapitools.server.models.IntegrationLogClientRequest
 
+import kotlinx.serialization.Serializable
 /**
  * Schema for log sent from an integration application.
  * @param clientTimestamp Timestamp in milliseconds of when the log was executed at the client.
@@ -30,6 +31,7 @@ import org.openapitools.server.models.IntegrationLogClientRequest
  * @param error 
  * @param request 
  */
+@Serializable
 data class IntegrationLog(
     /* Timestamp in milliseconds of when the log was executed at the client. */
     val clientTimestamp: kotlin.Int,
@@ -50,7 +52,7 @@ data class IntegrationLog(
     val platformVersionNumber: kotlin.String? = null,
     val error: IntegrationLogClientError? = null,
     val request: IntegrationLogClientRequest? = null
-) 
+)
 {
     /**
     * Log event type

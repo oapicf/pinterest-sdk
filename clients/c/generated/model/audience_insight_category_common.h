@@ -25,9 +25,10 @@ typedef struct audience_insight_category_common_t {
     double index; //numeric
     char *id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } audience_insight_category_common_t;
 
-audience_insight_category_common_t *audience_insight_category_common_create(
+__attribute__((deprecated)) audience_insight_category_common_t *audience_insight_category_common_create(
     char *key,
     char *name,
     double ratio,

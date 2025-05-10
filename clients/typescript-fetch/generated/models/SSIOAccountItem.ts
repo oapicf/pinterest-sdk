@@ -112,11 +112,11 @@ export function SSIOAccountItemFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-  export function SSIOAccountItemToJSON(json: any): SSIOAccountItem {
-      return SSIOAccountItemToJSONTyped(json, false);
-  }
+export function SSIOAccountItemToJSON(json: any): SSIOAccountItem {
+    return SSIOAccountItemToJSONTyped(json, false);
+}
 
-  export function SSIOAccountItemToJSONTyped(value?: SSIOAccountItem | null, ignoreDiscriminator: boolean = false): any {
+export function SSIOAccountItemToJSONTyped(value?: SSIOAccountItem | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

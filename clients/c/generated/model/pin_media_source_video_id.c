@@ -39,7 +39,7 @@ pinterest_rest_api_pin_media_source_video_id_COVERIMAGECONTENTTYPE_e pin_media_s
     return 0;
 }
 
-pin_media_source_video_id_t *pin_media_source_video_id_create(
+static pin_media_source_video_id_t *pin_media_source_video_id_create_internal(
     pinterest_rest_api_pin_media_source_video_id_SOURCETYPE_e source_type,
     char *cover_image_url,
     pinterest_rest_api_pin_media_source_video_id_COVERIMAGECONTENTTYPE_e cover_image_content_type,
@@ -58,12 +58,34 @@ pin_media_source_video_id_t *pin_media_source_video_id_create(
     pin_media_source_video_id_local_var->media_id = media_id;
     pin_media_source_video_id_local_var->is_standard = is_standard;
 
+    pin_media_source_video_id_local_var->_library_owned = 1;
     return pin_media_source_video_id_local_var;
 }
 
+__attribute__((deprecated)) pin_media_source_video_id_t *pin_media_source_video_id_create(
+    pinterest_rest_api_pin_media_source_video_id_SOURCETYPE_e source_type,
+    char *cover_image_url,
+    pinterest_rest_api_pin_media_source_video_id_COVERIMAGECONTENTTYPE_e cover_image_content_type,
+    char *cover_image_data,
+    char *media_id,
+    int is_standard
+    ) {
+    return pin_media_source_video_id_create_internal (
+        source_type,
+        cover_image_url,
+        cover_image_content_type,
+        cover_image_data,
+        media_id,
+        is_standard
+        );
+}
 
 void pin_media_source_video_id_free(pin_media_source_video_id_t *pin_media_source_video_id) {
     if(NULL == pin_media_source_video_id){
+        return ;
+    }
+    if(pin_media_source_video_id->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "pin_media_source_video_id_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -89,7 +111,7 @@ cJSON *pin_media_source_video_id_convertToJSON(pin_media_source_video_id_t *pin_
     if (pinterest_rest_api_pin_media_source_video_id_SOURCETYPE_NULL == pin_media_source_video_id->source_type) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "source_type", source_typepin_media_source_video_id_ToString(pin_media_source_video_id->source_type)) == NULL)
+    if(cJSON_AddStringToObject(item, "source_type", pin_media_source_video_id_source_type_ToString(pin_media_source_video_id->source_type)) == NULL)
     {
     goto fail; //Enum
     }
@@ -105,7 +127,7 @@ cJSON *pin_media_source_video_id_convertToJSON(pin_media_source_video_id_t *pin_
 
     // pin_media_source_video_id->cover_image_content_type
     if(pin_media_source_video_id->cover_image_content_type != pinterest_rest_api_pin_media_source_video_id_COVERIMAGECONTENTTYPE_NULL) {
-    if(cJSON_AddStringToObject(item, "cover_image_content_type", cover_image_content_typepin_media_source_video_id_ToString(pin_media_source_video_id->cover_image_content_type)) == NULL)
+    if(cJSON_AddStringToObject(item, "cover_image_content_type", pin_media_source_video_id_cover_image_content_type_ToString(pin_media_source_video_id->cover_image_content_type)) == NULL)
     {
     goto fail; //Enum
     }
@@ -150,6 +172,9 @@ pin_media_source_video_id_t *pin_media_source_video_id_parseFromJSON(cJSON *pin_
 
     // pin_media_source_video_id->source_type
     cJSON *source_type = cJSON_GetObjectItemCaseSensitive(pin_media_source_video_idJSON, "source_type");
+    if (cJSON_IsNull(source_type)) {
+        source_type = NULL;
+    }
     if (!source_type) {
         goto end;
     }
@@ -164,6 +189,9 @@ pin_media_source_video_id_t *pin_media_source_video_id_parseFromJSON(cJSON *pin_
 
     // pin_media_source_video_id->cover_image_url
     cJSON *cover_image_url = cJSON_GetObjectItemCaseSensitive(pin_media_source_video_idJSON, "cover_image_url");
+    if (cJSON_IsNull(cover_image_url)) {
+        cover_image_url = NULL;
+    }
     if (cover_image_url) { 
     if(!cJSON_IsString(cover_image_url) && !cJSON_IsNull(cover_image_url))
     {
@@ -173,6 +201,9 @@ pin_media_source_video_id_t *pin_media_source_video_id_parseFromJSON(cJSON *pin_
 
     // pin_media_source_video_id->cover_image_content_type
     cJSON *cover_image_content_type = cJSON_GetObjectItemCaseSensitive(pin_media_source_video_idJSON, "cover_image_content_type");
+    if (cJSON_IsNull(cover_image_content_type)) {
+        cover_image_content_type = NULL;
+    }
     pinterest_rest_api_pin_media_source_video_id_COVERIMAGECONTENTTYPE_e cover_image_content_typeVariable;
     if (cover_image_content_type) { 
     if(!cJSON_IsString(cover_image_content_type))
@@ -184,6 +215,9 @@ pin_media_source_video_id_t *pin_media_source_video_id_parseFromJSON(cJSON *pin_
 
     // pin_media_source_video_id->cover_image_data
     cJSON *cover_image_data = cJSON_GetObjectItemCaseSensitive(pin_media_source_video_idJSON, "cover_image_data");
+    if (cJSON_IsNull(cover_image_data)) {
+        cover_image_data = NULL;
+    }
     if (cover_image_data) { 
     if(!cJSON_IsString(cover_image_data) && !cJSON_IsNull(cover_image_data))
     {
@@ -193,6 +227,9 @@ pin_media_source_video_id_t *pin_media_source_video_id_parseFromJSON(cJSON *pin_
 
     // pin_media_source_video_id->media_id
     cJSON *media_id = cJSON_GetObjectItemCaseSensitive(pin_media_source_video_idJSON, "media_id");
+    if (cJSON_IsNull(media_id)) {
+        media_id = NULL;
+    }
     if (!media_id) {
         goto end;
     }
@@ -205,6 +242,9 @@ pin_media_source_video_id_t *pin_media_source_video_id_parseFromJSON(cJSON *pin_
 
     // pin_media_source_video_id->is_standard
     cJSON *is_standard = cJSON_GetObjectItemCaseSensitive(pin_media_source_video_idJSON, "is_standard");
+    if (cJSON_IsNull(is_standard)) {
+        is_standard = NULL;
+    }
     if (is_standard) { 
     if(!cJSON_IsBool(is_standard))
     {
@@ -213,7 +253,7 @@ pin_media_source_video_id_t *pin_media_source_video_id_parseFromJSON(cJSON *pin_
     }
 
 
-    pin_media_source_video_id_local_var = pin_media_source_video_id_create (
+    pin_media_source_video_id_local_var = pin_media_source_video_id_create_internal (
         source_typeVariable,
         cover_image_url && !cJSON_IsNull(cover_image_url) ? strdup(cover_image_url->valuestring) : NULL,
         cover_image_content_type ? cover_image_content_typeVariable : pinterest_rest_api_pin_media_source_video_id_COVERIMAGECONTENTTYPE_NULL,

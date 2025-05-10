@@ -25,14 +25,18 @@ import Http
 import Json.Decode
 import Json.Encode
 
-{-| Get the text of the terms of service and see whether the advertiser has accepted the terms of service.
+
+{-| Get terms of service
+
+Get the text of the terms of service and see whether the advertiser has accepted the terms of service.
+
 -}
 termsOfServiceGet : String -> Maybe Bool -> Maybe String -> Api.Request Api.Data.TermsOfService
 termsOfServiceGet adAccountId_path includeHtml_query tosType_query =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/terms_of_service"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         [ ( "include_html", Maybe.map (\val -> if val then "true" else "false") includeHtml_query ), ( "tos_type", Maybe.map identity tosType_query ) ]
         []
         Nothing

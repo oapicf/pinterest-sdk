@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.AuthRespondInvitesBodyInvitesInner
 
+import kotlinx.serialization.Serializable
 /**
  * An object with a list of all the invites the user would like to respond to and the action to take.
  * @param invites 
  */
+@Serializable
 data class AuthRespondInvitesBody(
     val invites: kotlin.collections.List<AuthRespondInvitesBodyInvitesInner>
-) 
+)
 

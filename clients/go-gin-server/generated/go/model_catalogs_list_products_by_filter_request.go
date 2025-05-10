@@ -10,10 +10,6 @@
 
 package openapi
 
-import (
-	"gopkg.in/validator.v2"
-)
-
 // CatalogsListProductsByFilterRequest - Request object to list products for a given product group filter.
 type CatalogsListProductsByFilterRequest struct {
 

@@ -1,9 +1,5 @@
 package models
 
-import (
-	"gopkg.in/validator.v2"
-)
-
 type FeedsCreateRequest struct {
 
 	DefaultCurrency *NullableCurrency `json:"default_currency,omitempty"`

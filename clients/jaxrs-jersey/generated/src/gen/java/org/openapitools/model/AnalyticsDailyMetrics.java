@@ -35,7 +35,7 @@ import javax.validation.Valid;
   AnalyticsDailyMetrics.JSON_PROPERTY_DATE,
   AnalyticsDailyMetrics.JSON_PROPERTY_METRICS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-11-05T02:20:07.425136412Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AnalyticsDailyMetrics   {
   public static final String JSON_PROPERTY_DATA_STATUS = "data_status";
   @JsonProperty(JSON_PROPERTY_DATA_STATUS)

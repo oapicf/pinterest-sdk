@@ -13,8 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // CatalogsVerticalFeedsUpdateRequest - Request object for updating a feed.
@@ -147,6 +147,24 @@ func (obj *CatalogsVerticalFeedsUpdateRequest) GetActualInstance() (interface{})
 
 	if obj.CatalogsRetailFeedsUpdateRequest != nil {
 		return obj.CatalogsRetailFeedsUpdateRequest
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj CatalogsVerticalFeedsUpdateRequest) GetActualInstanceValue() (interface{}) {
+	if obj.CatalogsCreativeAssetsFeedsUpdateRequest != nil {
+		return *obj.CatalogsCreativeAssetsFeedsUpdateRequest
+	}
+
+	if obj.CatalogsHotelFeedsUpdateRequest != nil {
+		return *obj.CatalogsHotelFeedsUpdateRequest
+	}
+
+	if obj.CatalogsRetailFeedsUpdateRequest != nil {
+		return *obj.CatalogsRetailFeedsUpdateRequest
 	}
 
 	// all schemas are nil

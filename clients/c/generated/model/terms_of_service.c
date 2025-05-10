@@ -5,7 +5,7 @@
 
 
 
-terms_of_service_t *terms_of_service_create(
+static terms_of_service_t *terms_of_service_create_internal(
     char *id,
     char *html,
     int has_accepted,
@@ -20,12 +20,30 @@ terms_of_service_t *terms_of_service_create(
     terms_of_service_local_var->has_accepted = has_accepted;
     terms_of_service_local_var->ad_account_id = ad_account_id;
 
+    terms_of_service_local_var->_library_owned = 1;
     return terms_of_service_local_var;
 }
 
+__attribute__((deprecated)) terms_of_service_t *terms_of_service_create(
+    char *id,
+    char *html,
+    int has_accepted,
+    char *ad_account_id
+    ) {
+    return terms_of_service_create_internal (
+        id,
+        html,
+        has_accepted,
+        ad_account_id
+        );
+}
 
 void terms_of_service_free(terms_of_service_t *terms_of_service) {
     if(NULL == terms_of_service){
+        return ;
+    }
+    if(terms_of_service->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "terms_of_service_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -92,6 +110,9 @@ terms_of_service_t *terms_of_service_parseFromJSON(cJSON *terms_of_serviceJSON){
 
     // terms_of_service->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(terms_of_serviceJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -101,6 +122,9 @@ terms_of_service_t *terms_of_service_parseFromJSON(cJSON *terms_of_serviceJSON){
 
     // terms_of_service->html
     cJSON *html = cJSON_GetObjectItemCaseSensitive(terms_of_serviceJSON, "html");
+    if (cJSON_IsNull(html)) {
+        html = NULL;
+    }
     if (html) { 
     if(!cJSON_IsString(html) && !cJSON_IsNull(html))
     {
@@ -110,6 +134,9 @@ terms_of_service_t *terms_of_service_parseFromJSON(cJSON *terms_of_serviceJSON){
 
     // terms_of_service->has_accepted
     cJSON *has_accepted = cJSON_GetObjectItemCaseSensitive(terms_of_serviceJSON, "has_accepted");
+    if (cJSON_IsNull(has_accepted)) {
+        has_accepted = NULL;
+    }
     if (has_accepted) { 
     if(!cJSON_IsBool(has_accepted))
     {
@@ -119,6 +146,9 @@ terms_of_service_t *terms_of_service_parseFromJSON(cJSON *terms_of_serviceJSON){
 
     // terms_of_service->ad_account_id
     cJSON *ad_account_id = cJSON_GetObjectItemCaseSensitive(terms_of_serviceJSON, "ad_account_id");
+    if (cJSON_IsNull(ad_account_id)) {
+        ad_account_id = NULL;
+    }
     if (ad_account_id) { 
     if(!cJSON_IsString(ad_account_id) && !cJSON_IsNull(ad_account_id))
     {
@@ -127,7 +157,7 @@ terms_of_service_t *terms_of_service_parseFromJSON(cJSON *terms_of_serviceJSON){
     }
 
 
-    terms_of_service_local_var = terms_of_service_create (
+    terms_of_service_local_var = terms_of_service_create_internal (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         html && !cJSON_IsNull(html) ? strdup(html->valuestring) : NULL,
         has_accepted ? has_accepted->valueint : 0,

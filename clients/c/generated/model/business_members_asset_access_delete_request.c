@@ -5,7 +5,7 @@
 
 
 
-business_members_asset_access_delete_request_t *business_members_asset_access_delete_request_create(
+static business_members_asset_access_delete_request_t *business_members_asset_access_delete_request_create_internal(
     list_t *accesses
     ) {
     business_members_asset_access_delete_request_t *business_members_asset_access_delete_request_local_var = malloc(sizeof(business_members_asset_access_delete_request_t));
@@ -14,12 +14,24 @@ business_members_asset_access_delete_request_t *business_members_asset_access_de
     }
     business_members_asset_access_delete_request_local_var->accesses = accesses;
 
+    business_members_asset_access_delete_request_local_var->_library_owned = 1;
     return business_members_asset_access_delete_request_local_var;
 }
 
+__attribute__((deprecated)) business_members_asset_access_delete_request_t *business_members_asset_access_delete_request_create(
+    list_t *accesses
+    ) {
+    return business_members_asset_access_delete_request_create_internal (
+        accesses
+        );
+}
 
 void business_members_asset_access_delete_request_free(business_members_asset_access_delete_request_t *business_members_asset_access_delete_request) {
     if(NULL == business_members_asset_access_delete_request){
+        return ;
+    }
+    if(business_members_asset_access_delete_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "business_members_asset_access_delete_request_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -73,6 +85,9 @@ business_members_asset_access_delete_request_t *business_members_asset_access_de
 
     // business_members_asset_access_delete_request->accesses
     cJSON *accesses = cJSON_GetObjectItemCaseSensitive(business_members_asset_access_delete_requestJSON, "accesses");
+    if (cJSON_IsNull(accesses)) {
+        accesses = NULL;
+    }
     if (!accesses) {
         goto end;
     }
@@ -96,7 +111,7 @@ business_members_asset_access_delete_request_t *business_members_asset_access_de
     }
 
 
-    business_members_asset_access_delete_request_local_var = business_members_asset_access_delete_request_create (
+    business_members_asset_access_delete_request_local_var = business_members_asset_access_delete_request_create_internal (
         accessesList
         );
 

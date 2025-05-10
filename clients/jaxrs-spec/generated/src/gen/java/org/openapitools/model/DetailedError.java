@@ -17,11 +17,25 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Used for including extra details to a base error")
 @JsonTypeName("DetailedError")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class DetailedError   {
   private Integer code;
   private String message;
   private Object details;
+
+  public DetailedError() {
+  }
+
+  @JsonCreator
+  public DetailedError(
+    @JsonProperty(required = true, value = "code") Integer code,
+    @JsonProperty(required = true, value = "message") String message,
+    @JsonProperty(required = true, value = "details") Object details
+  ) {
+    this.code = code;
+    this.message = message;
+    this.details = details;
+  }
 
   /**
    **/
@@ -32,12 +46,12 @@ public class DetailedError   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("code")
+  @JsonProperty(required = true, value = "code")
   @NotNull public Integer getCode() {
     return code;
   }
 
-  @JsonProperty("code")
+  @JsonProperty(required = true, value = "code")
   public void setCode(Integer code) {
     this.code = code;
   }
@@ -51,12 +65,12 @@ public class DetailedError   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("message")
+  @JsonProperty(required = true, value = "message")
   @NotNull public String getMessage() {
     return message;
   }
 
-  @JsonProperty("message")
+  @JsonProperty(required = true, value = "message")
   public void setMessage(String message) {
     this.message = message;
   }
@@ -70,12 +84,12 @@ public class DetailedError   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("details")
+  @JsonProperty(required = true, value = "details")
   @NotNull public Object getDetails() {
     return details;
   }
 
-  @JsonProperty("details")
+  @JsonProperty(required = true, value = "details")
   public void setDetails(Object details) {
     this.details = details;
   }

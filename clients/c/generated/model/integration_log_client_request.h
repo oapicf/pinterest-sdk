@@ -34,9 +34,10 @@ typedef struct integration_log_client_request_t {
     list_t* response_headers; //map
     int response_status_code; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } integration_log_client_request_t;
 
-integration_log_client_request_t *integration_log_client_request_create(
+__attribute__((deprecated)) integration_log_client_request_t *integration_log_client_request_create(
     pinterest_rest_api_integration_log_client_request_METHOD_e method,
     char *host,
     char *path,

@@ -1,6 +1,6 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Multipart};
+use axum_extra::extract::{CookieJar, Host};
 use bytes::Bytes;
 use http::Method;
 use serde::{Deserialize, Serialize};
@@ -179,148 +179,148 @@ pub enum UpdatePartnerAssetAccessHandlerImplResponse {
 /// BusinessAccessAssets
 #[async_trait]
 #[allow(clippy::ptr_arg)]
-pub trait BusinessAccessAssets {
+pub trait BusinessAccessAssets<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHandler<E> {
     /// Create a new asset group..
     ///
     /// AssetGroupSlashCreate - POST /v5/businesses/{business_id}/asset_groups
     async fn asset_group_slash_create(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::AssetGroupSlashCreatePathParams,
-            body: models::CreateAssetGroupBody,
-    ) -> Result<AssetGroupSlashCreateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::AssetGroupSlashCreatePathParams,
+            body: &models::CreateAssetGroupBody,
+    ) -> Result<AssetGroupSlashCreateResponse, E>;
 
     /// Delete asset groups..
     ///
     /// AssetGroupSlashDelete - DELETE /v5/businesses/{business_id}/asset_groups
     async fn asset_group_slash_delete(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::AssetGroupSlashDeletePathParams,
-            body: models::DeleteAssetGroupBody,
-    ) -> Result<AssetGroupSlashDeleteResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::AssetGroupSlashDeletePathParams,
+            body: &models::DeleteAssetGroupBody,
+    ) -> Result<AssetGroupSlashDeleteResponse, E>;
 
     /// Update asset groups..
     ///
     /// AssetGroupSlashUpdate - PATCH /v5/businesses/{business_id}/asset_groups
     async fn asset_group_slash_update(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::AssetGroupSlashUpdatePathParams,
-            body: models::UpdateAssetGroupBody,
-    ) -> Result<AssetGroupSlashUpdateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::AssetGroupSlashUpdatePathParams,
+            body: &models::UpdateAssetGroupBody,
+    ) -> Result<AssetGroupSlashUpdateResponse, E>;
 
     /// Get members with access to asset.
     ///
     /// BusinessAssetMembersSlashGet - GET /v5/businesses/{business_id}/assets/{asset_id}/members
     async fn business_asset_members_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::BusinessAssetMembersSlashGetPathParams,
-      query_params: models::BusinessAssetMembersSlashGetQueryParams,
-    ) -> Result<BusinessAssetMembersSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::BusinessAssetMembersSlashGetPathParams,
+      query_params: &models::BusinessAssetMembersSlashGetQueryParams,
+    ) -> Result<BusinessAssetMembersSlashGetResponse, E>;
 
     /// Get partners with access to asset.
     ///
     /// BusinessAssetPartnersSlashGet - GET /v5/businesses/{business_id}/assets/{asset_id}/partners
     async fn business_asset_partners_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::BusinessAssetPartnersSlashGetPathParams,
-      query_params: models::BusinessAssetPartnersSlashGetQueryParams,
-    ) -> Result<BusinessAssetPartnersSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::BusinessAssetPartnersSlashGetPathParams,
+      query_params: &models::BusinessAssetPartnersSlashGetQueryParams,
+    ) -> Result<BusinessAssetPartnersSlashGetResponse, E>;
 
     /// List business assets.
     ///
     /// BusinessAssetsSlashGet - GET /v5/businesses/{business_id}/assets
     async fn business_assets_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::BusinessAssetsSlashGetPathParams,
-      query_params: models::BusinessAssetsSlashGetQueryParams,
-    ) -> Result<BusinessAssetsSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::BusinessAssetsSlashGetPathParams,
+      query_params: &models::BusinessAssetsSlashGetQueryParams,
+    ) -> Result<BusinessAssetsSlashGetResponse, E>;
 
     /// Get assets assigned to a member.
     ///
     /// BusinessMemberAssetsSlashGet - GET /v5/businesses/{business_id}/members/{member_id}/assets
     async fn business_member_assets_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::BusinessMemberAssetsSlashGetPathParams,
-      query_params: models::BusinessMemberAssetsSlashGetQueryParams,
-    ) -> Result<BusinessMemberAssetsSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::BusinessMemberAssetsSlashGetPathParams,
+      query_params: &models::BusinessMemberAssetsSlashGetQueryParams,
+    ) -> Result<BusinessMemberAssetsSlashGetResponse, E>;
 
     /// Delete member access to asset.
     ///
     /// BusinessMembersAssetAccessSlashDelete - DELETE /v5/businesses/{business_id}/members/assets/access
     async fn business_members_asset_access_slash_delete(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::BusinessMembersAssetAccessSlashDeletePathParams,
-            body: models::BusinessMembersAssetAccessDeleteRequest,
-    ) -> Result<BusinessMembersAssetAccessSlashDeleteResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::BusinessMembersAssetAccessSlashDeletePathParams,
+            body: &models::BusinessMembersAssetAccessDeleteRequest,
+    ) -> Result<BusinessMembersAssetAccessSlashDeleteResponse, E>;
 
     /// Assign/Update member asset permissions.
     ///
     /// BusinessMembersAssetAccessSlashUpdate - PATCH /v5/businesses/{business_id}/members/assets/access
     async fn business_members_asset_access_slash_update(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::BusinessMembersAssetAccessSlashUpdatePathParams,
-            body: models::UpdateMemberAssetAccessBody,
-    ) -> Result<BusinessMembersAssetAccessSlashUpdateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::BusinessMembersAssetAccessSlashUpdatePathParams,
+            body: &models::UpdateMemberAssetAccessBody,
+    ) -> Result<BusinessMembersAssetAccessSlashUpdateResponse, E>;
 
     /// Get assets assigned to a partner or assets assigned by a partner.
     ///
     /// BusinessPartnerAssetAccessSlashGet - GET /v5/businesses/{business_id}/partners/{partner_id}/assets
     async fn business_partner_asset_access_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::BusinessPartnerAssetAccessSlashGetPathParams,
-      query_params: models::BusinessPartnerAssetAccessSlashGetQueryParams,
-    ) -> Result<BusinessPartnerAssetAccessSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::BusinessPartnerAssetAccessSlashGetPathParams,
+      query_params: &models::BusinessPartnerAssetAccessSlashGetQueryParams,
+    ) -> Result<BusinessPartnerAssetAccessSlashGetResponse, E>;
 
     /// Delete partner access to asset.
     ///
     /// DeletePartnerAssetAccessHandlerImpl - DELETE /v5/businesses/{business_id}/partners/assets
     async fn delete_partner_asset_access_handler_impl(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::DeletePartnerAssetAccessHandlerImplPathParams,
-            body: models::DeletePartnerAssetAccessBody,
-    ) -> Result<DeletePartnerAssetAccessHandlerImplResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::DeletePartnerAssetAccessHandlerImplPathParams,
+            body: &models::DeletePartnerAssetAccessBody,
+    ) -> Result<DeletePartnerAssetAccessHandlerImplResponse, E>;
 
     /// Assign/Update partner asset permissions.
     ///
     /// UpdatePartnerAssetAccessHandlerImpl - PATCH /v5/businesses/{business_id}/partners/assets
     async fn update_partner_asset_access_handler_impl(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::UpdatePartnerAssetAccessHandlerImplPathParams,
-            body: models::UpdatePartnerAssetAccessBody,
-    ) -> Result<UpdatePartnerAssetAccessHandlerImplResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::UpdatePartnerAssetAccessHandlerImplPathParams,
+            body: &models::UpdatePartnerAssetAccessBody,
+    ) -> Result<UpdatePartnerAssetAccessHandlerImplResponse, E>;
 }

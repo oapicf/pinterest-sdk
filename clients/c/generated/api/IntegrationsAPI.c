@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 
 // Delete commerce integration
@@ -25,15 +20,20 @@ IntegrationsAPI_integrationsCommerceDel(apiClient_t *apiClient, char *external_b
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/integrations/commerce/{external_business_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/integrations/commerce/{external_business_id}");
+    char *localVarPath = strdup("/integrations/commerce/{external_business_id}");
+
+    if(!external_business_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_external_business_id = strlen(external_business_id)+3 + strlen("{ external_business_id }");
+    long sizeOfPathParams_external_business_id = strlen(external_business_id)+3 + sizeof("{ external_business_id }") - 1;
     if(external_business_id == NULL) {
         goto end;
     }
@@ -52,6 +52,7 @@ IntegrationsAPI_integrationsCommerceDel(apiClient_t *apiClient, char *external_b
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "DELETE");
 
     // uncomment below to debug the error response
@@ -92,15 +93,20 @@ IntegrationsAPI_integrationsCommerceGet(apiClient_t *apiClient, char *external_b
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/integrations/commerce/{external_business_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/integrations/commerce/{external_business_id}");
+    char *localVarPath = strdup("/integrations/commerce/{external_business_id}");
+
+    if(!external_business_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_external_business_id = strlen(external_business_id)+3 + strlen("{ external_business_id }");
+    long sizeOfPathParams_external_business_id = strlen(external_business_id)+3 + sizeof("{ external_business_id }") - 1;
     if(external_business_id == NULL) {
         goto end;
     }
@@ -119,6 +125,7 @@ IntegrationsAPI_integrationsCommerceGet(apiClient_t *apiClient, char *external_b
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -138,11 +145,14 @@ IntegrationsAPI_integrationsCommerceGet(apiClient_t *apiClient, char *external_b
     //    printf("%s\n","Unexpected error.");
     //}
     //nonprimitive not container
-    cJSON *IntegrationsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    integration_metadata_t *elementToReturn = integration_metadata_parseFromJSON(IntegrationsAPIlocalVarJSON);
-    cJSON_Delete(IntegrationsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    integration_metadata_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *IntegrationsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = integration_metadata_parseFromJSON(IntegrationsAPIlocalVarJSON);
+        cJSON_Delete(IntegrationsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -178,15 +188,20 @@ IntegrationsAPI_integrationsCommercePatch(apiClient_t *apiClient, char *external
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/integrations/commerce/{external_business_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/integrations/commerce/{external_business_id}");
+    char *localVarPath = strdup("/integrations/commerce/{external_business_id}");
+
+    if(!external_business_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_external_business_id = strlen(external_business_id)+3 + strlen("{ external_business_id }");
+    long sizeOfPathParams_external_business_id = strlen(external_business_id)+3 + sizeof("{ external_business_id }") - 1;
     if(external_business_id == NULL) {
         goto end;
     }
@@ -201,9 +216,10 @@ IntegrationsAPI_integrationsCommercePatch(apiClient_t *apiClient, char *external
     cJSON *localVarSingleItemJSON_integration_request_patch = NULL;
     if (integration_request_patch != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_integration_request_patch = integration_request_patch_convertToJSON(integration_request_patch);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_integration_request_patch);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -215,6 +231,7 @@ IntegrationsAPI_integrationsCommercePatch(apiClient_t *apiClient, char *external
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "PATCH");
 
     // uncomment below to debug the error response
@@ -234,11 +251,14 @@ IntegrationsAPI_integrationsCommercePatch(apiClient_t *apiClient, char *external
     //    printf("%s\n","Unexpected error.");
     //}
     //nonprimitive not container
-    cJSON *IntegrationsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    integration_metadata_t *elementToReturn = integration_metadata_parseFromJSON(IntegrationsAPIlocalVarJSON);
-    cJSON_Delete(IntegrationsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    integration_metadata_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *IntegrationsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = integration_metadata_parseFromJSON(IntegrationsAPIlocalVarJSON);
+        cJSON_Delete(IntegrationsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -279,11 +299,14 @@ IntegrationsAPI_integrationsCommercePost(apiClient_t *apiClient, integration_req
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/integrations/commerce")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/integrations/commerce");
+    char *localVarPath = strdup("/integrations/commerce");
+
 
 
 
@@ -292,9 +315,10 @@ IntegrationsAPI_integrationsCommercePost(apiClient_t *apiClient, integration_req
     cJSON *localVarSingleItemJSON_integration_request = NULL;
     if (integration_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_integration_request = integration_request_convertToJSON(integration_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_integration_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -306,6 +330,7 @@ IntegrationsAPI_integrationsCommercePost(apiClient_t *apiClient, integration_req
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -325,11 +350,14 @@ IntegrationsAPI_integrationsCommercePost(apiClient_t *apiClient, integration_req
     //    printf("%s\n","Unexpected error.");
     //}
     //nonprimitive not container
-    cJSON *IntegrationsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    integration_metadata_t *elementToReturn = integration_metadata_parseFromJSON(IntegrationsAPIlocalVarJSON);
-    cJSON_Delete(IntegrationsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    integration_metadata_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *IntegrationsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = integration_metadata_parseFromJSON(IntegrationsAPIlocalVarJSON);
+        cJSON_Delete(IntegrationsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -369,15 +397,20 @@ IntegrationsAPI_integrationsGetById(apiClient_t *apiClient, char *id)
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/integrations/{id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/integrations/{id}");
+    char *localVarPath = strdup("/integrations/{id}");
+
+    if(!id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_id = strlen(id)+3 + strlen("{ id }");
+    long sizeOfPathParams_id = strlen(id)+3 + sizeof("{ id }") - 1;
     if(id == NULL) {
         goto end;
     }
@@ -396,6 +429,7 @@ IntegrationsAPI_integrationsGetById(apiClient_t *apiClient, char *id)
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -411,11 +445,14 @@ IntegrationsAPI_integrationsGetById(apiClient_t *apiClient, char *id)
     //    printf("%s\n","Unexpected error.");
     //}
     //nonprimitive not container
-    cJSON *IntegrationsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    integration_record_t *elementToReturn = integration_record_parseFromJSON(IntegrationsAPIlocalVarJSON);
-    cJSON_Delete(IntegrationsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    integration_record_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *IntegrationsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = integration_record_parseFromJSON(IntegrationsAPIlocalVarJSON);
+        cJSON_Delete(IntegrationsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -451,11 +488,14 @@ IntegrationsAPI_integrationsGetList(apiClient_t *apiClient, char *bookmark, int 
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/integrations")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/integrations");
+    char *localVarPath = strdup("/integrations");
+
 
 
 
@@ -493,6 +533,7 @@ IntegrationsAPI_integrationsGetList(apiClient_t *apiClient, char *bookmark, int 
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -504,11 +545,14 @@ IntegrationsAPI_integrationsGetList(apiClient_t *apiClient, char *bookmark, int 
     //    printf("%s\n","Unexpected error.");
     //}
     //nonprimitive not container
-    cJSON *IntegrationsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    integrations_get_list_200_response_t *elementToReturn = integrations_get_list_200_response_parseFromJSON(IntegrationsAPIlocalVarJSON);
-    cJSON_Delete(IntegrationsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    integrations_get_list_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *IntegrationsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = integrations_get_list_200_response_parseFromJSON(IntegrationsAPIlocalVarJSON);
+        cJSON_Delete(IntegrationsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -567,11 +611,14 @@ IntegrationsAPI_integrationsLogsPost(apiClient_t *apiClient, integration_logs_re
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/integrations/logs")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/integrations/logs");
+    char *localVarPath = strdup("/integrations/logs");
+
 
 
 
@@ -580,9 +627,10 @@ IntegrationsAPI_integrationsLogsPost(apiClient_t *apiClient, integration_logs_re
     cJSON *localVarSingleItemJSON_integration_logs_request = NULL;
     if (integration_logs_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_integration_logs_request = integration_logs_request_convertToJSON(integration_logs_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_integration_logs_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -594,6 +642,7 @@ IntegrationsAPI_integrationsLogsPost(apiClient_t *apiClient, integration_logs_re
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -609,11 +658,14 @@ IntegrationsAPI_integrationsLogsPost(apiClient_t *apiClient, integration_logs_re
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *IntegrationsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    integration_logs_success_response_t *elementToReturn = integration_logs_success_response_parseFromJSON(IntegrationsAPIlocalVarJSON);
-    cJSON_Delete(IntegrationsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    integration_logs_success_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *IntegrationsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = integration_logs_success_response_parseFromJSON(IntegrationsAPIlocalVarJSON);
+        cJSON_Delete(IntegrationsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type

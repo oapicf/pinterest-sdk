@@ -108,11 +108,11 @@ export function CatalogsHotelItemsBatchFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-  export function CatalogsHotelItemsBatchToJSON(json: any): CatalogsHotelItemsBatch {
-      return CatalogsHotelItemsBatchToJSONTyped(json, false);
-  }
+export function CatalogsHotelItemsBatchToJSON(json: any): CatalogsHotelItemsBatch {
+    return CatalogsHotelItemsBatchToJSONTyped(json, false);
+}
 
-  export function CatalogsHotelItemsBatchToJSONTyped(value?: Omit<CatalogsHotelItemsBatch, 'created_time'|'completed_time'> | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsHotelItemsBatchToJSONTyped(value?: Omit<CatalogsHotelItemsBatch, 'created_time'|'completed_time'> | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

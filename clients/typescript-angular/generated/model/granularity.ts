@@ -15,10 +15,15 @@
 export type Granularity = 'TOTAL' | 'DAY' | 'HOUR' | 'WEEK' | 'MONTH';
 
 export const Granularity = {
+
     Total: 'TOTAL' as Granularity,
+
     Day: 'DAY' as Granularity,
+
     Hour: 'HOUR' as Granularity,
+
     Week: 'WEEK' as Granularity,
+
     Month: 'MONTH' as Granularity
 };
 

@@ -161,11 +161,11 @@ export function PinCreateFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     };
 }
 
-  export function PinCreateToJSON(json: any): PinCreate {
-      return PinCreateToJSONTyped(json, false);
-  }
+export function PinCreateToJSON(json: any): PinCreate {
+    return PinCreateToJSONTyped(json, false);
+}
 
-  export function PinCreateToJSONTyped(value?: Omit<PinCreate, 'id'|'created_at'|'board_owner'|'media'> | null, ignoreDiscriminator: boolean = false): any {
+export function PinCreateToJSONTyped(value?: Omit<PinCreate, 'id'|'created_at'|'board_owner'|'media'> | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

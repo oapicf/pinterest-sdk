@@ -52,24 +52,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Object describing a hotel item error
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsHotelItemErrorResponse {
   public static final String SERIALIZED_NAME_CATALOG_TYPE = "catalog_type";
   @SerializedName(SERIALIZED_NAME_CATALOG_TYPE)
+  @javax.annotation.Nonnull
   private CatalogsType catalogType;
 
   public static final String SERIALIZED_NAME_HOTEL_ID = "hotel_id";
   @SerializedName(SERIALIZED_NAME_HOTEL_ID)
+  @javax.annotation.Nullable
   private String hotelId;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
+  @javax.annotation.Nullable
   private List<ItemValidationEvent> errors = new ArrayList<>();
 
   public CatalogsHotelItemErrorResponse() {
   }
 
-  public CatalogsHotelItemErrorResponse catalogType(CatalogsType catalogType) {
+  public CatalogsHotelItemErrorResponse catalogType(@javax.annotation.Nonnull CatalogsType catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -83,12 +86,12 @@ public class CatalogsHotelItemErrorResponse {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(@javax.annotation.Nonnull CatalogsType catalogType) {
     this.catalogType = catalogType;
   }
 
 
-  public CatalogsHotelItemErrorResponse hotelId(String hotelId) {
+  public CatalogsHotelItemErrorResponse hotelId(@javax.annotation.Nullable String hotelId) {
     this.hotelId = hotelId;
     return this;
   }
@@ -102,12 +105,12 @@ public class CatalogsHotelItemErrorResponse {
     return hotelId;
   }
 
-  public void setHotelId(String hotelId) {
+  public void setHotelId(@javax.annotation.Nullable String hotelId) {
     this.hotelId = hotelId;
   }
 
 
-  public CatalogsHotelItemErrorResponse errors(List<ItemValidationEvent> errors) {
+  public CatalogsHotelItemErrorResponse errors(@javax.annotation.Nullable List<ItemValidationEvent> errors) {
     this.errors = errors;
     return this;
   }
@@ -129,7 +132,7 @@ public class CatalogsHotelItemErrorResponse {
     return errors;
   }
 
-  public void setErrors(List<ItemValidationEvent> errors) {
+  public void setErrors(@javax.annotation.Nullable List<ItemValidationEvent> errors) {
     this.errors = errors;
   }
 

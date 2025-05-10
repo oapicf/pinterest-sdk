@@ -61,17 +61,21 @@ export function CatalogsVerticalFeedsCreateRequestFromJSONTyped(json: any, ignor
     }
 }
 
-export function CatalogsVerticalFeedsCreateRequestToJSON(value?: CatalogsVerticalFeedsCreateRequest | null): any {
+export function CatalogsVerticalFeedsCreateRequestToJSON(json: any): any {
+    return CatalogsVerticalFeedsCreateRequestToJSONTyped(json, false);
+}
+
+export function CatalogsVerticalFeedsCreateRequestToJSONTyped(value?: CatalogsVerticalFeedsCreateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
     switch (value['catalogType']) {
         case 'CREATIVE_ASSETS':
-            return CatalogsCreativeAssetsFeedsCreateRequestToJSON(value);
+            return Object.assign({}, CatalogsCreativeAssetsFeedsCreateRequestToJSON(value), { catalogType: 'CREATIVE_ASSETS' } as const);
         case 'HOTEL':
-            return CatalogsHotelFeedsCreateRequestToJSON(value);
+            return Object.assign({}, CatalogsHotelFeedsCreateRequestToJSON(value), { catalogType: 'HOTEL' } as const);
         case 'RETAIL':
-            return CatalogsRetailFeedsCreateRequestToJSON(value);
+            return Object.assign({}, CatalogsRetailFeedsCreateRequestToJSON(value), { catalogType: 'RETAIL' } as const);
         default:
             throw new Error(`No variant of CatalogsVerticalFeedsCreateRequest exists with 'catalogType=${value['catalogType']}'`);
     }

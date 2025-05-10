@@ -77,9 +77,10 @@ typedef struct catalogs_feed_validation_warnings_t {
     int sales_price_too_high; //numeric
     int mpn_invalid; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_feed_validation_warnings_t;
 
-catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_create(
+__attribute__((deprecated)) catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_create(
     int ad_link_format_warning,
     int ad_link_same_as_link,
     int title_length_too_long,

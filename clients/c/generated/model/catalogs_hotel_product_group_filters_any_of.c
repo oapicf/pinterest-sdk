@@ -5,7 +5,7 @@
 
 
 
-catalogs_hotel_product_group_filters_any_of_t *catalogs_hotel_product_group_filters_any_of_create(
+static catalogs_hotel_product_group_filters_any_of_t *catalogs_hotel_product_group_filters_any_of_create_internal(
     list_t *any_of
     ) {
     catalogs_hotel_product_group_filters_any_of_t *catalogs_hotel_product_group_filters_any_of_local_var = malloc(sizeof(catalogs_hotel_product_group_filters_any_of_t));
@@ -14,12 +14,24 @@ catalogs_hotel_product_group_filters_any_of_t *catalogs_hotel_product_group_filt
     }
     catalogs_hotel_product_group_filters_any_of_local_var->any_of = any_of;
 
+    catalogs_hotel_product_group_filters_any_of_local_var->_library_owned = 1;
     return catalogs_hotel_product_group_filters_any_of_local_var;
 }
 
+__attribute__((deprecated)) catalogs_hotel_product_group_filters_any_of_t *catalogs_hotel_product_group_filters_any_of_create(
+    list_t *any_of
+    ) {
+    return catalogs_hotel_product_group_filters_any_of_create_internal (
+        any_of
+        );
+}
 
 void catalogs_hotel_product_group_filters_any_of_free(catalogs_hotel_product_group_filters_any_of_t *catalogs_hotel_product_group_filters_any_of) {
     if(NULL == catalogs_hotel_product_group_filters_any_of){
+        return ;
+    }
+    if(catalogs_hotel_product_group_filters_any_of->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_hotel_product_group_filters_any_of_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -73,6 +85,9 @@ catalogs_hotel_product_group_filters_any_of_t *catalogs_hotel_product_group_filt
 
     // catalogs_hotel_product_group_filters_any_of->any_of
     cJSON *any_of = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_product_group_filters_any_ofJSON, "any_of");
+    if (cJSON_IsNull(any_of)) {
+        any_of = NULL;
+    }
     if (!any_of) {
         goto end;
     }
@@ -96,7 +111,7 @@ catalogs_hotel_product_group_filters_any_of_t *catalogs_hotel_product_group_filt
     }
 
 
-    catalogs_hotel_product_group_filters_any_of_local_var = catalogs_hotel_product_group_filters_any_of_create (
+    catalogs_hotel_product_group_filters_any_of_local_var = catalogs_hotel_product_group_filters_any_of_create_internal (
         any_ofList
         );
 

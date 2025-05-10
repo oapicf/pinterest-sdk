@@ -105,11 +105,11 @@ export function PinUpdateFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     };
 }
 
-  export function PinUpdateToJSON(json: any): PinUpdate {
-      return PinUpdateToJSONTyped(json, false);
-  }
+export function PinUpdateToJSON(json: any): PinUpdate {
+    return PinUpdateToJSONTyped(json, false);
+}
 
-  export function PinUpdateToJSONTyped(value?: PinUpdate | null, ignoreDiscriminator: boolean = false): any {
+export function PinUpdateToJSONTyped(value?: PinUpdate | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

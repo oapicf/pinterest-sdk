@@ -5,7 +5,7 @@
 
 
 
-audience_common_t *audience_common_create(
+static audience_common_t *audience_common_create_internal(
     char *ad_account_id,
     char *name,
     audience_rule_t *rule
@@ -18,12 +18,28 @@ audience_common_t *audience_common_create(
     audience_common_local_var->name = name;
     audience_common_local_var->rule = rule;
 
+    audience_common_local_var->_library_owned = 1;
     return audience_common_local_var;
 }
 
+__attribute__((deprecated)) audience_common_t *audience_common_create(
+    char *ad_account_id,
+    char *name,
+    audience_rule_t *rule
+    ) {
+    return audience_common_create_internal (
+        ad_account_id,
+        name,
+        rule
+        );
+}
 
 void audience_common_free(audience_common_t *audience_common) {
     if(NULL == audience_common){
+        return ;
+    }
+    if(audience_common->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "audience_common_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -90,6 +106,9 @@ audience_common_t *audience_common_parseFromJSON(cJSON *audience_commonJSON){
 
     // audience_common->ad_account_id
     cJSON *ad_account_id = cJSON_GetObjectItemCaseSensitive(audience_commonJSON, "ad_account_id");
+    if (cJSON_IsNull(ad_account_id)) {
+        ad_account_id = NULL;
+    }
     if (ad_account_id) { 
     if(!cJSON_IsString(ad_account_id) && !cJSON_IsNull(ad_account_id))
     {
@@ -99,6 +118,9 @@ audience_common_t *audience_common_parseFromJSON(cJSON *audience_commonJSON){
 
     // audience_common->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(audience_commonJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
     if (name) { 
     if(!cJSON_IsString(name) && !cJSON_IsNull(name))
     {
@@ -108,12 +130,15 @@ audience_common_t *audience_common_parseFromJSON(cJSON *audience_commonJSON){
 
     // audience_common->rule
     cJSON *rule = cJSON_GetObjectItemCaseSensitive(audience_commonJSON, "rule");
+    if (cJSON_IsNull(rule)) {
+        rule = NULL;
+    }
     if (rule) { 
     rule_local_nonprim = audience_rule_parseFromJSON(rule); //nonprimitive
     }
 
 
-    audience_common_local_var = audience_common_create (
+    audience_common_local_var = audience_common_create_internal (
         ad_account_id && !cJSON_IsNull(ad_account_id) ? strdup(ad_account_id->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         rule ? rule_local_nonprim : NULL

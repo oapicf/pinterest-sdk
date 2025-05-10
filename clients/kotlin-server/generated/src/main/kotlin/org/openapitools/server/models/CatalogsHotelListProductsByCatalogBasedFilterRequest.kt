@@ -13,18 +13,20 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsHotelProductGroupFilters
 
+import kotlinx.serialization.Serializable
 /**
  * Request object to list products for a given hotel catalog_id and product group filter.
  * @param catalogType 
  * @param catalogId Catalog id pertaining to the hotel product group.
  * @param filters 
  */
+@Serializable
 data class CatalogsHotelListProductsByCatalogBasedFilterRequest(
     val catalogType: CatalogsHotelListProductsByCatalogBasedFilterRequest.CatalogType,
     /* Catalog id pertaining to the hotel product group. */
     val catalogId: kotlin.String,
     val filters: CatalogsHotelProductGroupFilters
-) 
+)
 {
     /**
     * 

@@ -32,9 +32,10 @@ typedef struct update_partner_asset_access_body_accesses_inner_t {
     char *asset_id; // string
     list_t *permissions; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } update_partner_asset_access_body_accesses_inner_t;
 
-update_partner_asset_access_body_accesses_inner_t *update_partner_asset_access_body_accesses_inner_create(
+__attribute__((deprecated)) update_partner_asset_access_body_accesses_inner_t *update_partner_asset_access_body_accesses_inner_create(
     char *partner_id,
     char *asset_id,
     list_t *permissions

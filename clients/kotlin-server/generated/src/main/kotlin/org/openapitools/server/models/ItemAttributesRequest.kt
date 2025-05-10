@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.ItemAttributesRequestAllOfImageLink
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param adLink Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.
@@ -64,6 +65,7 @@ import org.openapitools.server.models.ItemAttributesRequestAllOfImageLink
  * @param imageLink 
  * @param videoLink <p><= 2,000 characters</p> <p>Hosted link to the product video.</p> <p>File types for linked videos must be .mp4, .mov or .m4v.</p> <p>File size cannot exceed 2GB.</p>
  */
+@Serializable
 data class ItemAttributesRequest(
     /* Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://. */
     val adLink: kotlin.String? = null,
@@ -160,5 +162,5 @@ data class ItemAttributesRequest(
     val imageLink: ItemAttributesRequestAllOfImageLink? = null,
     /* <p><= 2,000 characters</p> <p>Hosted link to the product video.</p> <p>File types for linked videos must be .mp4, .mov or .m4v.</p> <p>File size cannot exceed 2GB.</p> */
     val videoLink: kotlin.String? = null
-) 
+)
 

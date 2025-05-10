@@ -12,10 +12,10 @@ import AnyCodable
 
 public struct LeadFormResponse: Codable, JSONEncodable, Hashable {
 
-    static let questionsRule = ArrayRule(minItems: 0, maxItems: 10, uniqueItems: false)
-    static let policyLinksRule = ArrayRule(minItems: 0, maxItems: 3, uniqueItems: false)
-    static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let questionsRule = ArrayRule(minItems: 0, maxItems: 10, uniqueItems: false)
+    public static let policyLinksRule = ArrayRule(minItems: 0, maxItems: 3, uniqueItems: false)
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Internal name of the lead form. */
     public var name: String?
     /** A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language. */
@@ -89,3 +89,6 @@ public struct LeadFormResponse: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension LeadFormResponse: Identifiable {}

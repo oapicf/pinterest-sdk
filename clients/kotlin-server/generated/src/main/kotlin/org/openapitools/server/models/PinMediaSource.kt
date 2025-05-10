@@ -19,6 +19,7 @@ import org.openapitools.server.models.PinMediaSourceImagesURLItemsInner
 import org.openapitools.server.models.PinMediaSourcePinURL
 import org.openapitools.server.models.PinMediaSourceVideoID
 
+import kotlinx.serialization.Serializable
 /**
  * Pin media source.
  * @param sourceType 
@@ -34,6 +35,7 @@ import org.openapitools.server.models.PinMediaSourceVideoID
  * @param index 
  * @param isAffiliateLink This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
  */
+@Serializable
 data class PinMediaSource(
     val sourceType: PinMediaSource.SourceType,
     val contentType: PinMediaSource.ContentType,
@@ -53,7 +55,7 @@ data class PinMediaSource(
     val index: kotlin.Int? = null,
     /* This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products. */
     val isAffiliateLink: kotlin.Boolean? = false
-) 
+)
 {
     /**
     * 
@@ -64,19 +66,19 @@ data class PinMediaSource(
     }
     /**
     * 
-    * Values: jpeg,png
+    * Values: imageSlashJpeg,imageSlashPng
     */
     enum class ContentType(val value: kotlin.String){
-        jpeg("image/jpeg"),
-        png("image/png");
+        imageSlashJpeg("image/jpeg"),
+        imageSlashPng("image/png");
     }
     /**
     * Content type for cover image Base64.
-    * Values: jpeg,png
+    * Values: imageSlashJpeg,imageSlashPng
     */
     enum class CoverImageContentType(val value: kotlin.String){
-        jpeg("image/jpeg"),
-        png("image/png");
+        imageSlashJpeg("image/jpeg"),
+        imageSlashPng("image/png");
     }
 }
 

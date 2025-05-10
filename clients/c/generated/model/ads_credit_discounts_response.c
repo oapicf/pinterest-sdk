@@ -22,7 +22,7 @@ pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_e ads_credit_disco
     return 0;
 }
 
-ads_credit_discounts_response_t *ads_credit_discounts_response_create(
+static ads_credit_discounts_response_t *ads_credit_discounts_response_create_internal(
     int active,
     char *advertiser_id,
     pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_e discount_type,
@@ -43,12 +43,36 @@ ads_credit_discounts_response_t *ads_credit_discounts_response_create(
     ads_credit_discounts_response_local_var->title = title;
     ads_credit_discounts_response_local_var->remaining_discount_in_micro_currency = remaining_discount_in_micro_currency;
 
+    ads_credit_discounts_response_local_var->_library_owned = 1;
     return ads_credit_discounts_response_local_var;
 }
 
+__attribute__((deprecated)) ads_credit_discounts_response_t *ads_credit_discounts_response_create(
+    int active,
+    char *advertiser_id,
+    pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_e discount_type,
+    double discount_in_micro_currency,
+    char *discount_currency,
+    char *title,
+    double remaining_discount_in_micro_currency
+    ) {
+    return ads_credit_discounts_response_create_internal (
+        active,
+        advertiser_id,
+        discount_type,
+        discount_in_micro_currency,
+        discount_currency,
+        title,
+        remaining_discount_in_micro_currency
+        );
+}
 
 void ads_credit_discounts_response_free(ads_credit_discounts_response_t *ads_credit_discounts_response) {
     if(NULL == ads_credit_discounts_response){
+        return ;
+    }
+    if(ads_credit_discounts_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ads_credit_discounts_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -88,7 +112,7 @@ cJSON *ads_credit_discounts_response_convertToJSON(ads_credit_discounts_response
 
     // ads_credit_discounts_response->discount_type
     if(ads_credit_discounts_response->discount_type != pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_NULL) {
-    if(cJSON_AddStringToObject(item, "discountType", discount_typeads_credit_discounts_response_ToString(ads_credit_discounts_response->discount_type)) == NULL)
+    if(cJSON_AddStringToObject(item, "discountType", ads_credit_discounts_response_discount_type_ToString(ads_credit_discounts_response->discount_type)) == NULL)
     {
     goto fail; //Enum
     }
@@ -140,6 +164,9 @@ ads_credit_discounts_response_t *ads_credit_discounts_response_parseFromJSON(cJS
 
     // ads_credit_discounts_response->active
     cJSON *active = cJSON_GetObjectItemCaseSensitive(ads_credit_discounts_responseJSON, "active");
+    if (cJSON_IsNull(active)) {
+        active = NULL;
+    }
     if (active) { 
     if(!cJSON_IsBool(active))
     {
@@ -149,6 +176,9 @@ ads_credit_discounts_response_t *ads_credit_discounts_response_parseFromJSON(cJS
 
     // ads_credit_discounts_response->advertiser_id
     cJSON *advertiser_id = cJSON_GetObjectItemCaseSensitive(ads_credit_discounts_responseJSON, "advertiser_id");
+    if (cJSON_IsNull(advertiser_id)) {
+        advertiser_id = NULL;
+    }
     if (advertiser_id) { 
     if(!cJSON_IsString(advertiser_id) && !cJSON_IsNull(advertiser_id))
     {
@@ -158,6 +188,9 @@ ads_credit_discounts_response_t *ads_credit_discounts_response_parseFromJSON(cJS
 
     // ads_credit_discounts_response->discount_type
     cJSON *discount_type = cJSON_GetObjectItemCaseSensitive(ads_credit_discounts_responseJSON, "discountType");
+    if (cJSON_IsNull(discount_type)) {
+        discount_type = NULL;
+    }
     pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_e discount_typeVariable;
     if (discount_type) { 
     if(!cJSON_IsString(discount_type))
@@ -169,6 +202,9 @@ ads_credit_discounts_response_t *ads_credit_discounts_response_parseFromJSON(cJS
 
     // ads_credit_discounts_response->discount_in_micro_currency
     cJSON *discount_in_micro_currency = cJSON_GetObjectItemCaseSensitive(ads_credit_discounts_responseJSON, "discountInMicroCurrency");
+    if (cJSON_IsNull(discount_in_micro_currency)) {
+        discount_in_micro_currency = NULL;
+    }
     if (discount_in_micro_currency) { 
     if(!cJSON_IsNumber(discount_in_micro_currency))
     {
@@ -178,6 +214,9 @@ ads_credit_discounts_response_t *ads_credit_discounts_response_parseFromJSON(cJS
 
     // ads_credit_discounts_response->discount_currency
     cJSON *discount_currency = cJSON_GetObjectItemCaseSensitive(ads_credit_discounts_responseJSON, "discountCurrency");
+    if (cJSON_IsNull(discount_currency)) {
+        discount_currency = NULL;
+    }
     if (discount_currency) { 
     if(!cJSON_IsString(discount_currency) && !cJSON_IsNull(discount_currency))
     {
@@ -187,6 +226,9 @@ ads_credit_discounts_response_t *ads_credit_discounts_response_parseFromJSON(cJS
 
     // ads_credit_discounts_response->title
     cJSON *title = cJSON_GetObjectItemCaseSensitive(ads_credit_discounts_responseJSON, "title");
+    if (cJSON_IsNull(title)) {
+        title = NULL;
+    }
     if (title) { 
     if(!cJSON_IsString(title) && !cJSON_IsNull(title))
     {
@@ -196,6 +238,9 @@ ads_credit_discounts_response_t *ads_credit_discounts_response_parseFromJSON(cJS
 
     // ads_credit_discounts_response->remaining_discount_in_micro_currency
     cJSON *remaining_discount_in_micro_currency = cJSON_GetObjectItemCaseSensitive(ads_credit_discounts_responseJSON, "remainingDiscountInMicroCurrency");
+    if (cJSON_IsNull(remaining_discount_in_micro_currency)) {
+        remaining_discount_in_micro_currency = NULL;
+    }
     if (remaining_discount_in_micro_currency) { 
     if(!cJSON_IsNumber(remaining_discount_in_micro_currency))
     {
@@ -204,7 +249,7 @@ ads_credit_discounts_response_t *ads_credit_discounts_response_parseFromJSON(cJS
     }
 
 
-    ads_credit_discounts_response_local_var = ads_credit_discounts_response_create (
+    ads_credit_discounts_response_local_var = ads_credit_discounts_response_create_internal (
         active ? active->valueint : 0,
         advertiser_id && !cJSON_IsNull(advertiser_id) ? strdup(advertiser_id->valuestring) : NULL,
         discount_type ? discount_typeVariable : pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_NULL,

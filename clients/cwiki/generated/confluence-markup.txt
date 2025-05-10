@@ -23458,8 +23458,8 @@ with http:// or https://.&lt;/p&gt; |  | null
         Conversion report time type
 
          ||Name||Value||Description||
-          |AD_ACTION |"TIME_OF_AD_ACTION" | |
- |CONVERSION |"TIME_OF_CONVERSION" | |
+          |TIME_OF_AD_ACTION |"TIME_OF_AD_ACTION" | |
+ |TIME_OF_CONVERSION |"TIME_OF_CONVERSION" | |
          
         
         {anchor:ConversionTagCommonModelAnchor}

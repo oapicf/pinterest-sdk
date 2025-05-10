@@ -1653,8 +1653,8 @@ message TemplateResponse {
 
   // Conversion report time type
   enum Conversion_report_time_typeEnum {
-    Conversion_report_time_typeEnum_AD_ACTION = 0;
-    Conversion_report_time_typeEnum_CONVERSION = 1;
+    Conversion_report_time_typeEnum_TIME_OF_AD_ACTION = 0;
+    Conversion_report_time_typeEnum_TIME_OF_CONVERSION = 1;
   }
 
   Conversion_report_time_typeEnum conversion_report_time_type = 124205098;
@@ -1670,9 +1670,9 @@ message TemplateResponse {
 
   // The surface used to create this template
   enum Creation_sourceEnum {
-    Creation_sourceEnum_API = 0;
-    Creation_sourceEnum_MANAGER_REPORTING_PAGE = 1;
-    Creation_sourceEnum_MANAGER_REPORT_BUILDER = 2;
+    Creation_sourceEnum_ADS_API = 0;
+    Creation_sourceEnum_ADS_MANAGER_REPORTING_PAGE = 1;
+    Creation_sourceEnum_ADS_MANAGER_REPORT_BUILDER = 2;
   }
 
   Creation_sourceEnum creation_source = 449662333;

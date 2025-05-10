@@ -48,11 +48,11 @@ export function DeletedMembersResponseFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-  export function DeletedMembersResponseToJSON(json: any): DeletedMembersResponse {
-      return DeletedMembersResponseToJSONTyped(json, false);
-  }
+export function DeletedMembersResponseToJSON(json: any): DeletedMembersResponse {
+    return DeletedMembersResponseToJSONTyped(json, false);
+}
 
-  export function DeletedMembersResponseToJSONTyped(value?: DeletedMembersResponse | null, ignoreDiscriminator: boolean = false): any {
+export function DeletedMembersResponseToJSONTyped(value?: DeletedMembersResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -12,17 +12,19 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Request object for creating a catalog.
  * @param catalogType Type of the catalog entity.
  * @param name A human-friendly name associated to a given catalog.
  */
+@Serializable
 data class CatalogsCreateRequest(
     /* Type of the catalog entity. */
     val catalogType: CatalogsCreateRequest.CatalogType,
     /* A human-friendly name associated to a given catalog. */
     val name: kotlin.String
-) 
+)
 {
     /**
     * Type of the catalog entity.

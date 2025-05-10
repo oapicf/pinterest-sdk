@@ -12,10 +12,12 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  */
+@Serializable
 class AudienceCreateRequest1AudienceType(
 
-) 
+)
 

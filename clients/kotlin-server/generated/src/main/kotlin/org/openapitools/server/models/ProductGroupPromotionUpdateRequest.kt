@@ -13,14 +13,16 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.ProductGroupPromotion
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param adGroupId ID of the ad group the product group belongs to.
  * @param productGroupPromotion 
  */
+@Serializable
 data class ProductGroupPromotionUpdateRequest(
     /* ID of the ad group the product group belongs to. */
     val adGroupId: kotlin.String,
     val productGroupPromotion: kotlin.collections.List<ProductGroupPromotion>
-) 
+)
 

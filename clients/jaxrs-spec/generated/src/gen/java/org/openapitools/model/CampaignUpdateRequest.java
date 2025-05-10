@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CampaignUpdateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CampaignUpdateRequest   {
   private String id;
   private String adAccountId;
@@ -37,6 +37,18 @@ public class CampaignUpdateRequest   {
   private Boolean isCampaignBudgetOptimization;
   private ObjectiveType objectiveType;
 
+  public CampaignUpdateRequest() {
+  }
+
+  @JsonCreator
+  public CampaignUpdateRequest(
+    @JsonProperty(required = true, value = "id") String id,
+    @JsonProperty(required = true, value = "ad_account_id") String adAccountId
+  ) {
+    this.id = id;
+    this.adAccountId = adAccountId;
+  }
+
   /**
    * Campaign ID.
    **/
@@ -47,12 +59,12 @@ public class CampaignUpdateRequest   {
 
   
   @ApiModelProperty(example = "549755885175", required = true, value = "Campaign ID.")
-  @JsonProperty("id")
+  @JsonProperty(required = true, value = "id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getId() {
     return id;
   }
 
-  @JsonProperty("id")
+  @JsonProperty(required = true, value = "id")
   public void setId(String id) {
     this.id = id;
   }
@@ -67,12 +79,12 @@ public class CampaignUpdateRequest   {
 
   
   @ApiModelProperty(example = "549755885175", required = true, value = "Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.")
-  @JsonProperty("ad_account_id")
+  @JsonProperty(required = true, value = "ad_account_id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getAdAccountId() {
     return adAccountId;
   }
 
-  @JsonProperty("ad_account_id")
+  @JsonProperty(required = true, value = "ad_account_id")
   public void setAdAccountId(String adAccountId) {
     this.adAccountId = adAccountId;
   }

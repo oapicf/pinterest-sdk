@@ -13,13 +13,15 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.Country
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param propertyValues 
  * @param negated 
  */
+@Serializable
 data class CatalogsProductGroupMultipleCountriesCriteria(
     val propertyValues: kotlin.collections.List<Country>,
     val negated: kotlin.Boolean? = false
-) 
+)
 

@@ -16,9 +16,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CurrencyFilter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CurrencyFilter   {
   private CatalogsProductGroupCurrencyCriteria CURRENCY;
+
+  public CurrencyFilter() {
+  }
+
+  @JsonCreator
+  public CurrencyFilter(
+    @JsonProperty(required = true, value = "CURRENCY") CatalogsProductGroupCurrencyCriteria CURRENCY
+  ) {
+    this.CURRENCY = CURRENCY;
+  }
 
   /**
    **/
@@ -29,12 +39,12 @@ public class CurrencyFilter   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("CURRENCY")
+  @JsonProperty(required = true, value = "CURRENCY")
   @NotNull @Valid public CatalogsProductGroupCurrencyCriteria getCURRENCY() {
     return CURRENCY;
   }
 
-  @JsonProperty("CURRENCY")
+  @JsonProperty(required = true, value = "CURRENCY")
   public void setCURRENCY(CatalogsProductGroupCurrencyCriteria CURRENCY) {
     this.CURRENCY = CURRENCY;
   }

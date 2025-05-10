@@ -22,9 +22,10 @@ typedef struct catalogs_feed_credentials_t {
     char *password; // string
     char *username; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_feed_credentials_t;
 
-catalogs_feed_credentials_t *catalogs_feed_credentials_create(
+__attribute__((deprecated)) catalogs_feed_credentials_t *catalogs_feed_credentials_create(
     char *password,
     char *username
 );

@@ -175,11 +175,11 @@ export function CatalogsUpdatableHotelAttributesFromJSONTyped(json: any, ignoreD
     };
 }
 
-  export function CatalogsUpdatableHotelAttributesToJSON(json: any): CatalogsUpdatableHotelAttributes {
-      return CatalogsUpdatableHotelAttributesToJSONTyped(json, false);
-  }
+export function CatalogsUpdatableHotelAttributesToJSON(json: any): CatalogsUpdatableHotelAttributes {
+    return CatalogsUpdatableHotelAttributesToJSONTyped(json, false);
+}
 
-  export function CatalogsUpdatableHotelAttributesToJSONTyped(value?: CatalogsUpdatableHotelAttributes | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsUpdatableHotelAttributesToJSONTyped(value?: CatalogsUpdatableHotelAttributes | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

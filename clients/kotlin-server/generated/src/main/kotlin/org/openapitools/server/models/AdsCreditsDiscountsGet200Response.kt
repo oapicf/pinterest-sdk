@@ -13,13 +13,15 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.AdsCreditDiscountsResponse
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items 
  * @param bookmark 
  */
+@Serializable
 data class AdsCreditsDiscountsGet200Response(
     val items: kotlin.collections.List<AdsCreditDiscountsResponse>,
     val bookmark: kotlin.String? = null
-) 
+)
 

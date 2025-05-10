@@ -48,20 +48,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * The terminated asset access.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class DeleteMemberAccessResult {
   public static final String SERIALIZED_NAME_ASSET_ID = "asset_id";
   @SerializedName(SERIALIZED_NAME_ASSET_ID)
+  @javax.annotation.Nullable
   private String assetId;
 
   public static final String SERIALIZED_NAME_MEMBER_ID = "member_id";
   @SerializedName(SERIALIZED_NAME_MEMBER_ID)
+  @javax.annotation.Nullable
   private String memberId;
 
   public DeleteMemberAccessResult() {
   }
 
-  public DeleteMemberAccessResult assetId(String assetId) {
+  public DeleteMemberAccessResult assetId(@javax.annotation.Nullable String assetId) {
     this.assetId = assetId;
     return this;
   }
@@ -75,12 +77,12 @@ public class DeleteMemberAccessResult {
     return assetId;
   }
 
-  public void setAssetId(String assetId) {
+  public void setAssetId(@javax.annotation.Nullable String assetId) {
     this.assetId = assetId;
   }
 
 
-  public DeleteMemberAccessResult memberId(String memberId) {
+  public DeleteMemberAccessResult memberId(@javax.annotation.Nullable String memberId) {
     this.memberId = memberId;
     return this;
   }
@@ -94,7 +96,7 @@ public class DeleteMemberAccessResult {
     return memberId;
   }
 
-  public void setMemberId(String memberId) {
+  public void setMemberId(@javax.annotation.Nullable String memberId) {
     this.memberId = memberId;
   }
 

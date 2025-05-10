@@ -19,10 +19,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Two set of objects to be managed asyncronusly by bulk. One for creations, one for modifications.")
 @JsonTypeName("BulkUpsertRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BulkUpsertRequest   {
   private BulkUpsertRequestCreate create;
   private BulkUpsertRequestUpdate update;
+
+  public BulkUpsertRequest() {
+  }
 
   /**
    **/

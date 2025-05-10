@@ -18,10 +18,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Creative assets product metadata entity")
 @JsonTypeName("CatalogsCreativeAssetsProductMetadata")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsCreativeAssetsProductMetadata   {
   private String creativeAssetsId;
   private CreativeAssetsVisibilityType visibility;
+
+  public CatalogsCreativeAssetsProductMetadata() {
+  }
+
+  @JsonCreator
+  public CatalogsCreativeAssetsProductMetadata(
+    @JsonProperty(required = true, value = "creative_assets_id") String creativeAssetsId,
+    @JsonProperty(required = true, value = "visibility") CreativeAssetsVisibilityType visibility
+  ) {
+    this.creativeAssetsId = creativeAssetsId;
+    this.visibility = visibility;
+  }
 
   /**
    * The user-created unique ID that represents the creative assets item.
@@ -33,12 +45,12 @@ public class CatalogsCreativeAssetsProductMetadata   {
 
   
   @ApiModelProperty(example = "123abc", required = true, value = "The user-created unique ID that represents the creative assets item.")
-  @JsonProperty("creative_assets_id")
+  @JsonProperty(required = true, value = "creative_assets_id")
   @NotNull public String getCreativeAssetsId() {
     return creativeAssetsId;
   }
 
-  @JsonProperty("creative_assets_id")
+  @JsonProperty(required = true, value = "creative_assets_id")
   public void setCreativeAssetsId(String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
   }
@@ -52,12 +64,12 @@ public class CatalogsCreativeAssetsProductMetadata   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("visibility")
+  @JsonProperty(required = true, value = "visibility")
   @NotNull public CreativeAssetsVisibilityType getVisibility() {
     return visibility;
   }
 
-  @JsonProperty("visibility")
+  @JsonProperty(required = true, value = "visibility")
   public void setVisibility(CreativeAssetsVisibilityType visibility) {
     this.visibility = visibility;
   }

@@ -22,7 +22,7 @@ pinterest_rest_api_business_role_for_members__e business_role_for_members_busine
     return 0;
 }
 
-cJSON *business_role_for_members_business_role_for_members_convertToJSON(pinterest_rest_api_business_role_for_members__e business_role_for_members) {
+cJSON *business_role_for_members_convertToJSON(pinterest_rest_api_business_role_for_members__e business_role_for_members) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "business_role_for_members", business_role_for_members_business_role_for_members_ToString(business_role_for_members)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_business_role_for_members__e business_role_for_members_business_role_for_members_parseFromJSON(cJSON *business_role_for_membersJSON) {
-    pinterest_rest_api_business_role_for_members__e *business_role_for_members = NULL;
-    pinterest_rest_api_business_role_for_members__e business_role_for_membersVariable;
-    cJSON *business_role_for_membersVar = cJSON_GetObjectItemCaseSensitive(business_role_for_membersJSON, "business_role_for_members");
-    if(!cJSON_IsString(business_role_for_membersVar) || (business_role_for_membersVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_business_role_for_members__e business_role_for_members_parseFromJSON(cJSON *business_role_for_membersJSON) {
+    if(!cJSON_IsString(business_role_for_membersJSON) || (business_role_for_membersJSON->valuestring == NULL)) {
+        return 0;
     }
-    business_role_for_membersVariable = business_role_for_members_business_role_for_members_FromString(business_role_for_membersVar->valuestring);
-    return business_role_for_membersVariable;
-end:
-    return 0;
+    return business_role_for_members_business_role_for_members_FromString(business_role_for_membersJSON->valuestring);
 }

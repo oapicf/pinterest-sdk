@@ -13,12 +13,14 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.PinAnalyticsMetricsResponseDailyMetricsInner
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param lifetimeMetrics The lifetime metric name and value.
  * @param dailyMetrics Array with the requested daily metric records
  * @param summaryMetrics The metric name and value over the requested period for each requested metric
  */
+@Serializable
 data class PinAnalyticsMetricsResponse(
     /* The lifetime metric name and value. */
     val lifetimeMetrics: kotlin.collections.Map<kotlin.String, kotlin.Int>? = null,
@@ -26,5 +28,5 @@ data class PinAnalyticsMetricsResponse(
     val dailyMetrics: kotlin.collections.List<PinAnalyticsMetricsResponseDailyMetricsInner>? = null,
     /* The metric name and value over the requested period for each requested metric */
     val summaryMetrics: kotlin.collections.Map<kotlin.String, java.math.BigDecimal>? = null
-) 
+)
 

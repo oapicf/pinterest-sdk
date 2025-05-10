@@ -66,7 +66,7 @@ class TopVideoPinsAnalyticsResponse
      * @SerializedName("sort_by")
      * @Type("string")
     */
-    #[Assert\Choice(["SAVE", "IMPRESSION", "OUTBOUND_CLICK", "VIDEO_MRC_VIEW", "VIDEO_AVG_WATCH_TIME", "VIDEO_V50_WATCH_TIME", "QUARTILE_95_PERCENT_VIEW", "VIDEO_10S_VIEW", "VIDEO_START"])]
+    #[Assert\Choice(['SAVE', 'IMPRESSION', 'OUTBOUND_CLICK', 'VIDEO_MRC_VIEW', 'VIDEO_AVG_WATCH_TIME', 'VIDEO_V50_WATCH_TIME', 'QUARTILE_95_PERCENT_VIEW', 'VIDEO_10S_VIEW', 'VIDEO_START'])]
     #[Assert\Type("string")]
     protected ?string $sortBy = null;
 
@@ -74,7 +74,7 @@ class TopVideoPinsAnalyticsResponse
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->dateAvailability = array_key_exists('dateAvailability', $data) ? $data['dateAvailability'] : $this->dateAvailability;

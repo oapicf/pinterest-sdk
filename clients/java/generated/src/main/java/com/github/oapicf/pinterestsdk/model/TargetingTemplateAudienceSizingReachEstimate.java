@@ -48,24 +48,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * TargetingTemplateAudienceSizingReachEstimate
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TargetingTemplateAudienceSizingReachEstimate {
   public static final String SERIALIZED_NAME_ESTIMATE = "estimate";
   @SerializedName(SERIALIZED_NAME_ESTIMATE)
+  @javax.annotation.Nullable
   private Long estimate;
 
   public static final String SERIALIZED_NAME_LOWER_BOUND = "lower_bound";
   @SerializedName(SERIALIZED_NAME_LOWER_BOUND)
+  @javax.annotation.Nullable
   private Long lowerBound;
 
   public static final String SERIALIZED_NAME_UPPER_BOUND = "upper_bound";
   @SerializedName(SERIALIZED_NAME_UPPER_BOUND)
+  @javax.annotation.Nullable
   private Long upperBound;
 
   public TargetingTemplateAudienceSizingReachEstimate() {
   }
 
-  public TargetingTemplateAudienceSizingReachEstimate estimate(Long estimate) {
+  public TargetingTemplateAudienceSizingReachEstimate estimate(@javax.annotation.Nullable Long estimate) {
     this.estimate = estimate;
     return this;
   }
@@ -79,12 +82,12 @@ public class TargetingTemplateAudienceSizingReachEstimate {
     return estimate;
   }
 
-  public void setEstimate(Long estimate) {
+  public void setEstimate(@javax.annotation.Nullable Long estimate) {
     this.estimate = estimate;
   }
 
 
-  public TargetingTemplateAudienceSizingReachEstimate lowerBound(Long lowerBound) {
+  public TargetingTemplateAudienceSizingReachEstimate lowerBound(@javax.annotation.Nullable Long lowerBound) {
     this.lowerBound = lowerBound;
     return this;
   }
@@ -98,12 +101,12 @@ public class TargetingTemplateAudienceSizingReachEstimate {
     return lowerBound;
   }
 
-  public void setLowerBound(Long lowerBound) {
+  public void setLowerBound(@javax.annotation.Nullable Long lowerBound) {
     this.lowerBound = lowerBound;
   }
 
 
-  public TargetingTemplateAudienceSizingReachEstimate upperBound(Long upperBound) {
+  public TargetingTemplateAudienceSizingReachEstimate upperBound(@javax.annotation.Nullable Long upperBound) {
     this.upperBound = upperBound;
     return this;
   }
@@ -117,7 +120,7 @@ public class TargetingTemplateAudienceSizingReachEstimate {
     return upperBound;
   }
 
-  public void setUpperBound(Long upperBound) {
+  public void setUpperBound(@javax.annotation.Nullable Long upperBound) {
     this.upperBound = upperBound;
   }
 

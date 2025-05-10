@@ -5,7 +5,7 @@
 
 
 
-template_response_date_range_absolute_date_range_t *template_response_date_range_absolute_date_range_create(
+static template_response_date_range_absolute_date_range_t *template_response_date_range_absolute_date_range_create_internal(
     char *type,
     double start_date,
     double end_date
@@ -18,12 +18,28 @@ template_response_date_range_absolute_date_range_t *template_response_date_range
     template_response_date_range_absolute_date_range_local_var->start_date = start_date;
     template_response_date_range_absolute_date_range_local_var->end_date = end_date;
 
+    template_response_date_range_absolute_date_range_local_var->_library_owned = 1;
     return template_response_date_range_absolute_date_range_local_var;
 }
 
+__attribute__((deprecated)) template_response_date_range_absolute_date_range_t *template_response_date_range_absolute_date_range_create(
+    char *type,
+    double start_date,
+    double end_date
+    ) {
+    return template_response_date_range_absolute_date_range_create_internal (
+        type,
+        start_date,
+        end_date
+        );
+}
 
 void template_response_date_range_absolute_date_range_free(template_response_date_range_absolute_date_range_t *template_response_date_range_absolute_date_range) {
     if(NULL == template_response_date_range_absolute_date_range){
+        return ;
+    }
+    if(template_response_date_range_absolute_date_range->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "template_response_date_range_absolute_date_range_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -74,6 +90,9 @@ template_response_date_range_absolute_date_range_t *template_response_date_range
 
     // template_response_date_range_absolute_date_range->type
     cJSON *type = cJSON_GetObjectItemCaseSensitive(template_response_date_range_absolute_date_rangeJSON, "type");
+    if (cJSON_IsNull(type)) {
+        type = NULL;
+    }
     if (type) { 
     if(!cJSON_IsString(type) && !cJSON_IsNull(type))
     {
@@ -83,6 +102,9 @@ template_response_date_range_absolute_date_range_t *template_response_date_range
 
     // template_response_date_range_absolute_date_range->start_date
     cJSON *start_date = cJSON_GetObjectItemCaseSensitive(template_response_date_range_absolute_date_rangeJSON, "start_date");
+    if (cJSON_IsNull(start_date)) {
+        start_date = NULL;
+    }
     if (start_date) { 
     if(!cJSON_IsNumber(start_date))
     {
@@ -92,6 +114,9 @@ template_response_date_range_absolute_date_range_t *template_response_date_range
 
     // template_response_date_range_absolute_date_range->end_date
     cJSON *end_date = cJSON_GetObjectItemCaseSensitive(template_response_date_range_absolute_date_rangeJSON, "end_date");
+    if (cJSON_IsNull(end_date)) {
+        end_date = NULL;
+    }
     if (end_date) { 
     if(!cJSON_IsNumber(end_date))
     {
@@ -100,7 +125,7 @@ template_response_date_range_absolute_date_range_t *template_response_date_range
     }
 
 
-    template_response_date_range_absolute_date_range_local_var = template_response_date_range_absolute_date_range_create (
+    template_response_date_range_absolute_date_range_local_var = template_response_date_range_absolute_date_range_create_internal (
         type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL,
         start_date ? start_date->valuedouble : 0,
         end_date ? end_date->valuedouble : 0

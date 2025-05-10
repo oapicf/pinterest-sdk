@@ -3238,9 +3238,9 @@ class TemplateResponse {
 
     enum ConversionReportTimeTypeEnum {
     
-        AD_ACTION("TIME_OF_AD_ACTION"),
+        TIME_OF_AD_ACTION("TIME_OF_AD_ACTION"),
         
-        CONVERSION("TIME_OF_CONVERSION")
+        TIME_OF_CONVERSION("TIME_OF_CONVERSION")
     
         private final String value
     
@@ -3269,11 +3269,11 @@ class TemplateResponse {
 
     enum CreationSourceEnum {
     
-        API("ADS_API"),
+        ADS_API("ADS_API"),
         
-        MANAGER_REPORTING_PAGE("ADS_MANAGER_REPORTING_PAGE"),
+        ADS_MANAGER_REPORTING_PAGE("ADS_MANAGER_REPORTING_PAGE"),
         
-        MANAGER_REPORT_BUILDER("ADS_MANAGER_REPORT_BUILDER")
+        ADS_MANAGER_REPORT_BUILDER("ADS_MANAGER_REPORT_BUILDER")
     
         private final String value
     

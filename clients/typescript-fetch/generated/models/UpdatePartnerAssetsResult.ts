@@ -69,11 +69,11 @@ export function UpdatePartnerAssetsResultFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function UpdatePartnerAssetsResultToJSON(json: any): UpdatePartnerAssetsResult {
-      return UpdatePartnerAssetsResultToJSONTyped(json, false);
-  }
+export function UpdatePartnerAssetsResultToJSON(json: any): UpdatePartnerAssetsResult {
+    return UpdatePartnerAssetsResultToJSONTyped(json, false);
+}
 
-  export function UpdatePartnerAssetsResultToJSONTyped(value?: UpdatePartnerAssetsResult | null, ignoreDiscriminator: boolean = false): any {
+export function UpdatePartnerAssetsResultToJSONTyped(value?: UpdatePartnerAssetsResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

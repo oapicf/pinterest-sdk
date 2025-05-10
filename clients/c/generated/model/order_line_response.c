@@ -5,7 +5,7 @@
 
 
 
-order_line_response_t *order_line_response_create(
+static order_line_response_t *order_line_response_create_internal(
     list_t *errors,
     list_t *order_line
     ) {
@@ -16,12 +16,26 @@ order_line_response_t *order_line_response_create(
     order_line_response_local_var->errors = errors;
     order_line_response_local_var->order_line = order_line;
 
+    order_line_response_local_var->_library_owned = 1;
     return order_line_response_local_var;
 }
 
+__attribute__((deprecated)) order_line_response_t *order_line_response_create(
+    list_t *errors,
+    list_t *order_line
+    ) {
+    return order_line_response_create_internal (
+        errors,
+        order_line
+        );
+}
 
 void order_line_response_free(order_line_response_t *order_line_response) {
     if(NULL == order_line_response){
+        return ;
+    }
+    if(order_line_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "order_line_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -104,6 +118,9 @@ order_line_response_t *order_line_response_parseFromJSON(cJSON *order_line_respo
 
     // order_line_response->errors
     cJSON *errors = cJSON_GetObjectItemCaseSensitive(order_line_responseJSON, "errors");
+    if (cJSON_IsNull(errors)) {
+        errors = NULL;
+    }
     if (errors) { 
     cJSON *errors_local_nonprimitive = NULL;
     if(!cJSON_IsArray(errors)){
@@ -125,6 +142,9 @@ order_line_response_t *order_line_response_parseFromJSON(cJSON *order_line_respo
 
     // order_line_response->order_line
     cJSON *order_line = cJSON_GetObjectItemCaseSensitive(order_line_responseJSON, "order_line");
+    if (cJSON_IsNull(order_line)) {
+        order_line = NULL;
+    }
     if (order_line) { 
     cJSON *order_line_local_nonprimitive = NULL;
     if(!cJSON_IsArray(order_line)){
@@ -145,7 +165,7 @@ order_line_response_t *order_line_response_parseFromJSON(cJSON *order_line_respo
     }
 
 
-    order_line_response_local_var = order_line_response_create (
+    order_line_response_local_var = order_line_response_create_internal (
         errors ? errorsList : NULL,
         order_line ? order_lineList : NULL
         );

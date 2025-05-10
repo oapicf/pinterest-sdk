@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsProductGroupPricingCriteria
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param MIN_PRICE 
  */
+@Serializable
 data class MinPriceFilter(
     val MIN_PRICE: CatalogsProductGroupPricingCriteria
-) 
+)
 

@@ -15,7 +15,9 @@
 export type BusinessRoleCheckMode = 'INTERNAL' | 'EXTERNAL';
 
 export const BusinessRoleCheckMode = {
+
     Internal: 'INTERNAL' as BusinessRoleCheckMode,
+
     External: 'EXTERNAL' as BusinessRoleCheckMode
 };
 

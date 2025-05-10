@@ -31,9 +31,10 @@ typedef struct conversion_api_response_events_inner_t {
     char *error_message; // string
     char *warning_message; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } conversion_api_response_events_inner_t;
 
-conversion_api_response_events_inner_t *conversion_api_response_events_inner_create(
+__attribute__((deprecated)) conversion_api_response_events_inner_t *conversion_api_response_events_inner_create(
     pinterest_rest_api_conversion_api_response_events_inner_STATUS_e status,
     char *error_message,
     char *warning_message

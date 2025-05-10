@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "A request to exchange a refresh token for a new access token.")
 @JsonTypeName("OauthAccessTokenRequestRefresh")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class OauthAccessTokenRequestRefresh   {
   public enum GrantTypeEnum {
 
@@ -71,6 +71,18 @@ public class OauthAccessTokenRequestRefresh   {
   private String scope;
   private Boolean refreshOn;
 
+  public OauthAccessTokenRequestRefresh() {
+  }
+
+  @JsonCreator
+  public OauthAccessTokenRequestRefresh(
+    @JsonProperty(required = true, value = "grant_type") GrantTypeEnum grantType,
+    @JsonProperty(required = true, value = "refresh_token") String refreshToken
+  ) {
+    this.grantType = grantType;
+    this.refreshToken = refreshToken;
+  }
+
   /**
    **/
   public OauthAccessTokenRequestRefresh grantType(GrantTypeEnum grantType) {
@@ -80,12 +92,12 @@ public class OauthAccessTokenRequestRefresh   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("grant_type")
+  @JsonProperty(required = true, value = "grant_type")
   @NotNull public GrantTypeEnum getGrantType() {
     return grantType;
   }
 
-  @JsonProperty("grant_type")
+  @JsonProperty(required = true, value = "grant_type")
   public void setGrantType(GrantTypeEnum grantType) {
     this.grantType = grantType;
   }
@@ -99,12 +111,12 @@ public class OauthAccessTokenRequestRefresh   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("refresh_token")
+  @JsonProperty(required = true, value = "refresh_token")
   @NotNull public String getRefreshToken() {
     return refreshToken;
   }
 
-  @JsonProperty("refresh_token")
+  @JsonProperty(required = true, value = "refresh_token")
   public void setRefreshToken(String refreshToken) {
     this.refreshToken = refreshToken;
   }

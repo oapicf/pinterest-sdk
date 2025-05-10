@@ -19,11 +19,25 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("BusinessSharedAudience")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BusinessSharedAudience   {
   private String audienceId;
   private OperationType operationType;
   private @Valid List<@Pattern(regexp = "^\\d+$")String> recipientBusinessIds = new ArrayList<>();
+
+  public BusinessSharedAudience() {
+  }
+
+  @JsonCreator
+  public BusinessSharedAudience(
+    @JsonProperty(required = true, value = "audience_id") String audienceId,
+    @JsonProperty(required = true, value = "operation_type") OperationType operationType,
+    @JsonProperty(required = true, value = "recipient_business_ids") List< @Pattern(regexp="^\\d+$")String> recipientBusinessIds
+  ) {
+    this.audienceId = audienceId;
+    this.operationType = operationType;
+    this.recipientBusinessIds = recipientBusinessIds;
+  }
 
   /**
    * Unique identifier of an audience
@@ -35,12 +49,12 @@ public class BusinessSharedAudience   {
 
   
   @ApiModelProperty(example = "2542621871096", required = true, value = "Unique identifier of an audience")
-  @JsonProperty("audience_id")
+  @JsonProperty(required = true, value = "audience_id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getAudienceId() {
     return audienceId;
   }
 
-  @JsonProperty("audience_id")
+  @JsonProperty(required = true, value = "audience_id")
   public void setAudienceId(String audienceId) {
     this.audienceId = audienceId;
   }
@@ -54,12 +68,12 @@ public class BusinessSharedAudience   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("operation_type")
+  @JsonProperty(required = true, value = "operation_type")
   @NotNull public OperationType getOperationType() {
     return operationType;
   }
 
-  @JsonProperty("operation_type")
+  @JsonProperty(required = true, value = "operation_type")
   public void setOperationType(OperationType operationType) {
     this.operationType = operationType;
   }
@@ -74,12 +88,12 @@ public class BusinessSharedAudience   {
 
   
   @ApiModelProperty(required = true, value = "List of business IDs to share with or revoke from.")
-  @JsonProperty("recipient_business_ids")
+  @JsonProperty(required = true, value = "recipient_business_ids")
   @NotNull public List< @Pattern(regexp="^\\d+$")String> getRecipientBusinessIds() {
     return recipientBusinessIds;
   }
 
-  @JsonProperty("recipient_business_ids")
+  @JsonProperty(required = true, value = "recipient_business_ids")
   public void setRecipientBusinessIds(List<@Pattern(regexp = "^\\d+$")String> recipientBusinessIds) {
     this.recipientBusinessIds = recipientBusinessIds;
   }

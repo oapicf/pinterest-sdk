@@ -5,7 +5,7 @@
 
 
 
-item_validation_event_t *item_validation_event_create(
+static item_validation_event_t *item_validation_event_create_internal(
     char *attribute,
     int code,
     char *message
@@ -18,12 +18,28 @@ item_validation_event_t *item_validation_event_create(
     item_validation_event_local_var->code = code;
     item_validation_event_local_var->message = message;
 
+    item_validation_event_local_var->_library_owned = 1;
     return item_validation_event_local_var;
 }
 
+__attribute__((deprecated)) item_validation_event_t *item_validation_event_create(
+    char *attribute,
+    int code,
+    char *message
+    ) {
+    return item_validation_event_create_internal (
+        attribute,
+        code,
+        message
+        );
+}
 
 void item_validation_event_free(item_validation_event_t *item_validation_event) {
     if(NULL == item_validation_event){
+        return ;
+    }
+    if(item_validation_event->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "item_validation_event_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -78,6 +94,9 @@ item_validation_event_t *item_validation_event_parseFromJSON(cJSON *item_validat
 
     // item_validation_event->attribute
     cJSON *attribute = cJSON_GetObjectItemCaseSensitive(item_validation_eventJSON, "attribute");
+    if (cJSON_IsNull(attribute)) {
+        attribute = NULL;
+    }
     if (attribute) { 
     if(!cJSON_IsString(attribute) && !cJSON_IsNull(attribute))
     {
@@ -87,6 +106,9 @@ item_validation_event_t *item_validation_event_parseFromJSON(cJSON *item_validat
 
     // item_validation_event->code
     cJSON *code = cJSON_GetObjectItemCaseSensitive(item_validation_eventJSON, "code");
+    if (cJSON_IsNull(code)) {
+        code = NULL;
+    }
     if (code) { 
     if(!cJSON_IsNumber(code))
     {
@@ -96,6 +118,9 @@ item_validation_event_t *item_validation_event_parseFromJSON(cJSON *item_validat
 
     // item_validation_event->message
     cJSON *message = cJSON_GetObjectItemCaseSensitive(item_validation_eventJSON, "message");
+    if (cJSON_IsNull(message)) {
+        message = NULL;
+    }
     if (message) { 
     if(!cJSON_IsString(message) && !cJSON_IsNull(message))
     {
@@ -104,7 +129,7 @@ item_validation_event_t *item_validation_event_parseFromJSON(cJSON *item_validat
     }
 
 
-    item_validation_event_local_var = item_validation_event_create (
+    item_validation_event_local_var = item_validation_event_create_internal (
         attribute && !cJSON_IsNull(attribute) ? strdup(attribute->valuestring) : NULL,
         code ? code->valuedouble : 0,
         message && !cJSON_IsNull(message) ? strdup(message->valuestring) : NULL

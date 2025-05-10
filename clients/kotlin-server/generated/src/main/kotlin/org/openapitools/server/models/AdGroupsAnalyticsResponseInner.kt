@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param AD_GROUP_ID The ID of the ad group that this metrics belongs to.
  * @param DATE Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
  */
+@Serializable
 data class AdGroupsAnalyticsResponseInner(
     /* The ID of the ad group that this metrics belongs to. */
     val AD_GROUP_ID: kotlin.String,
     /* Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`) */
     val DATE: java.time.LocalDate? = null
-) 
+)
 

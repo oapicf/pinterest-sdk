@@ -16,11 +16,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("DeleteAssetGroupResponse_exceptions_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class DeleteAssetGroupResponseExceptionsInner   {
   private Integer code;
   private String message;
   private String assetGroupId;
+
+  public DeleteAssetGroupResponseExceptionsInner() {
+  }
 
   /**
    * Error code associated with the error deleting asset group.

@@ -66,7 +66,7 @@ import com.google.gson.JsonParseException;
 
 import com.github.oapicf.pinterestsdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ItemResponseAnyOf extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(ItemResponseAnyOf.class.getName());
 
@@ -241,6 +241,7 @@ public class ItemResponseAnyOf extends AbstractOpenApiSchema {
     public CatalogsRetailItemResponse getCatalogsRetailItemResponse() throws ClassCastException {
         return (CatalogsRetailItemResponse)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CatalogsHotelItemResponse`. If the actual instance is not `CatalogsHotelItemResponse`,
      * the ClassCastException will be thrown.
@@ -251,6 +252,7 @@ public class ItemResponseAnyOf extends AbstractOpenApiSchema {
     public CatalogsHotelItemResponse getCatalogsHotelItemResponse() throws ClassCastException {
         return (CatalogsHotelItemResponse)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CatalogsCreativeAssetsItemResponse`. If the actual instance is not `CatalogsCreativeAssetsItemResponse`,
      * the ClassCastException will be thrown.

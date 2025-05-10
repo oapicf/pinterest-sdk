@@ -12,15 +12,17 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Keyword metrics JSON
  * @param avgCpcInMicroCurrency Average cost per click
  * @param keywordQueryVolume Keyword's search frequency. This value is based on keyword frequency in pepsi client response
  */
+@Serializable
 data class KeywordMetrics(
     /* Average cost per click */
     val avgCpcInMicroCurrency: java.math.BigDecimal? = null,
     /* Keyword's search frequency. This value is based on keyword frequency in pepsi client response */
     val keywordQueryVolume: kotlin.String? = null
-) 
+)
 

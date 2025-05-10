@@ -49,20 +49,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Creative assets product metadata entity
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsCreativeAssetsProductMetadata {
   public static final String SERIALIZED_NAME_CREATIVE_ASSETS_ID = "creative_assets_id";
   @SerializedName(SERIALIZED_NAME_CREATIVE_ASSETS_ID)
+  @javax.annotation.Nonnull
   private String creativeAssetsId;
 
   public static final String SERIALIZED_NAME_VISIBILITY = "visibility";
   @SerializedName(SERIALIZED_NAME_VISIBILITY)
+  @javax.annotation.Nonnull
   private CreativeAssetsVisibilityType visibility;
 
   public CatalogsCreativeAssetsProductMetadata() {
   }
 
-  public CatalogsCreativeAssetsProductMetadata creativeAssetsId(String creativeAssetsId) {
+  public CatalogsCreativeAssetsProductMetadata creativeAssetsId(@javax.annotation.Nonnull String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
     return this;
   }
@@ -76,12 +78,12 @@ public class CatalogsCreativeAssetsProductMetadata {
     return creativeAssetsId;
   }
 
-  public void setCreativeAssetsId(String creativeAssetsId) {
+  public void setCreativeAssetsId(@javax.annotation.Nonnull String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
   }
 
 
-  public CatalogsCreativeAssetsProductMetadata visibility(CreativeAssetsVisibilityType visibility) {
+  public CatalogsCreativeAssetsProductMetadata visibility(@javax.annotation.Nonnull CreativeAssetsVisibilityType visibility) {
     this.visibility = visibility;
     return this;
   }
@@ -95,7 +97,7 @@ public class CatalogsCreativeAssetsProductMetadata {
     return visibility;
   }
 
-  public void setVisibility(CreativeAssetsVisibilityType visibility) {
+  public void setVisibility(@javax.annotation.Nonnull CreativeAssetsVisibilityType visibility) {
     this.visibility = visibility;
   }
 

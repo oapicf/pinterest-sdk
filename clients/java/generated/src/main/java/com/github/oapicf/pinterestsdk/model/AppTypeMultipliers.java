@@ -49,16 +49,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * This represents a mapping from app type targeting criteria to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified app type in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. All app type multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AppTypeMultipliers {
   public static final String SERIALIZED_NAME_A_P_P_T_Y_P_E = "APP_TYPE";
   @SerializedName(SERIALIZED_NAME_A_P_P_T_Y_P_E)
+  @javax.annotation.Nullable
   private TargetingSpecAppType APP_TYPE;
 
   public AppTypeMultipliers() {
   }
 
-  public AppTypeMultipliers APP_TYPE(TargetingSpecAppType APP_TYPE) {
+  public AppTypeMultipliers APP_TYPE(@javax.annotation.Nullable TargetingSpecAppType APP_TYPE) {
     this.APP_TYPE = APP_TYPE;
     return this;
   }
@@ -72,7 +73,7 @@ public class AppTypeMultipliers {
     return APP_TYPE;
   }
 
-  public void setAPPTYPE(TargetingSpecAppType APP_TYPE) {
+  public void setAPPTYPE(@javax.annotation.Nullable TargetingSpecAppType APP_TYPE) {
     this.APP_TYPE = APP_TYPE;
   }
 

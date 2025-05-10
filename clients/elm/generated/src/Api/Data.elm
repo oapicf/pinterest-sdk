@@ -3763,14 +3763,14 @@ type alias AdsAnalyticsCreateAsyncRequest =
 
 
 type AdsAnalyticsCreateAsyncRequestPrimarySort
-    = AdsAnalyticsCreateAsyncRequestPrimarySortID
-    | AdsAnalyticsCreateAsyncRequestPrimarySortDATE
+    = AdsAnalyticsCreateAsyncRequestPrimarySortBYID
+    | AdsAnalyticsCreateAsyncRequestPrimarySortBYDATE
 
 
 adsAnalyticsCreateAsyncRequestPrimarySortVariants : List AdsAnalyticsCreateAsyncRequestPrimarySort
 adsAnalyticsCreateAsyncRequestPrimarySortVariants =
-    [ AdsAnalyticsCreateAsyncRequestPrimarySortID
-    , AdsAnalyticsCreateAsyncRequestPrimarySortDATE
+    [ AdsAnalyticsCreateAsyncRequestPrimarySortBYID
+    , AdsAnalyticsCreateAsyncRequestPrimarySortBYDATE
     ]
 
 
@@ -8746,14 +8746,14 @@ conversionReportAttributionTypeVariants =
 {-| Conversion report time type
 -}
 type ConversionReportTimeType
-    = ConversionReportTimeTypeADACTION
-    | ConversionReportTimeTypeCONVERSION
+    = ConversionReportTimeTypeTIMEOFADACTION
+    | ConversionReportTimeTypeTIMEOFCONVERSION
 
 
 conversionReportTimeTypeVariants : List ConversionReportTimeType
 conversionReportTimeTypeVariants =
-    [ ConversionReportTimeTypeADACTION
-    , ConversionReportTimeTypeCONVERSION
+    [ ConversionReportTimeTypeTIMEOFADACTION
+    , ConversionReportTimeTypeTIMEOFCONVERSION
     ]
 
 
@@ -13019,14 +13019,14 @@ pinMediaSourceImageBase64SourceTypeVariants =
 
 
 type PinMediaSourceImageBase64ContentType
-    = PinMediaSourceImageBase64ContentTypeJpeg
-    | PinMediaSourceImageBase64ContentTypePng
+    = PinMediaSourceImageBase64ContentTypeImageJpeg
+    | PinMediaSourceImageBase64ContentTypeImagePng
 
 
 pinMediaSourceImageBase64ContentTypeVariants : List PinMediaSourceImageBase64ContentType
 pinMediaSourceImageBase64ContentTypeVariants =
-    [ PinMediaSourceImageBase64ContentTypeJpeg
-    , PinMediaSourceImageBase64ContentTypePng
+    [ PinMediaSourceImageBase64ContentTypeImageJpeg
+    , PinMediaSourceImageBase64ContentTypeImagePng
     ]
 
 
@@ -13078,14 +13078,14 @@ type alias PinMediaSourceImagesBase64ItemsInner =
 
 
 type PinMediaSourceImagesBase64ItemsInnerContentType
-    = PinMediaSourceImagesBase64ItemsInnerContentTypeJpeg
-    | PinMediaSourceImagesBase64ItemsInnerContentTypePng
+    = PinMediaSourceImagesBase64ItemsInnerContentTypeImageJpeg
+    | PinMediaSourceImagesBase64ItemsInnerContentTypeImagePng
 
 
 pinMediaSourceImagesBase64ItemsInnerContentTypeVariants : List PinMediaSourceImagesBase64ItemsInnerContentType
 pinMediaSourceImagesBase64ItemsInnerContentTypeVariants =
-    [ PinMediaSourceImagesBase64ItemsInnerContentTypeJpeg
-    , PinMediaSourceImagesBase64ItemsInnerContentTypePng
+    [ PinMediaSourceImagesBase64ItemsInnerContentTypeImageJpeg
+    , PinMediaSourceImagesBase64ItemsInnerContentTypeImagePng
     ]
 
 
@@ -13157,14 +13157,14 @@ pinMediaSourceVideoIDSourceTypeVariants =
 
 
 type PinMediaSourceVideoIDCoverImageContentType
-    = PinMediaSourceVideoIDCoverImageContentTypeJpeg
-    | PinMediaSourceVideoIDCoverImageContentTypePng
+    = PinMediaSourceVideoIDCoverImageContentTypeImageJpeg
+    | PinMediaSourceVideoIDCoverImageContentTypeImagePng
 
 
 pinMediaSourceVideoIDCoverImageContentTypeVariants : List PinMediaSourceVideoIDCoverImageContentType
 pinMediaSourceVideoIDCoverImageContentTypeVariants =
-    [ PinMediaSourceVideoIDCoverImageContentTypeJpeg
-    , PinMediaSourceVideoIDCoverImageContentTypePng
+    [ PinMediaSourceVideoIDCoverImageContentTypeImageJpeg
+    , PinMediaSourceVideoIDCoverImageContentTypeImagePng
     ]
 
 
@@ -18578,28 +18578,28 @@ templateResponseColumnsVariants =
 
 
 type TemplateResponseConversionReportTimeType
-    = TemplateResponseConversionReportTimeTypeADACTION
-    | TemplateResponseConversionReportTimeTypeCONVERSION
+    = TemplateResponseConversionReportTimeTypeTIMEOFADACTION
+    | TemplateResponseConversionReportTimeTypeTIMEOFCONVERSION
 
 
 templateResponseConversionReportTimeTypeVariants : List TemplateResponseConversionReportTimeType
 templateResponseConversionReportTimeTypeVariants =
-    [ TemplateResponseConversionReportTimeTypeADACTION
-    , TemplateResponseConversionReportTimeTypeCONVERSION
+    [ TemplateResponseConversionReportTimeTypeTIMEOFADACTION
+    , TemplateResponseConversionReportTimeTypeTIMEOFCONVERSION
     ]
 
 
 type TemplateResponseCreationSource
-    = TemplateResponseCreationSourceAPI
-    | TemplateResponseCreationSourceMANAGERREPORTINGPAGE
-    | TemplateResponseCreationSourceMANAGERREPORTBUILDER
+    = TemplateResponseCreationSourceADSAPI
+    | TemplateResponseCreationSourceADSMANAGERREPORTINGPAGE
+    | TemplateResponseCreationSourceADSMANAGERREPORTBUILDER
 
 
 templateResponseCreationSourceVariants : List TemplateResponseCreationSource
 templateResponseCreationSourceVariants =
-    [ TemplateResponseCreationSourceAPI
-    , TemplateResponseCreationSourceMANAGERREPORTINGPAGE
-    , TemplateResponseCreationSourceMANAGERREPORTBUILDER
+    [ TemplateResponseCreationSourceADSAPI
+    , TemplateResponseCreationSourceADSMANAGERREPORTINGPAGE
+    , TemplateResponseCreationSourceADSMANAGERREPORTBUILDER
     ]
 
 
@@ -21760,10 +21760,10 @@ encodeAdsAnalyticsCreateAsyncRequestPairs model =
 stringFromAdsAnalyticsCreateAsyncRequestPrimarySort : AdsAnalyticsCreateAsyncRequestPrimarySort -> String
 stringFromAdsAnalyticsCreateAsyncRequestPrimarySort model =
     case model of
-        AdsAnalyticsCreateAsyncRequestPrimarySortID ->
+        AdsAnalyticsCreateAsyncRequestPrimarySortBYID ->
             "BY_ID"
 
-        AdsAnalyticsCreateAsyncRequestPrimarySortDATE ->
+        AdsAnalyticsCreateAsyncRequestPrimarySortBYDATE ->
             "BY_DATE"
 
 
@@ -31282,10 +31282,10 @@ encodeConversionReportAttributionType =
 stringFromConversionReportTimeType : ConversionReportTimeType -> String
 stringFromConversionReportTimeType model =
     case model of
-        ConversionReportTimeTypeADACTION ->
+        ConversionReportTimeTypeTIMEOFADACTION ->
             "TIME_OF_AD_ACTION"
 
-        ConversionReportTimeTypeCONVERSION ->
+        ConversionReportTimeTypeTIMEOFCONVERSION ->
             "TIME_OF_CONVERSION"
 
 
@@ -39232,10 +39232,10 @@ encodePinMediaSourceImageBase64SourceType =
 stringFromPinMediaSourceImageBase64ContentType : PinMediaSourceImageBase64ContentType -> String
 stringFromPinMediaSourceImageBase64ContentType model =
     case model of
-        PinMediaSourceImageBase64ContentTypeJpeg ->
+        PinMediaSourceImageBase64ContentTypeImageJpeg ->
             "image/jpeg"
 
-        PinMediaSourceImageBase64ContentTypePng ->
+        PinMediaSourceImageBase64ContentTypeImagePng ->
             "image/png"
 
 
@@ -39339,10 +39339,10 @@ encodePinMediaSourceImagesBase64ItemsInnerPairs model =
 stringFromPinMediaSourceImagesBase64ItemsInnerContentType : PinMediaSourceImagesBase64ItemsInnerContentType -> String
 stringFromPinMediaSourceImagesBase64ItemsInnerContentType model =
     case model of
-        PinMediaSourceImagesBase64ItemsInnerContentTypeJpeg ->
+        PinMediaSourceImagesBase64ItemsInnerContentTypeImageJpeg ->
             "image/jpeg"
 
-        PinMediaSourceImagesBase64ItemsInnerContentTypePng ->
+        PinMediaSourceImagesBase64ItemsInnerContentTypeImagePng ->
             "image/png"
 
 
@@ -39481,10 +39481,10 @@ encodePinMediaSourceVideoIDSourceType =
 stringFromPinMediaSourceVideoIDCoverImageContentType : PinMediaSourceVideoIDCoverImageContentType -> String
 stringFromPinMediaSourceVideoIDCoverImageContentType model =
     case model of
-        PinMediaSourceVideoIDCoverImageContentTypeJpeg ->
+        PinMediaSourceVideoIDCoverImageContentTypeImageJpeg ->
             "image/jpeg"
 
-        PinMediaSourceVideoIDCoverImageContentTypePng ->
+        PinMediaSourceVideoIDCoverImageContentTypeImagePng ->
             "image/png"
 
 
@@ -48256,10 +48256,10 @@ encodeTemplateResponseColumns =
 stringFromTemplateResponseConversionReportTimeType : TemplateResponseConversionReportTimeType -> String
 stringFromTemplateResponseConversionReportTimeType model =
     case model of
-        TemplateResponseConversionReportTimeTypeADACTION ->
+        TemplateResponseConversionReportTimeTypeTIMEOFADACTION ->
             "TIME_OF_AD_ACTION"
 
-        TemplateResponseConversionReportTimeTypeCONVERSION ->
+        TemplateResponseConversionReportTimeTypeTIMEOFCONVERSION ->
             "TIME_OF_CONVERSION"
 
 
@@ -48271,13 +48271,13 @@ encodeTemplateResponseConversionReportTimeType =
 stringFromTemplateResponseCreationSource : TemplateResponseCreationSource -> String
 stringFromTemplateResponseCreationSource model =
     case model of
-        TemplateResponseCreationSourceAPI ->
+        TemplateResponseCreationSourceADSAPI ->
             "ADS_API"
 
-        TemplateResponseCreationSourceMANAGERREPORTINGPAGE ->
+        TemplateResponseCreationSourceADSMANAGERREPORTINGPAGE ->
             "ADS_MANAGER_REPORTING_PAGE"
 
-        TemplateResponseCreationSourceMANAGERREPORTBUILDER ->
+        TemplateResponseCreationSourceADSMANAGERREPORTBUILDER ->
             "ADS_MANAGER_REPORT_BUILDER"
 
 
@@ -51767,10 +51767,10 @@ adsAnalyticsCreateAsyncRequestPrimarySortDecoder =
             (\value ->
                 case value of
                     "BY_ID" ->
-                        Json.Decode.succeed AdsAnalyticsCreateAsyncRequestPrimarySortID
+                        Json.Decode.succeed AdsAnalyticsCreateAsyncRequestPrimarySortBYID
 
                     "BY_DATE" ->
-                        Json.Decode.succeed AdsAnalyticsCreateAsyncRequestPrimarySortDATE
+                        Json.Decode.succeed AdsAnalyticsCreateAsyncRequestPrimarySortBYDATE
 
                     other ->
                         Json.Decode.fail <| "Unknown type: " ++ other
@@ -58106,10 +58106,10 @@ conversionReportTimeTypeDecoder =
             (\value ->
                 case value of
                     "TIME_OF_AD_ACTION" ->
-                        Json.Decode.succeed ConversionReportTimeTypeADACTION
+                        Json.Decode.succeed ConversionReportTimeTypeTIMEOFADACTION
 
                     "TIME_OF_CONVERSION" ->
-                        Json.Decode.succeed ConversionReportTimeTypeCONVERSION
+                        Json.Decode.succeed ConversionReportTimeTypeTIMEOFCONVERSION
 
                     other ->
                         Json.Decode.fail <| "Unknown type: " ++ other
@@ -63706,10 +63706,10 @@ pinMediaSourceImageBase64ContentTypeDecoder =
             (\value ->
                 case value of
                     "image/jpeg" ->
-                        Json.Decode.succeed PinMediaSourceImageBase64ContentTypeJpeg
+                        Json.Decode.succeed PinMediaSourceImageBase64ContentTypeImageJpeg
 
                     "image/png" ->
-                        Json.Decode.succeed PinMediaSourceImageBase64ContentTypePng
+                        Json.Decode.succeed PinMediaSourceImageBase64ContentTypeImagePng
 
                     other ->
                         Json.Decode.fail <| "Unknown type: " ++ other
@@ -63780,10 +63780,10 @@ pinMediaSourceImagesBase64ItemsInnerContentTypeDecoder =
             (\value ->
                 case value of
                     "image/jpeg" ->
-                        Json.Decode.succeed PinMediaSourceImagesBase64ItemsInnerContentTypeJpeg
+                        Json.Decode.succeed PinMediaSourceImagesBase64ItemsInnerContentTypeImageJpeg
 
                     "image/png" ->
-                        Json.Decode.succeed PinMediaSourceImagesBase64ItemsInnerContentTypePng
+                        Json.Decode.succeed PinMediaSourceImagesBase64ItemsInnerContentTypeImagePng
 
                     other ->
                         Json.Decode.fail <| "Unknown type: " ++ other
@@ -63878,10 +63878,10 @@ pinMediaSourceVideoIDCoverImageContentTypeDecoder =
             (\value ->
                 case value of
                     "image/jpeg" ->
-                        Json.Decode.succeed PinMediaSourceVideoIDCoverImageContentTypeJpeg
+                        Json.Decode.succeed PinMediaSourceVideoIDCoverImageContentTypeImageJpeg
 
                     "image/png" ->
-                        Json.Decode.succeed PinMediaSourceVideoIDCoverImageContentTypePng
+                        Json.Decode.succeed PinMediaSourceVideoIDCoverImageContentTypeImagePng
 
                     other ->
                         Json.Decode.fail <| "Unknown type: " ++ other
@@ -71676,10 +71676,10 @@ templateResponseConversionReportTimeTypeDecoder =
             (\value ->
                 case value of
                     "TIME_OF_AD_ACTION" ->
-                        Json.Decode.succeed TemplateResponseConversionReportTimeTypeADACTION
+                        Json.Decode.succeed TemplateResponseConversionReportTimeTypeTIMEOFADACTION
 
                     "TIME_OF_CONVERSION" ->
-                        Json.Decode.succeed TemplateResponseConversionReportTimeTypeCONVERSION
+                        Json.Decode.succeed TemplateResponseConversionReportTimeTypeTIMEOFCONVERSION
 
                     other ->
                         Json.Decode.fail <| "Unknown type: " ++ other
@@ -71694,13 +71694,13 @@ templateResponseCreationSourceDecoder =
             (\value ->
                 case value of
                     "ADS_API" ->
-                        Json.Decode.succeed TemplateResponseCreationSourceAPI
+                        Json.Decode.succeed TemplateResponseCreationSourceADSAPI
 
                     "ADS_MANAGER_REPORTING_PAGE" ->
-                        Json.Decode.succeed TemplateResponseCreationSourceMANAGERREPORTINGPAGE
+                        Json.Decode.succeed TemplateResponseCreationSourceADSMANAGERREPORTINGPAGE
 
                     "ADS_MANAGER_REPORT_BUILDER" ->
-                        Json.Decode.succeed TemplateResponseCreationSourceMANAGERREPORTBUILDER
+                        Json.Decode.succeed TemplateResponseCreationSourceADSMANAGERREPORTBUILDER
 
                     other ->
                         Json.Decode.fail <| "Unknown type: " ++ other

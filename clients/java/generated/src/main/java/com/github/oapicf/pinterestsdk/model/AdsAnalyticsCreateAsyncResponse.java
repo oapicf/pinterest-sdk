@@ -50,24 +50,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdsAnalyticsCreateAsyncResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdsAnalyticsCreateAsyncResponse {
   public static final String SERIALIZED_NAME_REPORT_STATUS = "report_status";
   @SerializedName(SERIALIZED_NAME_REPORT_STATUS)
+  @javax.annotation.Nullable
   private BulkReportingJobStatus reportStatus;
 
   public static final String SERIALIZED_NAME_TOKEN = "token";
   @SerializedName(SERIALIZED_NAME_TOKEN)
+  @javax.annotation.Nullable
   private String token;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
+  @javax.annotation.Nullable
   private String message;
 
   public AdsAnalyticsCreateAsyncResponse() {
   }
 
-  public AdsAnalyticsCreateAsyncResponse reportStatus(BulkReportingJobStatus reportStatus) {
+  public AdsAnalyticsCreateAsyncResponse reportStatus(@javax.annotation.Nullable BulkReportingJobStatus reportStatus) {
     this.reportStatus = reportStatus;
     return this;
   }
@@ -81,12 +84,12 @@ public class AdsAnalyticsCreateAsyncResponse {
     return reportStatus;
   }
 
-  public void setReportStatus(BulkReportingJobStatus reportStatus) {
+  public void setReportStatus(@javax.annotation.Nullable BulkReportingJobStatus reportStatus) {
     this.reportStatus = reportStatus;
   }
 
 
-  public AdsAnalyticsCreateAsyncResponse token(String token) {
+  public AdsAnalyticsCreateAsyncResponse token(@javax.annotation.Nullable String token) {
     this.token = token;
     return this;
   }
@@ -100,12 +103,12 @@ public class AdsAnalyticsCreateAsyncResponse {
     return token;
   }
 
-  public void setToken(String token) {
+  public void setToken(@javax.annotation.Nullable String token) {
     this.token = token;
   }
 
 
-  public AdsAnalyticsCreateAsyncResponse message(String message) {
+  public AdsAnalyticsCreateAsyncResponse message(@javax.annotation.Nullable String message) {
     this.message = message;
     return this;
   }
@@ -119,7 +122,7 @@ public class AdsAnalyticsCreateAsyncResponse {
     return message;
   }
 
-  public void setMessage(String message) {
+  public void setMessage(@javax.annotation.Nullable String message) {
     this.message = message;
   }
 

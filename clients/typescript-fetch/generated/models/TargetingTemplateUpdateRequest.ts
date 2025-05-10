@@ -67,11 +67,11 @@ export function TargetingTemplateUpdateRequestFromJSONTyped(json: any, ignoreDis
     };
 }
 
-  export function TargetingTemplateUpdateRequestToJSON(json: any): TargetingTemplateUpdateRequest {
-      return TargetingTemplateUpdateRequestToJSONTyped(json, false);
-  }
+export function TargetingTemplateUpdateRequestToJSON(json: any): TargetingTemplateUpdateRequest {
+    return TargetingTemplateUpdateRequestToJSONTyped(json, false);
+}
 
-  export function TargetingTemplateUpdateRequestToJSONTyped(value?: TargetingTemplateUpdateRequest | null, ignoreDiscriminator: boolean = false): any {
+export function TargetingTemplateUpdateRequestToJSONTyped(value?: TargetingTemplateUpdateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

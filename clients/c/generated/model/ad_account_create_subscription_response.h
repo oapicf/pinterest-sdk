@@ -24,9 +24,10 @@ typedef struct ad_account_create_subscription_response_t {
     char *cryptographic_algorithm; // string
     int created_time; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } ad_account_create_subscription_response_t;
 
-ad_account_create_subscription_response_t *ad_account_create_subscription_response_create(
+__attribute__((deprecated)) ad_account_create_subscription_response_t *ad_account_create_subscription_response_create(
     char *id,
     char *cryptographic_key,
     char *cryptographic_algorithm,

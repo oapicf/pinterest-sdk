@@ -57,11 +57,11 @@ export function MinPriceFilterFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-  export function MinPriceFilterToJSON(json: any): MinPriceFilter {
-      return MinPriceFilterToJSONTyped(json, false);
-  }
+export function MinPriceFilterToJSON(json: any): MinPriceFilter {
+    return MinPriceFilterToJSONTyped(json, false);
+}
 
-  export function MinPriceFilterToJSONTyped(value?: MinPriceFilter | null, ignoreDiscriminator: boolean = false): any {
+export function MinPriceFilterToJSONTyped(value?: MinPriceFilter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

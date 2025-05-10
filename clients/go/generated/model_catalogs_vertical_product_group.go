@@ -13,8 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // CatalogsVerticalProductGroup - struct for CatalogsVerticalProductGroup
@@ -147,6 +147,24 @@ func (obj *CatalogsVerticalProductGroup) GetActualInstance() (interface{}) {
 
 	if obj.CatalogsRetailProductGroup != nil {
 		return obj.CatalogsRetailProductGroup
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj CatalogsVerticalProductGroup) GetActualInstanceValue() (interface{}) {
+	if obj.CatalogsCreativeAssetsProductGroup != nil {
+		return *obj.CatalogsCreativeAssetsProductGroup
+	}
+
+	if obj.CatalogsHotelProductGroup != nil {
+		return *obj.CatalogsHotelProductGroup
+	}
+
+	if obj.CatalogsRetailProductGroup != nil {
+		return *obj.CatalogsRetailProductGroup
 	}
 
 	// all schemas are nil

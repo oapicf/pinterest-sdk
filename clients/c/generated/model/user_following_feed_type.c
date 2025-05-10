@@ -22,7 +22,7 @@ pinterest_rest_api_user_following_feed_type__e user_following_feed_type_user_fol
     return 0;
 }
 
-cJSON *user_following_feed_type_user_following_feed_type_convertToJSON(pinterest_rest_api_user_following_feed_type__e user_following_feed_type) {
+cJSON *user_following_feed_type_convertToJSON(pinterest_rest_api_user_following_feed_type__e user_following_feed_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "user_following_feed_type", user_following_feed_type_user_following_feed_type_ToString(user_following_feed_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_user_following_feed_type__e user_following_feed_type_user_following_feed_type_parseFromJSON(cJSON *user_following_feed_typeJSON) {
-    pinterest_rest_api_user_following_feed_type__e *user_following_feed_type = NULL;
-    pinterest_rest_api_user_following_feed_type__e user_following_feed_typeVariable;
-    cJSON *user_following_feed_typeVar = cJSON_GetObjectItemCaseSensitive(user_following_feed_typeJSON, "user_following_feed_type");
-    if(!cJSON_IsString(user_following_feed_typeVar) || (user_following_feed_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_user_following_feed_type__e user_following_feed_type_parseFromJSON(cJSON *user_following_feed_typeJSON) {
+    if(!cJSON_IsString(user_following_feed_typeJSON) || (user_following_feed_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    user_following_feed_typeVariable = user_following_feed_type_user_following_feed_type_FromString(user_following_feed_typeVar->valuestring);
-    return user_following_feed_typeVariable;
-end:
-    return 0;
+    return user_following_feed_type_user_following_feed_type_FromString(user_following_feed_typeJSON->valuestring);
 }

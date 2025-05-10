@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct AdPinId: Codable, JSONEncodable, Hashable {
 
-    static let pinIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let pinIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Pin ID. */
     public var pinId: String?
 

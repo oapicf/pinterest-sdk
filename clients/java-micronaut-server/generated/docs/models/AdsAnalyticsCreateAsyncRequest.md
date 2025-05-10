@@ -62,8 +62,8 @@ Name | Type | Description | Notes
 
 Name | Value
 ---- | -----
-ID | `"BY_ID"`
-DATE | `"BY_DATE"`
+BY_ID | `"BY_ID"`
+BY_DATE | `"BY_DATE"`
 
 
 

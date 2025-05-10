@@ -22,7 +22,7 @@ pinterest_rest_api_oauth_access_token_request_refresh_GRANTTYPE_e oauth_access_t
     return 0;
 }
 
-oauth_access_token_request_refresh_t *oauth_access_token_request_refresh_create(
+static oauth_access_token_request_refresh_t *oauth_access_token_request_refresh_create_internal(
     pinterest_rest_api_oauth_access_token_request_refresh_GRANTTYPE_e grant_type,
     char *refresh_token,
     char *scope,
@@ -37,12 +37,30 @@ oauth_access_token_request_refresh_t *oauth_access_token_request_refresh_create(
     oauth_access_token_request_refresh_local_var->scope = scope;
     oauth_access_token_request_refresh_local_var->refresh_on = refresh_on;
 
+    oauth_access_token_request_refresh_local_var->_library_owned = 1;
     return oauth_access_token_request_refresh_local_var;
 }
 
+__attribute__((deprecated)) oauth_access_token_request_refresh_t *oauth_access_token_request_refresh_create(
+    pinterest_rest_api_oauth_access_token_request_refresh_GRANTTYPE_e grant_type,
+    char *refresh_token,
+    char *scope,
+    int refresh_on
+    ) {
+    return oauth_access_token_request_refresh_create_internal (
+        grant_type,
+        refresh_token,
+        scope,
+        refresh_on
+        );
+}
 
 void oauth_access_token_request_refresh_free(oauth_access_token_request_refresh_t *oauth_access_token_request_refresh) {
     if(NULL == oauth_access_token_request_refresh){
+        return ;
+    }
+    if(oauth_access_token_request_refresh->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "oauth_access_token_request_refresh_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -64,7 +82,7 @@ cJSON *oauth_access_token_request_refresh_convertToJSON(oauth_access_token_reque
     if (pinterest_rest_api_oauth_access_token_request_refresh_GRANTTYPE_NULL == oauth_access_token_request_refresh->grant_type) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "grant_type", grant_typeoauth_access_token_request_refresh_ToString(oauth_access_token_request_refresh->grant_type)) == NULL)
+    if(cJSON_AddStringToObject(item, "grant_type", oauth_access_token_request_refresh_grant_type_ToString(oauth_access_token_request_refresh->grant_type)) == NULL)
     {
     goto fail; //Enum
     }
@@ -108,6 +126,9 @@ oauth_access_token_request_refresh_t *oauth_access_token_request_refresh_parseFr
 
     // oauth_access_token_request_refresh->grant_type
     cJSON *grant_type = cJSON_GetObjectItemCaseSensitive(oauth_access_token_request_refreshJSON, "grant_type");
+    if (cJSON_IsNull(grant_type)) {
+        grant_type = NULL;
+    }
     if (!grant_type) {
         goto end;
     }
@@ -122,6 +143,9 @@ oauth_access_token_request_refresh_t *oauth_access_token_request_refresh_parseFr
 
     // oauth_access_token_request_refresh->refresh_token
     cJSON *refresh_token = cJSON_GetObjectItemCaseSensitive(oauth_access_token_request_refreshJSON, "refresh_token");
+    if (cJSON_IsNull(refresh_token)) {
+        refresh_token = NULL;
+    }
     if (!refresh_token) {
         goto end;
     }
@@ -134,6 +158,9 @@ oauth_access_token_request_refresh_t *oauth_access_token_request_refresh_parseFr
 
     // oauth_access_token_request_refresh->scope
     cJSON *scope = cJSON_GetObjectItemCaseSensitive(oauth_access_token_request_refreshJSON, "scope");
+    if (cJSON_IsNull(scope)) {
+        scope = NULL;
+    }
     if (scope) { 
     if(!cJSON_IsString(scope) && !cJSON_IsNull(scope))
     {
@@ -143,6 +170,9 @@ oauth_access_token_request_refresh_t *oauth_access_token_request_refresh_parseFr
 
     // oauth_access_token_request_refresh->refresh_on
     cJSON *refresh_on = cJSON_GetObjectItemCaseSensitive(oauth_access_token_request_refreshJSON, "refresh_on");
+    if (cJSON_IsNull(refresh_on)) {
+        refresh_on = NULL;
+    }
     if (refresh_on) { 
     if(!cJSON_IsBool(refresh_on))
     {
@@ -151,7 +181,7 @@ oauth_access_token_request_refresh_t *oauth_access_token_request_refresh_parseFr
     }
 
 
-    oauth_access_token_request_refresh_local_var = oauth_access_token_request_refresh_create (
+    oauth_access_token_request_refresh_local_var = oauth_access_token_request_refresh_create_internal (
         grant_typeVariable,
         strdup(refresh_token->valuestring),
         scope && !cJSON_IsNull(scope) ? strdup(scope->valuestring) : NULL,

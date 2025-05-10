@@ -115,11 +115,11 @@ export function CatalogsRetailBatchRequestItemsInnerFromJSONTyped(json: any, ign
     };
 }
 
-  export function CatalogsRetailBatchRequestItemsInnerToJSON(json: any): CatalogsRetailBatchRequestItemsInner {
-      return CatalogsRetailBatchRequestItemsInnerToJSONTyped(json, false);
-  }
+export function CatalogsRetailBatchRequestItemsInnerToJSON(json: any): CatalogsRetailBatchRequestItemsInner {
+    return CatalogsRetailBatchRequestItemsInnerToJSONTyped(json, false);
+}
 
-  export function CatalogsRetailBatchRequestItemsInnerToJSONTyped(value?: CatalogsRetailBatchRequestItemsInner | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsRetailBatchRequestItemsInnerToJSONTyped(value?: CatalogsRetailBatchRequestItemsInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

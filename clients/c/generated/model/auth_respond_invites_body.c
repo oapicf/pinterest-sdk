@@ -5,7 +5,7 @@
 
 
 
-auth_respond_invites_body_t *auth_respond_invites_body_create(
+static auth_respond_invites_body_t *auth_respond_invites_body_create_internal(
     list_t *invites
     ) {
     auth_respond_invites_body_t *auth_respond_invites_body_local_var = malloc(sizeof(auth_respond_invites_body_t));
@@ -14,12 +14,24 @@ auth_respond_invites_body_t *auth_respond_invites_body_create(
     }
     auth_respond_invites_body_local_var->invites = invites;
 
+    auth_respond_invites_body_local_var->_library_owned = 1;
     return auth_respond_invites_body_local_var;
 }
 
+__attribute__((deprecated)) auth_respond_invites_body_t *auth_respond_invites_body_create(
+    list_t *invites
+    ) {
+    return auth_respond_invites_body_create_internal (
+        invites
+        );
+}
 
 void auth_respond_invites_body_free(auth_respond_invites_body_t *auth_respond_invites_body) {
     if(NULL == auth_respond_invites_body){
+        return ;
+    }
+    if(auth_respond_invites_body->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "auth_respond_invites_body_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -73,6 +85,9 @@ auth_respond_invites_body_t *auth_respond_invites_body_parseFromJSON(cJSON *auth
 
     // auth_respond_invites_body->invites
     cJSON *invites = cJSON_GetObjectItemCaseSensitive(auth_respond_invites_bodyJSON, "invites");
+    if (cJSON_IsNull(invites)) {
+        invites = NULL;
+    }
     if (!invites) {
         goto end;
     }
@@ -96,7 +111,7 @@ auth_respond_invites_body_t *auth_respond_invites_body_parseFromJSON(cJSON *auth
     }
 
 
-    auth_respond_invites_body_local_var = auth_respond_invites_body_create (
+    auth_respond_invites_body_local_var = auth_respond_invites_body_create_internal (
         invitesList
         );
 

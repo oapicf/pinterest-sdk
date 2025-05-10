@@ -22,7 +22,7 @@ pinterest_rest_api_quiz_pin_data_TIEBREAKERTYPE_e quiz_pin_data_tie_breaker_type
     return 0;
 }
 
-quiz_pin_data_t *quiz_pin_data_create(
+static quiz_pin_data_t *quiz_pin_data_create_internal(
     list_t *questions,
     list_t *results,
     pinterest_rest_api_quiz_pin_data_TIEBREAKERTYPE_e tie_breaker_type,
@@ -37,12 +37,30 @@ quiz_pin_data_t *quiz_pin_data_create(
     quiz_pin_data_local_var->tie_breaker_type = tie_breaker_type;
     quiz_pin_data_local_var->tie_breaker_custom_result = tie_breaker_custom_result;
 
+    quiz_pin_data_local_var->_library_owned = 1;
     return quiz_pin_data_local_var;
 }
 
+__attribute__((deprecated)) quiz_pin_data_t *quiz_pin_data_create(
+    list_t *questions,
+    list_t *results,
+    pinterest_rest_api_quiz_pin_data_TIEBREAKERTYPE_e tie_breaker_type,
+    quiz_pin_result_t *tie_breaker_custom_result
+    ) {
+    return quiz_pin_data_create_internal (
+        questions,
+        results,
+        tie_breaker_type,
+        tie_breaker_custom_result
+        );
+}
 
 void quiz_pin_data_free(quiz_pin_data_t *quiz_pin_data) {
     if(NULL == quiz_pin_data){
+        return ;
+    }
+    if(quiz_pin_data->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "quiz_pin_data_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -112,7 +130,7 @@ cJSON *quiz_pin_data_convertToJSON(quiz_pin_data_t *quiz_pin_data) {
 
     // quiz_pin_data->tie_breaker_type
     if(quiz_pin_data->tie_breaker_type != pinterest_rest_api_quiz_pin_data_TIEBREAKERTYPE_NULL) {
-    if(cJSON_AddStringToObject(item, "tie_breaker_type", tie_breaker_typequiz_pin_data_ToString(quiz_pin_data->tie_breaker_type)) == NULL)
+    if(cJSON_AddStringToObject(item, "tie_breaker_type", quiz_pin_data_tie_breaker_type_ToString(quiz_pin_data->tie_breaker_type)) == NULL)
     {
     goto fail; //Enum
     }
@@ -154,6 +172,9 @@ quiz_pin_data_t *quiz_pin_data_parseFromJSON(cJSON *quiz_pin_dataJSON){
 
     // quiz_pin_data->questions
     cJSON *questions = cJSON_GetObjectItemCaseSensitive(quiz_pin_dataJSON, "questions");
+    if (cJSON_IsNull(questions)) {
+        questions = NULL;
+    }
     if (questions) { 
     cJSON *questions_local_nonprimitive = NULL;
     if(!cJSON_IsArray(questions)){
@@ -175,6 +196,9 @@ quiz_pin_data_t *quiz_pin_data_parseFromJSON(cJSON *quiz_pin_dataJSON){
 
     // quiz_pin_data->results
     cJSON *results = cJSON_GetObjectItemCaseSensitive(quiz_pin_dataJSON, "results");
+    if (cJSON_IsNull(results)) {
+        results = NULL;
+    }
     if (results) { 
     cJSON *results_local_nonprimitive = NULL;
     if(!cJSON_IsArray(results)){
@@ -196,6 +220,9 @@ quiz_pin_data_t *quiz_pin_data_parseFromJSON(cJSON *quiz_pin_dataJSON){
 
     // quiz_pin_data->tie_breaker_type
     cJSON *tie_breaker_type = cJSON_GetObjectItemCaseSensitive(quiz_pin_dataJSON, "tie_breaker_type");
+    if (cJSON_IsNull(tie_breaker_type)) {
+        tie_breaker_type = NULL;
+    }
     pinterest_rest_api_quiz_pin_data_TIEBREAKERTYPE_e tie_breaker_typeVariable;
     if (tie_breaker_type) { 
     if(!cJSON_IsString(tie_breaker_type))
@@ -207,12 +234,15 @@ quiz_pin_data_t *quiz_pin_data_parseFromJSON(cJSON *quiz_pin_dataJSON){
 
     // quiz_pin_data->tie_breaker_custom_result
     cJSON *tie_breaker_custom_result = cJSON_GetObjectItemCaseSensitive(quiz_pin_dataJSON, "tie_breaker_custom_result");
+    if (cJSON_IsNull(tie_breaker_custom_result)) {
+        tie_breaker_custom_result = NULL;
+    }
     if (tie_breaker_custom_result) { 
     tie_breaker_custom_result_local_nonprim = quiz_pin_result_parseFromJSON(tie_breaker_custom_result); //nonprimitive
     }
 
 
-    quiz_pin_data_local_var = quiz_pin_data_create (
+    quiz_pin_data_local_var = quiz_pin_data_create_internal (
         questions ? questionsList : NULL,
         results ? resultsList : NULL,
         tie_breaker_type ? tie_breaker_typeVariable : pinterest_rest_api_quiz_pin_data_TIEBREAKERTYPE_NULL,

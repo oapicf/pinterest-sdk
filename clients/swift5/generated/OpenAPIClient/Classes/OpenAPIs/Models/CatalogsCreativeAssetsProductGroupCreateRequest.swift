@@ -16,7 +16,7 @@ public struct CatalogsCreativeAssetsProductGroupCreateRequest: Codable, JSONEnco
     public enum CatalogType: String, Codable, CaseIterable {
         case creativeAssets = "CREATIVE_ASSETS"
     }
-    static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public var catalogType: CatalogType
     public var name: String
     public var description: String?

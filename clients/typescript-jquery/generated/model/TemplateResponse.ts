@@ -1720,13 +1720,13 @@ export namespace TemplateResponse {
         TotalOfflineUnknownConversionProductCountUnique = <any> 'TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_COUNT_UNIQUE'
     }
     export enum ConversionReportTimeTypeEnum {
-        AdAction = <any> 'TIME_OF_AD_ACTION',
-        Conversion = <any> 'TIME_OF_CONVERSION'
+        TimeOfAdAction = <any> 'TIME_OF_AD_ACTION',
+        TimeOfConversion = <any> 'TIME_OF_CONVERSION'
     }
     export enum CreationSourceEnum {
-        Api = <any> 'ADS_API',
-        ManagerReportingPage = <any> 'ADS_MANAGER_REPORTING_PAGE',
-        ManagerReportBuilder = <any> 'ADS_MANAGER_REPORT_BUILDER'
+        AdsApi = <any> 'ADS_API',
+        AdsManagerReportingPage = <any> 'ADS_MANAGER_REPORTING_PAGE',
+        AdsManagerReportBuilder = <any> 'ADS_MANAGER_REPORT_BUILDER'
     }
     export enum TypeEnum {
         Unspecified = <any> 'UNSPECIFIED',

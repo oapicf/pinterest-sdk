@@ -408,11 +408,11 @@ export function ItemAttributesRequestFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function ItemAttributesRequestToJSON(json: any): ItemAttributesRequest {
-      return ItemAttributesRequestToJSONTyped(json, false);
-  }
+export function ItemAttributesRequestToJSON(json: any): ItemAttributesRequest {
+    return ItemAttributesRequestToJSONTyped(json, false);
+}
 
-  export function ItemAttributesRequestToJSONTyped(value?: ItemAttributesRequest | null, ignoreDiscriminator: boolean = false): any {
+export function ItemAttributesRequestToJSONTyped(value?: ItemAttributesRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

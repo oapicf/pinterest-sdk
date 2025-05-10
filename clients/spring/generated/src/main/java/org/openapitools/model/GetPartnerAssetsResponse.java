@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.AssetGroupBinding;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -23,17 +24,17 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "GetPartnerAssetsResponse", description = "An object containing the permissions a you/your business partner has on the asset.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class GetPartnerAssetsResponse {
 
-  private String assetId;
+  private @Nullable String assetId;
 
-  private String assetType;
+  private @Nullable String assetType;
 
   @Valid
   private List<String> permissions = new ArrayList<>();
 
-  private AssetGroupBinding assetGroupInfo;
+  private @Nullable AssetGroupBinding assetGroupInfo;
 
   public GetPartnerAssetsResponse assetId(String assetId) {
     this.assetId = assetId;

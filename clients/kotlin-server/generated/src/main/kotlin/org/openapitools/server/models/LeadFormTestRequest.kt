@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Request to create test data for lead data test API.
  * @param answers Test lead answers. Should follow the creation order.
  */
+@Serializable
 data class LeadFormTestRequest(
     /* Test lead answers. Should follow the creation order. */
     val answers: kotlin.collections.List<kotlin.String>
-) 
+)
 

@@ -69,11 +69,11 @@ export function SingleInterestTargetingOptionResponseFromJSONTyped(json: any, ig
     };
 }
 
-  export function SingleInterestTargetingOptionResponseToJSON(json: any): SingleInterestTargetingOptionResponse {
-      return SingleInterestTargetingOptionResponseToJSONTyped(json, false);
-  }
+export function SingleInterestTargetingOptionResponseToJSON(json: any): SingleInterestTargetingOptionResponse {
+    return SingleInterestTargetingOptionResponseToJSONTyped(json, false);
+}
 
-  export function SingleInterestTargetingOptionResponseToJSONTyped(value?: SingleInterestTargetingOptionResponse | null, ignoreDiscriminator: boolean = false): any {
+export function SingleInterestTargetingOptionResponseToJSONTyped(value?: SingleInterestTargetingOptionResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -57,11 +57,11 @@ export function MembersToDeleteBodyFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function MembersToDeleteBodyToJSON(json: any): MembersToDeleteBody {
-      return MembersToDeleteBodyToJSONTyped(json, false);
-  }
+export function MembersToDeleteBodyToJSON(json: any): MembersToDeleteBody {
+    return MembersToDeleteBodyToJSONTyped(json, false);
+}
 
-  export function MembersToDeleteBodyToJSONTyped(value?: MembersToDeleteBody | null, ignoreDiscriminator: boolean = false): any {
+export function MembersToDeleteBodyToJSONTyped(value?: MembersToDeleteBody | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

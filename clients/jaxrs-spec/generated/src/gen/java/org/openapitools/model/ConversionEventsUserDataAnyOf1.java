@@ -19,12 +19,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ConversionEventsUserData_anyOf_1")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConversionEventsUserDataAnyOf1   {
   private @Valid List<String> em = new ArrayList<>();
   private @Valid List<String> hashedMaids = new ArrayList<>();
   private String clientIpAddress;
   private String clientUserAgent;
+
+  public ConversionEventsUserDataAnyOf1() {
+  }
+
+  @JsonCreator
+  public ConversionEventsUserDataAnyOf1(
+    @JsonProperty(required = true, value = "hashed_maids") List<String> hashedMaids
+  ) {
+    this.hashedMaids = hashedMaids;
+  }
 
   /**
    * Sha256 hashes of lowercase version of user&#39;s email addresses. Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
@@ -72,12 +82,12 @@ public class ConversionEventsUserDataAnyOf1   {
 
   
   @ApiModelProperty(example = "[\"0192518eb84137ccfe82c8b6322d29631dae7e28ed9d0f6dd5f245d73a58c5f1\",\"837b850ac46d62b2272a71de73c27801ff011ac1e36c5432620c8755cf90db46\"]", required = true, value = "Sha256 hashes of user's \"Google Advertising IDs\" (GAIDs) or \"Apple's Identifier for Advertisers\" (IDFAs). Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.")
-  @JsonProperty("hashed_maids")
+  @JsonProperty(required = true, value = "hashed_maids")
   @NotNull public List<String> getHashedMaids() {
     return hashedMaids;
   }
 
-  @JsonProperty("hashed_maids")
+  @JsonProperty(required = true, value = "hashed_maids")
   public void setHashedMaids(List<String> hashedMaids) {
     this.hashedMaids = hashedMaids;
   }

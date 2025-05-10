@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 // Functions for enum ORDER for AudiencesAPI_audiencesList
 
@@ -129,15 +124,20 @@ AudiencesAPI_audiencesCreate(apiClient_t *apiClient, char *ad_account_id, audien
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/audiences")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/audiences");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/audiences");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -152,9 +152,10 @@ AudiencesAPI_audiencesCreate(apiClient_t *apiClient, char *ad_account_id, audien
     cJSON *localVarSingleItemJSON_audience_create_request = NULL;
     if (audience_create_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_audience_create_request = audience_create_request_convertToJSON(audience_create_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_audience_create_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -166,6 +167,7 @@ AudiencesAPI_audiencesCreate(apiClient_t *apiClient, char *ad_account_id, audien
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -177,11 +179,14 @@ AudiencesAPI_audiencesCreate(apiClient_t *apiClient, char *ad_account_id, audien
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *AudiencesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    audience_t *elementToReturn = audience_parseFromJSON(AudiencesAPIlocalVarJSON);
-    cJSON_Delete(AudiencesAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    audience_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AudiencesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = audience_parseFromJSON(AudiencesAPIlocalVarJSON);
+        cJSON_Delete(AudiencesAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -222,15 +227,20 @@ AudiencesAPI_audiencesCreateCustom(apiClient_t *apiClient, char *ad_account_id, 
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/audiences/custom")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/audiences/custom");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/audiences/custom");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -245,9 +255,10 @@ AudiencesAPI_audiencesCreateCustom(apiClient_t *apiClient, char *ad_account_id, 
     cJSON *localVarSingleItemJSON_audience_create_custom_request = NULL;
     if (audience_create_custom_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_audience_create_custom_request = audience_create_custom_request_convertToJSON(audience_create_custom_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_audience_create_custom_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -259,6 +270,7 @@ AudiencesAPI_audiencesCreateCustom(apiClient_t *apiClient, char *ad_account_id, 
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -270,11 +282,14 @@ AudiencesAPI_audiencesCreateCustom(apiClient_t *apiClient, char *ad_account_id, 
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *AudiencesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    audience_t *elementToReturn = audience_parseFromJSON(AudiencesAPIlocalVarJSON);
-    cJSON_Delete(AudiencesAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    audience_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AudiencesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = audience_parseFromJSON(AudiencesAPIlocalVarJSON);
+        cJSON_Delete(AudiencesAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -315,15 +330,22 @@ AudiencesAPI_audiencesGet(apiClient_t *apiClient, char *ad_account_id, char *aud
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/audiences/{audience_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/audiences/{audience_id}");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/audiences/{audience_id}");
+
+    if(!ad_account_id)
+        goto end;
+    if(!audience_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(audience_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(audience_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -333,7 +355,7 @@ AudiencesAPI_audiencesGet(apiClient_t *apiClient, char *ad_account_id, char *aud
     localVarPath = strReplace(localVarPath, localVarToReplace_ad_account_id, ad_account_id);
 
     // Path Params
-    long sizeOfPathParams_audience_id = strlen(ad_account_id)+3 + strlen(audience_id)+3 + strlen("{ audience_id }");
+    long sizeOfPathParams_audience_id = strlen(ad_account_id)+3 + strlen(audience_id)+3 + sizeof("{ audience_id }") - 1;
     if(audience_id == NULL) {
         goto end;
     }
@@ -352,6 +374,7 @@ AudiencesAPI_audiencesGet(apiClient_t *apiClient, char *ad_account_id, char *aud
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -367,11 +390,14 @@ AudiencesAPI_audiencesGet(apiClient_t *apiClient, char *ad_account_id, char *aud
     //    printf("%s\n","Unexpected error.");
     //}
     //nonprimitive not container
-    cJSON *AudiencesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    audience_t *elementToReturn = audience_parseFromJSON(AudiencesAPIlocalVarJSON);
-    cJSON_Delete(AudiencesAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    audience_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AudiencesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = audience_parseFromJSON(AudiencesAPIlocalVarJSON);
+        cJSON_Delete(AudiencesAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -408,15 +434,20 @@ AudiencesAPI_audiencesList(apiClient_t *apiClient, char *ad_account_id, char *bo
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/audiences")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/audiences");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/audiences");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -447,7 +478,7 @@ AudiencesAPI_audiencesList(apiClient_t *apiClient, char *ad_account_id, char *bo
     {
         keyQuery_order = strdup("order");
         valueQuery_order = (order);
-        keyPairQuery_order = keyValuePair_create(keyQuery_order, (void *)strdup(audiencesList_ORDER_ToString(
+        keyPairQuery_order = keyValuePair_create(keyQuery_order, strdup(audiencesList_ORDER_ToString(
         valueQuery_order)));
         list_addElement(localVarQueryParameters,keyPairQuery_order);
     }
@@ -473,7 +504,7 @@ AudiencesAPI_audiencesList(apiClient_t *apiClient, char *ad_account_id, char *bo
     {
         keyQuery_ownership_type = strdup("ownership_type");
         valueQuery_ownership_type = (ownership_type);
-        keyPairQuery_ownership_type = keyValuePair_create(keyQuery_ownership_type, (void *)strdup(audiencesList_OWNERSHIPTYPE_ToString(
+        keyPairQuery_ownership_type = keyValuePair_create(keyQuery_ownership_type, strdup(audiencesList_OWNERSHIPTYPE_ToString(
         valueQuery_ownership_type)));
         list_addElement(localVarQueryParameters,keyPairQuery_ownership_type);
     }
@@ -486,6 +517,7 @@ AudiencesAPI_audiencesList(apiClient_t *apiClient, char *ad_account_id, char *bo
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -501,11 +533,14 @@ AudiencesAPI_audiencesList(apiClient_t *apiClient, char *ad_account_id, char *bo
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *AudiencesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    audiences_list_200_response_t *elementToReturn = audiences_list_200_response_parseFromJSON(AudiencesAPIlocalVarJSON);
-    cJSON_Delete(AudiencesAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    audiences_list_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AudiencesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = audiences_list_200_response_parseFromJSON(AudiencesAPIlocalVarJSON);
+        cJSON_Delete(AudiencesAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -581,15 +616,22 @@ AudiencesAPI_audiencesUpdate(apiClient_t *apiClient, char *ad_account_id, char *
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/audiences/{audience_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/audiences/{audience_id}");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/audiences/{audience_id}");
+
+    if(!ad_account_id)
+        goto end;
+    if(!audience_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(audience_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(audience_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -599,7 +641,7 @@ AudiencesAPI_audiencesUpdate(apiClient_t *apiClient, char *ad_account_id, char *
     localVarPath = strReplace(localVarPath, localVarToReplace_ad_account_id, ad_account_id);
 
     // Path Params
-    long sizeOfPathParams_audience_id = strlen(ad_account_id)+3 + strlen(audience_id)+3 + strlen("{ audience_id }");
+    long sizeOfPathParams_audience_id = strlen(ad_account_id)+3 + strlen(audience_id)+3 + sizeof("{ audience_id }") - 1;
     if(audience_id == NULL) {
         goto end;
     }
@@ -614,9 +656,10 @@ AudiencesAPI_audiencesUpdate(apiClient_t *apiClient, char *ad_account_id, char *
     cJSON *localVarSingleItemJSON_audience_update_request = NULL;
     if (audience_update_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_audience_update_request = audience_update_request_convertToJSON(audience_update_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_audience_update_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -628,6 +671,7 @@ AudiencesAPI_audiencesUpdate(apiClient_t *apiClient, char *ad_account_id, char *
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "PATCH");
 
     // uncomment below to debug the error response
@@ -639,11 +683,14 @@ AudiencesAPI_audiencesUpdate(apiClient_t *apiClient, char *ad_account_id, char *
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *AudiencesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    audience_t *elementToReturn = audience_parseFromJSON(AudiencesAPIlocalVarJSON);
-    cJSON_Delete(AudiencesAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    audience_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AudiencesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = audience_parseFromJSON(AudiencesAPIlocalVarJSON);
+        cJSON_Delete(AudiencesAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type

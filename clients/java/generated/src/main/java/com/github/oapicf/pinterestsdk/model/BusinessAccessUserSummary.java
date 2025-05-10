@@ -49,24 +49,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Metadata of the member/partner that has access to the asset.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BusinessAccessUserSummary {
   public static final String SERIALIZED_NAME_EMAIL = "email";
   @SerializedName(SERIALIZED_NAME_EMAIL)
+  @javax.annotation.Nullable
   private String email;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_USERNAME = "username";
   @SerializedName(SERIALIZED_NAME_USERNAME)
+  @javax.annotation.Nullable
   private String username;
 
   public BusinessAccessUserSummary() {
   }
 
-  public BusinessAccessUserSummary email(String email) {
+  public BusinessAccessUserSummary email(@javax.annotation.Nullable String email) {
     this.email = email;
     return this;
   }
@@ -80,12 +83,12 @@ public class BusinessAccessUserSummary {
     return email;
   }
 
-  public void setEmail(String email) {
+  public void setEmail(@javax.annotation.Nullable String email) {
     this.email = email;
   }
 
 
-  public BusinessAccessUserSummary id(String id) {
+  public BusinessAccessUserSummary id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -99,12 +102,12 @@ public class BusinessAccessUserSummary {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public BusinessAccessUserSummary username(String username) {
+  public BusinessAccessUserSummary username(@javax.annotation.Nullable String username) {
     this.username = username;
     return this;
   }
@@ -118,7 +121,7 @@ public class BusinessAccessUserSummary {
     return username;
   }
 
-  public void setUsername(String username) {
+  public void setUsername(@javax.annotation.Nullable String username) {
     this.username = username;
   }
 

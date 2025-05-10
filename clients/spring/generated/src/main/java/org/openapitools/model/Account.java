@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -22,7 +23,7 @@ import javax.annotation.Generated;
  * Account
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class Account {
 
   /**
@@ -60,17 +61,17 @@ public class Account {
     }
   }
 
-  private AccountTypeEnum accountType;
+  private @Nullable AccountTypeEnum accountType;
 
-  private String id;
+  private @Nullable String id;
 
-  private String profileImage;
+  private @Nullable String profileImage;
 
-  private String websiteUrl;
+  private @Nullable String websiteUrl;
 
-  private String username;
+  private @Nullable String username;
 
-  private String about;
+  private @Nullable String about;
 
   private JsonNullable<String> businessName = JsonNullable.<String>undefined();
 

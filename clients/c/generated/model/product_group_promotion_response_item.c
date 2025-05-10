@@ -5,7 +5,7 @@
 
 
 
-product_group_promotion_response_item_t *product_group_promotion_response_item_create(
+static product_group_promotion_response_item_t *product_group_promotion_response_item_create_internal(
     product_group_promotion_response_element_t *data,
     list_t *exceptions
     ) {
@@ -16,12 +16,26 @@ product_group_promotion_response_item_t *product_group_promotion_response_item_c
     product_group_promotion_response_item_local_var->data = data;
     product_group_promotion_response_item_local_var->exceptions = exceptions;
 
+    product_group_promotion_response_item_local_var->_library_owned = 1;
     return product_group_promotion_response_item_local_var;
 }
 
+__attribute__((deprecated)) product_group_promotion_response_item_t *product_group_promotion_response_item_create(
+    product_group_promotion_response_element_t *data,
+    list_t *exceptions
+    ) {
+    return product_group_promotion_response_item_create_internal (
+        data,
+        exceptions
+        );
+}
 
 void product_group_promotion_response_item_free(product_group_promotion_response_item_t *product_group_promotion_response_item) {
     if(NULL == product_group_promotion_response_item){
+        return ;
+    }
+    if(product_group_promotion_response_item->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "product_group_promotion_response_item_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -94,12 +108,18 @@ product_group_promotion_response_item_t *product_group_promotion_response_item_p
 
     // product_group_promotion_response_item->data
     cJSON *data = cJSON_GetObjectItemCaseSensitive(product_group_promotion_response_itemJSON, "data");
+    if (cJSON_IsNull(data)) {
+        data = NULL;
+    }
     if (data) { 
     data_local_nonprim = product_group_promotion_response_element_parseFromJSON(data); //nonprimitive
     }
 
     // product_group_promotion_response_item->exceptions
     cJSON *exceptions = cJSON_GetObjectItemCaseSensitive(product_group_promotion_response_itemJSON, "exceptions");
+    if (cJSON_IsNull(exceptions)) {
+        exceptions = NULL;
+    }
     if (exceptions) { 
     cJSON *exceptions_local_nonprimitive = NULL;
     if(!cJSON_IsArray(exceptions)){
@@ -120,7 +140,7 @@ product_group_promotion_response_item_t *product_group_promotion_response_item_p
     }
 
 
-    product_group_promotion_response_item_local_var = product_group_promotion_response_item_create (
+    product_group_promotion_response_item_local_var = product_group_promotion_response_item_create_internal (
         data ? data_local_nonprim : NULL,
         exceptions ? exceptionsList : NULL
         );

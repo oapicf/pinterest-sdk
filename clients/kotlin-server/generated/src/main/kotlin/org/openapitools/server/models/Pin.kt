@@ -16,6 +16,7 @@ import org.openapitools.server.models.CreativeType
 import org.openapitools.server.models.PinMedia
 import org.openapitools.server.models.PinMediaSource
 
+import kotlinx.serialization.Serializable
 /**
  * Pin
  * @param id 
@@ -38,9 +39,10 @@ import org.openapitools.server.models.PinMediaSource
  * @param note Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
  * @param pinMetrics Pin metrics with associated time intervals if any.
  */
+@Serializable
 data class Pin(
     val id: kotlin.String? = null,
-    val createdAt: java.time.OffsetDateTime? = null,
+    val createdAt: kotlin.String? = null,
     val link: kotlin.String? = null,
     val title: kotlin.String? = null,
     val description: kotlin.String? = null,
@@ -67,5 +69,5 @@ data class Pin(
     val note: kotlin.String? = null,
     /* Pin metrics with associated time intervals if any. */
     val pinMetrics: kotlin.Any? = null
-) 
+)
 

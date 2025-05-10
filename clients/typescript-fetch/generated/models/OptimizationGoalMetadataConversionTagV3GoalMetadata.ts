@@ -119,11 +119,11 @@ export function OptimizationGoalMetadataConversionTagV3GoalMetadataFromJSONTyped
     };
 }
 
-  export function OptimizationGoalMetadataConversionTagV3GoalMetadataToJSON(json: any): OptimizationGoalMetadataConversionTagV3GoalMetadata {
-      return OptimizationGoalMetadataConversionTagV3GoalMetadataToJSONTyped(json, false);
-  }
+export function OptimizationGoalMetadataConversionTagV3GoalMetadataToJSON(json: any): OptimizationGoalMetadataConversionTagV3GoalMetadata {
+    return OptimizationGoalMetadataConversionTagV3GoalMetadataToJSONTyped(json, false);
+}
 
-  export function OptimizationGoalMetadataConversionTagV3GoalMetadataToJSONTyped(value?: OptimizationGoalMetadataConversionTagV3GoalMetadata | null, ignoreDiscriminator: boolean = false): any {
+export function OptimizationGoalMetadataConversionTagV3GoalMetadataToJSONTyped(value?: OptimizationGoalMetadataConversionTagV3GoalMetadata | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

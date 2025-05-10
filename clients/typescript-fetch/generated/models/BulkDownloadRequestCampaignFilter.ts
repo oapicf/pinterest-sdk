@@ -91,11 +91,11 @@ export function BulkDownloadRequestCampaignFilterFromJSONTyped(json: any, ignore
     };
 }
 
-  export function BulkDownloadRequestCampaignFilterToJSON(json: any): BulkDownloadRequestCampaignFilter {
-      return BulkDownloadRequestCampaignFilterToJSONTyped(json, false);
-  }
+export function BulkDownloadRequestCampaignFilterToJSON(json: any): BulkDownloadRequestCampaignFilter {
+    return BulkDownloadRequestCampaignFilterToJSONTyped(json, false);
+}
 
-  export function BulkDownloadRequestCampaignFilterToJSONTyped(value?: BulkDownloadRequestCampaignFilter | null, ignoreDiscriminator: boolean = false): any {
+export function BulkDownloadRequestCampaignFilterToJSONTyped(value?: BulkDownloadRequestCampaignFilter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

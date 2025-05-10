@@ -50,7 +50,7 @@ class PlacementMultipliers
      * @SerializedName("PLACEMENT")
      * @Type("string")
     */
-    #[Assert\Choice(["SEARCH", "BROWSE"])]
+    #[Assert\Choice(['SEARCH', 'BROWSE'])]
     #[Assert\Type("string")]
     protected ?string $pLACEMENT = null;
 
@@ -58,7 +58,7 @@ class PlacementMultipliers
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->pLACEMENT = array_key_exists('pLACEMENT', $data) ? $data['pLACEMENT'] : $this->pLACEMENT;

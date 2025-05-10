@@ -49,11 +49,11 @@ export function DeleteAssetGroupBodyFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function DeleteAssetGroupBodyToJSON(json: any): DeleteAssetGroupBody {
-      return DeleteAssetGroupBodyToJSONTyped(json, false);
-  }
+export function DeleteAssetGroupBodyToJSON(json: any): DeleteAssetGroupBody {
+    return DeleteAssetGroupBodyToJSONTyped(json, false);
+}
 
-  export function DeleteAssetGroupBodyToJSONTyped(value?: DeleteAssetGroupBody | null, ignoreDiscriminator: boolean = false): any {
+export function DeleteAssetGroupBodyToJSONTyped(value?: DeleteAssetGroupBody | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

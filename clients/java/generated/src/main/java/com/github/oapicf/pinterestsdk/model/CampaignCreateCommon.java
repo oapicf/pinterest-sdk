@@ -51,60 +51,72 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CampaignCreateCommon
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CampaignCreateCommon {
   public static final String SERIALIZED_NAME_AD_ACCOUNT_ID = "ad_account_id";
   @SerializedName(SERIALIZED_NAME_AD_ACCOUNT_ID)
+  @javax.annotation.Nullable
   private String adAccountId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private EntityStatus status;
 
   public static final String SERIALIZED_NAME_LIFETIME_SPEND_CAP = "lifetime_spend_cap";
   @SerializedName(SERIALIZED_NAME_LIFETIME_SPEND_CAP)
+  @javax.annotation.Nullable
   private Integer lifetimeSpendCap;
 
   public static final String SERIALIZED_NAME_DAILY_SPEND_CAP = "daily_spend_cap";
   @SerializedName(SERIALIZED_NAME_DAILY_SPEND_CAP)
+  @javax.annotation.Nullable
   private Integer dailySpendCap;
 
   public static final String SERIALIZED_NAME_ORDER_LINE_ID = "order_line_id";
   @SerializedName(SERIALIZED_NAME_ORDER_LINE_ID)
+  @javax.annotation.Nullable
   private String orderLineId;
 
   public static final String SERIALIZED_NAME_TRACKING_URLS = "tracking_urls";
   @SerializedName(SERIALIZED_NAME_TRACKING_URLS)
+  @javax.annotation.Nullable
   private TrackingUrls trackingUrls;
 
   public static final String SERIALIZED_NAME_START_TIME = "start_time";
   @SerializedName(SERIALIZED_NAME_START_TIME)
+  @javax.annotation.Nullable
   private Integer startTime;
 
   public static final String SERIALIZED_NAME_END_TIME = "end_time";
   @SerializedName(SERIALIZED_NAME_END_TIME)
+  @javax.annotation.Nullable
   private Integer endTime;
 
   public static final String SERIALIZED_NAME_IS_FLEXIBLE_DAILY_BUDGETS = "is_flexible_daily_budgets";
   @SerializedName(SERIALIZED_NAME_IS_FLEXIBLE_DAILY_BUDGETS)
+  @javax.annotation.Nullable
   private Boolean isFlexibleDailyBudgets;
 
   public static final String SERIALIZED_NAME_DEFAULT_AD_GROUP_BUDGET_IN_MICRO_CURRENCY = "default_ad_group_budget_in_micro_currency";
   @SerializedName(SERIALIZED_NAME_DEFAULT_AD_GROUP_BUDGET_IN_MICRO_CURRENCY)
+  @javax.annotation.Nullable
   private Integer defaultAdGroupBudgetInMicroCurrency;
 
   public static final String SERIALIZED_NAME_IS_AUTOMATED_CAMPAIGN = "is_automated_campaign";
   @SerializedName(SERIALIZED_NAME_IS_AUTOMATED_CAMPAIGN)
+  @javax.annotation.Nullable
   private Boolean isAutomatedCampaign;
 
   public CampaignCreateCommon() {
   }
 
-  public CampaignCreateCommon adAccountId(String adAccountId) {
+  public CampaignCreateCommon adAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -118,12 +130,12 @@ public class CampaignCreateCommon {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
 
-  public CampaignCreateCommon name(String name) {
+  public CampaignCreateCommon name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -137,12 +149,12 @@ public class CampaignCreateCommon {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public CampaignCreateCommon status(EntityStatus status) {
+  public CampaignCreateCommon status(@javax.annotation.Nullable EntityStatus status) {
     this.status = status;
     return this;
   }
@@ -156,12 +168,12 @@ public class CampaignCreateCommon {
     return status;
   }
 
-  public void setStatus(EntityStatus status) {
+  public void setStatus(@javax.annotation.Nullable EntityStatus status) {
     this.status = status;
   }
 
 
-  public CampaignCreateCommon lifetimeSpendCap(Integer lifetimeSpendCap) {
+  public CampaignCreateCommon lifetimeSpendCap(@javax.annotation.Nullable Integer lifetimeSpendCap) {
     this.lifetimeSpendCap = lifetimeSpendCap;
     return this;
   }
@@ -175,12 +187,12 @@ public class CampaignCreateCommon {
     return lifetimeSpendCap;
   }
 
-  public void setLifetimeSpendCap(Integer lifetimeSpendCap) {
+  public void setLifetimeSpendCap(@javax.annotation.Nullable Integer lifetimeSpendCap) {
     this.lifetimeSpendCap = lifetimeSpendCap;
   }
 
 
-  public CampaignCreateCommon dailySpendCap(Integer dailySpendCap) {
+  public CampaignCreateCommon dailySpendCap(@javax.annotation.Nullable Integer dailySpendCap) {
     this.dailySpendCap = dailySpendCap;
     return this;
   }
@@ -194,12 +206,12 @@ public class CampaignCreateCommon {
     return dailySpendCap;
   }
 
-  public void setDailySpendCap(Integer dailySpendCap) {
+  public void setDailySpendCap(@javax.annotation.Nullable Integer dailySpendCap) {
     this.dailySpendCap = dailySpendCap;
   }
 
 
-  public CampaignCreateCommon orderLineId(String orderLineId) {
+  public CampaignCreateCommon orderLineId(@javax.annotation.Nullable String orderLineId) {
     this.orderLineId = orderLineId;
     return this;
   }
@@ -213,12 +225,12 @@ public class CampaignCreateCommon {
     return orderLineId;
   }
 
-  public void setOrderLineId(String orderLineId) {
+  public void setOrderLineId(@javax.annotation.Nullable String orderLineId) {
     this.orderLineId = orderLineId;
   }
 
 
-  public CampaignCreateCommon trackingUrls(TrackingUrls trackingUrls) {
+  public CampaignCreateCommon trackingUrls(@javax.annotation.Nullable TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
@@ -232,12 +244,12 @@ public class CampaignCreateCommon {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(TrackingUrls trackingUrls) {
+  public void setTrackingUrls(@javax.annotation.Nullable TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
 
-  public CampaignCreateCommon startTime(Integer startTime) {
+  public CampaignCreateCommon startTime(@javax.annotation.Nullable Integer startTime) {
     this.startTime = startTime;
     return this;
   }
@@ -251,12 +263,12 @@ public class CampaignCreateCommon {
     return startTime;
   }
 
-  public void setStartTime(Integer startTime) {
+  public void setStartTime(@javax.annotation.Nullable Integer startTime) {
     this.startTime = startTime;
   }
 
 
-  public CampaignCreateCommon endTime(Integer endTime) {
+  public CampaignCreateCommon endTime(@javax.annotation.Nullable Integer endTime) {
     this.endTime = endTime;
     return this;
   }
@@ -270,12 +282,12 @@ public class CampaignCreateCommon {
     return endTime;
   }
 
-  public void setEndTime(Integer endTime) {
+  public void setEndTime(@javax.annotation.Nullable Integer endTime) {
     this.endTime = endTime;
   }
 
 
-  public CampaignCreateCommon isFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
+  public CampaignCreateCommon isFlexibleDailyBudgets(@javax.annotation.Nullable Boolean isFlexibleDailyBudgets) {
     this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
     return this;
   }
@@ -289,12 +301,12 @@ public class CampaignCreateCommon {
     return isFlexibleDailyBudgets;
   }
 
-  public void setIsFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
+  public void setIsFlexibleDailyBudgets(@javax.annotation.Nullable Boolean isFlexibleDailyBudgets) {
     this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
   }
 
 
-  public CampaignCreateCommon defaultAdGroupBudgetInMicroCurrency(Integer defaultAdGroupBudgetInMicroCurrency) {
+  public CampaignCreateCommon defaultAdGroupBudgetInMicroCurrency(@javax.annotation.Nullable Integer defaultAdGroupBudgetInMicroCurrency) {
     this.defaultAdGroupBudgetInMicroCurrency = defaultAdGroupBudgetInMicroCurrency;
     return this;
   }
@@ -308,12 +320,12 @@ public class CampaignCreateCommon {
     return defaultAdGroupBudgetInMicroCurrency;
   }
 
-  public void setDefaultAdGroupBudgetInMicroCurrency(Integer defaultAdGroupBudgetInMicroCurrency) {
+  public void setDefaultAdGroupBudgetInMicroCurrency(@javax.annotation.Nullable Integer defaultAdGroupBudgetInMicroCurrency) {
     this.defaultAdGroupBudgetInMicroCurrency = defaultAdGroupBudgetInMicroCurrency;
   }
 
 
-  public CampaignCreateCommon isAutomatedCampaign(Boolean isAutomatedCampaign) {
+  public CampaignCreateCommon isAutomatedCampaign(@javax.annotation.Nullable Boolean isAutomatedCampaign) {
     this.isAutomatedCampaign = isAutomatedCampaign;
     return this;
   }
@@ -327,7 +339,7 @@ public class CampaignCreateCommon {
     return isAutomatedCampaign;
   }
 
-  public void setIsAutomatedCampaign(Boolean isAutomatedCampaign) {
+  public void setIsAutomatedCampaign(@javax.annotation.Nullable Boolean isAutomatedCampaign) {
     this.isAutomatedCampaign = isAutomatedCampaign;
   }
 

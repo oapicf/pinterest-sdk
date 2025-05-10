@@ -39,9 +39,10 @@ typedef struct catalogs_updatable_hotel_attributes_t {
     char *sale_price; // string
     struct catalogs_hotel_guest_ratings_t *guest_ratings; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_updatable_hotel_attributes_t;
 
-catalogs_updatable_hotel_attributes_t *catalogs_updatable_hotel_attributes_create(
+__attribute__((deprecated)) catalogs_updatable_hotel_attributes_t *catalogs_updatable_hotel_attributes_create(
     char *name,
     char *link,
     char *description,

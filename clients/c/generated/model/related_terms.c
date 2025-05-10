@@ -5,7 +5,7 @@
 
 
 
-related_terms_t *related_terms_create(
+static related_terms_t *related_terms_create_internal(
     char *id,
     int related_term_count,
     list_t *related_terms_list
@@ -18,12 +18,28 @@ related_terms_t *related_terms_create(
     related_terms_local_var->related_term_count = related_term_count;
     related_terms_local_var->related_terms_list = related_terms_list;
 
+    related_terms_local_var->_library_owned = 1;
     return related_terms_local_var;
 }
 
+__attribute__((deprecated)) related_terms_t *related_terms_create(
+    char *id,
+    int related_term_count,
+    list_t *related_terms_list
+    ) {
+    return related_terms_create_internal (
+        id,
+        related_term_count,
+        related_terms_list
+        );
+}
 
 void related_terms_free(related_terms_t *related_terms) {
     if(NULL == related_terms){
+        return ;
+    }
+    if(related_terms->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "related_terms_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -96,6 +112,9 @@ related_terms_t *related_terms_parseFromJSON(cJSON *related_termsJSON){
 
     // related_terms->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(related_termsJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -105,6 +124,9 @@ related_terms_t *related_terms_parseFromJSON(cJSON *related_termsJSON){
 
     // related_terms->related_term_count
     cJSON *related_term_count = cJSON_GetObjectItemCaseSensitive(related_termsJSON, "related_term_count");
+    if (cJSON_IsNull(related_term_count)) {
+        related_term_count = NULL;
+    }
     if (related_term_count) { 
     if(!cJSON_IsNumber(related_term_count))
     {
@@ -114,6 +136,9 @@ related_terms_t *related_terms_parseFromJSON(cJSON *related_termsJSON){
 
     // related_terms->related_terms_list
     cJSON *related_terms_list = cJSON_GetObjectItemCaseSensitive(related_termsJSON, "related_terms_list");
+    if (cJSON_IsNull(related_terms_list)) {
+        related_terms_list = NULL;
+    }
     if (related_terms_list) { 
     cJSON *related_terms_list_local_nonprimitive = NULL;
     if(!cJSON_IsArray(related_terms_list)){
@@ -134,7 +159,7 @@ related_terms_t *related_terms_parseFromJSON(cJSON *related_termsJSON){
     }
 
 
-    related_terms_local_var = related_terms_create (
+    related_terms_local_var = related_terms_create_internal (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         related_term_count ? related_term_count->valuedouble : 0,
         related_terms_list ? related_terms_listList : NULL

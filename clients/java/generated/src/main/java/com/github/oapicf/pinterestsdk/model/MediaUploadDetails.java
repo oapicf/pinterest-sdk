@@ -50,18 +50,21 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Media upload details
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class MediaUploadDetails {
   public static final String SERIALIZED_NAME_MEDIA_ID = "media_id";
   @SerializedName(SERIALIZED_NAME_MEDIA_ID)
+  @javax.annotation.Nullable
   private String mediaId;
 
   public static final String SERIALIZED_NAME_MEDIA_TYPE = "media_type";
   @SerializedName(SERIALIZED_NAME_MEDIA_TYPE)
+  @javax.annotation.Nullable
   private MediaUploadType mediaType;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private MediaUploadStatus status;
 
   public MediaUploadDetails() {

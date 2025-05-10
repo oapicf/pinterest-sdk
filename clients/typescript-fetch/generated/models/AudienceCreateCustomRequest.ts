@@ -111,11 +111,11 @@ export function AudienceCreateCustomRequestFromJSONTyped(json: any, ignoreDiscri
     };
 }
 
-  export function AudienceCreateCustomRequestToJSON(json: any): AudienceCreateCustomRequest {
-      return AudienceCreateCustomRequestToJSONTyped(json, false);
-  }
+export function AudienceCreateCustomRequestToJSON(json: any): AudienceCreateCustomRequest {
+    return AudienceCreateCustomRequestToJSONTyped(json, false);
+}
 
-  export function AudienceCreateCustomRequestToJSONTyped(value?: AudienceCreateCustomRequest | null, ignoreDiscriminator: boolean = false): any {
+export function AudienceCreateCustomRequestToJSONTyped(value?: AudienceCreateCustomRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

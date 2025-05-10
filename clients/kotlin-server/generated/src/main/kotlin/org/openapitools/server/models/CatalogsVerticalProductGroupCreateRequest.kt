@@ -18,6 +18,7 @@ import org.openapitools.server.models.CatalogsLocale
 import org.openapitools.server.models.CatalogsRetailProductGroupCreateRequest
 import org.openapitools.server.models.Country
 
+import kotlinx.serialization.Serializable
 /**
  * Request object for creating a catalog based product group.
  * @param catalogType 
@@ -28,6 +29,7 @@ import org.openapitools.server.models.Country
  * @param locale 
  * @param description 
  */
+@Serializable
 data class CatalogsVerticalProductGroupCreateRequest(
     val catalogType: CatalogsVerticalProductGroupCreateRequest.CatalogType,
     val name: kotlin.String,
@@ -37,7 +39,7 @@ data class CatalogsVerticalProductGroupCreateRequest(
     val country: Country,
     val locale: CatalogsLocale,
     val description: kotlin.String? = null
-) 
+)
 {
     /**
     * 

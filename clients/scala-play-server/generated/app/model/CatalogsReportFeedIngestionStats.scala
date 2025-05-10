@@ -11,7 +11,7 @@ import play.api.libs.json._
   * @param occurrences Number of occurrences of the issue
   * @param severity An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2025-05-10T05:44:38.070631387Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 case class CatalogsReportFeedIngestionStats(
   reportType: Option[CatalogsReportFeedIngestionStats.ReportType.Value],
   catalogId: Option[String],

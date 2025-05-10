@@ -57,11 +57,11 @@ export function HotelIdFilterFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-  export function HotelIdFilterToJSON(json: any): HotelIdFilter {
-      return HotelIdFilterToJSONTyped(json, false);
-  }
+export function HotelIdFilterToJSON(json: any): HotelIdFilter {
+    return HotelIdFilterToJSONTyped(json, false);
+}
 
-  export function HotelIdFilterToJSONTyped(value?: HotelIdFilter | null, ignoreDiscriminator: boolean = false): any {
+export function HotelIdFilterToJSONTyped(value?: HotelIdFilter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

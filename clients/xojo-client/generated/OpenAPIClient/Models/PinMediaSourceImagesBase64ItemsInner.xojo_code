@@ -34,8 +34,8 @@ Protected Class PinMediaSourceImagesBase64ItemsInner
 
     #tag Enum, Name = Content_typeEnum, Type = Integer, Flags = &h0
         
-        Jpeg
-        Png
+        ImageSlashJpeg
+        ImageSlashPng
         
     #tag EndEnum
 
@@ -44,9 +44,9 @@ Protected Class PinMediaSourceImagesBase64ItemsInner
 		Shared Function Content_typeEnumToString(value As Content_typeEnum) As String
 		  Select Case value
 		    
-		    Case Content_typeEnum.Jpeg
+		    Case Content_typeEnum.ImageSlashJpeg
 		      Return "image/jpeg"
-		    Case Content_typeEnum.Png
+		    Case Content_typeEnum.ImageSlashPng
 		      Return "image/png"
 		    
 		  End Select

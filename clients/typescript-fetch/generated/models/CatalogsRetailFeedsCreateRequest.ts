@@ -190,11 +190,11 @@ export function CatalogsRetailFeedsCreateRequestFromJSONTyped(json: any, ignoreD
     };
 }
 
-  export function CatalogsRetailFeedsCreateRequestToJSON(json: any): CatalogsRetailFeedsCreateRequest {
-      return CatalogsRetailFeedsCreateRequestToJSONTyped(json, false);
-  }
+export function CatalogsRetailFeedsCreateRequestToJSON(json: any): CatalogsRetailFeedsCreateRequest {
+    return CatalogsRetailFeedsCreateRequestToJSONTyped(json, false);
+}
 
-  export function CatalogsRetailFeedsCreateRequestToJSONTyped(value?: CatalogsRetailFeedsCreateRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsRetailFeedsCreateRequestToJSONTyped(value?: CatalogsRetailFeedsCreateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

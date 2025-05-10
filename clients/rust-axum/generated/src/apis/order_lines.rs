@@ -1,6 +1,6 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Multipart};
+use axum_extra::extract::{CookieJar, Host};
 use bytes::Bytes;
 use http::Method;
 use serde::{Deserialize, Serialize};
@@ -37,27 +37,27 @@ pub enum OrderLinesSlashListResponse {
 /// OrderLines
 #[async_trait]
 #[allow(clippy::ptr_arg)]
-pub trait OrderLines {
+pub trait OrderLines<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHandler<E> {
     /// Get order line.
     ///
     /// OrderLinesSlashGet - GET /v5/ad_accounts/{ad_account_id}/order_lines/{order_line_id}
     async fn order_lines_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::OrderLinesSlashGetPathParams,
-    ) -> Result<OrderLinesSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::OrderLinesSlashGetPathParams,
+    ) -> Result<OrderLinesSlashGetResponse, E>;
 
     /// Get order lines.
     ///
     /// OrderLinesSlashList - GET /v5/ad_accounts/{ad_account_id}/order_lines
     async fn order_lines_slash_list(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::OrderLinesSlashListPathParams,
-      query_params: models::OrderLinesSlashListQueryParams,
-    ) -> Result<OrderLinesSlashListResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::OrderLinesSlashListPathParams,
+      query_params: &models::OrderLinesSlashListQueryParams,
+    ) -> Result<OrderLinesSlashListResponse, E>;
 }

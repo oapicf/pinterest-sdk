@@ -51,36 +51,42 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Retail product metadata entity
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsRetailProductMetadata {
   public static final String SERIALIZED_NAME_ITEM_ID = "item_id";
   @SerializedName(SERIALIZED_NAME_ITEM_ID)
+  @javax.annotation.Nonnull
   private String itemId;
 
   public static final String SERIALIZED_NAME_ITEM_GROUP_ID = "item_group_id";
   @SerializedName(SERIALIZED_NAME_ITEM_GROUP_ID)
+  @javax.annotation.Nullable
   private String itemGroupId;
 
   public static final String SERIALIZED_NAME_AVAILABILITY = "availability";
   @SerializedName(SERIALIZED_NAME_AVAILABILITY)
+  @javax.annotation.Nonnull
   private NonNullableProductAvailabilityType availability;
 
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
+  @javax.annotation.Nonnull
   private BigDecimal price;
 
   public static final String SERIALIZED_NAME_SALE_PRICE = "sale_price";
   @SerializedName(SERIALIZED_NAME_SALE_PRICE)
+  @javax.annotation.Nullable
   private BigDecimal salePrice;
 
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
+  @javax.annotation.Nonnull
   private NonNullableCatalogsCurrency currency;
 
   public CatalogsRetailProductMetadata() {
   }
 
-  public CatalogsRetailProductMetadata itemId(String itemId) {
+  public CatalogsRetailProductMetadata itemId(@javax.annotation.Nonnull String itemId) {
     this.itemId = itemId;
     return this;
   }
@@ -94,12 +100,12 @@ public class CatalogsRetailProductMetadata {
     return itemId;
   }
 
-  public void setItemId(String itemId) {
+  public void setItemId(@javax.annotation.Nonnull String itemId) {
     this.itemId = itemId;
   }
 
 
-  public CatalogsRetailProductMetadata itemGroupId(String itemGroupId) {
+  public CatalogsRetailProductMetadata itemGroupId(@javax.annotation.Nullable String itemGroupId) {
     this.itemGroupId = itemGroupId;
     return this;
   }
@@ -113,12 +119,12 @@ public class CatalogsRetailProductMetadata {
     return itemGroupId;
   }
 
-  public void setItemGroupId(String itemGroupId) {
+  public void setItemGroupId(@javax.annotation.Nullable String itemGroupId) {
     this.itemGroupId = itemGroupId;
   }
 
 
-  public CatalogsRetailProductMetadata availability(NonNullableProductAvailabilityType availability) {
+  public CatalogsRetailProductMetadata availability(@javax.annotation.Nonnull NonNullableProductAvailabilityType availability) {
     this.availability = availability;
     return this;
   }
@@ -132,12 +138,12 @@ public class CatalogsRetailProductMetadata {
     return availability;
   }
 
-  public void setAvailability(NonNullableProductAvailabilityType availability) {
+  public void setAvailability(@javax.annotation.Nonnull NonNullableProductAvailabilityType availability) {
     this.availability = availability;
   }
 
 
-  public CatalogsRetailProductMetadata price(BigDecimal price) {
+  public CatalogsRetailProductMetadata price(@javax.annotation.Nonnull BigDecimal price) {
     this.price = price;
     return this;
   }
@@ -151,12 +157,12 @@ public class CatalogsRetailProductMetadata {
     return price;
   }
 
-  public void setPrice(BigDecimal price) {
+  public void setPrice(@javax.annotation.Nonnull BigDecimal price) {
     this.price = price;
   }
 
 
-  public CatalogsRetailProductMetadata salePrice(BigDecimal salePrice) {
+  public CatalogsRetailProductMetadata salePrice(@javax.annotation.Nullable BigDecimal salePrice) {
     this.salePrice = salePrice;
     return this;
   }
@@ -170,12 +176,12 @@ public class CatalogsRetailProductMetadata {
     return salePrice;
   }
 
-  public void setSalePrice(BigDecimal salePrice) {
+  public void setSalePrice(@javax.annotation.Nullable BigDecimal salePrice) {
     this.salePrice = salePrice;
   }
 
 
-  public CatalogsRetailProductMetadata currency(NonNullableCatalogsCurrency currency) {
+  public CatalogsRetailProductMetadata currency(@javax.annotation.Nonnull NonNullableCatalogsCurrency currency) {
     this.currency = currency;
     return this;
   }
@@ -189,7 +195,7 @@ public class CatalogsRetailProductMetadata {
     return currency;
   }
 
-  public void setCurrency(NonNullableCatalogsCurrency currency) {
+  public void setCurrency(@javax.annotation.Nonnull NonNullableCatalogsCurrency currency) {
     this.currency = currency;
   }
 

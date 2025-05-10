@@ -44,8 +44,8 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum AudienceDataParty: string
 {
-        case _1P = "1p";
-        case _3P = "3p";
+        case _1P = '1p';
+        case _3P = '3p';
 }
 
 

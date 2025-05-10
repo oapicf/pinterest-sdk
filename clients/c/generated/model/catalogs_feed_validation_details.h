@@ -24,9 +24,10 @@ typedef struct catalogs_feed_validation_details_t {
     struct catalogs_feed_validation_errors_t *errors; //model
     struct catalogs_feed_validation_warnings_t *warnings; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_feed_validation_details_t;
 
-catalogs_feed_validation_details_t *catalogs_feed_validation_details_create(
+__attribute__((deprecated)) catalogs_feed_validation_details_t *catalogs_feed_validation_details_create(
     catalogs_feed_validation_errors_t *errors,
     catalogs_feed_validation_warnings_t *warnings
 );

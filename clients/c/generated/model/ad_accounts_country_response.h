@@ -22,9 +22,10 @@ typedef struct ad_accounts_country_response_t ad_accounts_country_response_t;
 typedef struct ad_accounts_country_response_t {
     list_t *items; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } ad_accounts_country_response_t;
 
-ad_accounts_country_response_t *ad_accounts_country_response_create(
+__attribute__((deprecated)) ad_accounts_country_response_t *ad_accounts_country_response_create(
     list_t *items
 );
 

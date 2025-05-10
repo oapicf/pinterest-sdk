@@ -50,28 +50,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * GetMMMReportResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class GetMMMReportResponse {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
+  @javax.annotation.Nullable
   private BigDecimal code;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
+  @javax.annotation.Nullable
   private GetMMMReportResponseData data;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
+  @javax.annotation.Nullable
   private String message;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private String status;
 
   public GetMMMReportResponse() {
   }
 
-  public GetMMMReportResponse code(BigDecimal code) {
+  public GetMMMReportResponse code(@javax.annotation.Nullable BigDecimal code) {
     this.code = code;
     return this;
   }
@@ -85,12 +89,12 @@ public class GetMMMReportResponse {
     return code;
   }
 
-  public void setCode(BigDecimal code) {
+  public void setCode(@javax.annotation.Nullable BigDecimal code) {
     this.code = code;
   }
 
 
-  public GetMMMReportResponse data(GetMMMReportResponseData data) {
+  public GetMMMReportResponse data(@javax.annotation.Nullable GetMMMReportResponseData data) {
     this.data = data;
     return this;
   }
@@ -104,12 +108,12 @@ public class GetMMMReportResponse {
     return data;
   }
 
-  public void setData(GetMMMReportResponseData data) {
+  public void setData(@javax.annotation.Nullable GetMMMReportResponseData data) {
     this.data = data;
   }
 
 
-  public GetMMMReportResponse message(String message) {
+  public GetMMMReportResponse message(@javax.annotation.Nullable String message) {
     this.message = message;
     return this;
   }
@@ -123,12 +127,12 @@ public class GetMMMReportResponse {
     return message;
   }
 
-  public void setMessage(String message) {
+  public void setMessage(@javax.annotation.Nullable String message) {
     this.message = message;
   }
 
 
-  public GetMMMReportResponse status(String status) {
+  public GetMMMReportResponse status(@javax.annotation.Nullable String status) {
     this.status = status;
     return this;
   }
@@ -142,7 +146,7 @@ public class GetMMMReportResponse {
     return status;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(@javax.annotation.Nullable String status) {
     this.status = status;
   }
 

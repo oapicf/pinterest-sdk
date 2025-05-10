@@ -69,11 +69,11 @@ export function InterestFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
     };
 }
 
-  export function InterestToJSON(json: any): Interest {
-      return InterestToJSONTyped(json, false);
-  }
+export function InterestToJSON(json: any): Interest {
+    return InterestToJSONTyped(json, false);
+}
 
-  export function InterestToJSONTyped(value?: Interest | null, ignoreDiscriminator: boolean = false): any {
+export function InterestToJSONTyped(value?: Interest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

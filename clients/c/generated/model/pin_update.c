@@ -5,7 +5,7 @@
 
 
 
-pin_update_t *pin_update_create(
+static pin_update_t *pin_update_create_internal(
     char *alt_text,
     char *board_id,
     char *board_section_id,
@@ -28,12 +28,38 @@ pin_update_t *pin_update_create(
     pin_update_local_var->carousel_slots = carousel_slots;
     pin_update_local_var->note = note;
 
+    pin_update_local_var->_library_owned = 1;
     return pin_update_local_var;
 }
 
+__attribute__((deprecated)) pin_update_t *pin_update_create(
+    char *alt_text,
+    char *board_id,
+    char *board_section_id,
+    char *description,
+    char *link,
+    char *title,
+    list_t *carousel_slots,
+    char *note
+    ) {
+    return pin_update_create_internal (
+        alt_text,
+        board_id,
+        board_section_id,
+        description,
+        link,
+        title,
+        carousel_slots,
+        note
+        );
+}
 
 void pin_update_free(pin_update_t *pin_update) {
     if(NULL == pin_update){
+        return ;
+    }
+    if(pin_update->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "pin_update_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -170,6 +196,9 @@ pin_update_t *pin_update_parseFromJSON(cJSON *pin_updateJSON){
 
     // pin_update->alt_text
     cJSON *alt_text = cJSON_GetObjectItemCaseSensitive(pin_updateJSON, "alt_text");
+    if (cJSON_IsNull(alt_text)) {
+        alt_text = NULL;
+    }
     if (alt_text) { 
     if(!cJSON_IsString(alt_text) && !cJSON_IsNull(alt_text))
     {
@@ -179,6 +208,9 @@ pin_update_t *pin_update_parseFromJSON(cJSON *pin_updateJSON){
 
     // pin_update->board_id
     cJSON *board_id = cJSON_GetObjectItemCaseSensitive(pin_updateJSON, "board_id");
+    if (cJSON_IsNull(board_id)) {
+        board_id = NULL;
+    }
     if (board_id) { 
     if(!cJSON_IsString(board_id) && !cJSON_IsNull(board_id))
     {
@@ -188,6 +220,9 @@ pin_update_t *pin_update_parseFromJSON(cJSON *pin_updateJSON){
 
     // pin_update->board_section_id
     cJSON *board_section_id = cJSON_GetObjectItemCaseSensitive(pin_updateJSON, "board_section_id");
+    if (cJSON_IsNull(board_section_id)) {
+        board_section_id = NULL;
+    }
     if (board_section_id) { 
     if(!cJSON_IsString(board_section_id) && !cJSON_IsNull(board_section_id))
     {
@@ -197,6 +232,9 @@ pin_update_t *pin_update_parseFromJSON(cJSON *pin_updateJSON){
 
     // pin_update->description
     cJSON *description = cJSON_GetObjectItemCaseSensitive(pin_updateJSON, "description");
+    if (cJSON_IsNull(description)) {
+        description = NULL;
+    }
     if (description) { 
     if(!cJSON_IsString(description) && !cJSON_IsNull(description))
     {
@@ -206,6 +244,9 @@ pin_update_t *pin_update_parseFromJSON(cJSON *pin_updateJSON){
 
     // pin_update->link
     cJSON *link = cJSON_GetObjectItemCaseSensitive(pin_updateJSON, "link");
+    if (cJSON_IsNull(link)) {
+        link = NULL;
+    }
     if (link) { 
     if(!cJSON_IsString(link) && !cJSON_IsNull(link))
     {
@@ -215,6 +256,9 @@ pin_update_t *pin_update_parseFromJSON(cJSON *pin_updateJSON){
 
     // pin_update->title
     cJSON *title = cJSON_GetObjectItemCaseSensitive(pin_updateJSON, "title");
+    if (cJSON_IsNull(title)) {
+        title = NULL;
+    }
     if (title) { 
     if(!cJSON_IsString(title) && !cJSON_IsNull(title))
     {
@@ -224,6 +268,9 @@ pin_update_t *pin_update_parseFromJSON(cJSON *pin_updateJSON){
 
     // pin_update->carousel_slots
     cJSON *carousel_slots = cJSON_GetObjectItemCaseSensitive(pin_updateJSON, "carousel_slots");
+    if (cJSON_IsNull(carousel_slots)) {
+        carousel_slots = NULL;
+    }
     if (carousel_slots) { 
     cJSON *carousel_slots_local_nonprimitive = NULL;
     if(!cJSON_IsArray(carousel_slots)){
@@ -245,6 +292,9 @@ pin_update_t *pin_update_parseFromJSON(cJSON *pin_updateJSON){
 
     // pin_update->note
     cJSON *note = cJSON_GetObjectItemCaseSensitive(pin_updateJSON, "note");
+    if (cJSON_IsNull(note)) {
+        note = NULL;
+    }
     if (note) { 
     if(!cJSON_IsString(note) && !cJSON_IsNull(note))
     {
@@ -253,7 +303,7 @@ pin_update_t *pin_update_parseFromJSON(cJSON *pin_updateJSON){
     }
 
 
-    pin_update_local_var = pin_update_create (
+    pin_update_local_var = pin_update_create_internal (
         alt_text && !cJSON_IsNull(alt_text) ? strdup(alt_text->valuestring) : NULL,
         board_id && !cJSON_IsNull(board_id) ? strdup(board_id->valuestring) : NULL,
         board_section_id && !cJSON_IsNull(board_section_id) ? strdup(board_section_id->valuestring) : NULL,

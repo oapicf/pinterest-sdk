@@ -132,8 +132,8 @@ export interface AdsAnalyticsCreateAsyncRequest {
 export namespace AdsAnalyticsCreateAsyncRequest {
     export type PrimarySortEnum = 'BY_ID' | 'BY_DATE';
     export const PrimarySortEnum = {
-        Id: 'BY_ID' as PrimarySortEnum,
-        Date: 'BY_DATE' as PrimarySortEnum
+        ById: 'BY_ID' as PrimarySortEnum,
+        ByDate: 'BY_DATE' as PrimarySortEnum
     };
 }
 

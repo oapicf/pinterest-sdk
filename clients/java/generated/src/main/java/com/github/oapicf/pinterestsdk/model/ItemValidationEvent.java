@@ -48,24 +48,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Object describing an item validation event
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ItemValidationEvent {
   public static final String SERIALIZED_NAME_ATTRIBUTE = "attribute";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTE)
+  @javax.annotation.Nullable
   private String attribute;
 
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
+  @javax.annotation.Nullable
   private Integer code;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
+  @javax.annotation.Nullable
   private String message;
 
   public ItemValidationEvent() {
   }
 
-  public ItemValidationEvent attribute(String attribute) {
+  public ItemValidationEvent attribute(@javax.annotation.Nullable String attribute) {
     this.attribute = attribute;
     return this;
   }
@@ -79,12 +82,12 @@ public class ItemValidationEvent {
     return attribute;
   }
 
-  public void setAttribute(String attribute) {
+  public void setAttribute(@javax.annotation.Nullable String attribute) {
     this.attribute = attribute;
   }
 
 
-  public ItemValidationEvent code(Integer code) {
+  public ItemValidationEvent code(@javax.annotation.Nullable Integer code) {
     this.code = code;
     return this;
   }
@@ -98,12 +101,12 @@ public class ItemValidationEvent {
     return code;
   }
 
-  public void setCode(Integer code) {
+  public void setCode(@javax.annotation.Nullable Integer code) {
     this.code = code;
   }
 
 
-  public ItemValidationEvent message(String message) {
+  public ItemValidationEvent message(@javax.annotation.Nullable String message) {
     this.message = message;
     return this;
   }
@@ -117,7 +120,7 @@ public class ItemValidationEvent {
     return message;
   }
 
-  public void setMessage(String message) {
+  public void setMessage(@javax.annotation.Nullable String message) {
     this.message = message;
   }
 

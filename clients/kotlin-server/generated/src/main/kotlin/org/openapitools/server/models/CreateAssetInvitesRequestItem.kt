@@ -14,17 +14,19 @@ package org.openapitools.server.models
 import org.openapitools.server.models.InviteType
 import org.openapitools.server.models.Permissions
 
+import kotlinx.serialization.Serializable
 /**
  * Object declaring an asset role update to an invite.
  * @param inviteId Unique identifier of an invite.
  * @param inviteType 
  * @param assetIdToPermissions An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
  */
+@Serializable
 data class CreateAssetInvitesRequestItem(
     /* Unique identifier of an invite. */
     val inviteId: kotlin.String,
     val inviteType: InviteType,
     /* An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.  */
     val assetIdToPermissions: kotlin.collections.Map<kotlin.String, kotlin.collections.List<Permissions>>
-) 
+)
 

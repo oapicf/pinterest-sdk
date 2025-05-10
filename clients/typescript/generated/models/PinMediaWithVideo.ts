@@ -37,11 +37,11 @@ export class PinMediaWithVideo extends PinMedia {
     */
     'width'?: number;
 
-    static readonly discriminator: string | undefined = undefined;
+    static override readonly discriminator: string | undefined = undefined;
 
-    static readonly mapping: {[index: string]: string} | undefined = undefined;
+    static override readonly mapping: {[index: string]: string} | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+    static override readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
             "name": "images",
             "baseName": "images",
@@ -79,7 +79,7 @@ export class PinMediaWithVideo extends PinMedia {
             "format": ""
         }    ];
 
-    static getAttributeTypeMap() {
+    static override getAttributeTypeMap() {
         return super.getAttributeTypeMap().concat(PinMediaWithVideo.attributeTypeMap);
     }
 

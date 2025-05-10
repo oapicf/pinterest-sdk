@@ -48,18 +48,21 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * PinMediaSourceImagesBase64ItemsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMediaSourceImagesBase64ItemsInner {
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
+  @javax.annotation.Nullable
   private String title;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nullable
   private String description;
 
   public static final String SERIALIZED_NAME_LINK = "link";
   @SerializedName(SERIALIZED_NAME_LINK)
+  @javax.annotation.Nullable
   private String link;
 
   /**
@@ -67,9 +70,9 @@ public class PinMediaSourceImagesBase64ItemsInner {
    */
   @JsonAdapter(ContentTypeEnum.Adapter.class)
   public enum ContentTypeEnum {
-    JPEG("image/jpeg"),
+    IMAGE_JPEG("image/jpeg"),
     
-    PNG("image/png");
+    IMAGE_PNG("image/png");
 
     private String value;
 
@@ -116,16 +119,18 @@ public class PinMediaSourceImagesBase64ItemsInner {
 
   public static final String SERIALIZED_NAME_CONTENT_TYPE = "content_type";
   @SerializedName(SERIALIZED_NAME_CONTENT_TYPE)
+  @javax.annotation.Nonnull
   private ContentTypeEnum contentType;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
+  @javax.annotation.Nonnull
   private String data;
 
   public PinMediaSourceImagesBase64ItemsInner() {
   }
 
-  public PinMediaSourceImagesBase64ItemsInner title(String title) {
+  public PinMediaSourceImagesBase64ItemsInner title(@javax.annotation.Nullable String title) {
     this.title = title;
     return this;
   }
@@ -139,12 +144,12 @@ public class PinMediaSourceImagesBase64ItemsInner {
     return title;
   }
 
-  public void setTitle(String title) {
+  public void setTitle(@javax.annotation.Nullable String title) {
     this.title = title;
   }
 
 
-  public PinMediaSourceImagesBase64ItemsInner description(String description) {
+  public PinMediaSourceImagesBase64ItemsInner description(@javax.annotation.Nullable String description) {
     this.description = description;
     return this;
   }
@@ -158,12 +163,12 @@ public class PinMediaSourceImagesBase64ItemsInner {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
 
-  public PinMediaSourceImagesBase64ItemsInner link(String link) {
+  public PinMediaSourceImagesBase64ItemsInner link(@javax.annotation.Nullable String link) {
     this.link = link;
     return this;
   }
@@ -177,12 +182,12 @@ public class PinMediaSourceImagesBase64ItemsInner {
     return link;
   }
 
-  public void setLink(String link) {
+  public void setLink(@javax.annotation.Nullable String link) {
     this.link = link;
   }
 
 
-  public PinMediaSourceImagesBase64ItemsInner contentType(ContentTypeEnum contentType) {
+  public PinMediaSourceImagesBase64ItemsInner contentType(@javax.annotation.Nonnull ContentTypeEnum contentType) {
     this.contentType = contentType;
     return this;
   }
@@ -196,12 +201,12 @@ public class PinMediaSourceImagesBase64ItemsInner {
     return contentType;
   }
 
-  public void setContentType(ContentTypeEnum contentType) {
+  public void setContentType(@javax.annotation.Nonnull ContentTypeEnum contentType) {
     this.contentType = contentType;
   }
 
 
-  public PinMediaSourceImagesBase64ItemsInner data(String data) {
+  public PinMediaSourceImagesBase64ItemsInner data(@javax.annotation.Nonnull String data) {
     this.data = data;
     return this;
   }
@@ -215,7 +220,7 @@ public class PinMediaSourceImagesBase64ItemsInner {
     return data;
   }
 
-  public void setData(String data) {
+  public void setData(@javax.annotation.Nonnull String data) {
     this.data = data;
   }
 

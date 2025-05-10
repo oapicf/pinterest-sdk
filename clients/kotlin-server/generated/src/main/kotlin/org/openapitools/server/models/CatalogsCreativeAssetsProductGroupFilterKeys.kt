@@ -29,6 +29,7 @@ import org.openapitools.server.models.GoogleProductCategory5Filter
 import org.openapitools.server.models.GoogleProductCategory6Filter
 import org.openapitools.server.models.MediaTypeFilter
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param CREATIVE_ASSETS_ID 
@@ -46,6 +47,7 @@ import org.openapitools.server.models.MediaTypeFilter
  * @param GOOGLE_PRODUCT_CATEGORY_0 
  * @param MEDIA_TYPE 
  */
+@Serializable
 data class CatalogsCreativeAssetsProductGroupFilterKeys(
     val CREATIVE_ASSETS_ID: CatalogsProductGroupMultipleStringCriteria,
     val CUSTOM_LABEL_0: CatalogsProductGroupMultipleStringCriteria,
@@ -61,5 +63,5 @@ data class CatalogsCreativeAssetsProductGroupFilterKeys(
     val GOOGLE_PRODUCT_CATEGORY_1: CatalogsProductGroupMultipleStringListCriteria,
     val GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria,
     val MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria
-) 
+)
 

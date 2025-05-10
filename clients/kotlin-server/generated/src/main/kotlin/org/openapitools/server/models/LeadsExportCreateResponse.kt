@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param leadsExportId ID for the leads export job
  */
+@Serializable
 data class LeadsExportCreateResponse(
     /* ID for the leads export job */
     val leadsExportId: kotlin.String? = null
-) 
+)
 

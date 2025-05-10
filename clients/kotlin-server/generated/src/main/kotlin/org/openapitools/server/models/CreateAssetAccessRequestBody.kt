@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CreateAssetAccessRequestBodyAssetRequestsInner
 
+import kotlinx.serialization.Serializable
 /**
  * An object containing a list of all the asset access requests
  * @param assetRequests 
  */
+@Serializable
 data class CreateAssetAccessRequestBody(
     val assetRequests: kotlin.collections.List<CreateAssetAccessRequestBodyAssetRequestsInner>
-) 
+)
 

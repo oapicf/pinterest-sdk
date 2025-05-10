@@ -50,56 +50,67 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Audience
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class Audience {
   public static final String SERIALIZED_NAME_AD_ACCOUNT_ID = "ad_account_id";
   @SerializedName(SERIALIZED_NAME_AD_ACCOUNT_ID)
+  @javax.annotation.Nullable
   private String adAccountId;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_AUDIENCE_TYPE = "audience_type";
   @SerializedName(SERIALIZED_NAME_AUDIENCE_TYPE)
+  @javax.annotation.Nullable
   private String audienceType;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nullable
   private String description;
 
   public static final String SERIALIZED_NAME_RULE = "rule";
   @SerializedName(SERIALIZED_NAME_RULE)
+  @javax.annotation.Nullable
   private AudienceRule rule;
 
   public static final String SERIALIZED_NAME_SIZE = "size";
   @SerializedName(SERIALIZED_NAME_SIZE)
+  @javax.annotation.Nullable
   private Integer size;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private String status;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nullable
   private String type;
 
   public static final String SERIALIZED_NAME_CREATED_TIMESTAMP = "created_timestamp";
   @SerializedName(SERIALIZED_NAME_CREATED_TIMESTAMP)
+  @javax.annotation.Nullable
   private Integer createdTimestamp;
 
   public static final String SERIALIZED_NAME_UPDATED_TIMESTAMP = "updated_timestamp";
   @SerializedName(SERIALIZED_NAME_UPDATED_TIMESTAMP)
+  @javax.annotation.Nullable
   private Integer updatedTimestamp;
 
   public Audience() {
   }
 
-  public Audience adAccountId(String adAccountId) {
+  public Audience adAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -113,12 +124,12 @@ public class Audience {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
 
-  public Audience id(String id) {
+  public Audience id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -132,12 +143,12 @@ public class Audience {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public Audience name(String name) {
+  public Audience name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -151,12 +162,12 @@ public class Audience {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public Audience audienceType(String audienceType) {
+  public Audience audienceType(@javax.annotation.Nullable String audienceType) {
     this.audienceType = audienceType;
     return this;
   }
@@ -170,12 +181,12 @@ public class Audience {
     return audienceType;
   }
 
-  public void setAudienceType(String audienceType) {
+  public void setAudienceType(@javax.annotation.Nullable String audienceType) {
     this.audienceType = audienceType;
   }
 
 
-  public Audience description(String description) {
+  public Audience description(@javax.annotation.Nullable String description) {
     this.description = description;
     return this;
   }
@@ -189,12 +200,12 @@ public class Audience {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
 
-  public Audience rule(AudienceRule rule) {
+  public Audience rule(@javax.annotation.Nullable AudienceRule rule) {
     this.rule = rule;
     return this;
   }
@@ -208,12 +219,12 @@ public class Audience {
     return rule;
   }
 
-  public void setRule(AudienceRule rule) {
+  public void setRule(@javax.annotation.Nullable AudienceRule rule) {
     this.rule = rule;
   }
 
 
-  public Audience size(Integer size) {
+  public Audience size(@javax.annotation.Nullable Integer size) {
     this.size = size;
     return this;
   }
@@ -227,12 +238,12 @@ public class Audience {
     return size;
   }
 
-  public void setSize(Integer size) {
+  public void setSize(@javax.annotation.Nullable Integer size) {
     this.size = size;
   }
 
 
-  public Audience status(String status) {
+  public Audience status(@javax.annotation.Nullable String status) {
     this.status = status;
     return this;
   }
@@ -246,12 +257,12 @@ public class Audience {
     return status;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(@javax.annotation.Nullable String status) {
     this.status = status;
   }
 
 
-  public Audience type(String type) {
+  public Audience type(@javax.annotation.Nullable String type) {
     this.type = type;
     return this;
   }
@@ -265,12 +276,12 @@ public class Audience {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@javax.annotation.Nullable String type) {
     this.type = type;
   }
 
 
-  public Audience createdTimestamp(Integer createdTimestamp) {
+  public Audience createdTimestamp(@javax.annotation.Nullable Integer createdTimestamp) {
     this.createdTimestamp = createdTimestamp;
     return this;
   }
@@ -284,12 +295,12 @@ public class Audience {
     return createdTimestamp;
   }
 
-  public void setCreatedTimestamp(Integer createdTimestamp) {
+  public void setCreatedTimestamp(@javax.annotation.Nullable Integer createdTimestamp) {
     this.createdTimestamp = createdTimestamp;
   }
 
 
-  public Audience updatedTimestamp(Integer updatedTimestamp) {
+  public Audience updatedTimestamp(@javax.annotation.Nullable Integer updatedTimestamp) {
     this.updatedTimestamp = updatedTimestamp;
     return this;
   }
@@ -303,7 +314,7 @@ public class Audience {
     return updatedTimestamp;
   }
 
-  public void setUpdatedTimestamp(Integer updatedTimestamp) {
+  public void setUpdatedTimestamp(@javax.annotation.Nullable Integer updatedTimestamp) {
     this.updatedTimestamp = updatedTimestamp;
   }
 

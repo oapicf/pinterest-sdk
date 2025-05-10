@@ -44,9 +44,9 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum CatalogsType: string
 {
-        case RETAIL = "RETAIL";
-        case HOTEL = "HOTEL";
-        case CREATIVE_ASSETS = "CREATIVE_ASSETS";
+        case RETAIL = 'RETAIL';
+        case HOTEL = 'HOTEL';
+        case CREATIVE_ASSETS = 'CREATIVE_ASSETS';
 }
 
 

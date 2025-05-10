@@ -48,11 +48,11 @@ export function ItemDeleteBatchRecordFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function ItemDeleteBatchRecordToJSON(json: any): ItemDeleteBatchRecord {
-      return ItemDeleteBatchRecordToJSONTyped(json, false);
-  }
+export function ItemDeleteBatchRecordToJSON(json: any): ItemDeleteBatchRecord {
+    return ItemDeleteBatchRecordToJSONTyped(json, false);
+}
 
-  export function ItemDeleteBatchRecordToJSONTyped(value?: ItemDeleteBatchRecord | null, ignoreDiscriminator: boolean = false): any {
+export function ItemDeleteBatchRecordToJSONTyped(value?: ItemDeleteBatchRecord | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

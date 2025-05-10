@@ -22,7 +22,7 @@ pinterest_rest_api_creative_type__e creative_type_creative_type_FromString(char*
     return 0;
 }
 
-cJSON *creative_type_creative_type_convertToJSON(pinterest_rest_api_creative_type__e creative_type) {
+cJSON *creative_type_convertToJSON(pinterest_rest_api_creative_type__e creative_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "creative_type", creative_type_creative_type_ToString(creative_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_creative_type__e creative_type_creative_type_parseFromJSON(cJSON *creative_typeJSON) {
-    pinterest_rest_api_creative_type__e *creative_type = NULL;
-    pinterest_rest_api_creative_type__e creative_typeVariable;
-    cJSON *creative_typeVar = cJSON_GetObjectItemCaseSensitive(creative_typeJSON, "creative_type");
-    if(!cJSON_IsString(creative_typeVar) || (creative_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_creative_type__e creative_type_parseFromJSON(cJSON *creative_typeJSON) {
+    if(!cJSON_IsString(creative_typeJSON) || (creative_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    creative_typeVariable = creative_type_creative_type_FromString(creative_typeVar->valuestring);
-    return creative_typeVariable;
-end:
-    return 0;
+    return creative_type_creative_type_FromString(creative_typeJSON->valuestring);
 }

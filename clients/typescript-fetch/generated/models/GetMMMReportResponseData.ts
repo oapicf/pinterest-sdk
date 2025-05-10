@@ -77,11 +77,11 @@ export function GetMMMReportResponseDataFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function GetMMMReportResponseDataToJSON(json: any): GetMMMReportResponseData {
-      return GetMMMReportResponseDataToJSONTyped(json, false);
-  }
+export function GetMMMReportResponseDataToJSON(json: any): GetMMMReportResponseData {
+    return GetMMMReportResponseDataToJSONTyped(json, false);
+}
 
-  export function GetMMMReportResponseDataToJSONTyped(value?: GetMMMReportResponseData | null, ignoreDiscriminator: boolean = false): any {
+export function GetMMMReportResponseDataToJSONTyped(value?: GetMMMReportResponseData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -48,10 +48,11 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * User website verification request
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class UserWebsiteVerifyRequest {
   public static final String SERIALIZED_NAME_WEBSITE = "website";
   @SerializedName(SERIALIZED_NAME_WEBSITE)
+  @javax.annotation.Nullable
   private String website;
 
   /**
@@ -110,12 +111,13 @@ public class UserWebsiteVerifyRequest {
 
   public static final String SERIALIZED_NAME_VERIFICATION_METHOD = "verification_method";
   @SerializedName(SERIALIZED_NAME_VERIFICATION_METHOD)
+  @javax.annotation.Nullable
   private VerificationMethodEnum verificationMethod = VerificationMethodEnum.METATAG;
 
   public UserWebsiteVerifyRequest() {
   }
 
-  public UserWebsiteVerifyRequest website(String website) {
+  public UserWebsiteVerifyRequest website(@javax.annotation.Nullable String website) {
     this.website = website;
     return this;
   }
@@ -129,12 +131,12 @@ public class UserWebsiteVerifyRequest {
     return website;
   }
 
-  public void setWebsite(String website) {
+  public void setWebsite(@javax.annotation.Nullable String website) {
     this.website = website;
   }
 
 
-  public UserWebsiteVerifyRequest verificationMethod(VerificationMethodEnum verificationMethod) {
+  public UserWebsiteVerifyRequest verificationMethod(@javax.annotation.Nullable VerificationMethodEnum verificationMethod) {
     this.verificationMethod = verificationMethod;
     return this;
   }
@@ -148,7 +150,7 @@ public class UserWebsiteVerifyRequest {
     return verificationMethod;
   }
 
-  public void setVerificationMethod(VerificationMethodEnum verificationMethod) {
+  public void setVerificationMethod(@javax.annotation.Nullable VerificationMethodEnum verificationMethod) {
     this.verificationMethod = verificationMethod;
   }
 

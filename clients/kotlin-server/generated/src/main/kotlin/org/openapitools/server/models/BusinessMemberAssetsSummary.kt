@@ -14,15 +14,17 @@ package org.openapitools.server.models
 import org.openapitools.server.models.BusinessMemberAssetsSummaryAdAccountsInner
 import org.openapitools.server.models.BusinessMemberAssetsSummaryProfilesInner
 
+import kotlinx.serialization.Serializable
 /**
  * Ad accounts and profiles the business member/partner has access to.
  * @param adAccounts List of ad account IDs and respective permission levels.
  * @param profiles List of profile IDs and respective permission levels.
  */
+@Serializable
 data class BusinessMemberAssetsSummary(
     /* List of ad account IDs and respective permission levels. */
     val adAccounts: kotlin.collections.List<BusinessMemberAssetsSummaryAdAccountsInner>? = null,
     /* List of profile IDs and respective permission levels. */
     val profiles: kotlin.collections.List<BusinessMemberAssetsSummaryProfilesInner>? = null
-) 
+)
 

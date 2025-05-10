@@ -183,104 +183,129 @@ CatalogsItemValidationErrors <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return CatalogsItemValidationErrors in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return CatalogsItemValidationErrors as a base R list.
+    #' @examples
+    #' # convert array of CatalogsItemValidationErrors (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert CatalogsItemValidationErrors to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       CatalogsItemValidationErrorsObject <- list()
       if (!is.null(self$`ADULT_INVALID`)) {
         CatalogsItemValidationErrorsObject[["ADULT_INVALID"]] <-
-          self$`ADULT_INVALID`$toJSON()
+          self$`ADULT_INVALID`$toSimpleType()
       }
       if (!is.null(self$`ADWORDS_FORMAT_INVALID`)) {
         CatalogsItemValidationErrorsObject[["ADWORDS_FORMAT_INVALID"]] <-
-          self$`ADWORDS_FORMAT_INVALID`$toJSON()
+          self$`ADWORDS_FORMAT_INVALID`$toSimpleType()
       }
       if (!is.null(self$`AVAILABILITY_INVALID`)) {
         CatalogsItemValidationErrorsObject[["AVAILABILITY_INVALID"]] <-
-          self$`AVAILABILITY_INVALID`$toJSON()
+          self$`AVAILABILITY_INVALID`$toSimpleType()
       }
       if (!is.null(self$`BLOCKLISTED_IMAGE_SIGNATURE`)) {
         CatalogsItemValidationErrorsObject[["BLOCKLISTED_IMAGE_SIGNATURE"]] <-
-          self$`BLOCKLISTED_IMAGE_SIGNATURE`$toJSON()
+          self$`BLOCKLISTED_IMAGE_SIGNATURE`$toSimpleType()
       }
       if (!is.null(self$`DESCRIPTION_MISSING`)) {
         CatalogsItemValidationErrorsObject[["DESCRIPTION_MISSING"]] <-
-          self$`DESCRIPTION_MISSING`$toJSON()
+          self$`DESCRIPTION_MISSING`$toSimpleType()
       }
       if (!is.null(self$`DUPLICATE_PRODUCTS`)) {
         CatalogsItemValidationErrorsObject[["DUPLICATE_PRODUCTS"]] <-
-          self$`DUPLICATE_PRODUCTS`$toJSON()
+          self$`DUPLICATE_PRODUCTS`$toSimpleType()
       }
       if (!is.null(self$`IMAGE_LINK_INVALID`)) {
         CatalogsItemValidationErrorsObject[["IMAGE_LINK_INVALID"]] <-
-          self$`IMAGE_LINK_INVALID`$toJSON()
+          self$`IMAGE_LINK_INVALID`$toSimpleType()
       }
       if (!is.null(self$`IMAGE_LINK_LENGTH_TOO_LONG`)) {
         CatalogsItemValidationErrorsObject[["IMAGE_LINK_LENGTH_TOO_LONG"]] <-
-          self$`IMAGE_LINK_LENGTH_TOO_LONG`$toJSON()
+          self$`IMAGE_LINK_LENGTH_TOO_LONG`$toSimpleType()
       }
       if (!is.null(self$`IMAGE_LINK_MISSING`)) {
         CatalogsItemValidationErrorsObject[["IMAGE_LINK_MISSING"]] <-
-          self$`IMAGE_LINK_MISSING`$toJSON()
+          self$`IMAGE_LINK_MISSING`$toSimpleType()
       }
       if (!is.null(self$`INVALID_DOMAIN`)) {
         CatalogsItemValidationErrorsObject[["INVALID_DOMAIN"]] <-
-          self$`INVALID_DOMAIN`$toJSON()
+          self$`INVALID_DOMAIN`$toSimpleType()
       }
       if (!is.null(self$`ITEMID_MISSING`)) {
         CatalogsItemValidationErrorsObject[["ITEMID_MISSING"]] <-
-          self$`ITEMID_MISSING`$toJSON()
+          self$`ITEMID_MISSING`$toSimpleType()
       }
       if (!is.null(self$`ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE`)) {
         CatalogsItemValidationErrorsObject[["ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE"]] <-
-          self$`ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE`$toJSON()
+          self$`ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE`$toSimpleType()
       }
       if (!is.null(self$`LINK_FORMAT_INVALID`)) {
         CatalogsItemValidationErrorsObject[["LINK_FORMAT_INVALID"]] <-
-          self$`LINK_FORMAT_INVALID`$toJSON()
+          self$`LINK_FORMAT_INVALID`$toSimpleType()
       }
       if (!is.null(self$`LINK_LENGTH_TOO_LONG`)) {
         CatalogsItemValidationErrorsObject[["LINK_LENGTH_TOO_LONG"]] <-
-          self$`LINK_LENGTH_TOO_LONG`$toJSON()
+          self$`LINK_LENGTH_TOO_LONG`$toSimpleType()
       }
       if (!is.null(self$`LIST_PRICE_INVALID`)) {
         CatalogsItemValidationErrorsObject[["LIST_PRICE_INVALID"]] <-
-          self$`LIST_PRICE_INVALID`$toJSON()
+          self$`LIST_PRICE_INVALID`$toSimpleType()
       }
       if (!is.null(self$`MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED`)) {
         CatalogsItemValidationErrorsObject[["MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED"]] <-
-          self$`MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED`$toJSON()
+          self$`MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED`$toSimpleType()
       }
       if (!is.null(self$`PARSE_LINE_ERROR`)) {
         CatalogsItemValidationErrorsObject[["PARSE_LINE_ERROR"]] <-
-          self$`PARSE_LINE_ERROR`$toJSON()
+          self$`PARSE_LINE_ERROR`$toSimpleType()
       }
       if (!is.null(self$`PINJOIN_CONTENT_UNSAFE`)) {
         CatalogsItemValidationErrorsObject[["PINJOIN_CONTENT_UNSAFE"]] <-
-          self$`PINJOIN_CONTENT_UNSAFE`$toJSON()
+          self$`PINJOIN_CONTENT_UNSAFE`$toSimpleType()
       }
       if (!is.null(self$`PRICE_CANNOT_BE_DETERMINED`)) {
         CatalogsItemValidationErrorsObject[["PRICE_CANNOT_BE_DETERMINED"]] <-
-          self$`PRICE_CANNOT_BE_DETERMINED`$toJSON()
+          self$`PRICE_CANNOT_BE_DETERMINED`$toSimpleType()
       }
       if (!is.null(self$`PRICE_MISSING`)) {
         CatalogsItemValidationErrorsObject[["PRICE_MISSING"]] <-
-          self$`PRICE_MISSING`$toJSON()
+          self$`PRICE_MISSING`$toSimpleType()
       }
       if (!is.null(self$`PRODUCT_LINK_MISSING`)) {
         CatalogsItemValidationErrorsObject[["PRODUCT_LINK_MISSING"]] <-
-          self$`PRODUCT_LINK_MISSING`$toJSON()
+          self$`PRODUCT_LINK_MISSING`$toSimpleType()
       }
       if (!is.null(self$`PRODUCT_PRICE_INVALID`)) {
         CatalogsItemValidationErrorsObject[["PRODUCT_PRICE_INVALID"]] <-
-          self$`PRODUCT_PRICE_INVALID`$toJSON()
+          self$`PRODUCT_PRICE_INVALID`$toSimpleType()
       }
       if (!is.null(self$`TITLE_MISSING`)) {
         CatalogsItemValidationErrorsObject[["TITLE_MISSING"]] <-
-          self$`TITLE_MISSING`$toJSON()
+          self$`TITLE_MISSING`$toSimpleType()
       }
-      CatalogsItemValidationErrorsObject
+      return(CatalogsItemValidationErrorsObject)
     },
 
     #' @description
@@ -410,197 +435,13 @@ CatalogsItemValidationErrors <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return CatalogsItemValidationErrors in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`ADULT_INVALID`)) {
-          sprintf(
-          '"ADULT_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`ADULT_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`ADWORDS_FORMAT_INVALID`)) {
-          sprintf(
-          '"ADWORDS_FORMAT_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`ADWORDS_FORMAT_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`AVAILABILITY_INVALID`)) {
-          sprintf(
-          '"AVAILABILITY_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`AVAILABILITY_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`BLOCKLISTED_IMAGE_SIGNATURE`)) {
-          sprintf(
-          '"BLOCKLISTED_IMAGE_SIGNATURE":
-          %s
-          ',
-          jsonlite::toJSON(self$`BLOCKLISTED_IMAGE_SIGNATURE`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`DESCRIPTION_MISSING`)) {
-          sprintf(
-          '"DESCRIPTION_MISSING":
-          %s
-          ',
-          jsonlite::toJSON(self$`DESCRIPTION_MISSING`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`DUPLICATE_PRODUCTS`)) {
-          sprintf(
-          '"DUPLICATE_PRODUCTS":
-          %s
-          ',
-          jsonlite::toJSON(self$`DUPLICATE_PRODUCTS`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`IMAGE_LINK_INVALID`)) {
-          sprintf(
-          '"IMAGE_LINK_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`IMAGE_LINK_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`IMAGE_LINK_LENGTH_TOO_LONG`)) {
-          sprintf(
-          '"IMAGE_LINK_LENGTH_TOO_LONG":
-          %s
-          ',
-          jsonlite::toJSON(self$`IMAGE_LINK_LENGTH_TOO_LONG`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`IMAGE_LINK_MISSING`)) {
-          sprintf(
-          '"IMAGE_LINK_MISSING":
-          %s
-          ',
-          jsonlite::toJSON(self$`IMAGE_LINK_MISSING`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`INVALID_DOMAIN`)) {
-          sprintf(
-          '"INVALID_DOMAIN":
-          %s
-          ',
-          jsonlite::toJSON(self$`INVALID_DOMAIN`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`ITEMID_MISSING`)) {
-          sprintf(
-          '"ITEMID_MISSING":
-          %s
-          ',
-          jsonlite::toJSON(self$`ITEMID_MISSING`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE`)) {
-          sprintf(
-          '"ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE":
-          %s
-          ',
-          jsonlite::toJSON(self$`ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`LINK_FORMAT_INVALID`)) {
-          sprintf(
-          '"LINK_FORMAT_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`LINK_FORMAT_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`LINK_LENGTH_TOO_LONG`)) {
-          sprintf(
-          '"LINK_LENGTH_TOO_LONG":
-          %s
-          ',
-          jsonlite::toJSON(self$`LINK_LENGTH_TOO_LONG`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`LIST_PRICE_INVALID`)) {
-          sprintf(
-          '"LIST_PRICE_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`LIST_PRICE_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED`)) {
-          sprintf(
-          '"MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED":
-          %s
-          ',
-          jsonlite::toJSON(self$`MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`PARSE_LINE_ERROR`)) {
-          sprintf(
-          '"PARSE_LINE_ERROR":
-          %s
-          ',
-          jsonlite::toJSON(self$`PARSE_LINE_ERROR`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`PINJOIN_CONTENT_UNSAFE`)) {
-          sprintf(
-          '"PINJOIN_CONTENT_UNSAFE":
-          %s
-          ',
-          jsonlite::toJSON(self$`PINJOIN_CONTENT_UNSAFE`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`PRICE_CANNOT_BE_DETERMINED`)) {
-          sprintf(
-          '"PRICE_CANNOT_BE_DETERMINED":
-          %s
-          ',
-          jsonlite::toJSON(self$`PRICE_CANNOT_BE_DETERMINED`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`PRICE_MISSING`)) {
-          sprintf(
-          '"PRICE_MISSING":
-          %s
-          ',
-          jsonlite::toJSON(self$`PRICE_MISSING`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`PRODUCT_LINK_MISSING`)) {
-          sprintf(
-          '"PRODUCT_LINK_MISSING":
-          %s
-          ',
-          jsonlite::toJSON(self$`PRODUCT_LINK_MISSING`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`PRODUCT_PRICE_INVALID`)) {
-          sprintf(
-          '"PRODUCT_PRICE_INVALID":
-          %s
-          ',
-          jsonlite::toJSON(self$`PRODUCT_PRICE_INVALID`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`TITLE_MISSING`)) {
-          sprintf(
-          '"TITLE_MISSING":
-          %s
-          ',
-          jsonlite::toJSON(self$`TITLE_MISSING`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

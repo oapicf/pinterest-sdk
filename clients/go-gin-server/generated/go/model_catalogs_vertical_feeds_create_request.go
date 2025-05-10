@@ -10,10 +10,6 @@
 
 package openapi
 
-import (
-	"gopkg.in/validator.v2"
-)
-
 // CatalogsVerticalFeedsCreateRequest - Request object for creating a feed.
 type CatalogsVerticalFeedsCreateRequest struct {
 

@@ -69,9 +69,10 @@ typedef struct item_attributes_request_t {
     struct item_attributes_request_all_of_image_link_t *image_link; //model
     char *video_link; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } item_attributes_request_t;
 
-item_attributes_request_t *item_attributes_request_create(
+__attribute__((deprecated)) item_attributes_request_t *item_attributes_request_create(
     char *ad_link,
     int adult,
     char *age_group,

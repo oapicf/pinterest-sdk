@@ -98,11 +98,11 @@ export function CatalogsRetailProductGroupProductCountsFromJSONTyped(json: any, 
     };
 }
 
-  export function CatalogsRetailProductGroupProductCountsToJSON(json: any): CatalogsRetailProductGroupProductCounts {
-      return CatalogsRetailProductGroupProductCountsToJSONTyped(json, false);
-  }
+export function CatalogsRetailProductGroupProductCountsToJSON(json: any): CatalogsRetailProductGroupProductCounts {
+    return CatalogsRetailProductGroupProductCountsToJSONTyped(json, false);
+}
 
-  export function CatalogsRetailProductGroupProductCountsToJSONTyped(value?: CatalogsRetailProductGroupProductCounts | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsRetailProductGroupProductCountsToJSONTyped(value?: CatalogsRetailProductGroupProductCounts | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -13,12 +13,14 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.AdsAnalyticsTargetingType
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param targetingTypes List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
  */
+@Serializable
 data class TargetingTypeFilter(
     /* List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. */
     val targetingTypes: kotlin.collections.List<AdsAnalyticsTargetingType>? = null
-) 
+)
 

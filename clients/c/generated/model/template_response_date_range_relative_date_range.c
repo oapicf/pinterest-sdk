@@ -5,7 +5,7 @@
 
 
 
-template_response_date_range_relative_date_range_t *template_response_date_range_relative_date_range_create(
+static template_response_date_range_relative_date_range_t *template_response_date_range_relative_date_range_create_internal(
     char *type,
     double start_days_in_past,
     double end_days_in_past
@@ -18,12 +18,28 @@ template_response_date_range_relative_date_range_t *template_response_date_range
     template_response_date_range_relative_date_range_local_var->start_days_in_past = start_days_in_past;
     template_response_date_range_relative_date_range_local_var->end_days_in_past = end_days_in_past;
 
+    template_response_date_range_relative_date_range_local_var->_library_owned = 1;
     return template_response_date_range_relative_date_range_local_var;
 }
 
+__attribute__((deprecated)) template_response_date_range_relative_date_range_t *template_response_date_range_relative_date_range_create(
+    char *type,
+    double start_days_in_past,
+    double end_days_in_past
+    ) {
+    return template_response_date_range_relative_date_range_create_internal (
+        type,
+        start_days_in_past,
+        end_days_in_past
+        );
+}
 
 void template_response_date_range_relative_date_range_free(template_response_date_range_relative_date_range_t *template_response_date_range_relative_date_range) {
     if(NULL == template_response_date_range_relative_date_range){
+        return ;
+    }
+    if(template_response_date_range_relative_date_range->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "template_response_date_range_relative_date_range_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -74,6 +90,9 @@ template_response_date_range_relative_date_range_t *template_response_date_range
 
     // template_response_date_range_relative_date_range->type
     cJSON *type = cJSON_GetObjectItemCaseSensitive(template_response_date_range_relative_date_rangeJSON, "type");
+    if (cJSON_IsNull(type)) {
+        type = NULL;
+    }
     if (type) { 
     if(!cJSON_IsString(type) && !cJSON_IsNull(type))
     {
@@ -83,6 +102,9 @@ template_response_date_range_relative_date_range_t *template_response_date_range
 
     // template_response_date_range_relative_date_range->start_days_in_past
     cJSON *start_days_in_past = cJSON_GetObjectItemCaseSensitive(template_response_date_range_relative_date_rangeJSON, "start_days_in_past");
+    if (cJSON_IsNull(start_days_in_past)) {
+        start_days_in_past = NULL;
+    }
     if (start_days_in_past) { 
     if(!cJSON_IsNumber(start_days_in_past))
     {
@@ -92,6 +114,9 @@ template_response_date_range_relative_date_range_t *template_response_date_range
 
     // template_response_date_range_relative_date_range->end_days_in_past
     cJSON *end_days_in_past = cJSON_GetObjectItemCaseSensitive(template_response_date_range_relative_date_rangeJSON, "end_days_in_past");
+    if (cJSON_IsNull(end_days_in_past)) {
+        end_days_in_past = NULL;
+    }
     if (end_days_in_past) { 
     if(!cJSON_IsNumber(end_days_in_past))
     {
@@ -100,7 +125,7 @@ template_response_date_range_relative_date_range_t *template_response_date_range
     }
 
 
-    template_response_date_range_relative_date_range_local_var = template_response_date_range_relative_date_range_create (
+    template_response_date_range_relative_date_range_local_var = template_response_date_range_relative_date_range_create_internal (
         type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL,
         start_days_in_past ? start_days_in_past->valuedouble : 0,
         end_days_in_past ? end_days_in_past->valuedouble : 0

@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { AdAccountsAudiencesSharedAccountsList200Response } from '../model/adAccountsAudiencesSharedAccountsList200Response';
 import { AudienceAccountType } from '../model/audienceAccountType';
@@ -32,10 +32,12 @@ export class AudienceSharingService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -57,9 +59,10 @@ export class AudienceSharingService {
      * @param bookmark Cursor used to fetch the next page of items
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [adAccountsAudiencesSharedAccountsListOpts.config] Override http request option.
      */
-    public adAccountsAudiencesSharedAccountsList(adAccountId: string, audienceId: string, accountType: AudienceAccountType, pageSize?: number, bookmark?: string, ): Observable<AxiosResponse<AdAccountsAudiencesSharedAccountsList200Response>>;
-    public adAccountsAudiencesSharedAccountsList(adAccountId: string, audienceId: string, accountType: AudienceAccountType, pageSize?: number, bookmark?: string, ): Observable<any> {
+    public adAccountsAudiencesSharedAccountsList(adAccountId: string, audienceId: string, accountType: AudienceAccountType, pageSize?: number, bookmark?: string, adAccountsAudiencesSharedAccountsListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<AdAccountsAudiencesSharedAccountsList200Response>>;
+    public adAccountsAudiencesSharedAccountsList(adAccountId: string, audienceId: string, accountType: AudienceAccountType, pageSize?: number, bookmark?: string, adAccountsAudiencesSharedAccountsListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling adAccountsAudiencesSharedAccountsList.');
         }
@@ -119,7 +122,8 @@ export class AudienceSharingService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...adAccountsAudiencesSharedAccountsListOpts?.config,
+                        headers: {...headers, ...adAccountsAudiencesSharedAccountsListOpts?.config?.headers},
                     }
                 );
             })
@@ -135,9 +139,10 @@ export class AudienceSharingService {
      * @param bookmark Cursor used to fetch the next page of items
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [businessAccountAudiencesSharedAccountsListOpts.config] Override http request option.
      */
-    public businessAccountAudiencesSharedAccountsList(businessId: string, audienceId: string, accountType: AudienceAccountType, pageSize?: number, bookmark?: string, ): Observable<AxiosResponse<AdAccountsAudiencesSharedAccountsList200Response>>;
-    public businessAccountAudiencesSharedAccountsList(businessId: string, audienceId: string, accountType: AudienceAccountType, pageSize?: number, bookmark?: string, ): Observable<any> {
+    public businessAccountAudiencesSharedAccountsList(businessId: string, audienceId: string, accountType: AudienceAccountType, pageSize?: number, bookmark?: string, businessAccountAudiencesSharedAccountsListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<AdAccountsAudiencesSharedAccountsList200Response>>;
+    public businessAccountAudiencesSharedAccountsList(businessId: string, audienceId: string, accountType: AudienceAccountType, pageSize?: number, bookmark?: string, businessAccountAudiencesSharedAccountsListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling businessAccountAudiencesSharedAccountsList.');
         }
@@ -197,7 +202,8 @@ export class AudienceSharingService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...businessAccountAudiencesSharedAccountsListOpts?.config,
+                        headers: {...headers, ...businessAccountAudiencesSharedAccountsListOpts?.config?.headers},
                     }
                 );
             })
@@ -212,9 +218,10 @@ export class AudienceSharingService {
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [sharedAudiencesForBusinessListOpts.config] Override http request option.
      */
-    public sharedAudiencesForBusinessList(businessId: string, bookmark?: string, order?: 'ASCENDING' | 'DESCENDING', pageSize?: number, ): Observable<AxiosResponse<AudiencesList200Response>>;
-    public sharedAudiencesForBusinessList(businessId: string, bookmark?: string, order?: 'ASCENDING' | 'DESCENDING', pageSize?: number, ): Observable<any> {
+    public sharedAudiencesForBusinessList(businessId: string, bookmark?: string, order?: 'ASCENDING' | 'DESCENDING', pageSize?: number, sharedAudiencesForBusinessListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<AudiencesList200Response>>;
+    public sharedAudiencesForBusinessList(businessId: string, bookmark?: string, order?: 'ASCENDING' | 'DESCENDING', pageSize?: number, sharedAudiencesForBusinessListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling sharedAudiencesForBusinessList.');
         }
@@ -263,7 +270,8 @@ export class AudienceSharingService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...sharedAudiencesForBusinessListOpts?.config,
+                        headers: {...headers, ...sharedAudiencesForBusinessListOpts?.config?.headers},
                     }
                 );
             })
@@ -276,9 +284,10 @@ export class AudienceSharingService {
      * @param sharedAudience 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [updateAdAccountToAdAccountSharedAudienceOpts.config] Override http request option.
      */
-    public updateAdAccountToAdAccountSharedAudience(adAccountId: string, sharedAudience: SharedAudience, ): Observable<AxiosResponse<SharedAudienceResponse>>;
-    public updateAdAccountToAdAccountSharedAudience(adAccountId: string, sharedAudience: SharedAudience, ): Observable<any> {
+    public updateAdAccountToAdAccountSharedAudience(adAccountId: string, sharedAudience: SharedAudience, updateAdAccountToAdAccountSharedAudienceOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<SharedAudienceResponse>>;
+    public updateAdAccountToAdAccountSharedAudience(adAccountId: string, sharedAudience: SharedAudience, updateAdAccountToAdAccountSharedAudienceOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling updateAdAccountToAdAccountSharedAudience.');
         }
@@ -325,7 +334,8 @@ export class AudienceSharingService {
                     sharedAudience,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...updateAdAccountToAdAccountSharedAudienceOpts?.config,
+                        headers: {...headers, ...updateAdAccountToAdAccountSharedAudienceOpts?.config?.headers},
                     }
                 );
             })
@@ -338,9 +348,10 @@ export class AudienceSharingService {
      * @param businessSharedAudience 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [updateAdAccountToBusinessSharedAudienceOpts.config] Override http request option.
      */
-    public updateAdAccountToBusinessSharedAudience(adAccountId: string, businessSharedAudience: BusinessSharedAudience, ): Observable<AxiosResponse<BusinessSharedAudienceResponse>>;
-    public updateAdAccountToBusinessSharedAudience(adAccountId: string, businessSharedAudience: BusinessSharedAudience, ): Observable<any> {
+    public updateAdAccountToBusinessSharedAudience(adAccountId: string, businessSharedAudience: BusinessSharedAudience, updateAdAccountToBusinessSharedAudienceOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<BusinessSharedAudienceResponse>>;
+    public updateAdAccountToBusinessSharedAudience(adAccountId: string, businessSharedAudience: BusinessSharedAudience, updateAdAccountToBusinessSharedAudienceOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling updateAdAccountToBusinessSharedAudience.');
         }
@@ -387,7 +398,8 @@ export class AudienceSharingService {
                     businessSharedAudience,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...updateAdAccountToBusinessSharedAudienceOpts?.config,
+                        headers: {...headers, ...updateAdAccountToBusinessSharedAudienceOpts?.config?.headers},
                     }
                 );
             })
@@ -400,9 +412,10 @@ export class AudienceSharingService {
      * @param sharedAudience 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [updateBusinessToAdAccountSharedAudienceOpts.config] Override http request option.
      */
-    public updateBusinessToAdAccountSharedAudience(businessId: string, sharedAudience: SharedAudience, ): Observable<AxiosResponse<SharedAudienceResponse>>;
-    public updateBusinessToAdAccountSharedAudience(businessId: string, sharedAudience: SharedAudience, ): Observable<any> {
+    public updateBusinessToAdAccountSharedAudience(businessId: string, sharedAudience: SharedAudience, updateBusinessToAdAccountSharedAudienceOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<SharedAudienceResponse>>;
+    public updateBusinessToAdAccountSharedAudience(businessId: string, sharedAudience: SharedAudience, updateBusinessToAdAccountSharedAudienceOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling updateBusinessToAdAccountSharedAudience.');
         }
@@ -449,7 +462,8 @@ export class AudienceSharingService {
                     sharedAudience,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...updateBusinessToAdAccountSharedAudienceOpts?.config,
+                        headers: {...headers, ...updateBusinessToAdAccountSharedAudienceOpts?.config?.headers},
                     }
                 );
             })
@@ -462,9 +476,10 @@ export class AudienceSharingService {
      * @param businessSharedAudience 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [updateBusinessToBusinessSharedAudienceOpts.config] Override http request option.
      */
-    public updateBusinessToBusinessSharedAudience(businessId: string, businessSharedAudience: BusinessSharedAudience, ): Observable<AxiosResponse<BusinessSharedAudienceResponse>>;
-    public updateBusinessToBusinessSharedAudience(businessId: string, businessSharedAudience: BusinessSharedAudience, ): Observable<any> {
+    public updateBusinessToBusinessSharedAudience(businessId: string, businessSharedAudience: BusinessSharedAudience, updateBusinessToBusinessSharedAudienceOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<BusinessSharedAudienceResponse>>;
+    public updateBusinessToBusinessSharedAudience(businessId: string, businessSharedAudience: BusinessSharedAudience, updateBusinessToBusinessSharedAudienceOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling updateBusinessToBusinessSharedAudience.');
         }
@@ -511,7 +526,8 @@ export class AudienceSharingService {
                     businessSharedAudience,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...updateBusinessToBusinessSharedAudienceOpts?.config,
+                        headers: {...headers, ...updateBusinessToBusinessSharedAudienceOpts?.config?.headers},
                     }
                 );
             })

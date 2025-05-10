@@ -77,11 +77,11 @@ export function GetPartnerAssetsResponseFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function GetPartnerAssetsResponseToJSON(json: any): GetPartnerAssetsResponse {
-      return GetPartnerAssetsResponseToJSONTyped(json, false);
-  }
+export function GetPartnerAssetsResponseToJSON(json: any): GetPartnerAssetsResponse {
+    return GetPartnerAssetsResponseToJSONTyped(json, false);
+}
 
-  export function GetPartnerAssetsResponseToJSONTyped(value?: GetPartnerAssetsResponse | null, ignoreDiscriminator: boolean = false): any {
+export function GetPartnerAssetsResponseToJSONTyped(value?: GetPartnerAssetsResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

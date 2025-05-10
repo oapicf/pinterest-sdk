@@ -32,7 +32,7 @@ import play.api.libs.json._
   * @param endHour Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2025-05-10T05:44:38.070631387Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 case class AdsAnalyticsCreateAsyncRequest(
   startDate: String,
   endDate: String,
@@ -91,8 +91,8 @@ object AdsAnalyticsCreateAsyncRequest {
 
   // noinspection TypeAnnotation
   object PrimarySort extends Enumeration {
-    val ID = Value("BY_ID")
-    val DATE = Value("BY_DATE")
+    val BYID = Value("BY_ID")
+    val BYDATE = Value("BY_DATE")
 
     type PrimarySort = Value
     implicit lazy val PrimarySortJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])

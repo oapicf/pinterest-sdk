@@ -63,11 +63,11 @@ export function CatalogsProductGroupPricingCriteriaFromJSONTyped(json: any, igno
     };
 }
 
-  export function CatalogsProductGroupPricingCriteriaToJSON(json: any): CatalogsProductGroupPricingCriteria {
-      return CatalogsProductGroupPricingCriteriaToJSONTyped(json, false);
-  }
+export function CatalogsProductGroupPricingCriteriaToJSON(json: any): CatalogsProductGroupPricingCriteria {
+    return CatalogsProductGroupPricingCriteriaToJSONTyped(json, false);
+}
 
-  export function CatalogsProductGroupPricingCriteriaToJSONTyped(value?: CatalogsProductGroupPricingCriteria | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsProductGroupPricingCriteriaToJSONTyped(value?: CatalogsProductGroupPricingCriteria | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

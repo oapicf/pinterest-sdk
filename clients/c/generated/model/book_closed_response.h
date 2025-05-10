@@ -22,9 +22,10 @@ typedef struct book_closed_response_t {
     int conversion_metrics_ready; //boolean
     int non_conversion_metrics_ready; //boolean
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } book_closed_response_t;
 
-book_closed_response_t *book_closed_response_create(
+__attribute__((deprecated)) book_closed_response_t *book_closed_response_create(
     int conversion_metrics_ready,
     int non_conversion_metrics_ready
 );

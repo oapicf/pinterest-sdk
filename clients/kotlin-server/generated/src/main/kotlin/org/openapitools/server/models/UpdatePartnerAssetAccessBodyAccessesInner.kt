@@ -13,12 +13,14 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.Permissions
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param partnerId Unique identifier of a business partner to update asset access to.
  * @param assetId Unique identifier of the business asset.
  * @param permissions A non-empty array of permissions to assign to the partner.
  */
+@Serializable
 data class UpdatePartnerAssetAccessBodyAccessesInner(
     /* Unique identifier of a business partner to update asset access to. */
     val partnerId: kotlin.String,
@@ -26,5 +28,5 @@ data class UpdatePartnerAssetAccessBodyAccessesInner(
     val assetId: kotlin.String,
     /* A non-empty array of permissions to assign to the partner. */
     val permissions: kotlin.collections.List<Permissions>
-) 
+)
 

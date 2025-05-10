@@ -45,8 +45,8 @@ $apiInstance = new OpenAPI\Client\Api\PinsApi(
     $config
 );
 $pin_ids = array('pin_ids_example'); // string[] | List of Pin IDs.
-$start_date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
-$end_date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
+$start_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
+$end_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
 $metric_types = array(new \OpenAPI\Client\Model\\OpenAPI\Client\Model\PinsAnalyticsMetricTypesParameterInner()); // \OpenAPI\Client\Model\PinsAnalyticsMetricTypesParameterInner[] | Pin metric types to get data for.
 $app_types = 'ALL'; // string | Apps or devices to get data for, default is all.
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
@@ -118,8 +118,8 @@ $apiInstance = new OpenAPI\Client\Api\PinsApi(
     $config
 );
 $pin_id = 'pin_id_example'; // string | Unique identifier of a Pin.
-$start_date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
-$end_date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
+$start_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
+$end_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
 $metric_types = array(new \OpenAPI\Client\Model\\OpenAPI\Client\Model\PinsAnalyticsMetricTypesParameterInner()); // \OpenAPI\Client\Model\PinsAnalyticsMetricTypesParameterInner[] | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
 $app_types = 'ALL'; // string | Apps or devices to get data for, default is all.
 $split_field = 'NO_SPLIT'; // string | How to split the data into groups. Not including this param means data won't be split.

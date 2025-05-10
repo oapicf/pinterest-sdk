@@ -82,10 +82,35 @@ AdsCreditDiscountsResponse <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return AdsCreditDiscountsResponse in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return AdsCreditDiscountsResponse as a base R list.
+    #' @examples
+    #' # convert array of AdsCreditDiscountsResponse (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert AdsCreditDiscountsResponse to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       AdsCreditDiscountsResponseObject <- list()
       if (!is.null(self$`active`)) {
         AdsCreditDiscountsResponseObject[["active"]] <-
@@ -115,7 +140,7 @@ AdsCreditDiscountsResponse <- R6::R6Class(
         AdsCreditDiscountsResponseObject[["remainingDiscountInMicroCurrency"]] <-
           self$`remainingDiscountInMicroCurrency`
       }
-      AdsCreditDiscountsResponseObject
+      return(AdsCreditDiscountsResponseObject)
     },
 
     #' @description
@@ -154,69 +179,13 @@ AdsCreditDiscountsResponse <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return AdsCreditDiscountsResponse in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`active`)) {
-          sprintf(
-          '"active":
-            %s
-                    ',
-          tolower(self$`active`)
-          )
-        },
-        if (!is.null(self$`advertiser_id`)) {
-          sprintf(
-          '"advertiser_id":
-            "%s"
-                    ',
-          self$`advertiser_id`
-          )
-        },
-        if (!is.null(self$`discountType`)) {
-          sprintf(
-          '"discountType":
-            "%s"
-                    ',
-          self$`discountType`
-          )
-        },
-        if (!is.null(self$`discountInMicroCurrency`)) {
-          sprintf(
-          '"discountInMicroCurrency":
-            %d
-                    ',
-          self$`discountInMicroCurrency`
-          )
-        },
-        if (!is.null(self$`discountCurrency`)) {
-          sprintf(
-          '"discountCurrency":
-            "%s"
-                    ',
-          self$`discountCurrency`
-          )
-        },
-        if (!is.null(self$`title`)) {
-          sprintf(
-          '"title":
-            "%s"
-                    ',
-          self$`title`
-          )
-        },
-        if (!is.null(self$`remainingDiscountInMicroCurrency`)) {
-          sprintf(
-          '"remainingDiscountInMicroCurrency":
-            %d
-                    ',
-          self$`remainingDiscountInMicroCurrency`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

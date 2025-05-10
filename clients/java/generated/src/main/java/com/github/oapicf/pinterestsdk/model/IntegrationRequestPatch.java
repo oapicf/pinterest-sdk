@@ -49,60 +49,72 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Schema used for updating the integration metadata.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class IntegrationRequestPatch {
   public static final String SERIALIZED_NAME_CONNECTED_MERCHANT_ID = "connected_merchant_id";
   @SerializedName(SERIALIZED_NAME_CONNECTED_MERCHANT_ID)
+  @javax.annotation.Nullable
   private String connectedMerchantId;
 
   public static final String SERIALIZED_NAME_CONNECTED_ADVERTISER_ID = "connected_advertiser_id";
   @SerializedName(SERIALIZED_NAME_CONNECTED_ADVERTISER_ID)
+  @javax.annotation.Nullable
   private String connectedAdvertiserId;
 
   public static final String SERIALIZED_NAME_CONNECTED_LBA_ID = "connected_lba_id";
   @SerializedName(SERIALIZED_NAME_CONNECTED_LBA_ID)
+  @javax.annotation.Nullable
   private String connectedLbaId;
 
   public static final String SERIALIZED_NAME_CONNECTED_TAG_ID = "connected_tag_id";
   @SerializedName(SERIALIZED_NAME_CONNECTED_TAG_ID)
+  @javax.annotation.Nullable
   private String connectedTagId;
 
   public static final String SERIALIZED_NAME_PARTNER_ACCESS_TOKEN = "partner_access_token";
   @SerializedName(SERIALIZED_NAME_PARTNER_ACCESS_TOKEN)
+  @javax.annotation.Nullable
   private String partnerAccessToken;
 
   public static final String SERIALIZED_NAME_PARTNER_REFRESH_TOKEN = "partner_refresh_token";
   @SerializedName(SERIALIZED_NAME_PARTNER_REFRESH_TOKEN)
+  @javax.annotation.Nullable
   private String partnerRefreshToken;
 
   public static final String SERIALIZED_NAME_PARTNER_PRIMARY_EMAIL = "partner_primary_email";
   @SerializedName(SERIALIZED_NAME_PARTNER_PRIMARY_EMAIL)
+  @javax.annotation.Nullable
   private String partnerPrimaryEmail;
 
   public static final String SERIALIZED_NAME_PARTNER_ACCESS_TOKEN_EXPIRY = "partner_access_token_expiry";
   @SerializedName(SERIALIZED_NAME_PARTNER_ACCESS_TOKEN_EXPIRY)
+  @javax.annotation.Nullable
   private BigDecimal partnerAccessTokenExpiry;
 
   public static final String SERIALIZED_NAME_PARTNER_REFRESH_TOKEN_EXPIRY = "partner_refresh_token_expiry";
   @SerializedName(SERIALIZED_NAME_PARTNER_REFRESH_TOKEN_EXPIRY)
+  @javax.annotation.Nullable
   private BigDecimal partnerRefreshTokenExpiry;
 
   public static final String SERIALIZED_NAME_SCOPES = "scopes";
   @SerializedName(SERIALIZED_NAME_SCOPES)
+  @javax.annotation.Nullable
   private String scopes;
 
   public static final String SERIALIZED_NAME_ADDITIONAL_ID1 = "additional_id_1";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_ID1)
+  @javax.annotation.Nullable
   private String additionalId1;
 
   public static final String SERIALIZED_NAME_PARTNER_METADATA = "partner_metadata";
   @SerializedName(SERIALIZED_NAME_PARTNER_METADATA)
+  @javax.annotation.Nullable
   private String partnerMetadata;
 
   public IntegrationRequestPatch() {
   }
 
-  public IntegrationRequestPatch connectedMerchantId(String connectedMerchantId) {
+  public IntegrationRequestPatch connectedMerchantId(@javax.annotation.Nullable String connectedMerchantId) {
     this.connectedMerchantId = connectedMerchantId;
     return this;
   }
@@ -116,12 +128,12 @@ public class IntegrationRequestPatch {
     return connectedMerchantId;
   }
 
-  public void setConnectedMerchantId(String connectedMerchantId) {
+  public void setConnectedMerchantId(@javax.annotation.Nullable String connectedMerchantId) {
     this.connectedMerchantId = connectedMerchantId;
   }
 
 
-  public IntegrationRequestPatch connectedAdvertiserId(String connectedAdvertiserId) {
+  public IntegrationRequestPatch connectedAdvertiserId(@javax.annotation.Nullable String connectedAdvertiserId) {
     this.connectedAdvertiserId = connectedAdvertiserId;
     return this;
   }
@@ -135,12 +147,12 @@ public class IntegrationRequestPatch {
     return connectedAdvertiserId;
   }
 
-  public void setConnectedAdvertiserId(String connectedAdvertiserId) {
+  public void setConnectedAdvertiserId(@javax.annotation.Nullable String connectedAdvertiserId) {
     this.connectedAdvertiserId = connectedAdvertiserId;
   }
 
 
-  public IntegrationRequestPatch connectedLbaId(String connectedLbaId) {
+  public IntegrationRequestPatch connectedLbaId(@javax.annotation.Nullable String connectedLbaId) {
     this.connectedLbaId = connectedLbaId;
     return this;
   }
@@ -154,12 +166,12 @@ public class IntegrationRequestPatch {
     return connectedLbaId;
   }
 
-  public void setConnectedLbaId(String connectedLbaId) {
+  public void setConnectedLbaId(@javax.annotation.Nullable String connectedLbaId) {
     this.connectedLbaId = connectedLbaId;
   }
 
 
-  public IntegrationRequestPatch connectedTagId(String connectedTagId) {
+  public IntegrationRequestPatch connectedTagId(@javax.annotation.Nullable String connectedTagId) {
     this.connectedTagId = connectedTagId;
     return this;
   }
@@ -173,12 +185,12 @@ public class IntegrationRequestPatch {
     return connectedTagId;
   }
 
-  public void setConnectedTagId(String connectedTagId) {
+  public void setConnectedTagId(@javax.annotation.Nullable String connectedTagId) {
     this.connectedTagId = connectedTagId;
   }
 
 
-  public IntegrationRequestPatch partnerAccessToken(String partnerAccessToken) {
+  public IntegrationRequestPatch partnerAccessToken(@javax.annotation.Nullable String partnerAccessToken) {
     this.partnerAccessToken = partnerAccessToken;
     return this;
   }
@@ -192,12 +204,12 @@ public class IntegrationRequestPatch {
     return partnerAccessToken;
   }
 
-  public void setPartnerAccessToken(String partnerAccessToken) {
+  public void setPartnerAccessToken(@javax.annotation.Nullable String partnerAccessToken) {
     this.partnerAccessToken = partnerAccessToken;
   }
 
 
-  public IntegrationRequestPatch partnerRefreshToken(String partnerRefreshToken) {
+  public IntegrationRequestPatch partnerRefreshToken(@javax.annotation.Nullable String partnerRefreshToken) {
     this.partnerRefreshToken = partnerRefreshToken;
     return this;
   }
@@ -211,12 +223,12 @@ public class IntegrationRequestPatch {
     return partnerRefreshToken;
   }
 
-  public void setPartnerRefreshToken(String partnerRefreshToken) {
+  public void setPartnerRefreshToken(@javax.annotation.Nullable String partnerRefreshToken) {
     this.partnerRefreshToken = partnerRefreshToken;
   }
 
 
-  public IntegrationRequestPatch partnerPrimaryEmail(String partnerPrimaryEmail) {
+  public IntegrationRequestPatch partnerPrimaryEmail(@javax.annotation.Nullable String partnerPrimaryEmail) {
     this.partnerPrimaryEmail = partnerPrimaryEmail;
     return this;
   }
@@ -230,12 +242,12 @@ public class IntegrationRequestPatch {
     return partnerPrimaryEmail;
   }
 
-  public void setPartnerPrimaryEmail(String partnerPrimaryEmail) {
+  public void setPartnerPrimaryEmail(@javax.annotation.Nullable String partnerPrimaryEmail) {
     this.partnerPrimaryEmail = partnerPrimaryEmail;
   }
 
 
-  public IntegrationRequestPatch partnerAccessTokenExpiry(BigDecimal partnerAccessTokenExpiry) {
+  public IntegrationRequestPatch partnerAccessTokenExpiry(@javax.annotation.Nullable BigDecimal partnerAccessTokenExpiry) {
     this.partnerAccessTokenExpiry = partnerAccessTokenExpiry;
     return this;
   }
@@ -249,12 +261,12 @@ public class IntegrationRequestPatch {
     return partnerAccessTokenExpiry;
   }
 
-  public void setPartnerAccessTokenExpiry(BigDecimal partnerAccessTokenExpiry) {
+  public void setPartnerAccessTokenExpiry(@javax.annotation.Nullable BigDecimal partnerAccessTokenExpiry) {
     this.partnerAccessTokenExpiry = partnerAccessTokenExpiry;
   }
 
 
-  public IntegrationRequestPatch partnerRefreshTokenExpiry(BigDecimal partnerRefreshTokenExpiry) {
+  public IntegrationRequestPatch partnerRefreshTokenExpiry(@javax.annotation.Nullable BigDecimal partnerRefreshTokenExpiry) {
     this.partnerRefreshTokenExpiry = partnerRefreshTokenExpiry;
     return this;
   }
@@ -268,12 +280,12 @@ public class IntegrationRequestPatch {
     return partnerRefreshTokenExpiry;
   }
 
-  public void setPartnerRefreshTokenExpiry(BigDecimal partnerRefreshTokenExpiry) {
+  public void setPartnerRefreshTokenExpiry(@javax.annotation.Nullable BigDecimal partnerRefreshTokenExpiry) {
     this.partnerRefreshTokenExpiry = partnerRefreshTokenExpiry;
   }
 
 
-  public IntegrationRequestPatch scopes(String scopes) {
+  public IntegrationRequestPatch scopes(@javax.annotation.Nullable String scopes) {
     this.scopes = scopes;
     return this;
   }
@@ -287,12 +299,12 @@ public class IntegrationRequestPatch {
     return scopes;
   }
 
-  public void setScopes(String scopes) {
+  public void setScopes(@javax.annotation.Nullable String scopes) {
     this.scopes = scopes;
   }
 
 
-  public IntegrationRequestPatch additionalId1(String additionalId1) {
+  public IntegrationRequestPatch additionalId1(@javax.annotation.Nullable String additionalId1) {
     this.additionalId1 = additionalId1;
     return this;
   }
@@ -306,12 +318,12 @@ public class IntegrationRequestPatch {
     return additionalId1;
   }
 
-  public void setAdditionalId1(String additionalId1) {
+  public void setAdditionalId1(@javax.annotation.Nullable String additionalId1) {
     this.additionalId1 = additionalId1;
   }
 
 
-  public IntegrationRequestPatch partnerMetadata(String partnerMetadata) {
+  public IntegrationRequestPatch partnerMetadata(@javax.annotation.Nullable String partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
     return this;
   }
@@ -325,7 +337,7 @@ public class IntegrationRequestPatch {
     return partnerMetadata;
   }
 
-  public void setPartnerMetadata(String partnerMetadata) {
+  public void setPartnerMetadata(@javax.annotation.Nullable String partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
   }
 

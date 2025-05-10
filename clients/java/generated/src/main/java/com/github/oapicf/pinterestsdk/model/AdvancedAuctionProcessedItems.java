@@ -51,20 +51,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Response object containing the results of an operation on an item bid option
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdvancedAuctionProcessedItems {
   public static final String SERIALIZED_NAME_CATALOG_ID = "catalog_id";
   @SerializedName(SERIALIZED_NAME_CATALOG_ID)
+  @javax.annotation.Nullable
   private String catalogId;
 
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
+  @javax.annotation.Nullable
   private List<AdvancedAuctionProcessedItem> items = new ArrayList<>();
 
   public AdvancedAuctionProcessedItems() {
   }
 
-  public AdvancedAuctionProcessedItems catalogId(String catalogId) {
+  public AdvancedAuctionProcessedItems catalogId(@javax.annotation.Nullable String catalogId) {
     this.catalogId = catalogId;
     return this;
   }
@@ -78,12 +80,12 @@ public class AdvancedAuctionProcessedItems {
     return catalogId;
   }
 
-  public void setCatalogId(String catalogId) {
+  public void setCatalogId(@javax.annotation.Nullable String catalogId) {
     this.catalogId = catalogId;
   }
 
 
-  public AdvancedAuctionProcessedItems items(List<AdvancedAuctionProcessedItem> items) {
+  public AdvancedAuctionProcessedItems items(@javax.annotation.Nullable List<AdvancedAuctionProcessedItem> items) {
     this.items = items;
     return this;
   }
@@ -105,7 +107,7 @@ public class AdvancedAuctionProcessedItems {
     return items;
   }
 
-  public void setItems(List<AdvancedAuctionProcessedItem> items) {
+  public void setItems(@javax.annotation.Nullable List<AdvancedAuctionProcessedItem> items) {
     this.items = items;
   }
 

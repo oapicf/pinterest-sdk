@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param reportType 
@@ -23,6 +24,7 @@ package org.openapitools.server.models
  * @param ineligibleForAds Indicates if issue makes items ineligible for ads distribution
  * @param ineligibleForOrganic Indicates if issue makes items ineligible for organic distribution
  */
+@Serializable
 data class CatalogsReportDistributionStats(
     val reportType: CatalogsReportDistributionStats.ReportType? = null,
     /* ID of the catalog entity. */
@@ -39,7 +41,7 @@ data class CatalogsReportDistributionStats(
     val ineligibleForAds: kotlin.Boolean? = null,
     /* Indicates if issue makes items ineligible for organic distribution */
     val ineligibleForOrganic: kotlin.Boolean? = null
-) 
+)
 {
     /**
     * 

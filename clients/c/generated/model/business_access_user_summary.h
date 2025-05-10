@@ -23,9 +23,10 @@ typedef struct business_access_user_summary_t {
     char *id; // string
     char *username; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } business_access_user_summary_t;
 
-business_access_user_summary_t *business_access_user_summary_create(
+__attribute__((deprecated)) business_access_user_summary_t *business_access_user_summary_create(
     char *email,
     char *id,
     char *username

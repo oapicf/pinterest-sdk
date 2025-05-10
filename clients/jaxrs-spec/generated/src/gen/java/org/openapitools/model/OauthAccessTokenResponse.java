@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "A successful OAuth access token response.")
 @JsonTypeName("OauthAccessTokenResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class OauthAccessTokenResponse   {
   public enum ResponseTypeEnum {
 
@@ -83,6 +83,22 @@ public class OauthAccessTokenResponse   {
   private Integer expiresIn;
   private String scope;
 
+  public OauthAccessTokenResponse() {
+  }
+
+  @JsonCreator
+  public OauthAccessTokenResponse(
+    @JsonProperty(required = true, value = "access_token") String accessToken,
+    @JsonProperty(required = true, value = "token_type") String tokenType,
+    @JsonProperty(required = true, value = "expires_in") Integer expiresIn,
+    @JsonProperty(required = true, value = "scope") String scope
+  ) {
+    this.accessToken = accessToken;
+    this.tokenType = tokenType;
+    this.expiresIn = expiresIn;
+    this.scope = scope;
+  }
+
   /**
    **/
   public OauthAccessTokenResponse responseType(ResponseTypeEnum responseType) {
@@ -111,12 +127,12 @@ public class OauthAccessTokenResponse   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("access_token")
+  @JsonProperty(required = true, value = "access_token")
   @NotNull public String getAccessToken() {
     return accessToken;
   }
 
-  @JsonProperty("access_token")
+  @JsonProperty(required = true, value = "access_token")
   public void setAccessToken(String accessToken) {
     this.accessToken = accessToken;
   }
@@ -130,12 +146,12 @@ public class OauthAccessTokenResponse   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("token_type")
+  @JsonProperty(required = true, value = "token_type")
   @NotNull public String getTokenType() {
     return tokenType;
   }
 
-  @JsonProperty("token_type")
+  @JsonProperty(required = true, value = "token_type")
   public void setTokenType(String tokenType) {
     this.tokenType = tokenType;
   }
@@ -149,12 +165,12 @@ public class OauthAccessTokenResponse   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("expires_in")
+  @JsonProperty(required = true, value = "expires_in")
   @NotNull public Integer getExpiresIn() {
     return expiresIn;
   }
 
-  @JsonProperty("expires_in")
+  @JsonProperty(required = true, value = "expires_in")
   public void setExpiresIn(Integer expiresIn) {
     this.expiresIn = expiresIn;
   }
@@ -168,12 +184,12 @@ public class OauthAccessTokenResponse   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("scope")
+  @JsonProperty(required = true, value = "scope")
   @NotNull public String getScope() {
     return scope;
   }
 
-  @JsonProperty("scope")
+  @JsonProperty(required = true, value = "scope")
   public void setScope(String scope) {
     this.scope = scope;
   }

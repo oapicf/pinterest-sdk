@@ -32,9 +32,10 @@ typedef struct shared_audience_account_t {
     pinterest_rest_api_shared_audience_account_ACCOUNTTYPE_e account_type; //enum
     int shared_on_timestamp; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } shared_audience_account_t;
 
-shared_audience_account_t *shared_audience_account_create(
+__attribute__((deprecated)) shared_audience_account_t *shared_audience_account_create(
     char *account_id,
     char *account_name,
     pinterest_rest_api_shared_audience_account_ACCOUNTTYPE_e account_type,

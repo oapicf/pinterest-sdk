@@ -57,11 +57,11 @@ export function GenderFilterFromJSONTyped(json: any, ignoreDiscriminator: boolea
     };
 }
 
-  export function GenderFilterToJSON(json: any): GenderFilter {
-      return GenderFilterToJSONTyped(json, false);
-  }
+export function GenderFilterToJSON(json: any): GenderFilter {
+    return GenderFilterToJSONTyped(json, false);
+}
 
-  export function GenderFilterToJSONTyped(value?: GenderFilter | null, ignoreDiscriminator: boolean = false): any {
+export function GenderFilterToJSONTyped(value?: GenderFilter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

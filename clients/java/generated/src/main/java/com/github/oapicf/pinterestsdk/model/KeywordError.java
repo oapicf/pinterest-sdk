@@ -51,20 +51,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * KeywordError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class KeywordError {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
+  @javax.annotation.Nullable
   private Keyword data;
 
   public static final String SERIALIZED_NAME_ERROR_MESSAGES = "error_messages";
   @SerializedName(SERIALIZED_NAME_ERROR_MESSAGES)
+  @javax.annotation.Nullable
   private List<String> errorMessages = new ArrayList<>();
 
   public KeywordError() {
   }
 
-  public KeywordError data(Keyword data) {
+  public KeywordError data(@javax.annotation.Nullable Keyword data) {
     this.data = data;
     return this;
   }
@@ -78,12 +80,12 @@ public class KeywordError {
     return data;
   }
 
-  public void setData(Keyword data) {
+  public void setData(@javax.annotation.Nullable Keyword data) {
     this.data = data;
   }
 
 
-  public KeywordError errorMessages(List<String> errorMessages) {
+  public KeywordError errorMessages(@javax.annotation.Nullable List<String> errorMessages) {
     this.errorMessages = errorMessages;
     return this;
   }
@@ -105,7 +107,7 @@ public class KeywordError {
     return errorMessages;
   }
 
-  public void setErrorMessages(List<String> errorMessages) {
+  public void setErrorMessages(@javax.annotation.Nullable List<String> errorMessages) {
     this.errorMessages = errorMessages;
   }
 

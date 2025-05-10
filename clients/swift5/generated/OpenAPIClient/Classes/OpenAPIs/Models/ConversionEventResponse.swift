@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct ConversionEventResponse: Codable, JSONEncodable, Hashable {
 
-    static let conversionTagIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let conversionTagIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public var conversionEvent: ConversionTagType?
     /** Id of the tag. */
     public var conversionTagId: String?

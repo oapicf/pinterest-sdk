@@ -25,13 +25,16 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Request for creation of entities in bulk.")
 @JsonTypeName("BulkUpsertRequestUpdate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BulkUpsertRequestUpdate   {
   private @Valid List<@Valid CampaignUpdateRequest> campaigns = new ArrayList<>();
   private @Valid List<@Valid AdGroupUpdateRequest> adGroups = new ArrayList<>();
   private @Valid List<@Valid AdUpdateRequest> ads = new ArrayList<>();
   private @Valid List<@Valid ProductGroupPromotionUpdateRequest> productGroups = new ArrayList<>();
   private @Valid List<@Valid KeywordUpdate> keywords = new ArrayList<>();
+
+  public BulkUpsertRequestUpdate() {
+  }
 
   /**
    **/

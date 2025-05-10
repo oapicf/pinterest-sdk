@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsHotelProductGroupFilters
 
+import kotlinx.serialization.Serializable
 /**
  * Request object for creating a hotel product group.
  * @param catalogType 
@@ -21,6 +22,7 @@ import org.openapitools.server.models.CatalogsHotelProductGroupFilters
  * @param catalogId Catalog id pertaining to the hotel product group.
  * @param description 
  */
+@Serializable
 data class CatalogsHotelProductGroupCreateRequest(
     val catalogType: CatalogsHotelProductGroupCreateRequest.CatalogType,
     val name: kotlin.String,
@@ -28,7 +30,7 @@ data class CatalogsHotelProductGroupCreateRequest(
     /* Catalog id pertaining to the hotel product group. */
     val catalogId: kotlin.String,
     val description: kotlin.String? = null
-) 
+)
 {
     /**
     * 

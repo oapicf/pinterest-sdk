@@ -44,11 +44,11 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum EntityStatus: string
 {
-        case ACTIVE = "ACTIVE";
-        case PAUSED = "PAUSED";
-        case ARCHIVED = "ARCHIVED";
-        case DRAFT = "DRAFT";
-        case DELETED_DRAFT = "DELETED_DRAFT";
+        case ACTIVE = 'ACTIVE';
+        case PAUSED = 'PAUSED';
+        case ARCHIVED = 'ARCHIVED';
+        case DRAFT = 'DRAFT';
+        case DELETED_DRAFT = 'DELETED_DRAFT';
 }
 
 

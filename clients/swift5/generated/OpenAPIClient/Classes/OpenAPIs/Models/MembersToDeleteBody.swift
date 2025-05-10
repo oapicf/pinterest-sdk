@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct MembersToDeleteBody: Codable, JSONEncodable, Hashable {
 
-    static let membersRule = ArrayRule(minItems: 1, maxItems: 50, uniqueItems: false)
+    public static let membersRule = ArrayRule(minItems: 1, maxItems: 50, uniqueItems: false)
     public var members: [MembersToDeleteBodyMembersInner]
 
     public init(members: [MembersToDeleteBodyMembersInner]) {

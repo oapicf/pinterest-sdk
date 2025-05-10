@@ -20,7 +20,7 @@ import org.openapitools.model.BulkOutputFormat;
  **/
 
 @ApiModel(description = "Ad entities to get in bulk request.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-11-05T02:02:36.960464654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2025-05-10T05:38:59.250229241Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BulkDownloadRequest   {
   @JsonProperty("entity_types")
   private List<BulkEntityType> entityTypes = null;

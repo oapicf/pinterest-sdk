@@ -57,11 +57,11 @@ export function ConversionEventsFromJSONTyped(json: any, ignoreDiscriminator: bo
     };
 }
 
-  export function ConversionEventsToJSON(json: any): ConversionEvents {
-      return ConversionEventsToJSONTyped(json, false);
-  }
+export function ConversionEventsToJSON(json: any): ConversionEvents {
+    return ConversionEventsToJSONTyped(json, false);
+}
 
-  export function ConversionEventsToJSONTyped(value?: ConversionEvents | null, ignoreDiscriminator: boolean = false): any {
+export function ConversionEventsToJSONTyped(value?: ConversionEvents | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

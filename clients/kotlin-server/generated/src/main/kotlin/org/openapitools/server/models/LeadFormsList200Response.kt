@@ -13,13 +13,15 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.LeadFormResponse
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items 
  * @param bookmark 
  */
+@Serializable
 data class LeadFormsList200Response(
     val items: kotlin.collections.List<LeadFormResponse>,
     val bookmark: kotlin.String? = null
-) 
+)
 

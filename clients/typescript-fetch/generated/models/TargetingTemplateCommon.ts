@@ -114,11 +114,11 @@ export function TargetingTemplateCommonFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-  export function TargetingTemplateCommonToJSON(json: any): TargetingTemplateCommon {
-      return TargetingTemplateCommonToJSONTyped(json, false);
-  }
+export function TargetingTemplateCommonToJSON(json: any): TargetingTemplateCommon {
+    return TargetingTemplateCommonToJSONTyped(json, false);
+}
 
-  export function TargetingTemplateCommonToJSONTyped(value?: TargetingTemplateCommon | null, ignoreDiscriminator: boolean = false): any {
+export function TargetingTemplateCommonToJSONTyped(value?: TargetingTemplateCommon | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

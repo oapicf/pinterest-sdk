@@ -75,11 +75,11 @@ export function CatalogsRetailReportParametersFromJSONTyped(json: any, ignoreDis
     };
 }
 
-  export function CatalogsRetailReportParametersToJSON(json: any): CatalogsRetailReportParameters {
-      return CatalogsRetailReportParametersToJSONTyped(json, false);
-  }
+export function CatalogsRetailReportParametersToJSON(json: any): CatalogsRetailReportParameters {
+    return CatalogsRetailReportParametersToJSONTyped(json, false);
+}
 
-  export function CatalogsRetailReportParametersToJSONTyped(value?: CatalogsRetailReportParameters | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsRetailReportParametersToJSONTyped(value?: CatalogsRetailReportParameters | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -12,11 +12,11 @@ import AnyCodable
 
 public struct ProductGroupPromotion: Codable, JSONEncodable, Hashable {
 
-    static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let adGroupIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(AG)?\\d+$/")
-    static let parentIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let catalogProductGroupIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let collectionsHeroPinIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adGroupIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(AG)?\\d+$/")
+    public static let parentIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let catalogProductGroupIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let collectionsHeroPinIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** ID of the product group promotion. */
     public var id: String?
     /** ID of the ad group the product group belongs to. */
@@ -114,3 +114,6 @@ public struct ProductGroupPromotion: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension ProductGroupPromotion: Identifiable {}

@@ -51,16 +51,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Request body for updating asset roles for existing invites.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CreateAssetInvitesRequest {
   public static final String SERIALIZED_NAME_INVITES = "invites";
   @SerializedName(SERIALIZED_NAME_INVITES)
+  @javax.annotation.Nonnull
   private List<CreateAssetInvitesRequestItem> invites = new ArrayList<>();
 
   public CreateAssetInvitesRequest() {
   }
 
-  public CreateAssetInvitesRequest invites(List<CreateAssetInvitesRequestItem> invites) {
+  public CreateAssetInvitesRequest invites(@javax.annotation.Nonnull List<CreateAssetInvitesRequestItem> invites) {
     this.invites = invites;
     return this;
   }
@@ -82,7 +83,7 @@ public class CreateAssetInvitesRequest {
     return invites;
   }
 
-  public void setInvites(List<CreateAssetInvitesRequestItem> invites) {
+  public void setInvites(@javax.annotation.Nonnull List<CreateAssetInvitesRequestItem> invites) {
     this.invites = invites;
   }
 

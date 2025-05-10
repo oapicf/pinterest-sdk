@@ -12,17 +12,19 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * A request to exchange an authorization code for an access token.
  * @param grantType 
  * @param code 
  * @param redirectUri 
  */
+@Serializable
 data class OauthAccessTokenRequestCode(
     val grantType: OauthAccessTokenRequestCode.GrantType,
     val code: kotlin.String,
     val redirectUri: kotlin.String
-) 
+)
 {
     /**
     * 

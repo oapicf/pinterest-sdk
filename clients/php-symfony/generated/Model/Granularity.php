@@ -44,11 +44,11 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum Granularity: string
 {
-        case TOTAL = "TOTAL";
-        case DAY = "DAY";
-        case HOUR = "HOUR";
-        case WEEK = "WEEK";
-        case MONTH = "MONTH";
+        case TOTAL = 'TOTAL';
+        case DAY = 'DAY';
+        case HOUR = 'HOUR';
+        case WEEK = 'WEEK';
+        case MONTH = 'MONTH';
 }
 
 

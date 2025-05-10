@@ -74,10 +74,35 @@ SSIOAccountResponse <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return SSIOAccountResponse in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return SSIOAccountResponse as a base R list.
+    #' @examples
+    #' # convert array of SSIOAccountResponse (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert SSIOAccountResponse to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       SSIOAccountResponseObject <- list()
       if (!is.null(self$`eligible`)) {
         SSIOAccountResponseObject[["eligible"]] <-
@@ -89,7 +114,7 @@ SSIOAccountResponse <- R6::R6Class(
       }
       if (!is.null(self$`billto_infos`)) {
         SSIOAccountResponseObject[["billto_infos"]] <-
-          lapply(self$`billto_infos`, function(x) x$toJSON())
+          lapply(self$`billto_infos`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`currency`)) {
         SSIOAccountResponseObject[["currency"]] <-
@@ -97,13 +122,13 @@ SSIOAccountResponse <- R6::R6Class(
       }
       if (!is.null(self$`pmp_names`)) {
         SSIOAccountResponseObject[["pmp_names"]] <-
-          lapply(self$`pmp_names`, function(x) x$toJSON())
+          lapply(self$`pmp_names`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`error`)) {
         SSIOAccountResponseObject[["error"]] <-
           self$`error`
       }
-      SSIOAccountResponseObject
+      return(SSIOAccountResponseObject)
     },
 
     #' @description
@@ -136,61 +161,13 @@ SSIOAccountResponse <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return SSIOAccountResponse in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`eligible`)) {
-          sprintf(
-          '"eligible":
-            %s
-                    ',
-          tolower(self$`eligible`)
-          )
-        },
-        if (!is.null(self$`can_edit`)) {
-          sprintf(
-          '"can_edit":
-            %s
-                    ',
-          tolower(self$`can_edit`)
-          )
-        },
-        if (!is.null(self$`billto_infos`)) {
-          sprintf(
-          '"billto_infos":
-          [%s]
-',
-          paste(sapply(self$`billto_infos`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`currency`)) {
-          sprintf(
-          '"currency":
-            "%s"
-                    ',
-          self$`currency`
-          )
-        },
-        if (!is.null(self$`pmp_names`)) {
-          sprintf(
-          '"pmp_names":
-          [%s]
-',
-          paste(sapply(self$`pmp_names`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`error`)) {
-          sprintf(
-          '"error":
-            "%s"
-                    ',
-          self$`error`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

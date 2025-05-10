@@ -57,11 +57,11 @@ export function ConditionFilterFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-  export function ConditionFilterToJSON(json: any): ConditionFilter {
-      return ConditionFilterToJSONTyped(json, false);
-  }
+export function ConditionFilterToJSON(json: any): ConditionFilter {
+    return ConditionFilterToJSONTyped(json, false);
+}
 
-  export function ConditionFilterToJSONTyped(value?: ConditionFilter | null, ignoreDiscriminator: boolean = false): any {
+export function ConditionFilterToJSONTyped(value?: ConditionFilter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

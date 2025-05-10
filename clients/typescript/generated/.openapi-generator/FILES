@@ -1,6 +1,5 @@
 .gitattributes
 .gitignore
-.openapi-generator-ignore
 AdAccountsApi.md
 AdGroupsApi.md
 AdsApi.md

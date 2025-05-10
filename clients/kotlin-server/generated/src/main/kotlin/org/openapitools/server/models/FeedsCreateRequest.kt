@@ -23,6 +23,7 @@ import org.openapitools.server.models.Country
 import org.openapitools.server.models.NullableCurrency
 import org.openapitools.server.models.ProductAvailabilityType
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param name A human-friendly name associated to a given feed.
@@ -36,6 +37,7 @@ import org.openapitools.server.models.ProductAvailabilityType
  * @param defaultAvailability 
  * @param status 
  */
+@Serializable
 data class FeedsCreateRequest(
     /* A human-friendly name associated to a given feed. */
     val name: kotlin.String,
@@ -52,5 +54,5 @@ data class FeedsCreateRequest(
     val status: CatalogsStatus? = null,
     /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. */
     val catalogId: kotlin.String? = null
-) 
+)
 

@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Request object for updating a retail product group.")
 @JsonTypeName("CatalogsRetailProductGroupUpdateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsRetailProductGroupUpdateRequest   {
   public enum CatalogTypeEnum {
 
@@ -76,6 +76,9 @@ public class CatalogsRetailProductGroupUpdateRequest   {
   private CatalogsProductGroupFiltersRequest filters;
   private Country country;
   private CatalogsLocale locale;
+
+  public CatalogsRetailProductGroupUpdateRequest() {
+  }
 
   /**
    * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.

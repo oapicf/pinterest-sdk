@@ -247,7 +247,7 @@ func (c *CatalogsAPIController) CatalogsCreate(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	catalogsCreateRequestParam := CatalogsCreateRequest{}
+	var catalogsCreateRequestParam CatalogsCreateRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&catalogsCreateRequestParam); err != nil {
@@ -342,7 +342,7 @@ func (c *CatalogsAPIController) FeedsCreate(w http.ResponseWriter, r *http.Reque
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	feedsCreateRequestParam := FeedsCreateRequest{}
+	var feedsCreateRequestParam FeedsCreateRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&feedsCreateRequestParam); err != nil {
@@ -447,7 +447,7 @@ func (c *CatalogsAPIController) FeedsUpdate(w http.ResponseWriter, r *http.Reque
 		c.errorHandler(w, r, &RequiredError{"feed_id"}, nil)
 		return
 	}
-	feedsUpdateRequestParam := FeedsUpdateRequest{}
+	var feedsUpdateRequestParam FeedsUpdateRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&feedsUpdateRequestParam); err != nil {
@@ -695,7 +695,7 @@ func (c *CatalogsAPIController) ItemsPost(w http.ResponseWriter, r *http.Request
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	catalogsItemsRequestParam := CatalogsItemsRequest{}
+	var catalogsItemsRequestParam CatalogsItemsRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&catalogsItemsRequestParam); err != nil {
@@ -734,7 +734,7 @@ func (c *CatalogsAPIController) ItemsBatchPost(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	itemsBatchPostRequestParam := ItemsBatchPostRequest{}
+	var itemsBatchPostRequestParam ItemsBatchPostRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&itemsBatchPostRequestParam); err != nil {
@@ -803,7 +803,7 @@ func (c *CatalogsAPIController) CatalogsProductGroupsCreateMany(w http.ResponseW
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	multipleProductGroupsInnerParam := []MultipleProductGroupsInner{}
+	var multipleProductGroupsInnerParam []MultipleProductGroupsInner
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&multipleProductGroupsInnerParam); err != nil {
@@ -943,7 +943,7 @@ func (c *CatalogsAPIController) CatalogsProductGroupsCreate(w http.ResponseWrite
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	multipleProductGroupsInnerParam := MultipleProductGroupsInner{}
+	var multipleProductGroupsInnerParam MultipleProductGroupsInner
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&multipleProductGroupsInnerParam); err != nil {
@@ -1048,7 +1048,7 @@ func (c *CatalogsAPIController) CatalogsProductGroupsUpdate(w http.ResponseWrite
 		c.errorHandler(w, r, &RequiredError{"product_group_id"}, nil)
 		return
 	}
-	catalogsProductGroupsUpdateRequestParam := CatalogsProductGroupsUpdateRequest{}
+	var catalogsProductGroupsUpdateRequestParam CatalogsProductGroupsUpdateRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&catalogsProductGroupsUpdateRequestParam); err != nil {
@@ -1188,7 +1188,7 @@ func (c *CatalogsAPIController) ProductsByProductGroupFilterList(w http.Response
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	catalogsListProductsByFilterRequestParam := CatalogsListProductsByFilterRequest{}
+	var catalogsListProductsByFilterRequestParam CatalogsListProductsByFilterRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&catalogsListProductsByFilterRequestParam); err != nil {
@@ -1301,7 +1301,7 @@ func (c *CatalogsAPIController) ReportsCreate(w http.ResponseWriter, r *http.Req
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	catalogsReportParametersParam := CatalogsReportParameters{}
+	var catalogsReportParametersParam CatalogsReportParameters
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&catalogsReportParametersParam); err != nil {

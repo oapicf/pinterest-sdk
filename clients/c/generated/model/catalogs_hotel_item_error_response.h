@@ -18,25 +18,18 @@ typedef struct catalogs_hotel_item_error_response_t catalogs_hotel_item_error_re
 #include "catalogs_type.h"
 #include "item_validation_event.h"
 
-// Enum  for catalogs_hotel_item_error_response
-
-typedef enum  { pinterest_rest_api_catalogs_hotel_item_error_response__NULL = 0, pinterest_rest_api_catalogs_hotel_item_error_response__RETAIL, pinterest_rest_api_catalogs_hotel_item_error_response__HOTEL, pinterest_rest_api_catalogs_hotel_item_error_response__CREATIVE_ASSETS } pinterest_rest_api_catalogs_hotel_item_error_response__e;
-
-char* catalogs_hotel_item_error_response_catalog_type_ToString(pinterest_rest_api_catalogs_hotel_item_error_response__e catalog_type);
-
-pinterest_rest_api_catalogs_hotel_item_error_response__e catalogs_hotel_item_error_response_catalog_type_FromString(char* catalog_type);
-
 
 
 typedef struct catalogs_hotel_item_error_response_t {
-    catalogs_type_t *catalog_type; // custom
+    pinterest_rest_api_catalogs_type__e catalog_type; //referenced enum
     char *hotel_id; // string
     list_t *errors; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_hotel_item_error_response_t;
 
-catalogs_hotel_item_error_response_t *catalogs_hotel_item_error_response_create(
-    catalogs_type_t *catalog_type,
+__attribute__((deprecated)) catalogs_hotel_item_error_response_t *catalogs_hotel_item_error_response_create(
+    pinterest_rest_api_catalogs_type__e catalog_type,
     char *hotel_id,
     list_t *errors
 );

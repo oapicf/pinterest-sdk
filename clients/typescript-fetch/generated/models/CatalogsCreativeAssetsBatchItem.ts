@@ -101,11 +101,11 @@ export function CatalogsCreativeAssetsBatchItemFromJSONTyped(json: any, ignoreDi
     };
 }
 
-  export function CatalogsCreativeAssetsBatchItemToJSON(json: any): CatalogsCreativeAssetsBatchItem {
-      return CatalogsCreativeAssetsBatchItemToJSONTyped(json, false);
-  }
+export function CatalogsCreativeAssetsBatchItemToJSON(json: any): CatalogsCreativeAssetsBatchItem {
+    return CatalogsCreativeAssetsBatchItemToJSONTyped(json, false);
+}
 
-  export function CatalogsCreativeAssetsBatchItemToJSONTyped(value?: CatalogsCreativeAssetsBatchItem | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsCreativeAssetsBatchItemToJSONTyped(value?: CatalogsCreativeAssetsBatchItem | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

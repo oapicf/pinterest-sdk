@@ -5,7 +5,7 @@
 
 
 
-single_interest_targeting_option_response_t *single_interest_targeting_option_response_create(
+static single_interest_targeting_option_response_t *single_interest_targeting_option_response_create_internal(
     char *id,
     char *name,
     list_t *child_interests,
@@ -20,12 +20,30 @@ single_interest_targeting_option_response_t *single_interest_targeting_option_re
     single_interest_targeting_option_response_local_var->child_interests = child_interests;
     single_interest_targeting_option_response_local_var->level = level;
 
+    single_interest_targeting_option_response_local_var->_library_owned = 1;
     return single_interest_targeting_option_response_local_var;
 }
 
+__attribute__((deprecated)) single_interest_targeting_option_response_t *single_interest_targeting_option_response_create(
+    char *id,
+    char *name,
+    list_t *child_interests,
+    int level
+    ) {
+    return single_interest_targeting_option_response_create_internal (
+        id,
+        name,
+        child_interests,
+        level
+        );
+}
 
 void single_interest_targeting_option_response_free(single_interest_targeting_option_response_t *single_interest_targeting_option_response) {
     if(NULL == single_interest_targeting_option_response){
+        return ;
+    }
+    if(single_interest_targeting_option_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "single_interest_targeting_option_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -75,7 +93,7 @@ cJSON *single_interest_targeting_option_response_convertToJSON(single_interest_t
 
     listEntry_t *child_interestsListEntry;
     list_ForEach(child_interestsListEntry, single_interest_targeting_option_response->child_interests) {
-    if(cJSON_AddStringToObject(child_interests, "", (char*)child_interestsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(child_interests, "", child_interestsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -107,6 +125,9 @@ single_interest_targeting_option_response_t *single_interest_targeting_option_re
 
     // single_interest_targeting_option_response->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(single_interest_targeting_option_responseJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -116,6 +137,9 @@ single_interest_targeting_option_response_t *single_interest_targeting_option_re
 
     // single_interest_targeting_option_response->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(single_interest_targeting_option_responseJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
     if (name) { 
     if(!cJSON_IsString(name) && !cJSON_IsNull(name))
     {
@@ -125,6 +149,9 @@ single_interest_targeting_option_response_t *single_interest_targeting_option_re
 
     // single_interest_targeting_option_response->child_interests
     cJSON *child_interests = cJSON_GetObjectItemCaseSensitive(single_interest_targeting_option_responseJSON, "child_interests");
+    if (cJSON_IsNull(child_interests)) {
+        child_interests = NULL;
+    }
     if (child_interests) { 
     cJSON *child_interests_local = NULL;
     if(!cJSON_IsArray(child_interests)) {
@@ -144,6 +171,9 @@ single_interest_targeting_option_response_t *single_interest_targeting_option_re
 
     // single_interest_targeting_option_response->level
     cJSON *level = cJSON_GetObjectItemCaseSensitive(single_interest_targeting_option_responseJSON, "level");
+    if (cJSON_IsNull(level)) {
+        level = NULL;
+    }
     if (level) { 
     if(!cJSON_IsNumber(level))
     {
@@ -152,7 +182,7 @@ single_interest_targeting_option_response_t *single_interest_targeting_option_re
     }
 
 
-    single_interest_targeting_option_response_local_var = single_interest_targeting_option_response_create (
+    single_interest_targeting_option_response_local_var = single_interest_targeting_option_response_create_internal (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         child_interests ? child_interestsList : NULL,

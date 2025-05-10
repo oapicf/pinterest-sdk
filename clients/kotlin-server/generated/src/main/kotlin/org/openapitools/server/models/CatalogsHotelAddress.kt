@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param addr1 Primary street address of hotel.
@@ -20,6 +21,7 @@ package org.openapitools.server.models
  * @param country Country where the hotel is located.
  * @param postalCode Required for countries with a postal code system. Postal or zip code of the hotel.
  */
+@Serializable
 data class CatalogsHotelAddress(
     /* Primary street address of hotel. */
     val addr1: kotlin.String? = null,
@@ -31,5 +33,5 @@ data class CatalogsHotelAddress(
     val country: kotlin.String? = null,
     /* Required for countries with a postal code system. Postal or zip code of the hotel. */
     val postalCode: kotlin.String? = null
-) 
+)
 

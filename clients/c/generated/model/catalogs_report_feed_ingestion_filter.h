@@ -31,9 +31,10 @@ typedef struct catalogs_report_feed_ingestion_filter_t {
     char *feed_id; // string
     char *processing_result_id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_report_feed_ingestion_filter_t;
 
-catalogs_report_feed_ingestion_filter_t *catalogs_report_feed_ingestion_filter_create(
+__attribute__((deprecated)) catalogs_report_feed_ingestion_filter_t *catalogs_report_feed_ingestion_filter_create(
     pinterest_rest_api_catalogs_report_feed_ingestion_filter_REPORTTYPE_e report_type,
     char *feed_id,
     char *processing_result_id

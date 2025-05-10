@@ -50,28 +50,34 @@ stringFromOrder_ model =
 
 
 
-{-| Get a specific existing order line associated with an ad account.
+{-| Get order line
+
+Get a specific existing order line associated with an ad account.
+
 -}
 orderLinesGet : String -> String -> Api.Request Api.Data.OrderLine
 orderLinesGet adAccountId_path orderLineId_path =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/order_lines/{order_line_id}"
-        [ ( "adAccountId", identity adAccountId_path ), ( "orderLineId", identity orderLineId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ), ( "order_line_id", identity orderLineId_path ) ]
         []
         []
         Nothing
         Api.Data.orderLineDecoder
 
 
-{-| List existing order lines associated with an ad account.
+{-| Get order lines
+
+List existing order lines associated with an ad account.
+
 -}
 orderLinesList : String -> Maybe Int -> Maybe Order_ -> Maybe String -> Api.Request Api.Data.OrderLinesList200Response
 orderLinesList adAccountId_path pageSize_query order_query bookmark_query =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/order_lines"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         [ ( "page_size", Maybe.map String.fromInt pageSize_query ), ( "order", Maybe.map stringFromOrder_ order_query ), ( "bookmark", Maybe.map identity bookmark_query ) ]
         []
         Nothing

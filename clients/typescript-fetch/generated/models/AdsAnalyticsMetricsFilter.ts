@@ -82,11 +82,11 @@ export function AdsAnalyticsMetricsFilterFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function AdsAnalyticsMetricsFilterToJSON(json: any): AdsAnalyticsMetricsFilter {
-      return AdsAnalyticsMetricsFilterToJSONTyped(json, false);
-  }
+export function AdsAnalyticsMetricsFilterToJSON(json: any): AdsAnalyticsMetricsFilter {
+    return AdsAnalyticsMetricsFilterToJSONTyped(json, false);
+}
 
-  export function AdsAnalyticsMetricsFilterToJSONTyped(value?: AdsAnalyticsMetricsFilter | null, ignoreDiscriminator: boolean = false): any {
+export function AdsAnalyticsMetricsFilterToJSONTyped(value?: AdsAnalyticsMetricsFilter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

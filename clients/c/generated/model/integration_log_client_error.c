@@ -5,7 +5,7 @@
 
 
 
-integration_log_client_error_t *integration_log_client_error_create(
+static integration_log_client_error_t *integration_log_client_error_create_internal(
     char *cause,
     int column_number,
     char *file_name,
@@ -30,12 +30,40 @@ integration_log_client_error_t *integration_log_client_error_create(
     integration_log_client_error_local_var->number = number;
     integration_log_client_error_local_var->stack_trace = stack_trace;
 
+    integration_log_client_error_local_var->_library_owned = 1;
     return integration_log_client_error_local_var;
 }
 
+__attribute__((deprecated)) integration_log_client_error_t *integration_log_client_error_create(
+    char *cause,
+    int column_number,
+    char *file_name,
+    int line_number,
+    char *message,
+    char *message_detail,
+    char *name,
+    int number,
+    char *stack_trace
+    ) {
+    return integration_log_client_error_create_internal (
+        cause,
+        column_number,
+        file_name,
+        line_number,
+        message,
+        message_detail,
+        name,
+        number,
+        stack_trace
+        );
+}
 
 void integration_log_client_error_free(integration_log_client_error_t *integration_log_client_error) {
     if(NULL == integration_log_client_error){
+        return ;
+    }
+    if(integration_log_client_error->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "integration_log_client_error_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -154,6 +182,9 @@ integration_log_client_error_t *integration_log_client_error_parseFromJSON(cJSON
 
     // integration_log_client_error->cause
     cJSON *cause = cJSON_GetObjectItemCaseSensitive(integration_log_client_errorJSON, "cause");
+    if (cJSON_IsNull(cause)) {
+        cause = NULL;
+    }
     if (cause) { 
     if(!cJSON_IsString(cause) && !cJSON_IsNull(cause))
     {
@@ -163,6 +194,9 @@ integration_log_client_error_t *integration_log_client_error_parseFromJSON(cJSON
 
     // integration_log_client_error->column_number
     cJSON *column_number = cJSON_GetObjectItemCaseSensitive(integration_log_client_errorJSON, "column_number");
+    if (cJSON_IsNull(column_number)) {
+        column_number = NULL;
+    }
     if (column_number) { 
     if(!cJSON_IsNumber(column_number))
     {
@@ -172,6 +206,9 @@ integration_log_client_error_t *integration_log_client_error_parseFromJSON(cJSON
 
     // integration_log_client_error->file_name
     cJSON *file_name = cJSON_GetObjectItemCaseSensitive(integration_log_client_errorJSON, "file_name");
+    if (cJSON_IsNull(file_name)) {
+        file_name = NULL;
+    }
     if (file_name) { 
     if(!cJSON_IsString(file_name) && !cJSON_IsNull(file_name))
     {
@@ -181,6 +218,9 @@ integration_log_client_error_t *integration_log_client_error_parseFromJSON(cJSON
 
     // integration_log_client_error->line_number
     cJSON *line_number = cJSON_GetObjectItemCaseSensitive(integration_log_client_errorJSON, "line_number");
+    if (cJSON_IsNull(line_number)) {
+        line_number = NULL;
+    }
     if (line_number) { 
     if(!cJSON_IsNumber(line_number))
     {
@@ -190,6 +230,9 @@ integration_log_client_error_t *integration_log_client_error_parseFromJSON(cJSON
 
     // integration_log_client_error->message
     cJSON *message = cJSON_GetObjectItemCaseSensitive(integration_log_client_errorJSON, "message");
+    if (cJSON_IsNull(message)) {
+        message = NULL;
+    }
     if (message) { 
     if(!cJSON_IsString(message) && !cJSON_IsNull(message))
     {
@@ -199,6 +242,9 @@ integration_log_client_error_t *integration_log_client_error_parseFromJSON(cJSON
 
     // integration_log_client_error->message_detail
     cJSON *message_detail = cJSON_GetObjectItemCaseSensitive(integration_log_client_errorJSON, "message_detail");
+    if (cJSON_IsNull(message_detail)) {
+        message_detail = NULL;
+    }
     if (message_detail) { 
     if(!cJSON_IsString(message_detail) && !cJSON_IsNull(message_detail))
     {
@@ -208,6 +254,9 @@ integration_log_client_error_t *integration_log_client_error_parseFromJSON(cJSON
 
     // integration_log_client_error->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(integration_log_client_errorJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
     if (name) { 
     if(!cJSON_IsString(name) && !cJSON_IsNull(name))
     {
@@ -217,6 +266,9 @@ integration_log_client_error_t *integration_log_client_error_parseFromJSON(cJSON
 
     // integration_log_client_error->number
     cJSON *number = cJSON_GetObjectItemCaseSensitive(integration_log_client_errorJSON, "number");
+    if (cJSON_IsNull(number)) {
+        number = NULL;
+    }
     if (number) { 
     if(!cJSON_IsNumber(number))
     {
@@ -226,6 +278,9 @@ integration_log_client_error_t *integration_log_client_error_parseFromJSON(cJSON
 
     // integration_log_client_error->stack_trace
     cJSON *stack_trace = cJSON_GetObjectItemCaseSensitive(integration_log_client_errorJSON, "stack_trace");
+    if (cJSON_IsNull(stack_trace)) {
+        stack_trace = NULL;
+    }
     if (stack_trace) { 
     if(!cJSON_IsString(stack_trace) && !cJSON_IsNull(stack_trace))
     {
@@ -234,7 +289,7 @@ integration_log_client_error_t *integration_log_client_error_parseFromJSON(cJSON
     }
 
 
-    integration_log_client_error_local_var = integration_log_client_error_create (
+    integration_log_client_error_local_var = integration_log_client_error_create_internal (
         cause && !cJSON_IsNull(cause) ? strdup(cause->valuestring) : NULL,
         column_number ? column_number->valuedouble : 0,
         file_name && !cJSON_IsNull(file_name) ? strdup(file_name->valuestring) : NULL,

@@ -50,7 +50,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * GetMMMReportResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class GetMMMReportResponseData {
   /**
    * Gets or Sets reportStatus
@@ -114,20 +114,23 @@ public class GetMMMReportResponseData {
 
   public static final String SERIALIZED_NAME_REPORT_STATUS = "report_status";
   @SerializedName(SERIALIZED_NAME_REPORT_STATUS)
+  @javax.annotation.Nullable
   private ReportStatusEnum reportStatus;
 
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)
+  @javax.annotation.Nullable
   private String url;
 
   public static final String SERIALIZED_NAME_SIZE = "size";
   @SerializedName(SERIALIZED_NAME_SIZE)
+  @javax.annotation.Nullable
   private BigDecimal size;
 
   public GetMMMReportResponseData() {
   }
 
-  public GetMMMReportResponseData reportStatus(ReportStatusEnum reportStatus) {
+  public GetMMMReportResponseData reportStatus(@javax.annotation.Nullable ReportStatusEnum reportStatus) {
     this.reportStatus = reportStatus;
     return this;
   }
@@ -141,12 +144,12 @@ public class GetMMMReportResponseData {
     return reportStatus;
   }
 
-  public void setReportStatus(ReportStatusEnum reportStatus) {
+  public void setReportStatus(@javax.annotation.Nullable ReportStatusEnum reportStatus) {
     this.reportStatus = reportStatus;
   }
 
 
-  public GetMMMReportResponseData url(String url) {
+  public GetMMMReportResponseData url(@javax.annotation.Nullable String url) {
     this.url = url;
     return this;
   }
@@ -160,12 +163,12 @@ public class GetMMMReportResponseData {
     return url;
   }
 
-  public void setUrl(String url) {
+  public void setUrl(@javax.annotation.Nullable String url) {
     this.url = url;
   }
 
 
-  public GetMMMReportResponseData size(BigDecimal size) {
+  public GetMMMReportResponseData size(@javax.annotation.Nullable BigDecimal size) {
     this.size = size;
     return this;
   }
@@ -179,7 +182,7 @@ public class GetMMMReportResponseData {
     return size;
   }
 
-  public void setSize(BigDecimal size) {
+  public void setSize(@javax.annotation.Nullable BigDecimal size) {
     this.size = size;
   }
 

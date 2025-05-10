@@ -24,9 +24,9 @@ char* operation_type_operation_type_ToString(pinterest_rest_api_operation_type__
 
 pinterest_rest_api_operation_type__e operation_type_operation_type_FromString(char* operation_type);
 
-//cJSON *operation_type_operation_type_convertToJSON(pinterest_rest_api_operation_type__e operation_type);
+cJSON *operation_type_convertToJSON(pinterest_rest_api_operation_type__e operation_type);
 
-//pinterest_rest_api_operation_type__e operation_type_operation_type_parseFromJSON(cJSON *operation_typeJSON);
+pinterest_rest_api_operation_type__e operation_type_parseFromJSON(cJSON *operation_typeJSON);
 
 #endif /* _operation_type_H_ */
 

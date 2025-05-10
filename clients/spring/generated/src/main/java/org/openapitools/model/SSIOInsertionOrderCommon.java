@@ -5,6 +5,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -19,32 +20,32 @@ import javax.annotation.Generated;
  * SSIOInsertionOrderCommon
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class SSIOInsertionOrderCommon {
 
-  private String startDate;
+  private @Nullable String startDate;
 
-  private String endDate;
+  private @Nullable String endDate;
 
-  private String poNumber;
+  private @Nullable String poNumber;
 
-  private BigDecimal budgetAmount;
+  private @Nullable BigDecimal budgetAmount;
 
-  private String billingContactFirstname;
+  private @Nullable String billingContactFirstname;
 
-  private String billingContactLastname;
+  private @Nullable String billingContactLastname;
 
-  private String billingContactEmail;
+  private @Nullable String billingContactEmail;
 
-  private String mediaContactFirstname;
+  private @Nullable String mediaContactFirstname;
 
-  private String mediaContactLastname;
+  private @Nullable String mediaContactLastname;
 
-  private String mediaContactEmail;
+  private @Nullable String mediaContactEmail;
 
-  private String agencyLink;
+  private @Nullable String agencyLink;
 
-  private String userEmail;
+  private @Nullable String userEmail;
 
   public SSIOInsertionOrderCommon startDate(String startDate) {
     this.startDate = startDate;

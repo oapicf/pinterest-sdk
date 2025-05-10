@@ -52,7 +52,11 @@ export function FeedsUpdateRequestFromJSONTyped(json: any, ignoreDiscriminator: 
     return {} as any;
 }
 
-export function FeedsUpdateRequestToJSON(value?: FeedsUpdateRequest | null): any {
+export function FeedsUpdateRequestToJSON(json: any): any {
+    return FeedsUpdateRequestToJSONTyped(json, false);
+}
+
+export function FeedsUpdateRequestToJSONTyped(value?: FeedsUpdateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

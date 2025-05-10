@@ -22,9 +22,10 @@ typedef struct keyword_metrics_t {
     double avg_cpc_in_micro_currency; //numeric
     char *keyword_query_volume; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } keyword_metrics_t;
 
-keyword_metrics_t *keyword_metrics_create(
+__attribute__((deprecated)) keyword_metrics_t *keyword_metrics_create(
     double avg_cpc_in_micro_currency,
     char *keyword_query_volume
 );

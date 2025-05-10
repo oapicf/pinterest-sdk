@@ -59,14 +59,39 @@ AdAccountsCountryResponseData <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return AdAccountsCountryResponseData in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return AdAccountsCountryResponseData as a base R list.
+    #' @examples
+    #' # convert array of AdAccountsCountryResponseData (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert AdAccountsCountryResponseData to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       AdAccountsCountryResponseDataObject <- list()
       if (!is.null(self$`code`)) {
         AdAccountsCountryResponseDataObject[["code"]] <-
-          self$`code`$toJSON()
+          self$`code`$toSimpleType()
       }
       if (!is.null(self$`currency`)) {
         AdAccountsCountryResponseDataObject[["currency"]] <-
@@ -80,7 +105,7 @@ AdAccountsCountryResponseData <- R6::R6Class(
         AdAccountsCountryResponseDataObject[["name"]] <-
           self$`name`
       }
-      AdAccountsCountryResponseDataObject
+      return(AdAccountsCountryResponseDataObject)
     },
 
     #' @description
@@ -109,45 +134,13 @@ AdAccountsCountryResponseData <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return AdAccountsCountryResponseData in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`code`)) {
-          sprintf(
-          '"code":
-          %s
-          ',
-          jsonlite::toJSON(self$`code`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`currency`)) {
-          sprintf(
-          '"currency":
-            "%s"
-                    ',
-          self$`currency`
-          )
-        },
-        if (!is.null(self$`index`)) {
-          sprintf(
-          '"index":
-            %d
-                    ',
-          self$`index`
-          )
-        },
-        if (!is.null(self$`name`)) {
-          sprintf(
-          '"name":
-            "%s"
-                    ',
-          self$`name`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

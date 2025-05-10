@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -24,14 +25,14 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "InviteExceptionResponse", description = "An exception object if there is an error performing the action. Will only be provided if there is an error.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class InviteExceptionResponse {
 
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> inviteOrRequestId = JsonNullable.<String>undefined();
 
-  private Integer code;
+  private @Nullable Integer code;
 
-  private String message;
+  private @Nullable String message;
 
   @Valid
   private JsonNullable<List<String>> usersOrPartnerIds = JsonNullable.<List<String>>undefined();

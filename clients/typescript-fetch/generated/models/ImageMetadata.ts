@@ -84,11 +84,11 @@ export function ImageMetadataFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-  export function ImageMetadataToJSON(json: any): ImageMetadata {
-      return ImageMetadataToJSONTyped(json, false);
-  }
+export function ImageMetadataToJSON(json: any): ImageMetadata {
+    return ImageMetadataToJSONTyped(json, false);
+}
 
-  export function ImageMetadataToJSONTyped(value?: ImageMetadata | null, ignoreDiscriminator: boolean = false): any {
+export function ImageMetadataToJSONTyped(value?: ImageMetadata | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

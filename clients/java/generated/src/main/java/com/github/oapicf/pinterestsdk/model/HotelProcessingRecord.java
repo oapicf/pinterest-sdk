@@ -52,28 +52,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Object describing an item processing record
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class HotelProcessingRecord {
   public static final String SERIALIZED_NAME_HOTEL_ID = "hotel_id";
   @SerializedName(SERIALIZED_NAME_HOTEL_ID)
+  @javax.annotation.Nullable
   private String hotelId;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
+  @javax.annotation.Nullable
   private List<ItemValidationEvent> errors = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_WARNINGS = "warnings";
   @SerializedName(SERIALIZED_NAME_WARNINGS)
+  @javax.annotation.Nullable
   private List<ItemValidationEvent> warnings = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private ItemProcessingStatus status;
 
   public HotelProcessingRecord() {
   }
 
-  public HotelProcessingRecord hotelId(String hotelId) {
+  public HotelProcessingRecord hotelId(@javax.annotation.Nullable String hotelId) {
     this.hotelId = hotelId;
     return this;
   }
@@ -87,12 +91,12 @@ public class HotelProcessingRecord {
     return hotelId;
   }
 
-  public void setHotelId(String hotelId) {
+  public void setHotelId(@javax.annotation.Nullable String hotelId) {
     this.hotelId = hotelId;
   }
 
 
-  public HotelProcessingRecord errors(List<ItemValidationEvent> errors) {
+  public HotelProcessingRecord errors(@javax.annotation.Nullable List<ItemValidationEvent> errors) {
     this.errors = errors;
     return this;
   }
@@ -114,12 +118,12 @@ public class HotelProcessingRecord {
     return errors;
   }
 
-  public void setErrors(List<ItemValidationEvent> errors) {
+  public void setErrors(@javax.annotation.Nullable List<ItemValidationEvent> errors) {
     this.errors = errors;
   }
 
 
-  public HotelProcessingRecord warnings(List<ItemValidationEvent> warnings) {
+  public HotelProcessingRecord warnings(@javax.annotation.Nullable List<ItemValidationEvent> warnings) {
     this.warnings = warnings;
     return this;
   }
@@ -141,12 +145,12 @@ public class HotelProcessingRecord {
     return warnings;
   }
 
-  public void setWarnings(List<ItemValidationEvent> warnings) {
+  public void setWarnings(@javax.annotation.Nullable List<ItemValidationEvent> warnings) {
     this.warnings = warnings;
   }
 
 
-  public HotelProcessingRecord status(ItemProcessingStatus status) {
+  public HotelProcessingRecord status(@javax.annotation.Nullable ItemProcessingStatus status) {
     this.status = status;
     return this;
   }
@@ -160,7 +164,7 @@ public class HotelProcessingRecord {
     return status;
   }
 
-  public void setStatus(ItemProcessingStatus status) {
+  public void setStatus(@javax.annotation.Nullable ItemProcessingStatus status) {
     this.status = status;
   }
 

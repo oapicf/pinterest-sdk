@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CampaignCreateResponseItem
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items 
  */
+@Serializable
 data class CampaignCreateResponse(
     val items: kotlin.collections.List<CampaignCreateResponseItem>? = null
-) 
+)
 

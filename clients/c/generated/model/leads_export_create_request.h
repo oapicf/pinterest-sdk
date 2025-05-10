@@ -23,9 +23,10 @@ typedef struct leads_export_create_request_t {
     char *end_date; // string
     char *ad_id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } leads_export_create_request_t;
 
-leads_export_create_request_t *leads_export_create_request_create(
+__attribute__((deprecated)) leads_export_create_request_t *leads_export_create_request_create(
     char *start_date,
     char *end_date,
     char *ad_id

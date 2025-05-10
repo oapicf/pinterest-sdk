@@ -15,6 +15,7 @@ import org.openapitools.server.models.LeadFormCommonPolicyLinksInner
 import org.openapitools.server.models.LeadFormQuestion
 import org.openapitools.server.models.LeadFormStatus
 
+import kotlinx.serialization.Serializable
 /**
  * Creation fields
  * @param name Internal name of the lead form.
@@ -26,6 +27,7 @@ import org.openapitools.server.models.LeadFormStatus
  * @param questions List of questions to be displayed on the lead form.
  * @param policyLinks List of additional policy links to be displayed on the lead form.
  */
+@Serializable
 data class LeadFormCommon(
     /* Internal name of the lead form. */
     val name: kotlin.String? = null,
@@ -42,5 +44,5 @@ data class LeadFormCommon(
     val questions: kotlin.collections.List<LeadFormQuestion>? = null,
     /* List of additional policy links to be displayed on the lead form. */
     val policyLinks: kotlin.collections.List<LeadFormCommonPolicyLinksInner>? = null
-) 
+)
 

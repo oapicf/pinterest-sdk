@@ -15,10 +15,15 @@
 export type BatchOperation = 'UPDATE' | 'UPSERT' | 'CREATE' | 'DELETE_DISCONTINUED' | 'DELETE';
 
 export const BatchOperation = {
+
     Update: 'UPDATE' as BatchOperation,
+
     Upsert: 'UPSERT' as BatchOperation,
+
     Create: 'CREATE' as BatchOperation,
+
     DeleteDiscontinued: 'DELETE_DISCONTINUED' as BatchOperation,
+
     Delete: 'DELETE' as BatchOperation
 };
 

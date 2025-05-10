@@ -13,12 +13,14 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.UpdateMemberResult
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items List of members with updated business access role.
  */
+@Serializable
 data class UpdateMemberResultsResponseArray(
     /* List of members with updated business access role. */
     val items: kotlin.collections.List<UpdateMemberResult>? = null
-) 
+)
 

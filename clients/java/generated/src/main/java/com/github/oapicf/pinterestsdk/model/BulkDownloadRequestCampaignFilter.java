@@ -52,32 +52,37 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * BulkDownloadRequestCampaignFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BulkDownloadRequestCampaignFilter {
   public static final String SERIALIZED_NAME_START_TIME = "start_time";
   @SerializedName(SERIALIZED_NAME_START_TIME)
+  @javax.annotation.Nullable
   private String startTime;
 
   public static final String SERIALIZED_NAME_END_TIME = "end_time";
   @SerializedName(SERIALIZED_NAME_END_TIME)
+  @javax.annotation.Nullable
   private String endTime;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_STATUS = "campaign_status";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_STATUS)
+  @javax.annotation.Nullable
   private List<CampaignSummaryStatus> campaignStatus = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_OBJECTIVE_TYPE = "objective_type";
   @SerializedName(SERIALIZED_NAME_OBJECTIVE_TYPE)
+  @javax.annotation.Nullable
   private List<ObjectiveType> objectiveType = new ArrayList<>();
 
   public BulkDownloadRequestCampaignFilter() {
   }
 
-  public BulkDownloadRequestCampaignFilter startTime(String startTime) {
+  public BulkDownloadRequestCampaignFilter startTime(@javax.annotation.Nullable String startTime) {
     this.startTime = startTime;
     return this;
   }
@@ -91,12 +96,12 @@ public class BulkDownloadRequestCampaignFilter {
     return startTime;
   }
 
-  public void setStartTime(String startTime) {
+  public void setStartTime(@javax.annotation.Nullable String startTime) {
     this.startTime = startTime;
   }
 
 
-  public BulkDownloadRequestCampaignFilter endTime(String endTime) {
+  public BulkDownloadRequestCampaignFilter endTime(@javax.annotation.Nullable String endTime) {
     this.endTime = endTime;
     return this;
   }
@@ -110,12 +115,12 @@ public class BulkDownloadRequestCampaignFilter {
     return endTime;
   }
 
-  public void setEndTime(String endTime) {
+  public void setEndTime(@javax.annotation.Nullable String endTime) {
     this.endTime = endTime;
   }
 
 
-  public BulkDownloadRequestCampaignFilter name(String name) {
+  public BulkDownloadRequestCampaignFilter name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -129,12 +134,12 @@ public class BulkDownloadRequestCampaignFilter {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public BulkDownloadRequestCampaignFilter campaignStatus(List<CampaignSummaryStatus> campaignStatus) {
+  public BulkDownloadRequestCampaignFilter campaignStatus(@javax.annotation.Nullable List<CampaignSummaryStatus> campaignStatus) {
     this.campaignStatus = campaignStatus;
     return this;
   }
@@ -156,12 +161,12 @@ public class BulkDownloadRequestCampaignFilter {
     return campaignStatus;
   }
 
-  public void setCampaignStatus(List<CampaignSummaryStatus> campaignStatus) {
+  public void setCampaignStatus(@javax.annotation.Nullable List<CampaignSummaryStatus> campaignStatus) {
     this.campaignStatus = campaignStatus;
   }
 
 
-  public BulkDownloadRequestCampaignFilter objectiveType(List<ObjectiveType> objectiveType) {
+  public BulkDownloadRequestCampaignFilter objectiveType(@javax.annotation.Nullable List<ObjectiveType> objectiveType) {
     this.objectiveType = objectiveType;
     return this;
   }
@@ -183,7 +188,7 @@ public class BulkDownloadRequestCampaignFilter {
     return objectiveType;
   }
 
-  public void setObjectiveType(List<ObjectiveType> objectiveType) {
+  public void setObjectiveType(@javax.annotation.Nullable List<ObjectiveType> objectiveType) {
     this.objectiveType = objectiveType;
   }
 

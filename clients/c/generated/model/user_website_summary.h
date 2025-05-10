@@ -23,9 +23,10 @@ typedef struct user_website_summary_t {
     char *status; // string
     char *verified_at; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } user_website_summary_t;
 
-user_website_summary_t *user_website_summary_create(
+__attribute__((deprecated)) user_website_summary_t *user_website_summary_create(
     char *website,
     char *status,
     char *verified_at

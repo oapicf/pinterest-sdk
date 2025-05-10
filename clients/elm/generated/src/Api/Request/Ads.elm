@@ -801,7 +801,6 @@ stringFromColumns model =
 
 
 
-
 type ClickWindowDays
     = ClickWindowDays0
     | ClickWindowDays1
@@ -842,7 +841,6 @@ stringFromClickWindowDays model =
 
         ClickWindowDays60 ->
             60
-
 
 
 
@@ -889,7 +887,6 @@ stringFromEngagementWindowDays model =
 
 
 
-
 type ViewWindowDays
     = ViewWindowDays0
     | ViewWindowDays1
@@ -933,28 +930,26 @@ stringFromViewWindowDays model =
 
 
 
-
 type ConversionReportTime
-    = ConversionReportTimeADACTION
-    | ConversionReportTimeCONVERSION
+    = ConversionReportTimeTIMEOFADACTION
+    | ConversionReportTimeTIMEOFCONVERSION
 
 
 conversionReportTimeVariants : List ConversionReportTime
 conversionReportTimeVariants =
-    [ ConversionReportTimeADACTION
-    , ConversionReportTimeCONVERSION
+    [ ConversionReportTimeTIMEOFADACTION
+    , ConversionReportTimeTIMEOFCONVERSION
     ]
 
 
 stringFromConversionReportTime : ConversionReportTime -> String
 stringFromConversionReportTime model =
     case model of
-        ConversionReportTimeADACTION ->
+        ConversionReportTimeTIMEOFADACTION ->
             "TIME_OF_AD_ACTION"
 
-        ConversionReportTimeCONVERSION ->
+        ConversionReportTimeTIMEOFCONVERSION ->
             "TIME_OF_CONVERSION"
-
 
 
 
@@ -1726,7 +1721,6 @@ stringFromColumns model =
 
 
 
-
 type ClickWindowDays
     = ClickWindowDays0
     | ClickWindowDays1
@@ -1767,7 +1761,6 @@ stringFromClickWindowDays model =
 
         ClickWindowDays60 ->
             60
-
 
 
 
@@ -1814,7 +1807,6 @@ stringFromEngagementWindowDays model =
 
 
 
-
 type ViewWindowDays
     = ViewWindowDays0
     | ViewWindowDays1
@@ -1858,28 +1850,26 @@ stringFromViewWindowDays model =
 
 
 
-
 type ConversionReportTime
-    = ConversionReportTimeADACTION
-    | ConversionReportTimeCONVERSION
+    = ConversionReportTimeTIMEOFADACTION
+    | ConversionReportTimeTIMEOFCONVERSION
 
 
 conversionReportTimeVariants : List ConversionReportTime
 conversionReportTimeVariants =
-    [ ConversionReportTimeADACTION
-    , ConversionReportTimeCONVERSION
+    [ ConversionReportTimeTIMEOFADACTION
+    , ConversionReportTimeTIMEOFCONVERSION
     ]
 
 
 stringFromConversionReportTime : ConversionReportTime -> String
 stringFromConversionReportTime model =
     case model of
-        ConversionReportTimeADACTION ->
+        ConversionReportTimeTIMEOFADACTION ->
             "TIME_OF_AD_ACTION"
 
-        ConversionReportTimeCONVERSION ->
+        ConversionReportTimeTIMEOFCONVERSION ->
             "TIME_OF_CONVERSION"
-
 
 
 
@@ -1921,7 +1911,6 @@ stringFromEntityStatuses model =
 
 
 
-
 type Order_
     = Order_ASCENDING
     | Order_DESCENDING
@@ -1945,98 +1934,119 @@ stringFromOrder_ model =
 
 
 
-{-| Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/> If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href=\"https://help.pinterest.com/en/business/article/promoted-pins-overview\" target=\"_blank\">Ads Overview</a>.) <p/> You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
+{-| Create ad preview with pin or image
+
+Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/> If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href=\"https://help.pinterest.com/en/business/article/promoted-pins-overview\" target=\"_blank\">Ads Overview</a>.) <p/> You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
+
 -}
 adPreviewsCreate : String -> Api.Data.AdPreviewRequest -> Api.Request Api.Data.AdPreviewURLResponse
 adPreviewsCreate adAccountId_path adPreviewRequest_body =
     Api.request
         "POST"
         "/ad_accounts/{ad_account_id}/ad_previews"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Just (Api.Data.encodeAdPreviewRequest adPreviewRequest_body)))
         Api.Data.adPreviewURLResponseDecoder
 
 
-{-| Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+{-| Get targeting analytics for ads
+
+Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+
 -}
 adTargetingAnalyticsGet : String -> List String -> Posix -> Posix -> List AdsAnalyticsAdTargetingType -> List Columns -> Granularity -> Maybe ClickWindowDays -> Maybe EngagementWindowDays -> Maybe ViewWindowDays -> Maybe ConversionReportTime -> Maybe ConversionReportAttributionType -> Api.Request Api.Data.MetricsResponse
 adTargetingAnalyticsGet adAccountId_path adIds_query startDate_query endDate_query targetingTypes_query columns_query granularity_query clickWindowDays_query engagementWindowDays_query viewWindowDays_query conversionReportTime_query attributionTypes_query =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/ads/targeting_analytics"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         [ ( "ad_ids", Just <| (String.join "," << List.map identity) adIds_query ), ( "start_date", Just <| Api.Time.dateToString startDate_query ), ( "end_date", Just <| Api.Time.dateToString endDate_query ), ( "targeting_types", Just <| (String.join "," << List.map Api.Data.stringFromAdsAnalyticsAdTargetingType) targetingTypes_query ), ( "columns", Just <| (String.join "," << List.map stringFromColumns) columns_query ), ( "granularity", Just <| Api.Data.stringFromGranularity granularity_query ), ( "click_window_days", Maybe.map String.fromInt stringFromClickWindowDays clickWindowDays_query ), ( "engagement_window_days", Maybe.map String.fromInt stringFromEngagementWindowDays engagementWindowDays_query ), ( "view_window_days", Maybe.map String.fromInt stringFromViewWindowDays viewWindowDays_query ), ( "conversion_report_time", Maybe.map stringFromConversionReportTime conversionReportTime_query ), ( "attribution_types", Maybe.map Api.Data.stringFromConversionReportAttributionType attributionTypes_query ) ]
         []
         Nothing
         Api.Data.metricsResponseDecoder
 
 
-{-| Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+{-| Get ad analytics
+
+Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+
 -}
 adsAnalytics : String -> Posix -> Posix -> List Columns -> Granularity -> Maybe (List String) -> Maybe ClickWindowDays -> Maybe EngagementWindowDays -> Maybe ViewWindowDays -> Maybe ConversionReportTime -> Maybe (List String) -> Maybe (List String) -> Api.Request (List AdsAnalyticsResponseInner)
 adsAnalytics adAccountId_path startDate_query endDate_query columns_query granularity_query adIds_query clickWindowDays_query engagementWindowDays_query viewWindowDays_query conversionReportTime_query pinIds_query campaignIds_query =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/ads/analytics"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         [ ( "start_date", Just <| Api.Time.dateToString startDate_query ), ( "end_date", Just <| Api.Time.dateToString endDate_query ), ( "ad_ids", Maybe.map (String.join "," << List.map identity) adIds_query ), ( "columns", Just <| (String.join "," << List.map stringFromColumns) columns_query ), ( "granularity", Just <| Api.Data.stringFromGranularity granularity_query ), ( "click_window_days", Maybe.map String.fromInt stringFromClickWindowDays clickWindowDays_query ), ( "engagement_window_days", Maybe.map String.fromInt stringFromEngagementWindowDays engagementWindowDays_query ), ( "view_window_days", Maybe.map String.fromInt stringFromViewWindowDays viewWindowDays_query ), ( "conversion_report_time", Maybe.map stringFromConversionReportTime conversionReportTime_query ), ( "pin_ids", Maybe.map (String.join "," << List.map identity) pinIds_query ), ( "campaign_ids", Maybe.map (String.join "," << List.map identity) campaignIds_query ) ]
         []
         Nothing
         (Json.Decode.list Api.Data.adsAnalyticsResponseInnerDecoder)
 
 
-{-| Create multiple new ads. Request must contain ad_group_id, creative_type, and the source Pin pin_id.
+{-| Create ads
+
+Create multiple new ads. Request must contain ad_group_id, creative_type, and the source Pin pin_id.
+
 -}
 adsCreate : String -> List Api.Data.AdCreateRequest -> Api.Request Api.Data.AdArrayResponse
 adsCreate adAccountId_path adCreateRequest_body =
     Api.request
         "POST"
         "/ad_accounts/{ad_account_id}/ads"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Just (Json.Encode.list encodeAdCreateRequest adCreateRequest_body)))
         Api.Data.adArrayResponseDecoder
 
 
-{-| Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will contain additional information from the Ad Review process. For more information about our policies and rejection reasons see the <a href=\"https://www.pinterest.com/_/_/policy/advertising-guidelines/\" target=\"_blank\">Pinterest advertising standards</a>.
+{-| Get ad
+
+Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will contain additional information from the Ad Review process. For more information about our policies and rejection reasons see the <a href=\"https://www.pinterest.com/_/_/policy/advertising-guidelines/\" target=\"_blank\">Pinterest advertising standards</a>.
+
 -}
 adsGet : String -> String -> Api.Request Api.Data.AdResponse
 adsGet adAccountId_path adId_path =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/ads/{ad_id}"
-        [ ( "adAccountId", identity adAccountId_path ), ( "adId", identity adId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ), ( "ad_id", identity adId_path ) ]
         []
         []
         Nothing
         Api.Data.adResponseDecoder
 
 
-{-| List ads that meet the filters provided:   - Listed campaign ids or ad group ids or ad ids   - Listed entity statuses <p/> If no filter is provided, all ads in the ad account are returned. <p/> <strong>Note:</strong><p/> Provide only campaign_id or ad_group_id or ad_id. Do not provide more than one type. <p/> Review status is provided for each ad; if review_status is REJECTED, the rejected_reasons field will contain additional information. For more, see <a href=\"https://policy.pinterest.com/en/advertising-guidelines\">Pinterest advertising standards</a>.
+{-| List ads
+
+List ads that meet the filters provided:   - Listed campaign ids or ad group ids or ad ids   - Listed entity statuses <p/> If no filter is provided, all ads in the ad account are returned. <p/> <strong>Note:</strong><p/> Provide only campaign_id or ad_group_id or ad_id. Do not provide more than one type. <p/> Review status is provided for each ad; if review_status is REJECTED, the rejected_reasons field will contain additional information. For more, see <a href=\"https://policy.pinterest.com/en/advertising-guidelines\">Pinterest advertising standards</a>.
+
 -}
 adsList : String -> Maybe (List String) -> Maybe (List String) -> Maybe (List String) -> Maybe (List EntityStatuses) -> Maybe Int -> Maybe Order_ -> Maybe String -> Api.Request Api.Data.AdsList200Response
 adsList adAccountId_path campaignIds_query adGroupIds_query adIds_query entityStatuses_query pageSize_query order_query bookmark_query =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/ads"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         [ ( "campaign_ids", Maybe.map (String.join "," << List.map identity) campaignIds_query ), ( "ad_group_ids", Maybe.map (String.join "," << List.map identity) adGroupIds_query ), ( "ad_ids", Maybe.map (String.join "," << List.map identity) adIds_query ), ( "entity_statuses", Maybe.map (String.join "," << List.map stringFromEntityStatuses) entityStatuses_query ), ( "page_size", Maybe.map String.fromInt pageSize_query ), ( "order", Maybe.map stringFromOrder_ order_query ), ( "bookmark", Maybe.map identity bookmark_query ) ]
         []
         Nothing
         Api.Data.adsList200ResponseDecoder
 
 
-{-| Update multiple existing ads
+{-| Update ads
+
+Update multiple existing ads
+
 -}
 adsUpdate : String -> List Api.Data.AdUpdateRequest -> Api.Request Api.Data.AdArrayResponse
 adsUpdate adAccountId_path adUpdateRequest_body =
     Api.request
         "PATCH"
         "/ad_accounts/{ad_account_id}/ads"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Just (Json.Encode.list encodeAdUpdateRequest adUpdateRequest_body)))

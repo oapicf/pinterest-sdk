@@ -11,7 +11,7 @@ import org.openapitools.model.ItemAttributesRequest;
  * Object describing an item batch record to create items
  */
 @ApiModel(description = "Object describing an item batch record to create items")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2025-05-10T05:39:24.501669360Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ItemCreateBatchRecord   {
   @JsonProperty("item_id")
   private String itemId;

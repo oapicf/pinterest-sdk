@@ -18,29 +18,22 @@ typedef struct hotel_processing_record_t hotel_processing_record_t;
 #include "item_processing_status.h"
 #include "item_validation_event.h"
 
-// Enum  for hotel_processing_record
-
-typedef enum  { pinterest_rest_api_hotel_processing_record__NULL = 0, pinterest_rest_api_hotel_processing_record__SUCCESS, pinterest_rest_api_hotel_processing_record__FAILURE, pinterest_rest_api_hotel_processing_record__PROCESSING } pinterest_rest_api_hotel_processing_record__e;
-
-char* hotel_processing_record_status_ToString(pinterest_rest_api_hotel_processing_record__e status);
-
-pinterest_rest_api_hotel_processing_record__e hotel_processing_record_status_FromString(char* status);
-
 
 
 typedef struct hotel_processing_record_t {
     char *hotel_id; // string
     list_t *errors; //nonprimitive container
     list_t *warnings; //nonprimitive container
-    item_processing_status_t *status; // custom
+    pinterest_rest_api_item_processing_status__e status; //referenced enum
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } hotel_processing_record_t;
 
-hotel_processing_record_t *hotel_processing_record_create(
+__attribute__((deprecated)) hotel_processing_record_t *hotel_processing_record_create(
     char *hotel_id,
     list_t *errors,
     list_t *warnings,
-    item_processing_status_t *status
+    pinterest_rest_api_item_processing_status__e status
 );
 
 void hotel_processing_record_free(hotel_processing_record_t *hotel_processing_record);

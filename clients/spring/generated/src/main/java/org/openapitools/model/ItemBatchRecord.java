@@ -15,6 +15,7 @@ import org.openapitools.model.ItemDeleteDiscontinuedBatchRecord;
 import org.openapitools.model.ItemUpdateBatchRecord;
 import org.openapitools.model.ItemUpsertBatchRecord;
 import org.openapitools.model.UpdateMaskFieldType;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -29,6 +30,6 @@ import java.util.*;
 import javax.annotation.Generated;
 
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public interface ItemBatchRecord {
 }

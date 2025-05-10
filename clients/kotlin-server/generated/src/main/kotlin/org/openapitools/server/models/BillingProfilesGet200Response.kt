@@ -13,13 +13,15 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.BillingProfilesResponse
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items 
  * @param bookmark 
  */
+@Serializable
 data class BillingProfilesGet200Response(
     val items: kotlin.collections.List<BillingProfilesResponse>,
     val bookmark: kotlin.String? = null
-) 
+)
 

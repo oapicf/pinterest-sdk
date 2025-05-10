@@ -1122,9 +1122,9 @@ Protected Class ProductGroupPromotionsApi
 		Private Function Conversion_report_timeEnum_ProductGroupsAnalyticsToString(value As Conversion_report_timeEnum_ProductGroupsAnalytics) As String
 		  Select Case value
 		    
-		    Case Conversion_report_timeEnum_ProductGroupsAnalytics.AdAction
+		    Case Conversion_report_timeEnum_ProductGroupsAnalytics.TimeOfAdAction
 		      Return "TIME_OF_AD_ACTION"
-		    Case Conversion_report_timeEnum_ProductGroupsAnalytics.Conversion
+		    Case Conversion_report_timeEnum_ProductGroupsAnalytics.TimeOfConversion
 		      Return "TIME_OF_CONVERSION"
 		    
 		  End Select
@@ -1416,8 +1416,8 @@ Protected Class ProductGroupPromotionsApi
 
 	#tag Enum, Name = Conversion_report_timeEnum_ProductGroupsAnalytics, Type = Integer, Flags = &h0
 		
-        AdAction
-        Conversion
+        TimeOfAdAction
+        TimeOfConversion
 		
 	#tag EndEnum
 

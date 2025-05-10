@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Metadata of the member/partner that has access to the asset.
  * @param email Email of the business member/partner.
  * @param id Unique identifier of the business member/partner.
  * @param username Username of the business member/partner.
  */
+@Serializable
 data class BusinessAccessUserSummary(
     /* Email of the business member/partner. */
     val email: kotlin.String? = null,
@@ -25,5 +27,5 @@ data class BusinessAccessUserSummary(
     val id: kotlin.String? = null,
     /* Username of the business member/partner. */
     val username: kotlin.String? = null
-) 
+)
 

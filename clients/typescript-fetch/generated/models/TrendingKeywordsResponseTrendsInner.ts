@@ -90,11 +90,11 @@ export function TrendingKeywordsResponseTrendsInnerFromJSONTyped(json: any, igno
     };
 }
 
-  export function TrendingKeywordsResponseTrendsInnerToJSON(json: any): TrendingKeywordsResponseTrendsInner {
-      return TrendingKeywordsResponseTrendsInnerToJSONTyped(json, false);
-  }
+export function TrendingKeywordsResponseTrendsInnerToJSON(json: any): TrendingKeywordsResponseTrendsInner {
+    return TrendingKeywordsResponseTrendsInnerToJSONTyped(json, false);
+}
 
-  export function TrendingKeywordsResponseTrendsInnerToJSONTyped(value?: TrendingKeywordsResponseTrendsInner | null, ignoreDiscriminator: boolean = false): any {
+export function TrendingKeywordsResponseTrendsInnerToJSONTyped(value?: TrendingKeywordsResponseTrendsInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

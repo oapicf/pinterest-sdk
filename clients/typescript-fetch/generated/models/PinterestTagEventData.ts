@@ -135,11 +135,11 @@ export function PinterestTagEventDataFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function PinterestTagEventDataToJSON(json: any): PinterestTagEventData {
-      return PinterestTagEventDataToJSONTyped(json, false);
-  }
+export function PinterestTagEventDataToJSON(json: any): PinterestTagEventData {
+    return PinterestTagEventDataToJSONTyped(json, false);
+}
 
-  export function PinterestTagEventDataToJSONTyped(value?: PinterestTagEventData | null, ignoreDiscriminator: boolean = false): any {
+export function PinterestTagEventDataToJSONTyped(value?: PinterestTagEventData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

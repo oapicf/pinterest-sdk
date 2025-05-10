@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Product counts for a CatalogsProductGroup")
 @JsonTypeName("CatalogsProductGroupProductCountsVertical")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsProductGroupProductCountsVertical   {
   private CatalogsType catalogType;
   private BigDecimal inStock;
@@ -39,6 +39,26 @@ public class CatalogsProductGroupProductCountsVertical   {
   private BigDecimal preorder;
   private BigDecimal total;
   private BigDecimal videos;
+
+  public CatalogsProductGroupProductCountsVertical() {
+  }
+
+  @JsonCreator
+  public CatalogsProductGroupProductCountsVertical(
+    @JsonProperty(required = true, value = "catalog_type") CatalogsType catalogType,
+    @JsonProperty(required = true, value = "in_stock") BigDecimal inStock,
+    @JsonProperty(required = true, value = "out_of_stock") BigDecimal outOfStock,
+    @JsonProperty(required = true, value = "preorder") BigDecimal preorder,
+    @JsonProperty(required = true, value = "total") BigDecimal total,
+    @JsonProperty(required = true, value = "videos") BigDecimal videos
+  ) {
+    this.catalogType = catalogType;
+    this.inStock = inStock;
+    this.outOfStock = outOfStock;
+    this.preorder = preorder;
+    this.total = total;
+    this.videos = videos;
+  }
 
   /**
    **/
@@ -49,12 +69,12 @@ public class CatalogsProductGroupProductCountsVertical   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   @NotNull public CatalogsType getCatalogType() {
     return catalogType;
   }
 
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   public void setCatalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
   }
@@ -69,12 +89,12 @@ public class CatalogsProductGroupProductCountsVertical   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("in_stock")
+  @JsonProperty(required = true, value = "in_stock")
   @NotNull @Valid  @DecimalMin("0")public BigDecimal getInStock() {
     return inStock;
   }
 
-  @JsonProperty("in_stock")
+  @JsonProperty(required = true, value = "in_stock")
   public void setInStock(BigDecimal inStock) {
     this.inStock = inStock;
   }
@@ -89,12 +109,12 @@ public class CatalogsProductGroupProductCountsVertical   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("out_of_stock")
+  @JsonProperty(required = true, value = "out_of_stock")
   @NotNull @Valid  @DecimalMin("0")public BigDecimal getOutOfStock() {
     return outOfStock;
   }
 
-  @JsonProperty("out_of_stock")
+  @JsonProperty(required = true, value = "out_of_stock")
   public void setOutOfStock(BigDecimal outOfStock) {
     this.outOfStock = outOfStock;
   }
@@ -109,12 +129,12 @@ public class CatalogsProductGroupProductCountsVertical   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("preorder")
+  @JsonProperty(required = true, value = "preorder")
   @NotNull @Valid  @DecimalMin("0")public BigDecimal getPreorder() {
     return preorder;
   }
 
-  @JsonProperty("preorder")
+  @JsonProperty(required = true, value = "preorder")
   public void setPreorder(BigDecimal preorder) {
     this.preorder = preorder;
   }
@@ -129,12 +149,12 @@ public class CatalogsProductGroupProductCountsVertical   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("total")
+  @JsonProperty(required = true, value = "total")
   @NotNull @Valid  @DecimalMin("0")public BigDecimal getTotal() {
     return total;
   }
 
-  @JsonProperty("total")
+  @JsonProperty(required = true, value = "total")
   public void setTotal(BigDecimal total) {
     this.total = total;
   }
@@ -149,12 +169,12 @@ public class CatalogsProductGroupProductCountsVertical   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("videos")
+  @JsonProperty(required = true, value = "videos")
   @NotNull @Valid  @DecimalMin("0")public BigDecimal getVideos() {
     return videos;
   }
 
-  @JsonProperty("videos")
+  @JsonProperty(required = true, value = "videos")
   public void setVideos(BigDecimal videos) {
     this.videos = videos;
   }

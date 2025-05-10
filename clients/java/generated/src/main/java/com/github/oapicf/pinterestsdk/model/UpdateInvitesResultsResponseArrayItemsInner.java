@@ -51,20 +51,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * UpdateInvitesResultsResponseArrayItemsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class UpdateInvitesResultsResponseArrayItemsInner {
   public static final String SERIALIZED_NAME_EXCEPTION = "exception";
   @SerializedName(SERIALIZED_NAME_EXCEPTION)
+  @javax.annotation.Nullable
   private InviteExceptionResponse exception;
 
   public static final String SERIALIZED_NAME_INVITE = "invite";
   @SerializedName(SERIALIZED_NAME_INVITE)
+  @javax.annotation.Nullable
   private InviteBusinessRoleBinding invite;
 
   public UpdateInvitesResultsResponseArrayItemsInner() {
   }
 
-  public UpdateInvitesResultsResponseArrayItemsInner exception(InviteExceptionResponse exception) {
+  public UpdateInvitesResultsResponseArrayItemsInner exception(@javax.annotation.Nullable InviteExceptionResponse exception) {
     this.exception = exception;
     return this;
   }
@@ -78,12 +80,12 @@ public class UpdateInvitesResultsResponseArrayItemsInner {
     return exception;
   }
 
-  public void setException(InviteExceptionResponse exception) {
+  public void setException(@javax.annotation.Nullable InviteExceptionResponse exception) {
     this.exception = exception;
   }
 
 
-  public UpdateInvitesResultsResponseArrayItemsInner invite(InviteBusinessRoleBinding invite) {
+  public UpdateInvitesResultsResponseArrayItemsInner invite(@javax.annotation.Nullable InviteBusinessRoleBinding invite) {
     this.invite = invite;
     return this;
   }
@@ -97,7 +99,7 @@ public class UpdateInvitesResultsResponseArrayItemsInner {
     return invite;
   }
 
-  public void setInvite(InviteBusinessRoleBinding invite) {
+  public void setInvite(@javax.annotation.Nullable InviteBusinessRoleBinding invite) {
     this.invite = invite;
   }
 

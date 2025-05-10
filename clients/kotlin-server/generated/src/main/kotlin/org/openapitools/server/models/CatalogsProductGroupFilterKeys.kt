@@ -46,6 +46,7 @@ import org.openapitools.server.models.ProductType2Filter
 import org.openapitools.server.models.ProductType3Filter
 import org.openapitools.server.models.ProductType4Filter
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param MIN_PRICE 
@@ -77,6 +78,7 @@ import org.openapitools.server.models.ProductType4Filter
  * @param GOOGLE_PRODUCT_CATEGORY_0 
  * @param PRODUCT_GROUP 
  */
+@Serializable
 data class CatalogsProductGroupFilterKeys(
     val MIN_PRICE: CatalogsProductGroupPricingCriteria,
     val MAX_PRICE: CatalogsProductGroupPricingCriteria,
@@ -106,5 +108,5 @@ data class CatalogsProductGroupFilterKeys(
     val GOOGLE_PRODUCT_CATEGORY_1: CatalogsProductGroupMultipleStringListCriteria,
     val GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria,
     val PRODUCT_GROUP: CatalogsProductGroupMultipleStringCriteria
-) 
+)
 

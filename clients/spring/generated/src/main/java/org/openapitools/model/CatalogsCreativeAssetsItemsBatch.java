@@ -14,6 +14,7 @@ import org.openapitools.model.BatchOperationStatus;
 import org.openapitools.model.CatalogsType;
 import org.openapitools.model.CreativeAssetsProcessingRecord;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -33,18 +34,18 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsCreativeAssetsItemsBatch", description = "Object describing the catalogs creative assets items batch")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsCreativeAssetsItemsBatch implements CatalogsItemsBatch {
 
-  private String batchId;
+  private @Nullable String batchId;
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-  private OffsetDateTime createdTime;
+  private @Nullable OffsetDateTime createdTime;
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private JsonNullable<OffsetDateTime> completedTime = JsonNullable.<OffsetDateTime>undefined();
 
-  private BatchOperationStatus status;
+  private @Nullable BatchOperationStatus status;
 
   private CatalogsType catalogType;
 

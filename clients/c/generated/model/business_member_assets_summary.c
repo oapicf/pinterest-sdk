@@ -5,7 +5,7 @@
 
 
 
-business_member_assets_summary_t *business_member_assets_summary_create(
+static business_member_assets_summary_t *business_member_assets_summary_create_internal(
     list_t *ad_accounts,
     list_t *profiles
     ) {
@@ -16,12 +16,26 @@ business_member_assets_summary_t *business_member_assets_summary_create(
     business_member_assets_summary_local_var->ad_accounts = ad_accounts;
     business_member_assets_summary_local_var->profiles = profiles;
 
+    business_member_assets_summary_local_var->_library_owned = 1;
     return business_member_assets_summary_local_var;
 }
 
+__attribute__((deprecated)) business_member_assets_summary_t *business_member_assets_summary_create(
+    list_t *ad_accounts,
+    list_t *profiles
+    ) {
+    return business_member_assets_summary_create_internal (
+        ad_accounts,
+        profiles
+        );
+}
 
 void business_member_assets_summary_free(business_member_assets_summary_t *business_member_assets_summary) {
     if(NULL == business_member_assets_summary){
+        return ;
+    }
+    if(business_member_assets_summary->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "business_member_assets_summary_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -104,6 +118,9 @@ business_member_assets_summary_t *business_member_assets_summary_parseFromJSON(c
 
     // business_member_assets_summary->ad_accounts
     cJSON *ad_accounts = cJSON_GetObjectItemCaseSensitive(business_member_assets_summaryJSON, "ad_accounts");
+    if (cJSON_IsNull(ad_accounts)) {
+        ad_accounts = NULL;
+    }
     if (ad_accounts) { 
     cJSON *ad_accounts_local_nonprimitive = NULL;
     if(!cJSON_IsArray(ad_accounts)){
@@ -125,6 +142,9 @@ business_member_assets_summary_t *business_member_assets_summary_parseFromJSON(c
 
     // business_member_assets_summary->profiles
     cJSON *profiles = cJSON_GetObjectItemCaseSensitive(business_member_assets_summaryJSON, "profiles");
+    if (cJSON_IsNull(profiles)) {
+        profiles = NULL;
+    }
     if (profiles) { 
     cJSON *profiles_local_nonprimitive = NULL;
     if(!cJSON_IsArray(profiles)){
@@ -145,7 +165,7 @@ business_member_assets_summary_t *business_member_assets_summary_parseFromJSON(c
     }
 
 
-    business_member_assets_summary_local_var = business_member_assets_summary_create (
+    business_member_assets_summary_local_var = business_member_assets_summary_create_internal (
         ad_accounts ? ad_accountsList : NULL,
         profiles ? profilesList : NULL
         );

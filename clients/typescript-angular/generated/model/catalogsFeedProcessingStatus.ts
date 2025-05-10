@@ -12,8 +12,11 @@
 export type CatalogsFeedProcessingStatus = 'COMPLETED' | 'FAILED' | 'PROCESSING';
 
 export const CatalogsFeedProcessingStatus = {
+
     Completed: 'COMPLETED' as CatalogsFeedProcessingStatus,
+
     Failed: 'FAILED' as CatalogsFeedProcessingStatus,
+
     Processing: 'PROCESSING' as CatalogsFeedProcessingStatus
 };
 

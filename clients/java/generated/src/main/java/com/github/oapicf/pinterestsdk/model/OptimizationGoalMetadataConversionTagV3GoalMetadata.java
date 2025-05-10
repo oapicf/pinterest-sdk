@@ -50,10 +50,11 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * OptimizationGoalMetadataConversionTagV3GoalMetadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
   public static final String SERIALIZED_NAME_ATTRIBUTION_WINDOWS = "attribution_windows";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTION_WINDOWS)
+  @javax.annotation.Nullable
   private OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows attributionWindows;
 
   /**
@@ -126,18 +127,22 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
 
   public static final String SERIALIZED_NAME_CONVERSION_EVENT = "conversion_event";
   @SerializedName(SERIALIZED_NAME_CONVERSION_EVENT)
+  @javax.annotation.Nullable
   private ConversionEventEnum conversionEvent;
 
   public static final String SERIALIZED_NAME_CONVERSION_TAG_ID = "conversion_tag_id";
   @SerializedName(SERIALIZED_NAME_CONVERSION_TAG_ID)
+  @javax.annotation.Nullable
   private String conversionTagId;
 
   public static final String SERIALIZED_NAME_CPA_GOAL_VALUE_IN_MICRO_CURRENCY = "cpa_goal_value_in_micro_currency";
   @SerializedName(SERIALIZED_NAME_CPA_GOAL_VALUE_IN_MICRO_CURRENCY)
+  @javax.annotation.Nullable
   private String cpaGoalValueInMicroCurrency;
 
   public static final String SERIALIZED_NAME_IS_ROAS_OPTIMIZED = "is_roas_optimized";
   @SerializedName(SERIALIZED_NAME_IS_ROAS_OPTIMIZED)
+  @javax.annotation.Nullable
   private Boolean isRoasOptimized;
 
   /**
@@ -194,12 +199,13 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
 
   public static final String SERIALIZED_NAME_LEARNING_MODE_TYPE = "learning_mode_type";
   @SerializedName(SERIALIZED_NAME_LEARNING_MODE_TYPE)
+  @javax.annotation.Nullable
   private LearningModeTypeEnum learningModeType;
 
   public OptimizationGoalMetadataConversionTagV3GoalMetadata() {
   }
 
-  public OptimizationGoalMetadataConversionTagV3GoalMetadata attributionWindows(OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows attributionWindows) {
+  public OptimizationGoalMetadataConversionTagV3GoalMetadata attributionWindows(@javax.annotation.Nullable OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows attributionWindows) {
     this.attributionWindows = attributionWindows;
     return this;
   }
@@ -213,12 +219,12 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
     return attributionWindows;
   }
 
-  public void setAttributionWindows(OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows attributionWindows) {
+  public void setAttributionWindows(@javax.annotation.Nullable OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows attributionWindows) {
     this.attributionWindows = attributionWindows;
   }
 
 
-  public OptimizationGoalMetadataConversionTagV3GoalMetadata conversionEvent(ConversionEventEnum conversionEvent) {
+  public OptimizationGoalMetadataConversionTagV3GoalMetadata conversionEvent(@javax.annotation.Nullable ConversionEventEnum conversionEvent) {
     this.conversionEvent = conversionEvent;
     return this;
   }
@@ -232,12 +238,12 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
     return conversionEvent;
   }
 
-  public void setConversionEvent(ConversionEventEnum conversionEvent) {
+  public void setConversionEvent(@javax.annotation.Nullable ConversionEventEnum conversionEvent) {
     this.conversionEvent = conversionEvent;
   }
 
 
-  public OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagId(String conversionTagId) {
+  public OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagId(@javax.annotation.Nullable String conversionTagId) {
     this.conversionTagId = conversionTagId;
     return this;
   }
@@ -251,12 +257,12 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
     return conversionTagId;
   }
 
-  public void setConversionTagId(String conversionTagId) {
+  public void setConversionTagId(@javax.annotation.Nullable String conversionTagId) {
     this.conversionTagId = conversionTagId;
   }
 
 
-  public OptimizationGoalMetadataConversionTagV3GoalMetadata cpaGoalValueInMicroCurrency(String cpaGoalValueInMicroCurrency) {
+  public OptimizationGoalMetadataConversionTagV3GoalMetadata cpaGoalValueInMicroCurrency(@javax.annotation.Nullable String cpaGoalValueInMicroCurrency) {
     this.cpaGoalValueInMicroCurrency = cpaGoalValueInMicroCurrency;
     return this;
   }
@@ -270,12 +276,12 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
     return cpaGoalValueInMicroCurrency;
   }
 
-  public void setCpaGoalValueInMicroCurrency(String cpaGoalValueInMicroCurrency) {
+  public void setCpaGoalValueInMicroCurrency(@javax.annotation.Nullable String cpaGoalValueInMicroCurrency) {
     this.cpaGoalValueInMicroCurrency = cpaGoalValueInMicroCurrency;
   }
 
 
-  public OptimizationGoalMetadataConversionTagV3GoalMetadata isRoasOptimized(Boolean isRoasOptimized) {
+  public OptimizationGoalMetadataConversionTagV3GoalMetadata isRoasOptimized(@javax.annotation.Nullable Boolean isRoasOptimized) {
     this.isRoasOptimized = isRoasOptimized;
     return this;
   }
@@ -289,12 +295,12 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
     return isRoasOptimized;
   }
 
-  public void setIsRoasOptimized(Boolean isRoasOptimized) {
+  public void setIsRoasOptimized(@javax.annotation.Nullable Boolean isRoasOptimized) {
     this.isRoasOptimized = isRoasOptimized;
   }
 
 
-  public OptimizationGoalMetadataConversionTagV3GoalMetadata learningModeType(LearningModeTypeEnum learningModeType) {
+  public OptimizationGoalMetadataConversionTagV3GoalMetadata learningModeType(@javax.annotation.Nullable LearningModeTypeEnum learningModeType) {
     this.learningModeType = learningModeType;
     return this;
   }
@@ -308,7 +314,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
     return learningModeType;
   }
 
-  public void setLearningModeType(LearningModeTypeEnum learningModeType) {
+  public void setLearningModeType(@javax.annotation.Nullable LearningModeTypeEnum learningModeType) {
     this.learningModeType = learningModeType;
   }
 

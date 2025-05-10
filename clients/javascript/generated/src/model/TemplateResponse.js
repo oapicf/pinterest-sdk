@@ -9884,13 +9884,13 @@ TemplateResponse['ConversionReportTimeTypeEnum'] = {
      * value: "TIME_OF_AD_ACTION"
      * @const
      */
-    "AD_ACTION": "TIME_OF_AD_ACTION",
+    "TIME_OF_AD_ACTION": "TIME_OF_AD_ACTION",
 
     /**
      * value: "TIME_OF_CONVERSION"
      * @const
      */
-    "CONVERSION": "TIME_OF_CONVERSION"
+    "TIME_OF_CONVERSION": "TIME_OF_CONVERSION"
 };
 
 
@@ -9905,19 +9905,19 @@ TemplateResponse['CreationSourceEnum'] = {
      * value: "ADS_API"
      * @const
      */
-    "API": "ADS_API",
+    "ADS_API": "ADS_API",
 
     /**
      * value: "ADS_MANAGER_REPORTING_PAGE"
      * @const
      */
-    "MANAGER_REPORTING_PAGE": "ADS_MANAGER_REPORTING_PAGE",
+    "ADS_MANAGER_REPORTING_PAGE": "ADS_MANAGER_REPORTING_PAGE",
 
     /**
      * value: "ADS_MANAGER_REPORT_BUILDER"
      * @const
      */
-    "MANAGER_REPORT_BUILDER": "ADS_MANAGER_REPORT_BUILDER"
+    "ADS_MANAGER_REPORT_BUILDER": "ADS_MANAGER_REPORT_BUILDER"
 };
 
 

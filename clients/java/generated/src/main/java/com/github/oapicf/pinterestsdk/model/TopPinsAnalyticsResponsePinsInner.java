@@ -52,24 +52,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Array with metrics, status, and pin id for the requested metric
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TopPinsAnalyticsResponsePinsInner {
   public static final String SERIALIZED_NAME_METRICS = "metrics";
   @SerializedName(SERIALIZED_NAME_METRICS)
+  @javax.annotation.Nullable
   private Map<String, BigDecimal> metrics = new HashMap<>();
 
   public static final String SERIALIZED_NAME_DATA_STATUS = "data_status";
   @SerializedName(SERIALIZED_NAME_DATA_STATUS)
+  @javax.annotation.Nullable
   private Map<String, DataStatus> dataStatus = new HashMap<>();
 
   public static final String SERIALIZED_NAME_PIN_ID = "pin_id";
   @SerializedName(SERIALIZED_NAME_PIN_ID)
+  @javax.annotation.Nullable
   private String pinId;
 
   public TopPinsAnalyticsResponsePinsInner() {
   }
 
-  public TopPinsAnalyticsResponsePinsInner metrics(Map<String, BigDecimal> metrics) {
+  public TopPinsAnalyticsResponsePinsInner metrics(@javax.annotation.Nullable Map<String, BigDecimal> metrics) {
     this.metrics = metrics;
     return this;
   }
@@ -91,12 +94,12 @@ public class TopPinsAnalyticsResponsePinsInner {
     return metrics;
   }
 
-  public void setMetrics(Map<String, BigDecimal> metrics) {
+  public void setMetrics(@javax.annotation.Nullable Map<String, BigDecimal> metrics) {
     this.metrics = metrics;
   }
 
 
-  public TopPinsAnalyticsResponsePinsInner dataStatus(Map<String, DataStatus> dataStatus) {
+  public TopPinsAnalyticsResponsePinsInner dataStatus(@javax.annotation.Nullable Map<String, DataStatus> dataStatus) {
     this.dataStatus = dataStatus;
     return this;
   }
@@ -118,12 +121,12 @@ public class TopPinsAnalyticsResponsePinsInner {
     return dataStatus;
   }
 
-  public void setDataStatus(Map<String, DataStatus> dataStatus) {
+  public void setDataStatus(@javax.annotation.Nullable Map<String, DataStatus> dataStatus) {
     this.dataStatus = dataStatus;
   }
 
 
-  public TopPinsAnalyticsResponsePinsInner pinId(String pinId) {
+  public TopPinsAnalyticsResponsePinsInner pinId(@javax.annotation.Nullable String pinId) {
     this.pinId = pinId;
     return this;
   }
@@ -137,7 +140,7 @@ public class TopPinsAnalyticsResponsePinsInner {
     return pinId;
   }
 
-  public void setPinId(String pinId) {
+  public void setPinId(@javax.annotation.Nullable String pinId) {
     this.pinId = pinId;
   }
 

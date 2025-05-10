@@ -65,11 +65,11 @@ export function KeywordsRequestFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-  export function KeywordsRequestToJSON(json: any): KeywordsRequest {
-      return KeywordsRequestToJSONTyped(json, false);
-  }
+export function KeywordsRequestToJSON(json: any): KeywordsRequest {
+    return KeywordsRequestToJSONTyped(json, false);
+}
 
-  export function KeywordsRequestToJSONTyped(value?: KeywordsRequest | null, ignoreDiscriminator: boolean = false): any {
+export function KeywordsRequestToJSONTyped(value?: KeywordsRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -35,9 +35,10 @@ typedef struct ads_credit_discounts_response_t {
     char *title; // string
     double remaining_discount_in_micro_currency; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } ads_credit_discounts_response_t;
 
-ads_credit_discounts_response_t *ads_credit_discounts_response_create(
+__attribute__((deprecated)) ads_credit_discounts_response_t *ads_credit_discounts_response_create(
     int active,
     char *advertiser_id,
     pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_e discount_type,

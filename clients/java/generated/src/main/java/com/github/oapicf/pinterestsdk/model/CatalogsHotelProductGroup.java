@@ -50,7 +50,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsHotelProductGroup
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsHotelProductGroup {
   /**
    * Gets or Sets catalogType
@@ -104,40 +104,48 @@ public class CatalogsHotelProductGroup {
 
   public static final String SERIALIZED_NAME_CATALOG_TYPE = "catalog_type";
   @SerializedName(SERIALIZED_NAME_CATALOG_TYPE)
+  @javax.annotation.Nonnull
   private CatalogTypeEnum catalogType;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nonnull
   private String id;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nullable
   private String description;
 
   public static final String SERIALIZED_NAME_FILTERS = "filters";
   @SerializedName(SERIALIZED_NAME_FILTERS)
+  @javax.annotation.Nonnull
   private CatalogsHotelProductGroupFilters filters;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  @javax.annotation.Nullable
   private Integer createdAt;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updated_at";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+  @javax.annotation.Nullable
   private Integer updatedAt;
 
   public static final String SERIALIZED_NAME_CATALOG_ID = "catalog_id";
   @SerializedName(SERIALIZED_NAME_CATALOG_ID)
+  @javax.annotation.Nonnull
   private String catalogId;
 
   public CatalogsHotelProductGroup() {
   }
 
-  public CatalogsHotelProductGroup catalogType(CatalogTypeEnum catalogType) {
+  public CatalogsHotelProductGroup catalogType(@javax.annotation.Nonnull CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -151,12 +159,12 @@ public class CatalogsHotelProductGroup {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogTypeEnum catalogType) {
+  public void setCatalogType(@javax.annotation.Nonnull CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
 
-  public CatalogsHotelProductGroup id(String id) {
+  public CatalogsHotelProductGroup id(@javax.annotation.Nonnull String id) {
     this.id = id;
     return this;
   }
@@ -170,12 +178,12 @@ public class CatalogsHotelProductGroup {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 
 
-  public CatalogsHotelProductGroup name(String name) {
+  public CatalogsHotelProductGroup name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -189,12 +197,12 @@ public class CatalogsHotelProductGroup {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public CatalogsHotelProductGroup description(String description) {
+  public CatalogsHotelProductGroup description(@javax.annotation.Nullable String description) {
     this.description = description;
     return this;
   }
@@ -208,12 +216,12 @@ public class CatalogsHotelProductGroup {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
 
-  public CatalogsHotelProductGroup filters(CatalogsHotelProductGroupFilters filters) {
+  public CatalogsHotelProductGroup filters(@javax.annotation.Nonnull CatalogsHotelProductGroupFilters filters) {
     this.filters = filters;
     return this;
   }
@@ -227,12 +235,12 @@ public class CatalogsHotelProductGroup {
     return filters;
   }
 
-  public void setFilters(CatalogsHotelProductGroupFilters filters) {
+  public void setFilters(@javax.annotation.Nonnull CatalogsHotelProductGroupFilters filters) {
     this.filters = filters;
   }
 
 
-  public CatalogsHotelProductGroup createdAt(Integer createdAt) {
+  public CatalogsHotelProductGroup createdAt(@javax.annotation.Nullable Integer createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -246,12 +254,12 @@ public class CatalogsHotelProductGroup {
     return createdAt;
   }
 
-  public void setCreatedAt(Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
     this.createdAt = createdAt;
   }
 
 
-  public CatalogsHotelProductGroup updatedAt(Integer updatedAt) {
+  public CatalogsHotelProductGroup updatedAt(@javax.annotation.Nullable Integer updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
@@ -265,12 +273,12 @@ public class CatalogsHotelProductGroup {
     return updatedAt;
   }
 
-  public void setUpdatedAt(Integer updatedAt) {
+  public void setUpdatedAt(@javax.annotation.Nullable Integer updatedAt) {
     this.updatedAt = updatedAt;
   }
 
 
-  public CatalogsHotelProductGroup catalogId(String catalogId) {
+  public CatalogsHotelProductGroup catalogId(@javax.annotation.Nonnull String catalogId) {
     this.catalogId = catalogId;
     return this;
   }
@@ -284,7 +292,7 @@ public class CatalogsHotelProductGroup {
     return catalogId;
   }
 
-  public void setCatalogId(String catalogId) {
+  public void setCatalogId(@javax.annotation.Nonnull String catalogId) {
     this.catalogId = catalogId;
   }
 

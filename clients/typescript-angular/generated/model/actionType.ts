@@ -15,8 +15,11 @@
 export type ActionType = 'CLICKTHROUGH' | 'IMPRESSION' | 'VIDEO_V_50_MRC';
 
 export const ActionType = {
+
     Clickthrough: 'CLICKTHROUGH' as ActionType,
+
     Impression: 'IMPRESSION' as ActionType,
+
     VideoV50Mrc: 'VIDEO_V_50_MRC' as ActionType
 };
 

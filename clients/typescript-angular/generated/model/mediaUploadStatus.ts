@@ -15,9 +15,13 @@
 export type MediaUploadStatus = 'registered' | 'processing' | 'succeeded' | 'failed';
 
 export const MediaUploadStatus = {
+
     Registered: 'registered' as MediaUploadStatus,
+
     Processing: 'processing' as MediaUploadStatus,
+
     Succeeded: 'succeeded' as MediaUploadStatus,
+
     Failed: 'failed' as MediaUploadStatus
 };
 

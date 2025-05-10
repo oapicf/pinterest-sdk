@@ -49,24 +49,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Queryable audience representation.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AudienceDefinition {
   public static final String SERIALIZED_NAME_DATE = "date";
   @SerializedName(SERIALIZED_NAME_DATE)
+  @javax.annotation.Nullable
   private String date;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nullable
   private String type;
 
   public static final String SERIALIZED_NAME_SCOPE = "scope";
   @SerializedName(SERIALIZED_NAME_SCOPE)
+  @javax.annotation.Nullable
   private String scope;
 
   public AudienceDefinition() {
   }
 
-  public AudienceDefinition date(String date) {
+  public AudienceDefinition date(@javax.annotation.Nullable String date) {
     this.date = date;
     return this;
   }
@@ -80,12 +83,12 @@ public class AudienceDefinition {
     return date;
   }
 
-  public void setDate(String date) {
+  public void setDate(@javax.annotation.Nullable String date) {
     this.date = date;
   }
 
 
-  public AudienceDefinition type(String type) {
+  public AudienceDefinition type(@javax.annotation.Nullable String type) {
     this.type = type;
     return this;
   }
@@ -99,12 +102,12 @@ public class AudienceDefinition {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@javax.annotation.Nullable String type) {
     this.type = type;
   }
 
 
-  public AudienceDefinition scope(String scope) {
+  public AudienceDefinition scope(@javax.annotation.Nullable String scope) {
     this.scope = scope;
     return this;
   }
@@ -118,7 +121,7 @@ public class AudienceDefinition {
     return scope;
   }
 
-  public void setScope(String scope) {
+  public void setScope(@javax.annotation.Nullable String scope) {
     this.scope = scope;
   }
 

@@ -48,7 +48,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * A request to exchange a refresh token for a new access token.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class OauthAccessTokenRequestRefresh {
   /**
    * Gets or Sets grantType
@@ -106,24 +106,28 @@ public class OauthAccessTokenRequestRefresh {
 
   public static final String SERIALIZED_NAME_GRANT_TYPE = "grant_type";
   @SerializedName(SERIALIZED_NAME_GRANT_TYPE)
+  @javax.annotation.Nonnull
   private GrantTypeEnum grantType;
 
   public static final String SERIALIZED_NAME_REFRESH_TOKEN = "refresh_token";
   @SerializedName(SERIALIZED_NAME_REFRESH_TOKEN)
+  @javax.annotation.Nonnull
   private String refreshToken;
 
   public static final String SERIALIZED_NAME_SCOPE = "scope";
   @SerializedName(SERIALIZED_NAME_SCOPE)
+  @javax.annotation.Nullable
   private String scope;
 
   public static final String SERIALIZED_NAME_REFRESH_ON = "refresh_on";
   @SerializedName(SERIALIZED_NAME_REFRESH_ON)
+  @javax.annotation.Nullable
   private Boolean refreshOn;
 
   public OauthAccessTokenRequestRefresh() {
   }
 
-  public OauthAccessTokenRequestRefresh grantType(GrantTypeEnum grantType) {
+  public OauthAccessTokenRequestRefresh grantType(@javax.annotation.Nonnull GrantTypeEnum grantType) {
     this.grantType = grantType;
     return this;
   }
@@ -137,12 +141,12 @@ public class OauthAccessTokenRequestRefresh {
     return grantType;
   }
 
-  public void setGrantType(GrantTypeEnum grantType) {
+  public void setGrantType(@javax.annotation.Nonnull GrantTypeEnum grantType) {
     this.grantType = grantType;
   }
 
 
-  public OauthAccessTokenRequestRefresh refreshToken(String refreshToken) {
+  public OauthAccessTokenRequestRefresh refreshToken(@javax.annotation.Nonnull String refreshToken) {
     this.refreshToken = refreshToken;
     return this;
   }
@@ -156,12 +160,12 @@ public class OauthAccessTokenRequestRefresh {
     return refreshToken;
   }
 
-  public void setRefreshToken(String refreshToken) {
+  public void setRefreshToken(@javax.annotation.Nonnull String refreshToken) {
     this.refreshToken = refreshToken;
   }
 
 
-  public OauthAccessTokenRequestRefresh scope(String scope) {
+  public OauthAccessTokenRequestRefresh scope(@javax.annotation.Nullable String scope) {
     this.scope = scope;
     return this;
   }
@@ -175,12 +179,12 @@ public class OauthAccessTokenRequestRefresh {
     return scope;
   }
 
-  public void setScope(String scope) {
+  public void setScope(@javax.annotation.Nullable String scope) {
     this.scope = scope;
   }
 
 
-  public OauthAccessTokenRequestRefresh refreshOn(Boolean refreshOn) {
+  public OauthAccessTokenRequestRefresh refreshOn(@javax.annotation.Nullable Boolean refreshOn) {
     this.refreshOn = refreshOn;
     return this;
   }
@@ -194,7 +198,7 @@ public class OauthAccessTokenRequestRefresh {
     return refreshOn;
   }
 
-  public void setRefreshOn(Boolean refreshOn) {
+  public void setRefreshOn(@javax.annotation.Nullable Boolean refreshOn) {
     this.refreshOn = refreshOn;
   }
 

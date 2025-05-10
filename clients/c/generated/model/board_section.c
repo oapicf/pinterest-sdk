@@ -5,7 +5,7 @@
 
 
 
-board_section_t *board_section_create(
+static board_section_t *board_section_create_internal(
     char *id,
     char *name
     ) {
@@ -16,12 +16,26 @@ board_section_t *board_section_create(
     board_section_local_var->id = id;
     board_section_local_var->name = name;
 
+    board_section_local_var->_library_owned = 1;
     return board_section_local_var;
 }
 
+__attribute__((deprecated)) board_section_t *board_section_create(
+    char *id,
+    char *name
+    ) {
+    return board_section_create_internal (
+        id,
+        name
+        );
+}
 
 void board_section_free(board_section_t *board_section) {
     if(NULL == board_section){
+        return ;
+    }
+    if(board_section->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "board_section_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -69,6 +83,9 @@ board_section_t *board_section_parseFromJSON(cJSON *board_sectionJSON){
 
     // board_section->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(board_sectionJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -78,6 +95,9 @@ board_section_t *board_section_parseFromJSON(cJSON *board_sectionJSON){
 
     // board_section->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(board_sectionJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
     if (!name) {
         goto end;
     }
@@ -89,7 +109,7 @@ board_section_t *board_section_parseFromJSON(cJSON *board_sectionJSON){
     }
 
 
-    board_section_local_var = board_section_create (
+    board_section_local_var = board_section_create_internal (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         strdup(name->valuestring)
         );

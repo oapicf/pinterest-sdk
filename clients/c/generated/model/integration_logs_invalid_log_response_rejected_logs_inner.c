@@ -5,7 +5,7 @@
 
 
 
-integration_logs_invalid_log_response_rejected_logs_inner_t *integration_logs_invalid_log_response_rejected_logs_inner_create(
+static integration_logs_invalid_log_response_rejected_logs_inner_t *integration_logs_invalid_log_response_rejected_logs_inner_create_internal(
     int log_index,
     char *field,
     char *value,
@@ -20,12 +20,30 @@ integration_logs_invalid_log_response_rejected_logs_inner_t *integration_logs_in
     integration_logs_invalid_log_response_rejected_logs_inner_local_var->value = value;
     integration_logs_invalid_log_response_rejected_logs_inner_local_var->reason = reason;
 
+    integration_logs_invalid_log_response_rejected_logs_inner_local_var->_library_owned = 1;
     return integration_logs_invalid_log_response_rejected_logs_inner_local_var;
 }
 
+__attribute__((deprecated)) integration_logs_invalid_log_response_rejected_logs_inner_t *integration_logs_invalid_log_response_rejected_logs_inner_create(
+    int log_index,
+    char *field,
+    char *value,
+    char *reason
+    ) {
+    return integration_logs_invalid_log_response_rejected_logs_inner_create_internal (
+        log_index,
+        field,
+        value,
+        reason
+        );
+}
 
 void integration_logs_invalid_log_response_rejected_logs_inner_free(integration_logs_invalid_log_response_rejected_logs_inner_t *integration_logs_invalid_log_response_rejected_logs_inner) {
     if(NULL == integration_logs_invalid_log_response_rejected_logs_inner){
+        return ;
+    }
+    if(integration_logs_invalid_log_response_rejected_logs_inner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "integration_logs_invalid_log_response_rejected_logs_inner_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -95,6 +113,9 @@ integration_logs_invalid_log_response_rejected_logs_inner_t *integration_logs_in
 
     // integration_logs_invalid_log_response_rejected_logs_inner->log_index
     cJSON *log_index = cJSON_GetObjectItemCaseSensitive(integration_logs_invalid_log_response_rejected_logs_innerJSON, "log_index");
+    if (cJSON_IsNull(log_index)) {
+        log_index = NULL;
+    }
     if (log_index) { 
     if(!cJSON_IsNumber(log_index))
     {
@@ -104,6 +125,9 @@ integration_logs_invalid_log_response_rejected_logs_inner_t *integration_logs_in
 
     // integration_logs_invalid_log_response_rejected_logs_inner->field
     cJSON *field = cJSON_GetObjectItemCaseSensitive(integration_logs_invalid_log_response_rejected_logs_innerJSON, "field");
+    if (cJSON_IsNull(field)) {
+        field = NULL;
+    }
     if (!field) {
         goto end;
     }
@@ -116,6 +140,9 @@ integration_logs_invalid_log_response_rejected_logs_inner_t *integration_logs_in
 
     // integration_logs_invalid_log_response_rejected_logs_inner->value
     cJSON *value = cJSON_GetObjectItemCaseSensitive(integration_logs_invalid_log_response_rejected_logs_innerJSON, "value");
+    if (cJSON_IsNull(value)) {
+        value = NULL;
+    }
     if (!value) {
         goto end;
     }
@@ -128,6 +155,9 @@ integration_logs_invalid_log_response_rejected_logs_inner_t *integration_logs_in
 
     // integration_logs_invalid_log_response_rejected_logs_inner->reason
     cJSON *reason = cJSON_GetObjectItemCaseSensitive(integration_logs_invalid_log_response_rejected_logs_innerJSON, "reason");
+    if (cJSON_IsNull(reason)) {
+        reason = NULL;
+    }
     if (!reason) {
         goto end;
     }
@@ -139,7 +169,7 @@ integration_logs_invalid_log_response_rejected_logs_inner_t *integration_logs_in
     }
 
 
-    integration_logs_invalid_log_response_rejected_logs_inner_local_var = integration_logs_invalid_log_response_rejected_logs_inner_create (
+    integration_logs_invalid_log_response_rejected_logs_inner_local_var = integration_logs_invalid_log_response_rejected_logs_inner_create_internal (
         log_index ? log_index->valuedouble : 0,
         strdup(field->valuestring),
         strdup(value->valuestring),

@@ -22,7 +22,7 @@ pinterest_rest_api_account_ACCOUNTTYPE_e account_account_type_FromString(char* a
     return 0;
 }
 
-account_t *account_create(
+static account_t *account_create_internal(
     pinterest_rest_api_account_ACCOUNTTYPE_e account_type,
     char *id,
     char *profile_image,
@@ -53,12 +53,46 @@ account_t *account_create(
     account_local_var->following_count = following_count;
     account_local_var->monthly_views = monthly_views;
 
+    account_local_var->_library_owned = 1;
     return account_local_var;
 }
 
+__attribute__((deprecated)) account_t *account_create(
+    pinterest_rest_api_account_ACCOUNTTYPE_e account_type,
+    char *id,
+    char *profile_image,
+    char *website_url,
+    char *username,
+    char *about,
+    char *business_name,
+    int board_count,
+    int pin_count,
+    int follower_count,
+    int following_count,
+    int monthly_views
+    ) {
+    return account_create_internal (
+        account_type,
+        id,
+        profile_image,
+        website_url,
+        username,
+        about,
+        business_name,
+        board_count,
+        pin_count,
+        follower_count,
+        following_count,
+        monthly_views
+        );
+}
 
 void account_free(account_t *account) {
     if(NULL == account){
+        return ;
+    }
+    if(account->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "account_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -94,7 +128,7 @@ cJSON *account_convertToJSON(account_t *account) {
 
     // account->account_type
     if(account->account_type != pinterest_rest_api_account_ACCOUNTTYPE_NULL) {
-    if(cJSON_AddStringToObject(item, "account_type", account_typeaccount_ToString(account->account_type)) == NULL)
+    if(cJSON_AddStringToObject(item, "account_type", account_account_type_ToString(account->account_type)) == NULL)
     {
     goto fail; //Enum
     }
@@ -202,6 +236,9 @@ account_t *account_parseFromJSON(cJSON *accountJSON){
 
     // account->account_type
     cJSON *account_type = cJSON_GetObjectItemCaseSensitive(accountJSON, "account_type");
+    if (cJSON_IsNull(account_type)) {
+        account_type = NULL;
+    }
     pinterest_rest_api_account_ACCOUNTTYPE_e account_typeVariable;
     if (account_type) { 
     if(!cJSON_IsString(account_type))
@@ -213,6 +250,9 @@ account_t *account_parseFromJSON(cJSON *accountJSON){
 
     // account->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(accountJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -222,6 +262,9 @@ account_t *account_parseFromJSON(cJSON *accountJSON){
 
     // account->profile_image
     cJSON *profile_image = cJSON_GetObjectItemCaseSensitive(accountJSON, "profile_image");
+    if (cJSON_IsNull(profile_image)) {
+        profile_image = NULL;
+    }
     if (profile_image) { 
     if(!cJSON_IsString(profile_image) && !cJSON_IsNull(profile_image))
     {
@@ -231,6 +274,9 @@ account_t *account_parseFromJSON(cJSON *accountJSON){
 
     // account->website_url
     cJSON *website_url = cJSON_GetObjectItemCaseSensitive(accountJSON, "website_url");
+    if (cJSON_IsNull(website_url)) {
+        website_url = NULL;
+    }
     if (website_url) { 
     if(!cJSON_IsString(website_url) && !cJSON_IsNull(website_url))
     {
@@ -240,6 +286,9 @@ account_t *account_parseFromJSON(cJSON *accountJSON){
 
     // account->username
     cJSON *username = cJSON_GetObjectItemCaseSensitive(accountJSON, "username");
+    if (cJSON_IsNull(username)) {
+        username = NULL;
+    }
     if (username) { 
     if(!cJSON_IsString(username) && !cJSON_IsNull(username))
     {
@@ -249,6 +298,9 @@ account_t *account_parseFromJSON(cJSON *accountJSON){
 
     // account->about
     cJSON *about = cJSON_GetObjectItemCaseSensitive(accountJSON, "about");
+    if (cJSON_IsNull(about)) {
+        about = NULL;
+    }
     if (about) { 
     if(!cJSON_IsString(about) && !cJSON_IsNull(about))
     {
@@ -258,6 +310,9 @@ account_t *account_parseFromJSON(cJSON *accountJSON){
 
     // account->business_name
     cJSON *business_name = cJSON_GetObjectItemCaseSensitive(accountJSON, "business_name");
+    if (cJSON_IsNull(business_name)) {
+        business_name = NULL;
+    }
     if (business_name) { 
     if(!cJSON_IsString(business_name) && !cJSON_IsNull(business_name))
     {
@@ -267,6 +322,9 @@ account_t *account_parseFromJSON(cJSON *accountJSON){
 
     // account->board_count
     cJSON *board_count = cJSON_GetObjectItemCaseSensitive(accountJSON, "board_count");
+    if (cJSON_IsNull(board_count)) {
+        board_count = NULL;
+    }
     if (board_count) { 
     if(!cJSON_IsNumber(board_count))
     {
@@ -276,6 +334,9 @@ account_t *account_parseFromJSON(cJSON *accountJSON){
 
     // account->pin_count
     cJSON *pin_count = cJSON_GetObjectItemCaseSensitive(accountJSON, "pin_count");
+    if (cJSON_IsNull(pin_count)) {
+        pin_count = NULL;
+    }
     if (pin_count) { 
     if(!cJSON_IsNumber(pin_count))
     {
@@ -285,6 +346,9 @@ account_t *account_parseFromJSON(cJSON *accountJSON){
 
     // account->follower_count
     cJSON *follower_count = cJSON_GetObjectItemCaseSensitive(accountJSON, "follower_count");
+    if (cJSON_IsNull(follower_count)) {
+        follower_count = NULL;
+    }
     if (follower_count) { 
     if(!cJSON_IsNumber(follower_count))
     {
@@ -294,6 +358,9 @@ account_t *account_parseFromJSON(cJSON *accountJSON){
 
     // account->following_count
     cJSON *following_count = cJSON_GetObjectItemCaseSensitive(accountJSON, "following_count");
+    if (cJSON_IsNull(following_count)) {
+        following_count = NULL;
+    }
     if (following_count) { 
     if(!cJSON_IsNumber(following_count))
     {
@@ -303,6 +370,9 @@ account_t *account_parseFromJSON(cJSON *accountJSON){
 
     // account->monthly_views
     cJSON *monthly_views = cJSON_GetObjectItemCaseSensitive(accountJSON, "monthly_views");
+    if (cJSON_IsNull(monthly_views)) {
+        monthly_views = NULL;
+    }
     if (monthly_views) { 
     if(!cJSON_IsNumber(monthly_views))
     {
@@ -311,7 +381,7 @@ account_t *account_parseFromJSON(cJSON *accountJSON){
     }
 
 
-    account_local_var = account_create (
+    account_local_var = account_create_internal (
         account_type ? account_typeVariable : pinterest_rest_api_account_ACCOUNTTYPE_NULL,
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         profile_image && !cJSON_IsNull(profile_image) ? strdup(profile_image->valuestring) : NULL,

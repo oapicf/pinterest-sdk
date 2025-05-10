@@ -21,9 +21,10 @@ typedef struct optimization_goal_metadata_scrollup_goal_metadata_t optimization_
 typedef struct optimization_goal_metadata_scrollup_goal_metadata_t {
     char *scrollup_goal_value_in_micro_currency; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } optimization_goal_metadata_scrollup_goal_metadata_t;
 
-optimization_goal_metadata_scrollup_goal_metadata_t *optimization_goal_metadata_scrollup_goal_metadata_create(
+__attribute__((deprecated)) optimization_goal_metadata_scrollup_goal_metadata_t *optimization_goal_metadata_scrollup_goal_metadata_create(
     char *scrollup_goal_value_in_micro_currency
 );
 

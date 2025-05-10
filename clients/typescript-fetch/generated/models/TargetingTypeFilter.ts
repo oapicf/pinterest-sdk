@@ -56,11 +56,11 @@ export function TargetingTypeFilterFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function TargetingTypeFilterToJSON(json: any): TargetingTypeFilter {
-      return TargetingTypeFilterToJSONTyped(json, false);
-  }
+export function TargetingTypeFilterToJSON(json: any): TargetingTypeFilter {
+    return TargetingTypeFilterToJSONTyped(json, false);
+}
 
-  export function TargetingTypeFilterToJSONTyped(value?: TargetingTypeFilter | null, ignoreDiscriminator: boolean = false): any {
+export function TargetingTypeFilterToJSONTyped(value?: TargetingTypeFilter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

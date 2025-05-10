@@ -12,16 +12,18 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param operationType 
  * @param id Targeting template ID
  */
+@Serializable
 data class TargetingTemplateUpdateRequest(
     val operationType: TargetingTemplateUpdateRequest.OperationType,
     /* Targeting template ID */
     val id: kotlin.String
-) 
+)
 {
     /**
     * 

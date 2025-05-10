@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.AssetGroupType
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param assetGroupId Unique identifier of the asset group to update.
@@ -22,6 +23,7 @@ import org.openapitools.server.models.AssetGroupType
  * @param assetsToAdd A list of asset ids to add to the asset group.
  * @param assetsToRemove A list of asset ids to remove from the asset group.
  */
+@Serializable
 data class UpdateAssetGroupBodyAssetGroupsToUpdateInner(
     /* Unique identifier of the asset group to update. */
     val assetGroupId: kotlin.String,
@@ -35,5 +37,5 @@ data class UpdateAssetGroupBodyAssetGroupsToUpdateInner(
     val assetsToAdd: kotlin.collections.List<kotlin.String>? = null,
     /* A list of asset ids to remove from the asset group. */
     val assetsToRemove: kotlin.collections.List<kotlin.String>? = null
-) 
+)
 

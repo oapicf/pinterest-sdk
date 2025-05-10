@@ -50,16 +50,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Request body used to cancel invites
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CancelInvitesBody {
   public static final String SERIALIZED_NAME_INVITE_IDS = "invite_ids";
   @SerializedName(SERIALIZED_NAME_INVITE_IDS)
+  @javax.annotation.Nonnull
   private List<String> inviteIds = new ArrayList<>();
 
   public CancelInvitesBody() {
   }
 
-  public CancelInvitesBody inviteIds(List<String> inviteIds) {
+  public CancelInvitesBody inviteIds(@javax.annotation.Nonnull List<String> inviteIds) {
     this.inviteIds = inviteIds;
     return this;
   }
@@ -81,7 +82,7 @@ public class CancelInvitesBody {
     return inviteIds;
   }
 
-  public void setInviteIds(List<String> inviteIds) {
+  public void setInviteIds(@javax.annotation.Nonnull List<String> inviteIds) {
     this.inviteIds = inviteIds;
   }
 

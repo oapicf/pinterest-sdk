@@ -22,7 +22,7 @@ pinterest_rest_api_bulk_reporting_job_status__e bulk_reporting_job_status_bulk_r
     return 0;
 }
 
-cJSON *bulk_reporting_job_status_bulk_reporting_job_status_convertToJSON(pinterest_rest_api_bulk_reporting_job_status__e bulk_reporting_job_status) {
+cJSON *bulk_reporting_job_status_convertToJSON(pinterest_rest_api_bulk_reporting_job_status__e bulk_reporting_job_status) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "bulk_reporting_job_status", bulk_reporting_job_status_bulk_reporting_job_status_ToString(bulk_reporting_job_status)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_bulk_reporting_job_status__e bulk_reporting_job_status_bulk_reporting_job_status_parseFromJSON(cJSON *bulk_reporting_job_statusJSON) {
-    pinterest_rest_api_bulk_reporting_job_status__e *bulk_reporting_job_status = NULL;
-    pinterest_rest_api_bulk_reporting_job_status__e bulk_reporting_job_statusVariable;
-    cJSON *bulk_reporting_job_statusVar = cJSON_GetObjectItemCaseSensitive(bulk_reporting_job_statusJSON, "bulk_reporting_job_status");
-    if(!cJSON_IsString(bulk_reporting_job_statusVar) || (bulk_reporting_job_statusVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_bulk_reporting_job_status__e bulk_reporting_job_status_parseFromJSON(cJSON *bulk_reporting_job_statusJSON) {
+    if(!cJSON_IsString(bulk_reporting_job_statusJSON) || (bulk_reporting_job_statusJSON->valuestring == NULL)) {
+        return 0;
     }
-    bulk_reporting_job_statusVariable = bulk_reporting_job_status_bulk_reporting_job_status_FromString(bulk_reporting_job_statusVar->valuestring);
-    return bulk_reporting_job_statusVariable;
-end:
-    return 0;
+    return bulk_reporting_job_status_bulk_reporting_job_status_FromString(bulk_reporting_job_statusJSON->valuestring);
 }

@@ -22,7 +22,7 @@ pinterest_rest_api_enhanced_match_status_type__e enhanced_match_status_type_enha
     return 0;
 }
 
-cJSON *enhanced_match_status_type_enhanced_match_status_type_convertToJSON(pinterest_rest_api_enhanced_match_status_type__e enhanced_match_status_type) {
+cJSON *enhanced_match_status_type_convertToJSON(pinterest_rest_api_enhanced_match_status_type__e enhanced_match_status_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "enhanced_match_status_type", enhanced_match_status_type_enhanced_match_status_type_ToString(enhanced_match_status_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_enhanced_match_status_type__e enhanced_match_status_type_enhanced_match_status_type_parseFromJSON(cJSON *enhanced_match_status_typeJSON) {
-    pinterest_rest_api_enhanced_match_status_type__e *enhanced_match_status_type = NULL;
-    pinterest_rest_api_enhanced_match_status_type__e enhanced_match_status_typeVariable;
-    cJSON *enhanced_match_status_typeVar = cJSON_GetObjectItemCaseSensitive(enhanced_match_status_typeJSON, "enhanced_match_status_type");
-    if(!cJSON_IsString(enhanced_match_status_typeVar) || (enhanced_match_status_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_enhanced_match_status_type__e enhanced_match_status_type_parseFromJSON(cJSON *enhanced_match_status_typeJSON) {
+    if(!cJSON_IsString(enhanced_match_status_typeJSON) || (enhanced_match_status_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    enhanced_match_status_typeVariable = enhanced_match_status_type_enhanced_match_status_type_FromString(enhanced_match_status_typeVar->valuestring);
-    return enhanced_match_status_typeVariable;
-end:
-    return 0;
+    return enhanced_match_status_type_enhanced_match_status_type_FromString(enhanced_match_status_typeJSON->valuestring);
 }

@@ -128,11 +128,11 @@ export function CampaignCommonFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-  export function CampaignCommonToJSON(json: any): CampaignCommon {
-      return CampaignCommonToJSONTyped(json, false);
-  }
+export function CampaignCommonToJSON(json: any): CampaignCommon {
+    return CampaignCommonToJSONTyped(json, false);
+}
 
-  export function CampaignCommonToJSONTyped(value?: CampaignCommon | null, ignoreDiscriminator: boolean = false): any {
+export function CampaignCommonToJSONTyped(value?: CampaignCommon | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

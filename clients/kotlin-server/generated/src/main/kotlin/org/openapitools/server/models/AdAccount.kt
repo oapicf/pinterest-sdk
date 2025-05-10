@@ -16,6 +16,7 @@ import org.openapitools.server.models.BusinessAccessRole
 import org.openapitools.server.models.Country
 import org.openapitools.server.models.Currency
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param id 
@@ -27,6 +28,7 @@ import org.openapitools.server.models.Currency
  * @param createdTime Creation time. Unix timestamp in seconds.
  * @param updatedTime Last update time. Unix timestamp in seconds.
  */
+@Serializable
 data class AdAccount(
     val id: kotlin.String? = null,
     val name: kotlin.String? = null,
@@ -38,5 +40,5 @@ data class AdAccount(
     val createdTime: kotlin.Int? = null,
     /* Last update time. Unix timestamp in seconds. */
     val updatedTime: kotlin.Int? = null
-) 
+)
 

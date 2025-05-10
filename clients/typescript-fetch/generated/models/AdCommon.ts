@@ -237,11 +237,11 @@ export function AdCommonFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
     };
 }
 
-  export function AdCommonToJSON(json: any): AdCommon {
-      return AdCommonToJSONTyped(json, false);
-  }
+export function AdCommonToJSON(json: any): AdCommon {
+    return AdCommonToJSONTyped(json, false);
+}
 
-  export function AdCommonToJSONTyped(value?: AdCommon | null, ignoreDiscriminator: boolean = false): any {
+export function AdCommonToJSONTyped(value?: AdCommon | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

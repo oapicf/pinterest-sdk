@@ -209,8 +209,8 @@ open class AdGroupsAPI {
      * enum for parameter conversionReportTime
      */
     public enum ConversionReportTime_adGroupsAnalytics: String, CaseIterable {
-        case adAction = "TIME_OF_AD_ACTION"
-        case conversion = "TIME_OF_CONVERSION"
+        case timeOfAdAction = "TIME_OF_AD_ACTION"
+        case timeOfConversion = "TIME_OF_CONVERSION"
     }
 
     /**
@@ -792,8 +792,8 @@ open class AdGroupsAPI {
      * enum for parameter conversionReportTime
      */
     public enum ConversionReportTime_adGroupsTargetingAnalyticsGet: String, CaseIterable {
-        case adAction = "TIME_OF_AD_ACTION"
-        case conversion = "TIME_OF_CONVERSION"
+        case timeOfAdAction = "TIME_OF_AD_ACTION"
+        case timeOfConversion = "TIME_OF_CONVERSION"
     }
 
     /**

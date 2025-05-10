@@ -12,18 +12,20 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param catalogType 
  * @param hotelIds 
  * @param catalogId Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
  */
+@Serializable
 data class CatalogsHotelItemsPostFilter(
     val catalogType: CatalogsHotelItemsPostFilter.CatalogType,
     val hotelIds: kotlin.collections.List<kotlin.String>,
     /* Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog */
     val catalogId: kotlin.String? = null
-) 
+)
 {
     /**
     * 

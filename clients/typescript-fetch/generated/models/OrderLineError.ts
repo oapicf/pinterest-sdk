@@ -63,11 +63,11 @@ export function OrderLineErrorFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-  export function OrderLineErrorToJSON(json: any): OrderLineError {
-      return OrderLineErrorToJSONTyped(json, false);
-  }
+export function OrderLineErrorToJSON(json: any): OrderLineError {
+    return OrderLineErrorToJSONTyped(json, false);
+}
 
-  export function OrderLineErrorToJSONTyped(value?: OrderLineError | null, ignoreDiscriminator: boolean = false): any {
+export function OrderLineErrorToJSONTyped(value?: OrderLineError | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

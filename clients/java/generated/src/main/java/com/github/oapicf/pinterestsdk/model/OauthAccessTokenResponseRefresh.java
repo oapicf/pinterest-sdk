@@ -48,7 +48,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * A successful OAuth access token response for the refresh token flow.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class OauthAccessTokenResponseRefresh {
   /**
    * Gets or Sets responseType
@@ -106,28 +106,33 @@ public class OauthAccessTokenResponseRefresh {
 
   public static final String SERIALIZED_NAME_RESPONSE_TYPE = "response_type";
   @SerializedName(SERIALIZED_NAME_RESPONSE_TYPE)
+  @javax.annotation.Nullable
   private ResponseTypeEnum responseType;
 
   public static final String SERIALIZED_NAME_ACCESS_TOKEN = "access_token";
   @SerializedName(SERIALIZED_NAME_ACCESS_TOKEN)
+  @javax.annotation.Nonnull
   private String accessToken;
 
   public static final String SERIALIZED_NAME_TOKEN_TYPE = "token_type";
   @SerializedName(SERIALIZED_NAME_TOKEN_TYPE)
+  @javax.annotation.Nonnull
   private String tokenType = "bearer";
 
   public static final String SERIALIZED_NAME_EXPIRES_IN = "expires_in";
   @SerializedName(SERIALIZED_NAME_EXPIRES_IN)
+  @javax.annotation.Nonnull
   private Integer expiresIn;
 
   public static final String SERIALIZED_NAME_SCOPE = "scope";
   @SerializedName(SERIALIZED_NAME_SCOPE)
+  @javax.annotation.Nonnull
   private String scope;
 
   public OauthAccessTokenResponseRefresh() {
   }
 
-  public OauthAccessTokenResponseRefresh responseType(ResponseTypeEnum responseType) {
+  public OauthAccessTokenResponseRefresh responseType(@javax.annotation.Nullable ResponseTypeEnum responseType) {
     this.responseType = responseType;
     return this;
   }
@@ -141,12 +146,12 @@ public class OauthAccessTokenResponseRefresh {
     return responseType;
   }
 
-  public void setResponseType(ResponseTypeEnum responseType) {
+  public void setResponseType(@javax.annotation.Nullable ResponseTypeEnum responseType) {
     this.responseType = responseType;
   }
 
 
-  public OauthAccessTokenResponseRefresh accessToken(String accessToken) {
+  public OauthAccessTokenResponseRefresh accessToken(@javax.annotation.Nonnull String accessToken) {
     this.accessToken = accessToken;
     return this;
   }
@@ -160,12 +165,12 @@ public class OauthAccessTokenResponseRefresh {
     return accessToken;
   }
 
-  public void setAccessToken(String accessToken) {
+  public void setAccessToken(@javax.annotation.Nonnull String accessToken) {
     this.accessToken = accessToken;
   }
 
 
-  public OauthAccessTokenResponseRefresh tokenType(String tokenType) {
+  public OauthAccessTokenResponseRefresh tokenType(@javax.annotation.Nonnull String tokenType) {
     this.tokenType = tokenType;
     return this;
   }
@@ -179,12 +184,12 @@ public class OauthAccessTokenResponseRefresh {
     return tokenType;
   }
 
-  public void setTokenType(String tokenType) {
+  public void setTokenType(@javax.annotation.Nonnull String tokenType) {
     this.tokenType = tokenType;
   }
 
 
-  public OauthAccessTokenResponseRefresh expiresIn(Integer expiresIn) {
+  public OauthAccessTokenResponseRefresh expiresIn(@javax.annotation.Nonnull Integer expiresIn) {
     this.expiresIn = expiresIn;
     return this;
   }
@@ -198,12 +203,12 @@ public class OauthAccessTokenResponseRefresh {
     return expiresIn;
   }
 
-  public void setExpiresIn(Integer expiresIn) {
+  public void setExpiresIn(@javax.annotation.Nonnull Integer expiresIn) {
     this.expiresIn = expiresIn;
   }
 
 
-  public OauthAccessTokenResponseRefresh scope(String scope) {
+  public OauthAccessTokenResponseRefresh scope(@javax.annotation.Nonnull String scope) {
     this.scope = scope;
     return this;
   }
@@ -217,7 +222,7 @@ public class OauthAccessTokenResponseRefresh {
     return scope;
   }
 
-  public void setScope(String scope) {
+  public void setScope(@javax.annotation.Nonnull String scope) {
     this.scope = scope;
   }
 

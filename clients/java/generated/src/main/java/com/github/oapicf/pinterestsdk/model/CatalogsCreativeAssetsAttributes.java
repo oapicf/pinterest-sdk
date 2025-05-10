@@ -49,68 +49,82 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsCreativeAssetsAttributes
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsCreativeAssetsAttributes {
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
+  @javax.annotation.Nullable
   private String title;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nullable
   private String description;
 
   public static final String SERIALIZED_NAME_LINK = "link";
   @SerializedName(SERIALIZED_NAME_LINK)
+  @javax.annotation.Nullable
   private String link;
 
   public static final String SERIALIZED_NAME_IOS_DEEP_LINK = "ios_deep_link";
   @SerializedName(SERIALIZED_NAME_IOS_DEEP_LINK)
+  @javax.annotation.Nullable
   private String iosDeepLink;
 
   public static final String SERIALIZED_NAME_ANDROID_DEEP_LINK = "android_deep_link";
   @SerializedName(SERIALIZED_NAME_ANDROID_DEEP_LINK)
+  @javax.annotation.Nullable
   private String androidDeepLink;
 
   public static final String SERIALIZED_NAME_GOOGLE_PRODUCT_CATEGORY = "google_product_category";
   @SerializedName(SERIALIZED_NAME_GOOGLE_PRODUCT_CATEGORY)
+  @javax.annotation.Nullable
   private String googleProductCategory;
 
   public static final String SERIALIZED_NAME_CUSTOM_LABEL0 = "custom_label_0";
   @SerializedName(SERIALIZED_NAME_CUSTOM_LABEL0)
+  @javax.annotation.Nullable
   private String customLabel0;
 
   public static final String SERIALIZED_NAME_CUSTOM_LABEL1 = "custom_label_1";
   @SerializedName(SERIALIZED_NAME_CUSTOM_LABEL1)
+  @javax.annotation.Nullable
   private String customLabel1;
 
   public static final String SERIALIZED_NAME_CUSTOM_LABEL2 = "custom_label_2";
   @SerializedName(SERIALIZED_NAME_CUSTOM_LABEL2)
+  @javax.annotation.Nullable
   private String customLabel2;
 
   public static final String SERIALIZED_NAME_CUSTOM_LABEL3 = "custom_label_3";
   @SerializedName(SERIALIZED_NAME_CUSTOM_LABEL3)
+  @javax.annotation.Nullable
   private String customLabel3;
 
   public static final String SERIALIZED_NAME_CUSTOM_LABEL4 = "custom_label_4";
   @SerializedName(SERIALIZED_NAME_CUSTOM_LABEL4)
+  @javax.annotation.Nullable
   private String customLabel4;
 
   public static final String SERIALIZED_NAME_VISIBILITY = "visibility";
   @SerializedName(SERIALIZED_NAME_VISIBILITY)
+  @javax.annotation.Nullable
   private String visibility;
 
   public static final String SERIALIZED_NAME_IMAGE_LINK = "image_link";
   @SerializedName(SERIALIZED_NAME_IMAGE_LINK)
+  @javax.annotation.Nullable
   private String imageLink;
 
   public static final String SERIALIZED_NAME_VIDEO_LINK = "video_link";
   @SerializedName(SERIALIZED_NAME_VIDEO_LINK)
+  @javax.annotation.Nullable
   private String videoLink;
 
   public CatalogsCreativeAssetsAttributes() {
   }
 
-  public CatalogsCreativeAssetsAttributes title(String title) {
+  public CatalogsCreativeAssetsAttributes title(@javax.annotation.Nullable String title) {
     this.title = title;
     return this;
   }
@@ -124,12 +138,12 @@ public class CatalogsCreativeAssetsAttributes {
     return title;
   }
 
-  public void setTitle(String title) {
+  public void setTitle(@javax.annotation.Nullable String title) {
     this.title = title;
   }
 
 
-  public CatalogsCreativeAssetsAttributes description(String description) {
+  public CatalogsCreativeAssetsAttributes description(@javax.annotation.Nullable String description) {
     this.description = description;
     return this;
   }
@@ -143,12 +157,12 @@ public class CatalogsCreativeAssetsAttributes {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
 
-  public CatalogsCreativeAssetsAttributes link(String link) {
+  public CatalogsCreativeAssetsAttributes link(@javax.annotation.Nullable String link) {
     this.link = link;
     return this;
   }
@@ -162,12 +176,12 @@ public class CatalogsCreativeAssetsAttributes {
     return link;
   }
 
-  public void setLink(String link) {
+  public void setLink(@javax.annotation.Nullable String link) {
     this.link = link;
   }
 
 
-  public CatalogsCreativeAssetsAttributes iosDeepLink(String iosDeepLink) {
+  public CatalogsCreativeAssetsAttributes iosDeepLink(@javax.annotation.Nullable String iosDeepLink) {
     this.iosDeepLink = iosDeepLink;
     return this;
   }
@@ -181,12 +195,12 @@ public class CatalogsCreativeAssetsAttributes {
     return iosDeepLink;
   }
 
-  public void setIosDeepLink(String iosDeepLink) {
+  public void setIosDeepLink(@javax.annotation.Nullable String iosDeepLink) {
     this.iosDeepLink = iosDeepLink;
   }
 
 
-  public CatalogsCreativeAssetsAttributes androidDeepLink(String androidDeepLink) {
+  public CatalogsCreativeAssetsAttributes androidDeepLink(@javax.annotation.Nullable String androidDeepLink) {
     this.androidDeepLink = androidDeepLink;
     return this;
   }
@@ -200,12 +214,12 @@ public class CatalogsCreativeAssetsAttributes {
     return androidDeepLink;
   }
 
-  public void setAndroidDeepLink(String androidDeepLink) {
+  public void setAndroidDeepLink(@javax.annotation.Nullable String androidDeepLink) {
     this.androidDeepLink = androidDeepLink;
   }
 
 
-  public CatalogsCreativeAssetsAttributes googleProductCategory(String googleProductCategory) {
+  public CatalogsCreativeAssetsAttributes googleProductCategory(@javax.annotation.Nullable String googleProductCategory) {
     this.googleProductCategory = googleProductCategory;
     return this;
   }
@@ -219,12 +233,12 @@ public class CatalogsCreativeAssetsAttributes {
     return googleProductCategory;
   }
 
-  public void setGoogleProductCategory(String googleProductCategory) {
+  public void setGoogleProductCategory(@javax.annotation.Nullable String googleProductCategory) {
     this.googleProductCategory = googleProductCategory;
   }
 
 
-  public CatalogsCreativeAssetsAttributes customLabel0(String customLabel0) {
+  public CatalogsCreativeAssetsAttributes customLabel0(@javax.annotation.Nullable String customLabel0) {
     this.customLabel0 = customLabel0;
     return this;
   }
@@ -238,12 +252,12 @@ public class CatalogsCreativeAssetsAttributes {
     return customLabel0;
   }
 
-  public void setCustomLabel0(String customLabel0) {
+  public void setCustomLabel0(@javax.annotation.Nullable String customLabel0) {
     this.customLabel0 = customLabel0;
   }
 
 
-  public CatalogsCreativeAssetsAttributes customLabel1(String customLabel1) {
+  public CatalogsCreativeAssetsAttributes customLabel1(@javax.annotation.Nullable String customLabel1) {
     this.customLabel1 = customLabel1;
     return this;
   }
@@ -257,12 +271,12 @@ public class CatalogsCreativeAssetsAttributes {
     return customLabel1;
   }
 
-  public void setCustomLabel1(String customLabel1) {
+  public void setCustomLabel1(@javax.annotation.Nullable String customLabel1) {
     this.customLabel1 = customLabel1;
   }
 
 
-  public CatalogsCreativeAssetsAttributes customLabel2(String customLabel2) {
+  public CatalogsCreativeAssetsAttributes customLabel2(@javax.annotation.Nullable String customLabel2) {
     this.customLabel2 = customLabel2;
     return this;
   }
@@ -276,12 +290,12 @@ public class CatalogsCreativeAssetsAttributes {
     return customLabel2;
   }
 
-  public void setCustomLabel2(String customLabel2) {
+  public void setCustomLabel2(@javax.annotation.Nullable String customLabel2) {
     this.customLabel2 = customLabel2;
   }
 
 
-  public CatalogsCreativeAssetsAttributes customLabel3(String customLabel3) {
+  public CatalogsCreativeAssetsAttributes customLabel3(@javax.annotation.Nullable String customLabel3) {
     this.customLabel3 = customLabel3;
     return this;
   }
@@ -295,12 +309,12 @@ public class CatalogsCreativeAssetsAttributes {
     return customLabel3;
   }
 
-  public void setCustomLabel3(String customLabel3) {
+  public void setCustomLabel3(@javax.annotation.Nullable String customLabel3) {
     this.customLabel3 = customLabel3;
   }
 
 
-  public CatalogsCreativeAssetsAttributes customLabel4(String customLabel4) {
+  public CatalogsCreativeAssetsAttributes customLabel4(@javax.annotation.Nullable String customLabel4) {
     this.customLabel4 = customLabel4;
     return this;
   }
@@ -314,12 +328,12 @@ public class CatalogsCreativeAssetsAttributes {
     return customLabel4;
   }
 
-  public void setCustomLabel4(String customLabel4) {
+  public void setCustomLabel4(@javax.annotation.Nullable String customLabel4) {
     this.customLabel4 = customLabel4;
   }
 
 
-  public CatalogsCreativeAssetsAttributes visibility(String visibility) {
+  public CatalogsCreativeAssetsAttributes visibility(@javax.annotation.Nullable String visibility) {
     this.visibility = visibility;
     return this;
   }
@@ -333,12 +347,12 @@ public class CatalogsCreativeAssetsAttributes {
     return visibility;
   }
 
-  public void setVisibility(String visibility) {
+  public void setVisibility(@javax.annotation.Nullable String visibility) {
     this.visibility = visibility;
   }
 
 
-  public CatalogsCreativeAssetsAttributes imageLink(String imageLink) {
+  public CatalogsCreativeAssetsAttributes imageLink(@javax.annotation.Nullable String imageLink) {
     this.imageLink = imageLink;
     return this;
   }
@@ -352,12 +366,12 @@ public class CatalogsCreativeAssetsAttributes {
     return imageLink;
   }
 
-  public void setImageLink(String imageLink) {
+  public void setImageLink(@javax.annotation.Nullable String imageLink) {
     this.imageLink = imageLink;
   }
 
 
-  public CatalogsCreativeAssetsAttributes videoLink(String videoLink) {
+  public CatalogsCreativeAssetsAttributes videoLink(@javax.annotation.Nullable String videoLink) {
     this.videoLink = videoLink;
     return this;
   }
@@ -371,7 +385,7 @@ public class CatalogsCreativeAssetsAttributes {
     return videoLink;
   }
 
-  public void setVideoLink(String videoLink) {
+  public void setVideoLink(@javax.annotation.Nullable String videoLink) {
     this.videoLink = videoLink;
   }
 

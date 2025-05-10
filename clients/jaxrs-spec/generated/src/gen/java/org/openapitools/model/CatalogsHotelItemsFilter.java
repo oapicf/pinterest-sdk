@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsHotelItemsFilter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsHotelItemsFilter   {
   public enum CatalogTypeEnum {
 
@@ -71,6 +71,18 @@ public class CatalogsHotelItemsFilter   {
   private @Valid List<String> hotelIds = new ArrayList<>();
   private String catalogId;
 
+  public CatalogsHotelItemsFilter() {
+  }
+
+  @JsonCreator
+  public CatalogsHotelItemsFilter(
+    @JsonProperty(required = true, value = "catalog_type") CatalogTypeEnum catalogType,
+    @JsonProperty(required = true, value = "hotel_ids") List<String> hotelIds
+  ) {
+    this.catalogType = catalogType;
+    this.hotelIds = hotelIds;
+  }
+
   /**
    **/
   public CatalogsHotelItemsFilter catalogType(CatalogTypeEnum catalogType) {
@@ -80,12 +92,12 @@ public class CatalogsHotelItemsFilter   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   @NotNull public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  @JsonProperty("catalog_type")
+  @JsonProperty(required = true, value = "catalog_type")
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
@@ -99,12 +111,12 @@ public class CatalogsHotelItemsFilter   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("hotel_ids")
+  @JsonProperty(required = true, value = "hotel_ids")
   @NotNull  @Size(min=1,max=100)public List<String> getHotelIds() {
     return hotelIds;
   }
 
-  @JsonProperty("hotel_ids")
+  @JsonProperty(required = true, value = "hotel_ids")
   public void setHotelIds(List<String> hotelIds) {
     this.hotelIds = hotelIds;
   }

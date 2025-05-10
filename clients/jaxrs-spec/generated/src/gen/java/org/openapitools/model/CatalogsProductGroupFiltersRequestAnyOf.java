@@ -20,9 +20,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsProductGroupFiltersRequest_anyOf")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsProductGroupFiltersRequestAnyOf   {
   private @Valid List<CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
+
+  public CatalogsProductGroupFiltersRequestAnyOf() {
+  }
+
+  @JsonCreator
+  public CatalogsProductGroupFiltersRequestAnyOf(
+    @JsonProperty(required = true, value = "any_of") List<@Valid CatalogsProductGroupFilterKeys> anyOf
+  ) {
+    this.anyOf = anyOf;
+  }
 
   /**
    **/
@@ -33,12 +43,12 @@ public class CatalogsProductGroupFiltersRequestAnyOf   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("any_of")
+  @JsonProperty(required = true, value = "any_of")
   @NotNull @Valid  @Size(min=1)public List<@Valid CatalogsProductGroupFilterKeys> getAnyOf() {
     return anyOf;
   }
 
-  @JsonProperty("any_of")
+  @JsonProperty(required = true, value = "any_of")
   public void setAnyOf(List<CatalogsProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
   }

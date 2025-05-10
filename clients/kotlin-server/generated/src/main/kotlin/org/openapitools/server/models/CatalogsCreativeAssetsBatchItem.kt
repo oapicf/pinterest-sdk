@@ -17,18 +17,20 @@ import org.openapitools.server.models.CatalogsUpdatableCreativeAssetsAttributes
 import org.openapitools.server.models.CatalogsUpdateCreativeAssetsItem
 import org.openapitools.server.models.CatalogsUpsertCreativeAssetsItem
 
+import kotlinx.serialization.Serializable
 /**
  * Creative assets batch item
  * @param creativeAssetsId The catalog creative assets id in the merchant namespace
  * @param operation 
  * @param attributes 
  */
+@Serializable
 data class CatalogsCreativeAssetsBatchItem(
     /* The catalog creative assets id in the merchant namespace */
     val creativeAssetsId: kotlin.String,
     val operation: CatalogsCreativeAssetsBatchItem.Operation,
     val attributes: CatalogsUpdatableCreativeAssetsAttributes
-) 
+)
 {
     /**
     * 

@@ -20,7 +20,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Template fields")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@ApiModel(description="Template fields")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2025-05-10T05:40:40.818990358Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TemplateResponse   {
   
   private String id;
@@ -3232,9 +3232,9 @@ public class TemplateResponse   {
    * Conversion report time type
    */
   public enum ConversionReportTimeTypeEnum {
-    AD_ACTION("TIME_OF_AD_ACTION"),
+    TIME_OF_AD_ACTION("TIME_OF_AD_ACTION"),
 
-        CONVERSION("TIME_OF_CONVERSION");
+        TIME_OF_CONVERSION("TIME_OF_CONVERSION");
     private String value;
 
     ConversionReportTimeTypeEnum(String value) {
@@ -3257,11 +3257,11 @@ public class TemplateResponse   {
    * The surface used to create this template
    */
   public enum CreationSourceEnum {
-    API("ADS_API"),
+    ADS_API("ADS_API"),
 
-        MANAGER_REPORTING_PAGE("ADS_MANAGER_REPORTING_PAGE"),
+        ADS_MANAGER_REPORTING_PAGE("ADS_MANAGER_REPORTING_PAGE"),
 
-        MANAGER_REPORT_BUILDER("ADS_MANAGER_REPORT_BUILDER");
+        ADS_MANAGER_REPORT_BUILDER("ADS_MANAGER_REPORT_BUILDER");
     private String value;
 
     CreationSourceEnum(String value) {

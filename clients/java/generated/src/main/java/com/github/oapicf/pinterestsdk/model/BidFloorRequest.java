@@ -52,20 +52,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * BidFloorRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BidFloorRequest {
   public static final String SERIALIZED_NAME_BID_FLOOR_SPECS = "bid_floor_specs";
   @SerializedName(SERIALIZED_NAME_BID_FLOOR_SPECS)
+  @javax.annotation.Nonnull
   private List<BidFloorSpec> bidFloorSpecs = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_TARGETING_SPEC = "targeting_spec";
   @SerializedName(SERIALIZED_NAME_TARGETING_SPEC)
+  @javax.annotation.Nullable
   private TargetingSpec targetingSpec;
 
   public BidFloorRequest() {
   }
 
-  public BidFloorRequest bidFloorSpecs(List<BidFloorSpec> bidFloorSpecs) {
+  public BidFloorRequest bidFloorSpecs(@javax.annotation.Nonnull List<BidFloorSpec> bidFloorSpecs) {
     this.bidFloorSpecs = bidFloorSpecs;
     return this;
   }
@@ -87,12 +89,12 @@ public class BidFloorRequest {
     return bidFloorSpecs;
   }
 
-  public void setBidFloorSpecs(List<BidFloorSpec> bidFloorSpecs) {
+  public void setBidFloorSpecs(@javax.annotation.Nonnull List<BidFloorSpec> bidFloorSpecs) {
     this.bidFloorSpecs = bidFloorSpecs;
   }
 
 
-  public BidFloorRequest targetingSpec(TargetingSpec targetingSpec) {
+  public BidFloorRequest targetingSpec(@javax.annotation.Nullable TargetingSpec targetingSpec) {
     this.targetingSpec = targetingSpec;
     return this;
   }
@@ -106,7 +108,7 @@ public class BidFloorRequest {
     return targetingSpec;
   }
 
-  public void setTargetingSpec(TargetingSpec targetingSpec) {
+  public void setTargetingSpec(@javax.annotation.Nullable TargetingSpec targetingSpec) {
     this.targetingSpec = targetingSpec;
   }
 

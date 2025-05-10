@@ -27,9 +27,10 @@ typedef struct conversion_tag_configs_t {
     int aem_db_enabled; //boolean
     int aem_loc_enabled; //boolean
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } conversion_tag_configs_t;
 
-conversion_tag_configs_t *conversion_tag_configs_create(
+__attribute__((deprecated)) conversion_tag_configs_t *conversion_tag_configs_create(
     int aem_enabled,
     double md_frequency,
     int aem_fnln_enabled,

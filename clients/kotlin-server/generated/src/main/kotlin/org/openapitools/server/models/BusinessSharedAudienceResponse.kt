@@ -13,17 +13,19 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.Role
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param audienceId Audience ID that was shared
  * @param permissions 
  * @param recipientBusinessIds Business IDs that received the audience
  */
+@Serializable
 data class BusinessSharedAudienceResponse(
     /* Audience ID that was shared */
     val audienceId: kotlin.String? = null,
     val permissions: kotlin.collections.List<Role>? = null,
     /* Business IDs that received the audience */
     val recipientBusinessIds: kotlin.collections.List<kotlin.String>? = null
-) 
+)
 

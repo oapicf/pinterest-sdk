@@ -51,42 +51,51 @@ stringFromOrder_ model =
 
 
 
-{-| <p>Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords & interest, demographics, and placements to use more than once during the campaign creation process.</p>  <p>Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.</p>
+{-| Create targeting templates
+
+<p>Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords & interest, demographics, and placements to use more than once during the campaign creation process.</p>  <p>Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.</p>
+
 -}
 targetingTemplateCreate : String -> Api.Data.TargetingTemplateCreate -> Api.Request Api.Data.TargetingTemplateGetResponseData
 targetingTemplateCreate adAccountId_path targetingTemplateCreate_body =
     Api.request
         "POST"
         "/ad_accounts/{ad_account_id}/targeting_templates"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Just (Api.Data.encodeTargetingTemplateCreate targetingTemplateCreate_body)))
         Api.Data.targetingTemplateGetResponseDataDecoder
 
 
-{-| Get a list of the targeting templates in the specified <code>ad_account_id</code>
+{-| List targeting templates
+
+Get a list of the targeting templates in the specified <code>ad_account_id</code>
+
 -}
 targetingTemplateList : String -> Maybe Order_ -> Maybe Bool -> Maybe String -> Maybe Int -> Maybe String -> Api.Request Api.Data.TargetingTemplateList200Response
 targetingTemplateList adAccountId_path order_query includeSizing_query searchQuery_query pageSize_query bookmark_query =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/targeting_templates"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         [ ( "order", Maybe.map stringFromOrder_ order_query ), ( "include_sizing", Maybe.map (\val -> if val then "true" else "false") includeSizing_query ), ( "search_query", Maybe.map identity searchQuery_query ), ( "page_size", Maybe.map String.fromInt pageSize_query ), ( "bookmark", Maybe.map identity bookmark_query ) ]
         []
         Nothing
         Api.Data.targetingTemplateList200ResponseDecoder
 
 
-{-| <p>Update the targeting template given advertiser ID and targeting template ID</p>
+{-| Update targeting templates
+
+<p>Update the targeting template given advertiser ID and targeting template ID</p>
+
 -}
 targetingTemplateUpdate : String -> Api.Data.TargetingTemplateUpdateRequest -> Api.Request ()
 targetingTemplateUpdate adAccountId_path targetingTemplateUpdateRequest_body =
     Api.request
         "PATCH"
         "/ad_accounts/{ad_account_id}/targeting_templates"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Just (Api.Data.encodeTargetingTemplateUpdateRequest targetingTemplateUpdateRequest_body)))

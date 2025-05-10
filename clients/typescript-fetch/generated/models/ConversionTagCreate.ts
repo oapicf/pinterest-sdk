@@ -98,11 +98,11 @@ export function ConversionTagCreateFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function ConversionTagCreateToJSON(json: any): ConversionTagCreate {
-      return ConversionTagCreateToJSONTyped(json, false);
-  }
+export function ConversionTagCreateToJSON(json: any): ConversionTagCreate {
+    return ConversionTagCreateToJSONTyped(json, false);
+}
 
-  export function ConversionTagCreateToJSONTyped(value?: ConversionTagCreate | null, ignoreDiscriminator: boolean = false): any {
+export function ConversionTagCreateToJSONTyped(value?: ConversionTagCreate | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

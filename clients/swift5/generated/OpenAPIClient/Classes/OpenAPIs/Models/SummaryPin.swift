@@ -13,8 +13,8 @@ import AnyCodable
 /** Summarized pin information */
 public struct SummaryPin: Codable, JSONEncodable, Hashable {
 
-    static let altTextRule = StringRule(minLength: nil, maxLength: 500, pattern: nil)
-    static let linkRule = StringRule(minLength: nil, maxLength: 2048, pattern: nil)
+    public static let altTextRule = StringRule(minLength: nil, maxLength: 500, pattern: nil)
+    public static let linkRule = StringRule(minLength: nil, maxLength: 2048, pattern: nil)
     public var media: PinMedia?
     public var altText: String?
     public var link: String?

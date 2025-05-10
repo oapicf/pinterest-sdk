@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.model.BusinessAccessUserSummary;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -22,12 +23,12 @@ import javax.annotation.Generated;
 
 @Schema(name = "CreateInvitesResultsResponseArray_items_inner_invite", description = "An invite object if the invite/request was successfully created. Will only be provided if the an invite/request is successfully created.")
 @JsonTypeName("CreateInvitesResultsResponseArray_items_inner_invite")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CreateInvitesResultsResponseArrayItemsInnerInvite {
 
-  private String id;
+  private @Nullable String id;
 
-  private BusinessAccessUserSummary user;
+  private @Nullable BusinessAccessUserSummary user;
 
   public CreateInvitesResultsResponseArrayItemsInnerInvite id(String id) {
     this.id = id;

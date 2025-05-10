@@ -19,6 +19,6 @@ import * as models from './models';
     * Conversion report time type
     */
 export enum ConversionReportTimeType {
-    AdAction = <any> 'TIME_OF_AD_ACTION',
-    Conversion = <any> 'TIME_OF_CONVERSION'
+    TimeOfAdAction = <any> 'TIME_OF_AD_ACTION',
+    TimeOfConversion = <any> 'TIME_OF_CONVERSION'
 }

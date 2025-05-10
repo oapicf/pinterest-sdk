@@ -5,7 +5,7 @@
 
 
 
-advanced_auction_operation_error_t *advanced_auction_operation_error_create(
+static advanced_auction_operation_error_t *advanced_auction_operation_error_create_internal(
     int code,
     char *message
     ) {
@@ -16,12 +16,26 @@ advanced_auction_operation_error_t *advanced_auction_operation_error_create(
     advanced_auction_operation_error_local_var->code = code;
     advanced_auction_operation_error_local_var->message = message;
 
+    advanced_auction_operation_error_local_var->_library_owned = 1;
     return advanced_auction_operation_error_local_var;
 }
 
+__attribute__((deprecated)) advanced_auction_operation_error_t *advanced_auction_operation_error_create(
+    int code,
+    char *message
+    ) {
+    return advanced_auction_operation_error_create_internal (
+        code,
+        message
+        );
+}
 
 void advanced_auction_operation_error_free(advanced_auction_operation_error_t *advanced_auction_operation_error) {
     if(NULL == advanced_auction_operation_error){
+        return ;
+    }
+    if(advanced_auction_operation_error->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "advanced_auction_operation_error_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -64,6 +78,9 @@ advanced_auction_operation_error_t *advanced_auction_operation_error_parseFromJS
 
     // advanced_auction_operation_error->code
     cJSON *code = cJSON_GetObjectItemCaseSensitive(advanced_auction_operation_errorJSON, "code");
+    if (cJSON_IsNull(code)) {
+        code = NULL;
+    }
     if (code) { 
     if(!cJSON_IsNumber(code))
     {
@@ -73,6 +90,9 @@ advanced_auction_operation_error_t *advanced_auction_operation_error_parseFromJS
 
     // advanced_auction_operation_error->message
     cJSON *message = cJSON_GetObjectItemCaseSensitive(advanced_auction_operation_errorJSON, "message");
+    if (cJSON_IsNull(message)) {
+        message = NULL;
+    }
     if (message) { 
     if(!cJSON_IsString(message) && !cJSON_IsNull(message))
     {
@@ -81,7 +101,7 @@ advanced_auction_operation_error_t *advanced_auction_operation_error_parseFromJS
     }
 
 
-    advanced_auction_operation_error_local_var = advanced_auction_operation_error_create (
+    advanced_auction_operation_error_local_var = advanced_auction_operation_error_create_internal (
         code ? code->valuedouble : 0,
         message && !cJSON_IsNull(message) ? strdup(message->valuestring) : NULL
         );

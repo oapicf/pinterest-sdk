@@ -68,7 +68,6 @@ stringFromFromClaimedContent model =
 
 
 
-
 type PinFormat
     = PinFormatALL
     | PinFormatORGANICIMAGE
@@ -122,7 +121,6 @@ stringFromPinFormat model =
 
 
 
-
 type AppTypes
     = AppTypesALL
     | AppTypesMOBILE
@@ -156,7 +154,6 @@ stringFromAppTypes model =
 
 
 
-
 type ContentType
     = ContentTypeALL
     | ContentTypePAID
@@ -185,7 +182,6 @@ stringFromContentType model =
 
 
 
-
 type Source
     = SourceALL
     | SourceYOURPINS
@@ -211,7 +207,6 @@ stringFromSource model =
 
         SourceOTHERPINS ->
             "OTHER_PINS"
-
 
 
 
@@ -270,7 +265,6 @@ stringFromMetricTypes model =
 
         MetricTypesSAVERATE ->
             "SAVE_RATE"
-
 
 
 
@@ -312,7 +306,6 @@ stringFromSplitField model =
 
 
 
-
 type SortBy
     = SortByENGAGEMENT
     | SortByIMPRESSION
@@ -351,7 +344,6 @@ stringFromSortBy model =
 
 
 
-
 type FromClaimedContent
     = FromClaimedContentOTHER
     | FromClaimedContentCLAIMED
@@ -377,7 +369,6 @@ stringFromFromClaimedContent model =
 
         FromClaimedContentBOTH ->
             "BOTH"
-
 
 
 
@@ -434,7 +425,6 @@ stringFromPinFormat model =
 
 
 
-
 type AppTypes
     = AppTypesALL
     | AppTypesMOBILE
@@ -468,7 +458,6 @@ stringFromAppTypes model =
 
 
 
-
 type ContentType
     = ContentTypeALL
     | ContentTypePAID
@@ -497,7 +486,6 @@ stringFromContentType model =
 
 
 
-
 type Source
     = SourceALL
     | SourceYOURPINS
@@ -523,7 +511,6 @@ stringFromSource model =
 
         SourceOTHERPINS ->
             "OTHER_PINS"
-
 
 
 
@@ -585,7 +572,6 @@ stringFromMetricTypes model =
 
 
 
-
 type CreatedInLastNDays
     = CreatedInLastNDays30
 
@@ -601,7 +587,6 @@ stringFromCreatedInLastNDays model =
     case model of
         CreatedInLastNDays30 ->
             30
-
 
 
 
@@ -663,7 +648,6 @@ stringFromSortBy model =
 
 
 
-
 type FromClaimedContent
     = FromClaimedContentOTHER
     | FromClaimedContentCLAIMED
@@ -689,7 +673,6 @@ stringFromFromClaimedContent model =
 
         FromClaimedContentBOTH ->
             "BOTH"
-
 
 
 
@@ -746,7 +729,6 @@ stringFromPinFormat model =
 
 
 
-
 type AppTypes
     = AppTypesALL
     | AppTypesMOBILE
@@ -780,7 +762,6 @@ stringFromAppTypes model =
 
 
 
-
 type ContentType
     = ContentTypeALL
     | ContentTypePAID
@@ -809,7 +790,6 @@ stringFromContentType model =
 
 
 
-
 type Source
     = SourceALL
     | SourceYOURPINS
@@ -835,7 +815,6 @@ stringFromSource model =
 
         SourceOTHERPINS ->
             "OTHER_PINS"
-
 
 
 
@@ -897,7 +876,6 @@ stringFromMetricTypes model =
 
 
 
-
 type CreatedInLastNDays
     = CreatedInLastNDays30
 
@@ -916,7 +894,10 @@ stringFromCreatedInLastNDays model =
 
 
 
-{-| Get a list of the boards a user follows. The request returns a board summary object array.
+{-| List following boards
+
+Get a list of the boards a user follows. The request returns a board summary object array.
+
 -}
 boardsUserFollowsList : Maybe String -> Maybe Int -> Maybe Bool -> Maybe String -> Api.Request Api.Data.BoardsUserFollowsList200Response
 boardsUserFollowsList bookmark_query pageSize_query explicitFollowing_query adAccountId_query =
@@ -930,7 +911,10 @@ boardsUserFollowsList bookmark_query pageSize_query explicitFollowing_query adAc
         Api.Data.boardsUserFollowsList200ResponseDecoder
 
 
-{-| <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+{-| Follow user
+
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+
 -}
 followUserUpdate : String -> Api.Data.FollowUserRequest -> Api.Request Api.Data.UserSummary
 followUserUpdate username_path followUserRequest_body =
@@ -944,7 +928,10 @@ followUserUpdate username_path followUserRequest_body =
         Api.Data.userSummaryDecoder
 
 
-{-| Get a list of your followers.
+{-| List followers
+
+Get a list of your followers.
+
 -}
 followersList : Maybe String -> Maybe Int -> Api.Request Api.Data.FollowersList200Response
 followersList bookmark_query pageSize_query =
@@ -958,7 +945,10 @@ followersList bookmark_query pageSize_query =
         Api.Data.followersList200ResponseDecoder
 
 
-{-| Get a list of your linked business accounts.
+{-| List linked businesses
+
+Get a list of your linked business accounts.
+
 -}
 linkedBusinessAccountsGet : Api.Request (List Api.Data.LinkedBusiness)
 linkedBusinessAccountsGet =
@@ -972,7 +962,10 @@ linkedBusinessAccountsGet =
         (Json.Decode.list Api.Data.linkedBusinessDecoder)
 
 
-{-| Unverifu a website verified by the signed-in user.
+{-| Unverify website
+
+Unverifu a website verified by the signed-in user.
+
 -}
 unverifyWebsiteDelete : String -> Api.Request ()
 unverifyWebsiteDelete website_query =
@@ -986,7 +979,10 @@ unverifyWebsiteDelete website_query =
         (Json.Decode.succeed ())
 
 
-{-| Get analytics for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
+{-| Get user account analytics
+
+Get analytics for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
+
 -}
 userAccountAnalytics : Posix -> Posix -> Maybe FromClaimedContent -> Maybe PinFormat -> Maybe AppTypes -> Maybe ContentType -> Maybe Source -> Maybe (List MetricTypes) -> Maybe SplitField -> Maybe String -> Api.Request (Dict.Dict String Api.Data.AnalyticsMetricsResponse)
 userAccountAnalytics startDate_query endDate_query fromClaimedContent_query pinFormat_query appTypes_query contentType_query source_query metricTypes_query splitField_query adAccountId_query =
@@ -1000,7 +996,10 @@ userAccountAnalytics startDate_query endDate_query fromClaimedContent_query pinF
         (Json.Decode.dict Api.Data.analyticsMetricsResponseDecoder)
 
 
-{-| Gets analytics data about a user's top pins (limited to the top 50). - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
+{-| Get user account top pins analytics
+
+Gets analytics data about a user's top pins (limited to the top 50). - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
+
 -}
 userAccountAnalyticsTopPins : Posix -> Posix -> SortBy -> Maybe FromClaimedContent -> Maybe PinFormat -> Maybe AppTypes -> Maybe ContentType -> Maybe Source -> Maybe (List MetricTypes) -> Maybe Int -> Maybe CreatedInLastNDays -> Maybe String -> Api.Request Api.Data.TopPinsAnalyticsResponse
 userAccountAnalyticsTopPins startDate_query endDate_query sortBy_query fromClaimedContent_query pinFormat_query appTypes_query contentType_query source_query metricTypes_query numOfPins_query createdInLastNDays_query adAccountId_query =
@@ -1014,7 +1013,10 @@ userAccountAnalyticsTopPins startDate_query endDate_query sortBy_query fromClaim
         Api.Data.topPinsAnalyticsResponseDecoder
 
 
-{-| Gets analytics data about a user's top video pins (limited to the top 50). - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
+{-| Get user account top video pins analytics
+
+Gets analytics data about a user's top video pins (limited to the top 50). - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
+
 -}
 userAccountAnalyticsTopVideoPins : Posix -> Posix -> SortBy -> Maybe FromClaimedContent -> Maybe PinFormat -> Maybe AppTypes -> Maybe ContentType -> Maybe Source -> Maybe (List MetricTypes) -> Maybe Int -> Maybe CreatedInLastNDays -> Maybe String -> Api.Request Api.Data.TopVideoPinsAnalyticsResponse
 userAccountAnalyticsTopVideoPins startDate_query endDate_query sortBy_query fromClaimedContent_query pinFormat_query appTypes_query contentType_query source_query metricTypes_query numOfPins_query createdInLastNDays_query adAccountId_query =
@@ -1028,7 +1030,10 @@ userAccountAnalyticsTopVideoPins startDate_query endDate_query sortBy_query from
         Api.Data.topVideoPinsAnalyticsResponseDecoder
 
 
-{-| Get a list of a user's following interests in one place.
+{-| List following interests
+
+Get a list of a user's following interests in one place.
+
 -}
 userAccountFollowedInterests : String -> Maybe String -> Maybe Int -> Api.Request Api.Data.UserAccountFollowedInterests200Response
 userAccountFollowedInterests username_path bookmark_query pageSize_query =
@@ -1042,7 +1047,10 @@ userAccountFollowedInterests username_path bookmark_query pageSize_query =
         Api.Data.userAccountFollowedInterests200ResponseDecoder
 
 
-{-| Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+{-| Get user account
+
+Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+
 -}
 userAccountGet : Maybe String -> Api.Request Api.Data.Account
 userAccountGet adAccountId_query =
@@ -1056,7 +1064,10 @@ userAccountGet adAccountId_query =
         Api.Data.accountDecoder
 
 
-{-| Get a list of who a certain user follows.
+{-| List following
+
+Get a list of who a certain user follows.
+
 -}
 userFollowingGet : Maybe String -> Maybe Int -> Maybe UserFollowingFeedType -> Maybe Bool -> Maybe String -> Api.Request Api.Data.UserFollowingGet200Response
 userFollowingGet bookmark_query pageSize_query feedType_query explicitFollowing_query adAccountId_query =
@@ -1070,7 +1081,10 @@ userFollowingGet bookmark_query pageSize_query feedType_query explicitFollowing_
         Api.Data.userFollowingGet200ResponseDecoder
 
 
-{-| Get user websites, claimed or not
+{-| Get user websites
+
+Get user websites, claimed or not
+
 -}
 userWebsitesGet : Maybe String -> Maybe Int -> Api.Request Api.Data.UserWebsitesGet200Response
 userWebsitesGet bookmark_query pageSize_query =
@@ -1084,7 +1098,10 @@ userWebsitesGet bookmark_query pageSize_query =
         Api.Data.userWebsitesGet200ResponseDecoder
 
 
-{-| Verify a website as a signed-in user.
+{-| Verify website
+
+Verify a website as a signed-in user.
+
 -}
 verifyWebsiteUpdate : Maybe String -> Api.Data.UserWebsiteVerifyRequest -> Api.Request Api.Data.UserWebsiteSummary
 verifyWebsiteUpdate adAccountId_query userWebsiteVerifyRequest_body =
@@ -1098,7 +1115,10 @@ verifyWebsiteUpdate adAccountId_query userWebsiteVerifyRequest_body =
         Api.Data.userWebsiteSummaryDecoder
 
 
-{-| Get verification code for user to install on the website to claim it.
+{-| Get user verification code for website claiming
+
+Get verification code for user to install on the website to claim it.
+
 -}
 websiteVerificationGet : Maybe String -> Api.Request Api.Data.UserWebsiteVerificationCode
 websiteVerificationGet adAccountId_query =

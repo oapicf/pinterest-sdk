@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
@@ -21,6 +22,7 @@ package org.openapitools.server.models
  * @param ADDITIONAL_IMAGE_INVALID_FILE Additional image files are unreadable. Please upload new files to continue.
  * @param HOTEL_PRICE_HEADER_IS_PRESENT price is not a supported column. Use base_price and sale_price instead.
  */
+@Serializable
 data class CatalogsFeedIngestionWarnings(
     /* We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours. */
     val ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR: kotlin.Int? = null,
@@ -34,5 +36,5 @@ data class CatalogsFeedIngestionWarnings(
     val ADDITIONAL_IMAGE_INVALID_FILE: kotlin.Int? = null,
     /* price is not a supported column. Use base_price and sale_price instead. */
     val HOTEL_PRICE_HEADER_IS_PRESENT: kotlin.Int? = null
-) 
+)
 

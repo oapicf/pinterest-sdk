@@ -18,14 +18,6 @@ typedef struct audience_update_request_t audience_update_request_t;
 #include "audience_rule.h"
 #include "audience_update_operation_type.h"
 
-// Enum  for audience_update_request
-
-typedef enum  { pinterest_rest_api_audience_update_request__NULL = 0, pinterest_rest_api_audience_update_request__UPDATE, pinterest_rest_api_audience_update_request___REMOVE } pinterest_rest_api_audience_update_request__e;
-
-char* audience_update_request_operation_type_ToString(pinterest_rest_api_audience_update_request__e operation_type);
-
-pinterest_rest_api_audience_update_request__e audience_update_request_operation_type_FromString(char* operation_type);
-
 
 
 typedef struct audience_update_request_t {
@@ -33,16 +25,17 @@ typedef struct audience_update_request_t {
     char *name; // string
     struct audience_rule_t *rule; //model
     char *description; // string
-    audience_update_operation_type_t *operation_type; // custom
+    pinterest_rest_api_audience_update_operation_type__e operation_type; //referenced enum
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } audience_update_request_t;
 
-audience_update_request_t *audience_update_request_create(
+__attribute__((deprecated)) audience_update_request_t *audience_update_request_create(
     char *ad_account_id,
     char *name,
     audience_rule_t *rule,
     char *description,
-    audience_update_operation_type_t *operation_type
+    pinterest_rest_api_audience_update_operation_type__e operation_type
 );
 
 void audience_update_request_free(audience_update_request_t *audience_update_request);

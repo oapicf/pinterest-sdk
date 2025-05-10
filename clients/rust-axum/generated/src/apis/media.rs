@@ -1,6 +1,6 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Multipart};
+use axum_extra::extract::{CookieJar, Host};
 use bytes::Bytes;
 use http::Method;
 use serde::{Deserialize, Serialize};
@@ -54,37 +54,37 @@ pub enum MediaSlashListResponse {
 /// Media
 #[async_trait]
 #[allow(clippy::ptr_arg)]
-pub trait Media {
+pub trait Media<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHandler<E> {
     /// Register media upload.
     ///
     /// MediaSlashCreate - POST /v5/media
     async fn media_slash_create(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-            body: models::MediaUploadRequest,
-    ) -> Result<MediaSlashCreateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+            body: &models::MediaUploadRequest,
+    ) -> Result<MediaSlashCreateResponse, E>;
 
     /// Get media upload details.
     ///
     /// MediaSlashGet - GET /v5/media/{media_id}
     async fn media_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::MediaSlashGetPathParams,
-    ) -> Result<MediaSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::MediaSlashGetPathParams,
+    ) -> Result<MediaSlashGetResponse, E>;
 
     /// List media uploads.
     ///
     /// MediaSlashList - GET /v5/media
     async fn media_slash_list(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::MediaSlashListQueryParams,
-    ) -> Result<MediaSlashListResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::MediaSlashListQueryParams,
+    ) -> Result<MediaSlashListResponse, E>;
 }

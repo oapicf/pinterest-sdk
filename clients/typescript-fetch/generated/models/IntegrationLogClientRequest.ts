@@ -104,11 +104,11 @@ export function IntegrationLogClientRequestFromJSONTyped(json: any, ignoreDiscri
     };
 }
 
-  export function IntegrationLogClientRequestToJSON(json: any): IntegrationLogClientRequest {
-      return IntegrationLogClientRequestToJSONTyped(json, false);
-  }
+export function IntegrationLogClientRequestToJSON(json: any): IntegrationLogClientRequest {
+    return IntegrationLogClientRequestToJSONTyped(json, false);
+}
 
-  export function IntegrationLogClientRequestToJSONTyped(value?: IntegrationLogClientRequest | null, ignoreDiscriminator: boolean = false): any {
+export function IntegrationLogClientRequestToJSONTyped(value?: IntegrationLogClientRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

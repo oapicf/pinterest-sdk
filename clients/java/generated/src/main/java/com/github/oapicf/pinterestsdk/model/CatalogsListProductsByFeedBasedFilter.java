@@ -49,20 +49,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Request object to list products for a given feed_id and product group filter.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsListProductsByFeedBasedFilter {
   public static final String SERIALIZED_NAME_FEED_ID = "feed_id";
   @SerializedName(SERIALIZED_NAME_FEED_ID)
+  @javax.annotation.Nonnull
   private String feedId;
 
   public static final String SERIALIZED_NAME_FILTERS = "filters";
   @SerializedName(SERIALIZED_NAME_FILTERS)
+  @javax.annotation.Nonnull
   private CatalogsProductGroupFilters filters;
 
   public CatalogsListProductsByFeedBasedFilter() {
   }
 
-  public CatalogsListProductsByFeedBasedFilter feedId(String feedId) {
+  public CatalogsListProductsByFeedBasedFilter feedId(@javax.annotation.Nonnull String feedId) {
     this.feedId = feedId;
     return this;
   }
@@ -76,12 +78,12 @@ public class CatalogsListProductsByFeedBasedFilter {
     return feedId;
   }
 
-  public void setFeedId(String feedId) {
+  public void setFeedId(@javax.annotation.Nonnull String feedId) {
     this.feedId = feedId;
   }
 
 
-  public CatalogsListProductsByFeedBasedFilter filters(CatalogsProductGroupFilters filters) {
+  public CatalogsListProductsByFeedBasedFilter filters(@javax.annotation.Nonnull CatalogsProductGroupFilters filters) {
     this.filters = filters;
     return this;
   }
@@ -95,7 +97,7 @@ public class CatalogsListProductsByFeedBasedFilter {
     return filters;
   }
 
-  public void setFilters(CatalogsProductGroupFilters filters) {
+  public void setFilters(@javax.annotation.Nonnull CatalogsProductGroupFilters filters) {
     this.filters = filters;
   }
 

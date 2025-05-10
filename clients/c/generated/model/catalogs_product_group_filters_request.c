@@ -5,7 +5,7 @@
 
 
 
-catalogs_product_group_filters_request_t *catalogs_product_group_filters_request_create(
+static catalogs_product_group_filters_request_t *catalogs_product_group_filters_request_create_internal(
     list_t *any_of,
     list_t *all_of
     ) {
@@ -16,12 +16,26 @@ catalogs_product_group_filters_request_t *catalogs_product_group_filters_request
     catalogs_product_group_filters_request_local_var->any_of = any_of;
     catalogs_product_group_filters_request_local_var->all_of = all_of;
 
+    catalogs_product_group_filters_request_local_var->_library_owned = 1;
     return catalogs_product_group_filters_request_local_var;
 }
 
+__attribute__((deprecated)) catalogs_product_group_filters_request_t *catalogs_product_group_filters_request_create(
+    list_t *any_of,
+    list_t *all_of
+    ) {
+    return catalogs_product_group_filters_request_create_internal (
+        any_of,
+        all_of
+        );
+}
 
 void catalogs_product_group_filters_request_free(catalogs_product_group_filters_request_t *catalogs_product_group_filters_request) {
     if(NULL == catalogs_product_group_filters_request){
+        return ;
+    }
+    if(catalogs_product_group_filters_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_product_group_filters_request_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -106,6 +120,9 @@ catalogs_product_group_filters_request_t *catalogs_product_group_filters_request
 
     // catalogs_product_group_filters_request->any_of
     cJSON *any_of = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filters_requestJSON, "any_of");
+    if (cJSON_IsNull(any_of)) {
+        any_of = NULL;
+    }
     if (!any_of) {
         goto end;
     }
@@ -130,6 +147,9 @@ catalogs_product_group_filters_request_t *catalogs_product_group_filters_request
 
     // catalogs_product_group_filters_request->all_of
     cJSON *all_of = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_filters_requestJSON, "all_of");
+    if (cJSON_IsNull(all_of)) {
+        all_of = NULL;
+    }
     if (!all_of) {
         goto end;
     }
@@ -153,7 +173,7 @@ catalogs_product_group_filters_request_t *catalogs_product_group_filters_request
     }
 
 
-    catalogs_product_group_filters_request_local_var = catalogs_product_group_filters_request_create (
+    catalogs_product_group_filters_request_local_var = catalogs_product_group_filters_request_create_internal (
         any_ofList,
         all_ofList
         );

@@ -31,9 +31,10 @@ typedef struct catalogs_report_t {
     char *url; // string
     double size; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_report_t;
 
-catalogs_report_t *catalogs_report_create(
+__attribute__((deprecated)) catalogs_report_t *catalogs_report_create(
     pinterest_rest_api_catalogs_report_REPORTSTATUS_e report_status,
     char *url,
     double size

@@ -21,9 +21,10 @@ typedef struct catalogs_create_report_response_t catalogs_create_report_response
 typedef struct catalogs_create_report_response_t {
     char *token; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_create_report_response_t;
 
-catalogs_create_report_response_t *catalogs_create_report_response_create(
+__attribute__((deprecated)) catalogs_create_report_response_t *catalogs_create_report_response_create(
     char *token
 );
 

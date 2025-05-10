@@ -22,7 +22,7 @@ pinterest_rest_api_currency__e currency_currency_FromString(char* currency) {
     return 0;
 }
 
-cJSON *currency_currency_convertToJSON(pinterest_rest_api_currency__e currency) {
+cJSON *currency_convertToJSON(pinterest_rest_api_currency__e currency) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "currency", currency_currency_ToString(currency)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_currency__e currency_currency_parseFromJSON(cJSON *currencyJSON) {
-    pinterest_rest_api_currency__e *currency = NULL;
-    pinterest_rest_api_currency__e currencyVariable;
-    cJSON *currencyVar = cJSON_GetObjectItemCaseSensitive(currencyJSON, "currency");
-    if(!cJSON_IsString(currencyVar) || (currencyVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_currency__e currency_parseFromJSON(cJSON *currencyJSON) {
+    if(!cJSON_IsString(currencyJSON) || (currencyJSON->valuestring == NULL)) {
+        return 0;
     }
-    currencyVariable = currency_currency_FromString(currencyVar->valuestring);
-    return currencyVariable;
-end:
-    return 0;
+    return currency_currency_FromString(currencyJSON->valuestring);
 }

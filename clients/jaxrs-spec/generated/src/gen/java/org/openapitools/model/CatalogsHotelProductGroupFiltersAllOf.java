@@ -19,9 +19,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsHotelProductGroupFiltersAllOf")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsHotelProductGroupFiltersAllOf   {
   private @Valid List<CatalogsHotelProductGroupFilterKeys> allOf = new ArrayList<>();
+
+  public CatalogsHotelProductGroupFiltersAllOf() {
+  }
+
+  @JsonCreator
+  public CatalogsHotelProductGroupFiltersAllOf(
+    @JsonProperty(required = true, value = "all_of") List<@Valid CatalogsHotelProductGroupFilterKeys> allOf
+  ) {
+    this.allOf = allOf;
+  }
 
   /**
    **/
@@ -32,12 +42,12 @@ public class CatalogsHotelProductGroupFiltersAllOf   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("all_of")
+  @JsonProperty(required = true, value = "all_of")
   @NotNull @Valid public List<@Valid CatalogsHotelProductGroupFilterKeys> getAllOf() {
     return allOf;
   }
 
-  @JsonProperty("all_of")
+  @JsonProperty(required = true, value = "all_of")
   public void setAllOf(List<CatalogsHotelProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
   }

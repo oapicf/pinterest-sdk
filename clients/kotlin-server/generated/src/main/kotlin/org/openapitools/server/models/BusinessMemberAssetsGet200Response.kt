@@ -13,14 +13,16 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.AssetIdPermissions
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items List asset permissions the given member was granted.
  * @param bookmark 
  */
+@Serializable
 data class BusinessMemberAssetsGet200Response(
     /* List asset permissions the given member was granted. */
     val items: kotlin.collections.List<AssetIdPermissions>,
     val bookmark: kotlin.String? = null
-) 
+)
 

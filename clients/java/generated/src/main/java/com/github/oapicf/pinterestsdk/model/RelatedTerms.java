@@ -51,24 +51,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * RelatedTerms
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class RelatedTerms {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_RELATED_TERM_COUNT = "related_term_count";
   @SerializedName(SERIALIZED_NAME_RELATED_TERM_COUNT)
+  @javax.annotation.Nullable
   private Integer relatedTermCount;
 
   public static final String SERIALIZED_NAME_RELATED_TERMS_LIST = "related_terms_list";
   @SerializedName(SERIALIZED_NAME_RELATED_TERMS_LIST)
+  @javax.annotation.Nullable
   private List<RelatedTermsRelatedTermsListInner> relatedTermsList = new ArrayList<>();
 
   public RelatedTerms() {
   }
 
-  public RelatedTerms id(String id) {
+  public RelatedTerms id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -82,12 +85,12 @@ public class RelatedTerms {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public RelatedTerms relatedTermCount(Integer relatedTermCount) {
+  public RelatedTerms relatedTermCount(@javax.annotation.Nullable Integer relatedTermCount) {
     this.relatedTermCount = relatedTermCount;
     return this;
   }
@@ -101,12 +104,12 @@ public class RelatedTerms {
     return relatedTermCount;
   }
 
-  public void setRelatedTermCount(Integer relatedTermCount) {
+  public void setRelatedTermCount(@javax.annotation.Nullable Integer relatedTermCount) {
     this.relatedTermCount = relatedTermCount;
   }
 
 
-  public RelatedTerms relatedTermsList(List<RelatedTermsRelatedTermsListInner> relatedTermsList) {
+  public RelatedTerms relatedTermsList(@javax.annotation.Nullable List<RelatedTermsRelatedTermsListInner> relatedTermsList) {
     this.relatedTermsList = relatedTermsList;
     return this;
   }
@@ -128,7 +131,7 @@ public class RelatedTerms {
     return relatedTermsList;
   }
 
-  public void setRelatedTermsList(List<RelatedTermsRelatedTermsListInner> relatedTermsList) {
+  public void setRelatedTermsList(@javax.annotation.Nullable List<RelatedTermsRelatedTermsListInner> relatedTermsList) {
     this.relatedTermsList = relatedTermsList;
   }
 

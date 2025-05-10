@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 // Functions for enum PRIVACY for BoardsAPI_boardsList
 
@@ -120,15 +115,20 @@ BoardsAPI_boardSectionsCreate(apiClient_t *apiClient, char *board_id, board_sect
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/boards/{board_id}/sections")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/boards/{board_id}/sections");
+    char *localVarPath = strdup("/boards/{board_id}/sections");
+
+    if(!board_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_board_id = strlen(board_id)+3 + strlen("{ board_id }");
+    long sizeOfPathParams_board_id = strlen(board_id)+3 + sizeof("{ board_id }") - 1;
     if(board_id == NULL) {
         goto end;
     }
@@ -155,9 +155,10 @@ BoardsAPI_boardSectionsCreate(apiClient_t *apiClient, char *board_id, board_sect
     cJSON *localVarSingleItemJSON_board_section = NULL;
     if (board_section != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_board_section = board_section_convertToJSON(board_section);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_board_section);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -169,6 +170,7 @@ BoardsAPI_boardSectionsCreate(apiClient_t *apiClient, char *board_id, board_sect
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -196,11 +198,14 @@ BoardsAPI_boardSectionsCreate(apiClient_t *apiClient, char *board_id, board_sect
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BoardsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    board_section_t *elementToReturn = board_section_parseFromJSON(BoardsAPIlocalVarJSON);
-    cJSON_Delete(BoardsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    board_section_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BoardsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = board_section_parseFromJSON(BoardsAPIlocalVarJSON);
+        cJSON_Delete(BoardsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -253,15 +258,22 @@ BoardsAPI_boardSectionsDelete(apiClient_t *apiClient, char *board_id, char *sect
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/boards/{board_id}/sections/{section_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/boards/{board_id}/sections/{section_id}");
+    char *localVarPath = strdup("/boards/{board_id}/sections/{section_id}");
+
+    if(!board_id)
+        goto end;
+    if(!section_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_board_id = strlen(board_id)+3 + strlen(section_id)+3 + strlen("{ board_id }");
+    long sizeOfPathParams_board_id = strlen(board_id)+3 + strlen(section_id)+3 + sizeof("{ board_id }") - 1;
     if(board_id == NULL) {
         goto end;
     }
@@ -271,7 +283,7 @@ BoardsAPI_boardSectionsDelete(apiClient_t *apiClient, char *board_id, char *sect
     localVarPath = strReplace(localVarPath, localVarToReplace_board_id, board_id);
 
     // Path Params
-    long sizeOfPathParams_section_id = strlen(board_id)+3 + strlen(section_id)+3 + strlen("{ section_id }");
+    long sizeOfPathParams_section_id = strlen(board_id)+3 + strlen(section_id)+3 + sizeof("{ section_id }") - 1;
     if(section_id == NULL) {
         goto end;
     }
@@ -302,6 +314,7 @@ BoardsAPI_boardSectionsDelete(apiClient_t *apiClient, char *board_id, char *sect
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "DELETE");
 
     // uncomment below to debug the error response
@@ -375,15 +388,20 @@ BoardsAPI_boardSectionsList(apiClient_t *apiClient, char *board_id, char *ad_acc
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/boards/{board_id}/sections")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/boards/{board_id}/sections");
+    char *localVarPath = strdup("/boards/{board_id}/sections");
+
+    if(!board_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_board_id = strlen(board_id)+3 + strlen("{ board_id }");
+    long sizeOfPathParams_board_id = strlen(board_id)+3 + sizeof("{ board_id }") - 1;
     if(board_id == NULL) {
         goto end;
     }
@@ -439,6 +457,7 @@ BoardsAPI_boardSectionsList(apiClient_t *apiClient, char *board_id, char *ad_acc
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -450,11 +469,14 @@ BoardsAPI_boardSectionsList(apiClient_t *apiClient, char *board_id, char *ad_acc
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BoardsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    board_sections_list_200_response_t *elementToReturn = board_sections_list_200_response_parseFromJSON(BoardsAPIlocalVarJSON);
-    cJSON_Delete(BoardsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    board_sections_list_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BoardsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = board_sections_list_200_response_parseFromJSON(BoardsAPIlocalVarJSON);
+        cJSON_Delete(BoardsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -526,15 +548,22 @@ BoardsAPI_boardSectionsListPins(apiClient_t *apiClient, char *board_id, char *se
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/boards/{board_id}/sections/{section_id}/pins")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/boards/{board_id}/sections/{section_id}/pins");
+    char *localVarPath = strdup("/boards/{board_id}/sections/{section_id}/pins");
+
+    if(!board_id)
+        goto end;
+    if(!section_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_board_id = strlen(board_id)+3 + strlen(section_id)+3 + strlen("{ board_id }");
+    long sizeOfPathParams_board_id = strlen(board_id)+3 + strlen(section_id)+3 + sizeof("{ board_id }") - 1;
     if(board_id == NULL) {
         goto end;
     }
@@ -544,7 +573,7 @@ BoardsAPI_boardSectionsListPins(apiClient_t *apiClient, char *board_id, char *se
     localVarPath = strReplace(localVarPath, localVarToReplace_board_id, board_id);
 
     // Path Params
-    long sizeOfPathParams_section_id = strlen(board_id)+3 + strlen(section_id)+3 + strlen("{ section_id }");
+    long sizeOfPathParams_section_id = strlen(board_id)+3 + strlen(section_id)+3 + sizeof("{ section_id }") - 1;
     if(section_id == NULL) {
         goto end;
     }
@@ -600,6 +629,7 @@ BoardsAPI_boardSectionsListPins(apiClient_t *apiClient, char *board_id, char *se
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -623,11 +653,14 @@ BoardsAPI_boardSectionsListPins(apiClient_t *apiClient, char *board_id, char *se
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BoardsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    boards_list_pins_200_response_t *elementToReturn = boards_list_pins_200_response_parseFromJSON(BoardsAPIlocalVarJSON);
-    cJSON_Delete(BoardsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    boards_list_pins_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BoardsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = boards_list_pins_200_response_parseFromJSON(BoardsAPIlocalVarJSON);
+        cJSON_Delete(BoardsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -700,15 +733,22 @@ BoardsAPI_boardSectionsUpdate(apiClient_t *apiClient, char *board_id, char *sect
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/boards/{board_id}/sections/{section_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/boards/{board_id}/sections/{section_id}");
+    char *localVarPath = strdup("/boards/{board_id}/sections/{section_id}");
+
+    if(!board_id)
+        goto end;
+    if(!section_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_board_id = strlen(board_id)+3 + strlen(section_id)+3 + strlen("{ board_id }");
+    long sizeOfPathParams_board_id = strlen(board_id)+3 + strlen(section_id)+3 + sizeof("{ board_id }") - 1;
     if(board_id == NULL) {
         goto end;
     }
@@ -718,7 +758,7 @@ BoardsAPI_boardSectionsUpdate(apiClient_t *apiClient, char *board_id, char *sect
     localVarPath = strReplace(localVarPath, localVarToReplace_board_id, board_id);
 
     // Path Params
-    long sizeOfPathParams_section_id = strlen(board_id)+3 + strlen(section_id)+3 + strlen("{ section_id }");
+    long sizeOfPathParams_section_id = strlen(board_id)+3 + strlen(section_id)+3 + sizeof("{ section_id }") - 1;
     if(section_id == NULL) {
         goto end;
     }
@@ -745,9 +785,10 @@ BoardsAPI_boardSectionsUpdate(apiClient_t *apiClient, char *board_id, char *sect
     cJSON *localVarSingleItemJSON_board_section = NULL;
     if (board_section != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_board_section = board_section_convertToJSON(board_section);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_board_section);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -759,6 +800,7 @@ BoardsAPI_boardSectionsUpdate(apiClient_t *apiClient, char *board_id, char *sect
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "PATCH");
 
     // uncomment below to debug the error response
@@ -782,11 +824,14 @@ BoardsAPI_boardSectionsUpdate(apiClient_t *apiClient, char *board_id, char *sect
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BoardsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    board_section_t *elementToReturn = board_section_parseFromJSON(BoardsAPIlocalVarJSON);
-    cJSON_Delete(BoardsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    board_section_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BoardsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = board_section_parseFromJSON(BoardsAPIlocalVarJSON);
+        cJSON_Delete(BoardsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -840,11 +885,14 @@ BoardsAPI_boardsCreate(apiClient_t *apiClient, board_t *board, char *ad_account_
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/boards")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/boards");
+    char *localVarPath = strdup("/boards");
+
 
 
 
@@ -865,9 +913,10 @@ BoardsAPI_boardsCreate(apiClient_t *apiClient, board_t *board, char *ad_account_
     cJSON *localVarSingleItemJSON_board = NULL;
     if (board != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_board = board_convertToJSON(board);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_board);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -879,6 +928,7 @@ BoardsAPI_boardsCreate(apiClient_t *apiClient, board_t *board, char *ad_account_
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -894,11 +944,14 @@ BoardsAPI_boardsCreate(apiClient_t *apiClient, board_t *board, char *ad_account_
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BoardsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    board_t *elementToReturn = board_parseFromJSON(BoardsAPIlocalVarJSON);
-    cJSON_Delete(BoardsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    board_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BoardsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = board_parseFromJSON(BoardsAPIlocalVarJSON);
+        cJSON_Delete(BoardsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -950,15 +1003,20 @@ BoardsAPI_boardsDelete(apiClient_t *apiClient, char *board_id, char *ad_account_
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/boards/{board_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/boards/{board_id}");
+    char *localVarPath = strdup("/boards/{board_id}");
+
+    if(!board_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_board_id = strlen(board_id)+3 + strlen("{ board_id }");
+    long sizeOfPathParams_board_id = strlen(board_id)+3 + sizeof("{ board_id }") - 1;
     if(board_id == NULL) {
         goto end;
     }
@@ -989,6 +1047,7 @@ BoardsAPI_boardsDelete(apiClient_t *apiClient, char *board_id, char *ad_account_
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "DELETE");
 
     // uncomment below to debug the error response
@@ -1065,15 +1124,20 @@ BoardsAPI_boardsGet(apiClient_t *apiClient, char *board_id, char *ad_account_id)
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/boards/{board_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/boards/{board_id}");
+    char *localVarPath = strdup("/boards/{board_id}");
+
+    if(!board_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_board_id = strlen(board_id)+3 + strlen("{ board_id }");
+    long sizeOfPathParams_board_id = strlen(board_id)+3 + sizeof("{ board_id }") - 1;
     if(board_id == NULL) {
         goto end;
     }
@@ -1104,6 +1168,7 @@ BoardsAPI_boardsGet(apiClient_t *apiClient, char *board_id, char *ad_account_id)
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -1119,11 +1184,14 @@ BoardsAPI_boardsGet(apiClient_t *apiClient, char *board_id, char *ad_account_id)
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BoardsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    board_t *elementToReturn = board_parseFromJSON(BoardsAPIlocalVarJSON);
-    cJSON_Delete(BoardsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    board_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BoardsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = board_parseFromJSON(BoardsAPIlocalVarJSON);
+        cJSON_Delete(BoardsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1171,11 +1239,14 @@ BoardsAPI_boardsList(apiClient_t *apiClient, char *ad_account_id, char *bookmark
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/boards")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/boards");
+    char *localVarPath = strdup("/boards");
+
 
 
 
@@ -1225,7 +1296,7 @@ BoardsAPI_boardsList(apiClient_t *apiClient, char *ad_account_id, char *bookmark
     {
         keyQuery_privacy = strdup("privacy");
         valueQuery_privacy = (privacy);
-        keyPairQuery_privacy = keyValuePair_create(keyQuery_privacy, (void *)strdup(boardsList_PRIVACY_ToString(
+        keyPairQuery_privacy = keyValuePair_create(keyQuery_privacy, strdup(boardsList_PRIVACY_ToString(
         valueQuery_privacy)));
         list_addElement(localVarQueryParameters,keyPairQuery_privacy);
     }
@@ -1238,6 +1309,7 @@ BoardsAPI_boardsList(apiClient_t *apiClient, char *ad_account_id, char *bookmark
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -1249,11 +1321,14 @@ BoardsAPI_boardsList(apiClient_t *apiClient, char *ad_account_id, char *bookmark
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BoardsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    boards_list_200_response_t *elementToReturn = boards_list_200_response_parseFromJSON(BoardsAPIlocalVarJSON);
-    cJSON_Delete(BoardsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    boards_list_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BoardsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = boards_list_200_response_parseFromJSON(BoardsAPIlocalVarJSON);
+        cJSON_Delete(BoardsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1332,15 +1407,20 @@ BoardsAPI_boardsListPins(apiClient_t *apiClient, char *board_id, char *bookmark,
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/boards/{board_id}/pins")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/boards/{board_id}/pins");
+    char *localVarPath = strdup("/boards/{board_id}/pins");
+
+    if(!board_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_board_id = strlen(board_id)+3 + strlen("{ board_id }");
+    long sizeOfPathParams_board_id = strlen(board_id)+3 + sizeof("{ board_id }") - 1;
     if(board_id == NULL) {
         goto end;
     }
@@ -1415,6 +1495,7 @@ BoardsAPI_boardsListPins(apiClient_t *apiClient, char *board_id, char *bookmark,
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -1430,11 +1511,14 @@ BoardsAPI_boardsListPins(apiClient_t *apiClient, char *board_id, char *bookmark,
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BoardsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    boards_list_pins_200_response_t *elementToReturn = boards_list_pins_200_response_parseFromJSON(BoardsAPIlocalVarJSON);
-    cJSON_Delete(BoardsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    boards_list_pins_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BoardsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = boards_list_pins_200_response_parseFromJSON(BoardsAPIlocalVarJSON);
+        cJSON_Delete(BoardsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1518,15 +1602,20 @@ BoardsAPI_boardsUpdate(apiClient_t *apiClient, char *board_id, board_update_t *b
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/boards/{board_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/boards/{board_id}");
+    char *localVarPath = strdup("/boards/{board_id}");
+
+    if(!board_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_board_id = strlen(board_id)+3 + strlen("{ board_id }");
+    long sizeOfPathParams_board_id = strlen(board_id)+3 + sizeof("{ board_id }") - 1;
     if(board_id == NULL) {
         goto end;
     }
@@ -1553,9 +1642,10 @@ BoardsAPI_boardsUpdate(apiClient_t *apiClient, char *board_id, board_update_t *b
     cJSON *localVarSingleItemJSON_board_update = NULL;
     if (board_update != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_board_update = board_update_convertToJSON(board_update);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_board_update);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -1567,6 +1657,7 @@ BoardsAPI_boardsUpdate(apiClient_t *apiClient, char *board_id, board_update_t *b
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "PATCH");
 
     // uncomment below to debug the error response
@@ -1590,11 +1681,14 @@ BoardsAPI_boardsUpdate(apiClient_t *apiClient, char *board_id, board_update_t *b
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BoardsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    board_t *elementToReturn = board_parseFromJSON(BoardsAPIlocalVarJSON);
-    cJSON_Delete(BoardsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    board_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BoardsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = board_parseFromJSON(BoardsAPIlocalVarJSON);
+        cJSON_Delete(BoardsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type

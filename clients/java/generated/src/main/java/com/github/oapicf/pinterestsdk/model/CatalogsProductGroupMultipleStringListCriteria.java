@@ -50,20 +50,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsProductGroupMultipleStringListCriteria
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsProductGroupMultipleStringListCriteria {
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
+  @javax.annotation.Nonnull
   private List<List<String>> values = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_NEGATED = "negated";
   @SerializedName(SERIALIZED_NAME_NEGATED)
+  @javax.annotation.Nullable
   private Boolean negated = false;
 
   public CatalogsProductGroupMultipleStringListCriteria() {
   }
 
-  public CatalogsProductGroupMultipleStringListCriteria values(List<List<String>> values) {
+  public CatalogsProductGroupMultipleStringListCriteria values(@javax.annotation.Nonnull List<List<String>> values) {
     this.values = values;
     return this;
   }
@@ -85,12 +87,12 @@ public class CatalogsProductGroupMultipleStringListCriteria {
     return values;
   }
 
-  public void setValues(List<List<String>> values) {
+  public void setValues(@javax.annotation.Nonnull List<List<String>> values) {
     this.values = values;
   }
 
 
-  public CatalogsProductGroupMultipleStringListCriteria negated(Boolean negated) {
+  public CatalogsProductGroupMultipleStringListCriteria negated(@javax.annotation.Nullable Boolean negated) {
     this.negated = negated;
     return this;
   }
@@ -104,7 +106,7 @@ public class CatalogsProductGroupMultipleStringListCriteria {
     return negated;
   }
 
-  public void setNegated(Boolean negated) {
+  public void setNegated(@javax.annotation.Nullable Boolean negated) {
     this.negated = negated;
   }
 

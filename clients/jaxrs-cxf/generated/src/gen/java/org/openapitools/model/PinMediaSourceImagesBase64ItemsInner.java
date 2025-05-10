@@ -27,7 +27,7 @@ public class PinMediaSourceImagesBase64ItemsInner  {
 
 public enum ContentTypeEnum {
 
-JPEG(String.valueOf("image/jpeg")), PNG(String.valueOf("image/png"));
+IMAGE_JPEG(String.valueOf("image/jpeg")), IMAGE_PNG(String.valueOf("image/png"));
 
 
     private String value;

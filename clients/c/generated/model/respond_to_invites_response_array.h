@@ -22,9 +22,10 @@ typedef struct respond_to_invites_response_array_t respond_to_invites_response_a
 typedef struct respond_to_invites_response_array_t {
     list_t *items; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } respond_to_invites_response_array_t;
 
-respond_to_invites_response_array_t *respond_to_invites_response_array_create(
+__attribute__((deprecated)) respond_to_invites_response_array_t *respond_to_invites_response_array_create(
     list_t *items
 );
 

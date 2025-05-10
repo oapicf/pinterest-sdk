@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsFeedProcessingStatus
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param id 
@@ -20,10 +21,11 @@ import org.openapitools.server.models.CatalogsFeedProcessingStatus
  * @param createdAt 
  * @param status 
  */
+@Serializable
 data class CatalogsFeedIngestion(
     val id: kotlin.String,
     val feedId: kotlin.String,
-    val createdAt: java.time.OffsetDateTime,
+    val createdAt: kotlin.String,
     val status: CatalogsFeedProcessingStatus
-) 
+)
 

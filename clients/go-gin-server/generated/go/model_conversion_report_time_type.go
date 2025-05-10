@@ -14,6 +14,6 @@ type ConversionReportTimeType string
 
 // List of ConversionReportTimeType
 const (
-	AD_ACTION ConversionReportTimeType = "TIME_OF_AD_ACTION"
-	CONVERSION ConversionReportTimeType = "TIME_OF_CONVERSION"
+	TIME_OF_AD_ACTION ConversionReportTimeType = "TIME_OF_AD_ACTION"
+	TIME_OF_CONVERSION ConversionReportTimeType = "TIME_OF_CONVERSION"
 )

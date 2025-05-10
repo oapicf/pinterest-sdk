@@ -16,6 +16,7 @@ import org.openapitools.server.models.CatalogsItemsRequestLanguage
 import org.openapitools.server.models.Country
 import org.openapitools.server.models.ItemUpsertBatchRecord
 
+import kotlinx.serialization.Serializable
 /**
  * Request object to upsert catalogs items
  * @param country 
@@ -23,11 +24,12 @@ import org.openapitools.server.models.ItemUpsertBatchRecord
  * @param operation 
  * @param items Array with catalogs items
  */
+@Serializable
 data class CatalogsItemsUpsertBatchRequest(
     val country: Country,
     val language: CatalogsItemsRequestLanguage,
     val operation: BatchOperation,
     /* Array with catalogs items */
     val items: kotlin.collections.List<ItemUpsertBatchRecord>
-) 
+)
 

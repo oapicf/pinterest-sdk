@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 // Functions for enum ORDER for ConversionTagsAPI_pageVisitConversionTagsGet
 
@@ -77,15 +72,20 @@ ConversionTagsAPI_conversionTagsCreate(apiClient_t *apiClient, char *ad_account_
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/conversion_tags")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/conversion_tags");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/conversion_tags");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -100,9 +100,10 @@ ConversionTagsAPI_conversionTagsCreate(apiClient_t *apiClient, char *ad_account_
     cJSON *localVarSingleItemJSON_conversion_tag_create = NULL;
     if (conversion_tag_create != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_conversion_tag_create = conversion_tag_create_convertToJSON(conversion_tag_create);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_conversion_tag_create);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -114,6 +115,7 @@ ConversionTagsAPI_conversionTagsCreate(apiClient_t *apiClient, char *ad_account_
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -125,11 +127,14 @@ ConversionTagsAPI_conversionTagsCreate(apiClient_t *apiClient, char *ad_account_
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *ConversionTagsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    conversion_tag_response_t *elementToReturn = conversion_tag_response_parseFromJSON(ConversionTagsAPIlocalVarJSON);
-    cJSON_Delete(ConversionTagsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    conversion_tag_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *ConversionTagsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = conversion_tag_response_parseFromJSON(ConversionTagsAPIlocalVarJSON);
+        cJSON_Delete(ConversionTagsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -170,15 +175,22 @@ ConversionTagsAPI_conversionTagsGet(apiClient_t *apiClient, char *ad_account_id,
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}");
+
+    if(!ad_account_id)
+        goto end;
+    if(!conversion_tag_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(conversion_tag_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(conversion_tag_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -188,7 +200,7 @@ ConversionTagsAPI_conversionTagsGet(apiClient_t *apiClient, char *ad_account_id,
     localVarPath = strReplace(localVarPath, localVarToReplace_ad_account_id, ad_account_id);
 
     // Path Params
-    long sizeOfPathParams_conversion_tag_id = strlen(ad_account_id)+3 + strlen(conversion_tag_id)+3 + strlen("{ conversion_tag_id }");
+    long sizeOfPathParams_conversion_tag_id = strlen(ad_account_id)+3 + strlen(conversion_tag_id)+3 + sizeof("{ conversion_tag_id }") - 1;
     if(conversion_tag_id == NULL) {
         goto end;
     }
@@ -207,6 +219,7 @@ ConversionTagsAPI_conversionTagsGet(apiClient_t *apiClient, char *ad_account_id,
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -218,11 +231,14 @@ ConversionTagsAPI_conversionTagsGet(apiClient_t *apiClient, char *ad_account_id,
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *ConversionTagsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    conversion_tag_response_t *elementToReturn = conversion_tag_response_parseFromJSON(ConversionTagsAPIlocalVarJSON);
-    cJSON_Delete(ConversionTagsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    conversion_tag_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *ConversionTagsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = conversion_tag_response_parseFromJSON(ConversionTagsAPIlocalVarJSON);
+        cJSON_Delete(ConversionTagsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -259,15 +275,20 @@ ConversionTagsAPI_conversionTagsList(apiClient_t *apiClient, char *ad_account_id
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/conversion_tags")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/conversion_tags");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/conversion_tags");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -299,6 +320,7 @@ ConversionTagsAPI_conversionTagsList(apiClient_t *apiClient, char *ad_account_id
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -310,11 +332,14 @@ ConversionTagsAPI_conversionTagsList(apiClient_t *apiClient, char *ad_account_id
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *ConversionTagsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    conversion_tag_list_response_t *elementToReturn = conversion_tag_list_response_parseFromJSON(ConversionTagsAPIlocalVarJSON);
-    cJSON_Delete(ConversionTagsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    conversion_tag_list_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *ConversionTagsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = conversion_tag_list_response_parseFromJSON(ConversionTagsAPIlocalVarJSON);
+        cJSON_Delete(ConversionTagsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -362,15 +387,20 @@ ConversionTagsAPI_ocpmEligibleConversionTagsGet(apiClient_t *apiClient, char *ad
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -389,6 +419,7 @@ ConversionTagsAPI_ocpmEligibleConversionTagsGet(apiClient_t *apiClient, char *ad
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -400,14 +431,17 @@ ConversionTagsAPI_ocpmEligibleConversionTagsGet(apiClient_t *apiClient, char *ad
     //    printf("%s\n","Unexpected errors");
     //}
     //primitive return type not simple
-    cJSON *localVarJSON = cJSON_Parse(apiClient->dataReceived);
-    cJSON *VarJSON;
-    list_t *elementToReturn = list_createList();
-    cJSON_ArrayForEach(VarJSON, localVarJSON){
-        keyValuePair_t *keyPair = keyValuePair_create(strdup(VarJSON->string), cJSON_Print(VarJSON));
-        list_addElement(elementToReturn, keyPair);
+    list_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *localVarJSON = cJSON_Parse(apiClient->dataReceived);
+        cJSON *VarJSON;
+        elementToReturn = list_createList();
+        cJSON_ArrayForEach(VarJSON, localVarJSON){
+            keyValuePair_t *keyPair = keyValuePair_create(strdup(VarJSON->string), cJSON_Print(VarJSON));
+            list_addElement(elementToReturn, keyPair);
+        }
+        cJSON_Delete(localVarJSON);
     }
-    cJSON_Delete(localVarJSON);
 
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
@@ -441,15 +475,20 @@ ConversionTagsAPI_pageVisitConversionTagsGet(apiClient_t *apiClient, char *ad_ac
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/conversion_tags/page_visit")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/conversion_tags/page_visit");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/conversion_tags/page_visit");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -481,7 +520,7 @@ ConversionTagsAPI_pageVisitConversionTagsGet(apiClient_t *apiClient, char *ad_ac
     {
         keyQuery_order = strdup("order");
         valueQuery_order = (order);
-        keyPairQuery_order = keyValuePair_create(keyQuery_order, (void *)strdup(pageVisitConversionTagsGet_ORDER_ToString(
+        keyPairQuery_order = keyValuePair_create(keyQuery_order, strdup(pageVisitConversionTagsGet_ORDER_ToString(
         valueQuery_order)));
         list_addElement(localVarQueryParameters,keyPairQuery_order);
     }
@@ -506,6 +545,7 @@ ConversionTagsAPI_pageVisitConversionTagsGet(apiClient_t *apiClient, char *ad_ac
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -517,11 +557,14 @@ ConversionTagsAPI_pageVisitConversionTagsGet(apiClient_t *apiClient, char *ad_ac
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *ConversionTagsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    page_visit_conversion_tags_get_200_response_t *elementToReturn = page_visit_conversion_tags_get_200_response_parseFromJSON(ConversionTagsAPIlocalVarJSON);
-    cJSON_Delete(ConversionTagsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    page_visit_conversion_tags_get_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *ConversionTagsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = page_visit_conversion_tags_get_200_response_parseFromJSON(ConversionTagsAPIlocalVarJSON);
+        cJSON_Delete(ConversionTagsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type

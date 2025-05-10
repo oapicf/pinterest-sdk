@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { AdvancedAuctionItems } from '../model/advancedAuctionItems';
 import { AdvancedAuctionItemsGetRequest } from '../model/advancedAuctionItemsGetRequest';
@@ -29,10 +29,12 @@ export class AdvancedAuctionService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -51,9 +53,10 @@ export class AdvancedAuctionService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [advancedAuctionItemsGetPostOpts.config] Override http request option.
      */
-    public advancedAuctionItemsGetPost(advancedAuctionItemsGetRequest: AdvancedAuctionItemsGetRequest, adAccountId?: string, ): Observable<AxiosResponse<AdvancedAuctionItems>>;
-    public advancedAuctionItemsGetPost(advancedAuctionItemsGetRequest: AdvancedAuctionItemsGetRequest, adAccountId?: string, ): Observable<any> {
+    public advancedAuctionItemsGetPost(advancedAuctionItemsGetRequest: AdvancedAuctionItemsGetRequest, adAccountId?: string, advancedAuctionItemsGetPostOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<AdvancedAuctionItems>>;
+    public advancedAuctionItemsGetPost(advancedAuctionItemsGetRequest: AdvancedAuctionItemsGetRequest, adAccountId?: string, advancedAuctionItemsGetPostOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (advancedAuctionItemsGetRequest === null || advancedAuctionItemsGetRequest === undefined) {
             throw new Error('Required parameter advancedAuctionItemsGetRequest was null or undefined when calling advancedAuctionItemsGetPost.');
         }
@@ -102,7 +105,8 @@ export class AdvancedAuctionService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...advancedAuctionItemsGetPostOpts?.config,
+                        headers: {...headers, ...advancedAuctionItemsGetPostOpts?.config?.headers},
                     }
                 );
             })
@@ -115,9 +119,10 @@ export class AdvancedAuctionService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [advancedAuctionItemsSubmitPostOpts.config] Override http request option.
      */
-    public advancedAuctionItemsSubmitPost(advancedAuctionItemsSubmitRequest: AdvancedAuctionItemsSubmitRequest, adAccountId?: string, ): Observable<AxiosResponse<AdvancedAuctionProcessedItems>>;
-    public advancedAuctionItemsSubmitPost(advancedAuctionItemsSubmitRequest: AdvancedAuctionItemsSubmitRequest, adAccountId?: string, ): Observable<any> {
+    public advancedAuctionItemsSubmitPost(advancedAuctionItemsSubmitRequest: AdvancedAuctionItemsSubmitRequest, adAccountId?: string, advancedAuctionItemsSubmitPostOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<AdvancedAuctionProcessedItems>>;
+    public advancedAuctionItemsSubmitPost(advancedAuctionItemsSubmitRequest: AdvancedAuctionItemsSubmitRequest, adAccountId?: string, advancedAuctionItemsSubmitPostOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (advancedAuctionItemsSubmitRequest === null || advancedAuctionItemsSubmitRequest === undefined) {
             throw new Error('Required parameter advancedAuctionItemsSubmitRequest was null or undefined when calling advancedAuctionItemsSubmitPost.');
         }
@@ -166,7 +171,8 @@ export class AdvancedAuctionService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...advancedAuctionItemsSubmitPostOpts?.config,
+                        headers: {...headers, ...advancedAuctionItemsSubmitPostOpts?.config?.headers},
                     }
                 );
             })

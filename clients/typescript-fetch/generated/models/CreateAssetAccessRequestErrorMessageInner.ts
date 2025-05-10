@@ -55,11 +55,11 @@ export function CreateAssetAccessRequestErrorMessageInnerFromJSONTyped(json: any
     };
 }
 
-  export function CreateAssetAccessRequestErrorMessageInnerToJSON(json: any): CreateAssetAccessRequestErrorMessageInner {
-      return CreateAssetAccessRequestErrorMessageInnerToJSONTyped(json, false);
-  }
+export function CreateAssetAccessRequestErrorMessageInnerToJSON(json: any): CreateAssetAccessRequestErrorMessageInner {
+    return CreateAssetAccessRequestErrorMessageInnerToJSONTyped(json, false);
+}
 
-  export function CreateAssetAccessRequestErrorMessageInnerToJSONTyped(value?: CreateAssetAccessRequestErrorMessageInner | null, ignoreDiscriminator: boolean = false): any {
+export function CreateAssetAccessRequestErrorMessageInnerToJSONTyped(value?: CreateAssetAccessRequestErrorMessageInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

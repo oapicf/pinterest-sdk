@@ -57,11 +57,11 @@ export function CatalogsCreativeAssetsProductGroupFiltersAllOfFromJSONTyped(json
     };
 }
 
-  export function CatalogsCreativeAssetsProductGroupFiltersAllOfToJSON(json: any): CatalogsCreativeAssetsProductGroupFiltersAllOf {
-      return CatalogsCreativeAssetsProductGroupFiltersAllOfToJSONTyped(json, false);
-  }
+export function CatalogsCreativeAssetsProductGroupFiltersAllOfToJSON(json: any): CatalogsCreativeAssetsProductGroupFiltersAllOf {
+    return CatalogsCreativeAssetsProductGroupFiltersAllOfToJSONTyped(json, false);
+}
 
-  export function CatalogsCreativeAssetsProductGroupFiltersAllOfToJSONTyped(value?: CatalogsCreativeAssetsProductGroupFiltersAllOf | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsCreativeAssetsProductGroupFiltersAllOfToJSONTyped(value?: CatalogsCreativeAssetsProductGroupFiltersAllOf | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

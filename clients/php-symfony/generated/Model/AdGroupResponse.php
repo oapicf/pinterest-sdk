@@ -203,7 +203,7 @@ class AdGroupResponse
      * @SerializedName("bid_strategy_type")
      * @Type("string")
     */
-    #[Assert\Choice(["AUTOMATIC_BID", "MAX_BID", "TARGET_AVG"])]
+    #[Assert\Choice(['AUTOMATIC_BID', 'MAX_BID', 'TARGET_AVG'])]
     #[Assert\Type("string")]
     protected ?string $bidStrategyType = null;
 
@@ -279,7 +279,7 @@ class AdGroupResponse
      * @SerializedName("conversion_learning_mode_type")
      * @Type("string")
     */
-    #[Assert\Choice(["NOT_ACTIVE", "ACTIVE"])]
+    #[Assert\Choice(['NOT_ACTIVE', 'ACTIVE'])]
     #[Assert\Type("string")]
     protected ?string $conversionLearningModeType = null;
 
@@ -317,7 +317,7 @@ class AdGroupResponse
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->name = array_key_exists('name', $data) ? $data['name'] : $this->name;

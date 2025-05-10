@@ -5,7 +5,7 @@
 
 
 
-invite_assets_summary_t *invite_assets_summary_create(
+static invite_assets_summary_t *invite_assets_summary_create_internal(
     list_t *ad_accounts,
     list_t *profiles
     ) {
@@ -16,12 +16,26 @@ invite_assets_summary_t *invite_assets_summary_create(
     invite_assets_summary_local_var->ad_accounts = ad_accounts;
     invite_assets_summary_local_var->profiles = profiles;
 
+    invite_assets_summary_local_var->_library_owned = 1;
     return invite_assets_summary_local_var;
 }
 
+__attribute__((deprecated)) invite_assets_summary_t *invite_assets_summary_create(
+    list_t *ad_accounts,
+    list_t *profiles
+    ) {
+    return invite_assets_summary_create_internal (
+        ad_accounts,
+        profiles
+        );
+}
 
 void invite_assets_summary_free(invite_assets_summary_t *invite_assets_summary) {
     if(NULL == invite_assets_summary){
+        return ;
+    }
+    if(invite_assets_summary->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "invite_assets_summary_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -104,6 +118,9 @@ invite_assets_summary_t *invite_assets_summary_parseFromJSON(cJSON *invite_asset
 
     // invite_assets_summary->ad_accounts
     cJSON *ad_accounts = cJSON_GetObjectItemCaseSensitive(invite_assets_summaryJSON, "ad_accounts");
+    if (cJSON_IsNull(ad_accounts)) {
+        ad_accounts = NULL;
+    }
     if (ad_accounts) { 
     cJSON *ad_accounts_local_nonprimitive = NULL;
     if(!cJSON_IsArray(ad_accounts)){
@@ -125,6 +142,9 @@ invite_assets_summary_t *invite_assets_summary_parseFromJSON(cJSON *invite_asset
 
     // invite_assets_summary->profiles
     cJSON *profiles = cJSON_GetObjectItemCaseSensitive(invite_assets_summaryJSON, "profiles");
+    if (cJSON_IsNull(profiles)) {
+        profiles = NULL;
+    }
     if (profiles) { 
     cJSON *profiles_local_nonprimitive = NULL;
     if(!cJSON_IsArray(profiles)){
@@ -145,7 +165,7 @@ invite_assets_summary_t *invite_assets_summary_parseFromJSON(cJSON *invite_asset
     }
 
 
-    invite_assets_summary_local_var = invite_assets_summary_create (
+    invite_assets_summary_local_var = invite_assets_summary_create_internal (
         ad_accounts ? ad_accountsList : NULL,
         profiles ? profilesList : NULL
         );

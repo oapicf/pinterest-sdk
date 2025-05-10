@@ -25,9 +25,10 @@ typedef struct asset_id_permissions_t {
     list_t *permissions; //primitive container
     struct asset_group_binding_t *asset_group_info; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } asset_id_permissions_t;
 
-asset_id_permissions_t *asset_id_permissions_create(
+__attribute__((deprecated)) asset_id_permissions_t *asset_id_permissions_create(
     char *asset_id,
     char *asset_type,
     list_t *permissions,

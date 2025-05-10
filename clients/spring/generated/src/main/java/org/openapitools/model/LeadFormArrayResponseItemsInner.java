@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.Exception;
 import org.openapitools.model.LeadFormResponse;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -25,10 +26,10 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("LeadFormArrayResponse_items_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class LeadFormArrayResponseItemsInner {
 
-  private LeadFormResponse data;
+  private @Nullable LeadFormResponse data;
 
   @Valid
   private List<@Valid Exception> exceptions = new ArrayList<>();

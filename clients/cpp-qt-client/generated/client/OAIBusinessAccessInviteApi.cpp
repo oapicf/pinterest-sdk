@@ -252,7 +252,7 @@ void OAIBusinessAccessInviteApi::assetAccessRequests_create(const QString &busin
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessInviteApi::assetAccessRequests_createCallback);
     connect(this, &OAIBusinessAccessInviteApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -275,7 +275,7 @@ void OAIBusinessAccessInviteApi::assetAccessRequests_create(const QString &busin
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessInviteApi::assetAccessRequests_createCallback);
     connect(this, &OAIBusinessAccessInviteApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -384,7 +384,7 @@ void OAIBusinessAccessInviteApi::cancelInvitesOrRequests(const QString &business
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessInviteApi::cancelInvitesOrRequestsCallback);
     connect(this, &OAIBusinessAccessInviteApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -406,7 +406,7 @@ void OAIBusinessAccessInviteApi::cancelInvitesOrRequests(const QString &business
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessInviteApi::cancelInvitesOrRequestsCallback);
     connect(this, &OAIBusinessAccessInviteApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -514,7 +514,7 @@ void OAIBusinessAccessInviteApi::createAssetInvites(const QString &business_id, 
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessInviteApi::createAssetInvitesCallback);
     connect(this, &OAIBusinessAccessInviteApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -537,7 +537,7 @@ void OAIBusinessAccessInviteApi::createAssetInvites(const QString &business_id, 
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessInviteApi::createAssetInvitesCallback);
     connect(this, &OAIBusinessAccessInviteApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -646,7 +646,7 @@ void OAIBusinessAccessInviteApi::createMembershipOrPartnershipInvites(const QStr
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessInviteApi::createMembershipOrPartnershipInvitesCallback);
     connect(this, &OAIBusinessAccessInviteApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -668,7 +668,7 @@ void OAIBusinessAccessInviteApi::createMembershipOrPartnershipInvites(const QStr
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessInviteApi::createMembershipOrPartnershipInvitesCallback);
     connect(this, &OAIBusinessAccessInviteApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -772,7 +772,7 @@ void OAIBusinessAccessInviteApi::get_invites(const QString &business_id, const :
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("is_member")).append(querySuffix).append(QUrl::toPercentEncoding(is_member.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("is_member")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(is_member.stringValue())));
     }
     if (invite_status.hasValue())
     {
@@ -931,7 +931,7 @@ void OAIBusinessAccessInviteApi::get_invites(const QString &business_id, const :
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(bookmark.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("bookmark")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(bookmark.stringValue())));
     }
     if (page_size.hasValue())
     {
@@ -946,7 +946,7 @@ void OAIBusinessAccessInviteApi::get_invites(const QString &business_id, const :
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(page_size.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("page_size")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(page_size.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -961,7 +961,7 @@ void OAIBusinessAccessInviteApi::get_invites(const QString &business_id, const :
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessInviteApi::get_invitesCallback);
     connect(this, &OAIBusinessAccessInviteApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -983,7 +983,7 @@ void OAIBusinessAccessInviteApi::get_invites(const QString &business_id, const :
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessInviteApi::get_invitesCallback);
     connect(this, &OAIBusinessAccessInviteApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1077,7 +1077,7 @@ void OAIBusinessAccessInviteApi::respondBusinessAccessInvites(const OAIAuthRespo
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessInviteApi::respondBusinessAccessInvitesCallback);
     connect(this, &OAIBusinessAccessInviteApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -1100,7 +1100,7 @@ void OAIBusinessAccessInviteApi::respondBusinessAccessInvites(const OAIAuthRespo
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBusinessAccessInviteApi::respondBusinessAccessInvitesCallback);
     connect(this, &OAIBusinessAccessInviteApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }

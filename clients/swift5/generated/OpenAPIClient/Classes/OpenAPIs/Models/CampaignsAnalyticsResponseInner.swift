@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct CampaignsAnalyticsResponseInner: Codable, JSONEncodable, Hashable {
 
-    static let CAMPAIGN_IDRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let CAMPAIGN_IDRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** The ID of the campaing that this metrics belongs to. */
     public var CAMPAIGN_ID: String
     /** Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`) */

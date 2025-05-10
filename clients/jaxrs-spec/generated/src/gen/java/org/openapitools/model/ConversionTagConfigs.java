@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ConversionTagConfigs")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConversionTagConfigs   {
   private Boolean aemEnabled = false;
   private BigDecimal mdFrequency = new BigDecimal("1");
@@ -26,6 +26,9 @@ public class ConversionTagConfigs   {
   private Boolean aemGeEnabled = false;
   private Boolean aemDbEnabled = false;
   private Boolean aemLocEnabled = false;
+
+  public ConversionTagConfigs() {
+  }
 
   /**
    * Whether Automatic Enhanced Match email is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.

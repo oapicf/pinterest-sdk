@@ -103,10 +103,35 @@ IntegrationLogClientError <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return IntegrationLogClientError in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return IntegrationLogClientError as a base R list.
+    #' @examples
+    #' # convert array of IntegrationLogClientError (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert IntegrationLogClientError to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       IntegrationLogClientErrorObject <- list()
       if (!is.null(self$`cause`)) {
         IntegrationLogClientErrorObject[["cause"]] <-
@@ -144,7 +169,7 @@ IntegrationLogClientError <- R6::R6Class(
         IntegrationLogClientErrorObject[["stack_trace"]] <-
           self$`stack_trace`
       }
-      IntegrationLogClientErrorObject
+      return(IntegrationLogClientErrorObject)
     },
 
     #' @description
@@ -186,85 +211,13 @@ IntegrationLogClientError <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return IntegrationLogClientError in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`cause`)) {
-          sprintf(
-          '"cause":
-            "%s"
-                    ',
-          self$`cause`
-          )
-        },
-        if (!is.null(self$`column_number`)) {
-          sprintf(
-          '"column_number":
-            %d
-                    ',
-          self$`column_number`
-          )
-        },
-        if (!is.null(self$`file_name`)) {
-          sprintf(
-          '"file_name":
-            "%s"
-                    ',
-          self$`file_name`
-          )
-        },
-        if (!is.null(self$`line_number`)) {
-          sprintf(
-          '"line_number":
-            %d
-                    ',
-          self$`line_number`
-          )
-        },
-        if (!is.null(self$`message`)) {
-          sprintf(
-          '"message":
-            "%s"
-                    ',
-          self$`message`
-          )
-        },
-        if (!is.null(self$`message_detail`)) {
-          sprintf(
-          '"message_detail":
-            "%s"
-                    ',
-          self$`message_detail`
-          )
-        },
-        if (!is.null(self$`name`)) {
-          sprintf(
-          '"name":
-            "%s"
-                    ',
-          self$`name`
-          )
-        },
-        if (!is.null(self$`number`)) {
-          sprintf(
-          '"number":
-            %d
-                    ',
-          self$`number`
-          )
-        },
-        if (!is.null(self$`stack_trace`)) {
-          sprintf(
-          '"stack_trace":
-            "%s"
-                    ',
-          self$`stack_trace`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

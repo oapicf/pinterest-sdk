@@ -14,16 +14,18 @@ package org.openapitools.server.models
 import org.openapitools.server.models.AppTypeMultipliers
 import org.openapitools.server.models.PlacementMultipliers
 
+import kotlinx.serialization.Serializable
 /**
  * Object describing a retail catalog item's bid options (bid price and bid multipliers).
  * @param bidInMicroCurrency Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.
  * @param appTypeMultipliers 
  * @param placementMultipliers 
  */
+@Serializable
 data class AdvancedAuctionBidOptions(
     /* Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`. */
     val bidInMicroCurrency: kotlin.Long? = null,
     val appTypeMultipliers: AppTypeMultipliers? = null,
     val placementMultipliers: PlacementMultipliers? = null
-) 
+)
 

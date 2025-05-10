@@ -56,11 +56,11 @@ export function UpdateMemberAssetsResultsResponseArrayItemsInnerFromJSONTyped(js
     };
 }
 
-  export function UpdateMemberAssetsResultsResponseArrayItemsInnerToJSON(json: any): UpdateMemberAssetsResultsResponseArrayItemsInner {
-      return UpdateMemberAssetsResultsResponseArrayItemsInnerToJSONTyped(json, false);
-  }
+export function UpdateMemberAssetsResultsResponseArrayItemsInnerToJSON(json: any): UpdateMemberAssetsResultsResponseArrayItemsInner {
+    return UpdateMemberAssetsResultsResponseArrayItemsInnerToJSONTyped(json, false);
+}
 
-  export function UpdateMemberAssetsResultsResponseArrayItemsInnerToJSONTyped(value?: UpdateMemberAssetsResultsResponseArrayItemsInner | null, ignoreDiscriminator: boolean = false): any {
+export function UpdateMemberAssetsResultsResponseArrayItemsInnerToJSONTyped(value?: UpdateMemberAssetsResultsResponseArrayItemsInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

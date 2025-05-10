@@ -50,14 +50,16 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdsCreditDiscountsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdsCreditDiscountsResponse {
   public static final String SERIALIZED_NAME_ACTIVE = "active";
   @SerializedName(SERIALIZED_NAME_ACTIVE)
+  @javax.annotation.Nullable
   private Boolean active;
 
   public static final String SERIALIZED_NAME_ADVERTISER_ID = "advertiser_id";
   @SerializedName(SERIALIZED_NAME_ADVERTISER_ID)
+  @javax.annotation.Nullable
   private String advertiserId;
 
   /**
@@ -150,28 +152,33 @@ public class AdsCreditDiscountsResponse {
 
   public static final String SERIALIZED_NAME_DISCOUNT_TYPE = "discountType";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_TYPE)
+  @javax.annotation.Nullable
   private DiscountTypeEnum discountType;
 
   public static final String SERIALIZED_NAME_DISCOUNT_IN_MICRO_CURRENCY = "discountInMicroCurrency";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_IN_MICRO_CURRENCY)
+  @javax.annotation.Nullable
   private BigDecimal discountInMicroCurrency;
 
   public static final String SERIALIZED_NAME_DISCOUNT_CURRENCY = "discountCurrency";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_CURRENCY)
+  @javax.annotation.Nullable
   private String discountCurrency;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
+  @javax.annotation.Nullable
   private String title;
 
   public static final String SERIALIZED_NAME_REMAINING_DISCOUNT_IN_MICRO_CURRENCY = "remainingDiscountInMicroCurrency";
   @SerializedName(SERIALIZED_NAME_REMAINING_DISCOUNT_IN_MICRO_CURRENCY)
+  @javax.annotation.Nullable
   private BigDecimal remainingDiscountInMicroCurrency;
 
   public AdsCreditDiscountsResponse() {
   }
 
-  public AdsCreditDiscountsResponse active(Boolean active) {
+  public AdsCreditDiscountsResponse active(@javax.annotation.Nullable Boolean active) {
     this.active = active;
     return this;
   }
@@ -185,12 +192,12 @@ public class AdsCreditDiscountsResponse {
     return active;
   }
 
-  public void setActive(Boolean active) {
+  public void setActive(@javax.annotation.Nullable Boolean active) {
     this.active = active;
   }
 
 
-  public AdsCreditDiscountsResponse advertiserId(String advertiserId) {
+  public AdsCreditDiscountsResponse advertiserId(@javax.annotation.Nullable String advertiserId) {
     this.advertiserId = advertiserId;
     return this;
   }
@@ -204,12 +211,12 @@ public class AdsCreditDiscountsResponse {
     return advertiserId;
   }
 
-  public void setAdvertiserId(String advertiserId) {
+  public void setAdvertiserId(@javax.annotation.Nullable String advertiserId) {
     this.advertiserId = advertiserId;
   }
 
 
-  public AdsCreditDiscountsResponse discountType(DiscountTypeEnum discountType) {
+  public AdsCreditDiscountsResponse discountType(@javax.annotation.Nullable DiscountTypeEnum discountType) {
     this.discountType = discountType;
     return this;
   }
@@ -223,12 +230,12 @@ public class AdsCreditDiscountsResponse {
     return discountType;
   }
 
-  public void setDiscountType(DiscountTypeEnum discountType) {
+  public void setDiscountType(@javax.annotation.Nullable DiscountTypeEnum discountType) {
     this.discountType = discountType;
   }
 
 
-  public AdsCreditDiscountsResponse discountInMicroCurrency(BigDecimal discountInMicroCurrency) {
+  public AdsCreditDiscountsResponse discountInMicroCurrency(@javax.annotation.Nullable BigDecimal discountInMicroCurrency) {
     this.discountInMicroCurrency = discountInMicroCurrency;
     return this;
   }
@@ -242,12 +249,12 @@ public class AdsCreditDiscountsResponse {
     return discountInMicroCurrency;
   }
 
-  public void setDiscountInMicroCurrency(BigDecimal discountInMicroCurrency) {
+  public void setDiscountInMicroCurrency(@javax.annotation.Nullable BigDecimal discountInMicroCurrency) {
     this.discountInMicroCurrency = discountInMicroCurrency;
   }
 
 
-  public AdsCreditDiscountsResponse discountCurrency(String discountCurrency) {
+  public AdsCreditDiscountsResponse discountCurrency(@javax.annotation.Nullable String discountCurrency) {
     this.discountCurrency = discountCurrency;
     return this;
   }
@@ -261,12 +268,12 @@ public class AdsCreditDiscountsResponse {
     return discountCurrency;
   }
 
-  public void setDiscountCurrency(String discountCurrency) {
+  public void setDiscountCurrency(@javax.annotation.Nullable String discountCurrency) {
     this.discountCurrency = discountCurrency;
   }
 
 
-  public AdsCreditDiscountsResponse title(String title) {
+  public AdsCreditDiscountsResponse title(@javax.annotation.Nullable String title) {
     this.title = title;
     return this;
   }
@@ -280,12 +287,12 @@ public class AdsCreditDiscountsResponse {
     return title;
   }
 
-  public void setTitle(String title) {
+  public void setTitle(@javax.annotation.Nullable String title) {
     this.title = title;
   }
 
 
-  public AdsCreditDiscountsResponse remainingDiscountInMicroCurrency(BigDecimal remainingDiscountInMicroCurrency) {
+  public AdsCreditDiscountsResponse remainingDiscountInMicroCurrency(@javax.annotation.Nullable BigDecimal remainingDiscountInMicroCurrency) {
     this.remainingDiscountInMicroCurrency = remainingDiscountInMicroCurrency;
     return this;
   }
@@ -299,7 +306,7 @@ public class AdsCreditDiscountsResponse {
     return remainingDiscountInMicroCurrency;
   }
 
-  public void setRemainingDiscountInMicroCurrency(BigDecimal remainingDiscountInMicroCurrency) {
+  public void setRemainingDiscountInMicroCurrency(@javax.annotation.Nullable BigDecimal remainingDiscountInMicroCurrency) {
     this.remainingDiscountInMicroCurrency = remainingDiscountInMicroCurrency;
   }
 

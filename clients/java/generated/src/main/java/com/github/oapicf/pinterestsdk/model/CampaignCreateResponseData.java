@@ -53,88 +53,107 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CampaignCreateResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CampaignCreateResponseData {
   public static final String SERIALIZED_NAME_AD_ACCOUNT_ID = "ad_account_id";
   @SerializedName(SERIALIZED_NAME_AD_ACCOUNT_ID)
+  @javax.annotation.Nullable
   private String adAccountId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private EntityStatus status;
 
   public static final String SERIALIZED_NAME_LIFETIME_SPEND_CAP = "lifetime_spend_cap";
   @SerializedName(SERIALIZED_NAME_LIFETIME_SPEND_CAP)
+  @javax.annotation.Nullable
   private Integer lifetimeSpendCap;
 
   public static final String SERIALIZED_NAME_DAILY_SPEND_CAP = "daily_spend_cap";
   @SerializedName(SERIALIZED_NAME_DAILY_SPEND_CAP)
+  @javax.annotation.Nullable
   private Integer dailySpendCap;
 
   public static final String SERIALIZED_NAME_ORDER_LINE_ID = "order_line_id";
   @SerializedName(SERIALIZED_NAME_ORDER_LINE_ID)
+  @javax.annotation.Nullable
   private String orderLineId;
 
   public static final String SERIALIZED_NAME_TRACKING_URLS = "tracking_urls";
   @SerializedName(SERIALIZED_NAME_TRACKING_URLS)
+  @javax.annotation.Nullable
   private TrackingUrls trackingUrls;
 
   public static final String SERIALIZED_NAME_START_TIME = "start_time";
   @SerializedName(SERIALIZED_NAME_START_TIME)
+  @javax.annotation.Nullable
   private Integer startTime;
 
   public static final String SERIALIZED_NAME_END_TIME = "end_time";
   @SerializedName(SERIALIZED_NAME_END_TIME)
+  @javax.annotation.Nullable
   private Integer endTime;
 
   public static final String SERIALIZED_NAME_IS_FLEXIBLE_DAILY_BUDGETS = "is_flexible_daily_budgets";
   @SerializedName(SERIALIZED_NAME_IS_FLEXIBLE_DAILY_BUDGETS)
+  @javax.annotation.Nullable
   private Boolean isFlexibleDailyBudgets;
 
   public static final String SERIALIZED_NAME_DEFAULT_AD_GROUP_BUDGET_IN_MICRO_CURRENCY = "default_ad_group_budget_in_micro_currency";
   @SerializedName(SERIALIZED_NAME_DEFAULT_AD_GROUP_BUDGET_IN_MICRO_CURRENCY)
+  @javax.annotation.Nullable
   private Integer defaultAdGroupBudgetInMicroCurrency;
 
   public static final String SERIALIZED_NAME_IS_AUTOMATED_CAMPAIGN = "is_automated_campaign";
   @SerializedName(SERIALIZED_NAME_IS_AUTOMATED_CAMPAIGN)
+  @javax.annotation.Nullable
   private Boolean isAutomatedCampaign;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_OBJECTIVE_TYPE = "objective_type";
   @SerializedName(SERIALIZED_NAME_OBJECTIVE_TYPE)
+  @javax.annotation.Nullable
   private ObjectiveType objectiveType;
 
   public static final String SERIALIZED_NAME_CREATED_TIME = "created_time";
   @SerializedName(SERIALIZED_NAME_CREATED_TIME)
+  @javax.annotation.Nullable
   private Integer createdTime;
 
   public static final String SERIALIZED_NAME_UPDATED_TIME = "updated_time";
   @SerializedName(SERIALIZED_NAME_UPDATED_TIME)
+  @javax.annotation.Nullable
   private Integer updatedTime;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nullable
   private String type;
 
   public static final String SERIALIZED_NAME_IS_CAMPAIGN_BUDGET_OPTIMIZATION = "is_campaign_budget_optimization";
   @SerializedName(SERIALIZED_NAME_IS_CAMPAIGN_BUDGET_OPTIMIZATION)
+  @javax.annotation.Nullable
   private Boolean isCampaignBudgetOptimization;
 
   public static final String SERIALIZED_NAME_SUMMARY_STATUS = "summary_status";
   @SerializedName(SERIALIZED_NAME_SUMMARY_STATUS)
+  @javax.annotation.Nullable
   private CampaignSummaryStatus summaryStatus;
 
   public CampaignCreateResponseData() {
   }
 
-  public CampaignCreateResponseData adAccountId(String adAccountId) {
+  public CampaignCreateResponseData adAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -148,12 +167,12 @@ public class CampaignCreateResponseData {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
 
-  public CampaignCreateResponseData name(String name) {
+  public CampaignCreateResponseData name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -167,12 +186,12 @@ public class CampaignCreateResponseData {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public CampaignCreateResponseData status(EntityStatus status) {
+  public CampaignCreateResponseData status(@javax.annotation.Nullable EntityStatus status) {
     this.status = status;
     return this;
   }
@@ -186,12 +205,12 @@ public class CampaignCreateResponseData {
     return status;
   }
 
-  public void setStatus(EntityStatus status) {
+  public void setStatus(@javax.annotation.Nullable EntityStatus status) {
     this.status = status;
   }
 
 
-  public CampaignCreateResponseData lifetimeSpendCap(Integer lifetimeSpendCap) {
+  public CampaignCreateResponseData lifetimeSpendCap(@javax.annotation.Nullable Integer lifetimeSpendCap) {
     this.lifetimeSpendCap = lifetimeSpendCap;
     return this;
   }
@@ -205,12 +224,12 @@ public class CampaignCreateResponseData {
     return lifetimeSpendCap;
   }
 
-  public void setLifetimeSpendCap(Integer lifetimeSpendCap) {
+  public void setLifetimeSpendCap(@javax.annotation.Nullable Integer lifetimeSpendCap) {
     this.lifetimeSpendCap = lifetimeSpendCap;
   }
 
 
-  public CampaignCreateResponseData dailySpendCap(Integer dailySpendCap) {
+  public CampaignCreateResponseData dailySpendCap(@javax.annotation.Nullable Integer dailySpendCap) {
     this.dailySpendCap = dailySpendCap;
     return this;
   }
@@ -224,12 +243,12 @@ public class CampaignCreateResponseData {
     return dailySpendCap;
   }
 
-  public void setDailySpendCap(Integer dailySpendCap) {
+  public void setDailySpendCap(@javax.annotation.Nullable Integer dailySpendCap) {
     this.dailySpendCap = dailySpendCap;
   }
 
 
-  public CampaignCreateResponseData orderLineId(String orderLineId) {
+  public CampaignCreateResponseData orderLineId(@javax.annotation.Nullable String orderLineId) {
     this.orderLineId = orderLineId;
     return this;
   }
@@ -243,12 +262,12 @@ public class CampaignCreateResponseData {
     return orderLineId;
   }
 
-  public void setOrderLineId(String orderLineId) {
+  public void setOrderLineId(@javax.annotation.Nullable String orderLineId) {
     this.orderLineId = orderLineId;
   }
 
 
-  public CampaignCreateResponseData trackingUrls(TrackingUrls trackingUrls) {
+  public CampaignCreateResponseData trackingUrls(@javax.annotation.Nullable TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
@@ -262,12 +281,12 @@ public class CampaignCreateResponseData {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(TrackingUrls trackingUrls) {
+  public void setTrackingUrls(@javax.annotation.Nullable TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
 
-  public CampaignCreateResponseData startTime(Integer startTime) {
+  public CampaignCreateResponseData startTime(@javax.annotation.Nullable Integer startTime) {
     this.startTime = startTime;
     return this;
   }
@@ -281,12 +300,12 @@ public class CampaignCreateResponseData {
     return startTime;
   }
 
-  public void setStartTime(Integer startTime) {
+  public void setStartTime(@javax.annotation.Nullable Integer startTime) {
     this.startTime = startTime;
   }
 
 
-  public CampaignCreateResponseData endTime(Integer endTime) {
+  public CampaignCreateResponseData endTime(@javax.annotation.Nullable Integer endTime) {
     this.endTime = endTime;
     return this;
   }
@@ -300,12 +319,12 @@ public class CampaignCreateResponseData {
     return endTime;
   }
 
-  public void setEndTime(Integer endTime) {
+  public void setEndTime(@javax.annotation.Nullable Integer endTime) {
     this.endTime = endTime;
   }
 
 
-  public CampaignCreateResponseData isFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
+  public CampaignCreateResponseData isFlexibleDailyBudgets(@javax.annotation.Nullable Boolean isFlexibleDailyBudgets) {
     this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
     return this;
   }
@@ -319,12 +338,12 @@ public class CampaignCreateResponseData {
     return isFlexibleDailyBudgets;
   }
 
-  public void setIsFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
+  public void setIsFlexibleDailyBudgets(@javax.annotation.Nullable Boolean isFlexibleDailyBudgets) {
     this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
   }
 
 
-  public CampaignCreateResponseData defaultAdGroupBudgetInMicroCurrency(Integer defaultAdGroupBudgetInMicroCurrency) {
+  public CampaignCreateResponseData defaultAdGroupBudgetInMicroCurrency(@javax.annotation.Nullable Integer defaultAdGroupBudgetInMicroCurrency) {
     this.defaultAdGroupBudgetInMicroCurrency = defaultAdGroupBudgetInMicroCurrency;
     return this;
   }
@@ -338,12 +357,12 @@ public class CampaignCreateResponseData {
     return defaultAdGroupBudgetInMicroCurrency;
   }
 
-  public void setDefaultAdGroupBudgetInMicroCurrency(Integer defaultAdGroupBudgetInMicroCurrency) {
+  public void setDefaultAdGroupBudgetInMicroCurrency(@javax.annotation.Nullable Integer defaultAdGroupBudgetInMicroCurrency) {
     this.defaultAdGroupBudgetInMicroCurrency = defaultAdGroupBudgetInMicroCurrency;
   }
 
 
-  public CampaignCreateResponseData isAutomatedCampaign(Boolean isAutomatedCampaign) {
+  public CampaignCreateResponseData isAutomatedCampaign(@javax.annotation.Nullable Boolean isAutomatedCampaign) {
     this.isAutomatedCampaign = isAutomatedCampaign;
     return this;
   }
@@ -357,12 +376,12 @@ public class CampaignCreateResponseData {
     return isAutomatedCampaign;
   }
 
-  public void setIsAutomatedCampaign(Boolean isAutomatedCampaign) {
+  public void setIsAutomatedCampaign(@javax.annotation.Nullable Boolean isAutomatedCampaign) {
     this.isAutomatedCampaign = isAutomatedCampaign;
   }
 
 
-  public CampaignCreateResponseData id(String id) {
+  public CampaignCreateResponseData id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -376,12 +395,12 @@ public class CampaignCreateResponseData {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public CampaignCreateResponseData objectiveType(ObjectiveType objectiveType) {
+  public CampaignCreateResponseData objectiveType(@javax.annotation.Nullable ObjectiveType objectiveType) {
     this.objectiveType = objectiveType;
     return this;
   }
@@ -395,12 +414,12 @@ public class CampaignCreateResponseData {
     return objectiveType;
   }
 
-  public void setObjectiveType(ObjectiveType objectiveType) {
+  public void setObjectiveType(@javax.annotation.Nullable ObjectiveType objectiveType) {
     this.objectiveType = objectiveType;
   }
 
 
-  public CampaignCreateResponseData createdTime(Integer createdTime) {
+  public CampaignCreateResponseData createdTime(@javax.annotation.Nullable Integer createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -414,12 +433,12 @@ public class CampaignCreateResponseData {
     return createdTime;
   }
 
-  public void setCreatedTime(Integer createdTime) {
+  public void setCreatedTime(@javax.annotation.Nullable Integer createdTime) {
     this.createdTime = createdTime;
   }
 
 
-  public CampaignCreateResponseData updatedTime(Integer updatedTime) {
+  public CampaignCreateResponseData updatedTime(@javax.annotation.Nullable Integer updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -433,12 +452,12 @@ public class CampaignCreateResponseData {
     return updatedTime;
   }
 
-  public void setUpdatedTime(Integer updatedTime) {
+  public void setUpdatedTime(@javax.annotation.Nullable Integer updatedTime) {
     this.updatedTime = updatedTime;
   }
 
 
-  public CampaignCreateResponseData type(String type) {
+  public CampaignCreateResponseData type(@javax.annotation.Nullable String type) {
     this.type = type;
     return this;
   }
@@ -452,12 +471,12 @@ public class CampaignCreateResponseData {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@javax.annotation.Nullable String type) {
     this.type = type;
   }
 
 
-  public CampaignCreateResponseData isCampaignBudgetOptimization(Boolean isCampaignBudgetOptimization) {
+  public CampaignCreateResponseData isCampaignBudgetOptimization(@javax.annotation.Nullable Boolean isCampaignBudgetOptimization) {
     this.isCampaignBudgetOptimization = isCampaignBudgetOptimization;
     return this;
   }
@@ -471,12 +490,12 @@ public class CampaignCreateResponseData {
     return isCampaignBudgetOptimization;
   }
 
-  public void setIsCampaignBudgetOptimization(Boolean isCampaignBudgetOptimization) {
+  public void setIsCampaignBudgetOptimization(@javax.annotation.Nullable Boolean isCampaignBudgetOptimization) {
     this.isCampaignBudgetOptimization = isCampaignBudgetOptimization;
   }
 
 
-  public CampaignCreateResponseData summaryStatus(CampaignSummaryStatus summaryStatus) {
+  public CampaignCreateResponseData summaryStatus(@javax.annotation.Nullable CampaignSummaryStatus summaryStatus) {
     this.summaryStatus = summaryStatus;
     return this;
   }
@@ -490,7 +509,7 @@ public class CampaignCreateResponseData {
     return summaryStatus;
   }
 
-  public void setSummaryStatus(CampaignSummaryStatus summaryStatus) {
+  public void setSummaryStatus(@javax.annotation.Nullable CampaignSummaryStatus summaryStatus) {
     this.summaryStatus = summaryStatus;
   }
 

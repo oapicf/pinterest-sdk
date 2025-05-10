@@ -142,11 +142,11 @@ export function CampaignCreateCommonFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function CampaignCreateCommonToJSON(json: any): CampaignCreateCommon {
-      return CampaignCreateCommonToJSONTyped(json, false);
-  }
+export function CampaignCreateCommonToJSON(json: any): CampaignCreateCommon {
+    return CampaignCreateCommonToJSONTyped(json, false);
+}
 
-  export function CampaignCreateCommonToJSONTyped(value?: CampaignCreateCommon | null, ignoreDiscriminator: boolean = false): any {
+export function CampaignCreateCommonToJSONTyped(value?: CampaignCreateCommon | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

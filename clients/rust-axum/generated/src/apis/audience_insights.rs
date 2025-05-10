@@ -1,6 +1,6 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Multipart};
+use axum_extra::extract::{CookieJar, Host};
 use bytes::Bytes;
 use http::Method;
 use serde::{Deserialize, Serialize};
@@ -37,27 +37,27 @@ pub enum AudienceInsightsSlashGetResponse {
 /// AudienceInsights
 #[async_trait]
 #[allow(clippy::ptr_arg)]
-pub trait AudienceInsights {
+pub trait AudienceInsights<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHandler<E> {
     /// Get audience insights scope and type.
     ///
     /// AudienceInsightsScopeAndTypeSlashGet - GET /v5/ad_accounts/{ad_account_id}/insights/audiences
     async fn audience_insights_scope_and_type_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::AudienceInsightsScopeAndTypeSlashGetPathParams,
-    ) -> Result<AudienceInsightsScopeAndTypeSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::AudienceInsightsScopeAndTypeSlashGetPathParams,
+    ) -> Result<AudienceInsightsScopeAndTypeSlashGetResponse, E>;
 
     /// Get audience insights.
     ///
     /// AudienceInsightsSlashGet - GET /v5/ad_accounts/{ad_account_id}/audience_insights
     async fn audience_insights_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::AudienceInsightsSlashGetPathParams,
-      query_params: models::AudienceInsightsSlashGetQueryParams,
-    ) -> Result<AudienceInsightsSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::AudienceInsightsSlashGetPathParams,
+      query_params: &models::AudienceInsightsSlashGetQueryParams,
+    ) -> Result<AudienceInsightsSlashGetResponse, E>;
 }

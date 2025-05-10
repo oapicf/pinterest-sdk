@@ -12,11 +12,17 @@
 export type TargetingSpecAppType = 'android_mobile' | 'android_tablet' | 'ipad' | 'iphone' | 'web' | 'web_mobile';
 
 export const TargetingSpecAppType = {
+
     AndroidMobile: 'android_mobile' as TargetingSpecAppType,
+
     AndroidTablet: 'android_tablet' as TargetingSpecAppType,
+
     Ipad: 'ipad' as TargetingSpecAppType,
+
     Iphone: 'iphone' as TargetingSpecAppType,
+
     Web: 'web' as TargetingSpecAppType,
+
     WebMobile: 'web_mobile' as TargetingSpecAppType
 };
 

@@ -50,20 +50,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * BidFloor
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class BidFloor {
   public static final String SERIALIZED_NAME_BID_FLOORS = "bid_floors";
   @SerializedName(SERIALIZED_NAME_BID_FLOORS)
+  @javax.annotation.Nullable
   private List<Integer> bidFloors = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nullable
   private String type = "bidfloor";
 
   public BidFloor() {
   }
 
-  public BidFloor bidFloors(List<Integer> bidFloors) {
+  public BidFloor bidFloors(@javax.annotation.Nullable List<Integer> bidFloors) {
     this.bidFloors = bidFloors;
     return this;
   }
@@ -85,12 +87,12 @@ public class BidFloor {
     return bidFloors;
   }
 
-  public void setBidFloors(List<Integer> bidFloors) {
+  public void setBidFloors(@javax.annotation.Nullable List<Integer> bidFloors) {
     this.bidFloors = bidFloors;
   }
 
 
-  public BidFloor type(String type) {
+  public BidFloor type(@javax.annotation.Nullable String type) {
     this.type = type;
     return this;
   }
@@ -104,7 +106,7 @@ public class BidFloor {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@javax.annotation.Nullable String type) {
     this.type = type;
   }
 

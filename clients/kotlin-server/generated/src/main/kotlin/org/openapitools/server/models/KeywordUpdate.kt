@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param id Keyword ID.
  * @param archived Is keyword archived?
  * @param bid </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
  */
+@Serializable
 data class KeywordUpdate(
     /* Keyword ID. */
     val id: kotlin.String,
@@ -25,5 +27,5 @@ data class KeywordUpdate(
     val archived: kotlin.Boolean? = null,
     /* </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. */
     val bid: kotlin.Int? = null
-) 
+)
 

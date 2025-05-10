@@ -15,6 +15,7 @@ import org.openapitools.server.models.CatalogsProductGroupFilters
 import org.openapitools.server.models.CatalogsProductGroupStatus
 import org.openapitools.server.models.CatalogsProductGroupType
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param catalogType 
@@ -32,6 +33,7 @@ import org.openapitools.server.models.CatalogsProductGroupType
  * @param country 
  * @param locale 
  */
+@Serializable
 data class CatalogsRetailProductGroup(
     val catalogType: CatalogsRetailProductGroup.CatalogType,
     /* ID of the catalog product group. */
@@ -40,7 +42,7 @@ data class CatalogsRetailProductGroup(
     /* Catalog id pertaining to the retail product group. */
     val catalogId: kotlin.String,
     /* id of the catalogs feed belonging to this catalog product group */
-    val feedId: kotlin.String,
+    val feedId: kotlin.String?,
     /* Name of catalog product group */
     val name: kotlin.String? = null,
     val description: kotlin.String? = null,
@@ -54,7 +56,7 @@ data class CatalogsRetailProductGroup(
     val updatedAt: kotlin.Int? = null,
     val country: kotlin.String? = null,
     val locale: kotlin.String? = null
-) 
+)
 {
     /**
     * 

@@ -116,11 +116,11 @@ export function OauthAccessTokenResponseEverlastingRefreshFromJSONTyped(json: an
     };
 }
 
-  export function OauthAccessTokenResponseEverlastingRefreshToJSON(json: any): OauthAccessTokenResponseEverlastingRefresh {
-      return OauthAccessTokenResponseEverlastingRefreshToJSONTyped(json, false);
-  }
+export function OauthAccessTokenResponseEverlastingRefreshToJSON(json: any): OauthAccessTokenResponseEverlastingRefresh {
+    return OauthAccessTokenResponseEverlastingRefreshToJSONTyped(json, false);
+}
 
-  export function OauthAccessTokenResponseEverlastingRefreshToJSONTyped(value?: OauthAccessTokenResponseEverlastingRefresh | null, ignoreDiscriminator: boolean = false): any {
+export function OauthAccessTokenResponseEverlastingRefreshToJSONTyped(value?: OauthAccessTokenResponseEverlastingRefresh | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

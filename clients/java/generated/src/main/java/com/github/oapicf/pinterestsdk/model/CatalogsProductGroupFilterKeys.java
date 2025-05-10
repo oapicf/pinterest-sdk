@@ -91,7 +91,7 @@ import com.google.gson.JsonParseException;
 
 import com.github.oapicf.pinterestsdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CatalogsProductGroupFilterKeys.class.getName());
 
@@ -912,6 +912,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     public MinPriceFilter getMinPriceFilter() throws ClassCastException {
         return (MinPriceFilter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `MaxPriceFilter`. If the actual instance is not `MaxPriceFilter`,
      * the ClassCastException will be thrown.
@@ -922,6 +923,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     public MaxPriceFilter getMaxPriceFilter() throws ClassCastException {
         return (MaxPriceFilter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CurrencyFilter`. If the actual instance is not `CurrencyFilter`,
      * the ClassCastException will be thrown.
@@ -932,6 +934,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     public CurrencyFilter getCurrencyFilter() throws ClassCastException {
         return (CurrencyFilter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `ItemIdFilter`. If the actual instance is not `ItemIdFilter`,
      * the ClassCastException will be thrown.
@@ -942,6 +945,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     public ItemIdFilter getItemIdFilter() throws ClassCastException {
         return (ItemIdFilter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `AvailabilityFilter`. If the actual instance is not `AvailabilityFilter`,
      * the ClassCastException will be thrown.
@@ -952,6 +956,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     public AvailabilityFilter getAvailabilityFilter() throws ClassCastException {
         return (AvailabilityFilter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `BrandFilter`. If the actual instance is not `BrandFilter`,
      * the ClassCastException will be thrown.
@@ -962,6 +967,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     public BrandFilter getBrandFilter() throws ClassCastException {
         return (BrandFilter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `ConditionFilter`. If the actual instance is not `ConditionFilter`,
      * the ClassCastException will be thrown.
@@ -972,6 +978,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     public ConditionFilter getConditionFilter() throws ClassCastException {
         return (ConditionFilter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CustomLabel0Filter`. If the actual instance is not `CustomLabel0Filter`,
      * the ClassCastException will be thrown.
@@ -982,6 +989,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     public CustomLabel0Filter getCustomLabel0Filter() throws ClassCastException {
         return (CustomLabel0Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CustomLabel1Filter`. If the actual instance is not `CustomLabel1Filter`,
      * the ClassCastException will be thrown.
@@ -992,6 +1000,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     public CustomLabel1Filter getCustomLabel1Filter() throws ClassCastException {
         return (CustomLabel1Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CustomLabel2Filter`. If the actual instance is not `CustomLabel2Filter`,
      * the ClassCastException will be thrown.
@@ -1002,6 +1011,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     public CustomLabel2Filter getCustomLabel2Filter() throws ClassCastException {
         return (CustomLabel2Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CustomLabel3Filter`. If the actual instance is not `CustomLabel3Filter`,
      * the ClassCastException will be thrown.
@@ -1012,6 +1022,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     public CustomLabel3Filter getCustomLabel3Filter() throws ClassCastException {
         return (CustomLabel3Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `CustomLabel4Filter`. If the actual instance is not `CustomLabel4Filter`,
      * the ClassCastException will be thrown.
@@ -1022,6 +1033,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     public CustomLabel4Filter getCustomLabel4Filter() throws ClassCastException {
         return (CustomLabel4Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `ItemGroupIdFilter`. If the actual instance is not `ItemGroupIdFilter`,
      * the ClassCastException will be thrown.
@@ -1032,6 +1044,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     public ItemGroupIdFilter getItemGroupIdFilter() throws ClassCastException {
         return (ItemGroupIdFilter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `GenderFilter`. If the actual instance is not `GenderFilter`,
      * the ClassCastException will be thrown.
@@ -1042,6 +1055,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     public GenderFilter getGenderFilter() throws ClassCastException {
         return (GenderFilter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `MediaTypeFilter`. If the actual instance is not `MediaTypeFilter`,
      * the ClassCastException will be thrown.
@@ -1052,6 +1066,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     public MediaTypeFilter getMediaTypeFilter() throws ClassCastException {
         return (MediaTypeFilter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `ProductType4Filter`. If the actual instance is not `ProductType4Filter`,
      * the ClassCastException will be thrown.
@@ -1062,6 +1077,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     public ProductType4Filter getProductType4Filter() throws ClassCastException {
         return (ProductType4Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `ProductType3Filter`. If the actual instance is not `ProductType3Filter`,
      * the ClassCastException will be thrown.
@@ -1072,6 +1088,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     public ProductType3Filter getProductType3Filter() throws ClassCastException {
         return (ProductType3Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `ProductType2Filter`. If the actual instance is not `ProductType2Filter`,
      * the ClassCastException will be thrown.
@@ -1082,6 +1099,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     public ProductType2Filter getProductType2Filter() throws ClassCastException {
         return (ProductType2Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `ProductType1Filter`. If the actual instance is not `ProductType1Filter`,
      * the ClassCastException will be thrown.
@@ -1092,6 +1110,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     public ProductType1Filter getProductType1Filter() throws ClassCastException {
         return (ProductType1Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `ProductType0Filter`. If the actual instance is not `ProductType0Filter`,
      * the ClassCastException will be thrown.
@@ -1102,6 +1121,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     public ProductType0Filter getProductType0Filter() throws ClassCastException {
         return (ProductType0Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `GoogleProductCategory6Filter`. If the actual instance is not `GoogleProductCategory6Filter`,
      * the ClassCastException will be thrown.
@@ -1112,6 +1132,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     public GoogleProductCategory6Filter getGoogleProductCategory6Filter() throws ClassCastException {
         return (GoogleProductCategory6Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `GoogleProductCategory5Filter`. If the actual instance is not `GoogleProductCategory5Filter`,
      * the ClassCastException will be thrown.
@@ -1122,6 +1143,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     public GoogleProductCategory5Filter getGoogleProductCategory5Filter() throws ClassCastException {
         return (GoogleProductCategory5Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `GoogleProductCategory4Filter`. If the actual instance is not `GoogleProductCategory4Filter`,
      * the ClassCastException will be thrown.
@@ -1132,6 +1154,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     public GoogleProductCategory4Filter getGoogleProductCategory4Filter() throws ClassCastException {
         return (GoogleProductCategory4Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `GoogleProductCategory3Filter`. If the actual instance is not `GoogleProductCategory3Filter`,
      * the ClassCastException will be thrown.
@@ -1142,6 +1165,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     public GoogleProductCategory3Filter getGoogleProductCategory3Filter() throws ClassCastException {
         return (GoogleProductCategory3Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `GoogleProductCategory2Filter`. If the actual instance is not `GoogleProductCategory2Filter`,
      * the ClassCastException will be thrown.
@@ -1152,6 +1176,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     public GoogleProductCategory2Filter getGoogleProductCategory2Filter() throws ClassCastException {
         return (GoogleProductCategory2Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `GoogleProductCategory1Filter`. If the actual instance is not `GoogleProductCategory1Filter`,
      * the ClassCastException will be thrown.
@@ -1162,6 +1187,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     public GoogleProductCategory1Filter getGoogleProductCategory1Filter() throws ClassCastException {
         return (GoogleProductCategory1Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `GoogleProductCategory0Filter`. If the actual instance is not `GoogleProductCategory0Filter`,
      * the ClassCastException will be thrown.
@@ -1172,6 +1198,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     public GoogleProductCategory0Filter getGoogleProductCategory0Filter() throws ClassCastException {
         return (GoogleProductCategory0Filter)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `ProductGroupReferenceFilter`. If the actual instance is not `ProductGroupReferenceFilter`,
      * the ClassCastException will be thrown.

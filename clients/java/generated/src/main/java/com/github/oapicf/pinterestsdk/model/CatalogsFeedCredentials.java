@@ -48,20 +48,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * This field is **OPTIONAL**. Use this if your feed file requires username and password.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsFeedCredentials {
   public static final String SERIALIZED_NAME_PASSWORD = "password";
   @SerializedName(SERIALIZED_NAME_PASSWORD)
+  @javax.annotation.Nonnull
   private String password;
 
   public static final String SERIALIZED_NAME_USERNAME = "username";
   @SerializedName(SERIALIZED_NAME_USERNAME)
+  @javax.annotation.Nonnull
   private String username;
 
   public CatalogsFeedCredentials() {
   }
 
-  public CatalogsFeedCredentials password(String password) {
+  public CatalogsFeedCredentials password(@javax.annotation.Nonnull String password) {
     this.password = password;
     return this;
   }
@@ -75,12 +77,12 @@ public class CatalogsFeedCredentials {
     return password;
   }
 
-  public void setPassword(String password) {
+  public void setPassword(@javax.annotation.Nonnull String password) {
     this.password = password;
   }
 
 
-  public CatalogsFeedCredentials username(String username) {
+  public CatalogsFeedCredentials username(@javax.annotation.Nonnull String username) {
     this.username = username;
     return this;
   }
@@ -94,7 +96,7 @@ public class CatalogsFeedCredentials {
     return username;
   }
 
-  public void setUsername(String username) {
+  public void setUsername(@javax.annotation.Nonnull String username) {
     this.username = username;
   }
 

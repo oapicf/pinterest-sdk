@@ -25,27 +25,20 @@ char* create_membership_or_partnership_invites_body_business_role_ToString(pinte
 
 pinterest_rest_api_create_membership_or_partnership_invites_body_BUSINESSROLE_e create_membership_or_partnership_invites_body_business_role_FromString(char* business_role);
 
-// Enum  for create_membership_or_partnership_invites_body
-
-typedef enum  { pinterest_rest_api_create_membership_or_partnership_invites_body__NULL = 0, pinterest_rest_api_create_membership_or_partnership_invites_body__MEMBER_INVITE, pinterest_rest_api_create_membership_or_partnership_invites_body__PARTNER_INVITE, pinterest_rest_api_create_membership_or_partnership_invites_body__PARTNER_REQUEST } pinterest_rest_api_create_membership_or_partnership_invites_body__e;
-
-char* create_membership_or_partnership_invites_body_invite_type_ToString(pinterest_rest_api_create_membership_or_partnership_invites_body__e invite_type);
-
-pinterest_rest_api_create_membership_or_partnership_invites_body__e create_membership_or_partnership_invites_body_invite_type_FromString(char* invite_type);
-
 
 
 typedef struct create_membership_or_partnership_invites_body_t {
     pinterest_rest_api_create_membership_or_partnership_invites_body_BUSINESSROLE_e business_role; //enum
-    invite_type_t *invite_type; // custom
+    pinterest_rest_api_invite_type__e invite_type; //referenced enum
     list_t *members; //primitive container
     list_t *partners; //primitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } create_membership_or_partnership_invites_body_t;
 
-create_membership_or_partnership_invites_body_t *create_membership_or_partnership_invites_body_create(
+__attribute__((deprecated)) create_membership_or_partnership_invites_body_t *create_membership_or_partnership_invites_body_create(
     pinterest_rest_api_create_membership_or_partnership_invites_body_BUSINESSROLE_e business_role,
-    invite_type_t *invite_type,
+    pinterest_rest_api_invite_type__e invite_type,
     list_t *members,
     list_t *partners
 );

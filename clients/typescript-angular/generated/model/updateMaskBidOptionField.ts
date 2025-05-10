@@ -15,8 +15,11 @@
 export type UpdateMaskBidOptionField = 'BID' | 'APP_TYPE_BID_MULTIPLIER_SET' | 'PLACEMENT_BID_MULTIPLIER_SET';
 
 export const UpdateMaskBidOptionField = {
+
     Bid: 'BID' as UpdateMaskBidOptionField,
+
     AppTypeBidMultiplierSet: 'APP_TYPE_BID_MULTIPLIER_SET' as UpdateMaskBidOptionField,
+
     PlacementBidMultiplierSet: 'PLACEMENT_BID_MULTIPLIER_SET' as UpdateMaskBidOptionField
 };
 

@@ -54,24 +54,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * PinAnalyticsMetricsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinAnalyticsMetricsResponse {
   public static final String SERIALIZED_NAME_LIFETIME_METRICS = "lifetime_metrics";
   @SerializedName(SERIALIZED_NAME_LIFETIME_METRICS)
+  @javax.annotation.Nullable
   private Map<String, Integer> lifetimeMetrics = new HashMap<>();
 
   public static final String SERIALIZED_NAME_DAILY_METRICS = "daily_metrics";
   @SerializedName(SERIALIZED_NAME_DAILY_METRICS)
+  @javax.annotation.Nullable
   private List<PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_SUMMARY_METRICS = "summary_metrics";
   @SerializedName(SERIALIZED_NAME_SUMMARY_METRICS)
+  @javax.annotation.Nullable
   private Map<String, BigDecimal> summaryMetrics = new HashMap<>();
 
   public PinAnalyticsMetricsResponse() {
   }
 
-  public PinAnalyticsMetricsResponse lifetimeMetrics(Map<String, Integer> lifetimeMetrics) {
+  public PinAnalyticsMetricsResponse lifetimeMetrics(@javax.annotation.Nullable Map<String, Integer> lifetimeMetrics) {
     this.lifetimeMetrics = lifetimeMetrics;
     return this;
   }
@@ -93,12 +96,12 @@ public class PinAnalyticsMetricsResponse {
     return lifetimeMetrics;
   }
 
-  public void setLifetimeMetrics(Map<String, Integer> lifetimeMetrics) {
+  public void setLifetimeMetrics(@javax.annotation.Nullable Map<String, Integer> lifetimeMetrics) {
     this.lifetimeMetrics = lifetimeMetrics;
   }
 
 
-  public PinAnalyticsMetricsResponse dailyMetrics(List<PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics) {
+  public PinAnalyticsMetricsResponse dailyMetrics(@javax.annotation.Nullable List<PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics) {
     this.dailyMetrics = dailyMetrics;
     return this;
   }
@@ -120,12 +123,12 @@ public class PinAnalyticsMetricsResponse {
     return dailyMetrics;
   }
 
-  public void setDailyMetrics(List<PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics) {
+  public void setDailyMetrics(@javax.annotation.Nullable List<PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics) {
     this.dailyMetrics = dailyMetrics;
   }
 
 
-  public PinAnalyticsMetricsResponse summaryMetrics(Map<String, BigDecimal> summaryMetrics) {
+  public PinAnalyticsMetricsResponse summaryMetrics(@javax.annotation.Nullable Map<String, BigDecimal> summaryMetrics) {
     this.summaryMetrics = summaryMetrics;
     return this;
   }
@@ -147,7 +150,7 @@ public class PinAnalyticsMetricsResponse {
     return summaryMetrics;
   }
 
-  public void setSummaryMetrics(Map<String, BigDecimal> summaryMetrics) {
+  public void setSummaryMetrics(@javax.annotation.Nullable Map<String, BigDecimal> summaryMetrics) {
     this.summaryMetrics = summaryMetrics;
   }
 

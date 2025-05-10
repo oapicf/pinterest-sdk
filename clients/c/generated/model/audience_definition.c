@@ -5,7 +5,7 @@
 
 
 
-audience_definition_t *audience_definition_create(
+static audience_definition_t *audience_definition_create_internal(
     char *date,
     ) {
     audience_definition_t *audience_definition_local_var = malloc(sizeof(audience_definition_t));
@@ -16,12 +16,26 @@ audience_definition_t *audience_definition_create(
     audience_definition_local_var->type = type;
     audience_definition_local_var->scope = scope;
 
+    audience_definition_local_var->_library_owned = 1;
     return audience_definition_local_var;
 }
 
+__attribute__((deprecated)) audience_definition_t *audience_definition_create(
+    char *date,
+    ) {
+    return audience_definition_create_internal (
+        date,
+        type,
+        scope
+        );
+}
 
 void audience_definition_free(audience_definition_t *audience_definition) {
     if(NULL == audience_definition){
+        return ;
+    }
+    if(audience_definition->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "audience_definition_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -66,6 +80,9 @@ audience_definition_t *audience_definition_parseFromJSON(cJSON *audience_definit
 
     // audience_definition->date
     cJSON *date = cJSON_GetObjectItemCaseSensitive(audience_definitionJSON, "date");
+    if (cJSON_IsNull(date)) {
+        date = NULL;
+    }
     if (date) { 
     if(!cJSON_IsString(date) && !cJSON_IsNull(date))
     {
@@ -75,14 +92,20 @@ audience_definition_t *audience_definition_parseFromJSON(cJSON *audience_definit
 
     // audience_definition->type
     cJSON *type = cJSON_GetObjectItemCaseSensitive(audience_definitionJSON, "type");
+    if (cJSON_IsNull(type)) {
+        type = NULL;
+    }
     }
 
     // audience_definition->scope
     cJSON *scope = cJSON_GetObjectItemCaseSensitive(audience_definitionJSON, "scope");
+    if (cJSON_IsNull(scope)) {
+        scope = NULL;
+    }
     }
 
 
-    audience_definition_local_var = audience_definition_create (
+    audience_definition_local_var = audience_definition_create_internal (
         date && !cJSON_IsNull(date) ? strdup(date->valuestring) : NULL,
         );
 

@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 // Functions for enum REPORTTYPE for ResourcesAPI_deliveryMetricsGet
 
@@ -129,11 +124,14 @@ ResourcesAPI_adAccountCountriesGet(apiClient_t *apiClient)
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/resources/ad_account_countries")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/resources/ad_account_countries");
+    char *localVarPath = strdup("/resources/ad_account_countries");
+
 
 
 
@@ -146,6 +144,7 @@ ResourcesAPI_adAccountCountriesGet(apiClient_t *apiClient)
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -157,11 +156,14 @@ ResourcesAPI_adAccountCountriesGet(apiClient_t *apiClient)
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *ResourcesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    ad_accounts_country_response_t *elementToReturn = ad_accounts_country_response_parseFromJSON(ResourcesAPIlocalVarJSON);
-    cJSON_Delete(ResourcesAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    ad_accounts_country_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *ResourcesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = ad_accounts_country_response_parseFromJSON(ResourcesAPIlocalVarJSON);
+        cJSON_Delete(ResourcesAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -196,11 +198,14 @@ ResourcesAPI_deliveryMetricsGet(apiClient_t *apiClient, pinterest_rest_api_deliv
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/resources/delivery_metrics")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/resources/delivery_metrics");
+    char *localVarPath = strdup("/resources/delivery_metrics");
+
 
 
 
@@ -213,7 +218,7 @@ ResourcesAPI_deliveryMetricsGet(apiClient_t *apiClient, pinterest_rest_api_deliv
     {
         keyQuery_report_type = strdup("report_type");
         valueQuery_report_type = (report_type);
-        keyPairQuery_report_type = keyValuePair_create(keyQuery_report_type, (void *)strdup(deliveryMetricsGet_REPORTTYPE_ToString(
+        keyPairQuery_report_type = keyValuePair_create(keyQuery_report_type, strdup(deliveryMetricsGet_REPORTTYPE_ToString(
         valueQuery_report_type)));
         list_addElement(localVarQueryParameters,keyPairQuery_report_type);
     }
@@ -226,6 +231,7 @@ ResourcesAPI_deliveryMetricsGet(apiClient_t *apiClient, pinterest_rest_api_deliv
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -237,11 +243,14 @@ ResourcesAPI_deliveryMetricsGet(apiClient_t *apiClient, pinterest_rest_api_deliv
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *ResourcesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    delivery_metrics_response_t *elementToReturn = delivery_metrics_response_parseFromJSON(ResourcesAPIlocalVarJSON);
-    cJSON_Delete(ResourcesAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    delivery_metrics_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *ResourcesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = delivery_metrics_response_parseFromJSON(ResourcesAPIlocalVarJSON);
+        cJSON_Delete(ResourcesAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -284,15 +293,20 @@ ResourcesAPI_interestTargetingOptionsGet(apiClient_t *apiClient, char *interest_
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/resources/targeting/interests/{interest_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/resources/targeting/interests/{interest_id}");
+    char *localVarPath = strdup("/resources/targeting/interests/{interest_id}");
+
+    if(!interest_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_interest_id = strlen(interest_id)+3 + strlen("{ interest_id }");
+    long sizeOfPathParams_interest_id = strlen(interest_id)+3 + sizeof("{ interest_id }") - 1;
     if(interest_id == NULL) {
         goto end;
     }
@@ -311,6 +325,7 @@ ResourcesAPI_interestTargetingOptionsGet(apiClient_t *apiClient, char *interest_
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -322,11 +337,14 @@ ResourcesAPI_interestTargetingOptionsGet(apiClient_t *apiClient, char *interest_
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *ResourcesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    single_interest_targeting_option_response_t *elementToReturn = single_interest_targeting_option_response_parseFromJSON(ResourcesAPIlocalVarJSON);
-    cJSON_Delete(ResourcesAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    single_interest_targeting_option_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *ResourcesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = single_interest_targeting_option_response_parseFromJSON(ResourcesAPIlocalVarJSON);
+        cJSON_Delete(ResourcesAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -362,11 +380,14 @@ ResourcesAPI_leadFormQuestionsGet(apiClient_t *apiClient)
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/resources/lead_form_questions")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/resources/lead_form_questions");
+    char *localVarPath = strdup("/resources/lead_form_questions");
+
 
 
 
@@ -379,6 +400,7 @@ ResourcesAPI_leadFormQuestionsGet(apiClient_t *apiClient)
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -418,11 +440,14 @@ ResourcesAPI_metricsReadyStateGet(apiClient_t *apiClient, char *date)
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/resources/metrics_ready_state")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/resources/metrics_ready_state");
+    char *localVarPath = strdup("/resources/metrics_ready_state");
+
 
 
 
@@ -447,6 +472,7 @@ ResourcesAPI_metricsReadyStateGet(apiClient_t *apiClient, char *date)
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -458,11 +484,14 @@ ResourcesAPI_metricsReadyStateGet(apiClient_t *apiClient, char *date)
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *ResourcesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    book_closed_response_t *elementToReturn = book_closed_response_parseFromJSON(ResourcesAPIlocalVarJSON);
-    cJSON_Delete(ResourcesAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    book_closed_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *ResourcesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = book_closed_response_parseFromJSON(ResourcesAPIlocalVarJSON);
+        cJSON_Delete(ResourcesAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -509,22 +538,27 @@ ResourcesAPI_targetingOptionsGet(apiClient_t *apiClient, pinterest_rest_api_targ
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/resources/targeting/{targeting_type}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/resources/targeting/{targeting_type}");
+    char *localVarPath = strdup("/resources/targeting/{targeting_type}");
+
+    if(!targeting_type)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_targeting_type = strlen(targeting_type)+3 + strlen("{ targeting_type }");
-    if(targeting_type == NULL) {
+    long sizeOfPathParams_targeting_type = strlen(targetingOptionsGet_TARGETINGTYPE_ToString(targeting_type))+3 + sizeof("{ targeting_type }") - 1;
+    if(targeting_type == 0) {
         goto end;
     }
     char* localVarToReplace_targeting_type = malloc(sizeOfPathParams_targeting_type);
     sprintf(localVarToReplace_targeting_type, "{%s}", "targeting_type");
 
-    localVarPath = strReplace(localVarPath, localVarToReplace_targeting_type, targeting_type);
+    localVarPath = strReplace(localVarPath, localVarToReplace_targeting_type, targetingOptionsGet_TARGETINGTYPE_ToString(targeting_type));
 
 
 
@@ -584,6 +618,7 @@ ResourcesAPI_targetingOptionsGet(apiClient_t *apiClient, pinterest_rest_api_targ
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -594,24 +629,27 @@ ResourcesAPI_targetingOptionsGet(apiClient_t *apiClient, pinterest_rest_api_targ
     //if (apiClient->response_code == 0) {
     //    printf("%s\n","Unexpected error");
     //}
-    cJSON *ResourcesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    if(!cJSON_IsArray(ResourcesAPIlocalVarJSON)) {
-        return 0;//nonprimitive container
-    }
-    list_t *elementToReturn = list_createList();
-    cJSON *VarJSON;
-    cJSON_ArrayForEach(VarJSON, ResourcesAPIlocalVarJSON)
-    {
-        if(!cJSON_IsObject(VarJSON))
-        {
-           // return 0;
+    list_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *ResourcesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        if(!cJSON_IsArray(ResourcesAPIlocalVarJSON)) {
+            return 0;//nonprimitive container
         }
-        char *localVarJSONToChar = cJSON_Print(VarJSON);
-        list_addElement(elementToReturn , localVarJSONToChar);
-    }
+        elementToReturn = list_createList();
+        cJSON *VarJSON;
+        cJSON_ArrayForEach(VarJSON, ResourcesAPIlocalVarJSON)
+        {
+            if(!cJSON_IsObject(VarJSON))
+            {
+               // return 0;
+            }
+            char *localVarJSONToChar = cJSON_Print(VarJSON);
+            list_addElement(elementToReturn , localVarJSONToChar);
+        }
 
-    cJSON_Delete( ResourcesAPIlocalVarJSON);
-    cJSON_Delete( VarJSON);
+        cJSON_Delete( ResourcesAPIlocalVarJSON);
+        cJSON_Delete( VarJSON);
+    }
     //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);

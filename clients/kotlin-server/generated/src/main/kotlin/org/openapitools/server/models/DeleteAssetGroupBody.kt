@@ -12,12 +12,14 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Request body used to delete asset groups
  * @param assetGroupsToDelete List of ids of asset groups to be deleted
  */
+@Serializable
 data class DeleteAssetGroupBody(
     /* List of ids of asset groups to be deleted */
     val assetGroupsToDelete: kotlin.collections.List<kotlin.String>
-) 
+)
 

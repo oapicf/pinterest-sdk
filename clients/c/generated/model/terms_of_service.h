@@ -24,9 +24,10 @@ typedef struct terms_of_service_t {
     int has_accepted; //boolean
     char *ad_account_id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } terms_of_service_t;
 
-terms_of_service_t *terms_of_service_create(
+__attribute__((deprecated)) terms_of_service_t *terms_of_service_create(
     char *id,
     char *html,
     int has_accepted,

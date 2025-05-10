@@ -14,13 +14,15 @@ package org.openapitools.server.models
 import org.openapitools.server.models.Exception
 import org.openapitools.server.models.ProductGroupPromotionResponseElement
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param `data` 
  * @param exceptions 
  */
+@Serializable
 data class ProductGroupPromotionResponseItem(
     val `data`: ProductGroupPromotionResponseElement? = null,
     val exceptions: kotlin.collections.List<Exception>? = null
-) 
+)
 

@@ -58,11 +58,11 @@ export function AdGroupsAnalyticsResponseInnerFromJSONTyped(json: any, ignoreDis
     };
 }
 
-  export function AdGroupsAnalyticsResponseInnerToJSON(json: any): AdGroupsAnalyticsResponseInner {
-      return AdGroupsAnalyticsResponseInnerToJSONTyped(json, false);
-  }
+export function AdGroupsAnalyticsResponseInnerToJSON(json: any): AdGroupsAnalyticsResponseInner {
+    return AdGroupsAnalyticsResponseInnerToJSONTyped(json, false);
+}
 
-  export function AdGroupsAnalyticsResponseInnerToJSONTyped(value?: AdGroupsAnalyticsResponseInner | null, ignoreDiscriminator: boolean = false): any {
+export function AdGroupsAnalyticsResponseInnerToJSONTyped(value?: AdGroupsAnalyticsResponseInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

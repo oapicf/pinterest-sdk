@@ -47,6 +47,7 @@ class TermsOfServiceApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/terms_of_service
      * Get terms of service
      * Get the text of the terms of service and see whether the advertiser has accepted the terms of service.
      * @param adAccountId Unique identifier of an ad account.
@@ -80,6 +81,7 @@ class TermsOfServiceApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/terms_of_service
      * Get terms of service
      * Get the text of the terms of service and see whether the advertiser has accepted the terms of service.
      * @param adAccountId Unique identifier of an ad account.

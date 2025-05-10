@@ -71,7 +71,7 @@ class AdsCreditDiscountsResponse
      * @SerializedName("discountType")
      * @Type("string")
     */
-    #[Assert\Choice(["COUPON", "CREDIT", "COUPON_APPLIED", "CREDIT_APPLIED", "MARKETING_OFFER_CREDIT", "MARKETING_OFFER_CREDIT_APPLIED", "GOODWILL_CREDIT", "GOODWILL_CREDIT_APPLIED", "INTERNAL_CREDIT", "INTERNAL_CREDIT_APPLIED", "PREPAID_CREDIT", "PREPAID_CREDIT_APPLIED", "SALES_INCENTIVE_CREDIT", "SALES_INCENTIVE_CREDIT_APPLIED", "CREDIT_EXPIRED", "FUTURE_CREDIT", "REFERRAL_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT_APPLIED", "PREPAID_CREDIT_REFUND"])]
+    #[Assert\Choice(['COUPON', 'CREDIT', 'COUPON_APPLIED', 'CREDIT_APPLIED', 'MARKETING_OFFER_CREDIT', 'MARKETING_OFFER_CREDIT_APPLIED', 'GOODWILL_CREDIT', 'GOODWILL_CREDIT_APPLIED', 'INTERNAL_CREDIT', 'INTERNAL_CREDIT_APPLIED', 'PREPAID_CREDIT', 'PREPAID_CREDIT_APPLIED', 'SALES_INCENTIVE_CREDIT', 'SALES_INCENTIVE_CREDIT_APPLIED', 'CREDIT_EXPIRED', 'FUTURE_CREDIT', 'REFERRAL_CREDIT', 'INVOICE_SALES_INCENTIVE_CREDIT', 'INVOICE_SALES_INCENTIVE_CREDIT_APPLIED', 'PREPAID_CREDIT_REFUND'])]
     #[Assert\Type("string")]
     protected ?string $discountType = null;
 
@@ -119,7 +119,7 @@ class AdsCreditDiscountsResponse
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->active = array_key_exists('active', $data) ? $data['active'] : $this->active;

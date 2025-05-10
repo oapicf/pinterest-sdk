@@ -11,6 +11,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BoardMedia;
 import org.openapitools.model.BoardOwner;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -27,30 +28,30 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "Board", description = "Board")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class Board {
 
-  private String id;
+  private @Nullable String id;
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-  private OffsetDateTime createdAt;
+  private @Nullable OffsetDateTime createdAt;
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-  private OffsetDateTime boardPinsModifiedAt;
+  private @Nullable OffsetDateTime boardPinsModifiedAt;
 
   private String name;
 
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
-  private Integer collaboratorCount;
+  private @Nullable Integer collaboratorCount;
 
-  private Integer pinCount;
+  private @Nullable Integer pinCount;
 
-  private Integer followerCount;
+  private @Nullable Integer followerCount;
 
-  private BoardMedia media;
+  private @Nullable BoardMedia media;
 
-  private BoardOwner owner;
+  private @Nullable BoardOwner owner;
 
   /**
    * Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>

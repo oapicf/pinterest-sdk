@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.IntegrationLog
 
+import kotlinx.serialization.Serializable
 /**
  * Batch of logs sent from an integration application.
  * @param logs 
  */
+@Serializable
 data class IntegrationLogsRequest(
     val logs: kotlin.collections.List<IntegrationLog>
-) 
+)
 

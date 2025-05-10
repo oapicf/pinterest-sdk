@@ -156,13 +156,13 @@ PinMediaSourceImageBase64['ContentTypeEnum'] = {
      * value: "image/jpeg"
      * @const
      */
-    "jpeg": "image/jpeg",
+    "image/jpeg": "image/jpeg",
 
     /**
      * value: "image/png"
      * @const
      */
-    "png": "image/png"
+    "image/png": "image/png"
 };
 
 

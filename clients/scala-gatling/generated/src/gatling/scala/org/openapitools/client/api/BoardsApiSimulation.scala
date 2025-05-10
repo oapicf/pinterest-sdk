@@ -132,8 +132,8 @@ class BoardsApiSimulation extends Simulation {
         .feed(board_sections/listPATHFeeder)
         .exec(http("boardSectionsList")
         .httpRequest("GET","/boards/${board_id}/sections")
-        .queryParam("ad_account_id","${ad_account_id}")
         .queryParam("page_size","${page_size}")
+        .queryParam("ad_account_id","${ad_account_id}")
         .queryParam("bookmark","${bookmark}")
 )
 
@@ -150,8 +150,8 @@ class BoardsApiSimulation extends Simulation {
         .feed(board_sections/list_pinsPATHFeeder)
         .exec(http("boardSectionsListPins")
         .httpRequest("GET","/boards/${board_id}/sections/${section_id}/pins")
-        .queryParam("ad_account_id","${ad_account_id}")
         .queryParam("page_size","${page_size}")
+        .queryParam("ad_account_id","${ad_account_id}")
         .queryParam("bookmark","${bookmark}")
 )
 
@@ -230,9 +230,9 @@ class BoardsApiSimulation extends Simulation {
         .feed(boards/listQUERYFeeder)
         .exec(http("boardsList")
         .httpRequest("GET","/boards")
-        .queryParam("ad_account_id","${ad_account_id}")
         .queryParam("page_size","${page_size}")
         .queryParam("privacy","${privacy}")
+        .queryParam("ad_account_id","${ad_account_id}")
         .queryParam("bookmark","${bookmark}")
 )
 
@@ -249,10 +249,10 @@ class BoardsApiSimulation extends Simulation {
         .feed(boards/list_pinsPATHFeeder)
         .exec(http("boardsListPins")
         .httpRequest("GET","/boards/${board_id}/pins")
+        .queryParam("page_size","${page_size}")
+        .queryParam("pin_metrics","${pin_metrics}")
         .queryParam("ad_account_id","${ad_account_id}")
         .queryParam("creative_types","${creative_types}")
-        .queryParam("pin_metrics","${pin_metrics}")
-        .queryParam("page_size","${page_size}")
         .queryParam("bookmark","${bookmark}")
 )
 

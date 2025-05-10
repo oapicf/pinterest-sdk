@@ -40,8 +40,8 @@ public struct BillingProfilesResponse: Codable, JSONEncodable, Hashable {
         case elo = "ELO"
         case carteBancaire = "CARTE_BANCAIRE"
     }
-    static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let advertiserIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let advertiserIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Billing ID. */
     public var id: String?
     /** Type of the card. */
@@ -81,3 +81,6 @@ public struct BillingProfilesResponse: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension BillingProfilesResponse: Identifiable {}

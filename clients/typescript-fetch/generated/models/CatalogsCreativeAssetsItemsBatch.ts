@@ -108,11 +108,11 @@ export function CatalogsCreativeAssetsItemsBatchFromJSONTyped(json: any, ignoreD
     };
 }
 
-  export function CatalogsCreativeAssetsItemsBatchToJSON(json: any): CatalogsCreativeAssetsItemsBatch {
-      return CatalogsCreativeAssetsItemsBatchToJSONTyped(json, false);
-  }
+export function CatalogsCreativeAssetsItemsBatchToJSON(json: any): CatalogsCreativeAssetsItemsBatch {
+    return CatalogsCreativeAssetsItemsBatchToJSONTyped(json, false);
+}
 
-  export function CatalogsCreativeAssetsItemsBatchToJSONTyped(value?: Omit<CatalogsCreativeAssetsItemsBatch, 'created_time'|'completed_time'> | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsCreativeAssetsItemsBatchToJSONTyped(value?: Omit<CatalogsCreativeAssetsItemsBatch, 'created_time'|'completed_time'> | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

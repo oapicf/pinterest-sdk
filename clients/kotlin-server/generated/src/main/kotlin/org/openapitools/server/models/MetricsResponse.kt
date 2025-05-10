@@ -12,11 +12,13 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param `data` 
  */
+@Serializable
 data class MetricsResponse(
     val `data`: kotlin.collections.List<kotlin.Any>? = null
-) 
+)
 

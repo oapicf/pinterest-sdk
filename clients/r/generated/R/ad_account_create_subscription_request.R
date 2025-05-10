@@ -65,10 +65,35 @@ AdAccountCreateSubscriptionRequest <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return AdAccountCreateSubscriptionRequest in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return AdAccountCreateSubscriptionRequest as a base R list.
+    #' @examples
+    #' # convert array of AdAccountCreateSubscriptionRequest (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert AdAccountCreateSubscriptionRequest to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       AdAccountCreateSubscriptionRequestObject <- list()
       if (!is.null(self$`webhook_url`)) {
         AdAccountCreateSubscriptionRequestObject[["webhook_url"]] <-
@@ -88,9 +113,9 @@ AdAccountCreateSubscriptionRequest <- R6::R6Class(
       }
       if (!is.null(self$`partner_metadata`)) {
         AdAccountCreateSubscriptionRequestObject[["partner_metadata"]] <-
-          self$`partner_metadata`$toJSON()
+          self$`partner_metadata`$toSimpleType()
       }
-      AdAccountCreateSubscriptionRequestObject
+      return(AdAccountCreateSubscriptionRequestObject)
     },
 
     #' @description
@@ -122,53 +147,13 @@ AdAccountCreateSubscriptionRequest <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return AdAccountCreateSubscriptionRequest in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`webhook_url`)) {
-          sprintf(
-          '"webhook_url":
-            "%s"
-                    ',
-          self$`webhook_url`
-          )
-        },
-        if (!is.null(self$`lead_form_id`)) {
-          sprintf(
-          '"lead_form_id":
-            "%s"
-                    ',
-          self$`lead_form_id`
-          )
-        },
-        if (!is.null(self$`partner_access_token`)) {
-          sprintf(
-          '"partner_access_token":
-            "%s"
-                    ',
-          self$`partner_access_token`
-          )
-        },
-        if (!is.null(self$`partner_refresh_token`)) {
-          sprintf(
-          '"partner_refresh_token":
-            "%s"
-                    ',
-          self$`partner_refresh_token`
-          )
-        },
-        if (!is.null(self$`partner_metadata`)) {
-          sprintf(
-          '"partner_metadata":
-          %s
-          ',
-          jsonlite::toJSON(self$`partner_metadata`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

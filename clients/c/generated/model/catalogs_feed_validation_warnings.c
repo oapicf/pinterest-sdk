@@ -22,7 +22,7 @@ pinterest_rest_api_catalogs_feed_validation_warnings_FETCHSAMESIGNATURE_e catalo
     return 0;
 }
 
-catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_create(
+static catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_create_internal(
     int ad_link_format_warning,
     int ad_link_same_as_link,
     int title_length_too_long,
@@ -127,12 +127,120 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_create(
     catalogs_feed_validation_warnings_local_var->sales_price_too_high = sales_price_too_high;
     catalogs_feed_validation_warnings_local_var->mpn_invalid = mpn_invalid;
 
+    catalogs_feed_validation_warnings_local_var->_library_owned = 1;
     return catalogs_feed_validation_warnings_local_var;
 }
 
+__attribute__((deprecated)) catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_create(
+    int ad_link_format_warning,
+    int ad_link_same_as_link,
+    int title_length_too_long,
+    int description_length_too_long,
+    int gender_invalid,
+    int age_group_invalid,
+    int size_type_invalid,
+    int size_system_invalid,
+    int link_format_warning,
+    int sales_price_invalid,
+    int product_category_depth_warning,
+    int adwords_format_warning,
+    int adwords_same_as_link,
+    int duplicate_headers,
+    int fetch_same_signature,
+    int additional_image_link_length_too_long,
+    int additional_image_link_warning,
+    int image_link_warning,
+    int shipping_invalid,
+    int tax_invalid,
+    int shipping_weight_invalid,
+    int expiration_date_invalid,
+    int availability_date_invalid,
+    int sale_date_invalid,
+    int weight_unit_invalid,
+    int is_bundle_invalid,
+    int updated_time_invalid,
+    int custom_label_length_too_long,
+    int product_type_length_too_long,
+    int too_many_additional_image_links,
+    int multipack_invalid,
+    int indexed_product_count_large_delta,
+    int item_additional_image_download_failure,
+    int optional_product_category_missing,
+    int optional_product_category_invalid,
+    int optional_condition_missing,
+    int optional_condition_invalid,
+    int ios_deep_link_invalid,
+    int android_deep_link_invalid,
+    int utm_source_auto_corrected,
+    int country_does_not_map_to_currency,
+    int min_ad_price_invalid,
+    int gtin_invalid,
+    int inconsistent_currency_values,
+    int sales_price_too_low,
+    int shipping_width_invalid,
+    int shipping_height_invalid,
+    int sales_price_too_high,
+    int mpn_invalid
+    ) {
+    return catalogs_feed_validation_warnings_create_internal (
+        ad_link_format_warning,
+        ad_link_same_as_link,
+        title_length_too_long,
+        description_length_too_long,
+        gender_invalid,
+        age_group_invalid,
+        size_type_invalid,
+        size_system_invalid,
+        link_format_warning,
+        sales_price_invalid,
+        product_category_depth_warning,
+        adwords_format_warning,
+        adwords_same_as_link,
+        duplicate_headers,
+        fetch_same_signature,
+        additional_image_link_length_too_long,
+        additional_image_link_warning,
+        image_link_warning,
+        shipping_invalid,
+        tax_invalid,
+        shipping_weight_invalid,
+        expiration_date_invalid,
+        availability_date_invalid,
+        sale_date_invalid,
+        weight_unit_invalid,
+        is_bundle_invalid,
+        updated_time_invalid,
+        custom_label_length_too_long,
+        product_type_length_too_long,
+        too_many_additional_image_links,
+        multipack_invalid,
+        indexed_product_count_large_delta,
+        item_additional_image_download_failure,
+        optional_product_category_missing,
+        optional_product_category_invalid,
+        optional_condition_missing,
+        optional_condition_invalid,
+        ios_deep_link_invalid,
+        android_deep_link_invalid,
+        utm_source_auto_corrected,
+        country_does_not_map_to_currency,
+        min_ad_price_invalid,
+        gtin_invalid,
+        inconsistent_currency_values,
+        sales_price_too_low,
+        shipping_width_invalid,
+        shipping_height_invalid,
+        sales_price_too_high,
+        mpn_invalid
+        );
+}
 
 void catalogs_feed_validation_warnings_free(catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings) {
     if(NULL == catalogs_feed_validation_warnings){
+        return ;
+    }
+    if(catalogs_feed_validation_warnings->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_feed_validation_warnings_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -547,6 +655,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->ad_link_format_warning
     cJSON *ad_link_format_warning = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "AD_LINK_FORMAT_WARNING");
+    if (cJSON_IsNull(ad_link_format_warning)) {
+        ad_link_format_warning = NULL;
+    }
     if (ad_link_format_warning) { 
     if(!cJSON_IsNumber(ad_link_format_warning))
     {
@@ -556,6 +667,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->ad_link_same_as_link
     cJSON *ad_link_same_as_link = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "AD_LINK_SAME_AS_LINK");
+    if (cJSON_IsNull(ad_link_same_as_link)) {
+        ad_link_same_as_link = NULL;
+    }
     if (ad_link_same_as_link) { 
     if(!cJSON_IsNumber(ad_link_same_as_link))
     {
@@ -565,6 +679,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->title_length_too_long
     cJSON *title_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "TITLE_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(title_length_too_long)) {
+        title_length_too_long = NULL;
+    }
     if (title_length_too_long) { 
     if(!cJSON_IsNumber(title_length_too_long))
     {
@@ -574,6 +691,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->description_length_too_long
     cJSON *description_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "DESCRIPTION_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(description_length_too_long)) {
+        description_length_too_long = NULL;
+    }
     if (description_length_too_long) { 
     if(!cJSON_IsNumber(description_length_too_long))
     {
@@ -583,6 +703,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->gender_invalid
     cJSON *gender_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "GENDER_INVALID");
+    if (cJSON_IsNull(gender_invalid)) {
+        gender_invalid = NULL;
+    }
     if (gender_invalid) { 
     if(!cJSON_IsNumber(gender_invalid))
     {
@@ -592,6 +715,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->age_group_invalid
     cJSON *age_group_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "AGE_GROUP_INVALID");
+    if (cJSON_IsNull(age_group_invalid)) {
+        age_group_invalid = NULL;
+    }
     if (age_group_invalid) { 
     if(!cJSON_IsNumber(age_group_invalid))
     {
@@ -601,6 +727,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->size_type_invalid
     cJSON *size_type_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "SIZE_TYPE_INVALID");
+    if (cJSON_IsNull(size_type_invalid)) {
+        size_type_invalid = NULL;
+    }
     if (size_type_invalid) { 
     if(!cJSON_IsNumber(size_type_invalid))
     {
@@ -610,6 +739,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->size_system_invalid
     cJSON *size_system_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "SIZE_SYSTEM_INVALID");
+    if (cJSON_IsNull(size_system_invalid)) {
+        size_system_invalid = NULL;
+    }
     if (size_system_invalid) { 
     if(!cJSON_IsNumber(size_system_invalid))
     {
@@ -619,6 +751,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->link_format_warning
     cJSON *link_format_warning = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "LINK_FORMAT_WARNING");
+    if (cJSON_IsNull(link_format_warning)) {
+        link_format_warning = NULL;
+    }
     if (link_format_warning) { 
     if(!cJSON_IsNumber(link_format_warning))
     {
@@ -628,6 +763,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->sales_price_invalid
     cJSON *sales_price_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "SALES_PRICE_INVALID");
+    if (cJSON_IsNull(sales_price_invalid)) {
+        sales_price_invalid = NULL;
+    }
     if (sales_price_invalid) { 
     if(!cJSON_IsNumber(sales_price_invalid))
     {
@@ -637,6 +775,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->product_category_depth_warning
     cJSON *product_category_depth_warning = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "PRODUCT_CATEGORY_DEPTH_WARNING");
+    if (cJSON_IsNull(product_category_depth_warning)) {
+        product_category_depth_warning = NULL;
+    }
     if (product_category_depth_warning) { 
     if(!cJSON_IsNumber(product_category_depth_warning))
     {
@@ -646,6 +787,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->adwords_format_warning
     cJSON *adwords_format_warning = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "ADWORDS_FORMAT_WARNING");
+    if (cJSON_IsNull(adwords_format_warning)) {
+        adwords_format_warning = NULL;
+    }
     if (adwords_format_warning) { 
     if(!cJSON_IsNumber(adwords_format_warning))
     {
@@ -655,6 +799,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->adwords_same_as_link
     cJSON *adwords_same_as_link = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "ADWORDS_SAME_AS_LINK");
+    if (cJSON_IsNull(adwords_same_as_link)) {
+        adwords_same_as_link = NULL;
+    }
     if (adwords_same_as_link) { 
     if(!cJSON_IsNumber(adwords_same_as_link))
     {
@@ -664,6 +811,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->duplicate_headers
     cJSON *duplicate_headers = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "DUPLICATE_HEADERS");
+    if (cJSON_IsNull(duplicate_headers)) {
+        duplicate_headers = NULL;
+    }
     if (duplicate_headers) { 
     if(!cJSON_IsNumber(duplicate_headers))
     {
@@ -673,6 +823,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->fetch_same_signature
     cJSON *fetch_same_signature = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "FETCH_SAME_SIGNATURE");
+    if (cJSON_IsNull(fetch_same_signature)) {
+        fetch_same_signature = NULL;
+    }
     if (fetch_same_signature) { 
     if(!cJSON_IsNumber(fetch_same_signature))
     {
@@ -682,6 +835,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->additional_image_link_length_too_long
     cJSON *additional_image_link_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(additional_image_link_length_too_long)) {
+        additional_image_link_length_too_long = NULL;
+    }
     if (additional_image_link_length_too_long) { 
     if(!cJSON_IsNumber(additional_image_link_length_too_long))
     {
@@ -691,6 +847,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->additional_image_link_warning
     cJSON *additional_image_link_warning = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "ADDITIONAL_IMAGE_LINK_WARNING");
+    if (cJSON_IsNull(additional_image_link_warning)) {
+        additional_image_link_warning = NULL;
+    }
     if (additional_image_link_warning) { 
     if(!cJSON_IsNumber(additional_image_link_warning))
     {
@@ -700,6 +859,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->image_link_warning
     cJSON *image_link_warning = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "IMAGE_LINK_WARNING");
+    if (cJSON_IsNull(image_link_warning)) {
+        image_link_warning = NULL;
+    }
     if (image_link_warning) { 
     if(!cJSON_IsNumber(image_link_warning))
     {
@@ -709,6 +871,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->shipping_invalid
     cJSON *shipping_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "SHIPPING_INVALID");
+    if (cJSON_IsNull(shipping_invalid)) {
+        shipping_invalid = NULL;
+    }
     if (shipping_invalid) { 
     if(!cJSON_IsNumber(shipping_invalid))
     {
@@ -718,6 +883,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->tax_invalid
     cJSON *tax_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "TAX_INVALID");
+    if (cJSON_IsNull(tax_invalid)) {
+        tax_invalid = NULL;
+    }
     if (tax_invalid) { 
     if(!cJSON_IsNumber(tax_invalid))
     {
@@ -727,6 +895,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->shipping_weight_invalid
     cJSON *shipping_weight_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "SHIPPING_WEIGHT_INVALID");
+    if (cJSON_IsNull(shipping_weight_invalid)) {
+        shipping_weight_invalid = NULL;
+    }
     if (shipping_weight_invalid) { 
     if(!cJSON_IsNumber(shipping_weight_invalid))
     {
@@ -736,6 +907,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->expiration_date_invalid
     cJSON *expiration_date_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "EXPIRATION_DATE_INVALID");
+    if (cJSON_IsNull(expiration_date_invalid)) {
+        expiration_date_invalid = NULL;
+    }
     if (expiration_date_invalid) { 
     if(!cJSON_IsNumber(expiration_date_invalid))
     {
@@ -745,6 +919,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->availability_date_invalid
     cJSON *availability_date_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "AVAILABILITY_DATE_INVALID");
+    if (cJSON_IsNull(availability_date_invalid)) {
+        availability_date_invalid = NULL;
+    }
     if (availability_date_invalid) { 
     if(!cJSON_IsNumber(availability_date_invalid))
     {
@@ -754,6 +931,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->sale_date_invalid
     cJSON *sale_date_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "SALE_DATE_INVALID");
+    if (cJSON_IsNull(sale_date_invalid)) {
+        sale_date_invalid = NULL;
+    }
     if (sale_date_invalid) { 
     if(!cJSON_IsNumber(sale_date_invalid))
     {
@@ -763,6 +943,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->weight_unit_invalid
     cJSON *weight_unit_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "WEIGHT_UNIT_INVALID");
+    if (cJSON_IsNull(weight_unit_invalid)) {
+        weight_unit_invalid = NULL;
+    }
     if (weight_unit_invalid) { 
     if(!cJSON_IsNumber(weight_unit_invalid))
     {
@@ -772,6 +955,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->is_bundle_invalid
     cJSON *is_bundle_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "IS_BUNDLE_INVALID");
+    if (cJSON_IsNull(is_bundle_invalid)) {
+        is_bundle_invalid = NULL;
+    }
     if (is_bundle_invalid) { 
     if(!cJSON_IsNumber(is_bundle_invalid))
     {
@@ -781,6 +967,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->updated_time_invalid
     cJSON *updated_time_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "UPDATED_TIME_INVALID");
+    if (cJSON_IsNull(updated_time_invalid)) {
+        updated_time_invalid = NULL;
+    }
     if (updated_time_invalid) { 
     if(!cJSON_IsNumber(updated_time_invalid))
     {
@@ -790,6 +979,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->custom_label_length_too_long
     cJSON *custom_label_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "CUSTOM_LABEL_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(custom_label_length_too_long)) {
+        custom_label_length_too_long = NULL;
+    }
     if (custom_label_length_too_long) { 
     if(!cJSON_IsNumber(custom_label_length_too_long))
     {
@@ -799,6 +991,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->product_type_length_too_long
     cJSON *product_type_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "PRODUCT_TYPE_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(product_type_length_too_long)) {
+        product_type_length_too_long = NULL;
+    }
     if (product_type_length_too_long) { 
     if(!cJSON_IsNumber(product_type_length_too_long))
     {
@@ -808,6 +1003,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->too_many_additional_image_links
     cJSON *too_many_additional_image_links = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "TOO_MANY_ADDITIONAL_IMAGE_LINKS");
+    if (cJSON_IsNull(too_many_additional_image_links)) {
+        too_many_additional_image_links = NULL;
+    }
     if (too_many_additional_image_links) { 
     if(!cJSON_IsNumber(too_many_additional_image_links))
     {
@@ -817,6 +1015,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->multipack_invalid
     cJSON *multipack_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "MULTIPACK_INVALID");
+    if (cJSON_IsNull(multipack_invalid)) {
+        multipack_invalid = NULL;
+    }
     if (multipack_invalid) { 
     if(!cJSON_IsNumber(multipack_invalid))
     {
@@ -826,6 +1027,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->indexed_product_count_large_delta
     cJSON *indexed_product_count_large_delta = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "INDEXED_PRODUCT_COUNT_LARGE_DELTA");
+    if (cJSON_IsNull(indexed_product_count_large_delta)) {
+        indexed_product_count_large_delta = NULL;
+    }
     if (indexed_product_count_large_delta) { 
     if(!cJSON_IsNumber(indexed_product_count_large_delta))
     {
@@ -835,6 +1039,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->item_additional_image_download_failure
     cJSON *item_additional_image_download_failure = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE");
+    if (cJSON_IsNull(item_additional_image_download_failure)) {
+        item_additional_image_download_failure = NULL;
+    }
     if (item_additional_image_download_failure) { 
     if(!cJSON_IsNumber(item_additional_image_download_failure))
     {
@@ -844,6 +1051,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->optional_product_category_missing
     cJSON *optional_product_category_missing = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "OPTIONAL_PRODUCT_CATEGORY_MISSING");
+    if (cJSON_IsNull(optional_product_category_missing)) {
+        optional_product_category_missing = NULL;
+    }
     if (optional_product_category_missing) { 
     if(!cJSON_IsNumber(optional_product_category_missing))
     {
@@ -853,6 +1063,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->optional_product_category_invalid
     cJSON *optional_product_category_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "OPTIONAL_PRODUCT_CATEGORY_INVALID");
+    if (cJSON_IsNull(optional_product_category_invalid)) {
+        optional_product_category_invalid = NULL;
+    }
     if (optional_product_category_invalid) { 
     if(!cJSON_IsNumber(optional_product_category_invalid))
     {
@@ -862,6 +1075,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->optional_condition_missing
     cJSON *optional_condition_missing = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "OPTIONAL_CONDITION_MISSING");
+    if (cJSON_IsNull(optional_condition_missing)) {
+        optional_condition_missing = NULL;
+    }
     if (optional_condition_missing) { 
     if(!cJSON_IsNumber(optional_condition_missing))
     {
@@ -871,6 +1087,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->optional_condition_invalid
     cJSON *optional_condition_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "OPTIONAL_CONDITION_INVALID");
+    if (cJSON_IsNull(optional_condition_invalid)) {
+        optional_condition_invalid = NULL;
+    }
     if (optional_condition_invalid) { 
     if(!cJSON_IsNumber(optional_condition_invalid))
     {
@@ -880,6 +1099,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->ios_deep_link_invalid
     cJSON *ios_deep_link_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "IOS_DEEP_LINK_INVALID");
+    if (cJSON_IsNull(ios_deep_link_invalid)) {
+        ios_deep_link_invalid = NULL;
+    }
     if (ios_deep_link_invalid) { 
     if(!cJSON_IsNumber(ios_deep_link_invalid))
     {
@@ -889,6 +1111,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->android_deep_link_invalid
     cJSON *android_deep_link_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "ANDROID_DEEP_LINK_INVALID");
+    if (cJSON_IsNull(android_deep_link_invalid)) {
+        android_deep_link_invalid = NULL;
+    }
     if (android_deep_link_invalid) { 
     if(!cJSON_IsNumber(android_deep_link_invalid))
     {
@@ -898,6 +1123,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->utm_source_auto_corrected
     cJSON *utm_source_auto_corrected = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "UTM_SOURCE_AUTO_CORRECTED");
+    if (cJSON_IsNull(utm_source_auto_corrected)) {
+        utm_source_auto_corrected = NULL;
+    }
     if (utm_source_auto_corrected) { 
     if(!cJSON_IsNumber(utm_source_auto_corrected))
     {
@@ -907,6 +1135,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->country_does_not_map_to_currency
     cJSON *country_does_not_map_to_currency = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "COUNTRY_DOES_NOT_MAP_TO_CURRENCY");
+    if (cJSON_IsNull(country_does_not_map_to_currency)) {
+        country_does_not_map_to_currency = NULL;
+    }
     if (country_does_not_map_to_currency) { 
     if(!cJSON_IsNumber(country_does_not_map_to_currency))
     {
@@ -916,6 +1147,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->min_ad_price_invalid
     cJSON *min_ad_price_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "MIN_AD_PRICE_INVALID");
+    if (cJSON_IsNull(min_ad_price_invalid)) {
+        min_ad_price_invalid = NULL;
+    }
     if (min_ad_price_invalid) { 
     if(!cJSON_IsNumber(min_ad_price_invalid))
     {
@@ -925,6 +1159,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->gtin_invalid
     cJSON *gtin_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "GTIN_INVALID");
+    if (cJSON_IsNull(gtin_invalid)) {
+        gtin_invalid = NULL;
+    }
     if (gtin_invalid) { 
     if(!cJSON_IsNumber(gtin_invalid))
     {
@@ -934,6 +1171,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->inconsistent_currency_values
     cJSON *inconsistent_currency_values = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "INCONSISTENT_CURRENCY_VALUES");
+    if (cJSON_IsNull(inconsistent_currency_values)) {
+        inconsistent_currency_values = NULL;
+    }
     if (inconsistent_currency_values) { 
     if(!cJSON_IsNumber(inconsistent_currency_values))
     {
@@ -943,6 +1183,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->sales_price_too_low
     cJSON *sales_price_too_low = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "SALES_PRICE_TOO_LOW");
+    if (cJSON_IsNull(sales_price_too_low)) {
+        sales_price_too_low = NULL;
+    }
     if (sales_price_too_low) { 
     if(!cJSON_IsNumber(sales_price_too_low))
     {
@@ -952,6 +1195,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->shipping_width_invalid
     cJSON *shipping_width_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "SHIPPING_WIDTH_INVALID");
+    if (cJSON_IsNull(shipping_width_invalid)) {
+        shipping_width_invalid = NULL;
+    }
     if (shipping_width_invalid) { 
     if(!cJSON_IsNumber(shipping_width_invalid))
     {
@@ -961,6 +1207,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->shipping_height_invalid
     cJSON *shipping_height_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "SHIPPING_HEIGHT_INVALID");
+    if (cJSON_IsNull(shipping_height_invalid)) {
+        shipping_height_invalid = NULL;
+    }
     if (shipping_height_invalid) { 
     if(!cJSON_IsNumber(shipping_height_invalid))
     {
@@ -970,6 +1219,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->sales_price_too_high
     cJSON *sales_price_too_high = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "SALES_PRICE_TOO_HIGH");
+    if (cJSON_IsNull(sales_price_too_high)) {
+        sales_price_too_high = NULL;
+    }
     if (sales_price_too_high) { 
     if(!cJSON_IsNumber(sales_price_too_high))
     {
@@ -979,6 +1231,9 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
 
     // catalogs_feed_validation_warnings->mpn_invalid
     cJSON *mpn_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_feed_validation_warningsJSON, "MPN_INVALID");
+    if (cJSON_IsNull(mpn_invalid)) {
+        mpn_invalid = NULL;
+    }
     if (mpn_invalid) { 
     if(!cJSON_IsNumber(mpn_invalid))
     {
@@ -987,7 +1242,7 @@ catalogs_feed_validation_warnings_t *catalogs_feed_validation_warnings_parseFrom
     }
 
 
-    catalogs_feed_validation_warnings_local_var = catalogs_feed_validation_warnings_create (
+    catalogs_feed_validation_warnings_local_var = catalogs_feed_validation_warnings_create_internal (
         ad_link_format_warning ? ad_link_format_warning->valuedouble : 0,
         ad_link_same_as_link ? ad_link_same_as_link->valuedouble : 0,
         title_length_too_long ? title_length_too_long->valuedouble : 0,

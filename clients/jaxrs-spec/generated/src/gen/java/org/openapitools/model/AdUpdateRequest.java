@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdUpdateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdUpdateRequest   {
   private String adGroupId;
   private String androidDeepLink;
@@ -94,6 +94,16 @@ public class AdUpdateRequest   {
   private QuizPinData quizPinData;
   private String id;
   private String pinId;
+
+  public AdUpdateRequest() {
+  }
+
+  @JsonCreator
+  public AdUpdateRequest(
+    @JsonProperty(required = true, value = "id") String id
+  ) {
+    this.id = id;
+  }
 
   /**
    * ID of the ad group that contains the ad.
@@ -529,12 +539,12 @@ public class AdUpdateRequest   {
 
   
   @ApiModelProperty(example = "687195134316", required = true, value = "The ID of this ad.")
-  @JsonProperty("id")
+  @JsonProperty(required = true, value = "id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getId() {
     return id;
   }
 
-  @JsonProperty("id")
+  @JsonProperty(required = true, value = "id")
   public void setId(String id) {
     this.id = id;
   }

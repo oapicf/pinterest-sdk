@@ -5,7 +5,7 @@
 
 
 
-audience_t *audience_create(
+static audience_t *audience_create_internal(
     char *ad_account_id,
     char *id,
     char *name,
@@ -34,12 +34,44 @@ audience_t *audience_create(
     audience_local_var->created_timestamp = created_timestamp;
     audience_local_var->updated_timestamp = updated_timestamp;
 
+    audience_local_var->_library_owned = 1;
     return audience_local_var;
 }
 
+__attribute__((deprecated)) audience_t *audience_create(
+    char *ad_account_id,
+    char *id,
+    char *name,
+    char *audience_type,
+    char *description,
+    audience_rule_t *rule,
+    int size,
+    char *status,
+    char *type,
+    int created_timestamp,
+    int updated_timestamp
+    ) {
+    return audience_create_internal (
+        ad_account_id,
+        id,
+        name,
+        audience_type,
+        description,
+        rule,
+        size,
+        status,
+        type,
+        created_timestamp,
+        updated_timestamp
+        );
+}
 
 void audience_free(audience_t *audience) {
     if(NULL == audience){
+        return ;
+    }
+    if(audience->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "audience_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -190,6 +222,9 @@ audience_t *audience_parseFromJSON(cJSON *audienceJSON){
 
     // audience->ad_account_id
     cJSON *ad_account_id = cJSON_GetObjectItemCaseSensitive(audienceJSON, "ad_account_id");
+    if (cJSON_IsNull(ad_account_id)) {
+        ad_account_id = NULL;
+    }
     if (ad_account_id) { 
     if(!cJSON_IsString(ad_account_id) && !cJSON_IsNull(ad_account_id))
     {
@@ -199,6 +234,9 @@ audience_t *audience_parseFromJSON(cJSON *audienceJSON){
 
     // audience->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(audienceJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -208,6 +246,9 @@ audience_t *audience_parseFromJSON(cJSON *audienceJSON){
 
     // audience->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(audienceJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
     if (name) { 
     if(!cJSON_IsString(name) && !cJSON_IsNull(name))
     {
@@ -217,6 +258,9 @@ audience_t *audience_parseFromJSON(cJSON *audienceJSON){
 
     // audience->audience_type
     cJSON *audience_type = cJSON_GetObjectItemCaseSensitive(audienceJSON, "audience_type");
+    if (cJSON_IsNull(audience_type)) {
+        audience_type = NULL;
+    }
     if (audience_type) { 
     if(!cJSON_IsString(audience_type) && !cJSON_IsNull(audience_type))
     {
@@ -226,6 +270,9 @@ audience_t *audience_parseFromJSON(cJSON *audienceJSON){
 
     // audience->description
     cJSON *description = cJSON_GetObjectItemCaseSensitive(audienceJSON, "description");
+    if (cJSON_IsNull(description)) {
+        description = NULL;
+    }
     if (description) { 
     if(!cJSON_IsString(description) && !cJSON_IsNull(description))
     {
@@ -235,12 +282,18 @@ audience_t *audience_parseFromJSON(cJSON *audienceJSON){
 
     // audience->rule
     cJSON *rule = cJSON_GetObjectItemCaseSensitive(audienceJSON, "rule");
+    if (cJSON_IsNull(rule)) {
+        rule = NULL;
+    }
     if (rule) { 
     rule_local_nonprim = audience_rule_parseFromJSON(rule); //nonprimitive
     }
 
     // audience->size
     cJSON *size = cJSON_GetObjectItemCaseSensitive(audienceJSON, "size");
+    if (cJSON_IsNull(size)) {
+        size = NULL;
+    }
     if (size) { 
     if(!cJSON_IsNumber(size))
     {
@@ -250,6 +303,9 @@ audience_t *audience_parseFromJSON(cJSON *audienceJSON){
 
     // audience->status
     cJSON *status = cJSON_GetObjectItemCaseSensitive(audienceJSON, "status");
+    if (cJSON_IsNull(status)) {
+        status = NULL;
+    }
     if (status) { 
     if(!cJSON_IsString(status) && !cJSON_IsNull(status))
     {
@@ -259,6 +315,9 @@ audience_t *audience_parseFromJSON(cJSON *audienceJSON){
 
     // audience->type
     cJSON *type = cJSON_GetObjectItemCaseSensitive(audienceJSON, "type");
+    if (cJSON_IsNull(type)) {
+        type = NULL;
+    }
     if (type) { 
     if(!cJSON_IsString(type) && !cJSON_IsNull(type))
     {
@@ -268,6 +327,9 @@ audience_t *audience_parseFromJSON(cJSON *audienceJSON){
 
     // audience->created_timestamp
     cJSON *created_timestamp = cJSON_GetObjectItemCaseSensitive(audienceJSON, "created_timestamp");
+    if (cJSON_IsNull(created_timestamp)) {
+        created_timestamp = NULL;
+    }
     if (created_timestamp) { 
     if(!cJSON_IsNumber(created_timestamp))
     {
@@ -277,6 +339,9 @@ audience_t *audience_parseFromJSON(cJSON *audienceJSON){
 
     // audience->updated_timestamp
     cJSON *updated_timestamp = cJSON_GetObjectItemCaseSensitive(audienceJSON, "updated_timestamp");
+    if (cJSON_IsNull(updated_timestamp)) {
+        updated_timestamp = NULL;
+    }
     if (updated_timestamp) { 
     if(!cJSON_IsNumber(updated_timestamp))
     {
@@ -285,7 +350,7 @@ audience_t *audience_parseFromJSON(cJSON *audienceJSON){
     }
 
 
-    audience_local_var = audience_create (
+    audience_local_var = audience_create_internal (
         ad_account_id && !cJSON_IsNull(ad_account_id) ? strdup(ad_account_id->valuestring) : NULL,
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,

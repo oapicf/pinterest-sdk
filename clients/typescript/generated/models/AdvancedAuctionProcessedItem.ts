@@ -28,11 +28,11 @@ export class AdvancedAuctionProcessedItem extends AdvancedAuctionItemsSubmitReco
     */
     'errors'?: Array<AdvancedAuctionOperationError>;
 
-    static readonly discriminator: string | undefined = undefined;
+    static override readonly discriminator: string | undefined = undefined;
 
-    static readonly mapping: {[index: string]: string} | undefined = undefined;
+    static override readonly mapping: {[index: string]: string} | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+    static override readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
             "name": "errors",
             "baseName": "errors",
@@ -40,7 +40,7 @@ export class AdvancedAuctionProcessedItem extends AdvancedAuctionItemsSubmitReco
             "format": ""
         }    ];
 
-    static getAttributeTypeMap() {
+    static override getAttributeTypeMap() {
         return super.getAttributeTypeMap().concat(AdvancedAuctionProcessedItem.attributeTypeMap);
     }
 

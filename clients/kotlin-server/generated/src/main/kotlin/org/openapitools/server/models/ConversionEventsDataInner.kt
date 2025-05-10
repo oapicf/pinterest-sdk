@@ -14,6 +14,7 @@ package org.openapitools.server.models
 import org.openapitools.server.models.ConversionEventsDataInnerCustomData
 import org.openapitools.server.models.ConversionEventsUserData
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param eventName <p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p> 
@@ -36,6 +37,7 @@ import org.openapitools.server.models.ConversionEventsUserData
  * @param wifi Whether the event occurred when the user device was connected to wifi.
  * @param language Two-character ISO-639-1 language code indicating the user's language.
  */
+@Serializable
 data class ConversionEventsDataInner(
     /* <p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p>  */
     val eventName: kotlin.String,
@@ -73,5 +75,5 @@ data class ConversionEventsDataInner(
     val wifi: kotlin.Boolean? = null,
     /* Two-character ISO-639-1 language code indicating the user's language. */
     val language: kotlin.String? = null
-) 
+)
 

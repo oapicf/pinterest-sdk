@@ -14,6 +14,7 @@ package org.openapitools.server.models
 import org.openapitools.server.models.BaseInviteDataResponseInviteData
 import org.openapitools.server.models.BusinessAccessUserSummary
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param id Unique identifier of the invite/request.
@@ -21,6 +22,7 @@ import org.openapitools.server.models.BusinessAccessUserSummary
  * @param isReceivedInvite Indicates whether the invite/request was received.
  * @param user Metadata for the member/partner that was sent the invite/request.
  */
+@Serializable
 data class BaseInviteDataResponse(
     /* Unique identifier of the invite/request. */
     val id: kotlin.String? = null,
@@ -29,5 +31,5 @@ data class BaseInviteDataResponse(
     val isReceivedInvite: kotlin.Boolean? = null,
     /* Metadata for the member/partner that was sent the invite/request. */
     val user: BusinessAccessUserSummary? = null
-) 
+)
 

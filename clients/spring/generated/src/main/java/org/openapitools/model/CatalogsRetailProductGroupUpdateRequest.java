@@ -10,6 +10,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsLocale;
 import org.openapitools.model.CatalogsProductGroupFiltersRequest;
 import org.openapitools.model.Country;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -29,7 +30,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsRetailProductGroupUpdateRequest", description = "Request object for updating a retail product group.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsRetailProductGroupUpdateRequest implements CatalogsVerticalProductGroupUpdateRequest {
 
   /**
@@ -65,17 +66,17 @@ public class CatalogsRetailProductGroupUpdateRequest implements CatalogsVertical
     }
   }
 
-  private CatalogTypeEnum catalogType;
+  private @Nullable CatalogTypeEnum catalogType;
 
-  private String name;
+  private @Nullable String name;
 
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
-  private CatalogsProductGroupFiltersRequest filters;
+  private @Nullable CatalogsProductGroupFiltersRequest filters;
 
-  private Country country;
+  private @Nullable Country country;
 
-  private CatalogsLocale locale;
+  private @Nullable CatalogsLocale locale;
 
   public CatalogsRetailProductGroupUpdateRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;

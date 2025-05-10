@@ -5,6 +5,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.openapitools.model.CatalogsItemValidationDetails;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -19,96 +20,96 @@ import javax.annotation.Generated;
  * CatalogsItemValidationWarnings
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsItemValidationWarnings {
 
-  private CatalogsItemValidationDetails AD_LINK_FORMAT_WARNING;
+  private @Nullable CatalogsItemValidationDetails AD_LINK_FORMAT_WARNING;
 
-  private CatalogsItemValidationDetails AD_LINK_SAME_AS_LINK;
+  private @Nullable CatalogsItemValidationDetails AD_LINK_SAME_AS_LINK;
 
-  private CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
+  private @Nullable CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
 
-  private CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_WARNING;
+  private @Nullable CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_WARNING;
 
-  private CatalogsItemValidationDetails ADWORDS_FORMAT_WARNING;
+  private @Nullable CatalogsItemValidationDetails ADWORDS_FORMAT_WARNING;
 
-  private CatalogsItemValidationDetails ADWORDS_SAME_AS_LINK;
+  private @Nullable CatalogsItemValidationDetails ADWORDS_SAME_AS_LINK;
 
-  private CatalogsItemValidationDetails AGE_GROUP_INVALID;
+  private @Nullable CatalogsItemValidationDetails AGE_GROUP_INVALID;
 
-  private CatalogsItemValidationDetails SIZE_SYSTEM_INVALID;
+  private @Nullable CatalogsItemValidationDetails SIZE_SYSTEM_INVALID;
 
-  private CatalogsItemValidationDetails ANDROID_DEEP_LINK_INVALID;
+  private @Nullable CatalogsItemValidationDetails ANDROID_DEEP_LINK_INVALID;
 
-  private CatalogsItemValidationDetails AVAILABILITY_DATE_INVALID;
+  private @Nullable CatalogsItemValidationDetails AVAILABILITY_DATE_INVALID;
 
-  private CatalogsItemValidationDetails COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
+  private @Nullable CatalogsItemValidationDetails COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
 
-  private CatalogsItemValidationDetails CUSTOM_LABEL_LENGTH_TOO_LONG;
+  private @Nullable CatalogsItemValidationDetails CUSTOM_LABEL_LENGTH_TOO_LONG;
 
-  private CatalogsItemValidationDetails DESCRIPTION_LENGTH_TOO_LONG;
+  private @Nullable CatalogsItemValidationDetails DESCRIPTION_LENGTH_TOO_LONG;
 
-  private CatalogsItemValidationDetails EXPIRATION_DATE_INVALID;
+  private @Nullable CatalogsItemValidationDetails EXPIRATION_DATE_INVALID;
 
-  private CatalogsItemValidationDetails GENDER_INVALID;
+  private @Nullable CatalogsItemValidationDetails GENDER_INVALID;
 
-  private CatalogsItemValidationDetails GTIN_INVALID;
+  private @Nullable CatalogsItemValidationDetails GTIN_INVALID;
 
-  private CatalogsItemValidationDetails IMAGE_LINK_WARNING;
+  private @Nullable CatalogsItemValidationDetails IMAGE_LINK_WARNING;
 
-  private CatalogsItemValidationDetails IOS_DEEP_LINK_INVALID;
+  private @Nullable CatalogsItemValidationDetails IOS_DEEP_LINK_INVALID;
 
-  private CatalogsItemValidationDetails IS_BUNDLE_INVALID;
+  private @Nullable CatalogsItemValidationDetails IS_BUNDLE_INVALID;
 
-  private CatalogsItemValidationDetails ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
+  private @Nullable CatalogsItemValidationDetails ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
 
-  private CatalogsItemValidationDetails LINK_FORMAT_WARNING;
+  private @Nullable CatalogsItemValidationDetails LINK_FORMAT_WARNING;
 
-  private CatalogsItemValidationDetails MIN_AD_PRICE_INVALID;
+  private @Nullable CatalogsItemValidationDetails MIN_AD_PRICE_INVALID;
 
-  private CatalogsItemValidationDetails MPN_INVALID;
+  private @Nullable CatalogsItemValidationDetails MPN_INVALID;
 
-  private CatalogsItemValidationDetails MULTIPACK_INVALID;
+  private @Nullable CatalogsItemValidationDetails MULTIPACK_INVALID;
 
-  private CatalogsItemValidationDetails OPTIONAL_CONDITION_INVALID;
+  private @Nullable CatalogsItemValidationDetails OPTIONAL_CONDITION_INVALID;
 
-  private CatalogsItemValidationDetails OPTIONAL_CONDITION_MISSING;
+  private @Nullable CatalogsItemValidationDetails OPTIONAL_CONDITION_MISSING;
 
-  private CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_INVALID;
+  private @Nullable CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_INVALID;
 
-  private CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_MISSING;
+  private @Nullable CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_MISSING;
 
-  private CatalogsItemValidationDetails PRODUCT_CATEGORY_DEPTH_WARNING;
+  private @Nullable CatalogsItemValidationDetails PRODUCT_CATEGORY_DEPTH_WARNING;
 
-  private CatalogsItemValidationDetails PRODUCT_TYPE_LENGTH_TOO_LONG;
+  private @Nullable CatalogsItemValidationDetails PRODUCT_TYPE_LENGTH_TOO_LONG;
 
-  private CatalogsItemValidationDetails SALES_PRICE_INVALID;
+  private @Nullable CatalogsItemValidationDetails SALES_PRICE_INVALID;
 
-  private CatalogsItemValidationDetails SALES_PRICE_TOO_LOW;
+  private @Nullable CatalogsItemValidationDetails SALES_PRICE_TOO_LOW;
 
-  private CatalogsItemValidationDetails SALES_PRICE_TOO_HIGH;
+  private @Nullable CatalogsItemValidationDetails SALES_PRICE_TOO_HIGH;
 
-  private CatalogsItemValidationDetails SALE_DATE_INVALID;
+  private @Nullable CatalogsItemValidationDetails SALE_DATE_INVALID;
 
-  private CatalogsItemValidationDetails SHIPPING_INVALID;
+  private @Nullable CatalogsItemValidationDetails SHIPPING_INVALID;
 
-  private CatalogsItemValidationDetails SHIPPING_HEIGHT_INVALID;
+  private @Nullable CatalogsItemValidationDetails SHIPPING_HEIGHT_INVALID;
 
-  private CatalogsItemValidationDetails SHIPPING_WEIGHT_INVALID;
+  private @Nullable CatalogsItemValidationDetails SHIPPING_WEIGHT_INVALID;
 
-  private CatalogsItemValidationDetails SHIPPING_WIDTH_INVALID;
+  private @Nullable CatalogsItemValidationDetails SHIPPING_WIDTH_INVALID;
 
-  private CatalogsItemValidationDetails SIZE_TYPE_INVALID;
+  private @Nullable CatalogsItemValidationDetails SIZE_TYPE_INVALID;
 
-  private CatalogsItemValidationDetails TAX_INVALID;
+  private @Nullable CatalogsItemValidationDetails TAX_INVALID;
 
-  private CatalogsItemValidationDetails TITLE_LENGTH_TOO_LONG;
+  private @Nullable CatalogsItemValidationDetails TITLE_LENGTH_TOO_LONG;
 
-  private CatalogsItemValidationDetails TOO_MANY_ADDITIONAL_IMAGE_LINKS;
+  private @Nullable CatalogsItemValidationDetails TOO_MANY_ADDITIONAL_IMAGE_LINKS;
 
-  private CatalogsItemValidationDetails UTM_SOURCE_AUTO_CORRECTED;
+  private @Nullable CatalogsItemValidationDetails UTM_SOURCE_AUTO_CORRECTED;
 
-  private CatalogsItemValidationDetails WEIGHT_UNIT_INVALID;
+  private @Nullable CatalogsItemValidationDetails WEIGHT_UNIT_INVALID;
 
   public CatalogsItemValidationWarnings AD_LINK_FORMAT_WARNING(CatalogsItemValidationDetails AD_LINK_FORMAT_WARNING) {
     this.AD_LINK_FORMAT_WARNING = AD_LINK_FORMAT_WARNING;

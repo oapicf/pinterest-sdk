@@ -53,24 +53,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Object declaring an asset role update to an invite.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CreateAssetInvitesRequestItem {
   public static final String SERIALIZED_NAME_INVITE_ID = "invite_id";
   @SerializedName(SERIALIZED_NAME_INVITE_ID)
+  @javax.annotation.Nonnull
   private String inviteId;
 
   public static final String SERIALIZED_NAME_INVITE_TYPE = "invite_type";
   @SerializedName(SERIALIZED_NAME_INVITE_TYPE)
+  @javax.annotation.Nonnull
   private InviteType inviteType;
 
   public static final String SERIALIZED_NAME_ASSET_ID_TO_PERMISSIONS = "asset_id_to_permissions";
   @SerializedName(SERIALIZED_NAME_ASSET_ID_TO_PERMISSIONS)
+  @javax.annotation.Nonnull
   private Map<String, List<Permissions>> assetIdToPermissions = new HashMap<>();
 
   public CreateAssetInvitesRequestItem() {
   }
 
-  public CreateAssetInvitesRequestItem inviteId(String inviteId) {
+  public CreateAssetInvitesRequestItem inviteId(@javax.annotation.Nonnull String inviteId) {
     this.inviteId = inviteId;
     return this;
   }
@@ -84,12 +87,12 @@ public class CreateAssetInvitesRequestItem {
     return inviteId;
   }
 
-  public void setInviteId(String inviteId) {
+  public void setInviteId(@javax.annotation.Nonnull String inviteId) {
     this.inviteId = inviteId;
   }
 
 
-  public CreateAssetInvitesRequestItem inviteType(InviteType inviteType) {
+  public CreateAssetInvitesRequestItem inviteType(@javax.annotation.Nonnull InviteType inviteType) {
     this.inviteType = inviteType;
     return this;
   }
@@ -103,12 +106,12 @@ public class CreateAssetInvitesRequestItem {
     return inviteType;
   }
 
-  public void setInviteType(InviteType inviteType) {
+  public void setInviteType(@javax.annotation.Nonnull InviteType inviteType) {
     this.inviteType = inviteType;
   }
 
 
-  public CreateAssetInvitesRequestItem assetIdToPermissions(Map<String, List<Permissions>> assetIdToPermissions) {
+  public CreateAssetInvitesRequestItem assetIdToPermissions(@javax.annotation.Nonnull Map<String, List<Permissions>> assetIdToPermissions) {
     this.assetIdToPermissions = assetIdToPermissions;
     return this;
   }
@@ -130,7 +133,7 @@ public class CreateAssetInvitesRequestItem {
     return assetIdToPermissions;
   }
 
-  public void setAssetIdToPermissions(Map<String, List<Permissions>> assetIdToPermissions) {
+  public void setAssetIdToPermissions(@javax.annotation.Nonnull Map<String, List<Permissions>> assetIdToPermissions) {
     this.assetIdToPermissions = assetIdToPermissions;
   }
 

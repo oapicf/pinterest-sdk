@@ -190,11 +190,11 @@ export function CatalogsHotelFeedFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-  export function CatalogsHotelFeedToJSON(json: any): CatalogsHotelFeed {
-      return CatalogsHotelFeedToJSONTyped(json, false);
-  }
+export function CatalogsHotelFeedToJSON(json: any): CatalogsHotelFeed {
+    return CatalogsHotelFeedToJSONTyped(json, false);
+}
 
-  export function CatalogsHotelFeedToJSONTyped(value?: CatalogsHotelFeed | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsHotelFeedToJSONTyped(value?: CatalogsHotelFeed | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

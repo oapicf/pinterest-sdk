@@ -1,6 +1,6 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Multipart};
+use axum_extra::extract::{CookieJar, Host};
 use bytes::Bytes;
 use http::Method;
 use serde::{Deserialize, Serialize};
@@ -93,75 +93,75 @@ pub enum UpdateSlashBusinessMembershipsResponse {
 /// BusinessAccessRelationships
 #[async_trait]
 #[allow(clippy::ptr_arg)]
-pub trait BusinessAccessRelationships {
+pub trait BusinessAccessRelationships<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHandler<E> {
     /// Terminate business memberships.
     ///
     /// DeleteBusinessMembership - DELETE /v5/businesses/{business_id}/members
     async fn delete_business_membership(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::DeleteBusinessMembershipPathParams,
-            body: models::MembersToDeleteBody,
-    ) -> Result<DeleteBusinessMembershipResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::DeleteBusinessMembershipPathParams,
+            body: &models::MembersToDeleteBody,
+    ) -> Result<DeleteBusinessMembershipResponse, E>;
 
     /// Terminate business partnerships.
     ///
     /// DeleteBusinessPartners - DELETE /v5/businesses/{business_id}/partners
     async fn delete_business_partners(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::DeleteBusinessPartnersPathParams,
-            body: models::DeletePartnersRequest,
-    ) -> Result<DeleteBusinessPartnersResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::DeleteBusinessPartnersPathParams,
+            body: &models::DeletePartnersRequest,
+    ) -> Result<DeleteBusinessPartnersResponse, E>;
 
     /// List business employers for user.
     ///
     /// GetSlashBusinessEmployers - GET /v5/businesses/employers
     async fn get_slash_business_employers(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      query_params: models::GetSlashBusinessEmployersQueryParams,
-    ) -> Result<GetSlashBusinessEmployersResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      query_params: &models::GetSlashBusinessEmployersQueryParams,
+    ) -> Result<GetSlashBusinessEmployersResponse, E>;
 
     /// Get business members.
     ///
     /// GetSlashBusinessMembers - GET /v5/businesses/{business_id}/members
     async fn get_slash_business_members(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::GetSlashBusinessMembersPathParams,
-      query_params: models::GetSlashBusinessMembersQueryParams,
-    ) -> Result<GetSlashBusinessMembersResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::GetSlashBusinessMembersPathParams,
+      query_params: &models::GetSlashBusinessMembersQueryParams,
+    ) -> Result<GetSlashBusinessMembersResponse, E>;
 
     /// Get business partners.
     ///
     /// GetSlashBusinessPartners - GET /v5/businesses/{business_id}/partners
     async fn get_slash_business_partners(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::GetSlashBusinessPartnersPathParams,
-      query_params: models::GetSlashBusinessPartnersQueryParams,
-    ) -> Result<GetSlashBusinessPartnersResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::GetSlashBusinessPartnersPathParams,
+      query_params: &models::GetSlashBusinessPartnersQueryParams,
+    ) -> Result<GetSlashBusinessPartnersResponse, E>;
 
     /// Update member's business role.
     ///
     /// UpdateSlashBusinessMemberships - PATCH /v5/businesses/{business_id}/members
     async fn update_slash_business_memberships(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::UpdateSlashBusinessMembershipsPathParams,
-            body: Vec<models::UpdateMemberBusinessRoleBody>,
-    ) -> Result<UpdateSlashBusinessMembershipsResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::UpdateSlashBusinessMembershipsPathParams,
+            body: &Vec<models::UpdateMemberBusinessRoleBody>,
+    ) -> Result<UpdateSlashBusinessMembershipsResponse, E>;
 }

@@ -55,11 +55,11 @@ export function CatalogsFeedProductCountsFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function CatalogsFeedProductCountsToJSON(json: any): CatalogsFeedProductCounts {
-      return CatalogsFeedProductCountsToJSONTyped(json, false);
-  }
+export function CatalogsFeedProductCountsToJSON(json: any): CatalogsFeedProductCounts {
+    return CatalogsFeedProductCountsToJSONTyped(json, false);
+}
 
-  export function CatalogsFeedProductCountsToJSONTyped(value?: CatalogsFeedProductCounts | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsFeedProductCountsToJSONTyped(value?: CatalogsFeedProductCounts | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -5,7 +5,7 @@
 
 
 
-delete_asset_group_response_t *delete_asset_group_response_create(
+static delete_asset_group_response_t *delete_asset_group_response_create_internal(
     list_t *deleted_asset_groups,
     list_t *exceptions
     ) {
@@ -16,12 +16,26 @@ delete_asset_group_response_t *delete_asset_group_response_create(
     delete_asset_group_response_local_var->deleted_asset_groups = deleted_asset_groups;
     delete_asset_group_response_local_var->exceptions = exceptions;
 
+    delete_asset_group_response_local_var->_library_owned = 1;
     return delete_asset_group_response_local_var;
 }
 
+__attribute__((deprecated)) delete_asset_group_response_t *delete_asset_group_response_create(
+    list_t *deleted_asset_groups,
+    list_t *exceptions
+    ) {
+    return delete_asset_group_response_create_internal (
+        deleted_asset_groups,
+        exceptions
+        );
+}
 
 void delete_asset_group_response_free(delete_asset_group_response_t *delete_asset_group_response) {
     if(NULL == delete_asset_group_response){
+        return ;
+    }
+    if(delete_asset_group_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "delete_asset_group_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -54,7 +68,7 @@ cJSON *delete_asset_group_response_convertToJSON(delete_asset_group_response_t *
 
     listEntry_t *deleted_asset_groupsListEntry;
     list_ForEach(deleted_asset_groupsListEntry, delete_asset_group_response->deleted_asset_groups) {
-    if(cJSON_AddStringToObject(deleted_asset_groups, "", (char*)deleted_asset_groupsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(deleted_asset_groups, "", deleted_asset_groupsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -101,6 +115,9 @@ delete_asset_group_response_t *delete_asset_group_response_parseFromJSON(cJSON *
 
     // delete_asset_group_response->deleted_asset_groups
     cJSON *deleted_asset_groups = cJSON_GetObjectItemCaseSensitive(delete_asset_group_responseJSON, "deleted_asset_groups");
+    if (cJSON_IsNull(deleted_asset_groups)) {
+        deleted_asset_groups = NULL;
+    }
     if (deleted_asset_groups) { 
     cJSON *deleted_asset_groups_local = NULL;
     if(!cJSON_IsArray(deleted_asset_groups)) {
@@ -120,6 +137,9 @@ delete_asset_group_response_t *delete_asset_group_response_parseFromJSON(cJSON *
 
     // delete_asset_group_response->exceptions
     cJSON *exceptions = cJSON_GetObjectItemCaseSensitive(delete_asset_group_responseJSON, "exceptions");
+    if (cJSON_IsNull(exceptions)) {
+        exceptions = NULL;
+    }
     if (exceptions) { 
     cJSON *exceptions_local_nonprimitive = NULL;
     if(!cJSON_IsArray(exceptions)){
@@ -140,7 +160,7 @@ delete_asset_group_response_t *delete_asset_group_response_parseFromJSON(cJSON *
     }
 
 
-    delete_asset_group_response_local_var = delete_asset_group_response_create (
+    delete_asset_group_response_local_var = delete_asset_group_response_create_internal (
         deleted_asset_groups ? deleted_asset_groupsList : NULL,
         exceptions ? exceptionsList : NULL
         );

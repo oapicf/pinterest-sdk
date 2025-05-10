@@ -22,9 +22,10 @@ typedef struct gender_filter_t gender_filter_t;
 typedef struct gender_filter_t {
     catalogs_product_group_multiple_gender_criteria_t *gender; //object
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } gender_filter_t;
 
-gender_filter_t *gender_filter_create(
+__attribute__((deprecated)) gender_filter_t *gender_filter_create(
     catalogs_product_group_multiple_gender_criteria_t *gender
 );
 

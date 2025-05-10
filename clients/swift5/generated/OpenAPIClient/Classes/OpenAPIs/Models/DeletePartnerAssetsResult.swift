@@ -13,8 +13,8 @@ import AnyCodable
 /** The terminated asset access. */
 public struct DeletePartnerAssetsResult: Codable, JSONEncodable, Hashable {
 
-    static let assetIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let partnerIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let assetIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let partnerIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Unique identifier of a business asset. */
     public var assetId: String?
     /** Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. */

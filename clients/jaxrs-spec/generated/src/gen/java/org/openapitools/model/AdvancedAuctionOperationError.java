@@ -17,10 +17,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Error which occurred when applying a bid options operation to a specific item.")
 @JsonTypeName("AdvancedAuctionOperationError")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdvancedAuctionOperationError   {
   private Integer code;
   private String message;
+
+  public AdvancedAuctionOperationError() {
+  }
 
   /**
    * The error code for the item bid option operation validation error

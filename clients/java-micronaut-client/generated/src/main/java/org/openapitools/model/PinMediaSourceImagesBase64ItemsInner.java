@@ -33,7 +33,7 @@ import javax.annotation.Generated;
   PinMediaSourceImagesBase64ItemsInner.JSON_PROPERTY_DATA
 })
 @JsonTypeName("PinMediaSourceImagesBase64_items_inner")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2024-11-05T02:02:57.601423453Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2025-05-10T05:39:05.070592818Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 @Introspected
 public class PinMediaSourceImagesBase64ItemsInner {
     public static final String JSON_PROPERTY_TITLE = "title";
@@ -49,8 +49,8 @@ public class PinMediaSourceImagesBase64ItemsInner {
      * Gets or Sets contentType
      */
     public enum ContentTypeEnum {
-        JPEG("image/jpeg"),
-        PNG("image/png");
+        IMAGE_JPEG("image/jpeg"),
+        IMAGE_PNG("image/png");
 
         private String value;
 

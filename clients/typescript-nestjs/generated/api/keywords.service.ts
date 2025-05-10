@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { KeywordUpdateBody } from '../model/keywordUpdateBody';
 import { KeywordsGet200Response } from '../model/keywordsGet200Response';
@@ -34,10 +34,12 @@ export class KeywordsService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -57,9 +59,10 @@ export class KeywordsService {
      * @param keywords Comma-separated keywords
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [countryKeywordsMetricsGetOpts.config] Override http request option.
      */
-    public countryKeywordsMetricsGet(adAccountId: string, countryCode: string, keywords: Array<string>, ): Observable<AxiosResponse<KeywordsMetricsArrayResponse>>;
-    public countryKeywordsMetricsGet(adAccountId: string, countryCode: string, keywords: Array<string>, ): Observable<any> {
+    public countryKeywordsMetricsGet(adAccountId: string, countryCode: string, keywords: Array<string>, countryKeywordsMetricsGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<KeywordsMetricsArrayResponse>>;
+    public countryKeywordsMetricsGet(adAccountId: string, countryCode: string, keywords: Array<string>, countryKeywordsMetricsGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling countryKeywordsMetricsGet.');
         }
@@ -113,7 +116,8 @@ export class KeywordsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...countryKeywordsMetricsGetOpts?.config,
+                        headers: {...headers, ...countryKeywordsMetricsGetOpts?.config?.headers},
                     }
                 );
             })
@@ -126,9 +130,10 @@ export class KeywordsService {
      * @param keywordsRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [keywordsCreateOpts.config] Override http request option.
      */
-    public keywordsCreate(adAccountId: string, keywordsRequest: KeywordsRequest, ): Observable<AxiosResponse<KeywordsResponse>>;
-    public keywordsCreate(adAccountId: string, keywordsRequest: KeywordsRequest, ): Observable<any> {
+    public keywordsCreate(adAccountId: string, keywordsRequest: KeywordsRequest, keywordsCreateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<KeywordsResponse>>;
+    public keywordsCreate(adAccountId: string, keywordsRequest: KeywordsRequest, keywordsCreateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling keywordsCreate.');
         }
@@ -175,7 +180,8 @@ export class KeywordsService {
                     keywordsRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...keywordsCreateOpts?.config,
+                        headers: {...headers, ...keywordsCreateOpts?.config?.headers},
                     }
                 );
             })
@@ -192,9 +198,10 @@ export class KeywordsService {
      * @param bookmark Cursor used to fetch the next page of items
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [keywordsGetOpts.config] Override http request option.
      */
-    public keywordsGet(adAccountId: string, campaignId?: string, adGroupId?: string, matchTypes?: Array<MatchType>, pageSize?: number, bookmark?: string, ): Observable<AxiosResponse<KeywordsGet200Response>>;
-    public keywordsGet(adAccountId: string, campaignId?: string, adGroupId?: string, matchTypes?: Array<MatchType>, pageSize?: number, bookmark?: string, ): Observable<any> {
+    public keywordsGet(adAccountId: string, campaignId?: string, adGroupId?: string, matchTypes?: Array<MatchType>, pageSize?: number, bookmark?: string, keywordsGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<KeywordsGet200Response>>;
+    public keywordsGet(adAccountId: string, campaignId?: string, adGroupId?: string, matchTypes?: Array<MatchType>, pageSize?: number, bookmark?: string, keywordsGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling keywordsGet.');
         }
@@ -251,7 +258,8 @@ export class KeywordsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...keywordsGetOpts?.config,
+                        headers: {...headers, ...keywordsGetOpts?.config?.headers},
                     }
                 );
             })
@@ -264,9 +272,10 @@ export class KeywordsService {
      * @param keywordUpdateBody 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [keywordsUpdateOpts.config] Override http request option.
      */
-    public keywordsUpdate(adAccountId: string, keywordUpdateBody: KeywordUpdateBody, ): Observable<AxiosResponse<KeywordsResponse>>;
-    public keywordsUpdate(adAccountId: string, keywordUpdateBody: KeywordUpdateBody, ): Observable<any> {
+    public keywordsUpdate(adAccountId: string, keywordUpdateBody: KeywordUpdateBody, keywordsUpdateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<KeywordsResponse>>;
+    public keywordsUpdate(adAccountId: string, keywordUpdateBody: KeywordUpdateBody, keywordsUpdateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling keywordsUpdate.');
         }
@@ -313,7 +322,8 @@ export class KeywordsService {
                     keywordUpdateBody,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...keywordsUpdateOpts?.config,
+                        headers: {...headers, ...keywordsUpdateOpts?.config?.headers},
                     }
                 );
             })
@@ -332,9 +342,10 @@ export class KeywordsService {
      * @param limit The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a &#x60;limit&#x60; of 50 will return the top 50 trends.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [trendingKeywordsListOpts.config] Override http request option.
      */
-    public trendingKeywordsList(region: TrendsSupportedRegion, trendType: TrendType, interests?: Array<'animals' | 'architecture' | 'art' | 'beauty' | 'childrens_fashion' | 'design' | 'diy_and_crafts' | 'education' | 'electronics' | 'entertainment' | 'event_planning' | 'finance' | 'food_and_drinks' | 'gardening' | 'health' | 'home_decor' | 'mens_fashion' | 'parenting' | 'quotes' | 'sport' | 'travel' | 'vehicles' | 'wedding' | 'womens_fashion'>, genders?: Array<'female' | 'male' | 'unknown'>, ages?: Array<'18-24' | '25-34' | '35-44' | '45-49' | '50-54' | '55-64' | '65+'>, includeKeywords?: Array<string>, normalizeAgainstGroup?: boolean, limit?: number, ): Observable<AxiosResponse<TrendingKeywordsResponse>>;
-    public trendingKeywordsList(region: TrendsSupportedRegion, trendType: TrendType, interests?: Array<'animals' | 'architecture' | 'art' | 'beauty' | 'childrens_fashion' | 'design' | 'diy_and_crafts' | 'education' | 'electronics' | 'entertainment' | 'event_planning' | 'finance' | 'food_and_drinks' | 'gardening' | 'health' | 'home_decor' | 'mens_fashion' | 'parenting' | 'quotes' | 'sport' | 'travel' | 'vehicles' | 'wedding' | 'womens_fashion'>, genders?: Array<'female' | 'male' | 'unknown'>, ages?: Array<'18-24' | '25-34' | '35-44' | '45-49' | '50-54' | '55-64' | '65+'>, includeKeywords?: Array<string>, normalizeAgainstGroup?: boolean, limit?: number, ): Observable<any> {
+    public trendingKeywordsList(region: TrendsSupportedRegion, trendType: TrendType, interests?: Array<'animals' | 'architecture' | 'art' | 'beauty' | 'childrens_fashion' | 'design' | 'diy_and_crafts' | 'education' | 'electronics' | 'entertainment' | 'event_planning' | 'finance' | 'food_and_drinks' | 'gardening' | 'health' | 'home_decor' | 'mens_fashion' | 'parenting' | 'quotes' | 'sport' | 'travel' | 'vehicles' | 'wedding' | 'womens_fashion'>, genders?: Array<'female' | 'male' | 'unknown'>, ages?: Array<'18-24' | '25-34' | '35-44' | '45-49' | '50-54' | '55-64' | '65+'>, includeKeywords?: Array<string>, normalizeAgainstGroup?: boolean, limit?: number, trendingKeywordsListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<TrendingKeywordsResponse>>;
+    public trendingKeywordsList(region: TrendsSupportedRegion, trendType: TrendType, interests?: Array<'animals' | 'architecture' | 'art' | 'beauty' | 'childrens_fashion' | 'design' | 'diy_and_crafts' | 'education' | 'electronics' | 'entertainment' | 'event_planning' | 'finance' | 'food_and_drinks' | 'gardening' | 'health' | 'home_decor' | 'mens_fashion' | 'parenting' | 'quotes' | 'sport' | 'travel' | 'vehicles' | 'wedding' | 'womens_fashion'>, genders?: Array<'female' | 'male' | 'unknown'>, ages?: Array<'18-24' | '25-34' | '35-44' | '45-49' | '50-54' | '55-64' | '65+'>, includeKeywords?: Array<string>, normalizeAgainstGroup?: boolean, limit?: number, trendingKeywordsListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (region === null || region === undefined) {
             throw new Error('Required parameter region was null or undefined when calling trendingKeywordsList.');
         }
@@ -404,7 +415,8 @@ export class KeywordsService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...trendingKeywordsListOpts?.config,
+                        headers: {...headers, ...trendingKeywordsListOpts?.config?.headers},
                     }
                 );
             })

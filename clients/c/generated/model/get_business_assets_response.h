@@ -24,9 +24,10 @@ typedef struct get_business_assets_response_t {
     char *asset_type; // string
     struct asset_group_binding_t *asset_group_info; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } get_business_assets_response_t;
 
-get_business_assets_response_t *get_business_assets_response_create(
+__attribute__((deprecated)) get_business_assets_response_t *get_business_assets_response_create(
     char *asset_id,
     char *asset_type,
     asset_group_binding_t *asset_group_info

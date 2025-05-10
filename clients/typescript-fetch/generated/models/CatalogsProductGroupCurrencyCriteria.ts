@@ -66,11 +66,11 @@ export function CatalogsProductGroupCurrencyCriteriaFromJSONTyped(json: any, ign
     };
 }
 
-  export function CatalogsProductGroupCurrencyCriteriaToJSON(json: any): CatalogsProductGroupCurrencyCriteria {
-      return CatalogsProductGroupCurrencyCriteriaToJSONTyped(json, false);
-  }
+export function CatalogsProductGroupCurrencyCriteriaToJSON(json: any): CatalogsProductGroupCurrencyCriteria {
+    return CatalogsProductGroupCurrencyCriteriaToJSONTyped(json, false);
+}
 
-  export function CatalogsProductGroupCurrencyCriteriaToJSONTyped(value?: CatalogsProductGroupCurrencyCriteria | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsProductGroupCurrencyCriteriaToJSONTyped(value?: CatalogsProductGroupCurrencyCriteria | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -13,14 +13,16 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.UserSummary
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items Users
  * @param bookmark 
  */
+@Serializable
 data class UserFollowingGet200Response(
     /* Users */
     val items: kotlin.collections.List<UserSummary>,
     val bookmark: kotlin.String? = null
-) 
+)
 

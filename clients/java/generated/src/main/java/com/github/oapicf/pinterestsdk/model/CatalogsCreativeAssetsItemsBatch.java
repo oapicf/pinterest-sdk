@@ -55,30 +55,36 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Object describing the catalogs creative assets items batch
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsCreativeAssetsItemsBatch {
   public static final String SERIALIZED_NAME_BATCH_ID = "batch_id";
   @SerializedName(SERIALIZED_NAME_BATCH_ID)
+  @javax.annotation.Nullable
   private String batchId;
 
   public static final String SERIALIZED_NAME_CREATED_TIME = "created_time";
   @SerializedName(SERIALIZED_NAME_CREATED_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime createdTime;
 
   public static final String SERIALIZED_NAME_COMPLETED_TIME = "completed_time";
   @SerializedName(SERIALIZED_NAME_COMPLETED_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime completedTime;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private BatchOperationStatus status;
 
   public static final String SERIALIZED_NAME_CATALOG_TYPE = "catalog_type";
   @SerializedName(SERIALIZED_NAME_CATALOG_TYPE)
+  @javax.annotation.Nonnull
   private CatalogsType catalogType;
 
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
+  @javax.annotation.Nullable
   private List<CreativeAssetsProcessingRecord> items = new ArrayList<>();
 
   public CatalogsCreativeAssetsItemsBatch() {
@@ -93,7 +99,7 @@ public class CatalogsCreativeAssetsItemsBatch {
     this.completedTime = completedTime;
   }
 
-  public CatalogsCreativeAssetsItemsBatch batchId(String batchId) {
+  public CatalogsCreativeAssetsItemsBatch batchId(@javax.annotation.Nullable String batchId) {
     this.batchId = batchId;
     return this;
   }
@@ -107,7 +113,7 @@ public class CatalogsCreativeAssetsItemsBatch {
     return batchId;
   }
 
-  public void setBatchId(String batchId) {
+  public void setBatchId(@javax.annotation.Nullable String batchId) {
     this.batchId = batchId;
   }
 
@@ -134,7 +140,7 @@ public class CatalogsCreativeAssetsItemsBatch {
 
 
 
-  public CatalogsCreativeAssetsItemsBatch status(BatchOperationStatus status) {
+  public CatalogsCreativeAssetsItemsBatch status(@javax.annotation.Nullable BatchOperationStatus status) {
     this.status = status;
     return this;
   }
@@ -148,12 +154,12 @@ public class CatalogsCreativeAssetsItemsBatch {
     return status;
   }
 
-  public void setStatus(BatchOperationStatus status) {
+  public void setStatus(@javax.annotation.Nullable BatchOperationStatus status) {
     this.status = status;
   }
 
 
-  public CatalogsCreativeAssetsItemsBatch catalogType(CatalogsType catalogType) {
+  public CatalogsCreativeAssetsItemsBatch catalogType(@javax.annotation.Nonnull CatalogsType catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -167,12 +173,12 @@ public class CatalogsCreativeAssetsItemsBatch {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(@javax.annotation.Nonnull CatalogsType catalogType) {
     this.catalogType = catalogType;
   }
 
 
-  public CatalogsCreativeAssetsItemsBatch items(List<CreativeAssetsProcessingRecord> items) {
+  public CatalogsCreativeAssetsItemsBatch items(@javax.annotation.Nullable List<CreativeAssetsProcessingRecord> items) {
     this.items = items;
     return this;
   }
@@ -194,7 +200,7 @@ public class CatalogsCreativeAssetsItemsBatch {
     return items;
   }
 
-  public void setItems(List<CreativeAssetsProcessingRecord> items) {
+  public void setItems(@javax.annotation.Nullable List<CreativeAssetsProcessingRecord> items) {
     this.items = items;
   }
 

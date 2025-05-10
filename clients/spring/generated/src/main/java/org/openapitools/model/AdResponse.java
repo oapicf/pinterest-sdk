@@ -15,6 +15,7 @@ import org.openapitools.model.GridClickType;
 import org.openapitools.model.PinPromotionSummaryStatus;
 import org.openapitools.model.QuizPinData;
 import org.openapitools.model.TrackingUrls;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -30,10 +31,10 @@ import javax.annotation.Generated;
  * AdResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdResponse {
 
-  private String adGroupId;
+  private @Nullable String adGroupId;
 
   private JsonNullable<String> androidDeepLink = JsonNullable.<String>undefined();
 
@@ -48,19 +49,19 @@ public class AdResponse {
 
   private JsonNullable<String> clickTrackingUrl = JsonNullable.<String>undefined();
 
-  private CreativeType creativeType;
+  private @Nullable CreativeType creativeType;
 
   private JsonNullable<String> destinationUrl = JsonNullable.<String>undefined();
 
   private JsonNullable<String> iosDeepLink = JsonNullable.<String>undefined();
 
-  private Boolean isPinDeleted;
+  private @Nullable Boolean isPinDeleted;
 
-  private Boolean isRemovable;
+  private @Nullable Boolean isRemovable;
 
   private JsonNullable<String> name = JsonNullable.<String>undefined();
 
-  private EntityStatus status;
+  private @Nullable EntityStatus status;
 
   private JsonNullable<TrackingUrls> trackingUrls = JsonNullable.<TrackingUrls>undefined();
 
@@ -141,17 +142,17 @@ public class AdResponse {
 
   private JsonNullable<QuizPinData> quizPinData = JsonNullable.<QuizPinData>undefined();
 
-  private String pinId;
+  private @Nullable String pinId;
 
-  private String adAccountId;
+  private @Nullable String adAccountId;
 
-  private String campaignId;
+  private @Nullable String campaignId;
 
   private JsonNullable<String> collectionItemsDestinationUrlTemplate = JsonNullable.<String>undefined();
 
-  private Integer createdTime;
+  private @Nullable Integer createdTime;
 
-  private String id;
+  private @Nullable String id;
 
   /**
    * ad disapproval reasons
@@ -325,13 +326,13 @@ public class AdResponse {
     }
   }
 
-  private ReviewStatusEnum reviewStatus;
+  private @Nullable ReviewStatusEnum reviewStatus;
 
-  private String type;
+  private @Nullable String type;
 
-  private Integer updatedTime;
+  private @Nullable Integer updatedTime;
 
-  private PinPromotionSummaryStatus summaryStatus;
+  private @Nullable PinPromotionSummaryStatus summaryStatus;
 
   public AdResponse adGroupId(String adGroupId) {
     this.adGroupId = adGroupId;

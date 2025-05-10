@@ -49,16 +49,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ConditionFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConditionFilter {
   public static final String SERIALIZED_NAME_C_O_N_D_I_T_I_O_N = "CONDITION";
   @SerializedName(SERIALIZED_NAME_C_O_N_D_I_T_I_O_N)
+  @javax.annotation.Nonnull
   private CatalogsProductGroupMultipleStringCriteria CONDITION;
 
   public ConditionFilter() {
   }
 
-  public ConditionFilter CONDITION(CatalogsProductGroupMultipleStringCriteria CONDITION) {
+  public ConditionFilter CONDITION(@javax.annotation.Nonnull CatalogsProductGroupMultipleStringCriteria CONDITION) {
     this.CONDITION = CONDITION;
     return this;
   }
@@ -72,7 +73,7 @@ public class ConditionFilter {
     return CONDITION;
   }
 
-  public void setCONDITION(CatalogsProductGroupMultipleStringCriteria CONDITION) {
+  public void setCONDITION(@javax.annotation.Nonnull CatalogsProductGroupMultipleStringCriteria CONDITION) {
     this.CONDITION = CONDITION;
   }
 

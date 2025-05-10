@@ -5,7 +5,7 @@
 
 
 
-quiz_pin_result_t *quiz_pin_result_create(
+static quiz_pin_result_t *quiz_pin_result_create_internal(
     char *organic_pin_id,
     char *android_deep_link,
     char *ios_deep_link,
@@ -22,12 +22,32 @@ quiz_pin_result_t *quiz_pin_result_create(
     quiz_pin_result_local_var->destination_url = destination_url;
     quiz_pin_result_local_var->result_id = result_id;
 
+    quiz_pin_result_local_var->_library_owned = 1;
     return quiz_pin_result_local_var;
 }
 
+__attribute__((deprecated)) quiz_pin_result_t *quiz_pin_result_create(
+    char *organic_pin_id,
+    char *android_deep_link,
+    char *ios_deep_link,
+    char *destination_url,
+    double result_id
+    ) {
+    return quiz_pin_result_create_internal (
+        organic_pin_id,
+        android_deep_link,
+        ios_deep_link,
+        destination_url,
+        result_id
+        );
+}
 
 void quiz_pin_result_free(quiz_pin_result_t *quiz_pin_result) {
     if(NULL == quiz_pin_result){
+        return ;
+    }
+    if(quiz_pin_result->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "quiz_pin_result_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -106,6 +126,9 @@ quiz_pin_result_t *quiz_pin_result_parseFromJSON(cJSON *quiz_pin_resultJSON){
 
     // quiz_pin_result->organic_pin_id
     cJSON *organic_pin_id = cJSON_GetObjectItemCaseSensitive(quiz_pin_resultJSON, "organic_pin_id");
+    if (cJSON_IsNull(organic_pin_id)) {
+        organic_pin_id = NULL;
+    }
     if (organic_pin_id) { 
     if(!cJSON_IsString(organic_pin_id) && !cJSON_IsNull(organic_pin_id))
     {
@@ -115,6 +138,9 @@ quiz_pin_result_t *quiz_pin_result_parseFromJSON(cJSON *quiz_pin_resultJSON){
 
     // quiz_pin_result->android_deep_link
     cJSON *android_deep_link = cJSON_GetObjectItemCaseSensitive(quiz_pin_resultJSON, "android_deep_link");
+    if (cJSON_IsNull(android_deep_link)) {
+        android_deep_link = NULL;
+    }
     if (android_deep_link) { 
     if(!cJSON_IsString(android_deep_link) && !cJSON_IsNull(android_deep_link))
     {
@@ -124,6 +150,9 @@ quiz_pin_result_t *quiz_pin_result_parseFromJSON(cJSON *quiz_pin_resultJSON){
 
     // quiz_pin_result->ios_deep_link
     cJSON *ios_deep_link = cJSON_GetObjectItemCaseSensitive(quiz_pin_resultJSON, "ios_deep_link");
+    if (cJSON_IsNull(ios_deep_link)) {
+        ios_deep_link = NULL;
+    }
     if (ios_deep_link) { 
     if(!cJSON_IsString(ios_deep_link) && !cJSON_IsNull(ios_deep_link))
     {
@@ -133,6 +162,9 @@ quiz_pin_result_t *quiz_pin_result_parseFromJSON(cJSON *quiz_pin_resultJSON){
 
     // quiz_pin_result->destination_url
     cJSON *destination_url = cJSON_GetObjectItemCaseSensitive(quiz_pin_resultJSON, "destination_url");
+    if (cJSON_IsNull(destination_url)) {
+        destination_url = NULL;
+    }
     if (destination_url) { 
     if(!cJSON_IsString(destination_url) && !cJSON_IsNull(destination_url))
     {
@@ -142,6 +174,9 @@ quiz_pin_result_t *quiz_pin_result_parseFromJSON(cJSON *quiz_pin_resultJSON){
 
     // quiz_pin_result->result_id
     cJSON *result_id = cJSON_GetObjectItemCaseSensitive(quiz_pin_resultJSON, "result_id");
+    if (cJSON_IsNull(result_id)) {
+        result_id = NULL;
+    }
     if (result_id) { 
     if(!cJSON_IsNumber(result_id))
     {
@@ -150,7 +185,7 @@ quiz_pin_result_t *quiz_pin_result_parseFromJSON(cJSON *quiz_pin_resultJSON){
     }
 
 
-    quiz_pin_result_local_var = quiz_pin_result_create (
+    quiz_pin_result_local_var = quiz_pin_result_create_internal (
         organic_pin_id && !cJSON_IsNull(organic_pin_id) ? strdup(organic_pin_id->valuestring) : NULL,
         android_deep_link && !cJSON_IsNull(android_deep_link) ? strdup(android_deep_link->valuestring) : NULL,
         ios_deep_link && !cJSON_IsNull(ios_deep_link) ? strdup(ios_deep_link->valuestring) : NULL,

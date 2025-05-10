@@ -28,7 +28,7 @@ import javax.annotation.Generated;
   IntegrationLogsSuccessResponse.JSON_PROPERTY_MESSAGE
 })
 @JsonTypeName("IntegrationLogsSuccessResponse")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2024-11-05T02:02:57.601423453Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2025-05-10T05:39:05.070592818Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 @Introspected
 public class IntegrationLogsSuccessResponse {
     public static final String JSON_PROPERTY_MESSAGE = "message";

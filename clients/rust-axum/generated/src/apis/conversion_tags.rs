@@ -1,6 +1,6 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Multipart};
+use axum_extra::extract::{CookieJar, Host};
 use bytes::Bytes;
 use http::Method;
 use serde::{Deserialize, Serialize};
@@ -76,62 +76,62 @@ pub enum PageVisitConversionTagsSlashGetResponse {
 /// ConversionTags
 #[async_trait]
 #[allow(clippy::ptr_arg)]
-pub trait ConversionTags {
+pub trait ConversionTags<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHandler<E> {
     /// Create conversion tag.
     ///
     /// ConversionTagsSlashCreate - POST /v5/ad_accounts/{ad_account_id}/conversion_tags
     async fn conversion_tags_slash_create(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::ConversionTagsSlashCreatePathParams,
-            body: models::ConversionTagCreate,
-    ) -> Result<ConversionTagsSlashCreateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::ConversionTagsSlashCreatePathParams,
+            body: &models::ConversionTagCreate,
+    ) -> Result<ConversionTagsSlashCreateResponse, E>;
 
     /// Get conversion tag.
     ///
     /// ConversionTagsSlashGet - GET /v5/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}
     async fn conversion_tags_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::ConversionTagsSlashGetPathParams,
-    ) -> Result<ConversionTagsSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::ConversionTagsSlashGetPathParams,
+    ) -> Result<ConversionTagsSlashGetResponse, E>;
 
     /// Get conversion tags.
     ///
     /// ConversionTagsSlashList - GET /v5/ad_accounts/{ad_account_id}/conversion_tags
     async fn conversion_tags_slash_list(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::ConversionTagsSlashListPathParams,
-      query_params: models::ConversionTagsSlashListQueryParams,
-    ) -> Result<ConversionTagsSlashListResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::ConversionTagsSlashListPathParams,
+      query_params: &models::ConversionTagsSlashListQueryParams,
+    ) -> Result<ConversionTagsSlashListResponse, E>;
 
     /// Get Ocpm eligible conversion tags.
     ///
     /// OcpmEligibleConversionTagsSlashGet - GET /v5/ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible
     async fn ocpm_eligible_conversion_tags_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::OcpmEligibleConversionTagsSlashGetPathParams,
-    ) -> Result<OcpmEligibleConversionTagsSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::OcpmEligibleConversionTagsSlashGetPathParams,
+    ) -> Result<OcpmEligibleConversionTagsSlashGetResponse, E>;
 
     /// Get page visit conversion tags.
     ///
     /// PageVisitConversionTagsSlashGet - GET /v5/ad_accounts/{ad_account_id}/conversion_tags/page_visit
     async fn page_visit_conversion_tags_slash_get(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::PageVisitConversionTagsSlashGetPathParams,
-      query_params: models::PageVisitConversionTagsSlashGetQueryParams,
-    ) -> Result<PageVisitConversionTagsSlashGetResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::PageVisitConversionTagsSlashGetPathParams,
+      query_params: &models::PageVisitConversionTagsSlashGetQueryParams,
+    ) -> Result<PageVisitConversionTagsSlashGetResponse, E>;
 }

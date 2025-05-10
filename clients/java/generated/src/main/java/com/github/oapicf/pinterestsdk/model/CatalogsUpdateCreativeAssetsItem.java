@@ -49,10 +49,11 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * A creative assets item to be updated.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsUpdateCreativeAssetsItem {
   public static final String SERIALIZED_NAME_CREATIVE_ASSETS_ID = "creative_assets_id";
   @SerializedName(SERIALIZED_NAME_CREATIVE_ASSETS_ID)
+  @javax.annotation.Nonnull
   private String creativeAssetsId;
 
   /**
@@ -107,16 +108,18 @@ public class CatalogsUpdateCreativeAssetsItem {
 
   public static final String SERIALIZED_NAME_OPERATION = "operation";
   @SerializedName(SERIALIZED_NAME_OPERATION)
+  @javax.annotation.Nonnull
   private OperationEnum operation;
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  @javax.annotation.Nonnull
   private CatalogsUpdatableCreativeAssetsAttributes attributes;
 
   public CatalogsUpdateCreativeAssetsItem() {
   }
 
-  public CatalogsUpdateCreativeAssetsItem creativeAssetsId(String creativeAssetsId) {
+  public CatalogsUpdateCreativeAssetsItem creativeAssetsId(@javax.annotation.Nonnull String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
     return this;
   }
@@ -130,12 +133,12 @@ public class CatalogsUpdateCreativeAssetsItem {
     return creativeAssetsId;
   }
 
-  public void setCreativeAssetsId(String creativeAssetsId) {
+  public void setCreativeAssetsId(@javax.annotation.Nonnull String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
   }
 
 
-  public CatalogsUpdateCreativeAssetsItem operation(OperationEnum operation) {
+  public CatalogsUpdateCreativeAssetsItem operation(@javax.annotation.Nonnull OperationEnum operation) {
     this.operation = operation;
     return this;
   }
@@ -149,12 +152,12 @@ public class CatalogsUpdateCreativeAssetsItem {
     return operation;
   }
 
-  public void setOperation(OperationEnum operation) {
+  public void setOperation(@javax.annotation.Nonnull OperationEnum operation) {
     this.operation = operation;
   }
 
 
-  public CatalogsUpdateCreativeAssetsItem attributes(CatalogsUpdatableCreativeAssetsAttributes attributes) {
+  public CatalogsUpdateCreativeAssetsItem attributes(@javax.annotation.Nonnull CatalogsUpdatableCreativeAssetsAttributes attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -168,7 +171,7 @@ public class CatalogsUpdateCreativeAssetsItem {
     return attributes;
   }
 
-  public void setAttributes(CatalogsUpdatableCreativeAssetsAttributes attributes) {
+  public void setAttributes(@javax.annotation.Nonnull CatalogsUpdatableCreativeAssetsAttributes attributes) {
     this.attributes = attributes;
   }
 

@@ -51,24 +51,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Schema describing the object in the response, which contains information about the events that were received and processed.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConversionApiResponse {
   public static final String SERIALIZED_NAME_NUM_EVENTS_RECEIVED = "num_events_received";
   @SerializedName(SERIALIZED_NAME_NUM_EVENTS_RECEIVED)
+  @javax.annotation.Nonnull
   private Integer numEventsReceived;
 
   public static final String SERIALIZED_NAME_NUM_EVENTS_PROCESSED = "num_events_processed";
   @SerializedName(SERIALIZED_NAME_NUM_EVENTS_PROCESSED)
+  @javax.annotation.Nonnull
   private Integer numEventsProcessed;
 
   public static final String SERIALIZED_NAME_EVENTS = "events";
   @SerializedName(SERIALIZED_NAME_EVENTS)
+  @javax.annotation.Nonnull
   private List<ConversionApiResponseEventsInner> events = new ArrayList<>();
 
   public ConversionApiResponse() {
   }
 
-  public ConversionApiResponse numEventsReceived(Integer numEventsReceived) {
+  public ConversionApiResponse numEventsReceived(@javax.annotation.Nonnull Integer numEventsReceived) {
     this.numEventsReceived = numEventsReceived;
     return this;
   }
@@ -82,12 +85,12 @@ public class ConversionApiResponse {
     return numEventsReceived;
   }
 
-  public void setNumEventsReceived(Integer numEventsReceived) {
+  public void setNumEventsReceived(@javax.annotation.Nonnull Integer numEventsReceived) {
     this.numEventsReceived = numEventsReceived;
   }
 
 
-  public ConversionApiResponse numEventsProcessed(Integer numEventsProcessed) {
+  public ConversionApiResponse numEventsProcessed(@javax.annotation.Nonnull Integer numEventsProcessed) {
     this.numEventsProcessed = numEventsProcessed;
     return this;
   }
@@ -101,12 +104,12 @@ public class ConversionApiResponse {
     return numEventsProcessed;
   }
 
-  public void setNumEventsProcessed(Integer numEventsProcessed) {
+  public void setNumEventsProcessed(@javax.annotation.Nonnull Integer numEventsProcessed) {
     this.numEventsProcessed = numEventsProcessed;
   }
 
 
-  public ConversionApiResponse events(List<ConversionApiResponseEventsInner> events) {
+  public ConversionApiResponse events(@javax.annotation.Nonnull List<ConversionApiResponseEventsInner> events) {
     this.events = events;
     return this;
   }
@@ -128,7 +131,7 @@ public class ConversionApiResponse {
     return events;
   }
 
-  public void setEvents(List<ConversionApiResponseEventsInner> events) {
+  public void setEvents(@javax.annotation.Nonnull List<ConversionApiResponseEventsInner> events) {
     this.events = events;
   }
 

@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Video ID-based media source")
 @JsonTypeName("PinMediaSourceVideoID")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class PinMediaSourceVideoID   {
   public enum SourceTypeEnum {
 
@@ -70,7 +70,7 @@ public class PinMediaSourceVideoID   {
   private String coverImageUrl;
   public enum CoverImageContentTypeEnum {
 
-    JPEG(String.valueOf("image/jpeg")), PNG(String.valueOf("image/png"));
+    IMAGE_JPEG(String.valueOf("image/jpeg")), IMAGE_PNG(String.valueOf("image/png"));
 
 
     private String value;
@@ -120,6 +120,18 @@ public class PinMediaSourceVideoID   {
   private String mediaId;
   private Boolean isStandard = true;
 
+  public PinMediaSourceVideoID() {
+  }
+
+  @JsonCreator
+  public PinMediaSourceVideoID(
+    @JsonProperty(required = true, value = "source_type") SourceTypeEnum sourceType,
+    @JsonProperty(required = true, value = "media_id") String mediaId
+  ) {
+    this.sourceType = sourceType;
+    this.mediaId = mediaId;
+  }
+
   /**
    **/
   public PinMediaSourceVideoID sourceType(SourceTypeEnum sourceType) {
@@ -129,12 +141,12 @@ public class PinMediaSourceVideoID   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("source_type")
+  @JsonProperty(required = true, value = "source_type")
   @NotNull public SourceTypeEnum getSourceType() {
     return sourceType;
   }
 
-  @JsonProperty("source_type")
+  @JsonProperty(required = true, value = "source_type")
   public void setSourceType(SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
   }
@@ -208,12 +220,12 @@ public class PinMediaSourceVideoID   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("media_id")
+  @JsonProperty(required = true, value = "media_id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getMediaId() {
     return mediaId;
   }
 
-  @JsonProperty("media_id")
+  @JsonProperty(required = true, value = "media_id")
   public void setMediaId(String mediaId) {
     this.mediaId = mediaId;
   }

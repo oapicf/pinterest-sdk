@@ -5,7 +5,7 @@
 
 
 
-item_create_batch_record_t *item_create_batch_record_create(
+static item_create_batch_record_t *item_create_batch_record_create_internal(
     char *item_id,
     item_attributes_request_t *attributes
     ) {
@@ -16,12 +16,26 @@ item_create_batch_record_t *item_create_batch_record_create(
     item_create_batch_record_local_var->item_id = item_id;
     item_create_batch_record_local_var->attributes = attributes;
 
+    item_create_batch_record_local_var->_library_owned = 1;
     return item_create_batch_record_local_var;
 }
 
+__attribute__((deprecated)) item_create_batch_record_t *item_create_batch_record_create(
+    char *item_id,
+    item_attributes_request_t *attributes
+    ) {
+    return item_create_batch_record_create_internal (
+        item_id,
+        attributes
+        );
+}
 
 void item_create_batch_record_free(item_create_batch_record_t *item_create_batch_record) {
     if(NULL == item_create_batch_record){
+        return ;
+    }
+    if(item_create_batch_record->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "item_create_batch_record_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -76,6 +90,9 @@ item_create_batch_record_t *item_create_batch_record_parseFromJSON(cJSON *item_c
 
     // item_create_batch_record->item_id
     cJSON *item_id = cJSON_GetObjectItemCaseSensitive(item_create_batch_recordJSON, "item_id");
+    if (cJSON_IsNull(item_id)) {
+        item_id = NULL;
+    }
     if (item_id) { 
     if(!cJSON_IsString(item_id) && !cJSON_IsNull(item_id))
     {
@@ -85,12 +102,15 @@ item_create_batch_record_t *item_create_batch_record_parseFromJSON(cJSON *item_c
 
     // item_create_batch_record->attributes
     cJSON *attributes = cJSON_GetObjectItemCaseSensitive(item_create_batch_recordJSON, "attributes");
+    if (cJSON_IsNull(attributes)) {
+        attributes = NULL;
+    }
     if (attributes) { 
     attributes_local_nonprim = item_attributes_request_parseFromJSON(attributes); //nonprimitive
     }
 
 
-    item_create_batch_record_local_var = item_create_batch_record_create (
+    item_create_batch_record_local_var = item_create_batch_record_create_internal (
         item_id && !cJSON_IsNull(item_id) ? strdup(item_id->valuestring) : NULL,
         attributes ? attributes_local_nonprim : NULL
         );

@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.UpdateMemberAssetAccessBodyAccessesInner
 
+import kotlinx.serialization.Serializable
 /**
  * An object with a list of all the new accesses.
  * @param accesses 
  */
+@Serializable
 data class UpdateMemberAssetAccessBody(
     val accesses: kotlin.collections.List<UpdateMemberAssetAccessBodyAccessesInner>
-) 
+)
 

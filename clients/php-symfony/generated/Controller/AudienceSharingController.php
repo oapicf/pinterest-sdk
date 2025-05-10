@@ -372,7 +372,7 @@ class AudienceSharingController extends Controller
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Choice([ "ASCENDING", "DESCENDING" ]);
+        $asserts[] = new Assert\Choice([ 'ASCENDING', 'DESCENDING' ]);
         $asserts[] = new Assert\Type("string");
         $response = $this->validate($order, $asserts);
         if ($response instanceof Response) {

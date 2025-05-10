@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import org.openapitools.model.OptimizationGoalMetadataConversionTagV3GoalMetadata;
 import org.openapitools.model.OptimizationGoalMetadataFrequencyGoalMetadata;
 import org.openapitools.model.OptimizationGoalMetadataScrollupGoalMetadata;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -21,14 +22,14 @@ import javax.annotation.Generated;
  * OptimizationGoalMetadata
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class OptimizationGoalMetadata {
 
-  private OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagV3GoalMetadata;
+  private @Nullable OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagV3GoalMetadata;
 
-  private OptimizationGoalMetadataFrequencyGoalMetadata frequencyGoalMetadata;
+  private @Nullable OptimizationGoalMetadataFrequencyGoalMetadata frequencyGoalMetadata;
 
-  private OptimizationGoalMetadataScrollupGoalMetadata scrollupGoalMetadata;
+  private @Nullable OptimizationGoalMetadataScrollupGoalMetadata scrollupGoalMetadata;
 
   public OptimizationGoalMetadata conversionTagV3GoalMetadata(OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagV3GoalMetadata) {
     this.conversionTagV3GoalMetadata = conversionTagV3GoalMetadata;

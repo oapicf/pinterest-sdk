@@ -5,7 +5,7 @@
 
 
 
-audience_category_t *audience_category_create(
+static audience_category_t *audience_category_create_internal(
     char *key,
     char *name,
     double ratio,
@@ -24,12 +24,34 @@ audience_category_t *audience_category_create(
     audience_category_local_var->id = id;
     audience_category_local_var->subcategories = subcategories;
 
+    audience_category_local_var->_library_owned = 1;
     return audience_category_local_var;
 }
 
+__attribute__((deprecated)) audience_category_t *audience_category_create(
+    char *key,
+    char *name,
+    double ratio,
+    double index,
+    char *id,
+    list_t *subcategories
+    ) {
+    return audience_category_create_internal (
+        key,
+        name,
+        ratio,
+        index,
+        id,
+        subcategories
+        );
+}
 
 void audience_category_free(audience_category_t *audience_category) {
     if(NULL == audience_category){
+        return ;
+    }
+    if(audience_category->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "audience_category_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -134,6 +156,9 @@ audience_category_t *audience_category_parseFromJSON(cJSON *audience_categoryJSO
 
     // audience_category->key
     cJSON *key = cJSON_GetObjectItemCaseSensitive(audience_categoryJSON, "key");
+    if (cJSON_IsNull(key)) {
+        key = NULL;
+    }
     if (key) { 
     if(!cJSON_IsString(key) && !cJSON_IsNull(key))
     {
@@ -143,6 +168,9 @@ audience_category_t *audience_category_parseFromJSON(cJSON *audience_categoryJSO
 
     // audience_category->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(audience_categoryJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
     if (name) { 
     if(!cJSON_IsString(name) && !cJSON_IsNull(name))
     {
@@ -152,6 +180,9 @@ audience_category_t *audience_category_parseFromJSON(cJSON *audience_categoryJSO
 
     // audience_category->ratio
     cJSON *ratio = cJSON_GetObjectItemCaseSensitive(audience_categoryJSON, "ratio");
+    if (cJSON_IsNull(ratio)) {
+        ratio = NULL;
+    }
     if (ratio) { 
     if(!cJSON_IsNumber(ratio))
     {
@@ -161,6 +192,9 @@ audience_category_t *audience_category_parseFromJSON(cJSON *audience_categoryJSO
 
     // audience_category->index
     cJSON *index = cJSON_GetObjectItemCaseSensitive(audience_categoryJSON, "index");
+    if (cJSON_IsNull(index)) {
+        index = NULL;
+    }
     if (index) { 
     if(!cJSON_IsNumber(index))
     {
@@ -170,6 +204,9 @@ audience_category_t *audience_category_parseFromJSON(cJSON *audience_categoryJSO
 
     // audience_category->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(audience_categoryJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -179,6 +216,9 @@ audience_category_t *audience_category_parseFromJSON(cJSON *audience_categoryJSO
 
     // audience_category->subcategories
     cJSON *subcategories = cJSON_GetObjectItemCaseSensitive(audience_categoryJSON, "subcategories");
+    if (cJSON_IsNull(subcategories)) {
+        subcategories = NULL;
+    }
     if (subcategories) { 
     cJSON *subcategories_local_nonprimitive = NULL;
     if(!cJSON_IsArray(subcategories)){
@@ -199,7 +239,7 @@ audience_category_t *audience_category_parseFromJSON(cJSON *audience_categoryJSO
     }
 
 
-    audience_category_local_var = audience_category_create (
+    audience_category_local_var = audience_category_create_internal (
         key && !cJSON_IsNull(key) ? strdup(key->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         ratio ? ratio->valuedouble : 0,

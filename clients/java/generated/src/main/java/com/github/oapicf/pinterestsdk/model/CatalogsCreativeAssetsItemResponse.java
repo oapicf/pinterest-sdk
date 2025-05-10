@@ -54,28 +54,32 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Object describing a hotel record
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsCreativeAssetsItemResponse {
   public static final String SERIALIZED_NAME_CATALOG_TYPE = "catalog_type";
   @SerializedName(SERIALIZED_NAME_CATALOG_TYPE)
+  @javax.annotation.Nonnull
   private CatalogsType catalogType;
 
   public static final String SERIALIZED_NAME_CREATIVE_ASSETS_ID = "creative_assets_id";
   @SerializedName(SERIALIZED_NAME_CREATIVE_ASSETS_ID)
+  @javax.annotation.Nullable
   private String creativeAssetsId;
 
   public static final String SERIALIZED_NAME_PINS = "pins";
   @SerializedName(SERIALIZED_NAME_PINS)
+  @javax.annotation.Nullable
   private List<Pin> pins;
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  @javax.annotation.Nullable
   private CatalogsCreativeAssetsAttributes attributes;
 
   public CatalogsCreativeAssetsItemResponse() {
   }
 
-  public CatalogsCreativeAssetsItemResponse catalogType(CatalogsType catalogType) {
+  public CatalogsCreativeAssetsItemResponse catalogType(@javax.annotation.Nonnull CatalogsType catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -89,12 +93,12 @@ public class CatalogsCreativeAssetsItemResponse {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(@javax.annotation.Nonnull CatalogsType catalogType) {
     this.catalogType = catalogType;
   }
 
 
-  public CatalogsCreativeAssetsItemResponse creativeAssetsId(String creativeAssetsId) {
+  public CatalogsCreativeAssetsItemResponse creativeAssetsId(@javax.annotation.Nullable String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
     return this;
   }
@@ -108,12 +112,12 @@ public class CatalogsCreativeAssetsItemResponse {
     return creativeAssetsId;
   }
 
-  public void setCreativeAssetsId(String creativeAssetsId) {
+  public void setCreativeAssetsId(@javax.annotation.Nullable String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
   }
 
 
-  public CatalogsCreativeAssetsItemResponse pins(List<Pin> pins) {
+  public CatalogsCreativeAssetsItemResponse pins(@javax.annotation.Nullable List<Pin> pins) {
     this.pins = pins;
     return this;
   }
@@ -135,12 +139,12 @@ public class CatalogsCreativeAssetsItemResponse {
     return pins;
   }
 
-  public void setPins(List<Pin> pins) {
+  public void setPins(@javax.annotation.Nullable List<Pin> pins) {
     this.pins = pins;
   }
 
 
-  public CatalogsCreativeAssetsItemResponse attributes(CatalogsCreativeAssetsAttributes attributes) {
+  public CatalogsCreativeAssetsItemResponse attributes(@javax.annotation.Nullable CatalogsCreativeAssetsAttributes attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -154,7 +158,7 @@ public class CatalogsCreativeAssetsItemResponse {
     return attributes;
   }
 
-  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
+  public void setAttributes(@javax.annotation.Nullable CatalogsCreativeAssetsAttributes attributes) {
     this.attributes = attributes;
   }
 

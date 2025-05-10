@@ -5,7 +5,7 @@
 
 
 
-ad_groups_analytics_response_inner_t *ad_groups_analytics_response_inner_create(
+static ad_groups_analytics_response_inner_t *ad_groups_analytics_response_inner_create_internal(
     char *ad_group_id,
     char *date
     ) {
@@ -16,12 +16,26 @@ ad_groups_analytics_response_inner_t *ad_groups_analytics_response_inner_create(
     ad_groups_analytics_response_inner_local_var->ad_group_id = ad_group_id;
     ad_groups_analytics_response_inner_local_var->date = date;
 
+    ad_groups_analytics_response_inner_local_var->_library_owned = 1;
     return ad_groups_analytics_response_inner_local_var;
 }
 
+__attribute__((deprecated)) ad_groups_analytics_response_inner_t *ad_groups_analytics_response_inner_create(
+    char *ad_group_id,
+    char *date
+    ) {
+    return ad_groups_analytics_response_inner_create_internal (
+        ad_group_id,
+        date
+        );
+}
 
 void ad_groups_analytics_response_inner_free(ad_groups_analytics_response_inner_t *ad_groups_analytics_response_inner) {
     if(NULL == ad_groups_analytics_response_inner){
+        return ;
+    }
+    if(ad_groups_analytics_response_inner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ad_groups_analytics_response_inner_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -69,6 +83,9 @@ ad_groups_analytics_response_inner_t *ad_groups_analytics_response_inner_parseFr
 
     // ad_groups_analytics_response_inner->ad_group_id
     cJSON *ad_group_id = cJSON_GetObjectItemCaseSensitive(ad_groups_analytics_response_innerJSON, "AD_GROUP_ID");
+    if (cJSON_IsNull(ad_group_id)) {
+        ad_group_id = NULL;
+    }
     if (!ad_group_id) {
         goto end;
     }
@@ -81,6 +98,9 @@ ad_groups_analytics_response_inner_t *ad_groups_analytics_response_inner_parseFr
 
     // ad_groups_analytics_response_inner->date
     cJSON *date = cJSON_GetObjectItemCaseSensitive(ad_groups_analytics_response_innerJSON, "DATE");
+    if (cJSON_IsNull(date)) {
+        date = NULL;
+    }
     if (date) { 
     if(!cJSON_IsString(date))
     {
@@ -89,7 +109,7 @@ ad_groups_analytics_response_inner_t *ad_groups_analytics_response_inner_parseFr
     }
 
 
-    ad_groups_analytics_response_inner_local_var = ad_groups_analytics_response_inner_create (
+    ad_groups_analytics_response_inner_local_var = ad_groups_analytics_response_inner_create_internal (
         strdup(ad_group_id->valuestring),
         date ? strdup(date->valuestring) : NULL
         );

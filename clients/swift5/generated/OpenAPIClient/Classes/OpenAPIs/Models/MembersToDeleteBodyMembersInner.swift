@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct MembersToDeleteBodyMembersInner: Codable, JSONEncodable, Hashable {
 
-    static let memberIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
+    public static let memberIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
     /** Unique identifier of the member */
     public var memberId: String
     public var businessRole: BusinessRoleForMembers

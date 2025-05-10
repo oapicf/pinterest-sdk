@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param active True if the offer code is currently active.
@@ -22,6 +23,7 @@ package org.openapitools.server.models
  * @param title Human readable title of the offer code.
  * @param remainingDiscountInMicroCurrency The credits left to spend.
  */
+@Serializable
 data class AdsCreditDiscountsResponse(
     /* True if the offer code is currently active. */
     val active: kotlin.Boolean? = null,
@@ -37,7 +39,7 @@ data class AdsCreditDiscountsResponse(
     val title: kotlin.String? = null,
     /* The credits left to spend. */
     val remainingDiscountInMicroCurrency: java.math.BigDecimal? = null
-) 
+)
 {
     /**
     * The type of discount of this credit

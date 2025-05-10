@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param attributionWindows 
@@ -22,6 +23,7 @@ import org.openapitools.server.models.OptimizationGoalMetadataConversionTagV3Goa
  * @param isRoasOptimized ROAS optimization is not supported
  * @param learningModeType Conversion learning model type
  */
+@Serializable
 data class OptimizationGoalMetadataConversionTagV3GoalMetadata(
     val attributionWindows: OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows? = null,
     val conversionEvent: OptimizationGoalMetadataConversionTagV3GoalMetadata.ConversionEvent? = null,
@@ -31,7 +33,7 @@ data class OptimizationGoalMetadataConversionTagV3GoalMetadata(
     val isRoasOptimized: kotlin.Boolean? = null,
     /* Conversion learning model type */
     val learningModeType: OptimizationGoalMetadataConversionTagV3GoalMetadata.LearningModeType? = null
-) 
+)
 {
     /**
     * 

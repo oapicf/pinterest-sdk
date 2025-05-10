@@ -48,24 +48,27 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * UserWebsiteSummary
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class UserWebsiteSummary {
   public static final String SERIALIZED_NAME_WEBSITE = "website";
   @SerializedName(SERIALIZED_NAME_WEBSITE)
+  @javax.annotation.Nullable
   private String website;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private String status;
 
   public static final String SERIALIZED_NAME_VERIFIED_AT = "verified_at";
   @SerializedName(SERIALIZED_NAME_VERIFIED_AT)
+  @javax.annotation.Nullable
   private String verifiedAt;
 
   public UserWebsiteSummary() {
   }
 
-  public UserWebsiteSummary website(String website) {
+  public UserWebsiteSummary website(@javax.annotation.Nullable String website) {
     this.website = website;
     return this;
   }
@@ -79,12 +82,12 @@ public class UserWebsiteSummary {
     return website;
   }
 
-  public void setWebsite(String website) {
+  public void setWebsite(@javax.annotation.Nullable String website) {
     this.website = website;
   }
 
 
-  public UserWebsiteSummary status(String status) {
+  public UserWebsiteSummary status(@javax.annotation.Nullable String status) {
     this.status = status;
     return this;
   }
@@ -98,12 +101,12 @@ public class UserWebsiteSummary {
     return status;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(@javax.annotation.Nullable String status) {
     this.status = status;
   }
 
 
-  public UserWebsiteSummary verifiedAt(String verifiedAt) {
+  public UserWebsiteSummary verifiedAt(@javax.annotation.Nullable String verifiedAt) {
     this.verifiedAt = verifiedAt;
     return this;
   }
@@ -117,7 +120,7 @@ public class UserWebsiteSummary {
     return verifiedAt;
   }
 
-  public void setVerifiedAt(String verifiedAt) {
+  public void setVerifiedAt(@javax.annotation.Nullable String verifiedAt) {
     this.verifiedAt = verifiedAt;
   }
 

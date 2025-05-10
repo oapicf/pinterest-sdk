@@ -48,11 +48,11 @@ export function SSIOEditInsertionOrderResponseFromJSONTyped(json: any, ignoreDis
     };
 }
 
-  export function SSIOEditInsertionOrderResponseToJSON(json: any): SSIOEditInsertionOrderResponse {
-      return SSIOEditInsertionOrderResponseToJSONTyped(json, false);
-  }
+export function SSIOEditInsertionOrderResponseToJSON(json: any): SSIOEditInsertionOrderResponse {
+    return SSIOEditInsertionOrderResponseToJSONTyped(json, false);
+}
 
-  export function SSIOEditInsertionOrderResponseToJSONTyped(value?: SSIOEditInsertionOrderResponse | null, ignoreDiscriminator: boolean = false): any {
+export function SSIOEditInsertionOrderResponseToJSONTyped(value?: SSIOEditInsertionOrderResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

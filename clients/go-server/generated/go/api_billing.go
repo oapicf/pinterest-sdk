@@ -156,7 +156,7 @@ func (c *BillingAPIController) AdsCreditRedeem(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	adsCreditRedeemRequestParam := AdsCreditRedeemRequest{}
+	var adsCreditRedeemRequestParam AdsCreditRedeemRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&adsCreditRedeemRequestParam); err != nil {
@@ -271,7 +271,7 @@ func (c *BillingAPIController) SsioInsertionOrderCreate(w http.ResponseWriter, r
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	ssioCreateInsertionOrderRequestParam := SsioCreateInsertionOrderRequest{}
+	var ssioCreateInsertionOrderRequestParam SsioCreateInsertionOrderRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&ssioCreateInsertionOrderRequestParam); err != nil {
@@ -304,7 +304,7 @@ func (c *BillingAPIController) SsioInsertionOrderEdit(w http.ResponseWriter, r *
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	ssioEditInsertionOrderRequestParam := SsioEditInsertionOrderRequest{}
+	var ssioEditInsertionOrderRequestParam SsioEditInsertionOrderRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&ssioEditInsertionOrderRequestParam); err != nil {

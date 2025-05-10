@@ -24,9 +24,9 @@ char* grid_click_type_grid_click_type_ToString(pinterest_rest_api_grid_click_typ
 
 pinterest_rest_api_grid_click_type__e grid_click_type_grid_click_type_FromString(char* grid_click_type);
 
-//cJSON *grid_click_type_grid_click_type_convertToJSON(pinterest_rest_api_grid_click_type__e grid_click_type);
+cJSON *grid_click_type_convertToJSON(pinterest_rest_api_grid_click_type__e grid_click_type);
 
-//pinterest_rest_api_grid_click_type__e grid_click_type_grid_click_type_parseFromJSON(cJSON *grid_click_typeJSON);
+pinterest_rest_api_grid_click_type__e grid_click_type_parseFromJSON(cJSON *grid_click_typeJSON);
 
 #endif /* _grid_click_type_H_ */
 

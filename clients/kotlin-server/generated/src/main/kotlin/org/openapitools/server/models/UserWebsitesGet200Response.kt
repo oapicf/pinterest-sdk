@@ -13,13 +13,15 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.UserWebsiteSummary
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items 
  * @param bookmark 
  */
+@Serializable
 data class UserWebsitesGet200Response(
     val items: kotlin.collections.List<UserWebsiteSummary>,
     val bookmark: kotlin.String? = null
-) 
+)
 

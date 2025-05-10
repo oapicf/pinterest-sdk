@@ -54,7 +54,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   SSIOOrderLine.JSON_PROPERTY_ESTIMATED_MONTHLY_SPEND
 })
 @JsonTypeName("SSIOOrderLine")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2024-11-05T02:03:37.829873561Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2025-05-10T05:39:14.747146068Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 @Introspected
 public class SSIOOrderLine {
     public static final String JSON_PROPERTY_SALESFORCE_ORDER_LINE_ID = "salesforce_order_line_id";
@@ -229,7 +229,7 @@ public class SSIOOrderLine {
      * @return startDate
      */
     @Nullable
-    @Schema(name = "start_date", example = "Thu Mar 01 00:00:00 UTC 2018", description = "Start date of the order line.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @Schema(name = "start_date", example = "2018-03-01", description = "Start date of the order line.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty(JSON_PROPERTY_START_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
@@ -254,7 +254,7 @@ public class SSIOOrderLine {
      * @return endDate
      */
     @Nullable
-    @Schema(name = "end_date", example = "Mon Oct 05 00:00:00 UTC 2020", description = "End date of the order line.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @Schema(name = "end_date", example = "2020-10-05", description = "End date of the order line.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty(JSON_PROPERTY_END_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")

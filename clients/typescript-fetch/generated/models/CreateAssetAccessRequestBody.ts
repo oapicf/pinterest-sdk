@@ -57,11 +57,11 @@ export function CreateAssetAccessRequestBodyFromJSONTyped(json: any, ignoreDiscr
     };
 }
 
-  export function CreateAssetAccessRequestBodyToJSON(json: any): CreateAssetAccessRequestBody {
-      return CreateAssetAccessRequestBodyToJSONTyped(json, false);
-  }
+export function CreateAssetAccessRequestBodyToJSON(json: any): CreateAssetAccessRequestBody {
+    return CreateAssetAccessRequestBodyToJSONTyped(json, false);
+}
 
-  export function CreateAssetAccessRequestBodyToJSONTyped(value?: CreateAssetAccessRequestBody | null, ignoreDiscriminator: boolean = false): any {
+export function CreateAssetAccessRequestBodyToJSONTyped(value?: CreateAssetAccessRequestBody | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

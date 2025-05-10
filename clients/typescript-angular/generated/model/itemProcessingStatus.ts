@@ -15,8 +15,11 @@
 export type ItemProcessingStatus = 'SUCCESS' | 'FAILURE' | 'PROCESSING';
 
 export const ItemProcessingStatus = {
+
     Success: 'SUCCESS' as ItemProcessingStatus,
+
     Failure: 'FAILURE' as ItemProcessingStatus,
+
     Processing: 'PROCESSING' as ItemProcessingStatus
 };
 

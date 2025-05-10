@@ -5,7 +5,7 @@
 
 
 
-keyword_metrics_t *keyword_metrics_create(
+static keyword_metrics_t *keyword_metrics_create_internal(
     double avg_cpc_in_micro_currency,
     char *keyword_query_volume
     ) {
@@ -16,12 +16,26 @@ keyword_metrics_t *keyword_metrics_create(
     keyword_metrics_local_var->avg_cpc_in_micro_currency = avg_cpc_in_micro_currency;
     keyword_metrics_local_var->keyword_query_volume = keyword_query_volume;
 
+    keyword_metrics_local_var->_library_owned = 1;
     return keyword_metrics_local_var;
 }
 
+__attribute__((deprecated)) keyword_metrics_t *keyword_metrics_create(
+    double avg_cpc_in_micro_currency,
+    char *keyword_query_volume
+    ) {
+    return keyword_metrics_create_internal (
+        avg_cpc_in_micro_currency,
+        keyword_query_volume
+        );
+}
 
 void keyword_metrics_free(keyword_metrics_t *keyword_metrics) {
     if(NULL == keyword_metrics){
+        return ;
+    }
+    if(keyword_metrics->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "keyword_metrics_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -64,6 +78,9 @@ keyword_metrics_t *keyword_metrics_parseFromJSON(cJSON *keyword_metricsJSON){
 
     // keyword_metrics->avg_cpc_in_micro_currency
     cJSON *avg_cpc_in_micro_currency = cJSON_GetObjectItemCaseSensitive(keyword_metricsJSON, "avg_cpc_in_micro_currency");
+    if (cJSON_IsNull(avg_cpc_in_micro_currency)) {
+        avg_cpc_in_micro_currency = NULL;
+    }
     if (avg_cpc_in_micro_currency) { 
     if(!cJSON_IsNumber(avg_cpc_in_micro_currency))
     {
@@ -73,6 +90,9 @@ keyword_metrics_t *keyword_metrics_parseFromJSON(cJSON *keyword_metricsJSON){
 
     // keyword_metrics->keyword_query_volume
     cJSON *keyword_query_volume = cJSON_GetObjectItemCaseSensitive(keyword_metricsJSON, "keyword_query_volume");
+    if (cJSON_IsNull(keyword_query_volume)) {
+        keyword_query_volume = NULL;
+    }
     if (keyword_query_volume) { 
     if(!cJSON_IsString(keyword_query_volume) && !cJSON_IsNull(keyword_query_volume))
     {
@@ -81,7 +101,7 @@ keyword_metrics_t *keyword_metrics_parseFromJSON(cJSON *keyword_metricsJSON){
     }
 
 
-    keyword_metrics_local_var = keyword_metrics_create (
+    keyword_metrics_local_var = keyword_metrics_create_internal (
         avg_cpc_in_micro_currency ? avg_cpc_in_micro_currency->valuedouble : 0,
         keyword_query_volume && !cJSON_IsNull(keyword_query_volume) ? strdup(keyword_query_volume->valuestring) : NULL
         );

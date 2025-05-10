@@ -20,13 +20,16 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.")
 @JsonTypeName("TrackingUrls")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class TrackingUrls   {
   private @Valid List<String> impression = new ArrayList<>();
   private @Valid List<String> click = new ArrayList<>();
   private @Valid List<String> engagement = new ArrayList<>();
   private @Valid List<String> buyableButton = new ArrayList<>();
   private @Valid List<String> audienceVerification = new ArrayList<>();
+
+  public TrackingUrls() {
+  }
 
   /**
    **/

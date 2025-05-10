@@ -22,9 +22,10 @@ typedef struct keyword_update_body_t keyword_update_body_t;
 typedef struct keyword_update_body_t {
     list_t *keywords; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } keyword_update_body_t;
 
-keyword_update_body_t *keyword_update_body_create(
+__attribute__((deprecated)) keyword_update_body_t *keyword_update_body_create(
     list_t *keywords
 );
 

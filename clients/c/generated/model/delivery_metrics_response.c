@@ -5,7 +5,7 @@
 
 
 
-delivery_metrics_response_t *delivery_metrics_response_create(
+static delivery_metrics_response_t *delivery_metrics_response_create_internal(
     list_t *items
     ) {
     delivery_metrics_response_t *delivery_metrics_response_local_var = malloc(sizeof(delivery_metrics_response_t));
@@ -14,12 +14,24 @@ delivery_metrics_response_t *delivery_metrics_response_create(
     }
     delivery_metrics_response_local_var->items = items;
 
+    delivery_metrics_response_local_var->_library_owned = 1;
     return delivery_metrics_response_local_var;
 }
 
+__attribute__((deprecated)) delivery_metrics_response_t *delivery_metrics_response_create(
+    list_t *items
+    ) {
+    return delivery_metrics_response_create_internal (
+        items
+        );
+}
 
 void delivery_metrics_response_free(delivery_metrics_response_t *delivery_metrics_response) {
     if(NULL == delivery_metrics_response){
+        return ;
+    }
+    if(delivery_metrics_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "delivery_metrics_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -72,6 +84,9 @@ delivery_metrics_response_t *delivery_metrics_response_parseFromJSON(cJSON *deli
 
     // delivery_metrics_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(delivery_metrics_responseJSON, "items");
+    if (cJSON_IsNull(items)) {
+        items = NULL;
+    }
     if (items) { 
     cJSON *items_local_nonprimitive = NULL;
     if(!cJSON_IsArray(items)){
@@ -92,7 +107,7 @@ delivery_metrics_response_t *delivery_metrics_response_parseFromJSON(cJSON *deli
     }
 
 
-    delivery_metrics_response_local_var = delivery_metrics_response_create (
+    delivery_metrics_response_local_var = delivery_metrics_response_create_internal (
         items ? itemsList : NULL
         );
 

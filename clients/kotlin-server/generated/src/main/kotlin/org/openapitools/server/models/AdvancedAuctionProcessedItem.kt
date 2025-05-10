@@ -19,10 +19,12 @@ import org.openapitools.server.models.Country
 import org.openapitools.server.models.Language
 import org.openapitools.server.models.UpdateMaskBidOptionField
 
+import kotlinx.serialization.Serializable
 /**
  * Object describing the result of an operation on an item bid option
  * @param errors Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
  */
+@Serializable
 data class AdvancedAuctionProcessedItem(
     val operation: AdvancedAuctionOperation,
     /* The catalog retail item id in the merchant namespace */
@@ -31,8 +33,8 @@ data class AdvancedAuctionProcessedItem(
     val language: Language,
     val bidOptions: AdvancedAuctionBidOptions,
     /* The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`. */
-    val updateMask: kotlin.collections.List<UpdateMaskBidOptionField>,
+    val updateMask: kotlin.collections.List<UpdateMaskBidOptionField>?,
     /* Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied. */
     val errors: kotlin.collections.List<AdvancedAuctionOperationError>? = null
-) 
+)
 

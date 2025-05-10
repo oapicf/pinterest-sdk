@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { OrderLine } from '../model/orderLine';
 import { OrderLinesList200Response } from '../model/orderLinesList200Response';
@@ -27,10 +27,12 @@ export class OrderLinesService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -49,9 +51,10 @@ export class OrderLinesService {
      * @param orderLineId Unique identifier of an order line.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [orderLinesGetOpts.config] Override http request option.
      */
-    public orderLinesGet(adAccountId: string, orderLineId: string, ): Observable<AxiosResponse<OrderLine>>;
-    public orderLinesGet(adAccountId: string, orderLineId: string, ): Observable<any> {
+    public orderLinesGet(adAccountId: string, orderLineId: string, orderLinesGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<OrderLine>>;
+    public orderLinesGet(adAccountId: string, orderLineId: string, orderLinesGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling orderLinesGet.');
         }
@@ -92,7 +95,8 @@ export class OrderLinesService {
                 return this.httpClient.get<OrderLine>(`${this.basePath}/ad_accounts/${encodeURIComponent(String(ad_account_id))}/order_lines/${encodeURIComponent(String(order_line_id))}`,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...orderLinesGetOpts?.config,
+                        headers: {...headers, ...orderLinesGetOpts?.config?.headers},
                     }
                 );
             })
@@ -107,9 +111,10 @@ export class OrderLinesService {
      * @param bookmark Cursor used to fetch the next page of items
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [orderLinesListOpts.config] Override http request option.
      */
-    public orderLinesList(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, ): Observable<AxiosResponse<OrderLinesList200Response>>;
-    public orderLinesList(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, ): Observable<any> {
+    public orderLinesList(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, orderLinesListOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<OrderLinesList200Response>>;
+    public orderLinesList(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, orderLinesListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling orderLinesList.');
         }
@@ -158,7 +163,8 @@ export class OrderLinesService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...orderLinesListOpts?.config,
+                        headers: {...headers, ...orderLinesListOpts?.config?.headers},
                     }
                 );
             })

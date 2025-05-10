@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { TermsOfService } from '../model/termsOfService';
 import { Configuration } from '../configuration';
@@ -26,10 +26,12 @@ export class TermsOfServiceService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -49,9 +51,10 @@ export class TermsOfServiceService {
      * @param tosType Request type.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [termsOfServiceGetOpts.config] Override http request option.
      */
-    public termsOfServiceGet(adAccountId: string, includeHtml?: boolean, tosType?: string, ): Observable<AxiosResponse<TermsOfService>>;
-    public termsOfServiceGet(adAccountId: string, includeHtml?: boolean, tosType?: string, ): Observable<any> {
+    public termsOfServiceGet(adAccountId: string, includeHtml?: boolean, tosType?: string, termsOfServiceGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<TermsOfService>>;
+    public termsOfServiceGet(adAccountId: string, includeHtml?: boolean, tosType?: string, termsOfServiceGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling termsOfServiceGet.');
         }
@@ -97,7 +100,8 @@ export class TermsOfServiceService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...termsOfServiceGetOpts?.config,
+                        headers: {...headers, ...termsOfServiceGetOpts?.config?.headers},
                     }
                 );
             })

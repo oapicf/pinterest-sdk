@@ -41,8 +41,8 @@ public:
 	TOptional<FString> CoverImageUrl;
 	enum class CoverImageContentTypeEnum
 	{
-		Jpeg,
-		Png,
+		ImageJpeg,
+		ImagePng,
   	};
 
 	static FString EnumToString(const CoverImageContentTypeEnum& EnumValue);

@@ -48,20 +48,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * The counts can be null early in the process.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsFeedProductCounts {
   public static final String SERIALIZED_NAME_ORIGINAL = "original";
   @SerializedName(SERIALIZED_NAME_ORIGINAL)
+  @javax.annotation.Nullable
   private Integer original;
 
   public static final String SERIALIZED_NAME_INGESTED = "ingested";
   @SerializedName(SERIALIZED_NAME_INGESTED)
+  @javax.annotation.Nullable
   private Integer ingested;
 
   public CatalogsFeedProductCounts() {
   }
 
-  public CatalogsFeedProductCounts original(Integer original) {
+  public CatalogsFeedProductCounts original(@javax.annotation.Nullable Integer original) {
     this.original = original;
     return this;
   }
@@ -75,12 +77,12 @@ public class CatalogsFeedProductCounts {
     return original;
   }
 
-  public void setOriginal(Integer original) {
+  public void setOriginal(@javax.annotation.Nullable Integer original) {
     this.original = original;
   }
 
 
-  public CatalogsFeedProductCounts ingested(Integer ingested) {
+  public CatalogsFeedProductCounts ingested(@javax.annotation.Nullable Integer ingested) {
     this.ingested = ingested;
     return this;
   }
@@ -94,7 +96,7 @@ public class CatalogsFeedProductCounts {
     return ingested;
   }
 
-  public void setIngested(Integer ingested) {
+  public void setIngested(@javax.annotation.Nullable Integer ingested) {
     this.ingested = ingested;
   }
 

@@ -5,7 +5,7 @@
 
 
 
-analytics_metrics_response_t *analytics_metrics_response_create(
+static analytics_metrics_response_t *analytics_metrics_response_create_internal(
     list_t* summary_metrics,
     list_t *daily_metrics
     ) {
@@ -16,18 +16,32 @@ analytics_metrics_response_t *analytics_metrics_response_create(
     analytics_metrics_response_local_var->summary_metrics = summary_metrics;
     analytics_metrics_response_local_var->daily_metrics = daily_metrics;
 
+    analytics_metrics_response_local_var->_library_owned = 1;
     return analytics_metrics_response_local_var;
 }
 
+__attribute__((deprecated)) analytics_metrics_response_t *analytics_metrics_response_create(
+    list_t* summary_metrics,
+    list_t *daily_metrics
+    ) {
+    return analytics_metrics_response_create_internal (
+        summary_metrics,
+        daily_metrics
+        );
+}
 
 void analytics_metrics_response_free(analytics_metrics_response_t *analytics_metrics_response) {
     if(NULL == analytics_metrics_response){
         return ;
     }
+    if(analytics_metrics_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "analytics_metrics_response_free");
+        return ;
+    }
     listEntry_t *listEntry;
     if (analytics_metrics_response->summary_metrics) {
         list_ForEach(listEntry, analytics_metrics_response->summary_metrics) {
-            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            keyValuePair_t *localKeyValue = listEntry->data;
             free (localKeyValue->key);
             free (localKeyValue->value);
             keyValuePair_free(localKeyValue);
@@ -58,7 +72,7 @@ cJSON *analytics_metrics_response_convertToJSON(analytics_metrics_response_t *an
     listEntry_t *summary_metricsListEntry;
     if (analytics_metrics_response->summary_metrics) {
     list_ForEach(summary_metricsListEntry, analytics_metrics_response->summary_metrics) {
-        keyValuePair_t *localKeyValue = (keyValuePair_t*)summary_metricsListEntry->data;
+        keyValuePair_t *localKeyValue = summary_metricsListEntry->data;
         if(cJSON_AddNumberToObject(localMapObject, localKeyValue->key, *(double *)localKeyValue->value) == NULL)
         {
             goto fail;
@@ -107,6 +121,9 @@ analytics_metrics_response_t *analytics_metrics_response_parseFromJSON(cJSON *an
 
     // analytics_metrics_response->summary_metrics
     cJSON *summary_metrics = cJSON_GetObjectItemCaseSensitive(analytics_metrics_responseJSON, "summary_metrics");
+    if (cJSON_IsNull(summary_metrics)) {
+        summary_metrics = NULL;
+    }
     if (summary_metrics) { 
     cJSON *summary_metrics_local_map = NULL;
     if(!cJSON_IsObject(summary_metrics) && !cJSON_IsNull(summary_metrics))
@@ -132,6 +149,9 @@ analytics_metrics_response_t *analytics_metrics_response_parseFromJSON(cJSON *an
 
     // analytics_metrics_response->daily_metrics
     cJSON *daily_metrics = cJSON_GetObjectItemCaseSensitive(analytics_metrics_responseJSON, "daily_metrics");
+    if (cJSON_IsNull(daily_metrics)) {
+        daily_metrics = NULL;
+    }
     if (daily_metrics) { 
     cJSON *daily_metrics_local_nonprimitive = NULL;
     if(!cJSON_IsArray(daily_metrics)){
@@ -152,7 +172,7 @@ analytics_metrics_response_t *analytics_metrics_response_parseFromJSON(cJSON *an
     }
 
 
-    analytics_metrics_response_local_var = analytics_metrics_response_create (
+    analytics_metrics_response_local_var = analytics_metrics_response_create_internal (
         summary_metrics ? summary_metricsList : NULL,
         daily_metrics ? daily_metricsList : NULL
         );
@@ -162,7 +182,7 @@ end:
     if (summary_metricsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, summary_metricsList) {
-            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            keyValuePair_t *localKeyValue = listEntry->data;
             free(localKeyValue->key);
             localKeyValue->key = NULL;
             keyValuePair_free(localKeyValue);

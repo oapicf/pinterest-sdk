@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param itemType 
@@ -21,6 +22,7 @@ package org.openapitools.server.models
  * @param height Height (in pixels)
  * @param width Width (in pixels)
  */
+@Serializable
 data class VideoMetadata(
     val itemType: kotlin.String? = null,
     val coverImageUrl: kotlin.String? = null,
@@ -32,5 +34,5 @@ data class VideoMetadata(
     val height: kotlin.Int? = null,
     /* Width (in pixels) */
     val width: kotlin.Int? = null
-) 
+)
 

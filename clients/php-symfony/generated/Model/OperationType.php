@@ -44,8 +44,8 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum OperationType: string
 {
-        case SHARE = "SHARE";
-        case REVOKE = "REVOKE";
+        case SHARE = 'SHARE';
+        case REVOKE = 'REVOKE';
 }
 
 

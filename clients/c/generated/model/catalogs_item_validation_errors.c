@@ -5,7 +5,7 @@
 
 
 
-catalogs_item_validation_errors_t *catalogs_item_validation_errors_create(
+static catalogs_item_validation_errors_t *catalogs_item_validation_errors_create_internal(
     catalogs_item_validation_details_t *adult_invalid,
     catalogs_item_validation_details_t *adwords_format_invalid,
     catalogs_item_validation_details_t *availability_invalid,
@@ -58,12 +58,68 @@ catalogs_item_validation_errors_t *catalogs_item_validation_errors_create(
     catalogs_item_validation_errors_local_var->product_price_invalid = product_price_invalid;
     catalogs_item_validation_errors_local_var->title_missing = title_missing;
 
+    catalogs_item_validation_errors_local_var->_library_owned = 1;
     return catalogs_item_validation_errors_local_var;
 }
 
+__attribute__((deprecated)) catalogs_item_validation_errors_t *catalogs_item_validation_errors_create(
+    catalogs_item_validation_details_t *adult_invalid,
+    catalogs_item_validation_details_t *adwords_format_invalid,
+    catalogs_item_validation_details_t *availability_invalid,
+    catalogs_item_validation_details_t *blocklisted_image_signature,
+    catalogs_item_validation_details_t *description_missing,
+    catalogs_item_validation_details_t *duplicate_products,
+    catalogs_item_validation_details_t *image_link_invalid,
+    catalogs_item_validation_details_t *image_link_length_too_long,
+    catalogs_item_validation_details_t *image_link_missing,
+    catalogs_item_validation_details_t *invalid_domain,
+    catalogs_item_validation_details_t *itemid_missing,
+    catalogs_item_validation_details_t *item_main_image_download_failure,
+    catalogs_item_validation_details_t *link_format_invalid,
+    catalogs_item_validation_details_t *link_length_too_long,
+    catalogs_item_validation_details_t *list_price_invalid,
+    catalogs_item_validation_details_t *max_items_per_item_group_exceeded,
+    catalogs_item_validation_details_t *parse_line_error,
+    catalogs_item_validation_details_t *pinjoin_content_unsafe,
+    catalogs_item_validation_details_t *price_cannot_be_determined,
+    catalogs_item_validation_details_t *price_missing,
+    catalogs_item_validation_details_t *product_link_missing,
+    catalogs_item_validation_details_t *product_price_invalid,
+    catalogs_item_validation_details_t *title_missing
+    ) {
+    return catalogs_item_validation_errors_create_internal (
+        adult_invalid,
+        adwords_format_invalid,
+        availability_invalid,
+        blocklisted_image_signature,
+        description_missing,
+        duplicate_products,
+        image_link_invalid,
+        image_link_length_too_long,
+        image_link_missing,
+        invalid_domain,
+        itemid_missing,
+        item_main_image_download_failure,
+        link_format_invalid,
+        link_length_too_long,
+        list_price_invalid,
+        max_items_per_item_group_exceeded,
+        parse_line_error,
+        pinjoin_content_unsafe,
+        price_cannot_be_determined,
+        price_missing,
+        product_link_missing,
+        product_price_invalid,
+        title_missing
+        );
+}
 
 void catalogs_item_validation_errors_free(catalogs_item_validation_errors_t *catalogs_item_validation_errors) {
     if(NULL == catalogs_item_validation_errors){
+        return ;
+    }
+    if(catalogs_item_validation_errors->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "catalogs_item_validation_errors_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -546,144 +602,213 @@ catalogs_item_validation_errors_t *catalogs_item_validation_errors_parseFromJSON
 
     // catalogs_item_validation_errors->adult_invalid
     cJSON *adult_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_errorsJSON, "ADULT_INVALID");
+    if (cJSON_IsNull(adult_invalid)) {
+        adult_invalid = NULL;
+    }
     if (adult_invalid) { 
     adult_invalid_local_nonprim = catalogs_item_validation_details_parseFromJSON(adult_invalid); //nonprimitive
     }
 
     // catalogs_item_validation_errors->adwords_format_invalid
     cJSON *adwords_format_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_errorsJSON, "ADWORDS_FORMAT_INVALID");
+    if (cJSON_IsNull(adwords_format_invalid)) {
+        adwords_format_invalid = NULL;
+    }
     if (adwords_format_invalid) { 
     adwords_format_invalid_local_nonprim = catalogs_item_validation_details_parseFromJSON(adwords_format_invalid); //nonprimitive
     }
 
     // catalogs_item_validation_errors->availability_invalid
     cJSON *availability_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_errorsJSON, "AVAILABILITY_INVALID");
+    if (cJSON_IsNull(availability_invalid)) {
+        availability_invalid = NULL;
+    }
     if (availability_invalid) { 
     availability_invalid_local_nonprim = catalogs_item_validation_details_parseFromJSON(availability_invalid); //nonprimitive
     }
 
     // catalogs_item_validation_errors->blocklisted_image_signature
     cJSON *blocklisted_image_signature = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_errorsJSON, "BLOCKLISTED_IMAGE_SIGNATURE");
+    if (cJSON_IsNull(blocklisted_image_signature)) {
+        blocklisted_image_signature = NULL;
+    }
     if (blocklisted_image_signature) { 
     blocklisted_image_signature_local_nonprim = catalogs_item_validation_details_parseFromJSON(blocklisted_image_signature); //nonprimitive
     }
 
     // catalogs_item_validation_errors->description_missing
     cJSON *description_missing = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_errorsJSON, "DESCRIPTION_MISSING");
+    if (cJSON_IsNull(description_missing)) {
+        description_missing = NULL;
+    }
     if (description_missing) { 
     description_missing_local_nonprim = catalogs_item_validation_details_parseFromJSON(description_missing); //nonprimitive
     }
 
     // catalogs_item_validation_errors->duplicate_products
     cJSON *duplicate_products = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_errorsJSON, "DUPLICATE_PRODUCTS");
+    if (cJSON_IsNull(duplicate_products)) {
+        duplicate_products = NULL;
+    }
     if (duplicate_products) { 
     duplicate_products_local_nonprim = catalogs_item_validation_details_parseFromJSON(duplicate_products); //nonprimitive
     }
 
     // catalogs_item_validation_errors->image_link_invalid
     cJSON *image_link_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_errorsJSON, "IMAGE_LINK_INVALID");
+    if (cJSON_IsNull(image_link_invalid)) {
+        image_link_invalid = NULL;
+    }
     if (image_link_invalid) { 
     image_link_invalid_local_nonprim = catalogs_item_validation_details_parseFromJSON(image_link_invalid); //nonprimitive
     }
 
     // catalogs_item_validation_errors->image_link_length_too_long
     cJSON *image_link_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_errorsJSON, "IMAGE_LINK_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(image_link_length_too_long)) {
+        image_link_length_too_long = NULL;
+    }
     if (image_link_length_too_long) { 
     image_link_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(image_link_length_too_long); //nonprimitive
     }
 
     // catalogs_item_validation_errors->image_link_missing
     cJSON *image_link_missing = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_errorsJSON, "IMAGE_LINK_MISSING");
+    if (cJSON_IsNull(image_link_missing)) {
+        image_link_missing = NULL;
+    }
     if (image_link_missing) { 
     image_link_missing_local_nonprim = catalogs_item_validation_details_parseFromJSON(image_link_missing); //nonprimitive
     }
 
     // catalogs_item_validation_errors->invalid_domain
     cJSON *invalid_domain = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_errorsJSON, "INVALID_DOMAIN");
+    if (cJSON_IsNull(invalid_domain)) {
+        invalid_domain = NULL;
+    }
     if (invalid_domain) { 
     invalid_domain_local_nonprim = catalogs_item_validation_details_parseFromJSON(invalid_domain); //nonprimitive
     }
 
     // catalogs_item_validation_errors->itemid_missing
     cJSON *itemid_missing = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_errorsJSON, "ITEMID_MISSING");
+    if (cJSON_IsNull(itemid_missing)) {
+        itemid_missing = NULL;
+    }
     if (itemid_missing) { 
     itemid_missing_local_nonprim = catalogs_item_validation_details_parseFromJSON(itemid_missing); //nonprimitive
     }
 
     // catalogs_item_validation_errors->item_main_image_download_failure
     cJSON *item_main_image_download_failure = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_errorsJSON, "ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE");
+    if (cJSON_IsNull(item_main_image_download_failure)) {
+        item_main_image_download_failure = NULL;
+    }
     if (item_main_image_download_failure) { 
     item_main_image_download_failure_local_nonprim = catalogs_item_validation_details_parseFromJSON(item_main_image_download_failure); //nonprimitive
     }
 
     // catalogs_item_validation_errors->link_format_invalid
     cJSON *link_format_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_errorsJSON, "LINK_FORMAT_INVALID");
+    if (cJSON_IsNull(link_format_invalid)) {
+        link_format_invalid = NULL;
+    }
     if (link_format_invalid) { 
     link_format_invalid_local_nonprim = catalogs_item_validation_details_parseFromJSON(link_format_invalid); //nonprimitive
     }
 
     // catalogs_item_validation_errors->link_length_too_long
     cJSON *link_length_too_long = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_errorsJSON, "LINK_LENGTH_TOO_LONG");
+    if (cJSON_IsNull(link_length_too_long)) {
+        link_length_too_long = NULL;
+    }
     if (link_length_too_long) { 
     link_length_too_long_local_nonprim = catalogs_item_validation_details_parseFromJSON(link_length_too_long); //nonprimitive
     }
 
     // catalogs_item_validation_errors->list_price_invalid
     cJSON *list_price_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_errorsJSON, "LIST_PRICE_INVALID");
+    if (cJSON_IsNull(list_price_invalid)) {
+        list_price_invalid = NULL;
+    }
     if (list_price_invalid) { 
     list_price_invalid_local_nonprim = catalogs_item_validation_details_parseFromJSON(list_price_invalid); //nonprimitive
     }
 
     // catalogs_item_validation_errors->max_items_per_item_group_exceeded
     cJSON *max_items_per_item_group_exceeded = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_errorsJSON, "MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED");
+    if (cJSON_IsNull(max_items_per_item_group_exceeded)) {
+        max_items_per_item_group_exceeded = NULL;
+    }
     if (max_items_per_item_group_exceeded) { 
     max_items_per_item_group_exceeded_local_nonprim = catalogs_item_validation_details_parseFromJSON(max_items_per_item_group_exceeded); //nonprimitive
     }
 
     // catalogs_item_validation_errors->parse_line_error
     cJSON *parse_line_error = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_errorsJSON, "PARSE_LINE_ERROR");
+    if (cJSON_IsNull(parse_line_error)) {
+        parse_line_error = NULL;
+    }
     if (parse_line_error) { 
     parse_line_error_local_nonprim = catalogs_item_validation_details_parseFromJSON(parse_line_error); //nonprimitive
     }
 
     // catalogs_item_validation_errors->pinjoin_content_unsafe
     cJSON *pinjoin_content_unsafe = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_errorsJSON, "PINJOIN_CONTENT_UNSAFE");
+    if (cJSON_IsNull(pinjoin_content_unsafe)) {
+        pinjoin_content_unsafe = NULL;
+    }
     if (pinjoin_content_unsafe) { 
     pinjoin_content_unsafe_local_nonprim = catalogs_item_validation_details_parseFromJSON(pinjoin_content_unsafe); //nonprimitive
     }
 
     // catalogs_item_validation_errors->price_cannot_be_determined
     cJSON *price_cannot_be_determined = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_errorsJSON, "PRICE_CANNOT_BE_DETERMINED");
+    if (cJSON_IsNull(price_cannot_be_determined)) {
+        price_cannot_be_determined = NULL;
+    }
     if (price_cannot_be_determined) { 
     price_cannot_be_determined_local_nonprim = catalogs_item_validation_details_parseFromJSON(price_cannot_be_determined); //nonprimitive
     }
 
     // catalogs_item_validation_errors->price_missing
     cJSON *price_missing = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_errorsJSON, "PRICE_MISSING");
+    if (cJSON_IsNull(price_missing)) {
+        price_missing = NULL;
+    }
     if (price_missing) { 
     price_missing_local_nonprim = catalogs_item_validation_details_parseFromJSON(price_missing); //nonprimitive
     }
 
     // catalogs_item_validation_errors->product_link_missing
     cJSON *product_link_missing = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_errorsJSON, "PRODUCT_LINK_MISSING");
+    if (cJSON_IsNull(product_link_missing)) {
+        product_link_missing = NULL;
+    }
     if (product_link_missing) { 
     product_link_missing_local_nonprim = catalogs_item_validation_details_parseFromJSON(product_link_missing); //nonprimitive
     }
 
     // catalogs_item_validation_errors->product_price_invalid
     cJSON *product_price_invalid = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_errorsJSON, "PRODUCT_PRICE_INVALID");
+    if (cJSON_IsNull(product_price_invalid)) {
+        product_price_invalid = NULL;
+    }
     if (product_price_invalid) { 
     product_price_invalid_local_nonprim = catalogs_item_validation_details_parseFromJSON(product_price_invalid); //nonprimitive
     }
 
     // catalogs_item_validation_errors->title_missing
     cJSON *title_missing = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_errorsJSON, "TITLE_MISSING");
+    if (cJSON_IsNull(title_missing)) {
+        title_missing = NULL;
+    }
     if (title_missing) { 
     title_missing_local_nonprim = catalogs_item_validation_details_parseFromJSON(title_missing); //nonprimitive
     }
 
 
-    catalogs_item_validation_errors_local_var = catalogs_item_validation_errors_create (
+    catalogs_item_validation_errors_local_var = catalogs_item_validation_errors_create_internal (
         adult_invalid ? adult_invalid_local_nonprim : NULL,
         adwords_format_invalid ? adwords_format_invalid_local_nonprim : NULL,
         availability_invalid ? availability_invalid_local_nonprim : NULL,

@@ -5,7 +5,7 @@
 
 
 
-top_pins_analytics_response_date_availability_t *top_pins_analytics_response_date_availability_create(
+static top_pins_analytics_response_date_availability_t *top_pins_analytics_response_date_availability_create_internal(
     double latest_available_timestamp,
     int is_realtime
     ) {
@@ -16,12 +16,26 @@ top_pins_analytics_response_date_availability_t *top_pins_analytics_response_dat
     top_pins_analytics_response_date_availability_local_var->latest_available_timestamp = latest_available_timestamp;
     top_pins_analytics_response_date_availability_local_var->is_realtime = is_realtime;
 
+    top_pins_analytics_response_date_availability_local_var->_library_owned = 1;
     return top_pins_analytics_response_date_availability_local_var;
 }
 
+__attribute__((deprecated)) top_pins_analytics_response_date_availability_t *top_pins_analytics_response_date_availability_create(
+    double latest_available_timestamp,
+    int is_realtime
+    ) {
+    return top_pins_analytics_response_date_availability_create_internal (
+        latest_available_timestamp,
+        is_realtime
+        );
+}
 
 void top_pins_analytics_response_date_availability_free(top_pins_analytics_response_date_availability_t *top_pins_analytics_response_date_availability) {
     if(NULL == top_pins_analytics_response_date_availability){
+        return ;
+    }
+    if(top_pins_analytics_response_date_availability->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "top_pins_analytics_response_date_availability_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -60,6 +74,9 @@ top_pins_analytics_response_date_availability_t *top_pins_analytics_response_dat
 
     // top_pins_analytics_response_date_availability->latest_available_timestamp
     cJSON *latest_available_timestamp = cJSON_GetObjectItemCaseSensitive(top_pins_analytics_response_date_availabilityJSON, "latest_available_timestamp");
+    if (cJSON_IsNull(latest_available_timestamp)) {
+        latest_available_timestamp = NULL;
+    }
     if (latest_available_timestamp) { 
     if(!cJSON_IsNumber(latest_available_timestamp))
     {
@@ -69,6 +86,9 @@ top_pins_analytics_response_date_availability_t *top_pins_analytics_response_dat
 
     // top_pins_analytics_response_date_availability->is_realtime
     cJSON *is_realtime = cJSON_GetObjectItemCaseSensitive(top_pins_analytics_response_date_availabilityJSON, "is_realtime");
+    if (cJSON_IsNull(is_realtime)) {
+        is_realtime = NULL;
+    }
     if (is_realtime) { 
     if(!cJSON_IsBool(is_realtime))
     {
@@ -77,7 +97,7 @@ top_pins_analytics_response_date_availability_t *top_pins_analytics_response_dat
     }
 
 
-    top_pins_analytics_response_date_availability_local_var = top_pins_analytics_response_date_availability_create (
+    top_pins_analytics_response_date_availability_local_var = top_pins_analytics_response_date_availability_create_internal (
         latest_available_timestamp ? latest_available_timestamp->valuedouble : 0,
         is_realtime ? is_realtime->valueint : 0
         );

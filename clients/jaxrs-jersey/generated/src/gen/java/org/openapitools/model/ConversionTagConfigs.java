@@ -35,7 +35,7 @@ import javax.validation.Valid;
   ConversionTagConfigs.JSON_PROPERTY_AEM_DB_ENABLED,
   ConversionTagConfigs.JSON_PROPERTY_AEM_LOC_ENABLED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-11-05T02:20:07.425136412Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ConversionTagConfigs   {
   public static final String JSON_PROPERTY_AEM_ENABLED = "aem_enabled";
   @JsonProperty(JSON_PROPERTY_AEM_ENABLED)

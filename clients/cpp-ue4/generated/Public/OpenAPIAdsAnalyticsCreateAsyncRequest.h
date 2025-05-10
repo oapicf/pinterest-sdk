@@ -91,8 +91,8 @@ public:
 	TOptional<OpenAPIDataOutputFormat> ReportFormat;
 	enum class PrimarySortEnum
 	{
-		Id,
-		Date,
+		ById,
+		ByDate,
   	};
 
 	static FString EnumToString(const PrimarySortEnum& EnumValue);

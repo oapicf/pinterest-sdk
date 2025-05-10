@@ -24,9 +24,10 @@ typedef struct ad_array_response_element_t {
     struct ad_response_t *data; //model
     struct exception_t *exceptions; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } ad_array_response_element_t;
 
-ad_array_response_element_t *ad_array_response_element_create(
+__attribute__((deprecated)) ad_array_response_element_t *ad_array_response_element_create(
     ad_response_t *data,
     exception_t *exceptions
 );

@@ -62,11 +62,11 @@ export function UserWebsiteSummaryFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-  export function UserWebsiteSummaryToJSON(json: any): UserWebsiteSummary {
-      return UserWebsiteSummaryToJSONTyped(json, false);
-  }
+export function UserWebsiteSummaryToJSON(json: any): UserWebsiteSummary {
+    return UserWebsiteSummaryToJSONTyped(json, false);
+}
 
-  export function UserWebsiteSummaryToJSONTyped(value?: UserWebsiteSummary | null, ignoreDiscriminator: boolean = false): any {
+export function UserWebsiteSummaryToJSONTyped(value?: UserWebsiteSummary | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

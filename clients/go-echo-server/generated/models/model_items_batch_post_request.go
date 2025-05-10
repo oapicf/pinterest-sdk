@@ -1,9 +1,5 @@
 package models
 
-import (
-	"gopkg.in/validator.v2"
-)
-
 type ItemsBatchPostRequest struct {
 
 	Country Country `json:"country"`

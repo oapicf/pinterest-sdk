@@ -64,11 +64,11 @@ export function PinsList200ResponseFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function PinsList200ResponseToJSON(json: any): PinsList200Response {
-      return PinsList200ResponseToJSONTyped(json, false);
-  }
+export function PinsList200ResponseToJSON(json: any): PinsList200Response {
+    return PinsList200ResponseToJSONTyped(json, false);
+}
 
-  export function PinsList200ResponseToJSONTyped(value?: PinsList200Response | null, ignoreDiscriminator: boolean = false): any {
+export function PinsList200ResponseToJSONTyped(value?: PinsList200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

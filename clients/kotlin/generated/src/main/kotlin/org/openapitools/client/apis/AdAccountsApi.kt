@@ -293,8 +293,8 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
      * enum for parameter conversionReportTime
      */
      enum class ConversionReportTimeAdAccountAnalytics(val value: kotlin.String) {
-         @Json(name = "TIME_OF_AD_ACTION") AD_ACTION("TIME_OF_AD_ACTION"),
-         @Json(name = "TIME_OF_CONVERSION") CONVERSION("TIME_OF_CONVERSION");
+         @Json(name = "TIME_OF_AD_ACTION") TIME_OF_AD_ACTION("TIME_OF_AD_ACTION"),
+         @Json(name = "TIME_OF_CONVERSION") TIME_OF_CONVERSION("TIME_OF_CONVERSION");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -307,6 +307,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
      }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/analytics
      * Get ad account analytics
      * Get analytics for the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time.
      * @param adAccountId Unique identifier of an ad account.
@@ -327,7 +328,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun adAccountAnalytics(adAccountId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, columns: kotlin.collections.List<ColumnsAdAccountAnalytics>, granularity: Granularity, clickWindowDays: ClickWindowDaysAdAccountAnalytics? = ClickWindowDaysAdAccountAnalytics._30, engagementWindowDays: EngagementWindowDaysAdAccountAnalytics? = EngagementWindowDaysAdAccountAnalytics._30, viewWindowDays: ViewWindowDaysAdAccountAnalytics? = ViewWindowDaysAdAccountAnalytics._1, conversionReportTime: ConversionReportTimeAdAccountAnalytics? = ConversionReportTimeAdAccountAnalytics.AD_ACTION) : kotlin.collections.List<AdAccountAnalyticsResponseInner> {
+    fun adAccountAnalytics(adAccountId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, columns: kotlin.collections.List<ColumnsAdAccountAnalytics>, granularity: Granularity, clickWindowDays: ClickWindowDaysAdAccountAnalytics? = ClickWindowDaysAdAccountAnalytics._30, engagementWindowDays: EngagementWindowDaysAdAccountAnalytics? = EngagementWindowDaysAdAccountAnalytics._30, viewWindowDays: ViewWindowDaysAdAccountAnalytics? = ViewWindowDaysAdAccountAnalytics._1, conversionReportTime: ConversionReportTimeAdAccountAnalytics? = ConversionReportTimeAdAccountAnalytics.TIME_OF_AD_ACTION) : kotlin.collections.List<AdAccountAnalyticsResponseInner> {
         val localVarResponse = adAccountAnalyticsWithHttpInfo(adAccountId = adAccountId, startDate = startDate, endDate = endDate, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime)
 
         return when (localVarResponse.responseType) {
@@ -346,6 +347,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/analytics
      * Get ad account analytics
      * Get analytics for the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time.
      * @param adAccountId Unique identifier of an ad account.
@@ -652,8 +654,8 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
      * enum for parameter conversionReportTime
      */
      enum class ConversionReportTimeAdAccountTargetingAnalyticsGet(val value: kotlin.String) {
-         @Json(name = "TIME_OF_AD_ACTION") AD_ACTION("TIME_OF_AD_ACTION"),
-         @Json(name = "TIME_OF_CONVERSION") CONVERSION("TIME_OF_CONVERSION");
+         @Json(name = "TIME_OF_AD_ACTION") TIME_OF_AD_ACTION("TIME_OF_AD_ACTION"),
+         @Json(name = "TIME_OF_CONVERSION") TIME_OF_CONVERSION("TIME_OF_CONVERSION");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -666,6 +668,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
      }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/targeting_analytics
      * Get targeting analytics for an ad account
      * Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt; - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
      * @param adAccountId Unique identifier of an ad account.
@@ -688,7 +691,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun adAccountTargetingAnalyticsGet(adAccountId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, targetingTypes: kotlin.collections.List<AdsAnalyticsTargetingType>, columns: kotlin.collections.List<ColumnsAdAccountTargetingAnalyticsGet>, granularity: Granularity, clickWindowDays: ClickWindowDaysAdAccountTargetingAnalyticsGet? = ClickWindowDaysAdAccountTargetingAnalyticsGet._30, engagementWindowDays: EngagementWindowDaysAdAccountTargetingAnalyticsGet? = EngagementWindowDaysAdAccountTargetingAnalyticsGet._30, viewWindowDays: ViewWindowDaysAdAccountTargetingAnalyticsGet? = ViewWindowDaysAdAccountTargetingAnalyticsGet._1, conversionReportTime: ConversionReportTimeAdAccountTargetingAnalyticsGet? = ConversionReportTimeAdAccountTargetingAnalyticsGet.AD_ACTION, attributionTypes: ConversionReportAttributionType? = null) : MetricsResponse {
+    fun adAccountTargetingAnalyticsGet(adAccountId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, targetingTypes: kotlin.collections.List<AdsAnalyticsTargetingType>, columns: kotlin.collections.List<ColumnsAdAccountTargetingAnalyticsGet>, granularity: Granularity, clickWindowDays: ClickWindowDaysAdAccountTargetingAnalyticsGet? = ClickWindowDaysAdAccountTargetingAnalyticsGet._30, engagementWindowDays: EngagementWindowDaysAdAccountTargetingAnalyticsGet? = EngagementWindowDaysAdAccountTargetingAnalyticsGet._30, viewWindowDays: ViewWindowDaysAdAccountTargetingAnalyticsGet? = ViewWindowDaysAdAccountTargetingAnalyticsGet._1, conversionReportTime: ConversionReportTimeAdAccountTargetingAnalyticsGet? = ConversionReportTimeAdAccountTargetingAnalyticsGet.TIME_OF_AD_ACTION, attributionTypes: ConversionReportAttributionType? = null) : MetricsResponse {
         val localVarResponse = adAccountTargetingAnalyticsGetWithHttpInfo(adAccountId = adAccountId, startDate = startDate, endDate = endDate, targetingTypes = targetingTypes, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime, attributionTypes = attributionTypes)
 
         return when (localVarResponse.responseType) {
@@ -707,6 +710,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/targeting_analytics
      * Get targeting analytics for an ad account
      * Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt; - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
      * @param adAccountId Unique identifier of an ad account.
@@ -789,6 +793,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     }
 
     /**
+     * POST /ad_accounts
      * Create ad account
      * Create a new ad account. Different ad accounts can support different currencies, payment methods, etc. An ad account is needed to create campaigns, ad groups, and ads; other accounts (your employees or partners) can be assigned business access and appropriate roles to access an ad account. &lt;p/&gt; You can set up up to 50 ad accounts per user. (The user must have a business account to create an ad account.) &lt;p/&gt; For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/create-an-advertiser-account\&quot;&gt;Create an advertiser account&lt;/a&gt;.
      * @param adAccountCreateRequest Ad account to create.
@@ -820,6 +825,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     }
 
     /**
+     * POST /ad_accounts
      * Create ad account
      * Create a new ad account. Different ad accounts can support different currencies, payment methods, etc. An ad account is needed to create campaigns, ad groups, and ads; other accounts (your employees or partners) can be assigned business access and appropriate roles to access an ad account. &lt;p/&gt; You can set up up to 50 ad accounts per user. (The user must have a business account to create an ad account.) &lt;p/&gt; For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/create-an-advertiser-account\&quot;&gt;Create an advertiser account&lt;/a&gt;.
      * @param adAccountCreateRequest Ad account to create.
@@ -861,6 +867,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}
      * Get ad account
      * Get an ad account
      * @param adAccountId Unique identifier of an ad account.
@@ -892,6 +899,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}
      * Get ad account
      * Get an ad account
      * @param adAccountId Unique identifier of an ad account.
@@ -932,6 +940,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     }
 
     /**
+     * GET /ad_accounts
      * List ad accounts
      * Get a list of the ad_accounts that the \&quot;operation user_account\&quot; has access to. - This includes ad_accounts they own and ad_accounts that are owned by others who have granted them &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;.
      * @param bookmark Cursor used to fetch the next page of items (optional)
@@ -965,6 +974,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     }
 
     /**
+     * GET /ad_accounts
      * List ad accounts
      * Get a list of the ad_accounts that the \&quot;operation user_account\&quot; has access to. - This includes ad_accounts they own and ad_accounts that are owned by others who have granted them &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;.
      * @param bookmark Cursor used to fetch the next page of items (optional)
@@ -1020,6 +1030,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     }
 
     /**
+     * POST /ad_accounts/{ad_account_id}/mmm_reports
      * Create a request for a Marketing Mix Modeling (MMM) report
      * This creates an asynchronous mmm report based on the given request. It returns a token that you can use to download the report when it is ready. NOTE: An additional limit of 5 queries per minute per advertiser applies to this endpoint while it&#39;s in beta release.
      * @param adAccountId Unique identifier of an ad account.
@@ -1052,6 +1063,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     }
 
     /**
+     * POST /ad_accounts/{ad_account_id}/mmm_reports
      * Create a request for a Marketing Mix Modeling (MMM) report
      * This creates an asynchronous mmm report based on the given request. It returns a token that you can use to download the report when it is ready. NOTE: An additional limit of 5 queries per minute per advertiser applies to this endpoint while it&#39;s in beta release.
      * @param adAccountId Unique identifier of an ad account.
@@ -1095,6 +1107,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     }
 
     /**
+     * POST /ad_accounts/{ad_account_id}/reports
      * Create async request for an account analytics report
      * This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 914 days before the current date in UTC time and the max time range supported is 186 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. - If level is PRODUCT_ITEM, the furthest back you can are allowed to pull data is 92 days before the current date in UTC time and the max time range supported is 31 days. - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
      * @param adAccountId Unique identifier of an ad account.
@@ -1127,6 +1140,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     }
 
     /**
+     * POST /ad_accounts/{ad_account_id}/reports
      * Create async request for an account analytics report
      * This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 914 days before the current date in UTC time and the max time range supported is 186 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. - If level is PRODUCT_ITEM, the furthest back you can are allowed to pull data is 92 days before the current date in UTC time and the max time range supported is 31 days. - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
      * @param adAccountId Unique identifier of an ad account.
@@ -1170,6 +1184,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     }
 
     /**
+     * POST /ad_accounts/{ad_account_id}/templates/{template_id}/reports
      * Create async request for an analytics report using a template
      * This takes a template ID and an optional custom timeframe and constructs an asynchronous report based on the template. It returns a token that you can use to download the report when it is ready.
      * @param adAccountId Unique identifier of an ad account.
@@ -1205,6 +1220,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     }
 
     /**
+     * POST /ad_accounts/{ad_account_id}/templates/{template_id}/reports
      * Create async request for an analytics report using a template
      * This takes a template ID and an optional custom timeframe and constructs an asynchronous report based on the template. It returns a token that you can use to download the report when it is ready.
      * @param adAccountId Unique identifier of an ad account.
@@ -1264,6 +1280,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/mmm_reports
      * Get advertiser Marketing Mix Modeling (MMM) report.
      * Get an mmm report for an ad account. This returns a URL to an mmm metrics report given a token returned from the create mmm report endpoint.
      * @param adAccountId Unique identifier of an ad account.
@@ -1296,6 +1313,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/mmm_reports
      * Get advertiser Marketing Mix Modeling (MMM) report.
      * Get an mmm report for an ad account. This returns a URL to an mmm metrics report given a token returned from the create mmm report endpoint.
      * @param adAccountId Unique identifier of an ad account.
@@ -1341,6 +1359,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/reports
      * Get the account analytics report created by the async call
      * This returns a URL to an analytics report given a token returned from the post request report creation call. You can use the URL to download the report. The link is valid for five minutes and the report is valid for one hour. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.
      * @param adAccountId Unique identifier of an ad account.
@@ -1373,6 +1392,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/reports
      * Get the account analytics report created by the async call
      * This returns a URL to an analytics report given a token returned from the post request report creation call. You can use the URL to download the report. The link is valid for five minutes and the report is valid for one hour. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.
      * @param adAccountId Unique identifier of an ad account.
@@ -1418,6 +1438,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     }
 
     /**
+     * DELETE /ad_accounts/{ad_account_id}/sandbox
      * Delete ads data for ad account in API Sandbox
      * Delete an ad account and all the ads data associated with that account. A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5). Go to /docs/developer-tools/sandbox/ for more information.
      * @param adAccountId Unique identifier of an ad account.
@@ -1449,6 +1470,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     }
 
     /**
+     * DELETE /ad_accounts/{ad_account_id}/sandbox
      * Delete ads data for ad account in API Sandbox
      * Delete an ad account and all the ads data associated with that account. A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5). Go to /docs/developer-tools/sandbox/ for more information.
      * @param adAccountId Unique identifier of an ad account.
@@ -1506,6 +1528,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
      }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/templates
      * List templates
      * Gets all Templates associated with an ad account ID.
      * @param adAccountId Unique identifier of an ad account.
@@ -1540,6 +1563,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     }
 
     /**
+     * GET /ad_accounts/{ad_account_id}/templates
      * List templates
      * Gets all Templates associated with an ad account ID.
      * @param adAccountId Unique identifier of an ad account.

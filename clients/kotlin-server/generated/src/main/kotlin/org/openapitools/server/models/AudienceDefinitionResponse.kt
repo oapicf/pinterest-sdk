@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.AudienceDefinition
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items 
  */
+@Serializable
 data class AudienceDefinitionResponse(
     val items: kotlin.collections.List<AudienceDefinition>? = null
-) 
+)
 

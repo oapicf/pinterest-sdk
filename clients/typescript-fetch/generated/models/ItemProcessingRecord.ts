@@ -87,11 +87,11 @@ export function ItemProcessingRecordFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function ItemProcessingRecordToJSON(json: any): ItemProcessingRecord {
-      return ItemProcessingRecordToJSONTyped(json, false);
-  }
+export function ItemProcessingRecordToJSON(json: any): ItemProcessingRecord {
+    return ItemProcessingRecordToJSONTyped(json, false);
+}
 
-  export function ItemProcessingRecordToJSONTyped(value?: ItemProcessingRecord | null, ignoreDiscriminator: boolean = false): any {
+export function ItemProcessingRecordToJSONTyped(value?: ItemProcessingRecord | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

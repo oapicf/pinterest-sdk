@@ -33,126 +33,154 @@ import Http
 import Json.Decode
 import Json.Encode
 
-{-| Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+
+{-| Redeem ad credits
+
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+
 -}
 adsCreditRedeem : String -> Api.Data.AdsCreditRedeemRequest -> Api.Request Api.Data.AdsCreditRedeemResponse
 adsCreditRedeem adAccountId_path adsCreditRedeemRequest_body =
     Api.request
         "POST"
         "/ad_accounts/{ad_account_id}/ads_credit/redeem"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Just (Api.Data.encodeAdsCreditRedeemRequest adsCreditRedeemRequest_body)))
         Api.Data.adsCreditRedeemResponseDecoder
 
 
-{-| Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+{-| Get ads credit discounts
+
+Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+
 -}
 adsCreditsDiscountsGet : String -> Maybe String -> Maybe Int -> Api.Request Api.Data.AdsCreditsDiscountsGet200Response
 adsCreditsDiscountsGet adAccountId_path bookmark_query pageSize_query =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/ads_credit/discounts"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         [ ( "bookmark", Maybe.map identity bookmark_query ), ( "page_size", Maybe.map String.fromInt pageSize_query ) ]
         []
         Nothing
         Api.Data.adsCreditsDiscountsGet200ResponseDecoder
 
 
-{-| Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+{-| Get billing profiles
+
+Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+
 -}
 billingProfilesGet : String -> Bool -> Maybe String -> Maybe Int -> Api.Request Api.Data.BillingProfilesGet200Response
 billingProfilesGet adAccountId_path isActive_query bookmark_query pageSize_query =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/billing_profiles"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         [ ( "is_active", Just <| (\val -> if val then "true" else "false") isActive_query ), ( "bookmark", Maybe.map identity bookmark_query ), ( "page_size", Maybe.map String.fromInt pageSize_query ) ]
         []
         Nothing
         Api.Data.billingProfilesGet200ResponseDecoder
 
 
-{-| Get Salesforce account details including bill-to information to be used in insertion orders process for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+{-| Get Salesforce account details including bill-to information.
+
+Get Salesforce account details including bill-to information to be used in insertion orders process for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+
 -}
 ssioAccountsGet : String -> Api.Request Api.Data.SSIOAccountResponse
 ssioAccountsGet adAccountId_path =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/ssio/accounts"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         Nothing
         Api.Data.sSIOAccountResponseDecoder
 
 
-{-| Create insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+{-| Create insertion order through SSIO.
+
+Create insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+
 -}
 ssioInsertionOrderCreate : String -> Api.Data.SSIOCreateInsertionOrderRequest -> Api.Request Api.Data.SSIOCreateInsertionOrderResponse
 ssioInsertionOrderCreate adAccountId_path sSIOCreateInsertionOrderRequest_body =
     Api.request
         "POST"
         "/ad_accounts/{ad_account_id}/ssio/insertion_orders"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Just (Api.Data.encodeSSIOCreateInsertionOrderRequest sSIOCreateInsertionOrderRequest_body)))
         Api.Data.sSIOCreateInsertionOrderResponseDecoder
 
 
-{-| Edit insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+{-| Edit insertion order through SSIO.
+
+Edit insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+
 -}
 ssioInsertionOrderEdit : String -> Api.Data.SSIOEditInsertionOrderRequest -> Api.Request Api.Data.SSIOEditInsertionOrderResponse
 ssioInsertionOrderEdit adAccountId_path sSIOEditInsertionOrderRequest_body =
     Api.request
         "PATCH"
         "/ad_accounts/{ad_account_id}/ssio/insertion_orders"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         []
         []
         (Maybe.map Http.jsonBody (Just (Api.Data.encodeSSIOEditInsertionOrderRequest sSIOEditInsertionOrderRequest_body)))
         Api.Data.sSIOEditInsertionOrderResponseDecoder
 
 
-{-| Get insertion order status for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+{-| Get insertion order status by ad account id.
+
+Get insertion order status for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+
 -}
 ssioInsertionOrdersStatusGetByAdAccount : String -> Maybe String -> Maybe Int -> Api.Request Api.Data.SsioInsertionOrdersStatusGetByAdAccount200Response
 ssioInsertionOrdersStatusGetByAdAccount adAccountId_path bookmark_query pageSize_query =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/ssio/insertion_orders/status"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         [ ( "bookmark", Maybe.map identity bookmark_query ), ( "page_size", Maybe.map String.fromInt pageSize_query ) ]
         []
         Nothing
         Api.Data.ssioInsertionOrdersStatusGetByAdAccount200ResponseDecoder
 
 
-{-| Get insertion order status for pin order id <code>pin_order_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+{-| Get insertion order status by pin order id.
+
+Get insertion order status for pin order id <code>pin_order_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+
 -}
 ssioInsertionOrdersStatusGetByPinOrderId : String -> String -> Api.Request Api.Data.SSIOInsertionOrderStatusResponse
 ssioInsertionOrdersStatusGetByPinOrderId adAccountId_path pinOrderId_path =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/ssio/insertion_orders/{pin_order_id}/status"
-        [ ( "adAccountId", identity adAccountId_path ), ( "pinOrderId", identity pinOrderId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ), ( "pin_order_id", identity pinOrderId_path ) ]
         []
         []
         Nothing
         Api.Data.sSIOInsertionOrderStatusResponseDecoder
 
 
-{-| Get Salesforce order lines for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+{-| Get Salesforce order lines by ad account id.
+
+Get Salesforce order lines for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+
 -}
 ssioOrderLinesGetByAdAccount : String -> Maybe String -> Maybe Int -> Maybe String -> Api.Request Api.Data.SsioOrderLinesGetByAdAccount200Response
 ssioOrderLinesGetByAdAccount adAccountId_path bookmark_query pageSize_query pinOrderId_query =
     Api.request
         "GET"
         "/ad_accounts/{ad_account_id}/ssio/order_lines"
-        [ ( "adAccountId", identity adAccountId_path ) ]
+        [ ( "ad_account_id", identity adAccountId_path ) ]
         [ ( "bookmark", Maybe.map identity bookmark_query ), ( "page_size", Maybe.map String.fromInt pageSize_query ), ( "pin_order_id", Maybe.map identity pinOrderId_query ) ]
         []
         Nothing

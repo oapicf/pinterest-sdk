@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("catalogs_product_group_pricing_currency_criteria")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsProductGroupPricingCurrencyCriteria   {
   public enum OperatorEnum {
 
@@ -72,6 +72,20 @@ public class CatalogsProductGroupPricingCurrencyCriteria   {
   private NonNullableCatalogsCurrency currency;
   private Boolean negated = false;
 
+  public CatalogsProductGroupPricingCurrencyCriteria() {
+  }
+
+  @JsonCreator
+  public CatalogsProductGroupPricingCurrencyCriteria(
+    @JsonProperty(required = true, value = "operator") OperatorEnum operator,
+    @JsonProperty(required = true, value = "value") BigDecimal value,
+    @JsonProperty(required = true, value = "currency") NonNullableCatalogsCurrency currency
+  ) {
+    this.operator = operator;
+    this.value = value;
+    this.currency = currency;
+  }
+
   /**
    **/
   public CatalogsProductGroupPricingCurrencyCriteria operator(OperatorEnum operator) {
@@ -81,12 +95,12 @@ public class CatalogsProductGroupPricingCurrencyCriteria   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("operator")
+  @JsonProperty(required = true, value = "operator")
   @NotNull public OperatorEnum getOperator() {
     return operator;
   }
 
-  @JsonProperty("operator")
+  @JsonProperty(required = true, value = "operator")
   public void setOperator(OperatorEnum operator) {
     this.operator = operator;
   }
@@ -101,12 +115,12 @@ public class CatalogsProductGroupPricingCurrencyCriteria   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("value")
+  @JsonProperty(required = true, value = "value")
   @NotNull @Valid  @DecimalMin("0")public BigDecimal getValue() {
     return value;
   }
 
-  @JsonProperty("value")
+  @JsonProperty(required = true, value = "value")
   public void setValue(BigDecimal value) {
     this.value = value;
   }
@@ -120,12 +134,12 @@ public class CatalogsProductGroupPricingCurrencyCriteria   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("currency")
+  @JsonProperty(required = true, value = "currency")
   @NotNull public NonNullableCatalogsCurrency getCurrency() {
     return currency;
   }
 
-  @JsonProperty("currency")
+  @JsonProperty(required = true, value = "currency")
   public void setCurrency(NonNullableCatalogsCurrency currency) {
     this.currency = currency;
   }

@@ -92,11 +92,11 @@ export function OauthAccessTokenResponseRefreshFromJSONTyped(json: any, ignoreDi
     };
 }
 
-  export function OauthAccessTokenResponseRefreshToJSON(json: any): OauthAccessTokenResponseRefresh {
-      return OauthAccessTokenResponseRefreshToJSONTyped(json, false);
-  }
+export function OauthAccessTokenResponseRefreshToJSON(json: any): OauthAccessTokenResponseRefresh {
+    return OauthAccessTokenResponseRefreshToJSONTyped(json, false);
+}
 
-  export function OauthAccessTokenResponseRefreshToJSONTyped(value?: OauthAccessTokenResponseRefresh | null, ignoreDiscriminator: boolean = false): any {
+export function OauthAccessTokenResponseRefreshToJSONTyped(value?: OauthAccessTokenResponseRefresh | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

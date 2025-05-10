@@ -620,7 +620,7 @@ export type ProductGroupsAnalyticsViewWindowDaysEnum = typeof ProductGroupsAnaly
  * @export
  */
 export const ProductGroupsAnalyticsConversionReportTimeEnum = {
-    AdAction: 'TIME_OF_AD_ACTION',
-    Conversion: 'TIME_OF_CONVERSION'
+    TimeOfAdAction: 'TIME_OF_AD_ACTION',
+    TimeOfConversion: 'TIME_OF_CONVERSION'
 } as const;
 export type ProductGroupsAnalyticsConversionReportTimeEnum = typeof ProductGroupsAnalyticsConversionReportTimeEnum[keyof typeof ProductGroupsAnalyticsConversionReportTimeEnum];

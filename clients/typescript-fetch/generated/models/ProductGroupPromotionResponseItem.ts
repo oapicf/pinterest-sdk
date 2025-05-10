@@ -70,11 +70,11 @@ export function ProductGroupPromotionResponseItemFromJSONTyped(json: any, ignore
     };
 }
 
-  export function ProductGroupPromotionResponseItemToJSON(json: any): ProductGroupPromotionResponseItem {
-      return ProductGroupPromotionResponseItemToJSONTyped(json, false);
-  }
+export function ProductGroupPromotionResponseItemToJSON(json: any): ProductGroupPromotionResponseItem {
+    return ProductGroupPromotionResponseItemToJSONTyped(json, false);
+}
 
-  export function ProductGroupPromotionResponseItemToJSONTyped(value?: ProductGroupPromotionResponseItem | null, ignoreDiscriminator: boolean = false): any {
+export function ProductGroupPromotionResponseItemToJSONTyped(value?: ProductGroupPromotionResponseItem | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

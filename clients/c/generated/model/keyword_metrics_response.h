@@ -23,9 +23,10 @@ typedef struct keyword_metrics_response_t {
     char *keyword; // string
     struct keyword_metrics_t *metrics; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } keyword_metrics_response_t;
 
-keyword_metrics_response_t *keyword_metrics_response_create(
+__attribute__((deprecated)) keyword_metrics_response_t *keyword_metrics_response_create(
     char *keyword,
     keyword_metrics_t *metrics
 );

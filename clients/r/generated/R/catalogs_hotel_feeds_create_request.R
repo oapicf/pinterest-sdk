@@ -110,14 +110,39 @@ CatalogsHotelFeedsCreateRequest <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return CatalogsHotelFeedsCreateRequest in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return CatalogsHotelFeedsCreateRequest as a base R list.
+    #' @examples
+    #' # convert array of CatalogsHotelFeedsCreateRequest (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert CatalogsHotelFeedsCreateRequest to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       CatalogsHotelFeedsCreateRequestObject <- list()
       if (!is.null(self$`default_currency`)) {
         CatalogsHotelFeedsCreateRequestObject[["default_currency"]] <-
-          self$`default_currency`$toJSON()
+          self$`default_currency`$toSimpleType()
       }
       if (!is.null(self$`name`)) {
         CatalogsHotelFeedsCreateRequestObject[["name"]] <-
@@ -125,15 +150,15 @@ CatalogsHotelFeedsCreateRequest <- R6::R6Class(
       }
       if (!is.null(self$`format`)) {
         CatalogsHotelFeedsCreateRequestObject[["format"]] <-
-          self$`format`$toJSON()
+          self$`format`$toSimpleType()
       }
       if (!is.null(self$`default_locale`)) {
         CatalogsHotelFeedsCreateRequestObject[["default_locale"]] <-
-          self$`default_locale`$toJSON()
+          self$`default_locale`$toSimpleType()
       }
       if (!is.null(self$`credentials`)) {
         CatalogsHotelFeedsCreateRequestObject[["credentials"]] <-
-          self$`credentials`$toJSON()
+          self$`credentials`$toSimpleType()
       }
       if (!is.null(self$`location`)) {
         CatalogsHotelFeedsCreateRequestObject[["location"]] <-
@@ -141,11 +166,11 @@ CatalogsHotelFeedsCreateRequest <- R6::R6Class(
       }
       if (!is.null(self$`preferred_processing_schedule`)) {
         CatalogsHotelFeedsCreateRequestObject[["preferred_processing_schedule"]] <-
-          self$`preferred_processing_schedule`$toJSON()
+          self$`preferred_processing_schedule`$toSimpleType()
       }
       if (!is.null(self$`catalog_type`)) {
         CatalogsHotelFeedsCreateRequestObject[["catalog_type"]] <-
-          self$`catalog_type`$toJSON()
+          self$`catalog_type`$toSimpleType()
       }
       if (!is.null(self$`catalog_id`)) {
         CatalogsHotelFeedsCreateRequestObject[["catalog_id"]] <-
@@ -153,9 +178,9 @@ CatalogsHotelFeedsCreateRequest <- R6::R6Class(
       }
       if (!is.null(self$`status`)) {
         CatalogsHotelFeedsCreateRequestObject[["status"]] <-
-          self$`status`$toJSON()
+          self$`status`$toSimpleType()
       }
-      CatalogsHotelFeedsCreateRequestObject
+      return(CatalogsHotelFeedsCreateRequestObject)
     },
 
     #' @description
@@ -214,93 +239,13 @@ CatalogsHotelFeedsCreateRequest <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return CatalogsHotelFeedsCreateRequest in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`default_currency`)) {
-          sprintf(
-          '"default_currency":
-          %s
-          ',
-          jsonlite::toJSON(self$`default_currency`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`name`)) {
-          sprintf(
-          '"name":
-            "%s"
-                    ',
-          self$`name`
-          )
-        },
-        if (!is.null(self$`format`)) {
-          sprintf(
-          '"format":
-          %s
-          ',
-          jsonlite::toJSON(self$`format`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`default_locale`)) {
-          sprintf(
-          '"default_locale":
-          %s
-          ',
-          jsonlite::toJSON(self$`default_locale`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`credentials`)) {
-          sprintf(
-          '"credentials":
-          %s
-          ',
-          jsonlite::toJSON(self$`credentials`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`location`)) {
-          sprintf(
-          '"location":
-            "%s"
-                    ',
-          self$`location`
-          )
-        },
-        if (!is.null(self$`preferred_processing_schedule`)) {
-          sprintf(
-          '"preferred_processing_schedule":
-          %s
-          ',
-          jsonlite::toJSON(self$`preferred_processing_schedule`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`catalog_type`)) {
-          sprintf(
-          '"catalog_type":
-          %s
-          ',
-          jsonlite::toJSON(self$`catalog_type`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`catalog_id`)) {
-          sprintf(
-          '"catalog_id":
-            "%s"
-                    ',
-          self$`catalog_id`
-          )
-        },
-        if (!is.null(self$`status`)) {
-          sprintf(
-          '"status":
-          %s
-          ',
-          jsonlite::toJSON(self$`status`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

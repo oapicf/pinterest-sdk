@@ -13,6 +13,7 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.BusinessAccessUserSummary
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param id Asset Group ID.
@@ -26,6 +27,7 @@ import org.openapitools.server.models.BusinessAccessUserSummary
  * @param owner The data of the business that owns the asset group.
  * @param createdBy The data of the user that created the asset group.
  */
+@Serializable
 data class AssetGroupBinding(
     /* Asset Group ID. */
     val id: kotlin.String? = null,
@@ -47,5 +49,5 @@ data class AssetGroupBinding(
     val owner: BusinessAccessUserSummary? = null,
     /* The data of the user that created the asset group. */
     val createdBy: BusinessAccessUserSummary? = null
-) 
+)
 

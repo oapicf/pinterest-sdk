@@ -51,9 +51,10 @@ typedef struct audience_rule_t {
     list_t *objective_type; //nonprimitive container
     char *ad_account_id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } audience_rule_t;
 
-audience_rule_t *audience_rule_create(
+__attribute__((deprecated)) audience_rule_t *audience_rule_create(
     char *country,
     char *customer_list_id,
     list_t *engagement_domain,

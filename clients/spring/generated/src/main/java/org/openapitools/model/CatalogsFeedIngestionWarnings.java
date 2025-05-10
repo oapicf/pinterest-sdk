@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -18,20 +19,20 @@ import javax.annotation.Generated;
  * CatalogsFeedIngestionWarnings
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsFeedIngestionWarnings {
 
-  private Integer ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR;
+  private @Nullable Integer ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR;
 
-  private Integer ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE;
+  private @Nullable Integer ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE;
 
-  private Integer ADDITIONAL_IMAGE_MALFORMED_URL;
+  private @Nullable Integer ADDITIONAL_IMAGE_MALFORMED_URL;
 
-  private Integer ADDITIONAL_IMAGE_FILE_NOT_FOUND;
+  private @Nullable Integer ADDITIONAL_IMAGE_FILE_NOT_FOUND;
 
-  private Integer ADDITIONAL_IMAGE_INVALID_FILE;
+  private @Nullable Integer ADDITIONAL_IMAGE_INVALID_FILE;
 
-  private Integer HOTEL_PRICE_HEADER_IS_PRESENT;
+  private @Nullable Integer HOTEL_PRICE_HEADER_IS_PRESENT;
 
   public CatalogsFeedIngestionWarnings ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR(Integer ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR) {
     this.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR = ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR;

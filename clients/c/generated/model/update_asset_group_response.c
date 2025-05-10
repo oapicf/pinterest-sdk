@@ -5,7 +5,7 @@
 
 
 
-update_asset_group_response_t *update_asset_group_response_create(
+static update_asset_group_response_t *update_asset_group_response_create_internal(
     list_t *updated_asset_groups,
     list_t *exceptions
     ) {
@@ -16,12 +16,26 @@ update_asset_group_response_t *update_asset_group_response_create(
     update_asset_group_response_local_var->updated_asset_groups = updated_asset_groups;
     update_asset_group_response_local_var->exceptions = exceptions;
 
+    update_asset_group_response_local_var->_library_owned = 1;
     return update_asset_group_response_local_var;
 }
 
+__attribute__((deprecated)) update_asset_group_response_t *update_asset_group_response_create(
+    list_t *updated_asset_groups,
+    list_t *exceptions
+    ) {
+    return update_asset_group_response_create_internal (
+        updated_asset_groups,
+        exceptions
+        );
+}
 
 void update_asset_group_response_free(update_asset_group_response_t *update_asset_group_response) {
     if(NULL == update_asset_group_response){
+        return ;
+    }
+    if(update_asset_group_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "update_asset_group_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -104,6 +118,9 @@ update_asset_group_response_t *update_asset_group_response_parseFromJSON(cJSON *
 
     // update_asset_group_response->updated_asset_groups
     cJSON *updated_asset_groups = cJSON_GetObjectItemCaseSensitive(update_asset_group_responseJSON, "updated_asset_groups");
+    if (cJSON_IsNull(updated_asset_groups)) {
+        updated_asset_groups = NULL;
+    }
     if (updated_asset_groups) { 
     cJSON *updated_asset_groups_local_nonprimitive = NULL;
     if(!cJSON_IsArray(updated_asset_groups)){
@@ -125,6 +142,9 @@ update_asset_group_response_t *update_asset_group_response_parseFromJSON(cJSON *
 
     // update_asset_group_response->exceptions
     cJSON *exceptions = cJSON_GetObjectItemCaseSensitive(update_asset_group_responseJSON, "exceptions");
+    if (cJSON_IsNull(exceptions)) {
+        exceptions = NULL;
+    }
     if (exceptions) { 
     cJSON *exceptions_local_nonprimitive = NULL;
     if(!cJSON_IsArray(exceptions)){
@@ -145,7 +165,7 @@ update_asset_group_response_t *update_asset_group_response_parseFromJSON(cJSON *
     }
 
 
-    update_asset_group_response_local_var = update_asset_group_response_create (
+    update_asset_group_response_local_var = update_asset_group_response_create_internal (
         updated_asset_groups ? updated_asset_groupsList : NULL,
         exceptions ? exceptionsList : NULL
         );

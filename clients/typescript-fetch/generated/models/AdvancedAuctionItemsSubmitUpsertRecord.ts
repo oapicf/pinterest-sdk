@@ -112,11 +112,11 @@ export function AdvancedAuctionItemsSubmitUpsertRecordFromJSONTyped(json: any, i
     };
 }
 
-  export function AdvancedAuctionItemsSubmitUpsertRecordToJSON(json: any): AdvancedAuctionItemsSubmitUpsertRecord {
-      return AdvancedAuctionItemsSubmitUpsertRecordToJSONTyped(json, false);
-  }
+export function AdvancedAuctionItemsSubmitUpsertRecordToJSON(json: any): AdvancedAuctionItemsSubmitUpsertRecord {
+    return AdvancedAuctionItemsSubmitUpsertRecordToJSONTyped(json, false);
+}
 
-  export function AdvancedAuctionItemsSubmitUpsertRecordToJSONTyped(value?: AdvancedAuctionItemsSubmitUpsertRecord | null, ignoreDiscriminator: boolean = false): any {
+export function AdvancedAuctionItemsSubmitUpsertRecordToJSONTyped(value?: AdvancedAuctionItemsSubmitUpsertRecord | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

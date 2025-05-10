@@ -233,7 +233,7 @@ void OAIResourcesApi::adAccountCountries_get() {
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIResourcesApi::adAccountCountries_getCallback);
     connect(this, &OAIResourcesApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -255,7 +255,7 @@ void OAIResourcesApi::adAccountCountries_get() {
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIResourcesApi::adAccountCountries_getCallback);
     connect(this, &OAIResourcesApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -345,7 +345,7 @@ void OAIResourcesApi::deliveryMetrics_get(const ::OpenAPI::OptionalParam<QString
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("report_type")).append(querySuffix).append(QUrl::toPercentEncoding(report_type.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("report_type")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(report_type.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -360,7 +360,7 @@ void OAIResourcesApi::deliveryMetrics_get(const ::OpenAPI::OptionalParam<QString
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIResourcesApi::deliveryMetrics_getCallback);
     connect(this, &OAIResourcesApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -384,7 +384,7 @@ void OAIResourcesApi::deliveryMetrics_get(const ::OpenAPI::OptionalParam<QString
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIResourcesApi::deliveryMetrics_getCallback);
     connect(this, &OAIResourcesApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -489,7 +489,7 @@ void OAIResourcesApi::interestTargetingOptions_get(const QString &interest_id) {
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIResourcesApi::interestTargetingOptions_getCallback);
     connect(this, &OAIResourcesApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -511,7 +511,7 @@ void OAIResourcesApi::interestTargetingOptions_get(const QString &interest_id) {
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIResourcesApi::interestTargetingOptions_getCallback);
     connect(this, &OAIResourcesApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -600,7 +600,7 @@ void OAIResourcesApi::leadFormQuestions_get() {
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIResourcesApi::leadFormQuestions_getCallback);
     connect(this, &OAIResourcesApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -622,7 +622,7 @@ void OAIResourcesApi::leadFormQuestions_get() {
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIResourcesApi::leadFormQuestions_getCallback);
     connect(this, &OAIResourcesApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -711,7 +711,7 @@ void OAIResourcesApi::metricsReadyState_get(const QString &date) {
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("date")).append(querySuffix).append(QUrl::toPercentEncoding(date));
+        fullPath.append(QUrl::toPercentEncoding("date")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(date)));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -726,7 +726,7 @@ void OAIResourcesApi::metricsReadyState_get(const QString &date) {
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIResourcesApi::metricsReadyState_getCallback);
     connect(this, &OAIResourcesApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -748,7 +748,7 @@ void OAIResourcesApi::metricsReadyState_get(const QString &date) {
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIResourcesApi::metricsReadyState_getCallback);
     connect(this, &OAIResourcesApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -852,7 +852,7 @@ void OAIResourcesApi::targetingOptions_get(const QString &targeting_type, const 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("client_id")).append(querySuffix).append(QUrl::toPercentEncoding(client_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("client_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(client_id.stringValue())));
     }
     if (oauth_signature.hasValue())
     {
@@ -867,7 +867,7 @@ void OAIResourcesApi::targetingOptions_get(const QString &targeting_type, const 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("oauth_signature")).append(querySuffix).append(QUrl::toPercentEncoding(oauth_signature.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("oauth_signature")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(oauth_signature.stringValue())));
     }
     if (timestamp.hasValue())
     {
@@ -882,7 +882,7 @@ void OAIResourcesApi::targetingOptions_get(const QString &targeting_type, const 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("timestamp")).append(querySuffix).append(QUrl::toPercentEncoding(timestamp.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("timestamp")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(timestamp.stringValue())));
     }
     if (ad_account_id.hasValue())
     {
@@ -897,7 +897,7 @@ void OAIResourcesApi::targetingOptions_get(const QString &targeting_type, const 
         else
             fullPath.append("?");
 
-        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(ad_account_id.stringValue()));
+        fullPath.append(QUrl::toPercentEncoding("ad_account_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ad_account_id.stringValue())));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -912,7 +912,7 @@ void OAIResourcesApi::targetingOptions_get(const QString &targeting_type, const 
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIResourcesApi::targetingOptions_getCallback);
     connect(this, &OAIResourcesApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this]() {
+    connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
             Q_EMIT allPendingRequestsCompleted();
         }
@@ -934,7 +934,7 @@ void OAIResourcesApi::targetingOptions_get(const QString &targeting_type, const 
 
     connect(_latestWorker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIResourcesApi::targetingOptions_getCallback);
     connect(this, &OAIResourcesApi::abortRequestsSignal, _latestWorker, &QObject::deleteLater);
-    connect(_latestWorker, &QObject::destroyed, [this](){
+    connect(_latestWorker, &QObject::destroyed, this, [this] {
         if(findChildren<OAIHttpRequestWorker*>().count() == 0){
             Q_EMIT allPendingRequestsCompleted();
         }

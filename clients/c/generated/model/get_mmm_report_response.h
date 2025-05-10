@@ -25,9 +25,10 @@ typedef struct get_mmm_report_response_t {
     char *message; // string
     char *status; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } get_mmm_report_response_t;
 
-get_mmm_report_response_t *get_mmm_report_response_create(
+__attribute__((deprecated)) get_mmm_report_response_t *get_mmm_report_response_create(
     double code,
     get_mmm_report_response_data_t *data,
     char *message,

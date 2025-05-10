@@ -57,17 +57,18 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Object describing the result of an operation on an item bid option
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdvancedAuctionProcessedItem extends AdvancedAuctionItemsSubmitRecord {
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
+  @javax.annotation.Nullable
   private List<AdvancedAuctionOperationError> errors = new ArrayList<>();
 
   public AdvancedAuctionProcessedItem() {
-    this.operation = this.getClass().getSimpleName();
+
   }
 
-  public AdvancedAuctionProcessedItem errors(List<AdvancedAuctionOperationError> errors) {
+  public AdvancedAuctionProcessedItem errors(@javax.annotation.Nullable List<AdvancedAuctionOperationError> errors) {
     this.errors = errors;
     return this;
   }
@@ -89,7 +90,7 @@ public class AdvancedAuctionProcessedItem extends AdvancedAuctionItemsSubmitReco
     return errors;
   }
 
-  public void setErrors(List<AdvancedAuctionOperationError> errors) {
+  public void setErrors(@javax.annotation.Nullable List<AdvancedAuctionOperationError> errors) {
     this.errors = errors;
   }
 

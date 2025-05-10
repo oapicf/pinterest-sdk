@@ -27,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdGroupUpdateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdGroupUpdateRequest   {
   private String name;
   private EntityStatus status;
@@ -95,6 +95,16 @@ public class AdGroupUpdateRequest   {
   private BidStrategyTypeEnum bidStrategyType;
   private @Valid List<@Pattern(regexp = "^\\d+$")String> targetingTemplateIds;
   private String id;
+
+  public AdGroupUpdateRequest() {
+  }
+
+  @JsonCreator
+  public AdGroupUpdateRequest(
+    @JsonProperty(required = true, value = "id") String id
+  ) {
+    this.id = id;
+  }
 
   /**
    * Ad group name.
@@ -478,12 +488,12 @@ public class AdGroupUpdateRequest   {
 
   
   @ApiModelProperty(example = "2680060704746", required = true, value = "Ad group ID.")
-  @JsonProperty("id")
+  @JsonProperty(required = true, value = "id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getId() {
     return id;
   }
 
-  @JsonProperty("id")
+  @JsonProperty(required = true, value = "id")
   public void setId(String id) {
     this.id = id;
   }

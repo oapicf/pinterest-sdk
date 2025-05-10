@@ -5,7 +5,7 @@
 
 
 
-customer_list_request_t *customer_list_request_create(
+static customer_list_request_t *customer_list_request_create_internal(
     char *name,
     char *records,
     user_list_type_t *list_type,
@@ -20,12 +20,30 @@ customer_list_request_t *customer_list_request_create(
     customer_list_request_local_var->list_type = list_type;
     customer_list_request_local_var->exceptions = exceptions;
 
+    customer_list_request_local_var->_library_owned = 1;
     return customer_list_request_local_var;
 }
 
+__attribute__((deprecated)) customer_list_request_t *customer_list_request_create(
+    char *name,
+    char *records,
+    user_list_type_t *list_type,
+    object_t *exceptions
+    ) {
+    return customer_list_request_create_internal (
+        name,
+        records,
+        list_type,
+        exceptions
+        );
+}
 
 void customer_list_request_free(customer_list_request_t *customer_list_request) {
     if(NULL == customer_list_request){
+        return ;
+    }
+    if(customer_list_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "customer_list_request_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -111,6 +129,9 @@ customer_list_request_t *customer_list_request_parseFromJSON(cJSON *customer_lis
 
     // customer_list_request->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(customer_list_requestJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
     if (!name) {
         goto end;
     }
@@ -123,6 +144,9 @@ customer_list_request_t *customer_list_request_parseFromJSON(cJSON *customer_lis
 
     // customer_list_request->records
     cJSON *records = cJSON_GetObjectItemCaseSensitive(customer_list_requestJSON, "records");
+    if (cJSON_IsNull(records)) {
+        records = NULL;
+    }
     if (!records) {
         goto end;
     }
@@ -135,19 +159,25 @@ customer_list_request_t *customer_list_request_parseFromJSON(cJSON *customer_lis
 
     // customer_list_request->list_type
     cJSON *list_type = cJSON_GetObjectItemCaseSensitive(customer_list_requestJSON, "list_type");
+    if (cJSON_IsNull(list_type)) {
+        list_type = NULL;
+    }
     if (list_type) { 
     list_type_local_nonprim = user_list_type_parseFromJSON(list_type); //custom
     }
 
     // customer_list_request->exceptions
     cJSON *exceptions = cJSON_GetObjectItemCaseSensitive(customer_list_requestJSON, "exceptions");
+    if (cJSON_IsNull(exceptions)) {
+        exceptions = NULL;
+    }
     object_t *exceptions_local_object = NULL;
     if (exceptions) { 
     exceptions_local_object = object_parseFromJSON(exceptions); //object
     }
 
 
-    customer_list_request_local_var = customer_list_request_create (
+    customer_list_request_local_var = customer_list_request_create_internal (
         strdup(name->valuestring),
         strdup(records->valuestring),
         list_type ? list_type_local_nonprim : NULL,

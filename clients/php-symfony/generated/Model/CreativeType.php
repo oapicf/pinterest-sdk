@@ -44,16 +44,16 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum CreativeType: string
 {
-        case REGULAR = "REGULAR";
-        case VIDEO = "VIDEO";
-        case SHOPPING = "SHOPPING";
-        case CAROUSEL = "CAROUSEL";
-        case MAX_VIDEO = "MAX_VIDEO";
-        case SHOP_THE_PIN = "SHOP_THE_PIN";
-        case COLLECTION = "COLLECTION";
-        case IDEA = "IDEA";
-        case SHOWCASE = "SHOWCASE";
-        case QUIZ = "QUIZ";
+        case REGULAR = 'REGULAR';
+        case VIDEO = 'VIDEO';
+        case SHOPPING = 'SHOPPING';
+        case CAROUSEL = 'CAROUSEL';
+        case MAX_VIDEO = 'MAX_VIDEO';
+        case SHOP_THE_PIN = 'SHOP_THE_PIN';
+        case COLLECTION = 'COLLECTION';
+        case IDEA = 'IDEA';
+        case SHOWCASE = 'SHOWCASE';
+        case QUIZ = 'QUIZ';
 }
 
 

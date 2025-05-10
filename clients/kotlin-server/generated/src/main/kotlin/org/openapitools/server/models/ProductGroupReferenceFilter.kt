@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsProductGroupMultipleStringCriteria
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param PRODUCT_GROUP 
  */
+@Serializable
 data class ProductGroupReferenceFilter(
     val PRODUCT_GROUP: CatalogsProductGroupMultipleStringCriteria
-) 
+)
 

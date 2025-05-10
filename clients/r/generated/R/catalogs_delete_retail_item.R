@@ -43,10 +43,35 @@ CatalogsDeleteRetailItem <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return CatalogsDeleteRetailItem in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return CatalogsDeleteRetailItem as a base R list.
+    #' @examples
+    #' # convert array of CatalogsDeleteRetailItem (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert CatalogsDeleteRetailItem to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       CatalogsDeleteRetailItemObject <- list()
       if (!is.null(self$`item_id`)) {
         CatalogsDeleteRetailItemObject[["item_id"]] <-
@@ -56,7 +81,7 @@ CatalogsDeleteRetailItem <- R6::R6Class(
         CatalogsDeleteRetailItemObject[["operation"]] <-
           self$`operation`
       }
-      CatalogsDeleteRetailItemObject
+      return(CatalogsDeleteRetailItemObject)
     },
 
     #' @description
@@ -80,29 +105,13 @@ CatalogsDeleteRetailItem <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return CatalogsDeleteRetailItem in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`item_id`)) {
-          sprintf(
-          '"item_id":
-            "%s"
-                    ',
-          self$`item_id`
-          )
-        },
-        if (!is.null(self$`operation`)) {
-          sprintf(
-          '"operation":
-            "%s"
-                    ',
-          self$`operation`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

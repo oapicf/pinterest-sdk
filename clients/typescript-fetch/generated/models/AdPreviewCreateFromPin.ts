@@ -49,11 +49,11 @@ export function AdPreviewCreateFromPinFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-  export function AdPreviewCreateFromPinToJSON(json: any): AdPreviewCreateFromPin {
-      return AdPreviewCreateFromPinToJSONTyped(json, false);
-  }
+export function AdPreviewCreateFromPinToJSON(json: any): AdPreviewCreateFromPin {
+    return AdPreviewCreateFromPinToJSONTyped(json, false);
+}
 
-  export function AdPreviewCreateFromPinToJSONTyped(value?: AdPreviewCreateFromPin | null, ignoreDiscriminator: boolean = false): any {
+export function AdPreviewCreateFromPinToJSONTyped(value?: AdPreviewCreateFromPin | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

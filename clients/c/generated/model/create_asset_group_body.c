@@ -22,7 +22,7 @@ pinterest_rest_api_create_asset_group_body__e create_asset_group_body_asset_grou
     return 0;
 }
 
-create_asset_group_body_t *create_asset_group_body_create(
+static create_asset_group_body_t *create_asset_group_body_create_internal(
     char *asset_group_name,
     char *asset_group_description,
     list_t *asset_group_types
@@ -35,12 +35,28 @@ create_asset_group_body_t *create_asset_group_body_create(
     create_asset_group_body_local_var->asset_group_description = asset_group_description;
     create_asset_group_body_local_var->asset_group_types = asset_group_types;
 
+    create_asset_group_body_local_var->_library_owned = 1;
     return create_asset_group_body_local_var;
 }
 
+__attribute__((deprecated)) create_asset_group_body_t *create_asset_group_body_create(
+    char *asset_group_name,
+    char *asset_group_description,
+    list_t *asset_group_types
+    ) {
+    return create_asset_group_body_create_internal (
+        asset_group_name,
+        asset_group_description,
+        asset_group_types
+        );
+}
 
 void create_asset_group_body_free(create_asset_group_body_t *create_asset_group_body) {
     if(NULL == create_asset_group_body){
+        return ;
+    }
+    if(create_asset_group_body->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "create_asset_group_body_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -84,7 +100,7 @@ cJSON *create_asset_group_body_convertToJSON(create_asset_group_body_t *create_a
 
 
     // create_asset_group_body->asset_group_types
-    if (pinterest_rest_api_create_asset_group_body_ASSETGROUPTYPES_NULL == create_asset_group_body->asset_group_types) {
+    if (pinterest_rest_api_list_ASSETGROUPTYPES_NULL == create_asset_group_body->asset_group_types) {
         goto fail;
     }
     cJSON *asset_group_types = cJSON_AddArrayToObject(item, "asset_group_types");
@@ -120,6 +136,9 @@ create_asset_group_body_t *create_asset_group_body_parseFromJSON(cJSON *create_a
 
     // create_asset_group_body->asset_group_name
     cJSON *asset_group_name = cJSON_GetObjectItemCaseSensitive(create_asset_group_bodyJSON, "asset_group_name");
+    if (cJSON_IsNull(asset_group_name)) {
+        asset_group_name = NULL;
+    }
     if (!asset_group_name) {
         goto end;
     }
@@ -132,6 +151,9 @@ create_asset_group_body_t *create_asset_group_body_parseFromJSON(cJSON *create_a
 
     // create_asset_group_body->asset_group_description
     cJSON *asset_group_description = cJSON_GetObjectItemCaseSensitive(create_asset_group_bodyJSON, "asset_group_description");
+    if (cJSON_IsNull(asset_group_description)) {
+        asset_group_description = NULL;
+    }
     if (!asset_group_description) {
         goto end;
     }
@@ -144,6 +166,9 @@ create_asset_group_body_t *create_asset_group_body_parseFromJSON(cJSON *create_a
 
     // create_asset_group_body->asset_group_types
     cJSON *asset_group_types = cJSON_GetObjectItemCaseSensitive(create_asset_group_bodyJSON, "asset_group_types");
+    if (cJSON_IsNull(asset_group_types)) {
+        asset_group_types = NULL;
+    }
     if (!asset_group_types) {
         goto end;
     }
@@ -167,7 +192,7 @@ create_asset_group_body_t *create_asset_group_body_parseFromJSON(cJSON *create_a
     }
 
 
-    create_asset_group_body_local_var = create_asset_group_body_create (
+    create_asset_group_body_local_var = create_asset_group_body_create_internal (
         strdup(asset_group_name->valuestring),
         strdup(asset_group_description->valuestring),
         asset_group_typesList

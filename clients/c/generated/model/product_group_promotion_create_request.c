@@ -5,7 +5,7 @@
 
 
 
-product_group_promotion_create_request_t *product_group_promotion_create_request_create(
+static product_group_promotion_create_request_t *product_group_promotion_create_request_create_internal(
     char *ad_group_id,
     list_t *product_group_promotion
     ) {
@@ -16,12 +16,26 @@ product_group_promotion_create_request_t *product_group_promotion_create_request
     product_group_promotion_create_request_local_var->ad_group_id = ad_group_id;
     product_group_promotion_create_request_local_var->product_group_promotion = product_group_promotion;
 
+    product_group_promotion_create_request_local_var->_library_owned = 1;
     return product_group_promotion_create_request_local_var;
 }
 
+__attribute__((deprecated)) product_group_promotion_create_request_t *product_group_promotion_create_request_create(
+    char *ad_group_id,
+    list_t *product_group_promotion
+    ) {
+    return product_group_promotion_create_request_create_internal (
+        ad_group_id,
+        product_group_promotion
+        );
+}
 
 void product_group_promotion_create_request_free(product_group_promotion_create_request_t *product_group_promotion_create_request) {
     if(NULL == product_group_promotion_create_request){
+        return ;
+    }
+    if(product_group_promotion_create_request->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "product_group_promotion_create_request_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -88,6 +102,9 @@ product_group_promotion_create_request_t *product_group_promotion_create_request
 
     // product_group_promotion_create_request->ad_group_id
     cJSON *ad_group_id = cJSON_GetObjectItemCaseSensitive(product_group_promotion_create_requestJSON, "ad_group_id");
+    if (cJSON_IsNull(ad_group_id)) {
+        ad_group_id = NULL;
+    }
     if (!ad_group_id) {
         goto end;
     }
@@ -100,6 +117,9 @@ product_group_promotion_create_request_t *product_group_promotion_create_request
 
     // product_group_promotion_create_request->product_group_promotion
     cJSON *product_group_promotion = cJSON_GetObjectItemCaseSensitive(product_group_promotion_create_requestJSON, "product_group_promotion");
+    if (cJSON_IsNull(product_group_promotion)) {
+        product_group_promotion = NULL;
+    }
     if (!product_group_promotion) {
         goto end;
     }
@@ -123,7 +143,7 @@ product_group_promotion_create_request_t *product_group_promotion_create_request
     }
 
 
-    product_group_promotion_create_request_local_var = product_group_promotion_create_request_create (
+    product_group_promotion_create_request_local_var = product_group_promotion_create_request_create_internal (
         strdup(ad_group_id->valuestring),
         product_group_promotionList
         );

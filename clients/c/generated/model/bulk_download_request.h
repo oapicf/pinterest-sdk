@@ -28,9 +28,10 @@ typedef struct bulk_download_request_t {
     struct bulk_download_request_campaign_filter_t *campaign_filter; //model
     bulk_output_format_t *output_format; // custom
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } bulk_download_request_t;
 
-bulk_download_request_t *bulk_download_request_create(
+__attribute__((deprecated)) bulk_download_request_t *bulk_download_request_create(
     list_t *entity_types,
     list_t *entity_ids,
     char *updated_since,

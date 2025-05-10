@@ -13,8 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // CatalogsListProductsByFilterRequest - Request object to list products for a given product group filter.
@@ -113,6 +113,20 @@ func (obj *CatalogsListProductsByFilterRequest) GetActualInstance() (interface{}
 
 	if obj.CatalogsVerticalsListProductsByCatalogBasedFilterRequest != nil {
 		return obj.CatalogsVerticalsListProductsByCatalogBasedFilterRequest
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj CatalogsListProductsByFilterRequest) GetActualInstanceValue() (interface{}) {
+	if obj.CatalogsListProductsByFeedBasedFilter != nil {
+		return *obj.CatalogsListProductsByFeedBasedFilter
+	}
+
+	if obj.CatalogsVerticalsListProductsByCatalogBasedFilterRequest != nil {
+		return *obj.CatalogsVerticalsListProductsByCatalogBasedFilterRequest
 	}
 
 	// all schemas are nil

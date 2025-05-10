@@ -24,9 +24,10 @@ typedef struct order_line_response_t {
     list_t *errors; //nonprimitive container
     list_t *order_line; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } order_line_response_t;
 
-order_line_response_t *order_line_response_create(
+__attribute__((deprecated)) order_line_response_t *order_line_response_create(
     list_t *errors,
     list_t *order_line
 );

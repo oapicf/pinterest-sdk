@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param canonicalUrl 
@@ -19,10 +20,11 @@ package org.openapitools.server.models
  * @param key 
  * @param name 
  */
+@Serializable
 data class Interest(
     val canonicalUrl: kotlin.String? = null,
     val id: kotlin.String? = null,
     val key: kotlin.String? = null,
     val name: kotlin.String? = null
-) 
+)
 

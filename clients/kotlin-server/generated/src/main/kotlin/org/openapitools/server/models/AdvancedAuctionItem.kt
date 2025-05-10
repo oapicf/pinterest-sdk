@@ -15,6 +15,7 @@ import org.openapitools.server.models.AdvancedAuctionBidOptions
 import org.openapitools.server.models.Country
 import org.openapitools.server.models.Language
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param itemId The catalog retail item id in the merchant namespace
@@ -22,11 +23,12 @@ import org.openapitools.server.models.Language
  * @param language 
  * @param bidOptions 
  */
+@Serializable
 data class AdvancedAuctionItem(
     /* The catalog retail item id in the merchant namespace */
     val itemId: kotlin.String,
     val country: Country,
     val language: Language,
     val bidOptions: AdvancedAuctionBidOptions
-) 
+)
 

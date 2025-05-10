@@ -26,9 +26,10 @@ typedef struct video_metadata_t {
     int height; //numeric
     int width; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } video_metadata_t;
 
-video_metadata_t *video_metadata_create(
+__attribute__((deprecated)) video_metadata_t *video_metadata_create(
     char *item_type,
     char *cover_image_url,
     char *video_url,

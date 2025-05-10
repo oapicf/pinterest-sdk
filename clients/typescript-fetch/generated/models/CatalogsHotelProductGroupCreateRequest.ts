@@ -98,11 +98,11 @@ export function CatalogsHotelProductGroupCreateRequestFromJSONTyped(json: any, i
     };
 }
 
-  export function CatalogsHotelProductGroupCreateRequestToJSON(json: any): CatalogsHotelProductGroupCreateRequest {
-      return CatalogsHotelProductGroupCreateRequestToJSONTyped(json, false);
-  }
+export function CatalogsHotelProductGroupCreateRequestToJSON(json: any): CatalogsHotelProductGroupCreateRequest {
+    return CatalogsHotelProductGroupCreateRequestToJSONTyped(json, false);
+}
 
-  export function CatalogsHotelProductGroupCreateRequestToJSONTyped(value?: CatalogsHotelProductGroupCreateRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsHotelProductGroupCreateRequestToJSONTyped(value?: CatalogsHotelProductGroupCreateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

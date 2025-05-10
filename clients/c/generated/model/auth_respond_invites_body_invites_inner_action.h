@@ -31,9 +31,10 @@ typedef struct auth_respond_invites_body_invites_inner_action_t {
     int accept_invite; //boolean
     list_t* asset_id_to_permissions; //map
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } auth_respond_invites_body_invites_inner_action_t;
 
-auth_respond_invites_body_invites_inner_action_t *auth_respond_invites_body_invites_inner_action_create(
+__attribute__((deprecated)) auth_respond_invites_body_invites_inner_action_t *auth_respond_invites_body_invites_inner_action_create(
     int accept_invite,
     list_t* asset_id_to_permissions
 );

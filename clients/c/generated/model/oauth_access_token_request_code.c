@@ -22,7 +22,7 @@ pinterest_rest_api_oauth_access_token_request_code_GRANTTYPE_e oauth_access_toke
     return 0;
 }
 
-oauth_access_token_request_code_t *oauth_access_token_request_code_create(
+static oauth_access_token_request_code_t *oauth_access_token_request_code_create_internal(
     pinterest_rest_api_oauth_access_token_request_code_GRANTTYPE_e grant_type,
     char *code,
     char *redirect_uri
@@ -35,12 +35,28 @@ oauth_access_token_request_code_t *oauth_access_token_request_code_create(
     oauth_access_token_request_code_local_var->code = code;
     oauth_access_token_request_code_local_var->redirect_uri = redirect_uri;
 
+    oauth_access_token_request_code_local_var->_library_owned = 1;
     return oauth_access_token_request_code_local_var;
 }
 
+__attribute__((deprecated)) oauth_access_token_request_code_t *oauth_access_token_request_code_create(
+    pinterest_rest_api_oauth_access_token_request_code_GRANTTYPE_e grant_type,
+    char *code,
+    char *redirect_uri
+    ) {
+    return oauth_access_token_request_code_create_internal (
+        grant_type,
+        code,
+        redirect_uri
+        );
+}
 
 void oauth_access_token_request_code_free(oauth_access_token_request_code_t *oauth_access_token_request_code) {
     if(NULL == oauth_access_token_request_code){
+        return ;
+    }
+    if(oauth_access_token_request_code->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "oauth_access_token_request_code_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -62,7 +78,7 @@ cJSON *oauth_access_token_request_code_convertToJSON(oauth_access_token_request_
     if (pinterest_rest_api_oauth_access_token_request_code_GRANTTYPE_NULL == oauth_access_token_request_code->grant_type) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "grant_type", grant_typeoauth_access_token_request_code_ToString(oauth_access_token_request_code->grant_type)) == NULL)
+    if(cJSON_AddStringToObject(item, "grant_type", oauth_access_token_request_code_grant_type_ToString(oauth_access_token_request_code->grant_type)) == NULL)
     {
     goto fail; //Enum
     }
@@ -99,6 +115,9 @@ oauth_access_token_request_code_t *oauth_access_token_request_code_parseFromJSON
 
     // oauth_access_token_request_code->grant_type
     cJSON *grant_type = cJSON_GetObjectItemCaseSensitive(oauth_access_token_request_codeJSON, "grant_type");
+    if (cJSON_IsNull(grant_type)) {
+        grant_type = NULL;
+    }
     if (!grant_type) {
         goto end;
     }
@@ -113,6 +132,9 @@ oauth_access_token_request_code_t *oauth_access_token_request_code_parseFromJSON
 
     // oauth_access_token_request_code->code
     cJSON *code = cJSON_GetObjectItemCaseSensitive(oauth_access_token_request_codeJSON, "code");
+    if (cJSON_IsNull(code)) {
+        code = NULL;
+    }
     if (!code) {
         goto end;
     }
@@ -125,6 +147,9 @@ oauth_access_token_request_code_t *oauth_access_token_request_code_parseFromJSON
 
     // oauth_access_token_request_code->redirect_uri
     cJSON *redirect_uri = cJSON_GetObjectItemCaseSensitive(oauth_access_token_request_codeJSON, "redirect_uri");
+    if (cJSON_IsNull(redirect_uri)) {
+        redirect_uri = NULL;
+    }
     if (!redirect_uri) {
         goto end;
     }
@@ -136,7 +161,7 @@ oauth_access_token_request_code_t *oauth_access_token_request_code_parseFromJSON
     }
 
 
-    oauth_access_token_request_code_local_var = oauth_access_token_request_code_create (
+    oauth_access_token_request_code_local_var = oauth_access_token_request_code_create_internal (
         grant_typeVariable,
         strdup(code->valuestring),
         strdup(redirect_uri->valuestring)

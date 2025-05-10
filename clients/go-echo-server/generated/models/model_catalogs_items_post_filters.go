@@ -1,9 +1,5 @@
 package models
 
-import (
-	"gopkg.in/validator.v2"
-)
-
 type CatalogsItemsPostFilters struct {
 
 	CatalogType CatalogsType `json:"catalog_type"`

@@ -20,11 +20,25 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Request object of catalogs items")
 @JsonTypeName("CatalogsItemsRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsItemsRequest   {
   private Country country;
   private CatalogsItemsRequestLanguage language;
   private CatalogsItemsPostFilters filters;
+
+  public CatalogsItemsRequest() {
+  }
+
+  @JsonCreator
+  public CatalogsItemsRequest(
+    @JsonProperty(required = true, value = "country") Country country,
+    @JsonProperty(required = true, value = "language") CatalogsItemsRequestLanguage language,
+    @JsonProperty(required = true, value = "filters") CatalogsItemsPostFilters filters
+  ) {
+    this.country = country;
+    this.language = language;
+    this.filters = filters;
+  }
 
   /**
    **/
@@ -35,12 +49,12 @@ public class CatalogsItemsRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("country")
+  @JsonProperty(required = true, value = "country")
   @NotNull public Country getCountry() {
     return country;
   }
 
-  @JsonProperty("country")
+  @JsonProperty(required = true, value = "country")
   public void setCountry(Country country) {
     this.country = country;
   }
@@ -54,12 +68,12 @@ public class CatalogsItemsRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("language")
+  @JsonProperty(required = true, value = "language")
   @NotNull @Valid public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
 
-  @JsonProperty("language")
+  @JsonProperty(required = true, value = "language")
   public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
@@ -73,12 +87,12 @@ public class CatalogsItemsRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("filters")
+  @JsonProperty(required = true, value = "filters")
   @NotNull @Valid public CatalogsItemsPostFilters getFilters() {
     return filters;
   }
 
-  @JsonProperty("filters")
+  @JsonProperty(required = true, value = "filters")
   public void setFilters(CatalogsItemsPostFilters filters) {
     this.filters = filters;
   }

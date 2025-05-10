@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -24,7 +25,7 @@ import javax.annotation.Generated;
  * ItemAttributes
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ItemAttributes {
 
   private JsonNullable<String> adLink = JsonNullable.<String>undefined();
@@ -33,7 +34,7 @@ public class ItemAttributes {
 
   private JsonNullable<String> ageGroup = JsonNullable.<String>undefined();
 
-  private String availability;
+  private @Nullable String availability;
 
   private JsonNullable<BigDecimal> averageReviewRating = JsonNullable.<BigDecimal>undefined();
 
@@ -56,7 +57,7 @@ public class ItemAttributes {
 
   private JsonNullable<String> customLabel4 = JsonNullable.<String>undefined();
 
-  private String description;
+  private @Nullable String description;
 
   private JsonNullable<Boolean> freeShippingLabel = JsonNullable.<Boolean>undefined();
 
@@ -69,13 +70,13 @@ public class ItemAttributes {
   private JsonNullable<Integer> gtin = JsonNullable.<Integer>undefined();
 
   @Deprecated
-  private String id;
+  private @Nullable String id;
 
   private JsonNullable<String> itemGroupId = JsonNullable.<String>undefined();
 
   private JsonNullable<Long> lastUpdatedTime = JsonNullable.<Long>undefined();
 
-  private String link;
+  private @Nullable String link;
 
   private JsonNullable<String> material = JsonNullable.<String>undefined();
 
@@ -91,7 +92,7 @@ public class ItemAttributes {
 
   private JsonNullable<String> pattern = JsonNullable.<String>undefined();
 
-  private String price;
+  private @Nullable String price;
 
   private JsonNullable<String> productType = JsonNullable.<String>undefined();
 
@@ -113,7 +114,7 @@ public class ItemAttributes {
 
   private JsonNullable<String> tax = JsonNullable.<String>undefined();
 
-  private String title;
+  private @Nullable String title;
 
   @Valid
   private JsonNullable<List<String>> variantNames = JsonNullable.<List<String>>undefined();

@@ -5,7 +5,7 @@
 
 
 
-advanced_auction_items_t *advanced_auction_items_create(
+static advanced_auction_items_t *advanced_auction_items_create_internal(
     char *catalog_id,
     list_t *items
     ) {
@@ -16,12 +16,26 @@ advanced_auction_items_t *advanced_auction_items_create(
     advanced_auction_items_local_var->catalog_id = catalog_id;
     advanced_auction_items_local_var->items = items;
 
+    advanced_auction_items_local_var->_library_owned = 1;
     return advanced_auction_items_local_var;
 }
 
+__attribute__((deprecated)) advanced_auction_items_t *advanced_auction_items_create(
+    char *catalog_id,
+    list_t *items
+    ) {
+    return advanced_auction_items_create_internal (
+        catalog_id,
+        items
+        );
+}
 
 void advanced_auction_items_free(advanced_auction_items_t *advanced_auction_items) {
     if(NULL == advanced_auction_items){
+        return ;
+    }
+    if(advanced_auction_items->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "advanced_auction_items_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -86,6 +100,9 @@ advanced_auction_items_t *advanced_auction_items_parseFromJSON(cJSON *advanced_a
 
     // advanced_auction_items->catalog_id
     cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(advanced_auction_itemsJSON, "catalog_id");
+    if (cJSON_IsNull(catalog_id)) {
+        catalog_id = NULL;
+    }
     if (catalog_id) { 
     if(!cJSON_IsString(catalog_id) && !cJSON_IsNull(catalog_id))
     {
@@ -95,6 +112,9 @@ advanced_auction_items_t *advanced_auction_items_parseFromJSON(cJSON *advanced_a
 
     // advanced_auction_items->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(advanced_auction_itemsJSON, "items");
+    if (cJSON_IsNull(items)) {
+        items = NULL;
+    }
     if (items) { 
     cJSON *items_local_nonprimitive = NULL;
     if(!cJSON_IsArray(items)){
@@ -115,7 +135,7 @@ advanced_auction_items_t *advanced_auction_items_parseFromJSON(cJSON *advanced_a
     }
 
 
-    advanced_auction_items_local_var = advanced_auction_items_create (
+    advanced_auction_items_local_var = advanced_auction_items_create_internal (
         catalog_id && !cJSON_IsNull(catalog_id) ? strdup(catalog_id->valuestring) : NULL,
         items ? itemsList : NULL
         );

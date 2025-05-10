@@ -33,9 +33,10 @@ typedef struct order_lines_t {
     char *name; // string
     order_line_paid_type_t *paid_type; // custom
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } order_lines_t;
 
-order_lines_t *order_lines_create(
+__attribute__((deprecated)) order_lines_t *order_lines_create(
     char *id,
     char *type,
     char *ad_account_id,

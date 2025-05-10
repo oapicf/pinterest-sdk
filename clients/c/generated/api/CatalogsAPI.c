@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 // Functions for enum  for CatalogsAPI_itemsIssuesList
 
@@ -68,11 +63,14 @@ CatalogsAPI_catalogsCreate(apiClient_t *apiClient, catalogs_create_request_t *ca
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/catalogs")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/catalogs");
+    char *localVarPath = strdup("/catalogs");
+
 
 
 
@@ -93,9 +91,10 @@ CatalogsAPI_catalogsCreate(apiClient_t *apiClient, catalogs_create_request_t *ca
     cJSON *localVarSingleItemJSON_catalogs_create_request = NULL;
     if (catalogs_create_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_catalogs_create_request = catalogs_create_request_convertToJSON(catalogs_create_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_catalogs_create_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -107,6 +106,7 @@ CatalogsAPI_catalogsCreate(apiClient_t *apiClient, catalogs_create_request_t *ca
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -126,11 +126,14 @@ CatalogsAPI_catalogsCreate(apiClient_t *apiClient, catalogs_create_request_t *ca
     //    printf("%s\n","Unexpected error.");
     //}
     //nonprimitive not container
-    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    catalog_t *elementToReturn = catalog_parseFromJSON(CatalogsAPIlocalVarJSON);
-    cJSON_Delete(CatalogsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    catalog_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = catalog_parseFromJSON(CatalogsAPIlocalVarJSON);
+        cJSON_Delete(CatalogsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -182,11 +185,14 @@ CatalogsAPI_catalogsList(apiClient_t *apiClient, char *bookmark, int *page_size,
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/catalogs")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/catalogs");
+    char *localVarPath = strdup("/catalogs");
+
 
 
 
@@ -236,6 +242,7 @@ CatalogsAPI_catalogsList(apiClient_t *apiClient, char *bookmark, int *page_size,
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -255,11 +262,14 @@ CatalogsAPI_catalogsList(apiClient_t *apiClient, char *bookmark, int *page_size,
     //    printf("%s\n","Unexpected error.");
     //}
     //nonprimitive not container
-    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    catalogs_list_200_response_t *elementToReturn = catalogs_list_200_response_parseFromJSON(CatalogsAPIlocalVarJSON);
-    cJSON_Delete(CatalogsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    catalogs_list_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = catalogs_list_200_response_parseFromJSON(CatalogsAPIlocalVarJSON);
+        cJSON_Delete(CatalogsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -330,15 +340,20 @@ CatalogsAPI_catalogsProductGroupPinsList(apiClient_t *apiClient, char *product_g
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/catalogs/product_groups/{product_group_id}/products")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/catalogs/product_groups/{product_group_id}/products");
+    char *localVarPath = strdup("/catalogs/product_groups/{product_group_id}/products");
+
+    if(!product_group_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_product_group_id = strlen(product_group_id)+3 + strlen("{ product_group_id }");
+    long sizeOfPathParams_product_group_id = strlen(product_group_id)+3 + sizeof("{ product_group_id }") - 1;
     if(product_group_id == NULL) {
         goto end;
     }
@@ -407,6 +422,7 @@ CatalogsAPI_catalogsProductGroupPinsList(apiClient_t *apiClient, char *product_g
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -430,11 +446,14 @@ CatalogsAPI_catalogsProductGroupPinsList(apiClient_t *apiClient, char *product_g
     //    printf("%s\n","Unexpected error.");
     //}
     //nonprimitive not container
-    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    catalogs_product_group_pins_list_200_response_t *elementToReturn = catalogs_product_group_pins_list_200_response_parseFromJSON(CatalogsAPIlocalVarJSON);
-    cJSON_Delete(CatalogsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    catalogs_product_group_pins_list_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = catalogs_product_group_pins_list_200_response_parseFromJSON(CatalogsAPIlocalVarJSON);
+        cJSON_Delete(CatalogsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -518,11 +537,14 @@ CatalogsAPI_catalogsProductGroupsCreate(apiClient_t *apiClient, multiple_product
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/catalogs/product_groups")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/catalogs/product_groups");
+    char *localVarPath = strdup("/catalogs/product_groups");
+
 
 
 
@@ -543,9 +565,10 @@ CatalogsAPI_catalogsProductGroupsCreate(apiClient_t *apiClient, multiple_product
     cJSON *localVarSingleItemJSON_multiple_product_groups_inner = NULL;
     if (multiple_product_groups_inner != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_multiple_product_groups_inner = multiple_product_groups_inner_convertToJSON(multiple_product_groups_inner);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_multiple_product_groups_inner);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -557,6 +580,7 @@ CatalogsAPI_catalogsProductGroupsCreate(apiClient_t *apiClient, multiple_product
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -584,11 +608,14 @@ CatalogsAPI_catalogsProductGroupsCreate(apiClient_t *apiClient, multiple_product
     //    printf("%s\n","Unexpected error.");
     //}
     //nonprimitive not container
-    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    catalogs_vertical_product_group_t *elementToReturn = catalogs_vertical_product_group_parseFromJSON(CatalogsAPIlocalVarJSON);
-    cJSON_Delete(CatalogsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    catalogs_vertical_product_group_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = catalogs_vertical_product_group_parseFromJSON(CatalogsAPIlocalVarJSON);
+        cJSON_Delete(CatalogsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -640,11 +667,14 @@ CatalogsAPI_catalogsProductGroupsCreateMany(apiClient_t *apiClient, list_t *mult
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/catalogs/product_groups/multiple")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/catalogs/product_groups/multiple");
+    char *localVarPath = strdup("/catalogs/product_groups/multiple");
+
 
 
 
@@ -688,6 +718,7 @@ CatalogsAPI_catalogsProductGroupsCreateMany(apiClient_t *apiClient, list_t *mult
         }
         cJSON_AddItemToArray(localVarSingleItemJSON_multiple_product_groups_inner, localVar_multiple_product_groups_inner);
         localVarBodyParameters = cJSON_Print(localVarItemJSON_multiple_product_groups_inner);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -699,6 +730,7 @@ CatalogsAPI_catalogsProductGroupsCreateMany(apiClient_t *apiClient, list_t *mult
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -726,14 +758,17 @@ CatalogsAPI_catalogsProductGroupsCreateMany(apiClient_t *apiClient, list_t *mult
     //    printf("%s\n","Unexpected error.");
     //}
     //primitive return type not simple
-    cJSON *localVarJSON = cJSON_Parse(apiClient->dataReceived);
-    cJSON *VarJSON;
-    list_t *elementToReturn = list_createList();
-    cJSON_ArrayForEach(VarJSON, localVarJSON){
-        keyValuePair_t *keyPair = keyValuePair_create(strdup(VarJSON->string), cJSON_Print(VarJSON));
-        list_addElement(elementToReturn, keyPair);
+    list_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *localVarJSON = cJSON_Parse(apiClient->dataReceived);
+        cJSON *VarJSON;
+        elementToReturn = list_createList();
+        cJSON_ArrayForEach(VarJSON, localVarJSON){
+            keyValuePair_t *keyPair = keyValuePair_create(strdup(VarJSON->string), cJSON_Print(VarJSON));
+            list_addElement(elementToReturn, keyPair);
+        }
+        cJSON_Delete(localVarJSON);
     }
-    cJSON_Delete(localVarJSON);
 
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
@@ -791,15 +826,20 @@ CatalogsAPI_catalogsProductGroupsDelete(apiClient_t *apiClient, char *product_gr
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/catalogs/product_groups/{product_group_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/catalogs/product_groups/{product_group_id}");
+    char *localVarPath = strdup("/catalogs/product_groups/{product_group_id}");
+
+    if(!product_group_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_product_group_id = strlen(product_group_id)+3 + strlen("{ product_group_id }");
+    long sizeOfPathParams_product_group_id = strlen(product_group_id)+3 + sizeof("{ product_group_id }") - 1;
     if(product_group_id == NULL) {
         goto end;
     }
@@ -830,6 +870,7 @@ CatalogsAPI_catalogsProductGroupsDelete(apiClient_t *apiClient, char *product_gr
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "DELETE");
 
     // uncomment below to debug the error response
@@ -910,11 +951,14 @@ CatalogsAPI_catalogsProductGroupsDeleteMany(apiClient_t *apiClient, list_t *id, 
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/catalogs/product_groups/multiple")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/catalogs/product_groups/multiple");
+    char *localVarPath = strdup("/catalogs/product_groups/multiple");
+
 
 
 
@@ -945,6 +989,7 @@ CatalogsAPI_catalogsProductGroupsDeleteMany(apiClient_t *apiClient, list_t *id, 
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "DELETE");
 
     // uncomment below to debug the error response
@@ -1020,15 +1065,20 @@ CatalogsAPI_catalogsProductGroupsGet(apiClient_t *apiClient, char *product_group
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/catalogs/product_groups/{product_group_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/catalogs/product_groups/{product_group_id}");
+    char *localVarPath = strdup("/catalogs/product_groups/{product_group_id}");
+
+    if(!product_group_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_product_group_id = strlen(product_group_id)+3 + strlen("{ product_group_id }");
+    long sizeOfPathParams_product_group_id = strlen(product_group_id)+3 + sizeof("{ product_group_id }") - 1;
     if(product_group_id == NULL) {
         goto end;
     }
@@ -1059,6 +1109,7 @@ CatalogsAPI_catalogsProductGroupsGet(apiClient_t *apiClient, char *product_group
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -1090,11 +1141,14 @@ CatalogsAPI_catalogsProductGroupsGet(apiClient_t *apiClient, char *product_group
     //    printf("%s\n","Unexpected error.");
     //}
     //nonprimitive not container
-    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    catalogs_vertical_product_group_t *elementToReturn = catalogs_vertical_product_group_parseFromJSON(CatalogsAPIlocalVarJSON);
-    cJSON_Delete(CatalogsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    catalogs_vertical_product_group_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = catalogs_vertical_product_group_parseFromJSON(CatalogsAPIlocalVarJSON);
+        cJSON_Delete(CatalogsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1142,11 +1196,14 @@ CatalogsAPI_catalogsProductGroupsList(apiClient_t *apiClient, list_t *id, char *
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/catalogs/product_groups")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/catalogs/product_groups");
+    char *localVarPath = strdup("/catalogs/product_groups");
+
 
 
 
@@ -1226,6 +1283,7 @@ CatalogsAPI_catalogsProductGroupsList(apiClient_t *apiClient, list_t *id, char *
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -1257,11 +1315,14 @@ CatalogsAPI_catalogsProductGroupsList(apiClient_t *apiClient, list_t *id, char *
     //    printf("%s\n","Unexpected error.");
     //}
     //nonprimitive not container
-    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    catalogs_product_groups_list_200_response_t *elementToReturn = catalogs_product_groups_list_200_response_parseFromJSON(CatalogsAPIlocalVarJSON);
-    cJSON_Delete(CatalogsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    catalogs_product_groups_list_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = catalogs_product_groups_list_200_response_parseFromJSON(CatalogsAPIlocalVarJSON);
+        cJSON_Delete(CatalogsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1356,15 +1417,20 @@ CatalogsAPI_catalogsProductGroupsProductCountsGet(apiClient_t *apiClient, char *
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/catalogs/product_groups/{product_group_id}/product_counts")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/catalogs/product_groups/{product_group_id}/product_counts");
+    char *localVarPath = strdup("/catalogs/product_groups/{product_group_id}/product_counts");
+
+    if(!product_group_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_product_group_id = strlen(product_group_id)+3 + strlen("{ product_group_id }");
+    long sizeOfPathParams_product_group_id = strlen(product_group_id)+3 + sizeof("{ product_group_id }") - 1;
     if(product_group_id == NULL) {
         goto end;
     }
@@ -1395,6 +1461,7 @@ CatalogsAPI_catalogsProductGroupsProductCountsGet(apiClient_t *apiClient, char *
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -1414,11 +1481,14 @@ CatalogsAPI_catalogsProductGroupsProductCountsGet(apiClient_t *apiClient, char *
     //    printf("%s\n","Unexpected error.");
     //}
     //nonprimitive not container
-    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    catalogs_product_group_product_counts_vertical_t *elementToReturn = catalogs_product_group_product_counts_vertical_parseFromJSON(CatalogsAPIlocalVarJSON);
-    cJSON_Delete(CatalogsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    catalogs_product_group_product_counts_vertical_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = catalogs_product_group_product_counts_vertical_parseFromJSON(CatalogsAPIlocalVarJSON);
+        cJSON_Delete(CatalogsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1466,15 +1536,20 @@ CatalogsAPI_catalogsProductGroupsUpdate(apiClient_t *apiClient, char *product_gr
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/catalogs/product_groups/{product_group_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/catalogs/product_groups/{product_group_id}");
+    char *localVarPath = strdup("/catalogs/product_groups/{product_group_id}");
+
+    if(!product_group_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_product_group_id = strlen(product_group_id)+3 + strlen("{ product_group_id }");
+    long sizeOfPathParams_product_group_id = strlen(product_group_id)+3 + sizeof("{ product_group_id }") - 1;
     if(product_group_id == NULL) {
         goto end;
     }
@@ -1501,9 +1576,10 @@ CatalogsAPI_catalogsProductGroupsUpdate(apiClient_t *apiClient, char *product_gr
     cJSON *localVarSingleItemJSON_catalogs_product_groups_update_request = NULL;
     if (catalogs_product_groups_update_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_catalogs_product_groups_update_request = catalogs_product_groups_update_request_convertToJSON(catalogs_product_groups_update_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_catalogs_product_groups_update_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -1515,6 +1591,7 @@ CatalogsAPI_catalogsProductGroupsUpdate(apiClient_t *apiClient, char *product_gr
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "PATCH");
 
     // uncomment below to debug the error response
@@ -1546,11 +1623,14 @@ CatalogsAPI_catalogsProductGroupsUpdate(apiClient_t *apiClient, char *product_gr
     //    printf("%s\n","Unexpected error.");
     //}
     //nonprimitive not container
-    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    catalogs_vertical_product_group_t *elementToReturn = catalogs_vertical_product_group_parseFromJSON(CatalogsAPIlocalVarJSON);
-    cJSON_Delete(CatalogsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    catalogs_vertical_product_group_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = catalogs_vertical_product_group_parseFromJSON(CatalogsAPIlocalVarJSON);
+        cJSON_Delete(CatalogsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1603,15 +1683,20 @@ CatalogsAPI_feedProcessingResultsList(apiClient_t *apiClient, char *feed_id, cha
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/catalogs/feeds/{feed_id}/processing_results")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/catalogs/feeds/{feed_id}/processing_results");
+    char *localVarPath = strdup("/catalogs/feeds/{feed_id}/processing_results");
+
+    if(!feed_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_feed_id = strlen(feed_id)+3 + strlen("{ feed_id }");
+    long sizeOfPathParams_feed_id = strlen(feed_id)+3 + sizeof("{ feed_id }") - 1;
     if(feed_id == NULL) {
         goto end;
     }
@@ -1667,6 +1752,7 @@ CatalogsAPI_feedProcessingResultsList(apiClient_t *apiClient, char *feed_id, cha
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -1690,11 +1776,14 @@ CatalogsAPI_feedProcessingResultsList(apiClient_t *apiClient, char *feed_id, cha
     //    printf("%s\n","Unexpected error.");
     //}
     //nonprimitive not container
-    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    feed_processing_results_list_200_response_t *elementToReturn = feed_processing_results_list_200_response_parseFromJSON(CatalogsAPIlocalVarJSON);
-    cJSON_Delete(CatalogsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    feed_processing_results_list_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = feed_processing_results_list_200_response_parseFromJSON(CatalogsAPIlocalVarJSON);
+        cJSON_Delete(CatalogsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1766,11 +1855,14 @@ CatalogsAPI_feedsCreate(apiClient_t *apiClient, feeds_create_request_t *feeds_cr
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/catalogs/feeds")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/catalogs/feeds");
+    char *localVarPath = strdup("/catalogs/feeds");
+
 
 
 
@@ -1791,9 +1883,10 @@ CatalogsAPI_feedsCreate(apiClient_t *apiClient, feeds_create_request_t *feeds_cr
     cJSON *localVarSingleItemJSON_feeds_create_request = NULL;
     if (feeds_create_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_feeds_create_request = feeds_create_request_convertToJSON(feeds_create_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_feeds_create_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -1805,6 +1898,7 @@ CatalogsAPI_feedsCreate(apiClient_t *apiClient, feeds_create_request_t *feeds_cr
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -1840,11 +1934,14 @@ CatalogsAPI_feedsCreate(apiClient_t *apiClient, feeds_create_request_t *feeds_cr
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    catalogs_feed_t *elementToReturn = catalogs_feed_parseFromJSON(CatalogsAPIlocalVarJSON);
-    cJSON_Delete(CatalogsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    catalogs_feed_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = catalogs_feed_parseFromJSON(CatalogsAPIlocalVarJSON);
+        cJSON_Delete(CatalogsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -1896,15 +1993,20 @@ CatalogsAPI_feedsDelete(apiClient_t *apiClient, char *feed_id, char *ad_account_
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/catalogs/feeds/{feed_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/catalogs/feeds/{feed_id}");
+    char *localVarPath = strdup("/catalogs/feeds/{feed_id}");
+
+    if(!feed_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_feed_id = strlen(feed_id)+3 + strlen("{ feed_id }");
+    long sizeOfPathParams_feed_id = strlen(feed_id)+3 + sizeof("{ feed_id }") - 1;
     if(feed_id == NULL) {
         goto end;
     }
@@ -1935,6 +2037,7 @@ CatalogsAPI_feedsDelete(apiClient_t *apiClient, char *feed_id, char *ad_account_
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "DELETE");
 
     // uncomment below to debug the error response
@@ -2011,15 +2114,20 @@ CatalogsAPI_feedsGet(apiClient_t *apiClient, char *feed_id, char *ad_account_id)
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/catalogs/feeds/{feed_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/catalogs/feeds/{feed_id}");
+    char *localVarPath = strdup("/catalogs/feeds/{feed_id}");
+
+    if(!feed_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_feed_id = strlen(feed_id)+3 + strlen("{ feed_id }");
+    long sizeOfPathParams_feed_id = strlen(feed_id)+3 + sizeof("{ feed_id }") - 1;
     if(feed_id == NULL) {
         goto end;
     }
@@ -2050,6 +2158,7 @@ CatalogsAPI_feedsGet(apiClient_t *apiClient, char *feed_id, char *ad_account_id)
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -2073,11 +2182,14 @@ CatalogsAPI_feedsGet(apiClient_t *apiClient, char *feed_id, char *ad_account_id)
     //    printf("%s\n","Unexpected error.");
     //}
     //nonprimitive not container
-    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    catalogs_feed_t *elementToReturn = catalogs_feed_parseFromJSON(CatalogsAPIlocalVarJSON);
-    cJSON_Delete(CatalogsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    catalogs_feed_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = catalogs_feed_parseFromJSON(CatalogsAPIlocalVarJSON);
+        cJSON_Delete(CatalogsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -2125,15 +2237,20 @@ CatalogsAPI_feedsIngest(apiClient_t *apiClient, char *feed_id, char *ad_account_
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/catalogs/feeds/{feed_id}/ingest")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/catalogs/feeds/{feed_id}/ingest");
+    char *localVarPath = strdup("/catalogs/feeds/{feed_id}/ingest");
+
+    if(!feed_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_feed_id = strlen(feed_id)+3 + strlen("{ feed_id }");
+    long sizeOfPathParams_feed_id = strlen(feed_id)+3 + sizeof("{ feed_id }") - 1;
     if(feed_id == NULL) {
         goto end;
     }
@@ -2164,6 +2281,7 @@ CatalogsAPI_feedsIngest(apiClient_t *apiClient, char *feed_id, char *ad_account_
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -2187,11 +2305,14 @@ CatalogsAPI_feedsIngest(apiClient_t *apiClient, char *feed_id, char *ad_account_
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    catalogs_feed_ingestion_t *elementToReturn = catalogs_feed_ingestion_parseFromJSON(CatalogsAPIlocalVarJSON);
-    cJSON_Delete(CatalogsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    catalogs_feed_ingestion_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = catalogs_feed_ingestion_parseFromJSON(CatalogsAPIlocalVarJSON);
+        cJSON_Delete(CatalogsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -2239,11 +2360,14 @@ CatalogsAPI_feedsList(apiClient_t *apiClient, char *bookmark, int *page_size, ch
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/catalogs/feeds")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/catalogs/feeds");
+    char *localVarPath = strdup("/catalogs/feeds");
+
 
 
 
@@ -2305,6 +2429,7 @@ CatalogsAPI_feedsList(apiClient_t *apiClient, char *bookmark, int *page_size, ch
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -2324,11 +2449,14 @@ CatalogsAPI_feedsList(apiClient_t *apiClient, char *bookmark, int *page_size, ch
     //    printf("%s\n","Unexpected error.");
     //}
     //nonprimitive not container
-    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    feeds_list_200_response_t *elementToReturn = feeds_list_200_response_parseFromJSON(CatalogsAPIlocalVarJSON);
-    cJSON_Delete(CatalogsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    feeds_list_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = feeds_list_200_response_parseFromJSON(CatalogsAPIlocalVarJSON);
+        cJSON_Delete(CatalogsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -2411,15 +2539,20 @@ CatalogsAPI_feedsUpdate(apiClient_t *apiClient, char *feed_id, feeds_update_requ
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/catalogs/feeds/{feed_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/catalogs/feeds/{feed_id}");
+    char *localVarPath = strdup("/catalogs/feeds/{feed_id}");
+
+    if(!feed_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_feed_id = strlen(feed_id)+3 + strlen("{ feed_id }");
+    long sizeOfPathParams_feed_id = strlen(feed_id)+3 + sizeof("{ feed_id }") - 1;
     if(feed_id == NULL) {
         goto end;
     }
@@ -2446,9 +2579,10 @@ CatalogsAPI_feedsUpdate(apiClient_t *apiClient, char *feed_id, feeds_update_requ
     cJSON *localVarSingleItemJSON_feeds_update_request = NULL;
     if (feeds_update_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_feeds_update_request = feeds_update_request_convertToJSON(feeds_update_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_feeds_update_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -2460,6 +2594,7 @@ CatalogsAPI_feedsUpdate(apiClient_t *apiClient, char *feed_id, feeds_update_requ
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "PATCH");
 
     // uncomment below to debug the error response
@@ -2483,11 +2618,14 @@ CatalogsAPI_feedsUpdate(apiClient_t *apiClient, char *feed_id, feeds_update_requ
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    catalogs_feed_t *elementToReturn = catalogs_feed_parseFromJSON(CatalogsAPIlocalVarJSON);
-    cJSON_Delete(CatalogsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    catalogs_feed_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = catalogs_feed_parseFromJSON(CatalogsAPIlocalVarJSON);
+        cJSON_Delete(CatalogsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -2540,15 +2678,20 @@ CatalogsAPI_itemsBatchGet(apiClient_t *apiClient, char *batch_id, char *ad_accou
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/catalogs/items/batch/{batch_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/catalogs/items/batch/{batch_id}");
+    char *localVarPath = strdup("/catalogs/items/batch/{batch_id}");
+
+    if(!batch_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_batch_id = strlen(batch_id)+3 + strlen("{ batch_id }");
+    long sizeOfPathParams_batch_id = strlen(batch_id)+3 + sizeof("{ batch_id }") - 1;
     if(batch_id == NULL) {
         goto end;
     }
@@ -2579,6 +2722,7 @@ CatalogsAPI_itemsBatchGet(apiClient_t *apiClient, char *batch_id, char *ad_accou
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -2606,11 +2750,14 @@ CatalogsAPI_itemsBatchGet(apiClient_t *apiClient, char *batch_id, char *ad_accou
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    catalogs_items_batch_t *elementToReturn = catalogs_items_batch_parseFromJSON(CatalogsAPIlocalVarJSON);
-    cJSON_Delete(CatalogsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    catalogs_items_batch_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = catalogs_items_batch_parseFromJSON(CatalogsAPIlocalVarJSON);
+        cJSON_Delete(CatalogsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -2658,11 +2805,14 @@ CatalogsAPI_itemsBatchPost(apiClient_t *apiClient, items_batch_post_request_t *i
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/catalogs/items/batch")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/catalogs/items/batch");
+    char *localVarPath = strdup("/catalogs/items/batch");
+
 
 
 
@@ -2683,9 +2833,10 @@ CatalogsAPI_itemsBatchPost(apiClient_t *apiClient, items_batch_post_request_t *i
     cJSON *localVarSingleItemJSON_items_batch_post_request = NULL;
     if (items_batch_post_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_items_batch_post_request = items_batch_post_request_convertToJSON(items_batch_post_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_items_batch_post_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -2697,6 +2848,7 @@ CatalogsAPI_itemsBatchPost(apiClient_t *apiClient, items_batch_post_request_t *i
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -2720,11 +2872,14 @@ CatalogsAPI_itemsBatchPost(apiClient_t *apiClient, items_batch_post_request_t *i
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    catalogs_items_batch_t *elementToReturn = catalogs_items_batch_parseFromJSON(CatalogsAPIlocalVarJSON);
-    cJSON_Delete(CatalogsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    catalogs_items_batch_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = catalogs_items_batch_parseFromJSON(CatalogsAPIlocalVarJSON);
+        cJSON_Delete(CatalogsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -2776,11 +2931,14 @@ CatalogsAPI_itemsGet(apiClient_t *apiClient, char *country, char *language, char
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/catalogs/items")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/catalogs/items");
+    char *localVarPath = strdup("/catalogs/items");
+
 
 
 
@@ -2847,6 +3005,7 @@ CatalogsAPI_itemsGet(apiClient_t *apiClient, char *country, char *language, char
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -2870,11 +3029,14 @@ CatalogsAPI_itemsGet(apiClient_t *apiClient, char *country, char *language, char
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    catalogs_items_t *elementToReturn = catalogs_items_parseFromJSON(CatalogsAPIlocalVarJSON);
-    cJSON_Delete(CatalogsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    catalogs_items_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = catalogs_items_parseFromJSON(CatalogsAPIlocalVarJSON);
+        cJSON_Delete(CatalogsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -2953,15 +3115,20 @@ CatalogsAPI_itemsIssuesList(apiClient_t *apiClient, char *processing_result_id, 
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/catalogs/processing_results/{processing_result_id}/item_issues")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/catalogs/processing_results/{processing_result_id}/item_issues");
+    char *localVarPath = strdup("/catalogs/processing_results/{processing_result_id}/item_issues");
+
+    if(!processing_result_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_processing_result_id = strlen(processing_result_id)+3 + strlen("{ processing_result_id }");
+    long sizeOfPathParams_processing_result_id = strlen(processing_result_id)+3 + sizeof("{ processing_result_id }") - 1;
     if(processing_result_id == NULL) {
         goto end;
     }
@@ -3011,7 +3178,7 @@ CatalogsAPI_itemsIssuesList(apiClient_t *apiClient, char *processing_result_id, 
     {
         keyQuery_item_validation_issue = strdup("item_validation_issue");
         valueQuery_item_validation_issue = (item_validation_issue);
-        keyPairQuery_item_validation_issue = keyValuePair_create(keyQuery_item_validation_issue, (void *)strdup(itemsIssuesList__ToString(
+        keyPairQuery_item_validation_issue = keyValuePair_create(keyQuery_item_validation_issue, strdup(itemsIssuesList__ToString(
         &valueQuery_item_validation_issue)));
         list_addElement(localVarQueryParameters,keyPairQuery_item_validation_issue);
     }
@@ -3036,6 +3203,7 @@ CatalogsAPI_itemsIssuesList(apiClient_t *apiClient, char *processing_result_id, 
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -3059,11 +3227,14 @@ CatalogsAPI_itemsIssuesList(apiClient_t *apiClient, char *processing_result_id, 
     //    printf("%s\n","Unexpected error.");
     //}
     //nonprimitive not container
-    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    items_issues_list_200_response_t *elementToReturn = items_issues_list_200_response_parseFromJSON(CatalogsAPIlocalVarJSON);
-    cJSON_Delete(CatalogsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    items_issues_list_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = items_issues_list_200_response_parseFromJSON(CatalogsAPIlocalVarJSON);
+        cJSON_Delete(CatalogsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -3143,11 +3314,14 @@ CatalogsAPI_itemsPost(apiClient_t *apiClient, catalogs_items_request_t *catalogs
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/catalogs/items")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/catalogs/items");
+    char *localVarPath = strdup("/catalogs/items");
+
 
 
 
@@ -3168,9 +3342,10 @@ CatalogsAPI_itemsPost(apiClient_t *apiClient, catalogs_items_request_t *catalogs
     cJSON *localVarSingleItemJSON_catalogs_items_request = NULL;
     if (catalogs_items_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_catalogs_items_request = catalogs_items_request_convertToJSON(catalogs_items_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_catalogs_items_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -3182,6 +3357,7 @@ CatalogsAPI_itemsPost(apiClient_t *apiClient, catalogs_items_request_t *catalogs
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -3205,11 +3381,14 @@ CatalogsAPI_itemsPost(apiClient_t *apiClient, catalogs_items_request_t *catalogs
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    catalogs_items_t *elementToReturn = catalogs_items_parseFromJSON(CatalogsAPIlocalVarJSON);
-    cJSON_Delete(CatalogsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    catalogs_items_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = catalogs_items_parseFromJSON(CatalogsAPIlocalVarJSON);
+        cJSON_Delete(CatalogsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -3261,11 +3440,14 @@ CatalogsAPI_productsByProductGroupFilterList(apiClient_t *apiClient, catalogs_li
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/catalogs/products/get_by_product_group_filters")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/catalogs/products/get_by_product_group_filters");
+    char *localVarPath = strdup("/catalogs/products/get_by_product_group_filters");
+
 
 
 
@@ -3324,9 +3506,10 @@ CatalogsAPI_productsByProductGroupFilterList(apiClient_t *apiClient, catalogs_li
     cJSON *localVarSingleItemJSON_catalogs_list_products_by_filter_request = NULL;
     if (catalogs_list_products_by_filter_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_catalogs_list_products_by_filter_request = catalogs_list_products_by_filter_request_convertToJSON(catalogs_list_products_by_filter_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_catalogs_list_products_by_filter_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -3338,6 +3521,7 @@ CatalogsAPI_productsByProductGroupFilterList(apiClient_t *apiClient, catalogs_li
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -3357,11 +3541,14 @@ CatalogsAPI_productsByProductGroupFilterList(apiClient_t *apiClient, catalogs_li
     //    printf("%s\n","Unexpected error.");
     //}
     //nonprimitive not container
-    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    catalogs_product_group_pins_list_200_response_t *elementToReturn = catalogs_product_group_pins_list_200_response_parseFromJSON(CatalogsAPIlocalVarJSON);
-    cJSON_Delete(CatalogsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    catalogs_product_group_pins_list_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = catalogs_product_group_pins_list_200_response_parseFromJSON(CatalogsAPIlocalVarJSON);
+        cJSON_Delete(CatalogsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -3449,11 +3636,14 @@ CatalogsAPI_reportsCreate(apiClient_t *apiClient, catalogs_report_parameters_t *
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/catalogs/reports")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/catalogs/reports");
+    char *localVarPath = strdup("/catalogs/reports");
+
 
 
 
@@ -3474,9 +3664,10 @@ CatalogsAPI_reportsCreate(apiClient_t *apiClient, catalogs_report_parameters_t *
     cJSON *localVarSingleItemJSON_catalogs_report_parameters = NULL;
     if (catalogs_report_parameters != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_catalogs_report_parameters = catalogs_report_parameters_convertToJSON(catalogs_report_parameters);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_catalogs_report_parameters);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -3488,6 +3679,7 @@ CatalogsAPI_reportsCreate(apiClient_t *apiClient, catalogs_report_parameters_t *
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -3507,11 +3699,14 @@ CatalogsAPI_reportsCreate(apiClient_t *apiClient, catalogs_report_parameters_t *
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    catalogs_create_report_response_t *elementToReturn = catalogs_create_report_response_parseFromJSON(CatalogsAPIlocalVarJSON);
-    cJSON_Delete(CatalogsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    catalogs_create_report_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = catalogs_create_report_response_parseFromJSON(CatalogsAPIlocalVarJSON);
+        cJSON_Delete(CatalogsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -3563,11 +3758,14 @@ CatalogsAPI_reportsGet(apiClient_t *apiClient, char *token, char *ad_account_id)
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/catalogs/reports")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/catalogs/reports");
+    char *localVarPath = strdup("/catalogs/reports");
+
 
 
 
@@ -3604,6 +3802,7 @@ CatalogsAPI_reportsGet(apiClient_t *apiClient, char *token, char *ad_account_id)
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -3623,11 +3822,14 @@ CatalogsAPI_reportsGet(apiClient_t *apiClient, char *token, char *ad_account_id)
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    catalogs_report_t *elementToReturn = catalogs_report_parseFromJSON(CatalogsAPIlocalVarJSON);
-    cJSON_Delete(CatalogsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    catalogs_report_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = catalogs_report_parseFromJSON(CatalogsAPIlocalVarJSON);
+        cJSON_Delete(CatalogsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -3686,11 +3888,14 @@ CatalogsAPI_reportsStats(apiClient_t *apiClient, catalogs_report_parameters_t *p
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/catalogs/reports/stats")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/catalogs/reports/stats");
+    char *localVarPath = strdup("/catalogs/reports/stats");
+
 
 
 
@@ -3752,6 +3957,7 @@ CatalogsAPI_reportsStats(apiClient_t *apiClient, catalogs_report_parameters_t *p
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -3767,11 +3973,14 @@ CatalogsAPI_reportsStats(apiClient_t *apiClient, catalogs_report_parameters_t *p
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    reports_stats_200_response_t *elementToReturn = reports_stats_200_response_parseFromJSON(CatalogsAPIlocalVarJSON);
-    cJSON_Delete(CatalogsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    reports_stats_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = reports_stats_200_response_parseFromJSON(CatalogsAPIlocalVarJSON);
+        cJSON_Delete(CatalogsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type

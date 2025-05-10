@@ -15,18 +15,31 @@
 export type AdsAnalyticsTargetingType = 'KEYWORD' | 'APPTYPE' | 'GENDER' | 'LOCATION' | 'PLACEMENT' | 'COUNTRY' | 'TARGETED_INTEREST' | 'PINNER_INTEREST' | 'AUDIENCE_INCLUDE' | 'GEO' | 'AGE_BUCKET' | 'REGION' | 'AGE_BUCKET_AND_GENDER';
 
 export const AdsAnalyticsTargetingType = {
+
     Keyword: 'KEYWORD' as AdsAnalyticsTargetingType,
+
     Apptype: 'APPTYPE' as AdsAnalyticsTargetingType,
+
     Gender: 'GENDER' as AdsAnalyticsTargetingType,
+
     Location: 'LOCATION' as AdsAnalyticsTargetingType,
+
     Placement: 'PLACEMENT' as AdsAnalyticsTargetingType,
+
     Country: 'COUNTRY' as AdsAnalyticsTargetingType,
+
     TargetedInterest: 'TARGETED_INTEREST' as AdsAnalyticsTargetingType,
+
     PinnerInterest: 'PINNER_INTEREST' as AdsAnalyticsTargetingType,
+
     AudienceInclude: 'AUDIENCE_INCLUDE' as AdsAnalyticsTargetingType,
+
     Geo: 'GEO' as AdsAnalyticsTargetingType,
+
     AgeBucket: 'AGE_BUCKET' as AdsAnalyticsTargetingType,
+
     Region: 'REGION' as AdsAnalyticsTargetingType,
+
     AgeBucketAndGender: 'AGE_BUCKET_AND_GENDER' as AdsAnalyticsTargetingType
 };
 

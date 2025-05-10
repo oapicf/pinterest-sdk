@@ -12,11 +12,13 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param username 
  */
+@Serializable
 data class BoardOwner(
     val username: kotlin.String? = null
-) 
+)
 

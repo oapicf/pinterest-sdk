@@ -48,16 +48,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdAccountCreateSubscriptionRequestPartnerMetadata {
   public static final String SERIALIZED_NAME_SUBSCRIBER_KEY = "subscriber_key";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBER_KEY)
+  @javax.annotation.Nullable
   private String subscriberKey;
 
   public AdAccountCreateSubscriptionRequestPartnerMetadata() {
   }
 
-  public AdAccountCreateSubscriptionRequestPartnerMetadata subscriberKey(String subscriberKey) {
+  public AdAccountCreateSubscriptionRequestPartnerMetadata subscriberKey(@javax.annotation.Nullable String subscriberKey) {
     this.subscriberKey = subscriberKey;
     return this;
   }
@@ -71,7 +72,7 @@ public class AdAccountCreateSubscriptionRequestPartnerMetadata {
     return subscriberKey;
   }
 
-  public void setSubscriberKey(String subscriberKey) {
+  public void setSubscriberKey(@javax.annotation.Nullable String subscriberKey) {
     this.subscriberKey = subscriberKey;
   }
 

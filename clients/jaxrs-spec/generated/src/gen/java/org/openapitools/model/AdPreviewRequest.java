@@ -17,11 +17,25 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdPreviewRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdPreviewRequest   {
   private String imageUrl;
   private String title;
   private String pinId;
+
+  public AdPreviewRequest() {
+  }
+
+  @JsonCreator
+  public AdPreviewRequest(
+    @JsonProperty(required = true, value = "image_url") String imageUrl,
+    @JsonProperty(required = true, value = "title") String title,
+    @JsonProperty(required = true, value = "pin_id") String pinId
+  ) {
+    this.imageUrl = imageUrl;
+    this.title = title;
+    this.pinId = pinId;
+  }
 
   /**
    * Image URL.
@@ -33,12 +47,12 @@ public class AdPreviewRequest   {
 
   
   @ApiModelProperty(example = "https://somewebsite.com/someimage.jpg", required = true, value = "Image URL.")
-  @JsonProperty("image_url")
+  @JsonProperty(required = true, value = "image_url")
   @NotNull public String getImageUrl() {
     return imageUrl;
   }
 
-  @JsonProperty("image_url")
+  @JsonProperty(required = true, value = "image_url")
   public void setImageUrl(String imageUrl) {
     this.imageUrl = imageUrl;
   }
@@ -53,12 +67,12 @@ public class AdPreviewRequest   {
 
   
   @ApiModelProperty(example = "My Preview Image", required = true, value = "Title displayed below ad.")
-  @JsonProperty("title")
+  @JsonProperty(required = true, value = "title")
   @NotNull public String getTitle() {
     return title;
   }
 
-  @JsonProperty("title")
+  @JsonProperty(required = true, value = "title")
   public void setTitle(String title) {
     this.title = title;
   }
@@ -73,12 +87,12 @@ public class AdPreviewRequest   {
 
   
   @ApiModelProperty(example = "7389479023", required = true, value = "Pin ID.")
-  @JsonProperty("pin_id")
+  @JsonProperty(required = true, value = "pin_id")
   @NotNull public String getPinId() {
     return pinId;
   }
 
-  @JsonProperty("pin_id")
+  @JsonProperty(required = true, value = "pin_id")
   public void setPinId(String pinId) {
     this.pinId = pinId;
   }

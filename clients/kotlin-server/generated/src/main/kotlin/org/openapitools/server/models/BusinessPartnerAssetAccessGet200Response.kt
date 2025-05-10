@@ -13,14 +13,16 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.GetPartnerAssetsResponse
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param items List assets on which you granted access to your partner or assets on which your partner has granted you access.
  * @param bookmark 
  */
+@Serializable
 data class BusinessPartnerAssetAccessGet200Response(
     /* List assets on which you granted access to your partner or assets on which your partner has granted you access. */
     val items: kotlin.collections.List<GetPartnerAssetsResponse>,
     val bookmark: kotlin.String? = null
-) 
+)
 

@@ -49,16 +49,17 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ProductType3Filter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class ProductType3Filter {
   public static final String SERIALIZED_NAME_P_R_O_D_U_C_T_T_Y_P_E3 = "PRODUCT_TYPE_3";
   @SerializedName(SERIALIZED_NAME_P_R_O_D_U_C_T_T_Y_P_E3)
+  @javax.annotation.Nonnull
   private CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_3;
 
   public ProductType3Filter() {
   }
 
-  public ProductType3Filter PRODUCT_TYPE_3(CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_3) {
+  public ProductType3Filter PRODUCT_TYPE_3(@javax.annotation.Nonnull CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_3) {
     this.PRODUCT_TYPE_3 = PRODUCT_TYPE_3;
     return this;
   }
@@ -72,7 +73,7 @@ public class ProductType3Filter {
     return PRODUCT_TYPE_3;
   }
 
-  public void setPRODUCTTYPE3(CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_3) {
+  public void setPRODUCTTYPE3(@javax.annotation.Nonnull CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_3) {
     this.PRODUCT_TYPE_3 = PRODUCT_TYPE_3;
   }
 

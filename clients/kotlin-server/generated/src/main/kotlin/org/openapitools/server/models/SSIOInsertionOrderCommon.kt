@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param startDate Starting date of time period. Format: YYYY-MM-DD
@@ -27,6 +28,7 @@ package org.openapitools.server.models
  * @param agencyLink URL link for agency
  * @param userEmail The email of user submitting the insertion order
  */
+@Serializable
 data class SSIOInsertionOrderCommon(
     /* Starting date of time period. Format: YYYY-MM-DD */
     val startDate: kotlin.String? = null,
@@ -52,5 +54,5 @@ data class SSIOInsertionOrderCommon(
     val agencyLink: kotlin.String? = null,
     /* The email of user submitting the insertion order */
     val userEmail: kotlin.String? = null
-) 
+)
 

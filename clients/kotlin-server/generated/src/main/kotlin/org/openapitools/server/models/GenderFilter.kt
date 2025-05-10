@@ -13,11 +13,13 @@ package org.openapitools.server.models
 
 import org.openapitools.server.models.CatalogsProductGroupMultipleGenderCriteria
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param GENDER 
  */
+@Serializable
 data class GenderFilter(
     val GENDER: CatalogsProductGroupMultipleGenderCriteria
-) 
+)
 

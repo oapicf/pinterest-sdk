@@ -107,11 +107,11 @@ export function CatalogsFeedIngestionErrorsFromJSONTyped(json: any, ignoreDiscri
     };
 }
 
-  export function CatalogsFeedIngestionErrorsToJSON(json: any): CatalogsFeedIngestionErrors {
-      return CatalogsFeedIngestionErrorsToJSONTyped(json, false);
-  }
+export function CatalogsFeedIngestionErrorsToJSON(json: any): CatalogsFeedIngestionErrors {
+    return CatalogsFeedIngestionErrorsToJSONTyped(json, false);
+}
 
-  export function CatalogsFeedIngestionErrorsToJSONTyped(value?: CatalogsFeedIngestionErrors | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsFeedIngestionErrorsToJSONTyped(value?: CatalogsFeedIngestionErrors | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

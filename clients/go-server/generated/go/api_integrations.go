@@ -92,7 +92,7 @@ func (c *IntegrationsAPIController) Routes() Routes {
 
 // IntegrationsCommercePost - Create commerce integration
 func (c *IntegrationsAPIController) IntegrationsCommercePost(w http.ResponseWriter, r *http.Request) {
-	integrationRequestParam := IntegrationRequest{}
+	var integrationRequestParam IntegrationRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&integrationRequestParam); err != nil && !errors.Is(err, io.EOF) {
@@ -161,7 +161,7 @@ func (c *IntegrationsAPIController) IntegrationsCommercePatch(w http.ResponseWri
 		c.errorHandler(w, r, &RequiredError{"external_business_id"}, nil)
 		return
 	}
-	integrationRequestPatchParam := IntegrationRequestPatch{}
+	var integrationRequestPatchParam IntegrationRequestPatch
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&integrationRequestPatchParam); err != nil && !errors.Is(err, io.EOF) {
@@ -188,7 +188,7 @@ func (c *IntegrationsAPIController) IntegrationsCommercePatch(w http.ResponseWri
 
 // IntegrationsLogsPost - Receives batched logs from integration applications.
 func (c *IntegrationsAPIController) IntegrationsLogsPost(w http.ResponseWriter, r *http.Request) {
-	integrationLogsRequestParam := IntegrationLogsRequest{}
+	var integrationLogsRequestParam IntegrationLogsRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&integrationLogsRequestParam); err != nil {

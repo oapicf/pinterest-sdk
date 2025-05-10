@@ -5,7 +5,7 @@
 
 
 
-summary_pin_t *summary_pin_create(
+static summary_pin_t *summary_pin_create_internal(
     pin_media_t *media,
     char *alt_text,
     char *link,
@@ -22,12 +22,32 @@ summary_pin_t *summary_pin_create(
     summary_pin_local_var->title = title;
     summary_pin_local_var->description = description;
 
+    summary_pin_local_var->_library_owned = 1;
     return summary_pin_local_var;
 }
 
+__attribute__((deprecated)) summary_pin_t *summary_pin_create(
+    pin_media_t *media,
+    char *alt_text,
+    char *link,
+    char *title,
+    char *description
+    ) {
+    return summary_pin_create_internal (
+        media,
+        alt_text,
+        link,
+        title,
+        description
+        );
+}
 
 void summary_pin_free(summary_pin_t *summary_pin) {
     if(NULL == summary_pin){
+        return ;
+    }
+    if(summary_pin->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "summary_pin_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -118,12 +138,18 @@ summary_pin_t *summary_pin_parseFromJSON(cJSON *summary_pinJSON){
 
     // summary_pin->media
     cJSON *media = cJSON_GetObjectItemCaseSensitive(summary_pinJSON, "media");
+    if (cJSON_IsNull(media)) {
+        media = NULL;
+    }
     if (media) { 
     media_local_nonprim = pin_media_parseFromJSON(media); //nonprimitive
     }
 
     // summary_pin->alt_text
     cJSON *alt_text = cJSON_GetObjectItemCaseSensitive(summary_pinJSON, "alt_text");
+    if (cJSON_IsNull(alt_text)) {
+        alt_text = NULL;
+    }
     if (alt_text) { 
     if(!cJSON_IsString(alt_text) && !cJSON_IsNull(alt_text))
     {
@@ -133,6 +159,9 @@ summary_pin_t *summary_pin_parseFromJSON(cJSON *summary_pinJSON){
 
     // summary_pin->link
     cJSON *link = cJSON_GetObjectItemCaseSensitive(summary_pinJSON, "link");
+    if (cJSON_IsNull(link)) {
+        link = NULL;
+    }
     if (link) { 
     if(!cJSON_IsString(link) && !cJSON_IsNull(link))
     {
@@ -142,6 +171,9 @@ summary_pin_t *summary_pin_parseFromJSON(cJSON *summary_pinJSON){
 
     // summary_pin->title
     cJSON *title = cJSON_GetObjectItemCaseSensitive(summary_pinJSON, "title");
+    if (cJSON_IsNull(title)) {
+        title = NULL;
+    }
     if (title) { 
     if(!cJSON_IsString(title) && !cJSON_IsNull(title))
     {
@@ -151,6 +183,9 @@ summary_pin_t *summary_pin_parseFromJSON(cJSON *summary_pinJSON){
 
     // summary_pin->description
     cJSON *description = cJSON_GetObjectItemCaseSensitive(summary_pinJSON, "description");
+    if (cJSON_IsNull(description)) {
+        description = NULL;
+    }
     if (description) { 
     if(!cJSON_IsString(description) && !cJSON_IsNull(description))
     {
@@ -159,7 +194,7 @@ summary_pin_t *summary_pin_parseFromJSON(cJSON *summary_pinJSON){
     }
 
 
-    summary_pin_local_var = summary_pin_create (
+    summary_pin_local_var = summary_pin_create_internal (
         media ? media_local_nonprim : NULL,
         alt_text && !cJSON_IsNull(alt_text) ? strdup(alt_text->valuestring) : NULL,
         link && !cJSON_IsNull(link) ? strdup(link->valuestring) : NULL,

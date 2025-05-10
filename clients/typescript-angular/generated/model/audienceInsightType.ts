@@ -12,8 +12,11 @@
 export type AudienceInsightType = 'YOUR_TOTAL_AUDIENCE' | 'YOUR_ENGAGED_AUDIENCE' | 'PINTEREST_TOTAL_AUDIENCE';
 
 export const AudienceInsightType = {
+
     YourTotalAudience: 'YOUR_TOTAL_AUDIENCE' as AudienceInsightType,
+
     YourEngagedAudience: 'YOUR_ENGAGED_AUDIENCE' as AudienceInsightType,
+
     PinterestTotalAudience: 'PINTEREST_TOTAL_AUDIENCE' as AudienceInsightType
 };
 

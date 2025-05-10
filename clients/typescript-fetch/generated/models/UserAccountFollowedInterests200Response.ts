@@ -64,11 +64,11 @@ export function UserAccountFollowedInterests200ResponseFromJSONTyped(json: any, 
     };
 }
 
-  export function UserAccountFollowedInterests200ResponseToJSON(json: any): UserAccountFollowedInterests200Response {
-      return UserAccountFollowedInterests200ResponseToJSONTyped(json, false);
-  }
+export function UserAccountFollowedInterests200ResponseToJSON(json: any): UserAccountFollowedInterests200Response {
+    return UserAccountFollowedInterests200ResponseToJSONTyped(json, false);
+}
 
-  export function UserAccountFollowedInterests200ResponseToJSONTyped(value?: UserAccountFollowedInterests200Response | null, ignoreDiscriminator: boolean = false): any {
+export function UserAccountFollowedInterests200ResponseToJSONTyped(value?: UserAccountFollowedInterests200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

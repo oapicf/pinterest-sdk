@@ -429,13 +429,13 @@ AdsAnalyticsCreateAsyncRequest['PrimarySortEnum'] = {
      * value: "BY_ID"
      * @const
      */
-    "ID": "BY_ID",
+    "BY_ID": "BY_ID",
 
     /**
      * value: "BY_DATE"
      * @const
      */
-    "DATE": "BY_DATE"
+    "BY_DATE": "BY_DATE"
 };
 
 

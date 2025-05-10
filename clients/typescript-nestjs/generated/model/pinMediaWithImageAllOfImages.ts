@@ -12,9 +12,9 @@
 
 
 export interface PinMediaWithImageAllOfImages { 
-    _150x150?: object;
-    _400x300?: object;
-    _600x?: object;
-    _1200x?: object;
+    '150x150'?: object;
+    '400x300'?: object;
+    '600x'?: object;
+    '1200x'?: object;
 }
 

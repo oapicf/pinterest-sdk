@@ -22,9 +22,10 @@ typedef struct update_partner_asset_access_body_t update_partner_asset_access_bo
 typedef struct update_partner_asset_access_body_t {
     list_t *accesses; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } update_partner_asset_access_body_t;
 
-update_partner_asset_access_body_t *update_partner_asset_access_body_create(
+__attribute__((deprecated)) update_partner_asset_access_body_t *update_partner_asset_access_body_create(
     list_t *accesses
 );
 

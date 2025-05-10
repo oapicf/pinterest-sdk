@@ -15,6 +15,7 @@ import org.openapitools.server.models.EntityStatus
 import org.openapitools.server.models.ObjectiveType
 import org.openapitools.server.models.TrackingUrls
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param id Campaign ID.
@@ -33,6 +34,7 @@ import org.openapitools.server.models.TrackingUrls
  * @param isCampaignBudgetOptimization Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
  * @param objectiveType 
  */
+@Serializable
 data class CampaignUpdateRequest(
     /* Campaign ID. */
     val id: kotlin.String,
@@ -61,5 +63,5 @@ data class CampaignUpdateRequest(
     /* Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared. */
     val isCampaignBudgetOptimization: kotlin.Boolean? = null,
     val objectiveType: ObjectiveType? = null
-) 
+)
 

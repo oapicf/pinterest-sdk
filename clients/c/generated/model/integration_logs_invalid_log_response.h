@@ -22,9 +22,10 @@ typedef struct integration_logs_invalid_log_response_t integration_logs_invalid_
 typedef struct integration_logs_invalid_log_response_t {
     list_t *rejected_logs; //nonprimitive container
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } integration_logs_invalid_log_response_t;
 
-integration_logs_invalid_log_response_t *integration_logs_invalid_log_response_create(
+__attribute__((deprecated)) integration_logs_invalid_log_response_t *integration_logs_invalid_log_response_create(
     list_t *rejected_logs
 );
 

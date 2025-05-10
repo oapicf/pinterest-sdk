@@ -24,9 +24,9 @@ char* media_type_media_type_ToString(pinterest_rest_api_media_type__e media_type
 
 pinterest_rest_api_media_type__e media_type_media_type_FromString(char* media_type);
 
-//cJSON *media_type_media_type_convertToJSON(pinterest_rest_api_media_type__e media_type);
+cJSON *media_type_convertToJSON(pinterest_rest_api_media_type__e media_type);
 
-//pinterest_rest_api_media_type__e media_type_media_type_parseFromJSON(cJSON *media_typeJSON);
+pinterest_rest_api_media_type__e media_type_parseFromJSON(cJSON *media_typeJSON);
 
 #endif /* _media_type_H_ */
 

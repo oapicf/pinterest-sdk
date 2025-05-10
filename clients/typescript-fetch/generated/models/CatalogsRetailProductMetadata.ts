@@ -106,11 +106,11 @@ export function CatalogsRetailProductMetadataFromJSONTyped(json: any, ignoreDisc
     };
 }
 
-  export function CatalogsRetailProductMetadataToJSON(json: any): CatalogsRetailProductMetadata {
-      return CatalogsRetailProductMetadataToJSONTyped(json, false);
-  }
+export function CatalogsRetailProductMetadataToJSON(json: any): CatalogsRetailProductMetadata {
+    return CatalogsRetailProductMetadataToJSONTyped(json, false);
+}
 
-  export function CatalogsRetailProductMetadataToJSONTyped(value?: CatalogsRetailProductMetadata | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsRetailProductMetadataToJSONTyped(value?: CatalogsRetailProductMetadata | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

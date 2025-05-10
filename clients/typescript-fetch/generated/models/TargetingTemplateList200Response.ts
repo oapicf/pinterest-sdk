@@ -64,11 +64,11 @@ export function TargetingTemplateList200ResponseFromJSONTyped(json: any, ignoreD
     };
 }
 
-  export function TargetingTemplateList200ResponseToJSON(json: any): TargetingTemplateList200Response {
-      return TargetingTemplateList200ResponseToJSONTyped(json, false);
-  }
+export function TargetingTemplateList200ResponseToJSON(json: any): TargetingTemplateList200Response {
+    return TargetingTemplateList200ResponseToJSONTyped(json, false);
+}
 
-  export function TargetingTemplateList200ResponseToJSONTyped(value?: TargetingTemplateList200Response | null, ignoreDiscriminator: boolean = false): any {
+export function TargetingTemplateList200ResponseToJSONTyped(value?: TargetingTemplateList200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

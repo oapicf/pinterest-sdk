@@ -19,30 +19,6 @@ typedef struct product_group_promotion_response_element_t product_group_promotio
 #include "entity_status.h"
 #include "grid_click_type.h"
 
-// Enum  for product_group_promotion_response_element
-
-typedef enum  { pinterest_rest_api_product_group_promotion_response_element__NULL = 0, pinterest_rest_api_product_group_promotion_response_element__ACTIVE, pinterest_rest_api_product_group_promotion_response_element__PAUSED, pinterest_rest_api_product_group_promotion_response_element__ARCHIVED, pinterest_rest_api_product_group_promotion_response_element__DRAFT, pinterest_rest_api_product_group_promotion_response_element__DELETED_DRAFT } pinterest_rest_api_product_group_promotion_response_element__e;
-
-char* product_group_promotion_response_element_status_ToString(pinterest_rest_api_product_group_promotion_response_element__e status);
-
-pinterest_rest_api_product_group_promotion_response_element__e product_group_promotion_response_element_status_FromString(char* status);
-
-// Enum  for product_group_promotion_response_element
-
-typedef enum  { pinterest_rest_api_product_group_promotion_response_element__NULL = 0, pinterest_rest_api_product_group_promotion_response_element__CLOSEUP, pinterest_rest_api_product_group_promotion_response_element__DIRECT_TO_DESTINATION } pinterest_rest_api_product_group_promotion_response_element__e;
-
-char* product_group_promotion_response_element_grid_click_type_ToString(pinterest_rest_api_product_group_promotion_response_element__e grid_click_type);
-
-pinterest_rest_api_product_group_promotion_response_element__e product_group_promotion_response_element_grid_click_type_FromString(char* grid_click_type);
-
-// Enum  for product_group_promotion_response_element
-
-typedef enum  { pinterest_rest_api_product_group_promotion_response_element__NULL = 0, pinterest_rest_api_product_group_promotion_response_element__REGULAR, pinterest_rest_api_product_group_promotion_response_element__VIDEO, pinterest_rest_api_product_group_promotion_response_element__SHOPPING, pinterest_rest_api_product_group_promotion_response_element__CAROUSEL, pinterest_rest_api_product_group_promotion_response_element__MAX_VIDEO, pinterest_rest_api_product_group_promotion_response_element__SHOP_THE_PIN, pinterest_rest_api_product_group_promotion_response_element__COLLECTION, pinterest_rest_api_product_group_promotion_response_element__IDEA, pinterest_rest_api_product_group_promotion_response_element__SHOWCASE, pinterest_rest_api_product_group_promotion_response_element__QUIZ } pinterest_rest_api_product_group_promotion_response_element__e;
-
-char* product_group_promotion_response_element_creative_type_ToString(pinterest_rest_api_product_group_promotion_response_element__e creative_type);
-
-pinterest_rest_api_product_group_promotion_response_element__e product_group_promotion_response_element_creative_type_FromString(char* creative_type);
-
 
 
 typedef struct product_group_promotion_response_element_t {
@@ -56,18 +32,19 @@ typedef struct product_group_promotion_response_element_t {
     char *slideshow_collections_title; // string
     char *slideshow_collections_description; // string
     int is_mdl; //boolean
-    entity_status_t *status; // custom
+    pinterest_rest_api_entity_status__e status; //referenced enum
     char *tracking_url; // string
     char *catalog_product_group_id; // string
     char *catalog_product_group_name; // string
     char *collections_hero_pin_id; // string
     char *collections_hero_destination_url; // string
-    grid_click_type_t *grid_click_type; // custom
-    creative_type_t *creative_type; // custom
+    pinterest_rest_api_grid_click_type__e grid_click_type; //referenced enum
+    pinterest_rest_api_creative_type__e creative_type; //referenced enum
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } product_group_promotion_response_element_t;
 
-product_group_promotion_response_element_t *product_group_promotion_response_element_create(
+__attribute__((deprecated)) product_group_promotion_response_element_t *product_group_promotion_response_element_create(
     char *id,
     char *ad_group_id,
     int bid_in_micro_currency,
@@ -78,14 +55,14 @@ product_group_promotion_response_element_t *product_group_promotion_response_ele
     char *slideshow_collections_title,
     char *slideshow_collections_description,
     int is_mdl,
-    entity_status_t *status,
+    pinterest_rest_api_entity_status__e status,
     char *tracking_url,
     char *catalog_product_group_id,
     char *catalog_product_group_name,
     char *collections_hero_pin_id,
     char *collections_hero_destination_url,
-    grid_click_type_t *grid_click_type,
-    creative_type_t *creative_type
+    pinterest_rest_api_grid_click_type__e grid_click_type,
+    pinterest_rest_api_creative_type__e creative_type
 );
 
 void product_group_promotion_response_element_free(product_group_promotion_response_element_t *product_group_promotion_response_element);

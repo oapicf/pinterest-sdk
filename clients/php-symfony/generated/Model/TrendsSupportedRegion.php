@@ -42,24 +42,24 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum TrendsSupportedRegion: string
 {
-        case US = "US";
-        case CA = "CA";
-        case DE = "DE";
-        case FR = "FR";
-        case ES = "ES";
-        case IT = "IT";
-        case DEATCH = "DE+AT+CH";
-        case GBIE = "GB+IE";
-        case ITESPTGRMT = "IT+ES+PT+GR+MT";
-        case PLROHUSKCZ = "PL+RO+HU+SK+CZ";
-        case SEDKFINO = "SE+DK+FI+NO";
-        case NLBELU = "NL+BE+LU";
-        case AR = "AR";
-        case BR = "BR";
-        case CO = "CO";
-        case MX = "MX";
-        case MXARCOCL = "MX+AR+CO+CL";
-        case AUNZ = "AU+NZ";
+        case US = 'US';
+        case CA = 'CA';
+        case DE = 'DE';
+        case FR = 'FR';
+        case ES = 'ES';
+        case IT = 'IT';
+        case DEATCH = 'DE+AT+CH';
+        case GBIE = 'GB+IE';
+        case ITESPTGRMT = 'IT+ES+PT+GR+MT';
+        case PLROHUSKCZ = 'PL+RO+HU+SK+CZ';
+        case SEDKFINO = 'SE+DK+FI+NO';
+        case NLBELU = 'NL+BE+LU';
+        case AR = 'AR';
+        case BR = 'BR';
+        case CO = 'CO';
+        case MX = 'MX';
+        case MXARCOCL = 'MX+AR+CO+CL';
+        case AUNZ = 'AU+NZ';
 }
 
 

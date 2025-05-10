@@ -9676,16 +9676,16 @@ namespace Org.OpenAPITools.Models
         {
             
             /// <summary>
-            /// Enum ADACTIONEnum for TIME_OF_AD_ACTION
+            /// Enum TIMEOFADACTIONEnum for TIME_OF_AD_ACTION
             /// </summary>
             [EnumMember(Value = "TIME_OF_AD_ACTION")]
-            ADACTIONEnum = 1,
+            TIMEOFADACTIONEnum = 1,
             
             /// <summary>
-            /// Enum CONVERSIONEnum for TIME_OF_CONVERSION
+            /// Enum TIMEOFCONVERSIONEnum for TIME_OF_CONVERSION
             /// </summary>
             [EnumMember(Value = "TIME_OF_CONVERSION")]
-            CONVERSIONEnum = 2
+            TIMEOFCONVERSIONEnum = 2
         }
 
         /// <summary>
@@ -9731,22 +9731,22 @@ namespace Org.OpenAPITools.Models
         {
             
             /// <summary>
-            /// Enum APIEnum for ADS_API
+            /// Enum ADSAPIEnum for ADS_API
             /// </summary>
             [EnumMember(Value = "ADS_API")]
-            APIEnum = 1,
+            ADSAPIEnum = 1,
             
             /// <summary>
-            /// Enum MANAGERREPORTINGPAGEEnum for ADS_MANAGER_REPORTING_PAGE
+            /// Enum ADSMANAGERREPORTINGPAGEEnum for ADS_MANAGER_REPORTING_PAGE
             /// </summary>
             [EnumMember(Value = "ADS_MANAGER_REPORTING_PAGE")]
-            MANAGERREPORTINGPAGEEnum = 2,
+            ADSMANAGERREPORTINGPAGEEnum = 2,
             
             /// <summary>
-            /// Enum MANAGERREPORTBUILDEREnum for ADS_MANAGER_REPORT_BUILDER
+            /// Enum ADSMANAGERREPORTBUILDEREnum for ADS_MANAGER_REPORT_BUILDER
             /// </summary>
             [EnumMember(Value = "ADS_MANAGER_REPORT_BUILDER")]
-            MANAGERREPORTBUILDEREnum = 3
+            ADSMANAGERREPORTBUILDEREnum = 3
         }
 
         /// <summary>

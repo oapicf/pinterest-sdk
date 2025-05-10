@@ -24,14 +24,6 @@ typedef struct ad_group_update_request_t ad_group_update_request_t;
 #include "targeting_spec.h"
 #include "tracking_urls.h"
 
-// Enum  for ad_group_update_request
-
-typedef enum  { pinterest_rest_api_ad_group_update_request__NULL = 0, pinterest_rest_api_ad_group_update_request__CLICKTHROUGH, pinterest_rest_api_ad_group_update_request__IMPRESSION, pinterest_rest_api_ad_group_update_request__VIDEO_V_50_MRC } pinterest_rest_api_ad_group_update_request__e;
-
-char* ad_group_update_request_billable_event_ToString(pinterest_rest_api_ad_group_update_request__e billable_event);
-
-pinterest_rest_api_ad_group_update_request__e ad_group_update_request_billable_event_FromString(char* billable_event);
-
 // Enum BIDSTRATEGYTYPE for ad_group_update_request
 
 typedef enum  { pinterest_rest_api_ad_group_update_request_BIDSTRATEGYTYPE_NULL = 0, pinterest_rest_api_ad_group_update_request_BIDSTRATEGYTYPE_AUTOMATIC_BID, pinterest_rest_api_ad_group_update_request_BIDSTRATEGYTYPE_MAX_BID, pinterest_rest_api_ad_group_update_request_BIDSTRATEGYTYPE_TARGET_AVG } pinterest_rest_api_ad_group_update_request_BIDSTRATEGYTYPE_e;
@@ -58,14 +50,15 @@ typedef struct ad_group_update_request_t {
     placement_group_type_t *placement_group; // custom
     pacing_delivery_type_t *pacing_delivery_type; // custom
     char *campaign_id; // string
-    action_type_t *billable_event; // custom
+    pinterest_rest_api_action_type__e billable_event; //referenced enum
     pinterest_rest_api_ad_group_update_request_BIDSTRATEGYTYPE_e bid_strategy_type; //enum
     list_t *targeting_template_ids; //primitive container
     char *id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } ad_group_update_request_t;
 
-ad_group_update_request_t *ad_group_update_request_create(
+__attribute__((deprecated)) ad_group_update_request_t *ad_group_update_request_create(
     char *name,
     entity_status_t *status,
     int budget_in_micro_currency,
@@ -81,7 +74,7 @@ ad_group_update_request_t *ad_group_update_request_create(
     placement_group_type_t *placement_group,
     pacing_delivery_type_t *pacing_delivery_type,
     char *campaign_id,
-    action_type_t *billable_event,
+    pinterest_rest_api_action_type__e billable_event,
     pinterest_rest_api_ad_group_update_request_BIDSTRATEGYTYPE_e bid_strategy_type,
     list_t *targeting_template_ids,
     char *id

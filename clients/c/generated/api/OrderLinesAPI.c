@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 // Functions for enum ORDER for OrderLinesAPI_orderLinesList
 
@@ -77,15 +72,22 @@ OrderLinesAPI_orderLinesGet(apiClient_t *apiClient, char *ad_account_id, char *o
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/order_lines/{order_line_id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/order_lines/{order_line_id}");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/order_lines/{order_line_id}");
+
+    if(!ad_account_id)
+        goto end;
+    if(!order_line_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(order_line_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(order_line_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -95,7 +97,7 @@ OrderLinesAPI_orderLinesGet(apiClient_t *apiClient, char *ad_account_id, char *o
     localVarPath = strReplace(localVarPath, localVarToReplace_ad_account_id, ad_account_id);
 
     // Path Params
-    long sizeOfPathParams_order_line_id = strlen(ad_account_id)+3 + strlen(order_line_id)+3 + strlen("{ order_line_id }");
+    long sizeOfPathParams_order_line_id = strlen(ad_account_id)+3 + strlen(order_line_id)+3 + sizeof("{ order_line_id }") - 1;
     if(order_line_id == NULL) {
         goto end;
     }
@@ -114,6 +116,7 @@ OrderLinesAPI_orderLinesGet(apiClient_t *apiClient, char *ad_account_id, char *o
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -125,11 +128,14 @@ OrderLinesAPI_orderLinesGet(apiClient_t *apiClient, char *ad_account_id, char *o
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *OrderLinesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    order_line_t *elementToReturn = order_line_parseFromJSON(OrderLinesAPIlocalVarJSON);
-    cJSON_Delete(OrderLinesAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    order_line_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *OrderLinesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = order_line_parseFromJSON(OrderLinesAPIlocalVarJSON);
+        cJSON_Delete(OrderLinesAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -166,15 +172,20 @@ OrderLinesAPI_orderLinesList(apiClient_t *apiClient, char *ad_account_id, int *p
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/ad_accounts/{ad_account_id}/order_lines")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/ad_accounts/{ad_account_id}/order_lines");
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/order_lines");
+
+    if(!ad_account_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen("{ ad_account_id }");
+    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
     if(ad_account_id == NULL) {
         goto end;
     }
@@ -206,7 +217,7 @@ OrderLinesAPI_orderLinesList(apiClient_t *apiClient, char *ad_account_id, int *p
     {
         keyQuery_order = strdup("order");
         valueQuery_order = (order);
-        keyPairQuery_order = keyValuePair_create(keyQuery_order, (void *)strdup(orderLinesList_ORDER_ToString(
+        keyPairQuery_order = keyValuePair_create(keyQuery_order, strdup(orderLinesList_ORDER_ToString(
         valueQuery_order)));
         list_addElement(localVarQueryParameters,keyPairQuery_order);
     }
@@ -231,6 +242,7 @@ OrderLinesAPI_orderLinesList(apiClient_t *apiClient, char *ad_account_id, int *p
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -242,11 +254,14 @@ OrderLinesAPI_orderLinesList(apiClient_t *apiClient, char *ad_account_id, int *p
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *OrderLinesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    order_lines_list_200_response_t *elementToReturn = order_lines_list_200_response_parseFromJSON(OrderLinesAPIlocalVarJSON);
-    cJSON_Delete(OrderLinesAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    order_lines_list_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *OrderLinesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = order_lines_list_200_response_parseFromJSON(OrderLinesAPIlocalVarJSON);
+        cJSON_Delete(OrderLinesAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type

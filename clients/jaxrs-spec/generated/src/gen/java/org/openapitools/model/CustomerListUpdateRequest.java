@@ -17,11 +17,23 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CustomerListUpdateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CustomerListUpdateRequest   {
   private String records;
   private UserListOperationType operationType;
   private Exception exceptions;
+
+  public CustomerListUpdateRequest() {
+  }
+
+  @JsonCreator
+  public CustomerListUpdateRequest(
+    @JsonProperty(required = true, value = "records") String records,
+    @JsonProperty(required = true, value = "operation_type") UserListOperationType operationType
+  ) {
+    this.records = records;
+    this.operationType = operationType;
+  }
 
   /**
    * Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
@@ -33,12 +45,12 @@ public class CustomerListUpdateRequest   {
 
   
   @ApiModelProperty(example = "email2@pinterest.com,email6@pinterest.com,", required = true, value = "Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.")
-  @JsonProperty("records")
+  @JsonProperty(required = true, value = "records")
   @NotNull public String getRecords() {
     return records;
   }
 
-  @JsonProperty("records")
+  @JsonProperty(required = true, value = "records")
   public void setRecords(String records) {
     this.records = records;
   }
@@ -52,12 +64,12 @@ public class CustomerListUpdateRequest   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("operation_type")
+  @JsonProperty(required = true, value = "operation_type")
   @NotNull public UserListOperationType getOperationType() {
     return operationType;
   }
 
-  @JsonProperty("operation_type")
+  @JsonProperty(required = true, value = "operation_type")
   public void setOperationType(UserListOperationType operationType) {
     this.operationType = operationType;
   }

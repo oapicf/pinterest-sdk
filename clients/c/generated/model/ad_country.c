@@ -22,7 +22,7 @@ pinterest_rest_api_ad_country__e ad_country_ad_country_FromString(char* ad_count
     return 0;
 }
 
-cJSON *ad_country_ad_country_convertToJSON(pinterest_rest_api_ad_country__e ad_country) {
+cJSON *ad_country_convertToJSON(pinterest_rest_api_ad_country__e ad_country) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "ad_country", ad_country_ad_country_ToString(ad_country)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_ad_country__e ad_country_ad_country_parseFromJSON(cJSON *ad_countryJSON) {
-    pinterest_rest_api_ad_country__e *ad_country = NULL;
-    pinterest_rest_api_ad_country__e ad_countryVariable;
-    cJSON *ad_countryVar = cJSON_GetObjectItemCaseSensitive(ad_countryJSON, "ad_country");
-    if(!cJSON_IsString(ad_countryVar) || (ad_countryVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_ad_country__e ad_country_parseFromJSON(cJSON *ad_countryJSON) {
+    if(!cJSON_IsString(ad_countryJSON) || (ad_countryJSON->valuestring == NULL)) {
+        return 0;
     }
-    ad_countryVariable = ad_country_ad_country_FromString(ad_countryVar->valuestring);
-    return ad_countryVariable;
-end:
-    return 0;
+    return ad_country_ad_country_FromString(ad_countryJSON->valuestring);
 }

@@ -55,11 +55,11 @@ export function BookClosedResponseFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-  export function BookClosedResponseToJSON(json: any): BookClosedResponse {
-      return BookClosedResponseToJSONTyped(json, false);
-  }
+export function BookClosedResponseToJSON(json: any): BookClosedResponse {
+    return BookClosedResponseToJSONTyped(json, false);
+}
 
-  export function BookClosedResponseToJSONTyped(value?: BookClosedResponse | null, ignoreDiscriminator: boolean = false): any {
+export function BookClosedResponseToJSONTyped(value?: BookClosedResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

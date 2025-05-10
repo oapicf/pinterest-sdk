@@ -22,7 +22,7 @@ pinterest_rest_api_conversion_report_time_type__e conversion_report_time_type_co
     return 0;
 }
 
-cJSON *conversion_report_time_type_conversion_report_time_type_convertToJSON(pinterest_rest_api_conversion_report_time_type__e conversion_report_time_type) {
+cJSON *conversion_report_time_type_convertToJSON(pinterest_rest_api_conversion_report_time_type__e conversion_report_time_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "conversion_report_time_type", conversion_report_time_type_conversion_report_time_type_ToString(conversion_report_time_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_conversion_report_time_type__e conversion_report_time_type_conversion_report_time_type_parseFromJSON(cJSON *conversion_report_time_typeJSON) {
-    pinterest_rest_api_conversion_report_time_type__e *conversion_report_time_type = NULL;
-    pinterest_rest_api_conversion_report_time_type__e conversion_report_time_typeVariable;
-    cJSON *conversion_report_time_typeVar = cJSON_GetObjectItemCaseSensitive(conversion_report_time_typeJSON, "conversion_report_time_type");
-    if(!cJSON_IsString(conversion_report_time_typeVar) || (conversion_report_time_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_conversion_report_time_type__e conversion_report_time_type_parseFromJSON(cJSON *conversion_report_time_typeJSON) {
+    if(!cJSON_IsString(conversion_report_time_typeJSON) || (conversion_report_time_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    conversion_report_time_typeVariable = conversion_report_time_type_conversion_report_time_type_FromString(conversion_report_time_typeVar->valuestring);
-    return conversion_report_time_typeVariable;
-end:
-    return 0;
+    return conversion_report_time_type_conversion_report_time_type_FromString(conversion_report_time_typeJSON->valuestring);
 }

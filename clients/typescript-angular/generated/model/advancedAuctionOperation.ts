@@ -12,7 +12,9 @@
 export type AdvancedAuctionOperation = 'UPSERT' | 'DELETE';
 
 export const AdvancedAuctionOperation = {
+
     Upsert: 'UPSERT' as AdvancedAuctionOperation,
+
     Delete: 'DELETE' as AdvancedAuctionOperation
 };
 

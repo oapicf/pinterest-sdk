@@ -5,7 +5,7 @@
 
 
 
-ad_account_create_subscription_response_t *ad_account_create_subscription_response_create(
+static ad_account_create_subscription_response_t *ad_account_create_subscription_response_create_internal(
     char *id,
     char *cryptographic_key,
     char *cryptographic_algorithm,
@@ -20,12 +20,30 @@ ad_account_create_subscription_response_t *ad_account_create_subscription_respon
     ad_account_create_subscription_response_local_var->cryptographic_algorithm = cryptographic_algorithm;
     ad_account_create_subscription_response_local_var->created_time = created_time;
 
+    ad_account_create_subscription_response_local_var->_library_owned = 1;
     return ad_account_create_subscription_response_local_var;
 }
 
+__attribute__((deprecated)) ad_account_create_subscription_response_t *ad_account_create_subscription_response_create(
+    char *id,
+    char *cryptographic_key,
+    char *cryptographic_algorithm,
+    int created_time
+    ) {
+    return ad_account_create_subscription_response_create_internal (
+        id,
+        cryptographic_key,
+        cryptographic_algorithm,
+        created_time
+        );
+}
 
 void ad_account_create_subscription_response_free(ad_account_create_subscription_response_t *ad_account_create_subscription_response) {
     if(NULL == ad_account_create_subscription_response){
+        return ;
+    }
+    if(ad_account_create_subscription_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ad_account_create_subscription_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -92,6 +110,9 @@ ad_account_create_subscription_response_t *ad_account_create_subscription_respon
 
     // ad_account_create_subscription_response->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(ad_account_create_subscription_responseJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
@@ -101,6 +122,9 @@ ad_account_create_subscription_response_t *ad_account_create_subscription_respon
 
     // ad_account_create_subscription_response->cryptographic_key
     cJSON *cryptographic_key = cJSON_GetObjectItemCaseSensitive(ad_account_create_subscription_responseJSON, "cryptographic_key");
+    if (cJSON_IsNull(cryptographic_key)) {
+        cryptographic_key = NULL;
+    }
     if (cryptographic_key) { 
     if(!cJSON_IsString(cryptographic_key) && !cJSON_IsNull(cryptographic_key))
     {
@@ -110,6 +134,9 @@ ad_account_create_subscription_response_t *ad_account_create_subscription_respon
 
     // ad_account_create_subscription_response->cryptographic_algorithm
     cJSON *cryptographic_algorithm = cJSON_GetObjectItemCaseSensitive(ad_account_create_subscription_responseJSON, "cryptographic_algorithm");
+    if (cJSON_IsNull(cryptographic_algorithm)) {
+        cryptographic_algorithm = NULL;
+    }
     if (cryptographic_algorithm) { 
     if(!cJSON_IsString(cryptographic_algorithm) && !cJSON_IsNull(cryptographic_algorithm))
     {
@@ -119,6 +146,9 @@ ad_account_create_subscription_response_t *ad_account_create_subscription_respon
 
     // ad_account_create_subscription_response->created_time
     cJSON *created_time = cJSON_GetObjectItemCaseSensitive(ad_account_create_subscription_responseJSON, "created_time");
+    if (cJSON_IsNull(created_time)) {
+        created_time = NULL;
+    }
     if (created_time) { 
     if(!cJSON_IsNumber(created_time))
     {
@@ -127,7 +157,7 @@ ad_account_create_subscription_response_t *ad_account_create_subscription_respon
     }
 
 
-    ad_account_create_subscription_response_local_var = ad_account_create_subscription_response_create (
+    ad_account_create_subscription_response_local_var = ad_account_create_subscription_response_create_internal (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         cryptographic_key && !cJSON_IsNull(cryptographic_key) ? strdup(cryptographic_key->valuestring) : NULL,
         cryptographic_algorithm && !cJSON_IsNull(cryptographic_algorithm) ? strdup(cryptographic_algorithm->valuestring) : NULL,

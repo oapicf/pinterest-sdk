@@ -221,7 +221,7 @@ func (dst *CatalogsRetailBatchRequestItemsInner) UnmarshalJSON(data []byte) erro
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src *CatalogsRetailBatchRequestItemsInner) MarshalJSON() ([]byte, error) {
+func (src CatalogsRetailBatchRequestItemsInner) MarshalJSON() ([]byte, error) {
 	if src.CatalogsCreateRetailItem != nil {
 		return json.Marshal(&src.CatalogsCreateRetailItem)
 	}

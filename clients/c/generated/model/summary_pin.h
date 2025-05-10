@@ -26,9 +26,10 @@ typedef struct summary_pin_t {
     char *title; // string
     char *description; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } summary_pin_t;
 
-summary_pin_t *summary_pin_create(
+__attribute__((deprecated)) summary_pin_t *summary_pin_create(
     pin_media_t *media,
     char *alt_text,
     char *link,

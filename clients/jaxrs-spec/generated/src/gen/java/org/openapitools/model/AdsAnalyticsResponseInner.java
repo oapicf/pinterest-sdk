@@ -19,10 +19,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdsAnalyticsResponse_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AdsAnalyticsResponseInner extends HashMap<String, Object>  {
   private String AD_ID;
   private LocalDate DATE;
+
+  public AdsAnalyticsResponseInner() {
+  }
+
+  @JsonCreator
+  public AdsAnalyticsResponseInner(
+    @JsonProperty(required = true, value = "AD_ID") String AD_ID
+  ) {
+    super(
+    );
+    this.AD_ID = AD_ID;
+  }
 
   /**
    * The ID of the ad that this metrics belongs to.
@@ -34,12 +46,12 @@ public class AdsAnalyticsResponseInner extends HashMap<String, Object>  {
 
   
   @ApiModelProperty(required = true, value = "The ID of the ad that this metrics belongs to.")
-  @JsonProperty("AD_ID")
+  @JsonProperty(required = true, value = "AD_ID")
   @NotNull  @Pattern(regexp="^\\d+$")public String getADID() {
     return AD_ID;
   }
 
-  @JsonProperty("AD_ID")
+  @JsonProperty(required = true, value = "AD_ID")
   public void setADID(String AD_ID) {
     this.AD_ID = AD_ID;
   }

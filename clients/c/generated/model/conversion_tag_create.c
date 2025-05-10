@@ -5,7 +5,7 @@
 
 
 
-conversion_tag_create_t *conversion_tag_create_create(
+static conversion_tag_create_t *conversion_tag_create_create_internal(
     char *name,
     int aem_enabled,
     double md_frequency,
@@ -28,12 +28,38 @@ conversion_tag_create_t *conversion_tag_create_create(
     conversion_tag_create_local_var->aem_db_enabled = aem_db_enabled;
     conversion_tag_create_local_var->aem_loc_enabled = aem_loc_enabled;
 
+    conversion_tag_create_local_var->_library_owned = 1;
     return conversion_tag_create_local_var;
 }
 
+__attribute__((deprecated)) conversion_tag_create_t *conversion_tag_create_create(
+    char *name,
+    int aem_enabled,
+    double md_frequency,
+    int aem_fnln_enabled,
+    int aem_ph_enabled,
+    int aem_ge_enabled,
+    int aem_db_enabled,
+    int aem_loc_enabled
+    ) {
+    return conversion_tag_create_create_internal (
+        name,
+        aem_enabled,
+        md_frequency,
+        aem_fnln_enabled,
+        aem_ph_enabled,
+        aem_ge_enabled,
+        aem_db_enabled,
+        aem_loc_enabled
+        );
+}
 
 void conversion_tag_create_free(conversion_tag_create_t *conversion_tag_create) {
     if(NULL == conversion_tag_create){
+        return ;
+    }
+    if(conversion_tag_create->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "conversion_tag_create_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -125,6 +151,9 @@ conversion_tag_create_t *conversion_tag_create_parseFromJSON(cJSON *conversion_t
 
     // conversion_tag_create->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(conversion_tag_createJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
     if (!name) {
         goto end;
     }
@@ -137,6 +166,9 @@ conversion_tag_create_t *conversion_tag_create_parseFromJSON(cJSON *conversion_t
 
     // conversion_tag_create->aem_enabled
     cJSON *aem_enabled = cJSON_GetObjectItemCaseSensitive(conversion_tag_createJSON, "aem_enabled");
+    if (cJSON_IsNull(aem_enabled)) {
+        aem_enabled = NULL;
+    }
     if (aem_enabled) { 
     if(!cJSON_IsBool(aem_enabled))
     {
@@ -146,6 +178,9 @@ conversion_tag_create_t *conversion_tag_create_parseFromJSON(cJSON *conversion_t
 
     // conversion_tag_create->md_frequency
     cJSON *md_frequency = cJSON_GetObjectItemCaseSensitive(conversion_tag_createJSON, "md_frequency");
+    if (cJSON_IsNull(md_frequency)) {
+        md_frequency = NULL;
+    }
     if (md_frequency) { 
     if(!cJSON_IsNumber(md_frequency))
     {
@@ -155,6 +190,9 @@ conversion_tag_create_t *conversion_tag_create_parseFromJSON(cJSON *conversion_t
 
     // conversion_tag_create->aem_fnln_enabled
     cJSON *aem_fnln_enabled = cJSON_GetObjectItemCaseSensitive(conversion_tag_createJSON, "aem_fnln_enabled");
+    if (cJSON_IsNull(aem_fnln_enabled)) {
+        aem_fnln_enabled = NULL;
+    }
     if (aem_fnln_enabled) { 
     if(!cJSON_IsBool(aem_fnln_enabled))
     {
@@ -164,6 +202,9 @@ conversion_tag_create_t *conversion_tag_create_parseFromJSON(cJSON *conversion_t
 
     // conversion_tag_create->aem_ph_enabled
     cJSON *aem_ph_enabled = cJSON_GetObjectItemCaseSensitive(conversion_tag_createJSON, "aem_ph_enabled");
+    if (cJSON_IsNull(aem_ph_enabled)) {
+        aem_ph_enabled = NULL;
+    }
     if (aem_ph_enabled) { 
     if(!cJSON_IsBool(aem_ph_enabled))
     {
@@ -173,6 +214,9 @@ conversion_tag_create_t *conversion_tag_create_parseFromJSON(cJSON *conversion_t
 
     // conversion_tag_create->aem_ge_enabled
     cJSON *aem_ge_enabled = cJSON_GetObjectItemCaseSensitive(conversion_tag_createJSON, "aem_ge_enabled");
+    if (cJSON_IsNull(aem_ge_enabled)) {
+        aem_ge_enabled = NULL;
+    }
     if (aem_ge_enabled) { 
     if(!cJSON_IsBool(aem_ge_enabled))
     {
@@ -182,6 +226,9 @@ conversion_tag_create_t *conversion_tag_create_parseFromJSON(cJSON *conversion_t
 
     // conversion_tag_create->aem_db_enabled
     cJSON *aem_db_enabled = cJSON_GetObjectItemCaseSensitive(conversion_tag_createJSON, "aem_db_enabled");
+    if (cJSON_IsNull(aem_db_enabled)) {
+        aem_db_enabled = NULL;
+    }
     if (aem_db_enabled) { 
     if(!cJSON_IsBool(aem_db_enabled))
     {
@@ -191,6 +238,9 @@ conversion_tag_create_t *conversion_tag_create_parseFromJSON(cJSON *conversion_t
 
     // conversion_tag_create->aem_loc_enabled
     cJSON *aem_loc_enabled = cJSON_GetObjectItemCaseSensitive(conversion_tag_createJSON, "aem_loc_enabled");
+    if (cJSON_IsNull(aem_loc_enabled)) {
+        aem_loc_enabled = NULL;
+    }
     if (aem_loc_enabled) { 
     if(!cJSON_IsBool(aem_loc_enabled))
     {
@@ -199,7 +249,7 @@ conversion_tag_create_t *conversion_tag_create_parseFromJSON(cJSON *conversion_t
     }
 
 
-    conversion_tag_create_local_var = conversion_tag_create_create (
+    conversion_tag_create_local_var = conversion_tag_create_create_internal (
         strdup(name->valuestring),
         aem_enabled ? aem_enabled->valueint : 0,
         md_frequency ? md_frequency->valuedouble : 0,

@@ -5,7 +5,7 @@
 
 
 
-ad_group_array_response_element_t *ad_group_array_response_element_create(
+static ad_group_array_response_element_t *ad_group_array_response_element_create_internal(
     ad_group_response_t *data,
     list_t *exceptions
     ) {
@@ -16,12 +16,26 @@ ad_group_array_response_element_t *ad_group_array_response_element_create(
     ad_group_array_response_element_local_var->data = data;
     ad_group_array_response_element_local_var->exceptions = exceptions;
 
+    ad_group_array_response_element_local_var->_library_owned = 1;
     return ad_group_array_response_element_local_var;
 }
 
+__attribute__((deprecated)) ad_group_array_response_element_t *ad_group_array_response_element_create(
+    ad_group_response_t *data,
+    list_t *exceptions
+    ) {
+    return ad_group_array_response_element_create_internal (
+        data,
+        exceptions
+        );
+}
 
 void ad_group_array_response_element_free(ad_group_array_response_element_t *ad_group_array_response_element) {
     if(NULL == ad_group_array_response_element){
+        return ;
+    }
+    if(ad_group_array_response_element->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "ad_group_array_response_element_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -94,12 +108,18 @@ ad_group_array_response_element_t *ad_group_array_response_element_parseFromJSON
 
     // ad_group_array_response_element->data
     cJSON *data = cJSON_GetObjectItemCaseSensitive(ad_group_array_response_elementJSON, "data");
+    if (cJSON_IsNull(data)) {
+        data = NULL;
+    }
     if (data) { 
     data_local_nonprim = ad_group_response_parseFromJSON(data); //nonprimitive
     }
 
     // ad_group_array_response_element->exceptions
     cJSON *exceptions = cJSON_GetObjectItemCaseSensitive(ad_group_array_response_elementJSON, "exceptions");
+    if (cJSON_IsNull(exceptions)) {
+        exceptions = NULL;
+    }
     if (exceptions) { 
     cJSON *exceptions_local_nonprimitive = NULL;
     if(!cJSON_IsArray(exceptions)){
@@ -120,7 +140,7 @@ ad_group_array_response_element_t *ad_group_array_response_element_parseFromJSON
     }
 
 
-    ad_group_array_response_element_local_var = ad_group_array_response_element_create (
+    ad_group_array_response_element_local_var = ad_group_array_response_element_create_internal (
         data ? data_local_nonprim : NULL,
         exceptions ? exceptionsList : NULL
         );

@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param `150x150` 
@@ -19,10 +20,11 @@ package org.openapitools.server.models
  * @param `600x` 
  * @param `1200x` 
  */
+@Serializable
 data class PinMediaWithImageAllOfImages(
     val `150x150`: kotlin.Any? = null,
     val `400x300`: kotlin.Any? = null,
     val `600x`: kotlin.Any? = null,
     val `1200x`: kotlin.Any? = null
-) 
+)
 

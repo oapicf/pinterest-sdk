@@ -36,9 +36,10 @@ typedef struct ssio_edit_insertion_order_request_t {
     char *salesforce_order_line_id; // string
     char *ads_manager_order_line_id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } ssio_edit_insertion_order_request_t;
 
-ssio_edit_insertion_order_request_t *ssio_edit_insertion_order_request_create(
+__attribute__((deprecated)) ssio_edit_insertion_order_request_t *ssio_edit_insertion_order_request_create(
     char *start_date,
     char *end_date,
     char *po_number,

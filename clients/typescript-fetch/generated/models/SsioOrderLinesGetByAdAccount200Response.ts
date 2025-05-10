@@ -64,11 +64,11 @@ export function SsioOrderLinesGetByAdAccount200ResponseFromJSONTyped(json: any, 
     };
 }
 
-  export function SsioOrderLinesGetByAdAccount200ResponseToJSON(json: any): SsioOrderLinesGetByAdAccount200Response {
-      return SsioOrderLinesGetByAdAccount200ResponseToJSONTyped(json, false);
-  }
+export function SsioOrderLinesGetByAdAccount200ResponseToJSON(json: any): SsioOrderLinesGetByAdAccount200Response {
+    return SsioOrderLinesGetByAdAccount200ResponseToJSONTyped(json, false);
+}
 
-  export function SsioOrderLinesGetByAdAccount200ResponseToJSONTyped(value?: SsioOrderLinesGetByAdAccount200Response | null, ignoreDiscriminator: boolean = false): any {
+export function SsioOrderLinesGetByAdAccount200ResponseToJSONTyped(value?: SsioOrderLinesGetByAdAccount200Response | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

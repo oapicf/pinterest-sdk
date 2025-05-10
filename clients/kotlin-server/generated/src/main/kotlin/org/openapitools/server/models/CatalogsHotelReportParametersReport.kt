@@ -14,6 +14,7 @@ package org.openapitools.server.models
 import org.openapitools.server.models.CatalogsReportDistributionIssueFilter
 import org.openapitools.server.models.CatalogsReportFeedIngestionFilter
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param feedId ID of the feed entity.
@@ -21,6 +22,7 @@ import org.openapitools.server.models.CatalogsReportFeedIngestionFilter
  * @param processingResultId Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.
  * @param catalogId Unique identifier of a catalog. If not given, oldest catalog will be used
  */
+@Serializable
 data class CatalogsHotelReportParametersReport(
     val reportType: CatalogsHotelReportParametersReport.ReportType,
     /* ID of the feed entity. */
@@ -30,7 +32,7 @@ data class CatalogsHotelReportParametersReport(
     val processingResultId: kotlin.String? = null,
     /* Unique identifier of a catalog. If not given, oldest catalog will be used */
     val catalogId: kotlin.String? = null
-) 
+)
 {
     /**
     * 

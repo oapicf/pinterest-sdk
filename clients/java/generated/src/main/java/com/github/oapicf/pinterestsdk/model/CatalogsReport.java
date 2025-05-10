@@ -50,7 +50,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsReport
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsReport {
   /**
    * Gets or Sets reportStatus
@@ -106,20 +106,23 @@ public class CatalogsReport {
 
   public static final String SERIALIZED_NAME_REPORT_STATUS = "report_status";
   @SerializedName(SERIALIZED_NAME_REPORT_STATUS)
+  @javax.annotation.Nullable
   private ReportStatusEnum reportStatus;
 
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)
+  @javax.annotation.Nullable
   private String url;
 
   public static final String SERIALIZED_NAME_SIZE = "size";
   @SerializedName(SERIALIZED_NAME_SIZE)
+  @javax.annotation.Nullable
   private BigDecimal size;
 
   public CatalogsReport() {
   }
 
-  public CatalogsReport reportStatus(ReportStatusEnum reportStatus) {
+  public CatalogsReport reportStatus(@javax.annotation.Nullable ReportStatusEnum reportStatus) {
     this.reportStatus = reportStatus;
     return this;
   }
@@ -133,12 +136,12 @@ public class CatalogsReport {
     return reportStatus;
   }
 
-  public void setReportStatus(ReportStatusEnum reportStatus) {
+  public void setReportStatus(@javax.annotation.Nullable ReportStatusEnum reportStatus) {
     this.reportStatus = reportStatus;
   }
 
 
-  public CatalogsReport url(String url) {
+  public CatalogsReport url(@javax.annotation.Nullable String url) {
     this.url = url;
     return this;
   }
@@ -152,12 +155,12 @@ public class CatalogsReport {
     return url;
   }
 
-  public void setUrl(String url) {
+  public void setUrl(@javax.annotation.Nullable String url) {
     this.url = url;
   }
 
 
-  public CatalogsReport size(BigDecimal size) {
+  public CatalogsReport size(@javax.annotation.Nullable BigDecimal size) {
     this.size = size;
     return this;
   }
@@ -171,7 +174,7 @@ public class CatalogsReport {
     return size;
   }
 
-  public void setSize(BigDecimal size) {
+  public void setSize(@javax.annotation.Nullable BigDecimal size) {
     this.size = size;
   }
 

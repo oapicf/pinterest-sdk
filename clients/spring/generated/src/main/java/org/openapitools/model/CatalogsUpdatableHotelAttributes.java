@@ -11,6 +11,7 @@ import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsHotelAddress;
 import org.openapitools.model.CatalogsHotelGuestRatings;
+import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -26,7 +27,7 @@ import javax.annotation.Generated;
  * CatalogsUpdatableHotelAttributes
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsUpdatableHotelAttributes {
 
   private JsonNullable<String> name = JsonNullable.<String>undefined();
@@ -37,14 +38,14 @@ public class CatalogsUpdatableHotelAttributes {
 
   private JsonNullable<String> brand = JsonNullable.<String>undefined();
 
-  private BigDecimal latitude;
+  private @Nullable BigDecimal latitude;
 
   private JsonNullable<BigDecimal> longitude = JsonNullable.<BigDecimal>undefined();
 
   @Valid
   private JsonNullable<List<String>> neighborhood = JsonNullable.<List<String>>undefined();
 
-  private CatalogsHotelAddress address;
+  private @Nullable CatalogsHotelAddress address;
 
   private JsonNullable<String> customLabel0 = JsonNullable.<String>undefined();
 
@@ -62,7 +63,7 @@ public class CatalogsUpdatableHotelAttributes {
 
   private JsonNullable<String> salePrice = JsonNullable.<String>undefined();
 
-  private CatalogsHotelGuestRatings guestRatings;
+  private @Nullable CatalogsHotelGuestRatings guestRatings;
 
   public CatalogsUpdatableHotelAttributes name(String name) {
     this.name = JsonNullable.of(name);

@@ -54,20 +54,22 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AnalyticsMetricsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AnalyticsMetricsResponse {
   public static final String SERIALIZED_NAME_SUMMARY_METRICS = "summary_metrics";
   @SerializedName(SERIALIZED_NAME_SUMMARY_METRICS)
+  @javax.annotation.Nullable
   private Map<String, BigDecimal> summaryMetrics = new HashMap<>();
 
   public static final String SERIALIZED_NAME_DAILY_METRICS = "daily_metrics";
   @SerializedName(SERIALIZED_NAME_DAILY_METRICS)
+  @javax.annotation.Nullable
   private List<AnalyticsDailyMetrics> dailyMetrics = new ArrayList<>();
 
   public AnalyticsMetricsResponse() {
   }
 
-  public AnalyticsMetricsResponse summaryMetrics(Map<String, BigDecimal> summaryMetrics) {
+  public AnalyticsMetricsResponse summaryMetrics(@javax.annotation.Nullable Map<String, BigDecimal> summaryMetrics) {
     this.summaryMetrics = summaryMetrics;
     return this;
   }
@@ -89,12 +91,12 @@ public class AnalyticsMetricsResponse {
     return summaryMetrics;
   }
 
-  public void setSummaryMetrics(Map<String, BigDecimal> summaryMetrics) {
+  public void setSummaryMetrics(@javax.annotation.Nullable Map<String, BigDecimal> summaryMetrics) {
     this.summaryMetrics = summaryMetrics;
   }
 
 
-  public AnalyticsMetricsResponse dailyMetrics(List<AnalyticsDailyMetrics> dailyMetrics) {
+  public AnalyticsMetricsResponse dailyMetrics(@javax.annotation.Nullable List<AnalyticsDailyMetrics> dailyMetrics) {
     this.dailyMetrics = dailyMetrics;
     return this;
   }
@@ -116,7 +118,7 @@ public class AnalyticsMetricsResponse {
     return dailyMetrics;
   }
 
-  public void setDailyMetrics(List<AnalyticsDailyMetrics> dailyMetrics) {
+  public void setDailyMetrics(@javax.annotation.Nullable List<AnalyticsDailyMetrics> dailyMetrics) {
     this.dailyMetrics = dailyMetrics;
   }
 

@@ -80,11 +80,11 @@ export function CatalogsHotelItemErrorResponseFromJSONTyped(json: any, ignoreDis
     };
 }
 
-  export function CatalogsHotelItemErrorResponseToJSON(json: any): CatalogsHotelItemErrorResponse {
-      return CatalogsHotelItemErrorResponseToJSONTyped(json, false);
-  }
+export function CatalogsHotelItemErrorResponseToJSON(json: any): CatalogsHotelItemErrorResponse {
+    return CatalogsHotelItemErrorResponseToJSONTyped(json, false);
+}
 
-  export function CatalogsHotelItemErrorResponseToJSONTyped(value?: CatalogsHotelItemErrorResponse | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsHotelItemErrorResponseToJSONTyped(value?: CatalogsHotelItemErrorResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

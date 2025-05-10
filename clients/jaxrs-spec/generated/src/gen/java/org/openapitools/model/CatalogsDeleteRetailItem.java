@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "An item to be deleted")
 @JsonTypeName("CatalogsDeleteRetailItem")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class CatalogsDeleteRetailItem   {
   private String itemId;
   public enum OperationEnum {
@@ -69,6 +69,18 @@ public class CatalogsDeleteRetailItem   {
 
   private OperationEnum operation;
 
+  public CatalogsDeleteRetailItem() {
+  }
+
+  @JsonCreator
+  public CatalogsDeleteRetailItem(
+    @JsonProperty(required = true, value = "item_id") String itemId,
+    @JsonProperty(required = true, value = "operation") OperationEnum operation
+  ) {
+    this.itemId = itemId;
+    this.operation = operation;
+  }
+
   /**
    * The catalog item id in the merchant namespace
    **/
@@ -79,12 +91,12 @@ public class CatalogsDeleteRetailItem   {
 
   
   @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog item id in the merchant namespace")
-  @JsonProperty("item_id")
+  @JsonProperty(required = true, value = "item_id")
   @NotNull public String getItemId() {
     return itemId;
   }
 
-  @JsonProperty("item_id")
+  @JsonProperty(required = true, value = "item_id")
   public void setItemId(String itemId) {
     this.itemId = itemId;
   }
@@ -98,12 +110,12 @@ public class CatalogsDeleteRetailItem   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("operation")
+  @JsonProperty(required = true, value = "operation")
   @NotNull public OperationEnum getOperation() {
     return operation;
   }
 
-  @JsonProperty("operation")
+  @JsonProperty(required = true, value = "operation")
   public void setOperation(OperationEnum operation) {
     this.operation = operation;
   }

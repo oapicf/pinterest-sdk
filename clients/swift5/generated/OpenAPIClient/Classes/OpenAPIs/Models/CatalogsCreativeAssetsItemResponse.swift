@@ -13,7 +13,7 @@ import AnyCodable
 /** Object describing a hotel record */
 public struct CatalogsCreativeAssetsItemResponse: Codable, JSONEncodable, Hashable {
 
-    static let pinsRule = ArrayRule(minItems: nil, maxItems: 11, uniqueItems: false)
+    public static let pinsRule = ArrayRule(minItems: nil, maxItems: 11, uniqueItems: false)
     public var catalogType: CatalogsType
     /** The catalog creative assets id in the merchant namespace */
     public var creativeAssetsId: String?

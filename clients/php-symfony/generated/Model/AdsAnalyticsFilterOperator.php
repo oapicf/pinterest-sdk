@@ -44,8 +44,8 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum AdsAnalyticsFilterOperator: string
 {
-        case LESS_THAN = "LESS_THAN";
-        case GREATER_THAN = "GREATER_THAN";
+        case LESS_THAN = 'LESS_THAN';
+        case GREATER_THAN = 'GREATER_THAN';
 }
 
 

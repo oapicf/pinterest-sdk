@@ -95,11 +95,11 @@ export function TopVideoPinsAnalyticsResponseFromJSONTyped(json: any, ignoreDisc
     };
 }
 
-  export function TopVideoPinsAnalyticsResponseToJSON(json: any): TopVideoPinsAnalyticsResponse {
-      return TopVideoPinsAnalyticsResponseToJSONTyped(json, false);
-  }
+export function TopVideoPinsAnalyticsResponseToJSON(json: any): TopVideoPinsAnalyticsResponse {
+    return TopVideoPinsAnalyticsResponseToJSONTyped(json, false);
+}
 
-  export function TopVideoPinsAnalyticsResponseToJSONTyped(value?: TopVideoPinsAnalyticsResponse | null, ignoreDiscriminator: boolean = false): any {
+export function TopVideoPinsAnalyticsResponseToJSONTyped(value?: TopVideoPinsAnalyticsResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

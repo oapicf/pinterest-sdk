@@ -24,9 +24,9 @@ char* data_status_data_status_ToString(pinterest_rest_api_data_status__e data_st
 
 pinterest_rest_api_data_status__e data_status_data_status_FromString(char* data_status);
 
-//cJSON *data_status_data_status_convertToJSON(pinterest_rest_api_data_status__e data_status);
+cJSON *data_status_convertToJSON(pinterest_rest_api_data_status__e data_status);
 
-//pinterest_rest_api_data_status__e data_status_data_status_parseFromJSON(cJSON *data_statusJSON);
+pinterest_rest_api_data_status__e data_status_parseFromJSON(cJSON *data_statusJSON);
 
 #endif /* _data_status_H_ */
 

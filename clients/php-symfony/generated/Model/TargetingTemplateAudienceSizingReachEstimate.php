@@ -71,7 +71,7 @@ class TargetingTemplateAudienceSizingReachEstimate
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->estimate = array_key_exists('estimate', $data) ? $data['estimate'] : $this->estimate;

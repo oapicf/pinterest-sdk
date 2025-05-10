@@ -20,28 +20,21 @@ typedef struct catalogs_product_group_product_counts_vertical_t catalogs_product
 #include "catalogs_retail_product_group_product_counts.h"
 #include "catalogs_type.h"
 
-// Enum  for catalogs_product_group_product_counts_vertical
-
-typedef enum  { pinterest_rest_api_catalogs_product_group_product_counts_vertical__NULL = 0, pinterest_rest_api_catalogs_product_group_product_counts_vertical__RETAIL, pinterest_rest_api_catalogs_product_group_product_counts_vertical__HOTEL, pinterest_rest_api_catalogs_product_group_product_counts_vertical__CREATIVE_ASSETS } pinterest_rest_api_catalogs_product_group_product_counts_vertical__e;
-
-char* catalogs_product_group_product_counts_vertical_catalog_type_ToString(pinterest_rest_api_catalogs_product_group_product_counts_vertical__e catalog_type);
-
-pinterest_rest_api_catalogs_product_group_product_counts_vertical__e catalogs_product_group_product_counts_vertical_catalog_type_FromString(char* catalog_type);
-
 
 
 typedef struct catalogs_product_group_product_counts_vertical_t {
-    catalogs_type_t *catalog_type; // custom
+    pinterest_rest_api_catalogs_type__e catalog_type; //referenced enum
     double in_stock; //numeric
     double out_of_stock; //numeric
     double preorder; //numeric
     double total; //numeric
     double videos; //numeric
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_product_group_product_counts_vertical_t;
 
-catalogs_product_group_product_counts_vertical_t *catalogs_product_group_product_counts_vertical_create(
-    catalogs_type_t *catalog_type,
+__attribute__((deprecated)) catalogs_product_group_product_counts_vertical_t *catalogs_product_group_product_counts_vertical_create(
+    pinterest_rest_api_catalogs_type__e catalog_type,
     double in_stock,
     double out_of_stock,
     double preorder,

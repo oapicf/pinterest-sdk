@@ -16,11 +16,21 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("KeywordUpdate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class KeywordUpdate   {
   private String id;
   private Boolean archived;
   private Integer bid;
+
+  public KeywordUpdate() {
+  }
+
+  @JsonCreator
+  public KeywordUpdate(
+    @JsonProperty(required = true, value = "id") String id
+  ) {
+    this.id = id;
+  }
 
   /**
    * Keyword ID.
@@ -32,12 +42,12 @@ public class KeywordUpdate   {
 
   
   @ApiModelProperty(example = "2886364308355", required = true, value = "Keyword ID.")
-  @JsonProperty("id")
+  @JsonProperty(required = true, value = "id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getId() {
     return id;
   }
 
-  @JsonProperty("id")
+  @JsonProperty(required = true, value = "id")
   public void setId(String id) {
     this.id = id;
   }

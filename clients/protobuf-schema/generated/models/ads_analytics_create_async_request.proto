@@ -102,8 +102,8 @@ message AdsAnalyticsCreateAsyncRequest {
 
   // Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
   enum Primary_sortEnum {
-    Primary_sortEnum_ID = 0;
-    Primary_sortEnum_DATE = 1;
+    Primary_sortEnum_BY_ID = 0;
+    Primary_sortEnum_BY_DATE = 1;
   }
 
   Primary_sortEnum primary_sort = 40496711;

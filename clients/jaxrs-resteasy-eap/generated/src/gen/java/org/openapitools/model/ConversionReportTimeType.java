@@ -7,6 +7,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 public enum ConversionReportTimeType {
-  AD_ACTION,
-  CONVERSION;
+  TIME_OF_AD_ACTION,
+  TIME_OF_CONVERSION;
 }

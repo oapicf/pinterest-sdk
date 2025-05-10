@@ -25,9 +25,10 @@ typedef struct ad_preview_request_t {
     char *title; // string
     char *pin_id; // string
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } ad_preview_request_t;
 
-ad_preview_request_t *ad_preview_request_create(
+__attribute__((deprecated)) ad_preview_request_t *ad_preview_request_create(
     char *image_url,
     char *title,
     char *pin_id

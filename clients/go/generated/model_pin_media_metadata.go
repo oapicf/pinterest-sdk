@@ -56,7 +56,7 @@ func (dst *PinMediaMetadata) UnmarshalJSON(data []byte) error {
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src *PinMediaMetadata) MarshalJSON() ([]byte, error) {
+func (src PinMediaMetadata) MarshalJSON() ([]byte, error) {
 	if src.ImageMetadata != nil {
 		return json.Marshal(&src.ImageMetadata)
 	}

@@ -42,8 +42,8 @@ use JMS\Serializer\Annotation\SerializedName;
  */
 enum AdvancedAuctionOperation: string
 {
-        case UPSERT = "UPSERT";
-        case DELETE = "DELETE";
+        case UPSERT = 'UPSERT';
+        case DELETE = 'DELETE';
 }
 
 

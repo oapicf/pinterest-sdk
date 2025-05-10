@@ -20,6 +20,7 @@ import org.openapitools.server.models.PlacementGroupType
 import org.openapitools.server.models.TargetingSpec
 import org.openapitools.server.models.TrackingUrls
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param id Ad group ID.
@@ -42,6 +43,7 @@ import org.openapitools.server.models.TrackingUrls
  * @param bidStrategyType Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
  * @param targetingTemplateIds Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].
  */
+@Serializable
 data class AdGroupUpdateRequest(
     /* Ad group ID. */
     val id: kotlin.String,
@@ -77,7 +79,7 @@ data class AdGroupUpdateRequest(
     val bidStrategyType: AdGroupUpdateRequest.BidStrategyType? = null,
     /* Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0']. */
     val targetingTemplateIds: kotlin.collections.List<kotlin.String>? = null
-) 
+)
 {
     /**
     * Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.

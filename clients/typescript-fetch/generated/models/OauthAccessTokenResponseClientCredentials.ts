@@ -92,11 +92,11 @@ export function OauthAccessTokenResponseClientCredentialsFromJSONTyped(json: any
     };
 }
 
-  export function OauthAccessTokenResponseClientCredentialsToJSON(json: any): OauthAccessTokenResponseClientCredentials {
-      return OauthAccessTokenResponseClientCredentialsToJSONTyped(json, false);
-  }
+export function OauthAccessTokenResponseClientCredentialsToJSON(json: any): OauthAccessTokenResponseClientCredentials {
+    return OauthAccessTokenResponseClientCredentialsToJSONTyped(json, false);
+}
 
-  export function OauthAccessTokenResponseClientCredentialsToJSONTyped(value?: OauthAccessTokenResponseClientCredentials | null, ignoreDiscriminator: boolean = false): any {
+export function OauthAccessTokenResponseClientCredentialsToJSONTyped(value?: OauthAccessTokenResponseClientCredentials | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

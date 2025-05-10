@@ -15,6 +15,7 @@ import org.openapitools.server.models.AudienceDataParty
 import org.openapitools.server.models.AudienceRule
 import org.openapitools.server.models.AudienceSharingType
 
+import kotlinx.serialization.Serializable
 /**
  * 
  * @param name Audience name.
@@ -24,6 +25,7 @@ import org.openapitools.server.models.AudienceSharingType
  * @param adAccountId Ad account ID.
  * @param category 
  */
+@Serializable
 data class AudienceCreateCustomRequest(
     /* Audience name. */
     val name: kotlin.String,
@@ -33,5 +35,5 @@ data class AudienceCreateCustomRequest(
     /* Ad account ID. */
     val adAccountId: kotlin.String? = null,
     val category: kotlin.String? = null
-) 
+)
 

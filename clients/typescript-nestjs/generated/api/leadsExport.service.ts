@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { LeadsExportCreateRequest } from '../model/leadsExportCreateRequest';
 import { LeadsExportCreateResponse } from '../model/leadsExportCreateResponse';
@@ -28,10 +28,12 @@ export class LeadsExportService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -50,9 +52,10 @@ export class LeadsExportService {
      * @param leadsExportCreateRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [leadsExportCreateOpts.config] Override http request option.
      */
-    public leadsExportCreate(adAccountId: string, leadsExportCreateRequest: LeadsExportCreateRequest, ): Observable<AxiosResponse<LeadsExportCreateResponse>>;
-    public leadsExportCreate(adAccountId: string, leadsExportCreateRequest: LeadsExportCreateRequest, ): Observable<any> {
+    public leadsExportCreate(adAccountId: string, leadsExportCreateRequest: LeadsExportCreateRequest, leadsExportCreateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<LeadsExportCreateResponse>>;
+    public leadsExportCreate(adAccountId: string, leadsExportCreateRequest: LeadsExportCreateRequest, leadsExportCreateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling leadsExportCreate.');
         }
@@ -99,7 +102,8 @@ export class LeadsExportService {
                     leadsExportCreateRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...leadsExportCreateOpts?.config,
+                        headers: {...headers, ...leadsExportCreateOpts?.config?.headers},
                     }
                 );
             })
@@ -112,9 +116,10 @@ export class LeadsExportService {
      * @param leadsExportId lead_export_id token returned from the create a lead export endpoint
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [leadsExportGetOpts.config] Override http request option.
      */
-    public leadsExportGet(adAccountId: string, leadsExportId: string, ): Observable<AxiosResponse<LeadsExportResponseData>>;
-    public leadsExportGet(adAccountId: string, leadsExportId: string, ): Observable<any> {
+    public leadsExportGet(adAccountId: string, leadsExportId: string, leadsExportGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<LeadsExportResponseData>>;
+    public leadsExportGet(adAccountId: string, leadsExportId: string, leadsExportGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling leadsExportGet.');
         }
@@ -155,7 +160,8 @@ export class LeadsExportService {
                 return this.httpClient.get<LeadsExportResponseData>(`${this.basePath}/ad_accounts/${encodeURIComponent(String(ad_account_id))}/leads_export/${encodeURIComponent(String(leads_export_id))}`,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...leadsExportGetOpts?.config,
+                        headers: {...headers, ...leadsExportGetOpts?.config?.headers},
                     }
                 );
             })

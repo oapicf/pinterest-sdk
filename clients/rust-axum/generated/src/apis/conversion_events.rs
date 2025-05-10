@@ -1,6 +1,6 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Multipart};
+use axum_extra::extract::{CookieJar, Host};
 use bytes::Bytes;
 use http::Method;
 use serde::{Deserialize, Serialize};
@@ -48,17 +48,20 @@ pub enum EventsSlashCreateResponse {
 /// ConversionEvents
 #[async_trait]
 #[allow(clippy::ptr_arg)]
-pub trait ConversionEvents {
+pub trait ConversionEvents<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHandler<E> {
+    type Claims;
+
     /// Send conversions.
     ///
     /// EventsSlashCreate - POST /v5/ad_accounts/{ad_account_id}/events
     async fn events_slash_create(
     &self,
-    method: Method,
-    host: Host,
-    cookies: CookieJar,
-      path_params: models::EventsSlashCreatePathParams,
-      query_params: models::EventsSlashCreateQueryParams,
-            body: models::ConversionEvents,
-    ) -> Result<EventsSlashCreateResponse, String>;
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+        claims: &Self::Claims,
+      path_params: &models::EventsSlashCreatePathParams,
+      query_params: &models::EventsSlashCreateQueryParams,
+            body: &models::ConversionEvents,
+    ) -> Result<EventsSlashCreateResponse, E>;
 }

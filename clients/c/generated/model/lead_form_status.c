@@ -22,7 +22,7 @@ pinterest_rest_api_lead_form_status__e lead_form_status_lead_form_status_FromStr
     return 0;
 }
 
-cJSON *lead_form_status_lead_form_status_convertToJSON(pinterest_rest_api_lead_form_status__e lead_form_status) {
+cJSON *lead_form_status_convertToJSON(pinterest_rest_api_lead_form_status__e lead_form_status) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "lead_form_status", lead_form_status_lead_form_status_ToString(lead_form_status)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_lead_form_status__e lead_form_status_lead_form_status_parseFromJSON(cJSON *lead_form_statusJSON) {
-    pinterest_rest_api_lead_form_status__e *lead_form_status = NULL;
-    pinterest_rest_api_lead_form_status__e lead_form_statusVariable;
-    cJSON *lead_form_statusVar = cJSON_GetObjectItemCaseSensitive(lead_form_statusJSON, "lead_form_status");
-    if(!cJSON_IsString(lead_form_statusVar) || (lead_form_statusVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_lead_form_status__e lead_form_status_parseFromJSON(cJSON *lead_form_statusJSON) {
+    if(!cJSON_IsString(lead_form_statusJSON) || (lead_form_statusJSON->valuestring == NULL)) {
+        return 0;
     }
-    lead_form_statusVariable = lead_form_status_lead_form_status_FromString(lead_form_statusVar->valuestring);
-    return lead_form_statusVariable;
-end:
-    return 0;
+    return lead_form_status_lead_form_status_FromString(lead_form_statusJSON->valuestring);
 }

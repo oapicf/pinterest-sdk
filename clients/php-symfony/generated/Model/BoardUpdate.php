@@ -66,7 +66,7 @@ class BoardUpdate
      * @SerializedName("privacy")
      * @Type("string")
     */
-    #[Assert\Choice(["PUBLIC", "SECRET"])]
+    #[Assert\Choice(['PUBLIC', 'SECRET'])]
     #[Assert\Type("string")]
     protected ?string $privacy = null;
 
@@ -74,7 +74,7 @@ class BoardUpdate
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         if (is_array($data)) {
             $this->name = array_key_exists('name', $data) ? $data['name'] : $this->name;

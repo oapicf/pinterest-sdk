@@ -109,11 +109,11 @@ export function KeywordFromJSONTyped(json: any, ignoreDiscriminator: boolean): K
     };
 }
 
-  export function KeywordToJSON(json: any): Keyword {
-      return KeywordToJSONTyped(json, false);
-  }
+export function KeywordToJSON(json: any): Keyword {
+    return KeywordToJSONTyped(json, false);
+}
 
-  export function KeywordToJSONTyped(value?: Keyword | null, ignoreDiscriminator: boolean = false): any {
+export function KeywordToJSONTyped(value?: Keyword | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

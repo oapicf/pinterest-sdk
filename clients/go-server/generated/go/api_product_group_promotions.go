@@ -159,7 +159,7 @@ func (c *ProductGroupPromotionsAPIController) ProductGroupPromotionsCreate(w htt
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	productGroupPromotionCreateRequestParam := ProductGroupPromotionCreateRequest{}
+	var productGroupPromotionCreateRequestParam ProductGroupPromotionCreateRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&productGroupPromotionCreateRequestParam); err != nil {
@@ -192,7 +192,7 @@ func (c *ProductGroupPromotionsAPIController) ProductGroupPromotionsUpdate(w htt
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	productGroupPromotionUpdateRequestParam := ProductGroupPromotionUpdateRequest{}
+	var productGroupPromotionUpdateRequestParam ProductGroupPromotionUpdateRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&productGroupPromotionUpdateRequestParam); err != nil {

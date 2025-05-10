@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "A request to receive a client token.")
 @JsonTypeName("OauthAccessTokenRequestClientCredentials")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class OauthAccessTokenRequestClientCredentials   {
   public enum GrantTypeEnum {
 
@@ -69,6 +69,18 @@ public class OauthAccessTokenRequestClientCredentials   {
   private GrantTypeEnum grantType;
   private String scope;
 
+  public OauthAccessTokenRequestClientCredentials() {
+  }
+
+  @JsonCreator
+  public OauthAccessTokenRequestClientCredentials(
+    @JsonProperty(required = true, value = "grant_type") GrantTypeEnum grantType,
+    @JsonProperty(required = true, value = "scope") String scope
+  ) {
+    this.grantType = grantType;
+    this.scope = scope;
+  }
+
   /**
    **/
   public OauthAccessTokenRequestClientCredentials grantType(GrantTypeEnum grantType) {
@@ -78,12 +90,12 @@ public class OauthAccessTokenRequestClientCredentials   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("grant_type")
+  @JsonProperty(required = true, value = "grant_type")
   @NotNull public GrantTypeEnum getGrantType() {
     return grantType;
   }
 
-  @JsonProperty("grant_type")
+  @JsonProperty(required = true, value = "grant_type")
   public void setGrantType(GrantTypeEnum grantType) {
     this.grantType = grantType;
   }
@@ -97,12 +109,12 @@ public class OauthAccessTokenRequestClientCredentials   {
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("scope")
+  @JsonProperty(required = true, value = "scope")
   @NotNull public String getScope() {
     return scope;
   }
 
-  @JsonProperty("scope")
+  @JsonProperty(required = true, value = "scope")
   public void setScope(String scope) {
     this.scope = scope;
   }

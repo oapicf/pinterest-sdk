@@ -50,32 +50,37 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AudienceUpdateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-05T02:01:32.024245558Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
 public class AudienceUpdateRequest {
   public static final String SERIALIZED_NAME_AD_ACCOUNT_ID = "ad_account_id";
   @SerializedName(SERIALIZED_NAME_AD_ACCOUNT_ID)
+  @javax.annotation.Nullable
   private String adAccountId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_RULE = "rule";
   @SerializedName(SERIALIZED_NAME_RULE)
+  @javax.annotation.Nullable
   private AudienceRule rule;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nullable
   private String description;
 
   public static final String SERIALIZED_NAME_OPERATION_TYPE = "operation_type";
   @SerializedName(SERIALIZED_NAME_OPERATION_TYPE)
+  @javax.annotation.Nullable
   private AudienceUpdateOperationType operationType = AudienceUpdateOperationType.UPDATE;
 
   public AudienceUpdateRequest() {
   }
 
-  public AudienceUpdateRequest adAccountId(String adAccountId) {
+  public AudienceUpdateRequest adAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -89,12 +94,12 @@ public class AudienceUpdateRequest {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@javax.annotation.Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
 
-  public AudienceUpdateRequest name(String name) {
+  public AudienceUpdateRequest name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -108,12 +113,12 @@ public class AudienceUpdateRequest {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public AudienceUpdateRequest rule(AudienceRule rule) {
+  public AudienceUpdateRequest rule(@javax.annotation.Nullable AudienceRule rule) {
     this.rule = rule;
     return this;
   }
@@ -127,12 +132,12 @@ public class AudienceUpdateRequest {
     return rule;
   }
 
-  public void setRule(AudienceRule rule) {
+  public void setRule(@javax.annotation.Nullable AudienceRule rule) {
     this.rule = rule;
   }
 
 
-  public AudienceUpdateRequest description(String description) {
+  public AudienceUpdateRequest description(@javax.annotation.Nullable String description) {
     this.description = description;
     return this;
   }
@@ -146,12 +151,12 @@ public class AudienceUpdateRequest {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
 
-  public AudienceUpdateRequest operationType(AudienceUpdateOperationType operationType) {
+  public AudienceUpdateRequest operationType(@javax.annotation.Nullable AudienceUpdateOperationType operationType) {
     this.operationType = operationType;
     return this;
   }
@@ -165,7 +170,7 @@ public class AudienceUpdateRequest {
     return operationType;
   }
 
-  public void setOperationType(AudienceUpdateOperationType operationType) {
+  public void setOperationType(@javax.annotation.Nullable AudienceUpdateOperationType operationType) {
     this.operationType = operationType;
   }
 

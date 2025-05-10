@@ -22,7 +22,7 @@ pinterest_rest_api_conversion_api_response_events_inner_STATUS_e conversion_api_
     return 0;
 }
 
-conversion_api_response_events_inner_t *conversion_api_response_events_inner_create(
+static conversion_api_response_events_inner_t *conversion_api_response_events_inner_create_internal(
     pinterest_rest_api_conversion_api_response_events_inner_STATUS_e status,
     char *error_message,
     char *warning_message
@@ -35,12 +35,28 @@ conversion_api_response_events_inner_t *conversion_api_response_events_inner_cre
     conversion_api_response_events_inner_local_var->error_message = error_message;
     conversion_api_response_events_inner_local_var->warning_message = warning_message;
 
+    conversion_api_response_events_inner_local_var->_library_owned = 1;
     return conversion_api_response_events_inner_local_var;
 }
 
+__attribute__((deprecated)) conversion_api_response_events_inner_t *conversion_api_response_events_inner_create(
+    pinterest_rest_api_conversion_api_response_events_inner_STATUS_e status,
+    char *error_message,
+    char *warning_message
+    ) {
+    return conversion_api_response_events_inner_create_internal (
+        status,
+        error_message,
+        warning_message
+        );
+}
 
 void conversion_api_response_events_inner_free(conversion_api_response_events_inner_t *conversion_api_response_events_inner) {
     if(NULL == conversion_api_response_events_inner){
+        return ;
+    }
+    if(conversion_api_response_events_inner->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "conversion_api_response_events_inner_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -62,7 +78,7 @@ cJSON *conversion_api_response_events_inner_convertToJSON(conversion_api_respons
     if (pinterest_rest_api_conversion_api_response_events_inner_STATUS_NULL == conversion_api_response_events_inner->status) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "status", statusconversion_api_response_events_inner_ToString(conversion_api_response_events_inner->status)) == NULL)
+    if(cJSON_AddStringToObject(item, "status", conversion_api_response_events_inner_status_ToString(conversion_api_response_events_inner->status)) == NULL)
     {
     goto fail; //Enum
     }
@@ -97,6 +113,9 @@ conversion_api_response_events_inner_t *conversion_api_response_events_inner_par
 
     // conversion_api_response_events_inner->status
     cJSON *status = cJSON_GetObjectItemCaseSensitive(conversion_api_response_events_innerJSON, "status");
+    if (cJSON_IsNull(status)) {
+        status = NULL;
+    }
     if (!status) {
         goto end;
     }
@@ -111,6 +130,9 @@ conversion_api_response_events_inner_t *conversion_api_response_events_inner_par
 
     // conversion_api_response_events_inner->error_message
     cJSON *error_message = cJSON_GetObjectItemCaseSensitive(conversion_api_response_events_innerJSON, "error_message");
+    if (cJSON_IsNull(error_message)) {
+        error_message = NULL;
+    }
     if (error_message) { 
     if(!cJSON_IsString(error_message) && !cJSON_IsNull(error_message))
     {
@@ -120,6 +142,9 @@ conversion_api_response_events_inner_t *conversion_api_response_events_inner_par
 
     // conversion_api_response_events_inner->warning_message
     cJSON *warning_message = cJSON_GetObjectItemCaseSensitive(conversion_api_response_events_innerJSON, "warning_message");
+    if (cJSON_IsNull(warning_message)) {
+        warning_message = NULL;
+    }
     if (warning_message) { 
     if(!cJSON_IsString(warning_message) && !cJSON_IsNull(warning_message))
     {
@@ -128,7 +153,7 @@ conversion_api_response_events_inner_t *conversion_api_response_events_inner_par
     }
 
 
-    conversion_api_response_events_inner_local_var = conversion_api_response_events_inner_create (
+    conversion_api_response_events_inner_local_var = conversion_api_response_events_inner_create_internal (
         statusVariable,
         error_message && !cJSON_IsNull(error_message) ? strdup(error_message->valuestring) : NULL,
         warning_message && !cJSON_IsNull(warning_message) ? strdup(warning_message->valuestring) : NULL

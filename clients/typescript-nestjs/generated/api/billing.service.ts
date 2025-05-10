@@ -13,7 +13,7 @@
 
 import { Injectable, Optional } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { AdsCreditRedeemRequest } from '../model/adsCreditRedeemRequest';
 import { AdsCreditRedeemResponse } from '../model/adsCreditRedeemResponse';
@@ -37,10 +37,12 @@ export class BillingService {
     protected basePath = 'https://api.pinterest.com/v5';
     public defaultHeaders: Record<string,string> = {};
     public configuration = new Configuration();
+    protected httpClient: HttpService;
 
-    constructor(protected httpClient: HttpService, @Optional() configuration: Configuration) {
+    constructor(httpClient: HttpService, @Optional() configuration: Configuration) {
         this.configuration = configuration || this.configuration;
         this.basePath = configuration?.basePath || this.basePath;
+        this.httpClient = configuration?.httpClient || httpClient;
     }
 
     /**
@@ -59,9 +61,10 @@ export class BillingService {
      * @param adsCreditRedeemRequest Redeem ad credits request.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [adsCreditRedeemOpts.config] Override http request option.
      */
-    public adsCreditRedeem(adAccountId: string, adsCreditRedeemRequest: AdsCreditRedeemRequest, ): Observable<AxiosResponse<AdsCreditRedeemResponse>>;
-    public adsCreditRedeem(adAccountId: string, adsCreditRedeemRequest: AdsCreditRedeemRequest, ): Observable<any> {
+    public adsCreditRedeem(adAccountId: string, adsCreditRedeemRequest: AdsCreditRedeemRequest, adsCreditRedeemOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<AdsCreditRedeemResponse>>;
+    public adsCreditRedeem(adAccountId: string, adsCreditRedeemRequest: AdsCreditRedeemRequest, adsCreditRedeemOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling adsCreditRedeem.');
         }
@@ -108,7 +111,8 @@ export class BillingService {
                     adsCreditRedeemRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...adsCreditRedeemOpts?.config,
+                        headers: {...headers, ...adsCreditRedeemOpts?.config?.headers},
                     }
                 );
             })
@@ -122,9 +126,10 @@ export class BillingService {
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [adsCreditsDiscountsGetOpts.config] Override http request option.
      */
-    public adsCreditsDiscountsGet(adAccountId: string, bookmark?: string, pageSize?: number, ): Observable<AxiosResponse<AdsCreditsDiscountsGet200Response>>;
-    public adsCreditsDiscountsGet(adAccountId: string, bookmark?: string, pageSize?: number, ): Observable<any> {
+    public adsCreditsDiscountsGet(adAccountId: string, bookmark?: string, pageSize?: number, adsCreditsDiscountsGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<AdsCreditsDiscountsGet200Response>>;
+    public adsCreditsDiscountsGet(adAccountId: string, bookmark?: string, pageSize?: number, adsCreditsDiscountsGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling adsCreditsDiscountsGet.');
         }
@@ -170,7 +175,8 @@ export class BillingService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...adsCreditsDiscountsGetOpts?.config,
+                        headers: {...headers, ...adsCreditsDiscountsGetOpts?.config?.headers},
                     }
                 );
             })
@@ -185,9 +191,10 @@ export class BillingService {
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [billingProfilesGetOpts.config] Override http request option.
      */
-    public billingProfilesGet(adAccountId: string, isActive: boolean, bookmark?: string, pageSize?: number, ): Observable<AxiosResponse<BillingProfilesGet200Response>>;
-    public billingProfilesGet(adAccountId: string, isActive: boolean, bookmark?: string, pageSize?: number, ): Observable<any> {
+    public billingProfilesGet(adAccountId: string, isActive: boolean, bookmark?: string, pageSize?: number, billingProfilesGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<BillingProfilesGet200Response>>;
+    public billingProfilesGet(adAccountId: string, isActive: boolean, bookmark?: string, pageSize?: number, billingProfilesGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling billingProfilesGet.');
         }
@@ -240,7 +247,8 @@ export class BillingService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...billingProfilesGetOpts?.config,
+                        headers: {...headers, ...billingProfilesGetOpts?.config?.headers},
                     }
                 );
             })
@@ -252,9 +260,10 @@ export class BillingService {
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [ssioAccountsGetOpts.config] Override http request option.
      */
-    public ssioAccountsGet(adAccountId: string, ): Observable<AxiosResponse<SSIOAccountResponse>>;
-    public ssioAccountsGet(adAccountId: string, ): Observable<any> {
+    public ssioAccountsGet(adAccountId: string, ssioAccountsGetOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<SSIOAccountResponse>>;
+    public ssioAccountsGet(adAccountId: string, ssioAccountsGetOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling ssioAccountsGet.');
         }
@@ -291,7 +300,8 @@ export class BillingService {
                 return this.httpClient.get<SSIOAccountResponse>(`${this.basePath}/ad_accounts/${encodeURIComponent(String(ad_account_id))}/ssio/accounts`,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...ssioAccountsGetOpts?.config,
+                        headers: {...headers, ...ssioAccountsGetOpts?.config?.headers},
                     }
                 );
             })
@@ -304,9 +314,10 @@ export class BillingService {
      * @param sSIOCreateInsertionOrderRequest Order line to create.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [ssioInsertionOrderCreateOpts.config] Override http request option.
      */
-    public ssioInsertionOrderCreate(adAccountId: string, sSIOCreateInsertionOrderRequest: SSIOCreateInsertionOrderRequest, ): Observable<AxiosResponse<SSIOCreateInsertionOrderResponse>>;
-    public ssioInsertionOrderCreate(adAccountId: string, sSIOCreateInsertionOrderRequest: SSIOCreateInsertionOrderRequest, ): Observable<any> {
+    public ssioInsertionOrderCreate(adAccountId: string, sSIOCreateInsertionOrderRequest: SSIOCreateInsertionOrderRequest, ssioInsertionOrderCreateOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<SSIOCreateInsertionOrderResponse>>;
+    public ssioInsertionOrderCreate(adAccountId: string, sSIOCreateInsertionOrderRequest: SSIOCreateInsertionOrderRequest, ssioInsertionOrderCreateOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling ssioInsertionOrderCreate.');
         }
@@ -353,7 +364,8 @@ export class BillingService {
                     sSIOCreateInsertionOrderRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...ssioInsertionOrderCreateOpts?.config,
+                        headers: {...headers, ...ssioInsertionOrderCreateOpts?.config?.headers},
                     }
                 );
             })
@@ -366,9 +378,10 @@ export class BillingService {
      * @param sSIOEditInsertionOrderRequest Order line to create.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [ssioInsertionOrderEditOpts.config] Override http request option.
      */
-    public ssioInsertionOrderEdit(adAccountId: string, sSIOEditInsertionOrderRequest: SSIOEditInsertionOrderRequest, ): Observable<AxiosResponse<SSIOEditInsertionOrderResponse>>;
-    public ssioInsertionOrderEdit(adAccountId: string, sSIOEditInsertionOrderRequest: SSIOEditInsertionOrderRequest, ): Observable<any> {
+    public ssioInsertionOrderEdit(adAccountId: string, sSIOEditInsertionOrderRequest: SSIOEditInsertionOrderRequest, ssioInsertionOrderEditOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<SSIOEditInsertionOrderResponse>>;
+    public ssioInsertionOrderEdit(adAccountId: string, sSIOEditInsertionOrderRequest: SSIOEditInsertionOrderRequest, ssioInsertionOrderEditOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling ssioInsertionOrderEdit.');
         }
@@ -415,7 +428,8 @@ export class BillingService {
                     sSIOEditInsertionOrderRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...ssioInsertionOrderEditOpts?.config,
+                        headers: {...headers, ...ssioInsertionOrderEditOpts?.config?.headers},
                     }
                 );
             })
@@ -429,9 +443,10 @@ export class BillingService {
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [ssioInsertionOrdersStatusGetByAdAccountOpts.config] Override http request option.
      */
-    public ssioInsertionOrdersStatusGetByAdAccount(adAccountId: string, bookmark?: string, pageSize?: number, ): Observable<AxiosResponse<SsioInsertionOrdersStatusGetByAdAccount200Response>>;
-    public ssioInsertionOrdersStatusGetByAdAccount(adAccountId: string, bookmark?: string, pageSize?: number, ): Observable<any> {
+    public ssioInsertionOrdersStatusGetByAdAccount(adAccountId: string, bookmark?: string, pageSize?: number, ssioInsertionOrdersStatusGetByAdAccountOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<SsioInsertionOrdersStatusGetByAdAccount200Response>>;
+    public ssioInsertionOrdersStatusGetByAdAccount(adAccountId: string, bookmark?: string, pageSize?: number, ssioInsertionOrdersStatusGetByAdAccountOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling ssioInsertionOrdersStatusGetByAdAccount.');
         }
@@ -477,7 +492,8 @@ export class BillingService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...ssioInsertionOrdersStatusGetByAdAccountOpts?.config,
+                        headers: {...headers, ...ssioInsertionOrdersStatusGetByAdAccountOpts?.config?.headers},
                     }
                 );
             })
@@ -490,9 +506,10 @@ export class BillingService {
      * @param pinOrderId The pin order id associated with the ssio insertion order
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [ssioInsertionOrdersStatusGetByPinOrderIdOpts.config] Override http request option.
      */
-    public ssioInsertionOrdersStatusGetByPinOrderId(adAccountId: string, pinOrderId: string, ): Observable<AxiosResponse<SSIOInsertionOrderStatusResponse>>;
-    public ssioInsertionOrdersStatusGetByPinOrderId(adAccountId: string, pinOrderId: string, ): Observable<any> {
+    public ssioInsertionOrdersStatusGetByPinOrderId(adAccountId: string, pinOrderId: string, ssioInsertionOrdersStatusGetByPinOrderIdOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<SSIOInsertionOrderStatusResponse>>;
+    public ssioInsertionOrdersStatusGetByPinOrderId(adAccountId: string, pinOrderId: string, ssioInsertionOrdersStatusGetByPinOrderIdOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling ssioInsertionOrdersStatusGetByPinOrderId.');
         }
@@ -533,7 +550,8 @@ export class BillingService {
                 return this.httpClient.get<SSIOInsertionOrderStatusResponse>(`${this.basePath}/ad_accounts/${encodeURIComponent(String(ad_account_id))}/ssio/insertion_orders/${encodeURIComponent(String(pin_order_id))}/status`,
                     {
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...ssioInsertionOrdersStatusGetByPinOrderIdOpts?.config,
+                        headers: {...headers, ...ssioInsertionOrdersStatusGetByPinOrderIdOpts?.config?.headers},
                     }
                 );
             })
@@ -548,9 +566,10 @@ export class BillingService {
      * @param pinOrderId The pin order id associated with the ssio insertino order
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param {*} [ssioOrderLinesGetByAdAccountOpts.config] Override http request option.
      */
-    public ssioOrderLinesGetByAdAccount(adAccountId: string, bookmark?: string, pageSize?: number, pinOrderId?: string, ): Observable<AxiosResponse<SsioOrderLinesGetByAdAccount200Response>>;
-    public ssioOrderLinesGetByAdAccount(adAccountId: string, bookmark?: string, pageSize?: number, pinOrderId?: string, ): Observable<any> {
+    public ssioOrderLinesGetByAdAccount(adAccountId: string, bookmark?: string, pageSize?: number, pinOrderId?: string, ssioOrderLinesGetByAdAccountOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<SsioOrderLinesGetByAdAccount200Response>>;
+    public ssioOrderLinesGetByAdAccount(adAccountId: string, bookmark?: string, pageSize?: number, pinOrderId?: string, ssioOrderLinesGetByAdAccountOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling ssioOrderLinesGetByAdAccount.');
         }
@@ -599,7 +618,8 @@ export class BillingService {
                     {
                         params: queryParameters,
                         withCredentials: this.configuration.withCredentials,
-                        headers: headers
+                        ...ssioOrderLinesGetByAdAccountOpts?.config,
+                        headers: {...headers, ...ssioOrderLinesGetByAdAccountOpts?.config?.headers},
                     }
                 );
             })

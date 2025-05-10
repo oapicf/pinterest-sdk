@@ -51,9 +51,10 @@ typedef struct catalogs_creative_assets_product_group_filter_keys_t {
     catalogs_product_group_multiple_string_list_criteria_t *google_product_category_0; //object
     catalogs_product_group_multiple_media_types_criteria_t *media_type; //object
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_creative_assets_product_group_filter_keys_t;
 
-catalogs_creative_assets_product_group_filter_keys_t *catalogs_creative_assets_product_group_filter_keys_create(
+__attribute__((deprecated)) catalogs_creative_assets_product_group_filter_keys_t *catalogs_creative_assets_product_group_filter_keys_create(
     catalogs_product_group_multiple_string_criteria_t *creative_assets_id,
     catalogs_product_group_multiple_string_criteria_t *custom_label_0,
     catalogs_product_group_multiple_string_criteria_t *custom_label_1,

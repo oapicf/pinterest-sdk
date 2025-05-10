@@ -545,7 +545,7 @@ class BusinessAccessInviteController extends Controller
         }
         $asserts = [];
         $asserts[] = new Assert\All([
-            new Assert\Choice([ "PENDING", "EXPIRED" ])
+            new Assert\Choice([ 'PENDING', 'EXPIRED' ])
         ]);
         $asserts[] = new Assert\All([
             new Assert\Type("string"),

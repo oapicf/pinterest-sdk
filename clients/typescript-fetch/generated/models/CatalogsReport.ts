@@ -73,11 +73,11 @@ export function CatalogsReportFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-  export function CatalogsReportToJSON(json: any): CatalogsReport {
-      return CatalogsReportToJSONTyped(json, false);
-  }
+export function CatalogsReportToJSON(json: any): CatalogsReport {
+    return CatalogsReportToJSONTyped(json, false);
+}
 
-  export function CatalogsReportToJSONTyped(value?: CatalogsReport | null, ignoreDiscriminator: boolean = false): any {
+export function CatalogsReportToJSONTyped(value?: CatalogsReport | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

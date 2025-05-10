@@ -12,6 +12,7 @@
 package org.openapitools.server.models
 
 
+import kotlinx.serialization.Serializable
 /**
  * Base64-encoded image media source
  * @param sourceType 
@@ -19,13 +20,14 @@ package org.openapitools.server.models
  * @param `data` 
  * @param isStandard Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
  */
+@Serializable
 data class PinMediaSourceImageBase64(
     val sourceType: PinMediaSourceImageBase64.SourceType,
     val contentType: PinMediaSourceImageBase64.ContentType,
     val `data`: kotlin.String,
     /* Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users. */
     val isStandard: kotlin.Boolean? = true
-) 
+)
 {
     /**
     * 
@@ -36,11 +38,11 @@ data class PinMediaSourceImageBase64(
     }
     /**
     * 
-    * Values: jpeg,png
+    * Values: imageSlashJpeg,imageSlashPng
     */
     enum class ContentType(val value: kotlin.String){
-        jpeg("image/jpeg"),
-        png("image/png");
+        imageSlashJpeg("image/jpeg"),
+        imageSlashPng("image/png");
     }
 }
 

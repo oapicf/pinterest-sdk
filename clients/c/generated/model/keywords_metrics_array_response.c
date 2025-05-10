@@ -5,7 +5,7 @@
 
 
 
-keywords_metrics_array_response_t *keywords_metrics_array_response_create(
+static keywords_metrics_array_response_t *keywords_metrics_array_response_create_internal(
     list_t *data
     ) {
     keywords_metrics_array_response_t *keywords_metrics_array_response_local_var = malloc(sizeof(keywords_metrics_array_response_t));
@@ -14,12 +14,24 @@ keywords_metrics_array_response_t *keywords_metrics_array_response_create(
     }
     keywords_metrics_array_response_local_var->data = data;
 
+    keywords_metrics_array_response_local_var->_library_owned = 1;
     return keywords_metrics_array_response_local_var;
 }
 
+__attribute__((deprecated)) keywords_metrics_array_response_t *keywords_metrics_array_response_create(
+    list_t *data
+    ) {
+    return keywords_metrics_array_response_create_internal (
+        data
+        );
+}
 
 void keywords_metrics_array_response_free(keywords_metrics_array_response_t *keywords_metrics_array_response) {
     if(NULL == keywords_metrics_array_response){
+        return ;
+    }
+    if(keywords_metrics_array_response->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "keywords_metrics_array_response_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -72,6 +84,9 @@ keywords_metrics_array_response_t *keywords_metrics_array_response_parseFromJSON
 
     // keywords_metrics_array_response->data
     cJSON *data = cJSON_GetObjectItemCaseSensitive(keywords_metrics_array_responseJSON, "data");
+    if (cJSON_IsNull(data)) {
+        data = NULL;
+    }
     if (data) { 
     cJSON *data_local_nonprimitive = NULL;
     if(!cJSON_IsArray(data)){
@@ -92,7 +107,7 @@ keywords_metrics_array_response_t *keywords_metrics_array_response_parseFromJSON
     }
 
 
-    keywords_metrics_array_response_local_var = keywords_metrics_array_response_create (
+    keywords_metrics_array_response_local_var = keywords_metrics_array_response_create_internal (
         data ? dataList : NULL
         );
 

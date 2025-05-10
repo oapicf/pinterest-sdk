@@ -22,7 +22,7 @@ pinterest_rest_api_nullable_catalogs_item_field_type__e nullable_catalogs_item_f
     return 0;
 }
 
-cJSON *nullable_catalogs_item_field_type_nullable_catalogs_item_field_type_convertToJSON(pinterest_rest_api_nullable_catalogs_item_field_type__e nullable_catalogs_item_field_type) {
+cJSON *nullable_catalogs_item_field_type_convertToJSON(pinterest_rest_api_nullable_catalogs_item_field_type__e nullable_catalogs_item_field_type) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "nullable_catalogs_item_field_type", nullable_catalogs_item_field_type_nullable_catalogs_item_field_type_ToString(nullable_catalogs_item_field_type)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-pinterest_rest_api_nullable_catalogs_item_field_type__e nullable_catalogs_item_field_type_nullable_catalogs_item_field_type_parseFromJSON(cJSON *nullable_catalogs_item_field_typeJSON) {
-    pinterest_rest_api_nullable_catalogs_item_field_type__e *nullable_catalogs_item_field_type = NULL;
-    pinterest_rest_api_nullable_catalogs_item_field_type__e nullable_catalogs_item_field_typeVariable;
-    cJSON *nullable_catalogs_item_field_typeVar = cJSON_GetObjectItemCaseSensitive(nullable_catalogs_item_field_typeJSON, "nullable_catalogs_item_field_type");
-    if(!cJSON_IsString(nullable_catalogs_item_field_typeVar) || (nullable_catalogs_item_field_typeVar->valuestring == NULL)){
-        goto end;
+pinterest_rest_api_nullable_catalogs_item_field_type__e nullable_catalogs_item_field_type_parseFromJSON(cJSON *nullable_catalogs_item_field_typeJSON) {
+    if(!cJSON_IsString(nullable_catalogs_item_field_typeJSON) || (nullable_catalogs_item_field_typeJSON->valuestring == NULL)) {
+        return 0;
     }
-    nullable_catalogs_item_field_typeVariable = nullable_catalogs_item_field_type_nullable_catalogs_item_field_type_FromString(nullable_catalogs_item_field_typeVar->valuestring);
-    return nullable_catalogs_item_field_typeVariable;
-end:
-    return 0;
+    return nullable_catalogs_item_field_type_nullable_catalogs_item_field_type_FromString(nullable_catalogs_item_field_typeJSON->valuestring);
 }

@@ -5,11 +5,6 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 // Functions for enum INVITESTATUS for BusinessAccessInviteAPI_getInvites
 
@@ -111,15 +106,20 @@ BusinessAccessInviteAPI_assetAccessRequestsCreate(apiClient_t *apiClient, char *
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/businesses/{business_id}/requests/assets/access")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/businesses/{business_id}/requests/assets/access");
+    char *localVarPath = strdup("/businesses/{business_id}/requests/assets/access");
+
+    if(!business_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen("{ business_id }");
+    long sizeOfPathParams_business_id = strlen(business_id)+3 + sizeof("{ business_id }") - 1;
     if(business_id == NULL) {
         goto end;
     }
@@ -134,9 +134,10 @@ BusinessAccessInviteAPI_assetAccessRequestsCreate(apiClient_t *apiClient, char *
     cJSON *localVarSingleItemJSON_create_asset_access_request_body = NULL;
     if (create_asset_access_request_body != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_create_asset_access_request_body = create_asset_access_request_body_convertToJSON(create_asset_access_request_body);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_create_asset_access_request_body);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -148,6 +149,7 @@ BusinessAccessInviteAPI_assetAccessRequestsCreate(apiClient_t *apiClient, char *
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -159,11 +161,14 @@ BusinessAccessInviteAPI_assetAccessRequestsCreate(apiClient_t *apiClient, char *
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BusinessAccessInviteAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    create_asset_access_request_response_t *elementToReturn = create_asset_access_request_response_parseFromJSON(BusinessAccessInviteAPIlocalVarJSON);
-    cJSON_Delete(BusinessAccessInviteAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    create_asset_access_request_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BusinessAccessInviteAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = create_asset_access_request_response_parseFromJSON(BusinessAccessInviteAPIlocalVarJSON);
+        cJSON_Delete(BusinessAccessInviteAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -204,15 +209,20 @@ BusinessAccessInviteAPI_cancelInvitesOrRequests(apiClient_t *apiClient, char *bu
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/businesses/{business_id}/invites")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/businesses/{business_id}/invites");
+    char *localVarPath = strdup("/businesses/{business_id}/invites");
+
+    if(!business_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen("{ business_id }");
+    long sizeOfPathParams_business_id = strlen(business_id)+3 + sizeof("{ business_id }") - 1;
     if(business_id == NULL) {
         goto end;
     }
@@ -227,9 +237,10 @@ BusinessAccessInviteAPI_cancelInvitesOrRequests(apiClient_t *apiClient, char *bu
     cJSON *localVarSingleItemJSON_cancel_invites_body = NULL;
     if (cancel_invites_body != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_cancel_invites_body = cancel_invites_body_convertToJSON(cancel_invites_body);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_cancel_invites_body);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -241,6 +252,7 @@ BusinessAccessInviteAPI_cancelInvitesOrRequests(apiClient_t *apiClient, char *bu
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "DELETE");
 
     // uncomment below to debug the error response
@@ -252,11 +264,14 @@ BusinessAccessInviteAPI_cancelInvitesOrRequests(apiClient_t *apiClient, char *bu
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BusinessAccessInviteAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    delete_invites_results_response_array_t *elementToReturn = delete_invites_results_response_array_parseFromJSON(BusinessAccessInviteAPIlocalVarJSON);
-    cJSON_Delete(BusinessAccessInviteAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    delete_invites_results_response_array_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BusinessAccessInviteAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = delete_invites_results_response_array_parseFromJSON(BusinessAccessInviteAPIlocalVarJSON);
+        cJSON_Delete(BusinessAccessInviteAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -297,15 +312,20 @@ BusinessAccessInviteAPI_createAssetInvites(apiClient_t *apiClient, char *busines
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/businesses/{business_id}/invites/assets/access")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/businesses/{business_id}/invites/assets/access");
+    char *localVarPath = strdup("/businesses/{business_id}/invites/assets/access");
+
+    if(!business_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen("{ business_id }");
+    long sizeOfPathParams_business_id = strlen(business_id)+3 + sizeof("{ business_id }") - 1;
     if(business_id == NULL) {
         goto end;
     }
@@ -320,9 +340,10 @@ BusinessAccessInviteAPI_createAssetInvites(apiClient_t *apiClient, char *busines
     cJSON *localVarSingleItemJSON_create_asset_invites_request = NULL;
     if (create_asset_invites_request != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_create_asset_invites_request = create_asset_invites_request_convertToJSON(create_asset_invites_request);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_create_asset_invites_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -334,6 +355,7 @@ BusinessAccessInviteAPI_createAssetInvites(apiClient_t *apiClient, char *busines
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -345,11 +367,14 @@ BusinessAccessInviteAPI_createAssetInvites(apiClient_t *apiClient, char *busines
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BusinessAccessInviteAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    update_invites_results_response_array_t *elementToReturn = update_invites_results_response_array_parseFromJSON(BusinessAccessInviteAPIlocalVarJSON);
-    cJSON_Delete(BusinessAccessInviteAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    update_invites_results_response_array_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BusinessAccessInviteAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = update_invites_results_response_array_parseFromJSON(BusinessAccessInviteAPIlocalVarJSON);
+        cJSON_Delete(BusinessAccessInviteAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -390,15 +415,20 @@ BusinessAccessInviteAPI_createMembershipOrPartnershipInvites(apiClient_t *apiCli
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/businesses/{business_id}/invites")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/businesses/{business_id}/invites");
+    char *localVarPath = strdup("/businesses/{business_id}/invites");
+
+    if(!business_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen("{ business_id }");
+    long sizeOfPathParams_business_id = strlen(business_id)+3 + sizeof("{ business_id }") - 1;
     if(business_id == NULL) {
         goto end;
     }
@@ -413,9 +443,10 @@ BusinessAccessInviteAPI_createMembershipOrPartnershipInvites(apiClient_t *apiCli
     cJSON *localVarSingleItemJSON_create_membership_or_partnership_invites_body = NULL;
     if (create_membership_or_partnership_invites_body != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_create_membership_or_partnership_invites_body = create_membership_or_partnership_invites_body_convertToJSON(create_membership_or_partnership_invites_body);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_create_membership_or_partnership_invites_body);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -427,6 +458,7 @@ BusinessAccessInviteAPI_createMembershipOrPartnershipInvites(apiClient_t *apiCli
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -438,11 +470,14 @@ BusinessAccessInviteAPI_createMembershipOrPartnershipInvites(apiClient_t *apiCli
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BusinessAccessInviteAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    create_invites_results_response_array_t *elementToReturn = create_invites_results_response_array_parseFromJSON(BusinessAccessInviteAPIlocalVarJSON);
-    cJSON_Delete(BusinessAccessInviteAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    create_invites_results_response_array_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BusinessAccessInviteAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = create_invites_results_response_array_parseFromJSON(BusinessAccessInviteAPIlocalVarJSON);
+        cJSON_Delete(BusinessAccessInviteAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -483,15 +518,20 @@ BusinessAccessInviteAPI_getInvites(apiClient_t *apiClient, char *business_id, in
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/businesses/{business_id}/invites")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/businesses/{business_id}/invites");
+    char *localVarPath = strdup("/businesses/{business_id}/invites");
+
+    if(!business_id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen("{ business_id }");
+    long sizeOfPathParams_business_id = strlen(business_id)+3 + sizeof("{ business_id }") - 1;
     if(business_id == NULL) {
         goto end;
     }
@@ -529,7 +569,7 @@ BusinessAccessInviteAPI_getInvites(apiClient_t *apiClient, char *business_id, in
     {
         keyQuery_invite_type = strdup("invite_type");
         valueQuery_invite_type = (invite_type);
-        keyPairQuery_invite_type = keyValuePair_create(keyQuery_invite_type, (void *)strdup(getInvites__ToString(
+        keyPairQuery_invite_type = keyValuePair_create(keyQuery_invite_type, strdup(getInvites__ToString(
         &valueQuery_invite_type)));
         list_addElement(localVarQueryParameters,keyPairQuery_invite_type);
     }
@@ -567,6 +607,7 @@ BusinessAccessInviteAPI_getInvites(apiClient_t *apiClient, char *business_id, in
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -578,11 +619,14 @@ BusinessAccessInviteAPI_getInvites(apiClient_t *apiClient, char *business_id, in
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BusinessAccessInviteAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    get_invites_200_response_t *elementToReturn = get_invites_200_response_parseFromJSON(BusinessAccessInviteAPIlocalVarJSON);
-    cJSON_Delete(BusinessAccessInviteAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    get_invites_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BusinessAccessInviteAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = get_invites_200_response_parseFromJSON(BusinessAccessInviteAPIlocalVarJSON);
+        cJSON_Delete(BusinessAccessInviteAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type
@@ -662,11 +706,14 @@ BusinessAccessInviteAPI_respondBusinessAccessInvites(apiClient_t *apiClient, aut
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/businesses/invites")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/businesses/invites");
+    char *localVarPath = strdup("/businesses/invites");
+
 
 
 
@@ -675,9 +722,10 @@ BusinessAccessInviteAPI_respondBusinessAccessInvites(apiClient_t *apiClient, aut
     cJSON *localVarSingleItemJSON_auth_respond_invites_body = NULL;
     if (auth_respond_invites_body != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_auth_respond_invites_body = auth_respond_invites_body_convertToJSON(auth_respond_invites_body);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_auth_respond_invites_body);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -689,6 +737,7 @@ BusinessAccessInviteAPI_respondBusinessAccessInvites(apiClient_t *apiClient, aut
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "PATCH");
 
     // uncomment below to debug the error response
@@ -700,11 +749,14 @@ BusinessAccessInviteAPI_respondBusinessAccessInvites(apiClient_t *apiClient, aut
     //    printf("%s\n","Unexpected error");
     //}
     //nonprimitive not container
-    cJSON *BusinessAccessInviteAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    respond_to_invites_response_array_t *elementToReturn = respond_to_invites_response_array_parseFromJSON(BusinessAccessInviteAPIlocalVarJSON);
-    cJSON_Delete(BusinessAccessInviteAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    respond_to_invites_response_array_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BusinessAccessInviteAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = respond_to_invites_response_array_parseFromJSON(BusinessAccessInviteAPIlocalVarJSON);
+        cJSON_Delete(BusinessAccessInviteAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type

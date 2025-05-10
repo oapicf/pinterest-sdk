@@ -30,57 +30,26 @@ char* bid_floor_spec_countries_ToString(pinterest_rest_api_bid_floor_spec__e cou
 
 pinterest_rest_api_bid_floor_spec__e bid_floor_spec_countries_FromString(char* countries);
 
-// Enum  for bid_floor_spec
-
-typedef enum  { pinterest_rest_api_bid_floor_spec__NULL = 0, pinterest_rest_api_bid_floor_spec__UNK, pinterest_rest_api_bid_floor_spec__USD, pinterest_rest_api_bid_floor_spec__GBP, pinterest_rest_api_bid_floor_spec__CAD, pinterest_rest_api_bid_floor_spec__EUR, pinterest_rest_api_bid_floor_spec__AUD, pinterest_rest_api_bid_floor_spec__NZD, pinterest_rest_api_bid_floor_spec__SEK, pinterest_rest_api_bid_floor_spec__ILS, pinterest_rest_api_bid_floor_spec__CHF, pinterest_rest_api_bid_floor_spec__HKD, pinterest_rest_api_bid_floor_spec__JPY, pinterest_rest_api_bid_floor_spec__SGD, pinterest_rest_api_bid_floor_spec__KRW, pinterest_rest_api_bid_floor_spec__NOK, pinterest_rest_api_bid_floor_spec__DKK, pinterest_rest_api_bid_floor_spec__PLN, pinterest_rest_api_bid_floor_spec__RON, pinterest_rest_api_bid_floor_spec__HUF, pinterest_rest_api_bid_floor_spec__CZK, pinterest_rest_api_bid_floor_spec__BRL, pinterest_rest_api_bid_floor_spec__MXN, pinterest_rest_api_bid_floor_spec__ARS, pinterest_rest_api_bid_floor_spec__CLP, pinterest_rest_api_bid_floor_spec__COP, pinterest_rest_api_bid_floor_spec__INR, pinterest_rest_api_bid_floor_spec___TRY } pinterest_rest_api_bid_floor_spec__e;
-
-char* bid_floor_spec_currency_ToString(pinterest_rest_api_bid_floor_spec__e currency);
-
-pinterest_rest_api_bid_floor_spec__e bid_floor_spec_currency_FromString(char* currency);
-
-// Enum  for bid_floor_spec
-
-typedef enum  { pinterest_rest_api_bid_floor_spec__NULL = 0, pinterest_rest_api_bid_floor_spec__AWARENESS, pinterest_rest_api_bid_floor_spec__CONSIDERATION, pinterest_rest_api_bid_floor_spec__VIDEO_VIEW, pinterest_rest_api_bid_floor_spec__WEB_CONVERSION, pinterest_rest_api_bid_floor_spec__CATALOG_SALES, pinterest_rest_api_bid_floor_spec__WEB_SESSIONS, pinterest_rest_api_bid_floor_spec__VIDEO_COMPLETION } pinterest_rest_api_bid_floor_spec__e;
-
-char* bid_floor_spec_objective_type_ToString(pinterest_rest_api_bid_floor_spec__e objective_type);
-
-pinterest_rest_api_bid_floor_spec__e bid_floor_spec_objective_type_FromString(char* objective_type);
-
-// Enum  for bid_floor_spec
-
-typedef enum  { pinterest_rest_api_bid_floor_spec__NULL = 0, pinterest_rest_api_bid_floor_spec__CLICKTHROUGH, pinterest_rest_api_bid_floor_spec__IMPRESSION, pinterest_rest_api_bid_floor_spec__VIDEO_V_50_MRC } pinterest_rest_api_bid_floor_spec__e;
-
-char* bid_floor_spec_billable_event_ToString(pinterest_rest_api_bid_floor_spec__e billable_event);
-
-pinterest_rest_api_bid_floor_spec__e bid_floor_spec_billable_event_FromString(char* billable_event);
-
-// Enum  for bid_floor_spec
-
-typedef enum  { pinterest_rest_api_bid_floor_spec__NULL = 0, pinterest_rest_api_bid_floor_spec__REGULAR, pinterest_rest_api_bid_floor_spec__VIDEO, pinterest_rest_api_bid_floor_spec__SHOPPING, pinterest_rest_api_bid_floor_spec__CAROUSEL, pinterest_rest_api_bid_floor_spec__MAX_VIDEO, pinterest_rest_api_bid_floor_spec__SHOP_THE_PIN, pinterest_rest_api_bid_floor_spec__COLLECTION, pinterest_rest_api_bid_floor_spec__IDEA, pinterest_rest_api_bid_floor_spec__SHOWCASE, pinterest_rest_api_bid_floor_spec__QUIZ } pinterest_rest_api_bid_floor_spec__e;
-
-char* bid_floor_spec_creative_type_ToString(pinterest_rest_api_bid_floor_spec__e creative_type);
-
-pinterest_rest_api_bid_floor_spec__e bid_floor_spec_creative_type_FromString(char* creative_type);
-
 
 
 typedef struct bid_floor_spec_t {
     list_t *countries; //nonprimitive container
-    currency_t *currency; // custom
-    objective_type_t *objective_type; // custom
-    action_type_t *billable_event; // custom
+    pinterest_rest_api_currency__e currency; //referenced enum
+    pinterest_rest_api_objective_type__e objective_type; //referenced enum
+    pinterest_rest_api_action_type__e billable_event; //referenced enum
     struct optimization_goal_metadata_t *optimization_goal_metadata; //model
-    creative_type_t *creative_type; // custom
+    pinterest_rest_api_creative_type__e creative_type; //referenced enum
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } bid_floor_spec_t;
 
-bid_floor_spec_t *bid_floor_spec_create(
+__attribute__((deprecated)) bid_floor_spec_t *bid_floor_spec_create(
     list_t *countries,
-    currency_t *currency,
-    objective_type_t *objective_type,
-    action_type_t *billable_event,
+    pinterest_rest_api_currency__e currency,
+    pinterest_rest_api_objective_type__e objective_type,
+    pinterest_rest_api_action_type__e billable_event,
     optimization_goal_metadata_t *optimization_goal_metadata,
-    creative_type_t *creative_type
+    pinterest_rest_api_creative_type__e creative_type
 );
 
 void bid_floor_spec_free(bid_floor_spec_t *bid_floor_spec);
