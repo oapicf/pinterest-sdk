@@ -10,4 +10,6 @@ scm:
   git_repo: pinterest-sdk
 base_dir:
   github_actions: /home/runner/work/pinterest-sdk/pinterest-sdk
-  local: /Users/cliffano/dev/workspace-studio/pinterest-sdk
+  local: /Users/cliffano/dev/workspace-oapicf/pinterest-sdk
+  custom: >-
+    /home/runner/work/generator-openapi-generator/generator-openapi-generator/stage/pinterest-sdk/
